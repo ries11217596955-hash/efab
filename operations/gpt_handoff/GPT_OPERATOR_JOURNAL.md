@@ -113,3 +113,8 @@ Night-school note:
 2026-07-06 - Overnight validator parameterization
 - Smoke found validator hard-coded to 30000; runner produced 100 accepted atoms but validator failed as ACCEPTED_TOTAL_NOT_30000.
 - Fixed validator to derive expected counts from proof or optional ExpectedAcceptedCount.
+
+2026-07-06 - Overnight smoke pass
+- Smoke runner PASS: accepted_total=100, proof_label=PROVEN_LAB_MECHANICS_NOT_LIVE, repo_root=H:/efab, branch=main.
+- Repo dirty after smoke: false.
+- Ready to launch 30k night runner from H:/efab.

@@ -76,3 +76,14 @@ H:/bridge/overnight_school_runs/<latest>/USEFUL_SCHOOL_30K_FULL_PROCESS_V1_PROOF
 ## Repair after smoke preflight
 
 Smoke preflight showed validator was hard-coded to 30000 accepted atoms. Validator is now parameterized from proof target/counts so small smoke runs and 30k night runs share one proof contract.
+
+## Smoke proof before night run
+
+`	ext
+SMOKE_STATUS=PASS
+SMOKE_ACCEPTED_TOTAL=100
+SMOKE_PROOF_LABEL=PROVEN_LAB_MECHANICS_NOT_LIVE
+SMOKE_REPO_ROOT=H:/efab
+SMOKE_BRANCH=main
+SMOKE_DIRTY_AFTER=false
+` 
