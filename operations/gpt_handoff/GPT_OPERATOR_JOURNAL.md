@@ -118,3 +118,9 @@ Night-school note:
 - Smoke runner PASS: accepted_total=100, proof_label=PROVEN_LAB_MECHANICS_NOT_LIVE, repo_root=H:/efab, branch=main.
 - Repo dirty after smoke: false.
 - Ready to launch 30k night runner from H:/efab.
+
+2026-07-06 - 30k night run completed
+- Run id: useful_school_30k_full_process_v1_20260706T190447Z.
+- Result: PASS; accepted_total=30000; rejected_total=3000; proof_label=PROVEN_LAB_MECHANICS_NOT_LIVE; runtime_ready=false.
+- Repo proof: tests/accepted_atom_retention/USEFUL_SCHOOL_30K_FULL_PROCESS_V1_PROOF.json.
+- Boundary: lab mechanics proof only, not live readiness.
