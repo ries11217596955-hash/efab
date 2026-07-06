@@ -1,0 +1,53 @@
+﻿{
+    "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
+    "status":  "MAP_REFRESHED",
+    "checked_at":  "2026-07-06T22:44:01.1376965+04:00",
+    "branch":  "main",
+    "observed_head":  "4d3906c7ab32a4c3ee9a42478db612fee07bc507",
+    "subject_head":  "4d3906c7ab32a4c3ee9a42478db612fee07bc507",
+    "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
+    "force":  true,
+    "dry_run":  false,
+    "changed_paths":  [
+                          "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+                          "reports/self_development/agent_body_map.json"
+                      ],
+    "structural_paths":  [
+
+                         ],
+    "output_root":  "reports/self_development",
+    "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+    "human_composition_summary":  "reports/self_development/agent_body_map.md",
+    "derived_compatibility_view":  "reports/self_development/agent_body_map.json",
+    "protected_state_mutated":  false,
+    "runtime_outputs_staged":  false,
+    "live_process_touched":  false,
+    "deletion_performed":  false,
+    "body_source_fingerprint":  {
+                                    "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
+                                    "structural_file_count":  552,
+                                    "sha256":  "f425568eb18a6ffd092f569263f24301a07dbde80ae54c479f82a9d02d4cfad3"
+                                },
+    "map_contains_required_components":  true,
+    "required_components":  [
+                                "school",
+                                "school_source_router",
+                                "compact_memory_intake",
+                                "autonomous_inner_motor",
+                                "map_control",
+                                "gpt_handoff"
+                            ],
+    "skip_reason":  null,
+    "freshness_rule":  "Currentness is body_source_fingerprint, not self-referential commit HEAD.",
+    "missing_required_components":  [
+
+                                    ],
+    "build_result":  {
+                         "result":  "PASS",
+                         "builder":  "AGENT_BODY_COMPOSITION_MAP_V1",
+                         "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+                         "component_count":  7,
+                         "structural_path_count":  552
+                     },
+    "refreshed_at":  "2026-07-06T22:44:01.8373836+04:00"
+}
