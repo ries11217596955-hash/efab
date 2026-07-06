@@ -1,4 +1,4 @@
-# AGENTS.md — EF Agent Builder Codex Command File
+# AGENTS.md â€” EF Agent Builder Codex Command File
 
 Status: ACTIVE_CODEX_COMMAND_FILE_V3
 Owner decision: AGENTS.md is a command file, not a history archive.
@@ -10,9 +10,33 @@ If this file conflicts with chat history, old reports, old route notes, or stale
 
 ## 1. Current repo identity
 
-Canonical project: `e-factory-agent-builder`
+Canonical active local root:
 
-Required branch: `thin-control`
+```text
+H:\efab
+```
+
+Canonical active GitHub remote:
+
+```text
+https://github.com/ries11217596955-hash/efab.git
+```
+
+Required branch:
+
+```text
+main
+```
+
+Current clean-line boundary:
+
+```text
+ACTIVE_WORKING_REPO=H:\efab
+ACTIVE_GITHUB_REPO=ries11217596955-hash/efab
+OLD_REPO=C:\Users\Azerbaijan\Downloads\e-factory-agent-builder
+OLD_REPO_ROLE=ARCHIVE_REFERENCE_ONLY
+OLD_GIT_HISTORY_DEPENDENCY=NO
+```
 
 Required identity markers:
 
@@ -23,44 +47,32 @@ TASK_QUEUE.json
 packs/registry.json
 orchestrator/run.ps1
 AGENTS.md
+reports/self_development/SELF_MODEL_ACTIVE_MAP.json
 ```
 
-Remote identity:
+Remote identity gate:
 
 ```text
-Expected origin URL contains:
-e-factory-agent-builder
+Expected origin URL must be exactly or resolve to:
+https://github.com/ries11217596955-hash/efab.git
 ```
 
-Portable path rule:
+Preflight rule:
 
 ```text
-Local clone path is machine-specific and must NOT be used as canonical identity.
-Do not block only because the absolute path differs from an old machine path.
-```
-
-Known historical/local paths, reference only, not hard gates:
-
-```text
-D:\efab-builder-thin
-C:\Users\Azerbaijan\Downloads\e-factory-agent-builder
-```
-
-If git root, branch, remote identity, or required markers mismatch:
-
-```text
+If cwd/root is not H:\efab, or branch is not main, or origin is not efab.git:
 STATUS: BLOCKED_PREFLIGHT
 STOP: REPO_CONTEXT_MISMATCH
 ```
 
-If only absolute local path differs but git root, branch, remote identity, and required markers are correct:
+Historical path rule:
 
 ```text
-STATUS: PREFLIGHT_PASS
-PATH_VARIANCE_ACCEPTED: YES
+C:\Users\Azerbaijan\Downloads\e-factory-agent-builder is old archive/reference only.
+Do not use it as current body.
+Do not commit, push, validate readiness, or run Builder growth from the old path unless Owner explicitly requests archive recovery.
 ```
 
----
 
 ## 2. Current route snapshot
 
@@ -129,7 +141,7 @@ replacement for proof
 Codex output is `CODEX_DRAFT` until validated by repo/test/runtime/proof evidence.
 
 Codex may be active and productive.
-Safety means planned, bounded, validated execution — not waiting for Owner after every step.
+Safety means planned, bounded, validated execution â€” not waiting for Owner after every step.
 
 ---
 

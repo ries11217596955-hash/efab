@@ -97,3 +97,10 @@ Night-school note:
 - school -> finalizer -> intake -> merge queue -> compact memory is built/proven; per-cycle SLA law is committed/proven.
 - parallel AIMO + active school remains NOT_ENABLED / NOT_PROVEN; next organ is `AIMO_MULTI_SOURCE_MEMORY_COMPATIBILITY_V1`.
 - future ports recorded: School+Codex/ExternalWorld and Agent+Codex/ExternalWorld/Reflex.
+2026-07-06 - Clean repo cutover pointer
+- ACTIVE_WORKING_REPO: H:\efab
+- ACTIVE_GITHUB_REPO: https://github.com/ries11217596955-hash/efab.git
+- ACTIVE_BRANCH: main
+- OLD_REPO_ROLE: C:\Users\Azerbaijan\Downloads\e-factory-agent-builder = archive/reference only.
+- Proof before pointer update: local/remote synced at 0d4b0eebc81c851eb02f86fb70d675f1c0b83d2f; map validator PASS.
+- Canonical pointer file: docs/operations/CURRENT_REPO_ROOT_AND_REMOTE.md
