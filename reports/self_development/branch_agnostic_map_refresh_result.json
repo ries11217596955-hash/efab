@@ -1,16 +1,19 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-06T22:44:01.1376965+04:00",
+    "checked_at":  "2026-07-06T22:45:14.7139097+04:00",
     "branch":  "main",
-    "observed_head":  "4d3906c7ab32a4c3ee9a42478db612fee07bc507",
-    "subject_head":  "4d3906c7ab32a4c3ee9a42478db612fee07bc507",
+    "observed_head":  "a952ed4371d8dfd3e135ea4feaaca94ed130717a",
+    "subject_head":  "a952ed4371d8dfd3e135ea4feaaca94ed130717a",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
+                          ".gitignore",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-                          "reports/self_development/agent_body_map.json"
+                          "reports/self_development/agent_body_map.json",
+                          "reports/self_development/agent_body_map.md",
+                          "reports/self_development/branch_agnostic_map_refresh_result.json"
                       ],
     "structural_paths":  [
 
@@ -49,5 +52,5 @@
                          "component_count":  7,
                          "structural_path_count":  552
                      },
-    "refreshed_at":  "2026-07-06T22:44:01.8373836+04:00"
+    "refreshed_at":  "2026-07-06T22:45:15.3879591+04:00"
 }
