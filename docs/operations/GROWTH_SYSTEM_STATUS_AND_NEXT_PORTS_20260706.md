@@ -73,3 +73,6 @@ And inspect:
 H:/bridge/overnight_school_runs/<latest>/LIVE_STATUS.json
 H:/bridge/overnight_school_runs/<latest>/USEFUL_SCHOOL_30K_FULL_PROCESS_V1_PROOF.json
 ```
+## Repair after smoke preflight
+
+Smoke preflight showed validator was hard-coded to 30000 accepted atoms. Validator is now parameterized from proof target/counts so small smoke runs and 30k night runs share one proof contract.

@@ -110,3 +110,6 @@ Night-school note:
 - Updated current status pointer: docs/operations/GROWTH_SYSTEM_STATUS_AND_NEXT_PORTS_20260706.md
 - Night target: operations/overnight_school/run_useful_school_30k_full_process_v1.ps1
 - Proof boundary: night run is PROVEN_LAB candidate only until final proof is inspected.
+2026-07-06 - Overnight validator parameterization
+- Smoke found validator hard-coded to 30000; runner produced 100 accepted atoms but validator failed as ACCEPTED_TOTAL_NOT_30000.
+- Fixed validator to derive expected counts from proof or optional ExpectedAcceptedCount.

@@ -1,24 +1,28 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-06T23:02:10.5099334+04:00",
+    "checked_at":  "2026-07-06T23:03:38.3267933+04:00",
     "branch":  "main",
-    "observed_head":  "b03f9d69d54777b11ae00a197af0efeee4dd5883",
-    "subject_head":  "b03f9d69d54777b11ae00a197af0efeee4dd5883",
+    "observed_head":  "8f710267982a2c7acb8c1b99870566acc7264459",
+    "subject_head":  "8f710267982a2c7acb8c1b99870566acc7264459",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "AGENTS.md",
-                          "docs/operations/CURRENT_REPO_ROOT_AND_REMOTE.md",
+                          "docs/operations/GROWTH_SYSTEM_STATUS_AND_NEXT_PORTS_20260706.md",
                           "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
+                          "operations/overnight_school/run_useful_school_30k_full_process_v1.ps1",
+                          "operations/overnight_school/validate_useful_school_30k_full_process_v1.ps1",
+                          "operations/overnight_school/watch_useful_school_30k_full_process_v1.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json"
                       ],
     "structural_paths":  [
-                             "AGENTS.md"
+                             "operations/overnight_school/run_useful_school_30k_full_process_v1.ps1",
+                             "operations/overnight_school/validate_useful_school_30k_full_process_v1.ps1",
+                             "operations/overnight_school/watch_useful_school_30k_full_process_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -31,7 +35,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  552,
-                                    "sha256":  "697af90025d8f9dd9f8788c9d1ecc2c32621a14e0a483cb1b964b5c3855a626e"
+                                    "sha256":  "9d38098b46384d58009e19ba0f1596d218e475ed98a0f6fc33aa867adbd35425"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -54,5 +58,5 @@
                          "component_count":  7,
                          "structural_path_count":  552
                      },
-    "refreshed_at":  "2026-07-06T23:02:11.1913299+04:00"
+    "refreshed_at":  "2026-07-06T23:03:39.0137598+04:00"
 }

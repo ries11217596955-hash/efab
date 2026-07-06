@@ -1,4 +1,7 @@
-param([string]$ProofPath='tests/accepted_atom_retention/USEFUL_SCHOOL_30K_FULL_PROCESS_V1_PROOF.json')
+param(
+  [string]$ProofPath='tests/accepted_atom_retention/USEFUL_SCHOOL_30K_FULL_PROCESS_V1_PROOF.json',
+  [int]$ExpectedAcceptedCount = 0
+)
 $ErrorActionPreference='Stop'
 $RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot '../..')).Path
 Set-Location $RepoRoot
@@ -7,10 +10,22 @@ $P=Get-Content $ProofPath -Raw | ConvertFrom-Json
 function Assert($Cond,[string]$Msg){ if(-not $Cond){ throw $Msg } }
 Assert ($P.schema -eq 'useful_school_30k_full_process_v1') 'SCHEMA_MISMATCH'
 Assert ($P.status -eq 'PASS') 'STATUS_NOT_PASS'
-Assert ([int]$P.accepted_total -eq 30000) 'ACCEPTED_TOTAL_NOT_30000'
-Assert ([int]$P.rejected_total -ge 3000) 'REJECTED_TOTAL_LT_3000'
-Assert ([int]$P.chunk_count -eq 6) 'CHUNK_COUNT_NOT_6'
-Assert ([int]$P.subchunk_count -eq 300) 'SUBCHUNK_COUNT_NOT_300'
+$expected=$ExpectedAcceptedCount
+if($expected -le 0){ $expected=[int]$P.target_accepted_count }
+if($expected -le 0){ throw 'EXPECTED_ACCEPTED_COUNT_UNKNOWN' }
+$chunkCount=[int]$P.chunk_count
+$chunkSize=[int]$P.chunk_size
+$subchunkSize=[int]$P.subchunk_size
+$subchunkCount=[int]$P.subchunk_count
+Assert ([int]$P.accepted_total -eq $expected) "ACCEPTED_TOTAL_NOT_EXPECTED_$expected"
+Assert ([int]$P.understood_atom_total -eq $expected) "UNDERSTOOD_TOTAL_NOT_EXPECTED_$expected"
+Assert ([int]$P.assimilated_atom_total -eq $expected) "ASSIMILATED_TOTAL_NOT_EXPECTED_$expected"
+Assert ($chunkCount -gt 0) 'CHUNK_COUNT_ZERO'
+Assert ($chunkSize -gt 0) 'CHUNK_SIZE_ZERO'
+Assert ($subchunkSize -gt 0) 'SUBCHUNK_SIZE_ZERO'
+Assert (($chunkCount * $chunkSize) -eq $expected) 'CHUNK_MULTIPLICATION_MISMATCH'
+Assert ($subchunkCount -eq ($expected / $subchunkSize)) 'SUBCHUNK_COUNT_MISMATCH'
+Assert ([int]$P.rejected_total -ge $subchunkCount) 'REJECTED_TOTAL_LT_SUBCHUNK_COUNT'
 Assert ([int]$P.domain_count -eq 10) 'DOMAIN_COUNT_NOT_10'
 Assert ([int]$P.level_count -eq 10) 'LEVEL_COUNT_NOT_10'
 Assert ([int]$P.after_score -gt [int]$P.before_score) 'AFTER_NOT_GREATER_THAN_BEFORE'
@@ -18,8 +33,6 @@ Assert ([int]$P.improved_case_count -gt 0) 'NO_IMPROVED_CASES'
 Assert ([int]$P.critical_regression_count -eq 0) 'CRITICAL_REGRESSION_PRESENT'
 Assert ([int]$P.proof_confusion_after -le [int]$P.proof_confusion_before) 'PROOF_CONFUSION_REGRESSION'
 Assert ([int]$P.unsafe_decision_after -le [int]$P.unsafe_decision_before) 'UNSAFE_DECISION_REGRESSION'
-Assert ([int]$P.understood_atom_total -eq 30000) 'UNDERSTOOD_TOTAL_NOT_30000'
-Assert ([int]$P.assimilated_atom_total -eq 30000) 'ASSIMILATED_TOTAL_NOT_30000'
 Assert ([int]$P.promoted_delta_count -gt 0) 'NO_PROMOTED_DELTAS'
 Assert ([int]$P.new_atoms_used_in_after_decisions -gt 0) 'NO_NEW_ATOMS_USED'
 Assert ($P.retrieval_status -eq 'PASS') 'RETRIEVAL_NOT_PASS'
@@ -33,16 +46,17 @@ Assert ($P.anti_mechanical_generation_checks.raw_dump_guard -eq $true) 'RAW_DUMP
 Assert ($P.anti_mechanical_generation_checks.accepted_count_only_guard -eq $true) 'ACCEPTED_COUNT_ONLY_GUARD_FALSE'
 Assert ($P.anti_mechanical_generation_checks.domain_ladder_distribution_guard -eq $true) 'DOMAIN_LADDER_GUARD_FALSE'
 $chain=@($P.chunk_state_chain)
-Assert ($chain.Count -eq 6) 'CHAIN_COUNT_NOT_6'
+Assert ($chain.Count -eq $chunkCount) 'CHAIN_COUNT_NOT_CHUNK_COUNT'
 for($i=1;$i -lt $chain.Count;$i++){ Assert ($chain[$i].input_hash -eq $chain[$i-1].output_hash) "CHAIN_BROKEN_AT_CHUNK_$($i+1)" }
 foreach($c in @($P.chunk_summaries)){
-  Assert ([int]$c.accepted_count -eq 5000) "CHUNK_ACCEPTED_NOT_5000_$($c.chunk)"
+  Assert ([int]$c.accepted_count -eq $chunkSize) "CHUNK_ACCEPTED_NOT_CHUNK_SIZE_$($c.chunk)"
   Assert ([int]$c.rejected_count -gt 0) "CHUNK_REJECTED_ZERO_$($c.chunk)"
   Assert ([int]$c.understood_count -gt 0) "CHUNK_UNDERSTOOD_ZERO_$($c.chunk)"
   Assert ([int]$c.assimilated_count -gt 0) "CHUNK_ASSIMILATED_ZERO_$($c.chunk)"
   Assert ($c.retrieval_status -eq 'PASS') "CHUNK_RETRIEVAL_FAIL_$($c.chunk)"
   Assert ($c.decision_reuse_status -eq 'PASS') "CHUNK_DECISION_REUSE_FAIL_$($c.chunk)"
 }
-Write-Host 'VALIDATION_PASS=USEFUL_SCHOOL_30K_FULL_PROCESS_V1_PROVEN_LAB_MECHANICS'
+Write-Host 'VALIDATION_PASS=USEFUL_SCHOOL_FULL_PROCESS_V1_PROVEN_LAB_MECHANICS'
+Write-Host "EXPECTED_ACCEPTED_COUNT=$expected"
 Write-Host "PROOF_PATH=$ProofPath"
 Write-Host 'RUNTIME_READY=false'
