@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_id": "continue_on_failure_runtime_v1",
+  "title": "Continue-On-Failure Runtime V1",
+  "type": "object",
+  "required": [
+    "runtime_id",
+    "version",
+    "status",
+    "active_line",
+    "input_sources",
+    "failure_classes",
+    "continue_rules",
+    "stop_rules",
+    "ledger_update_contract",
+    "simulation_contract",
+    "execution_allowed",
+    "next_allowed_step"
+  ],
+  "properties": {
+    "runtime_id": {
+      "const": "CONTINUE_ON_FAILURE_RUNTIME_V1"
+    },
+    "version": {
+      "const": "V1"
+    },
+    "status": {
+      "const": "ACTIVE_RUNTIME_CONTRACT"
+    },
+    "active_line": {
+      "const": "AGENT_BUILDER / SELF_BUILD"
+    },
+    "input_sources": {
+      "type": "array"
+    },
+    "failure_classes": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "SAFE_ITEM_FAILURE",
+          "ITEM_VALIDATION_FAILURE",
+          "ITEM_POLICY_BLOCK",
+          "BLOCKED_DEPENDENCY",
+          "MISSING_MATERIAL",
+          "SYSTEMIC_FAILURE",
+          "POLICY_VIOLATION",
+          "REPO_CORRUPTION"
+        ]
+      }
+    },
+    "continue_rules": {
+      "type": "object"
+    },
+    "stop_rules": {
+      "type": "object"
+    },
+    "ledger_update_contract": {
+      "type": "object"
+    },
+    "simulation_contract": {
+      "type": "object"
+    },
+    "execution_allowed": {
+      "const": false
+    },
+    "next_allowed_step": {
+      "const": "PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1"
+    }
+  },
+  "additionalProperties": true
+}

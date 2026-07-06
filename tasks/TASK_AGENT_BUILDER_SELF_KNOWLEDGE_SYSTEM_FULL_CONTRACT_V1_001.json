@@ -1,0 +1,74 @@
+{
+  "task_id": "TASK_AGENT_BUILDER_SELF_KNOWLEDGE_SYSTEM_FULL_CONTRACT_V1_001",
+  "active_line": "AGENT_BUILDER_SELF_DEVELOPMENT",
+  "mode": "SELF_BUILD",
+  "capability_id": "agent_builder_self_knowledge_system_full_contract_v1",
+  "phase": "PHASE_78",
+  "gate": "AGENT_BUILDER_SELF_KNOWLEDGE_SYSTEM_FULL_CONTRACT_V1",
+  "status": "ACTIVE",
+  "read_first": [
+    "AGENTS.md",
+    "CAPABILITY_ROADMAP.json",
+    "GENESIS_STATE.json",
+    "TASK_QUEUE.json",
+    "packs/registry.json",
+    "packs/PHASE78_AGENT_BUILDER_SELF_KNOWLEDGE_SYSTEM_FULL_CONTRACT_V1/README.md"
+  ],
+  "objective": "Seed and execute a full-contract Agent Builder Self-Knowledge System that can describe Builder from repo artifacts and distinguish proven, completed, active, candidate, planned, failed, unknown, and missing_surface states.",
+  "human_meaning": "Builder gains a durable repo-native memory surface for who it is, what it contains, what is evidenced, what is missing, what agents or agent-like products exist, and what the next strongest move should be.",
+  "files_allowed": [
+    "contracts/self_knowledge/",
+    "self_knowledge/",
+    "modules/build_builder_self_knowledge.ps1",
+    "modules/write_builder_self_describe_report.ps1",
+    "reports/self_knowledge/",
+    "proofs/self_knowledge/",
+    "tasks/TASK_AGENT_BUILDER_SELF_KNOWLEDGE_SYSTEM_FULL_CONTRACT_V1_001.json",
+    "packs/PHASE78_AGENT_BUILDER_SELF_KNOWLEDGE_SYSTEM_FULL_CONTRACT_V1/",
+    "CAPABILITY_ROADMAP.json",
+    "GENESIS_STATE.json",
+    "TASK_QUEUE.json",
+    "packs/registry.json"
+  ],
+  "forbidden": [
+    "Do not create Operation System as completed.",
+    "Do not create Blueprint Compiler as completed.",
+    "Do not mark missing systems as proven.",
+    "Do not delete or rewrite historical proofs or reports.",
+    "Do not collapse old roadmap history.",
+    "Do not modify orchestrator/run.ps1.",
+    "Do not create an external agent directly.",
+    "Do not touch Ruflo or external mining.",
+    "Do not use minimal, starter, or MVP framing."
+  ],
+  "validation": [
+    "git status --short",
+    "PowerShell parser check for modules/build_builder_self_knowledge.ps1",
+    "PowerShell parser check for modules/write_builder_self_describe_report.ps1",
+    "PowerShell parser check for packs/PHASE78_AGENT_BUILDER_SELF_KNOWLEDGE_SYSTEM_FULL_CONTRACT_V1/APPLY.ps1",
+    "PowerShell parser check for packs/PHASE78_AGENT_BUILDER_SELF_KNOWLEDGE_SYSTEM_FULL_CONTRACT_V1/VALIDATE.ps1",
+    "packs/PHASE78_AGENT_BUILDER_SELF_KNOWLEDGE_SYSTEM_FULL_CONTRACT_V1/VALIDATE.ps1 -Stage PreRuntime",
+    "packs/PHASE78_AGENT_BUILDER_SELF_KNOWLEDGE_SYSTEM_FULL_CONTRACT_V1/APPLY.ps1",
+    "packs/PHASE78_AGENT_BUILDER_SELF_KNOWLEDGE_SYSTEM_FULL_CONTRACT_V1/VALIDATE.ps1 -Stage Completed"
+  ],
+  "expected_report": [
+    "Files changed",
+    "Key design summary",
+    "Validation commands run",
+    "Validation results",
+    "Whether ready for terminal proof check",
+    "No runtime PASS claim unless APPLY.ps1 actually ran"
+  ],
+  "terminal_proof_pack": {
+    "shell": "PowerShell",
+    "commands": [
+      "$Continue = $true; foreach ($p in @('CAPABILITY_ROADMAP.json','GENESIS_STATE.json','TASK_QUEUE.json','packs/registry.json','orchestrator/run.ps1')) { if (-not (Test-Path $p)) { Write-Host 'STOP=WRONG_AGENT_BUILDER_REPO'; $Continue = $false } }; if ($Continue) { Write-Host 'REPO_IDENTITY_GATE=PASS' }",
+      "git status --short",
+      "$files = @('modules/build_builder_self_knowledge.ps1','modules/write_builder_self_describe_report.ps1','packs/PHASE78_AGENT_BUILDER_SELF_KNOWLEDGE_SYSTEM_FULL_CONTRACT_V1/APPLY.ps1','packs/PHASE78_AGENT_BUILDER_SELF_KNOWLEDGE_SYSTEM_FULL_CONTRACT_V1/VALIDATE.ps1'); foreach ($f in $files) { $tokens=$null; $errors=$null; [System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path $f), [ref]$tokens, [ref]$errors) | Out-Null; if ($errors.Count -gt 0) { Write-Host \"PARSER_FAIL=$f\"; $errors } else { Write-Host \"PARSER_PASS=$f\" } }",
+      "powershell -ExecutionPolicy Bypass -File packs/PHASE78_AGENT_BUILDER_SELF_KNOWLEDGE_SYSTEM_FULL_CONTRACT_V1/VALIDATE.ps1 -Stage PreRuntime",
+      "powershell -ExecutionPolicy Bypass -File packs/PHASE78_AGENT_BUILDER_SELF_KNOWLEDGE_SYSTEM_FULL_CONTRACT_V1/APPLY.ps1",
+      "powershell -ExecutionPolicy Bypass -File packs/PHASE78_AGENT_BUILDER_SELF_KNOWLEDGE_SYSTEM_FULL_CONTRACT_V1/VALIDATE.ps1 -Stage Completed",
+      "git status --short"
+    ]
+  }
+}

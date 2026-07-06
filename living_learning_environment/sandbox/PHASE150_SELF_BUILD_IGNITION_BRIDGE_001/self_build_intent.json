@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "intent_id": "PHASE150_SELF_BUILD_INTENT",
+  "step_id": "PHASE150_BUILDER_REUSE_BASED_MICRO_ORGAN_TRIAL_V1",
+  "run_id": "PHASE150_SELF_BUILD_IGNITION_BRIDGE_001",
+  "gap_detected": true,
+  "missing_capability": "learning_card_reuse_advisor",
+  "reused_capability_id": "self_learning_memory",
+  "target_output": "self_build_program_candidate",
+  "accepted_state_mutation_allowed": false,
+  "sandbox_only": true,
+  "input_sources": [
+    "proofs/self_development/PHASE149_BUILDER_READING_AND_CAPABILITY_REUSE_SESSION_V1.json",
+    "living_learning_environment/proposals/PHASE149_REUSE_PROPOSAL.json",
+    "knowledge_library/learning_cards/PHASE149_CAPABILITY_REUSE_LEARNING_CARD.json",
+    "source_registry/source_policy.json",
+    "source_registry/trusted_sources.json",
+    "capability_shelf/capabilities/self_learning_memory.json"
+  ],
+  "next_allowed_step": "PHASE151_BUILDER_SELF_BUILD_PROGRAM_ADMISSION_GATE_V1"
+}

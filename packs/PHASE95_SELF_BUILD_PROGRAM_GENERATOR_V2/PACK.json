@@ -1,0 +1,18 @@
+{
+  "pack_id": "PHASE95_SELF_BUILD_PROGRAM_GENERATOR_V2",
+  "task_id": "TASK_SELF_BUILD_PROGRAM_GENERATOR_V2_001",
+  "phase": "PHASE95",
+  "status": "READY",
+  "path": "packs/PHASE95_SELF_BUILD_PROGRAM_GENERATOR_V2",
+  "shell": "PowerShell",
+  "entry_script": "packs/PHASE95_SELF_BUILD_PROGRAM_GENERATOR_V2/APPLY.ps1",
+  "apply": "APPLY.ps1",
+  "validate": "VALIDATE.ps1",
+  "validate_script": "packs/PHASE95_SELF_BUILD_PROGRAM_GENERATOR_V2/VALIDATE.ps1",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "mode": "SELF_BUILD",
+  "capability_id": "self_build_program_generator_v2",
+  "gate": "SELF_BUILD_PROGRAM_GENERATOR_V2",
+  "next_allowed_step": "PHASE96_BATCH_PLANNER_V1",
+  "purpose": "Create Self-Build Program Generator V2 and a stronger generated self-build program candidate format."
+}

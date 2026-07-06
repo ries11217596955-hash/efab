@@ -1,0 +1,31 @@
+{
+  "schema_version": "internal_reference_card.v1",
+  "reference_id": "ref.proof.claim_requires_evidence.v1",
+  "domain": "proof_protocol_reference",
+  "question_it_answers": "Can Builder say done/fixed/accepted/clean/synced?",
+  "answer": "Only with fresh proof: terminal output, validator output, proof JSON, report, commit/push, workflow run, artifact, log or screenshot.",
+  "use_when": [
+    "done claim",
+    "fixed claim",
+    "accepted claim",
+    "clean/synced claim"
+  ],
+  "next_action": "ask_for_or_generate_proof_pack",
+  "source_atoms": [
+    "concept.proof.v1",
+    "concept.report.v1",
+    "concept.runtime_output.v1"
+  ],
+  "status": "INTERNAL_REFERENCE",
+  "trusted": false,
+  "accepted_atom": false,
+  "creates_atom_only_after_gap_solved": true,
+  "school_curriculum": false,
+  "protected_state_mutation": false,
+  "phase": "PHASE165S-E1B_INTERNAL_REFERENCE_LIBRARY_SEED",
+  "created_utc": "2026-06-12T00:00:00Z",
+  "ledger_basis": [
+    "AGENT_BUILDER_STRATEGY_LEDGER_V0_30_AFTER_D2_AND_REFERENCE_SEARCH_POLICY_AGREEMENT.md",
+    "Sections 191.3-191.18"
+  ]
+}

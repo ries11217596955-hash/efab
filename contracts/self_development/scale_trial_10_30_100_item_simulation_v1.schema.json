@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_id": "scale_trial_10_30_100_item_simulation_v1",
+  "title": "Scale Trial 10/30/100 Item Simulation V1",
+  "type": "object",
+  "required": [
+    "scale_trial_id",
+    "version",
+    "status",
+    "active_line",
+    "input_sources",
+    "trial_policy",
+    "scale_tiers",
+    "result_contract",
+    "simulation_performed",
+    "real_items_executed",
+    "next_allowed_step"
+  ],
+  "properties": {
+    "scale_trial_id": {
+      "type": "string"
+    },
+    "version": {
+      "const": "V1"
+    },
+    "status": {
+      "type": "string"
+    },
+    "active_line": {
+      "const": "AGENT_BUILDER / SELF_BUILD"
+    },
+    "input_sources": {
+      "type": "array",
+      "minItems": 3
+    },
+    "trial_policy": {
+      "type": "object"
+    },
+    "scale_tiers": {
+      "type": "array",
+      "minItems": 3
+    },
+    "result_contract": {
+      "type": "object"
+    },
+    "simulation_performed": {
+      "type": "boolean"
+    },
+    "real_items_executed": {
+      "const": false
+    },
+    "next_allowed_step": {
+      "const": "PHASE106_SCALE_TRIAL_PROMOTION_GATE_AND_ROUTE_LOCK_REFRESH_V1"
+    }
+  },
+  "additionalProperties": true
+}

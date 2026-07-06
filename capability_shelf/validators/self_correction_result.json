@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "capability_id": "self_correction_result",
+  "validator_id": "self_correction_result_capability_shelf_validator_reference_v1",
+  "expectations": [
+    "existing_files exist",
+    "forbidden_paths are not touched",
+    "requires_owner_prompt is false unless proven",
+    "requires_codex is false unless a missing tool or proven defect is documented",
+    "promotion_requirements are satisfied before state adoption"
+  ]
+}

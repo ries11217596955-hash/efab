@@ -1,0 +1,15 @@
+{
+  "schema": "CONTROLLED_RUNTIME_30000_STRESS_REVIEW_V1",
+  "status": "CONTROLLED_RUNTIME_30000_STRESS_REVIEW_PASS",
+  "promoted_from": "CONTROLLED_RUNTIME_ENTRYPOINT_ACCEPTED_LOCAL",
+  "runtime_ready": false,
+  "basis": [
+    "state JSON atomic write repair",
+    "memory delta isolation repair",
+    "completed 30000 detached run",
+    "git status clean",
+    "CONTROLLED_RUNTIME_30000_STRESS_PROOF_V1.json"
+  ],
+  "decision": "READY_FOR_DIVERSITY_AND_USE_PROOF_OR_OWNER_DECISION",
+  "next_required": "DIVERSITY_AND_USE_PROOF_OR_OWNER_DECISION_RUNTIME_READY"
+}

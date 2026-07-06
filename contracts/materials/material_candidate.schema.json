@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "material_candidate.schema.json",
+  "title": "Material Candidate",
+  "type": "object",
+  "required": [
+    "material_id",
+    "name",
+    "material_type",
+    "source_url",
+    "source_origin",
+    "provenance_status",
+    "license_status",
+    "security_status",
+    "usage_mode",
+    "status",
+    "risk_level",
+    "owner_approval_required",
+    "notes"
+  ],
+  "properties": {
+    "material_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "material_type": {
+      "type": "string",
+      "enum": [
+        "CLI",
+        "LIBRARY",
+        "TEMPLATE",
+        "WORKFLOW",
+        "DOCKER_IMAGE",
+        "POLICY",
+        "SCHEMA",
+        "EXAMPLE",
+        "RESEARCH_REFERENCE",
+        "SERVICE"
+      ]
+    },
+    "source_url": {
+      "type": "string"
+    },
+    "source_origin": {
+      "type": "string"
+    },
+    "provenance_status": {
+      "type": "string",
+      "enum": [
+        "DISCOVERED",
+        "CANDIDATE",
+        "QUARANTINED",
+        "WRAPPED",
+        "TESTED",
+        "TRUSTED",
+        "REJECTED",
+        "REFERENCE_ONLY",
+        "OWNER_APPROVAL_REQUIRED"
+      ]
+    },
+    "license_status": {
+      "type": "string",
+      "enum": [
+        "DISCOVERED",
+        "CANDIDATE",
+        "QUARANTINED",
+        "WRAPPED",
+        "TESTED",
+        "TRUSTED",
+        "REJECTED",
+        "REFERENCE_ONLY",
+        "OWNER_APPROVAL_REQUIRED"
+      ]
+    },
+    "security_status": {
+      "type": "string",
+      "enum": [
+        "DISCOVERED",
+        "CANDIDATE",
+        "QUARANTINED",
+        "WRAPPED",
+        "TESTED",
+        "TRUSTED",
+        "REJECTED",
+        "REFERENCE_ONLY",
+        "OWNER_APPROVAL_REQUIRED"
+      ]
+    },
+    "usage_mode": {
+      "type": "string",
+      "enum": [
+        "USE_AS_TOOL",
+        "WRAP_ONLY",
+        "COPY_WITH_ATTRIBUTION",
+        "ADAPT",
+        "REIMPLEMENT",
+        "REFERENCE_ONLY",
+        "ASK_PERMISSION",
+        "REJECT"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "DISCOVERED",
+        "CANDIDATE",
+        "QUARANTINED",
+        "WRAPPED",
+        "TESTED",
+        "TRUSTED",
+        "REJECTED",
+        "REFERENCE_ONLY",
+        "OWNER_APPROVAL_REQUIRED"
+      ]
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": [
+        "LOW",
+        "MEDIUM",
+        "HIGH",
+        "FORBIDDEN",
+        "UNKNOWN"
+      ]
+    },
+    "owner_approval_required": {
+      "type": "boolean"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

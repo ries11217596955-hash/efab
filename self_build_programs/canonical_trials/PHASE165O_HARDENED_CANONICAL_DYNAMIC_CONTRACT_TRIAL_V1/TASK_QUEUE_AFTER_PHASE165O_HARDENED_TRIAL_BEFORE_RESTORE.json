@@ -1,0 +1,1163 @@
+{
+    "queue_version":  "0.3",
+    "active_task_id":  "NONE",
+    "tasks":  [
+                  {
+                      "task_id":  "TASK_BUILDER_SELF_PACK_AUTHOR_V1_001",
+                      "status":  "COMPLETED",
+                      "path":  "tasks/TASK_BUILDER_SELF_PACK_AUTHOR_V1_001.json",
+                      "active_line":  "AGENT_BUILDER / SELF_BUILD",
+                      "mode":  "SELF_BUILD",
+                      "capability_id":  "builder_self_pack_author_v1",
+                      "phase":  "PHASE107",
+                      "gate":  "BUILDER_SELF_PACK_AUTHOR_V1",
+                      "pack_id":  "PHASE107_BUILDER_SELF_PACK_AUTHOR_V1",
+                      "baseline_commit":  "835aa83",
+                      "source_route_lock":  "route_locks/AGENT_BUILDER_NEXT_15_STEPS_LOCK_V3_SELF_PACK_AUTHOR.md",
+                      "source_route_correction_proof":  "proofs/self_development/SCALE_TRIAL_PROMOTION_GATE_AND_ROUTE_LOCK_REFRESH_V1.json",
+                      "generated_candidate_target":  "self_build_batch/self_pack_author/generated_candidates/PHASE108_BUILDER_GENERATED_PACK_ADMISSION_V1_CANDIDATE",
+                      "next_allowed_step":  "PHASE108_BUILDER_GENERATED_PACK_ADMISSION_V1",
+                      "completed_at":  "2026-05-30T16:58:31.0041051Z"
+                  },
+                  {
+                      "task_id":  "TASK_SCALE_TRIAL_PROMOTION_GATE_AND_ROUTE_LOCK_REFRESH_V1_001",
+                      "status":  "COMPLETED",
+                      "path":  "tasks/TASK_SCALE_TRIAL_PROMOTION_GATE_AND_ROUTE_LOCK_REFRESH_V1_001.json",
+                      "active_line":  "AGENT_BUILDER / SELF_BUILD",
+                      "mode":  "SELF_BUILD",
+                      "capability_id":  "scale_trial_promotion_gate_and_route_lock_refresh_v1",
+                      "phase":  "PHASE106",
+                      "gate":  "SCALE_TRIAL_PROMOTION_GATE_AND_ROUTE_LOCK_REFRESH_V1",
+                      "pack_id":  "PHASE106_SCALE_TRIAL_PROMOTION_GATE_AND_ROUTE_LOCK_REFRESH_V1",
+                      "baseline_commit":  "e66cf8e",
+                      "source_scale_trial_proof":  "proofs/self_development/SCALE_TRIAL_10_30_100_ITEM_SIMULATION_V1.json",
+                      "source_scale_trial_result":  "self_build_batch/scale_trials/BATCH_PLAN_EXAMPLE_V1_SCALE_TRIAL_RESULT.json",
+                      "route_change_reason":  "Codex dependency must be reduced; Builder must become next pack author.",
+                      "next_allowed_step":  "PHASE107_BUILDER_SELF_PACK_AUTHOR_V1",
+                      "completed_at":  "2026-05-30T16:38:56.2293574Z"
+                  },
+                  {
+                      "task_id":  "TASK_SCALE_TRIAL_10_30_100_ITEM_SIMULATION_V1_001",
+                      "status":  "COMPLETED",
+                      "path":  "tasks/TASK_SCALE_TRIAL_10_30_100_ITEM_SIMULATION_V1_001.json",
+                      "active_line":  "AGENT_BUILDER / SELF_BUILD",
+                      "mode":  "SELF_BUILD",
+                      "capability_id":  "scale_trial_10_30_100_item_simulation_v1",
+                      "phase":  "PHASE105",
+                      "gate":  "SCALE_TRIAL_10_30_100_ITEM_SIMULATION_V1",
+                      "pack_id":  "PHASE105_SCALE_TRIAL_10_30_100_ITEM_SIMULATION_V1",
+                      "baseline_commit":  "8606986",
+                      "route_lock":  "AGENT_BUILDER_NEXT_15_STEPS_LOCK_V2_R2.md",
+                      "source_controlled_run_result":  "self_build_batch/controlled_runs/BATCH_PLAN_EXAMPLE_V1_CONTROLLED_MULTI_CYCLE_RUN_RESULT.json",
+                      "source_controlled_run_proof":  "proofs/self_development/CONTROLLED_MULTI_CYCLE_SELF_BUILD_RUN_V1.json",
+                      "source_repair_bundle":  "self_build_batch/repair_loop/BATCH_PLAN_EXAMPLE_V1_REPAIR_LOOP_PROGRAMS_DRY_RUN.json",
+                      "next_allowed_step":  "PHASE106_SCALE_TRIAL_PROMOTION_GATE_AND_ROUTE_LOCK_REFRESH_V1",
+                      "completed_at":  "2026-05-30T16:16:04.7233575Z"
+                  },
+                  {
+                      "task_id":  "TASK_CONTROLLED_MULTI_CYCLE_SELF_BUILD_RUN_V1_001",
+                      "status":  "COMPLETED",
+                      "path":  "tasks/TASK_CONTROLLED_MULTI_CYCLE_SELF_BUILD_RUN_V1_001.json",
+                      "active_line":  "AGENT_BUILDER / SELF_BUILD",
+                      "mode":  "SELF_BUILD",
+                      "capability_id":  "controlled_multi_cycle_self_build_run_v1",
+                      "phase":  "PHASE104",
+                      "gate":  "CONTROLLED_MULTI_CYCLE_SELF_BUILD_RUN_V1",
+                      "pack_id":  "PHASE104_CONTROLLED_MULTI_CYCLE_SELF_BUILD_RUN_V1",
+                      "baseline_commit":  "fdf079d",
+                      "route_lock":  "AGENT_BUILDER_NEXT_15_STEPS_LOCK_V2_R2.md",
+                      "source_repair_bundle":  "self_build_batch/repair_loop/BATCH_PLAN_EXAMPLE_V1_REPAIR_LOOP_PROGRAMS_DRY_RUN.json",
+                      "source_generator_contract":  "self_build_batch/repair_loop/REPAIR_LOOP_GENERATOR_V1.json",
+                      "source_generator_proof":  "proofs/self_development/REPAIR_LOOP_GENERATOR_V1.json",
+                      "selected_program":  "REPAIR_PROGRAM_SELF_BUILD_REQUIRED_MODULES_001",
+                      "next_allowed_step":  "PHASE105_SCALE_TRIAL_10_30_100_ITEM_SIMULATION_V1",
+                      "completed_at":  "2026-05-30T15:37:33.5544119Z"
+                  },
+                  {
+                      "task_id":  "TASK_REPAIR_LOOP_GENERATOR_V1_001",
+                      "status":  "COMPLETED",
+                      "path":  "tasks/TASK_REPAIR_LOOP_GENERATOR_V1_001.json",
+                      "active_line":  "AGENT_BUILDER / SELF_BUILD",
+                      "mode":  "SELF_BUILD",
+                      "capability_id":  "repair_loop_generator_v1",
+                      "phase":  "PHASE103",
+                      "gate":  "REPAIR_LOOP_GENERATOR_V1",
+                      "pack_id":  "PHASE103_REPAIR_LOOP_GENERATOR_V1",
+                      "completed_at":  "2026-05-29T18:52:00.7314751Z"
+                  },
+                  {
+                      "task_id":  "TASK_AUTO_NEXT_GAP_DECISION_V1_001",
+                      "status":  "COMPLETED",
+                      "path":  "tasks/TASK_AUTO_NEXT_GAP_DECISION_V1_001.json",
+                      "active_line":  "AGENT_BUILDER / SELF_BUILD",
+                      "mode":  "SELF_BUILD",
+                      "capability_id":  "auto_next_gap_decision_v1",
+                      "phase":  "PHASE102",
+                      "gate":  "AUTO_NEXT_GAP_DECISION_V1",
+                      "pack_id":  "PHASE102_AUTO_NEXT_GAP_DECISION_V1",
+                      "completed_at":  "2026-05-29T18:40:43.5876943Z"
+                  },
+                  {
+                      "task_id":  "TASK_BATCH_PROOF_AGGREGATOR_V1_001",
+                      "status":  "COMPLETED",
+                      "path":  "tasks/TASK_BATCH_PROOF_AGGREGATOR_V1_001.json",
+                      "active_line":  "AGENT_BUILDER / SELF_BUILD",
+                      "mode":  "SELF_BUILD",
+                      "capability_id":  "batch_proof_aggregator_v1",
+                      "phase":  "PHASE101",
+                      "gate":  "BATCH_PROOF_AGGREGATOR_V1",
+                      "pack_id":  "PHASE101_BATCH_PROOF_AGGREGATOR_V1",
+                      "completed_at":  "2026-05-29T18:06:05.1999577Z"
+                  },
+                  {
+                      "task_id":  "TASK_QUARANTINE_AND_BLOCKER_REGISTRY_V1_001",
+                      "status":  "COMPLETED",
+                      "path":  "tasks/TASK_QUARANTINE_AND_BLOCKER_REGISTRY_V1_001.json",
+                      "active_line":  "AGENT_BUILDER / SELF_BUILD",
+                      "mode":  "SELF_BUILD",
+                      "capability_id":  "quarantine_and_blocker_registry_v1",
+                      "phase":  "PHASE100",
+                      "gate":  "QUARANTINE_AND_BLOCKER_REGISTRY_V1",
+                      "pack_id":  "PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1",
+                      "completed_at":  "2026-05-29T17:27:35.2969987Z"
+                  },
+                  {
+                      "task_id":  "TASK_CONTINUE_ON_FAILURE_RUNTIME_V1_001",
+                      "status":  "COMPLETED",
+                      "path":  "tasks/TASK_CONTINUE_ON_FAILURE_RUNTIME_V1_001.json",
+                      "active_line":  "AGENT_BUILDER / SELF_BUILD",
+                      "mode":  "SELF_BUILD",
+                      "capability_id":  "continue_on_failure_runtime_v1",
+                      "phase":  "PHASE99",
+                      "gate":  "CONTINUE_ON_FAILURE_RUNTIME_V1",
+                      "pack_id":  "PHASE99_CONTINUE_ON_FAILURE_RUNTIME_V1",
+                      "completed_at":  "2026-05-29T16:58:57.2813218Z"
+                  },
+                  {
+                      "task_id":  "TASK_ITEM_LEVEL_EXECUTION_LEDGER_V1_001",
+                      "status":  "COMPLETED",
+                      "path":  "tasks/TASK_ITEM_LEVEL_EXECUTION_LEDGER_V1_001.json",
+                      "active_line":  "AGENT_BUILDER / SELF_BUILD",
+                      "mode":  "SELF_BUILD",
+                      "capability_id":  "item_level_execution_ledger_v1",
+                      "phase":  "PHASE98",
+                      "gate":  "ITEM_LEVEL_EXECUTION_LEDGER_V1",
+                      "pack_id":  "PHASE98_ITEM_LEVEL_EXECUTION_LEDGER_V1",
+                      "completed_at":  "2026-05-29T16:44:01.3282867Z"
+                  },
+                  {
+                      "task_id":  "TASK_BATCH_ADMISSION_POLICY_V1_001",
+                      "status":  "COMPLETED",
+                      "path":  "tasks/TASK_BATCH_ADMISSION_POLICY_V1_001.json",
+                      "active_line":  "AGENT_BUILDER / SELF_BUILD",
+                      "mode":  "SELF_BUILD",
+                      "capability_id":  "batch_admission_policy_v1",
+                      "phase":  "PHASE97",
+                      "gate":  "BATCH_ADMISSION_POLICY_V1",
+                      "pack_id":  "PHASE97_BATCH_ADMISSION_POLICY_V1",
+                      "completed_at":  "2026-05-29T16:00:37.5102448Z"
+                  },
+                  {
+                      "task_id":  "TASK_BATCH_PLANNER_V1_001",
+                      "status":  "COMPLETED",
+                      "path":  "tasks/TASK_BATCH_PLANNER_V1_001.json",
+                      "active_line":  "AGENT_BUILDER / SELF_BUILD",
+                      "mode":  "SELF_BUILD",
+                      "capability_id":  "batch_planner_v1",
+                      "phase":  "PHASE96",
+                      "gate":  "BATCH_PLANNER_V1",
+                      "pack_id":  "PHASE96_BATCH_PLANNER_V1",
+                      "completed_at":  "2026-05-29T15:35:29.7486064Z"
+                  },
+                  {
+                      "task_id":  "TASK_SELF_BUILD_PROGRAM_GENERATOR_V2_001",
+                      "status":  "COMPLETED",
+                      "path":  "tasks/TASK_SELF_BUILD_PROGRAM_GENERATOR_V2_001.json",
+                      "active_line":  "AGENT_BUILDER / SELF_BUILD",
+                      "mode":  "SELF_BUILD",
+                      "capability_id":  "self_build_program_generator_v2",
+                      "phase":  "PHASE95",
+                      "gate":  "SELF_BUILD_PROGRAM_GENERATOR_V2",
+                      "pack_id":  "PHASE95_SELF_BUILD_PROGRAM_GENERATOR_V2",
+                      "completed_at":  "2026-05-29T15:17:27.50488Z"
+                  },
+                  {
+                      "task_id":  "TASK_OWNER_ORDER_TO_GAP_MAP_V1_001",
+                      "status":  "COMPLETED",
+                      "path":  "tasks/TASK_OWNER_ORDER_TO_GAP_MAP_V1_001.json",
+                      "active_line":  "AGENT_BUILDER / SELF_BUILD",
+                      "mode":  "SELF_BUILD",
+                      "capability_id":  "owner_order_to_gap_map_v1",
+                      "phase":  "PHASE94",
+                      "gate":  "OWNER_ORDER_TO_GAP_MAP_V1",
+                      "pack_id":  "PHASE94_OWNER_ORDER_TO_GAP_MAP_V1",
+                      "completed_at":  "2026-05-29T14:24:12.6312113Z"
+                  },
+                  {
+                      "task_id":  "TASK_ROUTE_V1_CLOSURE_AND_V2_R2_ACTIVATION_001",
+                      "status":  "COMPLETED",
+                      "path":  "tasks/TASK_ROUTE_V1_CLOSURE_AND_V2_R2_ACTIVATION_001.json",
+                      "active_line":  "AGENT_BUILDER / SELF_BUILD",
+                      "mode":  "SELF_BUILD",
+                      "capability_id":  "route_v1_closure_and_v2_r2_activation",
+                      "phase":  "PHASE91",
+                      "gate":  "ROUTE_V1_CLOSURE_AND_V2_R2_ACTIVATION",
+                      "pack_id":  "PHASE91_ROUTE_V1_CLOSURE_AND_V2_R2_ACTIVATION",
+                      "completed_at":  "2026-05-29T13:32:44.9894671Z"
+                  },
+                  {
+                      "task_id":  "TASK_BUILDER_EXECUTES_OWN_GENERATED_SELF_BUILD_PROGRAM_V1_001",
+                      "status":  "COMPLETED",
+                      "path":  "tasks/TASK_BUILDER_EXECUTES_OWN_GENERATED_SELF_BUILD_PROGRAM_V1_001.json",
+                      "active_line":  "AGENT_BUILDER / SELF_BUILD",
+                      "mode":  "SELF_BUILD",
+                      "capability_id":  "generated_self_build_execution_v1",
+                      "phase":  "PHASE90",
+                      "gate":  "BUILDER_EXECUTES_OWN_GENERATED_SELF_BUILD_PROGRAM_V1",
+                      "pack_id":  "PHASE90_BUILDER_EXECUTES_OWN_GENERATED_SELF_BUILD_PROGRAM_V1",
+                      "completed_at":  "2026-06-10T08:44:46.2917502Z",
+                      "state":  "RUNNING",
+                      "phase164t_run_id":  "PHASE164T_REAL_PHASE90_OWNER_CONTEXT_20260610_124444",
+                      "phase164t_owner_material_context":  true
+                  },
+                  {
+                      "task_id":  "TASK_GENERATED_PROGRAM_ADMISSION_V1_001",
+                      "status":  "COMPLETED",
+                      "path":  "tasks/TASK_GENERATED_PROGRAM_ADMISSION_V1_001.json",
+                      "active_line":  "AGENT_BUILDER / SELF_BUILD",
+                      "mode":  "SELF_BUILD",
+                      "capability_id":  "generated_program_admission_v1",
+                      "phase":  "PHASE89",
+                      "gate":  "GENERATED_PROGRAM_ADMISSION_V1",
+                      "pack_id":  "PHASE89_GENERATED_PROGRAM_ADMISSION_V1",
+                      "completed_at":  "2026-06-10T08:26:44.0780555Z",
+                      "state":  "RUNNING",
+                      "phase164r_run_id":  "PHASE164R_REAL_PHASE89_OWNER_CONTEXT_20260610_122641",
+                      "phase164r_owner_material_context":  true
+                  },
+                  {
+                      "task_id":  "TASK_SELF_DEVELOPMENT_DECISION_KERNEL_V1_001",
+                      "status":  "COMPLETED",
+                      "path":  "tasks/TASK_SELF_DEVELOPMENT_DECISION_KERNEL_V1_001.json",
+                      "active_line":  "AGENT_BUILDER_SELF_DEVELOPMENT",
+                      "mode":  "SELF_BUILD",
+                      "capability_id":  "self_development_decision_kernel_v1",
+                      "phase":  "PHASE_87",
+                      "gate":  "SELF_DEVELOPMENT_DECISION_KERNEL_V1",
+                      "pack_id":  "PHASE87_SELF_DEVELOPMENT_DECISION_KERNEL_V1",
+                      "state":  "RUNNING",
+                      "phase164p_run_id":  "PHASE164P_REAL_PHASE87_OWNER_MATERIAL_20260610_121435",
+                      "phase164p_owner_material_input":  true
+                  },
+                  {
+                      "task_id":  "TASK_OPERATION_RUNTIME_SKELETON_V1_001",
+                      "status":  "COMPLETED",
+                      "path":  "tasks/TASK_OPERATION_RUNTIME_SKELETON_V1_001.json",
+                      "active_line":  "AGENT_BUILDER_SELF_DEVELOPMENT",
+                      "mode":  "SELF_BUILD",
+                      "capability_id":  "operation_runtime_skeleton_v1",
+                      "phase":  "PHASE_86",
+                      "gate":  "OPERATION_RUNTIME_SKELETON_V1",
+                      "pack_id":  "PHASE86_OPERATION_RUNTIME_SKELETON_V1"
+                  },
+                  {
+                      "task_id":  "TASK_FIRST_SMOKE_INSTALL_TRIAL_V1_001",
+                      "status":  "COMPLETED",
+                      "path":  "tasks/TASK_FIRST_SMOKE_INSTALL_TRIAL_V1_001.json",
+                      "active_line":  "AGENT_BUILDER_SELF_DEVELOPMENT",
+                      "mode":  "SELF_BUILD",
+                      "capability_id":  "first_smoke_install_trial_v1",
+                      "phase":  "PHASE_85",
+                      "gate":  "FIRST_SMOKE_INSTALL_TRIAL_V1",
+                      "pack_id":  "PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1"
+                  },
+                  {
+                      "task_id":  "TASK_FIRST_WRAPPER_OPERATION_CONTRACTS_V1_001",
+                      "status":  "COMPLETED",
+                      "path":  "tasks/TASK_FIRST_WRAPPER_OPERATION_CONTRACTS_V1_001.json",
+                      "active_line":  "AGENT_BUILDER_SELF_DEVELOPMENT",
+                      "mode":  "SELF_BUILD",
+                      "capability_id":  "first_wrapper_operation_contracts_v1",
+                      "phase":  "PHASE_84",
+                      "gate":  "FIRST_WRAPPER_OPERATION_CONTRACTS_V1",
+                      "pack_id":  "PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1"
+                  },
+                  {
+                      "task_id":  "TASK_OPERATION_CONTRACT_SKELETON_V1_001",
+                      "status":  "COMPLETED",
+                      "path":  "tasks/TASK_OPERATION_CONTRACT_SKELETON_V1_001.json",
+                      "active_line":  "AGENT_BUILDER_SELF_DEVELOPMENT",
+                      "mode":  "SELF_BUILD",
+                      "capability_id":  "operation_contract_skeleton_v1",
+                      "phase":  "PHASE_83",
+                      "gate":  "OPERATION_CONTRACT_SKELETON_V1",
+                      "pack_id":  "PHASE83_OPERATION_CONTRACT_SKELETON_V1"
+                  },
+                  {
+                      "task_id":  "TASK_FIRST_MATERIAL_QUARANTINE_TRIAL_V1_001",
+                      "status":  "COMPLETED",
+                      "path":  "tasks/TASK_FIRST_MATERIAL_QUARANTINE_TRIAL_V1_001.json",
+                      "active_line":  "AGENT_BUILDER_SELF_DEVELOPMENT",
+                      "mode":  "SELF_BUILD",
+                      "capability_id":  "first_material_quarantine_trial_v1",
+                      "phase":  "PHASE_82",
+                      "gate":  "FIRST_MATERIAL_QUARANTINE_TRIAL_V1",
+                      "pack_id":  "PHASE82_FIRST_MATERIAL_QUARANTINE_TRIAL_V1"
+                  },
+                  {
+                      "task_id":  "TASK_MATERIAL_ADMISSION_POLICY_V1_001",
+                      "status":  "COMPLETED",
+                      "path":  "tasks/TASK_MATERIAL_ADMISSION_POLICY_V1_001.json",
+                      "active_line":  "AGENT_BUILDER_SELF_DEVELOPMENT",
+                      "mode":  "SELF_BUILD",
+                      "capability_id":  "material_admission_policy_v1",
+                      "phase":  "PHASE_81",
+                      "gate":  "MATERIAL_ADMISSION_POLICY_V1",
+                      "pack_id":  "PHASE81_MATERIAL_ADMISSION_POLICY_V1"
+                  },
+                  {
+                      "task_id":  "TASK_MANUAL_SCOUT_PASS_IMPORT_V1_001",
+                      "status":  "COMPLETED",
+                      "path":  "tasks/TASK_MANUAL_SCOUT_PASS_IMPORT_V1_001.json",
+                      "active_line":  "AGENT_BUILDER_SELF_DEVELOPMENT",
+                      "mode":  "SELF_BUILD",
+                      "capability_id":  "manual_scout_pass_import_v1",
+                      "phase":  "PHASE_80",
+                      "gate":  "MANUAL_SCOUT_PASS_IMPORT_V1",
+                      "pack_id":  "PHASE80_MANUAL_SCOUT_PASS_IMPORT_V1"
+                  },
+                  {
+                      "task_id":  "TASK_MATERIAL_ACQUISITION_BOOTSTRAP_V1_001",
+                      "status":  "COMPLETED",
+                      "path":  "tasks/TASK_MATERIAL_ACQUISITION_BOOTSTRAP_V1_001.json",
+                      "active_line":  "AGENT_BUILDER_SELF_DEVELOPMENT",
+                      "mode":  "SELF_BUILD",
+                      "capability_id":  "material_acquisition_bootstrap_v1",
+                      "phase":  "PHASE_79",
+                      "gate":  "MATERIAL_ACQUISITION_BOOTSTRAP_V1",
+                      "pack_id":  "PHASE79_MATERIAL_ACQUISITION_BOOTSTRAP_V1"
+                  },
+                  {
+                      "task_id":  "TASK_AGENT_BUILDER_SELF_KNOWLEDGE_SYSTEM_FULL_CONTRACT_V1_001",
+                      "status":  "COMPLETED",
+                      "path":  "tasks/TASK_AGENT_BUILDER_SELF_KNOWLEDGE_SYSTEM_FULL_CONTRACT_V1_001.json",
+                      "active_line":  "AGENT_BUILDER_SELF_DEVELOPMENT",
+                      "mode":  "SELF_BUILD",
+                      "capability_id":  "agent_builder_self_knowledge_system_full_contract_v1",
+                      "phase":  "PHASE_78",
+                      "gate":  "AGENT_BUILDER_SELF_KNOWLEDGE_SYSTEM_FULL_CONTRACT_V1",
+                      "pack_id":  "PHASE78_AGENT_BUILDER_SELF_KNOWLEDGE_SYSTEM_FULL_CONTRACT_V1"
+                  },
+                  {
+                      "task_id":  "TASK_REPO_GENESIS_001",
+                      "capability_id":  "repo_genesis",
+                      "status":  "COMPLETED",
+                      "objective":  "Create canonical repository skeleton and genesis truth files for E-Factory Agent Builder.",
+                      "expected_gate":  "REPO_GENESIS_READY"
+                  },
+                  {
+                      "task_id":  "TASK_SELF_BUILD_CONTROL_CORE_001",
+                      "capability_id":  "self_build_control_core",
+                      "status":  "COMPLETED",
+                      "objective":  "Implement the self-build control core.",
+                      "expected_gate":  "SELF_BUILD_CONTROL_CORE_READY"
+                  },
+                  {
+                      "task_id":  "TASK_SELF_BUILD_EXECUTION_LOOP_001",
+                      "capability_id":  "self_build_execution_substrate",
+                      "status":  "COMPLETED",
+                      "objective":  "Implement the self-build execution substrate.",
+                      "expected_gate":  "SELF_BUILD_EXECUTION_SUBSTRATE_READY",
+                      "build_task_path":  "tasks/TASK_SELF_BUILD_EXECUTION_LOOP_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_SERIAL_SELF_BUILD_PACK_EXECUTOR_001",
+                      "capability_id":  "serial_self_build_pack_executor",
+                      "status":  "COMPLETED",
+                      "objective":  "Build the serial self-build pack executor and prove it by self-running the next registered local execution pack.",
+                      "expected_gate":  "SERIAL_SELF_BUILD_PACK_EXECUTOR_READY",
+                      "build_task_path":  "tasks/TASK_SERIAL_SELF_BUILD_PACK_EXECUTOR_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_SELF_VALIDATION_RELEASE_GATES_001",
+                      "capability_id":  "self_validation_release_gates",
+                      "status":  "COMPLETED",
+                      "objective":  "Implement self-validation release gates through a registered self-build pack.",
+                      "expected_gate":  "SELF_BUILD_READY",
+                      "build_task_path":  "tasks/TASK_SELF_VALIDATION_RELEASE_GATES_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_EXTERNAL_AGENT_SPEC_INTAKE_001",
+                      "capability_id":  "external_agent_spec_intake",
+                      "status":  "COMPLETED",
+                      "objective":  "Implement formal intake for external agent specifications.",
+                      "expected_gate":  "EXTERNAL_AGENT_SPEC_INTAKE_READY",
+                      "build_task_path":  "tasks/TASK_EXTERNAL_AGENT_SPEC_INTAKE_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_EXTERNAL_AGENT_PACKAGE_GENERATOR_001",
+                      "capability_id":  "external_agent_package_generator",
+                      "status":  "COMPLETED",
+                      "objective":  "Implement external agent package generator.",
+                      "expected_gate":  "EXTERNAL_AGENT_PACKAGE_GENERATOR_READY",
+                      "build_task_path":  "tasks/TASK_EXTERNAL_AGENT_PACKAGE_GENERATOR_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_FIRST_PROVEN_EXTERNAL_AGENT_001",
+                      "capability_id":  "first_proven_external_agent",
+                      "status":  "COMPLETED",
+                      "objective":  "Prove the factory by building the first real external agent package.",
+                      "expected_gate":  "FIRST_EXTERNAL_AGENT_PROOF",
+                      "build_task_path":  "tasks/TASK_FIRST_PROVEN_EXTERNAL_AGENT_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_PRODUCTION_SPEC_CONTRACT_V1_001",
+                      "capability_id":  "production_spec_contract_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Replace proof-level external agent spec with production spec contract v1.",
+                      "expected_gate":  "PRODUCTION_SPEC_CONTRACT_V1_READY",
+                      "build_task_path":  "tasks/TASK_PRODUCTION_SPEC_CONTRACT_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_PRODUCTION_PACKAGE_BLUEPRINT_V1_001",
+                      "capability_id":  "production_package_blueprint_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Upgrade the external agent package generator to a production blueprint v1.",
+                      "expected_gate":  "PRODUCTION_PACKAGE_BLUEPRINT_V1_READY",
+                      "build_task_path":  "tasks/TASK_PRODUCTION_PACKAGE_BLUEPRINT_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_GENERATED_AGENT_VALIDATION_HARNESS_V1_001",
+                      "capability_id":  "generated_agent_validation_harness_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Add reusable validation harness for generated agent packages.",
+                      "expected_gate":  "GENERATED_AGENT_VALIDATION_HARNESS_V1_READY",
+                      "build_task_path":  "tasks/TASK_GENERATED_AGENT_VALIDATION_HARNESS_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_FACTORY_BUILD_EXTERNAL_AGENT_MODE_V1_001",
+                      "capability_id":  "factory_build_external_agent_mode_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Expose direct BUILD_EXTERNAL_AGENT mode in the Agent Builder orchestrator.",
+                      "expected_gate":  "FACTORY_BUILD_EXTERNAL_AGENT_MODE_V1_READY",
+                      "build_task_path":  "tasks/TASK_FACTORY_BUILD_EXTERNAL_AGENT_MODE_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_PRODUCTION_FACTORY_PROOF_V1_001",
+                      "capability_id":  "production_factory_proof_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Prove production-grade factory build mode end to end.",
+                      "expected_gate":  "PRODUCTION_FACTORY_PROOF_V1",
+                      "build_task_path":  "tasks/TASK_PRODUCTION_FACTORY_PROOF_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_PRODUCTION_TRUTH_RESET_V2_001",
+                      "capability_id":  "production_truth_reset_v2",
+                      "status":  "COMPLETED",
+                      "objective":  "Correct over-claimed production readiness and record the weaknesses that require hardening.",
+                      "expected_gate":  "PRODUCTION_TRUTH_RESET_V2_READY",
+                      "build_task_path":  "tasks/TASK_PRODUCTION_TRUTH_RESET_V2_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_REAL_GENERATED_AGENT_RUNTIME_V2_001",
+                      "capability_id":  "real_generated_agent_runtime_v2",
+                      "status":  "COMPLETED",
+                      "objective":  "Replace generated agent runtime stubs with a real baseline request to result execution path.",
+                      "expected_gate":  "REAL_GENERATED_AGENT_RUNTIME_V2_READY",
+                      "build_task_path":  "tasks/TASK_REAL_GENERATED_AGENT_RUNTIME_V2_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_OPERATIONAL_VALIDATION_HARNESS_V2_001",
+                      "capability_id":  "operational_validation_harness_v2",
+                      "status":  "COMPLETED",
+                      "objective":  "Add a reusable operational validation harness for generated agent packages.",
+                      "expected_gate":  "OPERATIONAL_VALIDATION_HARNESS_V2_READY",
+                      "build_task_path":  "tasks/TASK_OPERATIONAL_VALIDATION_HARNESS_V2_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_FACTORY_BUILD_EXTERNAL_AGENT_MODE_V2_001",
+                      "capability_id":  "factory_build_external_agent_mode_v2",
+                      "status":  "COMPLETED",
+                      "objective":  "Upgrade BUILD_EXTERNAL_AGENT mode so that every generated package is operationally validated and emits a structured build report.",
+                      "expected_gate":  "FACTORY_BUILD_EXTERNAL_AGENT_MODE_V2_READY",
+                      "build_task_path":  "tasks/TASK_FACTORY_BUILD_EXTERNAL_AGENT_MODE_V2_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_OPERATIONAL_FACTORY_PROOF_V2_001",
+                      "capability_id":  "operational_factory_proof_v2",
+                      "status":  "COMPLETED",
+                      "objective":  "Prove that Agent Builder can produce an operational baseline external agent through BUILD_EXTERNAL_AGENT mode v2.",
+                      "expected_gate":  "OPERATIONAL_FACTORY_PROOF_V2",
+                      "build_task_path":  "tasks/TASK_OPERATIONAL_FACTORY_PROOF_V2_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_ARCHITECT_TO_SPEC_HANDOFF_V1_001",
+                      "capability_id":  "architect_to_spec_handoff_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Build reusable Agent Spec Architect handoff that turns raw ideas into validated production external-agent specs.",
+                      "expected_gate":  "ARCHITECT_TO_SPEC_HANDOFF_V1_READY",
+                      "build_task_path":  "tasks/TASK_ARCHITECT_TO_SPEC_HANDOFF_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_BUILD_FROM_RAW_IDEA_MODE_V1_001",
+                      "capability_id":  "build_from_raw_idea_mode_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Expose direct BUILD_FROM_RAW_IDEA mode that chains Agent Spec Architect handoff into external agent build.",
+                      "expected_gate":  "BUILD_FROM_RAW_IDEA_MODE_V1_READY",
+                      "build_task_path":  "tasks/TASK_BUILD_FROM_RAW_IDEA_MODE_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_IDEA_TO_AGENT_FACTORY_PROOF_V1_001",
+                      "capability_id":  "idea_to_agent_factory_proof_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Prove end-to-end raw idea to generated agent factory loop.",
+                      "expected_gate":  "IDEA_TO_AGENT_FACTORY_PROOF_V1",
+                      "build_task_path":  "tasks/TASK_IDEA_TO_AGENT_FACTORY_PROOF_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_SPECIALIZATION_OVERLAY_RESOLUTION_V1_001",
+                      "capability_id":  "specialization_overlay_resolution_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Build reusable specialization overlay resolver and prove audit_agent_v1 profile selection.",
+                      "expected_gate":  "SPECIALIZATION_OVERLAY_RESOLUTION_V1_READY",
+                      "build_task_path":  "tasks/TASK_SPECIALIZATION_OVERLAY_RESOLUTION_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_BUILD_FROM_RAW_IDEA_SPECIALIZED_MODE_V1_001",
+                      "capability_id":  "build_from_raw_idea_specialized_mode_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Expose direct BUILD_FROM_RAW_IDEA_SPECIALIZED mode that resolves and applies a specialization overlay.",
+                      "expected_gate":  "BUILD_FROM_RAW_IDEA_SPECIALIZED_MODE_V1_READY",
+                      "build_task_path":  "tasks/TASK_BUILD_FROM_RAW_IDEA_SPECIALIZED_MODE_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_IDEA_TO_SPECIALIZED_AGENT_FACTORY_PROOF_V1_001",
+                      "capability_id":  "idea_to_specialized_agent_factory_proof_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Prove end-to-end raw idea to specialized generated agent factory loop.",
+                      "expected_gate":  "IDEA_TO_SPECIALIZED_AGENT_FACTORY_PROOF_V1",
+                      "build_task_path":  "tasks/TASK_IDEA_TO_SPECIALIZED_AGENT_FACTORY_PROOF_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_SPECIALIZATION_PROFILE_REGISTRY_V1_001",
+                      "capability_id":  "specialization_profile_registry_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Replace one-off specialization resolver branching with registry-backed specialization profile lookup.",
+                      "expected_gate":  "SPECIALIZATION_PROFILE_REGISTRY_V1_READY",
+                      "build_task_path":  "tasks/TASK_SPECIALIZATION_PROFILE_REGISTRY_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_SPECIFICATION_AGENT_SPECIALIZATION_PROFILE_V1_001",
+                      "capability_id":  "specification_agent_specialization_profile_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Add and prove specification_agent_v1 as the second registry-backed specialization profile.",
+                      "expected_gate":  "SPECIFICATION_AGENT_SPECIALIZATION_PROFILE_V1_READY",
+                      "build_task_path":  "tasks/TASK_SPECIFICATION_AGENT_SPECIALIZATION_PROFILE_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_MULTI_PROFILE_SPECIALIZED_FACTORY_PROOF_V1_001",
+                      "capability_id":  "multi_profile_specialized_factory_proof_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Prove two raw idea families route into distinct registry-backed specialization profiles.",
+                      "expected_gate":  "MULTI_PROFILE_SPECIALIZED_FACTORY_PROOF_V1",
+                      "build_task_path":  "tasks/TASK_MULTI_PROFILE_SPECIALIZED_FACTORY_PROOF_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_SPECIALIZATION_GAP_CONTRACT_V1_001",
+                      "capability_id":  "specialization_gap_contract_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Create reusable specialization gap contract and report writer module.",
+                      "expected_gate":  "SPECIALIZATION_GAP_CONTRACT_V1_READY",
+                      "build_task_path":  "tasks/TASK_SPECIALIZATION_GAP_CONTRACT_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_NO_MATCH_DIAGNOSTIC_MODE_V1_001",
+                      "capability_id":  "no_match_diagnostic_mode_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Modify BUILD_FROM_RAW_IDEA_SPECIALIZED so NO_MATCH writes structured diagnostic artifacts instead of throwing.",
+                      "expected_gate":  "NO_MATCH_DIAGNOSTIC_MODE_V1_READY",
+                      "build_task_path":  "tasks/TASK_NO_MATCH_DIAGNOSTIC_MODE_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_MISSING_PROFILE_FACTORY_PROOF_V1_001",
+                      "capability_id":  "missing_profile_factory_proof_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Prove unsupported raw idea families emit structured specialization gap diagnostics without crashing the factory.",
+                      "expected_gate":  "MISSING_PROFILE_FACTORY_PROOF_V1",
+                      "build_task_path":  "tasks/TASK_MISSING_PROFILE_FACTORY_PROOF_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_GAP_TO_PROFILE_CANDIDATE_BRIEF_V1_001",
+                      "capability_id":  "gap_to_profile_candidate_brief_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Convert a real specialization gap artifact into a reusable specialization profile candidate brief.",
+                      "expected_gate":  "GAP_TO_PROFILE_CANDIDATE_BRIEF_V1_READY",
+                      "build_task_path":  "tasks/TASK_GAP_TO_PROFILE_CANDIDATE_BRIEF_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_DECISION_SUPPORT_AGENT_SPECIALIZATION_PROFILE_V1_001",
+                      "capability_id":  "decision_support_agent_specialization_profile_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Build and prove decision_support_agent_v1 from the canonical gap-driven profile candidate brief.",
+                      "expected_gate":  "DECISION_SUPPORT_AGENT_SPECIALIZATION_PROFILE_V1_READY",
+                      "build_task_path":  "tasks/TASK_DECISION_SUPPORT_AGENT_SPECIALIZATION_PROFILE_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_GAP_CLOSURE_SPECIALIZED_FACTORY_PROOF_V1_001",
+                      "capability_id":  "gap_closure_specialized_factory_proof_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Prove the previously unsupported decision_support_agent raw idea now builds as a specialized agent.",
+                      "expected_gate":  "GAP_CLOSURE_SPECIALIZED_FACTORY_PROOF_V1",
+                      "build_task_path":  "tasks/TASK_GAP_CLOSURE_SPECIALIZED_FACTORY_PROOF_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_GAP_REMEDIATION_INTAKE_MODE_V1_001",
+                      "capability_id":  "gap_remediation_intake_mode_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Promote gap-to-profile candidate generation into a first-class orchestrator runtime mode.",
+                      "expected_gate":  "GAP_REMEDIATION_INTAKE_MODE_V1_READY",
+                      "build_task_path":  "tasks/TASK_GAP_REMEDIATION_INTAKE_MODE_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_CANDIDATE_INTAKE_REPORT_CONTRACT_V1_001",
+                      "capability_id":  "candidate_intake_report_contract_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Create a formal runtime report contract for gap-to-profile candidate intake.",
+                      "expected_gate":  "CANDIDATE_INTAKE_REPORT_CONTRACT_V1_READY",
+                      "build_task_path":  "tasks/TASK_CANDIDATE_INTAKE_REPORT_CONTRACT_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_RUNTIME_GAP_TO_CANDIDATE_FACTORY_PROOF_V1_001",
+                      "capability_id":  "runtime_gap_to_candidate_factory_proof_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Prove Builder runtime emits both candidate brief and intake report from a specialization gap report.",
+                      "expected_gate":  "RUNTIME_GAP_TO_CANDIDATE_FACTORY_PROOF_V1",
+                      "build_task_path":  "tasks/TASK_RUNTIME_GAP_TO_CANDIDATE_FACTORY_PROOF_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_WORKFLOW_EXECUTION_FAMILY_REACHABILITY_V1_001",
+                      "capability_id":  "workflow_execution_family_reachability_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Make workflow_execution_agent reachable from real raw idea classification and prove runtime gap candidate intake.",
+                      "expected_gate":  "WORKFLOW_EXECUTION_FAMILY_REACHABILITY_V1_READY",
+                      "build_task_path":  "tasks/TASK_WORKFLOW_EXECUTION_FAMILY_REACHABILITY_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_INTAKE_DRIVEN_WORKFLOW_EXECUTION_PROFILE_V1_001",
+                      "capability_id":  "intake_driven_workflow_execution_profile_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Build and prove workflow_execution_agent_v1 from canonical runtime remediation intake artifacts.",
+                      "expected_gate":  "INTAKE_DRIVEN_WORKFLOW_EXECUTION_PROFILE_V1_READY",
+                      "build_task_path":  "tasks/TASK_INTAKE_DRIVEN_WORKFLOW_EXECUTION_PROFILE_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_RUNTIME_GAP_REMEDIATION_CLOSURE_PROOF_V1_001",
+                      "capability_id":  "runtime_gap_remediation_closure_proof_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Prove the exact workflow raw idea now closes from prior gap into a specialized PASS route.",
+                      "expected_gate":  "RUNTIME_GAP_REMEDIATION_CLOSURE_PROOF_V1",
+                      "build_task_path":  "tasks/TASK_RUNTIME_GAP_REMEDIATION_CLOSURE_PROOF_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_MONITORING_GAP_REACHABILITY_V1_001",
+                      "capability_id":  "monitoring_gap_reachability_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Create a fresh real monitoring_agent gap family and prove candidate/intake generation before inline auto-intake integration.",
+                      "expected_gate":  "MONITORING_GAP_REACHABILITY_V1_READY",
+                      "build_task_path":  "tasks/TASK_MONITORING_GAP_REACHABILITY_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_SPECIALIZED_GAP_AUTO_INTAKE_RUNTIME_V1_001",
+                      "capability_id":  "specialized_gap_auto_intake_runtime_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Upgrade BUILD_FROM_RAW_IDEA_SPECIALIZED no-match runtime so one run emits gap, candidate, and intake artifacts.",
+                      "expected_gate":  "SPECIALIZED_GAP_AUTO_INTAKE_RUNTIME_V1_READY",
+                      "build_task_path":  "tasks/TASK_SPECIALIZED_GAP_AUTO_INTAKE_RUNTIME_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_ONE_RUN_GAP_REMEDIATION_PACKET_PROOF_V1_001",
+                      "capability_id":  "one_run_gap_remediation_packet_proof_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Prove a real monitoring raw idea returns gap report, candidate, and intake in one specialized run.",
+                      "expected_gate":  "ONE_RUN_GAP_REMEDIATION_PACKET_PROOF_V1",
+                      "build_task_path":  "tasks/TASK_ONE_RUN_GAP_REMEDIATION_PACKET_PROOF_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_REMEDIATION_PROGRAM_SEED_CONTRACT_V1_001",
+                      "capability_id":  "remediation_program_seed_contract_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Create a formal remediation program seed contract and generate a serial self-build closure seed from a valid inline remediation packet.",
+                      "expected_gate":  "REMEDIATION_PROGRAM_SEED_CONTRACT_V1_READY",
+                      "build_task_path":  "tasks/TASK_REMEDIATION_PROGRAM_SEED_CONTRACT_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_SPECIALIZED_GAP_AUTO_PROGRAM_SEED_RUNTIME_V1_001",
+                      "capability_id":  "specialized_gap_auto_program_seed_runtime_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Upgrade specialized no-match runtime so one run emits remediation packet plus serial remediation program seed.",
+                      "expected_gate":  "SPECIALIZED_GAP_AUTO_PROGRAM_SEED_RUNTIME_V1_READY",
+                      "build_task_path":  "tasks/TASK_SPECIALIZED_GAP_AUTO_PROGRAM_SEED_RUNTIME_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_ONE_RUN_REMEDIATION_PROGRAM_SEED_PROOF_V1_001",
+                      "capability_id":  "one_run_remediation_program_seed_proof_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Prove a real monitoring raw idea emits gap, candidate, intake, and serial remediation program seed in one specialized run.",
+                      "expected_gate":  "ONE_RUN_REMEDIATION_PROGRAM_SEED_PROOF_V1",
+                      "build_task_path":  "tasks/TASK_ONE_RUN_REMEDIATION_PROGRAM_SEED_PROOF_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_SEED_DRIVEN_MONITORING_PROFILE_V1_001",
+                      "capability_id":  "seed_driven_monitoring_profile_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Consume the canonical monitoring remediation program seed and build monitoring_agent_v1 specialization profile with registry mapping and runtime validation.",
+                      "expected_gate":  "SEED_DRIVEN_MONITORING_PROFILE_V1_READY",
+                      "build_task_path":  "tasks/TASK_SEED_DRIVEN_MONITORING_PROFILE_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_MONITORING_GAP_CLOSURE_SPECIALIZED_PROOF_V1_001",
+                      "capability_id":  "monitoring_gap_closure_specialized_proof_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Rerun the prior monitoring raw idea and prove it now resolves to monitoring_agent_v1 with specialized PASS output.",
+                      "expected_gate":  "MONITORING_GAP_CLOSURE_SPECIALIZED_PROOF_V1",
+                      "build_task_path":  "tasks/TASK_MONITORING_GAP_CLOSURE_SPECIALIZED_PROOF_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_REMEDIATION_PROGRAM_SEED_CONSUMPTION_CLOSURE_PROOF_V1_001",
+                      "capability_id":  "remediation_program_seed_consumption_closure_proof_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Prove the canonical remediation program seed was consumed into a real monitoring specialization closure loop.",
+                      "expected_gate":  "REMEDIATION_PROGRAM_SEED_CONSUMPTION_CLOSURE_PROOF_V1",
+                      "build_task_path":  "tasks/TASK_REMEDIATION_PROGRAM_SEED_CONSUMPTION_CLOSURE_PROOF_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_REMEDIATION_SEED_PROGRAM_BLUEPRINT_CONTRACT_V1_001",
+                      "capability_id":  "remediation_seed_program_blueprint_contract_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Turn a canonical remediation program seed into a normalized serial self-build program blueprint contract.",
+                      "expected_gate":  "REMEDIATION_SEED_PROGRAM_BLUEPRINT_CONTRACT_V1_READY",
+                      "build_task_path":  "tasks/TASK_REMEDIATION_SEED_PROGRAM_BLUEPRINT_CONTRACT_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_REMEDIATION_SEED_PROGRAM_MATERIALIZATION_V1_001",
+                      "capability_id":  "remediation_seed_program_materialization_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Materialize a normalized remediation seed blueprint into a generated serial self-build program package.",
+                      "expected_gate":  "REMEDIATION_SEED_PROGRAM_MATERIALIZATION_V1_READY",
+                      "build_task_path":  "tasks/TASK_REMEDIATION_SEED_PROGRAM_MATERIALIZATION_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_ONE_RUN_REMEDIATION_SEED_PROGRAM_SYNTHESIS_PROOF_V1_001",
+                      "capability_id":  "one_run_remediation_seed_program_synthesis_proof_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Prove that one canonical remediation program seed can become a normalized blueprint and a materialized serial self-build program package.",
+                      "expected_gate":  "ONE_RUN_REMEDIATION_SEED_PROGRAM_SYNTHESIS_PROOF_V1",
+                      "build_task_path":  "tasks/TASK_ONE_RUN_REMEDIATION_SEED_PROGRAM_SYNTHESIS_PROOF_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_BUILDER_GITHUB_ACTION_MANUAL_RUN_SURFACE_V1_001",
+                      "capability_id":  "builder_github_action_manual_run_surface_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Expose Agent Builder self-build through a manual GitHub Actions workflow_dispatch surface.",
+                      "expected_gate":  "BUILDER_GITHUB_ACTION_MANUAL_RUN_SURFACE_V1_READY",
+                      "build_task_path":  "tasks/TASK_BUILDER_GITHUB_ACTION_MANUAL_RUN_SURFACE_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_GENERATED_AGENT_ACTION_LAUNCH_CONTRACT_V1_001",
+                      "capability_id":  "generated_agent_action_launch_contract_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Upgrade generated external agent packages so they include a GitHub Actions launch delivery artifact and validator coverage.",
+                      "expected_gate":  "GENERATED_AGENT_ACTION_LAUNCH_CONTRACT_V1_READY",
+                      "build_task_path":  "tasks/TASK_GENERATED_AGENT_ACTION_LAUNCH_CONTRACT_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_ACTION_READY_GENERATED_AGENT_PROOF_V1_001",
+                      "capability_id":  "action_ready_generated_agent_proof_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Build one generated agent through the factory and prove the GitHub Actions launch delivery artifact is present and validator-enforced.",
+                      "expected_gate":  "ACTION_READY_GENERATED_AGENT_PROOF_V1",
+                      "build_task_path":  "tasks/TASK_ACTION_READY_GENERATED_AGENT_PROOF_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_OWNER_VISIBLE_SELF_BUILD_ACCEPTANCE_V1_001",
+                      "capability_id":  "owner_visible_self_build_acceptance_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Prove the owner-visible self-build acceptance loop by consuming the PHASE54 repo-defined pack through the GitHub Action compatible self-build path.",
+                      "expected_gate":  "OWNER_VISIBLE_SELF_BUILD_ACCEPTANCE_V1",
+                      "build_task_path":  "tasks/TASK_OWNER_VISIBLE_SELF_BUILD_ACCEPTANCE_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_GENERATED_PROGRAM_ADMISSION_READINESS_GATE_V1_001",
+                      "capability_id":  "generated_program_admission_readiness_gate_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Evaluate whether the materialized generated monitoring-agent self-build program is safely admissible into live Builder execution, without admitting it.",
+                      "expected_gate":  "GENERATED_PROGRAM_ADMISSION_READINESS_GATE_V1",
+                      "build_task_path":  "tasks/TASK_GENERATED_PROGRAM_ADMISSION_READINESS_GATE_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_EXECUTABLE_GENERATED_PROGRAM_MATERIALIZATION_V1_001",
+                      "capability_id":  "executable_generated_program_materialization_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Materialize executable APPLY.ps1 entry scripts for the generated monitoring-agent self-build program without admitting it into live Builder execution.",
+                      "expected_gate":  "EXECUTABLE_GENERATED_PROGRAM_MATERIALIZATION_V1",
+                      "build_task_path":  "tasks/TASK_EXECUTABLE_GENERATED_PROGRAM_MATERIALIZATION_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_GENERATED_PROGRAM_LIVE_ADMISSION_PROOF_V1_001",
+                      "capability_id":  "generated_program_live_admission_proof_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Admit the executable monitoring_agent_v1 generated self-build program into live Builder execution without executing generated packs.",
+                      "expected_gate":  "GENERATED_PROGRAM_LIVE_ADMISSION_PROOF_V1",
+                      "build_task_path":  "tasks/TASK_GENERATED_PROGRAM_LIVE_ADMISSION_PROOF_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1_001",
+                      "capability_id":  "generated_monitoring_agent_v1_profile_materialization_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Generated remediation self-build task for semantic role derived from remediation program seed.",
+                      "expected_gate":  "GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1_READY",
+                      "build_task_path":  "self_build_programs/generated/monitoring_agent_v1/tasks/TASK_GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1_001",
+                      "capability_id":  "generated_monitoring_agent_v1_closure_proof_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Generated remediation self-build task for semantic role derived from remediation program seed.",
+                      "expected_gate":  "GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1",
+                      "build_task_path":  "self_build_programs/generated/monitoring_agent_v1/tasks/TASK_GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_001",
+                      "capability_id":  "generated_monitoring_agent_v1_seed_consumption_proof_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Generated remediation self-build task for semantic role derived from remediation program seed.",
+                      "expected_gate":  "GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1",
+                      "build_task_path":  "self_build_programs/generated/monitoring_agent_v1/tasks/TASK_GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_GENERATED_PROGRAM_EXECUTION_RECIPE_CONTRACT_V1_001",
+                      "capability_id":  "generated_program_execution_recipe_contract_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Define and prove program-owned execution recipe artifacts for the already-consumed monitoring_agent_v1 generated self-build program.",
+                      "expected_gate":  "GENERATED_PROGRAM_EXECUTION_RECIPE_CONTRACT_V1",
+                      "build_task_path":  "tasks/TASK_GENERATED_PROGRAM_EXECUTION_RECIPE_CONTRACT_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_RECIPE_DRIVEN_GENERATED_PROGRAM_EXECUTABLE_MATERIALIZATION_V1_001",
+                      "capability_id":  "recipe_driven_generated_program_executable_materialization_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Refactor generated self-build executable materialization so APPLY.ps1 scripts are rendered from program-owned execution recipes while preserving the proven monitoring_agent_v1 behavior contour.",
+                      "expected_gate":  "RECIPE_DRIVEN_GENERATED_PROGRAM_EXECUTABLE_MATERIALIZATION_V1",
+                      "build_task_path":  "tasks/TASK_RECIPE_DRIVEN_GENERATED_PROGRAM_EXECUTABLE_MATERIALIZATION_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_GENERALIZED_GENERATED_PROGRAM_LIVE_ADMISSION_CONTRACT_V1_001",
+                      "capability_id":  "generalized_generated_program_live_admission_contract_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Generalize live admission so admission is driven by manifest-rooted program contracts rather than hardcoded fixture assumptions. Validate admissibility via contract validation on monitoring_agent_v1 without re-admission.",
+                      "expected_gate":  "GENERALIZED_GENERATED_PROGRAM_LIVE_ADMISSION_CONTRACT_V1",
+                      "build_task_path":  "tasks/TASK_GENERALIZED_GENERATED_PROGRAM_LIVE_ADMISSION_CONTRACT_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_SECOND_GENERATED_PROGRAM_FAMILY_PROOF_V1_001",
+                      "capability_id":  "second_generated_program_family_proof_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Define and prove remediation_intake_agent_v1 as a second generated self-build program family ready to enter the generalized generated-program materialization contour without materializing, admitting, or consuming it.",
+                      "expected_gate":  "SECOND_GENERATED_PROGRAM_FAMILY_PROOF_V1",
+                      "build_task_path":  "tasks/TASK_SECOND_GENERATED_PROGRAM_FAMILY_PROOF_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_SECOND_GENERATED_PROGRAM_FAMILY_MATERIALIZATION_V1_001",
+                      "capability_id":  "second_generated_program_family_materialization_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Materialize remediation_intake_agent_v1 from the second generated program family contract into a complete generated self-build program package without live admission or generated pack execution.",
+                      "expected_gate":  "SECOND_GENERATED_PROGRAM_FAMILY_MATERIALIZATION_V1",
+                      "build_task_path":  "tasks/TASK_SECOND_GENERATED_PROGRAM_FAMILY_MATERIALIZATION_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_SECOND_GENERATED_PROGRAM_FAMILY_LIVE_ADMISSION_V1_001",
+                      "capability_id":  "second_generated_program_family_live_admission_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Admit remediation_intake_agent_v1 into live Builder execution using the generalized generated-program admission module without executing generated remediation packs.",
+                      "expected_gate":  "SECOND_GENERATED_PROGRAM_FAMILY_LIVE_ADMISSION_V1",
+                      "build_task_path":  "tasks/TASK_SECOND_GENERATED_PROGRAM_FAMILY_LIVE_ADMISSION_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1_001",
+                      "capability_id":  "generated_remediation_intake_agent_v1_profile_materialization_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Generated self-build task for remediation_intake_agent_v1 semantic role PROFILE_MATERIALIZATION declared by family contract.",
+                      "expected_gate":  "GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1_READY",
+                      "build_task_path":  "self_build_programs/generated/remediation_intake_agent_v1/tasks/TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1_001",
+                      "capability_id":  "generated_remediation_intake_agent_v1_closure_proof_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Generated self-build task for remediation_intake_agent_v1 semantic role SPECIALIZED_CLOSURE_PROOF declared by family contract.",
+                      "expected_gate":  "GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1",
+                      "build_task_path":  "self_build_programs/generated/remediation_intake_agent_v1/tasks/TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_001",
+                      "capability_id":  "generated_remediation_intake_agent_v1_seed_consumption_proof_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Generated self-build task for remediation_intake_agent_v1 semantic role SEED_CONSUMPTION_PROOF declared by family contract.",
+                      "expected_gate":  "GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1",
+                      "build_task_path":  "self_build_programs/generated/remediation_intake_agent_v1/tasks/TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_CONTRACT_V1_001",
+                      "capability_id":  "generated_family_autonomous_conveyor_contract_v1",
+                      "status":  "COMPLETED"
+                  },
+                  {
+                      "task_id":  "TASK_GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_LIVE_TRIAL_V1_001",
+                      "capability_id":  "generated_family_autonomous_conveyor_live_trial_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Prove the generated-family autonomous conveyor can execute exactly one generated-family trial pack through the live path and return the Builder queue to NONE.",
+                      "expected_gate":  "GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_LIVE_TRIAL_V1",
+                      "build_task_path":  "tasks/TASK_GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_LIVE_TRIAL_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_GENERATED_CONVEYOR_TRIAL_FAMILY_V1_LIVE_PACK_V1_001",
+                      "capability_id":  "generated_conveyor_trial_family_v1_live_pack_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Disposable generated-family conveyor live trial pack for PHASE65.",
+                      "expected_gate":  "GENERATED_CONVEYOR_TRIAL_FAMILY_V1_LIVE_PACK_V1",
+                      "build_task_path":  "tasks/TASK_GENERATED_CONVEYOR_TRIAL_FAMILY_V1_LIVE_PACK_V1_001.json",
+                      "family_id":  "conveyor_trial_family_v1",
+                      "semantic_role":  "CONVEYOR_LIVE_TRIAL_PROOF"
+                  },
+                  {
+                      "task_id":  "TASK_GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_FAILURE_RECOVERY_V1_001",
+                      "capability_id":  "generated_family_autonomous_conveyor_failure_recovery_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Prove the generated-family autonomous conveyor detects a controlled generated-pack failure, records failure evidence, and recovers the Builder queue to NONE without faking PASS.",
+                      "expected_gate":  "GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_FAILURE_RECOVERY_V1",
+                      "build_task_path":  "tasks/TASK_GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_FAILURE_RECOVERY_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_GENERATED_CONVEYOR_FAILURE_TRIAL_FAMILY_V1_FAILURE_PACK_V1_001",
+                      "capability_id":  "generated_conveyor_failure_trial_family_v1_failure_pack_v1",
+                      "status":  "FAILED",
+                      "objective":  "Disposable generated-family conveyor failure trial pack for PHASE66 failure-recovery proof.",
+                      "expected_gate":  "GENERATED_CONVEYOR_FAILURE_TRIAL_FAMILY_V1_FAILURE_PACK_V1",
+                      "build_task_path":  "tasks/TASK_GENERATED_CONVEYOR_FAILURE_TRIAL_FAMILY_V1_FAILURE_PACK_V1_001.json",
+                      "family_id":  "conveyor_failure_trial_family_v1",
+                      "semantic_role":  "CONVEYOR_FAILURE_RECOVERY_PROOF"
+                  },
+                  {
+                      "task_id":  "TASK_EXTERNAL_AGENT_PRODUCTION_PROGRAM_TEST_V1_001",
+                      "capability_id":  "external_agent_production_program_test_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Produce the first standalone external remediation intake operator agent package through a terminal proof pack.",
+                      "expected_gate":  "EXTERNAL_AGENT_PRODUCTION_PROGRAM_TEST_V1",
+                      "build_task_path":  "tasks/TASK_EXTERNAL_AGENT_PRODUCTION_PROGRAM_TEST_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_AGENT_GITHUB_ACTION_LAUNCH_V1_001",
+                      "capability_id":  "agent_github_action_launch_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Add a GitHub Actions manual launch workflow for remediation_intake_operator_agent_v1 through a Builder self-build pack.",
+                      "expected_gate":  "AGENT_GITHUB_ACTION_LAUNCH_V1",
+                      "build_task_path":  "tasks/TASK_AGENT_GITHUB_ACTION_LAUNCH_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_AGENT_CATALOG_V1_001",
+                      "capability_id":  "agent_catalog_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Create a unified runtime catalog for accepted external agents and register remediation_intake_operator_agent_v1 as the first catalog entry.",
+                      "expected_gate":  "AGENT_CATALOG_V1",
+                      "build_task_path":  "tasks/TASK_AGENT_CATALOG_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_AGENT_PROGRAM_INPUT_FORMAT_V1_001",
+                      "capability_id":  "agent_program_input_format_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Create a standard input program format for future external-agent production and document remediation_intake_operator_agent_v1 as the first example production program.",
+                      "expected_gate":  "AGENT_PROGRAM_INPUT_FORMAT_V1",
+                      "build_task_path":  "tasks/TASK_AGENT_PROGRAM_INPUT_FORMAT_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_AGENT_PROGRAM_EXECUTOR_V1_001",
+                      "capability_id":  "agent_program_executor_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Read the first agent production PROGRAM.json and create a structured execution plan for producing an agent from that program.",
+                      "expected_gate":  "AGENT_PROGRAM_EXECUTOR_V1",
+                      "build_task_path":  "tasks/TASK_AGENT_PROGRAM_EXECUTOR_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_RUNBOOK_EXECUTOR_AGENT_PROGRAM_TRIAL_V1_001",
+                      "capability_id":  "runbook_executor_agent_program_trial_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Seed a Runbook Executor Agent v1 production program and prove Builder can read it into a production execution plan without creating the agent.",
+                      "expected_gate":  "RUNBOOK_EXECUTOR_AGENT_PROGRAM_TRIAL_V1",
+                      "build_task_path":  "tasks/TASK_RUNBOOK_EXECUTOR_AGENT_PROGRAM_TRIAL_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_RUNBOOK_EXECUTOR_AGENT_PRODUCTION_V1_001",
+                      "capability_id":  "runbook_executor_agent_production_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Produce Runbook Executor Agent v1 from the existing production program and execution plan, validate local runtime, and register it in the agent catalog pending GitHub Action launch.",
+                      "expected_gate":  "RUNBOOK_EXECUTOR_AGENT_PRODUCTION_V1",
+                      "build_task_path":  "tasks/TASK_RUNBOOK_EXECUTOR_AGENT_PRODUCTION_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_LAUNCH_V1_001",
+                      "capability_id":  "runbook_executor_agent_github_action_launch_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Add GitHub Actions launch workflow for Runbook Executor Agent v1",
+                      "expected_delta":  "RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_READY"
+                  },
+                  {
+                      "task_id":  "TASK_RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_ACCEPTANCE_V1_001",
+                      "capability_id":  "runbook_executor_agent_github_action_acceptance_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Run GitHub Actions workflow for Runbook Executor Agent v1, verify artifact, and mark the agent accepted",
+                      "expected_delta":  "RUNBOOK_EXECUTOR_AGENT_ACCEPTED"
+                  },
+                  {
+                      "task_id":  "TASK_AGENT_PRODUCTION_CLOSED_LOOP_STANDARD_V1_001",
+                      "capability_id":  "agent_production_closed_loop_standard_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Codify the closed-loop external-agent production path as the Builder factory standard.",
+                      "expected_gate":  "AGENT_PRODUCTION_CLOSED_LOOP_STANDARD_V1",
+                      "build_task_path":  "tasks/TASK_AGENT_PRODUCTION_CLOSED_LOOP_STANDARD_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_EVIDENCE_PACKAGER_AGENT_CLOSED_LOOP_TRIAL_V1_001",
+                      "capability_id":  "evidence_packager_agent_closed_loop_trial_v1",
+                      "status":  "COMPLETED",
+                      "objective":  "Use Builder to produce Evidence Packager Agent v1 through the closed-loop standard and accept it after GitHub artifact validation.",
+                      "expected_gate":  "EVIDENCE_PACKAGER_AGENT_CLOSED_LOOP_TRIAL_V1",
+                      "build_task_path":  "tasks/TASK_EVIDENCE_PACKAGER_AGENT_CLOSED_LOOP_TRIAL_V1_001.json"
+                  },
+                  {
+                      "task_id":  "TASK_SELF_BUILD_PROGRAM_GENERATOR_V1_001",
+                      "phase":  "PHASE88",
+                      "pack_id":  "PHASE88_SELF_BUILD_PROGRAM_GENERATOR_V1",
+                      "status":  "COMPLETED",
+                      "active_line":  "AGENT_BUILDER / SELF_BUILD",
+                      "created_at":  "2026-05-29T11:38:52.8203272Z",
+                      "purpose":  "Generate SELF_BUILD_PROGRAM_001 as a candidate program requiring admission before execution.",
+                      "cut_list":  [
+                                       "No admission",
+                                       "No execution",
+                                       "No installs",
+                                       "No external fetch",
+                                       "No external agents"
+                                   ],
+                      "state":  "RUNNING",
+                      "phase164p_run_id":  "PHASE164P_REAL_PHASE88_OWNER_MATERIAL_20260610_121435",
+                      "phase164p_owner_material_input":  true,
+                      "completed_at":  "2026-06-10T08:14:42.5534474Z"
+                  },
+                  {
+                      "task_id":  "TASK_SELF_BUILD_BACKLOG_CONTRACT_V1_001",
+                      "phase":  "PHASE92_SELF_BUILD_BACKLOG_CONTRACT_V1",
+                      "status":  "COMPLETED",
+                      "mode":  "SELF_BUILD",
+                      "pack_id":  "PHASE92_SELF_BUILD_BACKLOG_CONTRACT_V1",
+                      "title":  "Create self-build backlog contract V1",
+                      "created_by":  "terminal_runpack_without_codex",
+                      "route_lock":  "AGENT_BUILDER_NEXT_15_STEPS_LOCK_V2_R2.md",
+                      "baseline_commit":  "ec162b8",
+                      "expected_outputs":  [
+                                               "contracts/self_development/self_build_backlog_contract_v1.schema.json",
+                                               "self_build_backlog/SELF_BUILD_BACKLOG_CONTRACT_V1.json",
+                                               "reports/self_development/SELF_BUILD_BACKLOG_CONTRACT_REPORT.json",
+                                               "proofs/self_development/SELF_BUILD_BACKLOG_CONTRACT_V1.json"
+                                           ],
+                      "next_allowed_step":  "PHASE93_CAPABILITY_GAP_DETECTOR_V1",
+                      "completed_by":  "Builder runtime",
+                      "proof_path":  "proofs/self_development/SELF_BUILD_BACKLOG_CONTRACT_V1.json"
+                  },
+                  {
+                      "task_id":  "TASK_CAPABILITY_GAP_DETECTOR_V1_001",
+                      "phase":  "PHASE93_CAPABILITY_GAP_DETECTOR_V1",
+                      "status":  "COMPLETED",
+                      "mode":  "SELF_BUILD",
+                      "pack_id":  "PHASE93_CAPABILITY_GAP_DETECTOR_V1",
+                      "title":  "Create capability gap detector V1",
+                      "created_by":  "terminal_runpack_without_codex",
+                      "route_lock":  "AGENT_BUILDER_NEXT_15_STEPS_LOCK_V2_R2.md",
+                      "baseline_commit":  "339a060",
+                      "expected_outputs":  [
+                                               "contracts/self_development/capability_gap_detector_v1.schema.json",
+                                               "self_build_backlog/CAPABILITY_GAP_DETECTOR_V1.json",
+                                               "self_build_backlog/CAPABILITY_GAP_INDEX_V1.json",
+                                               "reports/self_development/CAPABILITY_GAP_DETECTOR_REPORT.json",
+                                               "proofs/self_development/CAPABILITY_GAP_DETECTOR_V1.json"
+                                           ],
+                      "next_allowed_step":  "PHASE94_OWNER_ORDER_TO_GAP_MAP_V1",
+                      "completed_by":  "Builder runtime",
+                      "proof_path":  "proofs/self_development/CAPABILITY_GAP_DETECTOR_V1.json"
+                  },
+                  {
+                      "task_id":  "TASK_BUILDER_GENERATED_PACK_ADMISSION_V1_001",
+                      "status":  "COMPLETED",
+                      "mode":  "SELF_BUILD",
+                      "baseline_commit":  "c55adeb",
+                      "source_candidate_path":  "self_build_batch/self_pack_author/generated_candidates/PHASE108_BUILDER_GENERATED_PACK_ADMISSION_V1_CANDIDATE",
+                      "admission_result":  "self_build_batch/self_pack_author/admission/PHASE108_BUILDER_GENERATED_PACK_ADMISSION_RESULT.json",
+                      "next_allowed_step":  "PHASE109_BUILDER_EXECUTES_OWN_GENERATED_NEXT_PACK_V1",
+                      "completed_at":  "2026-05-30T21:16:40.6353593+04:00"
+                  },
+                  {
+                      "task_id":  "TASK_PHASE110_IDEMPOTENT_AUTONOMY_TRIAL_ONE_CYCLE_SMOKE_V1_001",
+                      "status":  "COMPLETED",
+                      "mode":  "SELF_BUILD",
+                      "phase":  "PHASE110_IDEMPOTENT_AUTONOMY_TRIAL_ONE_CYCLE_SMOKE_V1",
+                      "baseline_commit":  "024a174",
+                      "active_line":  "AGENT_BUILDER / SELF_BUILD",
+                      "purpose":  "Idempotent one-cycle PHASE110 smoke target",
+                      "does_not_replay_phase107":  true,
+                      "codex_used":  false,
+                      "runtime_required":  true,
+                      "next_allowed_step":  "PHASE110_IDEMPOTENT_AUTONOMY_TRIAL_5_CYCLE_BATCH_V1"
+                  },
+                  {
+                      "task_id":  "TASK_PHASE115_EXECUTE_BUILDER_QUEUED_ADMITTED_ACTION_V1_001",
+                      "status":  "COMPLETED",
+                      "mode":  "SELF_BUILD",
+                      "phase":  "PHASE115_EXECUTE_BUILDER_QUEUED_ADMITTED_ACTION_V1",
+                      "active_line":  "AGENT_BUILDER / SELF_BUILD",
+                      "created_by":  "ADMITTED_ACTION_EXECUTION_ENGINE_V1",
+                      "source_admitted_action_id":  "ADMITTED_ACTION_BUILD_EXECUTION_ENGINE_V1",
+                      "source_admitted_action_path":  ".\\self_build_batch\\autonomy_trials\\PHASE113_BUILD_DECISION_ACTION_ADMISSION_BRIDGE_V1\\ADMITTED_ACTION.json",
+                      "purpose":  "Execute generated admitted-action move and return queue to NONE",
+                      "autonomous_eligible":  true,
+                      "codex_used":  false,
+                      "next_allowed_step":  "PHASE116_BUILDER_AUTONOMOUS_CHAIN_SMOKE_V1"
+                  },
+                  {
+                      "id":  "PHASE164G_SELF_GROWTH_FROM_OWNER_CANDIDATE_CODEX_ARCHIVE_BOUNDARY_CHECKER_001",
+                      "task_id":  "PHASE164G_SELF_GROWTH_FROM_OWNER_CANDIDATE_CODEX_ARCHIVE_BOUNDARY_CHECKER_001",
+                      "type":  "OWNER_CANDIDATE_SELF_GROWTH_INTAKE",
+                      "task_type":  "OWNER_CANDIDATE_SELF_GROWTH_INTAKE",
+                      "title":  "Self-growth intake from owner candidate: Codex archive boundary smoke checker",
+                      "status":  "COMPLETED",
+                      "state":  "COMPLETED",
+                      "priority":  "normal",
+                      "source":  "owner_candidate_inbox",
+                      "source_candidate_id":  "OWNER_CANDIDATE_CODEX_ARCHIVE_BOUNDARY_CHECKER_001",
+                      "source_candidate_path":  "owner_orders/candidate_inbox/OWNER_CANDIDATE_CODEX_ARCHIVE_BOUNDARY_CHECKER_001.candidate.json",
+                      "bridge_task_id":  "SELF_GROWTH_FROM_OWNER_CANDIDATE_OWNER_CANDIDATE_CODEX_ARCHIVE_BOUNDARY_CHECKER_001",
+                      "target_loop":  "EXISTING_BUILDER_SELF_GROWTH_LOOP",
+                      "requested_action":  "Use existing Builder self-growth organs to adapt candidate into atom candidate, sandbox validate, prove, then accept or reject.",
+                      "required_next_gate":  "BUILDER_SANDBOX_VALIDATE_PROOF_THEN_ACCEPT_OR_REJECT",
+                      "atom_acceptance_allowed":  false,
+                      "accepted_core_mutation_allowed":  false,
+                      "route_lock_mutation_allowed":  false,
+                      "codex_execution_allowed":  false,
+                      "created_at":  "2026-06-10T06:47:07.2665659Z",
+                      "phase_source":  "PHASE164G_REAL_CANDIDATE_QUEUE_TEST",
+                      "started_at":  "2026-06-10T07:22:42.096803Z",
+                      "phase164l_run_id":  "PHASE164L_RUN_EXISTING_ORCHESTRATOR_20260610_112242",
+                      "completed_at":  "2026-06-10T07:22:44.064987Z",
+                      "proof_path":  "proofs/self_development/PHASE164K_OWNER_CANDIDATE_SELF_GROWTH_ADAPTER_V1.json",
+                      "self_growth_request_path":  "self_build_batch/owner_candidate_self_growth_adapter/PHASE164G_SELF_GROWTH_FROM_OWNER_CANDIDATE_CODEX_ARCHIVE_BOUNDARY_CHECKER_001/OWNER_CANDIDATE_SELF_GROWTH_REQUEST.json"
+                  }
+              ]
+}

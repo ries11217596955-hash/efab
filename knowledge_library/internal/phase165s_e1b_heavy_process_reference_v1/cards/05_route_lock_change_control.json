@@ -1,0 +1,53 @@
+{
+  "id": "heavy_process_reference.route_lock_change_control.v1",
+  "phase": "PHASE165S_E1B_HEAVY_PROCESS_REFERENCE_LIBRARY_V1",
+  "kind": "internal_heavy_process_reference_card",
+  "title": "Route Lock Change Control",
+  "process_class": "route_control",
+  "summary": "Route lock control, route change request and next lock generation",
+  "trigger_pattern": "do not silently change route",
+  "when_to_use": [
+    "Use only when the task has a real operational gap or risk, not for primitive term lookup.",
+    "Use when Builder needs a process for: Route lock control, route change request and next lock generation.",
+    "Use during task/gap resolution after accepted atoms/organs are insufficient."
+  ],
+  "do_not_use_for": [
+    "Do not treat this card as an accepted atom.",
+    "Do not feed this card as school curriculum by default.",
+    "Do not use this card to mutate protected state without validator proof."
+  ],
+  "inputs": [
+    "current task or blocker",
+    "fresh repo/runtime/proof evidence where applicable",
+    "active route lock or explicit Owner authorization",
+    "risk classification and protected-surface list"
+  ],
+  "procedure": [
+    "Name the exact gap or process risk.",
+    "Check accepted memory/organs before consulting reference.",
+    "Read the relevant runbook section and extract only the step needed for the current gap.",
+    "Apply the step in sandbox or staged sidecar first when possible.",
+    "Validate with terminal/validator/proof/report.",
+    "If the result solved a repeatable gap, propose bounded atom candidate through C2B/PHASE162; otherwise keep as reference."
+  ],
+  "proof_required": [
+    "terminal output or validator result",
+    "proof JSON when a file/process changed",
+    "report MD when Owner needs review",
+    "git status for repo mutations",
+    "visibility/reuse proof before accepted atom claim"
+  ],
+  "risks": [
+    "passive reading becomes atom spam",
+    "sidecar material is mistaken for accepted memory",
+    "partial surface mutation is accepted as success",
+    "D2B or other live run is disturbed by unrelated changes"
+  ],
+  "output": [
+    "bounded action decision",
+    "proof requirement list",
+    "candidate next step or safe stop condition"
+  ],
+  "atomization_rule": "This reference can become an atom candidate only after it closes a concrete task gap, is applied, produces proof/use, is reusable, and passes C2B/PHASE162.",
+  "source_status": "Owner-strategy-derived internal reference; no external material downloaded; trusted=false as accepted memory until proven by use."
+}

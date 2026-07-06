@@ -1,0 +1,31 @@
+{
+  "schema_version": "internal_reference_card.v1",
+  "reference_id": "ref.owner_input.task_hint_material_route.v1",
+  "domain": "owner_input_routing_reference",
+  "question_it_answers": "How should Builder classify Owner input?",
+  "answer": "Owner input can be explicit task, hint, material, correction, route change request or stop/control signal; classify before acting.",
+  "use_when": [
+    "owner task",
+    "owner hint",
+    "uploaded material",
+    "route change"
+  ],
+  "next_action": "classify_owner_input_and_select_route",
+  "source_atoms": [
+    "concept.owner_task.v1",
+    "concept.owner_hint.v1",
+    "concept.instruction.v1"
+  ],
+  "status": "INTERNAL_REFERENCE",
+  "trusted": false,
+  "accepted_atom": false,
+  "creates_atom_only_after_gap_solved": true,
+  "school_curriculum": false,
+  "protected_state_mutation": false,
+  "phase": "PHASE165S-E1B_INTERNAL_REFERENCE_LIBRARY_SEED",
+  "created_utc": "2026-06-12T00:00:00Z",
+  "ledger_basis": [
+    "AGENT_BUILDER_STRATEGY_LEDGER_V0_30_AFTER_D2_AND_REFERENCE_SEARCH_POLICY_AGREEMENT.md",
+    "Sections 191.3-191.18"
+  ]
+}

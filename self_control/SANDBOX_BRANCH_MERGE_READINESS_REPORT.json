@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "report_id": "SANDBOX_BRANCH_MERGE_READINESS_REPORT",
+  "created_by": "PHASE138C_SANDBOX_BRANCH_MERGE_DECISION_V1",
+  "run_id": "PHASE138C_SANDBOX_BRANCH_MERGE_DECISION_001",
+  "previous_phases_accepted": [
+    "PHASE138A_AUTONOMOUS_MATERIAL_DECISION_STRESS_LAB_V1",
+    "PHASE138B_REVIEW_AUTONOMOUS_MATERIAL_DECISION_STRESS_RESULTS_V1"
+  ],
+  "source_branch": "phase138a-autonomous-material-decision-stress-lab",
+  "target_branch": "phase110-idempotent-autonomy-trial-runtime",
+  "source_head": "c2f8b56",
+  "target_base_head": "6a958ed",
+  "stress_dataset_record_count": 300,
+  "selected_material_id": "candidate_pester_powershell_test_framework",
+  "policy_violation_count": 30,
+  "merge_blockers_count": 1,
+  "merge_blockers": [
+    "OWNER_APPROVAL_REQUIRED_BEFORE_MERGE"
+  ],
+  "no_runtime_forbidden_actions": true,
+  "no_production_trust": true,
+  "no_dependency_install": true,
+  "no_external_fetch": true,
+  "no_executable_use": true,
+  "production_adoption_allowed": false,
+  "trusted_material_count": 0,
+  "external_fetch_performed": false,
+  "dependency_install_performed": false,
+  "executable_materials_used": false,
+  "wrapper_created": false,
+  "smoke_test_executed": false,
+  "next_allowed_step": "PHASE138D_OWNER_APPROVED_SANDBOX_BRANCH_MERGE_V1"
+}

@@ -1,0 +1,80 @@
+{
+  "policy_id": "BATCH_ADMISSION_POLICY_V1",
+  "version": "V1",
+  "status": "ACTIVE_ADMISSION_POLICY",
+  "phase": "PHASE97_BATCH_ADMISSION_POLICY_V1",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "generated_at": "2026-05-29T16:00:37.4096200Z",
+  "input_sources": [
+    "self_build_batch/plans/BATCH_PLAN_EXAMPLE_V1.json",
+    "self_build_batch/planner/BATCH_PLANNER_V1.json",
+    "self_build_backlog/SELF_BUILD_BACKLOG_CONTRACT_V1.json",
+    "self_build_programs/generated/SELF_BUILD_PROGRAM_V2_EXAMPLE_001.json"
+  ],
+  "output_schema": "contracts/self_development/batch_admission_policy_v1.schema.json",
+  "decision_values": [
+    "ADMIT_FOR_FUTURE_CONTROLLED_EXECUTION",
+    "CONDITIONALLY_ADMISSIBLE",
+    "BLOCKED",
+    "NEEDS_OWNER_DECISION",
+    "NEEDS_CODEX_REPAIR",
+    "NEEDS_MATERIAL",
+    "REJECTED_BY_POLICY"
+  ],
+  "admission_checks": [
+    "plan_status_must_be_planned",
+    "admission_required_must_be_true",
+    "execution_allowed_must_be_false_before_admission",
+    "batch_count_must_be_positive",
+    "item_count_must_be_positive",
+    "items_must_have_item_level_status",
+    "no_item_may_be_pass_before_execution",
+    "no_item_may_be_executed_before_runtime",
+    "dependencies_must_be_declared",
+    "blocked_files_scope_must_be_declared",
+    "allowed_files_scope_must_be_declared",
+    "proof_requirements_must_be_declared",
+    "quarantine_on_failure_must_be_declared"
+  ],
+  "blocking_conditions": [
+    "destructive_scope_without_owner_approval",
+    "external_fetch_requested",
+    "install_requested",
+    "external_agent_production_requested",
+    "missing_item_level_status",
+    "missing_proof_requirements",
+    "missing_quarantine_policy",
+    "plan_already_executed"
+  ],
+  "owner_approval_conditions": [
+    "destructive_changes",
+    "external_fetch",
+    "install_dependencies",
+    "policy_change",
+    "large_scale_execution"
+  ],
+  "assistance_conditions": [
+    "NEEDS_OWNER_DECISION",
+    "NEEDS_CODEX_REPAIR",
+    "NEEDS_MATERIAL"
+  ],
+  "output_contract": {
+    "admission_id": "Stable admission artifact identifier.",
+    "source_plan": "Source batch plan path.",
+    "status": "PASS or FAIL for policy evaluation.",
+    "decision": "One decision value from decision_values.",
+    "execution_allowed": "Must remain false until future runtime exists.",
+    "required_before_execution": "Required future runtime capabilities.",
+    "checked_items": "Batch and item-level check summary.",
+    "next_allowed_step": "Next safe self-build step."
+  },
+  "execution_allowed": false,
+  "policy": {
+    "policy_does_not_execute_batches": true,
+    "policy_does_not_create_ledger": true,
+    "batch_execution_remains_blocked_until_runtime_exists": true,
+    "no_external_agent_production": true,
+    "no_external_install": true,
+    "no_external_fetch": true
+  }
+}

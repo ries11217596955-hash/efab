@@ -1,0 +1,38 @@
+{
+  "task_id": "TASK_AGENT_CATALOG_V1_001",
+  "capability_id": "agent_catalog_v1",
+  "objective": "Prepare a Builder self-build pack that creates a unified catalog for accepted external agents and registers remediation_intake_operator_agent_v1 as the first entry.",
+  "execution_kind": "SELF_BUILD_AGENT_CATALOG_V1",
+  "phase": "PHASE_69",
+  "expected_gate": "AGENT_CATALOG_V1",
+  "registered_agent_id": "remediation_intake_operator_agent_v1",
+  "catalog_runtime_path": "agent_catalog/AGENT_CATALOG.json",
+  "agent_card_runtime_path": "agent_catalog/remediation_intake_operator_agent_v1.md",
+  "runtime_report_path": "reports/external_agent_production/AGENT_CATALOG_V1_REPORT.json",
+  "runtime_proof_path": "proofs/AGENT_CATALOG_V1.json",
+  "scope": [
+    "create agent_catalog/AGENT_CATALOG.json only at Builder runtime",
+    "create agent_catalog/remediation_intake_operator_agent_v1.md only at Builder runtime",
+    "copy validate_agent_catalog_v1.ps1 into validators only at Builder runtime",
+    "validate the catalog against the existing accepted remediation intake operator agent package and GitHub Actions workflow",
+    "write AGENT_CATALOG_V1 proof and report only after validation evidence",
+    "complete PHASE69 task and capability only after catalog validation evidence"
+  ],
+  "validation": [
+    "PowerShell parser check passes for PHASE69 APPLY.ps1",
+    "PowerShell parser check passes for PHASE69 validator payload",
+    "changed JSON files parse successfully",
+    "TASK_QUEUE active_task_id points to TASK_AGENT_CATALOG_V1_001",
+    "agent_catalog/proof/report/root-validator runtime outputs are not precommitted",
+    "generated_agents/remediation_intake_operator_agent_v1 files are not changed during preparation"
+  ],
+  "forbidden_scope": [
+    "do not create a second agent",
+    "do not change generated_agents/remediation_intake_operator_agent_v1 files during preparation",
+    "do not change .github/workflows/run-remediation-intake-operator-agent-v1.yml",
+    "do not change orchestrator/run.ps1",
+    "do not modify old proof/report files",
+    "do not commit or push during preparation",
+    "do not run PHASE69 runtime during preparation"
+  ]
+}

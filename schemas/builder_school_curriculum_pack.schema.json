@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "builder_school_curriculum_pack.schema.json",
+  "title": "Builder School Curriculum Pack",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "curriculum_id",
+    "curriculum_version",
+    "pack_type",
+    "active_line",
+    "active_mode",
+    "route_lock_required",
+    "route_step_id",
+    "safety_rules",
+    "lessons"
+  ],
+  "properties": {
+    "curriculum_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "curriculum_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "pack_type": {
+      "const": "BUILDER_SCHOOL_CURRICULUM_PACK"
+    },
+    "active_line": {
+      "enum": [
+        "AGENT_BUILDER_SELF_DEVELOPMENT",
+        "AGENT_BUILDER_EXTERNAL_AGENT_PRODUCTION"
+      ]
+    },
+    "active_mode": {
+      "enum": [
+        "SELF_BUILD",
+        "BUILD_EXTERNAL_AGENT",
+        "VERIFY"
+      ]
+    },
+    "route_lock_required": {
+      "type": "boolean"
+    },
+    "route_lock_stamp": {
+      "type": "string"
+    },
+    "route_step_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string"
+    },
+    "safety_rules": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "accepted_repo_mutation_allowed",
+        "protected_state_mutation_allowed",
+        "repo_commit_allowed",
+        "repo_push_allowed",
+        "branch_switch_allowed",
+        "runtime_session_only"
+      ],
+      "properties": {
+        "accepted_repo_mutation_allowed": {
+          "const": false
+        },
+        "protected_state_mutation_allowed": {
+          "const": false
+        },
+        "repo_commit_allowed": {
+          "const": false
+        },
+        "repo_push_allowed": {
+          "const": false
+        },
+        "branch_switch_allowed": {
+          "const": false
+        },
+        "runtime_session_only": {
+          "const": true
+        }
+      }
+    },
+    "lessons": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "builder_school_lesson.schema.json"
+      }
+    }
+  }
+}

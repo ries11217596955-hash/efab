@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "contracts/operations/operation_contract.schema.json",
+  "title": "Operation Contract",
+  "type": "object",
+  "required": [
+    "operation_id",
+    "operation_name",
+    "operation_type",
+    "status",
+    "phase_created",
+    "related_material_id",
+    "related_quarantine_card_path",
+    "purpose",
+    "input_contract",
+    "output_contract",
+    "allowed_reads",
+    "allowed_writes",
+    "forbidden_actions",
+    "execution_mode",
+    "risk_level",
+    "smoke_test_plan",
+    "proof_requirements",
+    "rollback_notes",
+    "owner_approval_required",
+    "created_at",
+    "next_allowed_step"
+  ],
+  "properties": {
+    "operation_id": {
+      "type": "string"
+    },
+    "operation_name": {
+      "type": "string"
+    },
+    "operation_type": {
+      "type": "string",
+      "enum": [
+        "VALIDATE_JSON_SCHEMA",
+        "RENDER_TEMPLATE",
+        "GENERATE_SBOM",
+        "SCAN_VULNERABILITIES",
+        "CHECK_LICENSES",
+        "EVALUATE_POLICY",
+        "PACKAGE_AGENT",
+        "RUN_SMOKE_TEST",
+        "REFERENCE_ONLY"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "DRAFT",
+        "CONTRACT_READY",
+        "WRAPPER_PENDING",
+        "WRAPPED",
+        "SMOKE_TEST_PENDING",
+        "TESTED",
+        "TRUSTED_OPERATION",
+        "BLOCKED",
+        "DEPRECATED"
+      ]
+    },
+    "phase_created": {
+      "type": "string"
+    },
+    "related_material_id": {
+      "type": "string"
+    },
+    "related_quarantine_card_path": {
+      "type": "string"
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "input_contract": {
+      "type": "object"
+    },
+    "output_contract": {
+      "type": "object"
+    },
+    "allowed_reads": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "allowed_writes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "forbidden_actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "execution_mode": {
+      "type": "string",
+      "enum": [
+        "NO_EXECUTION",
+        "DRY_RUN_ONLY",
+        "LOCAL_SANDBOX",
+        "ISOLATED_PROCESS",
+        "CONTAINER_REQUIRED",
+        "OWNER_APPROVAL_REQUIRED"
+      ]
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": [
+        "LOW",
+        "MEDIUM",
+        "HIGH",
+        "FORBIDDEN",
+        "UNKNOWN"
+      ]
+    },
+    "smoke_test_plan": {
+      "type": "object"
+    },
+    "proof_requirements": {
+      "type": "object"
+    },
+    "rollback_notes": {
+      "type": "string"
+    },
+    "owner_approval_required": {
+      "type": "boolean"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "next_allowed_step": {
+      "type": "string"
+    }
+  }
+}

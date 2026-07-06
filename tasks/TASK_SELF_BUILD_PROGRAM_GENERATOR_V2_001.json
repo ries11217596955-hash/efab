@@ -1,0 +1,27 @@
+{
+  "task_id": "TASK_SELF_BUILD_PROGRAM_GENERATOR_V2_001",
+  "phase": "PHASE95",
+  "pack_id": "PHASE95_SELF_BUILD_PROGRAM_GENERATOR_V2",
+  "status": "READY",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "mode": "SELF_BUILD",
+  "capability_id": "self_build_program_generator_v2",
+  "gate": "SELF_BUILD_PROGRAM_GENERATOR_V2",
+  "path": "tasks/TASK_SELF_BUILD_PROGRAM_GENERATOR_V2_001.json",
+  "baseline_commit": "9785fe2",
+  "route_lock": "AGENT_BUILDER_NEXT_15_STEPS_LOCK_V2_R2.md",
+  "source_gap_map": "self_build_backlog/OWNER_ORDER_GAP_MAP_EXAMPLE_V1.json",
+  "next_allowed_step": "PHASE96_BATCH_PLANNER_V1",
+  "purpose": "Define Self-Build Program Generator V2 and generate a non-admitted, non-executable Batch Planner V1 example candidate.",
+  "cut_list": [
+    "No Builder runtime from Codex",
+    "No generated program admission",
+    "No generated program execution",
+    "No PHASE96 execution",
+    "No GitHub workflow creation",
+    "No external agent production",
+    "No installs",
+    "No external fetch",
+    "No PHASE78-PHASE94 pack edits"
+  ]
+}

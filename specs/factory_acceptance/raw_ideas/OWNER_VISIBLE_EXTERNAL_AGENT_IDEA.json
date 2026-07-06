@@ -1,0 +1,27 @@
+{
+  "request_id": "owner_visible_external_agent_idea_v1",
+  "payload": {
+    "problem": "Meeting brief agent",
+    "target_user": "Team lead preparing recurring project meetings",
+    "operator_goal": "Turn a short meeting request into a structured brief with agenda focus, open decisions, risks, and follow-up questions.",
+    "expected_outputs": [
+      "meeting agenda focus",
+      "open decision list",
+      "risk and blocker summary",
+      "follow-up question set"
+    ],
+    "constraints": [
+      "domain-neutral",
+      "no external network dependency",
+      "must produce a generated operational agent package"
+    ],
+    "non_goals": [
+      "do not generate a Site Auditor agent",
+      "do not require a specialization overlay",
+      "do not claim production deployment beyond generated package artifacts"
+    ]
+  },
+  "metadata": {
+    "source": "owner_visible_factory_acceptance_loop_v1"
+  }
+}

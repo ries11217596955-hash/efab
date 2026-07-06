@@ -1,0 +1,917 @@
+{
+    "schema":  "value_grounded_curriculum_prep_v1",
+    "status":  "VALUE_GROUNDED_CURRICULUM_INBOX_PREPARED_NO_PROMOTION",
+    "runtime_ready":  false,
+    "promotion_allowed":  false,
+    "source_rule":  "real repo evidence only; no self-authored easy candidates",
+    "candidate_count":  39,
+    "candidates":  [
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0001.v1",
+                           "evidence_path":  "operations\\gpt_handoff\\GPT_OPERATOR_JOURNAL.md",
+                           "evidence_sha256":  "fec25011a19f5352c16b72dcad20c336a037d55f2ffd59e3e1e6125ae12cee69",
+                           "evidence_kind":  "audit_or_gap",
+                           "signal_count":  14,
+                           "signals":  [
+                                           "AUDIT_INVALID",
+                                           "NOT_PROVEN",
+                                           "NOT_PROMOTED",
+                                           "BLOCKED",
+                                           "Owner",
+                                           "Correction",
+                                           "rejected=0",
+                                           "engine stress"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       },
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0002.v1",
+                           "evidence_path":  "operations\\reports\\VALUE_GROUNDED_CURRICULUM_PREP_V1_VALIDATION.json",
+                           "evidence_sha256":  "09eab5faf5048d973efdf7947aed9e4da0072d54b654bf7ac2cf7fc7af364f8c",
+                           "evidence_kind":  "evidence",
+                           "signal_count":  1,
+                           "signals":  [
+                                           "validator"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       },
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0003.v1",
+                           "evidence_path":  "operations\\reports\\VALUE_GROUNDED_CURRICULUM_PREP_V1.json",
+                           "evidence_sha256":  "e982dd72e44f64d4262ce495f62657f516f8349b1ac7c0c82c90f4b1facece00",
+                           "evidence_kind":  "audit_or_gap",
+                           "signal_count":  14,
+                           "signals":  [
+                                           "AUDIT_INVALID",
+                                           "NOT_PROVEN",
+                                           "NOT_PROMOTED",
+                                           "BLOCKED",
+                                           "Owner",
+                                           "Correction",
+                                           "rejected=0",
+                                           "engine stress"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       },
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0004.v1",
+                           "evidence_path":  "operations\\gpt_handoff\\GPT_OPERATOR_LIVING_CELL_SOURCE_LADDER_V1.md",
+                           "evidence_sha256":  "227cfcfebed567c28ffb7e7f45a1f98a132cc00feb19d6bf59aa68d99749cbc4",
+                           "evidence_kind":  "owner_correction",
+                           "signal_count":  7,
+                           "signals":  [
+                                           "Owner",
+                                           "Correction",
+                                           "engine stress",
+                                           "processed=N",
+                                           "Codex",
+                                           "validator",
+                                           "proof"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       },
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0005.v1",
+                           "evidence_path":  "operations\\reports\\WEAK_SEMANTIC_OVERNIGHT_RUN_AUDIT_V1.md",
+                           "evidence_sha256":  "1c80c514eff7b5fd1a6e3c1d2ea6d1a9271a5164c07130febbc8c23990556ea4",
+                           "evidence_kind":  "audit_or_gap",
+                           "signal_count":  5,
+                           "signals":  [
+                                           "AUDIT_INVALID",
+                                           "NOT_PROVEN",
+                                           "NOT_PROMOTED",
+                                           "Correction",
+                                           "validator"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       },
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0006.v1",
+                           "evidence_path":  "operations\\reports\\WEAK_SEMANTIC_OVERNIGHT_RUN_AUDIT_V1.json",
+                           "evidence_sha256":  "7e30c85184e33bc61b4ef84f50f6d7ab71273787e7368cb9c34d66662881017c",
+                           "evidence_kind":  "audit_or_gap",
+                           "signal_count":  6,
+                           "signals":  [
+                                           "AUDIT_INVALID",
+                                           "NOT_PROMOTED",
+                                           "Owner",
+                                           "rejected=0",
+                                           "bloat",
+                                           "validator"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       },
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0007.v1",
+                           "evidence_path":  "operations\\reports\\REAL_SEMANTIC_LADDER_SCHOOL_V1.md",
+                           "evidence_sha256":  "eea2e2ad6f692d74998cfe0544f9ead749d11e567938a3beee571decd232c924",
+                           "evidence_kind":  "evidence",
+                           "signal_count":  2,
+                           "signals":  [
+                                           "validator",
+                                           "proof"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       },
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0008.v1",
+                           "evidence_path":  "operations\\reports\\REAL_SEMANTIC_LADDER_SCHOOL_V1.json",
+                           "evidence_sha256":  "0ca6d993aaa55241d92f1fcf06c74a7fa65ff4b64553c06dede35aaa3f7e2bf0",
+                           "evidence_kind":  "evidence",
+                           "signal_count":  2,
+                           "signals":  [
+                                           "validator",
+                                           "proof"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       },
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0009.v1",
+                           "evidence_path":  "operations\\reports\\OVERNIGHT_LADDER_SCHOOL_V1_FINAL.md",
+                           "evidence_sha256":  "56d391a17c05fcd912a693d9ef6047a53f99faee402877d21ebde84bd5b59abe",
+                           "evidence_kind":  "audit_or_gap",
+                           "signal_count":  3,
+                           "signals":  [
+                                           "NOT_PROVEN",
+                                           "Owner",
+                                           "proof"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       },
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0010.v1",
+                           "evidence_path":  "operations\\reports\\OVERNIGHT_LADDER_SCHOOL_V1_FINAL.json",
+                           "evidence_sha256":  "652af8d27140be114afadff40fc7f0ed767a6256d4f94cfa80d4eeded2bc745d",
+                           "evidence_kind":  "audit_or_gap",
+                           "signal_count":  1,
+                           "signals":  [
+                                           "NOT_PROVEN"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       },
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0011.v1",
+                           "evidence_path":  "operations\\reports\\OVERNIGHT_LADDER_SCHOOL_300K_AUDIT_V1.md",
+                           "evidence_sha256":  "22bc1180b344d36d033b452dbe85080a33d34965483736acb0b64b710b7f5f7e",
+                           "evidence_kind":  "audit_or_gap",
+                           "signal_count":  2,
+                           "signals":  [
+                                           "NOT_PROVEN",
+                                           "Owner"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       },
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0012.v1",
+                           "evidence_path":  "operations\\reports\\OVERNIGHT_LADDER_SCHOOL_300K_AUDIT_V1.json",
+                           "evidence_sha256":  "0a4128658f1f8159231724060d2ad703d22ed4ced1960ba11a184b7fad63ec87",
+                           "evidence_kind":  "audit_or_gap",
+                           "signal_count":  1,
+                           "signals":  [
+                                           "NOT_PROVEN"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       },
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0013.v1",
+                           "evidence_path":  "operations\\reports\\OVERNIGHT_LADDER_SCHOOL_V1_CANARY.md",
+                           "evidence_sha256":  "179dc24897a584df0dd3b3ad7dfa0cefbdf5c541f982a573c694d8fbaa2955ef",
+                           "evidence_kind":  "evidence",
+                           "signal_count":  1,
+                           "signals":  [
+                                           "rejected=0"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       },
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0014.v1",
+                           "evidence_path":  "operations\\reports\\OVERNIGHT_LADDER_SCHOOL_V1_CANARY.json",
+                           "evidence_sha256":  "71899c8a85462e020543931b8acdc2de567bae6c0b02d3947761807bcff6f33e",
+                           "evidence_kind":  "evidence",
+                           "signal_count":  1,
+                           "signals":  [
+                                           "proof"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       },
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0015.v1",
+                           "evidence_path":  "operations\\reports\\ACTIVE_BEHAVIOR_TASK_DECISION_FLOW_V1.md",
+                           "evidence_sha256":  "ee6489d17b06a7049493386cd03343a8625dea98f53214c02cd1379446fb9822",
+                           "evidence_kind":  "owner_correction",
+                           "signal_count":  3,
+                           "signals":  [
+                                           "Owner",
+                                           "Codex",
+                                           "bloat"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       },
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0016.v1",
+                           "evidence_path":  "operations\\reports\\ACTIVE_BEHAVIOR_TASK_DECISION_FLOW_V1.json",
+                           "evidence_sha256":  "1e112d9de8458f2767a6c49ba39a1d5ffab3e4432b85acbd49577b5219cb97b6",
+                           "evidence_kind":  "owner_correction",
+                           "signal_count":  3,
+                           "signals":  [
+                                           "Owner",
+                                           "Codex",
+                                           "bloat"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       },
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0017.v1",
+                           "evidence_path":  "operations\\reports\\LADDER_SCHOOL_1000_V1.md",
+                           "evidence_sha256":  "a2f854b86dff0e5504129e8ab9ea362bd622e37edcbec1f03c376c9e0ed63732",
+                           "evidence_kind":  "evidence",
+                           "signal_count":  2,
+                           "signals":  [
+                                           "runtime_ready=false",
+                                           "Codex"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       },
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0018.v1",
+                           "evidence_path":  "operations\\reports\\LADDER_SCHOOL_1000_V1.json",
+                           "evidence_sha256":  "23eb7d3526ceaf87b12e10d8feb44b9686ac291a947ebc5ffb2ea64633dd7319",
+                           "evidence_kind":  "evidence",
+                           "signal_count":  1,
+                           "signals":  [
+                                           "proof"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       },
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0019.v1",
+                           "evidence_path":  "operations\\reports\\SCHOOL_LESSON_DIGESTION_V1.json",
+                           "evidence_sha256":  "03282cb47636ec8d698d9f7ec4825fefdac65c908a3cd1f64bc2e0fffecfeb93",
+                           "evidence_kind":  "evidence",
+                           "signal_count":  2,
+                           "signals":  [
+                                           "validator",
+                                           "proof"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       },
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0020.v1",
+                           "evidence_path":  "operations\\reports\\SCHOOL_LESSON_DIGESTION_V1.md",
+                           "evidence_sha256":  "22bb64ed57ce505d6d0caf50b4d0d114a623cceff8ee64fa417d9a4f03fa7b9f",
+                           "evidence_kind":  "evidence",
+                           "signal_count":  1,
+                           "signals":  [
+                                           "proof"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       },
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0021.v1",
+                           "evidence_path":  "operations\\reports\\ACTIVE_BEHAVIOR_ABSORPTION_PROMOTION_V1.json",
+                           "evidence_sha256":  "1b3b5cf6fb887398611b44b2c0a9ed5922bfaa658f602e05269a0a1c5a81f91b",
+                           "evidence_kind":  "evidence",
+                           "signal_count":  1,
+                           "signals":  [
+                                           "proof"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       },
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0022.v1",
+                           "evidence_path":  "operations\\reports\\ACTIVE_BEHAVIOR_ABSORPTION_PROMOTION_V1.md",
+                           "evidence_sha256":  "3d2c3cf075f63978f1e6668bc171354f186ed477018e1dbdf6681c29b4d87505",
+                           "evidence_kind":  "evidence",
+                           "signal_count":  1,
+                           "signals":  [
+                                           "proof"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       },
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0023.v1",
+                           "evidence_path":  "operations\\reports\\FRESH_1000_CANDIDATE_BEHAVIOR_ABSORPTION_V1.md",
+                           "evidence_sha256":  "0f19e63c3b60224374a63c6209a3165ab8b4ed6305640e1125f0a4e9f67cb746",
+                           "evidence_kind":  "evidence",
+                           "signal_count":  2,
+                           "signals":  [
+                                           "runtime_ready=false",
+                                           "bloat"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       },
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0024.v1",
+                           "evidence_path":  "operations\\reports\\FRESH_1000_CANDIDATE_BEHAVIOR_ABSORPTION_V1.json",
+                           "evidence_sha256":  "9cb6ff817b9e34ef92b417513b15dbee25eeaff06bb9fa97fa6b2ee287e55b1b",
+                           "evidence_kind":  "evidence",
+                           "signal_count":  1,
+                           "signals":  [
+                                           "proof"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       },
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0025.v1",
+                           "evidence_path":  "operations\\reports\\BEHAVIOR_ABSORPTION_AND_BLOAT_DEEP_DIAGNOSTIC_V1.json",
+                           "evidence_sha256":  "514a2e97df0540704caadca3cd3c19d61af9080f7c7737b600bc47a275dedc5e",
+                           "evidence_kind":  "failure_or_blocker",
+                           "signal_count":  6,
+                           "signals":  [
+                                           "BLOCKED",
+                                           "Owner",
+                                           "runtime_ready=false",
+                                           "bloat",
+                                           "validator",
+                                           "proof"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       },
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0026.v1",
+                           "evidence_path":  "operations\\reports\\BEHAVIOR_ABSORPTION_AND_BLOAT_DEEP_DIAGNOSTIC_V1.md",
+                           "evidence_sha256":  "9a3a5c046e8a0f19fbcc073cbc9dd70438a6c4a07215e6b1fca02ccc9f0e73d5",
+                           "evidence_kind":  "failure_or_blocker",
+                           "signal_count":  5,
+                           "signals":  [
+                                           "BLOCKED",
+                                           "Owner",
+                                           "runtime_ready=false",
+                                           "bloat",
+                                           "proof"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       },
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0027.v1",
+                           "evidence_path":  "operations\\reports\\ABSORPTION_BLOAT_KEY_VALIDATOR_RUN_V1.json",
+                           "evidence_sha256":  "7f0fc129f019824d22ff444a8a4c5454f0be076a9b502c3d1efa11ebb09e439c",
+                           "evidence_kind":  "failure_or_blocker",
+                           "signal_count":  4,
+                           "signals":  [
+                                           "BLOCKED",
+                                           "bloat",
+                                           "validator",
+                                           "proof"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       },
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0028.v1",
+                           "evidence_path":  "operations\\reports\\SCHOOL_DURABLE_REPAIR_FINAL_VALIDATION_V1.json",
+                           "evidence_sha256":  "bdef71739ea878daa868f0691ce2842c461946b95b8e53e8ad8a5b235d2a0a00",
+                           "evidence_kind":  "failure_or_blocker",
+                           "signal_count":  5,
+                           "signals":  [
+                                           "BLOCKED",
+                                           "Owner",
+                                           "runtime_ready=false",
+                                           "validator",
+                                           "proof"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       },
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0029.v1",
+                           "evidence_path":  "operations\\reports\\CANONICAL_DURABLE_COMPACT_STORE_FIXTURE_REPAIR_V1.json",
+                           "evidence_sha256":  "0aea09482e2ac7e6642034a3ff3b5de1507c3b628505e3b70aca239abd432c0b",
+                           "evidence_kind":  "owner_correction",
+                           "signal_count":  3,
+                           "signals":  [
+                                           "Owner",
+                                           "validator",
+                                           "proof"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       },
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0030.v1",
+                           "evidence_path":  "operations\\reports\\SELF_MAP_SUPPORT_VALIDATION_FAST_V1.json",
+                           "evidence_sha256":  "e6de0f1725491770ccad8691b0c61618bc94c428e0de1540874b6b1806058f03",
+                           "evidence_kind":  "evidence",
+                           "signal_count":  1,
+                           "signals":  [
+                                           "validator"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       },
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0031.v1",
+                           "evidence_path":  "operations\\reports\\DIRTY_SIDE_AREA_ACTION_MAP_V1.md",
+                           "evidence_sha256":  "709c18c19ebdd397ea0e9a2e5ad1436051a07a29150d631fcc37ebd4f2b3c889",
+                           "evidence_kind":  "failure_or_blocker",
+                           "signal_count":  4,
+                           "signals":  [
+                                           "BLOCKED",
+                                           "Codex",
+                                           "validator",
+                                           "proof"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       },
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0032.v1",
+                           "evidence_path":  "operations\\reports\\DIRTY_SIDE_AREA_ACTION_MAP_V1.json",
+                           "evidence_sha256":  "9c4e2b734f4e650da930d4d674b7e4999a38ceb0da3e247f5d28c83880686e9b",
+                           "evidence_kind":  "failure_or_blocker",
+                           "signal_count":  5,
+                           "signals":  [
+                                           "BLOCKED",
+                                           "Owner",
+                                           "Codex",
+                                           "validator",
+                                           "proof"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       },
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0033.v1",
+                           "evidence_path":  "operations\\reports\\SCHOOL_DELETE_CANDIDATE_CLEANUP_V1.md",
+                           "evidence_sha256":  "d3567bbb9591b950636efbf544bb1a9d6f6355391f1d4c8e8d05066e89548eca",
+                           "evidence_kind":  "evidence",
+                           "signal_count":  2,
+                           "signals":  [
+                                           "Codex",
+                                           "validator"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       },
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0034.v1",
+                           "evidence_path":  "operations\\reports\\SCHOOL_DELETE_CANDIDATE_CLEANUP_V1.json",
+                           "evidence_sha256":  "34d7101b2c037718f4556ca81f676c312e6321f5fe2e857063402539435135e1",
+                           "evidence_kind":  "evidence",
+                           "signal_count":  2,
+                           "signals":  [
+                                           "Codex",
+                                           "proof"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       },
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0035.v1",
+                           "evidence_path":  "operations\\reports\\SCHOOL_REAL_BLOCKER_CLEANUP_PLAN_V1.md",
+                           "evidence_sha256":  "5d68392c5cdc74725caf005d4a91568cd9f6204f8ca2d7b5a64c528bd91962f2",
+                           "evidence_kind":  "failure_or_blocker",
+                           "signal_count":  5,
+                           "signals":  [
+                                           "BLOCKED",
+                                           "Owner",
+                                           "Codex",
+                                           "validator",
+                                           "proof"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       },
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0036.v1",
+                           "evidence_path":  "operations\\reports\\SCHOOL_REAL_BLOCKER_CLEANUP_PLAN_V1.json",
+                           "evidence_sha256":  "409e3da02d5feda5132d06f74174612616bae2575622f73302e85e68cfe43955",
+                           "evidence_kind":  "failure_or_blocker",
+                           "signal_count":  5,
+                           "signals":  [
+                                           "BLOCKED",
+                                           "Owner",
+                                           "Codex",
+                                           "validator",
+                                           "proof"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       },
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0037.v1",
+                           "evidence_path":  "operations\\reports\\SCHOOL_ROUTE_DEDUP_AUDIT_V1.json",
+                           "evidence_sha256":  "85d55bc43dcc78c33b9b3a4de68531ef8f13d4d7d4efc8d00fe81bd082875c80",
+                           "evidence_kind":  "failure_or_blocker",
+                           "signal_count":  6,
+                           "signals":  [
+                                           "BLOCKED",
+                                           "Owner",
+                                           "Codex",
+                                           "bloat",
+                                           "validator",
+                                           "proof"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       },
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0038.v1",
+                           "evidence_path":  "operations\\reports\\EXISTING_SCHOOL_ABSORPTION_VALIDATOR_REFRESH_V3.json",
+                           "evidence_sha256":  "c08ae25dd507fa9cab30d4ca886b1f8d9e2a6a8971ddb9edc89c6f46a7a52fce",
+                           "evidence_kind":  "evidence",
+                           "signal_count":  3,
+                           "signals":  [
+                                           "Codex",
+                                           "validator",
+                                           "proof"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       },
+                       {
+                           "candidate_id":  "value.curriculum.candidate.0039.v1",
+                           "evidence_path":  "operations\\reports\\SCHOOL_ROUTE_DEDUP_AUDIT_V1.md",
+                           "evidence_sha256":  "24caa339559c74869e8f16db6cec897d97cb637c9b4edb4e6aa7082fff845d7d",
+                           "evidence_kind":  "failure_or_blocker",
+                           "signal_count":  5,
+                           "signals":  [
+                                           "BLOCKED",
+                                           "Owner",
+                                           "Codex",
+                                           "validator",
+                                           "proof"
+                                       ],
+                           "source_is_real_repo_evidence":  true,
+                           "self_generated_easy_candidate":  false,
+                           "promotion_allowed":  false,
+                           "utility_question":  "What reusable behavior or validator change is justified by this evidence?",
+                           "acceptance_requires":  [
+                                                       "specific problem extracted",
+                                                       "utility claim",
+                                                       "negative case or risk",
+                                                       "behavior-use proof",
+                                                       "return-to-parent note"
+                                                   ]
+                       }
+                   ],
+    "boundary":  "This prepares curriculum inbox only. It does not claim learning."
+}

@@ -1,0 +1,182 @@
+{
+  "aggregator_id": "BATCH_PROOF_AGGREGATOR_V1",
+  "version": "V1",
+  "status": "ACTIVE_AGGREGATOR_CONTRACT",
+  "phase": "PHASE101_BATCH_PROOF_AGGREGATOR_V1",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "generated_at": "2026-05-29T18:06:05.0779462Z",
+  "input_sources": [
+    "self_build_batch/ledger/BATCH_PLAN_EXAMPLE_V1_LEDGER_DRY_RUN.json",
+    "self_build_batch/runtime/CONTINUE_ON_FAILURE_SIMULATION_V1.json",
+    "self_build_batch/quarantine/BATCH_PLAN_EXAMPLE_V1_QUARANTINE_BLOCKER_DRY_RUN.json",
+    "proofs/self_development/ITEM_LEVEL_EXECUTION_LEDGER_V1.json",
+    "proofs/self_development/CONTINUE_ON_FAILURE_RUNTIME_V1.json",
+    "proofs/self_development/QUARANTINE_AND_BLOCKER_REGISTRY_V1.json"
+  ],
+  "output_schema": "contracts/self_development/batch_proof_aggregator_v1.schema.json",
+  "aggregation_policy": {
+    "aggregate_batch_level_summary": true,
+    "no_fake_pass": true,
+    "no_hidden_failures": true,
+    "failed_items_must_be_counted": true,
+    "quarantined_items_must_be_counted": true,
+    "blocked_items_must_be_counted": true,
+    "unresolved_records_must_be_listed": true,
+    "evidence_manifest_required": true,
+    "aggregator_does_not_execute_items": true,
+    "aggregator_does_not_mark_pass": true,
+    "auto_next_gap_decision_required_next": true,
+    "no_external_agent_production": true,
+    "no_external_install": true,
+    "no_external_fetch": true
+  },
+  "summary_contract": {
+    "summary_id": "BATCH_PLAN_EXAMPLE_V1_PROOF_SUMMARY_DRY_RUN",
+    "status": "DRY_RUN_AGGREGATED",
+    "source_ledger": "self_build_batch/ledger/BATCH_PLAN_EXAMPLE_V1_LEDGER_DRY_RUN.json",
+    "source_runtime_simulation": "self_build_batch/runtime/CONTINUE_ON_FAILURE_SIMULATION_V1.json",
+    "source_quarantine_registry": "self_build_batch/quarantine/BATCH_PLAN_EXAMPLE_V1_QUARANTINE_BLOCKER_DRY_RUN.json",
+    "execution_performed": false,
+    "real_items_executed": false,
+    "real_items_marked_pass": false,
+    "total_item_count": 5,
+    "planned_count": 5,
+    "pass_count": 0,
+    "failed_count": 1,
+    "quarantined_count": 1,
+    "blocked_count": 1,
+    "assistance_required_count": 2,
+    "unresolved_record_count": 4,
+    "no_fake_pass": true,
+    "no_hidden_failures": true,
+    "evidence_manifest": [
+      "proofs/self_development/ITEM_LEVEL_EXECUTION_LEDGER_V1.json",
+      "proofs/self_development/CONTINUE_ON_FAILURE_RUNTIME_V1.json",
+      "proofs/self_development/QUARANTINE_AND_BLOCKER_REGISTRY_V1.json",
+      "self_build_batch/ledger/BATCH_PLAN_EXAMPLE_V1_LEDGER_DRY_RUN.json",
+      "self_build_batch/runtime/CONTINUE_ON_FAILURE_SIMULATION_V1.json",
+      "self_build_batch/quarantine/BATCH_PLAN_EXAMPLE_V1_QUARANTINE_BLOCKER_DRY_RUN.json"
+    ],
+    "unresolved_records": [
+      {
+        "record_id": "RECORD_FAILED_ITEM_PHASE98_ITEM_LEVEL_EXECUTION_LEDGER_V1",
+        "item_id": "ITEM_PHASE98_ITEM_LEVEL_EXECUTION_LEDGER_V1",
+        "source_gap": "PHASE98_ITEM_LEVEL_EXECUTION_LEDGER_V1",
+        "record_type": "FAILED",
+        "status": "FAILED",
+        "reason": "Simulation shows this isolated item could fail safely and continue after the failure is recorded.",
+        "evidence_paths": "self_build_batch/runtime/CONTINUE_ON_FAILURE_SIMULATION_V1.json",
+        "related_proof_or_report": "proofs/self_development/CONTINUE_ON_FAILURE_RUNTIME_V1.json",
+        "assistance_required": "NEEDS_CODEX_REPAIR",
+        "next_action": "RETRY_ONLY_AFTER_CODEX_REPAIR_OR_OWNER_APPROVAL"
+      },
+      {
+        "record_id": "RECORD_QUARANTINED_ITEM_PHASE99_CONTINUE_ON_FAILURE_RUNTIME_V1",
+        "item_id": "ITEM_PHASE99_CONTINUE_ON_FAILURE_RUNTIME_V1",
+        "source_gap": "PHASE99_CONTINUE_ON_FAILURE_RUNTIME_V1",
+        "record_type": "QUARANTINED",
+        "status": "QUARANTINED",
+        "reason": "Simulation shows this item would be quarantined before continuing because validation failed.",
+        "evidence_paths": "self_build_batch/runtime/CONTINUE_ON_FAILURE_SIMULATION_V1.json",
+        "related_proof_or_report": "proofs/self_development/CONTINUE_ON_FAILURE_RUNTIME_V1.json",
+        "assistance_required": null,
+        "next_action": "KEEP_QUARANTINED_UNTIL_PHASE100_REGISTRY_AND_OWNER_REVIEW"
+      },
+      {
+        "record_id": "RECORD_BLOCKED_ITEM_PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1",
+        "item_id": "ITEM_PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1",
+        "source_gap": "PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1",
+        "record_type": "BLOCKED",
+        "status": "BLOCKED",
+        "reason": "Simulation shows this item would be blocked by a dependency and must record the blocker before continuing.",
+        "evidence_paths": "self_build_batch/runtime/CONTINUE_ON_FAILURE_SIMULATION_V1.json",
+        "related_proof_or_report": "proofs/self_development/CONTINUE_ON_FAILURE_RUNTIME_V1.json",
+        "assistance_required": null,
+        "next_action": "WAIT_FOR_DEPENDENCY_CLEARANCE"
+      },
+      {
+        "record_id": "RECORD_NEEDS_OWNER_DECISION_ITEM_PHASE101_BATCH_PROOF_AGGREGATOR_V1",
+        "item_id": "ITEM_PHASE101_BATCH_PROOF_AGGREGATOR_V1",
+        "source_gap": "PHASE101_BATCH_PROOF_AGGREGATOR_V1",
+        "record_type": "NEEDS_OWNER_DECISION",
+        "status": "NEEDS_OWNER_DECISION",
+        "reason": "Simulation shows a systemic failure stop condition that requires owner decision before retry or continuation.",
+        "evidence_paths": "self_build_batch/runtime/CONTINUE_ON_FAILURE_SIMULATION_V1.json",
+        "related_proof_or_report": "proofs/self_development/CONTINUE_ON_FAILURE_RUNTIME_V1.json",
+        "assistance_required": "NEEDS_OWNER_DECISION",
+        "next_action": "STOP_BATCH_AND_REQUEST_OWNER_DECISION"
+      }
+    ],
+    "next_allowed_step": "PHASE102_AUTO_NEXT_GAP_DECISION_V1"
+  },
+  "status_counts": {
+    "total_item_count": 5,
+    "planned_count": 5,
+    "pass_count": 0,
+    "failed_count": 1,
+    "quarantined_count": 1,
+    "blocked_count": 1,
+    "assistance_required_count": 2,
+    "unresolved_record_count": 4
+  },
+  "evidence_manifest": [
+    "proofs/self_development/ITEM_LEVEL_EXECUTION_LEDGER_V1.json",
+    "proofs/self_development/CONTINUE_ON_FAILURE_RUNTIME_V1.json",
+    "proofs/self_development/QUARANTINE_AND_BLOCKER_REGISTRY_V1.json",
+    "self_build_batch/ledger/BATCH_PLAN_EXAMPLE_V1_LEDGER_DRY_RUN.json",
+    "self_build_batch/runtime/CONTINUE_ON_FAILURE_SIMULATION_V1.json",
+    "self_build_batch/quarantine/BATCH_PLAN_EXAMPLE_V1_QUARANTINE_BLOCKER_DRY_RUN.json"
+  ],
+  "unresolved_records": [
+    {
+      "record_id": "RECORD_FAILED_ITEM_PHASE98_ITEM_LEVEL_EXECUTION_LEDGER_V1",
+      "item_id": "ITEM_PHASE98_ITEM_LEVEL_EXECUTION_LEDGER_V1",
+      "source_gap": "PHASE98_ITEM_LEVEL_EXECUTION_LEDGER_V1",
+      "record_type": "FAILED",
+      "status": "FAILED",
+      "reason": "Simulation shows this isolated item could fail safely and continue after the failure is recorded.",
+      "evidence_paths": "self_build_batch/runtime/CONTINUE_ON_FAILURE_SIMULATION_V1.json",
+      "related_proof_or_report": "proofs/self_development/CONTINUE_ON_FAILURE_RUNTIME_V1.json",
+      "assistance_required": "NEEDS_CODEX_REPAIR",
+      "next_action": "RETRY_ONLY_AFTER_CODEX_REPAIR_OR_OWNER_APPROVAL"
+    },
+    {
+      "record_id": "RECORD_QUARANTINED_ITEM_PHASE99_CONTINUE_ON_FAILURE_RUNTIME_V1",
+      "item_id": "ITEM_PHASE99_CONTINUE_ON_FAILURE_RUNTIME_V1",
+      "source_gap": "PHASE99_CONTINUE_ON_FAILURE_RUNTIME_V1",
+      "record_type": "QUARANTINED",
+      "status": "QUARANTINED",
+      "reason": "Simulation shows this item would be quarantined before continuing because validation failed.",
+      "evidence_paths": "self_build_batch/runtime/CONTINUE_ON_FAILURE_SIMULATION_V1.json",
+      "related_proof_or_report": "proofs/self_development/CONTINUE_ON_FAILURE_RUNTIME_V1.json",
+      "assistance_required": null,
+      "next_action": "KEEP_QUARANTINED_UNTIL_PHASE100_REGISTRY_AND_OWNER_REVIEW"
+    },
+    {
+      "record_id": "RECORD_BLOCKED_ITEM_PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1",
+      "item_id": "ITEM_PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1",
+      "source_gap": "PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1",
+      "record_type": "BLOCKED",
+      "status": "BLOCKED",
+      "reason": "Simulation shows this item would be blocked by a dependency and must record the blocker before continuing.",
+      "evidence_paths": "self_build_batch/runtime/CONTINUE_ON_FAILURE_SIMULATION_V1.json",
+      "related_proof_or_report": "proofs/self_development/CONTINUE_ON_FAILURE_RUNTIME_V1.json",
+      "assistance_required": null,
+      "next_action": "WAIT_FOR_DEPENDENCY_CLEARANCE"
+    },
+    {
+      "record_id": "RECORD_NEEDS_OWNER_DECISION_ITEM_PHASE101_BATCH_PROOF_AGGREGATOR_V1",
+      "item_id": "ITEM_PHASE101_BATCH_PROOF_AGGREGATOR_V1",
+      "source_gap": "PHASE101_BATCH_PROOF_AGGREGATOR_V1",
+      "record_type": "NEEDS_OWNER_DECISION",
+      "status": "NEEDS_OWNER_DECISION",
+      "reason": "Simulation shows a systemic failure stop condition that requires owner decision before retry or continuation.",
+      "evidence_paths": "self_build_batch/runtime/CONTINUE_ON_FAILURE_SIMULATION_V1.json",
+      "related_proof_or_report": "proofs/self_development/CONTINUE_ON_FAILURE_RUNTIME_V1.json",
+      "assistance_required": "NEEDS_OWNER_DECISION",
+      "next_action": "STOP_BATCH_AND_REQUEST_OWNER_DECISION"
+    }
+  ],
+  "execution_performed": false,
+  "next_allowed_step": "PHASE102_AUTO_NEXT_GAP_DECISION_V1"
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "External Agent Spec",
+  "type": "object",
+  "required": [
+    "agent_id",
+    "mission",
+    "inputs",
+    "outputs",
+    "capabilities",
+    "validation",
+    "forbidden_scope"
+  ]
+}

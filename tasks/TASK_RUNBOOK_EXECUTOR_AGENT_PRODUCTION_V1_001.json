@@ -1,0 +1,44 @@
+{
+  "task_id": "TASK_RUNBOOK_EXECUTOR_AGENT_PRODUCTION_V1_001",
+  "capability_id": "runbook_executor_agent_production_v1",
+  "objective": "Prepare a Builder self-build pack that reads the Runbook Executor Agent v1 program and execution plan, produces the local agent package, validates runtime, and registers the agent pending GitHub Action launch.",
+  "execution_kind": "SELF_BUILD_RUNBOOK_EXECUTOR_AGENT_PRODUCTION_V1",
+  "phase": "PHASE_73",
+  "expected_gate": "RUNBOOK_EXECUTOR_AGENT_PRODUCTION_V1",
+  "source_program_path": "agent_programs/runbook_executor_agent_v1/PROGRAM.json",
+  "execution_plan_path": "agent_program_runs/runbook_executor_agent_v1/EXECUTION_PLAN.json",
+  "produced_agent_path": "generated_agents/runbook_executor_agent_v1",
+  "runtime_report_path": "reports/external_agent_production/RUNBOOK_EXECUTOR_AGENT_PRODUCTION_V1_REPORT.json",
+  "runtime_proof_path": "proofs/RUNBOOK_EXECUTOR_AGENT_PRODUCTION_V1.json",
+  "scope": [
+    "read agent_programs/runbook_executor_agent_v1/PROGRAM.json only at Builder runtime",
+    "read agent_program_runs/runbook_executor_agent_v1/EXECUTION_PLAN.json only at Builder runtime",
+    "create generated_agents/runbook_executor_agent_v1 only at Builder runtime",
+    "run generated_agents/runbook_executor_agent_v1/run.ps1 locally on INPUT_EXAMPLE.json",
+    "update agent_catalog/AGENT_CATALOG.json with runbook_executor_agent_v1 only at Builder runtime",
+    "create agent_catalog/runbook_executor_agent_v1.md only at Builder runtime",
+    "copy validate_runbook_executor_agent_production_v1.ps1 into validators only at Builder runtime",
+    "write RUNBOOK_EXECUTOR_AGENT_PRODUCTION_V1 proof and report only after validation evidence",
+    "complete PHASE73 task and capability only after validation evidence"
+  ],
+  "validation": [
+    "PowerShell parser check passes for PHASE73 APPLY.ps1",
+    "PowerShell parser check passes for PHASE73 validator payload",
+    "changed JSON files parse successfully",
+    "TASK_QUEUE active_task_id points to TASK_RUNBOOK_EXECUTOR_AGENT_PRODUCTION_V1_001",
+    "generated agent/catalog/proof/report/root-validator runtime outputs are not precommitted",
+    "existing remediation intake agent is not changed during preparation",
+    "runbook executor GitHub workflow is not created during preparation"
+  ],
+  "forbidden_scope": [
+    "do not change generated_agents/remediation_intake_operator_agent_v1 files",
+    "do not change GitHub workflow files",
+    "do not create .github/workflows/run-runbook-executor-agent-v1.yml",
+    "do not change orchestrator/run.ps1",
+    "do not modify old proof/report files",
+    "do not change agent_programs files",
+    "do not change agent_program_runs files",
+    "do not commit or push during preparation",
+    "do not run PHASE73 runtime during preparation"
+  ]
+}

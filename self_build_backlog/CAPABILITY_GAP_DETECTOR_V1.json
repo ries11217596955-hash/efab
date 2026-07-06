@@ -1,0 +1,54 @@
+{
+  "detector_id": "CAPABILITY_GAP_DETECTOR_V1",
+  "version": "V1",
+  "status": "ACTIVE_DETECTOR_CONTRACT",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "route_lock": "AGENT_BUILDER_NEXT_15_STEPS_LOCK_V2_R2.md",
+  "purpose": "Detect missing capabilities needed for the batch self-build engine from repo evidence, route lock, backlog contract, and proofs.",
+  "input_sources": [
+    "AGENT_BUILDER_NEXT_15_STEPS_LOCK_V2_R2.md",
+    "self_build_backlog/SELF_BUILD_BACKLOG_CONTRACT_V1.json",
+    "proofs/self_development/SELF_BUILD_BACKLOG_CONTRACT_V1.json",
+    "CAPABILITY_ROADMAP.json",
+    "GENESIS_STATE.json",
+    "TASK_QUEUE.json"
+  ],
+  "gap_statuses": [
+    "PROVEN",
+    "PARTIAL",
+    "MISSING",
+    "BLOCKED",
+    "NEEDS_OWNER_DECISION",
+    "NEEDS_CODEX_REPAIR",
+    "NEEDS_MATERIAL",
+    "PLANNED"
+  ],
+  "detection_rules": {
+    "use_proof_before_claim": true,
+    "route_lock_controls_next_gap": true,
+    "backlog_contract_required": true,
+    "missing_capability_becomes_backlog_candidate": true,
+    "blocked_gap_must_include_reason": true,
+    "owner_order_mapping_not_yet_available": true,
+    "no_external_agent_gap_until_route_allows": true
+  },
+  "output_contract": {
+    "gap_required_fields": [
+      "gap_id",
+      "title",
+      "status",
+      "why_needed",
+      "evidence",
+      "missing_artifacts",
+      "risk",
+      "recommended_next_step",
+      "assistance_required"
+    ],
+    "gap_index_path": "self_build_backlog/CAPABILITY_GAP_INDEX_V1.json",
+    "next_primary_gap_must_match_route": true
+  },
+  "no_external_agent_production": true,
+  "no_external_install": true,
+  "no_external_fetch": true,
+  "next_allowed_step": "PHASE94_OWNER_ORDER_TO_GAP_MAP_V1"
+}

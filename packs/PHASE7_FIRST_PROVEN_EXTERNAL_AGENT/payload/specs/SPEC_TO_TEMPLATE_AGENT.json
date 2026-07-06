@@ -1,0 +1,31 @@
+{
+  "agent_id": "spec_to_template_agent",
+  "mission": "Convert a formal agent specification into a structured starter template package.",
+  "inputs": [
+    "agent specification JSON"
+  ],
+  "outputs": [
+    "starter repository scaffold",
+    "README",
+    "AGENT_MISSION",
+    "contracts/modules/validators directories"
+  ],
+  "capabilities": [
+    "read specification",
+    "materialize package scaffold",
+    "emit proof manifest"
+  ],
+  "validation": [
+    "package root exists",
+    "README exists",
+    "AGENT_MISSION exists",
+    "contracts directory exists",
+    "modules directory exists",
+    "validators directory exists"
+  ],
+  "forbidden_scope": [
+    "no external network call",
+    "no Codex dependency",
+    "no manual operator copy-paste"
+  ]
+}

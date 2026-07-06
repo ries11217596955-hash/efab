@@ -1,0 +1,19 @@
+﻿{
+  "task_id": "TASK_SELF_VALIDATION_RELEASE_GATES_001",
+  "capability_id": "self_validation_release_gates",
+  "objective": "Implement self-validation and release gates: verify truth alignment, validator evidence, artifact alignment, and fail-run diagnostics.",
+  "execution_kind": "CONTROLLED_PROOF",
+  "scope": [
+    "validators/validate_self_validation_release_gates.ps1",
+    "runs/<run_id>/proof artifacts",
+    "GENESIS_STATE.json",
+    "CAPABILITY_ROADMAP.json",
+    "TASK_QUEUE.json"
+  ],
+  "validation": [
+    "roadmap and state alignment must be proven",
+    "queue and state alignment must be proven",
+    "PASS must require validator evidence",
+    "fail-runs must emit diagnostic artifacts"
+  ]
+}

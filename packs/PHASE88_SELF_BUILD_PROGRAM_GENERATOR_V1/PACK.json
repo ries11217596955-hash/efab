@@ -1,0 +1,23 @@
+{
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "purpose": "Generate the first candidate self-build program from the PHASE87 decision kernel.",
+  "cut_list": [
+    "No admission",
+    "No execution",
+    "No installs",
+    "No external fetch",
+    "No external agents",
+    "No route lock changes"
+  ],
+  "path": "packs/PHASE88_SELF_BUILD_PROGRAM_GENERATOR_V1",
+  "phase": "PHASE88",
+  "validate_script": "packs/PHASE88_SELF_BUILD_PROGRAM_GENERATOR_V1/VALIDATE.ps1",
+  "status": "READY",
+  "working_directory": ".",
+  "pack_id": "PHASE88_SELF_BUILD_PROGRAM_GENERATOR_V1",
+  "task_id": "TASK_SELF_BUILD_PROGRAM_GENERATOR_V1_001",
+  "entry_script": "packs/PHASE88_SELF_BUILD_PROGRAM_GENERATOR_V1/APPLY.ps1",
+  "shell": "PowerShell",
+  "validate": "VALIDATE.ps1",
+  "apply": "APPLY.ps1"
+}

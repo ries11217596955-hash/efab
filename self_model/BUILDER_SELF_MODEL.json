@@ -1,0 +1,112 @@
+{
+  "status": "PASS",
+  "self_model_id": "BUILDER_SELF_MODEL_V5_OPERATION_TRIAL_AWARE",
+  "updated_by": "OPERATION_TRIAL_AWARE_SELF_MODEL_ADVANCE_V1",
+  "run_id": "PHASE132_OPERATION_TRIAL_AWARE_SELF_MODEL_ADVANCE_001",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "identity": "primitive_brain_cell_with_hands",
+  "local_first": true,
+  "external_brain_dependency": false,
+  "current_state_summary": "Builder passed one contract-governed self-build operation trial. Next need is a selector for the first real operational self-build capability.",
+  "proven_capabilities": [
+    {
+      "id": "RUNTIME_REPEATABILITY",
+      "status": "PROVEN",
+      "proof": "PHASE110_FINALIZE_IDEMPOTENT_AUTONOMY_TRIAL_V1"
+    },
+    {
+      "id": "SELF_NEED_DETECTION",
+      "status": "PROVEN",
+      "proof": "PHASE111_BUILD_NEXT_ACTION_DECISION_KERNEL_V1"
+    },
+    {
+      "id": "DECISION_TO_ACTION",
+      "status": "PROVEN",
+      "proof": "PHASE112_BUILD_DECISION_TO_ACTION_ENGINE_V1"
+    },
+    {
+      "id": "ACTION_ADMISSION",
+      "status": "PROVEN",
+      "proof": "PHASE113_BUILD_DECISION_ACTION_ADMISSION_BRIDGE_V1"
+    },
+    {
+      "id": "ADMITTED_ACTION_TO_EXECUTABLE_MOVE",
+      "status": "PROVEN",
+      "proof": "PHASE114_BUILD_ADMITTED_ACTION_EXECUTION_ENGINE_V1"
+    },
+    {
+      "id": "BUILDER_QUEUED_ACTION_EXECUTION",
+      "status": "PROVEN",
+      "proof": "PHASE115_EXECUTE_BUILDER_QUEUED_ADMITTED_ACTION_V1"
+    },
+    {
+      "id": "TWO_STEP_AUTONOMOUS_CHAIN_SMOKE",
+      "status": "PROVEN",
+      "proof": "PHASE116_BUILDER_AUTONOMOUS_CHAIN_SMOKE_V1"
+    },
+    {
+      "id": "PROOF_AWARE_SELF_NEED",
+      "status": "PROVEN",
+      "proof": "PHASE117_BUILD_PROOF_AWARE_SELF_NEED_ENGINE_V1"
+    },
+    {
+      "id": "AUTONOMOUS_LOOP_CONTROLLER",
+      "status": "PROVEN",
+      "proof": "PHASE120_BUILD_AUTONOMOUS_LOOP_CONTROLLER_V1"
+    },
+    {
+      "id": "BOUNDED_AUTONOMOUS_LOOP_TRIAL",
+      "status": "PROVEN",
+      "proof": "PHASE121_RUN_BOUNDED_AUTONOMOUS_LOOP_TRIAL_V1"
+    },
+    {
+      "id": "SELF_MODEL_FIRST_RUNTIME_ENTRYPOINT",
+      "status": "PROVEN",
+      "proof": "PHASE124_BUILD_SELF_MODEL_FIRST_RUNTIME_ENTRYPOINT_V1"
+    },
+    {
+      "id": "SELF_MODEL_FIRST_CONTROLLER_GOVERNED_TRIAL",
+      "status": "PROVEN",
+      "proof": "PHASE125_RUN_SELF_MODEL_FIRST_CONTROLLER_GOVERNED_TRIAL_V1"
+    },
+    {
+      "id": "SELF_BUILD_OPERATION_CONTRACT",
+      "status": "PROVEN",
+      "proof": "PHASE127_BUILD_SELF_BUILD_OPERATION_CONTRACT_V1"
+    },
+    {
+      "id": "SELF_BUILD_OPERATION_CONTRACT_SMOKE",
+      "status": "PROVEN",
+      "proof": "PHASE128_RUN_SELF_BUILD_OPERATION_CONTRACT_SMOKE_V1"
+    },
+    {
+      "id": "SELF_BUILD_OPERATION_READINESS_GATE",
+      "status": "PROVEN",
+      "proof": "PHASE130_BUILD_SELF_BUILD_OPERATION_READINESS_GATE_V1"
+    },
+    {
+      "id": "CONTRACT_GOVERNED_SELF_BUILD_OPERATION_TRIAL",
+      "status": "PROVEN",
+      "proof": "PHASE131_RUN_CONTRACT_GOVERNED_SELF_BUILD_OPERATION_TRIAL_V1"
+    }
+  ],
+  "closed_needs": [
+    "NEED_ADMITTED_ACTION_EXECUTION_ENGINE",
+    "NEED_AUTONOMOUS_LOOP_CONTROLLER",
+    "NEED_CONTROLLER_GOVERNED_SELF_BUILD_TRIAL",
+    "NEED_DECISION_ACTION_ADMISSION_BRIDGE",
+    "NEED_DECISION_TO_ACTION_ENGINE",
+    "NEED_PROOF_AWARE_SELF_NEED_ENGINE",
+    "NEED_SELF_BUILD_OPERATION_CONTRACT",
+    "NEED_SELF_BUILD_OPERATION_READINESS_GATE",
+    "NEED_SELF_MODEL_UPDATE_ENGINE"
+  ],
+  "current_detected_need": "NEED_SELF_BUILD_OPERATION_CAPABILITY_SELECTOR",
+  "current_missing_capability": "SELF_BUILD_OPERATION_CAPABILITY_SELECTOR",
+  "recommended_next_step": "PHASE133_BUILD_SELF_BUILD_OPERATION_CAPABILITY_SELECTOR_V1",
+  "operation_trial_aware": true,
+  "source_phase131_classification": "CONTRACT_GOVERNED_SELF_BUILD_OPERATION_TRIAL_PASS",
+  "autonomy_claimed": false,
+  "codex_used": false,
+  "main_touched": false
+}

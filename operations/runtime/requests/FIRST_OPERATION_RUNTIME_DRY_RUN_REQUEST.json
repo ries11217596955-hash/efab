@@ -1,0 +1,37 @@
+{
+  "request_id": "FIRST_OPERATION_RUNTIME_DRY_RUN_REQUEST",
+  "operation_id": "validate_json_schema_with_python_jsonschema",
+  "requested_mode": "DRY_RUN_PLAN_ONLY",
+  "input_refs": {
+    "schema_path": "operations/smoke_trials/fixtures/json_schema_validation/schema.json",
+    "instance_path": "operations/smoke_trials/fixtures/json_schema_validation/valid_instance.json",
+    "options": {
+      "schema_dialect": "draft_2020_12",
+      "format_checking": false,
+      "error_format": "structured"
+    }
+  },
+  "output_refs": {
+    "runtime_report_path": "reports/operations/OPERATION_RUNTIME_SKELETON_REPORT.json",
+    "future_operation_output_path": "reports/operations/future_validate_json_schema_with_python_jsonschema_runtime_output.json"
+  },
+  "sandbox_policy": "TEMP_SANDBOX_REQUIRED_FOR_EXECUTION_LATER",
+  "required_contract_status": "CONTRACT_READY",
+  "required_smoke_proof": "proofs/operations/FIRST_SMOKE_INSTALL_TRIAL_V1.json",
+  "forbidden_actions": [
+    "install_tool",
+    "run_tool",
+    "create_venv",
+    "fetch_repo",
+    "mutate_catalog",
+    "mutate_policy",
+    "mutate_quarantine_card",
+    "mutate_operation_contract",
+    "mutate_operation_registry",
+    "mark_material_trusted",
+    "mark_operation_trusted",
+    "create_external_agent"
+  ],
+  "created_at": "2026-05-29T00:00:00Z",
+  "next_allowed_step": "PHASE87_SELF_DEVELOPMENT_DECISION_KERNEL_V1"
+}

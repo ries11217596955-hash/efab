@@ -1,0 +1,64 @@
+{
+    "schema":  "BATCH_SOURCE_DIGEST_AND_PROMOTION_DECISION_V1",
+    "status":  "COMPACT_BATCH_DIGEST_CREATED",
+    "run_id":  "learning_atom_candidate_route_fixture_20260705_01_cycle1_atom_candidate_fixture",
+    "source":  "CODEX_BATCH_READONLY_SOURCE",
+    "source_answer_status":  "CODEX_DRAFT",
+    "parent_task":  "define minimal atom acceptance rule",
+    "knowledge_need":  "controlled fixture for atom candidate route only",
+    "part_count":  1,
+    "part_digests":  [
+                         {
+                             "id":  "X1",
+                             "name":  "atom candidate route",
+                             "meaning":  "candidate can be routed, not accepted automatically",
+                             "role_in_parent_task":  "prove gate route",
+                             "compact_missing_knowledge":  [
+                                                               "downstream accepted atom proof"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "run accepted atom retention validator"
+                                                             ],
+                             "compact_validation_needed":  [
+                                                               "accepted atom retention proof"
+                                                           ],
+                             "return_to_parent_hint":  "do not mutate memory without atom proof"
+                         }
+                     ],
+    "cross_part_map":  {
+                           "dependencies":  [
+                                                "route depends on gate pass"
+                                            ],
+                           "duplicates_or_overlaps":  [
+
+                                                      ],
+                           "priority_order":  [
+                                                  "X1"
+                                              ],
+                           "can_skip_for_now":  [
+
+                                                ]
+                       },
+    "parent_return_plan":  {
+                               "how_to_rebuild_x":  "route ATOM_CANDIDATE to existing mechanism",
+                               "next_small_action":  "run accepted atom retention gate separately",
+                               "proof_needed":  [
+                                                    "accepted atom receipt/proof"
+                                                ]
+                           },
+    "promotion_decision":  {
+                               "default_classification":  "ATOM_CANDIDATE",
+                               "raw_retention_decision":  "DELETE_RAW_CANDIDATE",
+                               "active_memory_candidate":  false,
+                               "atom_candidate":  true,
+                               "reflex_candidate":  false,
+                               "organ_candidate":  false,
+                               "owner_decision_required":  "before accepted atom storage",
+                               "reason":  "small controlled fixture route only"
+                           },
+    "proof_refs":  {
+                       "batch_knowledge_acquisition_proof":  "operations/knowledge_acquisition_port/runs/learning_atom_candidate_route_fixture_20260705_01_cycle1_atom_candidate_fixture/BATCH_KNOWLEDGE_ACQUISITION_PROOF.json",
+                       "raw_answer_sha256":  "FIXTURE_NO_RAW_SOURCE_ROUTE_ONLY",
+                       "raw_answer_retained":  false
+                   }
+}

@@ -1,0 +1,22 @@
+﻿{
+  "task_id": "TASK_SELF_BUILD_EXECUTION_LOOP_001",
+  "capability_id": "self_build_execution_loop",
+  "objective": "Implement and prove the controlled self-build execution loop.",
+  "execution_kind": "CONTROLLED_PROOF",
+  "scope": [
+    "runs/<run_id>/BUILD_TASK.json",
+    "runs/<run_id>/EXECUTION_RESULT.json",
+    "runs/<run_id>/VALIDATION_STACK.json",
+    "runs/<run_id>/RUN_REPORT.json",
+    "runs/<run_id>/VALIDATION_REPORT.json",
+    "runs/<run_id>/STATE_DELTA.json",
+    "runs/<run_id>/TASK_DELTA.json",
+    "runs/<run_id>/ARTIFACT_MAP.json"
+  ],
+  "validation": [
+    "active queue task must point to this build task spec",
+    "execution module must emit EXECUTION_RESULT.json",
+    "validation stack must PASS",
+    "finalization must transition PHASE_2 to PHASE_3"
+  ]
+}

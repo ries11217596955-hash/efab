@@ -1,0 +1,146 @@
+{
+    "schema":  "BATCH_SOURCE_DIGEST_AND_PROMOTION_DECISION_V1",
+    "status":  "COMPACT_BATCH_DIGEST_CREATED",
+    "run_id":  "sandbox_study_life_observation_20260705_01_cycle3_attempt1_study_batch",
+    "source":  "CODEX_BATCH_READONLY_SOURCE",
+    "source_answer_status":  "CODEX_DRAFT",
+    "parent_task":  "minimal_reusable_builder_learning_rule",
+    "knowledge_need":  "Study topic as Engineer-Philosopher. Attempt 1 of up to 3. Give compact Builder-relevant understanding, validation needs, and return plan.",
+    "part_count":  5,
+    "part_digests":  [
+                         {
+                             "id":  "X1",
+                             "name":  "core meaning",
+                             "meaning":  "A minimal reusable builder learning rule is the smallest validated pattern that can change future Builder behavior across similar cases without carrying full episode history.",
+                             "role_in_parent_task":  "Defines X as behavior abstraction: trigger, action, constraint, expected delta, and validation evidence.",
+                             "compact_missing_knowledge":  [
+                                                               "Exact local format for accepted atom or rule candidates",
+                                                               "Which Builder surface is allowed to store/use the rule"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "Compare one successful and one failed case without modifying state",
+                                                                 "Extract only the invariant decision rule",
+                                                                 "Keep source as draft until validated"
+                                                             ],
+                             "compact_validation_needed":  "Show the rule predicts a better next action on a held-out similar case",
+                             "return_to_parent_hint":  "Return X as a compact rule candidate, not as a narrative memory."
+                         },
+                         {
+                             "id":  "X2",
+                             "name":  "why I am not ideal",
+                             "meaning":  "The weakness revealed is over-absorbing context, mistaking explanation for reusable learning, or promoting unvalidated insight into active behavior.",
+                             "role_in_parent_task":  "Prevents X from becoming vague self-modeling or route authority instead of a bounded reusable learning rule.",
+                             "compact_missing_knowledge":  [
+                                                               "Which failure mode is most common in current Builder runs",
+                                                               "Whether prior atoms overfit to single incidents"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "Name the specific weakness before proposing a rule",
+                                                                 "Separate evidence, interpretation, and action",
+                                                                 "Mark confidence and non-proof clearly"
+                                                             ],
+                             "compact_validation_needed":  "A reviewer or validator can distinguish evidence from the proposed rule",
+                             "return_to_parent_hint":  "Use X2 as a guardrail: minimal rule must correct a real weakness, not decorate the memory system."
+                         },
+                         {
+                             "id":  "X3",
+                             "name":  "builder relevance",
+                             "meaning":  "Builder relevance is the rule\u0027s ability to improve self-build or child-agent build decisions through smaller context, safer reuse, and measurable behavior change.",
+                             "role_in_parent_task":  "Connects X to practical Builder work: route choice, repair choice, validation choice, and agent instruction reuse.",
+                             "compact_missing_knowledge":  [
+                                                               "Which Builder workflow will first consume the rule",
+                                                               "Whether reuse applies to self-build, child-agent build, or both"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "Bind the rule to one concrete workflow first",
+                                                                 "Avoid claiming runtime capability from conceptual relevance",
+                                                                 "Prefer reversible draft surfaces"
+                                                             ],
+                             "compact_validation_needed":  "Demonstrate one future decision uses the rule and differs from the previous baseline",
+                             "return_to_parent_hint":  "Promote only if the rule reduces repeated reasoning or prevents repeated error in Builder behavior."
+                         },
+                         {
+                             "id":  "X4",
+                             "name":  "validation",
+                             "meaning":  "Validation means proving the extracted rule improves future behavior under controlled conditions, not merely sounding coherent.",
+                             "role_in_parent_task":  "Defines the acceptance boundary for X and blocks premature promotion.",
+                             "compact_missing_knowledge":  [
+                                                               "Required validator path for this exact rule type",
+                                                               "Minimum evidence threshold for acceptance"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "Create a testable trigger-action-expectation statement",
+                                                                 "Use a small held-out scenario before any active route wiring",
+                                                                 "Keep failed validation as learning input, not accepted memory"
+                                                             ],
+                             "compact_validation_needed":  [
+                                                               "Held-out case result",
+                                                               "Behavior delta comparison",
+                                                               "Storage/retrieval/use evidence if promotion is considered"
+                                                           ],
+                             "return_to_parent_hint":  "X can return as atom candidate only after validation shows reusable behavior delta."
+                         },
+                         {
+                             "id":  "X5",
+                             "name":  "promotion decision",
+                             "meaning":  "Promotion classifies the output as case pattern, atom candidate, or open gap based on evidence strength and reuse clarity.",
+                             "role_in_parent_task":  "Prevents X from forcing every insight into accepted memory and keeps learning proportional to proof.",
+                             "compact_missing_knowledge":  [
+                                                               "Canonical promotion thresholds",
+                                                               "Current allowed storage surface for draft candidates"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "Default to case pattern when evidence is thin",
+                                                                 "Use atom candidate only when trigger/action/validation are explicit",
+                                                                 "Mark open gap when missing evidence blocks reuse"
+                                                             ],
+                             "compact_validation_needed":  "Promotion rationale is auditable against evidence and thresholds",
+                             "return_to_parent_hint":  "Likely return for attempt 1 is atom candidate only if a testable minimal rule is produced; otherwise case pattern or open gap."
+                         }
+                     ],
+    "cross_part_map":  {
+                           "dependencies":  [
+                                                "X2 depends on X1 because weakness can only be judged against the intended rule shape",
+                                                "X3 depends on X1 because relevance requires a concrete reusable behavior",
+                                                "X5 depends on X4 because promotion requires validation evidence"
+                                            ],
+                           "duplicates_or_overlaps":  [
+                                                          "X4 overlaps X5: validation supplies the evidence used for promotion",
+                                                          "X2 overlaps X4: both prevent unvalidated self-belief from becoming active behavior"
+                                                      ],
+                           "priority_order":  [
+                                                  "X1",
+                                                  "X2",
+                                                  "X3",
+                                                  "X4",
+                                                  "X5"
+                                              ],
+                           "can_skip_for_now":  [
+                                                    "None; X5 can stay provisional if validation thresholds are unavailable"
+                                                ]
+                       },
+    "parent_return_plan":  {
+                               "how_to_rebuild_x":  "Define one minimal trigger-action-constraint-expectation rule, name the weakness it addresses, bind it to one Builder workflow, then require held-out behavior-delta validation before any promotion.",
+                               "next_small_action":  "Draft a single candidate rule in trigger/action/expected-delta form and test it against one prior similar case without modifying active state.",
+                               "proof_needed":  [
+                                                    "Held-out scenario behavior improves or avoids a known failure",
+                                                    "Evidence separates source case from reusable rule",
+                                                    "Promotion decision is justified as case pattern, atom candidate, or open gap"
+                                                ]
+                           },
+    "promotion_decision":  {
+                               "default_classification":  "CASE_PATTERN_CANDIDATE",
+                               "raw_retention_decision":  "DELETE_RAW_CANDIDATE",
+                               "active_memory_candidate":  false,
+                               "atom_candidate":  false,
+                               "reflex_candidate":  false,
+                               "organ_candidate":  false,
+                               "owner_decision_required":  "only if promotion beyond case pattern is requested",
+                               "reason":  "Batch source answer is material only; default is compact case pattern with part map and parent return plan."
+                           },
+    "proof_refs":  {
+                       "batch_knowledge_acquisition_proof":  "operations\\knowledge_acquisition_port\\runs\\sandbox_study_life_observation_20260705_01_cycle3_attempt1_study_batch\\BATCH_KNOWLEDGE_ACQUISITION_PROOF.json",
+                       "raw_answer_sha256":  "29939B11E1AC1DE7F8C4D1150B3E436D0F554A6DCB6EA0C41B4D275EDD103F87",
+                       "raw_answer_retained":  false
+                   }
+}

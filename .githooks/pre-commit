@@ -1,0 +1,7 @@
+#!/bin/sh
+if [ "$EF_SKIP_MAP_HOOK" = "1" ]; then exit 0; fi
+if command -v powershell.exe >/dev/null 2>&1; then PS=powershell.exe; elif command -v powershell >/dev/null 2>&1; then PS=powershell; elif command -v pwsh >/dev/null 2>&1; then PS=pwsh; else echo "MAP_HOOK_SKIPPED=no_powershell" >&2; exit 0; fi
+"$PS" -NoProfile -ExecutionPolicy Bypass -File modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1 -SubjectHead HEAD -Force -TriggerReason git_pre_commit_composition_map_auto_refresh || exit 1
+"$PS" -NoProfile -ExecutionPolicy Bypass -File validators/validate_agent_body_composition_map_current_v1.ps1 || exit 1
+git add reports/self_development/SELF_MODEL_ACTIVE_MAP.json reports/self_development/agent_body_map.json reports/self_development/agent_body_map.md reports/self_development/branch_agnostic_map_refresh_result.json
+exit 0

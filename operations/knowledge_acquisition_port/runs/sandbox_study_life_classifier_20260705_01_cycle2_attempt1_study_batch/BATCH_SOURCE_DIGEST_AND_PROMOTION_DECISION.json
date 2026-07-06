@@ -1,0 +1,142 @@
+{
+    "schema":  "BATCH_SOURCE_DIGEST_AND_PROMOTION_DECISION_V1",
+    "status":  "COMPACT_BATCH_DIGEST_CREATED",
+    "run_id":  "sandbox_study_life_classifier_20260705_01_cycle2_attempt1_study_batch",
+    "source":  "CODEX_BATCH_READONLY_SOURCE",
+    "source_answer_status":  "CODEX_DRAFT",
+    "parent_task":  "atom_vs_case_pattern_for_builder_learning",
+    "knowledge_need":  "Study topic as Engineer-Philosopher. Attempt 1 of up to 3. Give compact Builder-relevant understanding, validation needs, and return plan.",
+    "part_count":  5,
+    "part_digests":  [
+                         {
+                             "id":  "X1",
+                             "name":  "core meaning",
+                             "meaning":  "An atom is a compact reusable learning unit that can survive retrieval and change future decisions; a case pattern is a recurring shape seen in examples but not yet proven portable.",
+                             "role_in_parent_task":  "Defines the boundary Builder must use before absorbing knowledge into active behavior.",
+                             "compact_missing_knowledge":  [
+                                                               "Exact local criteria for atom promotion",
+                                                               "Examples of case patterns that failed promotion"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "Compare known accepted-memory examples against unpromoted diagnostic observations",
+                                                                 "Draft a small rubric separating portability, actionability, and proof"
+                                                             ],
+                             "compact_validation_needed":  "A reviewer or validator can classify sample items the same way using the rubric",
+                             "return_to_parent_hint":  "Use this as the base distinction for all later promotion choices."
+                         },
+                         {
+                             "id":  "X2",
+                             "name":  "why I am not ideal",
+                             "meaning":  "This exposes a weakness where Builder may mistake repeated cases, narrative confidence, or local success for validated reusable learning.",
+                             "role_in_parent_task":  "Shows why uncontrolled absorption can create brittle self-development or false capability claims.",
+                             "compact_missing_knowledge":  [
+                                                               "Known failure modes in current retention and retrieval paths",
+                                                               "How much negative evidence is required before rejection"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "List overfit-risk signals without changing active memory",
+                                                                 "Compare draft atoms against counterexamples"
+                                                             ],
+                             "compact_validation_needed":  "At least one counterexample test or rejection case is applied before promotion",
+                             "return_to_parent_hint":  "Feeds the caution criteria that prevent case patterns from becoming unsafe atoms."
+                         },
+                         {
+                             "id":  "X3",
+                             "name":  "builder relevance",
+                             "meaning":  "Builder needs atoms for durable self-improvement and child-agent construction, while case patterns are useful diagnostic material but should remain lower-trust until proven.",
+                             "role_in_parent_task":  "Connects the distinction to self-build, accepted atom retention, retrieval, and behavior delta proof.",
+                             "compact_missing_knowledge":  [
+                                                               "Which current Builder surfaces can consume atoms safely",
+                                                               "Whether child-agent templates require different atom granularity"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "Map candidate learning units to existing retention, retrieval, and decision-reuse surfaces",
+                                                                 "Keep child-agent implications as design notes until validated"
+                                                             ],
+                             "compact_validation_needed":  "A retained atom is retrieved in a later decision and produces an observable behavior delta",
+                             "return_to_parent_hint":  "Shows where the concept matters operationally, not just philosophically."
+                         },
+                         {
+                             "id":  "X4",
+                             "name":  "validation",
+                             "meaning":  "Understanding is validated only when the classification rule predicts what should be stored, retrieved, reused, rejected, or left as a case note.",
+                             "role_in_parent_task":  "Prevents the parent task from becoming a vocabulary exercise with no proof path.",
+                             "compact_missing_knowledge":  [
+                                                               "Minimal acceptance proof for atom-versus-case classification",
+                                                               "Required evidence format for Builder acceptance"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "Use a small fixed sample set of candidate learnings",
+                                                                 "Require classification plus expected downstream behavior before any promotion"
+                                                             ],
+                             "compact_validation_needed":  [
+                                                               "Classification agreement",
+                                                               "Retrieval evidence",
+                                                               "Decision reuse evidence",
+                                                               "Behavior delta evidence"
+                                                           ],
+                             "return_to_parent_hint":  "Defines the proof ladder needed before Builder treats the learning as active."
+                         },
+                         {
+                             "id":  "X5",
+                             "name":  "promotion decision",
+                             "meaning":  "The outcome should be framed as criteria for promotion: case pattern, atom candidate, accepted atom, or open gap; this draft must not itself promote anything.",
+                             "role_in_parent_task":  "Gives Builder a controlled return format for deciding what kind of learning object X produced.",
+                             "compact_missing_knowledge":  [
+                                                               "Owner-approved promotion gate",
+                                                               "Canonical storage target for each classification"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "Return a candidate classification with evidence requirements",
+                                                                 "Avoid writing to accepted memory until proof exists"
+                                                             ],
+                             "compact_validation_needed":  "Promotion is confirmed by the canonical validator or Owner-approved proof route",
+                             "return_to_parent_hint":  "Return X as an atom candidate only if proof requirements are satisfied; otherwise keep it as case pattern or open gap."
+                         }
+                     ],
+    "cross_part_map":  {
+                           "dependencies":  [
+                                                "X2 depends on X1 because weakness cannot be named until atom versus case is defined",
+                                                "X3 depends on X1 because Builder relevance changes by classification",
+                                                "X5 depends on X4 because promotion requires validation criteria"
+                                            ],
+                           "duplicates_or_overlaps":  [
+                                                          "X4 overlaps X5: validation defines evidence, promotion applies the result",
+                                                          "X2 overlaps X3: both concern risk, but X2 is failure mode and X3 is system use"
+                                                      ],
+                           "priority_order":  [
+                                                  "X1",
+                                                  "X2",
+                                                  "X4",
+                                                  "X5",
+                                                  "X3"
+                                              ],
+                           "can_skip_for_now":  [
+                                                    "Child-agent-specific granularity in X3 can wait until self-build classification is validated"
+                                                ]
+                       },
+    "parent_return_plan":  {
+                               "how_to_rebuild_x":  "Define atom versus case pattern, name the overfitting risk, map relevance to Builder retention and decision reuse, then return a promotion-gated classification with proof requirements.",
+                               "next_small_action":  "Create a small read-only classification rubric and test it against a few known accepted and unaccepted learning examples.",
+                               "proof_needed":  [
+                                                    "Sample classifications are reproducible",
+                                                    "A promoted atom candidate has retrieval evidence",
+                                                    "A promoted atom candidate causes decision reuse or behavior delta evidence"
+                                                ]
+                           },
+    "promotion_decision":  {
+                               "default_classification":  "CASE_PATTERN_CANDIDATE",
+                               "raw_retention_decision":  "DELETE_RAW_CANDIDATE",
+                               "active_memory_candidate":  false,
+                               "atom_candidate":  false,
+                               "reflex_candidate":  false,
+                               "organ_candidate":  false,
+                               "owner_decision_required":  "only if promotion beyond case pattern is requested",
+                               "reason":  "Batch source answer is material only; default is compact case pattern with part map and parent return plan."
+                           },
+    "proof_refs":  {
+                       "batch_knowledge_acquisition_proof":  "operations\\knowledge_acquisition_port\\runs\\sandbox_study_life_classifier_20260705_01_cycle2_attempt1_study_batch\\BATCH_KNOWLEDGE_ACQUISITION_PROOF.json",
+                       "raw_answer_sha256":  "62621C34DBEB20C3D4CDADCE0E84AD0627A303564D23E60E5CD1D3ADEAB6EEB6",
+                       "raw_answer_retained":  false
+                   }
+}

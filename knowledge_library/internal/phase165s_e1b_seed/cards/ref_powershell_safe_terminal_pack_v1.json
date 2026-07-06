@@ -1,0 +1,29 @@
+{
+  "schema_version": "internal_reference_card.v1",
+  "reference_id": "ref.powershell.safe_terminal_pack.v1",
+  "domain": "PowerShell_reference",
+  "question_it_answers": "What is a safe PowerShell command style for Owner-run proof packs?",
+  "answer": "Use short copyable commands, Set-Location explicitly, avoid destructive commands, avoid exit in shared shells, print STOP markers on failure, and capture machine-readable output when possible.",
+  "use_when": [
+    "PowerShell proof",
+    "Windows terminal",
+    "safe command"
+  ],
+  "next_action": "emit_bounded_powershell_proof_pack",
+  "source_atoms": [
+    "concept.runtime_output.v1",
+    "concept.validator.v1"
+  ],
+  "status": "INTERNAL_REFERENCE",
+  "trusted": false,
+  "accepted_atom": false,
+  "creates_atom_only_after_gap_solved": true,
+  "school_curriculum": false,
+  "protected_state_mutation": false,
+  "phase": "PHASE165S-E1B_INTERNAL_REFERENCE_LIBRARY_SEED",
+  "created_utc": "2026-06-12T00:00:00Z",
+  "ledger_basis": [
+    "AGENT_BUILDER_STRATEGY_LEDGER_V0_30_AFTER_D2_AND_REFERENCE_SEARCH_POLICY_AGREEMENT.md",
+    "Sections 191.3-191.18"
+  ]
+}

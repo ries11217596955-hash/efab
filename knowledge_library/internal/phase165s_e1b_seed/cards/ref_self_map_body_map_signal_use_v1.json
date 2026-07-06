@@ -1,0 +1,30 @@
+{
+  "schema_version": "internal_reference_card.v1",
+  "reference_id": "ref.self_map.body_map_signal_use.v1",
+  "domain": "self_map_body_map_reference",
+  "question_it_answers": "How should Builder use self-map/body-map signals?",
+  "answer": "Self-map/body-map provide awareness, health, capability and next-action signals; they are not school and not proof unless validated by fresh artifacts.",
+  "use_when": [
+    "self-map",
+    "body-map",
+    "health signal",
+    "capability map"
+  ],
+  "next_action": "read_map_then_verify_with_live_artifacts_if_needed",
+  "source_atoms": [
+    "concept.map_signal.v1",
+    "concept.protected_state.v1"
+  ],
+  "status": "INTERNAL_REFERENCE",
+  "trusted": false,
+  "accepted_atom": false,
+  "creates_atom_only_after_gap_solved": true,
+  "school_curriculum": false,
+  "protected_state_mutation": false,
+  "phase": "PHASE165S-E1B_INTERNAL_REFERENCE_LIBRARY_SEED",
+  "created_utc": "2026-06-12T00:00:00Z",
+  "ledger_basis": [
+    "AGENT_BUILDER_STRATEGY_LEDGER_V0_30_AFTER_D2_AND_REFERENCE_SEARCH_POLICY_AGREEMENT.md",
+    "Sections 191.3-191.18"
+  ]
+}

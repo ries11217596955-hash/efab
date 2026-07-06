@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "builder_school_morning_review.schema.json",
+  "title": "Builder School Morning Review",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "review_id",
+    "school_run_id",
+    "curriculum_id",
+    "active_route_lock_stamp",
+    "route_step_id",
+    "lesson_total_count",
+    "lesson_pass_count",
+    "lesson_fail_count",
+    "lesson_quarantine_count",
+    "failure_clusters",
+    "quarantine_clusters",
+    "recommendations",
+    "accepted_repo_mutated",
+    "protected_state_mutated",
+    "created_at"
+  ],
+  "properties": {
+    "review_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "school_run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "curriculum_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "active_route_lock_stamp": {
+      "type": "string",
+      "minLength": 1
+    },
+    "route_step_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "lesson_total_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "lesson_pass_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "lesson_fail_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "lesson_quarantine_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "failure_clusters": {
+      "type": "array"
+    },
+    "quarantine_clusters": {
+      "type": "array"
+    },
+    "recommendations": {
+      "type": "array"
+    },
+    "accepted_repo_mutated": {
+      "const": false
+    },
+    "protected_state_mutated": {
+      "const": false
+    },
+    "created_at": {
+      "type": "string"
+    }
+  }
+}

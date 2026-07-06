@@ -1,0 +1,17 @@
+{
+  "task_id": "TASK_GENERATED_PROGRAM_LIVE_ADMISSION_PROOF_V1_001",
+  "capability_id": "generated_program_live_admission_proof_v1",
+  "objective": "Admit the executable monitoring_agent_v1 generated self-build program into live Builder execution without executing generated packs.",
+  "execution_kind": "SELF_BUILD_LIVE_ADMISSION_PROOF",
+  "expected_gate": "GENERATED_PROGRAM_LIVE_ADMISSION_PROOF_V1",
+  "target_program_manifest": "self_build_programs/generated/monitoring_agent_v1/SELF_BUILD_PROGRAM_MANIFEST.json",
+  "required_prior_proof": "proofs/EXECUTABLE_GENERATED_PROGRAM_MATERIALIZATION_V1.json",
+  "forbidden_scope": [
+    "do not execute generated monitoring-agent packs",
+    "do not call nested SELF_BUILD",
+    "do not modify generated APPLY.ps1 files",
+    "do not modify generated PACK.json files",
+    "do not modify generated task contract files",
+    "do not create PHASE58"
+  ]
+}

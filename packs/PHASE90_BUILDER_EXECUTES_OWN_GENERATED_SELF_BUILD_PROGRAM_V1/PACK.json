@@ -1,0 +1,16 @@
+{
+  "pack_id": "PHASE90_BUILDER_EXECUTES_OWN_GENERATED_SELF_BUILD_PROGRAM_V1",
+  "task_id": "TASK_BUILDER_EXECUTES_OWN_GENERATED_SELF_BUILD_PROGRAM_V1_001",
+  "phase": "PHASE90",
+  "status": "READY",
+  "path": "packs/PHASE90_BUILDER_EXECUTES_OWN_GENERATED_SELF_BUILD_PROGRAM_V1",
+  "shell": "PowerShell",
+  "entry_script": "packs/PHASE90_BUILDER_EXECUTES_OWN_GENERATED_SELF_BUILD_PROGRAM_V1/APPLY.ps1",
+  "apply": "APPLY.ps1",
+  "validate": "VALIDATE.ps1",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "mode": "SELF_BUILD",
+  "capability_id": "generated_self_build_execution_v1",
+  "gate": "BUILDER_EXECUTES_OWN_GENERATED_SELF_BUILD_PROGRAM_V1",
+  "purpose": "Execute admitted SELF_BUILD_PROGRAM_001 in controlled self-build runtime and prove the decision-to-execution loop."
+}

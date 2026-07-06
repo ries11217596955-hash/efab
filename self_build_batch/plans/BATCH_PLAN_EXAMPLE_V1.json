@@ -1,0 +1,281 @@
+{
+  "plan_id": "BATCH_PLAN_EXAMPLE_V1",
+  "version": "V1",
+  "status": "PLANNED",
+  "generated_at": "2026-05-29T15:35:29.6302004Z",
+  "source_order": {
+    "order_path": "owner_orders/examples/OWNER_ORDER_BATCH_SELF_BUILD_100_TASKS_EXAMPLE.json",
+    "source_request": "Builder should learn to process 100 self-build tasks through controlled batch planning, admission, item-level evidence, continue-on-failure handling, quarantine/blocker routing, proof aggregation, repair loops, and scale trials."
+  },
+  "source_gap_map": "self_build_backlog/OWNER_ORDER_GAP_MAP_EXAMPLE_V1.json",
+  "source_programs": [
+    "self_build_programs/generated/SELF_BUILD_PROGRAM_V2_EXAMPLE_001.json"
+  ],
+  "planner_policy": {
+    "planner_does_not_execute_batches": true,
+    "planner_does_not_admit_batches": true,
+    "batch_admission_required": true,
+    "execution_allowed": false,
+    "group_only_safe_compatible_items": true,
+    "do_not_mix_destructive_with_safe": true,
+    "do_not_mix_external_fetch_with_local_only": true,
+    "preserve_dependency_order": true,
+    "item_level_status_required": true,
+    "proof_required_per_batch": true,
+    "no_external_agent_production": true,
+    "no_external_install": true,
+    "no_external_fetch": true
+  },
+  "batches": [
+    {
+      "batch_id": "BATCH_001_ADMISSION_POLICY_FOUNDATION",
+      "title": "Admission policy foundation before execution-related batch work",
+      "status": "PLANNED",
+      "risk": {
+        "classification": "LOW",
+        "reason": "Policy contract only."
+      },
+      "items": [
+        {
+          "item_id": "ITEM_PHASE97_BATCH_ADMISSION_POLICY_V1",
+          "source_gap": "PHASE97_BATCH_ADMISSION_POLICY_V1",
+          "title": "Define Batch Admission Policy V1",
+          "status": "PLANNED",
+          "risk": {
+            "classification": "LOW",
+            "reason": "Contract or planning foundation only; no execution in PHASE96."
+          },
+          "dependencies": [],
+          "assistance_required": [],
+          "expected_outputs": [
+            "Contract artifact",
+            "Example artifact",
+            "Report artifact",
+            "Proof artifact"
+          ],
+          "validation_required": true,
+          "proof_required": true,
+          "quarantine_on_failure": true,
+          "execution_performed": false
+        }
+      ],
+      "dependencies": [],
+      "allowed_files_scope": [
+        "contracts/self_development/",
+        "self_build_batch/",
+        "self_build_backlog/",
+        "reports/self_development/",
+        "proofs/self_development/",
+        "TASK_QUEUE.json",
+        "packs/registry.json",
+        "CAPABILITY_ROADMAP.json",
+        "GENESIS_STATE.json"
+      ],
+      "blocked_files_scope": [
+        "generated_agents/",
+        "applied_agents/",
+        ".github/workflows/",
+        "materials/",
+        "operations/",
+        "packs/PHASE78*",
+        "packs/PHASE79*",
+        "packs/PHASE80*",
+        "packs/PHASE81*",
+        "packs/PHASE82*",
+        "packs/PHASE83*",
+        "packs/PHASE84*",
+        "packs/PHASE85*",
+        "packs/PHASE86*",
+        "packs/PHASE87*",
+        "packs/PHASE88*",
+        "packs/PHASE89*",
+        "packs/PHASE90*",
+        "packs/PHASE91*",
+        "packs/PHASE92*",
+        "packs/PHASE93*",
+        "packs/PHASE94*",
+        "packs/PHASE95*"
+      ],
+      "admission_required": true,
+      "owner_approval_required": false,
+      "execution_allowed": false,
+      "stop_conditions": [
+        "Validation failure",
+        "Owner policy conflict",
+        "Unexpected external scope"
+      ],
+      "proof_requirements": [
+        "Batch plan remains PLANNED",
+        "No item marked PASS",
+        "No execution performed"
+      ]
+    },
+    {
+      "batch_id": "BATCH_002_EXECUTION_EVIDENCE_FOUNDATIONS",
+      "title": "Execution evidence and failure-handling foundations after admission policy",
+      "status": "PLANNED",
+      "risk": {
+        "classification": "LOW",
+        "reason": "Contract and planning foundations only."
+      },
+      "items": [
+        {
+          "item_id": "ITEM_PHASE98_ITEM_LEVEL_EXECUTION_LEDGER_V1",
+          "source_gap": "PHASE98_ITEM_LEVEL_EXECUTION_LEDGER_V1",
+          "title": "Define Item-Level Execution Ledger V1",
+          "status": "PLANNED",
+          "risk": {
+            "classification": "LOW",
+            "reason": "Contract or planning foundation only; no execution in PHASE96."
+          },
+          "dependencies": [
+            "ITEM_PHASE97_BATCH_ADMISSION_POLICY_V1"
+          ],
+          "assistance_required": [],
+          "expected_outputs": [
+            "Contract artifact",
+            "Example artifact",
+            "Report artifact",
+            "Proof artifact"
+          ],
+          "validation_required": true,
+          "proof_required": true,
+          "quarantine_on_failure": true,
+          "execution_performed": false
+        },
+        {
+          "item_id": "ITEM_PHASE99_CONTINUE_ON_FAILURE_RUNTIME_V1",
+          "source_gap": "PHASE99_CONTINUE_ON_FAILURE_RUNTIME_V1",
+          "title": "Define Continue-On-Failure Runtime V1",
+          "status": "PLANNED",
+          "risk": {
+            "classification": "LOW",
+            "reason": "Contract or planning foundation only; no execution in PHASE96."
+          },
+          "dependencies": [
+            "ITEM_PHASE97_BATCH_ADMISSION_POLICY_V1",
+            "ITEM_PHASE98_ITEM_LEVEL_EXECUTION_LEDGER_V1"
+          ],
+          "assistance_required": [],
+          "expected_outputs": [
+            "Contract artifact",
+            "Example artifact",
+            "Report artifact",
+            "Proof artifact"
+          ],
+          "validation_required": true,
+          "proof_required": true,
+          "quarantine_on_failure": true,
+          "execution_performed": false
+        },
+        {
+          "item_id": "ITEM_PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1",
+          "source_gap": "PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1",
+          "title": "Define Quarantine And Blocker Registry V1",
+          "status": "PLANNED",
+          "risk": {
+            "classification": "LOW",
+            "reason": "Contract or planning foundation only; no execution in PHASE96."
+          },
+          "dependencies": [
+            "ITEM_PHASE97_BATCH_ADMISSION_POLICY_V1",
+            "ITEM_PHASE98_ITEM_LEVEL_EXECUTION_LEDGER_V1"
+          ],
+          "assistance_required": [],
+          "expected_outputs": [
+            "Contract artifact",
+            "Example artifact",
+            "Report artifact",
+            "Proof artifact"
+          ],
+          "validation_required": true,
+          "proof_required": true,
+          "quarantine_on_failure": true,
+          "execution_performed": false
+        },
+        {
+          "item_id": "ITEM_PHASE101_BATCH_PROOF_AGGREGATOR_V1",
+          "source_gap": "PHASE101_BATCH_PROOF_AGGREGATOR_V1",
+          "title": "Define Batch Proof Aggregator V1",
+          "status": "PLANNED",
+          "risk": {
+            "classification": "LOW",
+            "reason": "Contract or planning foundation only; no execution in PHASE96."
+          },
+          "dependencies": [
+            "ITEM_PHASE97_BATCH_ADMISSION_POLICY_V1",
+            "ITEM_PHASE98_ITEM_LEVEL_EXECUTION_LEDGER_V1"
+          ],
+          "assistance_required": [],
+          "expected_outputs": [
+            "Contract artifact",
+            "Example artifact",
+            "Report artifact",
+            "Proof artifact"
+          ],
+          "validation_required": true,
+          "proof_required": true,
+          "quarantine_on_failure": true,
+          "execution_performed": false
+        }
+      ],
+      "dependencies": [
+        "BATCH_001_ADMISSION_POLICY_FOUNDATION"
+      ],
+      "allowed_files_scope": [
+        "contracts/self_development/",
+        "self_build_batch/",
+        "self_build_backlog/",
+        "reports/self_development/",
+        "proofs/self_development/",
+        "TASK_QUEUE.json",
+        "packs/registry.json",
+        "CAPABILITY_ROADMAP.json",
+        "GENESIS_STATE.json"
+      ],
+      "blocked_files_scope": [
+        "generated_agents/",
+        "applied_agents/",
+        ".github/workflows/",
+        "materials/",
+        "operations/",
+        "packs/PHASE78*",
+        "packs/PHASE79*",
+        "packs/PHASE80*",
+        "packs/PHASE81*",
+        "packs/PHASE82*",
+        "packs/PHASE83*",
+        "packs/PHASE84*",
+        "packs/PHASE85*",
+        "packs/PHASE86*",
+        "packs/PHASE87*",
+        "packs/PHASE88*",
+        "packs/PHASE89*",
+        "packs/PHASE90*",
+        "packs/PHASE91*",
+        "packs/PHASE92*",
+        "packs/PHASE93*",
+        "packs/PHASE94*",
+        "packs/PHASE95*"
+      ],
+      "admission_required": true,
+      "owner_approval_required": false,
+      "execution_allowed": false,
+      "stop_conditions": [
+        "Admission policy missing",
+        "Validation failure",
+        "Unexpected external scope"
+      ],
+      "proof_requirements": [
+        "Item-level evidence requirements defined",
+        "No batch admitted",
+        "No batch executed"
+      ]
+    }
+  ],
+  "batch_count": 2,
+  "item_count": 5,
+  "admission_required": true,
+  "execution_allowed": false,
+  "next_allowed_step": "PHASE97_BATCH_ADMISSION_POLICY_V1"
+}

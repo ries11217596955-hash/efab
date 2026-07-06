@@ -1,0 +1,18 @@
+{
+  "task_id": "TASK_SELF_BUILD_BACKLOG_CONTRACT_V1_001",
+  "phase": "PHASE92_SELF_BUILD_BACKLOG_CONTRACT_V1",
+  "status": "READY",
+  "mode": "SELF_BUILD",
+  "pack_id": "PHASE92_SELF_BUILD_BACKLOG_CONTRACT_V1",
+  "title": "Create self-build backlog contract V1",
+  "created_by": "terminal_runpack_without_codex",
+  "route_lock": "AGENT_BUILDER_NEXT_15_STEPS_LOCK_V2_R2.md",
+  "baseline_commit": "ec162b8",
+  "expected_outputs": [
+    "contracts/self_development/self_build_backlog_contract_v1.schema.json",
+    "self_build_backlog/SELF_BUILD_BACKLOG_CONTRACT_V1.json",
+    "reports/self_development/SELF_BUILD_BACKLOG_CONTRACT_REPORT.json",
+    "proofs/self_development/SELF_BUILD_BACKLOG_CONTRACT_V1.json"
+  ],
+  "next_allowed_step": "PHASE93_CAPABILITY_GAP_DETECTOR_V1"
+}

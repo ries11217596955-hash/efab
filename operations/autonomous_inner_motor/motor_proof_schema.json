@@ -1,0 +1,19 @@
+{
+    "schema":  "AUTONOMOUS_INNER_MOTOR_PROOF_SCHEMA",
+    "required_sections":  [
+                              "boundary",
+                              "repo_state",
+                              "memory_state",
+                              "school_state",
+                              "policy_snapshot",
+                              "self_question_trace",
+                              "decision_trace",
+                              "heartbeat",
+                              "stop_reason",
+                              "mutation_audit",
+                              "validator_result"
+                          ],
+    "mutation_audit_required":  true,
+    "clean_git_required_after_run":  true,
+    "active_memory_hash_required_before_after":  true
+}

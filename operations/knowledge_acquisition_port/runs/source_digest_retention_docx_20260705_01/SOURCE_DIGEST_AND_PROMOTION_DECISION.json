@@ -1,0 +1,45 @@
+{
+    "schema":  "SOURCE_DIGEST_AND_PROMOTION_DECISION_V1",
+    "status":  "COMPACT_DIGEST_CREATED",
+    "run_id":  "source_digest_retention_docx_20260705_01",
+    "source":  "CODEX_READONLY_SOURCE",
+    "source_answer_status":  "CODEX_DRAFT",
+    "parent_task":  "Create a Word file with one sentence",
+    "knowledge_need":  "The agent needs compact knowledge about docx creation boundaries, validation, and return-to-task without retaining raw source answers.",
+    "compact_candidate_knowledge":  "For task X, the missing knowledge is that a .docx file is not plain text renamed with a Word extension; it must be a valid DOCX/OOXML package created by a DOCX-capable application, library, or existing approved helper. The agent should learn only the minimum boundary: how to produce one document containing exactly one intended sentence, where the output path should be, what metadata or default content may appear, and how to validate the file before returning to the parent task while retaining only a compact digest and deleting raw source material by default.",
+    "compact_missing_concepts":  [
+                                     "DOCX is a structured Office Open XML package, not raw text",
+                                     "approved creation mechanism must be identified before execution",
+                                     "target sentence and output filename/path must be explicit",
+                                     "validation must check both file format and visible document text",
+                                     "raw learning material should be compacted into a digest and not retained by default"
+                                 ],
+    "compact_safe_learning_steps":  [
+                                        "read only the local policy or tool notes that define allowed document creation methods",
+                                        "check whether an existing approved helper or application boundary is already available",
+                                        "learn the minimum DOCX validation expectations without copying raw examples into memory",
+                                        "record only a compact digest of the usable creation and validation boundary"
+                                    ],
+    "compact_validation_needed":  [
+                                      "confirm the output file exists at the intended path",
+                                      "confirm the file opens or parses as a valid DOCX document",
+                                      "confirm the visible document body contains exactly the requested sentence",
+                                      "confirm no unintended extra body text was added"
+                                  ],
+    "return_to_task_hint":  "After learning and validation planning, discard raw source notes, retain only the compact DOCX boundary digest, then return to task X to create and validate the one-sentence Word file using the approved method.",
+    "promotion_decision":  {
+                               "default_classification":  "CASE_PATTERN_CANDIDATE",
+                               "raw_retention_decision":  "DELETE_RAW_CANDIDATE",
+                               "active_memory_candidate":  false,
+                               "atom_candidate":  false,
+                               "reflex_candidate":  false,
+                               "organ_candidate":  false,
+                               "owner_decision_required":  "only if promotion beyond case pattern is requested",
+                               "reason":  "One source answer is material only; default is compact reusable case pattern plus validation/return hint."
+                           },
+    "proof_refs":  {
+                       "knowledge_acquisition_proof":  "operations\\knowledge_acquisition_port\\runs\\source_digest_retention_docx_20260705_01\\KNOWLEDGE_ACQUISITION_PROOF.json",
+                       "raw_answer_sha256":  "2246DAF3045A45C70EEF673078EB5A3ED6B09C2FA30B548C93576CE39ACBB6D7",
+                       "raw_answer_retained":  false
+                   }
+}

@@ -1,0 +1,39 @@
+{
+  "agent_id": "monitoring_alert_triage_agent",
+  "display_name": "Monitoring Alert Triage Agent",
+  "mission": "Turn structured monitoring signals into an alert triage queue and escalation cue.",
+  "agent_kind": "monitoring_agent",
+  "package_profile": "operational_specialized",
+  "runtime": {
+    "shell": "PowerShell",
+    "entrypoint": "orchestrator/run.ps1"
+  },
+  "inputs": [
+    {
+      "name": "request",
+      "type": "json",
+      "required": true,
+      "description": "Structured monitoring signal request."
+    }
+  ],
+  "outputs": [
+    {
+      "name": "result",
+      "type": "json",
+      "required": true,
+      "description": "Alert triage queue and escalation status."
+    }
+  ],
+  "capabilities": [
+    "rank active monitoring alerts by severity",
+    "identify next alert to inspect",
+    "emit escalation cue"
+  ],
+  "validation": [
+    "specialized overlay is applied",
+    "runtime result operation is monitoring_alert_triage_queue"
+  ],
+  "forbidden_scope": [
+    "do not claim autonomous incident resolution"
+  ]
+}

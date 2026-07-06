@@ -1,0 +1,14 @@
+{
+  "schema": "multi_source_compact_memory_intake_policy_v1",
+  "status": "ACTIVE",
+  "allowed_sources": ["School", "AgentLife", "Codex", "ExternalWorld", "InternalFactory"],
+  "runtime_queue_root": ".runtime/compact_memory_intake_v1/queue",
+  "runtime_report_root": "operations/reports",
+  "active_growth_signal_path": ".runtime/compact_memory_growth_signal_v1/ACTIVE_GROWTH_SIGNAL.json",
+  "min_quality_score": 0.5,
+  "min_novelty_score": 0.0,
+  "max_packet_atoms": 1000,
+  "direct_active_memory_mutation_allowed": false,
+  "growth_signal_enabled": true,
+  "boundary": "Sources submit accepted knowledge packets to intake. Intake validates and emits growth signals. Active compact memory merge remains a separate locked/checkpointed action."
+}

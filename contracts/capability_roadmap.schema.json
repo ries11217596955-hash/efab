@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Agent Builder Capability Roadmap",
+  "type": "object",
+  "required": [
+    "roadmap_id",
+    "roadmap_version",
+    "capabilities"
+  ],
+  "properties": {
+    "roadmap_id": {
+      "type": "string"
+    },
+    "roadmap_version": {
+      "type": "string"
+    },
+    "capabilities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "phase",
+          "status",
+          "gate"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "phase": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "gate": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

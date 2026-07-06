@@ -1,0 +1,26 @@
+{
+  "request_id": "workflow_execution_agent_v1_operational_sample_001",
+  "payload": {
+    "workflow_id": "workflow_release_lane_001",
+    "workflow_steps": [
+      {
+        "id": "publish_output",
+        "sequence": 30,
+        "action": "publish final runtime artifact"
+      },
+      {
+        "id": "collect_input",
+        "sequence": 10,
+        "action": "collect normalized request payload"
+      },
+      {
+        "id": "validate_payload",
+        "sequence": 20,
+        "action": "validate required fields and constraints"
+      }
+    ]
+  },
+  "metadata": {
+    "source": "workflow_execution_agent_v1_overlay_operational_proof"
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_id": "item_level_execution_ledger_v1",
+  "title": "Item-Level Execution Ledger V1",
+  "type": "object",
+  "required": [
+    "ledger_id",
+    "version",
+    "status",
+    "active_line",
+    "source_plan",
+    "source_admission",
+    "item_status_values",
+    "ledger_policy",
+    "entries",
+    "item_count",
+    "execution_attempted",
+    "next_allowed_step"
+  ],
+  "properties": {
+    "ledger_id": {
+      "type": "string"
+    },
+    "version": {
+      "const": "V1"
+    },
+    "status": {
+      "type": "string"
+    },
+    "active_line": {
+      "const": "AGENT_BUILDER / SELF_BUILD"
+    },
+    "source_plan": {
+      "type": "string"
+    },
+    "source_admission": {
+      "type": "string"
+    },
+    "item_status_values": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "PLANNED",
+          "RUNNING",
+          "PASS",
+          "FAILED",
+          "QUARANTINED",
+          "BLOCKED",
+          "NEEDS_OWNER_DECISION",
+          "NEEDS_CODEX_REPAIR",
+          "NEEDS_MATERIAL",
+          "SKIPPED_BY_POLICY"
+        ]
+      }
+    },
+    "ledger_policy": {
+      "type": "object"
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "ledger_entry_id",
+          "item_id",
+          "source_gap",
+          "title",
+          "status",
+          "execution_attempted",
+          "attempt_count",
+          "evidence_paths",
+          "validation_output",
+          "proof_or_report_path",
+          "failure_reason",
+          "quarantine_reason",
+          "blocker_reason",
+          "assistance_required",
+          "next_action",
+          "updated_at_policy"
+        ]
+      }
+    },
+    "item_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "execution_attempted": {
+      "const": false
+    },
+    "next_allowed_step": {
+      "const": "PHASE99_CONTINUE_ON_FAILURE_RUNTIME_V1"
+    }
+  },
+  "additionalProperties": true
+}

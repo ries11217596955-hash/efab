@@ -1,0 +1,14 @@
+{
+    "schema":  "active_repo_body_replay_audit_policy_v1",
+    "status":  "PASS_ACTIVE_REPO_BODY_REPLAY_AUDIT_POLICY_V1",
+    "runtime_ready":  false,
+    "policy_mode":  "cold_audit_not_hot_path",
+    "max_deltas_since_full_replay":  5,
+    "max_incoming_without_replay":  5000,
+    "require_full_replay_before_live":  true,
+    "require_full_replay_before_accepted_core":  true,
+    "require_full_replay_after_crash":  true,
+    "require_full_replay_on_legacy_hash_mismatch":  true,
+    "normal_small_absorption_replay":  "skip_full_replay_use_projection_and_hash_counts",
+    "boundary":  "Policy only; selection report decides per run; no absorption."
+}

@@ -1,0 +1,50 @@
+{
+    "schema":  "LEARNING_EPISODE_ACCEPTANCE_GATE_VALIDATION_V1",
+    "status":  "PASS_LEARNING_EPISODE_ACCEPTANCE_GATE_V1",
+    "checked_at":  "2026-07-05T18:54:00.6649547+04:00",
+    "study_proof_path":  "operations/autonomous_inner_motor/study_life_runs/learning_atom_candidate_route_fixture_20260705_01/STUDY_LIFE_PROOF.json",
+    "accepted_result":  "ATOM_CANDIDATE_ROUTED_TO_EXISTING_ATOM_ACCEPTANCE",
+    "non_death_rule":  {
+                           "parked_count":  1,
+                           "open_gap_count":  1,
+                           "continued_after_parked_gap":  1
+                       },
+    "source_discipline":  {
+                              "source_attempt_limit_per_episode":  3,
+                              "source_attempts_used":  1,
+                              "batch_proofs_checked":  1,
+                              "batch_digests_checked":  1,
+                              "raw_source_paths_checked":  [
+                                                               "operations\\knowledge_acquisition_port\\runs\\learning_atom_candidate_route_fixture_20260705_01_cycle1_atom_candidate_fixture\\codex_batch_last_message.json.txt"
+                                                           ]
+                          },
+    "safety":  {
+                   "memory_unchanged":  true,
+                   "practical_actions_created":  0,
+                   "code_writes":  0,
+                   "active_memory_mutations":  0
+               },
+    "outputs_checked":  [
+                            {
+                                "topic":  "define_minimal_atom_acceptance_rule",
+                                "classification":  "ATOM_CANDIDATE",
+                                "atom_candidate":  true,
+                                "digest_path":  "operations/knowledge_acquisition_port/runs/learning_atom_candidate_route_fixture_20260705_01_cycle1_atom_candidate_fixture/BATCH_SOURCE_DIGEST_AND_PROMOTION_DECISION.json",
+                                "atom_acceptance_route":  "EXISTING_ACCEPTED_ATOM_RETENTION_MECHANISM"
+                            }
+                        ],
+    "atom_acceptance_route":  "EXISTING_ACCEPTED_ATOM_RETENTION_MECHANISM",
+    "atom_acceptance_validators":  [
+                                       "validators/validate_accepted_atom_retention_contract_v1.ps1",
+                                       "validators/validate_accepted_atom_retention_micro_proof_v1.ps1",
+                                       "validators/validate_accepted_atom_retention_passports_v1.ps1",
+                                       "validators/validate_compact_atom_storage_bridge_micro_proof_v1.ps1"
+                                   ],
+    "warnings":  [
+
+                 ],
+    "errors":  [
+
+               ],
+    "boundary":  "Acceptance gate validates episode discipline and routes atom candidates; it does not mutate active memory or claim accepted atom without downstream atom retention proof."
+}

@@ -1,0 +1,39 @@
+{
+  "schema_version": "self_build_program_identity_contract_v1",
+  "phase": "PHASE165C_GENERALIZE_SELF_BUILD_PROGRAM_IDENTITY",
+  "purpose": "Allow dynamic self-build program ids instead of fixed SELF_BUILD_PROGRAM_001 only.",
+  "canonical_bootstrap_program_id": "SELF_BUILD_PROGRAM_001",
+  "dynamic_program_id_required": true,
+  "id_rules": {
+    "prefix": "SELF_BUILD_PROGRAM",
+    "allowed_pattern": "^SELF_BUILD_PROGRAM_[A-Z0-9_]+_V[0-9]+_[0-9]{3}$",
+    "max_length": 96,
+    "uppercase": true,
+    "unsafe_chars_replaced_with": "_",
+    "version_format": "V1",
+    "sequence_format": "001"
+  },
+  "required_fields": [
+    "program_id",
+    "program_identity_schema",
+    "source_material_id",
+    "source_material_selector",
+    "source_material_path",
+    "created_utc",
+    "required_path",
+    "not_atom",
+    "lineage_required"
+  ],
+  "required_path": "PHASE87->PHASE88->PHASE89->PHASE90",
+  "not_atom": true,
+  "lineage_required": true,
+  "boundaries": {
+    "does_not_patch_phase88": true,
+    "does_not_patch_phase89": true,
+    "does_not_patch_phase90": true,
+    "does_not_execute_program": true,
+    "does_not_mutate_protected_state": true,
+    "does_not_replace_active_owner_material_input": true
+  },
+  "next_route_dependency": "PHASE165D_BUILD_SELF_BUILD_CAUSE_LINEAGE_CONTRACT"
+}

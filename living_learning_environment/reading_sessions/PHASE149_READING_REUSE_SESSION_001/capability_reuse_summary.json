@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "session_id": "PHASE149_READING_REUSE_SESSION_001",
+  "step_id": "PHASE149_BUILDER_READING_AND_CAPABILITY_REUSE_SESSION_V1",
+  "selected_capability_id": "self_learning_memory",
+  "selected_capability_path": "capability_shelf/capabilities/self_learning_memory.json",
+  "why_reused": "Capability shelf marks self_learning_memory as reusable for SELF_BUILD reading/reuse work, so Builder can absorb and reuse an existing organ instead of asking Codex to build a duplicate.",
+  "not_rebuilt_reason": "Observation-first and reuse-first policy requires reading existing capability entries, operation contracts, examples, and validator references before creating any new organ.",
+  "reusable_contract_found": true,
+  "operation_contract_path": "capability_shelf/operation_contracts/read_learning_memory.json",
+  "operation_contract_id": "read_learning_memory",
+  "validator_or_example_found": true,
+  "validator_reference": "capability_shelf/validators/self_learning_memory.json",
+  "example_usage_path": "capability_shelf/usage_examples/self_learning_memory.json",
+  "runtime_mutates_repo": false,
+  "safe_to_reuse": true,
+  "can_be_used_by_builder": true,
+  "accepted_state_mutated": false,
+  "external_agents_created": false,
+  "next_allowed_step": "PHASE150_BUILDER_REUSE_BASED_MICRO_ORGAN_TRIAL_V1"
+}

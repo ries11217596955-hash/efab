@@ -1,0 +1,27 @@
+{
+    "boundary":  "JSON shape contract for Codex batch read-only knowledge answers; checked by wrapper, not by Codex itself.",
+    "required":  [
+                     "answer_status",
+                     "source_role",
+                     "parent_task",
+                     "parts",
+                     "cross_part_map",
+                     "parent_return_plan",
+                     "limits"
+                 ],
+    "schema":  "CODEX_BATCH_KNOWLEDGE_ANSWER_SCHEMA_V1",
+    "part_required":  [
+                          "id",
+                          "name",
+                          "meaning",
+                          "role_in_parent_task",
+                          "missing_knowledge",
+                          "safe_learning_steps",
+                          "validation_needed",
+                          "return_to_parent_hint"
+                      ],
+    "constants":  {
+                      "answer_status":  "CODEX_DRAFT",
+                      "source_role":  "CODEX_BATCH_READONLY_SOURCE"
+                  }
+}

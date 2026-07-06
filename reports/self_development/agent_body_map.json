@@ -1,0 +1,98 @@
+﻿{
+    "schema":  "AGENT_BODY_MAP_COMPATIBILITY_VIEW_V1",
+    "source":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+    "branch":  "thin-control",
+    "observed_head_at_generation":  "d0343a58f63f68f364b405d63dd3008308239a15",
+    "generated_at":  "2026-07-06T22:09:37.7245553+04:00",
+    "body_source_fingerprint":  {
+                                    "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
+                                    "structural_file_count":  552,
+                                    "sha256":  "f425568eb18a6ffd092f569263f24301a07dbde80ae54c479f82a9d02d4cfad3"
+                                },
+    "map_kind":  "DERIVED_HUMAN_COMPATIBILITY_VIEW",
+    "components":  [
+                       {
+                           "id":  "school",
+                           "status":  "PRESENT_ON_CURRENT_BRANCH",
+                           "root":  "operations/school",
+                           "file_count":  96,
+                           "script_count":  58,
+                           "latest_runtime_artifact":  {
+                                                           "path":  ".runtime/school_runs/school_factory_digest_use_test_20_20260706_200311/AGENT_SCHOOL_CANONICAL_ENTRYPOINT_V1.json",
+                                                           "last_write":  "2026-07-06T20:03:14.7759632+04:00",
+                                                           "bytes":  7874
+                                                       },
+                           "required_files_present":  true
+                       },
+                       {
+                           "id":  "school_source_router",
+                           "status":  "PRESENT_ON_CURRENT_BRANCH",
+                           "root":  "operations/school/curriculum/source_router",
+                           "file_count":  8,
+                           "script_count":  6,
+                           "latest_runtime_artifact":  {
+                                                           "path":  ".runtime/school_source_template_filter/school_source_router_filter_school_factory_digest_use_test_20_20260706_200311_chunk_1_of_1/SCHOOL_SOURCE_TEMPLATE_FILTER_DECISION_V1.json",
+                                                           "last_write":  "2026-07-06T20:03:12.4750390+04:00",
+                                                           "bytes":  3260
+                                                       },
+                           "required_files_present":  true
+                       },
+                       {
+                           "id":  "compact_memory_intake",
+                           "status":  "PRESENT_ON_CURRENT_BRANCH",
+                           "root":  "operations/compact_memory_intake",
+                           "file_count":  9,
+                           "script_count":  5,
+                           "latest_runtime_artifact":  {
+                                                           "path":  ".runtime/compact_memory_intake_v1/maintenance_runs/queue_maintenance_20260706_200326/COMPACT_MEMORY_QUEUE_MAINTENANCE_RESULT_V1.json",
+                                                           "last_write":  "2026-07-06T20:04:12.5417864+04:00",
+                                                           "bytes":  10526
+                                                       },
+                           "required_files_present":  true
+                       },
+                       {
+                           "id":  "autonomous_inner_motor",
+                           "status":  "PRESENT_ON_CURRENT_BRANCH",
+                           "root":  "operations/autonomous_inner_motor",
+                           "file_count":  62,
+                           "script_count":  1,
+                           "latest_runtime_artifact":  {
+                                                           "path":  ".runtime/autonomous_inner_motor/test_life_runs/aimo_parallel_school_aimo_auto_maintenance_20260706_125100/TEST_LIFE_PROOF.json",
+                                                           "last_write":  "2026-07-06T12:52:06.9916139+04:00",
+                                                           "bytes":  61164
+                                                       },
+                           "required_files_present":  true
+                       },
+                       {
+                           "id":  "knowledge_acquisition_port",
+                           "status":  "PRESENT_ON_CURRENT_BRANCH",
+                           "root":  "operations/knowledge_acquisition_port",
+                           "file_count":  50,
+                           "script_count":  2,
+                           "latest_runtime_artifact":  {
+                                                           "path":  ".runtime/knowledge_acquisition_port/runs/aimo_parallel_school_aimo_auto_maintenance_20260706_125100_cycle1_batch_knowledge_gap/BATCH_KNOWLEDGE_ACQUISITION_PROOF.json",
+                                                           "last_write":  "2026-07-06T12:52:03.3794643+04:00",
+                                                           "bytes":  4414
+                                                       },
+                           "required_files_present":  true
+                       },
+                       {
+                           "id":  "map_control",
+                           "status":  "PRESENT_ON_CURRENT_BRANCH",
+                           "root":  "operations/map_control",
+                           "file_count":  2,
+                           "script_count":  0,
+                           "latest_runtime_artifact":  null,
+                           "required_files_present":  true
+                       },
+                       {
+                           "id":  "gpt_handoff",
+                           "status":  "PRESENT_ON_CURRENT_BRANCH",
+                           "root":  "operations/gpt_handoff",
+                           "file_count":  3,
+                           "script_count":  0,
+                           "latest_runtime_artifact":  null,
+                           "required_files_present":  true
+                       }
+                   ]
+}

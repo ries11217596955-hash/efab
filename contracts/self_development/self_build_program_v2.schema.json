@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_id": "self_build_program_v2",
+  "title": "Self-Build Program V2",
+  "type": "object",
+  "required": [
+    "program_id",
+    "version",
+    "status",
+    "source_order",
+    "source_gap",
+    "objective",
+    "expected_outputs",
+    "allowed_files_scope",
+    "blocked_files_scope",
+    "risk",
+    "admission_requirements",
+    "validation_requirements",
+    "proof_requirements",
+    "rollback_requirements",
+    "assistance_required",
+    "owner_approval_required",
+    "execution_allowed",
+    "next_allowed_step"
+  ],
+  "properties": {
+    "program_id": {
+      "type": "string"
+    },
+    "version": {
+      "const": "V2"
+    },
+    "status": {
+      "enum": [
+        "GENERATED_CANDIDATE",
+        "ADMITTED",
+        "REJECTED",
+        "BLOCKED"
+      ]
+    },
+    "source_order": {
+      "type": "object"
+    },
+    "source_gap": {
+      "type": "string"
+    },
+    "objective": {
+      "type": "string"
+    },
+    "expected_outputs": {
+      "type": "array"
+    },
+    "allowed_files_scope": {
+      "type": "array"
+    },
+    "blocked_files_scope": {
+      "type": "array"
+    },
+    "risk": {
+      "type": "object"
+    },
+    "admission_requirements": {
+      "type": "array"
+    },
+    "validation_requirements": {
+      "type": "array"
+    },
+    "proof_requirements": {
+      "type": "array"
+    },
+    "rollback_requirements": {
+      "type": "array"
+    },
+    "assistance_required": {
+      "type": "array"
+    },
+    "owner_approval_required": {
+      "type": "boolean"
+    },
+    "admission_required": {
+      "type": "boolean"
+    },
+    "execution_allowed": {
+      "type": "boolean"
+    },
+    "next_allowed_step": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

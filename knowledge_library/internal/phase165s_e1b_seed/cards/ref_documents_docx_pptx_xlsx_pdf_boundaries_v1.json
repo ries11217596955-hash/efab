@@ -1,0 +1,31 @@
+{
+  "schema_version": "internal_reference_card.v1",
+  "reference_id": "ref.documents.docx_pptx_xlsx_pdf_boundaries.v1",
+  "domain": "document_artifacts_reference",
+  "question_it_answers": "When Builder creates office/PDF artifacts, what boundaries apply?",
+  "answer": "Use format-specific skills/tools, validate generated file presence and basic open/readability, and keep source/material/proof separate from final deliverable.",
+  "use_when": [
+    "docx",
+    "pptx",
+    "xlsx",
+    "pdf",
+    "document artifact"
+  ],
+  "next_action": "choose_document_format_skill_and_validation",
+  "source_atoms": [
+    "concept.derived_artifact.v1",
+    "concept.delivery_block.v1"
+  ],
+  "status": "INTERNAL_REFERENCE",
+  "trusted": false,
+  "accepted_atom": false,
+  "creates_atom_only_after_gap_solved": true,
+  "school_curriculum": false,
+  "protected_state_mutation": false,
+  "phase": "PHASE165S-E1B_INTERNAL_REFERENCE_LIBRARY_SEED",
+  "created_utc": "2026-06-12T00:00:00Z",
+  "ledger_basis": [
+    "AGENT_BUILDER_STRATEGY_LEDGER_V0_30_AFTER_D2_AND_REFERENCE_SEARCH_POLICY_AGREEMENT.md",
+    "Sections 191.3-191.18"
+  ]
+}

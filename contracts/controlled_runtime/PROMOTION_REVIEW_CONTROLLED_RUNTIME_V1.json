@@ -1,0 +1,45 @@
+{
+  "schema": "PROMOTION_REVIEW_CONTROLLED_RUNTIME_V1",
+  "status": "CONTROLLED_RUNTIME_CANDIDATE",
+  "promoted_from": "ACCEPTED_LOCAL",
+  "runtime_ready": false,
+  "created_utc": "2026-06-19T00:00:00Z",
+  "capability": "ephemeral_candidate_to_atom_batch_circuit",
+  "basis": {
+    "batch_100_proof": "tests/accepted_atom_retention/EPHEMERAL_CANDIDATE_TO_ATOM_BATCH_100_TRIAL_V1.json",
+    "runtime_1000_proof": "tests/accepted_atom_retention/EPHEMERAL_CANDIDATE_TO_ATOM_RUNTIME_1000_TRIAL_V1.json",
+    "codex_map": "AGENTS.md",
+    "runtime_1000_summary": {
+      "total_cycles": 10,
+      "total_candidates": 1000,
+      "total_accepted": 1000,
+      "total_receipts": 1000,
+      "failed_cycles": 0,
+      "material_pruned": true,
+      "work_current_pruned": true,
+      "unexpected_git_status_count": 0,
+      "runtime_ready": false
+    }
+  },
+  "invariants": [
+    "candidates_are_fuel_not_memory",
+    "successful_candidate_material_must_be_pruned",
+    "work_current_must_be_pruned_after_success",
+    "failed_or_quarantine_traces_must_be_preserved",
+    "no_old_raw_shards_as_runtime_dependency",
+    "no_old_repo_as_runtime_source",
+    "dot_runtime_is_disposable_ignored_runtime"
+  ],
+  "non_goals": [
+    "do_not_set_runtime_ready_true",
+    "do_not_run_new_large_tests",
+    "do_not_rewrite_passports",
+    "do_not_copy_old_material_banks"
+  ],
+  "promotion_decision": {
+    "from": "ACCEPTED_LOCAL",
+    "to": "CONTROLLED_RUNTIME_CANDIDATE",
+    "runtime_ready_after_promotion": false
+  },
+  "next_required": "CONTROLLED_RUNTIME_WIRING_OR_STOP_GOVERNED_CONTINUOUS_TRIAL"
+}

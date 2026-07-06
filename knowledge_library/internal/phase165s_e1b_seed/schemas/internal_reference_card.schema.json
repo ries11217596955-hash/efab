@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Internal Reference Card v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "reference_id",
+    "domain",
+    "question_it_answers",
+    "answer",
+    "use_when",
+    "next_action",
+    "status",
+    "trusted",
+    "accepted_atom",
+    "creates_atom_only_after_gap_solved"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "internal_reference_card.v1"
+    },
+    "reference_id": {
+      "type": "string"
+    },
+    "domain": {
+      "type": "string"
+    },
+    "question_it_answers": {
+      "type": "string"
+    },
+    "answer": {
+      "type": "string"
+    },
+    "use_when": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "next_action": {
+      "type": "string"
+    },
+    "source_atoms": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "const": "INTERNAL_REFERENCE"
+    },
+    "trusted": {
+      "const": false
+    },
+    "accepted_atom": {
+      "const": false
+    },
+    "creates_atom_only_after_gap_solved": {
+      "const": true
+    }
+  }
+}

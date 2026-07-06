@@ -1,0 +1,227 @@
+{
+    "schema":  "BATCH_SOURCE_DIGEST_AND_PROMOTION_DECISION_V1",
+    "status":  "COMPACT_BATCH_DIGEST_CREATED",
+    "run_id":  "aimo_batch_knowledge_gap_20260705_01_cycle1_batch_knowledge_gap",
+    "source":  "CODEX_BATCH_READONLY_SOURCE",
+    "source_answer_status":  "CODEX_DRAFT",
+    "parent_task":  "choose_next_safe_growth_step",
+    "knowledge_need":  "Executable knowledge missing or weak for task \u0027choose_next_safe_growth_step\u0027. Explain the decomposed parts as one coordinated bundle, identify dependencies, validation, and return-to-parent plan.",
+    "part_count":  10,
+    "part_digests":  [
+                         {
+                             "id":  "X1",
+                             "name":  "task intent",
+                             "meaning":  "Identify the next bounded growth step that is safe, useful, and aligned with current route constraints.",
+                             "role_in_parent_task":  "Defines what \u0027next\u0027 and \u0027safe growth\u0027 must mean before selecting any action.",
+                             "compact_missing_knowledge":  [
+                                                               "current route constraints from authoritative local policy",
+                                                               "what growth means in this context"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "read only the active policy, queue, and route surfaces already designated as safe",
+                                                                 "avoid treating memory or school output as authority"
+                                                             ],
+                             "compact_validation_needed":  "intent matches active route and does not conflict with protected boundaries",
+                             "return_to_parent_hint":  "Use this as the selection criterion for all candidate steps."
+                         },
+                         {
+                             "id":  "X2",
+                             "name":  "required output",
+                             "meaning":  "A parent-facing recommendation or small action plan, not an executed mutation.",
+                             "role_in_parent_task":  "Prevents the batch source from becoming the agent brain or executor.",
+                             "compact_missing_knowledge":  [
+                                                               "exact expected format from parent agent",
+                                                               "whether parent needs one step or ranked options"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "infer minimum output from task name and policy",
+                                                                 "return a candidate step plus required proof gate"
+                                                             ],
+                             "compact_validation_needed":  "output is actionable but explicitly unproven until validated",
+                             "return_to_parent_hint":  "Return one recommended safe next action with evidence needed before adoption."
+                         },
+                         {
+                             "id":  "X3",
+                             "name":  "available knowledge",
+                             "meaning":  "Known inputs already inspected: low-relevance active memory, reflexes, read-only policy surfaces, and decomposed parts.",
+                             "role_in_parent_task":  "Separates usable context from weak or non-authoritative context.",
+                             "compact_missing_knowledge":  [
+                                                               "which repo policy surfaces were actually read",
+                                                               "freshness of active memory"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "treat active memory as hint only",
+                                                                 "prefer current local policy files over memory"
+                                                             ],
+                             "compact_validation_needed":  "available knowledge is cited back to read-only source categories",
+                             "return_to_parent_hint":  "Use available knowledge only to narrow what must be checked next."
+                         },
+                         {
+                             "id":  "X4",
+                             "name":  "missing knowledge",
+                             "meaning":  "The gaps that block a defensible next-step choice.",
+                             "role_in_parent_task":  "Prevents guessing a route or promoting an unsupported action.",
+                             "compact_missing_knowledge":  [
+                                                               "current highest-priority unresolved gap",
+                                                               "candidate actions and their risk levels",
+                                                               "required validator or proof for each candidate"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "list blockers before selecting a step",
+                                                                 "map each blocker to a read-only source or validator"
+                                                             ],
+                             "compact_validation_needed":  "no candidate is selected without a matching validation gate",
+                             "return_to_parent_hint":  "Turn gaps into a small ranked diagnostic checklist."
+                         },
+                         {
+                             "id":  "X5",
+                             "name":  "safe learning path",
+                             "meaning":  "A read-only, bounded way to acquire just enough knowledge for selection.",
+                             "role_in_parent_task":  "Keeps the parent task from mutating state or launching runtime prematurely.",
+                             "compact_missing_knowledge":  [
+                                                               "minimum file set needed for the choice",
+                                                               "whether any protected surface is implicated"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "read only named policy, queue, roadmap, and relevant contracts",
+                                                                 "skip logs, runtime output, quarantine, and broad scans unless explicitly required"
+                                                             ],
+                             "compact_validation_needed":  "learning path respects repo policy and protected areas",
+                             "return_to_parent_hint":  "Use this as the allowed discovery procedure before recommending the step."
+                         },
+                         {
+                             "id":  "X6",
+                             "name":  "validation gate",
+                             "meaning":  "The proof required before any candidate step can be called successful or accepted.",
+                             "role_in_parent_task":  "Keeps the chosen growth step from being treated as proven by recommendation alone.",
+                             "compact_missing_knowledge":  [
+                                                               "specific validator for the selected candidate",
+                                                               "whether proof must be owner-terminal or quick smoke only"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "attach a validation requirement to every candidate",
+                                                                 "avoid loops, long proofs, or runtime supervision"
+                                                             ],
+                             "compact_validation_needed":  "validator/proof command or owner-run proof path is identified",
+                             "return_to_parent_hint":  "Parent should not promote the step until this gate passes."
+                         },
+                         {
+                             "id":  "X7",
+                             "name":  "source boundary",
+                             "meaning":  "Codex and web/source responses are draft knowledge, not authority or acceptance proof.",
+                             "role_in_parent_task":  "Prevents authority leap from batch answer to route decision.",
+                             "compact_missing_knowledge":  [
+                                                               "which local source is canonical for final decision",
+                                                               "whether external source is needed at all"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "prefer local policy and contracts",
+                                                                 "label all Codex output as CODEX_DRAFT"
+                                                             ],
+                             "compact_validation_needed":  "final decision is grounded in repo evidence, not this answer",
+                             "return_to_parent_hint":  "Parent may use this as scaffolding, then verify locally."
+                         },
+                         {
+                             "id":  "X8",
+                             "name":  "return to parent",
+                             "meaning":  "How the decomposed answers reassemble into a useful next-step recommendation.",
+                             "role_in_parent_task":  "Ensures the bundle resolves X rather than producing isolated notes.",
+                             "compact_missing_knowledge":  [
+                                                               "parent\u0027s preferred decision format",
+                                                               "current candidate list"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "collapse parts into one candidate selection flow",
+                                                                 "return unresolved blockers separately"
+                                                             ],
+                             "compact_validation_needed":  "returned plan covers intent, scope, risk, and proof gate",
+                             "return_to_parent_hint":  "Produce one ranked next action plus why it is safe and what proves it."
+                         },
+                         {
+                             "id":  "X9",
+                             "name":  "retention decision",
+                             "meaning":  "Decide whether this knowledge becomes a compact digest, not raw retained context.",
+                             "role_in_parent_task":  "Prevents memory bloat while preserving reusable task pattern knowledge.",
+                             "compact_missing_knowledge":  [
+                                                               "retention policy for batch source outputs",
+                                                               "whether this pattern has repeated value"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "retain only compact decision pattern if validated useful",
+                                                                 "discard raw decomposition unless parent requests retention"
+                                                             ],
+                             "compact_validation_needed":  "retention is based on parent validation or reuse signal",
+                             "return_to_parent_hint":  "Likely defer retention until after parent validates usefulness."
+                         },
+                         {
+                             "id":  "X10",
+                             "name":  "promotion decision",
+                             "meaning":  "Classify whether the pattern should remain a case note or become atom/reflex/organ candidate.",
+                             "role_in_parent_task":  "Controls escalation of one task pattern into reusable behavior.",
+                             "compact_missing_knowledge":  [
+                                                               "promotion thresholds",
+                                                               "evidence of repeated successful use"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "treat as case pattern by default",
+                                                                 "consider atom/reflex only after repeated validated use"
+                                                             ],
+                             "compact_validation_needed":  "promotion has proof of reuse, safety, and behavior improvement",
+                             "return_to_parent_hint":  "Do not promote during X; mark as possible candidate after validation."
+                         }
+                     ],
+    "cross_part_map":  {
+                           "dependencies":  [
+                                                "X2 depends on X1",
+                                                "X4 depends on X3",
+                                                "X5 depends on X4",
+                                                "X6 depends on the selected candidate from X1-X5",
+                                                "X8 depends on X1-X7"
+                                            ],
+                           "duplicates_or_overlaps":  [
+                                                          "X4 overlaps X5 because gaps define learning steps",
+                                                          "X9 overlaps X10 because retention precedes promotion",
+                                                          "X6 overlaps X7 because both constrain proof claims"
+                                                      ],
+                           "priority_order":  [
+                                                  "X1",
+                                                  "X2",
+                                                  "X3",
+                                                  "X4",
+                                                  "X5",
+                                                  "X6",
+                                                  "X8",
+                                                  "X7",
+                                                  "X9",
+                                                  "X10"
+                                              ],
+                           "can_skip_for_now":  [
+                                                    "X9",
+                                                    "X10"
+                                                ]
+                       },
+    "parent_return_plan":  {
+                               "how_to_rebuild_x":  "Define safe-growth intent, identify current knowledge and gaps, use read-only learning to rank one bounded candidate, attach a validation gate, and return it as CODEX_DRAFT for parent verification.",
+                               "next_small_action":  "Compare the active route constraints against candidate diagnostic actions and choose the smallest read-only or quick-smoke step that advances accepted atom retention-to-reuse wiring without touching protected runtime state.",
+                               "proof_needed":  [
+                                                    "fresh local policy/route consistency check",
+                                                    "candidate-specific validator or owner-run proof path",
+                                                    "confirmation that no protected files or runtime state are modified"
+                                                ]
+                           },
+    "promotion_decision":  {
+                               "default_classification":  "CASE_PATTERN_CANDIDATE",
+                               "raw_retention_decision":  "DELETE_RAW_CANDIDATE",
+                               "active_memory_candidate":  false,
+                               "atom_candidate":  false,
+                               "reflex_candidate":  false,
+                               "organ_candidate":  false,
+                               "owner_decision_required":  "only if promotion beyond case pattern is requested",
+                               "reason":  "Batch source answer is material only; default is compact case pattern with part map and parent return plan."
+                           },
+    "proof_refs":  {
+                       "batch_knowledge_acquisition_proof":  "operations\\knowledge_acquisition_port\\runs\\aimo_batch_knowledge_gap_20260705_01_cycle1_batch_knowledge_gap\\BATCH_KNOWLEDGE_ACQUISITION_PROOF.json",
+                       "raw_answer_sha256":  "148C2AF1FACB36DF01FF1E2535AB52508AC2CFE1AEC186D69661C42923C96C9A",
+                       "raw_answer_retained":  false
+                   }
+}

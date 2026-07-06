@@ -1,0 +1,33 @@
+{
+  "schema_version": "internal_reference_card.v1",
+  "reference_id": "ref.repo.git_identity_dirty_remote.v1",
+  "domain": "repo_git_reference",
+  "question_it_answers": "How should Builder verify repo identity, branch, HEAD, origin and dirty state?",
+  "answer": "Before repo-impacting work, print location, branch, local HEAD, origin HEAD and git status; never claim clean/synced/committed without fresh Git proof.",
+  "use_when": [
+    "repo work",
+    "commit/push claim",
+    "dirty state",
+    "branch uncertainty"
+  ],
+  "next_action": "run_repo_identity_and_status_pack",
+  "source_atoms": [
+    "concept.repository.v1",
+    "concept.branch.v1",
+    "concept.commit.v1",
+    "concept.push.v1",
+    "concept.dirty_state.v1"
+  ],
+  "status": "INTERNAL_REFERENCE",
+  "trusted": false,
+  "accepted_atom": false,
+  "creates_atom_only_after_gap_solved": true,
+  "school_curriculum": false,
+  "protected_state_mutation": false,
+  "phase": "PHASE165S-E1B_INTERNAL_REFERENCE_LIBRARY_SEED",
+  "created_utc": "2026-06-12T00:00:00Z",
+  "ledger_basis": [
+    "AGENT_BUILDER_STRATEGY_LEDGER_V0_30_AFTER_D2_AND_REFERENCE_SEARCH_POLICY_AGREEMENT.md",
+    "Sections 191.3-191.18"
+  ]
+}

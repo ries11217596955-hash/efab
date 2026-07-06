@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "selector_id": "SELF_BUILD_OPERATION_CAPABILITY_SELECTOR_V1",
+  "created_by": "PHASE133_BUILD_SELF_BUILD_OPERATION_CAPABILITY_SELECTOR_V1",
+  "run_id": "PHASE133_SELF_BUILD_OPERATION_CAPABILITY_SELECTOR_001",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "scope": "SELECT_NEXT_SELF_BUILD_OPERATION_CAPABILITY",
+  "selection_policy": {
+    "prefer_real_operational_capability": true,
+    "avoid_smoke_for_smoke": true,
+    "avoid_external_agent_production": true,
+    "require_contract_governance": true,
+    "require_material_governance_before_external_material_use": true
+  },
+  "candidate_capabilities": [
+    {
+      "need_id": "NEED_MATERIAL_ACQUISITION_BOOTSTRAP",
+      "capability_id": "MATERIAL_ACQUISITION_BOOTSTRAP",
+      "priority": 1,
+      "reason": "Starts governed material intake/catalog path; enables reuse of libraries/templates/workflows later.",
+      "next_step": "PHASE134_BUILD_MATERIAL_ACQUISITION_BOOTSTRAP_V1"
+    },
+    {
+      "need_id": "NEED_OPERATION_TELEMETRY_SUMMARY",
+      "capability_id": "OPERATION_TELEMETRY_SUMMARY",
+      "priority": 2,
+      "reason": "Useful, but less foundational than material intake.",
+      "next_step": "PHASE134_BUILD_OPERATION_TELEMETRY_SUMMARY_V1"
+    },
+    {
+      "need_id": "NEED_EXTERNAL_AGENT_PRODUCTION_READINESS_REVIEW",
+      "capability_id": "EXTERNAL_AGENT_PRODUCTION_READINESS_REVIEW",
+      "priority": 3,
+      "reason": "Deferred until material bootstrap and governance are in place.",
+      "next_step": "PHASE134_REVIEW_EXTERNAL_AGENT_PRODUCTION_READINESS_V1"
+    }
+  ],
+  "selected_need_id": "NEED_MATERIAL_ACQUISITION_BOOTSTRAP",
+  "selected_capability_id": "MATERIAL_ACQUISITION_BOOTSTRAP",
+  "selected_next_step": "PHASE134_BUILD_MATERIAL_ACQUISITION_BOOTSTRAP_V1",
+  "reason": "Builder is past readiness gate and has a contract-governed operation trial. Next real self-build operation should bootstrap material acquisition so Builder can accept external materials through governance instead of writing everything from scratch.",
+  "autonomy_claimed": false,
+  "codex_used": false,
+  "main_touched": false
+}

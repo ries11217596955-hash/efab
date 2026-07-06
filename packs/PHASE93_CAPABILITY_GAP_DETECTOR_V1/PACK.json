@@ -1,0 +1,19 @@
+{
+  "pack_id": "PHASE93_CAPABILITY_GAP_DETECTOR_V1",
+  "task_id": "TASK_CAPABILITY_GAP_DETECTOR_V1_001",
+  "phase": "PHASE93",
+  "title": "Capability Gap Detector V1",
+  "mode": "SELF_BUILD",
+  "shell": "PowerShell",
+  "entry_script": "packs/PHASE93_CAPABILITY_GAP_DETECTOR_V1/APPLY.ps1",
+  "validate_script": "packs/PHASE93_CAPABILITY_GAP_DETECTOR_V1/VALIDATE.ps1",
+  "next_allowed_step": "PHASE94_OWNER_ORDER_TO_GAP_MAP_V1",
+  "purpose": "Create the first capability gap detector for the batch self-build engine.",
+  "prohibits": [
+    "external_agent_production",
+    "external_install",
+    "external_fetch",
+    "phase94_implementation",
+    "unbounded_autonomous_loop"
+  ]
+}

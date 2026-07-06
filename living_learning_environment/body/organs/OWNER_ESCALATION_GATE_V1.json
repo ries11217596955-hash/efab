@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "body_pack_id": "BUILDER_BODY_ORGAN_PACK_V1",
+  "organ_id": "OWNER_ESCALATION_GATE_V1",
+  "organ_type": "gate",
+  "purpose": "Decide when Owner approval is required for accepted state mutation, external fetch, install, money, credentials, destructive action, route change, or trust promotion.",
+  "allowed_inputs": [
+    "risk state",
+    "requested action"
+  ],
+  "allowed_outputs": [
+    "owner escalation decision fields"
+  ],
+  "forbidden_actions": [
+    "mutate accepted Builder state",
+    "execute arbitrary code",
+    "fetch internet",
+    "install dependencies",
+    "mutate capability_shelf",
+    "create generated or applied agents",
+    "mark sources trusted"
+  ],
+  "organ_status": "BODY_ORGAN_AVAILABLE_IN_LLE",
+  "accepted_capability": false,
+  "next_allowed_step": "PHASE152_BUILDER_EXECUTES_ADMITTED_SELF_BUILD_PROGRAM_IN_SANDBOX_V1"
+}

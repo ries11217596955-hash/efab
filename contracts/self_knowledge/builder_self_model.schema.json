@@ -1,0 +1,132 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Agent Builder Self Model",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "generated_at_utc",
+    "status_taxonomy",
+    "builder_identity",
+    "repo_markers",
+    "current_state",
+    "queue_state",
+    "roadmap_summary",
+    "capability_manifest",
+    "module_inventory",
+    "generated_programs",
+    "produced_agents",
+    "launch_surfaces",
+    "proof_index",
+    "report_index",
+    "missing_surfaces",
+    "failed_or_partial_items",
+    "next_strongest_move",
+    "cut_list",
+    "evidence_policy"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "AGENT_BUILDER_SELF_KNOWLEDGE_SYSTEM_FULL_CONTRACT_V1"
+    },
+    "generated_at_utc": {
+      "type": "string"
+    },
+    "collection_status": {
+      "enum": [
+        "prepared_not_run",
+        "collected"
+      ]
+    },
+    "status_taxonomy": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "proven",
+          "completed",
+          "active",
+          "candidate",
+          "planned",
+          "failed",
+          "unknown",
+          "missing_surface"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "builder_identity": {
+      "type": "object"
+    },
+    "repo_markers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "status"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "proven",
+              "missing_surface"
+            ]
+          }
+        }
+      }
+    },
+    "current_state": {
+      "type": "object"
+    },
+    "queue_state": {
+      "type": "object"
+    },
+    "roadmap_summary": {
+      "type": "object"
+    },
+    "capability_manifest": {
+      "type": "object"
+    },
+    "module_inventory": {
+      "type": "object"
+    },
+    "generated_programs": {
+      "type": "array"
+    },
+    "produced_agents": {
+      "type": "array"
+    },
+    "launch_surfaces": {
+      "type": "array"
+    },
+    "proof_index": {
+      "type": "array"
+    },
+    "report_index": {
+      "type": "array"
+    },
+    "missing_surfaces": {
+      "type": "array"
+    },
+    "failed_or_partial_items": {
+      "type": "array"
+    },
+    "next_strongest_move": {
+      "type": "object",
+      "required": [
+        "status",
+        "recommendation",
+        "basis"
+      ]
+    },
+    "cut_list": {
+      "type": "array"
+    },
+    "evidence_policy": {
+      "type": "object"
+    }
+  }
+}

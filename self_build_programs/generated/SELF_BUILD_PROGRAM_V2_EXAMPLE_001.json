@@ -1,0 +1,97 @@
+{
+  "program_id": "SELF_BUILD_PROGRAM_V2_EXAMPLE_001",
+  "version": "V2",
+  "status": "GENERATED_CANDIDATE",
+  "generated_at": "2026-05-29T15:17:27.3938516Z",
+  "source_order": {
+    "order_path": "owner_orders/examples/OWNER_ORDER_BATCH_SELF_BUILD_100_TASKS_EXAMPLE.json",
+    "gap_map_path": "self_build_backlog/OWNER_ORDER_GAP_MAP_EXAMPLE_V1.json"
+  },
+  "source_gap": "PHASE96_BATCH_PLANNER_V1",
+  "objective": "Define the Batch Planner V1 foundation.",
+  "expected_outputs": [
+    "Batch planner contract",
+    "Batch plan example",
+    "Batch planner report",
+    "Batch planner proof"
+  ],
+  "allowed_files_scope": [
+    "contracts/self_development/",
+    "self_build_backlog/",
+    "reports/self_development/",
+    "proofs/self_development/",
+    "packs/PHASE96_BATCH_PLANNER_V1/",
+    "tasks/TASK_BATCH_PLANNER_V1_001.json",
+    "TASK_QUEUE.json",
+    "packs/registry.json",
+    "CAPABILITY_ROADMAP.json",
+    "GENESIS_STATE.json"
+  ],
+  "blocked_files_scope": [
+    "generated_agents/",
+    "applied_agents/",
+    ".github/workflows/",
+    "materials/",
+    "operations/",
+    "packs/PHASE78*",
+    "packs/PHASE79*",
+    "packs/PHASE80*",
+    "packs/PHASE81*",
+    "packs/PHASE82*",
+    "packs/PHASE83*",
+    "packs/PHASE84*",
+    "packs/PHASE85*",
+    "packs/PHASE86*",
+    "packs/PHASE87*",
+    "packs/PHASE88*",
+    "packs/PHASE89*",
+    "packs/PHASE90*",
+    "packs/PHASE91*",
+    "packs/PHASE92*",
+    "packs/PHASE93*",
+    "packs/PHASE94*"
+  ],
+  "risk": {
+    "classification": "LOW",
+    "reason": "Planning contract only; no external agents, installs, fetches, or execution."
+  },
+  "admission_required": true,
+  "admission_requirements": [
+    "Validate against self_build_program_v2.schema.json.",
+    "Confirm source_gap is present in owner order gap map.",
+    "Confirm execution_allowed is false before admission.",
+    "Confirm no external agent production, installs, or external fetch are requested."
+  ],
+  "validation_requirements": [
+    "JSON parse for all generated artifacts.",
+    "Seed validator must pass before Builder runtime.",
+    "Completed validator must pass after Builder runtime.",
+    "No PHASE96 execution in PHASE95."
+  ],
+  "proof_requirements": [
+    "Report status PASS.",
+    "Proof status PASS.",
+    "Queue returned to NONE.",
+    "Example program remains GENERATED_CANDIDATE.",
+    "Example program execution_allowed remains false."
+  ],
+  "rollback_requirements": [
+    "Runtime-created files are bounded to PHASE95 output paths.",
+    "Do not modify protected PHASE78-PHASE94 packs.",
+    "Do not commit if validation fails."
+  ],
+  "checkpoint_requirements": [
+    "Owner can inspect candidate before admission.",
+    "PHASE96 is the next allowed step, not executed by PHASE95."
+  ],
+  "assistance_required": [
+    "Owner decision if Batch Planner scope expands beyond contract files.",
+    "Codex repair only if validator emits NEEDS_CODEX_REPAIR for a bounded defect."
+  ],
+  "owner_approval_required": false,
+  "execution_allowed": false,
+  "no_external_agent_production": true,
+  "no_external_install": true,
+  "no_external_fetch": true,
+  "next_allowed_step": "PHASE96_BATCH_PLANNER_V1"
+}

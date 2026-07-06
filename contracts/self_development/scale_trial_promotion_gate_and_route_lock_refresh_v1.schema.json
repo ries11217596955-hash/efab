@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_id": "scale_trial_promotion_gate_and_route_lock_refresh_v1",
+  "title": "Scale Trial Promotion Gate And Route Lock Refresh V1",
+  "type": "object",
+  "required": [
+    "status",
+    "phase",
+    "active_line",
+    "baseline_commit",
+    "scale_trial_promoted_as",
+    "full_autonomy_claimed",
+    "codex_dependency_risk_recorded",
+    "route_correction_created",
+    "route_lock_v3_created",
+    "builder_self_pack_author_required_next",
+    "codex_fallback_not_primary",
+    "no_external_agent_production",
+    "no_external_fetch",
+    "no_external_install",
+    "phase107_not_executed",
+    "next_allowed_step"
+  ],
+  "properties": {
+    "status": {
+      "const": "PASS"
+    },
+    "phase": {
+      "const": "PHASE106_SCALE_TRIAL_PROMOTION_GATE_AND_ROUTE_LOCK_REFRESH_V1"
+    },
+    "active_line": {
+      "const": "AGENT_BUILDER / SELF_BUILD"
+    },
+    "baseline_commit": {
+      "const": "e66cf8e"
+    },
+    "scale_trial_promoted_as": {
+      "const": "SIMULATION_PROVEN"
+    },
+    "full_autonomy_claimed": {
+      "const": false
+    },
+    "codex_dependency_risk_recorded": {
+      "const": true
+    },
+    "route_correction_created": {
+      "const": true
+    },
+    "route_lock_v3_created": {
+      "type": [
+        "boolean",
+        "string"
+      ]
+    },
+    "builder_self_pack_author_required_next": {
+      "const": true
+    },
+    "codex_fallback_not_primary": {
+      "const": true
+    },
+    "no_external_agent_production": {
+      "const": true
+    },
+    "no_external_fetch": {
+      "const": true
+    },
+    "no_external_install": {
+      "const": true
+    },
+    "phase107_not_executed": {
+      "const": true
+    },
+    "next_allowed_step": {
+      "const": "PHASE107_BUILDER_SELF_PACK_AUTHOR_V1"
+    }
+  },
+  "additionalProperties": true
+}

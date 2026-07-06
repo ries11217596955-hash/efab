@@ -1,0 +1,17 @@
+{
+  "pack_id": "PHASE107_BUILDER_SELF_PACK_AUTHOR_V1",
+  "task_id": "TASK_BUILDER_SELF_PACK_AUTHOR_V1_001",
+  "phase": "PHASE107",
+  "status": "READY",
+  "path": "packs/PHASE107_BUILDER_SELF_PACK_AUTHOR_V1",
+  "shell": "PowerShell",
+  "entry_script": "packs/PHASE107_BUILDER_SELF_PACK_AUTHOR_V1/APPLY.ps1",
+  "apply": "APPLY.ps1",
+  "validate": "VALIDATE.ps1",
+  "validate_script": "packs/PHASE107_BUILDER_SELF_PACK_AUTHOR_V1/VALIDATE.ps1",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "mode": "SELF_BUILD",
+  "capability_id": "builder_self_pack_author_v1",
+  "gate": "BUILDER_SELF_PACK_AUTHOR_V1",
+  "next_allowed_step": "PHASE108_BUILDER_GENERATED_PACK_ADMISSION_V1"
+}

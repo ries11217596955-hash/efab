@@ -1,0 +1,72 @@
+{
+  "planner_id": "BATCH_PLANNER_V1",
+  "status": "ACTIVE_PLANNER_CONTRACT",
+  "phase": "PHASE96_BATCH_PLANNER_V1",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "generated_at": "2026-05-29T15:35:29.6302004Z",
+  "input_sources": [
+    "self_build_programs/generated/SELF_BUILD_PROGRAM_V2_EXAMPLE_001.json",
+    "self_build_backlog/OWNER_ORDER_GAP_MAP_EXAMPLE_V1.json",
+    "self_build_backlog/CAPABILITY_GAP_INDEX_V1.json",
+    "self_build_backlog/SELF_BUILD_BACKLOG_CONTRACT_V1.json"
+  ],
+  "output_schema": "contracts/self_development/batch_plan_v1.schema.json",
+  "required_plan_fields": [
+    "plan_id",
+    "version",
+    "status",
+    "source_order",
+    "source_gap_map",
+    "source_programs",
+    "planner_policy",
+    "batches",
+    "batch_count",
+    "item_count",
+    "admission_required",
+    "execution_allowed",
+    "next_allowed_step"
+  ],
+  "required_batch_fields": [
+    "batch_id",
+    "title",
+    "status",
+    "risk",
+    "items",
+    "dependencies",
+    "allowed_files_scope",
+    "blocked_files_scope",
+    "admission_required",
+    "owner_approval_required",
+    "execution_allowed",
+    "stop_conditions",
+    "proof_requirements"
+  ],
+  "required_item_fields": [
+    "item_id",
+    "source_gap",
+    "title",
+    "status",
+    "risk",
+    "dependencies",
+    "assistance_required",
+    "expected_outputs",
+    "validation_required",
+    "proof_required",
+    "quarantine_on_failure"
+  ],
+  "planner_policy": {
+    "planner_does_not_execute_batches": true,
+    "planner_does_not_admit_batches": true,
+    "batch_admission_required": true,
+    "execution_allowed": false,
+    "group_only_safe_compatible_items": true,
+    "do_not_mix_destructive_with_safe": true,
+    "do_not_mix_external_fetch_with_local_only": true,
+    "preserve_dependency_order": true,
+    "item_level_status_required": true,
+    "proof_required_per_batch": true,
+    "no_external_agent_production": true,
+    "no_external_install": true,
+    "no_external_fetch": true
+  }
+}

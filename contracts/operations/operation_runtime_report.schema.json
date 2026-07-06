@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_id": "operation_runtime_report_v1",
+  "title": "Operation Runtime Report",
+  "type": "object",
+  "required": [
+    "report_id",
+    "phase",
+    "capability_id",
+    "status",
+    "generated_at",
+    "request_path",
+    "operation_id",
+    "operation_contract_path",
+    "operation_contract_status",
+    "smoke_proof_path",
+    "smoke_proof_status",
+    "runtime_mode",
+    "execution_performed",
+    "install_performed",
+    "external_fetch_performed",
+    "dry_run_plan_created",
+    "allowed_reads",
+    "allowed_writes",
+    "forbidden_actions",
+    "validation_gates",
+    "next_allowed_step"
+  ],
+  "properties": {
+    "report_id": {
+      "type": "string"
+    },
+    "phase": {
+      "const": "PHASE_86"
+    },
+    "capability_id": {
+      "const": "operation_runtime_skeleton_v1"
+    },
+    "status": {
+      "enum": [
+        "PASS",
+        "FAIL"
+      ]
+    },
+    "runtime_mode": {
+      "const": "DRY_RUN_PLAN_ONLY"
+    },
+    "execution_performed": {
+      "const": false
+    },
+    "install_performed": {
+      "const": false
+    },
+    "external_fetch_performed": {
+      "const": false
+    },
+    "dry_run_plan_created": {
+      "type": "boolean"
+    },
+    "allowed_reads": {
+      "type": "array"
+    },
+    "allowed_writes": {
+      "type": "array"
+    },
+    "forbidden_actions": {
+      "type": "array"
+    },
+    "validation_gates": {
+      "type": "array"
+    },
+    "next_allowed_step": {
+      "const": "PHASE87_SELF_DEVELOPMENT_DECISION_KERNEL_V1"
+    }
+  },
+  "additionalProperties": true
+}

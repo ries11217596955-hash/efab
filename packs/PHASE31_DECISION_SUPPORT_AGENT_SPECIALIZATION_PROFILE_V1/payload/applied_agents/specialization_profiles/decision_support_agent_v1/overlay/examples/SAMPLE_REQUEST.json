@@ -1,0 +1,26 @@
+{
+  "request_id": "decision_support_agent_v1_operational_sample_001",
+  "payload": {
+    "decision_goal": "Choose the strongest next operator route.",
+    "route_candidates": [
+      {
+        "id": "collect_missing_evidence",
+        "priority_score": 62,
+        "rationale": "Needed, but not the strongest immediate move."
+      },
+      {
+        "id": "execute_high_confidence_patch",
+        "priority_score": 91,
+        "rationale": "Highest immediate value and clear implementation path."
+      },
+      {
+        "id": "defer_to_backlog",
+        "priority_score": 35,
+        "rationale": "Weak option for the current decision."
+      }
+    ]
+  },
+  "metadata": {
+    "source": "decision_support_agent_v1_overlay_operational_proof"
+  }
+}

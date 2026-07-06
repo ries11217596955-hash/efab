@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Capability Gap Detector V1",
+  "type": "object",
+  "required": [
+    "detector_id",
+    "version",
+    "status",
+    "input_sources",
+    "gap_statuses",
+    "detection_rules",
+    "output_contract"
+  ],
+  "properties": {
+    "detector_id": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "input_sources": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "gap_statuses": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "PROVEN",
+          "PARTIAL",
+          "MISSING",
+          "BLOCKED",
+          "NEEDS_OWNER_DECISION",
+          "NEEDS_CODEX_REPAIR",
+          "NEEDS_MATERIAL",
+          "PLANNED"
+        ]
+      }
+    },
+    "detection_rules": {
+      "type": "object"
+    },
+    "output_contract": {
+      "type": "object"
+    }
+  }
+}

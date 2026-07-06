@@ -1,0 +1,86 @@
+{
+  "schema_version": "self_build_cause_lineage_contract_v1",
+  "phase": "PHASE165D_BUILD_SELF_BUILD_CAUSE_LINEAGE_CONTRACT",
+  "purpose": "Make lineage mandatory from owner material through decision, program, admission, execution, and absorption.",
+  "required_chain": [
+    "owner_material",
+    "decision",
+    "program",
+    "admission",
+    "execution",
+    "absorption"
+  ],
+  "required_path": "PHASE87->PHASE88->PHASE89->PHASE90",
+  "not_atom_required": true,
+  "lineage_required": true,
+  "required_stage_fields": {
+    "owner_material": [
+      "selected_material_id",
+      "selector",
+      "selected_source_file",
+      "selected_path",
+      "not_atom",
+      "required_path"
+    ],
+    "decision": [
+      "phase",
+      "decision_id",
+      "decision_status",
+      "source_material_id",
+      "program_generation_allowed",
+      "evidence_refs"
+    ],
+    "program": [
+      "phase",
+      "program_id",
+      "program_identity_schema",
+      "source_material_id",
+      "program_path",
+      "lineage_id"
+    ],
+    "admission": [
+      "phase",
+      "admission_id",
+      "program_id",
+      "admission_status",
+      "no_execution_guarantee",
+      "lineage_preserved"
+    ],
+    "execution": [
+      "phase",
+      "execution_id",
+      "program_id",
+      "execution_status",
+      "execution_performed",
+      "controlled_runtime",
+      "lineage_preserved"
+    ],
+    "absorption": [
+      "phase",
+      "absorption_id",
+      "program_id",
+      "absorption_decision",
+      "allowed_decisions",
+      "memory_update_required"
+    ]
+  },
+  "allowed_absorption_decisions": [
+    "KEEP",
+    "ROLLBACK",
+    "QUARANTINE",
+    "PROMOTE",
+    "UPDATE_MEMORY",
+    "OWNER_REVIEW_REQUIRED"
+  ],
+  "pending_stage_status": "PENDING_LATER_ROUTE_STEP",
+  "boundaries": {
+    "does_not_patch_phase87": true,
+    "does_not_patch_phase88": true,
+    "does_not_patch_phase89": true,
+    "does_not_patch_phase90": true,
+    "does_not_execute_program": true,
+    "does_not_mutate_protected_state": true,
+    "absorption_gate_not_implemented_here": true
+  },
+  "next_route_dependency": "PHASE165E_PATCH_DECISION_KERNEL_FOR_DYNAMIC_GAP_SELECTION"
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Remediation Seed Self-Build Program Blueprint",
+  "type": "object",
+  "required": [
+    "blueprint_id",
+    "status",
+    "source_seed",
+    "target",
+    "program_kind",
+    "generated_capabilities",
+    "generated_tasks",
+    "generated_packs",
+    "materialization_contract"
+  ]
+}

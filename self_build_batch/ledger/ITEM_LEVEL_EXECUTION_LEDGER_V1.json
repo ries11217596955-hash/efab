@@ -1,0 +1,43 @@
+{
+  "ledger_id": "ITEM_LEVEL_EXECUTION_LEDGER_V1",
+  "version": "V1",
+  "status": "ACTIVE_LEDGER_CONTRACT",
+  "phase": "PHASE98_ITEM_LEVEL_EXECUTION_LEDGER_V1",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "generated_at": "2026-05-29T16:44:01.1713855Z",
+  "input_sources": [
+    "self_build_batch/plans/BATCH_PLAN_EXAMPLE_V1.json",
+    "self_build_batch/admission/BATCH_PLAN_EXAMPLE_V1_ADMISSION.json",
+    "self_build_backlog/SELF_BUILD_BACKLOG_CONTRACT_V1.json"
+  ],
+  "output_schema": "contracts/self_development/item_level_execution_ledger_v1.schema.json",
+  "item_status_values": [
+    "PLANNED",
+    "RUNNING",
+    "PASS",
+    "FAILED",
+    "QUARANTINED",
+    "BLOCKED",
+    "NEEDS_OWNER_DECISION",
+    "NEEDS_CODEX_REPAIR",
+    "NEEDS_MATERIAL",
+    "SKIPPED_BY_POLICY"
+  ],
+  "ledger_policy": {
+    "ledger_records_item_attempts": true,
+    "ledger_does_not_execute_items": true,
+    "no_item_pass_without_proof": true,
+    "failed_item_must_have_reason": true,
+    "quarantined_item_must_have_reason": true,
+    "blocked_item_must_have_reason": true,
+    "assistance_required_must_be_explicit": true,
+    "batch_report_must_not_hide_failed_items": true,
+    "no_external_agent_production": true,
+    "no_external_install": true,
+    "no_external_fetch": true
+  },
+  "entries": [],
+  "item_count": 0,
+  "execution_attempted": false,
+  "next_allowed_step": "PHASE99_CONTINUE_ON_FAILURE_RUNTIME_V1"
+}

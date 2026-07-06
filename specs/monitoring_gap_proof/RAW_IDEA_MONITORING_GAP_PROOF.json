@@ -1,0 +1,23 @@
+{
+  "request_id": "phase39_monitoring_gap_proof_001",
+  "payload": {
+    "problem": "Monitoring alert agent",
+    "target_user": "Product Lead / System Operator",
+    "operator_goal": "Build a specialized agent that converts system signals into an alert triage queue.",
+    "expected_outputs": [
+      "alert severity queue",
+      "escalation cue",
+      "signal status snapshot"
+    ],
+    "constraints": [
+      "domain-neutral",
+      "registry-backed specialization only"
+    ],
+    "non_goals": [
+      "do not add monitoring_agent_v1 before this gap packet proof closes"
+    ]
+  },
+  "metadata": {
+    "source": "phase39_monitoring_gap_proof"
+  }
+}

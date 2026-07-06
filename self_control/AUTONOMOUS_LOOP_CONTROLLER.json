@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "controller_id": "AUTONOMOUS_LOOP_CONTROLLER_V1",
+  "created_by": "PHASE120_BUILD_AUTONOMOUS_LOOP_CONTROLLER_V1",
+  "run_id": "PHASE120_AUTONOMOUS_LOOP_CONTROLLER_SELF_TEST_001",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "mode": "BOUNDED_SELF_BUILD_LOOP",
+  "max_runtime_calls_per_trial": 2,
+  "max_internal_steps_per_runtime_call": 1,
+  "max_generated_actions_per_trial": 1,
+  "require_queue_none_at_start": true,
+  "require_clean_worktree_at_start": true,
+  "require_proof_before_next_phase": true,
+  "allowed_line": "AGENT_BUILDER / SELF_BUILD",
+  "forbidden": [
+    "touch main",
+    "use Codex",
+    "install dependencies",
+    "fetch internet materials",
+    "execute external agent production",
+    "claim full autonomy",
+    "ignore dirty worktree",
+    "continue after FAIL"
+  ],
+  "stop_conditions": [
+    "runtime exit nonzero",
+    "queue unsafe",
+    "unexpected changed file",
+    "missing proof",
+    "validator fail",
+    "same stale need repeats after proof says closed",
+    "max runtime calls reached"
+  ],
+  "next_trial": "PHASE121_RUN_BOUNDED_AUTONOMOUS_LOOP_TRIAL_V1",
+  "autonomy_claimed": false,
+  "codex_used": false,
+  "main_touched": false
+}

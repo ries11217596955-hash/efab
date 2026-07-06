@@ -1,0 +1,26 @@
+{
+  "patch_kind": "TASK_QUEUE_SEED",
+  "status": "READY_FOR_ADMISSION",
+  "family_id": "remediation_intake_agent_v1",
+  "active_task_id": "TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1_001",
+  "generated_tasks": [
+    {
+      "order": 1,
+      "task_id": "TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1_001",
+      "capability_id": "generated_remediation_intake_agent_v1_profile_materialization_v1",
+      "expected_gate": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1_READY"
+    },
+    {
+      "order": 2,
+      "task_id": "TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1_001",
+      "capability_id": "generated_remediation_intake_agent_v1_closure_proof_v1",
+      "expected_gate": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1"
+    },
+    {
+      "order": 3,
+      "task_id": "TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_001",
+      "capability_id": "generated_remediation_intake_agent_v1_seed_consumption_proof_v1",
+      "expected_gate": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1"
+    }
+  ]
+}

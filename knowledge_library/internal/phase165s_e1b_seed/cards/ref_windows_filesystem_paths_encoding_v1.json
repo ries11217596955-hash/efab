@@ -1,0 +1,30 @@
+{
+  "schema_version": "internal_reference_card.v1",
+  "reference_id": "ref.windows.filesystem_paths_encoding.v1",
+  "domain": "Windows_filesystem_reference",
+  "question_it_answers": "What Windows filesystem details matter for Builder?",
+  "answer": "Use quoted paths, prefer Join-Path for generated paths, expect spaces/non-ASCII characters, and verify encoding when reading/writing UTF-8 JSON or Markdown.",
+  "use_when": [
+    "Windows path",
+    "non ASCII path",
+    "encoding",
+    "PowerShell file IO"
+  ],
+  "next_action": "use_join_path_and_utf8_write_readback",
+  "source_atoms": [
+    "concept.path.v1",
+    "concept.file.v1"
+  ],
+  "status": "INTERNAL_REFERENCE",
+  "trusted": false,
+  "accepted_atom": false,
+  "creates_atom_only_after_gap_solved": true,
+  "school_curriculum": false,
+  "protected_state_mutation": false,
+  "phase": "PHASE165S-E1B_INTERNAL_REFERENCE_LIBRARY_SEED",
+  "created_utc": "2026-06-12T00:00:00Z",
+  "ledger_basis": [
+    "AGENT_BUILDER_STRATEGY_LEDGER_V0_30_AFTER_D2_AND_REFERENCE_SEARCH_POLICY_AGREEMENT.md",
+    "Sections 191.3-191.18"
+  ]
+}

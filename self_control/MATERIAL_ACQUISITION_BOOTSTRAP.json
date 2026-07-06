@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "bootstrap_id": "MATERIAL_ACQUISITION_BOOTSTRAP_V1",
+  "created_by": "PHASE134_BUILD_MATERIAL_ACQUISITION_BOOTSTRAP_V1",
+  "run_id": "PHASE134_MATERIAL_ACQUISITION_BOOTSTRAP_RECOVERY_001",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "purpose": "Create the governed intake lane for external materials before catalog, quarantine, policy, wrapper, or trusted use.",
+  "default_trust": false,
+  "external_fetch_performed": false,
+  "dependency_install_performed": false,
+  "allowed_material_types": [
+    "CLI_TOOL",
+    "LIBRARY",
+    "TEMPLATE",
+    "WORKFLOW",
+    "DOCKER_IMAGE",
+    "POLICY",
+    "SCHEMA",
+    "EXAMPLE",
+    "REFERENCE_ARCHITECTURE"
+  ],
+  "allowed_initial_statuses": [
+    "DISCOVERED",
+    "CANDIDATE",
+    "REFERENCE_ONLY",
+    "OWNER_APPROVAL_REQUIRED"
+  ],
+  "forbidden_initial_statuses": [
+    "TRUSTED",
+    "TESTED",
+    "WRAPPED"
+  ],
+  "required_fields_for_candidate": [
+    "material_id",
+    "name",
+    "material_type",
+    "source",
+    "provenance",
+    "license_or_terms",
+    "risk_notes",
+    "intended_use",
+    "initial_status",
+    "owner_decision_required"
+  ],
+  "next_manual_scout_pass": "PHASE135_RUN_MANUAL_MATERIAL_SCOUT_PASS_001_V1",
+  "autonomy_claimed": false,
+  "codex_used": false,
+  "main_touched": false
+}

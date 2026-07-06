@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "contracts/self_development/live_self_growth_macro_cycle.schema.json",
+  "title": "PHASE160B Live Self-Growth Macro Cycle",
+  "type": "object",
+  "required": [
+    "duty_id",
+    "cycle_id",
+    "cycle_stage",
+    "selected_gap",
+    "input_artifact",
+    "output_artifact",
+    "previous_duty_id",
+    "novelty_reason",
+    "progress_claim",
+    "validation_status",
+    "decision",
+    "next_gap",
+    "created_at"
+  ],
+  "properties": {
+    "duty_id": {
+      "type": "string",
+      "pattern": "^duty_[0-9]{4}$"
+    },
+    "cycle_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "cycle_stage": {
+      "type": "string",
+      "enum": [
+        "SELF_OBSERVE_MAP_REFRESH",
+        "CAPABILITY_INVENTORY_DIFF",
+        "GAP_RANK_AND_SELECT",
+        "SELF_CHANGE_CANDIDATE_GENERATE",
+        "SANDBOX_DRY_RUN",
+        "VALIDATE_AND_DECIDE",
+        "EXPERIENCE_ABSORB_AND_NEXT_GOAL"
+      ]
+    },
+    "selected_gap": {
+      "type": "string",
+      "minLength": 1
+    },
+    "input_artifact": {
+      "type": "string"
+    },
+    "output_artifact": {
+      "type": "string",
+      "minLength": 1
+    },
+    "previous_duty_id": {
+      "type": "string"
+    },
+    "novelty_reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "progress_claim": {
+      "type": "string",
+      "minLength": 1
+    },
+    "validation_status": {
+      "type": "string",
+      "enum": ["PASS", "BLOCKED", "FAIL"]
+    },
+    "decision": {
+      "type": "string",
+      "enum": [
+        "KEEP_SESSION_LOCAL",
+        "KEEP_PARTIAL",
+        "QUARANTINE_RESULT",
+        "ROLLBACK_REQUIRED",
+        "OWNER_DECISION_REQUIRED"
+      ]
+    },
+    "next_gap": {
+      "type": "string",
+      "minLength": 1
+    },
+    "created_at": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": true
+}

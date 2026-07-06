@@ -1,0 +1,59 @@
+{
+  "agent_id": "remediation_intake_agent_v1",
+  "display_name": "Remediation Intake Agent v1",
+  "mission": "Convert remediation gaps and failed generated self-build evidence into structured intake requests for follow-up builder execution.",
+  "agent_kind": "remediation_intake_agent",
+  "package_profile": "operational_specialized",
+  "runtime": {
+    "entrypoint": "agent.ps1",
+    "language": "powershell",
+    "mode": "generated_external_agent_profile"
+  },
+  "inputs": [
+    {
+      "name": "remediation_program_seed",
+      "path": "remediation_programs/REMEDIATION_INTAKE_AGENT_REMEDIATION_PROGRAM_SEED_V1.json",
+      "required": true
+    },
+    {
+      "name": "generated_program_manifest",
+      "path": "self_build_programs/generated/remediation_intake_agent_v1/SELF_BUILD_PROGRAM_MANIFEST.json",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "remediation_intake_result",
+      "path": "REMEDIATION_INTAKE_RESULT.json",
+      "required": true
+    }
+  ],
+  "capabilities": [
+    {
+      "capability_id": "remediation_intake_mode_v1",
+      "purpose": "Normalize a failed generated self-build consumption gap into a structured remediation intake artifact."
+    }
+  ],
+  "validation": {
+    "expected_status": "PASS",
+    "expected_operation": "remediation_intake_mode_v1",
+    "expected_next_alert_id": "remediation_intake_agent_intake_request",
+    "expected_escalation_status": "INTAKE_READY"
+  },
+  "forbidden_scope": [
+    "Do not modify live admission.",
+    "Do not execute generated remediation packs.",
+    "Do not create PHASE64.",
+    "Do not modify monitoring_agent_v1 artifacts."
+  ],
+  "spec_metadata": {
+    "spec_id": "REMEDIATION_INTAKE_AGENT_PROFILE_PROOF_SPEC",
+    "spec_version": "1.1",
+    "family_id": "remediation_intake_agent_v1",
+    "target_profile_id": "remediation_intake_agent_v1",
+    "generated_program_root": "self_build_programs/generated/remediation_intake_agent_v1",
+    "expected_task_id": "TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1_001",
+    "expected_capability_id": "generated_remediation_intake_agent_v1_profile_materialization_v1",
+    "status": "READY_FOR_GENERATED_PROFILE_MATERIALIZATION"
+  }
+}

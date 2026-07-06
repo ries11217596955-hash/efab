@@ -1,0 +1,48 @@
+{
+  "capability_id": "life_loop_runner",
+  "status": "PARTIAL",
+  "purpose": "Operate the existing life loop tooling only under explicit policy and never as an unrestricted production route.",
+  "owner_line": "SELF_BUILD",
+  "existing_files": [
+    "tools/start_builder_life_loop.ps1",
+    "tools/watch_builder_life_loop.ps1",
+    "tools/stop_builder_life_loop.ps1"
+  ],
+  "read_paths": [
+    "self_control",
+    "packs/registry.json"
+  ],
+  "write_paths": [
+    "living_learning_environment/sandbox/life_loop_sessions/<session_id>"
+  ],
+  "forbidden_paths": [
+    "proofs/self_development/PHASE142-PHASE147",
+    "reports/self_development/PHASE142-PHASE147",
+    "self_control/accepted_phase_results",
+    "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/current",
+    "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/existing_trials",
+    "generated_agents",
+    "agent_catalog",
+    "applied_agents",
+    "route_locks",
+    "orchestrator/run.ps1"
+  ],
+  "safe_to_reuse": true,
+  "runtime_mutates_repo": true,
+  "requires_owner_prompt": false,
+  "requires_codex": false,
+  "can_be_used_by_builder": true,
+  "example_usage_path": "capability_shelf/usage_examples/life_loop_runner.json",
+  "validator_reference": "capability_shelf/validators/life_loop_runner.json",
+  "known_risks": [
+    "Legacy tooling may touch current runtime state; PHASE148 only registers it behind sandbox and promotion policy.",
+    "Requires validation before live current-state use."
+  ],
+  "promotion_requirements": [
+    "validator PASS",
+    "proof artifact",
+    "no forbidden scope changes",
+    "promotion gate record",
+    "explicit next_allowed_step"
+  ]
+}

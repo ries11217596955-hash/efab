@@ -1,0 +1,143 @@
+{
+    "schema":  "BATCH_SOURCE_DIGEST_AND_PROMOTION_DECISION_V1",
+    "status":  "COMPACT_BATCH_DIGEST_CREATED",
+    "run_id":  "sandbox_study_life_10min_observation_20260705_01_cycle3_attempt1_study_batch",
+    "source":  "CODEX_BATCH_READONLY_SOURCE",
+    "source_answer_status":  "CODEX_DRAFT",
+    "parent_task":  "minimal_reusable_builder_learning_rule",
+    "knowledge_need":  "Study topic as Engineer-Philosopher. Attempt 1 of up to 3. Give compact Builder-relevant understanding, validation needs, and return plan.",
+    "part_count":  5,
+    "part_digests":  [
+                         {
+                             "id":  "X1",
+                             "name":  "core meaning",
+                             "meaning":  "A minimal reusable builder learning rule is the smallest validated pattern that can be reused across future build decisions without becoming broad doctrine.",
+                             "role_in_parent_task":  "It defines X as compression from experience into a bounded rule: condition, action, expected effect, and proof need.",
+                             "compact_missing_knowledge":  [
+                                                               "Exact local format for storing or naming such a rule",
+                                                               "Threshold for reusable versus one-case note"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "Extract one candidate rule from an already validated case",
+                                                                 "Keep it conditional and narrow",
+                                                                 "Mark it draft until reuse is proven"
+                                                             ],
+                             "compact_validation_needed":  "Show the rule improves or preserves behavior on at least one separate case without breaking the original case",
+                             "return_to_parent_hint":  "X should rebuild as a small rule schema, not a large philosophy or new subsystem."
+                         },
+                         {
+                             "id":  "X2",
+                             "name":  "why I am not ideal",
+                             "meaning":  "The weakness exposed is tendency to confuse insight, memory, and authority: a plausible lesson can be over-promoted before behavior proves reuse.",
+                             "role_in_parent_task":  "It explains why X must be minimal, validated, and demotable instead of treated as accepted truth.",
+                             "compact_missing_knowledge":  [
+                                                               "Which current Builder memories already suffer from over-broad learning",
+                                                               "How demotion or expiration is represented locally"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "Separate observation, hypothesis, rule, and accepted atom",
+                                                                 "Require failure notes as well as success notes"
+                                                             ],
+                             "compact_validation_needed":  "Audit one candidate and confirm it does not claim more scope than its evidence supports",
+                             "return_to_parent_hint":  "X should include anti-overreach language: reusable only under named conditions."
+                         },
+                         {
+                             "id":  "X3",
+                             "name":  "builder relevance",
+                             "meaning":  "For self-build or child-agent build, the rule lets Builder retain useful construction behavior without copying whole episodes or inventing new architecture each time.",
+                             "role_in_parent_task":  "It turns learning into a transferable build primitive: compact enough for retrieval, concrete enough for decision reuse.",
+                             "compact_missing_knowledge":  [
+                                                               "Where canonical decision reuse currently reads from",
+                                                               "Which child-agent build decisions need reusable learning first"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "Prefer rules tied to repeated decision points",
+                                                                 "Avoid rules that directly alter runtime or route locks"
+                                                             ],
+                             "compact_validation_needed":  "Demonstrate retrieval of the rule changes a later decision in a traceable, bounded way",
+                             "return_to_parent_hint":  "X should target behavior delta through reuse, not just better documentation."
+                         },
+                         {
+                             "id":  "X4",
+                             "name":  "validation",
+                             "meaning":  "Understanding is validated when a draft rule can be applied to a new bounded case and produces a measurable decision or implementation improvement.",
+                             "role_in_parent_task":  "It prevents X from becoming self-belief; proof must attach to reuse, not just formulation.",
+                             "compact_missing_knowledge":  [
+                                                               "Local validator or harness suitable for rule-reuse proof",
+                                                               "Minimum acceptable evidence size for promotion"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "Use one old case and one nearby new case",
+                                                                 "Compare with and without the candidate rule",
+                                                                 "Record negative or neutral results"
+                                                             ],
+                             "compact_validation_needed":  [
+                                                               "A before-after decision trace showing correct use of the rule",
+                                                               "A regression check that original behavior remains valid"
+                                                           ],
+                             "return_to_parent_hint":  "X needs a validation clause before any retention or promotion decision."
+                         },
+                         {
+                             "id":  "X5",
+                             "name":  "promotion decision",
+                             "meaning":  "A candidate should remain a case pattern until it proves reuse; it becomes an atom candidate only after bounded behavior delta, and an open gap if evidence or scope is missing.",
+                             "role_in_parent_task":  "It gives X a safe lifecycle: case pattern, atom candidate, accepted only after proof.",
+                             "compact_missing_knowledge":  [
+                                                               "Exact promotion gate used by current accepted atom retention",
+                                                               "Whether failed candidates are quarantined, logged, or discarded"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "Classify each rule by evidence level",
+                                                                 "Promote only one step at a time",
+                                                                 "Keep rollback or demotion path explicit"
+                                                             ],
+                             "compact_validation_needed":  "Promotion record links rule, evidence, reuse case, and remaining limits",
+                             "return_to_parent_hint":  "X should return as a promotion-safe learning rule with no claim of acceptance."
+                         }
+                     ],
+    "cross_part_map":  {
+                           "dependencies":  [
+                                                "X2 depends on X1 because overreach is only visible after the rule boundary is defined",
+                                                "X3 depends on X1 because reuse must be defined before Builder relevance can be tested",
+                                                "X5 depends on X4 because promotion requires validation evidence"
+                                            ],
+                           "duplicates_or_overlaps":  [
+                                                          "X4 overlaps X5: both discuss proof, but X4 defines evidence and X5 defines lifecycle decision",
+                                                          "X1 overlaps X3: both describe reuse, but X1 is conceptual and X3 is operational"
+                                                      ],
+                           "priority_order":  [
+                                                  "X1",
+                                                  "X2",
+                                                  "X4",
+                                                  "X5",
+                                                  "X3"
+                                              ],
+                           "can_skip_for_now":  [
+
+                                                ]
+                       },
+    "parent_return_plan":  {
+                               "how_to_rebuild_x":  "Define X as a narrow learning lifecycle: extract one conditional case pattern, state its scope and failure boundary, test reuse on a separate case, then classify as case pattern, atom candidate, or open gap.",
+                               "next_small_action":  "Draft one candidate minimal rule from an already validated Builder case and label its condition, action, expected effect, and proof need.",
+                               "proof_needed":  [
+                                                    "At least one separate reuse case showing behavior delta",
+                                                    "Evidence that the rule did not broaden beyond its source case",
+                                                    "Promotion decision tied to validation output"
+                                                ]
+                           },
+    "promotion_decision":  {
+                               "default_classification":  "CASE_PATTERN_CANDIDATE",
+                               "raw_retention_decision":  "DELETE_RAW_CANDIDATE",
+                               "active_memory_candidate":  false,
+                               "atom_candidate":  false,
+                               "reflex_candidate":  false,
+                               "organ_candidate":  false,
+                               "owner_decision_required":  "only if promotion beyond case pattern is requested",
+                               "reason":  "Batch source answer is material only; default is compact case pattern with part map and parent return plan."
+                           },
+    "proof_refs":  {
+                       "batch_knowledge_acquisition_proof":  "operations\\knowledge_acquisition_port\\runs\\sandbox_study_life_10min_observation_20260705_01_cycle3_attempt1_study_batch\\BATCH_KNOWLEDGE_ACQUISITION_PROOF.json",
+                       "raw_answer_sha256":  "76D942790D1ADAB65ED46FDC0110FF0FBD9F739DCAE45A2145F8C2B9D45ABEDE",
+                       "raw_answer_retained":  false
+                   }
+}

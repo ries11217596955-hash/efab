@@ -1,0 +1,37 @@
+{
+  "operation_id": "watch_observation_session",
+  "purpose": "Read observation-only artifacts without mutating them.",
+  "allowed_inputs": [
+    "session_id",
+    "iterations"
+  ],
+  "allowed_outputs": [
+    "latest heartbeat",
+    "summary view"
+  ],
+  "read_scope": [
+    "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/observations/<session_id>"
+  ],
+  "write_scope": [],
+  "forbidden_scope": [
+    "proofs/self_development/PHASE142-PHASE147",
+    "reports/self_development/PHASE142-PHASE147",
+    "self_control/accepted_phase_results",
+    "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/current",
+    "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/existing_trials",
+    "generated_agents",
+    "agent_catalog",
+    "applied_agents",
+    "route_locks",
+    "orchestrator/run.ps1"
+  ],
+  "proof_required": false,
+  "owner_prompt_required": false,
+  "codex_required": false,
+  "safe_failure_behavior": "Report missing session and stop.",
+  "rollback_behavior": "No rollback; read-only.",
+  "validator_expectations": [
+    "no writes",
+    "current runtime not read"
+  ]
+}

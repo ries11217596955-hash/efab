@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Agent Builder Produced Agents Index",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "generated_at_utc",
+    "produced_agents",
+    "source_surfaces",
+    "counts",
+    "missing_surfaces"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "AGENT_BUILDER_PRODUCED_AGENTS_INDEX_V1"
+    },
+    "generated_at_utc": {
+      "type": "string"
+    },
+    "collection_status": {
+      "enum": [
+        "prepared_not_run",
+        "collected"
+      ]
+    },
+    "produced_agents": {
+      "type": "array"
+    },
+    "source_surfaces": {
+      "type": "array"
+    },
+    "counts": {
+      "type": "object"
+    },
+    "missing_surfaces": {
+      "type": "array"
+    }
+  }
+}

@@ -1,0 +1,88 @@
+﻿{
+    "schema_version":  "self_build_cause_lineage_v1",
+    "lineage_id":  "LINEAGE_SELF_BUILD_PROGRAM_OWNER_MATERIAL_INPUT_BOOTSTRAP_001_V1_001",
+    "created_utc":  "2026-06-10T10:17:08.3238084Z",
+    "contract_path":  "self_build_programs/contracts/SELF_BUILD_CAUSE_LINEAGE_CONTRACT_V1.json",
+    "required_chain":  [
+                           "owner_material",
+                           "decision",
+                           "program",
+                           "admission",
+                           "execution",
+                           "absorption"
+                       ],
+    "required_path":  "PHASE87-\u003ePHASE88-\u003ePHASE89-\u003ePHASE90",
+    "not_atom":  true,
+    "lineage_required":  true,
+    "owner_material":  {
+                           "status":  "SELECTED",
+                           "selected_material_id":  "OWNER_MATERIAL_INPUT_BOOTSTRAP_001",
+                           "selector":  "SELECT_OWNER_MATERIAL_INPUT_V1",
+                           "selected_source_file":  "OWNER_MATERIAL_INPUT_BOOTSTRAP_001.json",
+                           "selected_path":  "self_build_batch/owner_material_inputs/selected/SELECTED_OWNER_MATERIAL_INPUT.json",
+                           "not_atom":  true,
+                           "required_path":  "PHASE87-\u003ePHASE88-\u003ePHASE89-\u003ePHASE90"
+                       },
+    "decision":  {
+                     "phase":  "PHASE87",
+                     "status":  "PENDING_DYNAMIC_DECISION_PATCH",
+                     "decision_id":  null,
+                     "decision_status":  "PENDING",
+                     "source_material_id":  "OWNER_MATERIAL_INPUT_BOOTSTRAP_001",
+                     "program_generation_allowed":  null,
+                     "evidence_refs":  [
+
+                                       ]
+                 },
+    "program":  {
+                    "phase":  "PHASE88",
+                    "status":  "IDENTITY_ALLOCATED",
+                    "program_id":  "SELF_BUILD_PROGRAM_OWNER_MATERIAL_INPUT_BOOTSTRAP_001_V1_001",
+                    "program_identity_schema":  "self_build_program_identity_v1",
+                    "source_material_id":  "OWNER_MATERIAL_INPUT_BOOTSTRAP_001",
+                    "program_path":  null,
+                    "lineage_id":  "LINEAGE_SELF_BUILD_PROGRAM_OWNER_MATERIAL_INPUT_BOOTSTRAP_001_V1_001"
+                },
+    "admission":  {
+                      "phase":  "PHASE89",
+                      "status":  "PENDING_DYNAMIC_ADMISSION_PATCH",
+                      "admission_id":  null,
+                      "program_id":  "SELF_BUILD_PROGRAM_OWNER_MATERIAL_INPUT_BOOTSTRAP_001_V1_001",
+                      "admission_status":  "PENDING",
+                      "no_execution_guarantee":  true,
+                      "lineage_preserved":  null
+                  },
+    "execution":  {
+                      "phase":  "PHASE90",
+                      "status":  "PENDING_DYNAMIC_EXECUTION_PATCH",
+                      "execution_id":  null,
+                      "program_id":  "SELF_BUILD_PROGRAM_OWNER_MATERIAL_INPUT_BOOTSTRAP_001_V1_001",
+                      "execution_status":  "PENDING",
+                      "execution_performed":  false,
+                      "controlled_runtime":  true,
+                      "lineage_preserved":  null
+                  },
+    "absorption":  {
+                       "phase":  "PHASE165K",
+                       "status":  "PENDING_ABSORPTION_DECISION_GATE",
+                       "absorption_id":  null,
+                       "program_id":  "SELF_BUILD_PROGRAM_OWNER_MATERIAL_INPUT_BOOTSTRAP_001_V1_001",
+                       "absorption_decision":  "PENDING",
+                       "allowed_decisions":  [
+                                                 "KEEP",
+                                                 "ROLLBACK",
+                                                 "QUARANTINE",
+                                                 "PROMOTE",
+                                                 "UPDATE_MEMORY",
+                                                 "OWNER_REVIEW_REQUIRED"
+                                             ],
+                       "memory_update_required":  true
+                   },
+    "invariants":  {
+                       "material_to_identity_match":  true,
+                       "program_id_dynamic":  true,
+                       "required_path_preserved":  true,
+                       "not_atom_preserved":  true,
+                       "absorption_required":  true
+                   }
+}

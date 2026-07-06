@@ -1,0 +1,14 @@
+{
+  "pack_id": "PHASE79_MATERIAL_ACQUISITION_BOOTSTRAP_V1",
+  "task_id": "TASK_MATERIAL_ACQUISITION_BOOTSTRAP_V1_001",
+  "capability_id": "material_acquisition_bootstrap_v1",
+  "phase": "PHASE_79",
+  "active_line": "AGENT_BUILDER_SELF_DEVELOPMENT",
+  "mode": "SELF_BUILD",
+  "entry_script": "packs/PHASE79_MATERIAL_ACQUISITION_BOOTSTRAP_V1/APPLY.ps1",
+  "validate_script": "packs/PHASE79_MATERIAL_ACQUISITION_BOOTSTRAP_V1/VALIDATE.ps1",
+  "validator_script": "packs/PHASE79_MATERIAL_ACQUISITION_BOOTSTRAP_V1/VALIDATE.ps1",
+  "shell": "PowerShell",
+  "expected_gate": "MATERIAL_ACQUISITION_BOOTSTRAP_V1",
+  "purpose": "Create the formal material acquisition bootstrap contract, empty material catalog, governance folders, report path, and proof path without scouting or trusting materials."
+}

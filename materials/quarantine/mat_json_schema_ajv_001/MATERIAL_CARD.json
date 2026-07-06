@@ -1,0 +1,43 @@
+{
+  "material_id": "mat_json_schema_ajv_001",
+  "name": "Ajv",
+  "material_type": "LIBRARY",
+  "source_url": "https://ajv.js.org/",
+  "source_origin": "official_project_site",
+  "license_status": "MIT_REPORTED_BY_OFFICIAL_LICENSE_PAGE",
+  "security_status": "NOT_SCANNED",
+  "usage_mode": "USE_AS_TOOL",
+  "catalog_status": "CANDIDATE",
+  "policy_decision": "CANDIDATE_FOR_QUARANTINE",
+  "risk_level": "LOW",
+  "owner_approval_required": false,
+  "quarantine_status": "QUARANTINE_RECORD_CREATED",
+  "created_at": "2026-05-29T07:33:20.9324623Z",
+  "source_notes_path": "materials/quarantine/mat_json_schema_ajv_001/SOURCE_NOTES.md",
+  "admission_checklist_path": "materials/quarantine/mat_json_schema_ajv_001/ADMISSION_CHECKLIST.json",
+  "allowed_next_actions": [
+    "review_source",
+    "verify_license",
+    "define_smoke_test_plan",
+    "define_wrapper_candidate",
+    "owner_review_if_needed"
+  ],
+  "forbidden_actions": [
+    "install_tool",
+    "fetch_repo",
+    "run_tool",
+    "mark_trusted",
+    "use_in_external_agent",
+    "modify_global_environment"
+  ],
+  "required_before_trust": [
+    "license_verified",
+    "source_verified",
+    "security_reviewed",
+    "smoke_test_passed",
+    "wrapper_or_operation_contract_exists",
+    "proof_recorded",
+    "owner_approval_if_required"
+  ],
+  "rollback_notes": "Delete this quarantine material folder and batch entry if PHASE82 acceptance fails. No catalog or policy rollback is required because neither is mutated."
+}

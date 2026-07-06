@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "example_id": "PHASE152_REUSE_ADVISOR_OUTPUT_EXAMPLE",
+  "step_id": "PHASE152_BUILDER_EXECUTES_ADMITTED_SELF_BUILD_PROGRAM_IN_SANDBOX_V1",
+  "run_id": "PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001",
+  "recommend_reuse": true,
+  "selected_capability_id": "self_learning_memory",
+  "reason": "Existing self_learning_memory capability and PHASE149 learning card provide reusable internal context before building a new organ.",
+  "accepted_state_change_requested": false,
+  "forbidden_flags": {
+    "external_fetch_performed": false,
+    "dependency_install_performed": false,
+    "executable_materials_used": false,
+    "accepted_state_mutated": false,
+    "external_agents_created": false
+  },
+  "next_allowed_step": "PHASE153_BUILDER_VALIDATES_SANDBOX_SELF_BUILD_RESULT_AND_LEARNS_V1"
+}

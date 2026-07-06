@@ -1,0 +1,23 @@
+{
+  "contract_id": "OWNER_ORDER_TO_GAP_MAP_V1",
+  "status": "ACTIVE_CONTRACT",
+  "phase": "PHASE94_OWNER_ORDER_TO_GAP_MAP_V1",
+  "generated_at": "2026-05-29T14:24:12.1742412Z",
+  "schema_path": "contracts/self_development/owner_order_to_gap_map_v1.schema.json",
+  "source_contract_path": "owner_orders/OWNER_ORDER_CONTRACT_V1.json",
+  "purpose": "Map simple owner orders into understood requests, missing capabilities, foundations, blockers, assistance needs, next safe self-build steps, and future workflow input fields.",
+  "required_fields": [
+    "source_order_path",
+    "understood_request",
+    "mapped_gap_count",
+    "available_foundation",
+    "missing_capabilities",
+    "blocked_items",
+    "assistance_required",
+    "next_safe_self_build_step",
+    "no_external_agent_production",
+    "execution_performed"
+  ],
+  "future_workflow_input_contract_defined": true,
+  "execution_performed": false
+}

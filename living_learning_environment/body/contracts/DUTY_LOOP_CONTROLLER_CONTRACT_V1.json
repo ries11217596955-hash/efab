@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "contract_id": "DUTY_LOOP_CONTROLLER_CONTRACT_V1",
+  "controller_id": "DUTY_LOOP_CONTROLLER_V1",
+  "repeated_loop_allowed_now": false,
+  "duty_loop_ready_for_bounded_trial": false,
+  "readiness_requires": [
+    "PHASE153 validation",
+    "learning absorption acceptance",
+    "owner-visible proof"
+  ],
+  "next_allowed_step": "PHASE152_BUILDER_EXECUTES_ADMITTED_SELF_BUILD_PROGRAM_IN_SANDBOX_V1"
+}

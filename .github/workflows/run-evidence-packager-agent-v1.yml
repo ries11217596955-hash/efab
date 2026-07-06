@@ -1,0 +1,69 @@
+name: Run Evidence Packager Agent v1
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  run-evidence-packager-agent:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify agent files
+        shell: pwsh
+        run: |
+          $required = @(
+            "generated_agents/evidence_packager_agent_v1/AGENT_SPEC.json",
+            "generated_agents/evidence_packager_agent_v1/README.md",
+            "generated_agents/evidence_packager_agent_v1/RUNBOOK.md",
+            "generated_agents/evidence_packager_agent_v1/INPUT_EXAMPLE.json",
+            "generated_agents/evidence_packager_agent_v1/run.ps1"
+          )
+
+          foreach ($path in $required) {
+            if (-not (Test-Path -LiteralPath $path)) {
+              throw "Required agent file missing: $path"
+            }
+          }
+
+      - name: Run Evidence Packager Agent
+        shell: pwsh
+        run: |
+          ./generated_agents/evidence_packager_agent_v1/run.ps1 `
+            -InputPath generated_agents/evidence_packager_agent_v1/INPUT_EXAMPLE.json `
+            -OutputPath generated_agents/evidence_packager_agent_v1/GITHUB_ACTION_OUTPUT.json
+
+      - name: Validate output
+        shell: pwsh
+        run: |
+          $outputPath = "generated_agents/evidence_packager_agent_v1/GITHUB_ACTION_OUTPUT.json"
+          if (-not (Test-Path -LiteralPath $outputPath)) {
+            throw "GITHUB_ACTION_OUTPUT.json missing."
+          }
+
+          $output = Get-Content -LiteralPath $outputPath -Raw | ConvertFrom-Json
+          foreach ($field in @("evidence_manifest", "missing_evidence", "risk_flags", "next_operator_action", "validation_status")) {
+            if (-not $output.PSObject.Properties.Name.Contains($field)) {
+              throw "Output missing field: $field"
+            }
+          }
+
+          if ([string]$output.validation_status -ne "PASS") {
+            throw "validation_status must be PASS."
+          }
+
+          Write-Output "EVIDENCE_PACKAGER_GITHUB_ACTION_STATUS=PASS"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: evidence-packager-agent-v1-output
+          path: |
+            generated_agents/evidence_packager_agent_v1/GITHUB_ACTION_OUTPUT.json
+            generated_agents/evidence_packager_agent_v1/AGENT_SPEC.json
+            generated_agents/evidence_packager_agent_v1/README.md
+            generated_agents/evidence_packager_agent_v1/RUNBOOK.md

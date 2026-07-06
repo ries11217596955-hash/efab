@@ -1,0 +1,23 @@
+{
+  "task_id": "TASK_RECIPE_DRIVEN_GENERATED_PROGRAM_EXECUTABLE_MATERIALIZATION_V1_001",
+  "capability_id": "recipe_driven_generated_program_executable_materialization_v1",
+  "objective": "Refactor generated self-build executable materialization so APPLY.ps1 scripts are rendered from program-owned execution recipes while preserving the proven monitoring_agent_v1 behavior contour.",
+  "execution_kind": "SELF_BUILD_RECIPE_DRIVEN_GENERATED_PROGRAM_MATERIALIZATION",
+  "expected_gate": "RECIPE_DRIVEN_GENERATED_PROGRAM_EXECUTABLE_MATERIALIZATION_V1",
+  "target_program_manifest": "self_build_programs/generated/monitoring_agent_v1/SELF_BUILD_PROGRAM_MANIFEST.json",
+  "required_recipe_paths": [
+    "self_build_programs/generated/monitoring_agent_v1/execution_recipes/GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1_RECIPE.json",
+    "self_build_programs/generated/monitoring_agent_v1/execution_recipes/GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1_RECIPE.json",
+    "self_build_programs/generated/monitoring_agent_v1/execution_recipes/GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_RECIPE.json"
+  ],
+  "forbidden_scope": [
+    "do not modify recipe JSON files",
+    "do not modify generated PACK.json files",
+    "do not modify generated task contract files",
+    "do not modify generated patch files",
+    "do not modify admission behavior",
+    "do not reopen live admission state",
+    "do not execute generated monitoring packs during PHASE59",
+    "do not claim arbitrary generated-program universality"
+  ]
+}

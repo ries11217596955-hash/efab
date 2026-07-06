@@ -1,0 +1,86 @@
+{
+  "request_id": "raw_idea_remediation_intake_agent_gap_proof_001",
+  "payload": {
+    "raw_idea_id": "RAW_IDEA_REMEDIATION_INTAKE_AGENT_GAP_PROOF",
+    "raw_idea_version": "1.0",
+    "title": "Remediation intake agent gap proof",
+    "family_id": "remediation_intake_agent_v1",
+    "target_profile_id": "remediation_intake_agent_v1",
+    "target_agent_kind": "remediation_intake_agent",
+    "package_profile": "operational_specialized",
+    "requested_mode": "BUILD_FROM_RAW_IDEA_SPECIALIZED",
+    "purpose": "Prove that the remediation intake agent can close the generated self-build gap path using the admitted remediation specialization profile.",
+    "problem": "Generated remediation family live consumption exposed missing dependency and specialization behavior gaps. The closure proof must rebuild through the specialized raw-idea route and produce remediation intake operational output.",
+    "expected_specialization_profile_id": "remediation_intake_agent_v1",
+    "expected_operation": "remediation_intake_mode_v1",
+    "expected_next_alert_id": "remediation_intake_agent_intake_request",
+    "expected_escalation_status": "INTAKE_READY",
+    "required_profile_proof_path": "proofs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1.json",
+    "generated_program_root": "self_build_programs/generated/remediation_intake_agent_v1",
+    "expected_active_task": "TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1_001",
+    "expected_next_task": "TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_001",
+    "acceptance": {
+      "factory_report_status": "PASS",
+      "selected_profile_id": "remediation_intake_agent_v1",
+      "overlay_status": "PASS",
+      "specialized_operation": "remediation_intake_mode_v1",
+      "next_alert_id": "remediation_intake_agent_intake_request",
+      "escalation_status": "INTAKE_READY"
+    },
+    "status": "READY_FOR_SPECIALIZED_CLOSURE_PROOF",
+    "target_user": "Agent Builder operator / self-build system",
+    "operator_goal": "Prove that remediation_intake_agent_v1 can complete the specialized closure proof path and emit remediation intake operational output.",
+    "target_agent_id": "remediation_intake_agent_v1",
+    "required_inputs": [
+      "remediation_programs/REMEDIATION_INTAKE_AGENT_REMEDIATION_PROGRAM_SEED_V1.json",
+      "proofs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1.json",
+      "specs/remediation_intake_agent_gap_proof/RAW_IDEA_REMEDIATION_INTAKE_AGENT_GAP_PROOF.json"
+    ],
+    "expected_outputs": [
+      "specialized remediation intake operational result",
+      "closure proof for remediation_intake_agent_v1",
+      "next generated seed consumption proof task activation"
+    ],
+    "validation_expectations": [
+      "request_id exists",
+      "payload exists",
+      "payload problem exists",
+      "payload target_user exists",
+      "payload operator_goal exists",
+      "payload target_agent_id exists",
+      "payload target_agent_kind equals remediation_intake_agent",
+      "payload package_profile equals operational_specialized",
+      "required inputs are declared",
+      "expected outputs are declared",
+      "validation expectations are declared",
+      "forbidden scope is declared"
+    ],
+    "forbidden_scope": [
+      "do not modify live admission",
+      "do not create PHASE64",
+      "do not modify monitoring_agent_v1 artifacts",
+      "do not bypass generated remediation closure proof",
+      "do not execute seed consumption proof inside closure proof"
+    ],
+    "constraints": [
+      "Must use remediation_intake_agent_v1 specialization profile.",
+      "Must use operational_specialized package profile.",
+      "Must preserve generated remediation closure proof path.",
+      "Must not bypass generated self-build task queue.",
+      "Must produce output suitable for closure proof validation."
+    ],
+    "non_goals": [
+      "Do not modify live admission.",
+      "Do not create PHASE64.",
+      "Do not modify monitoring_agent_v1 artifacts.",
+      "Do not bypass closure proof.",
+      "Do not execute seed consumption proof inside closure proof.",
+      "Do not change orchestrator or core build modules."
+    ]
+  },
+  "metadata": {
+    "source": "generated_remediation_family_consumption_preflight_v1",
+    "family_id": "remediation_intake_agent_v1",
+    "repair_reason": "BUILD_FROM_RAW_IDEA_SPECIALIZED requires raw idea request envelope with request_id and payload."
+  }
+}

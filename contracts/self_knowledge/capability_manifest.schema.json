@@ -1,0 +1,93 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Agent Builder Capability Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "generated_at_utc",
+    "source_files",
+    "capabilities",
+    "counts",
+    "evidence_policy"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "AGENT_BUILDER_CAPABILITY_MANIFEST_V1"
+    },
+    "generated_at_utc": {
+      "type": "string"
+    },
+    "collection_status": {
+      "enum": [
+        "prepared_not_run",
+        "collected"
+      ]
+    },
+    "source_files": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "capabilities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "status",
+          "evidence_status",
+          "evidence_paths"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "phase": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "gate": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "enum": [
+              "proven",
+              "completed",
+              "active",
+              "candidate",
+              "planned",
+              "failed",
+              "unknown",
+              "missing_surface"
+            ]
+          },
+          "evidence_status": {
+            "enum": [
+              "proven",
+              "unknown"
+            ]
+          },
+          "evidence_paths": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "counts": {
+      "type": "object"
+    },
+    "evidence_policy": {
+      "type": "object"
+    }
+  }
+}

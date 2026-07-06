@@ -1,0 +1,28 @@
+{
+    "purpose":  "Give AIMO safe innate read-only abilities: inspect repo, read file summary, inspect active memory, query compact memory, compare task to memory.",
+    "allowed_reflexes":  [
+                             "READ_FILE_SUMMARY",
+                             "VALIDATE_JSON",
+                             "INSPECT_REPO_STATUS",
+                             "INSPECT_ACTIVE_MEMORY",
+                             "QUERY_ACTIVE_MEMORY",
+                             "COMPARE_TASK_TO_MEMORY",
+                             "DETECT_REPETITION",
+                             "PROPOSE_NEXT_TASK"
+                         ],
+    "entrypoint":  "operations/reflex_library/invoke_reflex.ps1",
+    "boundaries":  [
+                       "read-only",
+                       "no active memory mutation",
+                       "no git commit",
+                       "no web",
+                       "no Codex",
+                       "no school start",
+                       "no background process"
+                   ],
+    "organ_id":  "AGENT_REFLEX_LIBRARY",
+    "schema":  "AGENT_REFLEX_LIBRARY_REGISTRY_V1",
+    "status":  "ACTIVE_READONLY_FIRST_LAYER",
+    "output_contract":  "single compact JSON to stdout and optional proof path when requested",
+    "mutation_allowed":  false
+}

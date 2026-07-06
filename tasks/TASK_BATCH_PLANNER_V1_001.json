@@ -1,0 +1,29 @@
+{
+  "task_id": "TASK_BATCH_PLANNER_V1_001",
+  "phase": "PHASE96",
+  "pack_id": "PHASE96_BATCH_PLANNER_V1",
+  "status": "READY",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "mode": "SELF_BUILD",
+  "capability_id": "batch_planner_v1",
+  "gate": "BATCH_PLANNER_V1",
+  "path": "tasks/TASK_BATCH_PLANNER_V1_001.json",
+  "baseline_commit": "00a7ee1",
+  "route_lock": "AGENT_BUILDER_NEXT_15_STEPS_LOCK_V2_R2.md",
+  "source_program": "self_build_programs/generated/SELF_BUILD_PROGRAM_V2_EXAMPLE_001.json",
+  "source_gap_map": "self_build_backlog/OWNER_ORDER_GAP_MAP_EXAMPLE_V1.json",
+  "next_allowed_step": "PHASE97_BATCH_ADMISSION_POLICY_V1",
+  "purpose": "Define Batch Planner V1 for safe ordered batches without admitting or executing any batch.",
+  "cut_list": [
+    "No Builder runtime from Codex",
+    "No batch admission",
+    "No batch execution",
+    "No generated V2 program execution",
+    "No PHASE97 execution",
+    "No GitHub workflow creation",
+    "No external agent production",
+    "No installs",
+    "No external fetch",
+    "No PHASE78-PHASE95 pack edits"
+  ]
+}

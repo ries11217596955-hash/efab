@@ -1,0 +1,39 @@
+{
+  "agent_id": "workflow_execution_runtime_agent",
+  "display_name": "Workflow Execution Runtime Agent",
+  "mission": "Turn structured workflow steps into an ordered execution dispatch plan.",
+  "agent_kind": "workflow_execution_agent",
+  "package_profile": "operational_specialized",
+  "runtime": {
+    "shell": "PowerShell",
+    "entrypoint": "orchestrator/run.ps1"
+  },
+  "inputs": [
+    {
+      "name": "request",
+      "type": "json",
+      "required": true,
+      "description": "Structured workflow execution request."
+    }
+  ],
+  "outputs": [
+    {
+      "name": "result",
+      "type": "json",
+      "required": true,
+      "description": "Ordered workflow execution dispatch result."
+    }
+  ],
+  "capabilities": [
+    "sort workflow steps by execution sequence",
+    "identify next execution step",
+    "emit dispatch plan readiness"
+  ],
+  "validation": [
+    "specialized overlay is applied",
+    "runtime result operation is workflow_step_dispatch_plan"
+  ],
+  "forbidden_scope": [
+    "do not claim arbitrary autonomous workflow execution"
+  ]
+}

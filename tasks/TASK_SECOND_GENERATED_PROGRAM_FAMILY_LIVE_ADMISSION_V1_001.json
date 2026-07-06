@@ -1,0 +1,23 @@
+{
+  "task_id": "TASK_SECOND_GENERATED_PROGRAM_FAMILY_LIVE_ADMISSION_V1_001",
+  "capability_id": "second_generated_program_family_live_admission_v1",
+  "objective": "Admit remediation_intake_agent_v1 into live Builder execution using the generalized generated-program admission module without executing generated remediation packs.",
+  "execution_kind": "SELF_BUILD_SECOND_GENERATED_PROGRAM_FAMILY_LIVE_ADMISSION_V1",
+  "expected_gate": "SECOND_GENERATED_PROGRAM_FAMILY_LIVE_ADMISSION_V1",
+  "family_id": "remediation_intake_agent_v1",
+  "source_program_manifest": "self_build_programs/generated/remediation_intake_agent_v1/SELF_BUILD_PROGRAM_MANIFEST.json",
+  "required_admission_module": "modules/admit_generated_self_build_program_to_live_execution.ps1",
+  "required_readiness_module": "modules/test_generated_self_build_program_admission_readiness.ps1",
+  "runtime_report_path": "reports/second_generated_program_family_live_admission/REMEDIATION_INTAKE_AGENT_V1_LIVE_ADMISSION.json",
+  "runtime_proof_path": "proofs/SECOND_GENERATED_PROGRAM_FAMILY_LIVE_ADMISSION_V1.json",
+  "first_activatable_task_id": "TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1_001",
+  "first_activatable_capability_id": "generated_remediation_intake_agent_v1_profile_materialization_v1",
+  "forbidden_scope": [
+    "do not modify monitoring_agent_v1 generated program artifacts",
+    "do not modify remediation_intake_agent_v1 generated packs, tasks, recipes, or patch files during seed",
+    "do not modify renderer, executable materializer, family-contract materializer, orchestrator, or workflows",
+    "do not execute remediation_intake_agent_v1 generated self-build packs",
+    "do not create PHASE63 runtime proof or report before runtime",
+    "do not admit remediation_intake_agent_v1 before PHASE63 runtime"
+  ]
+}

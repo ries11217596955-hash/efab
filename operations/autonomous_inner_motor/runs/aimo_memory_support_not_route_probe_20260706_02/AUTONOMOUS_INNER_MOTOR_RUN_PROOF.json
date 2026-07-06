@@ -1,0 +1,371 @@
+﻿{
+    "schema":  "AUTONOMOUS_INNER_MOTOR_RUN_PROOF",
+    "organ_id":  "AUTONOMOUS_INNER_MOTOR_ORGAN",
+    "run_id":  "aimo_memory_support_not_route_probe_20260706_02",
+    "mode":  "ReadOnly",
+    "maturity_level":  "SANDBOX_TEST_LIFE_HARD_WALLS",
+    "created_at":  "2026-07-06T08:41:37.9473823+04:00",
+    "repo_state":  {
+                       "root":  "C:/Users/Azerbaijan/Downloads/e-factory-agent-builder",
+                       "branch":  "thin-control",
+                       "head":  "ca61e01a7f023a4025f1bf73092cf0f9197354d2",
+                       "status_before":  "M docs/operations/MULTI_SOURCE_COMPACT_MEMORY_INTAKE_V1.md\r\n M operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1\r\n M operations/compact_memory_intake/submit_compact_memory_packet_v1.ps1\r\n M operations/school/finalize_agent_school_run_v1.ps1",
+                       "status_after":  "M docs/operations/MULTI_SOURCE_COMPACT_MEMORY_INTAKE_V1.md\r\n M operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1\r\n M operations/compact_memory_intake/submit_compact_memory_packet_v1.ps1\r\n M operations/school/finalize_agent_school_run_v1.ps1"
+                   },
+    "memory_state":  {
+                         "before":  {
+                                        "root":  ".runtime/active_compact_semantic_memory_v1",
+                                        "run_id":  "file_atom_absorption_20260706_003507",
+                                        "runtime_ready":  false,
+                                        "cell_count":  680,
+                                        "cells_sha256":  "09F730A432FBB235DE70407BB8832052FB44E2FF7C758D6AEE34AC1A91D5EDDB",
+                                        "manifest_status":  "PASS_COMPACT_SEMANTIC_DIGESTION_ORGAN_V1"
+                                    },
+                         "after":  {
+                                       "root":  ".runtime/active_compact_semantic_memory_v1",
+                                       "run_id":  "file_atom_absorption_20260706_003507",
+                                       "runtime_ready":  false,
+                                       "cell_count":  680,
+                                       "cells_sha256":  "09F730A432FBB235DE70407BB8832052FB44E2FF7C758D6AEE34AC1A91D5EDDB",
+                                       "manifest_status":  "PASS_COMPACT_SEMANTIC_DIGESTION_ORGAN_V1"
+                                   },
+                         "unchanged":  true
+                     },
+    "school_state":  {
+                         "active_detected":  false,
+                         "matching_processes":  [
+                                                    null
+                                                ]
+                     },
+    "growth_signal":  {
+                          "available":  true,
+                          "path":  ".runtime/compact_memory_growth_signal_v1/ACTIVE_GROWTH_SIGNAL.json",
+                          "status":  "ACTIVE_GROWTH_SIGNAL",
+                          "source_kind":  "AgentLife",
+                          "source_id":  "manual_probe_memory_support_not_route_20260706_02",
+                          "declared_atom_count":  2,
+                          "maturity_delta":  0.2,
+                          "topics":  [
+                                         "selected_path_memory_support",
+                                         "no_route_override"
+                                     ],
+                          "focus_boosts":  [
+                                               "selected_path_memory_support",
+                                               "no_route_override"
+                                           ],
+                          "memory_support_policy":  "CHECK_FRESH_MEMORY_AGAINST_SELECTED_PATH_BEFORE_EXECUTION",
+                          "created_at":  "2026-07-06T08:41:36.8629009+04:00",
+                          "behavior_rule":  "Autonomous life must inspect this signal after path selection and before execution; validated knowledge supports the selected path when topics match, but must not override path selection."
+                      },
+    "policy_snapshot":  {
+                            "schema":  "AUTONOMOUS_INNER_MOTOR_POLICY",
+                            "organ_id":  "AUTONOMOUS_INNER_MOTOR_ORGAN",
+                            "status":  "CONSTRUCTION_STARTED_POLICY_LOCKED",
+                            "active_maturity_level":  "SANDBOX_TEST_LIFE_HARD_WALLS",
+                            "runner_contract":  "single_runner_only_no_runner_per_level",
+                            "allowed_modes":  [
+                                                  "Diagnostic",
+                                                  "ReadOnly",
+                                                  "SandboxExploration",
+                                                  "SandboxTestLife",
+                                                  "SandboxStudyLife"
+                                              ],
+                            "disabled_modes":  [
+                                                   "SandboxAction",
+                                                   "GovernedRepoAction",
+                                                   "Continuous",
+                                                   "LiveAuthority"
+                                               ],
+                            "max_cycles":  1,
+                            "max_duration_seconds":  120,
+                            "mutation_allowed":  false,
+                            "active_memory_mutation_allowed":  false,
+                            "git_mutation_allowed":  false,
+                            "codex_launch_allowed":  false,
+                            "web_research_allowed":  false,
+                            "background_process_allowed":  false,
+                            "school_priority":  {
+                                                    "enabled":  true,
+                                                    "active_school_detection_required":  true,
+                                                    "allowed_when_school_active":  [
+                                                                                       "WAIT_FOR_SCHOOL",
+                                                                                       "OBSERVE_SCHOOL_READONLY",
+                                                                                       "SUMMARIZE_AFTER_SCHOOL",
+                                                                                       "BLOCKED_BY_ACTIVE_SCHOOL"
+                                                                                   ],
+                                                    "forbidden_when_school_active":  [
+                                                                                         "START_SECOND_SCHOOL",
+                                                                                         "MUTATE_ACTIVE_MEMORY",
+                                                                                         "MUTATE_SCHOOL_STATE",
+                                                                                         "START_LIVE_DAEMON"
+                                                                                     ]
+                                                },
+                            "source_ladder":  [
+                                                  "active_law_settings",
+                                                  "current_repo_runtime_proof",
+                                                  "active_compact_memory",
+                                                  "internal_library",
+                                                  "archived_reference",
+                                                  "web_external_sources"
+                                              ],
+                            "ports":  {
+                                          "school_port":  {
+                                                              "enabled":  true,
+                                                              "authority":  "contract_only",
+                                                              "priority":  "higher_than_motor_self_cycle"
+                                                          },
+                                          "active_memory_port":  {
+                                                                     "enabled":  true,
+                                                                     "default":  "read_only",
+                                                                     "mutation":  "disabled_until_governed_promotion"
+                                                                 },
+                                          "internal_library_port":  {
+                                                                        "enabled":  false,
+                                                                        "planned":  true,
+                                                                        "priority":  "above_web"
+                                                                    },
+                                          "web_research_port":  {
+                                                                    "enabled":  false,
+                                                                    "planned":  true,
+                                                                    "boundary":  "external_facts_only_not_runtime_truth"
+                                                                },
+                                          "tool_action_port":  {
+                                                                   "enabled":  false,
+                                                                   "planned":  true,
+                                                                   "boundary":  "policy_and_validator_required"
+                                                               },
+                                          "validator_port":  {
+                                                                 "enabled":  true,
+                                                                 "required":  true
+                                                             },
+                                          "rollback_port":  {
+                                                                "enabled":  true,
+                                                                "required_before_risky_mutation":  true
+                                                            }
+                                      },
+                            "allowed_read_paths":  [
+                                                       "AGENTS.md",
+                                                       "operations/autonomy_diagnostics",
+                                                       "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
+                                                       ".runtime/active_compact_semantic_memory_v1/manifest.json",
+                                                       ".runtime/active_compact_semantic_memory_v1/cells.jsonl"
+                                                   ],
+                            "allowed_write_paths":  [
+                                                        "operations/autonomous_inner_motor",
+                                                        "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
+                                                    ],
+                            "forbidden_paths":  [
+                                                    ".runtime/active_compact_semantic_memory_v1",
+                                                    "runtime_sessions/live_growth",
+                                                    "runtime_sessions/live_growth_console",
+                                                    "runtime_sessions/live_growth_self_growth",
+                                                    ".runtime/school_runs",
+                                                    "route_locks",
+                                                    "orchestrator/run.ps1"
+                                                ],
+                            "required_proof_outputs":  [
+                                                           "repo_state",
+                                                           "memory_state",
+                                                           "school_state",
+                                                           "self_question_trace",
+                                                           "decision_trace",
+                                                           "heartbeat",
+                                                           "stop_reason",
+                                                           "policy_snapshot",
+                                                           "validator_result"
+                                                       ],
+                            "stop_conditions":  [
+                                                    "OWNER_STOP",
+                                                    "ACTIVE_SCHOOL_OWNS_STATE",
+                                                    "POLICY_DENIED",
+                                                    "VALIDATOR_REQUIRED",
+                                                    "PROTECTIVE_CHECKPOINT",
+                                                    "MAX_CYCLES_REACHED",
+                                                    "MAX_DURATION_REACHED"
+                                                ],
+                            "promotion_rule":  "Maturity can only be opened by policy update plus validator proof; never by creating a new runner.",
+                            "sandbox_exploration":  {
+                                                        "enabled":  true,
+                                                        "rule":  "maximum_behavior_freedom_inside_hard_walls_one_compact_proof_file",
+                                                        "allowed_write_root":  "operations/autonomous_inner_motor/sandbox_runs",
+                                                        "proof_file_name":  "SANDBOX_EXPLORATION_PROOF.json",
+                                                        "max_cycles":  16,
+                                                        "max_events":  120,
+                                                        "max_proof_bytes":  250000,
+                                                        "max_run_dirs_kept":  10,
+                                                        "no_extra_files":  true,
+                                                        "no_raw_dump":  true,
+                                                        "compact_event_rule":  "write compact event, decision, risk, self_oppression signal, and conclusion; do not dump raw thought noise"
+                                                    },
+                            "sandbox_test_life":  {
+                                                      "enabled":  true,
+                                                      "rule":  "no_cycle_limit_no_time_limit_inside_hard_walls_one_rolling_compact_proof_file",
+                                                      "allowed_write_root":  "operations/autonomous_inner_motor/test_life_runs",
+                                                      "proof_file_name":  "TEST_LIFE_PROOF.json",
+                                                      "stop_file_name":  "STOP_REQUESTED.txt",
+                                                      "no_cycle_limit":  true,
+                                                      "no_time_limit":  true,
+                                                      "step_sleep_seconds":  1,
+                                                      "rolling_recent_events_kept":  80,
+                                                      "no_extra_files":  true,
+                                                      "no_raw_dump":  true,
+                                                      "active_memory_mutation_allowed":  false,
+                                                      "school_start_allowed":  false,
+                                                      "codex_allowed":  false,
+                                                      "web_allowed":  false,
+                                                      "child_background_process_allowed":  false,
+                                                      "development_reflex_enabled":  true,
+                                                      "active_memory_consult_required":  true,
+                                                      "reflex_library_entrypoint":  "operations/reflex_library/invoke_reflex.ps1",
+                                                      "development_rule":  "each cycle chooses a read-only development task, consults active memory, uses reflexes, records relevance/gap; when memory lacks executable knowledge, it decomposes task X into a bounded parts bundle and may call the governed batch knowledge acquisition port for CODEX_DRAFT before returning to X",
+                                                      "knowledge_acquisition_port_allowed":  true,
+                                                      "knowledge_acquisition_port_entrypoint":  "operations/knowledge_acquisition_port/ask_codex_knowledge_source.ps1",
+                                                      "knowledge_acquisition_source":  "CODEX_READONLY_SOURCE",
+                                                      "max_knowledge_acquisition_calls_per_run":  1,
+                                                      "knowledge_acquisition_timeout_seconds":  120,
+                                                      "knowledge_gap_relevance_triggers":  [
+                                                                                               "LOW_RELEVANCE",
+                                                                                               "NO_USEFUL_MEMORY"
+                                                                                           ],
+                                                      "governed_extra_proof_roots":  [
+                                                                                         "operations/knowledge_acquisition_port/runs"
+                                                                                     ],
+                                                      "codex_direct_allowed":  false,
+                                                      "batch_knowledge_acquisition_port_allowed":  true,
+                                                      "batch_knowledge_acquisition_port_entrypoint":  "operations/knowledge_acquisition_port/ask_codex_batch_knowledge_source.ps1",
+                                                      "batch_knowledge_acquisition_source":  "CODEX_BATCH_READONLY_SOURCE",
+                                                      "max_batch_knowledge_acquisition_calls_per_run":  1,
+                                                      "max_decomposition_parts_per_batch":  10,
+                                                      "batch_knowledge_preferred_over_single":  true
+                                                  },
+                            "sandbox_study_life":  {
+                                                       "enabled":  true,
+                                                       "rule":  "intellectual development only: ask builder questions, read allowed knowledge, use bounded source attempts, classify digest, park unresolved/practical gaps, continue life",
+                                                       "allowed_write_root":  "operations/autonomous_inner_motor/study_life_runs",
+                                                       "proof_file_name":  "STUDY_LIFE_PROOF.json",
+                                                       "stop_file_name":  "STOP_REQUESTED.txt",
+                                                       "step_sleep_seconds":  1,
+                                                       "rolling_recent_events_kept":  10,
+                                                       "active_memory_mutation_allowed":  false,
+                                                       "practical_action_creation_allowed":  false,
+                                                       "code_write_allowed":  false,
+                                                       "source_attempts_max_per_episode":  3,
+                                                       "source_attempts_max_per_run":  3,
+                                                       "batch_knowledge_acquisition_port_allowed":  true,
+                                                       "batch_knowledge_acquisition_port_entrypoint":  "operations/knowledge_acquisition_port/ask_codex_batch_knowledge_source.ps1",
+                                                       "source_attempt_ladder":  [
+                                                                                     "broad_map",
+                                                                                     "targeted_clarification",
+                                                                                     "simple_child_explanation"
+                                                                                 ],
+                                                       "knowledge_categories":  [
+                                                                                    "INTELLECTUAL_LEARNING",
+                                                                                    "FUTURE_ACTION_CREATION_LANE"
+                                                                                ],
+                                                       "default_promotion":  "CASE_PATTERN_CANDIDATE",
+                                                       "atom_promotion_requires":  [
+                                                                                       "validated",
+                                                                                       "small",
+                                                                                       "reusable",
+                                                                                       "composable",
+                                                                                       "builder-relevant",
+                                                                                       "acceptance-testable"
+                                                                                   ],
+                                                       "open_gap_rule":  "unresolved X is parked as OPEN_LEARNING_GAP or FUTURE_ACTION_CREATION_LANE; agent continues with Y/Z instead of stopping",
+                                                       "learning_episode_acceptance_gate_allowed":  true,
+                                                       "learning_episode_acceptance_gate_validator":  "validators/validate_learning_episode_acceptance_gate_v1.ps1",
+                                                       "atom_acceptance_route":  "EXISTING_ACCEPTED_ATOM_RETENTION_MECHANISM",
+                                                       "atom_acceptance_validators":  [
+                                                                                          "validators/validate_accepted_atom_retention_contract_v1.ps1",
+                                                                                          "validators/validate_accepted_atom_retention_micro_proof_v1.ps1",
+                                                                                          "validators/validate_accepted_atom_retention_passports_v1.ps1",
+                                                                                          "validators/validate_compact_atom_storage_bridge_micro_proof_v1.ps1"
+                                                                                      ],
+                                                       "learning_output_classifier_enabled":  true,
+                                                       "learning_output_classifier_rule":  "classify each study output as CASE_PATTERN_CANDIDATE, ATOM_CANDIDATE, OPEN_LEARNING_GAP, or FUTURE_ACTION_CREATION_LANE before acceptance gate",
+                                                       "atom_candidate_route_only":  true,
+                                                       "atom_candidate_criteria":  [
+                                                                                       "small",
+                                                                                       "reusable",
+                                                                                       "composable",
+                                                                                       "builder_relevant",
+                                                                                       "validation_path_exists",
+                                                                                       "not_practical_action",
+                                                                                       "not_active_memory_mutation"
+                                                                                   ],
+                                                       "study_episode_manager_enabled":  true,
+                                                       "no_immediate_repeat_enabled":  true,
+                                                       "dedupe_open_gaps_enabled":  true,
+                                                       "dedupe_future_action_lane_enabled":  true,
+                                                       "learning_residue_ledger_enabled":  true,
+                                                       "idle_when_no_new_focus_after_budget_exhausted":  true
+                                                   }
+                        },
+    "self_question_trace":  [
+                                {
+                                    "question":  "Who am I in current repo/runtime?",
+                                    "answer":  "AUTONOMOUS_INNER_MOTOR_ORGAN, one policy-gated runner, not whole brain."
+                                },
+                                {
+                                    "question":  "What is my safe cage?",
+                                    "answer":  "Mode policy, forbidden active surfaces, no external effects, compact proof budget."
+                                },
+                                {
+                                    "question":  "What active memory is available?",
+                                    "answer":  "cells=680; run_id=file_atom_absorption_20260706_003507; runtime_ready=False"
+                                },
+                                {
+                                    "question":  "Is school or another long process active?",
+                                    "answer":  "school_active=False; process_count=1"
+                                },
+                                {
+                                    "question":  "What proof do I owe?",
+                                    "answer":  "memory before/after, school state, policy snapshot, decision/risk/self-oppression compact events, stop reason, mutation audit."
+                                }
+                            ],
+    "decision_trace":  {
+                           "allowed_mode":  true,
+                           "policy_allows_mode":  true,
+                           "selected_next_path":  "SELECT_SAFE_NEXT_GROWTH_WITHOUT_ACTION",
+                           "rationale":  "ReadOnly mode detected new compact memory growth from AgentLife with 2 declared atoms; selected path is unchanged, but execution should check fresh memory when topic matches."
+                       },
+    "selected_next_path":  "SELECT_SAFE_NEXT_GROWTH_WITHOUT_ACTION",
+    "stop_reason":  "PROTECTIVE_CHECKPOINT",
+    "heartbeat":  {
+                      "status":  "STOPPED_PROTECTIVE_CHECKPOINT",
+                      "written_at":  "2026-07-06T08:41:38.3717245+04:00",
+                      "run_root":  "operations\\autonomous_inner_motor\\runs\\aimo_memory_support_not_route_probe_20260706_02"
+                  },
+    "mutation_audit":  {
+                           "active_memory_mutated":  false,
+                           "git_commit_created":  false,
+                           "codex_launched":  false,
+                           "web_research_performed":  false,
+                           "school_started":  false,
+                           "background_process_started":  false,
+                           "writes_limited_to_run_root":  true
+                       },
+    "cycles":  [
+
+               ],
+    "risk_summary":  null,
+    "compaction_budget":  null,
+    "final_self_diagnosis":  null,
+    "stop_file_path":  null,
+    "controller":  null,
+    "test_life":  null,
+    "validator_result":  {
+                             "status":  "NOT_RUN_INSIDE_RUNNER",
+                             "note":  "External validator validates proof after runner exits."
+                         },
+    "boundary":  "Policy-gated bounded motor run. No active memory mutation, no school run, no web research, no Codex launch, no background process.",
+    "memory_support_hint":  {
+                                "available":  true,
+                                "policy":  "CHECK_FRESH_MEMORY_AGAINST_SELECTED_PATH_BEFORE_EXECUTION",
+                                "topics":  [
+                                               "selected_path_memory_support",
+                                               "no_route_override"
+                                           ],
+                                "rule":  "support_selected_path_only_no_route_override"
+                            }
+}

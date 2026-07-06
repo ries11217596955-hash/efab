@@ -1,0 +1,27 @@
+{
+  "author_id": "BUILDER_SELF_PACK_AUTHOR_V1",
+  "status": "ACTIVE_SELF_PACK_AUTHOR",
+  "phase": "PHASE107_BUILDER_SELF_PACK_AUTHOR_V1",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "baseline_commit": "835aa83",
+  "generated_at": "2026-05-30T16:58:30.7630870Z",
+  "input_sources": [
+    "route_locks/AGENT_BUILDER_NEXT_15_STEPS_LOCK_V3_SELF_PACK_AUTHOR.md",
+    "proofs/self_development/SCALE_TRIAL_PROMOTION_GATE_AND_ROUTE_LOCK_REFRESH_V1.json",
+    "proofs/self_development/SCALE_TRIAL_10_30_100_ITEM_SIMULATION_V1.json"
+  ],
+  "author_policy": {
+    "builder_runtime_must_generate_candidate": true,
+    "codex_is_bootstrap_only": true,
+    "codex_is_fallback_not_primary": true,
+    "candidate_must_not_be_registered_live": true,
+    "candidate_must_not_be_executed_in_phase107": true,
+    "admission_required_next": true,
+    "no_external_agent_production": true,
+    "no_external_fetch": true,
+    "no_external_install": true,
+    "no_fake_autonomy_claim": true
+  },
+  "candidate_target": "self_build_batch/self_pack_author/generated_candidates/PHASE108_BUILDER_GENERATED_PACK_ADMISSION_V1_CANDIDATE",
+  "next_allowed_step": "PHASE108_BUILDER_GENERATED_PACK_ADMISSION_V1"
+}

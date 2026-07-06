@@ -1,0 +1,17 @@
+{
+  "contract_id": "GENERATED_AGENT_GITHUB_ACTION_LAUNCH_SURFACE_V1",
+  "status": "ACTIVE",
+  "delivery_artifact_path": "deployment/github_actions/run-generated-agent.workflow.yml",
+  "deployment_target_path": ".github/workflows/run-generated-agent.yml",
+  "trigger": "workflow_dispatch",
+  "required_inputs": [
+    "input_path",
+    "output_path"
+  ],
+  "required_content_markers": [
+    "workflow_dispatch:",
+    "orchestrator\\run.ps1",
+    "actions/checkout@v6",
+    "actions/upload-artifact@v7"
+  ]
+}

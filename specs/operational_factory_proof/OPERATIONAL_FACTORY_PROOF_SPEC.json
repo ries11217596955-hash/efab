@@ -1,0 +1,38 @@
+{
+  "agent_id": "operational_factory_proof_agent",
+  "display_name": "Operational Factory Proof Agent",
+  "mission": "Prove that Agent Builder can generate an operational baseline agent package with real RUN execution and validation.",
+  "agent_kind": "custom",
+  "package_profile": "operational_baseline",
+  "runtime": {
+    "shell": "PowerShell",
+    "entrypoint": "orchestrator/run.ps1"
+  },
+  "inputs": [
+    {
+      "name": "request",
+      "type": "json",
+      "required": true,
+      "description": "Operational proof request."
+    }
+  ],
+  "outputs": [
+    {
+      "name": "result",
+      "type": "json",
+      "required": true,
+      "description": "Operational proof result."
+    }
+  ],
+  "capabilities": [
+    "baseline operational request processing"
+  ],
+  "validation": [
+    "generated package validates",
+    "generated orchestrator RUN mode produces structured result"
+  ],
+  "forbidden_scope": [
+    "no external network dependency",
+    "no decorative validator"
+  ]
+}

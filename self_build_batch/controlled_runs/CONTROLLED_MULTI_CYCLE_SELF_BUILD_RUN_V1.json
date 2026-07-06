@@ -1,0 +1,71 @@
+{
+  "controlled_run_id": "CONTROLLED_MULTI_CYCLE_SELF_BUILD_RUN_V1",
+  "version": "V1",
+  "status": "ACTIVE_CONTROLLED_RUN_CONTRACT",
+  "phase": "PHASE104_CONTROLLED_MULTI_CYCLE_SELF_BUILD_RUN_V1",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "generated_at": "2026-05-30T15:37:33.4342982Z",
+  "input_sources": [
+    "self_build_batch/repair_loop/BATCH_PLAN_EXAMPLE_V1_REPAIR_LOOP_PROGRAMS_DRY_RUN.json",
+    "self_build_batch/repair_loop/REPAIR_LOOP_GENERATOR_V1.json",
+    "proofs/self_development/REPAIR_LOOP_GENERATOR_V1.json"
+  ],
+  "output_schema": "contracts/self_development/controlled_multi_cycle_self_build_run_v1.schema.json",
+  "run_policy": {
+    "bounded_run_required": true,
+    "max_cycles": 2,
+    "max_programs_executed": 1,
+    "selected_program_only": true,
+    "self_resolution_first": true,
+    "assistance_is_fallback": true,
+    "execute_self_build_program_only": true,
+    "material_acquisition_forbidden_in_phase104": true,
+    "safe_patch_execution_forbidden_in_phase104": true,
+    "external_fetch_forbidden": true,
+    "external_install_forbidden": true,
+    "external_agent_production_forbidden": true,
+    "stop_on_policy_violation": true,
+    "stop_on_missing_proof_requirement": true,
+    "proof_required_after_cycle": true,
+    "queue_must_return_to_none": true
+  },
+  "cycle_contract": {
+    "cycle_count_limit": 2,
+    "selected_program_only": "REPAIR_PROGRAM_SELF_BUILD_REQUIRED_MODULES_001",
+    "cycle_order": [
+      "CYCLE_001_SELECT_AND_ADMIT_SELF_BUILD_PROGRAM",
+      "CYCLE_002_EXECUTE_CONTROLLED_SELF_BUILD_PROGRAM"
+    ],
+    "completion_stop_reason": "MAX_CYCLES_REACHED",
+    "forbidden_execution": [
+      "MATERIAL_ACQUISITION",
+      "SAFE_PATCH",
+      "EXTERNAL_FETCH",
+      "EXTERNAL_INSTALL",
+      "EXTERNAL_AGENT_PRODUCTION",
+      "PHASE105"
+    ]
+  },
+  "selected_program": "REPAIR_PROGRAM_SELF_BUILD_REQUIRED_MODULES_001",
+  "selected_program_type": "SELF_BUILD_REQUIRED_MODULES_PROGRAM",
+  "max_cycles": 2,
+  "cycles": [
+    {
+      "cycle_id": "CYCLE_001_SELECT_AND_ADMIT_SELF_BUILD_PROGRAM",
+      "required": true,
+      "selected_program": "REPAIR_PROGRAM_SELF_BUILD_REQUIRED_MODULES_001",
+      "expected_admission_result": "ADMITTED_FOR_CONTROLLED_INTERNAL_RUN"
+    },
+    {
+      "cycle_id": "CYCLE_002_EXECUTE_CONTROLLED_SELF_BUILD_PROGRAM",
+      "required": true,
+      "program_type": "SELF_BUILD_REQUIRED_MODULES_PROGRAM",
+      "execution_scope": "CONTROLLED_INTERNAL_SELF_BUILD_ONLY",
+      "proof_required": true
+    }
+  ],
+  "cycle_count": 2,
+  "execution_allowed": true,
+  "execution_performed": false,
+  "next_allowed_step": "PHASE105_SCALE_TRIAL_10_30_100_ITEM_SIMULATION_V1"
+}

@@ -1,0 +1,56 @@
+{
+  "material_id": "mat_python_jsonschema_001",
+  "created_at": "2026-05-29T07:33:20.9324623Z",
+  "items": [
+    {
+      "item_id": "source_url_present",
+      "status": "PASS",
+      "notes": "Source URL must be present before any later admission work."
+    },
+    {
+      "item_id": "official_or_registry_source",
+      "status": "PASS",
+      "notes": "Source origin is recorded as data for later review."
+    },
+    {
+      "item_id": "license_status_present",
+      "status": "PASS",
+      "notes": "License status is recorded but not independently verified in PHASE82."
+    },
+    {
+      "item_id": "security_status_present",
+      "status": "PASS",
+      "notes": "Security status is recorded; no scanner has been run in PHASE82."
+    },
+    {
+      "item_id": "owner_approval_not_required_or_recorded",
+      "status": "PASS",
+      "notes": "Owner approval is not required for this selected quarantine batch unless explicitly recorded later."
+    },
+    {
+      "item_id": "smoke_test_plan_defined",
+      "status": "NOT_DONE",
+      "notes": "PHASE82 prepares records only; smoke test planning belongs to a later phase."
+    },
+    {
+      "item_id": "wrapper_plan_defined",
+      "status": "NOT_DONE",
+      "notes": "PHASE82 does not create wrapper plans or contracts."
+    },
+    {
+      "item_id": "no_trusted_status",
+      "status": "PASS",
+      "notes": "No material may be trusted by this quarantine record."
+    },
+    {
+      "item_id": "no_install_performed",
+      "status": "PASS",
+      "notes": "No install was performed."
+    },
+    {
+      "item_id": "no_external_fetch_performed",
+      "status": "PASS",
+      "notes": "No external fetch was performed."
+    }
+  ]
+}

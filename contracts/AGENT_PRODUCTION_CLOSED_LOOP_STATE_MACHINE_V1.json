@@ -1,0 +1,21 @@
+{
+  "standard_id": "AGENT_PRODUCTION_CLOSED_LOOP_STANDARD_V1",
+  "status": "ACTIVE",
+  "stages": [
+    "PROGRAM_ADMISSION",
+    "AGENT_PACKAGE_BUILD",
+    "LOCAL_RUNTIME_VALIDATION",
+    "AGENT_CATALOG_REGISTRATION",
+    "GITHUB_WORKFLOW_LAUNCH",
+    "GITHUB_RUN_DISPATCH",
+    "ARTIFACT_DOWNLOAD",
+    "ARTIFACT_VALIDATION",
+    "ACCEPTANCE_PROOF_REPORT",
+    "CLEAN_QUEUE_RETURN"
+  ],
+  "required_final_agent_status": "ACCEPTED",
+  "required_queue_state_after": "NONE",
+  "required_artifact_validation": "PASS",
+  "required_github_run_conclusion": "success",
+  "next_recommended_step": "run_closed_loop_trial_with_third_agent_program_v1"
+}

@@ -1,0 +1,319 @@
+{
+  "policy_id": "MATERIAL_ADMISSION_POLICY_V1",
+  "policy_version": "1.0",
+  "phase": "PHASE_81",
+  "capability_id": "material_admission_policy_v1",
+  "created_at": "2026-05-29T00:00:00Z",
+  "policy_status": "ACTIVE",
+  "default_decision": "HOLD",
+  "trust_rule": {
+    "statement": "PHASE81 cannot mark materials TRUSTED.",
+    "trusted_decision_allowed": false,
+    "trusted_status_allowed": false
+  },
+  "decision_values": [
+    "CANDIDATE_FOR_QUARANTINE",
+    "OWNER_APPROVAL_REQUIRED",
+    "REFERENCE_ONLY",
+    "REJECT",
+    "NEEDS_METADATA",
+    "CANDIDATE_FOR_WRAPPER_CONTRACT",
+    "HOLD"
+  ],
+  "risk_bands": [
+    "LOW",
+    "MEDIUM",
+    "HIGH",
+    "FORBIDDEN",
+    "UNKNOWN"
+  ],
+  "rules": [
+    {
+      "rule_id": "reject_forbidden_source_or_risk",
+      "objective": "forbidden source",
+      "priority": 10,
+      "decision": "REJECT",
+      "match": {
+        "any": [
+          {
+            "field": "risk_level",
+            "equals_any": [
+              "FORBIDDEN"
+            ]
+          },
+          {
+            "field": "source_origin",
+            "contains_any": [
+              "forbidden"
+            ]
+          },
+          {
+            "field": "usage_mode",
+            "equals_any": [
+              "REJECT"
+            ]
+          },
+          {
+            "field": "status",
+            "equals_any": [
+              "REJECTED"
+            ]
+          }
+        ]
+      },
+      "rationale": "Forbidden source, forbidden risk, explicit reject usage, or rejected catalog status cannot advance."
+    },
+    {
+      "rule_id": "needs_source_url",
+      "objective": "no source URL",
+      "priority": 20,
+      "decision": "NEEDS_METADATA",
+      "match": {
+        "field": "source_url",
+        "missing_or_empty": true
+      },
+      "rationale": "A catalog entry without a source URL cannot be admitted."
+    },
+    {
+      "rule_id": "owner_approval_or_high_risk",
+      "objective": "owner approval required",
+      "priority": 30,
+      "decision": "OWNER_APPROVAL_REQUIRED",
+      "match": {
+        "any": [
+          {
+            "field": "owner_approval_required",
+            "boolean_equals": true
+          },
+          {
+            "field": "risk_level",
+            "equals_any": [
+              "HIGH"
+            ]
+          },
+          {
+            "field": "status",
+            "equals_any": [
+              "OWNER_APPROVAL_REQUIRED"
+            ]
+          }
+        ]
+      },
+      "rationale": "High-risk or owner-gated material requires explicit owner approval before later admission work."
+    },
+    {
+      "rule_id": "reference_only_material",
+      "objective": "reference-only material",
+      "priority": 40,
+      "decision": "REFERENCE_ONLY",
+      "match": {
+        "any": [
+          {
+            "field": "status",
+            "equals_any": [
+              "REFERENCE_ONLY"
+            ]
+          },
+          {
+            "field": "usage_mode",
+            "equals_any": [
+              "REFERENCE_ONLY"
+            ]
+          }
+        ]
+      },
+      "rationale": "Reference-only material remains informational and is not admitted for runtime use."
+    },
+    {
+      "rule_id": "unknown_license_needs_metadata",
+      "objective": "unknown license",
+      "priority": 50,
+      "decision": "NEEDS_METADATA",
+      "match": {
+        "any": [
+          {
+            "field": "license_status",
+            "missing_or_empty": true
+          },
+          {
+            "field": "license_status",
+            "contains_any": [
+              "UNKNOWN",
+              "LICENSE_REVIEW_REQUIRED",
+              "NOT_PROVIDED",
+              "MISSING"
+            ]
+          }
+        ]
+      },
+      "rationale": "Unknown or review-required license metadata must be resolved before later admission steps."
+    },
+    {
+      "rule_id": "unknown_risk_needs_metadata",
+      "objective": "high risk",
+      "priority": 60,
+      "decision": "NEEDS_METADATA",
+      "match": {
+        "field": "risk_level",
+        "equals_any": [
+          "UNKNOWN"
+        ]
+      },
+      "rationale": "Unknown risk cannot advance until risk metadata is clarified."
+    },
+    {
+      "rule_id": "low_risk_use_as_tool_permissive_official",
+      "objective": "permissive license reported + official source + low risk",
+      "priority": 70,
+      "decision": "CANDIDATE_FOR_QUARANTINE",
+      "match": {
+        "all": [
+          {
+            "field": "risk_level",
+            "equals_any": [
+              "LOW"
+            ]
+          },
+          {
+            "field": "usage_mode",
+            "equals_any": [
+              "USE_AS_TOOL"
+            ]
+          },
+          {
+            "field": "source_origin",
+            "contains_any": [
+              "official"
+            ]
+          },
+          {
+            "field": "license_status",
+            "contains_any": [
+              "MIT_REPORTED",
+              "BSD_REPORTED",
+              "ISC_REPORTED",
+              "PERMISSIVE"
+            ]
+          }
+        ]
+      },
+      "rationale": "Low-risk, official-source, permissive-license tool candidates may advance only to quarantine."
+    },
+    {
+      "rule_id": "medium_risk_wrapper_apache_official",
+      "objective": "Apache-2.0 reported + official source + medium risk",
+      "priority": 80,
+      "decision": "CANDIDATE_FOR_WRAPPER_CONTRACT",
+      "match": {
+        "all": [
+          {
+            "field": "risk_level",
+            "equals_any": [
+              "MEDIUM"
+            ]
+          },
+          {
+            "field": "usage_mode",
+            "equals_any": [
+              "WRAP_ONLY"
+            ]
+          },
+          {
+            "field": "source_origin",
+            "contains_any": [
+              "official"
+            ]
+          },
+          {
+            "field": "license_status",
+            "contains_any": [
+              "APACHE_2_0",
+              "APACHE-2.0"
+            ]
+          }
+        ]
+      },
+      "rationale": "Medium-risk Apache-2.0 wrapper-only material may advance to wrapper contract design, not runtime use."
+    },
+    {
+      "rule_id": "security_not_scanned_holds_or_quarantines",
+      "objective": "security not scanned",
+      "priority": 90,
+      "decision": "CANDIDATE_FOR_QUARANTINE",
+      "match": {
+        "all": [
+          {
+            "field": "security_status",
+            "equals_any": [
+              "NOT_SCANNED"
+            ]
+          },
+          {
+            "field": "risk_level",
+            "equals_any": [
+              "LOW"
+            ]
+          }
+        ]
+      },
+      "rationale": "Known unscanned low-risk material can only advance to quarantine, where later checks may run."
+    },
+    {
+      "rule_id": "wrapper_only_material",
+      "objective": "wrapper-only material",
+      "priority": 100,
+      "decision": "CANDIDATE_FOR_WRAPPER_CONTRACT",
+      "match": {
+        "all": [
+          {
+            "field": "usage_mode",
+            "equals_any": [
+              "WRAP_ONLY"
+            ]
+          },
+          {
+            "field": "source_origin",
+            "contains_any": [
+              "official"
+            ]
+          }
+        ]
+      },
+      "rationale": "Wrapper-only material needs a wrapper contract before any later quarantine or test step."
+    },
+    {
+      "rule_id": "use_as_tool_material",
+      "objective": "use-as-tool material",
+      "priority": 110,
+      "decision": "CANDIDATE_FOR_QUARANTINE",
+      "match": {
+        "all": [
+          {
+            "field": "usage_mode",
+            "equals_any": [
+              "USE_AS_TOOL"
+            ]
+          },
+          {
+            "field": "source_origin",
+            "contains_any": [
+              "official"
+            ]
+          }
+        ]
+      },
+      "rationale": "Use-as-tool material may only become a quarantine candidate; trust remains forbidden."
+    }
+  ],
+  "cut_list": [
+    "Do not install tools.",
+    "Do not fetch external repositories.",
+    "Do not run vulnerability scanners.",
+    "Do not run license scanners.",
+    "Do not create quarantine trials.",
+    "Do not create wrappers.",
+    "Do not mark materials TRUSTED.",
+    "Do not create external agents."
+  ],
+  "next_allowed_step": "PHASE82_FIRST_MATERIAL_QUARANTINE_TRIAL_V1"
+}

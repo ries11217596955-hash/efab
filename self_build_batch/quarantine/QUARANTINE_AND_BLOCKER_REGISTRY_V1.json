@@ -1,0 +1,44 @@
+{
+  "registry_id": "QUARANTINE_AND_BLOCKER_REGISTRY_V1",
+  "version": "V1",
+  "status": "ACTIVE_REGISTRY_CONTRACT",
+  "phase": "PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "generated_at": "2026-05-29T17:27:35.2003738Z",
+  "input_sources": [
+    "self_build_batch/runtime/CONTINUE_ON_FAILURE_RUNTIME_V1.json",
+    "self_build_batch/runtime/CONTINUE_ON_FAILURE_SIMULATION_V1.json",
+    "self_build_batch/ledger/ITEM_LEVEL_EXECUTION_LEDGER_V1.json",
+    "self_build_batch/ledger/BATCH_PLAN_EXAMPLE_V1_LEDGER_DRY_RUN.json"
+  ],
+  "output_schema": "contracts/self_development/quarantine_and_blocker_registry_v1.schema.json",
+  "registry_policy": {
+    "failed_item_must_have_reason": true,
+    "quarantined_item_must_have_reason": true,
+    "blocked_item_must_have_reason": true,
+    "assistance_required_must_be_explicit": true,
+    "no_blind_retry": true,
+    "retry_requires_conditions": true,
+    "owner_decision_required_must_be_explicit": true,
+    "codex_repair_required_must_be_explicit": true,
+    "material_required_must_be_explicit": true,
+    "registry_does_not_execute_items": true,
+    "registry_does_not_mark_pass": true,
+    "no_external_agent_production": true,
+    "no_external_install": true,
+    "no_external_fetch": true
+  },
+  "record_status_values": [
+    "FAILED",
+    "QUARANTINED",
+    "BLOCKED",
+    "NEEDS_OWNER_DECISION",
+    "NEEDS_CODEX_REPAIR",
+    "NEEDS_MATERIAL",
+    "SKIPPED_BY_POLICY"
+  ],
+  "records": [],
+  "record_count": 0,
+  "execution_performed": false,
+  "next_allowed_step": "PHASE101_BATCH_PROOF_AGGREGATOR_V1"
+}

@@ -1,0 +1,17 @@
+{
+  "task_id": "TASK_BATCH_PROOF_AGGREGATOR_V1_001",
+  "status": "READY",
+  "path": "tasks/TASK_BATCH_PROOF_AGGREGATOR_V1_001.json",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "mode": "SELF_BUILD",
+  "capability_id": "batch_proof_aggregator_v1",
+  "phase": "PHASE101",
+  "gate": "BATCH_PROOF_AGGREGATOR_V1",
+  "pack_id": "PHASE101_BATCH_PROOF_AGGREGATOR_V1",
+  "baseline_commit": "4b0635a",
+  "route_lock": "AGENT_BUILDER_NEXT_15_STEPS_LOCK_V2_R2.md",
+  "source_ledger": "self_build_batch/ledger/BATCH_PLAN_EXAMPLE_V1_LEDGER_DRY_RUN.json",
+  "source_runtime_simulation": "self_build_batch/runtime/CONTINUE_ON_FAILURE_SIMULATION_V1.json",
+  "source_quarantine_registry": "self_build_batch/quarantine/BATCH_PLAN_EXAMPLE_V1_QUARANTINE_BLOCKER_DRY_RUN.json",
+  "next_allowed_step": "PHASE102_AUTO_NEXT_GAP_DECISION_V1"
+}

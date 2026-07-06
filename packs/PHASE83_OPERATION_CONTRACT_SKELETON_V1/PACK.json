@@ -1,0 +1,14 @@
+{
+  "pack_id": "PHASE83_OPERATION_CONTRACT_SKELETON_V1",
+  "task_id": "TASK_OPERATION_CONTRACT_SKELETON_V1_001",
+  "capability_id": "operation_contract_skeleton_v1",
+  "phase": "PHASE_83",
+  "active_line": "AGENT_BUILDER_SELF_DEVELOPMENT",
+  "mode": "SELF_BUILD",
+  "entry_script": "packs/PHASE83_OPERATION_CONTRACT_SKELETON_V1/APPLY.ps1",
+  "validate_script": "packs/PHASE83_OPERATION_CONTRACT_SKELETON_V1/VALIDATE.ps1",
+  "validator_script": "packs/PHASE83_OPERATION_CONTRACT_SKELETON_V1/VALIDATE.ps1",
+  "shell": "PowerShell",
+  "expected_gate": "OPERATION_CONTRACT_SKELETON_V1",
+  "purpose": "Create the operation contract schema and registry skeleton without wrappers, installs, fetches, smoke tests, trusted operations, catalog mutation, policy mutation, or quarantine card mutation."
+}

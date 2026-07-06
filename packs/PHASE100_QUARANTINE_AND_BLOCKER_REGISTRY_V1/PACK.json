@@ -1,0 +1,17 @@
+{
+  "pack_id": "PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1",
+  "task_id": "TASK_QUARANTINE_AND_BLOCKER_REGISTRY_V1_001",
+  "phase": "PHASE100",
+  "status": "READY",
+  "path": "packs/PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1",
+  "shell": "PowerShell",
+  "entry_script": "packs/PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1/APPLY.ps1",
+  "apply": "APPLY.ps1",
+  "validate": "VALIDATE.ps1",
+  "validate_script": "packs/PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1/VALIDATE.ps1",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "mode": "SELF_BUILD",
+  "capability_id": "quarantine_and_blocker_registry_v1",
+  "gate": "QUARANTINE_AND_BLOCKER_REGISTRY_V1",
+  "next_allowed_step": "PHASE101_BATCH_PROOF_AGGREGATOR_V1"
+}

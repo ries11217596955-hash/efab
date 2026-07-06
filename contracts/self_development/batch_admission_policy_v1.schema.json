@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_id": "batch_admission_policy_v1",
+  "title": "Batch Admission Policy V1",
+  "type": "object",
+  "required": [
+    "policy_id",
+    "version",
+    "status",
+    "active_line",
+    "input_sources",
+    "decision_values",
+    "admission_checks",
+    "blocking_conditions",
+    "owner_approval_conditions",
+    "assistance_conditions",
+    "output_contract",
+    "execution_allowed"
+  ],
+  "properties": {
+    "policy_id": {
+      "const": "BATCH_ADMISSION_POLICY_V1"
+    },
+    "version": {
+      "const": "V1"
+    },
+    "status": {
+      "const": "ACTIVE_ADMISSION_POLICY"
+    },
+    "active_line": {
+      "const": "AGENT_BUILDER / SELF_BUILD"
+    },
+    "input_sources": {
+      "type": "array"
+    },
+    "decision_values": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "ADMIT_FOR_FUTURE_CONTROLLED_EXECUTION",
+          "CONDITIONALLY_ADMISSIBLE",
+          "BLOCKED",
+          "NEEDS_OWNER_DECISION",
+          "NEEDS_CODEX_REPAIR",
+          "NEEDS_MATERIAL",
+          "REJECTED_BY_POLICY"
+        ]
+      }
+    },
+    "admission_checks": {
+      "type": "array"
+    },
+    "blocking_conditions": {
+      "type": "array"
+    },
+    "owner_approval_conditions": {
+      "type": "array"
+    },
+    "assistance_conditions": {
+      "type": "array"
+    },
+    "output_contract": {
+      "type": "object"
+    },
+    "execution_allowed": {
+      "const": false
+    }
+  },
+  "additionalProperties": true
+}

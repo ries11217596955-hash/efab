@@ -1,0 +1,19 @@
+{
+  "evidence_manifest": [
+    {
+      "evidence_id": "terminal_log",
+      "evidence_type": "terminal_log",
+      "summary": "Local terminal log showing the failing command and error text.",
+      "source_path": "reports/incidents/terminal-log.txt",
+      "status": "available"
+    }
+  ],
+  "missing_evidence": [
+    "state_diff"
+  ],
+  "risk_flags": [
+    "MISSING_EVIDENCE"
+  ],
+  "next_operator_action": "Collect the missing evidence before closing the review.",
+  "validation_status": "PASS"
+}

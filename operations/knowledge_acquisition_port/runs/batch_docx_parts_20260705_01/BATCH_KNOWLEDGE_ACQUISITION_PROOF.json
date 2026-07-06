@@ -1,0 +1,71 @@
+{
+    "schema":  "BATCH_KNOWLEDGE_ACQUISITION_PROOF_V1",
+    "source":  "CODEX_BATCH_READONLY_SOURCE",
+    "status":  "PASS_CODEX_BATCH_DRAFT_RETURNED",
+    "checked_at":  "2026-07-05T17:06:16.7230141+04:00",
+    "run_id":  "batch_docx_parts_20260705_01",
+    "current_task":  "Create a Word file with one sentence",
+    "knowledge_need":  "The agent decomposed task X into ten parts and needs one coordinated draft explaining each part, dependencies, priority order, validation, and parent return plan without retaining raw source.",
+    "already_checked":  "active memory has no executable docx reflex; source digest retention is active; batch query should return coordinated map, not isolated explanations",
+    "part_ids":  [
+                     "X1",
+                     "X2",
+                     "X3",
+                     "X4",
+                     "X5",
+                     "X6",
+                     "X7",
+                     "X8",
+                     "X9",
+                     "X10"
+                 ],
+    "part_count":  10,
+    "template_path":  "operations/knowledge_acquisition_port/CODEX_BATCH_KNOWLEDGE_REQUEST_TEMPLATE.md",
+    "answer_schema":  "CODEX_BATCH_KNOWLEDGE_ANSWER_SCHEMA_V1",
+    "answer_schema_path":  "operations/knowledge_acquisition_port/codex_batch_knowledge_answer_schema.json",
+    "retention_policy_path":  "operations/knowledge_acquisition_port/SOURCE_DIGEST_RETENTION_POLICY.md",
+    "source_digest_path":  "operations\\knowledge_acquisition_port\\runs\\batch_docx_parts_20260705_01\\BATCH_SOURCE_DIGEST_AND_PROMOTION_DECISION.json",
+    "codex_exit_code":  0,
+    "codex_answer_status":  "CODEX_DRAFT",
+    "codex_answer_json_valid":  true,
+    "codex_answer_required_shape_valid":  true,
+    "codex_answer_sha256":  "C3BD8FEA8AA01EEFAC531C0C41D9F7F2DB27CEF44E7D02B154A6F718441F503C",
+    "raw_source_retention":  "DELETED_AFTER_COMPACT_DIGEST",
+    "parent_return_plan":  {
+                               "how_to_rebuild_x":  "Choose an allowed save path, choose or receive one sentence, generate a .docx with that sentence as one normal body paragraph, validate existence/format/body text, then return path and proof.",
+                               "next_small_action":  "Resolve the output path and exact sentence before writing anything.",
+                               "proof_needed":  [
+                                                    "File exists at returned path",
+                                                    "File is a valid .docx package",
+                                                    "Main document body contains exactly the chosen one sentence"
+                                                ]
+                           },
+    "promotion_decision":  {
+                               "default_classification":  "CASE_PATTERN_CANDIDATE",
+                               "raw_retention_decision":  "DELETE_RAW_CANDIDATE",
+                               "active_memory_candidate":  false,
+                               "atom_candidate":  false,
+                               "reflex_candidate":  false,
+                               "organ_candidate":  false,
+                               "owner_decision_required":  "only if promotion beyond case pattern is requested",
+                               "reason":  "Batch source answer is material only; default is compact case pattern with part map and parent return plan."
+                           },
+    "mutation_audit":  {
+                           "active_memory_mutated":  false,
+                           "codex_file_write_requested":  false,
+                           "codex_shell_execution_requested":  false,
+                           "repo_status_before":  [
+                                                      "?? operations/knowledge_acquisition_port/CODEX_BATCH_KNOWLEDGE_REQUEST_TEMPLATE.md",
+                                                      "?? operations/knowledge_acquisition_port/ask_codex_batch_knowledge_source.ps1",
+                                                      "?? operations/knowledge_acquisition_port/codex_batch_knowledge_answer_schema.json"
+                                                  ],
+                           "repo_status_after":  [
+                                                     "?? operations/knowledge_acquisition_port/CODEX_BATCH_KNOWLEDGE_REQUEST_TEMPLATE.md",
+                                                     "?? operations/knowledge_acquisition_port/ask_codex_batch_knowledge_source.ps1",
+                                                     "?? operations/knowledge_acquisition_port/codex_batch_knowledge_answer_schema.json",
+                                                     "?? operations/knowledge_acquisition_port/runs/batch_docx_parts_20260705_01/BATCH_SOURCE_DIGEST_AND_PROMOTION_DECISION.json",
+                                                     "?? operations/knowledge_acquisition_port/runs/batch_docx_parts_20260705_01/codex_batch_last_message.json.txt"
+                                                 ]
+                       },
+    "boundary":  "CODEX_DRAFT only; batch answer is compact source material; raw source not retained by default."
+}

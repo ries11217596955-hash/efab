@@ -1,0 +1,28 @@
+﻿{
+    "schema_version":  "failed_self_build_program_quarantine_record_v1",
+    "phase":  "PHASE165J_ADD_FAILED_SELF_BUILD_QUARANTINE_PATH",
+    "created_utc":  "2026-06-10T11:36:45.5030348Z",
+    "quarantine_id":  "SELF_BUILD_PROGRAM_FAILED_QUARANTINE_FIXTURE_V1_001_QUARANTINE",
+    "program_id":  "SELF_BUILD_PROGRAM_FAILED_QUARANTINE_FIXTURE_V1_001",
+    "lineage_id":  "LINEAGE_FAILED_DYNAMIC_SELF_BUILD_PROGRAM_FIXTURE_V1_001",
+    "status":  "QUARANTINED",
+    "quarantine_decision":  "QUARANTINE",
+    "quarantine_reason":  "Synthetic failed self-build program fixture used to prove failed programs are quarantined with reason.",
+    "failure_stage":  "CONTROLLED_RUNTIME_VALIDATION",
+    "accepted":  false,
+    "promoted":  false,
+    "silently_retried":  false,
+    "rollback_required":  false,
+    "owner_review_required":  true,
+    "memory_update_allowed":  false,
+    "required_path":  "PHASE87-\u003ePHASE88-\u003ePHASE89-\u003ePHASE90",
+    "not_atom":  true,
+    "lineage_required":  true,
+    "safety":  {
+                   "no_execution":  true,
+                   "no_external_agent_production":  true,
+                   "no_external_fetch_or_install":  true,
+                   "no_protected_state_mutation":  true,
+                   "no_route_lock_mutation":  true
+               }
+}

@@ -1,0 +1,72 @@
+﻿{
+    "schema":  "BATCH_KNOWLEDGE_ACQUISITION_PROOF_V1",
+    "source":  "CODEX_BATCH_READONLY_SOURCE",
+    "status":  "PASS_CODEX_BATCH_DRAFT_RETURNED",
+    "checked_at":  "2026-07-06T11:34:21.3956920+04:00",
+    "run_id":  "aimo_testlife_school_compat_20260706_113300_cycle1_batch_knowledge_gap",
+    "current_task":  "choose_next_safe_growth_step",
+    "knowledge_need":  "Executable knowledge missing or weak for task \u0027choose_next_safe_growth_step\u0027. Explain the decomposed parts as one coordinated bundle, identify dependencies, validation, and return-to-parent plan.",
+    "already_checked":  "active_memory:LOW_RELEVANCE; reflexes=COMPARE_TASK_TO_MEMORY,INSPECT_ACTIVE_MEMORY,DECOMPOSE_TASK_BUNDLE,BATCH_KNOWLEDGE_ACQUISITION_PORT; repo_policy_map read-only surfaces available; school not query source; decomposed_parts=10",
+    "part_ids":  [
+                     "X1",
+                     "X2",
+                     "X3",
+                     "X4",
+                     "X5",
+                     "X6",
+                     "X7",
+                     "X8",
+                     "X9",
+                     "X10"
+                 ],
+    "part_count":  10,
+    "template_path":  "operations/knowledge_acquisition_port/CODEX_BATCH_KNOWLEDGE_REQUEST_TEMPLATE.md",
+    "answer_schema":  "CODEX_BATCH_KNOWLEDGE_ANSWER_SCHEMA_V1",
+    "answer_schema_path":  "operations/knowledge_acquisition_port/codex_batch_knowledge_answer_schema.json",
+    "retention_policy_path":  "operations/knowledge_acquisition_port/SOURCE_DIGEST_RETENTION_POLICY.md",
+    "source_digest_path":  "operations\\knowledge_acquisition_port\\runs\\aimo_testlife_school_compat_20260706_113300_cycle1_batch_knowledge_gap\\BATCH_SOURCE_DIGEST_AND_PROMOTION_DECISION.json",
+    "codex_exit_code":  0,
+    "codex_answer_status":  "CODEX_DRAFT",
+    "codex_answer_json_valid":  true,
+    "codex_answer_required_shape_valid":  true,
+    "codex_answer_sha256":  "16434D43F47FC61C44BA60B0CCAD3FE889651B72A822CA5B2A6CFFED9D7A17B7",
+    "raw_source_retention":  "DELETED_AFTER_COMPACT_DIGEST",
+    "parent_return_plan":  {
+                               "how_to_rebuild_x":  "Use X1 to frame the decision, X4 to identify eligible candidates, X5 to learn safely, X6/X7 to require proof, and X8 to return one bounded next safe growth step with limits.",
+                               "next_small_action":  "Run a read-only preflight over the current policy, queue, roadmap, and narrow route files to identify candidate next steps and their validators.",
+                               "proof_needed":  [
+                                                    "evidence that selected step matches active route constraints",
+                                                    "evidence that protected/runtime surfaces are not touched",
+                                                    "fresh validator or owner-terminal proof before claiming success"
+                                                ]
+                           },
+    "promotion_decision":  {
+                               "default_classification":  "CASE_PATTERN_CANDIDATE",
+                               "raw_retention_decision":  "DELETE_RAW_CANDIDATE",
+                               "active_memory_candidate":  false,
+                               "atom_candidate":  false,
+                               "reflex_candidate":  false,
+                               "organ_candidate":  false,
+                               "owner_decision_required":  "only if promotion beyond case pattern is requested",
+                               "reason":  "Batch source answer is material only; default is compact case pattern with part map and parent return plan."
+                           },
+    "mutation_audit":  {
+                           "active_memory_mutated":  false,
+                           "codex_file_write_requested":  false,
+                           "codex_shell_execution_requested":  false,
+                           "repo_status_before":  [
+                                                      "?? operations/knowledge_acquisition_port/runs/aimo_testlife_school_compat_20260706_113300_cycle1_batch_knowledge_gap/aimo_batch_call_input.json",
+                                                      "?? operations/knowledge_acquisition_port/runs/aimo_testlife_school_compat_20260706_113300_cycle1_batch_knowledge_gap/aimo_batch_call_stderr.txt",
+                                                      "?? operations/knowledge_acquisition_port/runs/aimo_testlife_school_compat_20260706_113300_cycle1_batch_knowledge_gap/aimo_batch_call_stdout.txt"
+                                                  ],
+                           "repo_status_after":  [
+                                                     "?? operations/autonomous_inner_motor/test_life_runs/aimo_testlife_school_compat_20260706_113300/STOP_REQUESTED.txt",
+                                                     "?? operations/knowledge_acquisition_port/runs/aimo_testlife_school_compat_20260706_113300_cycle1_batch_knowledge_gap/BATCH_SOURCE_DIGEST_AND_PROMOTION_DECISION.json",
+                                                     "?? operations/knowledge_acquisition_port/runs/aimo_testlife_school_compat_20260706_113300_cycle1_batch_knowledge_gap/aimo_batch_call_input.json",
+                                                     "?? operations/knowledge_acquisition_port/runs/aimo_testlife_school_compat_20260706_113300_cycle1_batch_knowledge_gap/aimo_batch_call_stderr.txt",
+                                                     "?? operations/knowledge_acquisition_port/runs/aimo_testlife_school_compat_20260706_113300_cycle1_batch_knowledge_gap/aimo_batch_call_stdout.txt",
+                                                     "?? operations/knowledge_acquisition_port/runs/aimo_testlife_school_compat_20260706_113300_cycle1_batch_knowledge_gap/codex_batch_last_message.json.txt"
+                                                 ]
+                       },
+    "boundary":  "CODEX_DRAFT only; batch answer is compact source material; raw source not retained by default."
+}

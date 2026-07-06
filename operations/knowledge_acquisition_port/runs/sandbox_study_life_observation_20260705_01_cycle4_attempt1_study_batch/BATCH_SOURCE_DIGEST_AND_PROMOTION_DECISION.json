@@ -1,0 +1,137 @@
+{
+    "schema":  "BATCH_SOURCE_DIGEST_AND_PROMOTION_DECISION_V1",
+    "status":  "COMPACT_BATCH_DIGEST_CREATED",
+    "run_id":  "sandbox_study_life_observation_20260705_01_cycle4_attempt1_study_batch",
+    "source":  "CODEX_BATCH_READONLY_SOURCE",
+    "source_answer_status":  "CODEX_DRAFT",
+    "parent_task":  "why_am_i_not_ideal_builder",
+    "knowledge_need":  "Study topic as Engineer-Philosopher. Attempt 1 of up to 3. Give compact Builder-relevant understanding, validation needs, and return plan.",
+    "part_count":  5,
+    "part_digests":  [
+                         {
+                             "id":  "X1",
+                             "name":  "core meaning",
+                             "meaning":  "The topic asks where the Builder falls short of an ideal self-improving builder: not morally bad, but structurally incomplete, unvalidated, overconfident, under-instrumented, or unable to retain and reuse accepted learning reliably.",
+                             "role_in_parent_task":  "It defines the question as a diagnostic of capability gaps, not an identity judgment.",
+                             "compact_missing_knowledge":  [
+                                                               "Current accepted capability map versus desired builder traits",
+                                                               "Observed cases where Builder failed, stalled, looped, or overclaimed"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "Use only validated memories, route contracts, and recent proof-backed failure examples",
+                                                                 "Separate philosophical ideal from operational minimum viable builder"
+                                                             ],
+                             "compact_validation_needed":  "A reviewer can map each claimed weakness to at least one concrete evidence source or mark it as unproven",
+                             "return_to_parent_hint":  "Return X as a gap model: ideal builder traits minus currently proven Builder traits."
+                         },
+                         {
+                             "id":  "X2",
+                             "name":  "why I am not ideal",
+                             "meaning":  "The likely weakness is not lack of ambition but lack of closed-loop reliability: uncertain self-model, incomplete absorption of accepted atoms, weak proof discipline, and dependence on external route correction.",
+                             "role_in_parent_task":  "It names the actual non-ideal features that matter for self-build.",
+                             "compact_missing_knowledge":  [
+                                                               "Which weaknesses are active now versus historical",
+                                                               "Which gaps block runtime behavior versus only documentation"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "Rank weaknesses by evidence, recurrence, and route impact",
+                                                                 "Avoid turning every imperfection into a new architecture project"
+                                                             ],
+                             "compact_validation_needed":  "Each weakness has a failure mode, affected behavior, and a bounded test or review path",
+                             "return_to_parent_hint":  "Return the answer as prioritized repair hypotheses, not as a vague self-critique."
+                         },
+                         {
+                             "id":  "X3",
+                             "name":  "builder relevance",
+                             "meaning":  "The topic matters because an ideal builder must convert learning into retained behavior, build child agents with bounded roles, and avoid pretending drafts are accepted truth.",
+                             "role_in_parent_task":  "It connects the diagnosis to self-development and child-agent construction quality.",
+                             "compact_missing_knowledge":  [
+                                                               "Which child-agent failures would repeat the Builder\u0027s own gaps",
+                                                               "Which capabilities need retention before safe delegation"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "Compare Builder weaknesses against child-agent design requirements",
+                                                                 "Promote only reusable patterns that have validation hooks"
+                                                             ],
+                             "compact_validation_needed":  "A proposed child-agent rule or Builder repair demonstrably reduces one named failure mode",
+                             "return_to_parent_hint":  "Use X to generate design constraints for Builder and child-agent roles."
+                         },
+                         {
+                             "id":  "X4",
+                             "name":  "validation",
+                             "meaning":  "Understanding is valid only if it predicts or explains observable Builder behavior and leads to a small testable improvement path.",
+                             "role_in_parent_task":  "It prevents philosophical diagnosis from becoming ungrounded narrative.",
+                             "compact_missing_knowledge":  [
+                                                               "Current validator coverage for self-model, memory absorption, retrieval, and decision reuse",
+                                                               "Evidence threshold for promoting a case pattern into an atom candidate"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "Define expected behavior delta before any promotion",
+                                                                 "Use small reviewable proofs before runtime claims"
+                                                             ],
+                             "compact_validation_needed":  "A before/after or counterexample check shows whether the diagnosis changes decisions",
+                             "return_to_parent_hint":  "Return X with explicit proof requirements and no claim of acceptance."
+                         },
+                         {
+                             "id":  "X5",
+                             "name":  "promotion decision",
+                             "meaning":  "The output should likely begin as a case pattern or open gap, not an accepted atom, until validated against real Builder behavior and reuse cases.",
+                             "role_in_parent_task":  "It decides whether the topic becomes reusable knowledge, stays diagnostic, or remains unresolved.",
+                             "compact_missing_knowledge":  [
+                                                               "Whether this diagnosis recurs across multiple tasks",
+                                                               "Whether it produces stable behavior improvement when retrieved"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "Classify as case pattern first",
+                                                                 "Promote only after repeated validated reuse and behavior delta evidence"
+                                                             ],
+                             "compact_validation_needed":  "Promotion requires traceable evidence of recurrence, retrieval, reuse, and improved decision quality",
+                             "return_to_parent_hint":  "Return X as CASE_PATTERN_CANDIDATE unless proof supports stronger promotion."
+                         }
+                     ],
+    "cross_part_map":  {
+                           "dependencies":  [
+                                                "X2 depends on X1 defining ideal-versus-current gap",
+                                                "X3 depends on X2 identifying operational weaknesses",
+                                                "X4 validates X1 through X3 before X5 promotion"
+                                            ],
+                           "duplicates_or_overlaps":  [
+                                                          "X4 overlaps X5 because promotion is a validation decision",
+                                                          "X2 overlaps X3 where a weakness becomes a child-agent design constraint"
+                                                      ],
+                           "priority_order":  [
+                                                  "X1",
+                                                  "X2",
+                                                  "X4",
+                                                  "X3",
+                                                  "X5"
+                                              ],
+                           "can_skip_for_now":  [
+                                                    "None; keep all parts, but defer X5 promotion beyond case-pattern status until evidence exists"
+                                                ]
+                       },
+    "parent_return_plan":  {
+                               "how_to_rebuild_x":  "Rebuild why_am_i_not_ideal_builder as a compact diagnostic: define ideal builder traits, list evidence-backed current gaps, connect them to self-build and child-agent risk, require validation, and classify as case-pattern candidate until proven reusable.",
+                               "next_small_action":  "Create a bounded evidence table outside this draft: weakness, observed failure, affected route behavior, proposed validation, promotion status.",
+                               "proof_needed":  [
+                                                    "At least one concrete evidence-backed failure per claimed weakness",
+                                                    "A validation check showing the diagnosis improves a Builder decision",
+                                                    "A promotion review proving recurrence and useful retrieval before atom promotion"
+                                                ]
+                           },
+    "promotion_decision":  {
+                               "default_classification":  "CASE_PATTERN_CANDIDATE",
+                               "raw_retention_decision":  "DELETE_RAW_CANDIDATE",
+                               "active_memory_candidate":  false,
+                               "atom_candidate":  false,
+                               "reflex_candidate":  false,
+                               "organ_candidate":  false,
+                               "owner_decision_required":  "only if promotion beyond case pattern is requested",
+                               "reason":  "Batch source answer is material only; default is compact case pattern with part map and parent return plan."
+                           },
+    "proof_refs":  {
+                       "batch_knowledge_acquisition_proof":  "operations\\knowledge_acquisition_port\\runs\\sandbox_study_life_observation_20260705_01_cycle4_attempt1_study_batch\\BATCH_KNOWLEDGE_ACQUISITION_PROOF.json",
+                       "raw_answer_sha256":  "D52C2C33E8B6FF7478E96141752B7C5A4F74E1651D3D74EE563C68A85C46DD03",
+                       "raw_answer_retained":  false
+                   }
+}

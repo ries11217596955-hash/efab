@@ -1,0 +1,15 @@
+{
+  "schema": "efab_passport_index_v1",
+  "organ_id": "accepted_atom_retention_organ",
+  "status": "PASSPORT_SET_CANDIDATE",
+  "runtime_ready": false,
+  "passports": [
+    "ORGAN_PASSPORT.json",
+    "CAPABILITY_PASSPORT.json",
+    "SANITIZER_PASSPORT.json",
+    "LIFECYCLE_PASSPORT.json",
+    "PROOF_PASSPORT.json",
+    "INTEGRATION_PASSPORT.json"
+  ],
+  "next_required": "validate passports then integrate retention gate with real acceptance runner"
+}

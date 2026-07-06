@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_id": "operation_request_v1",
+  "title": "Operation Request",
+  "type": "object",
+  "required": [
+    "request_id",
+    "operation_id",
+    "requested_mode",
+    "input_refs",
+    "output_refs",
+    "sandbox_policy",
+    "required_contract_status",
+    "required_smoke_proof",
+    "forbidden_actions",
+    "created_at"
+  ],
+  "properties": {
+    "request_id": {
+      "type": "string"
+    },
+    "operation_id": {
+      "type": "string"
+    },
+    "requested_mode": {
+      "enum": [
+        "DRY_RUN_PLAN_ONLY",
+        "EXECUTE_IN_SANDBOX_LATER"
+      ]
+    },
+    "input_refs": {
+      "type": "object"
+    },
+    "output_refs": {
+      "type": "object"
+    },
+    "sandbox_policy": {
+      "type": "string"
+    },
+    "required_contract_status": {
+      "type": "string"
+    },
+    "required_smoke_proof": {
+      "type": "string"
+    },
+    "forbidden_actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "created_at": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

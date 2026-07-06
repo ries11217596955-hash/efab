@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Agent Builder Evidence Index",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "generated_at_utc",
+    "proofs",
+    "reports",
+    "counts",
+    "missing_surfaces",
+    "evidence_policy"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "AGENT_BUILDER_EVIDENCE_INDEX_V1"
+    },
+    "generated_at_utc": {
+      "type": "string"
+    },
+    "collection_status": {
+      "enum": [
+        "prepared_not_run",
+        "collected"
+      ]
+    },
+    "proofs": {
+      "type": "array"
+    },
+    "reports": {
+      "type": "array"
+    },
+    "counts": {
+      "type": "object"
+    },
+    "missing_surfaces": {
+      "type": "array"
+    },
+    "evidence_policy": {
+      "type": "object"
+    }
+  }
+}

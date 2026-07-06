@@ -1,0 +1,46 @@
+{
+  "capability_id": "self_learning_memory",
+  "status": "READY",
+  "purpose": "Read accumulated multi-session learning memory as reusable context without mutating it during bootstrap.",
+  "owner_line": "SELF_BUILD",
+  "existing_files": [
+    "self_control/BUILDER_MULTI_SESSION_LEARNING_MEMORY.json"
+  ],
+  "read_paths": [
+    "self_control/BUILDER_MULTI_SESSION_LEARNING_MEMORY.json"
+  ],
+  "write_paths": [
+    "knowledge_library/learning_cards",
+    "living_learning_environment/reading_sessions/<session_id>"
+  ],
+  "forbidden_paths": [
+    "proofs/self_development/PHASE142-PHASE147",
+    "reports/self_development/PHASE142-PHASE147",
+    "self_control/accepted_phase_results",
+    "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/current",
+    "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/existing_trials",
+    "generated_agents",
+    "agent_catalog",
+    "applied_agents",
+    "route_locks",
+    "orchestrator/run.ps1"
+  ],
+  "safe_to_reuse": true,
+  "runtime_mutates_repo": false,
+  "requires_owner_prompt": false,
+  "requires_codex": false,
+  "can_be_used_by_builder": true,
+  "example_usage_path": "capability_shelf/usage_examples/self_learning_memory.json",
+  "validator_reference": "capability_shelf/validators/self_learning_memory.json",
+  "known_risks": [
+    "Memory can be stale or overfit; reading requires provenance and retention checks.",
+    "Bootstrap does not modify memory."
+  ],
+  "promotion_requirements": [
+    "validator PASS",
+    "proof artifact",
+    "no forbidden scope changes",
+    "promotion gate record",
+    "explicit next_allowed_step"
+  ]
+}

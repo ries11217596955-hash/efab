@@ -1,0 +1,41 @@
+﻿{
+    "schema_version":  "phase165n_first_dynamic_owner_material_canonical_trial_result_v1",
+    "phase":  "PHASE165N_RUN_FIRST_DYNAMIC_OWNER_MATERIAL_SELF_BUILD_CANONICAL_TRIAL",
+    "created_utc":  "2026-06-10T12:25:24.3661979Z",
+    "status":  "PASS",
+    "validation_passed":  true,
+    "errors":  [
+
+               ],
+    "canonical_trial_executed":  true,
+    "orchestrator_used":  true,
+    "orchestrator_exit_code":  0,
+    "orchestrator_output_tail":  [
+                                     "AGENT_BUILDER_ORCHESTRATOR",
+                                     "MODE=VERIFY",
+                                     "RUN_ID=SELF_BUILD_20260610_162524",
+                                     "STATUS=PASS"
+                                 ],
+    "program_id":  "SELF_BUILD_PROGRAM_OWNER_MATERIAL_INPUT_BOOTSTRAP_001_V1_001",
+    "lineage_id":  "LINEAGE_SELF_BUILD_PROGRAM_OWNER_MATERIAL_INPUT_BOOTSTRAP_001_V1_001",
+    "selected_material_id":  "OWNER_MATERIAL_INPUT_BOOTSTRAP_001",
+    "preflight_ready":  true,
+    "fixed_signal_count":  0,
+    "dynamic_program_generated":  true,
+    "dynamic_admission_performed":  true,
+    "dynamic_execution_performed":  true,
+    "completed_loop":  true,
+    "queue_returned_to_none":  true,
+    "lineage_preserved":  true,
+    "absorption_decision":  "KEEP",
+    "memory_record_status":  "PASS",
+    "generated_program_path":  "self_build_programs/generated/SELF_BUILD_PROGRAM_OWNER_MATERIAL_INPUT_BOOTSTRAP_001_V1_001.json",
+    "admission_path":  "self_build_programs/admission/SELF_BUILD_PROGRAM_OWNER_MATERIAL_INPUT_BOOTSTRAP_001_V1_001_ADMISSION.json",
+    "execution_path":  "self_build_programs/executions/SELF_BUILD_PROGRAM_OWNER_MATERIAL_INPUT_BOOTSTRAP_001_V1_001_EXECUTION.json",
+    "absorption_path":  "self_build_programs/absorption/SELF_BUILD_PROGRAM_OWNER_MATERIAL_INPUT_BOOTSTRAP_001_V1_001_ABSORPTION_DECISION.json",
+    "memory_path":  "self_build_programs/memory/SELF_BUILD_PROGRAM_OWNER_MATERIAL_INPUT_BOOTSTRAP_001_V1_001_MEMORY_ABSORPTION.json",
+    "external_agent_production":  false,
+    "external_fetch_or_install":  false,
+    "codex_used":  false,
+    "next_locked_step_after_build":  "PHASE165O_PROMOTION_OR_CANONICAL_DYNAMIC_CONTRACT_HARDENING_DECISION"
+}

@@ -1,0 +1,46 @@
+{
+  "capability_id": "restore_state",
+  "status": "READY",
+  "purpose": "Restore Builder state only from repo-approved checkpoint material after validation.",
+  "owner_line": "SELF_BUILD",
+  "existing_files": [
+    "tools/restore_agent_builder_state.ps1"
+  ],
+  "read_paths": [
+    "living_learning_environment/promotion_gates",
+    "proofs/self_development"
+  ],
+  "write_paths": [
+    "living_learning_environment/sandbox/restore_dry_runs"
+  ],
+  "forbidden_paths": [
+    "proofs/self_development/PHASE142-PHASE147",
+    "reports/self_development/PHASE142-PHASE147",
+    "self_control/accepted_phase_results",
+    "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/current",
+    "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/existing_trials",
+    "generated_agents",
+    "agent_catalog",
+    "applied_agents",
+    "route_locks",
+    "orchestrator/run.ps1"
+  ],
+  "safe_to_reuse": true,
+  "runtime_mutates_repo": true,
+  "requires_owner_prompt": false,
+  "requires_codex": false,
+  "can_be_used_by_builder": true,
+  "example_usage_path": "capability_shelf/usage_examples/restore_state.json",
+  "validator_reference": "capability_shelf/validators/restore_state.json",
+  "known_risks": [
+    "Direct restore can mutate state; PHASE148 permits dry-run planning only.",
+    "Promotion gate required before state writes."
+  ],
+  "promotion_requirements": [
+    "validator PASS",
+    "proof artifact",
+    "no forbidden scope changes",
+    "promotion gate record",
+    "explicit next_allowed_step"
+  ]
+}

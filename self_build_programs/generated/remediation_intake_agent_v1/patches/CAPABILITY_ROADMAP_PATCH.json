@@ -1,0 +1,25 @@
+{
+  "patch_kind": "CAPABILITY_ROADMAP_APPEND",
+  "status": "READY_FOR_ADMISSION",
+  "family_id": "remediation_intake_agent_v1",
+  "generated_capabilities": [
+    {
+      "order": 1,
+      "capability_id": "generated_remediation_intake_agent_v1_profile_materialization_v1",
+      "semantic_role": "PROFILE_MATERIALIZATION",
+      "source_capability_hint": "remediation_intake_agent_specialization_profile_v1"
+    },
+    {
+      "order": 2,
+      "capability_id": "generated_remediation_intake_agent_v1_closure_proof_v1",
+      "semantic_role": "SPECIALIZED_CLOSURE_PROOF",
+      "source_capability_hint": "remediation_intake_agent_closure_proof_v1"
+    },
+    {
+      "order": 3,
+      "capability_id": "generated_remediation_intake_agent_v1_seed_consumption_proof_v1",
+      "semantic_role": "SEED_CONSUMPTION_PROOF",
+      "source_capability_hint": "remediation_intake_seed_consumption_proof_v1"
+    }
+  ]
+}

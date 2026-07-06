@@ -1,0 +1,39 @@
+{
+  "agent_id": "production_example_agent",
+  "display_name": "Production Example Agent",
+  "mission": "Demonstrate the production-grade external agent specification format.",
+  "agent_kind": "custom",
+  "package_profile": "standard",
+  "runtime": {
+    "shell": "PowerShell",
+    "entrypoint": "orchestrator/run.ps1"
+  },
+  "inputs": [
+    {
+      "name": "request",
+      "type": "json",
+      "required": true,
+      "description": "Primary operator request payload."
+    }
+  ],
+  "outputs": [
+    {
+      "name": "result",
+      "type": "json",
+      "required": true,
+      "description": "Structured agent result payload."
+    }
+  ],
+  "capabilities": [
+    "accept structured input",
+    "emit structured output"
+  ],
+  "validation": [
+    "required repository files exist",
+    "generated orchestrator smoke-run passes"
+  ],
+  "forbidden_scope": [
+    "no external network call during generation",
+    "no hidden dependency on Codex"
+  ]
+}

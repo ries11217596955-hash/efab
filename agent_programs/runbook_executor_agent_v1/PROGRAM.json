@@ -1,0 +1,102 @@
+{
+  "program_id": "RUNBOOK_EXECUTOR_AGENT_PROGRAM_V1",
+  "agent_id": "runbook_executor_agent_v1",
+  "agent_name": "Runbook Executor Agent v1",
+  "purpose": "превращает runbook и задачу в операторский план действий",
+  "owner_visible_goal": "владелец может подать инструкцию и получить чеклист, риски, доказательства и следующий шаг",
+  "input_contract": {
+    "type": "object",
+    "required": [
+      "runbook_title",
+      "runbook_steps",
+      "task_or_incident",
+      "environment",
+      "constraints"
+    ],
+    "fields": {
+      "runbook_title": {
+        "type": "string",
+        "min_length": 1
+      },
+      "runbook_steps": {
+        "type": "array",
+        "items": "string",
+        "min_items": 1
+      },
+      "task_or_incident": {
+        "type": "string",
+        "min_length": 1
+      },
+      "environment": {
+        "type": "string",
+        "min_length": 1
+      },
+      "constraints": {
+        "type": "array",
+        "items": "string"
+      }
+    }
+  },
+  "output_contract": {
+    "type": "object",
+    "required": [
+      "execution_checklist",
+      "risk_flags",
+      "required_evidence",
+      "next_operator_action",
+      "validation_status"
+    ],
+    "fields": {
+      "execution_checklist": {
+        "type": "array",
+        "items": "string"
+      },
+      "risk_flags": {
+        "type": "array",
+        "items": "string"
+      },
+      "required_evidence": {
+        "type": "array",
+        "items": "string"
+      },
+      "next_operator_action": {
+        "type": "string"
+      },
+      "validation_status": {
+        "type": "string",
+        "required_value": "PASS"
+      }
+    }
+  },
+  "required_files": [
+    "README.md",
+    "AGENT_SPEC.json",
+    "RUNBOOK.md",
+    "INPUT_EXAMPLE.json",
+    "OUTPUT_EXAMPLE.json",
+    "run.ps1",
+    "proofs/README.md"
+  ],
+  "validation_requirements": [
+    "required files present",
+    "JSON examples valid",
+    "run.ps1 parser check passes",
+    "runtime output contains checklist, risks, evidence, next action",
+    "validation_status is PASS"
+  ],
+  "github_action_required": true,
+  "github_action_name": "Run Runbook Executor Agent v1",
+  "artifact_name": "runbook-executor-agent-v1-output",
+  "acceptance_criteria": [
+    "Builder creates standalone agent package",
+    "local runtime validation PASS",
+    "GitHub Actions workflow exists",
+    "GitHub Actions run produces artifact",
+    "agent registered in catalog"
+  ],
+  "forbidden_scope": [
+    "do not modify existing remediation intake agent",
+    "do not modify existing GitHub workflow",
+    "do not modify orchestrator/run.ps1"
+  ]
+}

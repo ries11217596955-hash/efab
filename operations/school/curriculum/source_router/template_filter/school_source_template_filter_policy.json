@@ -1,0 +1,55 @@
+﻿{
+  "schema": "school_source_template_filter_policy_v1",
+  "status": "ACTIVE_MINIMAL_SELECTOR_LAYER",
+  "default_minimum_authority_score": 0.80,
+  "source_ladder": [
+    {"tier":"official_docs","authority_score":0.95,"action":"prefer","use_when":"official product/API/language/library behavior"},
+    {"tier":"primary_source","authority_score":0.93,"action":"prefer","use_when":"original paper, release note, legal text, protocol owner"},
+    {"tier":"standards_specification","authority_score":0.92,"action":"prefer","use_when":"formal standard or specification"},
+    {"tier":"official_repository","authority_score":0.88,"action":"prefer","use_when":"source code, issues, changelog, tags"},
+    {"tier":"vendor_docs","authority_score":0.82,"action":"allow","use_when":"platform or vendor documentation"},
+    {"tier":"reputable_technical_article","authority_score":0.65,"action":"allow_with_cross_check","use_when":"explanation or pattern, not final proof"},
+    {"tier":"forum_discussion","authority_score":0.45,"action":"symptom_only_or_quarantine","use_when":"symptom discovery, edge cases, never primary proof"},
+    {"tier":"personal_blog","authority_score":0.40,"action":"idea_only_or_quarantine","use_when":"idea/reference only"},
+    {"tier":"sponsored_ad","authority_score":0.0,"action":"reject","use_when":"never"},
+    {"tier":"seo_scraper_content_farm","authority_score":0.10,"action":"reject","use_when":"never"}
+  ],
+  "blocked_result_types": ["ad", "sponsored", "coupon", "seo_farm", "scraped_mirror", "ai_content_farm", "tracking_campaign_url", "login_wall_without_content"],
+  "source_selection_rules": {
+    "internal_factory_healthy": {
+      "selected_source": "InternalFactory",
+      "conditions": {
+        "max_duplicate_rate": 0.20,
+        "min_novelty_score": 0.55,
+        "min_validator_pass_rate": 0.80,
+        "max_quarantine_rate": 0.10,
+        "external_required": false,
+        "codex_required": false
+      }
+    },
+    "internal_factory_stale": {
+      "selected_source": "CodexSourcePort",
+      "conditions": {
+        "min_duplicate_rate": 0.50,
+        "max_novelty_score": 0.35,
+        "external_required": false,
+        "codex_available": true
+      }
+    },
+    "external_required_or_codex_unavailable": {
+      "selected_source": "ExternalWorldSourcePort",
+      "conditions": {
+        "external_required": true,
+        "official_source_preferred": true
+      }
+    }
+  },
+  "query_template_defaults": {
+    "source_need": "official_docs",
+    "freshness_need": "version_sensitive",
+    "minimum_authority_score": 0.80,
+    "cross_check_required": false,
+    "reject_ads_sponsored": true
+  },
+  "boundary": "Template filter selects bounded source route and query plan only. It is not school brain, not accepted memory, and not source proof."
+}

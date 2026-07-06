@@ -1,0 +1,32 @@
+{
+  "phase": "PHASE165O_PROMOTION_READINESS_DECISION_AFTER_HARDENED_TRIAL",
+  "created_utc": "2026-06-11T05:06:00.3681228Z",
+  "status": "PASS",
+  "decision": "READY_FOR_GUARDED_PROMOTION_SCOPE",
+  "promotion_readiness": true,
+  "promote_now": false,
+  "evidence": {
+    "proof_chain_ready": true,
+    "hardening_passed": true,
+    "hardened_trial_passed": true,
+    "idempotent_trial_accepted": true,
+    "validator_repair_passed": true,
+    "absorption_ready": true,
+    "memory_ready": true,
+    "remaining_hardcoded_signal_count": 0,
+    "registry_already_promoted": false
+  },
+  "boundary": {
+    "orchestrator_run": false,
+    "promotion_performed": false,
+    "task_queue_mutated": false,
+    "genesis_state_mutated": false,
+    "capability_roadmap_mutated": false,
+    "route_lock_mutated": false,
+    "protected_self_model_mutated": false,
+    "registry_mutated": false,
+    "external_fetch_or_install": false,
+    "codex_used": false
+  },
+  "next_required_action": "PHASE165O_GUARDED_PROMOTION_SCOPE_FOR_REUSABLE_SELF_BUILD_ORGAN"
+}

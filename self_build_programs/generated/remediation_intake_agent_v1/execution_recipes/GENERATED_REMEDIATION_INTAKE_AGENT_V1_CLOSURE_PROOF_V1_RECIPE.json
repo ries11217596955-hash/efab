@@ -1,0 +1,61 @@
+{
+  "recipe_id": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1_RECIPE",
+  "program_manifest_path": "self_build_programs/generated/remediation_intake_agent_v1/SELF_BUILD_PROGRAM_MANIFEST.json",
+  "target_profile_id": "remediation_intake_agent_v1",
+  "target_agent_kind": "remediation_intake_agent",
+  "pack_id": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1",
+  "task_id": "TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1_001",
+  "capability_id": "generated_remediation_intake_agent_v1_closure_proof_v1",
+  "expected_gate": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1",
+  "semantic_role": "SPECIALIZED_CLOSURE_PROOF",
+  "recipe_kind": "SPECIALIZED_CLOSURE_PROOF_RECIPE_V1",
+  "input_artifacts": {
+    "raw_idea_path": ".\\specs\\remediation_intake_agent_gap_proof\\RAW_IDEA_REMEDIATION_INTAKE_AGENT_GAP_PROOF.json",
+    "orchestrator_path": ".\\orchestrator\\run.ps1"
+  },
+  "invocation_contract": {
+    "invocation_kind": "ORCHESTRATOR_MODE",
+    "mode": "BUILD_FROM_RAW_IDEA_SPECIALIZED",
+    "raw_idea_path": ".\\specs\\remediation_intake_agent_gap_proof\\RAW_IDEA_REMEDIATION_INTAKE_AGENT_GAP_PROOF.json",
+    "output_root": ".\\generated_agents",
+    "report_path_template": ".\\runs\\{run_id}\\BUILD_FROM_RAW_IDEA_SPECIALIZED_MODE_V1\\BUILD_FROM_RAW_IDEA_SPECIALIZED_REPORT.json"
+  },
+  "expected_assertions": {
+    "factory_report_status": "PASS",
+    "expected_specialization_profile_id": "remediation_intake_agent_v1",
+    "gap_report": null,
+    "overlay_status": "PASS",
+    "operational_result": {
+      "operation": "remediation_intake_mode_v1",
+      "next_alert_id": "remediation_intake_agent_intake_request",
+      "escalation_status": "INTAKE_READY"
+    }
+  },
+  "proof_contract": {
+    "proof_id": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1",
+    "required_fields": [
+      "proof_id",
+      "run_id",
+      "status",
+      "task_id",
+      "capability_id",
+      "expected_gate",
+      "semantic_role",
+      "raw_idea_path",
+      "factory_report_path",
+      "selected_profile_id",
+      "generated_package_root",
+      "validation_output",
+      "specialized_operation",
+      "next_alert_id",
+      "escalation_status",
+      "conclusion"
+    ],
+    "status": "PASS"
+  },
+  "next_transition": {
+    "next_capability_id": "generated_remediation_intake_agent_v1_seed_consumption_proof_v1",
+    "next_task_id": "TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_001",
+    "queue_action": "ACTIVATE_NEXT_GENERATED_TASK"
+  }
+}

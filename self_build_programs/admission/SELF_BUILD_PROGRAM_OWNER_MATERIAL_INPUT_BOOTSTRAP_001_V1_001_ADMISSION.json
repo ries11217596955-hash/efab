@@ -1,0 +1,43 @@
+﻿{
+    "schema_version":  "dynamic_generated_program_admission_v1",
+    "phase":  "PHASE89",
+    "admitted_by":  "ADMIT_DYNAMIC_SELF_BUILD_PROGRAM_V1",
+    "created_utc":  "2026-06-10T11:08:04.2441712Z",
+    "admission_id":  "SELF_BUILD_PROGRAM_OWNER_MATERIAL_INPUT_BOOTSTRAP_001_V1_001_ADMISSION",
+    "program_id":  "SELF_BUILD_PROGRAM_OWNER_MATERIAL_INPUT_BOOTSTRAP_001_V1_001",
+    "status":  "PASS",
+    "admission_status":  "ADMITTED_FOR_CONTROLLED_EXECUTION",
+    "admission_decision":  "ADMIT_CANDIDATE_FOR_CONTROLLED_EXECUTION",
+    "admission_required":  true,
+    "admission_performed":  true,
+    "execution_performed":  false,
+    "no_execution_guarantee":  true,
+    "next_required_step":  "PHASE165H_PATCH_EXECUTION_FOR_DYNAMIC_PROGRAMS",
+    "canonical_execution_step_after_patch":  "PHASE90_BUILDER_EXECUTES_OWN_GENERATED_SELF_BUILD_PROGRAM_V1",
+    "source":  {
+                   "dynamic_program_path":  "self_build_programs/generated/SELF_BUILD_PROGRAM_OWNER_MATERIAL_INPUT_BOOTSTRAP_001_V1_001.json",
+                   "selected_material_id":  "OWNER_MATERIAL_INPUT_BOOTSTRAP_001",
+                   "source_material_id":  "OWNER_MATERIAL_INPUT_BOOTSTRAP_001",
+                   "selected_source_file":  "OWNER_MATERIAL_INPUT_BOOTSTRAP_001.json",
+                   "selector":  "SELECT_OWNER_MATERIAL_INPUT_V1",
+                   "lineage_id":  "LINEAGE_SELF_BUILD_PROGRAM_OWNER_MATERIAL_INPUT_BOOTSTRAP_001_V1_001",
+                   "lineage_path":  "self_build_programs/lineage/SELF_BUILD_CAUSE_LINEAGE_EXAMPLE_V1.json"
+               },
+    "lineage":  {
+                    "lineage_id":  "LINEAGE_SELF_BUILD_PROGRAM_OWNER_MATERIAL_INPUT_BOOTSTRAP_001_V1_001",
+                    "required_path":  "PHASE87-\u003ePHASE88-\u003ePHASE89-\u003ePHASE90",
+                    "lineage_required":  true,
+                    "not_atom":  true,
+                    "owner_material_preserved":  true,
+                    "program_identity_preserved":  true,
+                    "dynamic_program_preserved":  true,
+                    "admission_lineage_preserved":  true
+                },
+    "safety":  {
+                   "no_execution":  true,
+                   "no_phase90_execution":  true,
+                   "no_external_agent_production":  true,
+                   "no_external_fetch_or_install":  true,
+                   "no_protected_state_mutation":  true
+               }
+}

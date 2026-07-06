@@ -1,0 +1,85 @@
+{
+    "schema":  "KNOWLEDGE_ACQUISITION_PROOF_V1",
+    "source":  "CODEX_READONLY_SOURCE",
+    "status":  "PASS_CODEX_DRAFT_RETURNED",
+    "checked_at":  "2026-07-05T16:07:59.4424537+04:00",
+    "run_id":  "source_digest_retention_docx_20260705_01",
+    "current_task":  "Create a Word file with one sentence",
+    "knowledge_need":  "The agent needs compact knowledge about docx creation boundaries, validation, and return-to-task without retaining raw source answers.",
+    "already_checked":  "active memory has no executable docx creation reflex; source retention policy requires compact digest and raw deletion by default",
+    "template_path":  "operations/knowledge_acquisition_port/CODEX_KNOWLEDGE_REQUEST_TEMPLATE.md",
+    "answer_schema":  "CODEX_KNOWLEDGE_ANSWER_SCHEMA_V1",
+    "answer_schema_path":  "operations/knowledge_acquisition_port/codex_knowledge_answer_schema.json",
+    "retention_policy_path":  "operations/knowledge_acquisition_port/SOURCE_DIGEST_RETENTION_POLICY.md",
+    "source_digest_path":  "operations\\knowledge_acquisition_port\\runs\\source_digest_retention_docx_20260705_01\\SOURCE_DIGEST_AND_PROMOTION_DECISION.json",
+    "codex_command":  "codex exec --skip-git-repo-check --sandbox read-only --ephemeral --output-last-message \u003crun_root\u003e/codex_last_message.json.txt -",
+    "codex_exit_code":  0,
+    "codex_answer_status":  "CODEX_DRAFT",
+    "codex_answer_json_valid":  true,
+    "codex_answer_required_shape_valid":  true,
+    "codex_answer_sha256":  "2246DAF3045A45C70EEF673078EB5A3ED6B09C2FA30B548C93576CE39ACBB6D7",
+    "raw_source_retention":  "DELETED_AFTER_COMPACT_DIGEST",
+    "source_role":  "CODEX_READONLY_SOURCE",
+    "candidate_knowledge":  "For task X, the missing knowledge is that a .docx file is not plain text renamed with a Word extension; it must be a valid DOCX/OOXML package created by a DOCX-capable application, library, or existing approved helper. The agent should learn only the minimum boundary: how to produce one document containing exactly one intended sentence, where the output path should be, what metadata or default content may appear, and how to validate the file before returning to the parent task while retaining only a compact digest and deleting raw source material by default.",
+    "missing_concepts":  [
+                             "DOCX is a structured Office Open XML package, not raw text",
+                             "approved creation mechanism must be identified before execution",
+                             "target sentence and output filename/path must be explicit",
+                             "validation must check both file format and visible document text",
+                             "raw learning material should be compacted into a digest and not retained by default"
+                         ],
+    "suggested_decomposition":  [
+                                    "identify allowed DOCX creation method",
+                                    "define exact one-sentence content",
+                                    "define output file location and name",
+                                    "create the smallest valid Word document",
+                                    "validate format and visible text",
+                                    "return compact result to task X"
+                                ],
+    "safe_learning_steps":  [
+                                "read only the local policy or tool notes that define allowed document creation methods",
+                                "check whether an existing approved helper or application boundary is already available",
+                                "learn the minimum DOCX validation expectations without copying raw examples into memory",
+                                "record only a compact digest of the usable creation and validation boundary"
+                            ],
+    "validation_needed":  [
+                              "confirm the output file exists at the intended path",
+                              "confirm the file opens or parses as a valid DOCX document",
+                              "confirm the visible document body contains exactly the requested sentence",
+                              "confirm no unintended extra body text was added"
+                          ],
+    "return_to_task_hint":  "After learning and validation planning, discard raw source notes, retain only the compact DOCX boundary digest, then return to task X to create and validate the one-sentence Word file using the approved method.",
+    "limits":  "NOT_PROVEN_UNTIL_VALIDATED: this draft does not prove any local tool, library, application, or repo helper exists; it does not create the document; it must not be treated as evidence that the final DOCX is valid or complete.",
+    "promotion_decision":  {
+                               "default_classification":  "CASE_PATTERN_CANDIDATE",
+                               "raw_retention_decision":  "DELETE_RAW_CANDIDATE",
+                               "active_memory_candidate":  false,
+                               "atom_candidate":  false,
+                               "reflex_candidate":  false,
+                               "organ_candidate":  false,
+                               "owner_decision_required":  "only if promotion beyond case pattern is requested",
+                               "reason":  "One source answer is material only; default is compact reusable case pattern plus validation/return hint."
+                           },
+    "mutation_audit":  {
+                           "active_memory_mutated":  false,
+                           "codex_file_write_requested":  false,
+                           "codex_shell_execution_requested":  false,
+                           "repo_status_before":  [
+                                                      " M operations/knowledge_acquisition_port/ask_codex_knowledge_source.ps1",
+                                                      " D operations/knowledge_acquisition_port/runs/aimo_knowledge_gap_codex_port_20260705_01_cycle1_knowledge_gap/codex_last_message.json.txt",
+                                                      " D operations/knowledge_acquisition_port/runs/codex_knowledge_source_docx_gap_20260704_01/codex_last_message.json.txt",
+                                                      " D operations/knowledge_acquisition_port/runs/codex_template_docx_gap_20260705_01/codex_last_message.json.txt",
+                                                      "?? operations/knowledge_acquisition_port/SOURCE_DIGEST_RETENTION_POLICY.md"
+                                                  ],
+                           "repo_status_after":  [
+                                                     " M operations/knowledge_acquisition_port/ask_codex_knowledge_source.ps1",
+                                                     " D operations/knowledge_acquisition_port/runs/aimo_knowledge_gap_codex_port_20260705_01_cycle1_knowledge_gap/codex_last_message.json.txt",
+                                                     " D operations/knowledge_acquisition_port/runs/codex_knowledge_source_docx_gap_20260704_01/codex_last_message.json.txt",
+                                                     " D operations/knowledge_acquisition_port/runs/codex_template_docx_gap_20260705_01/codex_last_message.json.txt",
+                                                     "?? operations/knowledge_acquisition_port/SOURCE_DIGEST_RETENTION_POLICY.md",
+                                                     "?? operations/knowledge_acquisition_port/runs/source_digest_retention_docx_20260705_01/SOURCE_DIGEST_AND_PROMOTION_DECISION.json",
+                                                     "?? operations/knowledge_acquisition_port/runs/source_digest_retention_docx_20260705_01/codex_last_message.json.txt"
+                                                 ]
+                       },
+    "boundary":  "CODEX_DRAFT only; agent must validate before acting; compact digest required; raw source not retained by default."
+}

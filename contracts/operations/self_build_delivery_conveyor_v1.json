@@ -1,0 +1,24 @@
+{
+  "contract_id": "SELF_BUILD_DELIVERY_CONVEYOR_V1",
+  "status": "ACTIVE_OPERATION_CONTRACT",
+  "created_in_phase": "PHASE98_ITEM_LEVEL_EXECUTION_LEDGER_V1",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "generated_at": "2026-05-29T16:44:01.1713855Z",
+  "purpose": "reduce manual seed/runtime/proof loops without weakening proof discipline",
+  "process_policy": {
+    "codex_for_complex_seed": true,
+    "combined_terminal_pack_preferred_after_phase97": true,
+    "seed_check_required": true,
+    "runtime_only_after_seed_pass": true,
+    "proof_validation_required": true,
+    "commit_only_after_runtime_pass": true,
+    "push_only_after_commit_pass": true,
+    "stop_on_any_fail": true,
+    "no_fake_pass": true,
+    "no_commit_on_fail": true,
+    "no_push_on_fail": true,
+    "owner_report_required_on_fail": true,
+    "no_unbounded_loop": true
+  },
+  "next_allowed_step": "PHASE99_CONTINUE_ON_FAILURE_RUNTIME_V1"
+}

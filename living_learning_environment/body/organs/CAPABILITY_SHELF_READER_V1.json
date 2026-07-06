@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "body_pack_id": "BUILDER_BODY_ORGAN_PACK_V1",
+  "organ_id": "CAPABILITY_SHELF_READER_V1",
+  "organ_type": "reader",
+  "purpose": "Read capability_shelf as reference only with no mutation.",
+  "allowed_inputs": [
+    "capability_shelf/registry.json",
+    "capability_shelf/capabilities/*.json"
+  ],
+  "allowed_outputs": [
+    "capability_shelf_read_result.json"
+  ],
+  "forbidden_actions": [
+    "mutate accepted Builder state",
+    "execute arbitrary code",
+    "fetch internet",
+    "install dependencies",
+    "mutate capability_shelf",
+    "create generated or applied agents",
+    "mark sources trusted"
+  ],
+  "organ_status": "BODY_ORGAN_AVAILABLE_IN_LLE",
+  "accepted_capability": false,
+  "next_allowed_step": "PHASE152_BUILDER_EXECUTES_ADMITTED_SELF_BUILD_PROGRAM_IN_SANDBOX_V1"
+}

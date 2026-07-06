@@ -1,0 +1,64 @@
+{
+    "schema":  "RUNTIME_SAFE_CLEANUP_REPORT_V1",
+    "status":  "PROVEN_LOCAL_CLEANUP_AFTER_REPORT_RECOVERY",
+    "cleaned_at":  "2026-07-05T15:54:16.8209719+04:00",
+    "head_before":  "b81af976961689b64eb2932e3451b6cf4e580471",
+    "branch":  "thin-control",
+    "runtime_tracked_count":  0,
+    "preserved":  [
+                      {
+                          "path":  ".runtime/active_compact_semantic_memory_v1",
+                          "bytes_before":  7272164,
+                          "bytes_after":  7272164,
+                          "manifest_run_id":  "file_atom_absorption_20260703_153235",
+                          "manifest_cells":  null,
+                          "manifest_hash":  null
+                      }
+                  ],
+    "deleted":  [
+                    {
+                        "path":  ".runtime/school_runs",
+                        "bytes":  47984298
+                    },
+                    {
+                        "path":  ".runtime/memory_snapshots",
+                        "bytes":  10688355
+                    },
+                    {
+                        "path":  ".runtime/codex_task_prompts",
+                        "bytes":  90687
+                    },
+                    {
+                        "path":  ".runtime/night_run_proofs",
+                        "bytes":  22065
+                    },
+                    {
+                        "path":  ".runtime/real_failure_rollback_proofs",
+                        "bytes":  48299
+                    },
+                    {
+                        "path":  ".runtime/real_resume_execution_proofs",
+                        "bytes":  41563
+                    },
+                    {
+                        "path":  ".runtime/scale_gate_proofs",
+                        "bytes":  151521
+                    },
+                    {
+                        "path":  ".runtime/supply_gate_proofs",
+                        "bytes":  4894
+                    },
+                    {
+                        "path":  ".runtime/memory_rebuild_proofs",
+                        "bytes":  2961
+                    }
+                ],
+    "sizes":  {
+                  "repo_before_bytes":  216377505,
+                  "repo_after_bytes":  157342862,
+                  "runtime_before_bytes":  66306807,
+                  "runtime_after_bytes":  7272164,
+                  "runtime_bytes_removed":  59034643
+              },
+    "boundary":  "Deleted only untracked runtime proof/snapshot/prompt directories; preserved active compact semantic memory. Initial report generation failed after deletion due manifest field typing; this report recovered from preflight measurements and current state."
+}

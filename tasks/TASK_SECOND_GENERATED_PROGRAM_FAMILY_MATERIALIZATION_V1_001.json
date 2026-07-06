@@ -1,0 +1,21 @@
+{
+  "task_id": "TASK_SECOND_GENERATED_PROGRAM_FAMILY_MATERIALIZATION_V1_001",
+  "capability_id": "second_generated_program_family_materialization_v1",
+  "objective": "Materialize remediation_intake_agent_v1 from the second generated program family contract into a complete generated self-build program package without live admission or generated pack execution.",
+  "execution_kind": "SELF_BUILD_SECOND_GENERATED_PROGRAM_FAMILY_MATERIALIZATION_V1",
+  "expected_gate": "SECOND_GENERATED_PROGRAM_FAMILY_MATERIALIZATION_V1",
+  "source_contract_path": "specs/second_generated_program_family/remediation_intake_agent_v1/REMEDIATION_INTAKE_AGENT_V1_GENERATED_PROGRAM_FAMILY_CONTRACT.json",
+  "family_id": "remediation_intake_agent_v1",
+  "materialized_program_root": "self_build_programs/generated/remediation_intake_agent_v1",
+  "required_materializer_module": "modules/materialize_generated_self_build_program_from_family_contract.ps1",
+  "required_executable_completion_module": "modules/complete_generated_self_build_program_executable_packs.ps1",
+  "forbidden_scope": [
+    "do not modify monitoring_agent_v1 generated program artifacts",
+    "do not modify recipe renderer, executable materializer, generalized admission module, orchestrator, or workflows",
+    "do not create PHASE63",
+    "do not admit remediation_intake_agent_v1 into live execution",
+    "do not activate remediation_intake_agent_v1 generated task queue",
+    "do not execute remediation_intake_agent_v1 generated self-build packs",
+    "do not create PHASE62 runtime proof, report, or materialized program artifacts before runtime"
+  ]
+}

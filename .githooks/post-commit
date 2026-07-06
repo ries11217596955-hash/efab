@@ -1,0 +1,5 @@
+#!/bin/sh
+if [ "$EF_SKIP_MAP_HOOK" = "1" ]; then exit 0; fi
+if command -v powershell.exe >/dev/null 2>&1; then PS=powershell.exe; elif command -v powershell >/dev/null 2>&1; then PS=powershell; elif command -v pwsh >/dev/null 2>&1; then PS=pwsh; else exit 0; fi
+"$PS" -NoProfile -ExecutionPolicy Bypass -File validators/validate_agent_body_composition_map_current_v1.ps1 >/dev/null 2>&1
+exit 0

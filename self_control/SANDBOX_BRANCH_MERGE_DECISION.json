@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "decision_id": "SANDBOX_BRANCH_MERGE_DECISION_001",
+  "created_by": "PHASE138C_SANDBOX_BRANCH_MERGE_DECISION_V1",
+  "run_id": "PHASE138C_SANDBOX_BRANCH_MERGE_DECISION_001",
+  "source_branch": "phase138a-autonomous-material-decision-stress-lab",
+  "target_branch": "phase110-idempotent-autonomy-trial-runtime",
+  "source_head": "c2f8b56",
+  "target_base_head": "6a958ed",
+  "merge_recommendation": "MERGE_AFTER_OWNER_APPROVAL",
+  "merge_allowed_now": false,
+  "owner_approval_required": true,
+  "recommended_merge_mode": "REVIEWED_PR_OR_MANUAL_MERGE",
+  "include_stress_dataset": true,
+  "include_runtime_modules": true,
+  "include_proofs_and_reports": true,
+  "production_adoption_allowed": false,
+  "trusted_material_count": 0,
+  "external_fetch_performed": false,
+  "dependency_install_performed": false,
+  "executable_materials_used": false,
+  "wrapper_created": false,
+  "smoke_test_executed": false,
+  "risk_notes": [
+    "Sandbox stress branch contains synthetic dataset and review artifacts only; it does not authorize production material adoption.",
+    "Owner approval is required before any branch merge.",
+    "Selected material remains untrusted and requires later owner, license, provenance, wrapper, quarantine, and smoke-test decisions before any use."
+  ],
+  "next_allowed_step": "PHASE138D_OWNER_APPROVED_SANDBOX_BRANCH_MERGE_V1"
+}

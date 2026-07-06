@@ -1,0 +1,14 @@
+{
+  "task_id": "TASK_EXECUTABLE_GENERATED_PROGRAM_MATERIALIZATION_V1_001",
+  "capability_id": "executable_generated_program_materialization_v1",
+  "objective": "Materialize executable APPLY.ps1 entry scripts for the generated monitoring-agent self-build program without admitting it into live Builder execution.",
+  "execution_kind": "SELF_BUILD_MATERIALIZATION_GATE",
+  "expected_gate": "EXECUTABLE_GENERATED_PROGRAM_MATERIALIZATION_V1",
+  "target_program_manifest": "self_build_programs/generated/monitoring_agent_v1/SELF_BUILD_PROGRAM_MANIFEST.json",
+  "required_blocker_removed": "ADMISSION_BLOCKED_NON_EXECUTABLE_PACKS",
+  "forbidden_scope": [
+    "do not admit generated monitoring-agent packs into live registry",
+    "do not seed generated monitoring-agent tasks into live queue",
+    "do not start generated_program_live_admission_proof_v1"
+  ]
+}

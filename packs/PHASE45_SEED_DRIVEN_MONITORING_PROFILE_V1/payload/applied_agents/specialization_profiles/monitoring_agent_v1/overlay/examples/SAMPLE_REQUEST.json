@@ -1,0 +1,26 @@
+{
+  "request_id": "monitoring_profile_sample_001",
+  "payload": {
+    "system_id": "runtime_checkout",
+    "signals": [
+      {
+        "id": "cpu_spike",
+        "severity": "HIGH",
+        "status": "OPEN",
+        "message": "CPU saturation exceeded threshold."
+      },
+      {
+        "id": "queue_lag",
+        "severity": "MEDIUM",
+        "status": "OPEN",
+        "message": "Queue lag is rising."
+      },
+      {
+        "id": "heartbeat_ok",
+        "severity": "LOW",
+        "status": "CLEAR",
+        "message": "Heartbeat healthy."
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "registry_id": "OPERATION_REGISTRY_V1",
+  "registry_version": "1.0",
+  "generated_at": "2026-05-29T09:41:16.0328293Z",
+  "status": "CONTRACTS_REGISTERED",
+  "operations": [
+    {
+      "operation_id": "validate_json_schema_with_ajv",
+      "operation_name": "Validate JSON Schema with Ajv",
+      "operation_type": "VALIDATE_JSON_SCHEMA",
+      "status": "CONTRACT_READY",
+      "related_material_id": "mat_json_schema_ajv_001",
+      "related_quarantine_card_path": "materials/quarantine/mat_json_schema_ajv_001/MATERIAL_CARD.json",
+      "contract_path": "operations/contracts/validate_json_schema_with_ajv.contract.json",
+      "execution_mode": "NO_EXECUTION",
+      "risk_level": "LOW",
+      "owner_approval_required": false,
+      "next_allowed_step": "PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1"
+    },
+    {
+      "operation_id": "validate_json_schema_with_python_jsonschema",
+      "operation_name": "Validate JSON Schema with python-jsonschema",
+      "operation_type": "VALIDATE_JSON_SCHEMA",
+      "status": "CONTRACT_READY",
+      "related_material_id": "mat_python_jsonschema_001",
+      "related_quarantine_card_path": "materials/quarantine/mat_python_jsonschema_001/MATERIAL_CARD.json",
+      "contract_path": "operations/contracts/validate_json_schema_with_python_jsonschema.contract.json",
+      "execution_mode": "NO_EXECUTION",
+      "risk_level": "LOW",
+      "owner_approval_required": false,
+      "next_allowed_step": "PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1"
+    }
+  ],
+  "policy": {
+    "phase": "PHASE_84",
+    "capability_id": "first_wrapper_operation_contracts_v1",
+    "trust_policy": "PHASE84 cannot create TRUSTED_OPERATION entries or mark materials trusted.",
+    "execution_policy": "PHASE84 creates operation contracts only; execution_mode must remain NO_EXECUTION and no candidate tools may run.",
+    "install_performed": false,
+    "external_fetch_performed": false,
+    "smoke_tests_run": false,
+    "wrapper_implementations_created": false
+  },
+  "next_allowed_step": "PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1",
+  "trusted_operation_count": 0,
+  "execution_performed": false
+}

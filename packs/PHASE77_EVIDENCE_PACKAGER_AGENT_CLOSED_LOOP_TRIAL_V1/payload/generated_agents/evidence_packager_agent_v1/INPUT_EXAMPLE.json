@@ -1,0 +1,37 @@
+{
+  "task_id": "INCIDENT-2026-05-25-001",
+  "task_summary": "Investigate failed hosted agent acceptance run and package the evidence for operator review.",
+  "required_evidence": [
+    "terminal_log",
+    "workflow_run_url",
+    "artifact_output",
+    "state_diff"
+  ],
+  "evidence_items": [
+    {
+      "evidence_id": "terminal_log",
+      "evidence_type": "terminal_log",
+      "summary": "Local terminal log showing the failing command and error text.",
+      "source_path": "reports/incidents/terminal-log.txt",
+      "status": "available",
+      "label": "terminal_log"
+    },
+    {
+      "evidence_id": "workflow_run_url",
+      "evidence_type": "workflow_run_url",
+      "summary": "GitHub Actions run URL for the hosted validation attempt.",
+      "source_path": "https://github.com/example/repo/actions/runs/1",
+      "status": "available",
+      "label": "workflow_run_url"
+    },
+    {
+      "evidence_id": "artifact_output",
+      "evidence_type": "artifact_output",
+      "summary": "Downloaded GITHUB_ACTION_OUTPUT.json from the hosted artifact.",
+      "source_path": "runs/example/GITHUB_ACTION_OUTPUT.json",
+      "status": "available",
+      "label": "artifact_output"
+    }
+  ],
+  "operator_notes": "State diff is not attached yet and should be requested before final closure."
+}

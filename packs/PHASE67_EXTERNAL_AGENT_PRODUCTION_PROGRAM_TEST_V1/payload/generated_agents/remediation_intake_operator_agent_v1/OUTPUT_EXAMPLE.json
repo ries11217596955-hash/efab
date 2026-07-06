@@ -1,0 +1,26 @@
+{
+  "normalized_problem": {
+    "title": "Patch deployment failed on payment remediation queue",
+    "description": "The latest remediation patch did not complete. The deployment job failed after the queue worker health check reported repeated processing timeouts.",
+    "affected_system": "payment-remediation-service",
+    "urgency": "high",
+    "evidence_count": 3,
+    "evidence_summary": [
+      "Deployment job run 2026-05-24.67 failed at health-check step.",
+      "Queue worker reported timeout while processing remediation messages.",
+      "No successful completion marker was written after the patch attempt."
+    ]
+  },
+  "severity": "SEV-2",
+  "likely_area": "deployment_or_release",
+  "missing_information": [
+    "impact",
+    "first_observed_at",
+    "reproduction_steps",
+    "owner_or_contact",
+    "recent_change_reference"
+  ],
+  "recommended_next_step": "Open a remediation incident for deployment_or_release, attach the supplied evidence, and request missing information: impact, first_observed_at, reproduction_steps, owner_or_contact, recent_change_reference.",
+  "operator_note": "Structured locally by remediation_intake_operator_agent_v1; no external APIs were called.",
+  "validation_status": "PASS"
+}

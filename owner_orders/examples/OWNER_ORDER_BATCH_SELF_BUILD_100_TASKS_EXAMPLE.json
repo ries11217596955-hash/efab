@@ -1,0 +1,20 @@
+{
+  "order_id": "OWNER_ORDER_BATCH_SELF_BUILD_100_TASKS_EXAMPLE",
+  "mode": "GAP_MAP_ONLY",
+  "request": "Owner wants Builder to learn to process 100 self-build tasks in controlled batches.",
+  "max_cycles": 1,
+  "max_items": 100,
+  "risk_level": "SAFE_ONLY",
+  "allow_external_agents": false,
+  "allow_installs": false,
+  "allow_external_fetch": false,
+  "require_owner_approval": true,
+  "expected_output": "Gap map for the capabilities needed to process 100 self-build tasks safely.",
+  "constraints": [
+    "Self-build only.",
+    "No external agents.",
+    "No installs.",
+    "No external fetch.",
+    "No execution in PHASE94."
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Agent Builder Run Report",
+  "type": "object",
+  "required": [
+    "run_id",
+    "mode",
+    "status",
+    "task_executed",
+    "validators",
+    "next_task"
+  ],
+  "properties": {
+    "run_id": {
+      "type": "string"
+    },
+    "mode": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "task_executed": {
+      "type": "string"
+    },
+    "validators": {
+      "type": "array"
+    },
+    "next_task": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Candidate Quarantine Record V1",
+  "type": "object",
+  "required": [
+    "candidate_id",
+    "source_candidate_path",
+    "quarantine_status",
+    "sandbox_status",
+    "promotion_allowed",
+    "risk_notes"
+  ],
+  "properties": {
+    "candidate_id": { "type": "string" },
+    "source_candidate_path": { "type": "string" },
+    "quarantine_status": { "type": "string" },
+    "sandbox_status": { "type": "string" },
+    "promotion_allowed": { "type": "boolean" },
+    "risk_notes": { "type": "string" },
+    "created_at": { "type": "string" }
+  },
+  "additionalProperties": true
+}

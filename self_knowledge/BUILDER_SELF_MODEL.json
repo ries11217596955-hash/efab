@@ -1,0 +1,4841 @@
+{
+  "schema_version": "AGENT_BUILDER_SELF_KNOWLEDGE_SYSTEM_FULL_CONTRACT_V1",
+  "generated_at_utc": "2026-05-28T15:44:58.6131166Z",
+  "collection_status": "collected",
+  "status_taxonomy": [
+    "proven",
+    "completed",
+    "active",
+    "candidate",
+    "planned",
+    "failed",
+    "unknown",
+    "missing_surface"
+  ],
+  "builder_identity": {
+    "system": "Agent Builder",
+    "repo_name": "e-factory-agent-builder",
+    "repo_root": "",
+    "active_line": "AGENT_BUILDER_SELF_DEVELOPMENT",
+    "active_mode": "SELF_BUILD",
+    "product_target": "Build a verified operating contour first, then build other agents from formal specs."
+  },
+  "repo_markers": [
+    {
+      "path": "CAPABILITY_ROADMAP.json",
+      "area": "Repo Identity",
+      "kind": "file",
+      "status": "proven"
+    },
+    {
+      "path": "GENESIS_STATE.json",
+      "area": "Repo Identity",
+      "kind": "file",
+      "status": "proven"
+    },
+    {
+      "path": "TASK_QUEUE.json",
+      "area": "Repo Identity",
+      "kind": "file",
+      "status": "proven"
+    },
+    {
+      "path": "packs/registry.json",
+      "area": "Repo Identity",
+      "kind": "file",
+      "status": "proven"
+    },
+    {
+      "path": "orchestrator/run.ps1",
+      "area": "Repo Identity",
+      "kind": "file",
+      "status": "proven"
+    }
+  ],
+  "current_state": {
+    "source_path": "GENESIS_STATE.json",
+    "current_capability": "agent_builder_self_knowledge_system_full_contract_v1",
+    "completed_capabilities_count": 85,
+    "self_build_ready": "True"
+  },
+  "queue_state": {
+    "source_path": "TASK_QUEUE.json",
+    "active_task_id": "NONE",
+    "clean": true
+  },
+  "roadmap_summary": {
+    "source_path": "CAPABILITY_ROADMAP.json",
+    "phase_78": {
+      "id": "agent_builder_self_knowledge_system_full_contract_v1",
+      "phase": "PHASE_78",
+      "gate": "AGENT_BUILDER_SELF_KNOWLEDGE_SYSTEM_FULL_CONTRACT_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    "counts": {
+      "total": 87,
+      "completed": 86,
+      "active": 0,
+      "candidate": 0,
+      "planned": 0,
+      "failed": 1,
+      "proven_by_evidence_file": 71,
+      "unknown": 0
+    },
+    "latest_active": [],
+    "latest_completed": [
+      {
+        "id": "runbook_executor_agent_production_v1",
+        "phase": "PHASE_73",
+        "gate": "RUNBOOK_EXECUTOR_AGENT_PRODUCTION_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/RUNBOOK_EXECUTOR_AGENT_PRODUCTION_V1.json",
+          "reports/external_agent_production/RUNBOOK_EXECUTOR_AGENT_PRODUCTION_V1_REPORT.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "runbook_executor_agent_github_action_launch_v1",
+        "phase": null,
+        "gate": null,
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_LAUNCH_V1.json",
+          "reports/external_agent_production/RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_LAUNCH_V1_REPORT.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "runbook_executor_agent_github_action_acceptance_v1",
+        "phase": null,
+        "gate": null,
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_ACCEPTANCE_V1.json",
+          "reports/external_agent_production/RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_ACCEPTANCE_V1_REPORT.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "agent_production_closed_loop_standard_v1",
+        "phase": "PHASE_76",
+        "gate": "AGENT_PRODUCTION_CLOSED_LOOP_STANDARD_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/AGENT_PRODUCTION_CLOSED_LOOP_STANDARD_V1.json",
+          "reports/external_agent_production/AGENT_PRODUCTION_CLOSED_LOOP_STANDARD_V1_REPORT.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "evidence_packager_agent_closed_loop_trial_v1",
+        "phase": "PHASE_77",
+        "gate": "EVIDENCE_PACKAGER_AGENT_CLOSED_LOOP_TRIAL_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/EVIDENCE_PACKAGER_AGENT_CLOSED_LOOP_TRIAL_V1.json",
+          "reports/external_agent_production/EVIDENCE_PACKAGER_AGENT_CLOSED_LOOP_TRIAL_V1_REPORT.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      }
+    ]
+  },
+  "capability_manifest": {
+    "schema_version": "AGENT_BUILDER_CAPABILITY_MANIFEST_V1",
+    "generated_at_utc": "2026-05-28T15:44:58.6131166Z",
+    "collection_status": "collected",
+    "source_files": [
+      "CAPABILITY_ROADMAP.json",
+      "GENESIS_STATE.json",
+      "proofs/",
+      "reports/"
+    ],
+    "capabilities": [
+      {
+        "id": "runbook_executor_agent_github_action_acceptance_v1",
+        "phase": null,
+        "gate": null,
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_ACCEPTANCE_V1.json",
+          "reports/external_agent_production/RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_ACCEPTANCE_V1_REPORT.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "runbook_executor_agent_github_action_launch_v1",
+        "phase": null,
+        "gate": null,
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_LAUNCH_V1.json",
+          "reports/external_agent_production/RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_LAUNCH_V1_REPORT.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "generated_conveyor_failure_trial_family_v1_failure_pack_v1",
+        "phase": "GENERATED_CONVEYOR_FAILURE_TRIAL_FAMILY_V1_PHASE_1",
+        "gate": "GENERATED_CONVEYOR_FAILURE_TRIAL_FAMILY_V1_FAILURE_PACK_V1",
+        "status": "failed",
+        "raw_status": "FAILED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/GENERATED_CONVEYOR_FAILURE_TRIAL_FAMILY_V1_FAILURE_PACK_V1.json",
+          "reports/generated_family_autonomous_conveyor/GENERATED_CONVEYOR_FAILURE_TRIAL_FAMILY_V1_FAILURE_PACK_V1_REPORT.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "generated_conveyor_trial_family_v1_live_pack_v1",
+        "phase": "GENERATED_CONVEYOR_TRIAL_FAMILY_V1_PHASE_1",
+        "gate": "GENERATED_CONVEYOR_TRIAL_FAMILY_V1_LIVE_PACK_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/GENERATED_CONVEYOR_TRIAL_FAMILY_V1_LIVE_PACK_V1.json",
+          "reports/generated_family_autonomous_conveyor/GENERATED_CONVEYOR_TRIAL_FAMILY_V1_LIVE_PACK_V1_REPORT.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "generated_monitoring_agent_v1_profile_materialization_v1",
+        "phase": "GENERATED_MONITORING_AGENT_V1_PHASE_1",
+        "gate": "GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "generated_monitoring_agent_v1_closure_proof_v1",
+        "phase": "GENERATED_MONITORING_AGENT_V1_PHASE_2",
+        "gate": "GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "generated_monitoring_agent_v1_seed_consumption_proof_v1",
+        "phase": "GENERATED_MONITORING_AGENT_V1_PHASE_3",
+        "gate": "GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "generated_remediation_intake_agent_v1_profile_materialization_v1",
+        "phase": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_PHASE_1",
+        "gate": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "generated_remediation_intake_agent_v1_closure_proof_v1",
+        "phase": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_PHASE_2",
+        "gate": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "generated_remediation_intake_agent_v1_seed_consumption_proof_v1",
+        "phase": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_PHASE_3",
+        "gate": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "repo_genesis",
+        "phase": "PHASE_0",
+        "gate": "REPO_GENESIS_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "unknown",
+        "evidence_paths": [],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "self_build_control_core",
+        "phase": "PHASE_1",
+        "gate": "SELF_BUILD_CONTROL_CORE_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "unknown",
+        "evidence_paths": [],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "generated_agent_validation_harness_v1",
+        "phase": "PHASE_10",
+        "gate": "GENERATED_AGENT_VALIDATION_HARNESS_V1_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "unknown",
+        "evidence_paths": [],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "factory_build_external_agent_mode_v1",
+        "phase": "PHASE_11",
+        "gate": "FACTORY_BUILD_EXTERNAL_AGENT_MODE_V1_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "unknown",
+        "evidence_paths": [],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "production_factory_proof_v1",
+        "phase": "PHASE_12",
+        "gate": "PRODUCTION_FACTORY_PROOF_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/PRODUCTION_FACTORY_PROOF_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "production_truth_reset_v2",
+        "phase": "PHASE_13",
+        "gate": "PRODUCTION_TRUTH_RESET_V2_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "unknown",
+        "evidence_paths": [],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "real_generated_agent_runtime_v2",
+        "phase": "PHASE_14",
+        "gate": "REAL_GENERATED_AGENT_RUNTIME_V2_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "unknown",
+        "evidence_paths": [],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "operational_validation_harness_v2",
+        "phase": "PHASE_15",
+        "gate": "OPERATIONAL_VALIDATION_HARNESS_V2_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "unknown",
+        "evidence_paths": [],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "factory_build_external_agent_mode_v2",
+        "phase": "PHASE_16",
+        "gate": "FACTORY_BUILD_EXTERNAL_AGENT_MODE_V2_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "unknown",
+        "evidence_paths": [],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "operational_factory_proof_v2",
+        "phase": "PHASE_17",
+        "gate": "OPERATIONAL_FACTORY_PROOF_V2",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/OPERATIONAL_FACTORY_PROOF_V2.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "architect_to_spec_handoff_v1",
+        "phase": "PHASE_18",
+        "gate": "ARCHITECT_TO_SPEC_HANDOFF_V1_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/ARCHITECT_TO_SPEC_HANDOFF_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "build_from_raw_idea_mode_v1",
+        "phase": "PHASE_19",
+        "gate": "BUILD_FROM_RAW_IDEA_MODE_V1_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "unknown",
+        "evidence_paths": [],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "self_build_execution_substrate",
+        "phase": "PHASE_2",
+        "gate": "SELF_BUILD_EXECUTION_SUBSTRATE_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "unknown",
+        "evidence_paths": [],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "idea_to_agent_factory_proof_v1",
+        "phase": "PHASE_20",
+        "gate": "IDEA_TO_AGENT_FACTORY_PROOF_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/IDEA_TO_AGENT_FACTORY_PROOF_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "specialization_overlay_resolution_v1",
+        "phase": "PHASE_21",
+        "gate": "SPECIALIZATION_OVERLAY_RESOLUTION_V1_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/SPECIALIZATION_OVERLAY_RESOLUTION_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "build_from_raw_idea_specialized_mode_v1",
+        "phase": "PHASE_22",
+        "gate": "BUILD_FROM_RAW_IDEA_SPECIALIZED_MODE_V1_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/BUILD_FROM_RAW_IDEA_SPECIALIZED_MODE_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "idea_to_specialized_agent_factory_proof_v1",
+        "phase": "PHASE_23",
+        "gate": "IDEA_TO_SPECIALIZED_AGENT_FACTORY_PROOF_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/IDEA_TO_SPECIALIZED_AGENT_FACTORY_PROOF_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "specialization_profile_registry_v1",
+        "phase": "PHASE_24",
+        "gate": "SPECIALIZATION_PROFILE_REGISTRY_V1_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/SPECIALIZATION_PROFILE_REGISTRY_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "specification_agent_specialization_profile_v1",
+        "phase": "PHASE_25",
+        "gate": "SPECIFICATION_AGENT_SPECIALIZATION_PROFILE_V1_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/SPECIFICATION_AGENT_SPECIALIZATION_PROFILE_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "multi_profile_specialized_factory_proof_v1",
+        "phase": "PHASE_26",
+        "gate": "MULTI_PROFILE_SPECIALIZED_FACTORY_PROOF_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/MULTI_PROFILE_SPECIALIZED_FACTORY_PROOF_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "specialization_gap_contract_v1",
+        "phase": "PHASE_27",
+        "gate": "SPECIALIZATION_GAP_CONTRACT_V1_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/SPECIALIZATION_GAP_CONTRACT_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "no_match_diagnostic_mode_v1",
+        "phase": "PHASE_28",
+        "gate": "NO_MATCH_DIAGNOSTIC_MODE_V1_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/NO_MATCH_DIAGNOSTIC_MODE_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "missing_profile_factory_proof_v1",
+        "phase": "PHASE_29",
+        "gate": "MISSING_PROFILE_FACTORY_PROOF_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/MISSING_PROFILE_FACTORY_PROOF_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "serial_self_build_pack_executor",
+        "phase": "PHASE_3",
+        "gate": "SERIAL_SELF_BUILD_PACK_EXECUTOR_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "unknown",
+        "evidence_paths": [],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "gap_to_profile_candidate_brief_v1",
+        "phase": "PHASE_30",
+        "gate": "GAP_TO_PROFILE_CANDIDATE_BRIEF_V1_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/GAP_TO_PROFILE_CANDIDATE_BRIEF_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "decision_support_agent_specialization_profile_v1",
+        "phase": "PHASE_31",
+        "gate": "DECISION_SUPPORT_AGENT_SPECIALIZATION_PROFILE_V1_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/DECISION_SUPPORT_AGENT_SPECIALIZATION_PROFILE_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "gap_closure_specialized_factory_proof_v1",
+        "phase": "PHASE_32",
+        "gate": "GAP_CLOSURE_SPECIALIZED_FACTORY_PROOF_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/GAP_CLOSURE_SPECIALIZED_FACTORY_PROOF_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "gap_remediation_intake_mode_v1",
+        "phase": "PHASE_33",
+        "gate": "GAP_REMEDIATION_INTAKE_MODE_V1_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/GAP_REMEDIATION_INTAKE_MODE_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "candidate_intake_report_contract_v1",
+        "phase": "PHASE_34",
+        "gate": "CANDIDATE_INTAKE_REPORT_CONTRACT_V1_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/CANDIDATE_INTAKE_REPORT_CONTRACT_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "runtime_gap_to_candidate_factory_proof_v1",
+        "phase": "PHASE_35",
+        "gate": "RUNTIME_GAP_TO_CANDIDATE_FACTORY_PROOF_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/RUNTIME_GAP_TO_CANDIDATE_FACTORY_PROOF_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "workflow_execution_family_reachability_v1",
+        "phase": "PHASE_36",
+        "gate": "WORKFLOW_EXECUTION_FAMILY_REACHABILITY_V1_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/WORKFLOW_EXECUTION_FAMILY_REACHABILITY_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "intake_driven_workflow_execution_profile_v1",
+        "phase": "PHASE_37",
+        "gate": "INTAKE_DRIVEN_WORKFLOW_EXECUTION_PROFILE_V1_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/INTAKE_DRIVEN_WORKFLOW_EXECUTION_PROFILE_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "runtime_gap_remediation_closure_proof_v1",
+        "phase": "PHASE_38",
+        "gate": "RUNTIME_GAP_REMEDIATION_CLOSURE_PROOF_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/RUNTIME_GAP_REMEDIATION_CLOSURE_PROOF_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "monitoring_gap_reachability_v1",
+        "phase": "PHASE_39",
+        "gate": "MONITORING_GAP_REACHABILITY_V1_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/MONITORING_GAP_REACHABILITY_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "self_validation_release_gates",
+        "phase": "PHASE_4",
+        "gate": "SELF_BUILD_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "unknown",
+        "evidence_paths": [],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "specialized_gap_auto_intake_runtime_v1",
+        "phase": "PHASE_40",
+        "gate": "SPECIALIZED_GAP_AUTO_INTAKE_RUNTIME_V1_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/SPECIALIZED_GAP_AUTO_INTAKE_RUNTIME_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "one_run_gap_remediation_packet_proof_v1",
+        "phase": "PHASE_41",
+        "gate": "ONE_RUN_GAP_REMEDIATION_PACKET_PROOF_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/ONE_RUN_GAP_REMEDIATION_PACKET_PROOF_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "remediation_program_seed_contract_v1",
+        "phase": "PHASE_42",
+        "gate": "REMEDIATION_PROGRAM_SEED_CONTRACT_V1_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/REMEDIATION_PROGRAM_SEED_CONTRACT_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "specialized_gap_auto_program_seed_runtime_v1",
+        "phase": "PHASE_43",
+        "gate": "SPECIALIZED_GAP_AUTO_PROGRAM_SEED_RUNTIME_V1_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/SPECIALIZED_GAP_AUTO_PROGRAM_SEED_RUNTIME_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "one_run_remediation_program_seed_proof_v1",
+        "phase": "PHASE_44",
+        "gate": "ONE_RUN_REMEDIATION_PROGRAM_SEED_PROOF_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/ONE_RUN_REMEDIATION_PROGRAM_SEED_PROOF_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "seed_driven_monitoring_profile_v1",
+        "phase": "PHASE_45",
+        "gate": "SEED_DRIVEN_MONITORING_PROFILE_V1_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/SEED_DRIVEN_MONITORING_PROFILE_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "monitoring_gap_closure_specialized_proof_v1",
+        "phase": "PHASE_46",
+        "gate": "MONITORING_GAP_CLOSURE_SPECIALIZED_PROOF_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/MONITORING_GAP_CLOSURE_SPECIALIZED_PROOF_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "remediation_program_seed_consumption_closure_proof_v1",
+        "phase": "PHASE_47",
+        "gate": "REMEDIATION_PROGRAM_SEED_CONSUMPTION_CLOSURE_PROOF_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/REMEDIATION_PROGRAM_SEED_CONSUMPTION_CLOSURE_PROOF_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "remediation_seed_program_blueprint_contract_v1",
+        "phase": "PHASE_48",
+        "gate": "REMEDIATION_SEED_PROGRAM_BLUEPRINT_CONTRACT_V1_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/REMEDIATION_SEED_PROGRAM_BLUEPRINT_CONTRACT_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "remediation_seed_program_materialization_v1",
+        "phase": "PHASE_49",
+        "gate": "REMEDIATION_SEED_PROGRAM_MATERIALIZATION_V1_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/REMEDIATION_SEED_PROGRAM_MATERIALIZATION_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "external_agent_spec_intake",
+        "phase": "PHASE_5",
+        "gate": "EXTERNAL_AGENT_SPEC_INTAKE_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "unknown",
+        "evidence_paths": [],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "one_run_remediation_seed_program_synthesis_proof_v1",
+        "phase": "PHASE_50",
+        "gate": "ONE_RUN_REMEDIATION_SEED_PROGRAM_SYNTHESIS_PROOF_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/ONE_RUN_REMEDIATION_SEED_PROGRAM_SYNTHESIS_PROOF_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "builder_github_action_manual_run_surface_v1",
+        "phase": "PHASE_51",
+        "gate": "BUILDER_GITHUB_ACTION_MANUAL_RUN_SURFACE_V1_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/BUILDER_GITHUB_ACTION_MANUAL_RUN_SURFACE_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "generated_agent_action_launch_contract_v1",
+        "phase": "PHASE_52",
+        "gate": "GENERATED_AGENT_ACTION_LAUNCH_CONTRACT_V1_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/GENERATED_AGENT_ACTION_LAUNCH_CONTRACT_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "action_ready_generated_agent_proof_v1",
+        "phase": "PHASE_53",
+        "gate": "ACTION_READY_GENERATED_AGENT_PROOF_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/ACTION_READY_GENERATED_AGENT_PROOF_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "owner_visible_self_build_acceptance_v1",
+        "phase": "PHASE_54",
+        "gate": "OWNER_VISIBLE_SELF_BUILD_ACCEPTANCE_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/OWNER_VISIBLE_SELF_BUILD_ACCEPTANCE_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "generated_program_admission_readiness_gate_v1",
+        "phase": "PHASE_55",
+        "gate": "GENERATED_PROGRAM_ADMISSION_READINESS_GATE_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/GENERATED_PROGRAM_ADMISSION_READINESS_GATE_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "executable_generated_program_materialization_v1",
+        "phase": "PHASE_56",
+        "gate": "EXECUTABLE_GENERATED_PROGRAM_MATERIALIZATION_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/EXECUTABLE_GENERATED_PROGRAM_MATERIALIZATION_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "generated_program_live_admission_proof_v1",
+        "phase": "PHASE_57",
+        "gate": "GENERATED_PROGRAM_LIVE_ADMISSION_PROOF_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/GENERATED_PROGRAM_LIVE_ADMISSION_PROOF_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "generated_program_execution_recipe_contract_v1",
+        "phase": "PHASE_58",
+        "gate": "GENERATED_PROGRAM_EXECUTION_RECIPE_CONTRACT_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/GENERATED_PROGRAM_EXECUTION_RECIPE_CONTRACT_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "recipe_driven_generated_program_executable_materialization_v1",
+        "phase": "PHASE_59",
+        "gate": "RECIPE_DRIVEN_GENERATED_PROGRAM_EXECUTABLE_MATERIALIZATION_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/RECIPE_DRIVEN_GENERATED_PROGRAM_EXECUTABLE_MATERIALIZATION_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "external_agent_package_generator",
+        "phase": "PHASE_6",
+        "gate": "EXTERNAL_AGENT_PACKAGE_GENERATOR_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "unknown",
+        "evidence_paths": [],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "generalized_generated_program_live_admission_contract_v1",
+        "phase": "PHASE_60",
+        "gate": "GENERALIZED_GENERATED_PROGRAM_LIVE_ADMISSION_CONTRACT_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/GENERALIZED_GENERATED_PROGRAM_LIVE_ADMISSION_CONTRACT_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "second_generated_program_family_proof_v1",
+        "phase": "PHASE_61",
+        "gate": "SECOND_GENERATED_PROGRAM_FAMILY_PROOF_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/SECOND_GENERATED_PROGRAM_FAMILY_PROOF_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "second_generated_program_family_materialization_v1",
+        "phase": "PHASE_62",
+        "gate": "SECOND_GENERATED_PROGRAM_FAMILY_MATERIALIZATION_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/SECOND_GENERATED_PROGRAM_FAMILY_MATERIALIZATION_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "second_generated_program_family_live_admission_v1",
+        "phase": "PHASE_63",
+        "gate": "SECOND_GENERATED_PROGRAM_FAMILY_LIVE_ADMISSION_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/SECOND_GENERATED_PROGRAM_FAMILY_LIVE_ADMISSION_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "generated_family_autonomous_conveyor_contract_v1",
+        "phase": "PHASE_64",
+        "gate": "GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_CONTRACT_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_CONTRACT_V1.json",
+          "reports/generated_family_autonomous_conveyor/GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_CONTRACT_V1_REPORT.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "generated_family_autonomous_conveyor_live_trial_v1",
+        "phase": "PHASE_65",
+        "gate": "GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_LIVE_TRIAL_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_LIVE_TRIAL_V1.json",
+          "reports/generated_family_autonomous_conveyor/GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_LIVE_TRIAL_V1_REPORT.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "generated_family_autonomous_conveyor_failure_recovery_v1",
+        "phase": "PHASE_66",
+        "gate": "GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_FAILURE_RECOVERY_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_FAILURE_RECOVERY_V1.json",
+          "reports/generated_family_autonomous_conveyor/GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_FAILURE_RECOVERY_V1_REPORT.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "external_agent_production_program_test_v1",
+        "phase": "PHASE_67",
+        "gate": "EXTERNAL_AGENT_PRODUCTION_PROGRAM_TEST_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/EXTERNAL_AGENT_PRODUCTION_PROGRAM_TEST_V1.json",
+          "reports/external_agent_production/EXTERNAL_AGENT_PRODUCTION_PROGRAM_TEST_V1_REPORT.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "agent_github_action_launch_v1",
+        "phase": "PHASE_68",
+        "gate": "AGENT_GITHUB_ACTION_LAUNCH_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/AGENT_GITHUB_ACTION_LAUNCH_V1.json",
+          "proofs/RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_LAUNCH_V1.json",
+          "reports/external_agent_production/AGENT_GITHUB_ACTION_LAUNCH_V1_REPORT.json",
+          "reports/external_agent_production/RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_LAUNCH_V1_REPORT.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "agent_catalog_v1",
+        "phase": "PHASE_69",
+        "gate": "AGENT_CATALOG_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/AGENT_CATALOG_V1.json",
+          "reports/external_agent_production/AGENT_CATALOG_V1_REPORT.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "first_proven_external_agent",
+        "phase": "PHASE_7",
+        "gate": "FIRST_EXTERNAL_AGENT_PROOF",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/FIRST_EXTERNAL_AGENT_PROOF_001.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "agent_program_input_format_v1",
+        "phase": "PHASE_70",
+        "gate": "AGENT_PROGRAM_INPUT_FORMAT_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/AGENT_PROGRAM_INPUT_FORMAT_V1.json",
+          "reports/external_agent_production/AGENT_PROGRAM_INPUT_FORMAT_V1_REPORT.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "agent_program_executor_v1",
+        "phase": "PHASE_71",
+        "gate": "AGENT_PROGRAM_EXECUTOR_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/AGENT_PROGRAM_EXECUTOR_V1.json",
+          "reports/external_agent_production/AGENT_PROGRAM_EXECUTOR_V1_REPORT.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "runbook_executor_agent_program_trial_v1",
+        "phase": "PHASE_72",
+        "gate": "RUNBOOK_EXECUTOR_AGENT_PROGRAM_TRIAL_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/RUNBOOK_EXECUTOR_AGENT_PROGRAM_TRIAL_V1.json",
+          "reports/external_agent_production/RUNBOOK_EXECUTOR_AGENT_PROGRAM_TRIAL_V1_REPORT.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "runbook_executor_agent_production_v1",
+        "phase": "PHASE_73",
+        "gate": "RUNBOOK_EXECUTOR_AGENT_PRODUCTION_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/RUNBOOK_EXECUTOR_AGENT_PRODUCTION_V1.json",
+          "reports/external_agent_production/RUNBOOK_EXECUTOR_AGENT_PRODUCTION_V1_REPORT.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "agent_production_closed_loop_standard_v1",
+        "phase": "PHASE_76",
+        "gate": "AGENT_PRODUCTION_CLOSED_LOOP_STANDARD_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/AGENT_PRODUCTION_CLOSED_LOOP_STANDARD_V1.json",
+          "reports/external_agent_production/AGENT_PRODUCTION_CLOSED_LOOP_STANDARD_V1_REPORT.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "evidence_packager_agent_closed_loop_trial_v1",
+        "phase": "PHASE_77",
+        "gate": "EVIDENCE_PACKAGER_AGENT_CLOSED_LOOP_TRIAL_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/EVIDENCE_PACKAGER_AGENT_CLOSED_LOOP_TRIAL_V1.json",
+          "reports/external_agent_production/EVIDENCE_PACKAGER_AGENT_CLOSED_LOOP_TRIAL_V1_REPORT.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "agent_builder_self_knowledge_system_full_contract_v1",
+        "phase": "PHASE_78",
+        "gate": "AGENT_BUILDER_SELF_KNOWLEDGE_SYSTEM_FULL_CONTRACT_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/self_knowledge/AGENT_BUILDER_SELF_KNOWLEDGE_SYSTEM_FULL_CONTRACT_V1.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "production_spec_contract_v1",
+        "phase": "PHASE_8",
+        "gate": "PRODUCTION_SPEC_CONTRACT_V1_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "unknown",
+        "evidence_paths": [],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "production_package_blueprint_v1",
+        "phase": "PHASE_9",
+        "gate": "PRODUCTION_PACKAGE_BLUEPRINT_V1_READY",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "unknown",
+        "evidence_paths": [],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      }
+    ],
+    "counts": {
+      "total": 87,
+      "completed": 86,
+      "active": 0,
+      "candidate": 0,
+      "planned": 0,
+      "failed": 1,
+      "proven_by_evidence_file": 71,
+      "unknown": 0
+    },
+    "evidence_policy": {
+      "no_proof_claim_without_file": true,
+      "completed_from_roadmap_requires_state_entry": true,
+      "proven_requires_existing_proof_or_report_path": true
+    }
+  },
+  "module_inventory": {
+    "schema_version": "AGENT_BUILDER_MODULE_INVENTORY_V1",
+    "generated_at_utc": "2026-05-28T15:44:58.6131166Z",
+    "collection_status": "collected",
+    "modules": [
+      {
+        "path": "modules/admit_generated_self_build_program_to_live_execution.ps1",
+        "name": "admit_generated_self_build_program_to_live_execution.ps1",
+        "extension": ".ps1",
+        "bytes": 20139,
+        "last_write_time_utc": "2026-05-23T09:13:52.0921240Z"
+      },
+      {
+        "path": "modules/apply_external_agent_overlay.ps1",
+        "name": "apply_external_agent_overlay.ps1",
+        "extension": ".ps1",
+        "bytes": 1144,
+        "last_write_time_utc": "2026-05-19T16:30:52.2051009Z"
+      },
+      {
+        "path": "modules/build_builder_self_knowledge.ps1",
+        "name": "build_builder_self_knowledge.ps1",
+        "extension": ".ps1",
+        "bytes": 22797,
+        "last_write_time_utc": "2026-05-28T15:43:30.3245285Z"
+      },
+      {
+        "path": "modules/complete_generated_self_build_program_executable_packs.ps1",
+        "name": "complete_generated_self_build_program_executable_packs.ps1",
+        "extension": ".ps1",
+        "bytes": 8764,
+        "last_write_time_utc": "2026-05-23T09:13:52.0931251Z"
+      },
+      {
+        "path": "modules/execute_build_task.ps1",
+        "name": "execute_build_task.ps1",
+        "extension": ".ps1",
+        "bytes": 1376,
+        "last_write_time_utc": "2026-05-19T16:30:52.2051009Z"
+      },
+      {
+        "path": "modules/execute_self_build_pack.ps1",
+        "name": "execute_self_build_pack.ps1",
+        "extension": ".ps1",
+        "bytes": 1049,
+        "last_write_time_utc": "2026-05-19T16:30:52.2051009Z"
+      },
+      {
+        "path": "modules/emit_build_decision.ps1",
+        "name": "emit_build_decision.ps1",
+        "extension": ".ps1",
+        "bytes": 1681,
+        "last_write_time_utc": "2026-05-19T16:30:52.2051009Z"
+      },
+      {
+        "path": "modules/emit_failure_diagnostic.ps1",
+        "name": "emit_failure_diagnostic.ps1",
+        "extension": ".ps1",
+        "bytes": 292,
+        "last_write_time_utc": "2026-05-19T16:30:52.2051009Z"
+      },
+      {
+        "path": "modules/emit_run_report.ps1",
+        "name": "emit_run_report.ps1",
+        "extension": ".ps1",
+        "bytes": 692,
+        "last_write_time_utc": "2026-05-19T16:30:52.2051009Z"
+      },
+      {
+        "path": "modules/invoke_agent_spec_architect_handoff.ps1",
+        "name": "invoke_agent_spec_architect_handoff.ps1",
+        "extension": ".ps1",
+        "bytes": 4056,
+        "last_write_time_utc": "2026-05-19T16:30:52.2051009Z"
+      },
+      {
+        "path": "modules/invoke_external_agent_build.ps1",
+        "name": "invoke_external_agent_build.ps1",
+        "extension": ".ps1",
+        "bytes": 2544,
+        "last_write_time_utc": "2026-05-19T16:30:52.2051009Z"
+      },
+      {
+        "path": "modules/invoke_generated_family_autonomous_conveyor.ps1",
+        "name": "invoke_generated_family_autonomous_conveyor.ps1",
+        "extension": ".ps1",
+        "bytes": 5190,
+        "last_write_time_utc": "2026-05-23T09:13:52.0941248Z"
+      },
+      {
+        "path": "modules/load_build_task.ps1",
+        "name": "load_build_task.ps1",
+        "extension": ".ps1",
+        "bytes": 1129,
+        "last_write_time_utc": "2026-05-19T16:30:52.2051009Z"
+      },
+      {
+        "path": "modules/materialize_generated_self_build_program_from_family_contract.ps1",
+        "name": "materialize_generated_self_build_program_from_family_contract.ps1",
+        "extension": ".ps1",
+        "bytes": 25280,
+        "last_write_time_utc": "2026-05-23T09:13:52.0951274Z"
+      },
+      {
+        "path": "modules/new_external_agent_package.ps1",
+        "name": "new_external_agent_package.ps1",
+        "extension": ".ps1",
+        "bytes": 14056,
+        "last_write_time_utc": "2026-05-19T17:12:20.5568047Z"
+      },
+      {
+        "path": "modules/new_gap_remediation_intake_report.ps1",
+        "name": "new_gap_remediation_intake_report.ps1",
+        "extension": ".ps1",
+        "bytes": 2176,
+        "last_write_time_utc": "2026-05-19T16:30:52.2051009Z"
+      },
+      {
+        "path": "modules/new_gap_remediation_program_seed.ps1",
+        "name": "new_gap_remediation_program_seed.ps1",
+        "extension": ".ps1",
+        "bytes": 4374,
+        "last_write_time_utc": "2026-05-19T16:30:52.2051009Z"
+      },
+      {
+        "path": "modules/new_generated_self_build_program_execution_recipe_bundle.ps1",
+        "name": "new_generated_self_build_program_execution_recipe_bundle.ps1",
+        "extension": ".ps1",
+        "bytes": 15172,
+        "last_write_time_utc": "2026-05-23T09:13:52.0951274Z"
+      },
+      {
+        "path": "modules/new_remediation_seed_program_blueprint.ps1",
+        "name": "new_remediation_seed_program_blueprint.ps1",
+        "extension": ".ps1",
+        "bytes": 4996,
+        "last_write_time_utc": "2026-05-19T16:30:52.2051009Z"
+      },
+      {
+        "path": "modules/new_remediation_seed_self_build_program_package.ps1",
+        "name": "new_remediation_seed_self_build_program_package.ps1",
+        "extension": ".ps1",
+        "bytes": 4464,
+        "last_write_time_utc": "2026-05-19T16:30:52.2051009Z"
+      },
+      {
+        "path": "modules/new_specialization_gap_report.ps1",
+        "name": "new_specialization_gap_report.ps1",
+        "extension": ".ps1",
+        "bytes": 2226,
+        "last_write_time_utc": "2026-05-19T16:30:52.2051009Z"
+      },
+      {
+        "path": "modules/new_specialization_profile_candidate_brief.ps1",
+        "name": "new_specialization_profile_candidate_brief.ps1",
+        "extension": ".ps1",
+        "bytes": 2637,
+        "last_write_time_utc": "2026-05-19T16:30:52.2051009Z"
+      },
+      {
+        "path": "modules/read_capability_roadmap.ps1",
+        "name": "read_capability_roadmap.ps1",
+        "extension": ".ps1",
+        "bytes": 425,
+        "last_write_time_utc": "2026-05-19T16:30:52.2198358Z"
+      },
+      {
+        "path": "modules/read_genesis_plan.ps1",
+        "name": "read_genesis_plan.ps1",
+        "extension": ".ps1",
+        "bytes": 760,
+        "last_write_time_utc": "2026-05-19T16:30:52.2208363Z"
+      },
+      {
+        "path": "modules/read_genesis_state.ps1",
+        "name": "read_genesis_state.ps1",
+        "extension": ".ps1",
+        "bytes": 402,
+        "last_write_time_utc": "2026-05-19T16:30:52.2208363Z"
+      },
+      {
+        "path": "modules/read_pack_registry.ps1",
+        "name": "read_pack_registry.ps1",
+        "extension": ".ps1",
+        "bytes": 268,
+        "last_write_time_utc": "2026-05-19T16:30:52.2219561Z"
+      },
+      {
+        "path": "modules/read_task_queue.ps1",
+        "name": "read_task_queue.ps1",
+        "extension": ".ps1",
+        "bytes": 393,
+        "last_write_time_utc": "2026-05-19T16:30:52.2219561Z"
+      },
+      {
+        "path": "modules/render_generated_self_build_pack_apply_from_recipe.ps1",
+        "name": "render_generated_self_build_pack_apply_from_recipe.ps1",
+        "extension": ".ps1",
+        "bytes": 24352,
+        "last_write_time_utc": "2026-05-23T09:13:52.0961432Z"
+      },
+      {
+        "path": "modules/resolve_specialization_overlay.ps1",
+        "name": "resolve_specialization_overlay.ps1",
+        "extension": ".ps1",
+        "bytes": 1642,
+        "last_write_time_utc": "2026-05-19T16:30:52.2219561Z"
+      },
+      {
+        "path": "modules/run_validators.ps1",
+        "name": "run_validators.ps1",
+        "extension": ".ps1",
+        "bytes": 1444,
+        "last_write_time_utc": "2026-05-19T16:30:52.2219561Z"
+      },
+      {
+        "path": "modules/select_next_capability.ps1",
+        "name": "select_next_capability.ps1",
+        "extension": ".ps1",
+        "bytes": 996,
+        "last_write_time_utc": "2026-05-19T16:30:52.2219561Z"
+      },
+      {
+        "path": "modules/select_next_task.ps1",
+        "name": "select_next_task.ps1",
+        "extension": ".ps1",
+        "bytes": 1114,
+        "last_write_time_utc": "2026-05-19T16:30:52.2219561Z"
+      },
+      {
+        "path": "modules/select_self_build_pack.ps1",
+        "name": "select_self_build_pack.ps1",
+        "extension": ".ps1",
+        "bytes": 333,
+        "last_write_time_utc": "2026-05-19T16:30:52.2219561Z"
+      },
+      {
+        "path": "modules/test_generated_agent_package_operational.ps1",
+        "name": "test_generated_agent_package_operational.ps1",
+        "extension": ".ps1",
+        "bytes": 1803,
+        "last_write_time_utc": "2026-05-19T16:30:52.2219561Z"
+      },
+      {
+        "path": "modules/test_generated_agent_package.ps1",
+        "name": "test_generated_agent_package.ps1",
+        "extension": ".ps1",
+        "bytes": 1219,
+        "last_write_time_utc": "2026-05-19T16:30:52.2219561Z"
+      },
+      {
+        "path": "modules/test_generated_self_build_program_admission_readiness.ps1",
+        "name": "test_generated_self_build_program_admission_readiness.ps1",
+        "extension": ".ps1",
+        "bytes": 5716,
+        "last_write_time_utc": "2026-05-19T18:47:53.6975696Z"
+      },
+      {
+        "path": "modules/update_genesis_state.ps1",
+        "name": "update_genesis_state.ps1",
+        "extension": ".ps1",
+        "bytes": 742,
+        "last_write_time_utc": "2026-05-19T16:30:52.2219561Z"
+      },
+      {
+        "path": "modules/update_task_queue.ps1",
+        "name": "update_task_queue.ps1",
+        "extension": ".ps1",
+        "bytes": 842,
+        "last_write_time_utc": "2026-05-19T16:30:52.2219561Z"
+      },
+      {
+        "path": "modules/validate_external_agent_spec_template.ps1",
+        "name": "validate_external_agent_spec_template.ps1",
+        "extension": ".ps1",
+        "bytes": 639,
+        "last_write_time_utc": "2026-05-19T16:30:52.2219561Z"
+      },
+      {
+        "path": "modules/validate_production_external_agent_spec.ps1",
+        "name": "validate_production_external_agent_spec.ps1",
+        "extension": ".ps1",
+        "bytes": 1162,
+        "last_write_time_utc": "2026-05-19T16:30:52.2219561Z"
+      },
+      {
+        "path": "modules/validate_truth_alignment.ps1",
+        "name": "validate_truth_alignment.ps1",
+        "extension": ".ps1",
+        "bytes": 725,
+        "last_write_time_utc": "2026-05-19T16:30:52.2219561Z"
+      },
+      {
+        "path": "modules/write_builder_self_describe_report.ps1",
+        "name": "write_builder_self_describe_report.ps1",
+        "extension": ".ps1",
+        "bytes": 7419,
+        "last_write_time_utc": "2026-05-28T15:41:18.9803184Z"
+      }
+    ],
+    "validators": [
+      {
+        "path": "validators/validate_action_ready_generated_agent_proof_v1.ps1",
+        "name": "validate_action_ready_generated_agent_proof_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 6878,
+        "last_write_time_utc": "2026-05-19T17:01:36.9520743Z"
+      },
+      {
+        "path": "validators/validate_agent_catalog_v1.ps1",
+        "name": "validate_agent_catalog_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 12699,
+        "last_write_time_utc": "2026-05-28T14:52:58.4132048Z"
+      },
+      {
+        "path": "validators/validate_agent_github_action_launch_v1.ps1",
+        "name": "validate_agent_github_action_launch_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 8756,
+        "last_write_time_utc": "2026-05-24T15:33:37.2585205Z"
+      },
+      {
+        "path": "validators/validate_agent_production_closed_loop_standard_v1.ps1",
+        "name": "validate_agent_production_closed_loop_standard_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 6019,
+        "last_write_time_utc": "2026-05-28T14:52:58.4132048Z"
+      },
+      {
+        "path": "validators/validate_agent_program_executor_v1.ps1",
+        "name": "validate_agent_program_executor_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 13972,
+        "last_write_time_utc": "2026-05-28T14:52:58.4142046Z"
+      },
+      {
+        "path": "validators/validate_agent_program_input_format_v1.ps1",
+        "name": "validate_agent_program_input_format_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 14508,
+        "last_write_time_utc": "2026-05-28T14:52:58.4152045Z"
+      },
+      {
+        "path": "validators/validate_architect_to_spec_handoff_v1.ps1",
+        "name": "validate_architect_to_spec_handoff_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 4381,
+        "last_write_time_utc": "2026-05-19T16:30:52.6149056Z"
+      },
+      {
+        "path": "validators/validate_build_from_raw_idea_mode_v1.ps1",
+        "name": "validate_build_from_raw_idea_mode_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 3881,
+        "last_write_time_utc": "2026-05-19T16:30:52.6149056Z"
+      },
+      {
+        "path": "validators/validate_build_from_raw_idea_specialized_mode_v1.ps1",
+        "name": "validate_build_from_raw_idea_specialized_mode_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 5238,
+        "last_write_time_utc": "2026-05-19T16:30:52.6149056Z"
+      },
+      {
+        "path": "validators/validate_builder_github_action_manual_run_surface_v1.ps1",
+        "name": "validate_builder_github_action_manual_run_surface_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 6627,
+        "last_write_time_utc": "2026-05-19T17:01:36.9041524Z"
+      },
+      {
+        "path": "validators/validate_candidate_intake_report_contract_v1.ps1",
+        "name": "validate_candidate_intake_report_contract_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 6009,
+        "last_write_time_utc": "2026-05-19T16:30:52.6149056Z"
+      },
+      {
+        "path": "validators/validate_decision_support_agent_specialization_profile_v1.ps1",
+        "name": "validate_decision_support_agent_specialization_profile_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 5747,
+        "last_write_time_utc": "2026-05-19T16:30:52.6149056Z"
+      },
+      {
+        "path": "validators/validate_executable_generated_program_materialization_v1.ps1",
+        "name": "validate_executable_generated_program_materialization_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 7867,
+        "last_write_time_utc": "2026-05-23T09:13:52.1753108Z"
+      },
+      {
+        "path": "validators/validate_external_agent_package_generator.ps1",
+        "name": "validate_external_agent_package_generator.ps1",
+        "extension": ".ps1",
+        "bytes": 3112,
+        "last_write_time_utc": "2026-05-19T16:30:52.6149056Z"
+      },
+      {
+        "path": "validators/validate_external_agent_spec_intake.ps1",
+        "name": "validate_external_agent_spec_intake.ps1",
+        "extension": ".ps1",
+        "bytes": 2741,
+        "last_write_time_utc": "2026-05-19T16:30:52.6149056Z"
+      },
+      {
+        "path": "validators/validate_external_agent_spec.ps1",
+        "name": "validate_external_agent_spec.ps1",
+        "extension": ".ps1",
+        "bytes": 130,
+        "last_write_time_utc": "2026-05-19T16:30:52.6149056Z"
+      },
+      {
+        "path": "validators/validate_evidence_packager_agent_closed_loop_trial_v1.ps1",
+        "name": "validate_evidence_packager_agent_closed_loop_trial_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 4881,
+        "last_write_time_utc": "2026-05-28T14:52:58.4152045Z"
+      },
+      {
+        "path": "validators/validate_factory_build_external_agent_mode_v1.ps1",
+        "name": "validate_factory_build_external_agent_mode_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 3002,
+        "last_write_time_utc": "2026-05-19T16:30:52.6149056Z"
+      },
+      {
+        "path": "validators/validate_factory_build_external_agent_mode_v2.ps1",
+        "name": "validate_factory_build_external_agent_mode_v2.ps1",
+        "extension": ".ps1",
+        "bytes": 3300,
+        "last_write_time_utc": "2026-05-19T16:30:52.6149056Z"
+      },
+      {
+        "path": "validators/validate_first_proven_external_agent.ps1",
+        "name": "validate_first_proven_external_agent.ps1",
+        "extension": ".ps1",
+        "bytes": 3260,
+        "last_write_time_utc": "2026-05-19T16:30:52.6149056Z"
+      },
+      {
+        "path": "validators/validate_gap_closure_specialized_factory_proof_v1.ps1",
+        "name": "validate_gap_closure_specialized_factory_proof_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 4488,
+        "last_write_time_utc": "2026-05-19T16:30:52.6149056Z"
+      },
+      {
+        "path": "validators/validate_gap_remediation_intake_mode_v1.ps1",
+        "name": "validate_gap_remediation_intake_mode_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 5363,
+        "last_write_time_utc": "2026-05-19T16:30:52.6149056Z"
+      },
+      {
+        "path": "validators/validate_gap_to_profile_candidate_brief_v1.ps1",
+        "name": "validate_gap_to_profile_candidate_brief_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 5312,
+        "last_write_time_utc": "2026-05-19T16:30:52.6149056Z"
+      },
+      {
+        "path": "validators/validate_generalized_generated_program_live_admission_contract_v1.ps1",
+        "name": "validate_generalized_generated_program_live_admission_contract_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 11042,
+        "last_write_time_utc": "2026-05-23T09:13:52.1753108Z"
+      },
+      {
+        "path": "validators/validate_generated_agent_action_launch_contract_v1.ps1",
+        "name": "validate_generated_agent_action_launch_contract_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 7242,
+        "last_write_time_utc": "2026-05-19T17:01:36.9364483Z"
+      },
+      {
+        "path": "validators/validate_generated_agent_validation_harness_v1.ps1",
+        "name": "validate_generated_agent_validation_harness_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 3161,
+        "last_write_time_utc": "2026-05-19T16:30:52.6149056Z"
+      },
+      {
+        "path": "validators/validate_generated_family_autonomous_conveyor_contract_v1.ps1",
+        "name": "validate_generated_family_autonomous_conveyor_contract_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 3560,
+        "last_write_time_utc": "2026-05-23T09:13:52.1753108Z"
+      },
+      {
+        "path": "validators/validate_generated_family_autonomous_conveyor_failure_recovery_v1.ps1",
+        "name": "validate_generated_family_autonomous_conveyor_failure_recovery_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 14820,
+        "last_write_time_utc": "2026-05-23T09:30:38.8108515Z"
+      },
+      {
+        "path": "validators/validate_generated_family_autonomous_conveyor_live_trial_v1.ps1",
+        "name": "validate_generated_family_autonomous_conveyor_live_trial_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 12199,
+        "last_write_time_utc": "2026-05-23T09:13:52.1753108Z"
+      },
+      {
+        "path": "validators/validate_generated_program_admission_readiness_gate_v1.ps1",
+        "name": "validate_generated_program_admission_readiness_gate_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 4970,
+        "last_write_time_utc": "2026-05-23T09:13:52.1753108Z"
+      },
+      {
+        "path": "validators/validate_generated_program_execution_recipe_contract_v1.ps1",
+        "name": "validate_generated_program_execution_recipe_contract_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 14350,
+        "last_write_time_utc": "2026-05-23T09:13:52.1753108Z"
+      },
+      {
+        "path": "validators/validate_generated_program_live_admission_proof_v1.ps1",
+        "name": "validate_generated_program_live_admission_proof_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 8487,
+        "last_write_time_utc": "2026-05-23T09:13:52.1753108Z"
+      },
+      {
+        "path": "validators/validate_idea_to_agent_factory_proof_v1.ps1",
+        "name": "validate_idea_to_agent_factory_proof_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 3768,
+        "last_write_time_utc": "2026-05-19T16:30:52.6149056Z"
+      },
+      {
+        "path": "validators/validate_idea_to_specialized_agent_factory_proof_v1.ps1",
+        "name": "validate_idea_to_specialized_agent_factory_proof_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 4643,
+        "last_write_time_utc": "2026-05-19T16:30:52.6149056Z"
+      },
+      {
+        "path": "validators/validate_intake_driven_workflow_execution_profile_v1.ps1",
+        "name": "validate_intake_driven_workflow_execution_profile_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 6112,
+        "last_write_time_utc": "2026-05-19T16:30:52.6305321Z"
+      },
+      {
+        "path": "validators/validate_missing_profile_factory_proof_v1.ps1",
+        "name": "validate_missing_profile_factory_proof_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 4239,
+        "last_write_time_utc": "2026-05-19T16:30:52.6305321Z"
+      },
+      {
+        "path": "validators/validate_monitoring_gap_closure_specialized_proof_v1.ps1",
+        "name": "validate_monitoring_gap_closure_specialized_proof_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 5441,
+        "last_write_time_utc": "2026-05-19T16:30:52.6305321Z"
+      },
+      {
+        "path": "validators/validate_monitoring_gap_reachability_v1.ps1",
+        "name": "validate_monitoring_gap_reachability_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 6368,
+        "last_write_time_utc": "2026-05-19T16:30:52.6305321Z"
+      },
+      {
+        "path": "validators/validate_multi_profile_specialized_factory_proof_v1.ps1",
+        "name": "validate_multi_profile_specialized_factory_proof_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 5759,
+        "last_write_time_utc": "2026-05-19T16:30:52.6305321Z"
+      },
+      {
+        "path": "validators/validate_no_match_diagnostic_mode_v1.ps1",
+        "name": "validate_no_match_diagnostic_mode_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 5018,
+        "last_write_time_utc": "2026-05-19T16:30:52.6305321Z"
+      },
+      {
+        "path": "validators/validate_one_run_gap_remediation_packet_proof_v1.ps1",
+        "name": "validate_one_run_gap_remediation_packet_proof_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 5324,
+        "last_write_time_utc": "2026-05-19T16:30:52.6305321Z"
+      },
+      {
+        "path": "validators/validate_one_run_remediation_program_seed_proof_v1.ps1",
+        "name": "validate_one_run_remediation_program_seed_proof_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 4618,
+        "last_write_time_utc": "2026-05-19T16:30:52.6305321Z"
+      },
+      {
+        "path": "validators/validate_one_run_remediation_seed_program_synthesis_proof_v1.ps1",
+        "name": "validate_one_run_remediation_seed_program_synthesis_proof_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 5850,
+        "last_write_time_utc": "2026-05-19T16:30:52.6305321Z"
+      },
+      {
+        "path": "validators/validate_operational_factory_proof_v2.ps1",
+        "name": "validate_operational_factory_proof_v2.ps1",
+        "extension": ".ps1",
+        "bytes": 3851,
+        "last_write_time_utc": "2026-05-19T16:30:52.6305321Z"
+      },
+      {
+        "path": "validators/validate_operational_validation_harness_v2.ps1",
+        "name": "validate_operational_validation_harness_v2.ps1",
+        "extension": ".ps1",
+        "bytes": 3511,
+        "last_write_time_utc": "2026-05-19T16:30:52.6305321Z"
+      },
+      {
+        "path": "validators/validate_owner_visible_self_build_acceptance_v1.ps1",
+        "name": "validate_owner_visible_self_build_acceptance_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 5871,
+        "last_write_time_utc": "2026-05-19T18:24:18.0129765Z"
+      },
+      {
+        "path": "validators/validate_production_factory_proof_v1.ps1",
+        "name": "validate_production_factory_proof_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 3079,
+        "last_write_time_utc": "2026-05-19T16:30:52.6305321Z"
+      },
+      {
+        "path": "validators/validate_production_package_blueprint_v1.ps1",
+        "name": "validate_production_package_blueprint_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 3363,
+        "last_write_time_utc": "2026-05-19T16:30:52.6305321Z"
+      },
+      {
+        "path": "validators/validate_production_spec_contract_v1.ps1",
+        "name": "validate_production_spec_contract_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 2746,
+        "last_write_time_utc": "2026-05-19T16:30:52.6305321Z"
+      },
+      {
+        "path": "validators/validate_production_truth_reset_v2.ps1",
+        "name": "validate_production_truth_reset_v2.ps1",
+        "extension": ".ps1",
+        "bytes": 3572,
+        "last_write_time_utc": "2026-05-19T16:30:52.6305321Z"
+      },
+      {
+        "path": "validators/validate_real_generated_agent_runtime_v2.ps1",
+        "name": "validate_real_generated_agent_runtime_v2.ps1",
+        "extension": ".ps1",
+        "bytes": 4088,
+        "last_write_time_utc": "2026-05-19T16:30:52.6305321Z"
+      },
+      {
+        "path": "validators/validate_recipe_driven_generated_program_executable_materialization_v1.ps1",
+        "name": "validate_recipe_driven_generated_program_executable_materialization_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 12699,
+        "last_write_time_utc": "2026-05-23T09:13:52.1753108Z"
+      },
+      {
+        "path": "validators/validate_remediation_intake_operator_agent_v1.ps1",
+        "name": "validate_remediation_intake_operator_agent_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 13128,
+        "last_write_time_utc": "2026-05-24T11:01:36.8521943Z"
+      },
+      {
+        "path": "validators/validate_remediation_program_seed_consumption_closure_proof_v1.ps1",
+        "name": "validate_remediation_program_seed_consumption_closure_proof_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 5392,
+        "last_write_time_utc": "2026-05-19T16:30:52.6305321Z"
+      },
+      {
+        "path": "validators/validate_remediation_program_seed_contract_v1.ps1",
+        "name": "validate_remediation_program_seed_contract_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 5696,
+        "last_write_time_utc": "2026-05-19T16:30:52.6305321Z"
+      },
+      {
+        "path": "validators/validate_remediation_seed_program_blueprint_contract_v1.ps1",
+        "name": "validate_remediation_seed_program_blueprint_contract_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 5707,
+        "last_write_time_utc": "2026-05-19T16:30:52.6305321Z"
+      },
+      {
+        "path": "validators/validate_remediation_seed_program_materialization_v1.ps1",
+        "name": "validate_remediation_seed_program_materialization_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 5682,
+        "last_write_time_utc": "2026-05-19T16:30:52.6305321Z"
+      },
+      {
+        "path": "validators/validate_repo_genesis.ps1",
+        "name": "validate_repo_genesis.ps1",
+        "extension": ".ps1",
+        "bytes": 13883,
+        "last_write_time_utc": "2026-05-19T16:30:52.6461571Z"
+      },
+      {
+        "path": "validators/validate_run_report_contract.ps1",
+        "name": "validate_run_report_contract.ps1",
+        "extension": ".ps1",
+        "bytes": 130,
+        "last_write_time_utc": "2026-05-19T16:30:52.6461571Z"
+      },
+      {
+        "path": "validators/validate_runbook_executor_agent_github_action_acceptance_v1.ps1",
+        "name": "validate_runbook_executor_agent_github_action_acceptance_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 4204,
+        "last_write_time_utc": "2026-05-28T14:52:58.4162057Z"
+      },
+      {
+        "path": "validators/validate_runbook_executor_agent_github_action_launch_v1.ps1",
+        "name": "validate_runbook_executor_agent_github_action_launch_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 9830,
+        "last_write_time_utc": "2026-05-28T14:52:58.4162057Z"
+      },
+      {
+        "path": "validators/validate_runbook_executor_agent_production_v1.ps1",
+        "name": "validate_runbook_executor_agent_production_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 16926,
+        "last_write_time_utc": "2026-05-28T14:52:58.4172050Z"
+      },
+      {
+        "path": "validators/validate_runbook_executor_agent_program_trial_v1.ps1",
+        "name": "validate_runbook_executor_agent_program_trial_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 14203,
+        "last_write_time_utc": "2026-05-28T14:52:58.4182048Z"
+      },
+      {
+        "path": "validators/validate_runtime_gap_remediation_closure_proof_v1.ps1",
+        "name": "validate_runtime_gap_remediation_closure_proof_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 4504,
+        "last_write_time_utc": "2026-05-19T16:30:52.6461571Z"
+      },
+      {
+        "path": "validators/validate_runtime_gap_to_candidate_factory_proof_v1.ps1",
+        "name": "validate_runtime_gap_to_candidate_factory_proof_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 5384,
+        "last_write_time_utc": "2026-05-19T16:30:52.6461571Z"
+      },
+      {
+        "path": "validators/validate_second_generated_program_family_live_admission_v1.ps1",
+        "name": "validate_second_generated_program_family_live_admission_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 24161,
+        "last_write_time_utc": "2026-05-23T09:13:52.1753108Z"
+      },
+      {
+        "path": "validators/validate_second_generated_program_family_materialization_v1.ps1",
+        "name": "validate_second_generated_program_family_materialization_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 16266,
+        "last_write_time_utc": "2026-05-23T09:13:52.1909404Z"
+      },
+      {
+        "path": "validators/validate_second_generated_program_family_proof_v1.ps1",
+        "name": "validate_second_generated_program_family_proof_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 15618,
+        "last_write_time_utc": "2026-05-23T09:13:52.1909404Z"
+      },
+      {
+        "path": "validators/validate_seed_driven_monitoring_profile_v1.ps1",
+        "name": "validate_seed_driven_monitoring_profile_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 6263,
+        "last_write_time_utc": "2026-05-19T16:30:52.6461571Z"
+      },
+      {
+        "path": "validators/validate_self_build_control_core.ps1",
+        "name": "validate_self_build_control_core.ps1",
+        "extension": ".ps1",
+        "bytes": 12330,
+        "last_write_time_utc": "2026-05-19T16:30:52.6461571Z"
+      },
+      {
+        "path": "validators/validate_self_build_execution_loop.ps1",
+        "name": "validate_self_build_execution_loop.ps1",
+        "extension": ".ps1",
+        "bytes": 13200,
+        "last_write_time_utc": "2026-05-19T16:30:52.6461571Z"
+      },
+      {
+        "path": "validators/validate_self_validation_release_gates.ps1",
+        "name": "validate_self_validation_release_gates.ps1",
+        "extension": ".ps1",
+        "bytes": 2612,
+        "last_write_time_utc": "2026-05-19T16:30:52.6461571Z"
+      },
+      {
+        "path": "validators/validate_serial_self_build_pack_executor.ps1",
+        "name": "validate_serial_self_build_pack_executor.ps1",
+        "extension": ".ps1",
+        "bytes": 2761,
+        "last_write_time_utc": "2026-05-19T16:30:52.6461571Z"
+      },
+      {
+        "path": "validators/validate_specialization_gap_contract_v1.ps1",
+        "name": "validate_specialization_gap_contract_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 4734,
+        "last_write_time_utc": "2026-05-19T16:30:52.6461571Z"
+      },
+      {
+        "path": "validators/validate_specialization_overlay_resolution_v1.ps1",
+        "name": "validate_specialization_overlay_resolution_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 4205,
+        "last_write_time_utc": "2026-05-19T16:30:52.6461571Z"
+      },
+      {
+        "path": "validators/validate_specialization_profile_registry_v1.ps1",
+        "name": "validate_specialization_profile_registry_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 4330,
+        "last_write_time_utc": "2026-05-19T16:30:52.6461571Z"
+      },
+      {
+        "path": "validators/validate_specialized_gap_auto_intake_runtime_v1.ps1",
+        "name": "validate_specialized_gap_auto_intake_runtime_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 6124,
+        "last_write_time_utc": "2026-05-19T16:30:52.6461571Z"
+      },
+      {
+        "path": "validators/validate_specialized_gap_auto_program_seed_runtime_v1.ps1",
+        "name": "validate_specialized_gap_auto_program_seed_runtime_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 5473,
+        "last_write_time_utc": "2026-05-19T16:30:52.6461571Z"
+      },
+      {
+        "path": "validators/validate_specification_agent_specialization_profile_v1.ps1",
+        "name": "validate_specification_agent_specialization_profile_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 5107,
+        "last_write_time_utc": "2026-05-19T16:30:52.6461571Z"
+      },
+      {
+        "path": "validators/validate_state_alignment.ps1",
+        "name": "validate_state_alignment.ps1",
+        "extension": ".ps1",
+        "bytes": 126,
+        "last_write_time_utc": "2026-05-19T16:30:52.6461571Z"
+      },
+      {
+        "path": "validators/validate_task_queue_alignment.ps1",
+        "name": "validate_task_queue_alignment.ps1",
+        "extension": ".ps1",
+        "bytes": 131,
+        "last_write_time_utc": "2026-05-19T16:30:52.6461571Z"
+      },
+      {
+        "path": "validators/validate_workflow_execution_family_reachability_v1.ps1",
+        "name": "validate_workflow_execution_family_reachability_v1.ps1",
+        "extension": ".ps1",
+        "bytes": 6514,
+        "last_write_time_utc": "2026-05-19T16:30:52.6461571Z"
+      }
+    ],
+    "contracts": [
+      {
+        "path": "contracts/agent_package_blueprint.schema.json",
+        "name": "agent_package_blueprint.schema.json",
+        "extension": ".json",
+        "bytes": 240,
+        "last_write_time_utc": "2026-05-19T16:30:52.1883871Z"
+      },
+      {
+        "path": "contracts/AGENT_PRODUCTION_CLOSED_LOOP_CONTRACT_V1.md",
+        "name": "AGENT_PRODUCTION_CLOSED_LOOP_CONTRACT_V1.md",
+        "extension": ".md",
+        "bytes": 2163,
+        "last_write_time_utc": "2026-05-28T14:52:58.2723412Z"
+      },
+      {
+        "path": "contracts/AGENT_PRODUCTION_CLOSED_LOOP_STATE_MACHINE_V1.json",
+        "name": "AGENT_PRODUCTION_CLOSED_LOOP_STATE_MACHINE_V1.json",
+        "extension": ".json",
+        "bytes": 642,
+        "last_write_time_utc": "2026-05-28T14:52:58.2723412Z"
+      },
+      {
+        "path": "contracts/build_decision.schema.json",
+        "name": "build_decision.schema.json",
+        "extension": ".json",
+        "bytes": 856,
+        "last_write_time_utc": "2026-05-19T16:30:52.1883871Z"
+      },
+      {
+        "path": "contracts/build_execution_result.schema.json",
+        "name": "build_execution_result.schema.json",
+        "extension": ".json",
+        "bytes": 699,
+        "last_write_time_utc": "2026-05-19T16:30:52.1883871Z"
+      },
+      {
+        "path": "contracts/build_task.schema.json",
+        "name": "build_task.schema.json",
+        "extension": ".json",
+        "bytes": 520,
+        "last_write_time_utc": "2026-05-19T16:30:52.1883871Z"
+      },
+      {
+        "path": "contracts/capability_roadmap.schema.json",
+        "name": "capability_roadmap.schema.json",
+        "extension": ".json",
+        "bytes": 873,
+        "last_write_time_utc": "2026-05-19T16:30:52.1883871Z"
+      },
+      {
+        "path": "contracts/external_agent_package_manifest.schema.json",
+        "name": "external_agent_package_manifest.schema.json",
+        "extension": ".json",
+        "bytes": 218,
+        "last_write_time_utc": "2026-05-19T16:30:52.1883871Z"
+      },
+      {
+        "path": "contracts/external_agent_spec.schema.json",
+        "name": "external_agent_spec.schema.json",
+        "extension": ".json",
+        "bytes": 367,
+        "last_write_time_utc": "2026-05-19T16:30:52.1883871Z"
+      },
+      {
+        "path": "contracts/failure_diagnostic.schema.json",
+        "name": "failure_diagnostic.schema.json",
+        "extension": ".json",
+        "bytes": 122,
+        "last_write_time_utc": "2026-05-19T16:30:52.1883871Z"
+      },
+      {
+        "path": "contracts/GAP_REMEDIATION_INTAKE_REPORT_CONTRACT_V1.json",
+        "name": "GAP_REMEDIATION_INTAKE_REPORT_CONTRACT_V1.json",
+        "extension": ".json",
+        "bytes": 508,
+        "last_write_time_utc": "2026-05-19T16:30:52.1883871Z"
+      },
+      {
+        "path": "contracts/GAP_REMEDIATION_PROGRAM_SEED_CONTRACT_V1.json",
+        "name": "GAP_REMEDIATION_PROGRAM_SEED_CONTRACT_V1.json",
+        "extension": ".json",
+        "bytes": 718,
+        "last_write_time_utc": "2026-05-19T16:30:52.1883871Z"
+      },
+      {
+        "path": "contracts/generated_agent_github_action_launch_surface.contract.json",
+        "name": "generated_agent_github_action_launch_surface.contract.json",
+        "extension": ".json",
+        "bytes": 506,
+        "last_write_time_utc": "2026-05-19T17:01:36.9177685Z"
+      },
+      {
+        "path": "contracts/generated_agent_request.schema.json",
+        "name": "generated_agent_request.schema.json",
+        "extension": ".json",
+        "bytes": 196,
+        "last_write_time_utc": "2026-05-19T16:30:52.1883871Z"
+      },
+      {
+        "path": "contracts/generated_agent_result.schema.json",
+        "name": "generated_agent_result.schema.json",
+        "extension": ".json",
+        "bytes": 246,
+        "last_write_time_utc": "2026-05-19T16:30:52.1883871Z"
+      },
+      {
+        "path": "contracts/generated_agent_validation_report.schema.json",
+        "name": "generated_agent_validation_report.schema.json",
+        "extension": ".json",
+        "bytes": 245,
+        "last_write_time_utc": "2026-05-19T16:30:52.1883871Z"
+      },
+      {
+        "path": "contracts/generated_self_build_program_execution_recipe.schema.json",
+        "name": "generated_self_build_program_execution_recipe.schema.json",
+        "extension": ".json",
+        "bytes": 2069,
+        "last_write_time_utc": "2026-05-23T09:13:52.0911243Z"
+      },
+      {
+        "path": "contracts/genesis_state.schema.json",
+        "name": "genesis_state.schema.json",
+        "extension": ".json",
+        "bytes": 1056,
+        "last_write_time_utc": "2026-05-19T16:30:52.1883871Z"
+      },
+      {
+        "path": "contracts/operational_generated_agent_validation_report.schema.json",
+        "name": "operational_generated_agent_validation_report.schema.json",
+        "extension": ".json",
+        "bytes": 273,
+        "last_write_time_utc": "2026-05-19T16:30:52.1883871Z"
+      },
+      {
+        "path": "contracts/remediation_seed_self_build_program_blueprint.schema.json",
+        "name": "remediation_seed_self_build_program_blueprint.schema.json",
+        "extension": ".json",
+        "bytes": 375,
+        "last_write_time_utc": "2026-05-19T16:30:52.1883871Z"
+      },
+      {
+        "path": "contracts/run_report.schema.json",
+        "name": "run_report.schema.json",
+        "extension": ".json",
+        "bytes": 618,
+        "last_write_time_utc": "2026-05-19T16:30:52.1883871Z"
+      },
+      {
+        "path": "contracts/self_build_pack_registry.schema.json",
+        "name": "self_build_pack_registry.schema.json",
+        "extension": ".json",
+        "bytes": 189,
+        "last_write_time_utc": "2026-05-19T16:30:52.2022217Z"
+      },
+      {
+        "path": "contracts/self_build_pack.schema.json",
+        "name": "self_build_pack.schema.json",
+        "extension": ".json",
+        "bytes": 231,
+        "last_write_time_utc": "2026-05-19T16:30:52.1883871Z"
+      },
+      {
+        "path": "contracts/self_knowledge/builder_self_model.schema.json",
+        "name": "builder_self_model.schema.json",
+        "extension": ".json",
+        "bytes": 2584,
+        "last_write_time_utc": "2026-05-28T14:52:58.2723412Z"
+      },
+      {
+        "path": "contracts/self_knowledge/capability_manifest.schema.json",
+        "name": "capability_manifest.schema.json",
+        "extension": ".json",
+        "bytes": 1872,
+        "last_write_time_utc": "2026-05-28T14:52:58.2723412Z"
+      },
+      {
+        "path": "contracts/self_knowledge/evidence_index.schema.json",
+        "name": "evidence_index.schema.json",
+        "extension": ".json",
+        "bytes": 822,
+        "last_write_time_utc": "2026-05-28T14:52:58.2723412Z"
+      },
+      {
+        "path": "contracts/self_knowledge/module_inventory.schema.json",
+        "name": "module_inventory.schema.json",
+        "extension": ".json",
+        "bytes": 943,
+        "last_write_time_utc": "2026-05-28T14:52:58.2723412Z"
+      },
+      {
+        "path": "contracts/self_knowledge/produced_agents_index.schema.json",
+        "name": "produced_agents_index.schema.json",
+        "extension": ".json",
+        "bytes": 792,
+        "last_write_time_utc": "2026-05-28T14:52:58.2723412Z"
+      },
+      {
+        "path": "contracts/self_knowledge/self_describe_report.schema.json",
+        "name": "self_describe_report.schema.json",
+        "extension": ".json",
+        "bytes": 1081,
+        "last_write_time_utc": "2026-05-28T14:52:58.2723412Z"
+      },
+      {
+        "path": "contracts/SPECIALIZATION_GAP_REPORT_CONTRACT_V1.json",
+        "name": "SPECIALIZATION_GAP_REPORT_CONTRACT_V1.json",
+        "extension": ".json",
+        "bytes": 607,
+        "last_write_time_utc": "2026-05-19T16:30:52.1883871Z"
+      },
+      {
+        "path": "contracts/task_queue.schema.json",
+        "name": "task_queue.schema.json",
+        "extension": ".json",
+        "bytes": 1127,
+        "last_write_time_utc": "2026-05-19T16:30:52.2032199Z"
+      },
+      {
+        "path": "contracts/validation_report.schema.json",
+        "name": "validation_report.schema.json",
+        "extension": ".json",
+        "bytes": 394,
+        "last_write_time_utc": "2026-05-19T16:30:52.2042195Z"
+      }
+    ],
+    "packs": [
+      {
+        "path": "packs/PHASE10_GENERATED_AGENT_VALIDATION_HARNESS_V1",
+        "name": "PHASE10_GENERATED_AGENT_VALIDATION_HARNESS_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE11_FACTORY_BUILD_EXTERNAL_AGENT_MODE_V1",
+        "name": "PHASE11_FACTORY_BUILD_EXTERNAL_AGENT_MODE_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE12_PRODUCTION_FACTORY_PROOF_V1",
+        "name": "PHASE12_PRODUCTION_FACTORY_PROOF_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE13_PRODUCTION_TRUTH_RESET_V2",
+        "name": "PHASE13_PRODUCTION_TRUTH_RESET_V2",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE14_REAL_GENERATED_AGENT_RUNTIME_V2",
+        "name": "PHASE14_REAL_GENERATED_AGENT_RUNTIME_V2",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE15_OPERATIONAL_VALIDATION_HARNESS_V2",
+        "name": "PHASE15_OPERATIONAL_VALIDATION_HARNESS_V2",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE16_FACTORY_BUILD_EXTERNAL_AGENT_MODE_V2",
+        "name": "PHASE16_FACTORY_BUILD_EXTERNAL_AGENT_MODE_V2",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE17_OPERATIONAL_FACTORY_PROOF_V2",
+        "name": "PHASE17_OPERATIONAL_FACTORY_PROOF_V2",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE18_ARCHITECT_TO_SPEC_HANDOFF_V1",
+        "name": "PHASE18_ARCHITECT_TO_SPEC_HANDOFF_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE19_BUILD_FROM_RAW_IDEA_MODE_V1",
+        "name": "PHASE19_BUILD_FROM_RAW_IDEA_MODE_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE20_IDEA_TO_AGENT_FACTORY_PROOF_V1",
+        "name": "PHASE20_IDEA_TO_AGENT_FACTORY_PROOF_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE21_SPECIALIZATION_OVERLAY_RESOLUTION_V1",
+        "name": "PHASE21_SPECIALIZATION_OVERLAY_RESOLUTION_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE22_BUILD_FROM_RAW_IDEA_SPECIALIZED_MODE_V1",
+        "name": "PHASE22_BUILD_FROM_RAW_IDEA_SPECIALIZED_MODE_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE23_IDEA_TO_SPECIALIZED_AGENT_FACTORY_PROOF_V1",
+        "name": "PHASE23_IDEA_TO_SPECIALIZED_AGENT_FACTORY_PROOF_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE24_SPECIALIZATION_PROFILE_REGISTRY_V1",
+        "name": "PHASE24_SPECIALIZATION_PROFILE_REGISTRY_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE25_SPECIFICATION_AGENT_SPECIALIZATION_PROFILE_V1",
+        "name": "PHASE25_SPECIFICATION_AGENT_SPECIALIZATION_PROFILE_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE26_MULTI_PROFILE_SPECIALIZED_FACTORY_PROOF_V1",
+        "name": "PHASE26_MULTI_PROFILE_SPECIALIZED_FACTORY_PROOF_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE27_SPECIALIZATION_GAP_CONTRACT_V1",
+        "name": "PHASE27_SPECIALIZATION_GAP_CONTRACT_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE28_NO_MATCH_DIAGNOSTIC_MODE_V1",
+        "name": "PHASE28_NO_MATCH_DIAGNOSTIC_MODE_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE29_MISSING_PROFILE_FACTORY_PROOF_V1",
+        "name": "PHASE29_MISSING_PROFILE_FACTORY_PROOF_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE30_GAP_TO_PROFILE_CANDIDATE_BRIEF_V1",
+        "name": "PHASE30_GAP_TO_PROFILE_CANDIDATE_BRIEF_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE31_DECISION_SUPPORT_AGENT_SPECIALIZATION_PROFILE_V1",
+        "name": "PHASE31_DECISION_SUPPORT_AGENT_SPECIALIZATION_PROFILE_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE32_GAP_CLOSURE_SPECIALIZED_FACTORY_PROOF_V1",
+        "name": "PHASE32_GAP_CLOSURE_SPECIALIZED_FACTORY_PROOF_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE33_GAP_REMEDIATION_INTAKE_MODE_V1",
+        "name": "PHASE33_GAP_REMEDIATION_INTAKE_MODE_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE34_CANDIDATE_INTAKE_REPORT_CONTRACT_V1",
+        "name": "PHASE34_CANDIDATE_INTAKE_REPORT_CONTRACT_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE35_RUNTIME_GAP_TO_CANDIDATE_FACTORY_PROOF_V1",
+        "name": "PHASE35_RUNTIME_GAP_TO_CANDIDATE_FACTORY_PROOF_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE36_WORKFLOW_EXECUTION_FAMILY_REACHABILITY_V1",
+        "name": "PHASE36_WORKFLOW_EXECUTION_FAMILY_REACHABILITY_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE37_INTAKE_DRIVEN_WORKFLOW_EXECUTION_PROFILE_V1",
+        "name": "PHASE37_INTAKE_DRIVEN_WORKFLOW_EXECUTION_PROFILE_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE38_RUNTIME_GAP_REMEDIATION_CLOSURE_PROOF_V1",
+        "name": "PHASE38_RUNTIME_GAP_REMEDIATION_CLOSURE_PROOF_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE39_MONITORING_GAP_REACHABILITY_V1",
+        "name": "PHASE39_MONITORING_GAP_REACHABILITY_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES",
+        "name": "PHASE4_SELF_VALIDATION_RELEASE_GATES",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE40_SPECIALIZED_GAP_AUTO_INTAKE_RUNTIME_V1",
+        "name": "PHASE40_SPECIALIZED_GAP_AUTO_INTAKE_RUNTIME_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE41_ONE_RUN_GAP_REMEDIATION_PACKET_PROOF_V1",
+        "name": "PHASE41_ONE_RUN_GAP_REMEDIATION_PACKET_PROOF_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE42_REMEDIATION_PROGRAM_SEED_CONTRACT_V1",
+        "name": "PHASE42_REMEDIATION_PROGRAM_SEED_CONTRACT_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE43_SPECIALIZED_GAP_AUTO_PROGRAM_SEED_RUNTIME_V1",
+        "name": "PHASE43_SPECIALIZED_GAP_AUTO_PROGRAM_SEED_RUNTIME_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE44_ONE_RUN_REMEDIATION_PROGRAM_SEED_PROOF_V1",
+        "name": "PHASE44_ONE_RUN_REMEDIATION_PROGRAM_SEED_PROOF_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE45_SEED_DRIVEN_MONITORING_PROFILE_V1",
+        "name": "PHASE45_SEED_DRIVEN_MONITORING_PROFILE_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE46_MONITORING_GAP_CLOSURE_SPECIALIZED_PROOF_V1",
+        "name": "PHASE46_MONITORING_GAP_CLOSURE_SPECIALIZED_PROOF_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE47_REMEDIATION_PROGRAM_SEED_CONSUMPTION_CLOSURE_PROOF_V1",
+        "name": "PHASE47_REMEDIATION_PROGRAM_SEED_CONSUMPTION_CLOSURE_PROOF_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE48_REMEDIATION_SEED_PROGRAM_BLUEPRINT_CONTRACT_V1",
+        "name": "PHASE48_REMEDIATION_SEED_PROGRAM_BLUEPRINT_CONTRACT_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE49_REMEDIATION_SEED_PROGRAM_MATERIALIZATION_V1",
+        "name": "PHASE49_REMEDIATION_SEED_PROGRAM_MATERIALIZATION_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE5_EXTERNAL_AGENT_SPEC_INTAKE",
+        "name": "PHASE5_EXTERNAL_AGENT_SPEC_INTAKE",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE50_ONE_RUN_REMEDIATION_SEED_PROGRAM_SYNTHESIS_PROOF_V1",
+        "name": "PHASE50_ONE_RUN_REMEDIATION_SEED_PROGRAM_SYNTHESIS_PROOF_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE51_BUILDER_GITHUB_ACTION_MANUAL_RUN_SURFACE_V1",
+        "name": "PHASE51_BUILDER_GITHUB_ACTION_MANUAL_RUN_SURFACE_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE52_GENERATED_AGENT_ACTION_LAUNCH_CONTRACT_V1",
+        "name": "PHASE52_GENERATED_AGENT_ACTION_LAUNCH_CONTRACT_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE53_ACTION_READY_GENERATED_AGENT_PROOF_V1",
+        "name": "PHASE53_ACTION_READY_GENERATED_AGENT_PROOF_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE54_OWNER_VISIBLE_SELF_BUILD_ACCEPTANCE_V1",
+        "name": "PHASE54_OWNER_VISIBLE_SELF_BUILD_ACCEPTANCE_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE55_GENERATED_PROGRAM_ADMISSION_READINESS_GATE_V1",
+        "name": "PHASE55_GENERATED_PROGRAM_ADMISSION_READINESS_GATE_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE56_EXECUTABLE_GENERATED_PROGRAM_MATERIALIZATION_V1",
+        "name": "PHASE56_EXECUTABLE_GENERATED_PROGRAM_MATERIALIZATION_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE57_GENERATED_PROGRAM_LIVE_ADMISSION_PROOF_V1",
+        "name": "PHASE57_GENERATED_PROGRAM_LIVE_ADMISSION_PROOF_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE58_GENERATED_PROGRAM_EXECUTION_RECIPE_CONTRACT_V1",
+        "name": "PHASE58_GENERATED_PROGRAM_EXECUTION_RECIPE_CONTRACT_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE59_RECIPE_DRIVEN_GENERATED_PROGRAM_EXECUTABLE_MATERIALIZATION_V1",
+        "name": "PHASE59_RECIPE_DRIVEN_GENERATED_PROGRAM_EXECUTABLE_MATERIALIZATION_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE6_EXTERNAL_AGENT_PACKAGE_GENERATOR",
+        "name": "PHASE6_EXTERNAL_AGENT_PACKAGE_GENERATOR",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE60_GENERALIZED_GENERATED_PROGRAM_LIVE_ADMISSION_CONTRACT_V1",
+        "name": "PHASE60_GENERALIZED_GENERATED_PROGRAM_LIVE_ADMISSION_CONTRACT_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE61_SECOND_GENERATED_PROGRAM_FAMILY_PROOF_V1",
+        "name": "PHASE61_SECOND_GENERATED_PROGRAM_FAMILY_PROOF_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE62_SECOND_GENERATED_PROGRAM_FAMILY_MATERIALIZATION_V1",
+        "name": "PHASE62_SECOND_GENERATED_PROGRAM_FAMILY_MATERIALIZATION_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE63_SECOND_GENERATED_PROGRAM_FAMILY_LIVE_ADMISSION_V1",
+        "name": "PHASE63_SECOND_GENERATED_PROGRAM_FAMILY_LIVE_ADMISSION_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE64_GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_CONTRACT_V1",
+        "name": "PHASE64_GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_CONTRACT_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE65_GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_LIVE_TRIAL_V1",
+        "name": "PHASE65_GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_LIVE_TRIAL_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE66_GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_FAILURE_RECOVERY_V1",
+        "name": "PHASE66_GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_FAILURE_RECOVERY_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE67_EXTERNAL_AGENT_PRODUCTION_PROGRAM_TEST_V1",
+        "name": "PHASE67_EXTERNAL_AGENT_PRODUCTION_PROGRAM_TEST_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE68_AGENT_GITHUB_ACTION_LAUNCH_V1",
+        "name": "PHASE68_AGENT_GITHUB_ACTION_LAUNCH_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE69_AGENT_CATALOG_V1",
+        "name": "PHASE69_AGENT_CATALOG_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE7_FIRST_PROVEN_EXTERNAL_AGENT",
+        "name": "PHASE7_FIRST_PROVEN_EXTERNAL_AGENT",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE70_AGENT_PROGRAM_INPUT_FORMAT_V1",
+        "name": "PHASE70_AGENT_PROGRAM_INPUT_FORMAT_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE71_AGENT_PROGRAM_EXECUTOR_V1",
+        "name": "PHASE71_AGENT_PROGRAM_EXECUTOR_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE72_RUNBOOK_EXECUTOR_AGENT_PROGRAM_TRIAL_V1",
+        "name": "PHASE72_RUNBOOK_EXECUTOR_AGENT_PROGRAM_TRIAL_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE73_RUNBOOK_EXECUTOR_AGENT_PRODUCTION_V1",
+        "name": "PHASE73_RUNBOOK_EXECUTOR_AGENT_PRODUCTION_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE74_RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_LAUNCH_V1",
+        "name": "PHASE74_RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_LAUNCH_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE75_RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_ACCEPTANCE_V1",
+        "name": "PHASE75_RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_ACCEPTANCE_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE76_AGENT_PRODUCTION_CLOSED_LOOP_STANDARD_V1",
+        "name": "PHASE76_AGENT_PRODUCTION_CLOSED_LOOP_STANDARD_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE77_EVIDENCE_PACKAGER_AGENT_CLOSED_LOOP_TRIAL_V1",
+        "name": "PHASE77_EVIDENCE_PACKAGER_AGENT_CLOSED_LOOP_TRIAL_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE78_AGENT_BUILDER_SELF_KNOWLEDGE_SYSTEM_FULL_CONTRACT_V1",
+        "name": "PHASE78_AGENT_BUILDER_SELF_KNOWLEDGE_SYSTEM_FULL_CONTRACT_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE8_PRODUCTION_SPEC_CONTRACT_V1",
+        "name": "PHASE8_PRODUCTION_SPEC_CONTRACT_V1",
+        "status": "candidate"
+      },
+      {
+        "path": "packs/PHASE9_PRODUCTION_PACKAGE_BLUEPRINT_V1",
+        "name": "PHASE9_PRODUCTION_PACKAGE_BLUEPRINT_V1",
+        "status": "candidate"
+      }
+    ],
+    "workflows": [
+      {
+        "path": ".github/workflows/agent-builder-build-from-raw-idea.yml",
+        "name": "agent-builder-build-from-raw-idea.yml",
+        "extension": ".yml",
+        "bytes": 4329,
+        "last_write_time_utc": "2026-05-19T18:24:18.0731806Z"
+      },
+      {
+        "path": ".github/workflows/agent-builder-self-build.yml",
+        "name": "agent-builder-self-build.yml",
+        "extension": ".yml",
+        "bytes": 2641,
+        "last_write_time_utc": "2026-05-19T18:24:18.0888056Z"
+      },
+      {
+        "path": ".github/workflows/run-evidence-packager-agent-v1.yml",
+        "name": "run-evidence-packager-agent-v1.yml",
+        "extension": ".yml",
+        "bytes": 2490,
+        "last_write_time_utc": "2026-05-28T14:52:58.2549655Z"
+      },
+      {
+        "path": ".github/workflows/run-remediation-intake-operator-agent-v1.yml",
+        "name": "run-remediation-intake-operator-agent-v1.yml",
+        "extension": ".yml",
+        "bytes": 2233,
+        "last_write_time_utc": "2026-05-24T15:33:37.2575249Z"
+      },
+      {
+        "path": ".github/workflows/run-runbook-executor-agent-v1.yml",
+        "name": "run-runbook-executor-agent-v1.yml",
+        "extension": ".yml",
+        "bytes": 2644,
+        "last_write_time_utc": "2026-05-28T14:52:58.2559652Z"
+      }
+    ],
+    "counts": {
+      "modules": 42,
+      "validators": 82,
+      "contracts": 32,
+      "packs": 75,
+      "workflows": 5
+    },
+    "missing_surfaces": []
+  },
+  "generated_programs": [
+    {
+      "path": "self_build_programs/generated/conveyor_failure_trial_family_v1/packs/GENERATED_CONVEYOR_FAILURE_TRIAL_FAMILY_V1_FAILURE_PACK_V1/APPLY.ps1",
+      "name": "APPLY.ps1",
+      "extension": ".ps1",
+      "bytes": 4584,
+      "last_write_time_utc": "2026-05-23T09:31:23.0191354Z"
+    },
+    {
+      "path": "self_build_programs/generated/conveyor_failure_trial_family_v1/packs/GENERATED_CONVEYOR_FAILURE_TRIAL_FAMILY_V1_FAILURE_PACK_V1/PACK.json",
+      "name": "PACK.json",
+      "extension": ".json",
+      "bytes": 396,
+      "last_write_time_utc": "2026-05-23T09:30:52.8713684Z"
+    },
+    {
+      "path": "self_build_programs/generated/conveyor_failure_trial_family_v1/SELF_BUILD_PROGRAM_MANIFEST.json",
+      "name": "SELF_BUILD_PROGRAM_MANIFEST.json",
+      "extension": ".json",
+      "bytes": 796,
+      "last_write_time_utc": "2026-05-23T09:30:47.1471628Z"
+    },
+    {
+      "path": "self_build_programs/generated/conveyor_trial_family_v1/packs/GENERATED_CONVEYOR_TRIAL_FAMILY_V1_LIVE_PACK_V1/APPLY.ps1",
+      "name": "APPLY.ps1",
+      "extension": ".ps1",
+      "bytes": 4360,
+      "last_write_time_utc": "2026-05-23T09:13:52.1542867Z"
+    },
+    {
+      "path": "self_build_programs/generated/conveyor_trial_family_v1/packs/GENERATED_CONVEYOR_TRIAL_FAMILY_V1_LIVE_PACK_V1/PACK.json",
+      "name": "PACK.json",
+      "extension": ".json",
+      "bytes": 348,
+      "last_write_time_utc": "2026-05-23T09:13:52.1552857Z"
+    },
+    {
+      "path": "self_build_programs/generated/conveyor_trial_family_v1/SELF_BUILD_PROGRAM_MANIFEST.json",
+      "name": "SELF_BUILD_PROGRAM_MANIFEST.json",
+      "extension": ".json",
+      "bytes": 671,
+      "last_write_time_utc": "2026-05-23T09:13:52.1532885Z"
+    },
+    {
+      "path": "self_build_programs/generated/monitoring_agent_v1/execution_recipes/GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1_RECIPE.json",
+      "name": "GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1_RECIPE.json",
+      "extension": ".json",
+      "bytes": 2337,
+      "last_write_time_utc": "2026-05-23T09:13:52.1572871Z"
+    },
+    {
+      "path": "self_build_programs/generated/monitoring_agent_v1/execution_recipes/GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1_RECIPE.json",
+      "name": "GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1_RECIPE.json",
+      "extension": ".json",
+      "bytes": 2790,
+      "last_write_time_utc": "2026-05-23T09:13:52.1582874Z"
+    },
+    {
+      "path": "self_build_programs/generated/monitoring_agent_v1/execution_recipes/GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_RECIPE.json",
+      "name": "GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_RECIPE.json",
+      "extension": ".json",
+      "bytes": 2555,
+      "last_write_time_utc": "2026-05-23T09:13:52.1582874Z"
+    },
+    {
+      "path": "self_build_programs/generated/monitoring_agent_v1/packs/GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1/APPLY.ps1",
+      "name": "APPLY.ps1",
+      "extension": ".ps1",
+      "bytes": 22559,
+      "last_write_time_utc": "2026-05-23T09:13:52.1596830Z"
+    },
+    {
+      "path": "self_build_programs/generated/monitoring_agent_v1/packs/GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1/PACK.json",
+      "name": "PACK.json",
+      "extension": ".json",
+      "bytes": 257,
+      "last_write_time_utc": "2026-05-19T16:30:52.5613011Z"
+    },
+    {
+      "path": "self_build_programs/generated/monitoring_agent_v1/packs/GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1/APPLY.ps1",
+      "name": "APPLY.ps1",
+      "extension": ".ps1",
+      "bytes": 23030,
+      "last_write_time_utc": "2026-05-23T09:13:52.1596830Z"
+    },
+    {
+      "path": "self_build_programs/generated/monitoring_agent_v1/packs/GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1/PACK.json",
+      "name": "PACK.json",
+      "extension": ".json",
+      "bytes": 277,
+      "last_write_time_utc": "2026-05-19T16:30:52.5623004Z"
+    },
+    {
+      "path": "self_build_programs/generated/monitoring_agent_v1/packs/GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1/APPLY.ps1",
+      "name": "APPLY.ps1",
+      "extension": ".ps1",
+      "bytes": 22792,
+      "last_write_time_utc": "2026-05-23T09:13:52.1596830Z"
+    },
+    {
+      "path": "self_build_programs/generated/monitoring_agent_v1/packs/GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1/PACK.json",
+      "name": "PACK.json",
+      "extension": ".json",
+      "bytes": 275,
+      "last_write_time_utc": "2026-05-19T16:30:52.5633004Z"
+    },
+    {
+      "path": "self_build_programs/generated/monitoring_agent_v1/patches/CAPABILITY_ROADMAP_PATCH.json",
+      "name": "CAPABILITY_ROADMAP_PATCH.json",
+      "extension": ".json",
+      "bytes": 860,
+      "last_write_time_utc": "2026-05-19T16:30:52.5643006Z"
+    },
+    {
+      "path": "self_build_programs/generated/monitoring_agent_v1/patches/PACK_REGISTRY_PATCH.json",
+      "name": "PACK_REGISTRY_PATCH.json",
+      "extension": ".json",
+      "bytes": 683,
+      "last_write_time_utc": "2026-05-19T16:30:52.5643006Z"
+    },
+    {
+      "path": "self_build_programs/generated/monitoring_agent_v1/patches/TASK_QUEUE_SEED.json",
+      "name": "TASK_QUEUE_SEED.json",
+      "extension": ".json",
+      "bytes": 1033,
+      "last_write_time_utc": "2026-05-19T16:30:52.5653008Z"
+    },
+    {
+      "path": "self_build_programs/generated/monitoring_agent_v1/SELF_BUILD_PROGRAM_MANIFEST.json",
+      "name": "SELF_BUILD_PROGRAM_MANIFEST.json",
+      "extension": ".json",
+      "bytes": 764,
+      "last_write_time_utc": "2026-05-23T09:13:52.1562888Z"
+    },
+    {
+      "path": "self_build_programs/generated/monitoring_agent_v1/tasks/TASK_GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1_001.json",
+      "name": "TASK_GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1_001.json",
+      "extension": ".json",
+      "bytes": 443,
+      "last_write_time_utc": "2026-05-19T16:30:52.5663008Z"
+    },
+    {
+      "path": "self_build_programs/generated/monitoring_agent_v1/tasks/TASK_GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1_001.json",
+      "name": "TASK_GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1_001.json",
+      "extension": ".json",
+      "bytes": 479,
+      "last_write_time_utc": "2026-05-19T16:30:52.5673025Z"
+    },
+    {
+      "path": "self_build_programs/generated/monitoring_agent_v1/tasks/TASK_GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_001.json",
+      "name": "TASK_GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_001.json",
+      "extension": ".json",
+      "bytes": 470,
+      "last_write_time_utc": "2026-05-19T16:30:52.5683026Z"
+    },
+    {
+      "path": "self_build_programs/generated/remediation_intake_agent_v1/execution_recipes/GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1_RECIPE.json",
+      "name": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1_RECIPE.json",
+      "extension": ".json",
+      "bytes": 2520,
+      "last_write_time_utc": "2026-05-23T09:13:52.1596830Z"
+    },
+    {
+      "path": "self_build_programs/generated/remediation_intake_agent_v1/execution_recipes/GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1_RECIPE.json",
+      "name": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1_RECIPE.json",
+      "extension": ".json",
+      "bytes": 2974,
+      "last_write_time_utc": "2026-05-23T09:13:52.1596830Z"
+    },
+    {
+      "path": "self_build_programs/generated/remediation_intake_agent_v1/execution_recipes/GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_RECIPE.json",
+      "name": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_RECIPE.json",
+      "extension": ".json",
+      "bytes": 2677,
+      "last_write_time_utc": "2026-05-23T09:13:52.1596830Z"
+    },
+    {
+      "path": "self_build_programs/generated/remediation_intake_agent_v1/packs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1/APPLY.ps1",
+      "name": "APPLY.ps1",
+      "extension": ".ps1",
+      "bytes": 22758,
+      "last_write_time_utc": "2026-05-23T09:13:52.1596830Z"
+    },
+    {
+      "path": "self_build_programs/generated/remediation_intake_agent_v1/packs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1/PACK.json",
+      "name": "PACK.json",
+      "extension": ".json",
+      "bytes": 360,
+      "last_write_time_utc": "2026-05-23T09:13:52.1596830Z"
+    },
+    {
+      "path": "self_build_programs/generated/remediation_intake_agent_v1/packs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1/APPLY.ps1",
+      "name": "APPLY.ps1",
+      "extension": ".ps1",
+      "bytes": 23230,
+      "last_write_time_utc": "2026-05-23T09:13:52.1596830Z"
+    },
+    {
+      "path": "self_build_programs/generated/remediation_intake_agent_v1/packs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1/PACK.json",
+      "name": "PACK.json",
+      "extension": ".json",
+      "bytes": 378,
+      "last_write_time_utc": "2026-05-23T09:13:52.1596830Z"
+    },
+    {
+      "path": "self_build_programs/generated/remediation_intake_agent_v1/packs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1/APPLY.ps1",
+      "name": "APPLY.ps1",
+      "extension": ".ps1",
+      "bytes": 22930,
+      "last_write_time_utc": "2026-05-23T09:13:52.1596830Z"
+    },
+    {
+      "path": "self_build_programs/generated/remediation_intake_agent_v1/packs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1/PACK.json",
+      "name": "PACK.json",
+      "extension": ".json",
+      "bytes": 375,
+      "last_write_time_utc": "2026-05-23T09:13:52.1596830Z"
+    },
+    {
+      "path": "self_build_programs/generated/remediation_intake_agent_v1/patches/CAPABILITY_ROADMAP_PATCH.json",
+      "name": "CAPABILITY_ROADMAP_PATCH.json",
+      "extension": ".json",
+      "bytes": 909,
+      "last_write_time_utc": "2026-05-23T09:13:52.1596830Z"
+    },
+    {
+      "path": "self_build_programs/generated/remediation_intake_agent_v1/patches/PACK_REGISTRY_PATCH.json",
+      "name": "PACK_REGISTRY_PATCH.json",
+      "extension": ".json",
+      "bytes": 756,
+      "last_write_time_utc": "2026-05-23T09:13:52.1596830Z"
+    },
+    {
+      "path": "self_build_programs/generated/remediation_intake_agent_v1/patches/TASK_QUEUE_SEED.json",
+      "name": "TASK_QUEUE_SEED.json",
+      "extension": ".json",
+      "bytes": 1134,
+      "last_write_time_utc": "2026-05-23T09:13:52.1596830Z"
+    },
+    {
+      "path": "self_build_programs/generated/remediation_intake_agent_v1/SELF_BUILD_PROGRAM_MANIFEST.json",
+      "name": "SELF_BUILD_PROGRAM_MANIFEST.json",
+      "extension": ".json",
+      "bytes": 1414,
+      "last_write_time_utc": "2026-05-23T09:13:52.1596830Z"
+    },
+    {
+      "path": "self_build_programs/generated/remediation_intake_agent_v1/tasks/TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1_001.json",
+      "name": "TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1_001.json",
+      "extension": ".json",
+      "bytes": 749,
+      "last_write_time_utc": "2026-05-23T09:13:52.1596830Z"
+    },
+    {
+      "path": "self_build_programs/generated/remediation_intake_agent_v1/tasks/TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1_001.json",
+      "name": "TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1_001.json",
+      "extension": ".json",
+      "bytes": 781,
+      "last_write_time_utc": "2026-05-23T09:13:52.1596830Z"
+    },
+    {
+      "path": "self_build_programs/generated/remediation_intake_agent_v1/tasks/TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_001.json",
+      "name": "TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_001.json",
+      "extension": ".json",
+      "bytes": 770,
+      "last_write_time_utc": "2026-05-23T09:13:52.1596830Z"
+    }
+  ],
+  "produced_agents": [
+    {
+      "agent_id": "",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "generated_agents/.gitkeep"
+      ],
+      "source_path": "generated_agents/.gitkeep",
+      "parse_status": "unknown"
+    },
+    {
+      "agent_id": "action_ready_agent_proof",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "generated_agents/action_ready_agent_proof/AGENT_PROFILE.json"
+      ],
+      "source_path": "generated_agents/action_ready_agent_proof/AGENT_PROFILE.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "AGENT_MISSION",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "generated_agents/action_ready_agent_proof/AGENT_MISSION.md"
+      ],
+      "source_path": "generated_agents/action_ready_agent_proof/AGENT_MISSION.md",
+      "parse_status": "unknown"
+    },
+    {
+      "agent_id": "agent_spec_architecture_result.schema",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "applied_agents/agent_spec_architect/overlay/contracts/agent_spec_architecture_result.schema.json"
+      ],
+      "source_path": "applied_agents/agent_spec_architect/overlay/contracts/agent_spec_architecture_result.schema.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "AGENTS",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "generated_agents/action_ready_agent_proof/AGENTS.md"
+      ],
+      "source_path": "generated_agents/action_ready_agent_proof/AGENTS.md",
+      "parse_status": "unknown"
+    },
+    {
+      "agent_id": "APPLY",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "self_build_programs/generated/conveyor_failure_trial_family_v1/packs/GENERATED_CONVEYOR_FAILURE_TRIAL_FAMILY_V1_FAILURE_PACK_V1/APPLY.ps1"
+      ],
+      "source_path": "self_build_programs/generated/conveyor_failure_trial_family_v1/packs/GENERATED_CONVEYOR_FAILURE_TRIAL_FAMILY_V1_FAILURE_PACK_V1/APPLY.ps1",
+      "parse_status": "unknown"
+    },
+    {
+      "agent_id": "APPLY",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "self_build_programs/generated/conveyor_trial_family_v1/packs/GENERATED_CONVEYOR_TRIAL_FAMILY_V1_LIVE_PACK_V1/APPLY.ps1"
+      ],
+      "source_path": "self_build_programs/generated/conveyor_trial_family_v1/packs/GENERATED_CONVEYOR_TRIAL_FAMILY_V1_LIVE_PACK_V1/APPLY.ps1",
+      "parse_status": "unknown"
+    },
+    {
+      "agent_id": "APPLY",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "self_build_programs/generated/monitoring_agent_v1/packs/GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1/APPLY.ps1"
+      ],
+      "source_path": "self_build_programs/generated/monitoring_agent_v1/packs/GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1/APPLY.ps1",
+      "parse_status": "unknown"
+    },
+    {
+      "agent_id": "APPLY",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "self_build_programs/generated/monitoring_agent_v1/packs/GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1/APPLY.ps1"
+      ],
+      "source_path": "self_build_programs/generated/monitoring_agent_v1/packs/GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1/APPLY.ps1",
+      "parse_status": "unknown"
+    },
+    {
+      "agent_id": "APPLY",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "self_build_programs/generated/monitoring_agent_v1/packs/GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1/APPLY.ps1"
+      ],
+      "source_path": "self_build_programs/generated/monitoring_agent_v1/packs/GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1/APPLY.ps1",
+      "parse_status": "unknown"
+    },
+    {
+      "agent_id": "APPLY",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "self_build_programs/generated/remediation_intake_agent_v1/packs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1/APPLY.ps1"
+      ],
+      "source_path": "self_build_programs/generated/remediation_intake_agent_v1/packs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1/APPLY.ps1",
+      "parse_status": "unknown"
+    },
+    {
+      "agent_id": "APPLY",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "self_build_programs/generated/remediation_intake_agent_v1/packs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1/APPLY.ps1"
+      ],
+      "source_path": "self_build_programs/generated/remediation_intake_agent_v1/packs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1/APPLY.ps1",
+      "parse_status": "unknown"
+    },
+    {
+      "agent_id": "APPLY",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "self_build_programs/generated/remediation_intake_agent_v1/packs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1/APPLY.ps1"
+      ],
+      "source_path": "self_build_programs/generated/remediation_intake_agent_v1/packs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1/APPLY.ps1",
+      "parse_status": "unknown"
+    },
+    {
+      "agent_id": "build_agent_spec_architecture",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "applied_agents/agent_spec_architect/overlay/modules/build_agent_spec_architecture.ps1"
+      ],
+      "source_path": "applied_agents/agent_spec_architect/overlay/modules/build_agent_spec_architecture.ps1",
+      "parse_status": "unknown"
+    },
+    {
+      "agent_id": "CAPABILITY_ROADMAP_PATCH",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "self_build_programs/generated/monitoring_agent_v1/patches/CAPABILITY_ROADMAP_PATCH.json"
+      ],
+      "source_path": "self_build_programs/generated/monitoring_agent_v1/patches/CAPABILITY_ROADMAP_PATCH.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "CAPABILITY_ROADMAP_PATCH",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "self_build_programs/generated/remediation_intake_agent_v1/patches/CAPABILITY_ROADMAP_PATCH.json"
+      ],
+      "source_path": "self_build_programs/generated/remediation_intake_agent_v1/patches/CAPABILITY_ROADMAP_PATCH.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "evidence_packager_agent_v1",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "generated_agents/evidence_packager_agent_v1/AGENT_SPEC.json"
+      ],
+      "source_path": "generated_agents/evidence_packager_agent_v1/AGENT_SPEC.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1_RECIPE",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "self_build_programs/generated/monitoring_agent_v1/execution_recipes/GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1_RECIPE.json"
+      ],
+      "source_path": "self_build_programs/generated/monitoring_agent_v1/execution_recipes/GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1_RECIPE.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1_RECIPE",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "self_build_programs/generated/monitoring_agent_v1/execution_recipes/GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1_RECIPE.json"
+      ],
+      "source_path": "self_build_programs/generated/monitoring_agent_v1/execution_recipes/GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1_RECIPE.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_RECIPE",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "self_build_programs/generated/monitoring_agent_v1/execution_recipes/GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_RECIPE.json"
+      ],
+      "source_path": "self_build_programs/generated/monitoring_agent_v1/execution_recipes/GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_RECIPE.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1_RECIPE",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "self_build_programs/generated/remediation_intake_agent_v1/execution_recipes/GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1_RECIPE.json"
+      ],
+      "source_path": "self_build_programs/generated/remediation_intake_agent_v1/execution_recipes/GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1_RECIPE.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1_RECIPE",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "self_build_programs/generated/remediation_intake_agent_v1/execution_recipes/GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1_RECIPE.json"
+      ],
+      "source_path": "self_build_programs/generated/remediation_intake_agent_v1/execution_recipes/GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1_RECIPE.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_RECIPE",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "self_build_programs/generated/remediation_intake_agent_v1/execution_recipes/GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_RECIPE.json"
+      ],
+      "source_path": "self_build_programs/generated/remediation_intake_agent_v1/execution_recipes/GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_RECIPE.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "INPUT_EXAMPLE",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "generated_agents/evidence_packager_agent_v1/INPUT_EXAMPLE.json"
+      ],
+      "source_path": "generated_agents/evidence_packager_agent_v1/INPUT_EXAMPLE.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "INPUT_EXAMPLE",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "generated_agents/remediation_intake_operator_agent_v1/INPUT_EXAMPLE.json"
+      ],
+      "source_path": "generated_agents/remediation_intake_operator_agent_v1/INPUT_EXAMPLE.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "INPUT_EXAMPLE",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "generated_agents/runbook_executor_agent_v1/INPUT_EXAMPLE.json"
+      ],
+      "source_path": "generated_agents/runbook_executor_agent_v1/INPUT_EXAMPLE.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "invoke_agent_operation",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "applied_agents/specialization_profiles/audit_agent_v1/overlay/modules/invoke_agent_operation.ps1"
+      ],
+      "source_path": "applied_agents/specialization_profiles/audit_agent_v1/overlay/modules/invoke_agent_operation.ps1",
+      "parse_status": "unknown"
+    },
+    {
+      "agent_id": "invoke_agent_operation",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "applied_agents/specialization_profiles/decision_support_agent_v1/overlay/modules/invoke_agent_operation.ps1"
+      ],
+      "source_path": "applied_agents/specialization_profiles/decision_support_agent_v1/overlay/modules/invoke_agent_operation.ps1",
+      "parse_status": "unknown"
+    },
+    {
+      "agent_id": "invoke_agent_operation",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "applied_agents/specialization_profiles/monitoring_agent_v1/overlay/modules/invoke_agent_operation.ps1"
+      ],
+      "source_path": "applied_agents/specialization_profiles/monitoring_agent_v1/overlay/modules/invoke_agent_operation.ps1",
+      "parse_status": "unknown"
+    },
+    {
+      "agent_id": "invoke_agent_operation",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "applied_agents/specialization_profiles/remediation_intake_agent_v1/overlay/modules/invoke_agent_operation.ps1"
+      ],
+      "source_path": "applied_agents/specialization_profiles/remediation_intake_agent_v1/overlay/modules/invoke_agent_operation.ps1",
+      "parse_status": "unknown"
+    },
+    {
+      "agent_id": "invoke_agent_operation",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "applied_agents/specialization_profiles/specification_agent_v1/overlay/modules/invoke_agent_operation.ps1"
+      ],
+      "source_path": "applied_agents/specialization_profiles/specification_agent_v1/overlay/modules/invoke_agent_operation.ps1",
+      "parse_status": "unknown"
+    },
+    {
+      "agent_id": "invoke_agent_operation",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "applied_agents/specialization_profiles/workflow_execution_agent_v1/overlay/modules/invoke_agent_operation.ps1"
+      ],
+      "source_path": "applied_agents/specialization_profiles/workflow_execution_agent_v1/overlay/modules/invoke_agent_operation.ps1",
+      "parse_status": "unknown"
+    },
+    {
+      "agent_id": "invoke_agent_operation",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "generated_agents/action_ready_agent_proof/modules/invoke_agent_operation.ps1"
+      ],
+      "source_path": "generated_agents/action_ready_agent_proof/modules/invoke_agent_operation.ps1",
+      "parse_status": "unknown"
+    },
+    {
+      "agent_id": "OUTPUT_EXAMPLE",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "generated_agents/evidence_packager_agent_v1/OUTPUT_EXAMPLE.json"
+      ],
+      "source_path": "generated_agents/evidence_packager_agent_v1/OUTPUT_EXAMPLE.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "OUTPUT_EXAMPLE",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "generated_agents/remediation_intake_operator_agent_v1/OUTPUT_EXAMPLE.json"
+      ],
+      "source_path": "generated_agents/remediation_intake_operator_agent_v1/OUTPUT_EXAMPLE.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "OUTPUT_EXAMPLE",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "generated_agents/runbook_executor_agent_v1/OUTPUT_EXAMPLE.json"
+      ],
+      "source_path": "generated_agents/runbook_executor_agent_v1/OUTPUT_EXAMPLE.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "OUTPUT_EXAMPLE_RUNTIME",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "generated_agents/evidence_packager_agent_v1/OUTPUT_EXAMPLE_RUNTIME.json"
+      ],
+      "source_path": "generated_agents/evidence_packager_agent_v1/OUTPUT_EXAMPLE_RUNTIME.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "OUTPUT_EXAMPLE_RUNTIME",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "generated_agents/remediation_intake_operator_agent_v1/OUTPUT_EXAMPLE_RUNTIME.json"
+      ],
+      "source_path": "generated_agents/remediation_intake_operator_agent_v1/OUTPUT_EXAMPLE_RUNTIME.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "OUTPUT_EXAMPLE_RUNTIME",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "generated_agents/runbook_executor_agent_v1/OUTPUT_EXAMPLE_RUNTIME.json"
+      ],
+      "source_path": "generated_agents/runbook_executor_agent_v1/OUTPUT_EXAMPLE_RUNTIME.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "OVERLAY_MANIFEST",
+      "agent_kind": "remediation_intake_agent",
+      "status": "candidate",
+      "evidence_paths": [
+        "applied_agents/specialization_profiles/remediation_intake_agent_v1/overlay/OVERLAY_MANIFEST.json"
+      ],
+      "source_path": "applied_agents/specialization_profiles/remediation_intake_agent_v1/overlay/OVERLAY_MANIFEST.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "PACK",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "self_build_programs/generated/conveyor_failure_trial_family_v1/packs/GENERATED_CONVEYOR_FAILURE_TRIAL_FAMILY_V1_FAILURE_PACK_V1/PACK.json"
+      ],
+      "source_path": "self_build_programs/generated/conveyor_failure_trial_family_v1/packs/GENERATED_CONVEYOR_FAILURE_TRIAL_FAMILY_V1_FAILURE_PACK_V1/PACK.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "PACK",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "self_build_programs/generated/conveyor_trial_family_v1/packs/GENERATED_CONVEYOR_TRIAL_FAMILY_V1_LIVE_PACK_V1/PACK.json"
+      ],
+      "source_path": "self_build_programs/generated/conveyor_trial_family_v1/packs/GENERATED_CONVEYOR_TRIAL_FAMILY_V1_LIVE_PACK_V1/PACK.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "PACK",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "self_build_programs/generated/monitoring_agent_v1/packs/GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1/PACK.json"
+      ],
+      "source_path": "self_build_programs/generated/monitoring_agent_v1/packs/GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1/PACK.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "PACK",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "self_build_programs/generated/monitoring_agent_v1/packs/GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1/PACK.json"
+      ],
+      "source_path": "self_build_programs/generated/monitoring_agent_v1/packs/GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1/PACK.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "PACK",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "self_build_programs/generated/monitoring_agent_v1/packs/GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1/PACK.json"
+      ],
+      "source_path": "self_build_programs/generated/monitoring_agent_v1/packs/GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1/PACK.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "PACK",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "self_build_programs/generated/remediation_intake_agent_v1/packs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1/PACK.json"
+      ],
+      "source_path": "self_build_programs/generated/remediation_intake_agent_v1/packs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1/PACK.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "PACK",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "self_build_programs/generated/remediation_intake_agent_v1/packs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1/PACK.json"
+      ],
+      "source_path": "self_build_programs/generated/remediation_intake_agent_v1/packs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1/PACK.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "PACK",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "self_build_programs/generated/remediation_intake_agent_v1/packs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1/PACK.json"
+      ],
+      "source_path": "self_build_programs/generated/remediation_intake_agent_v1/packs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1/PACK.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "PACK_REGISTRY_PATCH",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "self_build_programs/generated/monitoring_agent_v1/patches/PACK_REGISTRY_PATCH.json"
+      ],
+      "source_path": "self_build_programs/generated/monitoring_agent_v1/patches/PACK_REGISTRY_PATCH.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "PACK_REGISTRY_PATCH",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "self_build_programs/generated/remediation_intake_agent_v1/patches/PACK_REGISTRY_PATCH.json"
+      ],
+      "source_path": "self_build_programs/generated/remediation_intake_agent_v1/patches/PACK_REGISTRY_PATCH.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "raw_agent_idea.schema",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "applied_agents/agent_spec_architect/overlay/contracts/raw_agent_idea.schema.json"
+      ],
+      "source_path": "applied_agents/agent_spec_architect/overlay/contracts/raw_agent_idea.schema.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "README",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "generated_agents/action_ready_agent_proof/README.md"
+      ],
+      "source_path": "generated_agents/action_ready_agent_proof/README.md",
+      "parse_status": "unknown"
+    },
+    {
+      "agent_id": "README",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "generated_agents/evidence_packager_agent_v1/proofs/README.md"
+      ],
+      "source_path": "generated_agents/evidence_packager_agent_v1/proofs/README.md",
+      "parse_status": "unknown"
+    },
+    {
+      "agent_id": "README",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "generated_agents/evidence_packager_agent_v1/README.md"
+      ],
+      "source_path": "generated_agents/evidence_packager_agent_v1/README.md",
+      "parse_status": "unknown"
+    },
+    {
+      "agent_id": "README",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "generated_agents/remediation_intake_operator_agent_v1/proofs/README.md"
+      ],
+      "source_path": "generated_agents/remediation_intake_operator_agent_v1/proofs/README.md",
+      "parse_status": "unknown"
+    },
+    {
+      "agent_id": "README",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "generated_agents/remediation_intake_operator_agent_v1/README.md"
+      ],
+      "source_path": "generated_agents/remediation_intake_operator_agent_v1/README.md",
+      "parse_status": "unknown"
+    },
+    {
+      "agent_id": "README",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "generated_agents/runbook_executor_agent_v1/proofs/README.md"
+      ],
+      "source_path": "generated_agents/runbook_executor_agent_v1/proofs/README.md",
+      "parse_status": "unknown"
+    },
+    {
+      "agent_id": "README",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "generated_agents/runbook_executor_agent_v1/README.md"
+      ],
+      "source_path": "generated_agents/runbook_executor_agent_v1/README.md",
+      "parse_status": "unknown"
+    },
+    {
+      "agent_id": "request.schema",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "generated_agents/action_ready_agent_proof/contracts/request.schema.json"
+      ],
+      "source_path": "generated_agents/action_ready_agent_proof/contracts/request.schema.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "remediation_intake_operator_agent_v1",
+      "agent_kind": "external_operator_agent",
+      "status": "candidate",
+      "evidence_paths": [
+        "generated_agents/remediation_intake_operator_agent_v1/AGENT_SPEC.json"
+      ],
+      "source_path": "generated_agents/remediation_intake_operator_agent_v1/AGENT_SPEC.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "result.schema",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "generated_agents/action_ready_agent_proof/contracts/result.schema.json"
+      ],
+      "source_path": "generated_agents/action_ready_agent_proof/contracts/result.schema.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "run",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "applied_agents/agent_spec_architect/overlay/orchestrator/run.ps1"
+      ],
+      "source_path": "applied_agents/agent_spec_architect/overlay/orchestrator/run.ps1",
+      "parse_status": "unknown"
+    },
+    {
+      "agent_id": "run",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "generated_agents/action_ready_agent_proof/orchestrator/run.ps1"
+      ],
+      "source_path": "generated_agents/action_ready_agent_proof/orchestrator/run.ps1",
+      "parse_status": "unknown"
+    },
+    {
+      "agent_id": "run",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "generated_agents/evidence_packager_agent_v1/run.ps1"
+      ],
+      "source_path": "generated_agents/evidence_packager_agent_v1/run.ps1",
+      "parse_status": "unknown"
+    },
+    {
+      "agent_id": "run",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "generated_agents/remediation_intake_operator_agent_v1/run.ps1"
+      ],
+      "source_path": "generated_agents/remediation_intake_operator_agent_v1/run.ps1",
+      "parse_status": "unknown"
+    },
+    {
+      "agent_id": "run",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "generated_agents/runbook_executor_agent_v1/run.ps1"
+      ],
+      "source_path": "generated_agents/runbook_executor_agent_v1/run.ps1",
+      "parse_status": "unknown"
+    },
+    {
+      "agent_id": "run-generated-agent.workflow",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "generated_agents/action_ready_agent_proof/deployment/github_actions/run-generated-agent.workflow.yml"
+      ],
+      "source_path": "generated_agents/action_ready_agent_proof/deployment/github_actions/run-generated-agent.workflow.yml",
+      "parse_status": "unknown"
+    },
+    {
+      "agent_id": "RUNBOOK",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "generated_agents/evidence_packager_agent_v1/RUNBOOK.md"
+      ],
+      "source_path": "generated_agents/evidence_packager_agent_v1/RUNBOOK.md",
+      "parse_status": "unknown"
+    },
+    {
+      "agent_id": "RUNBOOK",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "generated_agents/remediation_intake_operator_agent_v1/RUNBOOK.md"
+      ],
+      "source_path": "generated_agents/remediation_intake_operator_agent_v1/RUNBOOK.md",
+      "parse_status": "unknown"
+    },
+    {
+      "agent_id": "RUNBOOK",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "generated_agents/runbook_executor_agent_v1/RUNBOOK.md"
+      ],
+      "source_path": "generated_agents/runbook_executor_agent_v1/RUNBOOK.md",
+      "parse_status": "unknown"
+    },
+    {
+      "agent_id": "runbook_executor_agent_v1",
+      "agent_kind": "external_operator_agent",
+      "status": "candidate",
+      "evidence_paths": [
+        "generated_agents/runbook_executor_agent_v1/AGENT_SPEC.json"
+      ],
+      "source_path": "generated_agents/runbook_executor_agent_v1/AGENT_SPEC.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "SAMPLE_REQUEST",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "applied_agents/agent_spec_architect/overlay/examples/SAMPLE_REQUEST.json"
+      ],
+      "source_path": "applied_agents/agent_spec_architect/overlay/examples/SAMPLE_REQUEST.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "SAMPLE_REQUEST",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "applied_agents/specialization_profiles/audit_agent_v1/overlay/examples/SAMPLE_REQUEST.json"
+      ],
+      "source_path": "applied_agents/specialization_profiles/audit_agent_v1/overlay/examples/SAMPLE_REQUEST.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "SAMPLE_REQUEST",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "applied_agents/specialization_profiles/decision_support_agent_v1/overlay/examples/SAMPLE_REQUEST.json"
+      ],
+      "source_path": "applied_agents/specialization_profiles/decision_support_agent_v1/overlay/examples/SAMPLE_REQUEST.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "SAMPLE_REQUEST",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "applied_agents/specialization_profiles/monitoring_agent_v1/overlay/examples/SAMPLE_REQUEST.json"
+      ],
+      "source_path": "applied_agents/specialization_profiles/monitoring_agent_v1/overlay/examples/SAMPLE_REQUEST.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "SAMPLE_REQUEST",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "applied_agents/specialization_profiles/specification_agent_v1/overlay/examples/SAMPLE_REQUEST.json"
+      ],
+      "source_path": "applied_agents/specialization_profiles/specification_agent_v1/overlay/examples/SAMPLE_REQUEST.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "SAMPLE_REQUEST",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "applied_agents/specialization_profiles/workflow_execution_agent_v1/overlay/examples/SAMPLE_REQUEST.json"
+      ],
+      "source_path": "applied_agents/specialization_profiles/workflow_execution_agent_v1/overlay/examples/SAMPLE_REQUEST.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "SAMPLE_REQUEST",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "generated_agents/action_ready_agent_proof/examples/SAMPLE_REQUEST.json"
+      ],
+      "source_path": "generated_agents/action_ready_agent_proof/examples/SAMPLE_REQUEST.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "SELF_BUILD_PROGRAM_MANIFEST",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "self_build_programs/generated/conveyor_failure_trial_family_v1/SELF_BUILD_PROGRAM_MANIFEST.json"
+      ],
+      "source_path": "self_build_programs/generated/conveyor_failure_trial_family_v1/SELF_BUILD_PROGRAM_MANIFEST.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "SELF_BUILD_PROGRAM_MANIFEST",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "self_build_programs/generated/conveyor_trial_family_v1/SELF_BUILD_PROGRAM_MANIFEST.json"
+      ],
+      "source_path": "self_build_programs/generated/conveyor_trial_family_v1/SELF_BUILD_PROGRAM_MANIFEST.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "SELF_BUILD_PROGRAM_MANIFEST",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "self_build_programs/generated/monitoring_agent_v1/SELF_BUILD_PROGRAM_MANIFEST.json"
+      ],
+      "source_path": "self_build_programs/generated/monitoring_agent_v1/SELF_BUILD_PROGRAM_MANIFEST.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "SELF_BUILD_PROGRAM_MANIFEST",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "self_build_programs/generated/remediation_intake_agent_v1/SELF_BUILD_PROGRAM_MANIFEST.json"
+      ],
+      "source_path": "self_build_programs/generated/remediation_intake_agent_v1/SELF_BUILD_PROGRAM_MANIFEST.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "SPECIALIZATION_PROFILE_REGISTRY",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "applied_agents/specialization_profiles/SPECIALIZATION_PROFILE_REGISTRY.json"
+      ],
+      "source_path": "applied_agents/specialization_profiles/SPECIALIZATION_PROFILE_REGISTRY.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "TASK_GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1_001",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "self_build_programs/generated/monitoring_agent_v1/tasks/TASK_GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1_001.json"
+      ],
+      "source_path": "self_build_programs/generated/monitoring_agent_v1/tasks/TASK_GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1_001.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "TASK_GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1_001",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "self_build_programs/generated/monitoring_agent_v1/tasks/TASK_GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1_001.json"
+      ],
+      "source_path": "self_build_programs/generated/monitoring_agent_v1/tasks/TASK_GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1_001.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "TASK_GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_001",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "self_build_programs/generated/monitoring_agent_v1/tasks/TASK_GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_001.json"
+      ],
+      "source_path": "self_build_programs/generated/monitoring_agent_v1/tasks/TASK_GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_001.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1_001",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "self_build_programs/generated/remediation_intake_agent_v1/tasks/TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1_001.json"
+      ],
+      "source_path": "self_build_programs/generated/remediation_intake_agent_v1/tasks/TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1_001.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1_001",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "self_build_programs/generated/remediation_intake_agent_v1/tasks/TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1_001.json"
+      ],
+      "source_path": "self_build_programs/generated/remediation_intake_agent_v1/tasks/TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1_001.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_001",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "self_build_programs/generated/remediation_intake_agent_v1/tasks/TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_001.json"
+      ],
+      "source_path": "self_build_programs/generated/remediation_intake_agent_v1/tasks/TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_001.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "TASK_QUEUE_SEED",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "self_build_programs/generated/monitoring_agent_v1/patches/TASK_QUEUE_SEED.json"
+      ],
+      "source_path": "self_build_programs/generated/monitoring_agent_v1/patches/TASK_QUEUE_SEED.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "TASK_QUEUE_SEED",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "self_build_programs/generated/remediation_intake_agent_v1/patches/TASK_QUEUE_SEED.json"
+      ],
+      "source_path": "self_build_programs/generated/remediation_intake_agent_v1/patches/TASK_QUEUE_SEED.json",
+      "parse_status": "proven"
+    },
+    {
+      "agent_id": "validate_package",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "applied_agents/agent_spec_architect/overlay/validators/validate_package.ps1"
+      ],
+      "source_path": "applied_agents/agent_spec_architect/overlay/validators/validate_package.ps1",
+      "parse_status": "unknown"
+    },
+    {
+      "agent_id": "validate_package",
+      "agent_kind": null,
+      "status": "candidate",
+      "evidence_paths": [
+        "generated_agents/action_ready_agent_proof/validators/validate_package.ps1"
+      ],
+      "source_path": "generated_agents/action_ready_agent_proof/validators/validate_package.ps1",
+      "parse_status": "unknown"
+    }
+  ],
+  "launch_surfaces": [
+    {
+      "path": "orchestrator/run.ps1",
+      "area": "Launch Surfaces",
+      "kind": "file",
+      "status": "proven"
+    },
+    {
+      "path": "packs/registry.json",
+      "area": "Launch Surfaces",
+      "kind": "file",
+      "status": "proven"
+    },
+    {
+      "path": "packs",
+      "area": "Launch Surfaces",
+      "kind": "directory",
+      "status": "proven"
+    },
+    {
+      "path": ".github/workflows",
+      "area": "Launch Surfaces",
+      "kind": "directory",
+      "status": "proven"
+    }
+  ],
+  "proof_index": [
+    {
+      "path": "proofs/ACTION_READY_GENERATED_AGENT_PROOF_V1.json",
+      "name": "ACTION_READY_GENERATED_AGENT_PROOF_V1.json",
+      "extension": ".json",
+      "bytes": 1451,
+      "last_write_time_utc": "2026-05-19T17:12:24.6699244Z"
+    },
+    {
+      "path": "proofs/AGENT_CATALOG_V1.json",
+      "name": "AGENT_CATALOG_V1.json",
+      "extension": ".json",
+      "bytes": 310,
+      "last_write_time_utc": "2026-05-28T14:52:58.3818445Z"
+    },
+    {
+      "path": "proofs/AGENT_GITHUB_ACTION_LAUNCH_V1.json",
+      "name": "AGENT_GITHUB_ACTION_LAUNCH_V1.json",
+      "extension": ".json",
+      "bytes": 474,
+      "last_write_time_utc": "2026-05-28T14:52:58.3818445Z"
+    },
+    {
+      "path": "proofs/AGENT_PRODUCTION_CLOSED_LOOP_STANDARD_V1.json",
+      "name": "AGENT_PRODUCTION_CLOSED_LOOP_STANDARD_V1.json",
+      "extension": ".json",
+      "bytes": 488,
+      "last_write_time_utc": "2026-05-28T14:52:58.3818445Z"
+    },
+    {
+      "path": "proofs/AGENT_PROGRAM_EXECUTOR_V1.json",
+      "name": "AGENT_PROGRAM_EXECUTOR_V1.json",
+      "extension": ".json",
+      "bytes": 492,
+      "last_write_time_utc": "2026-05-28T14:52:58.3818445Z"
+    },
+    {
+      "path": "proofs/AGENT_PROGRAM_INPUT_FORMAT_V1.json",
+      "name": "AGENT_PROGRAM_INPUT_FORMAT_V1.json",
+      "extension": ".json",
+      "bytes": 395,
+      "last_write_time_utc": "2026-05-28T14:52:58.3818445Z"
+    },
+    {
+      "path": "proofs/APPLIED_AGENT_SPEC_ARCHITECT_BUILD_001.json",
+      "name": "APPLIED_AGENT_SPEC_ARCHITECT_BUILD_001.json",
+      "extension": ".json",
+      "bytes": 720,
+      "last_write_time_utc": "2026-05-19T16:30:52.5312991Z"
+    },
+    {
+      "path": "proofs/APPLIED_AGENT_SPEC_ARCHITECT_SPECIALIZATION_V1.json",
+      "name": "APPLIED_AGENT_SPEC_ARCHITECT_SPECIALIZATION_V1.json",
+      "extension": ".json",
+      "bytes": 936,
+      "last_write_time_utc": "2026-05-19T16:30:52.5312991Z"
+    },
+    {
+      "path": "proofs/ARCHITECT_TO_SPEC_HANDOFF_V1.json",
+      "name": "ARCHITECT_TO_SPEC_HANDOFF_V1.json",
+      "extension": ".json",
+      "bytes": 672,
+      "last_write_time_utc": "2026-05-19T16:30:52.5323012Z"
+    },
+    {
+      "path": "proofs/BUILD_FROM_RAW_IDEA_SPECIALIZED_MODE_V1.json",
+      "name": "BUILD_FROM_RAW_IDEA_SPECIALIZED_MODE_V1.json",
+      "extension": ".json",
+      "bytes": 744,
+      "last_write_time_utc": "2026-05-19T16:30:52.5333024Z"
+    },
+    {
+      "path": "proofs/BUILDER_GITHUB_ACTION_MANUAL_RUN_SURFACE_V1.json",
+      "name": "BUILDER_GITHUB_ACTION_MANUAL_RUN_SURFACE_V1.json",
+      "extension": ".json",
+      "bytes": 499,
+      "last_write_time_utc": "2026-05-19T17:01:40.9577504Z"
+    },
+    {
+      "path": "proofs/CANDIDATE_INTAKE_REPORT_CONTRACT_V1.json",
+      "name": "CANDIDATE_INTAKE_REPORT_CONTRACT_V1.json",
+      "extension": ".json",
+      "bytes": 1021,
+      "last_write_time_utc": "2026-05-19T16:30:52.5333024Z"
+    },
+    {
+      "path": "proofs/DECISION_SUPPORT_AGENT_SPECIALIZATION_PROFILE_V1.json",
+      "name": "DECISION_SUPPORT_AGENT_SPECIALIZATION_PROFILE_V1.json",
+      "extension": ".json",
+      "bytes": 898,
+      "last_write_time_utc": "2026-05-19T16:30:52.5343004Z"
+    },
+    {
+      "path": "proofs/EXECUTABLE_GENERATED_PROGRAM_MATERIALIZATION_V1.json",
+      "name": "EXECUTABLE_GENERATED_PROGRAM_MATERIALIZATION_V1.json",
+      "extension": ".json",
+      "bytes": 708,
+      "last_write_time_utc": "2026-05-23T09:13:52.1302852Z"
+    },
+    {
+      "path": "proofs/EXTERNAL_AGENT_PRODUCTION_PROGRAM_TEST_V1.json",
+      "name": "EXTERNAL_AGENT_PRODUCTION_PROGRAM_TEST_V1.json",
+      "extension": ".json",
+      "bytes": 723,
+      "last_write_time_utc": "2026-05-24T11:37:22.1989861Z"
+    },
+    {
+      "path": "proofs/EVIDENCE_PACKAGER_AGENT_CLOSED_LOOP_TRIAL_V1.json",
+      "name": "EVIDENCE_PACKAGER_AGENT_CLOSED_LOOP_TRIAL_V1.json",
+      "extension": ".json",
+      "bytes": 818,
+      "last_write_time_utc": "2026-05-28T14:52:58.3818445Z"
+    },
+    {
+      "path": "proofs/FIRST_EXTERNAL_AGENT_PROOF_001.json",
+      "name": "FIRST_EXTERNAL_AGENT_PROOF_001.json",
+      "extension": ".json",
+      "bytes": 716,
+      "last_write_time_utc": "2026-05-19T16:30:52.5353030Z"
+    },
+    {
+      "path": "proofs/GAP_CLOSURE_SPECIALIZED_FACTORY_PROOF_V1.json",
+      "name": "GAP_CLOSURE_SPECIALIZED_FACTORY_PROOF_V1.json",
+      "extension": ".json",
+      "bytes": 1196,
+      "last_write_time_utc": "2026-05-19T16:30:52.5353030Z"
+    },
+    {
+      "path": "proofs/GAP_REMEDIATION_INTAKE_MODE_V1.json",
+      "name": "GAP_REMEDIATION_INTAKE_MODE_V1.json",
+      "extension": ".json",
+      "bytes": 733,
+      "last_write_time_utc": "2026-05-19T16:30:52.5363033Z"
+    },
+    {
+      "path": "proofs/GAP_TO_PROFILE_CANDIDATE_BRIEF_V1.json",
+      "name": "GAP_TO_PROFILE_CANDIDATE_BRIEF_V1.json",
+      "extension": ".json",
+      "bytes": 873,
+      "last_write_time_utc": "2026-05-19T16:30:52.5363033Z"
+    },
+    {
+      "path": "proofs/GENERALIZED_GENERATED_PROGRAM_LIVE_ADMISSION_CONTRACT_V1.json",
+      "name": "GENERALIZED_GENERATED_PROGRAM_LIVE_ADMISSION_CONTRACT_V1.json",
+      "extension": ".json",
+      "bytes": 1956,
+      "last_write_time_utc": "2026-05-23T09:13:52.1312839Z"
+    },
+    {
+      "path": "proofs/GENERATED_AGENT_ACTION_LAUNCH_CONTRACT_V1.json",
+      "name": "GENERATED_AGENT_ACTION_LAUNCH_CONTRACT_V1.json",
+      "extension": ".json",
+      "bytes": 521,
+      "last_write_time_utc": "2026-05-19T17:09:27.8125954Z"
+    },
+    {
+      "path": "proofs/GENERATED_CONVEYOR_FAILURE_TRIAL_FAMILY_V1_FAILURE_PACK_V1.json",
+      "name": "GENERATED_CONVEYOR_FAILURE_TRIAL_FAMILY_V1_FAILURE_PACK_V1.json",
+      "extension": ".json",
+      "bytes": 843,
+      "last_write_time_utc": "2026-05-23T10:03:39.3326299Z"
+    },
+    {
+      "path": "proofs/GENERATED_CONVEYOR_TRIAL_FAMILY_V1_LIVE_PACK_V1.json",
+      "name": "GENERATED_CONVEYOR_TRIAL_FAMILY_V1_LIVE_PACK_V1.json",
+      "extension": ".json",
+      "bytes": 647,
+      "last_write_time_utc": "2026-05-23T09:13:52.1322844Z"
+    },
+    {
+      "path": "proofs/GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_CONTRACT_V1.json",
+      "name": "GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_CONTRACT_V1.json",
+      "extension": ".json",
+      "bytes": 1093,
+      "last_write_time_utc": "2026-05-23T09:13:52.1322844Z"
+    },
+    {
+      "path": "proofs/GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_FAILURE_RECOVERY_V1.json",
+      "name": "GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_FAILURE_RECOVERY_V1.json",
+      "extension": ".json",
+      "bytes": 2261,
+      "last_write_time_utc": "2026-05-23T10:03:39.4973214Z"
+    },
+    {
+      "path": "proofs/GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_LIVE_TRIAL_V1.json",
+      "name": "GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_LIVE_TRIAL_V1.json",
+      "extension": ".json",
+      "bytes": 1841,
+      "last_write_time_utc": "2026-05-23T09:13:52.1332841Z"
+    },
+    {
+      "path": "proofs/GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1.json",
+      "name": "GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1.json",
+      "extension": ".json",
+      "bytes": 1393,
+      "last_write_time_utc": "2026-05-23T09:13:52.1332841Z"
+    },
+    {
+      "path": "proofs/GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1.json",
+      "name": "GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1.json",
+      "extension": ".json",
+      "bytes": 1352,
+      "last_write_time_utc": "2026-05-23T09:13:52.1342854Z"
+    },
+    {
+      "path": "proofs/GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1.json",
+      "name": "GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1.json",
+      "extension": ".json",
+      "bytes": 1185,
+      "last_write_time_utc": "2026-05-23T09:13:52.1352852Z"
+    },
+    {
+      "path": "proofs/GENERATED_PROGRAM_ADMISSION_READINESS_GATE_V1.json",
+      "name": "GENERATED_PROGRAM_ADMISSION_READINESS_GATE_V1.json",
+      "extension": ".json",
+      "bytes": 720,
+      "last_write_time_utc": "2026-05-23T09:13:52.1352852Z"
+    },
+    {
+      "path": "proofs/GENERATED_PROGRAM_EXECUTION_RECIPE_CONTRACT_V1.json",
+      "name": "GENERATED_PROGRAM_EXECUTION_RECIPE_CONTRACT_V1.json",
+      "extension": ".json",
+      "bytes": 1646,
+      "last_write_time_utc": "2026-05-23T09:13:52.1362851Z"
+    },
+    {
+      "path": "proofs/GENERATED_PROGRAM_LIVE_ADMISSION_PROOF_V1.json",
+      "name": "GENERATED_PROGRAM_LIVE_ADMISSION_PROOF_V1.json",
+      "extension": ".json",
+      "bytes": 1248,
+      "last_write_time_utc": "2026-05-23T09:13:52.1372917Z"
+    },
+    {
+      "path": "proofs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1.json",
+      "name": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1.json",
+      "extension": ".json",
+      "bytes": 1490,
+      "last_write_time_utc": "2026-05-23T09:13:52.1372917Z"
+    },
+    {
+      "path": "proofs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1.json",
+      "name": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1.json",
+      "extension": ".json",
+      "bytes": 1494,
+      "last_write_time_utc": "2026-05-23T09:13:52.1382839Z"
+    },
+    {
+      "path": "proofs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1.json",
+      "name": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1.json",
+      "extension": ".json",
+      "bytes": 1266,
+      "last_write_time_utc": "2026-05-23T09:13:52.1382839Z"
+    },
+    {
+      "path": "proofs/IDEA_TO_AGENT_FACTORY_PROOF_V1.json",
+      "name": "IDEA_TO_AGENT_FACTORY_PROOF_V1.json",
+      "extension": ".json",
+      "bytes": 1165,
+      "last_write_time_utc": "2026-05-19T16:30:52.5373005Z"
+    },
+    {
+      "path": "proofs/IDEA_TO_SPECIALIZED_AGENT_FACTORY_PROOF_V1.json",
+      "name": "IDEA_TO_SPECIALIZED_AGENT_FACTORY_PROOF_V1.json",
+      "extension": ".json",
+      "bytes": 1221,
+      "last_write_time_utc": "2026-05-19T16:30:52.5373005Z"
+    },
+    {
+      "path": "proofs/INTAKE_DRIVEN_WORKFLOW_EXECUTION_PROFILE_V1.json",
+      "name": "INTAKE_DRIVEN_WORKFLOW_EXECUTION_PROFILE_V1.json",
+      "extension": ".json",
+      "bytes": 1043,
+      "last_write_time_utc": "2026-05-19T16:30:52.5382995Z"
+    },
+    {
+      "path": "proofs/MISSING_PROFILE_FACTORY_PROOF_V1.json",
+      "name": "MISSING_PROFILE_FACTORY_PROOF_V1.json",
+      "extension": ".json",
+      "bytes": 1038,
+      "last_write_time_utc": "2026-05-19T16:30:52.5382995Z"
+    },
+    {
+      "path": "proofs/MONITORING_GAP_CLOSURE_SPECIALIZED_PROOF_V1.json",
+      "name": "MONITORING_GAP_CLOSURE_SPECIALIZED_PROOF_V1.json",
+      "extension": ".json",
+      "bytes": 1187,
+      "last_write_time_utc": "2026-05-19T16:30:52.5393013Z"
+    },
+    {
+      "path": "proofs/MONITORING_GAP_REACHABILITY_V1.json",
+      "name": "MONITORING_GAP_REACHABILITY_V1.json",
+      "extension": ".json",
+      "bytes": 1000,
+      "last_write_time_utc": "2026-05-19T16:30:52.5403017Z"
+    },
+    {
+      "path": "proofs/MULTI_PROFILE_SPECIALIZED_FACTORY_PROOF_V1.json",
+      "name": "MULTI_PROFILE_SPECIALIZED_FACTORY_PROOF_V1.json",
+      "extension": ".json",
+      "bytes": 1337,
+      "last_write_time_utc": "2026-05-19T16:30:52.5403017Z"
+    },
+    {
+      "path": "proofs/NO_MATCH_DIAGNOSTIC_MODE_V1.json",
+      "name": "NO_MATCH_DIAGNOSTIC_MODE_V1.json",
+      "extension": ".json",
+      "bytes": 756,
+      "last_write_time_utc": "2026-05-19T16:30:52.5413006Z"
+    },
+    {
+      "path": "proofs/ONE_RUN_GAP_REMEDIATION_PACKET_PROOF_V1.json",
+      "name": "ONE_RUN_GAP_REMEDIATION_PACKET_PROOF_V1.json",
+      "extension": ".json",
+      "bytes": 1398,
+      "last_write_time_utc": "2026-05-19T16:30:52.5413006Z"
+    },
+    {
+      "path": "proofs/ONE_RUN_REMEDIATION_PROGRAM_SEED_PROOF_V1.json",
+      "name": "ONE_RUN_REMEDIATION_PROGRAM_SEED_PROOF_V1.json",
+      "extension": ".json",
+      "bytes": 1180,
+      "last_write_time_utc": "2026-05-19T16:30:52.5423002Z"
+    },
+    {
+      "path": "proofs/ONE_RUN_REMEDIATION_SEED_PROGRAM_SYNTHESIS_PROOF_V1.json",
+      "name": "ONE_RUN_REMEDIATION_SEED_PROGRAM_SYNTHESIS_PROOF_V1.json",
+      "extension": ".json",
+      "bytes": 1999,
+      "last_write_time_utc": "2026-05-19T16:30:52.5433005Z"
+    },
+    {
+      "path": "proofs/OPERATIONAL_FACTORY_PROOF_V2.json",
+      "name": "OPERATIONAL_FACTORY_PROOF_V2.json",
+      "extension": ".json",
+      "bytes": 656,
+      "last_write_time_utc": "2026-05-19T16:30:52.5433005Z"
+    },
+    {
+      "path": "proofs/OWNER_VISIBLE_SELF_BUILD_ACCEPTANCE_V1.json",
+      "name": "OWNER_VISIBLE_SELF_BUILD_ACCEPTANCE_V1.json",
+      "extension": ".json",
+      "bytes": 1036,
+      "last_write_time_utc": "2026-05-19T18:24:18.0129765Z"
+    },
+    {
+      "path": "proofs/PRODUCTION_FACTORY_PROOF_V1.json",
+      "name": "PRODUCTION_FACTORY_PROOF_V1.json",
+      "extension": ".json",
+      "bytes": 514,
+      "last_write_time_utc": "2026-05-19T16:30:52.5443008Z"
+    },
+    {
+      "path": "proofs/PRODUCTION_HONESTY_RESET_V2.json",
+      "name": "PRODUCTION_HONESTY_RESET_V2.json",
+      "extension": ".json",
+      "bytes": 368,
+      "last_write_time_utc": "2026-05-19T16:30:52.5443008Z"
+    },
+    {
+      "path": "proofs/RECIPE_DRIVEN_GENERATED_PROGRAM_EXECUTABLE_MATERIALIZATION_V1.json",
+      "name": "RECIPE_DRIVEN_GENERATED_PROGRAM_EXECUTABLE_MATERIALIZATION_V1.json",
+      "extension": ".json",
+      "bytes": 1038,
+      "last_write_time_utc": "2026-05-23T09:13:52.1392850Z"
+    },
+    {
+      "path": "proofs/REMEDIATION_PROGRAM_SEED_CONSUMPTION_CLOSURE_PROOF_V1.json",
+      "name": "REMEDIATION_PROGRAM_SEED_CONSUMPTION_CLOSURE_PROOF_V1.json",
+      "extension": ".json",
+      "bytes": 1026,
+      "last_write_time_utc": "2026-05-19T16:30:52.5453009Z"
+    },
+    {
+      "path": "proofs/REMEDIATION_PROGRAM_SEED_CONTRACT_V1.json",
+      "name": "REMEDIATION_PROGRAM_SEED_CONTRACT_V1.json",
+      "extension": ".json",
+      "bytes": 827,
+      "last_write_time_utc": "2026-05-19T16:30:52.5453009Z"
+    },
+    {
+      "path": "proofs/REMEDIATION_SEED_PROGRAM_BLUEPRINT_CONTRACT_V1.json",
+      "name": "REMEDIATION_SEED_PROGRAM_BLUEPRINT_CONTRACT_V1.json",
+      "extension": ".json",
+      "bytes": 583,
+      "last_write_time_utc": "2026-05-19T16:30:52.5463009Z"
+    },
+    {
+      "path": "proofs/REMEDIATION_SEED_PROGRAM_MATERIALIZATION_V1.json",
+      "name": "REMEDIATION_SEED_PROGRAM_MATERIALIZATION_V1.json",
+      "extension": ".json",
+      "bytes": 956,
+      "last_write_time_utc": "2026-05-19T16:30:52.5463009Z"
+    },
+    {
+      "path": "proofs/RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_ACCEPTANCE_V1.json",
+      "name": "RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_ACCEPTANCE_V1.json",
+      "extension": ".json",
+      "bytes": 830,
+      "last_write_time_utc": "2026-05-28T14:52:58.3818445Z"
+    },
+    {
+      "path": "proofs/RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_LAUNCH_V1.json",
+      "name": "RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_LAUNCH_V1.json",
+      "extension": ".json",
+      "bytes": 536,
+      "last_write_time_utc": "2026-05-28T14:52:58.3818445Z"
+    },
+    {
+      "path": "proofs/RUNBOOK_EXECUTOR_AGENT_PRODUCTION_V1.json",
+      "name": "RUNBOOK_EXECUTOR_AGENT_PRODUCTION_V1.json",
+      "extension": ".json",
+      "bytes": 624,
+      "last_write_time_utc": "2026-05-28T14:52:58.3818445Z"
+    },
+    {
+      "path": "proofs/RUNBOOK_EXECUTOR_AGENT_PROGRAM_TRIAL_V1.json",
+      "name": "RUNBOOK_EXECUTOR_AGENT_PROGRAM_TRIAL_V1.json",
+      "extension": ".json",
+      "bytes": 475,
+      "last_write_time_utc": "2026-05-28T14:52:58.3818445Z"
+    },
+    {
+      "path": "proofs/RUNTIME_GAP_REMEDIATION_CLOSURE_PROOF_V1.json",
+      "name": "RUNTIME_GAP_REMEDIATION_CLOSURE_PROOF_V1.json",
+      "extension": ".json",
+      "bytes": 1217,
+      "last_write_time_utc": "2026-05-19T16:30:52.5473015Z"
+    },
+    {
+      "path": "proofs/RUNTIME_GAP_TO_CANDIDATE_FACTORY_PROOF_V1.json",
+      "name": "RUNTIME_GAP_TO_CANDIDATE_FACTORY_PROOF_V1.json",
+      "extension": ".json",
+      "bytes": 1198,
+      "last_write_time_utc": "2026-05-19T16:30:52.5483004Z"
+    },
+    {
+      "path": "proofs/SECOND_GENERATED_PROGRAM_FAMILY_LIVE_ADMISSION_V1.json",
+      "name": "SECOND_GENERATED_PROGRAM_FAMILY_LIVE_ADMISSION_V1.json",
+      "extension": ".json",
+      "bytes": 1369,
+      "last_write_time_utc": "2026-05-23T09:13:52.1402844Z"
+    },
+    {
+      "path": "proofs/SECOND_GENERATED_PROGRAM_FAMILY_MATERIALIZATION_V1.json",
+      "name": "SECOND_GENERATED_PROGRAM_FAMILY_MATERIALIZATION_V1.json",
+      "extension": ".json",
+      "bytes": 1169,
+      "last_write_time_utc": "2026-05-23T09:13:52.1402844Z"
+    },
+    {
+      "path": "proofs/SECOND_GENERATED_PROGRAM_FAMILY_PROOF_V1.json",
+      "name": "SECOND_GENERATED_PROGRAM_FAMILY_PROOF_V1.json",
+      "extension": ".json",
+      "bytes": 1153,
+      "last_write_time_utc": "2026-05-23T09:13:52.1412847Z"
+    },
+    {
+      "path": "proofs/SEED_DRIVEN_MONITORING_PROFILE_V1.json",
+      "name": "SEED_DRIVEN_MONITORING_PROFILE_V1.json",
+      "extension": ".json",
+      "bytes": 1079,
+      "last_write_time_utc": "2026-05-19T16:30:52.5483004Z"
+    },
+    {
+      "path": "proofs/self_knowledge/AGENT_BUILDER_SELF_KNOWLEDGE_SYSTEM_FULL_CONTRACT_V1.json",
+      "name": "AGENT_BUILDER_SELF_KNOWLEDGE_SYSTEM_FULL_CONTRACT_V1.json",
+      "extension": ".json",
+      "bytes": 1280,
+      "last_write_time_utc": "2026-05-28T15:44:58.6084088Z"
+    },
+    {
+      "path": "proofs/SPECIALIZATION_GAP_CONTRACT_V1.json",
+      "name": "SPECIALIZATION_GAP_CONTRACT_V1.json",
+      "extension": ".json",
+      "bytes": 567,
+      "last_write_time_utc": "2026-05-19T16:30:52.5493016Z"
+    },
+    {
+      "path": "proofs/SPECIALIZATION_OVERLAY_RESOLUTION_V1.json",
+      "name": "SPECIALIZATION_OVERLAY_RESOLUTION_V1.json",
+      "extension": ".json",
+      "bytes": 699,
+      "last_write_time_utc": "2026-05-19T16:30:52.5493016Z"
+    },
+    {
+      "path": "proofs/SPECIALIZATION_PROFILE_REGISTRY_V1.json",
+      "name": "SPECIALIZATION_PROFILE_REGISTRY_V1.json",
+      "extension": ".json",
+      "bytes": 501,
+      "last_write_time_utc": "2026-05-19T16:30:52.5503013Z"
+    },
+    {
+      "path": "proofs/SPECIALIZED_GAP_AUTO_INTAKE_RUNTIME_V1.json",
+      "name": "SPECIALIZED_GAP_AUTO_INTAKE_RUNTIME_V1.json",
+      "extension": ".json",
+      "bytes": 1258,
+      "last_write_time_utc": "2026-05-19T16:30:52.5503013Z"
+    },
+    {
+      "path": "proofs/SPECIALIZED_GAP_AUTO_PROGRAM_SEED_RUNTIME_V1.json",
+      "name": "SPECIALIZED_GAP_AUTO_PROGRAM_SEED_RUNTIME_V1.json",
+      "extension": ".json",
+      "bytes": 912,
+      "last_write_time_utc": "2026-05-19T16:30:52.5513011Z"
+    },
+    {
+      "path": "proofs/SPECIFICATION_AGENT_SPECIALIZATION_PROFILE_V1.json",
+      "name": "SPECIFICATION_AGENT_SPECIALIZATION_PROFILE_V1.json",
+      "extension": ".json",
+      "bytes": 779,
+      "last_write_time_utc": "2026-05-19T16:30:52.5523013Z"
+    },
+    {
+      "path": "proofs/WORKFLOW_EXECUTION_FAMILY_REACHABILITY_V1.json",
+      "name": "WORKFLOW_EXECUTION_FAMILY_REACHABILITY_V1.json",
+      "extension": ".json",
+      "bytes": 1087,
+      "last_write_time_utc": "2026-05-19T16:30:52.5533015Z"
+    }
+  ],
+  "report_index": [
+    {
+      "path": "reports/executable_generated_program_materialization/MONITORING_AGENT_V1_EXECUTABLE_PACKS.json",
+      "name": "MONITORING_AGENT_V1_EXECUTABLE_PACKS.json",
+      "extension": ".json",
+      "bytes": 2127,
+      "last_write_time_utc": "2026-05-23T09:13:52.1432836Z"
+    },
+    {
+      "path": "reports/external_agent_production/AGENT_CATALOG_V1_REPORT.json",
+      "name": "AGENT_CATALOG_V1_REPORT.json",
+      "extension": ".json",
+      "bytes": 1601,
+      "last_write_time_utc": "2026-05-28T14:52:58.3818445Z"
+    },
+    {
+      "path": "reports/external_agent_production/AGENT_GITHUB_ACTION_LAUNCH_V1_REPORT.json",
+      "name": "AGENT_GITHUB_ACTION_LAUNCH_V1_REPORT.json",
+      "extension": ".json",
+      "bytes": 1417,
+      "last_write_time_utc": "2026-05-28T14:52:58.3818445Z"
+    },
+    {
+      "path": "reports/external_agent_production/AGENT_PRODUCTION_CLOSED_LOOP_STANDARD_V1_REPORT.json",
+      "name": "AGENT_PRODUCTION_CLOSED_LOOP_STANDARD_V1_REPORT.json",
+      "extension": ".json",
+      "bytes": 1157,
+      "last_write_time_utc": "2026-05-28T14:52:58.3818445Z"
+    },
+    {
+      "path": "reports/external_agent_production/AGENT_PROGRAM_EXECUTOR_V1_REPORT.json",
+      "name": "AGENT_PROGRAM_EXECUTOR_V1_REPORT.json",
+      "extension": ".json",
+      "bytes": 1830,
+      "last_write_time_utc": "2026-05-28T14:52:58.3818445Z"
+    },
+    {
+      "path": "reports/external_agent_production/AGENT_PROGRAM_INPUT_FORMAT_V1_REPORT.json",
+      "name": "AGENT_PROGRAM_INPUT_FORMAT_V1_REPORT.json",
+      "extension": ".json",
+      "bytes": 1917,
+      "last_write_time_utc": "2026-05-28T14:52:58.3818445Z"
+    },
+    {
+      "path": "reports/external_agent_production/EXTERNAL_AGENT_PRODUCTION_PROGRAM_TEST_V1_REPORT.json",
+      "name": "EXTERNAL_AGENT_PRODUCTION_PROGRAM_TEST_V1_REPORT.json",
+      "extension": ".json",
+      "bytes": 2015,
+      "last_write_time_utc": "2026-05-24T11:37:22.1989861Z"
+    },
+    {
+      "path": "reports/external_agent_production/EXTERNAL_AGENT_PRODUCTION_TEST_1_ACCEPTANCE.md",
+      "name": "EXTERNAL_AGENT_PRODUCTION_TEST_1_ACCEPTANCE.md",
+      "extension": ".md",
+      "bytes": 2216,
+      "last_write_time_utc": "2026-05-24T11:44:05.7543415Z"
+    },
+    {
+      "path": "reports/external_agent_production/EVIDENCE_PACKAGER_AGENT_CLOSED_LOOP_TRIAL_V1_REPORT.json",
+      "name": "EVIDENCE_PACKAGER_AGENT_CLOSED_LOOP_TRIAL_V1_REPORT.json",
+      "extension": ".json",
+      "bytes": 1514,
+      "last_write_time_utc": "2026-05-28T14:52:58.3818445Z"
+    },
+    {
+      "path": "reports/external_agent_production/GENERATED_AGENT_GIT_PACKAGING_GUARDRAIL.md",
+      "name": "GENERATED_AGENT_GIT_PACKAGING_GUARDRAIL.md",
+      "extension": ".md",
+      "bytes": 1345,
+      "last_write_time_utc": "2026-05-28T14:52:58.3818445Z"
+    },
+    {
+      "path": "reports/external_agent_production/REMEDIATION_INTAKE_OPERATOR_AGENT_V1_GITHUB_ACTION_ACCEPTANCE.md",
+      "name": "REMEDIATION_INTAKE_OPERATOR_AGENT_V1_GITHUB_ACTION_ACCEPTANCE.md",
+      "extension": ".md",
+      "bytes": 1589,
+      "last_write_time_utc": "2026-05-28T14:52:58.3818445Z"
+    },
+    {
+      "path": "reports/external_agent_production/RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_ACCEPTANCE_V1_REPORT.json",
+      "name": "RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_ACCEPTANCE_V1_REPORT.json",
+      "extension": ".json",
+      "bytes": 857,
+      "last_write_time_utc": "2026-05-28T14:52:58.3974736Z"
+    },
+    {
+      "path": "reports/external_agent_production/RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_LAUNCH_V1_REPORT.json",
+      "name": "RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_LAUNCH_V1_REPORT.json",
+      "extension": ".json",
+      "bytes": 985,
+      "last_write_time_utc": "2026-05-28T14:52:58.3974736Z"
+    },
+    {
+      "path": "reports/external_agent_production/RUNBOOK_EXECUTOR_AGENT_PRODUCTION_V1_REPORT.json",
+      "name": "RUNBOOK_EXECUTOR_AGENT_PRODUCTION_V1_REPORT.json",
+      "extension": ".json",
+      "bytes": 1548,
+      "last_write_time_utc": "2026-05-28T14:52:58.3974736Z"
+    },
+    {
+      "path": "reports/external_agent_production/RUNBOOK_EXECUTOR_AGENT_PROGRAM_TRIAL_V1_REPORT.json",
+      "name": "RUNBOOK_EXECUTOR_AGENT_PROGRAM_TRIAL_V1_REPORT.json",
+      "extension": ".json",
+      "bytes": 1537,
+      "last_write_time_utc": "2026-05-28T14:52:58.3974736Z"
+    },
+    {
+      "path": "reports/external_agent_production/RUNBOOK_EXECUTOR_AGENT_V1_GITHUB_ACTION_ACCEPTANCE.md",
+      "name": "RUNBOOK_EXECUTOR_AGENT_V1_GITHUB_ACTION_ACCEPTANCE.md",
+      "extension": ".md",
+      "bytes": 892,
+      "last_write_time_utc": "2026-05-28T14:52:58.3974736Z"
+    },
+    {
+      "path": "reports/generalized_generated_program_live_admission/MONITORING_AGENT_V1_GENERALIZED_ADMISSION_CONTRACT.json",
+      "name": "MONITORING_AGENT_V1_GENERALIZED_ADMISSION_CONTRACT.json",
+      "extension": ".json",
+      "bytes": 1365,
+      "last_write_time_utc": "2026-05-23T09:13:52.1432836Z"
+    },
+    {
+      "path": "reports/generated_family_autonomous_conveyor/GENERATED_CONVEYOR_FAILURE_TRIAL_FAMILY_V1_FAILURE_PACK_V1_REPORT.json",
+      "name": "GENERATED_CONVEYOR_FAILURE_TRIAL_FAMILY_V1_FAILURE_PACK_V1_REPORT.json",
+      "extension": ".json",
+      "bytes": 851,
+      "last_write_time_utc": "2026-05-23T10:03:39.3346249Z"
+    },
+    {
+      "path": "reports/generated_family_autonomous_conveyor/GENERATED_CONVEYOR_TRIAL_FAMILY_V1_LIVE_PACK_V1_REPORT.json",
+      "name": "GENERATED_CONVEYOR_TRIAL_FAMILY_V1_LIVE_PACK_V1_REPORT.json",
+      "extension": ".json",
+      "bytes": 655,
+      "last_write_time_utc": "2026-05-23T09:13:52.1442851Z"
+    },
+    {
+      "path": "reports/generated_family_autonomous_conveyor/GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_CONTRACT_V1_REPORT.json",
+      "name": "GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_CONTRACT_V1_REPORT.json",
+      "extension": ".json",
+      "bytes": 727,
+      "last_write_time_utc": "2026-05-23T09:13:52.1452842Z"
+    },
+    {
+      "path": "reports/generated_family_autonomous_conveyor/GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_FAILURE_RECOVERY_V1_REPORT.json",
+      "name": "GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_FAILURE_RECOVERY_V1_REPORT.json",
+      "extension": ".json",
+      "bytes": 1935,
+      "last_write_time_utc": "2026-05-23T10:03:39.5043206Z"
+    },
+    {
+      "path": "reports/generated_family_autonomous_conveyor/GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_LIVE_TRIAL_V1_REPORT.json",
+      "name": "GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_LIVE_TRIAL_V1_REPORT.json",
+      "extension": ".json",
+      "bytes": 1467,
+      "last_write_time_utc": "2026-05-23T09:13:52.1462859Z"
+    },
+    {
+      "path": "reports/generated_program_admission_readiness/MONITORING_AGENT_V1_ADMISSION_READINESS.json",
+      "name": "MONITORING_AGENT_V1_ADMISSION_READINESS.json",
+      "extension": ".json",
+      "bytes": 1809,
+      "last_write_time_utc": "2026-05-23T09:13:52.1462859Z"
+    },
+    {
+      "path": "reports/generated_program_execution_recipes/MONITORING_AGENT_V1_EXECUTION_RECIPE_BUNDLE.json",
+      "name": "MONITORING_AGENT_V1_EXECUTION_RECIPE_BUNDLE.json",
+      "extension": ".json",
+      "bytes": 1549,
+      "last_write_time_utc": "2026-05-23T09:13:52.1472850Z"
+    },
+    {
+      "path": "reports/generated_program_live_admission/MONITORING_AGENT_V1_LIVE_ADMISSION.json",
+      "name": "MONITORING_AGENT_V1_LIVE_ADMISSION.json",
+      "extension": ".json",
+      "bytes": 1533,
+      "last_write_time_utc": "2026-05-23T09:13:52.1482837Z"
+    },
+    {
+      "path": "reports/generated_program_live_admission/SP_N15_SECOND_FAMILY_LIVE_CONSUMPTION_ACCEPTANCE_V1.md",
+      "name": "SP_N15_SECOND_FAMILY_LIVE_CONSUMPTION_ACCEPTANCE_V1.md",
+      "extension": ".md",
+      "bytes": 6809,
+      "last_write_time_utc": "2026-05-23T09:13:52.1492859Z"
+    },
+    {
+      "path": "reports/generated_remediation_family_consumption_preflight/GENERATED_REMEDIATION_FAMILY_CONSUMPTION_PREFLIGHT_V1.json",
+      "name": "GENERATED_REMEDIATION_FAMILY_CONSUMPTION_PREFLIGHT_V1.json",
+      "extension": ".json",
+      "bytes": 7130,
+      "last_write_time_utc": "2026-05-23T09:13:52.1502891Z"
+    },
+    {
+      "path": "reports/phase78/PHASE78_RUNTIME_REPAIR_TASK_REPORT.md",
+      "name": "PHASE78_RUNTIME_REPAIR_TASK_REPORT.md",
+      "extension": ".md",
+      "bytes": 3903,
+      "last_write_time_utc": "2026-05-28T15:41:47.2434769Z"
+    },
+    {
+      "path": "reports/recipe_driven_generated_program_materialization/MONITORING_AGENT_V1_RECIPE_RENDERING_PARITY.json",
+      "name": "MONITORING_AGENT_V1_RECIPE_RENDERING_PARITY.json",
+      "extension": ".json",
+      "bytes": 2188,
+      "last_write_time_utc": "2026-05-23T09:13:52.1502891Z"
+    },
+    {
+      "path": "reports/second_generated_program_family_live_admission/REMEDIATION_INTAKE_AGENT_V1_LIVE_ADMISSION.json",
+      "name": "REMEDIATION_INTAKE_AGENT_V1_LIVE_ADMISSION.json",
+      "extension": ".json",
+      "bytes": 2312,
+      "last_write_time_utc": "2026-05-23T09:13:52.1512875Z"
+    },
+    {
+      "path": "reports/second_generated_program_family_materialization/REMEDIATION_INTAKE_AGENT_V1_MATERIALIZATION.json",
+      "name": "REMEDIATION_INTAKE_AGENT_V1_MATERIALIZATION.json",
+      "extension": ".json",
+      "bytes": 1843,
+      "last_write_time_utc": "2026-05-23T09:13:52.1522874Z"
+    },
+    {
+      "path": "reports/second_generated_program_family_proof/REMEDIATION_INTAKE_AGENT_V1_SECOND_FAMILY.json",
+      "name": "REMEDIATION_INTAKE_AGENT_V1_SECOND_FAMILY.json",
+      "extension": ".json",
+      "bytes": 1214,
+      "last_write_time_utc": "2026-05-23T09:13:52.1522874Z"
+    },
+    {
+      "path": "reports/self_knowledge/BUILDER_SELF_DESCRIBE_REPORT.json",
+      "name": "BUILDER_SELF_DESCRIBE_REPORT.json",
+      "extension": ".json",
+      "bytes": 11425,
+      "last_write_time_utc": "2026-05-28T15:44:58.0432674Z"
+    },
+    {
+      "path": "reports/self_knowledge/BUILDER_SELF_DESCRIBE_SUMMARY.md",
+      "name": "BUILDER_SELF_DESCRIBE_SUMMARY.md",
+      "extension": ".md",
+      "bytes": 8177,
+      "last_write_time_utc": "2026-05-28T15:44:58.0597737Z"
+    }
+  ],
+  "missing_surfaces": [
+    {
+      "path": "agents",
+      "area": "Produced Agents",
+      "kind": "directory",
+      "status": "missing_surface"
+    },
+    {
+      "path": "operations",
+      "area": "Operation System",
+      "kind": "directory",
+      "status": "missing_surface"
+    },
+    {
+      "path": "operation_registry.json",
+      "area": "Operation System",
+      "kind": "file",
+      "status": "missing_surface"
+    },
+    {
+      "path": "contracts/operation.schema.json",
+      "area": "Operation System",
+      "kind": "file",
+      "status": "missing_surface"
+    },
+    {
+      "path": "reports/operations",
+      "area": "Operation System",
+      "kind": "directory",
+      "status": "missing_surface"
+    },
+    {
+      "path": "proofs/operations",
+      "area": "Operation System",
+      "kind": "directory",
+      "status": "missing_surface"
+    },
+    {
+      "path": "agent_intents",
+      "area": "Blueprint Compiler",
+      "kind": "directory",
+      "status": "missing_surface"
+    },
+    {
+      "path": "blueprints",
+      "area": "Blueprint Compiler",
+      "kind": "directory",
+      "status": "missing_surface"
+    },
+    {
+      "path": "contracts/blueprint.schema.json",
+      "area": "Blueprint Compiler",
+      "kind": "file",
+      "status": "missing_surface"
+    },
+    {
+      "path": "templates/agent_blueprint",
+      "area": "Blueprint Compiler",
+      "kind": "directory",
+      "status": "missing_surface"
+    },
+    {
+      "path": "reports/blueprint_compiler",
+      "area": "Blueprint Compiler",
+      "kind": "directory",
+      "status": "missing_surface"
+    },
+    {
+      "path": "proofs/blueprint_compiler",
+      "area": "Blueprint Compiler",
+      "kind": "directory",
+      "status": "missing_surface"
+    }
+  ],
+  "failed_or_partial_items": [
+    {
+      "id": "generated_conveyor_failure_trial_family_v1_failure_pack_v1",
+      "phase": "GENERATED_CONVEYOR_FAILURE_TRIAL_FAMILY_V1_PHASE_1",
+      "gate": "GENERATED_CONVEYOR_FAILURE_TRIAL_FAMILY_V1_FAILURE_PACK_V1",
+      "status": "failed",
+      "raw_status": "FAILED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/GENERATED_CONVEYOR_FAILURE_TRIAL_FAMILY_V1_FAILURE_PACK_V1.json",
+        "reports/generated_family_autonomous_conveyor/GENERATED_CONVEYOR_FAILURE_TRIAL_FAMILY_V1_FAILURE_PACK_V1_REPORT.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    }
+  ],
+  "next_strongest_move": {
+    "status": "candidate",
+    "recommendation": "After PHASE78 is proven, define the Operation System as a full contract rather than marking it complete.",
+    "basis": [
+      "Operation System surfaces are missing and must remain missing_surface until created and proven."
+    ]
+  },
+  "cut_list": [
+    {
+      "item": "Do not mark Operation System complete while operations/, operation_registry.json, reports/operations/, and proofs/operations/ are missing.",
+      "status": "planned"
+    },
+    {
+      "item": "Do not mark Blueprint Compiler complete while agent_intents/, blueprints/, templates/agent_blueprint/, reports/blueprint_compiler/, and proofs/blueprint_compiler/ are missing.",
+      "status": "planned"
+    },
+    {
+      "item": "Do not generate an external agent directly from this phase.",
+      "status": "planned"
+    }
+  ],
+  "evidence_policy": {
+    "no_proof_claim_without_file": true,
+    "state_files_require_validation_evidence": true,
+    "missing_directories_are_recorded_as_missing_surface": true,
+    "chat_is_not_source_of_truth": true,
+    "proof_and_report_paths_are_inventory_claims_only": true
+  }
+}

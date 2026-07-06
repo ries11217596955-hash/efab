@@ -1,0 +1,32 @@
+{
+  "schema_version": "internal_reference_card.v1",
+  "reference_id": "ref.runtime.checkpoint_resume_stop_signal.v1",
+  "domain": "runtime_checkpoint_resume_reference",
+  "question_it_answers": "How should Builder handle long runs, checkpoints and resume?",
+  "answer": "Long runs must checkpoint, support graceful stop, report resumable/incomplete states, and avoid restarting from zero when resume is valid.",
+  "use_when": [
+    "long run",
+    "checkpoint",
+    "resume",
+    "stop signal",
+    "incomplete resumable"
+  ],
+  "next_action": "inspect_resume_state_before_resume_or_commit",
+  "source_atoms": [
+    "concept.runtime_output.v1",
+    "concept.validator.v1",
+    "concept.proof.v1"
+  ],
+  "status": "INTERNAL_REFERENCE",
+  "trusted": false,
+  "accepted_atom": false,
+  "creates_atom_only_after_gap_solved": true,
+  "school_curriculum": false,
+  "protected_state_mutation": false,
+  "phase": "PHASE165S-E1B_INTERNAL_REFERENCE_LIBRARY_SEED",
+  "created_utc": "2026-06-12T00:00:00Z",
+  "ledger_basis": [
+    "AGENT_BUILDER_STRATEGY_LEDGER_V0_30_AFTER_D2_AND_REFERENCE_SEARCH_POLICY_AGREEMENT.md",
+    "Sections 191.3-191.18"
+  ]
+}

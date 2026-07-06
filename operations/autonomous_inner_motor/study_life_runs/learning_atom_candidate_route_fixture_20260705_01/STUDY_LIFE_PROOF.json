@@ -1,0 +1,64 @@
+{
+    "schema":  "AUTONOMOUS_INNER_MOTOR_PROOF_V1",
+    "mode":  "SandboxStudyLife",
+    "run_id":  "learning_atom_candidate_route_fixture_20260705_01",
+    "stop_reason":  "STOP_FILE_REQUESTED",
+    "memory_state":  {
+                         "unchanged":  true
+                     },
+    "study_life":  {
+                       "status":  "STOPPED_BY_STOP_FILE",
+                       "total_cycles":  2,
+                       "counters":  {
+                                        "topics_selected":  2,
+                                        "intellectual_topics":  1,
+                                        "future_action_lane_parked":  1,
+                                        "open_learning_gaps":  1,
+                                        "continued_after_parked_gap":  1,
+                                        "source_attempts_allowed_per_episode":  3,
+                                        "source_attempts_used":  1,
+                                        "source_attempt_failures":  0,
+                                        "compact_case_patterns":  0,
+                                        "atom_candidates":  1,
+                                        "practical_actions_created":  0,
+                                        "code_writes":  0,
+                                        "active_memory_mutations":  0
+                                    },
+                       "parked_future_action_lane":  [
+                                                         {
+                                                             "cycle":  1,
+                                                             "task":  "create_file_as_future_practical_x",
+                                                             "reason":  "practical action disabled",
+                                                             "status":  "PARKED_NOT_DEAD"
+                                                         }
+                                                     ],
+                       "open_learning_gap_queue":  [
+                                                       {
+                                                           "cycle":  1,
+                                                           "gap":  "create_file_as_future_practical_x",
+                                                           "status":  "PARKED_FUTURE_ACTION_CREATION_LANE",
+                                                           "retry_condition":  "future action lane enabled"
+                                                       }
+                                                   ],
+                       "compact_learning_outputs":  [
+                                                        {
+                                                            "cycle":  2,
+                                                            "topic":  "define_minimal_atom_acceptance_rule",
+                                                            "classification":  "ATOM_CANDIDATE",
+                                                            "atom_candidate":  true,
+                                                            "proof_path":  "operations/knowledge_acquisition_port/runs/learning_atom_candidate_route_fixture_20260705_01_cycle1_atom_candidate_fixture/BATCH_KNOWLEDGE_ACQUISITION_PROOF.json",
+                                                            "digest_path":  "operations/knowledge_acquisition_port/runs/learning_atom_candidate_route_fixture_20260705_01_cycle1_atom_candidate_fixture/BATCH_SOURCE_DIGEST_AND_PROMOTION_DECISION.json",
+                                                            "next_small_action":  "route to existing accepted atom retention mechanism",
+                                                            "reason":  "controlled route fixture; candidate only, not accepted atom"
+                                                        }
+                                                    ],
+                       "learning_acceptance_gate_trace":  [
+
+                                                          ],
+                       "atom_acceptance_route":  "EXISTING_ACCEPTED_ATOM_RETENTION_MECHANISM",
+                       "recent_events":  [
+
+                                         ]
+                   },
+    "boundary":  "Controlled fixture: route ATOM_CANDIDATE only; not autonomous source truth; not accepted atom; no memory mutation."
+}

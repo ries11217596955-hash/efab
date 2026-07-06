@@ -1,0 +1,492 @@
+{
+  "status": "PASS",
+  "registry_id": "PHASE148_CAPABILITY_SHELF_REGISTRY_V1",
+  "step_id": "PHASE148_MODULAR_LIVING_LEARNING_ENVIRONMENT_BOOTSTRAP_V1",
+  "owner_line": "SELF_BUILD",
+  "reusable_capability_count": 10,
+  "capabilities": [
+    {
+      "capability_id": "observation_runner",
+      "status": "READY",
+      "purpose": "Start, watch, and stop bounded observation-only sessions without allowing supervisor-authored task decisions.",
+      "owner_line": "SELF_BUILD",
+      "existing_files": [
+        "tools/start_builder_observation_session.ps1",
+        "tools/watch_builder_observation_session.ps1",
+        "tools/stop_builder_observation_session.ps1",
+        "modules/invoke_builder_observation_only_live_runner_001.ps1"
+      ],
+      "read_paths": [
+        "self_control/BUILDER_MULTI_SESSION_LEARNING_MEMORY.json",
+        "proofs/self_development/PHASE145_BUILDER_AUTONOMOUS_MULTI_SESSION_LEARNING_TRIAL_V1.json"
+      ],
+      "write_paths": [
+        "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/observations/<new_session_id>"
+      ],
+      "forbidden_paths": [
+        "proofs/self_development/PHASE142-PHASE147",
+        "reports/self_development/PHASE142-PHASE147",
+        "self_control/accepted_phase_results",
+        "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/current",
+        "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/existing_trials",
+        "generated_agents",
+        "agent_catalog",
+        "applied_agents",
+        "route_locks",
+        "orchestrator/run.ps1"
+      ],
+      "safe_to_reuse": true,
+      "runtime_mutates_repo": true,
+      "requires_owner_prompt": false,
+      "requires_codex": false,
+      "can_be_used_by_builder": true,
+      "example_usage_path": "capability_shelf/usage_examples/observation_runner.json",
+      "validator_reference": "capability_shelf/validators/observation_runner.json",
+      "known_risks": [
+        "Can create observation artifacts; must use new session ids only.",
+        "Does not decide tasks for Builder."
+      ],
+      "promotion_requirements": [
+        "validator PASS",
+        "proof artifact",
+        "no forbidden scope changes",
+        "promotion gate record",
+        "explicit next_allowed_step"
+      ]
+    },
+    {
+      "capability_id": "life_loop_runner",
+      "status": "PARTIAL",
+      "purpose": "Operate the existing life loop tooling only under explicit policy and never as an unrestricted production route.",
+      "owner_line": "SELF_BUILD",
+      "existing_files": [
+        "tools/start_builder_life_loop.ps1",
+        "tools/watch_builder_life_loop.ps1",
+        "tools/stop_builder_life_loop.ps1"
+      ],
+      "read_paths": [
+        "self_control",
+        "packs/registry.json"
+      ],
+      "write_paths": [
+        "living_learning_environment/sandbox/life_loop_sessions/<session_id>"
+      ],
+      "forbidden_paths": [
+        "proofs/self_development/PHASE142-PHASE147",
+        "reports/self_development/PHASE142-PHASE147",
+        "self_control/accepted_phase_results",
+        "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/current",
+        "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/existing_trials",
+        "generated_agents",
+        "agent_catalog",
+        "applied_agents",
+        "route_locks",
+        "orchestrator/run.ps1"
+      ],
+      "safe_to_reuse": true,
+      "runtime_mutates_repo": true,
+      "requires_owner_prompt": false,
+      "requires_codex": false,
+      "can_be_used_by_builder": true,
+      "example_usage_path": "capability_shelf/usage_examples/life_loop_runner.json",
+      "validator_reference": "capability_shelf/validators/life_loop_runner.json",
+      "known_risks": [
+        "Legacy tooling may touch current runtime state; PHASE148 only registers it behind sandbox and promotion policy.",
+        "Requires validation before live current-state use."
+      ],
+      "promotion_requirements": [
+        "validator PASS",
+        "proof artifact",
+        "no forbidden scope changes",
+        "promotion gate record",
+        "explicit next_allowed_step"
+      ]
+    },
+    {
+      "capability_id": "correction_inbox",
+      "status": "READY",
+      "purpose": "Record bounded correction requests for Builder to inspect and apply only inside governed sessions.",
+      "owner_line": "SELF_BUILD",
+      "existing_files": [
+        "tools/write_builder_life_loop_correction.ps1"
+      ],
+      "read_paths": [
+        "living_learning_environment/proposals",
+        "living_learning_environment/module_requests"
+      ],
+      "write_paths": [
+        "living_learning_environment/sandbox/corrections",
+        "living_learning_environment/observations/<session_id>"
+      ],
+      "forbidden_paths": [
+        "proofs/self_development/PHASE142-PHASE147",
+        "reports/self_development/PHASE142-PHASE147",
+        "self_control/accepted_phase_results",
+        "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/current",
+        "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/existing_trials",
+        "generated_agents",
+        "agent_catalog",
+        "applied_agents",
+        "route_locks",
+        "orchestrator/run.ps1"
+      ],
+      "safe_to_reuse": true,
+      "runtime_mutates_repo": true,
+      "requires_owner_prompt": false,
+      "requires_codex": false,
+      "can_be_used_by_builder": true,
+      "example_usage_path": "capability_shelf/usage_examples/correction_inbox.json",
+      "validator_reference": "capability_shelf/validators/correction_inbox.json",
+      "known_risks": [
+        "Corrections are not automatically trusted or promoted.",
+        "Correction application requires proof."
+      ],
+      "promotion_requirements": [
+        "validator PASS",
+        "proof artifact",
+        "no forbidden scope changes",
+        "promotion gate record",
+        "explicit next_allowed_step"
+      ]
+    },
+    {
+      "capability_id": "restore_state",
+      "status": "READY",
+      "purpose": "Restore Builder state only from repo-approved checkpoint material after validation.",
+      "owner_line": "SELF_BUILD",
+      "existing_files": [
+        "tools/restore_agent_builder_state.ps1"
+      ],
+      "read_paths": [
+        "living_learning_environment/promotion_gates",
+        "proofs/self_development"
+      ],
+      "write_paths": [
+        "living_learning_environment/sandbox/restore_dry_runs"
+      ],
+      "forbidden_paths": [
+        "proofs/self_development/PHASE142-PHASE147",
+        "reports/self_development/PHASE142-PHASE147",
+        "self_control/accepted_phase_results",
+        "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/current",
+        "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/existing_trials",
+        "generated_agents",
+        "agent_catalog",
+        "applied_agents",
+        "route_locks",
+        "orchestrator/run.ps1"
+      ],
+      "safe_to_reuse": true,
+      "runtime_mutates_repo": true,
+      "requires_owner_prompt": false,
+      "requires_codex": false,
+      "can_be_used_by_builder": true,
+      "example_usage_path": "capability_shelf/usage_examples/restore_state.json",
+      "validator_reference": "capability_shelf/validators/restore_state.json",
+      "known_risks": [
+        "Direct restore can mutate state; PHASE148 permits dry-run planning only.",
+        "Promotion gate required before state writes."
+      ],
+      "promotion_requirements": [
+        "validator PASS",
+        "proof artifact",
+        "no forbidden scope changes",
+        "promotion gate record",
+        "explicit next_allowed_step"
+      ]
+    },
+    {
+      "capability_id": "checkpoint_publish",
+      "status": "READY",
+      "purpose": "Publish checkpoint summaries for reading and observation without changing accepted phase artifacts.",
+      "owner_line": "SELF_BUILD",
+      "existing_files": [
+        "tools/publish_builder_life_loop_checkpoint.ps1"
+      ],
+      "read_paths": [
+        "living_learning_environment/observations",
+        "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/observations"
+      ],
+      "write_paths": [
+        "living_learning_environment/sandbox/checkpoints",
+        "living_learning_environment/promotion_candidates"
+      ],
+      "forbidden_paths": [
+        "proofs/self_development/PHASE142-PHASE147",
+        "reports/self_development/PHASE142-PHASE147",
+        "self_control/accepted_phase_results",
+        "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/current",
+        "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/existing_trials",
+        "generated_agents",
+        "agent_catalog",
+        "applied_agents",
+        "route_locks",
+        "orchestrator/run.ps1"
+      ],
+      "safe_to_reuse": true,
+      "runtime_mutates_repo": true,
+      "requires_owner_prompt": false,
+      "requires_codex": false,
+      "can_be_used_by_builder": true,
+      "example_usage_path": "capability_shelf/usage_examples/checkpoint_publish.json",
+      "validator_reference": "capability_shelf/validators/checkpoint_publish.json",
+      "known_risks": [
+        "Checkpoint publication is evidence packaging, not acceptance.",
+        "Published checkpoints need validator review before promotion."
+      ],
+      "promotion_requirements": [
+        "validator PASS",
+        "proof artifact",
+        "no forbidden scope changes",
+        "promotion gate record",
+        "explicit next_allowed_step"
+      ]
+    },
+    {
+      "capability_id": "self_learning_memory",
+      "status": "READY",
+      "purpose": "Read accumulated multi-session learning memory as reusable context without mutating it during bootstrap.",
+      "owner_line": "SELF_BUILD",
+      "existing_files": [
+        "self_control/BUILDER_MULTI_SESSION_LEARNING_MEMORY.json"
+      ],
+      "read_paths": [
+        "self_control/BUILDER_MULTI_SESSION_LEARNING_MEMORY.json"
+      ],
+      "write_paths": [
+        "knowledge_library/learning_cards",
+        "living_learning_environment/reading_sessions/<session_id>"
+      ],
+      "forbidden_paths": [
+        "proofs/self_development/PHASE142-PHASE147",
+        "reports/self_development/PHASE142-PHASE147",
+        "self_control/accepted_phase_results",
+        "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/current",
+        "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/existing_trials",
+        "generated_agents",
+        "agent_catalog",
+        "applied_agents",
+        "route_locks",
+        "orchestrator/run.ps1"
+      ],
+      "safe_to_reuse": true,
+      "runtime_mutates_repo": false,
+      "requires_owner_prompt": false,
+      "requires_codex": false,
+      "can_be_used_by_builder": true,
+      "example_usage_path": "capability_shelf/usage_examples/self_learning_memory.json",
+      "validator_reference": "capability_shelf/validators/self_learning_memory.json",
+      "known_risks": [
+        "Memory can be stale or overfit; reading requires provenance and retention checks.",
+        "Bootstrap does not modify memory."
+      ],
+      "promotion_requirements": [
+        "validator PASS",
+        "proof artifact",
+        "no forbidden scope changes",
+        "promotion gate record",
+        "explicit next_allowed_step"
+      ]
+    },
+    {
+      "capability_id": "observation_only_result",
+      "status": "READY",
+      "purpose": "Reuse PHASE146 observation-only proof and result as evidence for observation-first learning.",
+      "owner_line": "SELF_BUILD",
+      "existing_files": [
+        "proofs/self_development/PHASE146_BUILDER_OBSERVATION_ONLY_LIVE_RUNNER_V1.json",
+        "self_control/BUILDER_OBSERVATION_ONLY_LIVE_RUNNER_RESULT.json"
+      ],
+      "read_paths": [
+        "proofs/self_development/PHASE146_BUILDER_OBSERVATION_ONLY_LIVE_RUNNER_V1.json",
+        "self_control/BUILDER_OBSERVATION_ONLY_LIVE_RUNNER_RESULT.json",
+        "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/observations/LIVE_OBSERVE_AFTER_PHASE146_001"
+      ],
+      "write_paths": [
+        "knowledge_library/summaries",
+        "living_learning_environment/observations"
+      ],
+      "forbidden_paths": [
+        "proofs/self_development/PHASE142-PHASE147",
+        "reports/self_development/PHASE142-PHASE147",
+        "self_control/accepted_phase_results",
+        "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/current",
+        "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/existing_trials",
+        "generated_agents",
+        "agent_catalog",
+        "applied_agents",
+        "route_locks",
+        "orchestrator/run.ps1"
+      ],
+      "safe_to_reuse": true,
+      "runtime_mutates_repo": false,
+      "requires_owner_prompt": false,
+      "requires_codex": false,
+      "can_be_used_by_builder": true,
+      "example_usage_path": "capability_shelf/usage_examples/observation_only_result.json",
+      "validator_reference": "capability_shelf/validators/observation_only_result.json",
+      "known_risks": [
+        "Observation evidence is descriptive; it does not grant runtime authority.",
+        "Existing observation folders are read-only."
+      ],
+      "promotion_requirements": [
+        "validator PASS",
+        "proof artifact",
+        "no forbidden scope changes",
+        "promotion gate record",
+        "explicit next_allowed_step"
+      ]
+    },
+    {
+      "capability_id": "self_correction_result",
+      "status": "READY",
+      "purpose": "Reuse PHASE147 self-correction result as evidence for Builder-authored correction patterns.",
+      "owner_line": "SELF_BUILD",
+      "existing_files": [
+        "proofs/self_development/PHASE147_BUILDER_OBSERVATION_DRIVEN_SELF_CORRECTION_TRIAL_V1.json",
+        "self_control/BUILDER_OBSERVATION_DRIVEN_SELF_CORRECTION_RESULT.json",
+        "modules/invoke_builder_observation_driven_self_correction_trial_001.ps1",
+        "validators/validate_phase147_builder_observation_driven_self_correction_trial_v1.ps1"
+      ],
+      "read_paths": [
+        "proofs/self_development/PHASE147_BUILDER_OBSERVATION_DRIVEN_SELF_CORRECTION_TRIAL_V1.json",
+        "self_control/BUILDER_OBSERVATION_DRIVEN_SELF_CORRECTION_RESULT.json",
+        "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/self_correction_trials/PHASE147_OBSERVATION_DRIVEN_SELF_CORRECTION_TRIAL_001"
+      ],
+      "write_paths": [
+        "knowledge_library/learning_cards",
+        "living_learning_environment/promotion_candidates"
+      ],
+      "forbidden_paths": [
+        "proofs/self_development/PHASE142-PHASE147",
+        "reports/self_development/PHASE142-PHASE147",
+        "self_control/accepted_phase_results",
+        "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/current",
+        "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/existing_trials",
+        "generated_agents",
+        "agent_catalog",
+        "applied_agents",
+        "route_locks",
+        "orchestrator/run.ps1"
+      ],
+      "safe_to_reuse": true,
+      "runtime_mutates_repo": false,
+      "requires_owner_prompt": false,
+      "requires_codex": false,
+      "can_be_used_by_builder": true,
+      "example_usage_path": "capability_shelf/usage_examples/self_correction_result.json",
+      "validator_reference": "capability_shelf/validators/self_correction_result.json",
+      "known_risks": [
+        "Self-correction retention is deferred; PHASE149+ must prove reuse in live reading sessions.",
+        "Existing PHASE147 artifacts are read-only."
+      ],
+      "promotion_requirements": [
+        "validator PASS",
+        "proof artifact",
+        "no forbidden scope changes",
+        "promotion gate record",
+        "explicit next_allowed_step"
+      ]
+    },
+    {
+      "capability_id": "material_governance",
+      "status": "READY",
+      "purpose": "Read material policy and catalog to prevent blind trust, installs, fetches, executable use, and runtime adoption.",
+      "owner_line": "SELF_BUILD",
+      "existing_files": [
+        "materials/MATERIAL_CATALOG.json",
+        "materials/MATERIAL_QUARANTINE_EVALUATION_RESULTS.json",
+        "materials/MATERIAL_POLICY.json",
+        "materials/MATERIAL_USE_POLICY.json"
+      ],
+      "read_paths": [
+        "materials/MATERIAL_CATALOG.json",
+        "materials/MATERIAL_QUARANTINE_EVALUATION_RESULTS.json",
+        "materials/MATERIAL_POLICY.json",
+        "materials/MATERIAL_USE_POLICY.json",
+        "source_registry"
+      ],
+      "write_paths": [
+        "source_registry/source_cards",
+        "living_learning_environment/module_requests"
+      ],
+      "forbidden_paths": [
+        "proofs/self_development/PHASE142-PHASE147",
+        "reports/self_development/PHASE142-PHASE147",
+        "self_control/accepted_phase_results",
+        "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/current",
+        "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/existing_trials",
+        "generated_agents",
+        "agent_catalog",
+        "applied_agents",
+        "route_locks",
+        "orchestrator/run.ps1"
+      ],
+      "safe_to_reuse": true,
+      "runtime_mutates_repo": false,
+      "requires_owner_prompt": false,
+      "requires_codex": false,
+      "can_be_used_by_builder": true,
+      "example_usage_path": "capability_shelf/usage_examples/material_governance.json",
+      "validator_reference": "capability_shelf/validators/material_governance.json",
+      "known_risks": [
+        "Reference-only material can be mistaken for trusted material; policy forbids trust by default.",
+        "No external fetch or install is enabled."
+      ],
+      "promotion_requirements": [
+        "validator PASS",
+        "proof artifact",
+        "no forbidden scope changes",
+        "promotion gate record",
+        "explicit next_allowed_step"
+      ]
+    },
+    {
+      "capability_id": "pack_registry",
+      "status": "READY",
+      "purpose": "Read pack registry as the repo-native map of known Builder capabilities without adding routes during bootstrap.",
+      "owner_line": "SELF_BUILD",
+      "existing_files": [
+        "packs/registry.json"
+      ],
+      "read_paths": [
+        "packs/registry.json"
+      ],
+      "write_paths": [
+        "capability_shelf/summaries",
+        "living_learning_environment/reading_sessions/<session_id>"
+      ],
+      "forbidden_paths": [
+        "proofs/self_development/PHASE142-PHASE147",
+        "reports/self_development/PHASE142-PHASE147",
+        "self_control/accepted_phase_results",
+        "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/current",
+        "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/existing_trials",
+        "generated_agents",
+        "agent_catalog",
+        "applied_agents",
+        "route_locks",
+        "orchestrator/run.ps1"
+      ],
+      "safe_to_reuse": true,
+      "runtime_mutates_repo": false,
+      "requires_owner_prompt": false,
+      "requires_codex": false,
+      "can_be_used_by_builder": true,
+      "example_usage_path": "capability_shelf/usage_examples/pack_registry.json",
+      "validator_reference": "capability_shelf/validators/pack_registry.json",
+      "known_risks": [
+        "Registry reading is not permission to execute packs.",
+        "New execution routes remain out of scope."
+      ],
+      "promotion_requirements": [
+        "validator PASS",
+        "proof artifact",
+        "no forbidden scope changes",
+        "promotion gate record",
+        "explicit next_allowed_step"
+      ]
+    }
+  ],
+  "next_allowed_step": "PHASE149_BUILDER_READING_AND_CAPABILITY_REUSE_SESSION_V1"
+}

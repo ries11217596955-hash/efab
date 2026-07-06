@@ -1,0 +1,43 @@
+{
+    "status":  "PASS",
+    "program_id":  "SELF_BUILD_PROGRAM_001",
+    "phase":  "PHASE89_GENERATED_PROGRAM_ADMISSION_V1",
+    "source_program_path":  "self_build_programs/generated/SELF_BUILD_PROGRAM_001.json",
+    "source_generator_report_path":  "reports/self_development/SELF_BUILD_PROGRAM_GENERATOR_REPORT.json",
+    "source_generator_proof_path":  "proofs/self_development/SELF_BUILD_PROGRAM_GENERATOR_V1.json",
+    "owner_material_input":  {
+                                 "available":  true,
+                                 "path":  "self_build_batch/owner_material_inputs/ACTIVE_OWNER_MATERIAL_INPUT.json",
+                                 "read_status":  "READ",
+                                 "status":  "READY",
+                                 "source_kind":  "OWNER_CANDIDATE_SELF_GROWTH_REQUEST",
+                                 "source_candidate_id":  "OWNER_CANDIDATE_CODEX_ARCHIVE_BOUNDARY_CHECKER_001",
+                                 "source_candidate_path":  "owner_orders/candidate_inbox/OWNER_CANDIDATE_CODEX_ARCHIVE_BOUNDARY_CHECKER_001.candidate.json",
+                                 "source_request_path":  "self_build_batch/owner_candidate_self_growth_adapter/PHASE164G_SELF_GROWTH_FROM_OWNER_CANDIDATE_CODEX_ARCHIVE_BOUNDARY_CHECKER_001/OWNER_CANDIDATE_SELF_GROWTH_REQUEST.json",
+                                 "target_real_process":  "PHASE87_DECISION_KERNEL_TO_PHASE88_SELF_BUILD_PROGRAM_GENERATOR",
+                                 "not_a_parallel_conveyor":  true
+                             },
+    "owner_material_available":  true,
+    "owner_material_source_candidate_id":  "OWNER_CANDIDATE_CODEX_ARCHIVE_BOUNDARY_CHECKER_001",
+    "owner_material_source_candidate_path":  "owner_orders/candidate_inbox/OWNER_CANDIDATE_CODEX_ARCHIVE_BOUNDARY_CHECKER_001.candidate.json",
+    "owner_material_source_request_path":  "self_build_batch/owner_candidate_self_growth_adapter/PHASE164G_SELF_GROWTH_FROM_OWNER_CANDIDATE_CODEX_ARCHIVE_BOUNDARY_CHECKER_001/OWNER_CANDIDATE_SELF_GROWTH_REQUEST.json",
+    "admission_decision":  "ADMIT_CANDIDATE_FOR_CONTROLLED_EXECUTION",
+    "admission_performed":  true,
+    "execution_performed":  false,
+    "admitted_for_next_phase":  "PHASE90_BUILDER_EXECUTES_OWN_GENERATED_SELF_BUILD_PROGRAM_V1",
+    "generated_at":  "2026-06-10T08:24:55.0435946Z",
+    "input_state":  {
+                        "program_status":  "GENERATED_CANDIDATE",
+                        "admission_required":  true,
+                        "execution_allowed_before_admission":  false,
+                        "phase88_report_status":  "PASS",
+                        "phase88_proof_status":  "PASS"
+                    },
+    "guarantees":  {
+                       "no_program_execution":  true,
+                       "no_external_install":  true,
+                       "no_external_fetch":  true,
+                       "no_external_agent_production":  true
+                   },
+    "next_allowed_step":  "PHASE90_BUILDER_EXECUTES_OWN_GENERATED_SELF_BUILD_PROGRAM_V1"
+}

@@ -1,0 +1,32 @@
+{
+    "schema":  "BRIDGE_INTERRUPTION_REPORT_V1",
+    "status":  "RECOVERED_AFTER_BRIDGE_ENDPOINT_OFFLINE",
+    "recorded_at":  "2026-07-05T16:08:55.5992588+04:00",
+    "branch":  "thin-control",
+    "head_at_recovery":  "1f4898ea5044b616f6b8ad3b2de125e447ae7b67",
+    "user_visible_error":  [
+                               "ERR_NGROK_3004 during source digest proof run",
+                               "ERR_NGROK_3200 endpoint offline during immediate health check"
+                           ],
+    "command_interrupted":  "SOURCE_DIGEST_PROOF_RUN for operations/knowledge_acquisition_port/ask_codex_knowledge_source.ps1 -RunId source_digest_retention_docx_20260705_01",
+    "local_command_result_after_recovery":  {
+                                                "run_dir_exists":  true,
+                                                "proof_exists":  true,
+                                                "digest_exists":  true,
+                                                "raw_source_exists":  false,
+                                                "proof_status":  "PASS_CODEX_DRAFT_RETURNED",
+                                                "raw_retention":  "DELETED_AFTER_COMPACT_DIGEST",
+                                                "digest_status":  "COMPACT_DIGEST_CREATED",
+                                                "promotion_default":  "CASE_PATTERN_CANDIDATE"
+                                            },
+    "process_scan":  "No matching codex/ask_codex_knowledge_source/AIMO processes after recovery.",
+    "probable_cause":  "Network/ngrok tunnel interruption between ChatGPT and local Bridge, possibly due brief internet loss, IP/session change, or tunnel endpoint restart. Local process may continue/finish even while UI loses bridge connectivity.",
+    "bridge_hardening_candidates":  [
+                                        "managed run heartbeat and resumable run-status polling by run_id",
+                                        "bridge outage journal event with last command sha, run_id, cwd, head, dirty state",
+                                        "local run ledger independent of ngrok connection",
+                                        "reconnect recovery command: health -\u003e context -\u003e process scan -\u003e last managed run report -\u003e repo status",
+                                        "avoid assuming failed command when transport fails; inspect local artifacts first"
+                                    ],
+    "boundary":  "Transport interruption is not proof of local command failure. Always recover by checking local run artifacts and process state."
+}

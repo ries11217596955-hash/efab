@@ -1,0 +1,72 @@
+{
+    "schema":  "BATCH_KNOWLEDGE_ACQUISITION_PROOF_V1",
+    "source":  "CODEX_BATCH_READONLY_SOURCE",
+    "status":  "PASS_CODEX_BATCH_DRAFT_RETURNED",
+    "checked_at":  "2026-07-05T19:20:02.1468181+04:00",
+    "run_id":  "sandbox_study_life_observation_20260705_01_cycle3_attempt1_study_batch",
+    "current_task":  "minimal_reusable_builder_learning_rule",
+    "knowledge_need":  "Study topic as Engineer-Philosopher. Attempt 1 of up to 3. Give compact Builder-relevant understanding, validation needs, and return plan.",
+    "already_checked":  "study_life: active memory/docs conceptually checked; practical actions disabled; source is draft only",
+    "part_ids":  [
+                     "X1",
+                     "X2",
+                     "X3",
+                     "X4",
+                     "X5"
+                 ],
+    "part_count":  5,
+    "template_path":  "operations/knowledge_acquisition_port/CODEX_BATCH_KNOWLEDGE_REQUEST_TEMPLATE.md",
+    "answer_schema":  "CODEX_BATCH_KNOWLEDGE_ANSWER_SCHEMA_V1",
+    "answer_schema_path":  "operations/knowledge_acquisition_port/codex_batch_knowledge_answer_schema.json",
+    "retention_policy_path":  "operations/knowledge_acquisition_port/SOURCE_DIGEST_RETENTION_POLICY.md",
+    "source_digest_path":  "operations\\knowledge_acquisition_port\\runs\\sandbox_study_life_observation_20260705_01_cycle3_attempt1_study_batch\\BATCH_SOURCE_DIGEST_AND_PROMOTION_DECISION.json",
+    "codex_exit_code":  0,
+    "codex_answer_status":  "CODEX_DRAFT",
+    "codex_answer_json_valid":  true,
+    "codex_answer_required_shape_valid":  true,
+    "codex_answer_sha256":  "29939B11E1AC1DE7F8C4D1150B3E436D0F554A6DCB6EA0C41B4D275EDD103F87",
+    "raw_source_retention":  "DELETED_AFTER_COMPACT_DIGEST",
+    "parent_return_plan":  {
+                               "how_to_rebuild_x":  "Define one minimal trigger-action-constraint-expectation rule, name the weakness it addresses, bind it to one Builder workflow, then require held-out behavior-delta validation before any promotion.",
+                               "next_small_action":  "Draft a single candidate rule in trigger/action/expected-delta form and test it against one prior similar case without modifying active state.",
+                               "proof_needed":  [
+                                                    "Held-out scenario behavior improves or avoids a known failure",
+                                                    "Evidence separates source case from reusable rule",
+                                                    "Promotion decision is justified as case pattern, atom candidate, or open gap"
+                                                ]
+                           },
+    "promotion_decision":  {
+                               "default_classification":  "CASE_PATTERN_CANDIDATE",
+                               "raw_retention_decision":  "DELETE_RAW_CANDIDATE",
+                               "active_memory_candidate":  false,
+                               "atom_candidate":  false,
+                               "reflex_candidate":  false,
+                               "organ_candidate":  false,
+                               "owner_decision_required":  "only if promotion beyond case pattern is requested",
+                               "reason":  "Batch source answer is material only; default is compact case pattern with part map and parent return plan."
+                           },
+    "mutation_audit":  {
+                           "active_memory_mutated":  false,
+                           "codex_file_write_requested":  false,
+                           "codex_shell_execution_requested":  false,
+                           "repo_status_before":  [
+                                                      "?? operations/autonomous_inner_motor/study_life_runs/sandbox_study_life_observation_20260705_01/STUDY_LIFE_PROOF.json",
+                                                      "?? operations/knowledge_acquisition_port/runs/sandbox_study_life_observation_20260705_01_cycle2_attempt1_study_batch/BATCH_KNOWLEDGE_ACQUISITION_PROOF.json",
+                                                      "?? operations/knowledge_acquisition_port/runs/sandbox_study_life_observation_20260705_01_cycle2_attempt1_study_batch/BATCH_SOURCE_DIGEST_AND_PROMOTION_DECISION.json",
+                                                      "?? operations/knowledge_acquisition_port/runs/sandbox_study_life_observation_20260705_01_cycle3_attempt1_study_batch/study_batch_input.json",
+                                                      "?? operations/knowledge_acquisition_port/runs/sandbox_study_life_observation_20260705_01_cycle3_attempt1_study_batch/study_batch_stderr.txt",
+                                                      "?? operations/knowledge_acquisition_port/runs/sandbox_study_life_observation_20260705_01_cycle3_attempt1_study_batch/study_batch_stdout.txt"
+                                                  ],
+                           "repo_status_after":  [
+                                                     "?? operations/autonomous_inner_motor/study_life_runs/sandbox_study_life_observation_20260705_01/STUDY_LIFE_PROOF.json",
+                                                     "?? operations/knowledge_acquisition_port/runs/sandbox_study_life_observation_20260705_01_cycle2_attempt1_study_batch/BATCH_KNOWLEDGE_ACQUISITION_PROOF.json",
+                                                     "?? operations/knowledge_acquisition_port/runs/sandbox_study_life_observation_20260705_01_cycle2_attempt1_study_batch/BATCH_SOURCE_DIGEST_AND_PROMOTION_DECISION.json",
+                                                     "?? operations/knowledge_acquisition_port/runs/sandbox_study_life_observation_20260705_01_cycle3_attempt1_study_batch/BATCH_SOURCE_DIGEST_AND_PROMOTION_DECISION.json",
+                                                     "?? operations/knowledge_acquisition_port/runs/sandbox_study_life_observation_20260705_01_cycle3_attempt1_study_batch/codex_batch_last_message.json.txt",
+                                                     "?? operations/knowledge_acquisition_port/runs/sandbox_study_life_observation_20260705_01_cycle3_attempt1_study_batch/study_batch_input.json",
+                                                     "?? operations/knowledge_acquisition_port/runs/sandbox_study_life_observation_20260705_01_cycle3_attempt1_study_batch/study_batch_stderr.txt",
+                                                     "?? operations/knowledge_acquisition_port/runs/sandbox_study_life_observation_20260705_01_cycle3_attempt1_study_batch/study_batch_stdout.txt"
+                                                 ]
+                       },
+    "boundary":  "CODEX_DRAFT only; batch answer is compact source material; raw source not retained by default."
+}

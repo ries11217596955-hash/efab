@@ -1,0 +1,116 @@
+name: Agent Builder Build From Raw Idea
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: 'Optional explicit run id. Leave blank for automatic GitHub Actions run id.'
+        required: false
+        default: ''
+        type: string
+      raw_idea_path:
+        description: 'Raw idea request JSON path inside this repository.'
+        required: true
+        default: 'specs/factory_acceptance/raw_ideas/OWNER_VISIBLE_EXTERNAL_AGENT_IDEA.json'
+        type: string
+      output_root:
+        description: 'Generated external-agent output root inside this repository.'
+        required: true
+        default: 'generated_agents/owner_visible_factory_acceptance'
+        type: string
+
+jobs:
+  build-from-raw-idea:
+    runs-on: windows-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Resolve run context
+        id: run_context
+        shell: pwsh
+        env:
+          RAW_RUN_ID_INPUT: ${{ inputs.run_id }}
+          RAW_IDEA_PATH_INPUT: ${{ inputs.raw_idea_path }}
+          OUTPUT_ROOT_INPUT: ${{ inputs.output_root }}
+        run: |
+          $DefaultRawIdeaPath = "specs/factory_acceptance/raw_ideas/OWNER_VISIBLE_EXTERNAL_AGENT_IDEA.json"
+          $DefaultOutputRoot = "generated_agents/owner_visible_factory_acceptance"
+
+          $RawRunId = $env:RAW_RUN_ID_INPUT
+          $RunId = $RawRunId
+          if ([string]::IsNullOrWhiteSpace($RunId)) {
+              $RunId = "GHA_BUILD_FROM_RAW_IDEA_${{ github.run_id }}"
+          }
+          else {
+              $RunId = $RunId.Trim()
+              $RunId = [regex]::Replace($RunId, '\s+', '_')
+              foreach ($Char in [System.IO.Path]::GetInvalidFileNameChars()) {
+                  $RunId = $RunId.Replace([string]$Char, "_")
+              }
+              $RunId = $RunId.Replace("'", "_")
+              $RunId = [regex]::Replace($RunId, '_+', '_').Trim("_")
+              if ([string]::IsNullOrWhiteSpace($RunId)) {
+                  $RunId = "GHA_BUILD_FROM_RAW_IDEA_${{ github.run_id }}"
+              }
+          }
+
+          $RawIdeaPath = $env:RAW_IDEA_PATH_INPUT
+          if ([string]::IsNullOrWhiteSpace($RawIdeaPath) -or $RawIdeaPath.Trim() -eq "default") {
+              $RawIdeaPath = $DefaultRawIdeaPath
+          }
+          else {
+              $RawIdeaPath = $RawIdeaPath.Trim()
+          }
+
+          $OutputRoot = $env:OUTPUT_ROOT_INPUT
+          if ([string]::IsNullOrWhiteSpace($OutputRoot) -or $OutputRoot.Trim() -eq "default") {
+              $OutputRoot = $DefaultOutputRoot
+          }
+          else {
+              $OutputRoot = $OutputRoot.Trim()
+          }
+
+          Write-Host "RAW_RUN_ID=$RawRunId"
+          Write-Host "RESOLVED_RUN_ID=$RunId"
+          Write-Host "RESOLVED_RAW_IDEA_PATH=$RawIdeaPath"
+          Write-Host "RESOLVED_OUTPUT_ROOT=$OutputRoot"
+
+          New-Item -ItemType Directory -Force -Path ".\runs\$RunId" | Out-Null
+          "run_id=$RunId" >> $env:GITHUB_OUTPUT
+          "raw_idea_path=$RawIdeaPath" >> $env:GITHUB_OUTPUT
+          "output_root=$OutputRoot" >> $env:GITHUB_OUTPUT
+
+      - name: Validate raw idea path
+        shell: pwsh
+        env:
+          RAW_IDEA_PATH: ${{ steps.run_context.outputs.raw_idea_path }}
+        run: |
+          if (-not (Test-Path $env:RAW_IDEA_PATH)) {
+              throw "RAW_IDEA_PATH_NOT_FOUND=$env:RAW_IDEA_PATH"
+          }
+
+      - name: Build external agent from raw idea
+        shell: pwsh
+        run: |
+          & ".\orchestrator\run.ps1" `
+              -Mode BUILD_FROM_RAW_IDEA `
+              -RunId "${{ steps.run_context.outputs.run_id }}" `
+              -RawIdeaPath "${{ steps.run_context.outputs.raw_idea_path }}" `
+              -OutputRoot "${{ steps.run_context.outputs.output_root }}" |
+              Tee-Object -FilePath ".\runs\${{ steps.run_context.outputs.run_id }}\GITHUB_ACTION_BUILD_FROM_RAW_IDEA.log"
+
+      - name: Upload factory build artifacts
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: agent-builder-build-from-raw-idea-${{ steps.run_context.outputs.run_id }}
+          path: |
+            runs/${{ steps.run_context.outputs.run_id }}
+            ${{ steps.run_context.outputs.output_root }}
+          if-no-files-found: warn

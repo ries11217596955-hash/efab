@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_id": "batch_proof_aggregator_v1",
+  "title": "Batch Proof Aggregator V1",
+  "type": "object",
+  "required": [
+    "aggregator_id",
+    "version",
+    "status",
+    "active_line",
+    "input_sources",
+    "aggregation_policy",
+    "summary_contract",
+    "status_counts",
+    "evidence_manifest",
+    "unresolved_records",
+    "execution_performed",
+    "next_allowed_step"
+  ],
+  "properties": {
+    "aggregator_id": {
+      "type": "string"
+    },
+    "version": {
+      "const": "V1"
+    },
+    "status": {
+      "type": "string"
+    },
+    "active_line": {
+      "const": "AGENT_BUILDER / SELF_BUILD"
+    },
+    "input_sources": {
+      "type": "array"
+    },
+    "aggregation_policy": {
+      "type": "object"
+    },
+    "summary_contract": {
+      "type": "object",
+      "required": [
+        "summary_id",
+        "status",
+        "source_ledger",
+        "source_runtime_simulation",
+        "source_quarantine_registry",
+        "execution_performed",
+        "real_items_executed",
+        "real_items_marked_pass",
+        "total_item_count",
+        "planned_count",
+        "pass_count",
+        "failed_count",
+        "quarantined_count",
+        "blocked_count",
+        "assistance_required_count",
+        "unresolved_record_count",
+        "no_fake_pass",
+        "no_hidden_failures",
+        "evidence_manifest",
+        "unresolved_records",
+        "next_allowed_step"
+      ]
+    },
+    "status_counts": {
+      "type": "object"
+    },
+    "evidence_manifest": {
+      "type": "array"
+    },
+    "unresolved_records": {
+      "type": "array"
+    },
+    "execution_performed": {
+      "const": false
+    },
+    "next_allowed_step": {
+      "const": "PHASE102_AUTO_NEXT_GAP_DECISION_V1"
+    }
+  },
+  "additionalProperties": true
+}

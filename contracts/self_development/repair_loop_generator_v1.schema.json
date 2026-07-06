@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_id": "repair_loop_generator_v1",
+  "title": "Repair Loop Generator V1",
+  "type": "object",
+  "required": [
+    "repair_loop_generator_id",
+    "version",
+    "status",
+    "active_line",
+    "input_sources",
+    "generator_policy",
+    "program_bundle_contract",
+    "program_types",
+    "execution_allowed",
+    "next_allowed_step"
+  ],
+  "properties": {
+    "repair_loop_generator_id": {
+      "type": "string"
+    },
+    "version": {
+      "const": "V1"
+    },
+    "status": {
+      "type": "string"
+    },
+    "active_line": {
+      "const": "AGENT_BUILDER / SELF_BUILD"
+    },
+    "input_sources": {
+      "type": "array"
+    },
+    "generator_policy": {
+      "type": "object"
+    },
+    "program_bundle_contract": {
+      "type": "object",
+      "required": [
+        "bundle_id",
+        "status",
+        "source_next_action_plan",
+        "self_resolution_first",
+        "assistance_is_fallback",
+        "program_generation_performed",
+        "execution_performed",
+        "programs",
+        "program_count",
+        "self_build_program_count",
+        "material_acquisition_program_count",
+        "safe_patch_program_count",
+        "resume_plan_count",
+        "admission_required_before_execution",
+        "selected_program_for_next_cycle",
+        "next_allowed_step"
+      ]
+    },
+    "program_types": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "SELF_BUILD_REQUIRED_MODULES_PROGRAM",
+          "MATERIAL_ACQUISITION_UNDER_POLICY_PROGRAM",
+          "SAFE_LOCAL_PATCH_PROGRAM",
+          "RESUME_AFTER_SELF_REPAIR_PLAN"
+        ]
+      }
+    },
+    "execution_allowed": {
+      "const": false
+    },
+    "next_allowed_step": {
+      "const": "PHASE104_CONTROLLED_MULTI_CYCLE_SELF_BUILD_RUN_V1"
+    }
+  },
+  "additionalProperties": true
+}

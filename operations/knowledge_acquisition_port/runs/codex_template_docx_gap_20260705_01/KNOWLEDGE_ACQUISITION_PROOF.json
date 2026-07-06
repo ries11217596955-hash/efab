@@ -1,0 +1,70 @@
+{
+    "schema":  "KNOWLEDGE_ACQUISITION_PROOF_V1",
+    "source":  "CODEX_READONLY_SOURCE",
+    "status":  "PASS_CODEX_DRAFT_RETURNED",
+    "checked_at":  "2026-07-05T13:49:36.8474115+04:00",
+    "run_id":  "codex_template_docx_gap_20260705_01",
+    "current_task":  "Create a Word file with one sentence",
+    "knowledge_need":  "The agent lacks executable knowledge for docx/Word file creation and needs elementary concepts, safe learning steps, validation checks, and return-to-task guidance.",
+    "already_checked":  "active memory no executable docx method; reflex registry read-only only; repo no confirmed docx creation reflex",
+    "template_path":  "operations/knowledge_acquisition_port/CODEX_KNOWLEDGE_REQUEST_TEMPLATE.md",
+    "answer_schema":  "CODEX_KNOWLEDGE_ANSWER_SCHEMA_V1",
+    "answer_schema_path":  "operations/knowledge_acquisition_port/codex_knowledge_answer_schema.json",
+    "codex_command":  "codex exec --skip-git-repo-check --sandbox read-only --ephemeral --output-last-message \u003crun_root\u003e/codex_last_message.json.txt -",
+    "codex_exit_code":  0,
+    "codex_answer_status":  "CODEX_DRAFT",
+    "codex_answer_json_valid":  true,
+    "codex_answer_required_shape_valid":  true,
+    "codex_answer_sha256":  "EC3D2A001CFFB8C6F9AF089FD35119A4D88152871185F23BE317CF3CFFBAAF7C",
+    "source_role":  "CODEX_READONLY_SOURCE",
+    "candidate_knowledge":  "For task X, the missing knowledge is the elementary method for producing a valid .docx Word document from one sentence using an allowed local mechanism, such as an existing trusted library, Office automation, or a prebuilt reflex if later validated. The agent needs to know that a .docx is not plain text renamed with a .docx extension; it must be a valid Word/OpenXML package with document content, saved to the requested path, then checked before returning to the parent task.",
+    "missing_concepts":  [
+                             "difference between plain text and valid .docx container",
+                             "allowed local mechanism for docx creation",
+                             "target sentence and output path handling",
+                             "overwrite and filename safety rules",
+                             "basic Word/OpenXML validity check",
+                             "content verification after creation"
+                         ],
+    "suggested_decomposition":  [
+                                    "confirm the exact sentence to place in the document",
+                                    "identify one permitted docx creation mechanism",
+                                    "learn the minimal document structure or API action",
+                                    "define where the output file should be written",
+                                    "define validation checks before reporting completion"
+                                ],
+    "safe_learning_steps":  [
+                                "read local documentation or reflex descriptions for any existing docx/Word creation method",
+                                "read trusted library documentation conceptually without executing it",
+                                "compare whether the mechanism creates real .docx files rather than renamed text",
+                                "identify required inputs: sentence, output path, overwrite policy",
+                                "record a minimal validation checklist before attempting execution"
+                            ],
+    "validation_needed":  [
+                              "confirm the output file exists at the expected path",
+                              "confirm the file is a valid .docx package that Word-compatible tools can open",
+                              "confirm the document contains exactly the requested sentence",
+                              "confirm no extra content, macros, or unintended template material were added"
+                          ],
+    "return_to_task_hint":  "After learning and selecting one validated creation method, return to task X by creating only the requested one-sentence Word file, running the defined validation checks, and reporting the artifact path plus validation evidence.",
+    "limits":  "CODEX_DRAFT and NOT_PROVEN_UNTIL_VALIDATED; this did not prove any repo capability, did not select an executable local method, did not create a file, and must not be treated as acceptance evidence.",
+    "mutation_audit":  {
+                           "active_memory_mutated":  false,
+                           "codex_file_write_requested":  false,
+                           "codex_shell_execution_requested":  false,
+                           "repo_status_before":  [
+                                                      " M operations/knowledge_acquisition_port/ask_codex_knowledge_source.ps1",
+                                                      " M operations/knowledge_acquisition_port/codex_readonly_source_policy.json",
+                                                      "?? operations/knowledge_acquisition_port/CODEX_KNOWLEDGE_REQUEST_TEMPLATE.md",
+                                                      "?? operations/knowledge_acquisition_port/codex_knowledge_answer_schema.json"
+                                                  ],
+                           "repo_status_after":  [
+                                                     " M operations/knowledge_acquisition_port/ask_codex_knowledge_source.ps1",
+                                                     " M operations/knowledge_acquisition_port/codex_readonly_source_policy.json",
+                                                     "?? operations/knowledge_acquisition_port/CODEX_KNOWLEDGE_REQUEST_TEMPLATE.md",
+                                                     "?? operations/knowledge_acquisition_port/codex_knowledge_answer_schema.json",
+                                                     "?? operations/knowledge_acquisition_port/runs/codex_template_docx_gap_20260705_01/codex_last_message.json.txt"
+                                                 ]
+                       },
+    "boundary":  "CODEX_DRAFT only; agent must validate before acting; template is mandatory."
+}

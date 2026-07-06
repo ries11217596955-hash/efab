@@ -1,0 +1,12 @@
+{
+  "pack_id": "PHASE110_IDEMPOTENT_AUTONOMY_TRIAL_ONE_CYCLE_SMOKE_V1",
+  "task_id": "TASK_PHASE110_IDEMPOTENT_AUTONOMY_TRIAL_ONE_CYCLE_SMOKE_V1_001",
+  "phase": "PHASE110_IDEMPOTENT_AUTONOMY_TRIAL_ONE_CYCLE_SMOKE_V1",
+  "mode": "SELF_BUILD",
+  "status": "READY",
+  "shell": "PowerShell",
+  "entry_script": "packs/PHASE110_IDEMPOTENT_AUTONOMY_TRIAL_ONE_CYCLE_SMOKE_V1/APPLY.ps1",
+  "validate_script": "packs/PHASE110_IDEMPOTENT_AUTONOMY_TRIAL_ONE_CYCLE_SMOKE_V1/VALIDATE.ps1",
+  "purpose": "Run one idempotent PHASE110 smoke cycle without replaying PHASE107",
+  "next_allowed_step": "PHASE110_IDEMPOTENT_AUTONOMY_TRIAL_5_CYCLE_BATCH_V1"
+}

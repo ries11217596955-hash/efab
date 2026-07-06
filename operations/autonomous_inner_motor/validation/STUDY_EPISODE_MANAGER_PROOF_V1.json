@@ -1,0 +1,154 @@
+{
+    "schema":  "STUDY_EPISODE_MANAGER_PROOF_V1",
+    "status":  "PASS_STUDY_EPISODE_MANAGER_V1",
+    "checked_at":  "2026-07-05T19:58:52.7411586+04:00",
+    "run_id":  "sandbox_study_episode_manager_20260705_01",
+    "proof_path":  "operations/autonomous_inner_motor/study_life_runs/sandbox_study_episode_manager_20260705_01/STUDY_LIFE_PROOF.json",
+    "gate_report_path":  "operations/autonomous_inner_motor/study_life_runs/sandbox_study_episode_manager_20260705_01/LEARNING_EPISODE_ACCEPTANCE_GATE_VALIDATION.json",
+    "contract_path":  "operations/autonomous_inner_motor/STUDY_EPISODE_MANAGER_V1.md",
+    "proved":  [
+                   "episodes_have_boundaries",
+                   "learning_residue_created_for_each_completed_episode",
+                   "future_action_lane_parked_once",
+                   "open_gap_spam_prevented",
+                   "no_source_reflection_after_budget_exhaustion",
+                   "idle_without_gap_after_focus_set_exhausted",
+                   "no_immediate_repeats",
+                   "no_practical_action_or_memory_mutation"
+               ],
+    "counters":  {
+                     "topics_selected":  5,
+                     "intellectual_topics":  4,
+                     "future_action_lane_parked":  1,
+                     "open_learning_gaps":  1,
+                     "continued_after_parked_gap":  4,
+                     "source_attempts_allowed_per_episode":  3,
+                     "source_attempts_used":  3,
+                     "source_attempt_failures":  0,
+                     "compact_case_patterns":  2,
+                     "atom_candidates":  1,
+                     "practical_actions_created":  0,
+                     "code_writes":  0,
+                     "active_memory_mutations":  0,
+                     "episodes_started":  5,
+                     "episodes_closed":  5,
+                     "learning_residue_created":  5,
+                     "unique_open_gaps":  1,
+                     "duplicate_gap_suppressed":  0,
+                     "unique_parked_future_actions":  1,
+                     "duplicate_future_action_suppressed":  0,
+                     "no_source_reflections":  1,
+                     "immediate_repeats":  0,
+                     "idle_cycles":  6
+                 },
+    "episode_history":  [
+                            {
+                                "episode_id":  "sandbox_study_episode_manager_20260705_01_episode_0001",
+                                "focus":  "create_file_as_future_practical_x",
+                                "category":  "FUTURE_ACTION_CREATION_LANE",
+                                "result":  "PARKED_FUTURE_ACTION_CREATION_LANE",
+                                "closed_at":  "2026-07-05T19:55:09.0656722+04:00",
+                                "source_attempts_used_in_episode":  0
+                            },
+                            {
+                                "episode_id":  "sandbox_study_episode_manager_20260705_01_episode_0002",
+                                "focus":  "atom_vs_case_pattern_for_builder_learning",
+                                "category":  "INTELLECTUAL_LEARNING",
+                                "result":  "COMPACT_CASE_PATTERN_CANDIDATE_CREATED",
+                                "closed_at":  "2026-07-05T19:55:55.8148425+04:00",
+                                "source_attempts_used_in_episode":  1
+                            },
+                            {
+                                "episode_id":  "sandbox_study_episode_manager_20260705_01_episode_0003",
+                                "focus":  "minimal_reusable_builder_learning_rule",
+                                "category":  "INTELLECTUAL_LEARNING",
+                                "result":  "ATOM_CANDIDATE_ROUTED",
+                                "closed_at":  "2026-07-05T19:56:32.1331783+04:00",
+                                "source_attempts_used_in_episode":  1
+                            },
+                            {
+                                "episode_id":  "sandbox_study_episode_manager_20260705_01_episode_0004",
+                                "focus":  "why_am_i_not_ideal_builder",
+                                "category":  "INTELLECTUAL_LEARNING",
+                                "result":  "COMPACT_CASE_PATTERN_CANDIDATE_CREATED",
+                                "closed_at":  "2026-07-05T19:58:09.0149027+04:00",
+                                "source_attempts_used_in_episode":  1
+                            },
+                            {
+                                "episode_id":  "sandbox_study_episode_manager_20260705_01_episode_0005",
+                                "focus":  "source_discipline_after_budget_exhaustion",
+                                "category":  "INTELLECTUAL_LEARNING",
+                                "result":  "NO_SOURCE_REFLECTION_WITHOUT_NEW_GAP",
+                                "closed_at":  "2026-07-05T19:58:10.1982300+04:00",
+                                "source_attempts_used_in_episode":  0
+                            }
+                        ],
+    "learning_residue_ledger":  [
+                                    {
+                                        "episode_id":  "sandbox_study_episode_manager_20260705_01_episode_0001",
+                                        "focus":  "create_file_as_future_practical_x",
+                                        "residue_type":  "BOUNDARY_RESIDUE",
+                                        "status":  "PRACTICAL_ACTION_PARKED_ONCE",
+                                        "learned_fragment":  "This focus belongs to future action lane and is disabled in current intellectual study mode.",
+                                        "useful_for_future":  "revisit only when practical action lane and validator are enabled",
+                                        "promotion":  "FUTURE_ACTION_CREATION_LANE"
+                                    },
+                                    {
+                                        "episode_id":  "sandbox_study_episode_manager_20260705_01_episode_0002",
+                                        "focus":  "atom_vs_case_pattern_for_builder_learning",
+                                        "residue_type":  "CASE_PATTERN_RESIDUE",
+                                        "status":  "PARTIAL_OR_USEFUL_UNDERSTANDING",
+                                        "learned_fragment":  "Create a read-only classification rubric with 3 labels: case_pattern, atom_candidate, open_gap.",
+                                        "useful_for_future":  "may help later focus selection or case pattern recall",
+                                        "promotion":  "CASE_PATTERN_CANDIDATE"
+                                    },
+                                    {
+                                        "episode_id":  "sandbox_study_episode_manager_20260705_01_episode_0003",
+                                        "focus":  "minimal_reusable_builder_learning_rule",
+                                        "residue_type":  "ATOM_CANDIDATE_RESIDUE",
+                                        "status":  "ROUTE_ONLY_ATOM_CANDIDATE",
+                                        "learned_fragment":  "Draft the minimal rule fields and classify the current evidence as case pattern, atom candidate, or open gap without promoting it.",
+                                        "useful_for_future":  "route through existing accepted atom retention mechanism before accepted atom claim",
+                                        "promotion":  "ATOM_CANDIDATE"
+                                    },
+                                    {
+                                        "episode_id":  "sandbox_study_episode_manager_20260705_01_episode_0004",
+                                        "focus":  "why_am_i_not_ideal_builder",
+                                        "residue_type":  "CASE_PATTERN_RESIDUE",
+                                        "status":  "PARTIAL_OR_USEFUL_UNDERSTANDING",
+                                        "learned_fragment":  "Create a small checklist comparing ideal-builder traits against proven repo evidence without promoting any claim.",
+                                        "useful_for_future":  "may help later focus selection or case pattern recall",
+                                        "promotion":  "CASE_PATTERN_CANDIDATE"
+                                    },
+                                    {
+                                        "episode_id":  "sandbox_study_episode_manager_20260705_01_episode_0005",
+                                        "focus":  "source_discipline_after_budget_exhaustion",
+                                        "residue_type":  "NO_SOURCE_REFLECTION_RESIDUE",
+                                        "status":  "SOURCE_BUDGET_EXHAUSTED",
+                                        "learned_fragment":  "No more source calls in this run; do not turn missing source into repeated open gaps.",
+                                        "useful_for_future":  "choose new focus later or revisit when budget resets",
+                                        "promotion":  "NO_PROMOTION"
+                                    }
+                                ],
+    "gate_status":  "PASS_LEARNING_EPISODE_ACCEPTANCE_GATE_V1",
+    "gate_accepted_result":  "ATOM_CANDIDATE_ROUTED_TO_EXISTING_ATOM_ACCEPTANCE",
+    "raw_source_left_count":  0,
+    "previous_bad_observation":  {
+                                     "run_id":  "sandbox_study_life_observation_20260705_01",
+                                     "open_learning_gaps":  77,
+                                     "source_attempts_used":  3,
+                                     "total_cycles":  80
+                                 },
+    "current_repair_result":  {
+                                  "open_learning_gaps":  1,
+                                  "source_attempts_used":  3,
+                                  "episodes_closed":  5,
+                                  "learning_residue_created":  5
+                              },
+    "not_claimed":  [
+                        "live_autonomy",
+                        "accepted_atom",
+                        "active_memory_mutation",
+                        "semantic_curiosity_selector"
+                    ]
+}

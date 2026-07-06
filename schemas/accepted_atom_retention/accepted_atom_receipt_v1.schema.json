@@ -1,0 +1,22 @@
+{
+  "schema": "accepted_atom_retention_receipt_schema_v1",
+  "required": [
+    "schema",
+    "atom_id",
+    "atom_hash",
+    "batch_id",
+    "accepted_utc",
+    "effect_type",
+    "target",
+    "source_ref_hash",
+    "retained_trace",
+    "retained_reason"
+  ],
+  "forbidden_successful_payload_fields": [
+    "full_candidate_payload",
+    "full_execution_report",
+    "before_copy",
+    "rollback_copy",
+    "full_fingerprint_set"
+  ]
+}

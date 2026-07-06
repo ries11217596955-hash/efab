@@ -1,0 +1,54 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Agent Builder Task Queue",
+  "type": "object",
+  "required": [
+    "queue_version",
+    "active_task_id",
+    "tasks"
+  ],
+  "properties": {
+    "queue_version": {
+      "type": "string"
+    },
+    "active_task_id": {
+      "type": "string"
+    },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "task_id",
+          "capability_id",
+          "status",
+          "objective",
+          "expected_gate"
+        ],
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "capability_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "objective": {
+            "type": "string"
+          },
+          "expected_gate": {
+            "type": "string"
+          },
+          "build_task_path": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

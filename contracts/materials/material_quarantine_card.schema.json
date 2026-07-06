@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "contracts/materials/material_quarantine_card.schema.json",
+  "title": "Material Quarantine Card",
+  "type": "object",
+  "required": [
+    "material_id",
+    "name",
+    "material_type",
+    "source_url",
+    "source_origin",
+    "license_status",
+    "security_status",
+    "usage_mode",
+    "catalog_status",
+    "policy_decision",
+    "risk_level",
+    "owner_approval_required",
+    "quarantine_status",
+    "created_at",
+    "source_notes_path",
+    "admission_checklist_path",
+    "allowed_next_actions",
+    "forbidden_actions",
+    "required_before_trust",
+    "rollback_notes"
+  ],
+  "properties": {
+    "material_id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "material_type": {
+      "type": "string"
+    },
+    "source_url": {
+      "type": "string"
+    },
+    "source_origin": {
+      "type": "string"
+    },
+    "license_status": {
+      "type": "string"
+    },
+    "security_status": {
+      "type": "string"
+    },
+    "usage_mode": {
+      "type": "string"
+    },
+    "catalog_status": {
+      "type": "string"
+    },
+    "policy_decision": {
+      "type": "string"
+    },
+    "risk_level": {
+      "type": "string"
+    },
+    "owner_approval_required": {
+      "type": "boolean"
+    },
+    "quarantine_status": {
+      "type": "string",
+      "enum": [
+        "QUARANTINE_RECORD_CREATED",
+        "QUARANTINE_PENDING_REVIEW",
+        "QUARANTINE_BLOCKED",
+        "QUARANTINE_REJECTED"
+      ]
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "source_notes_path": {
+      "type": "string"
+    },
+    "admission_checklist_path": {
+      "type": "string"
+    },
+    "allowed_next_actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "forbidden_actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "required_before_trust": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "rollback_notes": {
+      "type": "string"
+    }
+  }
+}

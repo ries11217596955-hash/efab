@@ -1,0 +1,212 @@
+{
+  "index_id": "CAPABILITY_GAP_INDEX_V1",
+  "status": "ACTIVE_GAP_INDEX",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "route_lock": "AGENT_BUILDER_NEXT_15_STEPS_LOCK_V2_R2.md",
+  "detector_id": "CAPABILITY_GAP_DETECTOR_V1",
+  "baseline_commit": "339a060",
+  "detected_gap_count": 12,
+  "next_primary_gap": "PHASE94_OWNER_ORDER_TO_GAP_MAP_V1",
+  "proven_foundation": [
+    "PHASE90_BUILDER_EXECUTES_OWN_GENERATED_SELF_BUILD_PROGRAM_V1",
+    "PHASE91_ROUTE_V1_CLOSURE_AND_V2_R2_ACTIVATION",
+    "PHASE92_SELF_BUILD_BACKLOG_CONTRACT_V1"
+  ],
+  "gaps": [
+    {
+      "gap_id": "PHASE94_OWNER_ORDER_TO_GAP_MAP_V1",
+      "title": "Owner Order To Gap Map V1",
+      "status": "MISSING",
+      "why_needed": "Builder must translate an Owner request into missing capabilities before building.",
+      "evidence": [
+        "Route lock V2_R2 lists PHASE94 as next after capability gap detector."
+      ],
+      "missing_artifacts": [
+        "owner_order_to_gap_map contract",
+        "owner_order_to_gap_map report/proof"
+      ],
+      "risk": "Without this, the Owner must manually explain every self-build gap.",
+      "recommended_next_step": "PHASE94_OWNER_ORDER_TO_GAP_MAP_V1",
+      "assistance_required": "NONE"
+    },
+    {
+      "gap_id": "PHASE95_SELF_BUILD_PROGRAM_GENERATOR_V2",
+      "title": "Self-Build Program Generator V2",
+      "status": "MISSING",
+      "why_needed": "Builder needs stronger programs that describe goals, files, risks, validation, and proof.",
+      "evidence": [
+        "Route lock V2_R2 lists PHASE95."
+      ],
+      "missing_artifacts": [
+        "program generator V2 contract",
+        "program generator V2 runtime proof"
+      ],
+      "risk": "Without V2 generator, self-build programs remain too shallow for batch work.",
+      "recommended_next_step": "PHASE95_SELF_BUILD_PROGRAM_GENERATOR_V2",
+      "assistance_required": "NONE"
+    },
+    {
+      "gap_id": "PHASE96_BATCH_PLANNER_V1",
+      "title": "Batch Planner V1",
+      "status": "MISSING",
+      "why_needed": "Builder must group many backlog items into safe batches.",
+      "evidence": [
+        "Route lock V2_R2 lists PHASE96."
+      ],
+      "missing_artifacts": [
+        "batch planner contract",
+        "batch plan output schema"
+      ],
+      "risk": "Without batch planning, large work becomes one-by-one manual control.",
+      "recommended_next_step": "PHASE96_BATCH_PLANNER_V1",
+      "assistance_required": "NONE"
+    },
+    {
+      "gap_id": "PHASE97_BATCH_ADMISSION_POLICY_V1",
+      "title": "Batch Admission Policy V1",
+      "status": "MISSING",
+      "why_needed": "Builder must decide whether a batch is safe before execution.",
+      "evidence": [
+        "Route lock V2_R2 lists PHASE97."
+      ],
+      "missing_artifacts": [
+        "batch admission policy",
+        "batch admission proof"
+      ],
+      "risk": "Unsafe batches may modify too much or hide risk.",
+      "recommended_next_step": "PHASE97_BATCH_ADMISSION_POLICY_V1",
+      "assistance_required": "NONE"
+    },
+    {
+      "gap_id": "PHASE98_ITEM_LEVEL_EXECUTION_LEDGER_V1",
+      "title": "Item-Level Execution Ledger V1",
+      "status": "MISSING",
+      "why_needed": "Builder must record each item attempt, status, reason, and evidence.",
+      "evidence": [
+        "Owner batch doctrine requires item-level proof/failure reports."
+      ],
+      "missing_artifacts": [
+        "item ledger schema",
+        "item ledger runtime writer"
+      ],
+      "risk": "Without item ledger, batch reports can hide failed or skipped items.",
+      "recommended_next_step": "PHASE98_ITEM_LEVEL_EXECUTION_LEDGER_V1",
+      "assistance_required": "NONE"
+    },
+    {
+      "gap_id": "PHASE99_CONTINUE_ON_FAILURE_RUNTIME_V1",
+      "title": "Continue-On-Failure Runtime V1",
+      "status": "MISSING",
+      "why_needed": "Builder must continue after safe item-level failures while stopping on systemic failures.",
+      "evidence": [
+        "Backlog contract defines continue_after_safe_item_failure=true."
+      ],
+      "missing_artifacts": [
+        "continue-on-failure runtime behavior",
+        "failure classification proof"
+      ],
+      "risk": "Without this, a safe failure stops the whole batch.",
+      "recommended_next_step": "PHASE99_CONTINUE_ON_FAILURE_RUNTIME_V1",
+      "assistance_required": "NONE"
+    },
+    {
+      "gap_id": "PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1",
+      "title": "Quarantine And Blocker Registry V1",
+      "status": "MISSING",
+      "why_needed": "Failed or blocked items need durable quarantine/blocker records.",
+      "evidence": [
+        "Backlog contract includes QUARANTINED and BLOCKED statuses."
+      ],
+      "missing_artifacts": [
+        "quarantine registry",
+        "blocker registry"
+      ],
+      "risk": "Failed items may be lost or retried blindly.",
+      "recommended_next_step": "PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1",
+      "assistance_required": "NONE"
+    },
+    {
+      "gap_id": "PHASE101_BATCH_PROOF_AGGREGATOR_V1",
+      "title": "Batch Proof Aggregator V1",
+      "status": "MISSING",
+      "why_needed": "Builder needs a summary proof for large batches without hiding item-level details.",
+      "evidence": [
+        "Route lock V2_R2 lists PHASE101."
+      ],
+      "missing_artifacts": [
+        "batch proof aggregator",
+        "batch report schema"
+      ],
+      "risk": "Large runs become unreadable without aggregation.",
+      "recommended_next_step": "PHASE101_BATCH_PROOF_AGGREGATOR_V1",
+      "assistance_required": "NONE"
+    },
+    {
+      "gap_id": "PHASE102_AUTO_NEXT_GAP_DECISION_V1",
+      "title": "Auto Next-Gap Decision V1",
+      "status": "MISSING",
+      "why_needed": "After a batch, Builder should recommend the next missing capability.",
+      "evidence": [
+        "Owner wants Builder to say what is missing next."
+      ],
+      "missing_artifacts": [
+        "next-gap decision kernel",
+        "next-gap proof"
+      ],
+      "risk": "Owner remains the manual planner after every batch.",
+      "recommended_next_step": "PHASE102_AUTO_NEXT_GAP_DECISION_V1",
+      "assistance_required": "NONE"
+    },
+    {
+      "gap_id": "PHASE103_REPAIR_LOOP_GENERATOR_V1",
+      "title": "Repair Loop Generator V1",
+      "status": "MISSING",
+      "why_needed": "Builder needs repair programs for proven failures.",
+      "evidence": [
+        "Control doctrine requires fact → cause → patch → proof."
+      ],
+      "missing_artifacts": [
+        "repair loop generator",
+        "repair admission guard"
+      ],
+      "risk": "Failures require manual repair design every time.",
+      "recommended_next_step": "PHASE103_REPAIR_LOOP_GENERATOR_V1",
+      "assistance_required": "NONE"
+    },
+    {
+      "gap_id": "PHASE104_CONTROLLED_MULTI_CYCLE_SELF_BUILD_RUN_V1",
+      "title": "Controlled Multi-Cycle Self-Build Run V1",
+      "status": "MISSING",
+      "why_needed": "Builder must run multiple controlled cycles: gap, program, admission, runtime, proof, next gap.",
+      "evidence": [
+        "Route lock V2_R2 lists PHASE104."
+      ],
+      "missing_artifacts": [
+        "multi-cycle controller",
+        "cycle stop conditions"
+      ],
+      "risk": "Self-build remains a single-cycle mechanism.",
+      "recommended_next_step": "PHASE104_CONTROLLED_MULTI_CYCLE_SELF_BUILD_RUN_V1",
+      "assistance_required": "NONE"
+    },
+    {
+      "gap_id": "PHASE105_SCALE_TRIAL_10_TO_30_TO_100_TASKS_V1",
+      "title": "Scale Trial 10 To 30 To 100 Tasks V1",
+      "status": "MISSING",
+      "why_needed": "Builder must prove it can process bigger batches honestly.",
+      "evidence": [
+        "Owner described large-scale batch processing goal."
+      ],
+      "missing_artifacts": [
+        "scale trial program",
+        "scale report",
+        "scale proof"
+      ],
+      "risk": "The system may work only for tiny demonstrations.",
+      "recommended_next_step": "PHASE105_SCALE_TRIAL_10_TO_30_TO_100_TASKS_V1",
+      "assistance_required": "NONE"
+    }
+  ],
+  "no_external_agent_production": true,
+  "next_allowed_step": "PHASE94_OWNER_ORDER_TO_GAP_MAP_V1"
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "builder_learning_absorption.schema.json",
+  "title": "Builder Learning Absorption",
+  "type": "object",
+  "required": [
+    "absorption_id",
+    "source_school_run_id",
+    "source_curriculum_id",
+    "lesson_total_count",
+    "lesson_pass_count",
+    "lesson_fail_count",
+    "lesson_quarantine_count",
+    "repeated_failure_clusters",
+    "useful_patterns",
+    "unsafe_patterns",
+    "recommended_next_gaps",
+    "recommended_retry_lessons",
+    "recommended_curriculum_updates",
+    "self_mode_resume_recommendation",
+    "accepted_repo_mutated",
+    "protected_state_mutated",
+    "owner_review_required",
+    "created_at"
+  ],
+  "properties": {
+    "accepted_repo_mutated": {
+      "const": false
+    },
+    "protected_state_mutated": {
+      "const": false
+    },
+    "owner_review_required": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": true
+}

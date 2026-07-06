@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_id": "owner_order_to_gap_map_v1",
+  "title": "Owner Order To Gap Map V1",
+  "type": "object",
+  "required": [
+    "source_order_path",
+    "understood_request",
+    "mapped_gap_count",
+    "available_foundation",
+    "missing_capabilities",
+    "blocked_items",
+    "assistance_required",
+    "next_safe_self_build_step",
+    "no_external_agent_production",
+    "execution_performed"
+  ],
+  "properties": {
+    "source_order_path": {
+      "type": "string"
+    },
+    "understood_request": {
+      "type": "string"
+    },
+    "mapped_gap_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "available_foundation": {
+      "type": "array"
+    },
+    "missing_capabilities": {
+      "type": "array"
+    },
+    "blocked_items": {
+      "type": "array"
+    },
+    "assistance_required": {
+      "type": "array"
+    },
+    "next_safe_self_build_step": {
+      "type": "string"
+    },
+    "no_external_agent_production": {
+      "const": true
+    },
+    "execution_performed": {
+      "const": false
+    }
+  },
+  "additionalProperties": true
+}

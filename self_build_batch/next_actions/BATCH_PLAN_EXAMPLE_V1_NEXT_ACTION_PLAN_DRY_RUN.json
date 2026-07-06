@@ -1,0 +1,150 @@
+{
+  "plan_id": "BATCH_PLAN_EXAMPLE_V1_NEXT_ACTION_PLAN_DRY_RUN",
+  "version": "V1",
+  "status": "DRY_RUN_NEXT_ACTIONS_READY",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "generated_at": "2026-05-29T18:40:43.4843497Z",
+  "source_batch_summary": "self_build_batch/proof_aggregation/BATCH_PLAN_EXAMPLE_V1_PROOF_SUMMARY_DRY_RUN.json",
+  "source_quarantine_registry": "self_build_batch/quarantine/BATCH_PLAN_EXAMPLE_V1_QUARANTINE_BLOCKER_DRY_RUN.json",
+  "self_resolution_first": true,
+  "assistance_is_fallback": true,
+  "decision_priority": [
+    "SELF_EXECUTE_WITH_EXISTING_CAPABILITY",
+    "SELF_BUILD_REQUIRED_MODULES",
+    "SELF_ACQUIRE_MATERIAL_UNDER_POLICY",
+    "SELF_PATCH_SAFE_LOCAL_SCOPE",
+    "CONTINUE_AFTER_SELF_REPAIR",
+    "CODEX_REPAIR_REQUIRED_FALLBACK",
+    "OWNER_DECISION_REQUIRED_FALLBACK",
+    "BLOCKED_BY_POLICY",
+    "QUARANTINED_FOR_LATER"
+  ],
+  "decisions": [
+    {
+      "decision_id": "DECISION_SELF_BUILD_REQUIRED_MODULES_001",
+      "source_record_id": "RECORD_BLOCKED_ITEM_PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1",
+      "item_id": "ITEM_PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1",
+      "source_status": "BLOCKED",
+      "source_reason": "Simulation shows this item would be blocked by a dependency and must record the blocker before continuing.",
+      "gap": "PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1",
+      "missing_capability": "repair_loop_generator_v1",
+      "required_modules": [
+        "modules/self_development/write_repair_loop_generator_v1.ps1",
+        "packs/PHASE103_REPAIR_LOOP_GENERATOR_V1/APPLY.ps1",
+        "packs/PHASE103_REPAIR_LOOP_GENERATOR_V1/VALIDATE.ps1"
+      ],
+      "decision": "SELF_BUILD_REQUIRED_MODULES",
+      "self_resolution_path": "Generate a PHASE103 repair-loop program that turns unresolved batch records into bounded repair candidates.",
+      "required_program_type": "SELF_BUILD_REPAIR_LOOP_PROGRAM",
+      "can_self_resolve_now": true,
+      "execution_allowed_now": false,
+      "admission_required": true,
+      "material_policy_required": false,
+      "fallback_allowed_only_if_self_blocked": true,
+      "fallback_reason": "Codex fallback is permitted only if Builder cannot synthesize the repair-loop seed or validator.",
+      "proof_requirements": [
+        "PHASE103 seed validator must pass",
+        "No runtime execution before admission",
+        "No hidden unresolved records"
+      ],
+      "next_executable_step": "PHASE103_REPAIR_LOOP_GENERATOR_V1::SELF_BUILD_REQUIRED_MODULES",
+      "next_action_owner": "No owner action required unless PHASE103 policy or validation blocks self-build generation."
+    },
+    {
+      "decision_id": "DECISION_SELF_ACQUIRE_MATERIAL_UNDER_POLICY_001",
+      "source_record_id": "RECORD_QUARANTINED_ITEM_PHASE99_CONTINUE_ON_FAILURE_RUNTIME_V1",
+      "item_id": "ITEM_PHASE99_CONTINUE_ON_FAILURE_RUNTIME_V1",
+      "source_status": "QUARANTINED",
+      "source_reason": "Simulation shows this item would be quarantined before continuing because validation failed.",
+      "gap": "PHASE99_CONTINUE_ON_FAILURE_RUNTIME_V1",
+      "missing_capability": "material_request_packet_for_quarantined_batch_items_v1",
+      "required_modules": [
+        "modules/self_development/write_material_request_candidate_v1.ps1",
+        "contracts/operations/self_build_delivery_conveyor_v1.json"
+      ],
+      "decision": "SELF_ACQUIRE_MATERIAL_UNDER_POLICY",
+      "self_resolution_path": "Prepare a policy-gated material request candidate for quarantined items without fetching or installing anything.",
+      "required_program_type": "MATERIAL_ACQUISITION_CANDIDATE_PROGRAM",
+      "can_self_resolve_now": true,
+      "execution_allowed_now": false,
+      "admission_required": true,
+      "material_policy_required": true,
+      "fallback_allowed_only_if_self_blocked": true,
+      "fallback_reason": "Owner fallback is permitted only if material policy requires explicit approval.",
+      "proof_requirements": [
+        "Material policy gate must approve request shape",
+        "No external fetch",
+        "No install"
+      ],
+      "next_executable_step": "PHASE103_REPAIR_LOOP_GENERATOR_V1::SELF_ACQUIRE_MATERIAL_UNDER_POLICY",
+      "next_action_owner": "Review only if the future material policy gate blocks automatic material request preparation."
+    },
+    {
+      "decision_id": "DECISION_SELF_PATCH_SAFE_LOCAL_SCOPE_001",
+      "source_record_id": "RECORD_FAILED_ITEM_PHASE98_ITEM_LEVEL_EXECUTION_LEDGER_V1",
+      "item_id": "ITEM_PHASE98_ITEM_LEVEL_EXECUTION_LEDGER_V1",
+      "source_status": "FAILED",
+      "source_reason": "Simulation shows this isolated item could fail safely and continue after the failure is recorded.",
+      "gap": "PHASE98_ITEM_LEVEL_EXECUTION_LEDGER_V1",
+      "missing_capability": "safe_local_patch_plan_for_failed_batch_items_v1",
+      "required_modules": [
+        "modules/self_development/write_safe_local_repair_patch_plan_v1.ps1",
+        "packs/PHASE103_REPAIR_LOOP_GENERATOR_V1/VALIDATE.ps1"
+      ],
+      "decision": "SELF_PATCH_SAFE_LOCAL_SCOPE",
+      "self_resolution_path": "Create a safe local patch plan for isolated failed items, preserving admission and proof requirements.",
+      "required_program_type": "SAFE_LOCAL_PATCH_CANDIDATE_PROGRAM",
+      "can_self_resolve_now": true,
+      "execution_allowed_now": false,
+      "admission_required": true,
+      "material_policy_required": false,
+      "fallback_allowed_only_if_self_blocked": true,
+      "fallback_reason": "Codex repair fallback is permitted only after the safe local patch plan fails validation.",
+      "proof_requirements": [
+        "Patch scope must be declared",
+        "Validation must pass before runtime",
+        "No PASS without proof"
+      ],
+      "next_executable_step": "PHASE103_REPAIR_LOOP_GENERATOR_V1::SELF_PATCH_SAFE_LOCAL_SCOPE",
+      "next_action_owner": "No owner action required unless safe local scope cannot be proven."
+    },
+    {
+      "decision_id": "DECISION_OWNER_DECISION_FALLBACK_001",
+      "source_record_id": "RECORD_NEEDS_OWNER_DECISION_ITEM_PHASE101_BATCH_PROOF_AGGREGATOR_V1",
+      "item_id": "ITEM_PHASE101_BATCH_PROOF_AGGREGATOR_V1",
+      "source_status": "NEEDS_OWNER_DECISION",
+      "source_reason": "Simulation shows a systemic failure stop condition that requires owner decision before retry or continuation.",
+      "gap": "PHASE101_BATCH_PROOF_AGGREGATOR_V1",
+      "missing_capability": "systemic_failure_owner_decision_packet_v1",
+      "required_modules": [
+        "modules/self_development/write_owner_decision_packet_v1.ps1"
+      ],
+      "decision": "OWNER_DECISION_REQUIRED_FALLBACK",
+      "self_resolution_path": "Self-resolution is blocked by a systemic stop condition; prepare an owner decision packet rather than treating owner as the primary executor.",
+      "required_program_type": "OWNER_DECISION_PACKET",
+      "can_self_resolve_now": false,
+      "execution_allowed_now": false,
+      "admission_required": false,
+      "material_policy_required": false,
+      "fallback_allowed_only_if_self_blocked": true,
+      "fallback_reason": "Systemic failure policy requires owner decision before retry or continuation.",
+      "proof_requirements": [
+        "Systemic stop reason must be preserved",
+        "No automatic continuation",
+        "No hidden failure"
+      ],
+      "next_executable_step": "PHASE103_REPAIR_LOOP_GENERATOR_V1::OWNER_DECISION_FALLBACK_PACKET",
+      "next_action_owner": "Review systemic stop condition only if PHASE103 cannot produce a bounded repair candidate."
+    }
+  ],
+  "decision_count": 4,
+  "self_resolvable_count": 3,
+  "material_acquisition_candidate_count": 1,
+  "safe_patch_candidate_count": 1,
+  "fallback_count": 1,
+  "blocked_count": 0,
+  "selected_next_executable_step": "PHASE103_REPAIR_LOOP_GENERATOR_V1::SELF_BUILD_REQUIRED_MODULES",
+  "execution_allowed": false,
+  "program_generation_required_next": true,
+  "next_allowed_step": "PHASE103_REPAIR_LOOP_GENERATOR_V1"
+}

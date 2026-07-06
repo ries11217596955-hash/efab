@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "material_catalog.schema.json",
+  "title": "Material Catalog",
+  "type": "object",
+  "required": [
+    "catalog_version",
+    "generated_at",
+    "policy",
+    "entries"
+  ],
+  "properties": {
+    "catalog_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "policy": {
+      "type": "object"
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/material_candidate"
+      }
+    }
+  },
+  "$defs": {
+    "material_candidate": {
+      "type": "object",
+      "required": [
+        "material_id",
+        "name",
+        "material_type",
+        "source_url",
+        "source_origin",
+        "provenance_status",
+        "license_status",
+        "security_status",
+        "usage_mode",
+        "status",
+        "risk_level",
+        "owner_approval_required",
+        "notes"
+      ],
+      "properties": {
+        "material_type": {
+          "enum": [
+            "CLI",
+            "LIBRARY",
+            "TEMPLATE",
+            "WORKFLOW",
+            "DOCKER_IMAGE",
+            "POLICY",
+            "SCHEMA",
+            "EXAMPLE",
+            "RESEARCH_REFERENCE",
+            "SERVICE"
+          ]
+        },
+        "usage_mode": {
+          "enum": [
+            "USE_AS_TOOL",
+            "WRAP_ONLY",
+            "COPY_WITH_ATTRIBUTION",
+            "ADAPT",
+            "REIMPLEMENT",
+            "REFERENCE_ONLY",
+            "ASK_PERMISSION",
+            "REJECT"
+          ]
+        },
+        "status": {
+          "enum": [
+            "DISCOVERED",
+            "CANDIDATE",
+            "QUARANTINED",
+            "WRAPPED",
+            "TESTED",
+            "TRUSTED",
+            "REJECTED",
+            "REFERENCE_ONLY",
+            "OWNER_APPROVAL_REQUIRED"
+          ]
+        },
+        "risk_level": {
+          "enum": [
+            "LOW",
+            "MEDIUM",
+            "HIGH",
+            "FORBIDDEN",
+            "UNKNOWN"
+          ]
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

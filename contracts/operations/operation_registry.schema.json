@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "contracts/operations/operation_registry.schema.json",
+  "title": "Operation Registry",
+  "type": "object",
+  "required": [
+    "registry_id",
+    "registry_version",
+    "generated_at",
+    "status",
+    "operations",
+    "policy",
+    "next_allowed_step"
+  ],
+  "properties": {
+    "registry_id": {
+      "type": "string"
+    },
+    "registry_version": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "operations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "operation_id",
+          "operation_name",
+          "operation_type",
+          "status",
+          "related_material_id",
+          "execution_mode",
+          "risk_level"
+        ],
+        "properties": {
+          "operation_id": {
+            "type": "string"
+          },
+          "operation_name": {
+            "type": "string"
+          },
+          "operation_type": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "related_material_id": {
+            "type": "string"
+          },
+          "execution_mode": {
+            "type": "string"
+          },
+          "risk_level": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "policy": {
+      "type": "object"
+    },
+    "next_allowed_step": {
+      "type": "string"
+    }
+  }
+}

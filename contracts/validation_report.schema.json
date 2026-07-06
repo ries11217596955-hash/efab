@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Agent Builder Validation Report",
+  "type": "object",
+  "required": [
+    "validation_run_id",
+    "status",
+    "checks"
+  ],
+  "properties": {
+    "validation_run_id": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "checks": {
+      "type": "array"
+    }
+  }
+}

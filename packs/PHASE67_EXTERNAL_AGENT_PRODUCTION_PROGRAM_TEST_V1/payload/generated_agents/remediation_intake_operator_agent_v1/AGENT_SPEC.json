@@ -1,0 +1,110 @@
+{
+  "agent_id": "remediation_intake_operator_agent_v1",
+  "agent_name": "Remediation Intake Operator Agent v1",
+  "agent_kind": "external_operator_agent",
+  "purpose": "intake and structure remediation/problem reports",
+  "runtime": {
+    "entrypoint": "run.ps1",
+    "parameters": [
+      "-InputPath",
+      "-OutputPath"
+    ],
+    "external_api_usage": false
+  },
+  "input_contract": {
+    "type": "object",
+    "required": [
+      "problem_title",
+      "problem_description",
+      "affected_system",
+      "urgency",
+      "observed_evidence"
+    ],
+    "properties": {
+      "problem_title": {
+        "type": "string",
+        "min_length": 1
+      },
+      "problem_description": {
+        "type": "string",
+        "min_length": 1
+      },
+      "affected_system": {
+        "type": "string",
+        "min_length": 1
+      },
+      "urgency": {
+        "type": "string",
+        "allowed_values": [
+          "low",
+          "medium",
+          "high",
+          "critical"
+        ]
+      },
+      "observed_evidence": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "min_items": 1
+      }
+    }
+  },
+  "output_contract": {
+    "type": "object",
+    "required": [
+      "normalized_problem",
+      "severity",
+      "likely_area",
+      "missing_information",
+      "recommended_next_step",
+      "operator_note",
+      "validation_status"
+    ],
+    "properties": {
+      "normalized_problem": {
+        "type": "object"
+      },
+      "severity": {
+        "type": "string",
+        "allowed_values": [
+          "SEV-1",
+          "SEV-2",
+          "SEV-3",
+          "SEV-4"
+        ]
+      },
+      "likely_area": {
+        "type": "string"
+      },
+      "missing_information": {
+        "type": "array"
+      },
+      "recommended_next_step": {
+        "type": "string"
+      },
+      "operator_note": {
+        "type": "string"
+      },
+      "validation_status": {
+        "type": "string",
+        "required_value": "PASS"
+      }
+    }
+  },
+  "validation_contract": {
+    "validator": "validators/validate_remediation_intake_operator_agent_v1.ps1",
+    "required_status": "PASS",
+    "runtime_example_output": "generated_agents/remediation_intake_operator_agent_v1/OUTPUT_EXAMPLE_RUNTIME.json",
+    "checks": [
+      "required files exist",
+      "AGENT_SPEC.json parses and declares expected identity",
+      "INPUT_EXAMPLE.json parses and contains required input fields",
+      "run.ps1 passes PowerShell parser check",
+      "run.ps1 creates OUTPUT_EXAMPLE_RUNTIME.json from INPUT_EXAMPLE.json",
+      "runtime output contains required fields",
+      "runtime output validation_status is PASS"
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "task_id": "TASK_GENERATED_PROGRAM_ADMISSION_V1_001",
+  "phase": "PHASE89",
+  "pack_id": "PHASE89_GENERATED_PROGRAM_ADMISSION_V1",
+  "status": "PENDING",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "mode": "SELF_BUILD",
+  "capability_id": "generated_program_admission_v1",
+  "gate": "GENERATED_PROGRAM_ADMISSION_V1",
+  "path": "tasks/TASK_GENERATED_PROGRAM_ADMISSION_V1_001.json",
+  "created_at": "2026-05-29T00:00:00Z",
+  "purpose": "Evaluate the current dynamic generated self-build program resolved from runtime identity before controlled PHASE90 execution.",
+  "cut_list": [
+    "No generated program execution",
+    "No installs",
+    "No external fetch",
+    "No external agents",
+    "No PHASE78-PHASE88 pack edits"
+  ],
+  "dynamic_contract": {
+    "contract_type": "runtime_resolved_dynamic_program_admission",
+    "program_path_source": "derived_from_runtime_program_id",
+    "fixed_program_id_disallowed": true,
+    "bootstrap_example_id_disallowed": true
+  }
+}
+

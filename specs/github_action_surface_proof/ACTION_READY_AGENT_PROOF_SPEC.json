@@ -1,0 +1,38 @@
+{
+  "agent_id": "action_ready_agent_proof",
+  "display_name": "Action Ready Agent Proof",
+  "mission": "Prove that generated external agents now include a GitHub Actions launch delivery artifact while preserving operational RUN validation.",
+  "agent_kind": "proof_agent",
+  "package_profile": "operational_action_ready",
+  "runtime": {
+    "shell": "PowerShell",
+    "entrypoint": "orchestrator/run.ps1"
+  },
+  "inputs": [
+    {
+      "name": "request",
+      "type": "json",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "result",
+      "type": "json",
+      "required": true
+    }
+  ],
+  "capabilities": [
+    "produce operational agent package",
+    "include GitHub Actions launch delivery artifact",
+    "preserve validator and RUN proof"
+  ],
+  "validation": [
+    "generated package validator passes",
+    "workflow delivery artifact exists",
+    "operational RUN proof passes"
+  ],
+  "forbidden_scope": [
+    "do not claim standalone repository deployment in this proof"
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_id": "self_development_decision_kernel_report_v1",
+  "title": "Self-Development Decision Kernel Report",
+  "type": "object",
+  "required": [
+    "status",
+    "generated_at",
+    "active_line",
+    "current_phase",
+    "last_proven_phase",
+    "last_proven_commit_expected",
+    "queue_state_before",
+    "evidence_inputs_read",
+    "missing_optional_evidence",
+    "capability_summary",
+    "proven_foundation_summary",
+    "current_gap",
+    "recommended_next_step",
+    "recommended_next_step_id",
+    "decision_reason",
+    "risks",
+    "cut_list"
+  ],
+  "properties": {
+    "status": {
+      "enum": [
+        "PASS",
+        "FAIL"
+      ]
+    },
+    "active_line": {
+      "const": "AGENT_BUILDER / SELF_BUILD"
+    },
+    "current_phase": {
+      "const": "PHASE87_SELF_DEVELOPMENT_DECISION_KERNEL_V1"
+    },
+    "last_proven_phase": {
+      "const": "PHASE86_OPERATION_RUNTIME_SKELETON_V1"
+    },
+    "last_proven_commit_expected": {
+      "const": "89a7b5b"
+    },
+    "recommended_next_step_id": {
+      "const": "PHASE88_SELF_BUILD_PROGRAM_GENERATOR_V1"
+    },
+    "evidence_inputs_read": {
+      "type": "array"
+    },
+    "missing_optional_evidence": {
+      "type": "array"
+    },
+    "risks": {
+      "type": "array"
+    },
+    "cut_list": {
+      "type": "array"
+    }
+  },
+  "additionalProperties": true
+}

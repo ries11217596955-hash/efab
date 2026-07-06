@@ -1,0 +1,150 @@
+{
+    "schema":  "BATCH_SOURCE_DIGEST_AND_PROMOTION_DECISION_V1",
+    "status":  "COMPACT_BATCH_DIGEST_CREATED",
+    "run_id":  "sandbox_study_life_classifier_20260705_01_cycle3_attempt1_study_batch",
+    "source":  "CODEX_BATCH_READONLY_SOURCE",
+    "source_answer_status":  "CODEX_DRAFT",
+    "parent_task":  "minimal_reusable_builder_learning_rule",
+    "knowledge_need":  "Study topic as Engineer-Philosopher. Attempt 1 of up to 3. Give compact Builder-relevant understanding, validation needs, and return plan.",
+    "part_count":  5,
+    "part_digests":  [
+                         {
+                             "id":  "X1",
+                             "name":  "core meaning",
+                             "meaning":  "A minimal reusable Builder learning rule is a small rule for turning an experience into future-useful knowledge only when it has a bounded trigger, reusable action, retention path, and validation need.",
+                             "role_in_parent_task":  "Defines X as disciplined learning, not memory accumulation or route invention.",
+                             "compact_missing_knowledge":  [
+                                                               "exact threshold for reusable versus one-off",
+                                                               "where the learned unit should live in current Builder surfaces"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "compare a few accepted past learning cases",
+                                                                 "extract common trigger-action-validation shape",
+                                                                 "keep the rule draft separate from accepted truth"
+                                                             ],
+                             "compact_validation_needed":  "show that the rule can classify at least one known case without changing route state",
+                             "return_to_parent_hint":  "Use X1 as the definition gate before considering any learning item reusable."
+                         },
+                         {
+                             "id":  "X2",
+                             "name":  "why I am not ideal",
+                             "meaning":  "This topic exposes weakness in converting local observations into compact, validated, reusable behavior without overclaiming or storing noise.",
+                             "role_in_parent_task":  "Identifies why X is needed: the Builder can gather evidence but may fail to distill, retain, retrieve, and reuse it correctly.",
+                             "compact_missing_knowledge":  [
+                                                               "which failure mode is dominant: overfitting, forgetting, misrouting, or unvalidated promotion",
+                                                               "whether current memory surfaces already encode this weakness"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "list recent learning failures as cases only",
+                                                                 "separate diagnosis from correction",
+                                                                 "avoid editing accepted memory or route locks"
+                                                             ],
+                             "compact_validation_needed":  "match the weakness to evidence from a bounded prior case or validator result",
+                             "return_to_parent_hint":  "Use X2 to constrain the rule around actual Builder failure modes, not abstract intelligence ideals."
+                         },
+                         {
+                             "id":  "X3",
+                             "name":  "builder relevance",
+                             "meaning":  "The rule matters if it helps the Builder self-build or build child agents by reusing proven lessons across similar tasks without becoming the brain or supervisor.",
+                             "role_in_parent_task":  "Connects X to practical capability growth: better candidate selection, safer compaction, clearer validation, and reusable decision patterns.",
+                             "compact_missing_knowledge":  [
+                                                               "which child-agent or self-build workflow would first benefit",
+                                                               "what minimum behavior delta counts as useful"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "map the rule to one narrow workflow such as atom retention or decision reuse",
+                                                                 "keep runtime and accepted-core changes out of scope"
+                                                             ],
+                             "compact_validation_needed":  "demonstrate a specific future decision that the rule would improve or simplify",
+                             "return_to_parent_hint":  "Use X3 to reject learning rules that are elegant but do not change Builder behavior."
+                         },
+                         {
+                             "id":  "X4",
+                             "name":  "validation",
+                             "meaning":  "Understanding is valid only when the rule predicts, classifies, or improves behavior under a bounded check; explanation alone is not proof.",
+                             "role_in_parent_task":  "Prevents X from becoming philosophy text without an operational test.",
+                             "compact_missing_knowledge":  [
+                                                               "available quick validators for learning-rule classification",
+                                                               "acceptable proof size for a draft rule"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "define a tiny replay/classification test",
+                                                                 "compare expected category with observed result",
+                                                                 "stop after one bounded check unless validation loop is explicitly allowed"
+                                                             ],
+                             "compact_validation_needed":  [
+                                                               "case replay proof",
+                                                               "classification consistency proof",
+                                                               "evidence that no protected state was mutated"
+                                                           ],
+                             "return_to_parent_hint":  "Use X4 as the proof contract for promoting X beyond draft."
+                         },
+                         {
+                             "id":  "X5",
+                             "name":  "promotion decision",
+                             "meaning":  "A learning item should be classified as a case pattern, atom candidate, or open gap based on recurrence, generality, trigger clarity, reuse value, and validation strength.",
+                             "role_in_parent_task":  "Turns X into a routing rule for learning outputs instead of a vague decision to remember everything.",
+                             "compact_missing_knowledge":  [
+                                                               "promotion thresholds for atom candidate versus case pattern",
+                                                               "owner-approved destination for each category"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "draft a three-way decision table",
+                                                                 "test it on known cases without writing files",
+                                                                 "mark uncertain cases as open gap"
+                                                             ],
+                             "compact_validation_needed":  [
+                                                               "same input produces same category under repeat review",
+                                                               "at least one example is correctly rejected from promotion"
+                                                           ],
+                             "return_to_parent_hint":  "Use X5 as the final return classifier after X1-X4 establish meaning, weakness, relevance, and proof need."
+                         }
+                     ],
+    "cross_part_map":  {
+                           "dependencies":  [
+                                                "X2 depends on X1 because weakness must be measured against the rule definition",
+                                                "X3 depends on X1 and X2 because relevance requires both purpose and failure mode",
+                                                "X4 depends on X1 because validation needs a defined rule to test",
+                                                "X5 depends on X4 because promotion without proof is only labeling"
+                                            ],
+                           "duplicates_or_overlaps":  [
+                                                          "X4 and X5 overlap on proof threshold",
+                                                          "X2 and X3 overlap where a weakness becomes a capability need",
+                                                          "X1 and X5 overlap on defining reusable knowledge"
+                                                      ],
+                           "priority_order":  [
+                                                  "X1",
+                                                  "X2",
+                                                  "X4",
+                                                  "X5",
+                                                  "X3"
+                                              ],
+                           "can_skip_for_now":  [
+                                                    "none; all five are needed, but X3 can stay compact until a concrete workflow is selected"
+                                                ]
+                       },
+    "parent_return_plan":  {
+                               "how_to_rebuild_x":  "Define the learning rule as: capture only bounded experiences with a reusable trigger, action, validation need, storage destination, and promotion class; otherwise keep as case note or open gap.",
+                               "next_small_action":  "Run a read-only classification of one known learning case into case pattern, atom candidate, or open gap using the draft rule.",
+                               "proof_needed":  [
+                                                    "bounded case replay shows correct classification",
+                                                    "validation evidence is recorded before any promotion claim",
+                                                    "no route, runtime, accepted-core, or protected state is changed"
+                                                ]
+                           },
+    "promotion_decision":  {
+                               "default_classification":  "CASE_PATTERN_CANDIDATE",
+                               "raw_retention_decision":  "DELETE_RAW_CANDIDATE",
+                               "active_memory_candidate":  false,
+                               "atom_candidate":  false,
+                               "reflex_candidate":  false,
+                               "organ_candidate":  false,
+                               "owner_decision_required":  "only if promotion beyond case pattern is requested",
+                               "reason":  "Batch source answer is material only; default is compact case pattern with part map and parent return plan."
+                           },
+    "proof_refs":  {
+                       "batch_knowledge_acquisition_proof":  "operations\\knowledge_acquisition_port\\runs\\sandbox_study_life_classifier_20260705_01_cycle3_attempt1_study_batch\\BATCH_KNOWLEDGE_ACQUISITION_PROOF.json",
+                       "raw_answer_sha256":  "36C48A23BB8BB2996CE1EDB8681DBC1E6AAF121D711CDBD903AF32EE521671D9",
+                       "raw_answer_retained":  false
+                   }
+}

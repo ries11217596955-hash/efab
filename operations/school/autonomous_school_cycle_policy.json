@@ -1,0 +1,16 @@
+﻿{
+    "schema":  "autonomous_school_cycle_policy_v1",
+    "status":  "ACTIVE_MINIMAL_RUNTIME",
+    "default_mode":  "Live",
+    "default_count":  50000,
+    "default_max_cycle_runtime_minutes":  60,
+    "default_max_total_runtime_minutes":  0,
+    "default_max_cycles":  0,
+    "stop_file":  ".runtime/school_control/STOP_AUTONOMOUS_SCHOOL",
+    "require_repo_clean":  true,
+    "canonical_runner":  "operations/school/run_agent_school.ps1",
+    "post_run_memory_path":  "finalizer -\u003e intake -\u003e merge_queue -\u003e compact_memory",
+    "limit_model":  "per_cycle_sla_no_hard_kill",
+    "override_rule":  "Count, MaxCycleRuntimeMinutes, MaxTotalRuntimeMinutes, MaxCycles, StopFile, and RequireRepoClean can be supplied at launch. MaxRuntimeMinutes remains an alias for MaxCycleRuntimeMinutes.",
+    "boundary":  "Default autonomous school cycle is 50000 candidates with 60 minutes max per cycle. If one cycle exceeds SLA, the next cycle is not started. V1 does not hard-kill an active school run."
+}

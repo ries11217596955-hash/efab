@@ -1,0 +1,57 @@
+﻿{
+    "structural_include_prefixes":  [
+                                        "modules/",
+                                        "validators/",
+                                        "operations/",
+                                        ".github/workflows/"
+                                    ],
+    "structural_exclude_prefixes":  [
+                                        "operations/gpt_handoff/",
+                                        "operations/autonomy_diagnostics/",
+                                        "operations/autonomous_inner_motor/test_life_runs/",
+                                        "operations/archive/",
+                                        "runtime_sessions/",
+                                        "reports/",
+                                        "proofs/"
+                                    ],
+    "branch_name_must_not_be_hardcoded":  true,
+    "structural_include_files":  [
+                                     "AGENTS.md",
+                                     "README.md"
+                                 ],
+    "required_output_root":  "reports/self_development",
+    "accepted_statuses":  [
+                              "MAP_REFRESHED",
+                              "MAP_REFRESH_SKIPPED"
+                          ],
+    "required_result":  "reports/self_development/branch_agnostic_map_refresh_result.json",
+    "protected_state_direct_mutation_allowed":  false,
+    "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_POLICY_V1",
+    "current_branch_source":  "git branch --show-current",
+    "live_process_stop_allowed":  false,
+    "subject_head_source":  "git rev-parse \u003cSubjectHead\u003e",
+    "deletion_allowed":  false,
+    "required_active_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+    "policy_id":  "BRANCH_AGNOSTIC_LOCAL_POST_STRUCTURAL_CHANGE_MAP_REFRESH",
+    "runtime_outputs_staged_allowed":  false,
+    "required_new_organ_marker":  "AUTONOMOUS_INNER_MOTOR_ORGAN",
+    "trigger_rule":  "Refresh when structural paths change; otherwise write MAP_REFRESH_SKIPPED proof.",
+    "required_active_map_schema":  "AGENT_BODY_COMPOSITION_MAP_V1",
+    "canonical_map_kind":  "COMPOSITION_STATUS_MAP",
+    "freshness_rule":  "active composition map head must match git rev-parse HEAD before trusted",
+    "noncanonical_composition_map_surfaces":  [
+                                                  "self_knowledge/BUILDER_SELF_MODEL.json",
+                                                  "self_knowledge/ROADMAP_STATE.json",
+                                                  "CAPABILITY_ROADMAP.json",
+                                                  "GENESIS_STATE.json"
+                                              ],
+    "fingerprint_exclude_patterns":  [
+                                         "/proofs/",
+                                         "/runs/",
+                                         "/test_life_runs/",
+                                         "operations/map_control/*validation*.json",
+                                         "reports/",
+                                         "runtime_sessions/",
+                                         "operations/gpt_handoff/"
+                                     ]
+}

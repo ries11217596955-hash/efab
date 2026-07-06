@@ -1,0 +1,42 @@
+{
+    "schema":  "active_behavior_absorption_rollback_manifest_v1",
+    "status":  "ROLLBACK_READY",
+    "runtime_ready":  false,
+    "promotion_id":  "active_behavior_absorption_fresh_1000_v1",
+    "protected_before":  [
+                             {
+                                 "path":  "reports/self_development/accepted_change_memory_snapshot.json",
+                                 "before_sha256":  "025199784db8000ef9b42baee8341f443552422ac12a1ca86998ab6673b34519",
+                                 "backup_path":  "operations\\active_behavior\\rollback\\active_behavior_absorption_fresh_1000_v1\\reports__self_development__accepted_change_memory_snapshot.json.before.json"
+                             },
+                             {
+                                 "path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+                                 "before_sha256":  "ec8673d1bc1dd5e183d2b12ed90f714c96a10ba8efbb51082389effcd060d6c5",
+                                 "backup_path":  "operations\\active_behavior\\rollback\\active_behavior_absorption_fresh_1000_v1\\reports__self_development__SELF_MODEL_ACTIVE_MAP.json.before.json"
+                             },
+                             {
+                                 "path":  "packs/registry.json",
+                                 "before_sha256":  "bf15bb23a43a713a84f4b35c9c63f39757451ca307d8bfb049708654438d63d1",
+                                 "backup_path":  "operations\\active_behavior\\rollback\\active_behavior_absorption_fresh_1000_v1\\packs__registry.json.before.json"
+                             }
+                         ],
+    "protected_after":  [
+                            {
+                                "path":  "reports/self_development/accepted_change_memory_snapshot.json",
+                                "after_sha256":  "156fe0a8baec880bf3117700d71aaafa174613c933878c339cf23b87391d9cf9"
+                            },
+                            {
+                                "path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+                                "after_sha256":  "e4ec1868d7a42a5a6b190006e92af7cca1716dbc35fc04b5becc4413e8bc7563"
+                            },
+                            {
+                                "path":  "packs/registry.json",
+                                "after_sha256":  "4e8a0abb4c962ca16cd365c53236f38ed8a99c6d1242b14015a413dce4c0f794"
+                            }
+                        ],
+    "active_store_paths":  [
+                               "operations/active_behavior/store/active_behavior_absorption_fresh_1000_v1/manifest.json",
+                               "operations/active_behavior/store/active_behavior_absorption_fresh_1000_v1/active_compact_atom_index.json"
+                           ],
+    "rollback_command":  "operations/active_behavior/rollback_active_behavior_absorption_promotion_v1.ps1 -PromotionId active_behavior_absorption_fresh_1000_v1"
+}

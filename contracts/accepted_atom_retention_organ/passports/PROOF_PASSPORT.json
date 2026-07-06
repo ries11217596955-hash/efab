@@ -1,0 +1,32 @@
+{
+  "schema": "efab_proof_passport_v1",
+  "organ_id": "accepted_atom_retention_organ",
+  "status": "SYNTHETIC_AND_REAL_SHAPE_MICRO_PROOFS_PASS_NOT_RUNTIME_READY",
+  "proof_path": "tests/accepted_atom_retention/ACCEPTED_ATOM_RETENTION_MICRO_PROOF_V1.json",
+  "proof_commit": "9c00b68",
+  "proof_summary": {
+    "manifest_heavy_trace_pruned": true,
+    "status": "PASS",
+    "repo_growth_bytes": 0,
+    "accepted_count": 10,
+    "receipt_count": 10,
+    "heavy_trace_pruned": true,
+    "quarantined_count": 0,
+    "failed_count": 0
+  },
+  "validator": "validators/validate_accepted_atom_retention_micro_proof_v1.ps1",
+  "validator_status": "PASS",
+  "real_shape_micro_trial": {
+    "proof_path": "tests/accepted_atom_retention/ACCEPTED_ATOM_RETENTION_GATE_REAL_SHAPE_MICRO_TRIAL_V1.json",
+    "proof_commit": "f759a3a",
+    "status": "PASS",
+    "success_accepted_count": 5,
+    "success_receipt_count": 5,
+    "success_pruned": true,
+    "success_work_preserved": false,
+    "failure_status": "QUARANTINE_TRACE_REQUIRED",
+    "failure_pruned": false,
+    "failure_preserved": true,
+    "repo_growth_bytes": 0
+  }
+}

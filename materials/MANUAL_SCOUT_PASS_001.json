@@ -1,0 +1,65 @@
+{
+  "status": "PASS",
+  "scout_pass_id": "MANUAL_MATERIAL_SCOUT_PASS_001",
+  "created_by": "PHASE135_RUN_MANUAL_MATERIAL_SCOUT_PASS_001_V1",
+  "run_id": "PHASE135_MANUAL_MATERIAL_SCOUT_PASS_001",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "mode": "MANUAL_SCOUT_PASS",
+  "external_fetch_performed_by_runtime": false,
+  "dependency_install_performed": false,
+  "trusted_material_count": 0,
+  "candidate_material_count": 3,
+  "reference_only_material_count": 1,
+  "owner_decision_required_count": 4,
+  "candidate_materials": [
+    {
+      "material_id": "candidate_pester_powershell_test_framework",
+      "name": "Pester",
+      "material_type": "LIBRARY",
+      "source": "https://github.com/pester/Pester",
+      "provenance": "Open-source PowerShell test and mock framework maintained in the pester GitHub organization.",
+      "license_or_terms": "Apache-2.0 declared in repository license; owner/legal review still required before trusted use.",
+      "risk_notes": "Would add a test framework dependency if adopted. Requires version pinning, PowerShell compatibility review, and quarantine smoke test.",
+      "intended_use": "Future PowerShell module/runtime tests for Builder operations.",
+      "initial_status": "CANDIDATE",
+      "owner_decision_required": true
+    },
+    {
+      "material_id": "candidate_psscriptanalyzer_static_checker",
+      "name": "PSScriptAnalyzer",
+      "material_type": "LIBRARY",
+      "source": "https://github.com/PowerShell/PSScriptAnalyzer",
+      "provenance": "Microsoft PowerShell GitHub project for static analysis of PowerShell modules and scripts.",
+      "license_or_terms": "MIT License declared in repository; owner/legal review still required before trusted use.",
+      "risk_notes": "Would add static analysis rules and possible false positives. Requires pinned version, local smoke test, and rule scope decision.",
+      "intended_use": "Future PowerShell quality gate for modules and orchestrator scripts.",
+      "initial_status": "CANDIDATE",
+      "owner_decision_required": true
+    },
+    {
+      "material_id": "candidate_syft_sbom_cli",
+      "name": "Syft",
+      "material_type": "CLI_TOOL",
+      "source": "https://github.com/anchore/syft",
+      "provenance": "Anchore open-source CLI tool and Go library for generating Software Bills of Materials.",
+      "license_or_terms": "Apache-2.0 indicated by repository metadata; owner/legal review still required before trusted use.",
+      "risk_notes": "CLI introduces binary/toolchain risk. Requires checksum/provenance review, pinned version, offline smoke, and no automatic install.",
+      "intended_use": "Future SBOM generation operation for Builder repo and generated assets.",
+      "initial_status": "CANDIDATE",
+      "owner_decision_required": true
+    },
+    {
+      "material_id": "reference_json_schema_official",
+      "name": "JSON Schema official reference",
+      "material_type": "REFERENCE_ARCHITECTURE",
+      "source": "https://json-schema.org/",
+      "provenance": "Official JSON Schema website and documentation ecosystem.",
+      "license_or_terms": "REFERENCE_ONLY; terms/license to be reviewed before copying any content or adopting tooling.",
+      "risk_notes": "Useful as a schema reference, not executable material. Do not vendor text or tools without separate license review.",
+      "intended_use": "Future schema design reference for material catalog, operation contracts, and proof/report validation.",
+      "initial_status": "REFERENCE_ONLY",
+      "owner_decision_required": true
+    }
+  ],
+  "next_allowed_step": "PHASE136_IMPORT_MANUAL_MATERIAL_SCOUT_PASS_TO_CATALOG_V1"
+}

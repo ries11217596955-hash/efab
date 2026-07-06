@@ -1,0 +1,19 @@
+{
+  "pack_id": "PHASE92_SELF_BUILD_BACKLOG_CONTRACT_V1",
+  "task_id": "TASK_SELF_BUILD_BACKLOG_CONTRACT_V1_001",
+  "phase": "PHASE92",
+  "title": "Self-Build Backlog Contract V1",
+  "mode": "SELF_BUILD",
+  "shell": "PowerShell",
+  "entry_script": "packs/PHASE92_SELF_BUILD_BACKLOG_CONTRACT_V1/APPLY.ps1",
+  "validate_script": "packs/PHASE92_SELF_BUILD_BACKLOG_CONTRACT_V1/VALIDATE.ps1",
+  "next_allowed_step": "PHASE93_CAPABILITY_GAP_DETECTOR_V1",
+  "purpose": "Create the contract for Builder self-build backlog item statuses, quarantine/blocker behavior, and batch reporting foundation.",
+  "prohibits": [
+    "external_agent_production",
+    "external_install",
+    "external_fetch",
+    "phase93_implementation",
+    "unbounded_autonomous_loop"
+  ]
+}

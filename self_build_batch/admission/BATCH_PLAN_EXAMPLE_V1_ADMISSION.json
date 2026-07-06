@@ -1,0 +1,27 @@
+{
+  "admission_id": "BATCH_PLAN_EXAMPLE_V1_ADMISSION",
+  "source_plan": "self_build_batch/plans/BATCH_PLAN_EXAMPLE_V1.json",
+  "status": "PASS",
+  "decision": "CONDITIONALLY_ADMISSIBLE",
+  "execution_allowed": false,
+  "reason": "Batch plan is structurally valid, but execution remains blocked until item-level ledger and continue-on-failure runtime are built.",
+  "required_before_execution": [
+    "PHASE98_ITEM_LEVEL_EXECUTION_LEDGER_V1",
+    "PHASE99_CONTINUE_ON_FAILURE_RUNTIME_V1",
+    "PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1",
+    "PHASE101_BATCH_PROOF_AGGREGATOR_V1"
+  ],
+  "checked_items": {
+    "item_count": 5,
+    "batch_count": 2,
+    "no_pass_items": true,
+    "no_executed_items": true,
+    "item_level_status_present": true,
+    "proof_requirements_present": true,
+    "quarantine_policy_present": true
+  },
+  "no_external_agent_production": true,
+  "no_external_install": true,
+  "no_external_fetch": true,
+  "next_allowed_step": "PHASE98_ITEM_LEVEL_EXECUTION_LEDGER_V1"
+}

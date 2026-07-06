@@ -1,0 +1,24 @@
+{
+  "task_id": "TASK_OWNER_ORDER_TO_GAP_MAP_V1_001",
+  "phase": "PHASE94",
+  "pack_id": "PHASE94_OWNER_ORDER_TO_GAP_MAP_V1",
+  "status": "READY",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "mode": "SELF_BUILD",
+  "capability_id": "owner_order_to_gap_map_v1",
+  "gate": "OWNER_ORDER_TO_GAP_MAP_V1",
+  "path": "tasks/TASK_OWNER_ORDER_TO_GAP_MAP_V1_001.json",
+  "baseline_commit": "0fae637",
+  "route_lock": "AGENT_BUILDER_NEXT_15_STEPS_LOCK_V2_R2.md",
+  "next_allowed_step": "PHASE95_SELF_BUILD_PROGRAM_GENERATOR_V2",
+  "purpose": "Create the first owner-order to capability-gap mapping foundation with future workflow input fields.",
+  "cut_list": [
+    "No Builder runtime from Codex",
+    "No PHASE95 execution",
+    "No GitHub workflow creation",
+    "No external agent production",
+    "No installs",
+    "No external fetch",
+    "No PHASE78-PHASE93 pack edits"
+  ]
+}

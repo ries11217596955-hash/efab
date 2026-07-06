@@ -1,0 +1,54 @@
+{
+  "contract_id": "OWNER_ORDER_CONTRACT_V1",
+  "status": "ACTIVE_CONTRACT",
+  "phase": "PHASE94_OWNER_ORDER_TO_GAP_MAP_V1",
+  "generated_at": "2026-05-29T14:24:12.1742412Z",
+  "allowed_mode_values": [
+    "PLAN_ONLY",
+    "GAP_MAP_ONLY",
+    "SELF_BUILD_PROPOSAL_ONLY"
+  ],
+  "execution_mode_allowed": false,
+  "required_fields": [
+    "order_id",
+    "mode",
+    "request",
+    "max_cycles",
+    "max_items",
+    "risk_level",
+    "allow_external_agents",
+    "allow_installs",
+    "allow_external_fetch",
+    "require_owner_approval",
+    "expected_output",
+    "constraints"
+  ],
+  "field_definitions": {
+    "order_id": "Stable owner order identifier.",
+    "mode": "One of PLAN_ONLY, GAP_MAP_ONLY, SELF_BUILD_PROPOSAL_ONLY.",
+    "request": "Natural-language owner request.",
+    "max_cycles": "Maximum planning or mapping cycles allowed.",
+    "max_items": "Maximum requested items to consider.",
+    "risk_level": "Risk boundary for the order.",
+    "allow_external_agents": "Must default false.",
+    "allow_installs": "Must default false.",
+    "allow_external_fetch": "Must default false.",
+    "require_owner_approval": "Must default true.",
+    "expected_output": "Requested output artifact or decision form.",
+    "constraints": "Owner or policy constraints."
+  },
+  "safety_defaults": {
+    "allow_external_agents": false,
+    "allow_installs": false,
+    "allow_external_fetch": false,
+    "require_owner_approval": true
+  },
+  "future_workflow_inputs": {
+    "order_path": "Path to an owner order JSON file.",
+    "mode": "PLAN_ONLY, GAP_MAP_ONLY, or SELF_BUILD_PROPOSAL_ONLY.",
+    "max_cycles": "Maximum cycles for the workflow-dispatched request.",
+    "max_items": "Maximum item count for the workflow-dispatched request.",
+    "risk_level": "Risk boundary such as SAFE_ONLY.",
+    "require_owner_approval": "Boolean gate for owner approval."
+  }
+}

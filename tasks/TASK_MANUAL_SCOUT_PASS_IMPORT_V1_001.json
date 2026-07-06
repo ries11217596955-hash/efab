@@ -1,0 +1,35 @@
+{
+  "task_id": "TASK_MANUAL_SCOUT_PASS_IMPORT_V1_001",
+  "status": "PENDING",
+  "path": "tasks/TASK_MANUAL_SCOUT_PASS_IMPORT_V1_001.json",
+  "active_line": "AGENT_BUILDER_SELF_DEVELOPMENT",
+  "mode": "SELF_BUILD",
+  "capability_id": "manual_scout_pass_import_v1",
+  "phase": "PHASE_80",
+  "gate": "MANUAL_SCOUT_PASS_IMPORT_V1",
+  "pack_id": "PHASE80_MANUAL_SCOUT_PASS_IMPORT_V1",
+  "objective": "Import MANUAL_SCOUT_PASS_001 into materials/MATERIAL_CATALOG.json as non-trusted controlled catalog entries without installing, fetching, scanning, quarantining, or admitting materials.",
+  "human_meaning": "Builder records the manually scouted materials as candidates only. Importing is not trust, approval, installation, or use.",
+  "input_scout_pass": "materials/inbox/MANUAL_SCOUT_PASS_001.json",
+  "target_catalog": "materials/MATERIAL_CATALOG.json",
+  "expected_runtime_outputs": [
+    "reports/materials/MANUAL_SCOUT_PASS_IMPORT_REPORT.json",
+    "proofs/materials/MANUAL_SCOUT_PASS_IMPORT_V1.json"
+  ],
+  "forbidden": [
+    "Do not install external tools.",
+    "Do not fetch external repositories.",
+    "Do not run vulnerability scanners.",
+    "Do not run license scanners.",
+    "Do not create quarantine trials.",
+    "Do not mark materials TRUSTED.",
+    "Do not create external agents.",
+    "Do not mutate materials/inbox/MANUAL_SCOUT_PASS_001.json.",
+    "Do not modify PHASE79 runtime proof or report files."
+  ],
+  "validation": [
+    "Seed validation must pass before runtime.",
+    "Runtime import must produce exactly nine non-TRUSTED catalog entries unless duplicates are explicitly skipped with proof.",
+    "Completed validation must prove report PASS, proof PASS, queue NONE, and trusted count zero."
+  ]
+}

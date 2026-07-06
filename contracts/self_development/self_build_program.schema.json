@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Self Build Program Candidate",
+  "type": "object",
+  "required": [
+    "program_id",
+    "status",
+    "generated_by_phase",
+    "source_decision_report",
+    "source_decision_proof",
+    "target_next_step",
+    "active_line",
+    "purpose",
+    "required_inputs",
+    "proposed_changes",
+    "files_in_scope",
+    "files_out_of_scope",
+    "validation_requirements",
+    "proof_requirements",
+    "cut_list",
+    "admission_required",
+    "execution_allowed"
+  ],
+  "properties": {
+    "program_id": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "GENERATED_CANDIDATE"
+      ]
+    },
+    "generated_by_phase": {
+      "type": "string"
+    },
+    "source_decision_report": {
+      "type": "string"
+    },
+    "source_decision_proof": {
+      "type": "string"
+    },
+    "target_next_step": {
+      "type": "string"
+    },
+    "active_line": {
+      "type": "string"
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "required_inputs": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "proposed_changes": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "files_in_scope": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "files_out_of_scope": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "validation_requirements": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "proof_requirements": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "cut_list": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "admission_required": {
+      "type": "boolean"
+    },
+    "execution_allowed": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": true
+}

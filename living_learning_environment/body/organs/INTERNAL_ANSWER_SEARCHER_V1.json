@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "body_pack_id": "BUILDER_BODY_ORGAN_PACK_V1",
+  "organ_id": "INTERNAL_ANSWER_SEARCHER_V1",
+  "organ_type": "searcher",
+  "purpose": "Search internal repo sources first and produce answer candidates.",
+  "allowed_inputs": [
+    "internal question",
+    "repo sources",
+    "proof memory"
+  ],
+  "allowed_outputs": [
+    "internal_answer_search.json",
+    "internal_answer.json"
+  ],
+  "forbidden_actions": [
+    "mutate accepted Builder state",
+    "execute arbitrary code",
+    "fetch internet",
+    "install dependencies",
+    "mutate capability_shelf",
+    "create generated or applied agents",
+    "mark sources trusted"
+  ],
+  "organ_status": "BODY_ORGAN_AVAILABLE_IN_LLE",
+  "accepted_capability": false,
+  "next_allowed_step": "PHASE152_BUILDER_EXECUTES_ADMITTED_SELF_BUILD_PROGRAM_IN_SANDBOX_V1"
+}

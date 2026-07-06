@@ -1,0 +1,24 @@
+{
+  "patch_kind": "CAPABILITY_ROADMAP_APPEND",
+  "status": "READY_FOR_ADMISSION",
+  "generated_capabilities": [
+    {
+      "order": 1,
+      "capability_id": "generated_monitoring_agent_v1_profile_materialization_v1",
+      "semantic_role": "PROFILE_MATERIALIZATION",
+      "source_capability_hint": "monitoring_agent_specialization_profile_v1"
+    },
+    {
+      "order": 2,
+      "capability_id": "generated_monitoring_agent_v1_closure_proof_v1",
+      "semantic_role": "SPECIALIZED_CLOSURE_PROOF",
+      "source_capability_hint": "monitoring_agent_gap_closure_proof_v1"
+    },
+    {
+      "order": 3,
+      "capability_id": "generated_monitoring_agent_v1_seed_consumption_proof_v1",
+      "semantic_role": "SEED_CONSUMPTION_PROOF",
+      "source_capability_hint": "remediation_program_seed_consumption_closure_proof_v1"
+    }
+  ]
+}

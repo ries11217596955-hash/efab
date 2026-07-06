@@ -1,0 +1,17 @@
+{
+  "pack_id": "PHASE91_ROUTE_V1_CLOSURE_AND_V2_R2_ACTIVATION",
+  "task_id": "TASK_ROUTE_V1_CLOSURE_AND_V2_R2_ACTIVATION_001",
+  "phase": "PHASE91",
+  "status": "READY",
+  "path": "packs/PHASE91_ROUTE_V1_CLOSURE_AND_V2_R2_ACTIVATION",
+  "shell": "PowerShell",
+  "entry_script": "packs/PHASE91_ROUTE_V1_CLOSURE_AND_V2_R2_ACTIVATION/APPLY.ps1",
+  "apply": "APPLY.ps1",
+  "validate": "VALIDATE.ps1",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "mode": "SELF_BUILD",
+  "capability_id": "route_v1_closure_and_v2_r2_activation",
+  "gate": "ROUTE_V1_CLOSURE_AND_V2_R2_ACTIVATION",
+  "next_allowed_step": "PHASE92_SELF_BUILD_BACKLOG_CONTRACT_V1",
+  "purpose": "Activate the V2_R2 route lock for batch self-build engine development after PHASE90 closes route lock V1."
+}

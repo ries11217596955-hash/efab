@@ -1,0 +1,83 @@
+name: Agent Builder Self-Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: 'Optional explicit run id. Leave blank for automatic GitHub Actions run id.'
+        required: false
+        default: ''
+        type: string
+      max_packs:
+        description: 'Maximum self-build packs to execute.'
+        required: true
+        default: 5
+        type: number
+
+jobs:
+  self-build:
+    runs-on: windows-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Configure git author
+        shell: pwsh
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Resolve run context
+        id: run_context
+        shell: pwsh
+        env:
+          RAW_RUN_ID_INPUT: ${{ inputs.run_id }}
+        run: |
+          $RawRunId = $env:RAW_RUN_ID_INPUT
+          $RunId = $RawRunId
+          if ([string]::IsNullOrWhiteSpace($RunId)) {
+              $RunId = "GHA_SELF_BUILD_${{ github.run_id }}"
+          }
+          else {
+              $RunId = $RunId.Trim()
+              $RunId = [regex]::Replace($RunId, '\s+', '_')
+              foreach ($Char in [System.IO.Path]::GetInvalidFileNameChars()) {
+                  $RunId = $RunId.Replace([string]$Char, "_")
+              }
+              $RunId = $RunId.Replace("'", "_")
+              $RunId = [regex]::Replace($RunId, '_+', '_').Trim("_")
+              if ([string]::IsNullOrWhiteSpace($RunId)) {
+                  $RunId = "GHA_SELF_BUILD_${{ github.run_id }}"
+              }
+          }
+
+          Write-Host "RAW_RUN_ID=$RawRunId"
+          Write-Host "RESOLVED_RUN_ID=$RunId"
+
+          New-Item -ItemType Directory -Force -Path ".\runs\$RunId" | Out-Null
+          "run_id=$RunId" >> $env:GITHUB_OUTPUT
+
+      - name: Run Agent Builder self-build
+        shell: pwsh
+        run: |
+          & ".\orchestrator\run.ps1" `
+              -Mode SELF_BUILD `
+              -RunId "${{ steps.run_context.outputs.run_id }}" `
+              -MaxPacks ${{ inputs.max_packs }} |
+              Tee-Object -FilePath ".\runs\${{ steps.run_context.outputs.run_id }}\GITHUB_ACTION_SELF_BUILD.log"
+
+      - name: Upload Builder run artifacts
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: agent-builder-self-build-${{ steps.run_context.outputs.run_id }}
+          path: |
+            runs/${{ steps.run_context.outputs.run_id }}
+            proofs
+          if-no-files-found: warn

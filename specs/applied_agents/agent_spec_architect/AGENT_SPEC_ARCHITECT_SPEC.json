@@ -1,0 +1,48 @@
+{
+  "agent_id": "agent_spec_architect",
+  "display_name": "Agent Spec Architect",
+  "mission": "Convert a raw agent idea into a disciplined, production-grade external agent specification that can be consumed by Agent Builder BUILD_EXTERNAL_AGENT mode.",
+  "agent_kind": "specification_agent",
+  "package_profile": "operational_baseline",
+  "runtime": {
+    "shell": "PowerShell",
+    "entrypoint": "orchestrator/run.ps1"
+  },
+  "inputs": [
+    {
+      "name": "request",
+      "type": "json",
+      "required": true,
+      "description": "A structured raw agent idea containing problem, operator intent, target user, expected outputs, constraints, and non-goals."
+    }
+  ],
+  "outputs": [
+    {
+      "name": "result",
+      "type": "json",
+      "required": true,
+      "description": "A structured architectural result containing the normalized agent idea, capability framing, suggested package profile, build readiness assessment, and next required production-spec decisions."
+    }
+  ],
+  "capabilities": [
+    "accept a raw agent concept payload",
+    "preserve request_id and operational traceability",
+    "extract and echo payload structure deterministically",
+    "emit a structured baseline result compatible with downstream spec-writing extension",
+    "serve as the first operational package for the future idea-to-spec layer"
+  ],
+  "validation": [
+    "generated package validator passes",
+    "generated orchestrator VERIFY mode passes",
+    "generated orchestrator RUN mode accepts a JSON request",
+    "RUN mode writes structured result JSON",
+    "result preserves request_id and agent_id",
+    "factory BUILD_EXTERNAL_AGENT report is emitted"
+  ],
+  "forbidden_scope": [
+    "no hidden dependency on Codex",
+    "no external network call during generation or validation",
+    "no claim that v1 runtime already synthesizes final production specifications",
+    "no decorative-only package acceptance"
+  ]
+}

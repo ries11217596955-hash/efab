@@ -1,0 +1,38 @@
+{
+  "task_id": "TASK_EXTERNAL_AGENT_PRODUCTION_PROGRAM_TEST_V1_001",
+  "capability_id": "external_agent_production_program_test_v1",
+  "objective": "Produce the first standalone external remediation intake operator agent package and prepare a terminal proof pack that validates it without external APIs.",
+  "execution_kind": "SELF_BUILD_EXTERNAL_AGENT_PRODUCTION_PROGRAM_TEST_V1",
+  "phase": "PHASE_67",
+  "expected_gate": "EXTERNAL_AGENT_PRODUCTION_PROGRAM_TEST_V1",
+  "produced_agent_id": "remediation_intake_operator_agent_v1",
+  "produced_agent_path": "generated_agents/remediation_intake_operator_agent_v1",
+  "runtime_report_path": "reports/external_agent_production/EXTERNAL_AGENT_PRODUCTION_PROGRAM_TEST_V1_REPORT.json",
+  "runtime_proof_path": "proofs/EXTERNAL_AGENT_PRODUCTION_PROGRAM_TEST_V1.json",
+  "scope": [
+    "create generated_agents/remediation_intake_operator_agent_v1 as a standalone external operator agent package",
+    "include README, AGENT_SPEC, RUNBOOK, input and output examples, runtime script, proof notes",
+    "include a PHASE67 pack that copies the validator payload, validates the package, writes proof/report, finalizes live truth, and commits/pushes only at runtime",
+    "leave runtime proof/report uncreated before terminal proof execution"
+  ],
+  "validation": [
+    "PowerShell parser check passes for PHASE67 APPLY.ps1",
+    "PowerShell parser check passes for generated agent run.ps1",
+    "PowerShell parser check passes for PHASE67 validator payload",
+    "all new JSON files parse successfully",
+    "TASK_QUEUE active_task_id points to TASK_EXTERNAL_AGENT_PRODUCTION_PROGRAM_TEST_V1_001",
+    "runtime proof/report are not precommitted",
+    "orchestrator/run.ps1 is unchanged",
+    "PHASE64/65/66 proof/report files are unchanged"
+  ],
+  "forbidden_scope": [
+    "do not touch orchestrator/run.ps1",
+    "do not touch the conveyor module",
+    "do not modify PHASE64/65/66 proof/report files",
+    "do not create a new self-building conveyor stage",
+    "do not create PHASE68",
+    "do not use external APIs",
+    "do not commit or push during preparation",
+    "do not run the PHASE67 runtime pack during preparation"
+  ]
+}

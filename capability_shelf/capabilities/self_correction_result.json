@@ -1,0 +1,51 @@
+{
+  "capability_id": "self_correction_result",
+  "status": "READY",
+  "purpose": "Reuse PHASE147 self-correction result as evidence for Builder-authored correction patterns.",
+  "owner_line": "SELF_BUILD",
+  "existing_files": [
+    "proofs/self_development/PHASE147_BUILDER_OBSERVATION_DRIVEN_SELF_CORRECTION_TRIAL_V1.json",
+    "self_control/BUILDER_OBSERVATION_DRIVEN_SELF_CORRECTION_RESULT.json",
+    "modules/invoke_builder_observation_driven_self_correction_trial_001.ps1",
+    "validators/validate_phase147_builder_observation_driven_self_correction_trial_v1.ps1"
+  ],
+  "read_paths": [
+    "proofs/self_development/PHASE147_BUILDER_OBSERVATION_DRIVEN_SELF_CORRECTION_TRIAL_V1.json",
+    "self_control/BUILDER_OBSERVATION_DRIVEN_SELF_CORRECTION_RESULT.json",
+    "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/self_correction_trials/PHASE147_OBSERVATION_DRIVEN_SELF_CORRECTION_TRIAL_001"
+  ],
+  "write_paths": [
+    "knowledge_library/learning_cards",
+    "living_learning_environment/promotion_candidates"
+  ],
+  "forbidden_paths": [
+    "proofs/self_development/PHASE142-PHASE147",
+    "reports/self_development/PHASE142-PHASE147",
+    "self_control/accepted_phase_results",
+    "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/current",
+    "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/existing_trials",
+    "generated_agents",
+    "agent_catalog",
+    "applied_agents",
+    "route_locks",
+    "orchestrator/run.ps1"
+  ],
+  "safe_to_reuse": true,
+  "runtime_mutates_repo": false,
+  "requires_owner_prompt": false,
+  "requires_codex": false,
+  "can_be_used_by_builder": true,
+  "example_usage_path": "capability_shelf/usage_examples/self_correction_result.json",
+  "validator_reference": "capability_shelf/validators/self_correction_result.json",
+  "known_risks": [
+    "Self-correction retention is deferred; PHASE149+ must prove reuse in live reading sessions.",
+    "Existing PHASE147 artifacts are read-only."
+  ],
+  "promotion_requirements": [
+    "validator PASS",
+    "proof artifact",
+    "no forbidden scope changes",
+    "promotion gate record",
+    "explicit next_allowed_step"
+  ]
+}

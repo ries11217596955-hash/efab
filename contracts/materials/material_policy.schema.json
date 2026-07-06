@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "contracts/materials/material_policy.schema.json",
+  "title": "Material Admission Policy",
+  "type": "object",
+  "required": [
+    "policy_id",
+    "policy_version",
+    "phase",
+    "capability_id",
+    "policy_status",
+    "default_decision",
+    "trust_rule",
+    "rules",
+    "cut_list",
+    "next_allowed_step"
+  ],
+  "properties": {
+    "policy_id": {
+      "type": "string"
+    },
+    "policy_version": {
+      "type": "string"
+    },
+    "phase": {
+      "type": "string"
+    },
+    "capability_id": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "policy_status": {
+      "type": "string"
+    },
+    "default_decision": {
+      "type": "string",
+      "enum": [
+        "CANDIDATE_FOR_QUARANTINE",
+        "OWNER_APPROVAL_REQUIRED",
+        "REFERENCE_ONLY",
+        "REJECT",
+        "NEEDS_METADATA",
+        "CANDIDATE_FOR_WRAPPER_CONTRACT",
+        "HOLD"
+      ]
+    },
+    "trust_rule": {
+      "type": "object"
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "rule_id",
+          "priority",
+          "decision",
+          "match",
+          "rationale"
+        ],
+        "properties": {
+          "rule_id": {
+            "type": "string"
+          },
+          "priority": {
+            "type": "integer"
+          },
+          "decision": {
+            "type": "string",
+            "enum": [
+              "CANDIDATE_FOR_QUARANTINE",
+              "OWNER_APPROVAL_REQUIRED",
+              "REFERENCE_ONLY",
+              "REJECT",
+              "NEEDS_METADATA",
+              "CANDIDATE_FOR_WRAPPER_CONTRACT",
+              "HOLD"
+            ]
+          },
+          "match": {
+            "type": "object"
+          },
+          "rationale": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "cut_list": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "next_allowed_step": {
+      "type": "string"
+    }
+  }
+}

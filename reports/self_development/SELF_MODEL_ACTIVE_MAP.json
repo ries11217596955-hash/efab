@@ -1,0 +1,374 @@
+﻿{
+    "schema":  "AGENT_BODY_COMPOSITION_MAP_V1",
+    "map_refresh_status":  "SELF_KNOWLEDGE_READY",
+    "map_kind":  "COMPOSITION_STATUS_MAP",
+    "not_capability_invocation_map":  true,
+    "self_knowledge_ready":  true,
+    "map_is_ready_for_next_decision":  true,
+    "branch":  "thin-control",
+    "observed_head_at_generation":  "d0343a58f63f68f364b405d63dd3008308239a15",
+    "subject_head":  "d0343a58f63f68f364b405d63dd3008308239a15",
+    "generated_at":  "2026-07-06T22:09:37.7245553+04:00",
+    "generator":  "invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
+    "role":  "canonical local body composition/status map: what exists, where it is, freshness, last runtime/proof signal",
+    "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
+    "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+    "structural_path_count":  552,
+    "body_source_fingerprint":  {
+                                    "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
+                                    "structural_file_count":  552,
+                                    "sha256":  "f425568eb18a6ffd092f569263f24301a07dbde80ae54c479f82a9d02d4cfad3"
+                                },
+    "module_count":  207,
+    "validator_count":  174,
+    "workflow_count":  5,
+    "components":  [
+                       {
+                           "id":  "school",
+                           "role":  "candidate learning factory and school lifecycle",
+                           "root":  "operations/school",
+                           "status":  "PRESENT_ON_CURRENT_BRANCH",
+                           "file_count":  96,
+                           "script_count":  58,
+                           "policy_count":  4,
+                           "validator_count":  27,
+                           "proof_file_count":  12,
+                           "doc_count":  15,
+                           "required_files":  [
+                                                  "operations/school/run_agent_school.ps1",
+                                                  "operations/school/finalize_agent_school_run_v1.ps1",
+                                                  "operations/school/SCHOOL_CANONICAL_RUN_CONTRACT_V1.md"
+                                              ],
+                           "missing_required_files":  [
+
+                                                      ],
+                           "required_files_present":  true,
+                           "entrypoint_scripts":  [
+                                                      "operations/school/control_autonomous_school_cycle_v1.ps1",
+                                                      "operations/school/curriculum/candidate_factory/generate_codex_curriculum_candidate_factory_run_v1.ps1",
+                                                      "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_batch_delta_v1.ps1",
+                                                      "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_hot_path_invariants_v1.ps1",
+                                                      "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_memory_ladder_v1.ps1",
+                                                      "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_topic_cursor_ledger_v1.ps1",
+                                                      "operations/school/curriculum/candidate_factory/validate_codex_curriculum_candidate_factory_v1.ps1",
+                                                      "operations/school/curriculum/codex_active/validate_codex_curriculum_active_decision_v1.ps1",
+                                                      "operations/school/curriculum/codex_contract/validate_codex_curriculum_batch_v1.ps1",
+                                                      "operations/school/curriculum/codex_contract/validate_codex_curriculum_contract_consistency_v1.ps1",
+                                                      "operations/school/curriculum/codex_digest/validate_codex_curriculum_digestion_v1.ps1",
+                                                      "operations/school/curriculum/incremental_active_store/validate_incremental_active_store_and_rollback_v1.ps1",
+                                                      "operations/school/curriculum/incremental_active_store/validate_incremental_active_store_route_switch_v1.ps1",
+                                                      "operations/school/curriculum/incremental_active_store/validate_replay_audit_policy_entrypoint_wiring_v1.ps1",
+                                                      "operations/school/curriculum/incremental_active_store/validate_replay_audit_policy_v1.ps1",
+                                                      "operations/school/curriculum/incremental_active_store/validate_replayable_incremental_active_route_v1.ps1",
+                                                      "operations/school/curriculum/ready_lane/validate_absorption_route_guard_v1.ps1",
+                                                      "operations/school/curriculum/ready_lane/validate_codex_curriculum_ready_lane_active_decision_use_v1.ps1",
+                                                      "operations/school/curriculum/ready_lane/validate_codex_curriculum_ready_lane_promotion_gate_v1.ps1",
+                                                      "operations/school/curriculum/scale_gate/validate_codex_curriculum_scale_gate_v1.ps1",
+                                                      "operations/school/curriculum/source_router/run_school_codex_source_port_v1.ps1",
+                                                      "operations/school/curriculum/source_router/run_school_external_world_source_port_v1.ps1",
+                                                      "operations/school/curriculum/source_router/run_school_source_router_v1.ps1",
+                                                      "operations/school/curriculum/source_router/template_filter/run_school_source_template_filter_v1.ps1",
+                                                      "operations/school/curriculum/source_router/template_filter/validate_school_source_template_filter_policy_v1.ps1",
+                                                      "operations/school/curriculum/source_router/validate_external_world_source_material_v1.ps1",
+                                                      "operations/school/curriculum/streaming_absorption/validate_codex_curriculum_streaming_absorption_v1.ps1",
+                                                      "operations/school/curriculum/validate_curriculum_school_v1.ps1",
+                                                      "operations/school/digestion/validate_compact_semantic_digestion_organ_v1.ps1",
+                                                      "operations/school/finalize_agent_school_run_v1.ps1",
+                                                      "operations/school/memory/validate_compact_memory_recall_use_probe_v1.ps1",
+                                                      "operations/school/run_agent_school.ps1",
+                                                      "operations/school/run_autonomous_school_cycle_v1.ps1",
+                                                      "operations/school/validate_agent_school_canonical_entrypoint_v1.ps1",
+                                                      "operations/school/value_grounded/validate_value_grounded_curriculum_prep_v1.ps1"
+                                                  ],
+                           "notable_files":  [
+                                                 "operations/school/run_agent_school.ps1",
+                                                 "operations/school/finalize_agent_school_run_v1.ps1",
+                                                 "operations/school/SCHOOL_CANONICAL_RUN_CONTRACT_V1.md"
+                                             ],
+                           "latest_git_commit":  {
+                                                     "head":  "b0b612b1a756667422d6fbc4c90c471c56aa8606",
+                                                     "committed_at":  "2026-07-06T20:04:27+04:00",
+                                                     "subject":  "proof: record canonical school after template filter pass"
+                                                 },
+                           "latest_runtime_artifact":  {
+                                                           "path":  ".runtime/school_runs/school_factory_digest_use_test_20_20260706_200311/AGENT_SCHOOL_CANONICAL_ENTRYPOINT_V1.json",
+                                                           "last_write":  "2026-07-06T20:03:14.7759632+04:00",
+                                                           "bytes":  7874
+                                                       }
+                       },
+                       {
+                           "id":  "school_source_router",
+                           "role":  "governed source selection before school material intake",
+                           "root":  "operations/school/curriculum/source_router",
+                           "status":  "PRESENT_ON_CURRENT_BRANCH",
+                           "file_count":  8,
+                           "script_count":  6,
+                           "policy_count":  2,
+                           "validator_count":  2,
+                           "proof_file_count":  0,
+                           "doc_count":  0,
+                           "required_files":  [
+                                                  "operations/school/curriculum/source_router/run_school_source_router_v1.ps1",
+                                                  "operations/school/curriculum/source_router/run_school_codex_source_port_v1.ps1",
+                                                  "operations/school/curriculum/source_router/run_school_external_world_source_port_v1.ps1",
+                                                  "operations/school/curriculum/source_router/template_filter/run_school_source_template_filter_v1.ps1",
+                                                  "operations/school/curriculum/source_router/template_filter/school_source_template_filter_policy.json"
+                                              ],
+                           "missing_required_files":  [
+
+                                                      ],
+                           "required_files_present":  true,
+                           "entrypoint_scripts":  [
+                                                      "operations/school/curriculum/source_router/run_school_codex_source_port_v1.ps1",
+                                                      "operations/school/curriculum/source_router/run_school_external_world_source_port_v1.ps1",
+                                                      "operations/school/curriculum/source_router/run_school_source_router_v1.ps1",
+                                                      "operations/school/curriculum/source_router/template_filter/run_school_source_template_filter_v1.ps1",
+                                                      "operations/school/curriculum/source_router/template_filter/validate_school_source_template_filter_policy_v1.ps1",
+                                                      "operations/school/curriculum/source_router/validate_external_world_source_material_v1.ps1"
+                                                  ],
+                           "notable_files":  [
+                                                 "operations/school/curriculum/source_router/run_school_source_router_v1.ps1",
+                                                 "operations/school/curriculum/source_router/run_school_codex_source_port_v1.ps1",
+                                                 "operations/school/curriculum/source_router/run_school_external_world_source_port_v1.ps1",
+                                                 "operations/school/curriculum/source_router/template_filter/run_school_source_template_filter_v1.ps1",
+                                                 "operations/school/curriculum/source_router/template_filter/school_source_template_filter_policy.json"
+                                             ],
+                           "latest_git_commit":  {
+                                                     "head":  "bb534315effc73a45001cf2bc2429867cb9e4661",
+                                                     "committed_at":  "2026-07-06T20:01:54+04:00",
+                                                     "subject":  "fix: write template filter fields in router proof"
+                                                 },
+                           "latest_runtime_artifact":  {
+                                                           "path":  ".runtime/school_source_template_filter/school_source_router_filter_school_factory_digest_use_test_20_20260706_200311_chunk_1_of_1/SCHOOL_SOURCE_TEMPLATE_FILTER_DECISION_V1.json",
+                                                           "last_write":  "2026-07-06T20:03:12.4750390+04:00",
+                                                           "bytes":  3260
+                                                       }
+                       },
+                       {
+                           "id":  "compact_memory_intake",
+                           "role":  "only governed packet/intake/merge path into compact memory",
+                           "root":  "operations/compact_memory_intake",
+                           "status":  "PRESENT_ON_CURRENT_BRANCH",
+                           "file_count":  9,
+                           "script_count":  5,
+                           "policy_count":  1,
+                           "validator_count":  1,
+                           "proof_file_count":  3,
+                           "doc_count":  0,
+                           "required_files":  [
+                                                  "operations/compact_memory_intake/submit_compact_memory_packet_v1.ps1",
+                                                  "operations/compact_memory_intake/merge_compact_memory_intake_queue_v1.ps1",
+                                                  "operations/compact_memory_intake/run_compact_memory_queue_maintenance_v1.ps1"
+                                              ],
+                           "missing_required_files":  [
+
+                                                      ],
+                           "required_files_present":  true,
+                           "entrypoint_scripts":  [
+                                                      "operations/compact_memory_intake/merge_compact_memory_intake_queue_v1.ps1",
+                                                      "operations/compact_memory_intake/run_compact_memory_queue_maintenance_v1.ps1",
+                                                      "operations/compact_memory_intake/submit_and_merge_compact_memory_packet_v1.ps1",
+                                                      "operations/compact_memory_intake/submit_compact_memory_packet_v1.ps1",
+                                                      "operations/compact_memory_intake/validate_compact_memory_packet_v1.ps1"
+                                                  ],
+                           "notable_files":  [
+                                                 "operations/compact_memory_intake/submit_compact_memory_packet_v1.ps1",
+                                                 "operations/compact_memory_intake/merge_compact_memory_intake_queue_v1.ps1",
+                                                 "operations/compact_memory_intake/run_compact_memory_queue_maintenance_v1.ps1"
+                                             ],
+                           "latest_git_commit":  {
+                                                     "head":  "e0274d24f399b2f93621bf934ec5b6ce96b849e5",
+                                                     "committed_at":  "2026-07-06T12:50:29+04:00",
+                                                     "subject":  "fix: prioritize recent AgentLife packets in queue maintenance"
+                                                 },
+                           "latest_runtime_artifact":  {
+                                                           "path":  ".runtime/compact_memory_intake_v1/maintenance_runs/queue_maintenance_20260706_200326/COMPACT_MEMORY_QUEUE_MAINTENANCE_RESULT_V1.json",
+                                                           "last_write":  "2026-07-06T20:04:12.5417864+04:00",
+                                                           "bytes":  10526
+                                                       }
+                       },
+                       {
+                           "id":  "autonomous_inner_motor",
+                           "role":  "bounded inner motor / test life runtime surface",
+                           "root":  "operations/autonomous_inner_motor",
+                           "status":  "PRESENT_ON_CURRENT_BRANCH",
+                           "file_count":  62,
+                           "script_count":  1,
+                           "policy_count":  1,
+                           "validator_count":  12,
+                           "proof_file_count":  30,
+                           "doc_count":  10,
+                           "required_files":  [
+                                                  "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1"
+                                              ],
+                           "missing_required_files":  [
+
+                                                      ],
+                           "required_files_present":  true,
+                           "entrypoint_scripts":  [
+                                                      "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1"
+                                                  ],
+                           "notable_files":  [
+                                                 "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1"
+                                             ],
+                           "latest_git_commit":  {
+                                                     "head":  "28881eb591240757da420cc34a6b97fc09a65ae2",
+                                                     "committed_at":  "2026-07-06T12:53:55+04:00",
+                                                     "subject":  "proof: record automatic AgentLife queue maintenance after school"
+                                                 },
+                           "latest_runtime_artifact":  {
+                                                           "path":  ".runtime/autonomous_inner_motor/test_life_runs/aimo_parallel_school_aimo_auto_maintenance_20260706_125100/TEST_LIFE_PROOF.json",
+                                                           "last_write":  "2026-07-06T12:52:06.9916139+04:00",
+                                                           "bytes":  61164
+                                                       }
+                       },
+                       {
+                           "id":  "knowledge_acquisition_port",
+                           "role":  "bounded knowledge acquisition material port",
+                           "root":  "operations/knowledge_acquisition_port",
+                           "status":  "PRESENT_ON_CURRENT_BRANCH",
+                           "file_count":  50,
+                           "script_count":  2,
+                           "policy_count":  1,
+                           "validator_count":  0,
+                           "proof_file_count":  22,
+                           "doc_count":  4,
+                           "required_files":  [
+                                                  "operations/knowledge_acquisition_port/ask_codex_knowledge_source.ps1",
+                                                  "operations/knowledge_acquisition_port/ask_codex_batch_knowledge_source.ps1"
+                                              ],
+                           "missing_required_files":  [
+
+                                                      ],
+                           "required_files_present":  true,
+                           "entrypoint_scripts":  [
+                                                      "operations/knowledge_acquisition_port/ask_codex_batch_knowledge_source.ps1",
+                                                      "operations/knowledge_acquisition_port/ask_codex_knowledge_source.ps1"
+                                                  ],
+                           "notable_files":  [
+                                                 "operations/knowledge_acquisition_port/ask_codex_knowledge_source.ps1",
+                                                 "operations/knowledge_acquisition_port/ask_codex_batch_knowledge_source.ps1"
+                                             ],
+                           "latest_git_commit":  {
+                                                     "head":  "451196674c368376a87ed1cbeab64759c1ee5fcd",
+                                                     "committed_at":  "2026-07-06T11:58:59+04:00",
+                                                     "subject":  "fix: allow knowledge source runtime root override"
+                                                 },
+                           "latest_runtime_artifact":  {
+                                                           "path":  ".runtime/knowledge_acquisition_port/runs/aimo_parallel_school_aimo_auto_maintenance_20260706_125100_cycle1_batch_knowledge_gap/BATCH_KNOWLEDGE_ACQUISITION_PROOF.json",
+                                                           "last_write":  "2026-07-06T12:52:03.3794643+04:00",
+                                                           "bytes":  4414
+                                                       }
+                       },
+                       {
+                           "id":  "map_control",
+                           "role":  "map governance / freshness contract",
+                           "root":  "operations/map_control",
+                           "status":  "PRESENT_ON_CURRENT_BRANCH",
+                           "file_count":  2,
+                           "script_count":  0,
+                           "policy_count":  1,
+                           "validator_count":  0,
+                           "proof_file_count":  0,
+                           "doc_count":  1,
+                           "required_files":  [
+                                                  "operations/map_control/BRANCH_AGNOSTIC_MAP_REFRESH_CONTRACT.md",
+                                                  "operations/map_control/branch_agnostic_map_refresh_policy.json"
+                                              ],
+                           "missing_required_files":  [
+
+                                                      ],
+                           "required_files_present":  true,
+                           "entrypoint_scripts":  [
+
+                                                  ],
+                           "notable_files":  [
+                                                 "operations/map_control/BRANCH_AGNOSTIC_MAP_REFRESH_CONTRACT.md",
+                                                 "operations/map_control/branch_agnostic_map_refresh_policy.json"
+                                             ],
+                           "latest_git_commit":  {
+                                                     "head":  "d0343a58f63f68f364b405d63dd3008308239a15",
+                                                     "committed_at":  "2026-07-06T22:08:34+04:00",
+                                                     "subject":  "fix: avoid self-referential map freshness loop"
+                                                 },
+                           "latest_runtime_artifact":  null
+                       },
+                       {
+                           "id":  "gpt_handoff",
+                           "role":  "GPT/operator compact handoff surface",
+                           "root":  "operations/gpt_handoff",
+                           "status":  "PRESENT_ON_CURRENT_BRANCH",
+                           "file_count":  3,
+                           "script_count":  0,
+                           "policy_count":  0,
+                           "validator_count":  0,
+                           "proof_file_count":  0,
+                           "doc_count":  3,
+                           "required_files":  [
+                                                  "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
+                                              ],
+                           "missing_required_files":  [
+
+                                                      ],
+                           "required_files_present":  true,
+                           "entrypoint_scripts":  [
+
+                                                  ],
+                           "notable_files":  [
+                                                 "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
+                                             ],
+                           "latest_git_commit":  {
+                                                     "head":  "0c7e8d602301e5518d0d148d79d5d0407421afe0",
+                                                     "committed_at":  "2026-07-06T11:02:16+04:00",
+                                                     "subject":  "docs: journal growth system status and next ports"
+                                                 },
+                           "latest_runtime_artifact":  null
+                       }
+                   ],
+    "required_components_present":  true,
+    "missing_required_components":  [
+
+                                    ],
+    "legacy_or_noncanonical_map_surfaces":  [
+                                                {
+                                                    "path":  "self_knowledge/BUILDER_SELF_MODEL.json",
+                                                    "classification":  "LEGACY_SELF_MODEL_REFERENCE",
+                                                    "role":  "historical broad self model; not current composition map"
+                                                },
+                                                {
+                                                    "path":  "self_knowledge/ROADMAP_STATE.json",
+                                                    "classification":  "LEGACY_ROADMAP_REFERENCE",
+                                                    "role":  "historical roadmap state; not current composition map"
+                                                },
+                                                {
+                                                    "path":  "CAPABILITY_ROADMAP.json",
+                                                    "classification":  "CAPABILITY_ROADMAP_NOT_COMPOSITION_MAP",
+                                                    "role":  "capability/skill roadmap; keep separate from body composition map"
+                                                },
+                                                {
+                                                    "path":  "GENESIS_STATE.json",
+                                                    "classification":  "GENESIS_STATE_NOT_COMPOSITION_MAP",
+                                                    "role":  "genesis/static state registry; not current composition map"
+                                                }
+                                            ],
+    "current_runtime_observation":  {
+                                        "live_process_touched":  false,
+                                        "latest_active_compact_memory_manifest":  {
+                                                                                      "path":  ".runtime/active_compact_semantic_memory_v1/manifest.json",
+                                                                                      "last_write":  "2026-07-06T20:04:11.4354297+04:00",
+                                                                                      "bytes":  1011
+                                                                                  },
+                                        "latest_school_runtime_artifact":  {
+                                                                               "path":  ".runtime/school_runs/school_factory_digest_use_test_20_20260706_200311/AGENT_SCHOOL_CANONICAL_ENTRYPOINT_V1.json",
+                                                                               "last_write":  "2026-07-06T20:03:14.7759632+04:00",
+                                                                               "bytes":  7874
+                                                                           },
+                                        "latest_aimo_runtime_artifact":  {
+                                                                             "path":  ".runtime/autonomous_inner_motor/test_life_runs/aimo_parallel_school_aimo_auto_maintenance_20260706_125100/TEST_LIFE_PROOF.json",
+                                                                             "last_write":  "2026-07-06T12:52:06.9916139+04:00",
+                                                                             "bytes":  61164
+                                                                         }
+                                    },
+    "freshness_rule":  "Trust currentness by body_source_fingerprint, not by self-referential commit HEAD.",
+    "boundary":  "This is the single canonical composition/status map. It does not describe how to invoke capabilities; capability invocation belongs to a separate capability map."
+}

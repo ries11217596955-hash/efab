@@ -1,0 +1,149 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_id": "batch_plan_v1",
+  "title": "Batch Plan V1",
+  "type": "object",
+  "required": [
+    "plan_id",
+    "version",
+    "status",
+    "source_order",
+    "source_gap_map",
+    "source_programs",
+    "planner_policy",
+    "batches",
+    "batch_count",
+    "item_count",
+    "admission_required",
+    "execution_allowed",
+    "next_allowed_step"
+  ],
+  "properties": {
+    "plan_id": {
+      "type": "string"
+    },
+    "version": {
+      "const": "V1"
+    },
+    "status": {
+      "enum": [
+        "PLANNED",
+        "ADMITTED",
+        "BLOCKED",
+        "FAILED"
+      ]
+    },
+    "source_order": {
+      "type": "object"
+    },
+    "source_gap_map": {
+      "type": "string"
+    },
+    "source_programs": {
+      "type": "array"
+    },
+    "planner_policy": {
+      "type": "object"
+    },
+    "batches": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "batch_id",
+          "title",
+          "status",
+          "risk",
+          "items",
+          "dependencies",
+          "allowed_files_scope",
+          "blocked_files_scope",
+          "admission_required",
+          "owner_approval_required",
+          "execution_allowed",
+          "stop_conditions",
+          "proof_requirements"
+        ],
+        "properties": {
+          "batch_id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "PLANNED",
+              "BLOCKED",
+              "SKIPPED_BY_POLICY"
+            ]
+          },
+          "risk": {
+            "type": "object"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "item_id",
+                "source_gap",
+                "title",
+                "status",
+                "risk",
+                "dependencies",
+                "assistance_required",
+                "expected_outputs",
+                "validation_required",
+                "proof_required",
+                "quarantine_on_failure"
+              ]
+            }
+          },
+          "dependencies": {
+            "type": "array"
+          },
+          "allowed_files_scope": {
+            "type": "array"
+          },
+          "blocked_files_scope": {
+            "type": "array"
+          },
+          "admission_required": {
+            "type": "boolean"
+          },
+          "owner_approval_required": {
+            "type": "boolean"
+          },
+          "execution_allowed": {
+            "type": "boolean"
+          },
+          "stop_conditions": {
+            "type": "array"
+          },
+          "proof_requirements": {
+            "type": "array"
+          }
+        }
+      }
+    },
+    "batch_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "item_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "admission_required": {
+      "type": "boolean"
+    },
+    "execution_allowed": {
+      "type": "boolean"
+    },
+    "next_allowed_step": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

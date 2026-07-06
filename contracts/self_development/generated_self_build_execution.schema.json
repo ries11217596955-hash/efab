@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_id": "generated_self_build_execution_v1",
+  "title": "Generated Self-Build Execution V1",
+  "type": "object",
+  "required": [
+    "execution_id",
+    "program_id",
+    "status",
+    "execution_mode",
+    "source_program_path",
+    "source_admission_path",
+    "executed_by_phase",
+    "admitted_before_execution",
+    "admission_decision",
+    "execution_performed",
+    "external_agent_production",
+    "external_install_performed",
+    "external_fetch_performed",
+    "route_lock_changed",
+    "capability_created",
+    "completed_loop",
+    "next_recommended_action"
+  ],
+  "properties": {
+    "execution_id": {
+      "const": "SELF_BUILD_PROGRAM_001_EXECUTION"
+    },
+    "program_id": {
+      "const": "SELF_BUILD_PROGRAM_001"
+    },
+    "status": {
+      "const": "PASS"
+    },
+    "execution_mode": {
+      "const": "CONTROLLED_SELF_BUILD_EXECUTION"
+    },
+    "executed_by_phase": {
+      "const": "PHASE90_BUILDER_EXECUTES_OWN_GENERATED_SELF_BUILD_PROGRAM_V1"
+    },
+    "admitted_before_execution": {
+      "const": true
+    },
+    "admission_decision": {
+      "const": "ADMIT_CANDIDATE_FOR_CONTROLLED_EXECUTION"
+    },
+    "execution_performed": {
+      "const": true
+    },
+    "external_agent_production": {
+      "const": false
+    },
+    "external_install_performed": {
+      "const": false
+    },
+    "external_fetch_performed": {
+      "const": false
+    },
+    "route_lock_changed": {
+      "const": false
+    },
+    "capability_created": {
+      "const": "generated_self_build_execution_v1"
+    },
+    "completed_loop": {
+      "const": true
+    },
+    "next_recommended_action": {
+      "const": "CREATE_AGENT_BUILDER_NEXT_15_STEPS_LOCK_V2"
+    }
+  },
+  "additionalProperties": true
+}

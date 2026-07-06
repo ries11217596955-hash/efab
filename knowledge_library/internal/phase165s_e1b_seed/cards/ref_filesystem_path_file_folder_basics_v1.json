@@ -1,0 +1,32 @@
+{
+  "schema_version": "internal_reference_card.v1",
+  "reference_id": "ref.filesystem.path_file_folder_basics.v1",
+  "domain": "filesystem_reference",
+  "question_it_answers": "How should Builder reason about files, folders, paths, extensions and existence checks?",
+  "answer": "Use absolute repo-root anchored paths, verify existence with a fresh command, avoid guessing from names, and record path evidence before making existence/absence claims.",
+  "use_when": [
+    "file operation",
+    "folder operation",
+    "path confusion",
+    "existence claim"
+  ],
+  "next_action": "generate_path_probe_or_file_manifest_proof",
+  "source_atoms": [
+    "concept.file.v1",
+    "concept.folder.v1",
+    "concept.path.v1",
+    "concept.file_extension.v1"
+  ],
+  "status": "INTERNAL_REFERENCE",
+  "trusted": false,
+  "accepted_atom": false,
+  "creates_atom_only_after_gap_solved": true,
+  "school_curriculum": false,
+  "protected_state_mutation": false,
+  "phase": "PHASE165S-E1B_INTERNAL_REFERENCE_LIBRARY_SEED",
+  "created_utc": "2026-06-12T00:00:00Z",
+  "ledger_basis": [
+    "AGENT_BUILDER_STRATEGY_LEDGER_V0_30_AFTER_D2_AND_REFERENCE_SEARCH_POLICY_AGREEMENT.md",
+    "Sections 191.3-191.18"
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "schema_version": "AGENT_BUILDER_ROADMAP_STATE_V1",
+  "generated_at_utc": "2026-05-28T15:44:58.6131166Z",
+  "collection_status": "collected",
+  "current_capability": "agent_builder_self_knowledge_system_full_contract_v1",
+  "active_task_id": "NONE",
+  "queue_clean": true,
+  "phase_78": {
+    "id": "agent_builder_self_knowledge_system_full_contract_v1",
+    "phase": "PHASE_78",
+    "gate": "AGENT_BUILDER_SELF_KNOWLEDGE_SYSTEM_FULL_CONTRACT_V1",
+    "status": "completed",
+    "raw_status": "COMPLETED",
+    "source_path": "CAPABILITY_ROADMAP.json"
+  },
+  "roadmap_summary": {
+    "source_path": "CAPABILITY_ROADMAP.json",
+    "phase_78": {
+      "id": "agent_builder_self_knowledge_system_full_contract_v1",
+      "phase": "PHASE_78",
+      "gate": "AGENT_BUILDER_SELF_KNOWLEDGE_SYSTEM_FULL_CONTRACT_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    "counts": {
+      "total": 87,
+      "completed": 86,
+      "active": 0,
+      "candidate": 0,
+      "planned": 0,
+      "failed": 1,
+      "proven_by_evidence_file": 71,
+      "unknown": 0
+    },
+    "latest_active": [],
+    "latest_completed": [
+      {
+        "id": "runbook_executor_agent_production_v1",
+        "phase": "PHASE_73",
+        "gate": "RUNBOOK_EXECUTOR_AGENT_PRODUCTION_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/RUNBOOK_EXECUTOR_AGENT_PRODUCTION_V1.json",
+          "reports/external_agent_production/RUNBOOK_EXECUTOR_AGENT_PRODUCTION_V1_REPORT.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "runbook_executor_agent_github_action_launch_v1",
+        "phase": null,
+        "gate": null,
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_LAUNCH_V1.json",
+          "reports/external_agent_production/RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_LAUNCH_V1_REPORT.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "runbook_executor_agent_github_action_acceptance_v1",
+        "phase": null,
+        "gate": null,
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_ACCEPTANCE_V1.json",
+          "reports/external_agent_production/RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_ACCEPTANCE_V1_REPORT.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "agent_production_closed_loop_standard_v1",
+        "phase": "PHASE_76",
+        "gate": "AGENT_PRODUCTION_CLOSED_LOOP_STANDARD_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/AGENT_PRODUCTION_CLOSED_LOOP_STANDARD_V1.json",
+          "reports/external_agent_production/AGENT_PRODUCTION_CLOSED_LOOP_STANDARD_V1_REPORT.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      },
+      {
+        "id": "evidence_packager_agent_closed_loop_trial_v1",
+        "phase": "PHASE_77",
+        "gate": "EVIDENCE_PACKAGER_AGENT_CLOSED_LOOP_TRIAL_V1",
+        "status": "completed",
+        "raw_status": "COMPLETED",
+        "evidence_status": "proven",
+        "evidence_paths": [
+          "proofs/EVIDENCE_PACKAGER_AGENT_CLOSED_LOOP_TRIAL_V1.json",
+          "reports/external_agent_production/EVIDENCE_PACKAGER_AGENT_CLOSED_LOOP_TRIAL_V1_REPORT.json"
+        ],
+        "source_path": "CAPABILITY_ROADMAP.json"
+      }
+    ]
+  }
+}

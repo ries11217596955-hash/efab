@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "builder_learning_mode_state.schema.json",
+  "title": "Builder Learning Mode State",
+  "type": "object",
+  "required": [
+    "learning_mode",
+    "previous_learning_mode",
+    "decision_reason",
+    "active_curriculum_id",
+    "active_school_run_id",
+    "active_route_lock_file",
+    "current_route_step_id",
+    "self_mode_allowed",
+    "school_mode_allowed",
+    "absorption_required",
+    "owner_review_required",
+    "accepted_repo_mutation_allowed",
+    "created_at"
+  ],
+  "properties": {
+    "learning_mode": {
+      "enum": [
+        "SELF_MODE",
+        "SCHOOL_MODE",
+        "ABSORB_EXPERIENCE",
+        "WAITING_OWNER_REVIEW",
+        "SAFE_IDLE_ONLY"
+      ]
+    },
+    "accepted_repo_mutation_allowed": {
+      "const": false
+    }
+  },
+  "additionalProperties": true
+}

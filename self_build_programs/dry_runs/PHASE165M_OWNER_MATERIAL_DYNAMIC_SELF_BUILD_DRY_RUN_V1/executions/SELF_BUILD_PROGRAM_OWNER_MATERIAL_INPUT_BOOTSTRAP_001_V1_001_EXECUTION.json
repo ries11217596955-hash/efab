@@ -1,0 +1,63 @@
+﻿{
+    "schema_version":  "dynamic_self_build_program_execution_v1",
+    "phase":  "PHASE90",
+    "executed_by":  "EXECUTE_DYNAMIC_SELF_BUILD_PROGRAM_V1",
+    "created_utc":  "2026-06-10T12:06:25.9558563Z",
+    "execution_id":  "SELF_BUILD_PROGRAM_OWNER_MATERIAL_INPUT_BOOTSTRAP_001_V1_001_EXECUTION",
+    "program_id":  "SELF_BUILD_PROGRAM_OWNER_MATERIAL_INPUT_BOOTSTRAP_001_V1_001",
+    "admission_id":  "SELF_BUILD_PROGRAM_OWNER_MATERIAL_INPUT_BOOTSTRAP_001_V1_001_ADMISSION",
+    "status":  "PASS",
+    "execution_status":  "CONTROLLED_RUNTIME_EXECUTED",
+    "execution_performed":  true,
+    "completed_loop":  true,
+    "controlled_runtime":  true,
+    "queue_returned_to_none":  true,
+    "next_required_step":  "PHASE165I_SELF_BUILD_LOOP_REGRESSION_HARNESS",
+    "source":  {
+                   "dynamic_program_path":  "self_build_programs/dry_runs/PHASE165M_OWNER_MATERIAL_DYNAMIC_SELF_BUILD_DRY_RUN_V1/generated/SELF_BUILD_PROGRAM_OWNER_MATERIAL_INPUT_BOOTSTRAP_001_V1_001.json",
+                   "dynamic_admission_path":  "self_build_programs/dry_runs/PHASE165M_OWNER_MATERIAL_DYNAMIC_SELF_BUILD_DRY_RUN_V1/admission/SELF_BUILD_PROGRAM_OWNER_MATERIAL_INPUT_BOOTSTRAP_001_V1_001_ADMISSION.json",
+                   "selected_material_id":  "OWNER_MATERIAL_INPUT_BOOTSTRAP_001",
+                   "source_material_id":  "OWNER_MATERIAL_INPUT_BOOTSTRAP_001",
+                   "selected_source_file":  "OWNER_MATERIAL_INPUT_BOOTSTRAP_001.json",
+                   "selector":  "SELECT_OWNER_MATERIAL_INPUT_V1",
+                   "lineage_id":  "LINEAGE_SELF_BUILD_PROGRAM_OWNER_MATERIAL_INPUT_BOOTSTRAP_001_V1_001",
+                   "lineage_path":  "self_build_programs/lineage/SELF_BUILD_CAUSE_LINEAGE_EXAMPLE_V1.json"
+               },
+    "lineage":  {
+                    "lineage_id":  "LINEAGE_SELF_BUILD_PROGRAM_OWNER_MATERIAL_INPUT_BOOTSTRAP_001_V1_001",
+                    "required_path":  "PHASE87-\u003ePHASE88-\u003ePHASE89-\u003ePHASE90",
+                    "lineage_required":  true,
+                    "not_atom":  true,
+                    "owner_material_preserved":  true,
+                    "program_identity_preserved":  true,
+                    "dynamic_program_preserved":  true,
+                    "admission_lineage_preserved":  true,
+                    "execution_lineage_preserved":  true
+                },
+    "controlled_execution":  {
+                                 "dynamic_program_validated":  true,
+                                 "dynamic_admission_validated":  true,
+                                 "lineage_validated":  true,
+                                 "external_agent_production":  false,
+                                 "external_fetch_or_install":  false,
+                                 "protected_state_mutation":  false,
+                                 "route_lock_mutation":  false,
+                                 "codex_used":  false
+                             },
+    "owner_material":  {
+                           "schema":  "OWNER_MATERIAL_INPUT_FOR_REAL_SELF_BUILD_DECISION_KERNEL_V1",
+                           "status":  "READY",
+                           "created_at":  "2026-06-10T07:48:49.1978548Z",
+                           "source_kind":  "OWNER_CANDIDATE_SELF_GROWTH_REQUEST",
+                           "source_request_path":  "self_build_batch/owner_candidate_self_growth_adapter/PHASE164G_SELF_GROWTH_FROM_OWNER_CANDIDATE_CODEX_ARCHIVE_BOUNDARY_CHECKER_001/OWNER_CANDIDATE_SELF_GROWTH_REQUEST.json",
+                           "source_candidate_id":  "OWNER_CANDIDATE_CODEX_ARCHIVE_BOUNDARY_CHECKER_001",
+                           "source_candidate_path":  "owner_orders/candidate_inbox/OWNER_CANDIDATE_CODEX_ARCHIVE_BOUNDARY_CHECKER_001.candidate.json",
+                           "target_real_process":  "PHASE87_DECISION_KERNEL_TO_PHASE88_SELF_BUILD_PROGRAM_GENERATOR",
+                           "route_correction":  "PHASE164N_STOP_SIDE_CONVEYOR",
+                           "allowed_use":  "OPTIONAL_DECISION_EVIDENCE",
+                           "not_a_parallel_conveyor":  true,
+                           "no_direct_atom_admission":  true,
+                           "no_codex_execution":  true,
+                           "no_route_lock_mutation":  true
+                       }
+}

@@ -1,0 +1,67 @@
+{
+  "simulation_id": "CONTINUE_ON_FAILURE_SIMULATION_V1",
+  "status": "SIMULATION_ONLY",
+  "generated_at": "2026-05-29T16:58:57.1779158Z",
+  "source_dry_run_ledger": "self_build_batch/ledger/BATCH_PLAN_EXAMPLE_V1_LEDGER_DRY_RUN.json",
+  "execution_performed": false,
+  "real_items_executed": false,
+  "real_items_marked_pass": false,
+  "simulated_item_count": 5,
+  "scenario_results": [
+    {
+      "item_id": "ITEM_PHASE97_BATCH_ADMISSION_POLICY_V1",
+      "source_gap": "PHASE97_BATCH_ADMISSION_POLICY_V1",
+      "simulated_result": "WOULD_PASS_WITH_PROOF_REQUIRED",
+      "failure_class": null,
+      "runtime_action": "record_attempt_and_require_proof_before_pass",
+      "continue_after_item": true,
+      "real_ledger_mutated": false,
+      "real_item_marked_pass": false
+    },
+    {
+      "item_id": "ITEM_PHASE98_ITEM_LEVEL_EXECUTION_LEDGER_V1",
+      "source_gap": "PHASE98_ITEM_LEVEL_EXECUTION_LEDGER_V1",
+      "simulated_result": "WOULD_FAIL_SAFE_AND_CONTINUE",
+      "failure_class": "SAFE_ITEM_FAILURE",
+      "runtime_action": "record_failure_reason_then_continue",
+      "continue_after_item": true,
+      "real_ledger_mutated": false,
+      "real_item_marked_pass": false
+    },
+    {
+      "item_id": "ITEM_PHASE99_CONTINUE_ON_FAILURE_RUNTIME_V1",
+      "source_gap": "PHASE99_CONTINUE_ON_FAILURE_RUNTIME_V1",
+      "simulated_result": "WOULD_QUARANTINE_AND_CONTINUE",
+      "failure_class": "ITEM_VALIDATION_FAILURE",
+      "runtime_action": "record_quarantine_reason_then_continue",
+      "continue_after_item": true,
+      "real_ledger_mutated": false,
+      "real_item_marked_pass": false
+    },
+    {
+      "item_id": "ITEM_PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1",
+      "source_gap": "PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1",
+      "simulated_result": "WOULD_BLOCK_AND_RECORD_REASON",
+      "failure_class": "BLOCKED_DEPENDENCY",
+      "runtime_action": "record_blocker_reason_and_skip_dependent_item",
+      "continue_after_item": true,
+      "real_ledger_mutated": false,
+      "real_item_marked_pass": false
+    },
+    {
+      "item_id": "ITEM_PHASE101_BATCH_PROOF_AGGREGATOR_V1",
+      "source_gap": "PHASE101_BATCH_PROOF_AGGREGATOR_V1",
+      "simulated_result": "WOULD_STOP_ON_SYSTEMIC_FAILURE",
+      "failure_class": "SYSTEMIC_FAILURE",
+      "runtime_action": "record_systemic_failure_and_stop_batch",
+      "continue_after_item": false,
+      "real_ledger_mutated": false,
+      "real_item_marked_pass": false
+    }
+  ],
+  "continue_after_safe_failure_proven_by_simulation": true,
+  "stop_on_systemic_failure_proven_by_simulation": true,
+  "no_real_ledger_mutation": true,
+  "quarantine_registry_required_next": true,
+  "next_allowed_step": "PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1"
+}

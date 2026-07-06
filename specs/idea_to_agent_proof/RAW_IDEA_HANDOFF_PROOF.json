@@ -1,0 +1,24 @@
+{
+  "request_id": "phase18_architect_handoff_proof_001",
+  "payload": {
+    "problem": "Website funnel audit agent",
+    "target_user": "Product Lead / System Operator",
+    "operator_goal": "Produce a validated production agent spec draft for a domain-neutral website funnel audit agent.",
+    "expected_outputs": [
+      "audit architecture",
+      "draft production spec",
+      "build readiness signal"
+    ],
+    "constraints": [
+      "domain-neutral",
+      "artifact-first",
+      "no hardcoded single target"
+    ],
+    "non_goals": [
+      "do not generate final agent package inside handoff-only phase"
+    ]
+  },
+  "metadata": {
+    "source": "phase18_self_build_proof"
+  }
+}

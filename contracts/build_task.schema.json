@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Agent Builder Build Task",
+  "type": "object",
+  "required": [
+    "task_id",
+    "capability_id",
+    "objective",
+    "scope",
+    "validation"
+  ],
+  "properties": {
+    "task_id": {
+      "type": "string"
+    },
+    "capability_id": {
+      "type": "string"
+    },
+    "objective": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "array"
+    },
+    "validation": {
+      "type": "array"
+    }
+  }
+}

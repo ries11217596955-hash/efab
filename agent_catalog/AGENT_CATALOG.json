@@ -1,0 +1,73 @@
+{
+  "catalog_version": 1,
+  "status": "ACTIVE",
+  "agents": [
+    {
+      "agent_id": "remediation_intake_operator_agent_v1",
+      "agent_name": "Remediation Intake Operator Agent v1",
+      "purpose": "принимает описание проблемы и превращает его в структурированную карточку для оператора",
+      "location": "generated_agents/remediation_intake_operator_agent_v1/",
+      "run_script": "generated_agents/remediation_intake_operator_agent_v1/run.ps1",
+      "github_workflow": ".github/workflows/run-remediation-intake-operator-agent-v1.yml",
+      "github_workflow_name": "Run Remediation Intake Operator Agent v1",
+      "artifact_name": "remediation-intake-operator-agent-v1-output",
+      "status": "ACCEPTED",
+      "local_validation": "PASS",
+      "github_action_validation": "PASS",
+      "proof_paths": [
+        "proofs/EXTERNAL_AGENT_PRODUCTION_PROGRAM_TEST_V1.json",
+        "proofs/AGENT_GITHUB_ACTION_LAUNCH_V1.json"
+      ],
+      "report_paths": [
+        "reports/external_agent_production/EXTERNAL_AGENT_PRODUCTION_PROGRAM_TEST_V1_REPORT.json",
+        "reports/external_agent_production/AGENT_GITHUB_ACTION_LAUNCH_V1_REPORT.json",
+        "reports/external_agent_production/REMEDIATION_INTAKE_OPERATOR_AGENT_V1_GITHUB_ACTION_ACCEPTANCE.md"
+      ]
+    },
+    {
+      "agent_id": "runbook_executor_agent_v1",
+      "agent_name": "Runbook Executor Agent v1",
+      "purpose": "превращает runbook и задачу в операторский план действий",
+      "location": "generated_agents/runbook_executor_agent_v1/",
+      "run_script": "generated_agents/runbook_executor_agent_v1/run.ps1",
+      "github_workflow": ".github/workflows/run-runbook-executor-agent-v1.yml",
+      "github_workflow_name": "Run Runbook Executor Agent v1",
+      "artifact_name": "runbook-executor-agent-v1-output",
+      "status": "ACCEPTED",
+      "local_validation": "PASS",
+      "github_action_validation": "PASS",
+      "proof_paths": [
+        "proofs/RUNBOOK_EXECUTOR_AGENT_PROGRAM_TRIAL_V1.json",
+        "proofs/RUNBOOK_EXECUTOR_AGENT_PRODUCTION_V1.json",
+        "proofs/RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_LAUNCH_V1.json",
+        "proofs/RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_ACCEPTANCE_V1.json"
+      ],
+      "report_paths": [
+        "reports/external_agent_production/RUNBOOK_EXECUTOR_AGENT_PROGRAM_TRIAL_V1_REPORT.json",
+        "reports/external_agent_production/RUNBOOK_EXECUTOR_AGENT_PRODUCTION_V1_REPORT.json",
+        "reports/external_agent_production/RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_LAUNCH_V1_REPORT.json",
+        "reports/external_agent_production/RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_ACCEPTANCE_V1_REPORT.json",
+        "reports/external_agent_production/RUNBOOK_EXECUTOR_AGENT_V1_GITHUB_ACTION_ACCEPTANCE.md"
+      ],
+      "source_program_path": "agent_programs/runbook_executor_agent_v1/PROGRAM.json",
+      "execution_plan_path": "agent_program_runs/runbook_executor_agent_v1/EXECUTION_PLAN.json"
+    },
+    {
+      "agent_id": "evidence_packager_agent_v1",
+      "name": "Evidence Packager Agent v1",
+      "status": "ACCEPTED",
+      "package_path": "generated_agents/evidence_packager_agent_v1",
+      "local_run_command": "pwsh -NoLogo -NoProfile -File generated_agents/evidence_packager_agent_v1/run.ps1 -InputPath generated_agents/evidence_packager_agent_v1/INPUT_EXAMPLE.json -OutputPath generated_agents/evidence_packager_agent_v1/OUTPUT_EXAMPLE_RUNTIME.json",
+      "github_workflow": ".github/workflows/run-evidence-packager-agent-v1.yml",
+      "github_workflow_name": "Run Evidence Packager Agent v1",
+      "artifact_name": "evidence-packager-agent-v1-output",
+      "github_action_validation": "PASS",
+      "proof_paths": [
+        "proofs/EVIDENCE_PACKAGER_AGENT_CLOSED_LOOP_TRIAL_V1.json"
+      ],
+      "report_paths": [
+        "reports/external_agent_production/EVIDENCE_PACKAGER_AGENT_CLOSED_LOOP_TRIAL_V1_REPORT.json"
+      ]
+    }
+  ]
+}

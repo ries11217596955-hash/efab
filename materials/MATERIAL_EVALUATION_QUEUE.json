@@ -1,0 +1,154 @@
+{
+  "status": "METADATA_EVALUATED_AWAITING_OWNER_DECISION",
+  "queue_id": "MATERIAL_EVALUATION_QUEUE_V1",
+  "created_by": "PHASE136_IMPORT_MANUAL_MATERIAL_SCOUT_PASS_TO_CATALOG_V1",
+  "run_id": "PHASE137_MATERIAL_QUARANTINE_EVALUATION_RUNTIME_001",
+  "source_catalog_path": "materials/MATERIAL_CATALOG.json",
+  "candidate_material_count": 3,
+  "executable_evaluation_count": 3,
+  "reference_only_excluded_count": 1,
+  "trusted_material_count": 0,
+  "materials": [
+    {
+      "material_id": "candidate_pester_powershell_test_framework",
+      "name": "Pester",
+      "material_type": "LIBRARY",
+      "source": "https://github.com/pester/Pester",
+      "status": "METADATA_EVALUATED_AWAITING_OWNER_DECISION",
+      "trust_status": "NOT_TRUSTED",
+      "external_fetch_allowed": false,
+      "dependency_install_allowed": false,
+      "executable_use_allowed": false,
+      "required_before_any_use": [
+        "OWNER_APPROVAL",
+        "LICENSE_PROVENANCE_REVIEW",
+        "QUARANTINE",
+        "WRAPPER_DECISION",
+        "SMOKE_TEST"
+      ],
+      "evaluation_status": "QUARANTINE_EVALUATED_METADATA_ONLY",
+      "trusted": false,
+      "executable_used": false
+    },
+    {
+      "material_id": "candidate_psscriptanalyzer_static_checker",
+      "name": "PSScriptAnalyzer",
+      "material_type": "LIBRARY",
+      "source": "https://github.com/PowerShell/PSScriptAnalyzer",
+      "status": "METADATA_EVALUATED_AWAITING_OWNER_DECISION",
+      "trust_status": "NOT_TRUSTED",
+      "external_fetch_allowed": false,
+      "dependency_install_allowed": false,
+      "executable_use_allowed": false,
+      "required_before_any_use": [
+        "OWNER_APPROVAL",
+        "LICENSE_PROVENANCE_REVIEW",
+        "QUARANTINE",
+        "WRAPPER_DECISION",
+        "SMOKE_TEST"
+      ],
+      "evaluation_status": "QUARANTINE_EVALUATED_METADATA_ONLY",
+      "trusted": false,
+      "executable_used": false
+    },
+    {
+      "material_id": "candidate_syft_sbom_cli",
+      "name": "Syft",
+      "material_type": "CLI_TOOL",
+      "source": "https://github.com/anchore/syft",
+      "status": "METADATA_EVALUATED_AWAITING_OWNER_DECISION",
+      "trust_status": "NOT_TRUSTED",
+      "external_fetch_allowed": false,
+      "dependency_install_allowed": false,
+      "executable_use_allowed": false,
+      "required_before_any_use": [
+        "OWNER_APPROVAL",
+        "LICENSE_PROVENANCE_REVIEW",
+        "QUARANTINE",
+        "WRAPPER_DECISION",
+        "SMOKE_TEST"
+      ],
+      "evaluation_status": "QUARANTINE_EVALUATED_METADATA_ONLY",
+      "trusted": false,
+      "executable_used": false
+    }
+  ],
+  "queue_items": [
+    {
+      "material_id": "candidate_pester_powershell_test_framework",
+      "name": "Pester",
+      "material_type": "LIBRARY",
+      "source": "https://github.com/pester/Pester",
+      "status": "METADATA_EVALUATED_AWAITING_OWNER_DECISION",
+      "trust_status": "NOT_TRUSTED",
+      "external_fetch_allowed": false,
+      "dependency_install_allowed": false,
+      "executable_use_allowed": false,
+      "required_before_any_use": [
+        "OWNER_APPROVAL",
+        "LICENSE_PROVENANCE_REVIEW",
+        "QUARANTINE",
+        "WRAPPER_DECISION",
+        "SMOKE_TEST"
+      ],
+      "evaluation_status": "QUARANTINE_EVALUATED_METADATA_ONLY",
+      "trusted": false,
+      "executable_used": false
+    },
+    {
+      "material_id": "candidate_psscriptanalyzer_static_checker",
+      "name": "PSScriptAnalyzer",
+      "material_type": "LIBRARY",
+      "source": "https://github.com/PowerShell/PSScriptAnalyzer",
+      "status": "METADATA_EVALUATED_AWAITING_OWNER_DECISION",
+      "trust_status": "NOT_TRUSTED",
+      "external_fetch_allowed": false,
+      "dependency_install_allowed": false,
+      "executable_use_allowed": false,
+      "required_before_any_use": [
+        "OWNER_APPROVAL",
+        "LICENSE_PROVENANCE_REVIEW",
+        "QUARANTINE",
+        "WRAPPER_DECISION",
+        "SMOKE_TEST"
+      ],
+      "evaluation_status": "QUARANTINE_EVALUATED_METADATA_ONLY",
+      "trusted": false,
+      "executable_used": false
+    },
+    {
+      "material_id": "candidate_syft_sbom_cli",
+      "name": "Syft",
+      "material_type": "CLI_TOOL",
+      "source": "https://github.com/anchore/syft",
+      "status": "METADATA_EVALUATED_AWAITING_OWNER_DECISION",
+      "trust_status": "NOT_TRUSTED",
+      "external_fetch_allowed": false,
+      "dependency_install_allowed": false,
+      "executable_use_allowed": false,
+      "required_before_any_use": [
+        "OWNER_APPROVAL",
+        "LICENSE_PROVENANCE_REVIEW",
+        "QUARANTINE",
+        "WRAPPER_DECISION",
+        "SMOKE_TEST"
+      ],
+      "evaluation_status": "QUARANTINE_EVALUATED_METADATA_ONLY",
+      "trusted": false,
+      "executable_used": false
+    }
+  ],
+  "excluded_reference_only_materials": [
+    {
+      "material_id": "reference_json_schema_official",
+      "name": "JSON Schema official reference",
+      "reason": "REFERENCE_ONLY_NOT_EXECUTABLE"
+    }
+  ],
+  "external_fetch_performed": false,
+  "dependency_install_performed": false,
+  "executable_materials_used": false,
+  "next_allowed_step": "PHASE138_OWNER_DECISION_FOR_FIRST_MATERIAL_ADOPTION_V1",
+  "updated_by": "PHASE137_BUILD_MATERIAL_QUARANTINE_EVALUATION_RUNTIME_V1",
+  "reference_only_evaluated_as_executable": false
+}

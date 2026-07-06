@@ -1,0 +1,19 @@
+{
+  "task_id": "TASK_CAPABILITY_GAP_DETECTOR_V1_001",
+  "phase": "PHASE93_CAPABILITY_GAP_DETECTOR_V1",
+  "status": "READY",
+  "mode": "SELF_BUILD",
+  "pack_id": "PHASE93_CAPABILITY_GAP_DETECTOR_V1",
+  "title": "Create capability gap detector V1",
+  "created_by": "terminal_runpack_without_codex",
+  "route_lock": "AGENT_BUILDER_NEXT_15_STEPS_LOCK_V2_R2.md",
+  "baseline_commit": "339a060",
+  "expected_outputs": [
+    "contracts/self_development/capability_gap_detector_v1.schema.json",
+    "self_build_backlog/CAPABILITY_GAP_DETECTOR_V1.json",
+    "self_build_backlog/CAPABILITY_GAP_INDEX_V1.json",
+    "reports/self_development/CAPABILITY_GAP_DETECTOR_REPORT.json",
+    "proofs/self_development/CAPABILITY_GAP_DETECTOR_V1.json"
+  ],
+  "next_allowed_step": "PHASE94_OWNER_ORDER_TO_GAP_MAP_V1"
+}

@@ -1,0 +1,12 @@
+{
+  "task_id": "TASK_OWNER_VISIBLE_SELF_BUILD_ACCEPTANCE_V1_001",
+  "capability_id": "owner_visible_self_build_acceptance_v1",
+  "objective": "Prove the owner-visible self-build acceptance loop by consuming the PHASE54 repo-defined pack through the GitHub Action compatible self-build path.",
+  "execution_kind": "SELF_BUILD_ACCEPTANCE",
+  "expected_gate": "OWNER_VISIBLE_SELF_BUILD_ACCEPTANCE_V1",
+  "acceptance_surfaces": [
+    "Agent Builder Self-Build GitHub Action",
+    "Build Agent From Raw Idea GitHub Action",
+    "owner-visible runtime proof artifact"
+  ]
+}

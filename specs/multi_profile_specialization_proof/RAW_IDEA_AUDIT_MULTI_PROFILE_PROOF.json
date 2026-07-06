@@ -1,0 +1,23 @@
+{
+  "request_id": "phase26_audit_multi_profile_proof_001",
+  "payload": {
+    "problem": "Evidence audit triage agent",
+    "target_user": "Product Lead / System Operator",
+    "operator_goal": "Build a specialized audit agent that turns evidence into repair priorities.",
+    "expected_outputs": [
+      "finding queue",
+      "repair priorities",
+      "specialized runtime proof"
+    ],
+    "constraints": [
+      "domain-neutral",
+      "registry-backed specialization only"
+    ],
+    "non_goals": [
+      "do not use free-form code synthesis"
+    ]
+  },
+  "metadata": {
+    "source": "phase26_audit_multi_profile_proof"
+  }
+}

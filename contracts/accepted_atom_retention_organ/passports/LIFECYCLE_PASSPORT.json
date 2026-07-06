@@ -1,0 +1,17 @@
+{
+  "schema": "efab_lifecycle_passport_v1",
+  "organ_id": "accepted_atom_retention_organ",
+  "status": "CANDIDATE",
+  "lifecycle": [
+    "candidate_trace_created",
+    "acceptance_validated",
+    "compact_receipt_emitted",
+    "batch_manifest_emitted",
+    "heavy_successful_trace_pruned",
+    "validator_pass",
+    "commit_checkpoint"
+  ],
+  "current_stage": "micro_proof_passed",
+  "next_stage": "integrate_retention_gate_with_real_acceptance_runner",
+  "rollback_policy": "Do not promote to runtime if passport validator or real-runner micro-trial fails."
+}

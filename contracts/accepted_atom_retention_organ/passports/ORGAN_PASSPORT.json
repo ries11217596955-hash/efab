@@ -1,0 +1,19 @@
+{
+  "schema": "efab_organ_passport_v1",
+  "organ_id": "accepted_atom_retention_organ",
+  "name": "Accepted Atom Retention Organ",
+  "status": "CANDIDATE_WITH_MICRO_PROOF_NOT_PROMOTED",
+  "runtime_ready": false,
+  "promoted_to_real_runner": false,
+  "purpose": "Prevent repo bloat by compacting successful accepted atoms into receipts and pruning heavy successful traces.",
+  "contract_path": "contracts/accepted_atom_retention_organ/ACCEPTED_ATOM_RETENTION_ORGAN_CONTRACT.md",
+  "module_path": "modules/invoke_accepted_atom_retention_compactor_v1.ps1",
+  "proof_path": "tests/accepted_atom_retention/ACCEPTED_ATOM_RETENTION_MICRO_PROOF_V1.json",
+  "proof_commit": "9c00b68",
+  "boundaries": {
+    "is_builder_brain": false,
+    "is_candidate_component": true,
+    "is_runtime_core": false,
+    "requires_integration_gate_before_live_learning": true
+  }
+}

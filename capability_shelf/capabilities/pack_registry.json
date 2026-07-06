@@ -1,0 +1,46 @@
+{
+  "capability_id": "pack_registry",
+  "status": "READY",
+  "purpose": "Read pack registry as the repo-native map of known Builder capabilities without adding routes during bootstrap.",
+  "owner_line": "SELF_BUILD",
+  "existing_files": [
+    "packs/registry.json"
+  ],
+  "read_paths": [
+    "packs/registry.json"
+  ],
+  "write_paths": [
+    "capability_shelf/summaries",
+    "living_learning_environment/reading_sessions/<session_id>"
+  ],
+  "forbidden_paths": [
+    "proofs/self_development/PHASE142-PHASE147",
+    "reports/self_development/PHASE142-PHASE147",
+    "self_control/accepted_phase_results",
+    "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/current",
+    "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/existing_trials",
+    "generated_agents",
+    "agent_catalog",
+    "applied_agents",
+    "route_locks",
+    "orchestrator/run.ps1"
+  ],
+  "safe_to_reuse": true,
+  "runtime_mutates_repo": false,
+  "requires_owner_prompt": false,
+  "requires_codex": false,
+  "can_be_used_by_builder": true,
+  "example_usage_path": "capability_shelf/usage_examples/pack_registry.json",
+  "validator_reference": "capability_shelf/validators/pack_registry.json",
+  "known_risks": [
+    "Registry reading is not permission to execute packs.",
+    "New execution routes remain out of scope."
+  ],
+  "promotion_requirements": [
+    "validator PASS",
+    "proof artifact",
+    "no forbidden scope changes",
+    "promotion gate record",
+    "explicit next_allowed_step"
+  ]
+}

@@ -1,0 +1,281 @@
+{
+  "schema_version": "phase165s_e1b_heavy_process_catalog.v1",
+  "phase": "PHASE165S_E1B_HEAVY_PROCESS_REFERENCE_LIBRARY_V1",
+  "created_utc": "2026-06-12T05:24:58Z",
+  "status": "STAGED_INTERNAL_HEAVY_PROCESS_REFERENCE",
+  "purpose": "Internal reference library for hard operational processes, not primitive concepts.",
+  "source_basis": [
+    "Owner strategy: D2B already learns basic atoms; library should cover heavy processes.",
+    "Strategy Ledger V0.30: reference is read on demand, not school and not accepted memory.",
+    "No external materials downloaded in this pack."
+  ],
+  "explicit_not": [
+    "not accepted memory",
+    "not school curriculum",
+    "not D2B material",
+    "not external source catalogue",
+    "not protected state mutation"
+  ],
+  "counts": {
+    "cards": 38,
+    "runbooks": 16,
+    "indexes": 2,
+    "schemas": 1
+  },
+  "cards": [
+    {
+      "id": "heavy_process_reference.autonomous_long_run_recovery_and_resume.v1",
+      "file": "cards/01_autonomous_long_run_recovery_and_resume.json",
+      "title": "Autonomous Long Run Recovery And Resume",
+      "process_class": "runtime_checkpoint_resume"
+    },
+    {
+      "id": "heavy_process_reference.phase162_acceptance_pipeline_reconciliation.v1",
+      "file": "cards/02_phase162_acceptance_pipeline_reconciliation.json",
+      "title": "Phase162 Acceptance Pipeline Reconciliation",
+      "process_class": "atom_lifecycle"
+    },
+    {
+      "id": "heavy_process_reference.zero_surface_vs_partial_surface_failure.v1",
+      "file": "cards/03_zero_surface_vs_partial_surface_failure.json",
+      "title": "Zero Surface Vs Partial Surface Failure",
+      "process_class": "failure_triage"
+    },
+    {
+      "id": "heavy_process_reference.protected_state_mutation_gate.v1",
+      "file": "cards/04_protected_state_mutation_gate.json",
+      "title": "Protected State Mutation Gate",
+      "process_class": "protected_state"
+    },
+    {
+      "id": "heavy_process_reference.route_lock_change_control.v1",
+      "file": "cards/05_route_lock_change_control.json",
+      "title": "Route Lock Change Control",
+      "process_class": "route_control"
+    },
+    {
+      "id": "heavy_process_reference.source_gap_to_reference_expansion.v1",
+      "file": "cards/06_source_gap_to_reference_expansion.json",
+      "title": "Source Gap To Reference Expansion",
+      "process_class": "source_gap"
+    },
+    {
+      "id": "heavy_process_reference.governed_external_search_material_candidate.v1",
+      "file": "cards/07_governed_external_search_material_candidate.json",
+      "title": "Governed External Search Material Candidate",
+      "process_class": "source_policy"
+    },
+    {
+      "id": "heavy_process_reference.material_provenance_license_review.v1",
+      "file": "cards/08_material_provenance_license_review.json",
+      "title": "Material Provenance License Review",
+      "process_class": "material_governance"
+    },
+    {
+      "id": "heavy_process_reference.codex_boundary_repair_protocol.v1",
+      "file": "cards/09_codex_boundary_repair_protocol.json",
+      "title": "Codex Boundary Repair Protocol",
+      "process_class": "codex_boundary"
+    },
+    {
+      "id": "heavy_process_reference.post_codex_terminal_proof_pack.v1",
+      "file": "cards/10_post_codex_terminal_proof_pack.json",
+      "title": "Post Codex Terminal Proof Pack",
+      "process_class": "evidence_protocol"
+    },
+    {
+      "id": "heavy_process_reference.repo_identity_dirty_state_triage.v1",
+      "file": "cards/11_repo_identity_dirty_state_triage.json",
+      "title": "Repo Identity Dirty State Triage",
+      "process_class": "repo_git"
+    },
+    {
+      "id": "heavy_process_reference.validator_proof_report_contract.v1",
+      "file": "cards/12_validator_proof_report_contract.json",
+      "title": "Validator Proof Report Contract",
+      "process_class": "proof_protocol"
+    },
+    {
+      "id": "heavy_process_reference.checkpoint_resume_runtime_design.v1",
+      "file": "cards/13_checkpoint_resume_runtime_design.json",
+      "title": "Checkpoint Resume Runtime Design",
+      "process_class": "runtime_design"
+    },
+    {
+      "id": "heavy_process_reference.quarantine_and_rollback_decision.v1",
+      "file": "cards/14_quarantine_and_rollback_decision.json",
+      "title": "Quarantine And Rollback Decision",
+      "process_class": "immune_system"
+    },
+    {
+      "id": "heavy_process_reference.self_map_body_map_visibility_refresh.v1",
+      "file": "cards/15_self_map_body_map_visibility_refresh.json",
+      "title": "Self Map Body Map Visibility Refresh",
+      "process_class": "self_map"
+    },
+    {
+      "id": "heavy_process_reference.accepted_memory_vs_reference_vs_school.v1",
+      "file": "cards/16_accepted_memory_vs_reference_vs_school.json",
+      "title": "Accepted Memory Vs Reference Vs School",
+      "process_class": "memory_architecture"
+    },
+    {
+      "id": "heavy_process_reference.owner_input_routing_task_hint_signal.v1",
+      "file": "cards/17_owner_input_routing_task_hint_signal.json",
+      "title": "Owner Input Routing Task Hint Signal",
+      "process_class": "mode_decision"
+    },
+    {
+      "id": "heavy_process_reference.artifact_delivery_pack_process.v1",
+      "file": "cards/18_artifact_delivery_pack_process.json",
+      "title": "Artifact Delivery Pack Process",
+      "process_class": "artifact_organs"
+    },
+    {
+      "id": "heavy_process_reference.github_actions_remote_proof_cycle.v1",
+      "file": "cards/19_github_actions_remote_proof_cycle.json",
+      "title": "Github Actions Remote Proof Cycle",
+      "process_class": "remote_proof"
+    },
+    {
+      "id": "heavy_process_reference.child_agent_production_acceptance_contract.v1",
+      "file": "cards/20_child_agent_production_acceptance_contract.json",
+      "title": "Child Agent Production Acceptance Contract",
+      "process_class": "agent_factory"
+    },
+    {
+      "id": "heavy_process_reference.new_tool_governance_no_install_default.v1",
+      "file": "cards/21_new_tool_governance_no_install_default.json",
+      "title": "New Tool Governance No Install Default",
+      "process_class": "tool_governance"
+    },
+    {
+      "id": "heavy_process_reference.large_curriculum_factory_safety.v1",
+      "file": "cards/22_large_curriculum_factory_safety.json",
+      "title": "Large Curriculum Factory Safety",
+      "process_class": "curriculum_factory"
+    },
+    {
+      "id": "heavy_process_reference.parallel_sidecar_work_during_live_run.v1",
+      "file": "cards/23_parallel_sidecar_work_during_live_run.json",
+      "title": "Parallel Sidecar Work During Live Run",
+      "process_class": "parallel_work"
+    },
+    {
+      "id": "heavy_process_reference.finalization_commit_push_after_proof.v1",
+      "file": "cards/24_finalization_commit_push_after_proof.json",
+      "title": "Finalization Commit Push After Proof",
+      "process_class": "delivery_evidence"
+    },
+    {
+      "id": "heavy_process_reference.failure_taxonomy_and_triage.v1",
+      "file": "cards/25_failure_taxonomy_and_triage.json",
+      "title": "Failure Taxonomy And Triage",
+      "process_class": "failure_triage"
+    },
+    {
+      "id": "heavy_process_reference.runtime_health_heartbeat_observation.v1",
+      "file": "cards/26_runtime_health_heartbeat_observation.json",
+      "title": "Runtime Health Heartbeat Observation",
+      "process_class": "runtime_observation"
+    },
+    {
+      "id": "heavy_process_reference.memory_reflection_after_accepted_change.v1",
+      "file": "cards/27_memory_reflection_after_accepted_change.json",
+      "title": "Memory Reflection After Accepted Change",
+      "process_class": "memory_architecture"
+    },
+    {
+      "id": "heavy_process_reference.package_apply_validate_protocol.v1",
+      "file": "cards/28_package_apply_validate_protocol.json",
+      "title": "Package Apply Validate Protocol",
+      "process_class": "package_governance"
+    },
+    {
+      "id": "heavy_process_reference.safe_windows_powershell_operations.v1",
+      "file": "cards/29_safe_windows_powershell_operations.json",
+      "title": "Safe Windows Powershell Operations",
+      "process_class": "terminal_safety"
+    },
+    {
+      "id": "heavy_process_reference.emergency_stop_signal_protocol.v1",
+      "file": "cards/30_emergency_stop_signal_protocol.json",
+      "title": "Emergency Stop Signal Protocol",
+      "process_class": "runtime_control"
+    },
+    {
+      "id": "heavy_process_reference.deep_recovery_report_protocol.v1",
+      "file": "cards/31_deep_recovery_report_protocol.json",
+      "title": "Deep Recovery Report Protocol",
+      "process_class": "recovery"
+    },
+    {
+      "id": "heavy_process_reference.startup_awareness_lazy_load.v1",
+      "file": "cards/32_startup_awareness_lazy_load.json",
+      "title": "Startup Awareness Lazy Load",
+      "process_class": "startup_awareness"
+    },
+    {
+      "id": "heavy_process_reference.audit_trail_and_trace_evidence.v1",
+      "file": "cards/33_audit_trail_and_trace_evidence.json",
+      "title": "Audit Trail And Trace Evidence",
+      "process_class": "evidence_protocol"
+    },
+    {
+      "id": "heavy_process_reference.duplicate_collision_management.v1",
+      "file": "cards/34_duplicate_collision_management.json",
+      "title": "Duplicate Collision Management",
+      "process_class": "curriculum_factory"
+    },
+    {
+      "id": "heavy_process_reference.external_agent_execution_contract.v1",
+      "file": "cards/35_external_agent_execution_contract.json",
+      "title": "External Agent Execution Contract",
+      "process_class": "agent_factory"
+    },
+    {
+      "id": "heavy_process_reference.source_policy_guard_bridge.v1",
+      "file": "cards/36_source_policy_guard_bridge.json",
+      "title": "Source Policy Guard Bridge",
+      "process_class": "source_policy"
+    },
+    {
+      "id": "heavy_process_reference.partial_checkpoint_commit_policy.v1",
+      "file": "cards/37_partial_checkpoint_commit_policy.json",
+      "title": "Partial Checkpoint Commit Policy",
+      "process_class": "delivery_evidence"
+    },
+    {
+      "id": "heavy_process_reference.owner_delivery_evidence_pack.v1",
+      "file": "cards/38_owner_delivery_evidence_pack.json",
+      "title": "Owner Delivery Evidence Pack",
+      "process_class": "delivery_evidence"
+    }
+  ],
+  "runbooks": [
+    "RUNBOOK_ARTIFACT_ORGAN_PRODUCTION.md",
+    "RUNBOOK_CHECKPOINT_RESUME_RUNTIME.md",
+    "RUNBOOK_CODEX_REPAIR_WITH_PROOF.md",
+    "RUNBOOK_D2B_LONG_RUN_FAILURE_RECOVERY.md",
+    "RUNBOOK_EXTERNAL_AGENT_PRODUCTION_CONTRACT.md",
+    "RUNBOOK_GITHUB_REMOTE_PROOF.md",
+    "RUNBOOK_GOVERNED_MATERIAL_CANDIDATE.md",
+    "RUNBOOK_MEMORY_SELF_MAP_VISIBILITY.md",
+    "RUNBOOK_NO_HALLUCINATION_ESCALATION.md",
+    "RUNBOOK_PARALLEL_SIDECAR_DURING_LIVE_RUN.md",
+    "RUNBOOK_PHASE162_ACCEPTANCE_RECONCILIATION.md",
+    "RUNBOOK_PROTECTED_STATE_MUTATION_GATE.md",
+    "RUNBOOK_REPO_HEALTH_TRIAGE.md",
+    "RUNBOOK_ROUTE_LOCK_EVOLUTION.md",
+    "RUNBOOK_SOURCE_GAP_TO_REFERENCE_EXPANSION.md",
+    "RUNBOOK_VALIDATOR_AND_PROOF_DESIGN.md"
+  ],
+  "read_on_demand_flow": [
+    "accepted atoms / molecules / organs",
+    "internal heavy-process reference",
+    "self-map/body-map/control files if relevant",
+    "material catalogue / governed external policy if still missing",
+    "applied proof/use",
+    "bounded atom candidate only if reusable"
+  ]
+}

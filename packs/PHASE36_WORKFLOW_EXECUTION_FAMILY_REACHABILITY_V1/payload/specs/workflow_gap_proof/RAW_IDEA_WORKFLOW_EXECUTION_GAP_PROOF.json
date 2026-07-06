@@ -1,0 +1,23 @@
+{
+  "request_id": "phase36_workflow_execution_gap_proof_001",
+  "payload": {
+    "problem": "Workflow execution agent",
+    "target_user": "Product Lead / System Operator",
+    "operator_goal": "Build a specialized agent that turns workflow steps into an execution dispatch plan.",
+    "expected_outputs": [
+      "ordered workflow execution plan",
+      "next workflow step",
+      "dispatch readiness"
+    ],
+    "constraints": [
+      "domain-neutral",
+      "registry-backed specialization only"
+    ],
+    "non_goals": [
+      "do not add workflow_execution_agent_v1 before this gap proof closes"
+    ]
+  },
+  "metadata": {
+    "source": "phase36_workflow_execution_gap_proof"
+  }
+}

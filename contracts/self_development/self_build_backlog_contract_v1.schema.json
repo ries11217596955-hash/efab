@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Self-Build Backlog Contract V1",
+  "type": "object",
+  "required": [
+    "contract_id",
+    "version",
+    "status",
+    "item_statuses",
+    "item_contract",
+    "batch_behavior"
+  ],
+  "properties": {
+    "contract_id": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "item_statuses": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "PLANNED",
+          "RUNNING",
+          "PASS",
+          "FAILED",
+          "QUARANTINED",
+          "BLOCKED",
+          "NEEDS_OWNER_DECISION",
+          "NEEDS_CODEX_REPAIR",
+          "NEEDS_MATERIAL",
+          "SKIPPED_BY_POLICY"
+        ]
+      }
+    },
+    "item_contract": {
+      "type": "object",
+      "required": [
+        "required_fields",
+        "evidence_required_for_pass",
+        "quarantine_required_for_failed_unknown"
+      ]
+    },
+    "batch_behavior": {
+      "type": "object",
+      "required": [
+        "continue_after_safe_item_failure",
+        "stop_on_systemic_failure",
+        "batch_report_required"
+      ]
+    }
+  }
+}

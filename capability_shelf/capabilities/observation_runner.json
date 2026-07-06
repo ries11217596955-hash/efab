@@ -1,0 +1,49 @@
+{
+  "capability_id": "observation_runner",
+  "status": "READY",
+  "purpose": "Start, watch, and stop bounded observation-only sessions without allowing supervisor-authored task decisions.",
+  "owner_line": "SELF_BUILD",
+  "existing_files": [
+    "tools/start_builder_observation_session.ps1",
+    "tools/watch_builder_observation_session.ps1",
+    "tools/stop_builder_observation_session.ps1",
+    "modules/invoke_builder_observation_only_live_runner_001.ps1"
+  ],
+  "read_paths": [
+    "self_control/BUILDER_MULTI_SESSION_LEARNING_MEMORY.json",
+    "proofs/self_development/PHASE145_BUILDER_AUTONOMOUS_MULTI_SESSION_LEARNING_TRIAL_V1.json"
+  ],
+  "write_paths": [
+    "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/observations/<new_session_id>"
+  ],
+  "forbidden_paths": [
+    "proofs/self_development/PHASE142-PHASE147",
+    "reports/self_development/PHASE142-PHASE147",
+    "self_control/accepted_phase_results",
+    "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/current",
+    "operations/autonomy_diagnostics/retired_runtime_sessions_builder_life_loop/existing_trials",
+    "generated_agents",
+    "agent_catalog",
+    "applied_agents",
+    "route_locks",
+    "orchestrator/run.ps1"
+  ],
+  "safe_to_reuse": true,
+  "runtime_mutates_repo": true,
+  "requires_owner_prompt": false,
+  "requires_codex": false,
+  "can_be_used_by_builder": true,
+  "example_usage_path": "capability_shelf/usage_examples/observation_runner.json",
+  "validator_reference": "capability_shelf/validators/observation_runner.json",
+  "known_risks": [
+    "Can create observation artifacts; must use new session ids only.",
+    "Does not decide tasks for Builder."
+  ],
+  "promotion_requirements": [
+    "validator PASS",
+    "proof artifact",
+    "no forbidden scope changes",
+    "promotion gate record",
+    "explicit next_allowed_step"
+  ]
+}

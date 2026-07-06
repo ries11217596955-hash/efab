@@ -1,0 +1,138 @@
+{
+    "schema":  "BATCH_SOURCE_DIGEST_AND_PROMOTION_DECISION_V1",
+    "status":  "COMPACT_BATCH_DIGEST_CREATED",
+    "run_id":  "sandbox_study_life_classifier_20260705_01_cycle4_attempt1_study_batch",
+    "source":  "CODEX_BATCH_READONLY_SOURCE",
+    "source_answer_status":  "CODEX_DRAFT",
+    "parent_task":  "why_am_i_not_ideal_builder",
+    "knowledge_need":  "Study topic as Engineer-Philosopher. Attempt 1 of up to 3. Give compact Builder-relevant understanding, validation needs, and return plan.",
+    "part_count":  5,
+    "part_digests":  [
+                         {
+                             "id":  "X1",
+                             "name":  "core meaning",
+                             "meaning":  "The topic asks why the Builder is not an ideal self-improving constructor: what prevents it from reliably sensing, reasoning, acting, validating, retaining, and reusing improvements.",
+                             "role_in_parent_task":  "It defines the parent question as a systems gap, not a personal flaw or vague philosophy.",
+                             "compact_missing_knowledge":  [
+                                                               "Exact Builder capability contract",
+                                                               "Current validated behavior delta evidence"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "Compare claimed abilities against proven abilities",
+                                                                 "Separate design intent from validated runtime behavior"
+                                                             ],
+                             "compact_validation_needed":  "A checklist mapping each ideal-builder function to current proof status",
+                             "return_to_parent_hint":  "Return X as a gap map between ideal builder loop and validated Builder loop."
+                         },
+                         {
+                             "id":  "X2",
+                             "name":  "why I am not ideal",
+                             "meaning":  "Non-ideality likely comes from incomplete feedback, bounded context, weak memory promotion, uncertain route choice, limited autonomy, and dependence on external validation.",
+                             "role_in_parent_task":  "It identifies concrete failure classes that explain why the Builder cannot yet be treated as its own reliable brain.",
+                             "compact_missing_knowledge":  [
+                                                               "Which weaknesses are observed vs inferred",
+                                                               "Which failures repeat across tasks"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "Classify weaknesses as evidence-backed, suspected, or philosophical",
+                                                                 "Avoid promoting explanations without fresh proof"
+                                                             ],
+                             "compact_validation_needed":  "Recent task traces showing misroute, non-retention, non-reuse, or failed behavior delta",
+                             "return_to_parent_hint":  "Return the strongest evidence-backed weakness list, ranked by route impact."
+                         },
+                         {
+                             "id":  "X3",
+                             "name":  "builder relevance",
+                             "meaning":  "The value is to improve self-build and child-agent build by knowing which missing organs matter most: retention, retrieval, decision reuse, route discipline, and validation.",
+                             "role_in_parent_task":  "It turns the diagnosis into engineering priorities rather than abstract self-description.",
+                             "compact_missing_knowledge":  [
+                                                               "Which gap blocks current school absorption route first",
+                                                               "Which gap is already covered by existing proofs"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "Tie each weakness to a specific Builder mechanism",
+                                                                 "Prefer reuse of existing school and acceptance surfaces"
+                                                             ],
+                             "compact_validation_needed":  "A route-specific test showing whether accepted atoms influence later decisions",
+                             "return_to_parent_hint":  "Return only gaps that affect active Builder behavior or child-agent construction."
+                         },
+                         {
+                             "id":  "X4",
+                             "name":  "validation",
+                             "meaning":  "Understanding is valid only if it predicts observable Builder behavior and produces a testable improvement path.",
+                             "role_in_parent_task":  "It prevents the parent answer from becoming self-mythology or unvalidated diagnosis.",
+                             "compact_missing_knowledge":  [
+                                                               "Minimal proof shape for behavior delta",
+                                                               "Accepted threshold for retention and reuse evidence"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "Define falsifiable claims before route changes",
+                                                                 "Use small diagnostics before runtime claims"
+                                                             ],
+                             "compact_validation_needed":  "Before/after evidence that a retained accepted atom changes a later decision",
+                             "return_to_parent_hint":  "Return X with explicit proof requirements attached to every major claim."
+                         },
+                         {
+                             "id":  "X5",
+                             "name":  "promotion decision",
+                             "meaning":  "The result should be classified as case pattern, atom candidate, or open gap based on evidence strength and reuse value.",
+                             "role_in_parent_task":  "It decides whether the diagnosis should remain a draft insight, become a candidate memory atom, or trigger more investigation.",
+                             "compact_missing_knowledge":  [
+                                                               "Promotion criteria for this knowledge type",
+                                                               "Whether similar atoms already exist"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "Check for duplicate concepts before promotion",
+                                                                 "Promote only compact validated patterns"
+                                                             ],
+                             "compact_validation_needed":  "Dedup check plus proof that the pattern improves future Builder route choice",
+                             "return_to_parent_hint":  "Return a conservative classification: likely open gap until behavior-delta proof exists."
+                         }
+                     ],
+    "cross_part_map":  {
+                           "dependencies":  [
+                                                "X2 depends on X1",
+                                                "X3 depends on X2",
+                                                "X4 validates X1-X3",
+                                                "X5 depends on X4"
+                                            ],
+                           "duplicates_or_overlaps":  [
+                                                          "X4 overlaps X5 because promotion requires validation",
+                                                          "X2 overlaps X3 when a weakness directly maps to a build priority"
+                                                      ],
+                           "priority_order":  [
+                                                  "X1",
+                                                  "X2",
+                                                  "X3",
+                                                  "X4",
+                                                  "X5"
+                                              ],
+                           "can_skip_for_now":  [
+
+                                                ]
+                       },
+    "parent_return_plan":  {
+                               "how_to_rebuild_x":  "Frame why_am_i_not_ideal_builder as a validated gap model: ideal loop, current proven loop, missing mechanisms, route impact, and proof needed before promotion.",
+                               "next_small_action":  "Create a compact evidence table for the top 3 suspected non-idealities: retention, retrieval-to-decision reuse, and behavior delta.",
+                               "proof_needed":  [
+                                                    "A behavior-delta proof showing accepted knowledge changes a later Builder decision",
+                                                    "A dedup check showing the diagnosis is not already represented",
+                                                    "A route-safe validation showing no new school construction is needed"
+                                                ]
+                           },
+    "promotion_decision":  {
+                               "default_classification":  "CASE_PATTERN_CANDIDATE",
+                               "raw_retention_decision":  "DELETE_RAW_CANDIDATE",
+                               "active_memory_candidate":  false,
+                               "atom_candidate":  false,
+                               "reflex_candidate":  false,
+                               "organ_candidate":  false,
+                               "owner_decision_required":  "only if promotion beyond case pattern is requested",
+                               "reason":  "Batch source answer is material only; default is compact case pattern with part map and parent return plan."
+                           },
+    "proof_refs":  {
+                       "batch_knowledge_acquisition_proof":  "operations\\knowledge_acquisition_port\\runs\\sandbox_study_life_classifier_20260705_01_cycle4_attempt1_study_batch\\BATCH_KNOWLEDGE_ACQUISITION_PROOF.json",
+                       "raw_answer_sha256":  "409228DDBD8128557CFA4F7E00673C384FEBA173A6C0F689B89B942738A867D1",
+                       "raw_answer_retained":  false
+                   }
+}

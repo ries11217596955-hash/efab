@@ -1,0 +1,43 @@
+{
+  "schema_version": "phase165s_e1b_gap_router.v1",
+  "phase": "PHASE165S_E1B_HEAVY_PROCESS_REFERENCE_LIBRARY_V1",
+  "routing_rule": "Use this router only for hard process gaps. Do not route primitive concept gaps here unless they affect a risky process.",
+  "gap_type_to_cards": {
+    "runtime_gap": [
+      "autonomous_long_run_recovery_and_resume",
+      "checkpoint_resume_runtime_design",
+      "runtime_health_heartbeat_observation",
+      "emergency_stop_signal_protocol"
+    ],
+    "visibility_gap": [
+      "phase162_acceptance_pipeline_reconciliation",
+      "zero_surface_vs_partial_surface_failure",
+      "memory_self_map_visibility_refresh"
+    ],
+    "safety_gap": [
+      "protected_state_mutation_gate",
+      "quarantine_and_rollback_decision",
+      "new_tool_governance_no_install_default"
+    ],
+    "source_gap": [
+      "source_gap_to_reference_expansion",
+      "governed_external_search_material_candidate",
+      "source_policy_guard_bridge"
+    ],
+    "proof_gap": [
+      "validator_proof_report_contract",
+      "post_codex_terminal_proof_pack",
+      "audit_trail_and_trace_evidence"
+    ],
+    "route_gap": [
+      "route_lock_change_control",
+      "parallel_sidecar_work_during_live_run",
+      "deep_recovery_report_protocol"
+    ],
+    "production_gap": [
+      "artifact_delivery_pack_process",
+      "child_agent_production_acceptance_contract",
+      "external_agent_execution_contract"
+    ]
+  }
+}

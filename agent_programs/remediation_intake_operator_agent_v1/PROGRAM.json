@@ -1,0 +1,132 @@
+{
+  "program_id": "PROGRAM_REMEDIATION_INTAKE_OPERATOR_AGENT_V1",
+  "agent_id": "remediation_intake_operator_agent_v1",
+  "agent_name": "Remediation Intake Operator Agent v1",
+  "purpose": "принимает описание проблемы и превращает его в структурированную карточку для оператора",
+  "owner_visible_goal": "Оператор получает нормализованную карточку проблемы с severity, likely_area, missing_information и recommended_next_step.",
+  "input_contract": {
+    "type": "object",
+    "required": [
+      "problem_title",
+      "problem_description",
+      "affected_system",
+      "urgency",
+      "observed_evidence"
+    ],
+    "fields": {
+      "problem_title": {
+        "type": "string",
+        "min_length": 1
+      },
+      "problem_description": {
+        "type": "string",
+        "min_length": 1
+      },
+      "affected_system": {
+        "type": "string",
+        "min_length": 1
+      },
+      "urgency": {
+        "type": "string",
+        "allowed_values": [
+          "low",
+          "medium",
+          "high",
+          "critical"
+        ]
+      },
+      "observed_evidence": {
+        "type": "array",
+        "min_items": 1,
+        "items": "string"
+      }
+    }
+  },
+  "output_contract": {
+    "type": "object",
+    "required": [
+      "normalized_problem",
+      "severity",
+      "likely_area",
+      "missing_information",
+      "recommended_next_step",
+      "operator_note",
+      "validation_status"
+    ],
+    "fields": {
+      "normalized_problem": {
+        "type": "object"
+      },
+      "severity": {
+        "type": "string",
+        "allowed_values": [
+          "SEV-1",
+          "SEV-2",
+          "SEV-3",
+          "SEV-4"
+        ]
+      },
+      "likely_area": {
+        "type": "string"
+      },
+      "missing_information": {
+        "type": "array"
+      },
+      "recommended_next_step": {
+        "type": "string"
+      },
+      "operator_note": {
+        "type": "string"
+      },
+      "validation_status": {
+        "type": "string",
+        "required_value": "PASS"
+      }
+    }
+  },
+  "required_files": [
+    "generated_agents/remediation_intake_operator_agent_v1/AGENT_SPEC.json",
+    "generated_agents/remediation_intake_operator_agent_v1/INPUT_EXAMPLE.json",
+    "generated_agents/remediation_intake_operator_agent_v1/README.md",
+    "generated_agents/remediation_intake_operator_agent_v1/RUNBOOK.md",
+    "generated_agents/remediation_intake_operator_agent_v1/run.ps1"
+  ],
+  "validation_requirements": [
+    "agent package required files exist",
+    "run.ps1 passes PowerShell parser check",
+    "INPUT_EXAMPLE.json produces OUTPUT_EXAMPLE_RUNTIME.json",
+    "runtime output contains validation_status PASS",
+    "GitHub Actions workflow can run manually and upload expected artifact",
+    "agent is registered in agent_catalog/AGENT_CATALOG.json"
+  ],
+  "github_action_required": true,
+  "github_action_name": "Run Remediation Intake Operator Agent v1",
+  "github_workflow": ".github/workflows/run-remediation-intake-operator-agent-v1.yml",
+  "artifact_name": "remediation-intake-operator-agent-v1-output",
+  "agent_location": "generated_agents/remediation_intake_operator_agent_v1/",
+  "run_script": "generated_agents/remediation_intake_operator_agent_v1/run.ps1",
+  "proof_paths": [
+    "proofs/EXTERNAL_AGENT_PRODUCTION_PROGRAM_TEST_V1.json",
+    "proofs/AGENT_GITHUB_ACTION_LAUNCH_V1.json",
+    "proofs/AGENT_CATALOG_V1.json"
+  ],
+  "report_paths": [
+    "reports/external_agent_production/EXTERNAL_AGENT_PRODUCTION_PROGRAM_TEST_V1_REPORT.json",
+    "reports/external_agent_production/AGENT_GITHUB_ACTION_LAUNCH_V1_REPORT.json",
+    "reports/external_agent_production/REMEDIATION_INTAKE_OPERATOR_AGENT_V1_GITHUB_ACTION_ACCEPTANCE.md",
+    "reports/external_agent_production/AGENT_CATALOG_V1_REPORT.json"
+  ],
+  "acceptance_criteria": [
+    "local_validation PASS",
+    "github_action_validation PASS",
+    "agent catalog status ACCEPTED",
+    "proof and report paths exist"
+  ],
+  "forbidden_scope": [
+    "do not create a second agent",
+    "do not change generated_agents/remediation_intake_operator_agent_v1 files",
+    "do not change the existing GitHub workflow",
+    "do not change old proofs or reports",
+    "do not claim acceptance without validator evidence"
+  ]
+}

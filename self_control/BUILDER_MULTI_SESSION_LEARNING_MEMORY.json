@@ -1,0 +1,95 @@
+{
+  "status": "PASS",
+  "memory_id": "BUILDER_MULTI_SESSION_LEARNING_MEMORY",
+  "trial_session": "PHASE145_AUTONOMOUS_MULTI_SESSION_LEARNING_TRIAL_001",
+  "learning_memory_created": true,
+  "learning_memory_updated_count": 3,
+  "latest_session_id": "PHASE145_MULTI_SESSION_003",
+  "latest_memory_source": "PHASE145_MULTI_SESSION_001+PHASE145_MULTI_SESSION_002",
+  "session_updates": [
+    {
+      "session_id": "PHASE145_MULTI_SESSION_001",
+      "purpose": "establish learned-state carryover from PHASE144",
+      "memory_source": "PHASE144_BEHAVIOR_ADAPTATION_SCALE_TRIAL_001",
+      "learned_priority": "carry_forward_phase144_correction_to_behavior_mappings",
+      "task_sequence": [
+        "READ_CURRENT_STATE",
+        "LOAD_LEARNING_MEMORY",
+        "WRITE_LEARNING_NOTE",
+        "SELECT_NEXT_MICRO_GAP",
+        "EXPLAIN_BEHAVIOR_CHANGE",
+        "COMPARE_NEXT_STEP",
+        "WRITE_LEARNING_NOTE",
+        "SELECT_NEXT_MICRO_GAP"
+      ],
+      "changed_from_session_001": false,
+      "new_owner_correction_supplied": false,
+      "updated_at": "2026-06-02T11:31:52.8961158Z"
+    },
+    {
+      "session_id": "PHASE145_MULTI_SESSION_002",
+      "purpose": "use memory from session_001 to change task selection",
+      "memory_source": "PHASE145_MULTI_SESSION_001",
+      "learned_priority": "prefer_memory_guided_task_selection_before_state_reread",
+      "task_sequence": [
+        "LOAD_LEARNING_MEMORY",
+        "APPLY_SESSION_MEMORY",
+        "EXPLAIN_BEHAVIOR_CHANGE",
+        "SELECT_NEXT_MICRO_GAP",
+        "WRITE_LEARNING_NOTE",
+        "COMPARE_NEXT_STEP",
+        "SELECT_NEXT_MICRO_GAP",
+        "WRITE_LEARNING_NOTE"
+      ],
+      "changed_from_session_001": true,
+      "new_owner_correction_supplied": false,
+      "updated_at": "2026-06-02T11:31:53.0230246Z"
+    },
+    {
+      "session_id": "PHASE145_MULTI_SESSION_003",
+      "purpose": "prove stable adaptation without new Owner correction",
+      "memory_source": "PHASE145_MULTI_SESSION_001+PHASE145_MULTI_SESSION_002",
+      "learned_priority": "stabilize_stronger_micro_gap_selection_without_new_correction",
+      "task_sequence": [
+        "LOAD_LEARNING_MEMORY",
+        "APPLY_SESSION_MEMORY",
+        "SELECT_NEXT_MICRO_GAP",
+        "EXPLAIN_BEHAVIOR_CHANGE",
+        "WRITE_LEARNING_NOTE",
+        "SELECT_NEXT_MICRO_GAP",
+        "COMPARE_NEXT_STEP",
+        "SELECT_NEXT_MICRO_GAP"
+      ],
+      "changed_from_session_001": true,
+      "new_owner_correction_supplied": false,
+      "updated_at": "2026-06-02T11:31:53.1383004Z"
+    }
+  ],
+  "phase144_behavior_mappings": [
+    {
+      "correction_id": "PHASE144_CORRECTION_001",
+      "message": "Reduce repetitive READ_CURRENT_STATE loops. Prioritize practical tasks after state read.",
+      "behavior_change": "After the first state read, do not restart the safe carousel; move directly to WRITE_LEARNING_NOTE and SELECT_NEXT_MICRO_GAP.",
+      "applied_cycle": 1,
+      "mapped_next_gap": "PHASE145_BUILDER_AUTONOMOUS_MULTI_SESSION_LEARNING_TRIAL_V1"
+    },
+    {
+      "correction_id": "PHASE144_CORRECTION_002",
+      "message": "When a correction is present, explain the behavior change in decision_trace before selecting the next task.",
+      "behavior_change": "Insert explicit EXPLAIN_BEHAVIOR_CHANGE decisions before selection so decision_trace names the behavior change.",
+      "applied_cycle": 4,
+      "mapped_next_gap": "PHASE145_BUILDER_AUTONOMOUS_MULTI_SESSION_LEARNING_TRIAL_V1"
+    },
+    {
+      "correction_id": "PHASE144_CORRECTION_003",
+      "message": "After applying a correction, select a stronger micro-gap than the baseline safe carousel.",
+      "behavior_change": "Map correction response to a stronger next micro-gap: PHASE145 autonomous multi-session learning.",
+      "applied_cycle": 10,
+      "mapped_next_gap": "PHASE145_BUILDER_AUTONOMOUS_MULTI_SESSION_LEARNING_TRIAL_V1"
+    }
+  ],
+  "owner_interactive_prompt_required": false,
+  "assistant_or_codex_per_session_authoring_required": false,
+  "updated_at": "2026-06-02T11:31:53.1386690Z",
+  "next_allowed_step": "PHASE146_BUILDER_LONG_RUNNING_OBSERVABLE_LEARNING_SUPERVISOR_V1"
+}

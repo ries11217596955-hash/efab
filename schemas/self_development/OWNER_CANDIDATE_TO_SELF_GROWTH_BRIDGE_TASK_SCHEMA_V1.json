@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Owner Candidate To Self Growth Bridge Task V1",
+  "type": "object",
+  "required": [
+    "bridge_task_id",
+    "source_candidate_id",
+    "source_candidate_path",
+    "target_loop",
+    "requested_action",
+    "status",
+    "atom_acceptance_allowed"
+  ],
+  "properties": {
+    "bridge_task_id": { "type": "string" },
+    "source_candidate_id": { "type": "string" },
+    "source_candidate_path": { "type": "string" },
+    "target_loop": { "type": "string" },
+    "requested_action": { "type": "string" },
+    "status": { "type": "string" },
+    "atom_acceptance_allowed": { "type": "boolean" },
+    "required_next_gate": { "type": "string" },
+    "created_at": { "type": "string" }
+  },
+  "additionalProperties": true
+}

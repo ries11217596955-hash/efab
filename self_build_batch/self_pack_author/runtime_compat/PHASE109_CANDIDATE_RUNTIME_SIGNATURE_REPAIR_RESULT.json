@@ -1,0 +1,30 @@
+{
+  "result_id": "PHASE109_CANDIDATE_RUNTIME_SIGNATURE_REPAIR_RESULT",
+  "status": "PASS",
+  "phase": "PHASE109_RUNTIME_COMPATIBILITY_REPAIR",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "baseline_commit": "d8da941",
+  "candidate_pack_id": "PHASE108_BUILDER_GENERATED_PACK_ADMISSION_V1_CANDIDATE",
+  "repair_reason": "Builder-generated candidate scripts did not accept executor-passed RunId and InvokedByOrchestrator parameters.",
+  "repaired_files": [
+    "self_build_batch/self_pack_author/generated_candidates/PHASE108_BUILDER_GENERATED_PACK_ADMISSION_V1_CANDIDATE/APPLY.ps1",
+    "self_build_batch/self_pack_author/generated_candidates/PHASE108_BUILDER_GENERATED_PACK_ADMISSION_V1_CANDIDATE/VALIDATE.ps1"
+  ],
+  "apply_params_before": "RepoRoot",
+  "validate_params_before": "RepoRoot",
+  "apply_params_after": [
+    "RepoRoot",
+    "RunId",
+    "InvokedByOrchestrator"
+  ],
+  "validate_params_after": [
+    "RepoRoot",
+    "RunId",
+    "InvokedByOrchestrator"
+  ],
+  "codex_used": false,
+  "terminal_patch_used": true,
+  "full_autonomy_claimed": false,
+  "class_closed": "runtime_signature_contract_for_generated_candidate",
+  "created_at": "2026-05-30T22:04:25.8077127+04:00"
+}

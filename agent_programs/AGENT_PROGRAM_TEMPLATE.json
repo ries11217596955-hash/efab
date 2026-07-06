@@ -1,0 +1,56 @@
+{
+  "program_id": "PROGRAM_<AGENT_ID>_V1",
+  "agent_id": "<agent_id>",
+  "agent_name": "<Agent Name>",
+  "purpose": "<Short purpose statement>",
+  "owner_visible_goal": "<Human outcome expected from the produced agent>",
+  "input_contract": {
+    "type": "object",
+    "required": [
+      "<field_name>"
+    ],
+    "fields": {
+      "field_name": {
+        "type": "string",
+        "description": "<What the field means>"
+      }
+    }
+  },
+  "output_contract": {
+    "type": "object",
+    "required": [
+      "<output_field>"
+    ],
+    "fields": {
+      "output_field": {
+        "type": "string",
+        "description": "<What the output means>"
+      }
+    }
+  },
+  "required_files": [
+    "generated_agents/<agent_id>/AGENT_SPEC.json",
+    "generated_agents/<agent_id>/README.md",
+    "generated_agents/<agent_id>/RUNBOOK.md",
+    "generated_agents/<agent_id>/run.ps1"
+  ],
+  "validation_requirements": [
+    "required files exist",
+    "runtime script passes parser check",
+    "example input produces valid output",
+    "proof and report are written only after validation"
+  ],
+  "github_action_required": true,
+  "github_action_name": "<GitHub Actions workflow visible name>",
+  "artifact_name": "<artifact-name>",
+  "acceptance_criteria": [
+    "local validation PASS",
+    "GitHub Action validation PASS",
+    "agent catalog entry present"
+  ],
+  "forbidden_scope": [
+    "do not create unrelated agents",
+    "do not modify old proofs or reports",
+    "do not claim PASS without validator evidence"
+  ]
+}

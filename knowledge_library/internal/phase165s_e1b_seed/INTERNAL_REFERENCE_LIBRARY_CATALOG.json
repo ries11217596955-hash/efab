@@ -1,0 +1,119 @@
+{
+  "schema_version": "internal_reference_library_catalog.v1",
+  "catalog_id": "catalog.internal.phase165s_e1b_seed.v1",
+  "phase": "PHASE165S-E1B_INTERNAL_REFERENCE_LIBRARY_SEED",
+  "status": "STAGED_INTERNAL_REFERENCE_LIBRARY_SEED",
+  "created_utc": "2026-06-12T00:00:00Z",
+  "purpose": "Seed knowledge_library/internal with practical read-on-demand reference cards/runbooks. This is not school, not accepted memory, and not protected state mutation.",
+  "safety": {
+    "accepted_atoms_created": 0,
+    "protected_state_mutation": false,
+    "school_curriculum_created": false,
+    "external_downloads": false,
+    "trusted_by_default": false,
+    "atomization_rule": "Only after solved real task gap + applied proof/use + bounded C2B/PHASE162 path."
+  },
+  "reference_count": 19,
+  "cards": [
+    {
+      "reference_id": "ref.filesystem.path_file_folder_basics.v1",
+      "domain": "filesystem_reference",
+      "path": "knowledge_library/internal/phase165s_e1b_seed/cards/ref_filesystem_path_file_folder_basics_v1.json"
+    },
+    {
+      "reference_id": "ref.repo.git_identity_dirty_remote.v1",
+      "domain": "repo_git_reference",
+      "path": "knowledge_library/internal/phase165s_e1b_seed/cards/ref_repo_git_identity_dirty_remote_v1.json"
+    },
+    {
+      "reference_id": "ref.proof.claim_requires_evidence.v1",
+      "domain": "proof_protocol_reference",
+      "path": "knowledge_library/internal/phase165s_e1b_seed/cards/ref_proof_claim_requires_evidence_v1.json"
+    },
+    {
+      "reference_id": "ref.artifact.formats_and_validation.v1",
+      "domain": "artifact_formats_reference",
+      "path": "knowledge_library/internal/phase165s_e1b_seed/cards/ref_artifact_formats_and_validation_v1.json"
+    },
+    {
+      "reference_id": "ref.powershell.safe_terminal_pack.v1",
+      "domain": "PowerShell_reference",
+      "path": "knowledge_library/internal/phase165s_e1b_seed/cards/ref_powershell_safe_terminal_pack_v1.json"
+    },
+    {
+      "reference_id": "ref.windows.filesystem_paths_encoding.v1",
+      "domain": "Windows_filesystem_reference",
+      "path": "knowledge_library/internal/phase165s_e1b_seed/cards/ref_windows_filesystem_paths_encoding_v1.json"
+    },
+    {
+      "reference_id": "ref.json.machine_readable_contract.v1",
+      "domain": "JSON_reference",
+      "path": "knowledge_library/internal/phase165s_e1b_seed/cards/ref_json_machine_readable_contract_v1.json"
+    },
+    {
+      "reference_id": "ref.markdown.human_report_contract.v1",
+      "domain": "Markdown_reference",
+      "path": "knowledge_library/internal/phase165s_e1b_seed/cards/ref_markdown_human_report_contract_v1.json"
+    },
+    {
+      "reference_id": "ref.documents.docx_pptx_xlsx_pdf_boundaries.v1",
+      "domain": "document_artifacts_reference",
+      "path": "knowledge_library/internal/phase165s_e1b_seed/cards/ref_documents_docx_pptx_xlsx_pdf_boundaries_v1.json"
+    },
+    {
+      "reference_id": "ref.module_validator.runner_contract.v1",
+      "domain": "module_validator_runner_reference",
+      "path": "knowledge_library/internal/phase165s_e1b_seed/cards/ref_module_validator_runner_contract_v1.json"
+    },
+    {
+      "reference_id": "ref.protected_state.mutation_gate.v1",
+      "domain": "protected_state_reference",
+      "path": "knowledge_library/internal/phase165s_e1b_seed/cards/ref_protected_state_mutation_gate_v1.json"
+    },
+    {
+      "reference_id": "ref.material_governance.candidate_not_trusted.v1",
+      "domain": "material_governance_reference",
+      "path": "knowledge_library/internal/phase165s_e1b_seed/cards/ref_material_governance_candidate_not_trusted_v1.json"
+    },
+    {
+      "reference_id": "ref.source_policy.read_learn_use_execute_ladder.v1",
+      "domain": "source_policy_reference",
+      "path": "knowledge_library/internal/phase165s_e1b_seed/cards/ref_source_policy_read_learn_use_execute_ladder_v1.json"
+    },
+    {
+      "reference_id": "ref.school.curriculum_not_life_mode.v1",
+      "domain": "school_curriculum_reference",
+      "path": "knowledge_library/internal/phase165s_e1b_seed/cards/ref_school_curriculum_not_life_mode_v1.json"
+    },
+    {
+      "reference_id": "ref.atom.lifecycle_gap_to_proof_to_acceptance.v1",
+      "domain": "atom_lifecycle_reference",
+      "path": "knowledge_library/internal/phase165s_e1b_seed/cards/ref_atom_lifecycle_gap_to_proof_to_acceptance_v1.json"
+    },
+    {
+      "reference_id": "ref.self_map.body_map_signal_use.v1",
+      "domain": "self_map_body_map_reference",
+      "path": "knowledge_library/internal/phase165s_e1b_seed/cards/ref_self_map_body_map_signal_use_v1.json"
+    },
+    {
+      "reference_id": "ref.owner_input.task_hint_material_route.v1",
+      "domain": "owner_input_routing_reference",
+      "path": "knowledge_library/internal/phase165s_e1b_seed/cards/ref_owner_input_task_hint_material_route_v1.json"
+    },
+    {
+      "reference_id": "ref.delivery.evidence_pack_before_claim.v1",
+      "domain": "delivery_evidence_pack_reference",
+      "path": "knowledge_library/internal/phase165s_e1b_seed/cards/ref_delivery_evidence_pack_before_claim_v1.json"
+    },
+    {
+      "reference_id": "ref.runtime.checkpoint_resume_stop_signal.v1",
+      "domain": "runtime_checkpoint_resume_reference",
+      "path": "knowledge_library/internal/phase165s_e1b_seed/cards/ref_runtime_checkpoint_resume_stop_signal_v1.json"
+    }
+  ],
+  "runbooks": [
+    "knowledge_library/internal/phase165s_e1b_seed/runbooks/internal_reference_library_use_policy_v1.md",
+    "knowledge_library/internal/phase165s_e1b_seed/runbooks/task_gap_resolution_flow_v0_30.md",
+    "knowledge_library/internal/phase165s_e1b_seed/runbooks/reference_card_to_atom_candidate_gate_v1.md"
+  ]
+}

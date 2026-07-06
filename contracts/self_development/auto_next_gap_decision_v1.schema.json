@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_id": "auto_next_gap_decision_v1",
+  "title": "Auto Next Gap Decision V1",
+  "type": "object",
+  "required": [
+    "decision_kernel_id",
+    "version",
+    "status",
+    "active_line",
+    "input_sources",
+    "decision_priority",
+    "decision_policy",
+    "action_plan_contract",
+    "self_resolution_first",
+    "assistance_is_fallback",
+    "execution_allowed",
+    "next_allowed_step"
+  ],
+  "properties": {
+    "decision_kernel_id": {
+      "type": "string"
+    },
+    "version": {
+      "const": "V1"
+    },
+    "status": {
+      "type": "string"
+    },
+    "active_line": {
+      "const": "AGENT_BUILDER / SELF_BUILD"
+    },
+    "input_sources": {
+      "type": "array"
+    },
+    "decision_priority": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "SELF_EXECUTE_WITH_EXISTING_CAPABILITY",
+          "SELF_BUILD_REQUIRED_MODULES",
+          "SELF_ACQUIRE_MATERIAL_UNDER_POLICY",
+          "SELF_PATCH_SAFE_LOCAL_SCOPE",
+          "CONTINUE_AFTER_SELF_REPAIR",
+          "CODEX_REPAIR_REQUIRED_FALLBACK",
+          "OWNER_DECISION_REQUIRED_FALLBACK",
+          "BLOCKED_BY_POLICY",
+          "QUARANTINED_FOR_LATER"
+        ]
+      }
+    },
+    "decision_policy": {
+      "type": "object"
+    },
+    "action_plan_contract": {
+      "type": "object",
+      "required": [
+        "plan_id",
+        "status",
+        "source_batch_summary",
+        "source_quarantine_registry",
+        "self_resolution_first",
+        "assistance_is_fallback",
+        "decisions",
+        "decision_count",
+        "self_resolvable_count",
+        "material_acquisition_candidate_count",
+        "safe_patch_candidate_count",
+        "fallback_count",
+        "blocked_count",
+        "selected_next_executable_step",
+        "execution_allowed",
+        "program_generation_required_next",
+        "next_allowed_step"
+      ]
+    },
+    "self_resolution_first": {
+      "const": true
+    },
+    "assistance_is_fallback": {
+      "const": true
+    },
+    "execution_allowed": {
+      "const": false
+    },
+    "next_allowed_step": {
+      "const": "PHASE103_REPAIR_LOOP_GENERATOR_V1"
+    }
+  },
+  "additionalProperties": true
+}

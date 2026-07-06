@@ -1,0 +1,39 @@
+{
+  "agent_id": "decision_route_agent",
+  "display_name": "Decision Route Agent",
+  "mission": "Turn structured route candidates into a ranked operator action decision.",
+  "agent_kind": "decision_support_agent",
+  "package_profile": "operational_specialized",
+  "runtime": {
+    "shell": "PowerShell",
+    "entrypoint": "orchestrator/run.ps1"
+  },
+  "inputs": [
+    {
+      "name": "request",
+      "type": "json",
+      "required": true,
+      "description": "Structured route-candidate decision request."
+    }
+  ],
+  "outputs": [
+    {
+      "name": "result",
+      "type": "json",
+      "required": true,
+      "description": "Ranked route decision result."
+    }
+  ],
+  "capabilities": [
+    "rank candidate routes",
+    "identify strongest operator next action",
+    "emit decision-support runtime result"
+  ],
+  "validation": [
+    "specialized overlay is applied",
+    "runtime result operation is decision_route_prioritization"
+  ],
+  "forbidden_scope": [
+    "do not claim unconstrained decision intelligence"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "agent_id": "production_factory_proof_agent",
+  "display_name": "Production Factory Proof Agent",
+  "mission": "Prove that Agent Builder can materialize a production-style agent package through BUILD_EXTERNAL_AGENT mode.",
+  "agent_kind": "custom",
+  "package_profile": "standard",
+  "runtime": {
+    "shell": "PowerShell",
+    "entrypoint": "orchestrator/run.ps1"
+  },
+  "inputs": [
+    {
+      "name": "request",
+      "type": "json",
+      "required": true,
+      "description": "Proof request."
+    }
+  ],
+  "outputs": [
+    {
+      "name": "result",
+      "type": "json",
+      "required": true,
+      "description": "Proof result."
+    }
+  ],
+  "capabilities": [
+    "production package proof"
+  ],
+  "validation": [
+    "factory build mode passes",
+    "generated package validation harness passes"
+  ],
+  "forbidden_scope": [
+    "no external network dependency"
+  ]
+}

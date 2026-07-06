@@ -1,0 +1,120 @@
+{
+  "contract_id": "REMEDIATION_INTAKE_AGENT_V1_GENERATED_PROGRAM_FAMILY_CONTRACT",
+  "contract_version": "1.0",
+  "contract_status": "READY_FOR_SECOND_FAMILY_PROOF",
+  "family_id": "remediation_intake_agent_v1",
+  "distinct_from_family_id": "monitoring_agent_v1",
+  "target_agent_kind": "remediation_intake_agent",
+  "profile_id": "remediation_intake_agent_v1",
+  "source_phase": "PHASE_61",
+  "compatibility_target": "generalized_generated_program_pipeline_v1",
+  "growth_purpose": {
+    "summary": "Grow Builder toward formal intake, normalization, and validation of remediation requests before they become generated self-build program seeds.",
+    "builder_capability_target": "remediation_intake_mode_v1",
+    "owner_value": "Convert structured repair requests into contract-checked candidate inputs for future self-build program generation.",
+    "non_goals": [
+      "materialize executable generated packs in PHASE61",
+      "admit the second family into live execution in PHASE61",
+      "execute generated second-family self-build packs in PHASE61"
+    ]
+  },
+  "formal_identity": {
+    "program_family_kind": "GENERATED_SELF_BUILD_PROGRAM_FAMILY",
+    "program_root": "self_build_programs/generated/remediation_intake_agent_v1",
+    "manifest_path": "self_build_programs/generated/remediation_intake_agent_v1/SELF_BUILD_PROGRAM_MANIFEST.json",
+    "patches_root": "self_build_programs/generated/remediation_intake_agent_v1/patches",
+    "packs_root": "self_build_programs/generated/remediation_intake_agent_v1/packs",
+    "tasks_root": "self_build_programs/generated/remediation_intake_agent_v1/tasks",
+    "execution_recipes_root": "self_build_programs/generated/remediation_intake_agent_v1/execution_recipes",
+    "program_status_target": "PROGRAM_PACKAGE_MATERIALIZED",
+    "admission_status_target": "NOT_ADMITTED_YET"
+  },
+  "generated_program_shape": {
+    "expected_pack_count": 3,
+    "expected_task_count": 3,
+    "expected_capability_count": 3,
+    "first_activatable_task_id": "TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1_001",
+    "first_activatable_capability_id": "generated_remediation_intake_agent_v1_profile_materialization_v1",
+    "semantic_roles": [
+      "PROFILE_MATERIALIZATION",
+      "SPECIALIZED_CLOSURE_PROOF",
+      "SEED_CONSUMPTION_PROOF"
+    ]
+  },
+  "planned_generated_capabilities": [
+    {
+      "order": 1,
+      "capability_id": "generated_remediation_intake_agent_v1_profile_materialization_v1",
+      "semantic_role": "PROFILE_MATERIALIZATION",
+      "source_capability_hint": "remediation_intake_agent_specialization_profile_v1"
+    },
+    {
+      "order": 2,
+      "capability_id": "generated_remediation_intake_agent_v1_closure_proof_v1",
+      "semantic_role": "SPECIALIZED_CLOSURE_PROOF",
+      "source_capability_hint": "remediation_intake_agent_closure_proof_v1"
+    },
+    {
+      "order": 3,
+      "capability_id": "generated_remediation_intake_agent_v1_seed_consumption_proof_v1",
+      "semantic_role": "SEED_CONSUMPTION_PROOF",
+      "source_capability_hint": "remediation_intake_seed_consumption_proof_v1"
+    }
+  ],
+  "planned_generated_tasks": [
+    {
+      "order": 1,
+      "task_id": "TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1_001",
+      "capability_id": "generated_remediation_intake_agent_v1_profile_materialization_v1",
+      "expected_gate": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1_READY"
+    },
+    {
+      "order": 2,
+      "task_id": "TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1_001",
+      "capability_id": "generated_remediation_intake_agent_v1_closure_proof_v1",
+      "expected_gate": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1"
+    },
+    {
+      "order": 3,
+      "task_id": "TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_001",
+      "capability_id": "generated_remediation_intake_agent_v1_seed_consumption_proof_v1",
+      "expected_gate": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1"
+    }
+  ],
+  "planned_generated_packs": [
+    {
+      "order": 1,
+      "pack_id": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1",
+      "task_id": "TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1_001"
+    },
+    {
+      "order": 2,
+      "pack_id": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1",
+      "task_id": "TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1_001"
+    },
+    {
+      "order": 3,
+      "pack_id": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1",
+      "task_id": "TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_001"
+    }
+  ],
+  "pipeline_compatibility": {
+    "established_by_phases": [
+      "PHASE_58",
+      "PHASE_59",
+      "PHASE_60"
+    ],
+    "requires_manifest_rooted_program_paths": true,
+    "requires_patch_derived_counts": true,
+    "requires_program_owned_execution_recipes": true,
+    "requires_contract_validation_before_live_admission": true,
+    "materialization_next_capability": "second_generated_program_family_materialization_v1"
+  },
+  "readiness_assertions": [
+    "family identity is distinct from the first generated program family",
+    "growth purpose targets Builder remediation intake capability",
+    "planned generated artifacts follow the three-role generated self-build contour",
+    "future manifest, patch, pack, task, and recipe roots are derivable from the family id",
+    "PHASE61 stops before materialization, live admission, or generated pack execution"
+  ]
+}

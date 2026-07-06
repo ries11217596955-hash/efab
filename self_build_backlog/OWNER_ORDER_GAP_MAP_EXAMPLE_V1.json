@@ -1,0 +1,53 @@
+{
+  "gap_map_id": "OWNER_ORDER_GAP_MAP_EXAMPLE_V1",
+  "source_order_path": "owner_orders/examples/OWNER_ORDER_BATCH_SELF_BUILD_100_TASKS_EXAMPLE.json",
+  "understood_request": "Builder should learn to process 100 self-build tasks through controlled batch planning, admission, item-level evidence, continue-on-failure handling, quarantine/blocker routing, proof aggregation, repair loops, and scale trials.",
+  "mapped_gap_count": 11,
+  "available_foundation": [
+    "AGENT_BUILDER_NEXT_15_STEPS_LOCK_V2_R2.md",
+    "self_build_backlog/SELF_BUILD_BACKLOG_CONTRACT_V1.json",
+    "self_build_backlog/CAPABILITY_GAP_DETECTOR_V1.json",
+    "self_build_backlog/CAPABILITY_GAP_INDEX_V1.json",
+    "proofs/self_development/CAPABILITY_GAP_DETECTOR_V1.json",
+    "reports/self_development/CAPABILITY_GAP_DETECTOR_REPORT.json"
+  ],
+  "missing_capabilities": [
+    "PHASE95_SELF_BUILD_PROGRAM_GENERATOR_V2",
+    "PHASE96_BATCH_PLANNER_V1",
+    "PHASE97_BATCH_ADMISSION_POLICY_V1",
+    "PHASE98_ITEM_LEVEL_EXECUTION_LEDGER_V1",
+    "PHASE99_CONTINUE_ON_FAILURE_RUNTIME_V1",
+    "PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1",
+    "PHASE101_BATCH_PROOF_AGGREGATOR_V1",
+    "PHASE102_AUTO_NEXT_GAP_DECISION_V1",
+    "PHASE103_REPAIR_LOOP_GENERATOR_V1",
+    "PHASE104_CONTROLLED_MULTI_CYCLE_SELF_BUILD_RUN_V1",
+    "PHASE105_SCALE_TRIAL_10_TO_30_TO_100_TASKS_V1"
+  ],
+  "blocked_items": [
+    {
+      "item": "External agent production",
+      "reason": "Forbidden by V2_R2 route lock for PHASE91-PHASE105."
+    },
+    {
+      "item": "Unbounded autonomous batch execution",
+      "reason": "Batch runtime and item-level policy are not proven yet."
+    }
+  ],
+  "assistance_required": [
+    "Owner approval before moving from gap map to executable self-build proposal.",
+    "Codex repair only when Builder emits NEEDS_CODEX_REPAIR for a bounded item.",
+    "Owner decision for any item marked NEEDS_OWNER_DECISION."
+  ],
+  "next_safe_self_build_step": "PHASE95_SELF_BUILD_PROGRAM_GENERATOR_V2",
+  "future_workflow_inputs": {
+    "order_path": "owner_orders/examples/OWNER_ORDER_BATCH_SELF_BUILD_100_TASKS_EXAMPLE.json",
+    "mode": "GAP_MAP_ONLY",
+    "max_cycles": 1,
+    "max_items": 100,
+    "risk_level": "SAFE_ONLY",
+    "require_owner_approval": true
+  },
+  "no_external_agent_production": true,
+  "execution_performed": false
+}

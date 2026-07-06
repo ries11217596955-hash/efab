@@ -1,0 +1,17 @@
+{
+  "pack_id": "PHASE103_REPAIR_LOOP_GENERATOR_V1",
+  "task_id": "TASK_REPAIR_LOOP_GENERATOR_V1_001",
+  "phase": "PHASE103",
+  "status": "READY",
+  "path": "packs/PHASE103_REPAIR_LOOP_GENERATOR_V1",
+  "shell": "PowerShell",
+  "entry_script": "packs/PHASE103_REPAIR_LOOP_GENERATOR_V1/APPLY.ps1",
+  "apply": "APPLY.ps1",
+  "validate": "VALIDATE.ps1",
+  "validate_script": "packs/PHASE103_REPAIR_LOOP_GENERATOR_V1/VALIDATE.ps1",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "mode": "SELF_BUILD",
+  "capability_id": "repair_loop_generator_v1",
+  "gate": "REPAIR_LOOP_GENERATOR_V1",
+  "next_allowed_step": "PHASE104_CONTROLLED_MULTI_CYCLE_SELF_BUILD_RUN_V1"
+}

@@ -1,0 +1,53 @@
+name: Run Remediation Intake Operator Agent v1
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-remediation-intake-operator-agent-v1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify agent package files
+        shell: pwsh
+        run: |
+          $Required = @(
+            "generated_agents/remediation_intake_operator_agent_v1/run.ps1",
+            "generated_agents/remediation_intake_operator_agent_v1/INPUT_EXAMPLE.json",
+            "generated_agents/remediation_intake_operator_agent_v1/AGENT_SPEC.json"
+          )
+          foreach ($Path in $Required) {
+            if (-not (Test-Path -LiteralPath $Path)) {
+              throw "Required agent file missing: $Path"
+            }
+          }
+
+      - name: Run remediation intake operator agent
+        shell: pwsh
+        run: |
+          pwsh -NoProfile -ExecutionPolicy Bypass -File generated_agents/remediation_intake_operator_agent_v1/run.ps1 -InputPath generated_agents/remediation_intake_operator_agent_v1/INPUT_EXAMPLE.json -OutputPath generated_agents/remediation_intake_operator_agent_v1/GITHUB_ACTION_OUTPUT.json
+
+      - name: Verify agent output
+        shell: pwsh
+        run: |
+          $OutputPath = "generated_agents/remediation_intake_operator_agent_v1/GITHUB_ACTION_OUTPUT.json"
+          if (-not (Test-Path -LiteralPath $OutputPath)) {
+            throw "Agent output missing: $OutputPath"
+          }
+          $Result = Get-Content -LiteralPath $OutputPath -Raw | ConvertFrom-Json
+          if ([string]$Result.validation_status -ne "PASS") {
+            throw "Agent validation_status must be PASS."
+          }
+          Write-Host "REMEDIATION_INTAKE_GITHUB_ACTION_STATUS=PASS"
+
+      - name: Upload remediation intake output
+        uses: actions/upload-artifact@v4
+        with:
+          name: remediation-intake-operator-agent-v1-output
+          path: |
+            generated_agents/remediation_intake_operator_agent_v1/GITHUB_ACTION_OUTPUT.json
+            generated_agents/remediation_intake_operator_agent_v1/AGENT_SPEC.json
+            generated_agents/remediation_intake_operator_agent_v1/README.md
+            generated_agents/remediation_intake_operator_agent_v1/RUNBOOK.md

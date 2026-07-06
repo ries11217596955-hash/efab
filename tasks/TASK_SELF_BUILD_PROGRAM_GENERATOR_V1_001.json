@@ -1,0 +1,25 @@
+{
+  "task_id": "TASK_SELF_BUILD_PROGRAM_GENERATOR_V1_001",
+  "phase": "PHASE88",
+  "pack_id": "PHASE88_SELF_BUILD_PROGRAM_GENERATOR_V1",
+  "status": "PENDING",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "created_at": "2026-05-29T11:38:52.8203272Z",
+  "purpose": "Generate the current dynamic self-build program candidate from the runtime-selected owner material, current identity, and lineage contract.",
+  "cut_list": [
+    "No admission",
+    "No execution",
+    "No installs",
+    "No external fetch",
+    "No external agents"
+  ],
+  "dynamic_contract": {
+    "contract_type": "runtime_resolved_self_build_program_identity",
+    "program_id_source": "runtime_identity_json_discovery",
+    "owner_material_source": "runtime_chosen_owner_material_source",
+    "lineage_source": "runtime_lineage_contract",
+    "fixed_program_id_disallowed": true,
+    "bootstrap_example_id_disallowed": true
+  }
+}
+

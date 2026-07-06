@@ -1,0 +1,44 @@
+{
+  "generator_id": "SELF_BUILD_PROGRAM_GENERATOR_V2",
+  "status": "ACTIVE_GENERATOR_CONTRACT",
+  "phase": "PHASE95_SELF_BUILD_PROGRAM_GENERATOR_V2",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "generated_at": "2026-05-29T15:17:27.3938516Z",
+  "input_sources": [
+    "owner_orders/OWNER_ORDER_CONTRACT_V1.json",
+    "self_build_backlog/OWNER_ORDER_TO_GAP_MAP_V1.json",
+    "self_build_backlog/OWNER_ORDER_GAP_MAP_EXAMPLE_V1.json",
+    "self_build_backlog/CAPABILITY_GAP_INDEX_V1.json"
+  ],
+  "output_schema": "contracts/self_development/self_build_program_v2.schema.json",
+  "required_program_fields": [
+    "program_id",
+    "version",
+    "status",
+    "source_order",
+    "source_gap",
+    "objective",
+    "expected_outputs",
+    "allowed_files_scope",
+    "blocked_files_scope",
+    "risk",
+    "admission_requirements",
+    "validation_requirements",
+    "proof_requirements",
+    "rollback_requirements",
+    "assistance_required",
+    "owner_approval_required",
+    "execution_allowed",
+    "next_allowed_step"
+  ],
+  "generator_policy": {
+    "generator_does_not_execute_program": true,
+    "generated_program_requires_admission": true,
+    "owner_approval_required_for_destructive_scope": true,
+    "owner_approval_required_for_external_fetch": true,
+    "owner_approval_required_for_installs": true,
+    "no_external_agent_production": true,
+    "no_external_install": true,
+    "no_external_fetch": true
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "request_id": "audit_agent_v1_operational_sample_001",
+  "payload": {
+    "audit_goal": "Triage evidence-backed defects into a repair queue.",
+    "evidence_items": [
+      {
+        "id": "missing_primary_action",
+        "severity": "high",
+        "signal": "User reaches page but no concrete action is offered."
+      },
+      {
+        "id": "process_before_answer",
+        "severity": "medium",
+        "signal": "Page explains navigation before solving the actual pain."
+      },
+      {
+        "id": "weak_next_step",
+        "severity": "medium",
+        "signal": "Final section ends without a meaningful decision move."
+      }
+    ]
+  },
+  "metadata": {
+    "source": "audit_agent_v1_overlay_operational_proof"
+  }
+}

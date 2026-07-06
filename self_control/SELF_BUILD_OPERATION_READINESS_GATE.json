@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "gate_id": "SELF_BUILD_OPERATION_READINESS_GATE_V1",
+  "created_by": "PHASE130_BUILD_SELF_BUILD_OPERATION_READINESS_GATE_V1",
+  "run_id": "PHASE130_SELF_BUILD_OPERATION_READINESS_GATE_001",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "scope": "SELF_BUILD_OPERATION_ONLY",
+  "decision": "READY_FOR_CONTRACT_GOVERNED_SELF_BUILD_OPERATION_TRIAL",
+  "ready": true,
+  "allowed_next_step": "PHASE131_RUN_CONTRACT_GOVERNED_SELF_BUILD_OPERATION_TRIAL_V1",
+  "required_closed_needs": [
+    "NEED_DECISION_TO_ACTION_ENGINE",
+    "NEED_AUTONOMOUS_LOOP_CONTROLLER",
+    "NEED_CONTROLLER_GOVERNED_SELF_BUILD_TRIAL",
+    "NEED_SELF_BUILD_OPERATION_CONTRACT"
+  ],
+  "required_proofs": [
+    "PHASE124_BUILD_SELF_MODEL_FIRST_RUNTIME_ENTRYPOINT_V1",
+    "PHASE125_RUN_SELF_MODEL_FIRST_CONTROLLER_GOVERNED_TRIAL_V1",
+    "PHASE127_BUILD_SELF_BUILD_OPERATION_CONTRACT_V1",
+    "PHASE128_RUN_SELF_BUILD_OPERATION_CONTRACT_SMOKE_V1",
+    "PHASE129_BUILD_OPERATION_CONTRACT_AWARE_SELF_MODEL_ADVANCE_V1"
+  ],
+  "allowed_trial_constraints": {
+    "max_runtime_calls": 1,
+    "require_queue_none_at_start": true,
+    "require_clean_worktree_at_start": true,
+    "allow_external_agent_production": false,
+    "allow_main_touch": false,
+    "allow_dependency_install": false,
+    "require_result_report_proof": true,
+    "require_diff_scope_gate": true
+  },
+  "stop_conditions": [
+    "wrong branch",
+    "dirty worktree",
+    "queue not NONE",
+    "missing proof",
+    "runtime nonzero exit",
+    "unexpected changed file",
+    "legacy replay signal",
+    "validator fail",
+    "push failed"
+  ],
+  "reason": "Builder has self-model-first runtime, controller-governed trial, operation contract, contract smoke, and operation-contract-aware self-model. Ready for one bounded contract-governed self-build operation trial.",
+  "autonomy_claimed": false,
+  "codex_used": false,
+  "main_touched": false
+}

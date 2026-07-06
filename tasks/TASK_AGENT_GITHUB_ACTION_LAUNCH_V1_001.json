@@ -1,0 +1,36 @@
+{
+  "task_id": "TASK_AGENT_GITHUB_ACTION_LAUNCH_V1_001",
+  "capability_id": "agent_github_action_launch_v1",
+  "objective": "Prepare a Builder self-build pack that adds a GitHub Actions manual launch workflow for remediation_intake_operator_agent_v1.",
+  "execution_kind": "SELF_BUILD_AGENT_GITHUB_ACTION_LAUNCH_V1",
+  "phase": "PHASE_68",
+  "expected_gate": "AGENT_GITHUB_ACTION_LAUNCH_V1",
+  "launched_agent_id": "remediation_intake_operator_agent_v1",
+  "workflow_runtime_path": ".github/workflows/run-remediation-intake-operator-agent-v1.yml",
+  "runtime_report_path": "reports/external_agent_production/AGENT_GITHUB_ACTION_LAUNCH_V1_REPORT.json",
+  "runtime_proof_path": "proofs/AGENT_GITHUB_ACTION_LAUNCH_V1.json",
+  "scope": [
+    "copy GitHub Actions workflow payload into .github/workflows at Builder runtime",
+    "copy validator payload into validators at Builder runtime",
+    "validate workflow launch surface and existing remediation intake operator agent files",
+    "write AGENT_GITHUB_ACTION_LAUNCH_V1 proof and report only at runtime",
+    "complete PHASE68 task and capability only after validation evidence"
+  ],
+  "validation": [
+    "PowerShell parser check passes for PHASE68 APPLY.ps1",
+    "PowerShell parser check passes for PHASE68 validator payload",
+    "changed JSON files parse successfully",
+    "TASK_QUEUE active_task_id points to TASK_AGENT_GITHUB_ACTION_LAUNCH_V1_001",
+    "workflow/proof/report are not precommitted",
+    "generated agent files are not changed during preparation"
+  ],
+  "forbidden_scope": [
+    "do not change generated_agents/remediation_intake_operator_agent_v1 files during preparation",
+    "do not change generated_agents/remediation_intake_operator_agent_v1/run.ps1",
+    "do not change orchestrator/run.ps1",
+    "do not modify old proof/report files",
+    "do not create a second agent",
+    "do not commit or push during preparation",
+    "do not run PHASE68 runtime during preparation"
+  ]
+}

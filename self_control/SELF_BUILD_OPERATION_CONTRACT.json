@@ -1,0 +1,62 @@
+{
+  "status": "PASS",
+  "contract_id": "SELF_BUILD_OPERATION_CONTRACT_V1",
+  "created_by": "PHASE127_BUILD_SELF_BUILD_OPERATION_CONTRACT_V1",
+  "run_id": "PHASE127_SELF_BUILD_OPERATION_CONTRACT_SELF_TEST_001",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "purpose": "Govern live self-build operation after self-model-first controller-governed trial.",
+  "allowed_start_state": {
+    "branch": "phase110-idempotent-autonomy-trial-runtime",
+    "worktree": "CLEAN",
+    "active_task_id": "NONE",
+    "self_model_need": "NEED_SELF_BUILD_OPERATION_CONTRACT_OR_LATER"
+  },
+  "allowed_operations": [
+    "read self_model",
+    "read controller",
+    "run bounded self-build runtime",
+    "create one scoped capability per phase",
+    "write result/report/proof",
+    "validate JSON and PowerShell parse",
+    "commit and push only after PASS"
+  ],
+  "forbidden_operations": [
+    "touch main",
+    "claim full autonomy",
+    "continue after FAIL",
+    "ignore dirty worktree",
+    "install dependencies without material policy",
+    "fetch internet materials without material governance",
+    "produce external agents before readiness gate",
+    "commit transient runtime rewrites",
+    "mix external-agent production with SELF_BUILD proof"
+  ],
+  "proof_gates": [
+    "baseline branch/head/worktree gate",
+    "queue active_task_id gate",
+    "previous proof next_allowed_step gate",
+    "runtime exit code gate",
+    "log signal gate",
+    "JSON parse gate",
+    "validator gate",
+    "diff scope gate",
+    "commit/push gate"
+  ],
+  "stop_conditions": [
+    "wrong branch",
+    "dirty worktree before phase",
+    "queue not NONE unless phase explicitly requires active task",
+    "missing previous proof",
+    "unexpected next_allowed_step",
+    "runtime nonzero exit",
+    "validator fail",
+    "unexpected changed file",
+    "legacy replay signal when forbidden",
+    "transient output not restored",
+    "push failed"
+  ],
+  "next_smoke": "PHASE128_RUN_SELF_BUILD_OPERATION_CONTRACT_SMOKE_V1",
+  "autonomy_claimed": false,
+  "codex_used": false,
+  "main_touched": false
+}

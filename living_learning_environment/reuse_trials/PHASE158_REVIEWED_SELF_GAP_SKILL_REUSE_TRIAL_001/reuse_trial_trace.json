@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "trace_id": "PHASE158_REUSE_TRIAL_TRACE",
+  "step_id": "PHASE158_BUILDER_USES_SELF_BUILT_GAP_SKILLS_FOR_SELF_BUILD_SPEC_TRIAL_V1",
+  "run_id": "PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001",
+  "sequence": [
+    "VERIFY_PHASE157_TICKET",
+    "LOAD_REVIEWED_CANDIDATES",
+    "REUSE_GAP_INVENTORY_SKILL",
+    "REUSE_REPAIR_TASK_SPEC_WRITER_SKILL",
+    "REUSE_PROOF_SUMMARY_SKILL",
+    "WRITE_SELF_BUILD_SPEC_CANDIDATE",
+    "VALIDATE_SPEC_CANDIDATE",
+    "CREATE_GENERIC_EXECUTION_REQUEST",
+    "ADMIT_GENERIC_EXECUTION",
+    "PROVE_GENERIC_SANDBOX_EXECUTION_RESULT",
+    "VALIDATE_GENERIC_EXECUTION_BRIDGE",
+    "ISSUE_PHASE159_GENERIC_BRIDGE_TICKET",
+    "SAFE_STOP"
+  ],
+  "phase157_verified": true,
+  "reviewed_candidates_loaded": true,
+  "source_skills_reused": true,
+  "self_written_build_spec_candidate_created": true,
+  "self_written_build_spec_validated": true,
+  "generic_execution_bridge_proven": true,
+  "phase_specific_entrypoint_required": false,
+  "codex_required_for_phase159_entrypoint": false,
+  "safe_stop": true,
+  "next_allowed_step": "PHASE159_BUILDER_RUNS_GENERIC_SELF_WRITTEN_SPEC_EXECUTION_BRIDGE_V1"
+}

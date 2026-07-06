@@ -1,0 +1,23 @@
+{
+  "request_id": "phase28_no_match_diagnostic_mode_proof_001",
+  "payload": {
+    "problem": "Decision routing assistant",
+    "target_user": "Product Lead / System Operator",
+    "operator_goal": "Build an agent that turns an intake into a ranked action route.",
+    "expected_outputs": [
+      "route recommendation",
+      "decision rationale",
+      "operator action cue"
+    ],
+    "constraints": [
+      "domain-neutral",
+      "registry-backed specialization only"
+    ],
+    "non_goals": [
+      "do not add a decision_support specialization profile in this phase"
+    ]
+  },
+  "metadata": {
+    "source": "phase28_no_match_diagnostic_mode_proof"
+  }
+}

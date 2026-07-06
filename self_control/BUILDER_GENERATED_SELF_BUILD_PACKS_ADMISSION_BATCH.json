@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "admission_id": "BUILDER_GENERATED_SELF_BUILD_PACKS_ADMISSION_BATCH",
+  "admission_mode": "ONE_BATCH",
+  "admitted_by": "BUILDER_RUNTIME",
+  "admitted_pack_count": 3,
+  "admitted_packs": [
+    "PHASE140A_BUILDER_GENERATED_STATE_SYNC_CAPSULE_SEED_V1",
+    "PHASE140B_BUILDER_GENERATED_SELF_LEARNING_METRIC_SEED_V1",
+    "PHASE140C_BUILDER_GENERATED_NEXT_GAP_SELECTOR_SEED_V1"
+  ],
+  "generated_packs_author": "BUILDER_RUNTIME",
+  "codex_authored_generated_packs": false,
+  "generated_packs_admitted": true,
+  "external_agent_production_allowed": false,
+  "dependency_install_allowed": false,
+  "external_fetch_allowed": false,
+  "executable_use_allowed": false,
+  "admission_reason": "all generated packs are SELF_BUILD metadata-only seeds with forbidden external production/material actions",
+  "next_allowed_step": "PHASE141_BUILDER_SELF_LEARNING_LOOP_METRICS_V1"
+}

@@ -1,0 +1,18 @@
+{
+  "pack_id": "PHASE96_BATCH_PLANNER_V1",
+  "task_id": "TASK_BATCH_PLANNER_V1_001",
+  "phase": "PHASE96",
+  "status": "READY",
+  "path": "packs/PHASE96_BATCH_PLANNER_V1",
+  "shell": "PowerShell",
+  "entry_script": "packs/PHASE96_BATCH_PLANNER_V1/APPLY.ps1",
+  "apply": "APPLY.ps1",
+  "validate": "VALIDATE.ps1",
+  "validate_script": "packs/PHASE96_BATCH_PLANNER_V1/VALIDATE.ps1",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "mode": "SELF_BUILD",
+  "capability_id": "batch_planner_v1",
+  "gate": "BATCH_PLANNER_V1",
+  "next_allowed_step": "PHASE97_BATCH_ADMISSION_POLICY_V1",
+  "purpose": "Create Batch Planner V1 to turn generated self-build programs and gap maps into safe planned batches."
+}

@@ -1,0 +1,206 @@
+﻿{
+    "schema":  "SELF_BUILD_AUTONOMY_TRIALS_BULK_REMOVAL_SUMMARY_V1",
+    "status":  "SUMMARY_EXTRACTED_BEFORE_GIT_RM",
+    "generated_at":  "2026-07-03T17:49:01.7324239+04:00",
+    "source_path":  "self_build_batch/autonomy_trials",
+    "removed_files_planned":  144,
+    "removed_bytes_planned":  171958,
+    "external_refs_before_removal":  0,
+    "removed_steps":  [
+                          {
+                              "step":  "PHASE110_FINALIZE_IDEMPOTENT_AUTONOMY_TRIAL_V1",
+                              "count":  1
+                          },
+                          {
+                              "step":  "PHASE110_IDEMPOTENT_AUTONOMY_TRIAL_20_CYCLE_BATCH_V1",
+                              "count":  2
+                          },
+                          {
+                              "step":  "PHASE110_IDEMPOTENT_AUTONOMY_TRIAL_5_CYCLE_BATCH_V1",
+                              "count":  21
+                          },
+                          {
+                              "step":  "PHASE110_IDEMPOTENT_AUTONOMY_TRIAL_DESIGN_V1",
+                              "count":  1
+                          },
+                          {
+                              "step":  "PHASE110_IDEMPOTENT_AUTONOMY_TRIAL_ONE_CYCLE_SMOKE_V1",
+                              "count":  2
+                          },
+                          {
+                              "step":  "PHASE111_BUILD_NEXT_ACTION_DECISION_KERNEL_V1",
+                              "count":  3
+                          },
+                          {
+                              "step":  "PHASE111_BUILDER_NEXT_ACTION_DECISION_PROBE_V1",
+                              "count":  2
+                          },
+                          {
+                              "step":  "PHASE112_BUILD_DECISION_TO_ACTION_ENGINE_V1",
+                              "count":  4
+                          },
+                          {
+                              "step":  "PHASE113_BUILD_DECISION_ACTION_ADMISSION_BRIDGE_V1",
+                              "count":  5
+                          },
+                          {
+                              "step":  "PHASE114_BUILD_ADMITTED_ACTION_EXECUTION_ENGINE_V1",
+                              "count":  4
+                          },
+                          {
+                              "step":  "PHASE115_EXECUTE_BUILDER_QUEUED_ADMITTED_ACTION_V1",
+                              "count":  2
+                          },
+                          {
+                              "step":  "PHASE116_BUILDER_AUTONOMOUS_CHAIN_SMOKE_V1",
+                              "count":  2
+                          },
+                          {
+                              "step":  "PHASE117_BUILD_PROOF_AWARE_SELF_NEED_ENGINE_V1",
+                              "count":  3
+                          },
+                          {
+                              "step":  "PHASE118_BUILD_SELF_MODEL_UPDATE_ENGINE_V1",
+                              "count":  3
+                          },
+                          {
+                              "step":  "PHASE119_BUILD_SELF_MODEL_AWARE_DECISION_LOOP_V1",
+                              "count":  3
+                          },
+                          {
+                              "step":  "PHASE120_BUILD_AUTONOMOUS_LOOP_CONTROLLER_V1",
+                              "count":  3
+                          },
+                          {
+                              "step":  "PHASE121_RUN_BOUNDED_AUTONOMOUS_LOOP_TRIAL_V1",
+                              "count":  2
+                          },
+                          {
+                              "step":  "PHASE122_BUILD_CONTROLLER_AWARE_SELF_MODEL_UPDATE_V1",
+                              "count":  3
+                          },
+                          {
+                              "step":  "PHASE123_RUN_CONTROLLER_GOVERNED_SELF_BUILD_TRIAL_V1",
+                              "count":  2
+                          },
+                          {
+                              "step":  "PHASE124_BUILD_SELF_MODEL_FIRST_RUNTIME_ENTRYPOINT_V1",
+                              "count":  3
+                          },
+                          {
+                              "step":  "PHASE125_RUN_SELF_MODEL_FIRST_CONTROLLER_GOVERNED_TRIAL_V1",
+                              "count":  2
+                          },
+                          {
+                              "step":  "PHASE126_BUILD_TRIAL_AWARE_SELF_MODEL_ADVANCE_V1",
+                              "count":  3
+                          },
+                          {
+                              "step":  "PHASE127_BUILD_SELF_BUILD_OPERATION_CONTRACT_V1",
+                              "count":  3
+                          },
+                          {
+                              "step":  "PHASE128_RUN_SELF_BUILD_OPERATION_CONTRACT_SMOKE_V1",
+                              "count":  2
+                          },
+                          {
+                              "step":  "PHASE129_BUILD_OPERATION_CONTRACT_AWARE_SELF_MODEL_ADVANCE_V1",
+                              "count":  3
+                          },
+                          {
+                              "step":  "PHASE130_BUILD_SELF_BUILD_OPERATION_READINESS_GATE_V1",
+                              "count":  3
+                          },
+                          {
+                              "step":  "PHASE131_RUN_CONTRACT_GOVERNED_SELF_BUILD_OPERATION_TRIAL_V1",
+                              "count":  2
+                          },
+                          {
+                              "step":  "PHASE132_BUILD_OPERATION_TRIAL_AWARE_SELF_MODEL_ADVANCE_V1",
+                              "count":  3
+                          },
+                          {
+                              "step":  "PHASE133_BUILD_SELF_BUILD_OPERATION_CAPABILITY_SELECTOR_V1",
+                              "count":  3
+                          },
+                          {
+                              "step":  "PHASE134_BUILD_MATERIAL_ACQUISITION_BOOTSTRAP_V1",
+                              "count":  3
+                          },
+                          {
+                              "step":  "PHASE135_RUN_MANUAL_MATERIAL_SCOUT_PASS_001_V1",
+                              "count":  3
+                          },
+                          {
+                              "step":  "PHASE136_IMPORT_MANUAL_MATERIAL_SCOUT_PASS_TO_CATALOG_V1",
+                              "count":  3
+                          },
+                          {
+                              "step":  "PHASE137_BUILD_MATERIAL_QUARANTINE_EVALUATION_RUNTIME_V1",
+                              "count":  3
+                          },
+                          {
+                              "step":  "PHASE138A_AUTONOMOUS_MATERIAL_DECISION_STRESS_LAB_V1",
+                              "count":  3
+                          },
+                          {
+                              "step":  "PHASE138B_REVIEW_AUTONOMOUS_MATERIAL_DECISION_STRESS_RESULTS_V1",
+                              "count":  3
+                          },
+                          {
+                              "step":  "PHASE138C_SANDBOX_BRANCH_MERGE_DECISION_V1",
+                              "count":  3
+                          },
+                          {
+                              "step":  "PHASE138D_OWNER_APPROVED_SANDBOX_BRANCH_MERGE_V1",
+                              "count":  3
+                          },
+                          {
+                              "step":  "PHASE139_BUILD_BUILDER_SELF_PACK_AUTHOR_CONVEYOR_V1",
+                              "count":  3
+                          },
+                          {
+                              "step":  "PHASE139A_BUILDER_GENERATED_SELF_LEARNING_LOOP_SEED_V1",
+                              "count":  2
+                          },
+                          {
+                              "step":  "PHASE140_BUILDER_SELF_PACK_AUTHOR_SCALE_TRIAL_V1",
+                              "count":  3
+                          },
+                          {
+                              "step":  "PHASE140A_BUILDER_GENERATED_STATE_SYNC_CAPSULE_SEED_V1",
+                              "count":  2
+                          },
+                          {
+                              "step":  "PHASE140B_BUILDER_GENERATED_SELF_LEARNING_METRIC_SEED_V1",
+                              "count":  2
+                          },
+                          {
+                              "step":  "PHASE140C_BUILDER_GENERATED_NEXT_GAP_SELECTOR_SEED_V1",
+                              "count":  2
+                          },
+                          {
+                              "step":  "PHASE141_BUILDER_SELF_LEARNING_LOOP_METRICS_V1",
+                              "count":  3
+                          },
+                          {
+                              "step":  "PHASE142_BUILDER_NEXT_GAP_SELECTOR_RUNTIME_V1",
+                              "count":  2
+                          },
+                          {
+                              "step":  "PHASE143_BUILDER_CORRECTION_INBOX_RESPONSE_TRIAL_V1",
+                              "count":  2
+                          },
+                          {
+                              "step":  "PHASE144_BUILDER_BEHAVIOR_ADAPTATION_SCALE_TRIAL_V1",
+                              "count":  2
+                          },
+                          {
+                              "step":  "PHASE145_BUILDER_AUTONOMOUS_MULTI_SESSION_LEARNING_TRIAL_V1",
+                              "count":  2
+                          }
+                      ],
+    "classification":  "HISTORICAL_AUTONOMY_TRIAL_OUTPUT_BULK",
+    "reason":  "After pass 5 removed all external phase110-141 refs, this historical output bulk no longer participates in active route. Current route uses school/compact-memory/recovery proof path.",
+    "boundary":  "Removal of old tracked historical outputs only. Active compact memory, school runners, recovery contracts, and current validators are not touched."
+}

@@ -1,0 +1,47 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Agent Builder Build Decision",
+  "type": "object",
+  "required": [
+    "decision_id",
+    "mode",
+    "status",
+    "current_phase",
+    "selected_capability",
+    "selected_task",
+    "truth_inputs",
+    "reason"
+  ],
+  "properties": {
+    "decision_id": {
+      "type": "string"
+    },
+    "mode": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "current_phase": {
+      "type": "string"
+    },
+    "selected_capability": {
+      "type": "object"
+    },
+    "selected_task": {
+      "type": "object"
+    },
+    "truth_inputs": {
+      "type": "object"
+    },
+    "reason": {
+      "type": "string"
+    },
+    "stop_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

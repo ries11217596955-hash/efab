@@ -1,0 +1,47 @@
+runs/*
+!runs/.gitkeep
+
+# Keep legacy/generated scratch agents hidden by default.
+generated_agents/*
+!generated_agents/.gitkeep
+
+# Accepted product agents must stay visible/tracked.
+!generated_agents/remediation_intake_operator_agent_v1/
+!generated_agents/remediation_intake_operator_agent_v1/**
+
+!generated_agents/runbook_executor_agent_v1/
+!generated_agents/runbook_executor_agent_v1/**
+
+# R4-HYGIENE-01: generated runtime/proof bulk artifacts
+**/pre_execution_snapshots/
+reports/lab_r4_d2b_r4_03_batch_runner_*/
+reports/**/fixture_repo/
+reports/**/batch_package/
+reports/**/duplicate_package/
+reports/**/single_package/
+reports/lab_r4_hygiene_04b_short_work_root_*/
+
+# EFAB thin control repo retention rules
+reports/**/work/
+reports/**/work/current/
+reports/**/temporary_core_mutation_dry_run/
+reports/**/before_copies/
+reports/**/rollback_copies/
+reports/self_development/phase165s_d2_big_curriculum_material_factory/raw_shards/
+reports/self_development/phase165s_d2b_big_curriculum_autonomous_learning/accepted_log.jsonl
+*.tmp
+*.bak
+
+# EFAB thin control repo pass2 rules
+reports/**
+!reports/
+!reports/self_development/
+!reports/self_development/accepted_change_memory_snapshot.json
+!reports/self_development/SELF_MODEL_ACTIVE_MAP.json
+!reports/self_development/agent_body_map.json
+!reports/self_development/THIN_REPO_CLEANUP_MANIFEST_*.json
+!reports/self_development/THIN_REPO_PASS2_MANIFEST_*.json
+proofs/**
+.runtime/
+
+operations/reports/

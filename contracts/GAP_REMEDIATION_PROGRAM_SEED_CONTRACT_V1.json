@@ -1,0 +1,24 @@
+{
+  "contract_id": "GAP_REMEDIATION_PROGRAM_SEED_CONTRACT_V1",
+  "contract_version": "1.0",
+  "required_fields": [
+    "seed_id",
+    "seed_version",
+    "status",
+    "source_gap_report_path",
+    "source_candidate_path",
+    "source_intake_report_path",
+    "candidate_profile_id",
+    "candidate_agent_kind",
+    "candidate_package_profile",
+    "required_build_move",
+    "recommended_program",
+    "required_operator_move",
+    "operator_summary"
+  ],
+  "required_values": {
+    "status": "PROGRAM_SEED_READY",
+    "required_operator_move": "AUTHOR_OR_SELECT_REPO_DEFINED_PACKS_FOR_PROGRAM",
+    "recommended_program.program_kind": "SPECIALIZATION_PROFILE_CLOSURE_SERIAL_SELF_BUILD"
+  }
+}

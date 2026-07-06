@@ -1,0 +1,83 @@
+{
+  "contract_id": "SELF_BUILD_BACKLOG_CONTRACT_V1",
+  "version": "V1",
+  "status": "ACTIVE_CONTRACT",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "route_lock": "AGENT_BUILDER_NEXT_15_STEPS_LOCK_V2_R2.md",
+  "purpose": "Define the backlog contract for batch self-build work: item statuses, evidence, quarantine, blockers, and assistance requests.",
+  "item_statuses": [
+    "PLANNED",
+    "RUNNING",
+    "PASS",
+    "FAILED",
+    "QUARANTINED",
+    "BLOCKED",
+    "NEEDS_OWNER_DECISION",
+    "NEEDS_CODEX_REPAIR",
+    "NEEDS_MATERIAL",
+    "SKIPPED_BY_POLICY"
+  ],
+  "item_contract": {
+    "required_fields": [
+      "item_id",
+      "title",
+      "requested_outcome",
+      "status",
+      "risk_level",
+      "dependencies",
+      "allowed_files_scope",
+      "blocked_files_scope",
+      "proof_required",
+      "failure_reason",
+      "quarantine_reason",
+      "assistance_required",
+      "next_action"
+    ],
+    "evidence_required_for_pass": [
+      "changed_files",
+      "validation_output",
+      "proof_or_report_path",
+      "queue_state",
+      "runtime_or_diagnostic_result"
+    ],
+    "quarantine_required_for_failed_unknown": true,
+    "failure_must_not_hide_item": true,
+    "blocked_item_must_include_reason": true,
+    "assistance_required_values": [
+      "NONE",
+      "OWNER_DECISION",
+      "CODEX_REPAIR",
+      "MATERIAL_REQUIRED",
+      "RUNTIME_REPAIR",
+      "POLICY_DECISION"
+    ]
+  },
+  "batch_behavior": {
+    "continue_after_safe_item_failure": true,
+    "stop_on_systemic_failure": true,
+    "stop_on_policy_violation": true,
+    "stop_on_repo_corruption": true,
+    "batch_report_required": true,
+    "item_level_report_required": true,
+    "proof_aggregation_required": true,
+    "commit_only_after_batch_validation": true
+  },
+  "examples": [
+    {
+      "item": "chair",
+      "result": "PASS",
+      "meaning": "Item built and proven."
+    },
+    {
+      "item": "table",
+      "result": "QUARANTINED",
+      "meaning": "Item failed safely; reason and needed help recorded; batch continues."
+    },
+    {
+      "item": "sofa",
+      "result": "BLOCKED",
+      "meaning": "Cannot continue this item without missing material, owner decision, or repair."
+    }
+  ],
+  "next_allowed_step": "PHASE93_CAPABILITY_GAP_DETECTOR_V1"
+}

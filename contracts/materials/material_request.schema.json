@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "material_request.schema.json",
+  "title": "Material Request",
+  "type": "object",
+  "required": [
+    "request_id",
+    "requested_by",
+    "capability_gap",
+    "material_type",
+    "requirements",
+    "constraints",
+    "created_at"
+  ],
+  "properties": {
+    "request_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "requested_by": {
+      "type": "string",
+      "minLength": 1
+    },
+    "capability_gap": {
+      "type": "string",
+      "minLength": 1
+    },
+    "material_type": {
+      "type": "string",
+      "enum": [
+        "CLI",
+        "LIBRARY",
+        "TEMPLATE",
+        "WORKFLOW",
+        "DOCKER_IMAGE",
+        "POLICY",
+        "SCHEMA",
+        "EXAMPLE",
+        "RESEARCH_REFERENCE",
+        "SERVICE"
+      ]
+    },
+    "requirements": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "created_at": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

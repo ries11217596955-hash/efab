@@ -1,0 +1,31 @@
+{
+    "forbidden":  [
+                      "Codex as brain",
+                      "Codex as authority",
+                      "Codex file writes",
+                      "Codex shell execution for this port",
+                      "Codex deciding route",
+                      "accepting answer as PROVEN",
+                      "template bypass for autonomous knowledge acquisition"
+                  ],
+    "school_correction":  "School is not a query source; active school has priority, inactive school is unavailable.",
+    "codex_command":  "codex exec --sandbox read-only --ephemeral --output-last-message \u003cfile\u003e -",
+    "source_id":  "CODEX_READONLY_SOURCE",
+    "proof_file_name":  "KNOWLEDGE_ACQUISITION_PROOF.json",
+    "answer_status":  "CODEX_DRAFT",
+    "allowed":  true,
+    "schema":  "CODEX_READONLY_SOURCE_POLICY_V1",
+    "status":  "ACTIVE_CONTRACT_CANDIDATE",
+    "boundaries":  [
+                       "read-only sandbox",
+                       "ephemeral session",
+                       "bounded knowledge question only",
+                       "no file modification by Codex",
+                       "no shell/runtime execution by Codex prompt",
+                       "no autonomous route decisions",
+                       "agent must validate before acting",
+                       "strong prompt template required"
+                   ],
+    "template_path":  "operations/knowledge_acquisition_port/CODEX_KNOWLEDGE_REQUEST_TEMPLATE.md",
+    "answer_schema_path":  "operations/knowledge_acquisition_port/codex_knowledge_answer_schema.json"
+}

@@ -1,0 +1,142 @@
+{
+    "schema":  "BATCH_SOURCE_DIGEST_AND_PROMOTION_DECISION_V1",
+    "status":  "COMPACT_BATCH_DIGEST_CREATED",
+    "run_id":  "sandbox_study_episode_manager_20260705_01_cycle3_attempt1_study_batch",
+    "source":  "CODEX_BATCH_READONLY_SOURCE",
+    "source_answer_status":  "CODEX_DRAFT",
+    "parent_task":  "minimal_reusable_builder_learning_rule",
+    "knowledge_need":  "Study topic as Engineer-Philosopher. Attempt 1 of up to 3. Give compact Builder-relevant understanding, validation needs, and return plan.",
+    "part_count":  5,
+    "part_digests":  [
+                         {
+                             "id":  "X1",
+                             "name":  "core meaning",
+                             "meaning":  "A minimal reusable builder learning rule is the smallest validated rule that can be retained, retrieved, and reused across future build decisions without carrying unnecessary case detail.",
+                             "role_in_parent_task":  "Defines X as a bounded learning unit, not a broad philosophy or one-off note.",
+                             "compact_missing_knowledge":  [
+                                                               "Exact required fields for a rule in this repo",
+                                                               "Threshold for reusable vs case-specific"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "Compare existing accepted atom and retention contracts conceptually",
+                                                                 "Draft rule shape as trigger, action, boundary, evidence, reuse condition"
+                                                             ],
+                             "compact_validation_needed":  "Confirm the rule can be retrieved and applied to a later decision with a measurable behavior delta",
+                             "return_to_parent_hint":  "Use X1 to define the candidate object before judging weakness, relevance, or promotion."
+                         },
+                         {
+                             "id":  "X2",
+                             "name":  "why I am not ideal",
+                             "meaning":  "The weakness revealed is that the Builder can confuse useful observations with reusable learning, overfit to one case, or retain knowledge that is not decision-active.",
+                             "role_in_parent_task":  "Explains why X needs minimality, validation, and reuse boundaries instead of just memory accumulation.",
+                             "compact_missing_knowledge":  [
+                                                               "Which failure mode is currently dominant",
+                                                               "Whether existing retention stores preserve active decision hooks"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "List common failure modes without changing state",
+                                                                 "Map each failure to a proposed rule constraint"
+                                                             ],
+                             "compact_validation_needed":  "Show the rule prevents at least one repeated failure without causing an opposite failure",
+                             "return_to_parent_hint":  "Use X2 to make the rule corrective rather than decorative."
+                         },
+                         {
+                             "id":  "X3",
+                             "name":  "builder relevance",
+                             "meaning":  "For self-build or child-agent build, the rule is useful only if it improves future construction choices, acceptance discipline, or route control under bounded context.",
+                             "role_in_parent_task":  "Connects X to Builder behavior: better reuse, less drift, smaller validated learning units.",
+                             "compact_missing_knowledge":  [
+                                                               "Where the rule would be invoked in canonical Builder flow",
+                                                               "Whether child-agent build needs the same rule or a stricter variant"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "Identify one low-risk decision point where the rule would be read",
+                                                                 "Describe expected decision change before implementation"
+                                                             ],
+                             "compact_validation_needed":  "Run a before/after decision comparison on a controlled scenario",
+                             "return_to_parent_hint":  "Use X3 to reject rules that are true but not operationally useful."
+                         },
+                         {
+                             "id":  "X4",
+                             "name":  "validation",
+                             "meaning":  "Understanding is validated only when the rule is represented, retrieved, applied, and produces an observable decision improvement against a controlled baseline.",
+                             "role_in_parent_task":  "Prevents X from being promoted as learning based on explanation quality alone.",
+                             "compact_missing_knowledge":  [
+                                                               "Canonical validator path for this rule type",
+                                                               "Minimum acceptable behavior-delta evidence"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "Define static checks first",
+                                                                 "Define one bounded smoke scenario and one negative scenario"
+                                                             ],
+                             "compact_validation_needed":  [
+                                                               "Schema or contract check",
+                                                               "Retrieval check",
+                                                               "Decision reuse check",
+                                                               "Behavior delta proof"
+                                                           ],
+                             "return_to_parent_hint":  "Use X4 as the gate before any claim that X is learned."
+                         },
+                         {
+                             "id":  "X5",
+                             "name":  "promotion decision",
+                             "meaning":  "Promotion decides whether this is only a case pattern, an atom candidate, or an open gap needing more evidence.",
+                             "role_in_parent_task":  "Keeps X from entering active knowledge prematurely while still preserving useful draft structure.",
+                             "compact_missing_knowledge":  [
+                                                               "Promotion criteria for accepted atom retention in the current route",
+                                                               "Evidence count needed for reusable status"
+                                                           ],
+                             "compact_safe_learning_steps":  [
+                                                                 "Classify the draft against explicit criteria",
+                                                                 "Prefer lower promotion status when evidence is thin"
+                                                             ],
+                             "compact_validation_needed":  "Independent check that trigger, boundary, retrieval path, and behavior delta are present",
+                             "return_to_parent_hint":  "Return X as atom candidate only if validation artifacts exist; otherwise keep it as case pattern or open gap."
+                         }
+                     ],
+    "cross_part_map":  {
+                           "dependencies":  [
+                                                "X2 depends on X1 because weakness must be judged against a clear rule shape",
+                                                "X3 depends on X1 and X2 because relevance requires both definition and failure target",
+                                                "X5 depends on X4 because promotion requires validation evidence"
+                                            ],
+                           "duplicates_or_overlaps":  [
+                                                          "X4 overlaps X5: validation produces the evidence used for promotion",
+                                                          "X2 overlaps X3: both concern why the rule matters, but X2 is weakness and X3 is operational use"
+                                                      ],
+                           "priority_order":  [
+                                                  "X1",
+                                                  "X2",
+                                                  "X3",
+                                                  "X4",
+                                                  "X5"
+                                              ],
+                           "can_skip_for_now":  [
+
+                                                ]
+                       },
+    "parent_return_plan":  {
+                               "how_to_rebuild_x":  "Rebuild X as a compact candidate rule with trigger, action, boundary, evidence requirement, retrieval condition, and promotion status; then test whether it changes one future Builder decision under controlled validation.",
+                               "next_small_action":  "Draft the minimal rule fields and classify the current evidence as case pattern, atom candidate, or open gap without promoting it.",
+                               "proof_needed":  [
+                                                    "Proof that the rule is retrievable at the right decision point",
+                                                    "Proof that applying it changes behavior in a controlled scenario",
+                                                    "Proof that it does not promote unvalidated or overbroad learning"
+                                                ]
+                           },
+    "promotion_decision":  {
+                               "default_classification":  "CASE_PATTERN_CANDIDATE",
+                               "raw_retention_decision":  "DELETE_RAW_CANDIDATE",
+                               "active_memory_candidate":  false,
+                               "atom_candidate":  false,
+                               "reflex_candidate":  false,
+                               "organ_candidate":  false,
+                               "owner_decision_required":  "only if promotion beyond case pattern is requested",
+                               "reason":  "Batch source answer is material only; default is compact case pattern with part map and parent return plan."
+                           },
+    "proof_refs":  {
+                       "batch_knowledge_acquisition_proof":  "operations\\knowledge_acquisition_port\\runs\\sandbox_study_episode_manager_20260705_01_cycle3_attempt1_study_batch\\BATCH_KNOWLEDGE_ACQUISITION_PROOF.json",
+                       "raw_answer_sha256":  "E8302B5AAEC3BB4863582C153A06B04F9F0273841EAF08962E1934800E7D20E6",
+                       "raw_answer_retained":  false
+                   }
+}

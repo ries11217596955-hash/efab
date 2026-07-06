@@ -1,0 +1,24 @@
+{
+  "task_id": "TASK_SERIAL_SELF_BUILD_PACK_EXECUTOR_001",
+  "capability_id": "serial_self_build_pack_executor",
+  "objective": "Build the serial self-build pack executor and prove it by self-running the next registered local execution pack.",
+  "execution_kind": "LOCAL_PACK_EXECUTOR_PROOF",
+  "scope": [
+    "contracts/self_build_pack.schema.json",
+    "contracts/self_build_pack_registry.schema.json",
+    "packs/registry.json",
+    "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/PACK.json",
+    "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/APPLY.ps1",
+    "modules/read_pack_registry.ps1",
+    "modules/select_self_build_pack.ps1",
+    "modules/execute_self_build_pack.ps1",
+    "orchestrator/run.ps1",
+    "validators/validate_serial_self_build_pack_executor.ps1"
+  ],
+  "validation": [
+    "pack registry maps active next self-build task to a concrete pack",
+    "orchestrator SELF_BUILD mode selects and executes registered pack",
+    "pack executor stops on pack failure",
+    "next registered pack runs without external copy-paste"
+  ]
+}

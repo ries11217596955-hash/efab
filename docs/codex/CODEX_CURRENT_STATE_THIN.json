@@ -1,0 +1,53 @@
+﻿{
+    "schema_version":  "1.1",
+    "generated_utc":  "2026-06-11T08:25:08.6572299Z",
+    "branch":  "phase110-idempotent-autonomy-trial-runtime",
+    "generated_from_head":  "26db309ea883e65e9c90dfc66e8c43fb347f9ae4",
+    "generated_from_origin":  "26db309ea883e65e9c90dfc66e8c43fb347f9ae4",
+    "generator_worktree_status_at_generation":  "DIRTY",
+    "orientation_freshness_model":  "generated_from_repo_state_not_self_referential",
+    "orientation_self_commit_tolerance":  true,
+    "manual_refresh_required_when":  [
+                                         "active route changes",
+                                         "protected state changes",
+                                         "registry/roadmap/self-model changes",
+                                         "proof index changes",
+                                         "before starting a major Codex task"
+                                     ],
+    "last_orientation_refresh_commit":  "5a6bed5650fcff59b7deb0a86b2a1b2675b2ec78",
+    "head":  "26db309ea883e65e9c90dfc66e8c43fb347f9ae4",
+    "origin":  "26db309ea883e65e9c90dfc66e8c43fb347f9ae4",
+    "head_equals_origin":  true,
+    "git_status_clean":  false,
+    "active_route_lock":  "route_locks/AGENT_BUILDER_NEXT_15_STEPS_LOCK_V2.md",
+    "next_required_action":  "PHASE165P_ROUTE_LOCK_V2_COMPLETION_REVIEW_OR_NEXT_ROUTE_LOCK_DECISION",
+    "current_promoted_organ":  "reusable_owner_material_self_build_organ_v1",
+    "current_capability":  "owner_material_dynamic_self_build_loop",
+    "codex_skip_rules":  [
+                             "reports/**",
+                             "proofs/**",
+                             "self_build_programs/**/canonical_trials/**",
+                             "self_build_programs/**/dry_runs/**",
+                             "self_build_programs/**/promotions/**",
+                             "runtime_sessions/**",
+                             "zz_MUSORKA_DO_NOT_READ_BY_CODEX/**"
+                         ],
+    "read_first":  [
+                       "AGENTS.md",
+                       "docs/codex/CODEX_CURRENT_STATE_THIN.json",
+                       "docs/codex/CODEX_REPO_MAP.md",
+                       "docs/codex/CODEX_EVIDENCE_INDEX.md",
+                       "README.md",
+                       "route_locks/AGENT_BUILDER_NEXT_15_STEPS_LOCK_V2.md",
+                       "CAPABILITY_ROADMAP.json",
+                       "GENESIS_STATE.json",
+                       "TASK_QUEUE.json",
+                       "packs/registry.json",
+                       "orchestrator/run.ps1"
+                   ],
+    "generated_files":  [
+                            "docs/codex/CODEX_REPO_MAP.md",
+                            "docs/codex/CODEX_EVIDENCE_INDEX.md",
+                            "docs/codex/CODEX_CURRENT_STATE_THIN.json"
+                        ]
+}

@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_id": "builder_self_pack_author_v1",
+  "title": "Builder Self-Pack Author V1",
+  "type": "object",
+  "required": [
+    "author_id",
+    "status",
+    "active_line",
+    "baseline_commit",
+    "input_sources",
+    "author_policy",
+    "candidate_target",
+    "next_allowed_step"
+  ],
+  "properties": {
+    "author_id": {
+      "const": "BUILDER_SELF_PACK_AUTHOR_V1"
+    },
+    "status": {
+      "const": "ACTIVE_SELF_PACK_AUTHOR"
+    },
+    "active_line": {
+      "const": "AGENT_BUILDER / SELF_BUILD"
+    },
+    "baseline_commit": {
+      "const": "835aa83"
+    },
+    "input_sources": {
+      "type": "array",
+      "minItems": 3
+    },
+    "author_policy": {
+      "type": "object"
+    },
+    "candidate_target": {
+      "const": "self_build_batch/self_pack_author/generated_candidates/PHASE108_BUILDER_GENERATED_PACK_ADMISSION_V1_CANDIDATE"
+    },
+    "next_allowed_step": {
+      "const": "PHASE108_BUILDER_GENERATED_PACK_ADMISSION_V1"
+    }
+  },
+  "additionalProperties": true
+}

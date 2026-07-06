@@ -1,0 +1,294 @@
+{
+  "repair_loop_generator_id": "REPAIR_LOOP_GENERATOR_V1",
+  "version": "V1",
+  "status": "ACTIVE_REPAIR_LOOP_GENERATOR",
+  "phase": "PHASE103_REPAIR_LOOP_GENERATOR_V1",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "generated_at": "2026-05-29T18:52:00.4733226Z",
+  "input_sources": [
+    "self_build_batch/next_actions/BATCH_PLAN_EXAMPLE_V1_NEXT_ACTION_PLAN_DRY_RUN.json",
+    "self_build_batch/next_actions/AUTO_NEXT_GAP_DECISION_KERNEL_V1.json",
+    "proofs/self_development/AUTO_NEXT_GAP_DECISION_V1.json"
+  ],
+  "output_schema": "contracts/self_development/repair_loop_generator_v1.schema.json",
+  "generator_policy": {
+    "generates_executable_program_drafts": true,
+    "self_resolution_first": true,
+    "assistance_is_fallback": true,
+    "codex_is_not_primary_executor": true,
+    "owner_is_not_primary_executor": true,
+    "no_program_execution_in_phase103": true,
+    "admission_required_before_execution": true,
+    "proof_required_after_execution": true,
+    "no_blind_external_fetch": true,
+    "no_blind_install": true,
+    "no_external_agent_production": true,
+    "no_external_install": true,
+    "no_external_fetch": true
+  },
+  "program_bundle_contract": {
+    "bundle_id": "BATCH_PLAN_EXAMPLE_V1_REPAIR_LOOP_PROGRAMS_DRY_RUN",
+    "version": "V1",
+    "status": "DRY_RUN_PROGRAM_BUNDLE_READY",
+    "active_line": "AGENT_BUILDER / SELF_BUILD",
+    "generated_at": "2026-05-29T18:52:00.4733226Z",
+    "source_next_action_plan": "self_build_batch/next_actions/BATCH_PLAN_EXAMPLE_V1_NEXT_ACTION_PLAN_DRY_RUN.json",
+    "self_resolution_first": true,
+    "assistance_is_fallback": true,
+    "program_generation_performed": true,
+    "execution_performed": false,
+    "execution_allowed": false,
+    "programs": [
+      {
+        "program_id": "REPAIR_PROGRAM_SELF_BUILD_REQUIRED_MODULES_001",
+        "program_type": "SELF_BUILD_REQUIRED_MODULES_PROGRAM",
+        "source_decision_id": "DECISION_SELF_BUILD_REQUIRED_MODULES_001",
+        "source_item_id": "ITEM_PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1",
+        "source_decision": "SELF_BUILD_REQUIRED_MODULES",
+        "objective": "Create the controlled multi-cycle self-build run foundation from the selected PHASE103 self-build-required decision.",
+        "missing_capability": "repair_loop_generator_v1",
+        "required_modules": [
+          "modules/self_development/write_repair_loop_generator_v1.ps1",
+          "packs/PHASE103_REPAIR_LOOP_GENERATOR_V1/APPLY.ps1",
+          "packs/PHASE103_REPAIR_LOOP_GENERATOR_V1/VALIDATE.ps1"
+        ],
+        "planned_files": [
+          "packs/PHASE104_CONTROLLED_MULTI_CYCLE_SELF_BUILD_RUN_V1/PACK.json",
+          "packs/PHASE104_CONTROLLED_MULTI_CYCLE_SELF_BUILD_RUN_V1/APPLY.ps1",
+          "packs/PHASE104_CONTROLLED_MULTI_CYCLE_SELF_BUILD_RUN_V1/VALIDATE.ps1",
+          "modules/self_development/write_controlled_multi_cycle_self_build_run_v1.ps1",
+          "tasks/TASK_CONTROLLED_MULTI_CYCLE_SELF_BUILD_RUN_V1_001.json"
+        ],
+        "allowed_scope": [
+          "packs/PHASE104_CONTROLLED_MULTI_CYCLE_SELF_BUILD_RUN_V1/",
+          "modules/self_development/",
+          "contracts/self_development/",
+          "self_build_batch/",
+          "reports/self_development/",
+          "proofs/self_development/",
+          "tasks/",
+          "TASK_QUEUE.json",
+          "packs/registry.json",
+          "CAPABILITY_ROADMAP.json",
+          "GENESIS_STATE.json"
+        ],
+        "blocked_scope": [
+          "generated_agents/",
+          "applied_agents/",
+          ".github/workflows/",
+          "materials/",
+          "operations/",
+          "packs/PHASE78*",
+          "packs/PHASE79*",
+          "packs/PHASE80*",
+          "packs/PHASE81*",
+          "packs/PHASE82*",
+          "packs/PHASE83*",
+          "packs/PHASE84*",
+          "packs/PHASE85*",
+          "packs/PHASE86*",
+          "packs/PHASE87*",
+          "packs/PHASE88*",
+          "packs/PHASE89*",
+          "packs/PHASE90*",
+          "packs/PHASE91*",
+          "packs/PHASE92*",
+          "packs/PHASE93*",
+          "packs/PHASE94*",
+          "packs/PHASE95*",
+          "packs/PHASE96*",
+          "packs/PHASE97*",
+          "packs/PHASE98*",
+          "packs/PHASE99*",
+          "packs/PHASE100*",
+          "packs/PHASE101*",
+          "packs/PHASE102*"
+        ],
+        "admission_required": true,
+        "execution_allowed_now": false,
+        "material_policy_required": false,
+        "proof_requirements": [
+          "PHASE104 proof must PASS",
+          "queue must return to NONE",
+          "no generated program execution without admission",
+          "no hidden unresolved records"
+        ],
+        "validation_requirements": [
+          "PHASE104 seed validator passes",
+          "PowerShell parser checks pass",
+          "JSON parse checks pass",
+          "selected pack count is exactly one"
+        ],
+        "fallback_only_if_self_blocked": true,
+        "resume_after_success": "Continue into PHASE104 controlled multi-cycle runtime with admitted repair-loop program drafts only.",
+        "next_runtime_candidate": "PHASE104_CONTROLLED_MULTI_CYCLE_SELF_BUILD_RUN_V1"
+      },
+      {
+        "program_id": "REPAIR_PROGRAM_MATERIAL_ACQUISITION_UNDER_POLICY_001",
+        "program_type": "MATERIAL_ACQUISITION_UNDER_POLICY_PROGRAM",
+        "source_decision_id": "DECISION_SELF_ACQUIRE_MATERIAL_UNDER_POLICY_001",
+        "source_item_id": "ITEM_PHASE99_CONTINUE_ON_FAILURE_RUNTIME_V1",
+        "source_decision": "SELF_ACQUIRE_MATERIAL_UNDER_POLICY",
+        "objective": "Prepare a policy-gated material acquisition request draft for quarantined batch items without fetching, installing, trusting, or using materials.",
+        "missing_capability": "material_request_packet_for_quarantined_batch_items_v1",
+        "required_modules": [
+          "modules/self_development/write_material_request_candidate_v1.ps1",
+          "contracts/operations/self_build_delivery_conveyor_v1.json"
+        ],
+        "planned_files": [
+          "self_build_batch/repair_loop/material_requests/MATERIAL_REQUEST_CANDIDATE_DRY_RUN.json",
+          "contracts/self_development/material_request_candidate_v1.schema.json"
+        ],
+        "allowed_scope": [
+          "self_build_batch/repair_loop/",
+          "contracts/self_development/",
+          "reports/self_development/",
+          "proofs/self_development/"
+        ],
+        "blocked_scope": [
+          "materials/MATERIAL_CATALOG.json",
+          "materials/MATERIAL_POLICY.json",
+          "materials/quarantine/",
+          "generated_agents/",
+          "applied_agents/",
+          ".github/workflows/",
+          "operations/"
+        ],
+        "admission_required": true,
+        "execution_allowed_now": false,
+        "material_policy_required": true,
+        "proof_requirements": [
+          "provenance requirement recorded",
+          "license requirement recorded",
+          "risk review requirement recorded",
+          "quarantine requirement recorded",
+          "wrapper requirement recorded before use",
+          "test requirement recorded before use",
+          "proof requirement recorded before trusted use",
+          "no external fetch performed"
+        ],
+        "validation_requirements": [
+          "provenance field required",
+          "license field required",
+          "risk field required",
+          "quarantine gate required",
+          "wrapper/test/proof gates required before trusted use"
+        ],
+        "fallback_only_if_self_blocked": true,
+        "resume_after_success": "Return material candidate to admission policy before any fetch, install, trust, wrapper, or use.",
+        "next_runtime_candidate": "PHASE104_CONTROLLED_MULTI_CYCLE_SELF_BUILD_RUN_V1"
+      },
+      {
+        "program_id": "REPAIR_PROGRAM_SAFE_LOCAL_PATCH_001",
+        "program_type": "SAFE_LOCAL_PATCH_PROGRAM",
+        "source_decision_id": "DECISION_SELF_PATCH_SAFE_LOCAL_SCOPE_001",
+        "source_item_id": "ITEM_PHASE98_ITEM_LEVEL_EXECUTION_LEDGER_V1",
+        "source_decision": "SELF_PATCH_SAFE_LOCAL_SCOPE",
+        "objective": "Draft a safe local patch program for isolated failed batch items while keeping execution blocked until admission.",
+        "missing_capability": "safe_local_patch_plan_for_failed_batch_items_v1",
+        "required_modules": [
+          "modules/self_development/write_safe_local_repair_patch_plan_v1.ps1",
+          "packs/PHASE103_REPAIR_LOOP_GENERATOR_V1/VALIDATE.ps1"
+        ],
+        "planned_files": [
+          "self_build_batch/repair_loop/patch_plans/SAFE_LOCAL_PATCH_PLAN_DRY_RUN.json",
+          "contracts/self_development/safe_local_patch_plan_v1.schema.json"
+        ],
+        "allowed_scope": [
+          "self_build_batch/repair_loop/",
+          "contracts/self_development/",
+          "modules/self_development/",
+          "reports/self_development/",
+          "proofs/self_development/"
+        ],
+        "blocked_scope": [
+          "generated_agents/",
+          "applied_agents/",
+          ".github/workflows/",
+          "materials/",
+          "operations/",
+          "orchestrator/run.ps1"
+        ],
+        "admission_required": true,
+        "execution_allowed_now": false,
+        "material_policy_required": false,
+        "proof_requirements": [
+          "patch scope must be declared",
+          "validation evidence required before completion",
+          "no PASS without proof",
+          "fallback only after self patch validation blocks"
+        ],
+        "validation_requirements": [
+          "allowed scope non-empty",
+          "blocked scope non-empty",
+          "target files declared",
+          "rollback/checkpoint plan declared"
+        ],
+        "fallback_only_if_self_blocked": true,
+        "resume_after_success": "Resume the batch only after the safe patch program passes admission and proof gates.",
+        "next_runtime_candidate": "PHASE104_CONTROLLED_MULTI_CYCLE_SELF_BUILD_RUN_V1"
+      },
+      {
+        "program_id": "REPAIR_PROGRAM_RESUME_AFTER_SELF_REPAIR_001",
+        "program_type": "RESUME_AFTER_SELF_REPAIR_PLAN",
+        "source_decision_id": "DECISION_OWNER_DECISION_FALLBACK_001",
+        "source_item_id": "ITEM_PHASE101_BATCH_PROOF_AGGREGATOR_V1",
+        "source_decision": "OWNER_DECISION_REQUIRED_FALLBACK",
+        "objective": "Draft a resume-after-repair plan that keeps owner/Codex assistance as fallback when self-resolution is blocked.",
+        "missing_capability": "systemic_failure_owner_decision_packet_v1",
+        "required_modules": [
+          "modules/self_development/write_owner_decision_packet_v1.ps1"
+        ],
+        "planned_files": [
+          "self_build_batch/repair_loop/resume/RESUME_AFTER_SELF_REPAIR_PLAN_DRY_RUN.json"
+        ],
+        "allowed_scope": [
+          "self_build_batch/repair_loop/",
+          "reports/self_development/",
+          "proofs/self_development/"
+        ],
+        "blocked_scope": [
+          "generated_agents/",
+          "applied_agents/",
+          ".github/workflows/",
+          "materials/",
+          "operations/"
+        ],
+        "admission_required": true,
+        "execution_allowed_now": false,
+        "material_policy_required": false,
+        "proof_requirements": [
+          "systemic stop reason preserved",
+          "no automatic continuation before admission",
+          "owner/Codex fallback marked secondary",
+          "resume conditions declared"
+        ],
+        "validation_requirements": [
+          "resume trigger declared",
+          "blocked condition declared",
+          "fallback condition declared",
+          "next runtime candidate declared"
+        ],
+        "fallback_only_if_self_blocked": true,
+        "resume_after_success": "Resume controlled multi-cycle self-build only after repair proofs and admission checks pass.",
+        "next_runtime_candidate": "PHASE104_CONTROLLED_MULTI_CYCLE_SELF_BUILD_RUN_V1"
+      }
+    ],
+    "program_count": 4,
+    "self_build_program_count": 1,
+    "material_acquisition_program_count": 1,
+    "safe_patch_program_count": 1,
+    "resume_plan_count": 1,
+    "admission_required_before_execution": true,
+    "selected_program_for_next_cycle": "REPAIR_PROGRAM_SELF_BUILD_REQUIRED_MODULES_001",
+    "next_allowed_step": "PHASE104_CONTROLLED_MULTI_CYCLE_SELF_BUILD_RUN_V1"
+  },
+  "program_types": [
+    "SELF_BUILD_REQUIRED_MODULES_PROGRAM",
+    "MATERIAL_ACQUISITION_UNDER_POLICY_PROGRAM",
+    "SAFE_LOCAL_PATCH_PROGRAM",
+    "RESUME_AFTER_SELF_REPAIR_PLAN"
+  ],
+  "execution_allowed": false,
+  "next_allowed_step": "PHASE104_CONTROLLED_MULTI_CYCLE_SELF_BUILD_RUN_V1"
+}

@@ -1,0 +1,17 @@
+{
+  "task_id": "TASK_REPAIR_LOOP_GENERATOR_V1_001",
+  "status": "READY",
+  "path": "tasks/TASK_REPAIR_LOOP_GENERATOR_V1_001.json",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "mode": "SELF_BUILD",
+  "capability_id": "repair_loop_generator_v1",
+  "phase": "PHASE103",
+  "gate": "REPAIR_LOOP_GENERATOR_V1",
+  "pack_id": "PHASE103_REPAIR_LOOP_GENERATOR_V1",
+  "baseline_commit": "3e99885",
+  "route_lock": "AGENT_BUILDER_NEXT_15_STEPS_LOCK_V2_R2.md",
+  "source_next_action_plan": "self_build_batch/next_actions/BATCH_PLAN_EXAMPLE_V1_NEXT_ACTION_PLAN_DRY_RUN.json",
+  "source_decision_kernel": "self_build_batch/next_actions/AUTO_NEXT_GAP_DECISION_KERNEL_V1.json",
+  "source_decision_proof": "proofs/self_development/AUTO_NEXT_GAP_DECISION_V1.json",
+  "next_allowed_step": "PHASE104_CONTROLLED_MULTI_CYCLE_SELF_BUILD_RUN_V1"
+}

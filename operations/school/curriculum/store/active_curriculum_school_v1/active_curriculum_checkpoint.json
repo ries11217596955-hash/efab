@@ -1,0 +1,196 @@
+{
+    "schema":  "curriculum_school_active_checkpoint_v1",
+    "status":  "ACTIVE_CURRICULUM_SCHOOL_CHECKPOINT",
+    "runtime_ready":  false,
+    "processed_count":  13,
+    "accepted_count":  12,
+    "rejected_count":  1,
+    "learned_count":  12,
+    "directed_count":  6,
+    "experience_count":  6,
+    "behavior_use_pass_count":  12,
+    "no_magic_n":  true,
+    "boundary":  "Canary curriculum atoms only; not autonomous life.",
+    "accepted_atoms":  [
+                           {
+                               "atom_id":  "curriculum.atom.0001.proof_vs_claim.v1",
+                               "lesson_id":  "curriculum.lesson.0001.v1",
+                               "source_mode":  "directed_curriculum",
+                               "concept":  "proof_vs_claim",
+                               "behavior_rule":  "Never claim proven/learned without fresh proof and proof label.",
+                               "source_path":  "directed:operator_curriculum",
+                               "negative_trap":  "Calling processed count proof of learning.",
+                               "behavior_use_proof":  {
+                                                          "probe_task":  "Apply lesson: proof_vs_claim",
+                                                          "expected_behavior":  "Never claim proven/learned without fresh proof and proof label.",
+                                                          "pass":  true
+                                                      },
+                               "return_to_parent":  "curriculum_school_v1_active_checkpoint"
+                           },
+                           {
+                               "atom_id":  "curriculum.atom.0002.school_vs_life.v1",
+                               "lesson_id":  "curriculum.lesson.0002.v1",
+                               "source_mode":  "directed_curriculum",
+                               "concept":  "school_vs_life",
+                               "behavior_rule":  "Use school for provided lessons; use life path for autonomous work under observation.",
+                               "source_path":  "directed:operator_curriculum",
+                               "negative_trap":  "Treating self-generated night loop as autonomous maturity.",
+                               "behavior_use_proof":  {
+                                                          "probe_task":  "Apply lesson: school_vs_life",
+                                                          "expected_behavior":  "Use school for provided lessons; use life path for autonomous work under observation.",
+                                                          "pass":  true
+                                                      },
+                               "return_to_parent":  "curriculum_school_v1_active_checkpoint"
+                           },
+                           {
+                               "atom_id":  "curriculum.atom.0003.no_magic_n.v1",
+                               "lesson_id":  "curriculum.lesson.0003.v1",
+                               "source_mode":  "directed_curriculum",
+                               "concept":  "no_magic_n",
+                               "behavior_rule":  "Never build architecture around N; require materialize-validate-promote-use chain.",
+                               "source_path":  "directed:operator_curriculum",
+                               "negative_trap":  "Using N as reason to accept candidates.",
+                               "behavior_use_proof":  {
+                                                          "probe_task":  "Apply lesson: no_magic_n",
+                                                          "expected_behavior":  "Never build architecture around N; require materialize-validate-promote-use chain.",
+                                                          "pass":  true
+                                                      },
+                               "return_to_parent":  "curriculum_school_v1_active_checkpoint"
+                           },
+                           {
+                               "atom_id":  "curriculum.atom.0004.candidate_quality.v1",
+                               "lesson_id":  "curriculum.lesson.0004.v1",
+                               "source_mode":  "directed_curriculum",
+                               "concept":  "candidate_quality",
+                               "behavior_rule":  "Accept only lesson objects with objective, exercise, negative trap, validator, behavior-use.",
+                               "source_path":  "directed:operator_curriculum",
+                               "negative_trap":  "Self-generated easy candidate called useful atom.",
+                               "behavior_use_proof":  {
+                                                          "probe_task":  "Apply lesson: candidate_quality",
+                                                          "expected_behavior":  "Accept only lesson objects with objective, exercise, negative trap, validator, behavior-use.",
+                                                          "pass":  true
+                                                      },
+                               "return_to_parent":  "curriculum_school_v1_active_checkpoint"
+                           },
+                           {
+                               "atom_id":  "curriculum.atom.0005.promotion_boundary.v1",
+                               "lesson_id":  "curriculum.lesson.0005.v1",
+                               "source_mode":  "directed_curriculum",
+                               "concept":  "promotion_boundary",
+                               "behavior_rule":  "Promote only after behavior-use proof, rollback path, and return-to-parent.",
+                               "source_path":  "directed:operator_curriculum",
+                               "negative_trap":  "Archive proof treated as active learning.",
+                               "behavior_use_proof":  {
+                                                          "probe_task":  "Apply lesson: promotion_boundary",
+                                                          "expected_behavior":  "Promote only after behavior-use proof, rollback path, and return-to-parent.",
+                                                          "pass":  true
+                                                      },
+                               "return_to_parent":  "curriculum_school_v1_active_checkpoint"
+                           },
+                           {
+                               "atom_id":  "curriculum.atom.0006.operator_gate.v1",
+                               "lesson_id":  "curriculum.lesson.0006.v1",
+                               "source_mode":  "directed_curriculum",
+                               "concept":  "operator_gate",
+                               "behavior_rule":  "Surface pass for project message; deep pass for night/school/promotion claims.",
+                               "source_path":  "directed:operator_curriculum",
+                               "negative_trap":  "Continuing after Owner says poplyl without reading gate.",
+                               "behavior_use_proof":  {
+                                                          "probe_task":  "Apply lesson: operator_gate",
+                                                          "expected_behavior":  "Surface pass for project message; deep pass for night/school/promotion claims.",
+                                                          "pass":  true
+                                                      },
+                               "return_to_parent":  "curriculum_school_v1_active_checkpoint"
+                           },
+                           {
+                               "atom_id":  "curriculum.atom.0007.experience_audit_or_gap.v1",
+                               "lesson_id":  "curriculum.lesson.0007.v1",
+                               "source_mode":  "experience_curriculum",
+                               "concept":  "experience_audit_or_gap",
+                               "behavior_rule":  "Ground curriculum in real repo evidence and require utility proof before promotion.",
+                               "source_path":  "operations\\gpt_handoff\\GPT_OPERATOR_JOURNAL.md",
+                               "negative_trap":  "Promoting evidence presence itself as learning without extracted behavior-use.",
+                               "behavior_use_proof":  {
+                                                          "probe_task":  "Apply lesson: experience_audit_or_gap",
+                                                          "expected_behavior":  "Ground curriculum in real repo evidence and require utility proof before promotion.",
+                                                          "pass":  true
+                                                      },
+                               "return_to_parent":  "curriculum_school_v1_active_checkpoint"
+                           },
+                           {
+                               "atom_id":  "curriculum.atom.0008.experience_evidence.v1",
+                               "lesson_id":  "curriculum.lesson.0008.v1",
+                               "source_mode":  "experience_curriculum",
+                               "concept":  "experience_evidence",
+                               "behavior_rule":  "Ground curriculum in real repo evidence and require utility proof before promotion.",
+                               "source_path":  "operations\\reports\\VALUE_GROUNDED_CURRICULUM_PREP_V1_VALIDATION.json",
+                               "negative_trap":  "Promoting evidence presence itself as learning without extracted behavior-use.",
+                               "behavior_use_proof":  {
+                                                          "probe_task":  "Apply lesson: experience_evidence",
+                                                          "expected_behavior":  "Ground curriculum in real repo evidence and require utility proof before promotion.",
+                                                          "pass":  true
+                                                      },
+                               "return_to_parent":  "curriculum_school_v1_active_checkpoint"
+                           },
+                           {
+                               "atom_id":  "curriculum.atom.0009.experience_audit_or_gap.v1",
+                               "lesson_id":  "curriculum.lesson.0009.v1",
+                               "source_mode":  "experience_curriculum",
+                               "concept":  "experience_audit_or_gap",
+                               "behavior_rule":  "Ground curriculum in real repo evidence and require utility proof before promotion.",
+                               "source_path":  "operations\\reports\\VALUE_GROUNDED_CURRICULUM_PREP_V1.json",
+                               "negative_trap":  "Promoting evidence presence itself as learning without extracted behavior-use.",
+                               "behavior_use_proof":  {
+                                                          "probe_task":  "Apply lesson: experience_audit_or_gap",
+                                                          "expected_behavior":  "Ground curriculum in real repo evidence and require utility proof before promotion.",
+                                                          "pass":  true
+                                                      },
+                               "return_to_parent":  "curriculum_school_v1_active_checkpoint"
+                           },
+                           {
+                               "atom_id":  "curriculum.atom.0010.experience_owner_correction.v1",
+                               "lesson_id":  "curriculum.lesson.0010.v1",
+                               "source_mode":  "experience_curriculum",
+                               "concept":  "experience_owner_correction",
+                               "behavior_rule":  "Ground curriculum in real repo evidence and require utility proof before promotion.",
+                               "source_path":  "operations\\gpt_handoff\\GPT_OPERATOR_LIVING_CELL_SOURCE_LADDER_V1.md",
+                               "negative_trap":  "Promoting evidence presence itself as learning without extracted behavior-use.",
+                               "behavior_use_proof":  {
+                                                          "probe_task":  "Apply lesson: experience_owner_correction",
+                                                          "expected_behavior":  "Ground curriculum in real repo evidence and require utility proof before promotion.",
+                                                          "pass":  true
+                                                      },
+                               "return_to_parent":  "curriculum_school_v1_active_checkpoint"
+                           },
+                           {
+                               "atom_id":  "curriculum.atom.0011.experience_audit_or_gap.v1",
+                               "lesson_id":  "curriculum.lesson.0011.v1",
+                               "source_mode":  "experience_curriculum",
+                               "concept":  "experience_audit_or_gap",
+                               "behavior_rule":  "Ground curriculum in real repo evidence and require utility proof before promotion.",
+                               "source_path":  "operations\\reports\\WEAK_SEMANTIC_OVERNIGHT_RUN_AUDIT_V1.md",
+                               "negative_trap":  "Promoting evidence presence itself as learning without extracted behavior-use.",
+                               "behavior_use_proof":  {
+                                                          "probe_task":  "Apply lesson: experience_audit_or_gap",
+                                                          "expected_behavior":  "Ground curriculum in real repo evidence and require utility proof before promotion.",
+                                                          "pass":  true
+                                                      },
+                               "return_to_parent":  "curriculum_school_v1_active_checkpoint"
+                           },
+                           {
+                               "atom_id":  "curriculum.atom.0012.experience_audit_or_gap.v1",
+                               "lesson_id":  "curriculum.lesson.0012.v1",
+                               "source_mode":  "experience_curriculum",
+                               "concept":  "experience_audit_or_gap",
+                               "behavior_rule":  "Ground curriculum in real repo evidence and require utility proof before promotion.",
+                               "source_path":  "operations\\reports\\WEAK_SEMANTIC_OVERNIGHT_RUN_AUDIT_V1.json",
+                               "negative_trap":  "Promoting evidence presence itself as learning without extracted behavior-use.",
+                               "behavior_use_proof":  {
+                                                          "probe_task":  "Apply lesson: experience_audit_or_gap",
+                                                          "expected_behavior":  "Ground curriculum in real repo evidence and require utility proof before promotion.",
+                                                          "pass":  true
+                                                      },
+                               "return_to_parent":  "curriculum_school_v1_active_checkpoint"
+                           }
+                       ]
+}

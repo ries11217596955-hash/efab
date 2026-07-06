@@ -1,0 +1,22 @@
+﻿{
+    "schema":  "tracked_school_codex_source_port_probe_v1",
+    "status":  "PASS_SCHOOL_CODEX_SOURCE_PORT_ROUTER_V1",
+    "created_at":  "2026-07-06T14:44:55.9604615+04:00",
+    "router_status":  "PASS_SCHOOL_SOURCE_ROUTER_V1",
+    "selected_source":  "CodexSourcePort",
+    "source_material_status":  "CODEX_DRAFT_VALIDATED_THEN_INTERNAL_FACTORY_NORMALIZED",
+    "codex_source_port_status":  "PASS_SCHOOL_CODEX_SOURCE_PORT_V1",
+    "codex_source_port_proof":  ".runtime\\school_source_ports\\codex\\school_codex_source_port_20260706_144500\\SCHOOL_CODEX_SOURCE_PORT_PROOF.json",
+    "codex_answer_status":  "CODEX_DRAFT",
+    "codex_required_shape_valid":  true,
+    "codex_material_status":  "CODEX_DRAFT_ONLY",
+    "codex_active_memory_mutated":  false,
+    "codex_file_write_requested":  false,
+    "codex_shell_execution_requested":  false,
+    "child_exit_code":  null,
+    "factory_status":  "PASS_CODEX_CANDIDATE_FACTORY_GENERATION_V1",
+    "factory_candidates_created":  5,
+    "router_proof":  "operations/reports/SCHOOL_SOURCE_ROUTER_SELECTION_V1.json",
+    "test_policy":  ".runtime/school_source_router/codex_source_port_test_policy_v3.json",
+    "boundary":  "Proves explicit School CodexSourcePort produces validated CODEX_DRAFT material and then returns to existing InternalFactory/validator path; default policy remains InternalFactory-first and Codex disabled."
+}

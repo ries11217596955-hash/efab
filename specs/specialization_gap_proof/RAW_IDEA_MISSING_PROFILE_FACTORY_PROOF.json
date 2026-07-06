@@ -1,0 +1,23 @@
+{
+  "request_id": "phase29_missing_profile_factory_proof_001",
+  "payload": {
+    "problem": "Intake prioritization route agent",
+    "target_user": "Product Lead / System Operator",
+    "operator_goal": "Build a decision-support agent that ranks request routes and operator next actions.",
+    "expected_outputs": [
+      "ranked routes",
+      "decision rationale",
+      "operator next action"
+    ],
+    "constraints": [
+      "domain-neutral",
+      "do not add a new registry profile during this proof"
+    ],
+    "non_goals": [
+      "do not convert this unsupported family into a supported profile yet"
+    ]
+  },
+  "metadata": {
+    "source": "phase29_missing_profile_factory_proof"
+  }
+}

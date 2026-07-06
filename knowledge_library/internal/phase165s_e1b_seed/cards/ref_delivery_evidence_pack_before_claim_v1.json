@@ -1,0 +1,30 @@
+{
+  "schema_version": "internal_reference_card.v1",
+  "reference_id": "ref.delivery.evidence_pack_before_claim.v1",
+  "domain": "delivery_evidence_pack_reference",
+  "question_it_answers": "What should Builder return after serious work?",
+  "answer": "Return result/artifact, proof pack, changed files, validator status, risks, what was not done and next action; avoid unsupported success wording.",
+  "use_when": [
+    "final answer",
+    "proof pack",
+    "delivery block"
+  ],
+  "next_action": "assemble_result_plus_proof_delivery_block",
+  "source_atoms": [
+    "concept.delivery_block.v1",
+    "concept.proof.v1",
+    "concept.report.v1"
+  ],
+  "status": "INTERNAL_REFERENCE",
+  "trusted": false,
+  "accepted_atom": false,
+  "creates_atom_only_after_gap_solved": true,
+  "school_curriculum": false,
+  "protected_state_mutation": false,
+  "phase": "PHASE165S-E1B_INTERNAL_REFERENCE_LIBRARY_SEED",
+  "created_utc": "2026-06-12T00:00:00Z",
+  "ledger_basis": [
+    "AGENT_BUILDER_STRATEGY_LEDGER_V0_30_AFTER_D2_AND_REFERENCE_SEARCH_POLICY_AGREEMENT.md",
+    "Sections 191.3-191.18"
+  ]
+}

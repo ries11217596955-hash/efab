@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "ledger_id": "AUTONOMOUS_MATERIAL_DECISION_ERROR_LEDGER_V1",
+  "created_by": "PHASE138A_AUTONOMOUS_MATERIAL_DECISION_STRESS_LAB_V1",
+  "run_id": "PHASE138A_AUTONOMOUS_MATERIAL_DECISION_STRESS_LAB_001",
+  "dataset_record_count": 300,
+  "selected_count": 1,
+  "invalid_record_count": 20,
+  "duplicate_or_conflict_count": 20,
+  "policy_violation_count": 30,
+  "false_trust_attempt_count": 10,
+  "forbidden_fetch_attempt_count": 10,
+  "forbidden_install_attempt_count": 5,
+  "forbidden_executable_attempt_count": 5,
+  "unknown_license_count": 42,
+  "missing_provenance_count": 36,
+  "decision_quality_notes": [
+    "Synthetic dataset includes controlled malformed, conflicting, and policy-violating records.",
+    "Autonomous selection is sandbox-only and chooses exactly one valid candidate by deterministic score.",
+    "No selected or rejected record is fetched, installed, executed, wrapped, smoke tested, or trusted."
+  ],
+  "external_fetch_performed": false,
+  "dependency_install_performed": false,
+  "executable_materials_used": false,
+  "wrapper_created": false,
+  "smoke_test_executed": false,
+  "next_allowed_step": "PHASE138B_REVIEW_AUTONOMOUS_MATERIAL_DECISION_STRESS_RESULTS_V1"
+}

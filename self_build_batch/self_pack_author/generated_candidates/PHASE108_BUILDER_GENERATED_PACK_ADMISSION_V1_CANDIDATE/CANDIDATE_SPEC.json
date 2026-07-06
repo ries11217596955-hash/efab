@@ -1,0 +1,17 @@
+{
+  "candidate_id": "PHASE108_BUILDER_GENERATED_PACK_ADMISSION_V1_CANDIDATE",
+  "purpose": "Admit Builder-generated self-build pack candidate safely before execution.",
+  "generated_by_builder_runtime": true,
+  "source_author_contract": "self_build_batch/self_pack_author/BUILDER_SELF_PACK_AUTHOR_V1.json",
+  "admission_checks_required": [
+    "JSON parse",
+    "PowerShell parse",
+    "forbidden scope check",
+    "not registered live",
+    "not executed",
+    "proof requirements present",
+    "rollback/safety note present"
+  ],
+  "execution_allowed": false,
+  "next_allowed_step": "PHASE108_BUILDER_GENERATED_PACK_ADMISSION_V1"
+}

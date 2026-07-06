@@ -1,0 +1,14 @@
+{
+  "pack_id": "PHASE82_FIRST_MATERIAL_QUARANTINE_TRIAL_V1",
+  "task_id": "TASK_FIRST_MATERIAL_QUARANTINE_TRIAL_V1_001",
+  "capability_id": "first_material_quarantine_trial_v1",
+  "phase": "PHASE_82",
+  "active_line": "AGENT_BUILDER_SELF_DEVELOPMENT",
+  "mode": "SELF_BUILD",
+  "entry_script": "packs/PHASE82_FIRST_MATERIAL_QUARANTINE_TRIAL_V1/APPLY.ps1",
+  "validate_script": "packs/PHASE82_FIRST_MATERIAL_QUARANTINE_TRIAL_V1/VALIDATE.ps1",
+  "validator_script": "packs/PHASE82_FIRST_MATERIAL_QUARANTINE_TRIAL_V1/VALIDATE.ps1",
+  "shell": "PowerShell",
+  "expected_gate": "FIRST_MATERIAL_QUARANTINE_TRIAL_V1",
+  "purpose": "Create the first quarantine records for material catalog entries selected by PHASE81 policy without installing, fetching, scanning, wrapping, trusting, or using materials."
+}

@@ -1,0 +1,30 @@
+{
+  "schema_version": "internal_reference_card.v1",
+  "reference_id": "ref.material_governance.candidate_not_trusted.v1",
+  "domain": "material_governance_reference",
+  "question_it_answers": "How should Builder treat external or owner-provided materials?",
+  "answer": "Materials are candidates until provenance, license/terms, risk, allowed use and validation are recorded; material presence is not acceptance.",
+  "use_when": [
+    "material candidate",
+    "downloaded material",
+    "owner supplied material",
+    "license risk"
+  ],
+  "next_action": "classify_material_and_record_governance",
+  "source_atoms": [
+    "concept.proof.v1",
+    "concept.report.v1"
+  ],
+  "status": "INTERNAL_REFERENCE",
+  "trusted": false,
+  "accepted_atom": false,
+  "creates_atom_only_after_gap_solved": true,
+  "school_curriculum": false,
+  "protected_state_mutation": false,
+  "phase": "PHASE165S-E1B_INTERNAL_REFERENCE_LIBRARY_SEED",
+  "created_utc": "2026-06-12T00:00:00Z",
+  "ledger_basis": [
+    "AGENT_BUILDER_STRATEGY_LEDGER_V0_30_AFTER_D2_AND_REFERENCE_SEARCH_POLICY_AGREEMENT.md",
+    "Sections 191.3-191.18"
+  ]
+}

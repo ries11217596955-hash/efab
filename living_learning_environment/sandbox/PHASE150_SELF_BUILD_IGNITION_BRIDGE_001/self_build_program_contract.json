@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "contract_id": "PHASE150_LEARNING_CARD_REUSE_ADVISOR_PROGRAM_CONTRACT",
+  "step_id": "PHASE150_BUILDER_REUSE_BASED_MICRO_ORGAN_TRIAL_V1",
+  "run_id": "PHASE150_SELF_BUILD_IGNITION_BRIDGE_001",
+  "target_micro_organ_id": "learning_card_reuse_advisor",
+  "inputs": [
+    "knowledge_library/learning_cards/*.json",
+    "capability_shelf/registry.json",
+    "capability_shelf/capabilities/self_learning_memory.json",
+    "source_registry/source_policy.json",
+    "source_registry/trusted_sources.json"
+  ],
+  "outputs": [
+    "knowledge_library/learning_cards/<future_advisor_recommendation>.json",
+    "living_learning_environment/proposals/<future_reuse_advice>.json",
+    "living_learning_environment/reading_sessions/<future_session>/reuse_advice.json"
+  ],
+  "forbidden_actions": [
+    "modify accepted Builder state",
+    "modify orchestrator/run.ps1",
+    "modify route_locks",
+    "modify capability_shelf accepted files",
+    "create external agents",
+    "fetch internet",
+    "install dependencies",
+    "execute external materials",
+    "mark source trusted",
+    "promote candidate without admission"
+  ],
+  "proof_requirements": [
+    "validator PASS",
+    "sandbox execution evidence",
+    "source policy safe fields",
+    "trusted_source_count 0",
+    "no forbidden flags true",
+    "owner approval before promotion"
+  ],
+  "rollback_or_quarantine_rule": "If validation fails, keep candidate in living_learning_environment/sandbox and mark promotion candidate NOT_PROMOTED or QUARANTINED; do not apply to accepted Builder state.",
+  "next_allowed_step": "PHASE151_BUILDER_SELF_BUILD_PROGRAM_ADMISSION_GATE_V1"
+}

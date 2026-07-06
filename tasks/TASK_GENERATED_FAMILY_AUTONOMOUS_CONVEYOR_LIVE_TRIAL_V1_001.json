@@ -1,0 +1,18 @@
+{
+  "task_id": "TASK_GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_LIVE_TRIAL_V1_001",
+  "capability_id": "generated_family_autonomous_conveyor_live_trial_v1",
+  "objective": "Prove the PHASE64 generated-family autonomous conveyor can execute exactly one active generated-family trial pack through Invoke-GeneratedFamilyAutonomousConveyor with DryRun=false and return the Builder queue to NONE.",
+  "execution_kind": "SELF_BUILD_GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_LIVE_TRIAL_V1",
+  "expected_gate": "GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_LIVE_TRIAL_V1",
+  "runtime_report_path": "reports/generated_family_autonomous_conveyor/GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_LIVE_TRIAL_V1_REPORT.json",
+  "runtime_proof_path": "proofs/GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_LIVE_TRIAL_V1.json",
+  "generated_trial_family_id": "conveyor_trial_family_v1",
+  "generated_trial_task_id": "TASK_GENERATED_CONVEYOR_TRIAL_FAMILY_V1_LIVE_PACK_V1_001",
+  "generated_trial_pack_id": "GENERATED_CONVEYOR_TRIAL_FAMILY_V1_LIVE_PACK_V1",
+  "forbidden_scope": [
+    "do not touch orchestrator/run.ps1",
+    "do not execute more than one generated trial pack",
+    "do not create or admit a full new product family",
+    "do not precommit PHASE65 runtime proof/report"
+  ]
+}

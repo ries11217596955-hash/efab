@@ -1,0 +1,31 @@
+{
+  "schema_version": "internal_reference_card.v1",
+  "reference_id": "ref.protected_state.mutation_gate.v1",
+  "domain": "protected_state_reference",
+  "question_it_answers": "When may Builder mutate protected state?",
+  "answer": "Only through candidate, risk review, compatibility proof, owner approval when required, limited apply, validator, proof and self-map refresh; never as incidental side effect.",
+  "use_when": [
+    "protected state",
+    "TASK_QUEUE",
+    "GENESIS_STATE",
+    "CAPABILITY_ROADMAP",
+    "packs registry",
+    "orchestrator"
+  ],
+  "next_action": "route_change_or_protected_apply_protocol",
+  "source_atoms": [
+    "concept.protected_state.v1"
+  ],
+  "status": "INTERNAL_REFERENCE",
+  "trusted": false,
+  "accepted_atom": false,
+  "creates_atom_only_after_gap_solved": true,
+  "school_curriculum": false,
+  "protected_state_mutation": false,
+  "phase": "PHASE165S-E1B_INTERNAL_REFERENCE_LIBRARY_SEED",
+  "created_utc": "2026-06-12T00:00:00Z",
+  "ledger_basis": [
+    "AGENT_BUILDER_STRATEGY_LEDGER_V0_30_AFTER_D2_AND_REFERENCE_SEARCH_POLICY_AGREEMENT.md",
+    "Sections 191.3-191.18"
+  ]
+}

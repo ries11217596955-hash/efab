@@ -1,0 +1,24 @@
+{
+    "boundary":  "JSON shape contract for Codex read-only knowledge answers; schema is checked by wrapper, not by Codex itself.",
+    "required":  [
+                     "answer_status",
+                     "source_role",
+                     "candidate_knowledge",
+                     "missing_concepts",
+                     "suggested_decomposition",
+                     "safe_learning_steps",
+                     "validation_needed",
+                     "return_to_task_hint",
+                     "limits"
+                 ],
+    "schema":  "CODEX_KNOWLEDGE_ANSWER_SCHEMA_V1",
+    "array_bounds":  {
+                         "preferred_max":  8,
+                         "preferred_min":  3,
+                         "min":  1
+                     },
+    "constants":  {
+                      "answer_status":  "CODEX_DRAFT",
+                      "source_role":  "CODEX_READONLY_SOURCE"
+                  }
+}

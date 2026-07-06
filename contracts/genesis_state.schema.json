@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Agent Builder Genesis State",
+  "type": "object",
+  "required": [
+    "agent_id",
+    "genesis_version",
+    "current_phase",
+    "current_capability",
+    "completed_capabilities",
+    "blocked_capabilities",
+    "self_build_ready",
+    "external_agent_build_ready",
+    "first_external_agent_proof",
+    "last_run_status"
+  ],
+  "properties": {
+    "agent_id": {
+      "type": "string"
+    },
+    "genesis_version": {
+      "type": "string"
+    },
+    "current_phase": {
+      "type": "string"
+    },
+    "current_capability": {
+      "type": "string"
+    },
+    "completed_capabilities": {
+      "type": "array"
+    },
+    "blocked_capabilities": {
+      "type": "array"
+    },
+    "self_build_ready": {
+      "type": "boolean"
+    },
+    "external_agent_build_ready": {
+      "type": "boolean"
+    },
+    "first_external_agent_proof": {
+      "type": "boolean"
+    },
+    "last_run_status": {
+      "type": "string"
+    }
+  }
+}

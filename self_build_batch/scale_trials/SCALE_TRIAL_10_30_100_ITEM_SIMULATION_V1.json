@@ -1,0 +1,53 @@
+{
+  "scale_trial_id": "SCALE_TRIAL_10_30_100_ITEM_SIMULATION_V1",
+  "version": "V1",
+  "status": "ACTIVE_SCALE_TRIAL_CONTRACT",
+  "phase": "PHASE105_SCALE_TRIAL_10_30_100_ITEM_SIMULATION_V1",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "generated_at": "2026-05-30T16:16:04.5988847Z",
+  "input_sources": [
+    "self_build_batch/controlled_runs/BATCH_PLAN_EXAMPLE_V1_CONTROLLED_MULTI_CYCLE_RUN_RESULT.json",
+    "proofs/self_development/CONTROLLED_MULTI_CYCLE_SELF_BUILD_RUN_V1.json",
+    "self_build_batch/repair_loop/BATCH_PLAN_EXAMPLE_V1_REPAIR_LOOP_PROGRAMS_DRY_RUN.json"
+  ],
+  "output_schema": "contracts/self_development/scale_trial_10_30_100_item_simulation_v1.schema.json",
+  "trial_policy": {
+    "simulation_only": true,
+    "scale_tiers_required": [
+      10,
+      30,
+      100
+    ],
+    "no_real_item_execution": true,
+    "no_external_agent_production": true,
+    "no_external_fetch": true,
+    "no_external_install": true,
+    "no_fake_pass": true,
+    "no_hidden_failures": true,
+    "continue_after_safe_item_failure": true,
+    "quarantine_and_blockers_must_be_counted": true,
+    "systemic_failure_must_stop_tier": true,
+    "promotion_gate_required_next": true
+  },
+  "scale_tiers": [
+    10,
+    30,
+    100
+  ],
+  "result_contract": {
+    "tier_results_required": true,
+    "required_tiers": [
+      10,
+      30,
+      100
+    ],
+    "item_level_outcomes_preserved": true,
+    "hidden_failure_count_must_be_zero": true,
+    "fake_pass_count_must_be_zero": true,
+    "quarantine_and_blocker_counts_required": true,
+    "systemic_stop_required_in_100_item_tier": true
+  },
+  "simulation_performed": false,
+  "real_items_executed": false,
+  "next_allowed_step": "PHASE106_SCALE_TRIAL_PROMOTION_GATE_AND_ROUTE_LOCK_REFRESH_V1"
+}

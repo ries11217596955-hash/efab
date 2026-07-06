@@ -1,0 +1,51 @@
+﻿{
+    "schema_version":  "self_build_absorption_decision_gate_v1",
+    "phase":  "PHASE165K_ADD_SELF_BUILD_ABSORPTION_DECISION_GATE",
+    "created_utc":  "2026-06-10T12:06:26.6981786Z",
+    "absorption_id":  "SELF_BUILD_PROGRAM_OWNER_MATERIAL_INPUT_BOOTSTRAP_001_V1_001_ABSORPTION",
+    "program_id":  "SELF_BUILD_PROGRAM_OWNER_MATERIAL_INPUT_BOOTSTRAP_001_V1_001",
+    "lineage_id":  "LINEAGE_SELF_BUILD_PROGRAM_OWNER_MATERIAL_INPUT_BOOTSTRAP_001_V1_001",
+    "status":  "PASS",
+    "absorption_decision":  "KEEP",
+    "allowed_decisions":  [
+                              "KEEP",
+                              "ROLLBACK",
+                              "QUARANTINE",
+                              "PROMOTE",
+                              "UPDATE_MEMORY",
+                              "OWNER_REVIEW_REQUIRED"
+                          ],
+    "decision_basis":  {
+                           "regression_passed":  true,
+                           "integration_passed":  true,
+                           "execution_performed":  true,
+                           "completed_loop":  true,
+                           "controlled_runtime":  true,
+                           "queue_returned_to_none":  true,
+                           "lineage_preserved":  true,
+                           "failed_quarantine_path_passed":  true,
+                           "failed_programs_not_silently_accepted":  true
+                       },
+    "action":  {
+                   "keep":  true,
+                   "rollback_required":  false,
+                   "quarantine_required":  false,
+                   "promote_now":  false,
+                   "memory_update_required":  true,
+                   "owner_review_required":  false,
+                   "next_required_step":  "PHASE165L_CONNECT_ABSORPTION_TO_BUILDER_MEMORY"
+               },
+    "boundary":  {
+                     "memory_mutated":  false,
+                     "protected_state_mutated":  false,
+                     "route_lock_mutated":  false,
+                     "task_queue_mutated":  false,
+                     "program_executed_again":  false,
+                     "external_agent_production":  false,
+                     "external_fetch_or_install":  false,
+                     "codex_used":  false
+                 },
+    "errors":  [
+
+               ]
+}

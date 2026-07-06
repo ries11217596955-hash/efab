@@ -1,0 +1,63 @@
+{
+  "batch_id": "QUARANTINE_BATCH_001",
+  "phase": "PHASE_82",
+  "capability_id": "first_material_quarantine_trial_v1",
+  "created_at": "2026-05-29T07:33:20.9324623Z",
+  "source_policy_report": "reports/materials/MATERIAL_POLICY_V1_REPORT.json",
+  "source_catalog": "materials/MATERIAL_CATALOG.json",
+  "selected_material_ids": [
+    "mat_json_schema_ajv_001",
+    "mat_python_jsonschema_001"
+  ],
+  "deferred_material_ids": [
+    {
+      "material_id": "mat_license_scancode_toolkit_001",
+      "decision": "OWNER_APPROVAL_REQUIRED",
+      "reason": "owner_approval_required_before_quarantine"
+    },
+    {
+      "material_id": "mat_policy_conftest_001",
+      "decision": "REFERENCE_ONLY",
+      "reason": "reference_only_not_quarantine_candidate"
+    },
+    {
+      "material_id": "mat_policy_opa_001",
+      "decision": "REFERENCE_ONLY",
+      "reason": "reference_only_not_quarantine_candidate"
+    },
+    {
+      "material_id": "mat_sbom_syft_001",
+      "decision": "CANDIDATE_FOR_WRAPPER_CONTRACT",
+      "reason": "wrapper_contract_before_quarantine_or_later_phase"
+    },
+    {
+      "material_id": "mat_template_copier_001",
+      "decision": "NEEDS_METADATA",
+      "reason": "metadata_required_before_quarantine"
+    },
+    {
+      "material_id": "mat_vuln_grype_001",
+      "decision": "CANDIDATE_FOR_WRAPPER_CONTRACT",
+      "reason": "wrapper_contract_before_quarantine_or_later_phase"
+    },
+    {
+      "material_id": "mat_vuln_osv_scanner_001",
+      "decision": "NEEDS_METADATA",
+      "reason": "metadata_required_before_quarantine"
+    }
+  ],
+  "rejected_material_ids": [],
+  "quarantine_card_count": 2,
+  "trusted_count": 0,
+  "install_performed": false,
+  "external_fetch_performed": false,
+  "next_allowed_step": "PHASE83_OPERATION_CONTRACT_SKELETON_V1",
+  "cut_list": [
+    "Do not install tools.",
+    "Do not fetch external repositories.",
+    "Do not run scanners.",
+    "Do not create wrappers.",
+    "Do not mark materials TRUSTED.",
+    "Do not create external agents."
+  ]
+}

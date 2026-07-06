@@ -1,0 +1,47 @@
+{
+    "schema":  "BATCH_KNOWLEDGE_ACQUISITION_PROOF_V1",
+    "source":  "CODEX_BATCH_READONLY_SOURCE",
+    "status":  "PASS_CODEX_BATCH_DRAFT_RETURNED",
+    "checked_at":  "2026-07-05T18:54:00.1166665+04:00",
+    "run_id":  "learning_atom_candidate_route_fixture_20260705_01_cycle1_atom_candidate_fixture",
+    "current_task":  "define minimal atom acceptance rule",
+    "knowledge_need":  "controlled fixture for atom candidate route only",
+    "part_ids":  [
+                     "X1"
+                 ],
+    "part_count":  1,
+    "codex_answer_status":  "CODEX_DRAFT",
+    "codex_answer_json_valid":  true,
+    "codex_answer_required_shape_valid":  true,
+    "codex_answer_sha256":  "FIXTURE_NO_RAW_SOURCE_ROUTE_ONLY",
+    "raw_source_retention":  "DELETED_AFTER_COMPACT_DIGEST",
+    "parent_return_plan":  {
+                               "how_to_rebuild_x":  "route candidate to existing accepted-atom retention mechanism",
+                               "next_small_action":  "run atom retention gate if Owner/process asks promotion",
+                               "proof_needed":  [
+                                                    "accepted atom retention proof before accepted atom claim"
+                                                ]
+                           },
+    "promotion_decision":  {
+                               "default_classification":  "ATOM_CANDIDATE",
+                               "raw_retention_decision":  "DELETE_RAW_CANDIDATE",
+                               "active_memory_candidate":  false,
+                               "atom_candidate":  true,
+                               "reflex_candidate":  false,
+                               "organ_candidate":  false,
+                               "owner_decision_required":  "required before accepted atom storage",
+                               "reason":  "fixture tests route only, not content truth"
+                           },
+    "mutation_audit":  {
+                           "active_memory_mutated":  false,
+                           "codex_file_write_requested":  false,
+                           "codex_shell_execution_requested":  false,
+                           "repo_status_before":  [
+
+                                                  ],
+                           "repo_status_after":  [
+
+                                                 ]
+                       },
+    "boundary":  "Fixture proof for route logic only; no raw source retained; no accepted atom claim."
+}

@@ -1,0 +1,1058 @@
+{
+  "schema_version": "AGENT_BUILDER_CAPABILITY_MANIFEST_V1",
+  "generated_at_utc": "2026-05-28T15:44:58.6131166Z",
+  "collection_status": "collected",
+  "source_files": [
+    "CAPABILITY_ROADMAP.json",
+    "GENESIS_STATE.json",
+    "proofs/",
+    "reports/"
+  ],
+  "capabilities": [
+    {
+      "id": "runbook_executor_agent_github_action_acceptance_v1",
+      "phase": null,
+      "gate": null,
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_ACCEPTANCE_V1.json",
+        "reports/external_agent_production/RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_ACCEPTANCE_V1_REPORT.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "runbook_executor_agent_github_action_launch_v1",
+      "phase": null,
+      "gate": null,
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_LAUNCH_V1.json",
+        "reports/external_agent_production/RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_LAUNCH_V1_REPORT.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "generated_conveyor_failure_trial_family_v1_failure_pack_v1",
+      "phase": "GENERATED_CONVEYOR_FAILURE_TRIAL_FAMILY_V1_PHASE_1",
+      "gate": "GENERATED_CONVEYOR_FAILURE_TRIAL_FAMILY_V1_FAILURE_PACK_V1",
+      "status": "failed",
+      "raw_status": "FAILED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/GENERATED_CONVEYOR_FAILURE_TRIAL_FAMILY_V1_FAILURE_PACK_V1.json",
+        "reports/generated_family_autonomous_conveyor/GENERATED_CONVEYOR_FAILURE_TRIAL_FAMILY_V1_FAILURE_PACK_V1_REPORT.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "generated_conveyor_trial_family_v1_live_pack_v1",
+      "phase": "GENERATED_CONVEYOR_TRIAL_FAMILY_V1_PHASE_1",
+      "gate": "GENERATED_CONVEYOR_TRIAL_FAMILY_V1_LIVE_PACK_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/GENERATED_CONVEYOR_TRIAL_FAMILY_V1_LIVE_PACK_V1.json",
+        "reports/generated_family_autonomous_conveyor/GENERATED_CONVEYOR_TRIAL_FAMILY_V1_LIVE_PACK_V1_REPORT.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "generated_monitoring_agent_v1_profile_materialization_v1",
+      "phase": "GENERATED_MONITORING_AGENT_V1_PHASE_1",
+      "gate": "GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "generated_monitoring_agent_v1_closure_proof_v1",
+      "phase": "GENERATED_MONITORING_AGENT_V1_PHASE_2",
+      "gate": "GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "generated_monitoring_agent_v1_seed_consumption_proof_v1",
+      "phase": "GENERATED_MONITORING_AGENT_V1_PHASE_3",
+      "gate": "GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "generated_remediation_intake_agent_v1_profile_materialization_v1",
+      "phase": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_PHASE_1",
+      "gate": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "generated_remediation_intake_agent_v1_closure_proof_v1",
+      "phase": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_PHASE_2",
+      "gate": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "generated_remediation_intake_agent_v1_seed_consumption_proof_v1",
+      "phase": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_PHASE_3",
+      "gate": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "repo_genesis",
+      "phase": "PHASE_0",
+      "gate": "REPO_GENESIS_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "unknown",
+      "evidence_paths": [],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "self_build_control_core",
+      "phase": "PHASE_1",
+      "gate": "SELF_BUILD_CONTROL_CORE_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "unknown",
+      "evidence_paths": [],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "generated_agent_validation_harness_v1",
+      "phase": "PHASE_10",
+      "gate": "GENERATED_AGENT_VALIDATION_HARNESS_V1_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "unknown",
+      "evidence_paths": [],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "factory_build_external_agent_mode_v1",
+      "phase": "PHASE_11",
+      "gate": "FACTORY_BUILD_EXTERNAL_AGENT_MODE_V1_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "unknown",
+      "evidence_paths": [],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "production_factory_proof_v1",
+      "phase": "PHASE_12",
+      "gate": "PRODUCTION_FACTORY_PROOF_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/PRODUCTION_FACTORY_PROOF_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "production_truth_reset_v2",
+      "phase": "PHASE_13",
+      "gate": "PRODUCTION_TRUTH_RESET_V2_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "unknown",
+      "evidence_paths": [],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "real_generated_agent_runtime_v2",
+      "phase": "PHASE_14",
+      "gate": "REAL_GENERATED_AGENT_RUNTIME_V2_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "unknown",
+      "evidence_paths": [],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "operational_validation_harness_v2",
+      "phase": "PHASE_15",
+      "gate": "OPERATIONAL_VALIDATION_HARNESS_V2_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "unknown",
+      "evidence_paths": [],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "factory_build_external_agent_mode_v2",
+      "phase": "PHASE_16",
+      "gate": "FACTORY_BUILD_EXTERNAL_AGENT_MODE_V2_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "unknown",
+      "evidence_paths": [],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "operational_factory_proof_v2",
+      "phase": "PHASE_17",
+      "gate": "OPERATIONAL_FACTORY_PROOF_V2",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/OPERATIONAL_FACTORY_PROOF_V2.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "architect_to_spec_handoff_v1",
+      "phase": "PHASE_18",
+      "gate": "ARCHITECT_TO_SPEC_HANDOFF_V1_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/ARCHITECT_TO_SPEC_HANDOFF_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "build_from_raw_idea_mode_v1",
+      "phase": "PHASE_19",
+      "gate": "BUILD_FROM_RAW_IDEA_MODE_V1_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "unknown",
+      "evidence_paths": [],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "self_build_execution_substrate",
+      "phase": "PHASE_2",
+      "gate": "SELF_BUILD_EXECUTION_SUBSTRATE_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "unknown",
+      "evidence_paths": [],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "idea_to_agent_factory_proof_v1",
+      "phase": "PHASE_20",
+      "gate": "IDEA_TO_AGENT_FACTORY_PROOF_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/IDEA_TO_AGENT_FACTORY_PROOF_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "specialization_overlay_resolution_v1",
+      "phase": "PHASE_21",
+      "gate": "SPECIALIZATION_OVERLAY_RESOLUTION_V1_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/SPECIALIZATION_OVERLAY_RESOLUTION_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "build_from_raw_idea_specialized_mode_v1",
+      "phase": "PHASE_22",
+      "gate": "BUILD_FROM_RAW_IDEA_SPECIALIZED_MODE_V1_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/BUILD_FROM_RAW_IDEA_SPECIALIZED_MODE_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "idea_to_specialized_agent_factory_proof_v1",
+      "phase": "PHASE_23",
+      "gate": "IDEA_TO_SPECIALIZED_AGENT_FACTORY_PROOF_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/IDEA_TO_SPECIALIZED_AGENT_FACTORY_PROOF_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "specialization_profile_registry_v1",
+      "phase": "PHASE_24",
+      "gate": "SPECIALIZATION_PROFILE_REGISTRY_V1_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/SPECIALIZATION_PROFILE_REGISTRY_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "specification_agent_specialization_profile_v1",
+      "phase": "PHASE_25",
+      "gate": "SPECIFICATION_AGENT_SPECIALIZATION_PROFILE_V1_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/SPECIFICATION_AGENT_SPECIALIZATION_PROFILE_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "multi_profile_specialized_factory_proof_v1",
+      "phase": "PHASE_26",
+      "gate": "MULTI_PROFILE_SPECIALIZED_FACTORY_PROOF_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/MULTI_PROFILE_SPECIALIZED_FACTORY_PROOF_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "specialization_gap_contract_v1",
+      "phase": "PHASE_27",
+      "gate": "SPECIALIZATION_GAP_CONTRACT_V1_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/SPECIALIZATION_GAP_CONTRACT_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "no_match_diagnostic_mode_v1",
+      "phase": "PHASE_28",
+      "gate": "NO_MATCH_DIAGNOSTIC_MODE_V1_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/NO_MATCH_DIAGNOSTIC_MODE_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "missing_profile_factory_proof_v1",
+      "phase": "PHASE_29",
+      "gate": "MISSING_PROFILE_FACTORY_PROOF_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/MISSING_PROFILE_FACTORY_PROOF_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "serial_self_build_pack_executor",
+      "phase": "PHASE_3",
+      "gate": "SERIAL_SELF_BUILD_PACK_EXECUTOR_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "unknown",
+      "evidence_paths": [],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "gap_to_profile_candidate_brief_v1",
+      "phase": "PHASE_30",
+      "gate": "GAP_TO_PROFILE_CANDIDATE_BRIEF_V1_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/GAP_TO_PROFILE_CANDIDATE_BRIEF_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "decision_support_agent_specialization_profile_v1",
+      "phase": "PHASE_31",
+      "gate": "DECISION_SUPPORT_AGENT_SPECIALIZATION_PROFILE_V1_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/DECISION_SUPPORT_AGENT_SPECIALIZATION_PROFILE_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "gap_closure_specialized_factory_proof_v1",
+      "phase": "PHASE_32",
+      "gate": "GAP_CLOSURE_SPECIALIZED_FACTORY_PROOF_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/GAP_CLOSURE_SPECIALIZED_FACTORY_PROOF_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "gap_remediation_intake_mode_v1",
+      "phase": "PHASE_33",
+      "gate": "GAP_REMEDIATION_INTAKE_MODE_V1_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/GAP_REMEDIATION_INTAKE_MODE_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "candidate_intake_report_contract_v1",
+      "phase": "PHASE_34",
+      "gate": "CANDIDATE_INTAKE_REPORT_CONTRACT_V1_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/CANDIDATE_INTAKE_REPORT_CONTRACT_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "runtime_gap_to_candidate_factory_proof_v1",
+      "phase": "PHASE_35",
+      "gate": "RUNTIME_GAP_TO_CANDIDATE_FACTORY_PROOF_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/RUNTIME_GAP_TO_CANDIDATE_FACTORY_PROOF_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "workflow_execution_family_reachability_v1",
+      "phase": "PHASE_36",
+      "gate": "WORKFLOW_EXECUTION_FAMILY_REACHABILITY_V1_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/WORKFLOW_EXECUTION_FAMILY_REACHABILITY_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "intake_driven_workflow_execution_profile_v1",
+      "phase": "PHASE_37",
+      "gate": "INTAKE_DRIVEN_WORKFLOW_EXECUTION_PROFILE_V1_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/INTAKE_DRIVEN_WORKFLOW_EXECUTION_PROFILE_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "runtime_gap_remediation_closure_proof_v1",
+      "phase": "PHASE_38",
+      "gate": "RUNTIME_GAP_REMEDIATION_CLOSURE_PROOF_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/RUNTIME_GAP_REMEDIATION_CLOSURE_PROOF_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "monitoring_gap_reachability_v1",
+      "phase": "PHASE_39",
+      "gate": "MONITORING_GAP_REACHABILITY_V1_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/MONITORING_GAP_REACHABILITY_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "self_validation_release_gates",
+      "phase": "PHASE_4",
+      "gate": "SELF_BUILD_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "unknown",
+      "evidence_paths": [],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "specialized_gap_auto_intake_runtime_v1",
+      "phase": "PHASE_40",
+      "gate": "SPECIALIZED_GAP_AUTO_INTAKE_RUNTIME_V1_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/SPECIALIZED_GAP_AUTO_INTAKE_RUNTIME_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "one_run_gap_remediation_packet_proof_v1",
+      "phase": "PHASE_41",
+      "gate": "ONE_RUN_GAP_REMEDIATION_PACKET_PROOF_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/ONE_RUN_GAP_REMEDIATION_PACKET_PROOF_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "remediation_program_seed_contract_v1",
+      "phase": "PHASE_42",
+      "gate": "REMEDIATION_PROGRAM_SEED_CONTRACT_V1_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/REMEDIATION_PROGRAM_SEED_CONTRACT_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "specialized_gap_auto_program_seed_runtime_v1",
+      "phase": "PHASE_43",
+      "gate": "SPECIALIZED_GAP_AUTO_PROGRAM_SEED_RUNTIME_V1_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/SPECIALIZED_GAP_AUTO_PROGRAM_SEED_RUNTIME_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "one_run_remediation_program_seed_proof_v1",
+      "phase": "PHASE_44",
+      "gate": "ONE_RUN_REMEDIATION_PROGRAM_SEED_PROOF_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/ONE_RUN_REMEDIATION_PROGRAM_SEED_PROOF_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "seed_driven_monitoring_profile_v1",
+      "phase": "PHASE_45",
+      "gate": "SEED_DRIVEN_MONITORING_PROFILE_V1_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/SEED_DRIVEN_MONITORING_PROFILE_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "monitoring_gap_closure_specialized_proof_v1",
+      "phase": "PHASE_46",
+      "gate": "MONITORING_GAP_CLOSURE_SPECIALIZED_PROOF_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/MONITORING_GAP_CLOSURE_SPECIALIZED_PROOF_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "remediation_program_seed_consumption_closure_proof_v1",
+      "phase": "PHASE_47",
+      "gate": "REMEDIATION_PROGRAM_SEED_CONSUMPTION_CLOSURE_PROOF_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/REMEDIATION_PROGRAM_SEED_CONSUMPTION_CLOSURE_PROOF_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "remediation_seed_program_blueprint_contract_v1",
+      "phase": "PHASE_48",
+      "gate": "REMEDIATION_SEED_PROGRAM_BLUEPRINT_CONTRACT_V1_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/REMEDIATION_SEED_PROGRAM_BLUEPRINT_CONTRACT_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "remediation_seed_program_materialization_v1",
+      "phase": "PHASE_49",
+      "gate": "REMEDIATION_SEED_PROGRAM_MATERIALIZATION_V1_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/REMEDIATION_SEED_PROGRAM_MATERIALIZATION_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "external_agent_spec_intake",
+      "phase": "PHASE_5",
+      "gate": "EXTERNAL_AGENT_SPEC_INTAKE_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "unknown",
+      "evidence_paths": [],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "one_run_remediation_seed_program_synthesis_proof_v1",
+      "phase": "PHASE_50",
+      "gate": "ONE_RUN_REMEDIATION_SEED_PROGRAM_SYNTHESIS_PROOF_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/ONE_RUN_REMEDIATION_SEED_PROGRAM_SYNTHESIS_PROOF_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "builder_github_action_manual_run_surface_v1",
+      "phase": "PHASE_51",
+      "gate": "BUILDER_GITHUB_ACTION_MANUAL_RUN_SURFACE_V1_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/BUILDER_GITHUB_ACTION_MANUAL_RUN_SURFACE_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "generated_agent_action_launch_contract_v1",
+      "phase": "PHASE_52",
+      "gate": "GENERATED_AGENT_ACTION_LAUNCH_CONTRACT_V1_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/GENERATED_AGENT_ACTION_LAUNCH_CONTRACT_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "action_ready_generated_agent_proof_v1",
+      "phase": "PHASE_53",
+      "gate": "ACTION_READY_GENERATED_AGENT_PROOF_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/ACTION_READY_GENERATED_AGENT_PROOF_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "owner_visible_self_build_acceptance_v1",
+      "phase": "PHASE_54",
+      "gate": "OWNER_VISIBLE_SELF_BUILD_ACCEPTANCE_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/OWNER_VISIBLE_SELF_BUILD_ACCEPTANCE_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "generated_program_admission_readiness_gate_v1",
+      "phase": "PHASE_55",
+      "gate": "GENERATED_PROGRAM_ADMISSION_READINESS_GATE_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/GENERATED_PROGRAM_ADMISSION_READINESS_GATE_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "executable_generated_program_materialization_v1",
+      "phase": "PHASE_56",
+      "gate": "EXECUTABLE_GENERATED_PROGRAM_MATERIALIZATION_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/EXECUTABLE_GENERATED_PROGRAM_MATERIALIZATION_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "generated_program_live_admission_proof_v1",
+      "phase": "PHASE_57",
+      "gate": "GENERATED_PROGRAM_LIVE_ADMISSION_PROOF_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/GENERATED_PROGRAM_LIVE_ADMISSION_PROOF_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "generated_program_execution_recipe_contract_v1",
+      "phase": "PHASE_58",
+      "gate": "GENERATED_PROGRAM_EXECUTION_RECIPE_CONTRACT_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/GENERATED_PROGRAM_EXECUTION_RECIPE_CONTRACT_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "recipe_driven_generated_program_executable_materialization_v1",
+      "phase": "PHASE_59",
+      "gate": "RECIPE_DRIVEN_GENERATED_PROGRAM_EXECUTABLE_MATERIALIZATION_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/RECIPE_DRIVEN_GENERATED_PROGRAM_EXECUTABLE_MATERIALIZATION_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "external_agent_package_generator",
+      "phase": "PHASE_6",
+      "gate": "EXTERNAL_AGENT_PACKAGE_GENERATOR_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "unknown",
+      "evidence_paths": [],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "generalized_generated_program_live_admission_contract_v1",
+      "phase": "PHASE_60",
+      "gate": "GENERALIZED_GENERATED_PROGRAM_LIVE_ADMISSION_CONTRACT_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/GENERALIZED_GENERATED_PROGRAM_LIVE_ADMISSION_CONTRACT_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "second_generated_program_family_proof_v1",
+      "phase": "PHASE_61",
+      "gate": "SECOND_GENERATED_PROGRAM_FAMILY_PROOF_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/SECOND_GENERATED_PROGRAM_FAMILY_PROOF_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "second_generated_program_family_materialization_v1",
+      "phase": "PHASE_62",
+      "gate": "SECOND_GENERATED_PROGRAM_FAMILY_MATERIALIZATION_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/SECOND_GENERATED_PROGRAM_FAMILY_MATERIALIZATION_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "second_generated_program_family_live_admission_v1",
+      "phase": "PHASE_63",
+      "gate": "SECOND_GENERATED_PROGRAM_FAMILY_LIVE_ADMISSION_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/SECOND_GENERATED_PROGRAM_FAMILY_LIVE_ADMISSION_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "generated_family_autonomous_conveyor_contract_v1",
+      "phase": "PHASE_64",
+      "gate": "GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_CONTRACT_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_CONTRACT_V1.json",
+        "reports/generated_family_autonomous_conveyor/GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_CONTRACT_V1_REPORT.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "generated_family_autonomous_conveyor_live_trial_v1",
+      "phase": "PHASE_65",
+      "gate": "GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_LIVE_TRIAL_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_LIVE_TRIAL_V1.json",
+        "reports/generated_family_autonomous_conveyor/GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_LIVE_TRIAL_V1_REPORT.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "generated_family_autonomous_conveyor_failure_recovery_v1",
+      "phase": "PHASE_66",
+      "gate": "GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_FAILURE_RECOVERY_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_FAILURE_RECOVERY_V1.json",
+        "reports/generated_family_autonomous_conveyor/GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_FAILURE_RECOVERY_V1_REPORT.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "external_agent_production_program_test_v1",
+      "phase": "PHASE_67",
+      "gate": "EXTERNAL_AGENT_PRODUCTION_PROGRAM_TEST_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/EXTERNAL_AGENT_PRODUCTION_PROGRAM_TEST_V1.json",
+        "reports/external_agent_production/EXTERNAL_AGENT_PRODUCTION_PROGRAM_TEST_V1_REPORT.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "agent_github_action_launch_v1",
+      "phase": "PHASE_68",
+      "gate": "AGENT_GITHUB_ACTION_LAUNCH_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/AGENT_GITHUB_ACTION_LAUNCH_V1.json",
+        "proofs/RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_LAUNCH_V1.json",
+        "reports/external_agent_production/AGENT_GITHUB_ACTION_LAUNCH_V1_REPORT.json",
+        "reports/external_agent_production/RUNBOOK_EXECUTOR_AGENT_GITHUB_ACTION_LAUNCH_V1_REPORT.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "agent_catalog_v1",
+      "phase": "PHASE_69",
+      "gate": "AGENT_CATALOG_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/AGENT_CATALOG_V1.json",
+        "reports/external_agent_production/AGENT_CATALOG_V1_REPORT.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "first_proven_external_agent",
+      "phase": "PHASE_7",
+      "gate": "FIRST_EXTERNAL_AGENT_PROOF",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/FIRST_EXTERNAL_AGENT_PROOF_001.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "agent_program_input_format_v1",
+      "phase": "PHASE_70",
+      "gate": "AGENT_PROGRAM_INPUT_FORMAT_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/AGENT_PROGRAM_INPUT_FORMAT_V1.json",
+        "reports/external_agent_production/AGENT_PROGRAM_INPUT_FORMAT_V1_REPORT.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "agent_program_executor_v1",
+      "phase": "PHASE_71",
+      "gate": "AGENT_PROGRAM_EXECUTOR_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/AGENT_PROGRAM_EXECUTOR_V1.json",
+        "reports/external_agent_production/AGENT_PROGRAM_EXECUTOR_V1_REPORT.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "runbook_executor_agent_program_trial_v1",
+      "phase": "PHASE_72",
+      "gate": "RUNBOOK_EXECUTOR_AGENT_PROGRAM_TRIAL_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/RUNBOOK_EXECUTOR_AGENT_PROGRAM_TRIAL_V1.json",
+        "reports/external_agent_production/RUNBOOK_EXECUTOR_AGENT_PROGRAM_TRIAL_V1_REPORT.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "runbook_executor_agent_production_v1",
+      "phase": "PHASE_73",
+      "gate": "RUNBOOK_EXECUTOR_AGENT_PRODUCTION_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/RUNBOOK_EXECUTOR_AGENT_PRODUCTION_V1.json",
+        "reports/external_agent_production/RUNBOOK_EXECUTOR_AGENT_PRODUCTION_V1_REPORT.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "agent_production_closed_loop_standard_v1",
+      "phase": "PHASE_76",
+      "gate": "AGENT_PRODUCTION_CLOSED_LOOP_STANDARD_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/AGENT_PRODUCTION_CLOSED_LOOP_STANDARD_V1.json",
+        "reports/external_agent_production/AGENT_PRODUCTION_CLOSED_LOOP_STANDARD_V1_REPORT.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "evidence_packager_agent_closed_loop_trial_v1",
+      "phase": "PHASE_77",
+      "gate": "EVIDENCE_PACKAGER_AGENT_CLOSED_LOOP_TRIAL_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/EVIDENCE_PACKAGER_AGENT_CLOSED_LOOP_TRIAL_V1.json",
+        "reports/external_agent_production/EVIDENCE_PACKAGER_AGENT_CLOSED_LOOP_TRIAL_V1_REPORT.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "agent_builder_self_knowledge_system_full_contract_v1",
+      "phase": "PHASE_78",
+      "gate": "AGENT_BUILDER_SELF_KNOWLEDGE_SYSTEM_FULL_CONTRACT_V1",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "proven",
+      "evidence_paths": [
+        "proofs/self_knowledge/AGENT_BUILDER_SELF_KNOWLEDGE_SYSTEM_FULL_CONTRACT_V1.json"
+      ],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "production_spec_contract_v1",
+      "phase": "PHASE_8",
+      "gate": "PRODUCTION_SPEC_CONTRACT_V1_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "unknown",
+      "evidence_paths": [],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    },
+    {
+      "id": "production_package_blueprint_v1",
+      "phase": "PHASE_9",
+      "gate": "PRODUCTION_PACKAGE_BLUEPRINT_V1_READY",
+      "status": "completed",
+      "raw_status": "COMPLETED",
+      "evidence_status": "unknown",
+      "evidence_paths": [],
+      "source_path": "CAPABILITY_ROADMAP.json"
+    }
+  ],
+  "counts": {
+    "total": 87,
+    "completed": 86,
+    "active": 0,
+    "candidate": 0,
+    "planned": 0,
+    "failed": 1,
+    "proven_by_evidence_file": 71,
+    "unknown": 0
+  },
+  "evidence_policy": {
+    "no_proof_claim_without_file": true,
+    "completed_from_roadmap_requires_state_entry": true,
+    "proven_requires_existing_proof_or_report_path": true
+  }
+}

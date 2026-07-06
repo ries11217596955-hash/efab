@@ -1,0 +1,42 @@
+{
+  "task_id": "TASK_AGENT_PROGRAM_INPUT_FORMAT_V1_001",
+  "capability_id": "agent_program_input_format_v1",
+  "objective": "Prepare a Builder self-build pack that creates the standard agent_programs input format for future external-agent production and records remediation_intake_operator_agent_v1 as the first example program.",
+  "execution_kind": "SELF_BUILD_AGENT_PROGRAM_INPUT_FORMAT_V1",
+  "phase": "PHASE_70",
+  "expected_gate": "AGENT_PROGRAM_INPUT_FORMAT_V1",
+  "example_agent_id": "remediation_intake_operator_agent_v1",
+  "program_root_runtime_path": "agent_programs/",
+  "schema_runtime_path": "agent_programs/AGENT_PROGRAM_SCHEMA.json",
+  "template_markdown_runtime_path": "agent_programs/AGENT_PROGRAM_TEMPLATE.md",
+  "template_json_runtime_path": "agent_programs/AGENT_PROGRAM_TEMPLATE.json",
+  "example_program_markdown_runtime_path": "agent_programs/remediation_intake_operator_agent_v1/PROGRAM.md",
+  "example_program_json_runtime_path": "agent_programs/remediation_intake_operator_agent_v1/PROGRAM.json",
+  "runtime_report_path": "reports/external_agent_production/AGENT_PROGRAM_INPUT_FORMAT_V1_REPORT.json",
+  "runtime_proof_path": "proofs/AGENT_PROGRAM_INPUT_FORMAT_V1.json",
+  "scope": [
+    "create agent_programs README, schema, templates, and first example program only at Builder runtime",
+    "copy validate_agent_program_input_format_v1.ps1 into validators only at Builder runtime",
+    "validate the new program format against the existing agent catalog and accepted remediation intake operator agent",
+    "write AGENT_PROGRAM_INPUT_FORMAT_V1 proof and report only after validation evidence",
+    "complete PHASE70 task and capability only after validation evidence"
+  ],
+  "validation": [
+    "PowerShell parser check passes for PHASE70 APPLY.ps1",
+    "PowerShell parser check passes for PHASE70 validator payload",
+    "changed JSON files parse successfully",
+    "TASK_QUEUE active_task_id points to TASK_AGENT_PROGRAM_INPUT_FORMAT_V1_001",
+    "agent_programs/proof/report/root-validator runtime outputs are not precommitted",
+    "generated_agents and agent_catalog files are not changed during preparation"
+  ],
+  "forbidden_scope": [
+    "do not create a second agent",
+    "do not change generated_agents files",
+    "do not change agent_catalog files",
+    "do not change GitHub workflow files",
+    "do not change orchestrator/run.ps1",
+    "do not modify old proof/report files",
+    "do not commit or push during preparation",
+    "do not run PHASE70 runtime during preparation"
+  ]
+}

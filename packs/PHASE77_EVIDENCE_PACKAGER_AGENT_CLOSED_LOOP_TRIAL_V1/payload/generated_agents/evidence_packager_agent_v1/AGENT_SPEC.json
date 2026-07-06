@@ -1,0 +1,44 @@
+{
+  "agent_id": "evidence_packager_agent_v1",
+  "name": "Evidence Packager Agent v1",
+  "purpose": "Accept a task or incident and a list of evidence items, then assemble an evidence package showing what exists, what is missing, risk flags, and the next operator action.",
+  "input_contract": {
+    "required_fields": [
+      "task_id",
+      "task_summary",
+      "evidence_items"
+    ],
+    "optional_fields": [
+      "required_evidence",
+      "operator_notes"
+    ],
+    "evidence_items_contract": {
+      "required_fields": [
+        "evidence_id",
+        "evidence_type",
+        "summary"
+      ],
+      "optional_fields": [
+        "source_path",
+        "status",
+        "label"
+      ]
+    }
+  },
+  "output_contract": {
+    "required_fields": [
+      "evidence_manifest",
+      "missing_evidence",
+      "risk_flags",
+      "next_operator_action",
+      "validation_status"
+    ],
+    "validation_status_values": [
+      "PASS",
+      "FAIL"
+    ]
+  },
+  "local_run_command": "pwsh -NoLogo -NoProfile -File generated_agents/evidence_packager_agent_v1/run.ps1 -InputPath generated_agents/evidence_packager_agent_v1/INPUT_EXAMPLE.json -OutputPath generated_agents/evidence_packager_agent_v1/OUTPUT_EXAMPLE_RUNTIME.json",
+  "github_workflow_name": "Run Evidence Packager Agent v1",
+  "artifact_name": "evidence-packager-agent-v1-output"
+}

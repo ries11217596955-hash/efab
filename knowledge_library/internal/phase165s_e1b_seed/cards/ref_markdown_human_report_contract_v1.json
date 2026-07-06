@@ -1,0 +1,29 @@
+{
+  "schema_version": "internal_reference_card.v1",
+  "reference_id": "ref.markdown.human_report_contract.v1",
+  "domain": "Markdown_reference",
+  "question_it_answers": "How should Builder create Markdown reports/runbooks?",
+  "answer": "Use a short title, goal, scope, files created, safety notes, validation steps and next action; do not bury the machine decision.",
+  "use_when": [
+    "human report",
+    "runbook",
+    "operator note"
+  ],
+  "next_action": "write_report_with_machine_decision_section",
+  "source_atoms": [
+    "concept.markdown_document.v1",
+    "concept.report.v1"
+  ],
+  "status": "INTERNAL_REFERENCE",
+  "trusted": false,
+  "accepted_atom": false,
+  "creates_atom_only_after_gap_solved": true,
+  "school_curriculum": false,
+  "protected_state_mutation": false,
+  "phase": "PHASE165S-E1B_INTERNAL_REFERENCE_LIBRARY_SEED",
+  "created_utc": "2026-06-12T00:00:00Z",
+  "ledger_basis": [
+    "AGENT_BUILDER_STRATEGY_LEDGER_V0_30_AFTER_D2_AND_REFERENCE_SEARCH_POLICY_AGREEMENT.md",
+    "Sections 191.3-191.18"
+  ]
+}

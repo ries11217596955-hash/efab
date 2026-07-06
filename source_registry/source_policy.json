@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "policy_id": "PHASE148_SOURCE_POLICY_V1",
+  "default_trust": false,
+  "read_allowed_without_trust": true,
+  "read_allowed_without_trust_scope": [
+    "allowed",
+    "reference_only"
+  ],
+  "runtime_use_allowed_without_admission": false,
+  "install_allowed": false,
+  "external_fetch_allowed": false,
+  "executable_use_allowed": false,
+  "source_must_have": [
+    "provenance",
+    "license",
+    "terms",
+    "risk",
+    "use_scope"
+  ],
+  "wikipedia_reference_only_never_trusted_automatically": true,
+  "official_docs_allowed_readable_not_trusted_until_source_card_and_policy_gate_pass": true,
+  "github_repos_allowed_readable_not_executable_until_quarantine_admission_proof": true,
+  "new_source_initial_status_values": [
+    "candidate",
+    "reference_only"
+  ],
+  "new_source_must_never_start_trusted": true,
+  "next_allowed_step": "PHASE149_BUILDER_READING_AND_CAPABILITY_REUSE_SESSION_V1"
+}

@@ -1,0 +1,32 @@
+{
+  "schema": "efab_capability_passport_v1",
+  "organ_id": "accepted_atom_retention_organ",
+  "status": "CANDIDATE",
+  "capabilities": [
+    {
+      "proof": "10 synthetic accepted atoms produced 10 compact receipts",
+      "id": "compact_successful_atom_to_receipt",
+      "status": "MICRO_PROOF_PASS"
+    },
+    {
+      "proof": "batch manifest emitted with accepted_count, failed_count, receipts_hash, heavy_trace_pruned",
+      "id": "emit_batch_manifest",
+      "status": "MICRO_PROOF_PASS"
+    },
+    {
+      "proof": "synthetic work/current removed after compaction",
+      "id": "prune_successful_heavy_trace",
+      "status": "MICRO_PROOF_PASS"
+    },
+    {
+      "proof": "failure case preserved work/current and refused prune",
+      "id": "preserve_failed_quarantine_trace",
+      "status": "REAL_SHAPE_MICRO_TRIAL_PASS"
+    },
+    {
+      "proof": "next required step",
+      "id": "integrate_with_real_acceptance_runner",
+      "status": "NOT_IMPLEMENTED"
+    }
+  ]
+}

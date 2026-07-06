@@ -1,0 +1,63 @@
+{
+  "recipe_id": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_RECIPE",
+  "program_manifest_path": "self_build_programs/generated/remediation_intake_agent_v1/SELF_BUILD_PROGRAM_MANIFEST.json",
+  "target_profile_id": "remediation_intake_agent_v1",
+  "target_agent_kind": "remediation_intake_agent",
+  "pack_id": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1",
+  "task_id": "TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_001",
+  "capability_id": "generated_remediation_intake_agent_v1_seed_consumption_proof_v1",
+  "expected_gate": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1",
+  "semantic_role": "SEED_CONSUMPTION_PROOF",
+  "recipe_kind": "SEED_CONSUMPTION_PROOF_RECIPE_V1",
+  "input_artifacts": {
+    "program_seed_path": ".\\remediation_programs\\REMEDIATION_INTAKE_AGENT_REMEDIATION_PROGRAM_SEED_V1.json",
+    "dependent_generated_profile_proof_path": ".\\proofs\\GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1.json",
+    "dependent_generated_closure_proof_path": ".\\proofs\\GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1.json"
+  },
+  "invocation_contract": {
+    "invocation_kind": "ARTIFACT_CONSISTENCY_PROOF",
+    "required_prior_generated_proofs": [
+      ".\\proofs\\GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1.json",
+      ".\\proofs\\GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1.json"
+    ]
+  },
+  "expected_assertions": {
+    "seed_profile_id": "remediation_intake_agent_v1",
+    "seed_agent_kind": "remediation_intake_agent",
+    "cross_proof_consistency_rules": [
+      "profile_proof.status == PASS",
+      "profile_proof.selected_profile_id == seed.candidate_profile_id",
+      "closure_proof.status == PASS",
+      "closure_proof.selected_profile_id == seed.candidate_profile_id",
+      "closure_proof.specialized_operation == remediation_intake_mode_v1"
+    ],
+    "expected_specialized_operation": "remediation_intake_mode_v1"
+  },
+  "proof_contract": {
+    "proof_id": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1",
+    "required_fields": [
+      "proof_id",
+      "run_id",
+      "status",
+      "task_id",
+      "capability_id",
+      "expected_gate",
+      "semantic_role",
+      "program_seed_path",
+      "seed_profile_id",
+      "seed_agent_kind",
+      "profile_proof_path",
+      "profile_selected_id",
+      "closure_proof_path",
+      "closure_selected_profile_id",
+      "closure_specialized_operation",
+      "conclusion"
+    ],
+    "status": "PASS"
+  },
+  "next_transition": {
+    "next_capability_id": "",
+    "next_task_id": "",
+    "queue_action": "COMPLETE_GENERATED_PROGRAM"
+  }
+}

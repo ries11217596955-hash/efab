@@ -1,0 +1,806 @@
+{
+  "roadmap_id": "runbook_executor_agent_production_v1",
+  "roadmap_version": "33.0",
+  "capabilities": [
+    {
+      "id": "self_development_decision_kernel_v1",
+      "phase": "PHASE_87",
+      "status": "COMPLETED",
+      "gate": "SELF_DEVELOPMENT_DECISION_KERNEL_V1",
+      "goal": "Create a self-development decision kernel that reads repo evidence and recommends the next self-development gap without generating programs or external agents."
+    },
+    {
+      "id": "operation_runtime_skeleton_v1",
+      "phase": "PHASE_86",
+      "status": "COMPLETED",
+      "gate": "OPERATION_RUNTIME_SKELETON_V1",
+      "goal": "Create operation runtime skeleton for contract-gated dry-run operation requests without execution, installs, wrappers, trust changes, or protected state mutation."
+    },
+    {
+      "id": "first_smoke_install_trial_v1",
+      "phase": "PHASE_85",
+      "status": "COMPLETED",
+      "gate": "FIRST_SMOKE_INSTALL_TRIAL_V1",
+      "goal": "Run first sandbox-only smoke install trial for python-jsonschema without global install, repo dependency folders, trusted operation status, or material trust."
+    },
+    {
+      "id": "first_wrapper_operation_contracts_v1",
+      "phase": "PHASE_84",
+      "status": "COMPLETED",
+      "gate": "FIRST_WRAPPER_OPERATION_CONTRACTS_V1",
+      "goal": "Create first JSON Schema validation operation contracts without wrappers, installs, fetches, execution, smoke tests, trusted operations, or material trust."
+    },
+    {
+      "id": "operation_contract_skeleton_v1",
+      "phase": "PHASE_83",
+      "status": "COMPLETED",
+      "gate": "OPERATION_CONTRACT_SKELETON_V1",
+      "goal": "Create operation contract schemas, registry skeleton, and report/proof path without wrappers, execution, installs, fetches, or trusted operations."
+    },
+    {
+      "id": "first_material_quarantine_trial_v1",
+      "phase": "PHASE_82",
+      "status": "COMPLETED",
+      "gate": "FIRST_MATERIAL_QUARANTINE_TRIAL_V1",
+      "goal": "Create first quarantine records for materials selected by policy without trusting, installing, fetching, scanning, wrapping, or using materials."
+    },
+    {
+      "id": "material_admission_policy_v1",
+      "phase": "PHASE_81",
+      "status": "COMPLETED",
+      "gate": "MATERIAL_ADMISSION_POLICY_V1",
+      "goal": "Evaluate material catalog entries through a conservative admission policy without trusting, installing, scanning, quarantining, or wrapping materials."
+    },
+    {
+      "id": "manual_scout_pass_import_v1",
+      "phase": "PHASE_80",
+      "status": "COMPLETED",
+      "gate": "MANUAL_SCOUT_PASS_IMPORT_V1",
+      "goal": "Import MANUAL_SCOUT_PASS_001 into the controlled material catalog without trusting, installing, scanning, or admitting materials."
+    },
+    {
+      "id": "material_acquisition_bootstrap_v1",
+      "phase": "PHASE_79",
+      "status": "COMPLETED",
+      "gate": "MATERIAL_ACQUISITION_BOOTSTRAP_V1",
+      "goal": "Create the material acquisition bootstrap contract, empty catalog, and governance proof path without scouting or trusting materials."
+    },
+    {
+      "id": "agent_builder_self_knowledge_system_full_contract_v1",
+      "phase": "PHASE_78",
+      "status": "COMPLETED",
+      "gate": "AGENT_BUILDER_SELF_KNOWLEDGE_SYSTEM_FULL_CONTRACT_V1",
+      "goal": "Establish repo-native self-knowledge system for Agent Builder with evidence-indexed owner-readable self-description."
+    },
+    {
+      "id": "repo_genesis",
+      "phase": "PHASE_0",
+      "status": "COMPLETED",
+      "gate": "REPO_GENESIS_READY"
+    },
+    {
+      "id": "self_build_control_core",
+      "phase": "PHASE_1",
+      "status": "COMPLETED",
+      "gate": "SELF_BUILD_CONTROL_CORE_READY"
+    },
+    {
+      "id": "self_build_execution_substrate",
+      "legacy_alias": "self_build_execution_loop",
+      "phase": "PHASE_2",
+      "status": "COMPLETED",
+      "gate": "SELF_BUILD_EXECUTION_SUBSTRATE_READY"
+    },
+    {
+      "id": "serial_self_build_pack_executor",
+      "phase": "PHASE_3",
+      "status": "COMPLETED",
+      "gate": "SERIAL_SELF_BUILD_PACK_EXECUTOR_READY"
+    },
+    {
+      "id": "self_validation_release_gates",
+      "phase": "PHASE_4",
+      "status": "COMPLETED",
+      "gate": "SELF_BUILD_READY"
+    },
+    {
+      "id": "external_agent_spec_intake",
+      "phase": "PHASE_5",
+      "status": "COMPLETED",
+      "gate": "EXTERNAL_AGENT_SPEC_INTAKE_READY"
+    },
+    {
+      "id": "external_agent_package_generator",
+      "phase": "PHASE_6",
+      "status": "COMPLETED",
+      "gate": "EXTERNAL_AGENT_PACKAGE_GENERATOR_READY"
+    },
+    {
+      "id": "first_proven_external_agent",
+      "phase": "PHASE_7",
+      "status": "COMPLETED",
+      "gate": "FIRST_EXTERNAL_AGENT_PROOF"
+    },
+    {
+      "id": "production_spec_contract_v1",
+      "phase": "PHASE_8",
+      "status": "COMPLETED",
+      "gate": "PRODUCTION_SPEC_CONTRACT_V1_READY"
+    },
+    {
+      "id": "production_package_blueprint_v1",
+      "phase": "PHASE_9",
+      "status": "COMPLETED",
+      "gate": "PRODUCTION_PACKAGE_BLUEPRINT_V1_READY"
+    },
+    {
+      "id": "generated_agent_validation_harness_v1",
+      "phase": "PHASE_10",
+      "status": "COMPLETED",
+      "gate": "GENERATED_AGENT_VALIDATION_HARNESS_V1_READY"
+    },
+    {
+      "id": "factory_build_external_agent_mode_v1",
+      "phase": "PHASE_11",
+      "status": "COMPLETED",
+      "gate": "FACTORY_BUILD_EXTERNAL_AGENT_MODE_V1_READY"
+    },
+    {
+      "id": "production_factory_proof_v1",
+      "phase": "PHASE_12",
+      "status": "COMPLETED",
+      "gate": "PRODUCTION_FACTORY_PROOF_V1"
+    },
+    {
+      "id": "production_truth_reset_v2",
+      "phase": "PHASE_13",
+      "status": "COMPLETED",
+      "gate": "PRODUCTION_TRUTH_RESET_V2_READY"
+    },
+    {
+      "id": "real_generated_agent_runtime_v2",
+      "phase": "PHASE_14",
+      "status": "COMPLETED",
+      "gate": "REAL_GENERATED_AGENT_RUNTIME_V2_READY"
+    },
+    {
+      "id": "operational_validation_harness_v2",
+      "phase": "PHASE_15",
+      "status": "COMPLETED",
+      "gate": "OPERATIONAL_VALIDATION_HARNESS_V2_READY"
+    },
+    {
+      "id": "factory_build_external_agent_mode_v2",
+      "phase": "PHASE_16",
+      "status": "COMPLETED",
+      "gate": "FACTORY_BUILD_EXTERNAL_AGENT_MODE_V2_READY"
+    },
+    {
+      "id": "operational_factory_proof_v2",
+      "phase": "PHASE_17",
+      "status": "COMPLETED",
+      "gate": "OPERATIONAL_FACTORY_PROOF_V2"
+    },
+    {
+      "id": "architect_to_spec_handoff_v1",
+      "phase": "PHASE_18",
+      "status": "COMPLETED",
+      "gate": "ARCHITECT_TO_SPEC_HANDOFF_V1_READY"
+    },
+    {
+      "id": "build_from_raw_idea_mode_v1",
+      "phase": "PHASE_19",
+      "status": "COMPLETED",
+      "gate": "BUILD_FROM_RAW_IDEA_MODE_V1_READY"
+    },
+    {
+      "id": "idea_to_agent_factory_proof_v1",
+      "phase": "PHASE_20",
+      "status": "COMPLETED",
+      "gate": "IDEA_TO_AGENT_FACTORY_PROOF_V1"
+    },
+    {
+      "id": "specialization_overlay_resolution_v1",
+      "phase": "PHASE_21",
+      "status": "COMPLETED",
+      "gate": "SPECIALIZATION_OVERLAY_RESOLUTION_V1_READY"
+    },
+    {
+      "id": "build_from_raw_idea_specialized_mode_v1",
+      "phase": "PHASE_22",
+      "status": "COMPLETED",
+      "gate": "BUILD_FROM_RAW_IDEA_SPECIALIZED_MODE_V1_READY"
+    },
+    {
+      "id": "idea_to_specialized_agent_factory_proof_v1",
+      "phase": "PHASE_23",
+      "status": "COMPLETED",
+      "gate": "IDEA_TO_SPECIALIZED_AGENT_FACTORY_PROOF_V1"
+    },
+    {
+      "id": "specialization_profile_registry_v1",
+      "phase": "PHASE_24",
+      "status": "COMPLETED",
+      "gate": "SPECIALIZATION_PROFILE_REGISTRY_V1_READY"
+    },
+    {
+      "id": "specification_agent_specialization_profile_v1",
+      "phase": "PHASE_25",
+      "status": "COMPLETED",
+      "gate": "SPECIFICATION_AGENT_SPECIALIZATION_PROFILE_V1_READY"
+    },
+    {
+      "id": "multi_profile_specialized_factory_proof_v1",
+      "phase": "PHASE_26",
+      "status": "COMPLETED",
+      "gate": "MULTI_PROFILE_SPECIALIZED_FACTORY_PROOF_V1"
+    },
+    {
+      "id": "specialization_gap_contract_v1",
+      "phase": "PHASE_27",
+      "status": "COMPLETED",
+      "gate": "SPECIALIZATION_GAP_CONTRACT_V1_READY"
+    },
+    {
+      "id": "no_match_diagnostic_mode_v1",
+      "phase": "PHASE_28",
+      "status": "COMPLETED",
+      "gate": "NO_MATCH_DIAGNOSTIC_MODE_V1_READY"
+    },
+    {
+      "id": "missing_profile_factory_proof_v1",
+      "phase": "PHASE_29",
+      "status": "COMPLETED",
+      "gate": "MISSING_PROFILE_FACTORY_PROOF_V1"
+    },
+    {
+      "id": "gap_to_profile_candidate_brief_v1",
+      "phase": "PHASE_30",
+      "status": "COMPLETED",
+      "gate": "GAP_TO_PROFILE_CANDIDATE_BRIEF_V1_READY"
+    },
+    {
+      "id": "decision_support_agent_specialization_profile_v1",
+      "phase": "PHASE_31",
+      "status": "COMPLETED",
+      "gate": "DECISION_SUPPORT_AGENT_SPECIALIZATION_PROFILE_V1_READY"
+    },
+    {
+      "id": "gap_closure_specialized_factory_proof_v1",
+      "phase": "PHASE_32",
+      "status": "COMPLETED",
+      "gate": "GAP_CLOSURE_SPECIALIZED_FACTORY_PROOF_V1"
+    },
+    {
+      "id": "gap_remediation_intake_mode_v1",
+      "phase": "PHASE_33",
+      "status": "COMPLETED",
+      "gate": "GAP_REMEDIATION_INTAKE_MODE_V1_READY"
+    },
+    {
+      "id": "candidate_intake_report_contract_v1",
+      "phase": "PHASE_34",
+      "status": "COMPLETED",
+      "gate": "CANDIDATE_INTAKE_REPORT_CONTRACT_V1_READY"
+    },
+    {
+      "id": "runtime_gap_to_candidate_factory_proof_v1",
+      "phase": "PHASE_35",
+      "status": "COMPLETED",
+      "gate": "RUNTIME_GAP_TO_CANDIDATE_FACTORY_PROOF_V1"
+    },
+    {
+      "id": "workflow_execution_family_reachability_v1",
+      "phase": "PHASE_36",
+      "status": "COMPLETED",
+      "gate": "WORKFLOW_EXECUTION_FAMILY_REACHABILITY_V1_READY"
+    },
+    {
+      "id": "intake_driven_workflow_execution_profile_v1",
+      "phase": "PHASE_37",
+      "status": "COMPLETED",
+      "gate": "INTAKE_DRIVEN_WORKFLOW_EXECUTION_PROFILE_V1_READY"
+    },
+    {
+      "id": "runtime_gap_remediation_closure_proof_v1",
+      "phase": "PHASE_38",
+      "status": "COMPLETED",
+      "gate": "RUNTIME_GAP_REMEDIATION_CLOSURE_PROOF_V1"
+    },
+    {
+      "id": "monitoring_gap_reachability_v1",
+      "phase": "PHASE_39",
+      "status": "COMPLETED",
+      "gate": "MONITORING_GAP_REACHABILITY_V1_READY"
+    },
+    {
+      "id": "specialized_gap_auto_intake_runtime_v1",
+      "phase": "PHASE_40",
+      "status": "COMPLETED",
+      "gate": "SPECIALIZED_GAP_AUTO_INTAKE_RUNTIME_V1_READY"
+    },
+    {
+      "id": "one_run_gap_remediation_packet_proof_v1",
+      "phase": "PHASE_41",
+      "status": "COMPLETED",
+      "gate": "ONE_RUN_GAP_REMEDIATION_PACKET_PROOF_V1"
+    },
+    {
+      "id": "remediation_program_seed_contract_v1",
+      "phase": "PHASE_42",
+      "status": "COMPLETED",
+      "gate": "REMEDIATION_PROGRAM_SEED_CONTRACT_V1_READY"
+    },
+    {
+      "id": "specialized_gap_auto_program_seed_runtime_v1",
+      "phase": "PHASE_43",
+      "status": "COMPLETED",
+      "gate": "SPECIALIZED_GAP_AUTO_PROGRAM_SEED_RUNTIME_V1_READY"
+    },
+    {
+      "id": "one_run_remediation_program_seed_proof_v1",
+      "phase": "PHASE_44",
+      "status": "COMPLETED",
+      "gate": "ONE_RUN_REMEDIATION_PROGRAM_SEED_PROOF_V1"
+    },
+    {
+      "id": "seed_driven_monitoring_profile_v1",
+      "phase": "PHASE_45",
+      "status": "COMPLETED",
+      "gate": "SEED_DRIVEN_MONITORING_PROFILE_V1_READY"
+    },
+    {
+      "id": "monitoring_gap_closure_specialized_proof_v1",
+      "phase": "PHASE_46",
+      "status": "COMPLETED",
+      "gate": "MONITORING_GAP_CLOSURE_SPECIALIZED_PROOF_V1"
+    },
+    {
+      "id": "remediation_program_seed_consumption_closure_proof_v1",
+      "phase": "PHASE_47",
+      "status": "COMPLETED",
+      "gate": "REMEDIATION_PROGRAM_SEED_CONSUMPTION_CLOSURE_PROOF_V1"
+    },
+    {
+      "id": "remediation_seed_program_blueprint_contract_v1",
+      "phase": "PHASE_48",
+      "status": "COMPLETED",
+      "gate": "REMEDIATION_SEED_PROGRAM_BLUEPRINT_CONTRACT_V1_READY"
+    },
+    {
+      "id": "remediation_seed_program_materialization_v1",
+      "phase": "PHASE_49",
+      "status": "COMPLETED",
+      "gate": "REMEDIATION_SEED_PROGRAM_MATERIALIZATION_V1_READY"
+    },
+    {
+      "id": "one_run_remediation_seed_program_synthesis_proof_v1",
+      "phase": "PHASE_50",
+      "status": "COMPLETED",
+      "gate": "ONE_RUN_REMEDIATION_SEED_PROGRAM_SYNTHESIS_PROOF_V1"
+    },
+    {
+      "id": "builder_github_action_manual_run_surface_v1",
+      "phase": "PHASE_51",
+      "status": "COMPLETED",
+      "gate": "BUILDER_GITHUB_ACTION_MANUAL_RUN_SURFACE_V1_READY"
+    },
+    {
+      "id": "generated_agent_action_launch_contract_v1",
+      "phase": "PHASE_52",
+      "status": "COMPLETED",
+      "gate": "GENERATED_AGENT_ACTION_LAUNCH_CONTRACT_V1_READY"
+    },
+    {
+      "id": "action_ready_generated_agent_proof_v1",
+      "phase": "PHASE_53",
+      "status": "COMPLETED",
+      "gate": "ACTION_READY_GENERATED_AGENT_PROOF_V1"
+    },
+    {
+      "id": "owner_visible_self_build_acceptance_v1",
+      "phase": "PHASE_54",
+      "status": "COMPLETED",
+      "gate": "OWNER_VISIBLE_SELF_BUILD_ACCEPTANCE_V1"
+    },
+    {
+      "id": "generated_program_admission_readiness_gate_v1",
+      "phase": "PHASE_55",
+      "status": "COMPLETED",
+      "gate": "GENERATED_PROGRAM_ADMISSION_READINESS_GATE_V1"
+    },
+    {
+      "id": "executable_generated_program_materialization_v1",
+      "phase": "PHASE_56",
+      "status": "COMPLETED",
+      "gate": "EXECUTABLE_GENERATED_PROGRAM_MATERIALIZATION_V1"
+    },
+    {
+      "id": "generated_program_live_admission_proof_v1",
+      "phase": "PHASE_57",
+      "status": "COMPLETED",
+      "gate": "GENERATED_PROGRAM_LIVE_ADMISSION_PROOF_V1"
+    },
+    {
+      "id": "generated_monitoring_agent_v1_profile_materialization_v1",
+      "phase": "GENERATED_MONITORING_AGENT_V1_PHASE_1",
+      "status": "COMPLETED",
+      "gate": "GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1_READY",
+      "semantic_role": "PROFILE_MATERIALIZATION",
+      "source_capability_hint": "monitoring_agent_specialization_profile_v1"
+    },
+    {
+      "id": "generated_monitoring_agent_v1_closure_proof_v1",
+      "phase": "GENERATED_MONITORING_AGENT_V1_PHASE_2",
+      "status": "COMPLETED",
+      "gate": "GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1",
+      "semantic_role": "SPECIALIZED_CLOSURE_PROOF",
+      "source_capability_hint": "monitoring_agent_gap_closure_proof_v1"
+    },
+    {
+      "id": "generated_monitoring_agent_v1_seed_consumption_proof_v1",
+      "phase": "GENERATED_MONITORING_AGENT_V1_PHASE_3",
+      "status": "COMPLETED",
+      "gate": "GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1",
+      "semantic_role": "SEED_CONSUMPTION_PROOF",
+      "source_capability_hint": "remediation_program_seed_consumption_closure_proof_v1"
+    },
+    {
+      "id": "generated_program_execution_recipe_contract_v1",
+      "phase": "PHASE_58",
+      "status": "COMPLETED",
+      "gate": "GENERATED_PROGRAM_EXECUTION_RECIPE_CONTRACT_V1"
+    },
+    {
+      "id": "recipe_driven_generated_program_executable_materialization_v1",
+      "phase": "PHASE_59",
+      "status": "COMPLETED",
+      "gate": "RECIPE_DRIVEN_GENERATED_PROGRAM_EXECUTABLE_MATERIALIZATION_V1"
+    },
+    {
+      "id": "generalized_generated_program_live_admission_contract_v1",
+      "phase": "PHASE_60",
+      "status": "COMPLETED",
+      "gate": "GENERALIZED_GENERATED_PROGRAM_LIVE_ADMISSION_CONTRACT_V1"
+    },
+    {
+      "id": "second_generated_program_family_proof_v1",
+      "phase": "PHASE_61",
+      "status": "COMPLETED",
+      "gate": "SECOND_GENERATED_PROGRAM_FAMILY_PROOF_V1"
+    },
+    {
+      "id": "second_generated_program_family_materialization_v1",
+      "phase": "PHASE_62",
+      "status": "COMPLETED",
+      "gate": "SECOND_GENERATED_PROGRAM_FAMILY_MATERIALIZATION_V1"
+    },
+    {
+      "id": "second_generated_program_family_live_admission_v1",
+      "phase": "PHASE_63",
+      "status": "COMPLETED",
+      "gate": "SECOND_GENERATED_PROGRAM_FAMILY_LIVE_ADMISSION_V1"
+    },
+    {
+      "id": "generated_remediation_intake_agent_v1_profile_materialization_v1",
+      "phase": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_PHASE_1",
+      "status": "COMPLETED",
+      "gate": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1_READY",
+      "semantic_role": "PROFILE_MATERIALIZATION",
+      "source_capability_hint": "remediation_intake_agent_specialization_profile_v1"
+    },
+    {
+      "id": "generated_remediation_intake_agent_v1_closure_proof_v1",
+      "phase": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_PHASE_2",
+      "status": "COMPLETED",
+      "gate": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1",
+      "semantic_role": "SPECIALIZED_CLOSURE_PROOF",
+      "source_capability_hint": "remediation_intake_agent_closure_proof_v1"
+    },
+    {
+      "id": "generated_remediation_intake_agent_v1_seed_consumption_proof_v1",
+      "phase": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_PHASE_3",
+      "status": "COMPLETED",
+      "gate": "GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1",
+      "semantic_role": "SEED_CONSUMPTION_PROOF",
+      "source_capability_hint": "remediation_intake_seed_consumption_proof_v1"
+    },
+    {
+      "id": "generated_family_autonomous_conveyor_contract_v1",
+      "phase": "PHASE_64",
+      "status": "COMPLETED",
+      "gate": "GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_CONTRACT_V1"
+    },
+    {
+      "id": "generated_family_autonomous_conveyor_live_trial_v1",
+      "phase": "PHASE_65",
+      "status": "COMPLETED",
+      "gate": "GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_LIVE_TRIAL_V1"
+    },
+    {
+      "id": "generated_conveyor_trial_family_v1_live_pack_v1",
+      "phase": "GENERATED_CONVEYOR_TRIAL_FAMILY_V1_PHASE_1",
+      "status": "COMPLETED",
+      "gate": "GENERATED_CONVEYOR_TRIAL_FAMILY_V1_LIVE_PACK_V1",
+      "semantic_role": "CONVEYOR_LIVE_TRIAL_PROOF",
+      "family_id": "conveyor_trial_family_v1"
+    },
+    {
+      "id": "generated_family_autonomous_conveyor_failure_recovery_v1",
+      "phase": "PHASE_66",
+      "status": "COMPLETED",
+      "gate": "GENERATED_FAMILY_AUTONOMOUS_CONVEYOR_FAILURE_RECOVERY_V1"
+    },
+    {
+      "id": "generated_conveyor_failure_trial_family_v1_failure_pack_v1",
+      "phase": "GENERATED_CONVEYOR_FAILURE_TRIAL_FAMILY_V1_PHASE_1",
+      "status": "FAILED",
+      "gate": "GENERATED_CONVEYOR_FAILURE_TRIAL_FAMILY_V1_FAILURE_PACK_V1",
+      "semantic_role": "CONVEYOR_FAILURE_RECOVERY_PROOF",
+      "family_id": "conveyor_failure_trial_family_v1"
+    },
+    {
+      "id": "external_agent_production_program_test_v1",
+      "phase": "PHASE_67",
+      "status": "COMPLETED",
+      "gate": "EXTERNAL_AGENT_PRODUCTION_PROGRAM_TEST_V1"
+    },
+    {
+      "id": "agent_github_action_launch_v1",
+      "phase": "PHASE_68",
+      "status": "COMPLETED",
+      "gate": "AGENT_GITHUB_ACTION_LAUNCH_V1"
+    },
+    {
+      "id": "agent_catalog_v1",
+      "phase": "PHASE_69",
+      "status": "COMPLETED",
+      "gate": "AGENT_CATALOG_V1"
+    },
+    {
+      "id": "agent_program_input_format_v1",
+      "phase": "PHASE_70",
+      "status": "COMPLETED",
+      "gate": "AGENT_PROGRAM_INPUT_FORMAT_V1"
+    },
+    {
+      "id": "agent_program_executor_v1",
+      "phase": "PHASE_71",
+      "status": "COMPLETED",
+      "gate": "AGENT_PROGRAM_EXECUTOR_V1"
+    },
+    {
+      "id": "runbook_executor_agent_program_trial_v1",
+      "phase": "PHASE_72",
+      "status": "COMPLETED",
+      "gate": "RUNBOOK_EXECUTOR_AGENT_PROGRAM_TRIAL_V1"
+    },
+    {
+      "id": "runbook_executor_agent_production_v1",
+      "phase": "PHASE_73",
+      "status": "COMPLETED",
+      "gate": "RUNBOOK_EXECUTOR_AGENT_PRODUCTION_V1"
+    },
+    {
+      "id": "runbook_executor_agent_github_action_launch_v1",
+      "status": "COMPLETED",
+      "goal": "Add GitHub Actions launch workflow for Runbook Executor Agent v1"
+    },
+    {
+      "id": "runbook_executor_agent_github_action_acceptance_v1",
+      "status": "COMPLETED",
+      "goal": "Accept Runbook Executor Agent v1 after GitHub Actions artifact verification"
+    },
+    {
+      "id": "agent_production_closed_loop_standard_v1",
+      "phase": "PHASE_76",
+      "status": "COMPLETED",
+      "gate": "AGENT_PRODUCTION_CLOSED_LOOP_STANDARD_V1",
+      "goal": "Codify the proven external-agent production acceptance loop as the factory standard"
+    },
+    {
+      "id": "evidence_packager_agent_closed_loop_trial_v1",
+      "phase": "PHASE_77",
+      "status": "COMPLETED",
+      "gate": "EVIDENCE_PACKAGER_AGENT_CLOSED_LOOP_TRIAL_V1",
+      "goal": "Prove the closed-loop agent production standard on Evidence Packager Agent v1"
+    }
+  ],
+  "phase89_generated_program_admission_v1": "COMPLETED",
+  "phase90_builder_executes_own_generated_self_build_program_v1": "COMPLETED",
+  "phase91_route_v1_closure_and_v2_r2_activation": "COMPLETED",
+  "phase92_self_build_backlog_contract_v1": {
+    "status": "COMPLETED",
+    "proof": "proofs/self_development/SELF_BUILD_BACKLOG_CONTRACT_V1.json",
+    "report": "reports/self_development/SELF_BUILD_BACKLOG_CONTRACT_REPORT.json",
+    "next_allowed_step": "PHASE93_CAPABILITY_GAP_DETECTOR_V1"
+  },
+  "phase93_capability_gap_detector_v1": {
+    "status": "COMPLETED",
+    "detector": "self_build_backlog/CAPABILITY_GAP_DETECTOR_V1.json",
+    "gap_index": "self_build_backlog/CAPABILITY_GAP_INDEX_V1.json",
+    "proof": "proofs/self_development/CAPABILITY_GAP_DETECTOR_V1.json",
+    "report": "reports/self_development/CAPABILITY_GAP_DETECTOR_REPORT.json",
+    "next_allowed_step": "PHASE94_OWNER_ORDER_TO_GAP_MAP_V1"
+  },
+  "phase94_owner_order_to_gap_map_v1": {
+    "status": "COMPLETED",
+    "contract": "owner_orders/OWNER_ORDER_CONTRACT_V1.json",
+    "gap_map_contract": "self_build_backlog/OWNER_ORDER_TO_GAP_MAP_V1.json",
+    "proof": "proofs/self_development/OWNER_ORDER_TO_GAP_MAP_V1.json",
+    "report": "reports/self_development/OWNER_ORDER_TO_GAP_MAP_REPORT.json",
+    "next_allowed_step": "PHASE95_SELF_BUILD_PROGRAM_GENERATOR_V2"
+  },
+  "phase95_self_build_program_generator_v2": {
+    "status": "COMPLETED",
+    "generator": "self_build_programs/generator/SELF_BUILD_PROGRAM_GENERATOR_V2.json",
+    "schema": "contracts/self_development/self_build_program_v2.schema.json",
+    "example_program": "self_build_programs/generated/SELF_BUILD_PROGRAM_V2_EXAMPLE_001.json",
+    "proof": "proofs/self_development/SELF_BUILD_PROGRAM_GENERATOR_V2.json",
+    "report": "reports/self_development/SELF_BUILD_PROGRAM_GENERATOR_V2_REPORT.json",
+    "next_allowed_step": "PHASE96_BATCH_PLANNER_V1"
+  },
+  "phase96_batch_planner_v1": {
+    "status": "COMPLETED",
+    "planner": "self_build_batch/planner/BATCH_PLANNER_V1.json",
+    "schema": "contracts/self_development/batch_plan_v1.schema.json",
+    "example_plan": "self_build_batch/plans/BATCH_PLAN_EXAMPLE_V1.json",
+    "proof": "proofs/self_development/BATCH_PLANNER_V1.json",
+    "report": "reports/self_development/BATCH_PLANNER_V1_REPORT.json",
+    "next_allowed_step": "PHASE97_BATCH_ADMISSION_POLICY_V1"
+  },
+  "phase97_batch_admission_policy_v1": {
+    "status": "COMPLETED",
+    "policy": "self_build_batch/admission/BATCH_ADMISSION_POLICY_V1.json",
+    "schema": "contracts/self_development/batch_admission_policy_v1.schema.json",
+    "admission": "self_build_batch/admission/BATCH_PLAN_EXAMPLE_V1_ADMISSION.json",
+    "proof": "proofs/self_development/BATCH_ADMISSION_POLICY_V1.json",
+    "report": "reports/self_development/BATCH_ADMISSION_POLICY_V1_REPORT.json",
+    "next_allowed_step": "PHASE98_ITEM_LEVEL_EXECUTION_LEDGER_V1"
+  },
+  "phase98_item_level_execution_ledger_v1": {
+    "status": "COMPLETED",
+    "ledger_contract": "self_build_batch/ledger/ITEM_LEVEL_EXECUTION_LEDGER_V1.json",
+    "schema": "contracts/self_development/item_level_execution_ledger_v1.schema.json",
+    "dry_run_ledger": "self_build_batch/ledger/BATCH_PLAN_EXAMPLE_V1_LEDGER_DRY_RUN.json",
+    "delivery_conveyor_contract": "contracts/operations/self_build_delivery_conveyor_v1.json",
+    "delivery_conveyor_doc": "docs/operations/SELF_BUILD_DELIVERY_CONVEYOR_V1.md",
+    "proof": "proofs/self_development/ITEM_LEVEL_EXECUTION_LEDGER_V1.json",
+    "report": "reports/self_development/ITEM_LEVEL_EXECUTION_LEDGER_V1_REPORT.json",
+    "next_allowed_step": "PHASE99_CONTINUE_ON_FAILURE_RUNTIME_V1"
+  },
+  "phase99_continue_on_failure_runtime_v1": {
+    "status": "COMPLETED",
+    "runtime_contract": "self_build_batch/runtime/CONTINUE_ON_FAILURE_RUNTIME_V1.json",
+    "schema": "contracts/self_development/continue_on_failure_runtime_v1.schema.json",
+    "simulation": "self_build_batch/runtime/CONTINUE_ON_FAILURE_SIMULATION_V1.json",
+    "proof": "proofs/self_development/CONTINUE_ON_FAILURE_RUNTIME_V1.json",
+    "report": "reports/self_development/CONTINUE_ON_FAILURE_RUNTIME_V1_REPORT.json",
+    "next_allowed_step": "PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1"
+  },
+  "phase100_quarantine_and_blocker_registry_v1": {
+    "status": "COMPLETED",
+    "registry_contract": "self_build_batch/quarantine/QUARANTINE_AND_BLOCKER_REGISTRY_V1.json",
+    "schema": "contracts/self_development/quarantine_and_blocker_registry_v1.schema.json",
+    "dry_run_registry": "self_build_batch/quarantine/BATCH_PLAN_EXAMPLE_V1_QUARANTINE_BLOCKER_DRY_RUN.json",
+    "proof": "proofs/self_development/QUARANTINE_AND_BLOCKER_REGISTRY_V1.json",
+    "report": "reports/self_development/QUARANTINE_AND_BLOCKER_REGISTRY_V1_REPORT.json",
+    "next_allowed_step": "PHASE101_BATCH_PROOF_AGGREGATOR_V1"
+  },
+  "phase101_batch_proof_aggregator_v1": {
+    "status": "COMPLETED",
+    "aggregator_contract": "self_build_batch/proof_aggregation/BATCH_PROOF_AGGREGATOR_V1.json",
+    "schema": "contracts/self_development/batch_proof_aggregator_v1.schema.json",
+    "dry_run_summary": "self_build_batch/proof_aggregation/BATCH_PLAN_EXAMPLE_V1_PROOF_SUMMARY_DRY_RUN.json",
+    "proof": "proofs/self_development/BATCH_PROOF_AGGREGATOR_V1.json",
+    "report": "reports/self_development/BATCH_PROOF_AGGREGATOR_V1_REPORT.json",
+    "next_allowed_step": "PHASE102_AUTO_NEXT_GAP_DECISION_V1"
+  },
+  "phase102_auto_next_gap_decision_v1": {
+    "status": "COMPLETED",
+    "decision_kernel": "self_build_batch/next_actions/AUTO_NEXT_GAP_DECISION_KERNEL_V1.json",
+    "schema": "contracts/self_development/auto_next_gap_decision_v1.schema.json",
+    "dry_run_action_plan": "self_build_batch/next_actions/BATCH_PLAN_EXAMPLE_V1_NEXT_ACTION_PLAN_DRY_RUN.json",
+    "proof": "proofs/self_development/AUTO_NEXT_GAP_DECISION_V1.json",
+    "report": "reports/self_development/AUTO_NEXT_GAP_DECISION_V1_REPORT.json",
+    "next_allowed_step": "PHASE103_REPAIR_LOOP_GENERATOR_V1"
+  },
+  "phase103_repair_loop_generator_v1": {
+    "status": "COMPLETED",
+    "repair_loop_generator": "self_build_batch/repair_loop/REPAIR_LOOP_GENERATOR_V1.json",
+    "schema": "contracts/self_development/repair_loop_generator_v1.schema.json",
+    "dry_run_program_bundle": "self_build_batch/repair_loop/BATCH_PLAN_EXAMPLE_V1_REPAIR_LOOP_PROGRAMS_DRY_RUN.json",
+    "proof": "proofs/self_development/REPAIR_LOOP_GENERATOR_V1.json",
+    "report": "reports/self_development/REPAIR_LOOP_GENERATOR_V1_REPORT.json",
+    "next_allowed_step": "PHASE104_CONTROLLED_MULTI_CYCLE_SELF_BUILD_RUN_V1"
+  },
+  "phase104_controlled_multi_cycle_self_build_run_v1": {
+    "status": "COMPLETED",
+    "controlled_run_contract": "self_build_batch/controlled_runs/CONTROLLED_MULTI_CYCLE_SELF_BUILD_RUN_V1.json",
+    "schema": "contracts/self_development/controlled_multi_cycle_self_build_run_v1.schema.json",
+    "controlled_run_result": "self_build_batch/controlled_runs/BATCH_PLAN_EXAMPLE_V1_CONTROLLED_MULTI_CYCLE_RUN_RESULT.json",
+    "proof": "proofs/self_development/CONTROLLED_MULTI_CYCLE_SELF_BUILD_RUN_V1.json",
+    "report": "reports/self_development/CONTROLLED_MULTI_CYCLE_SELF_BUILD_RUN_V1_REPORT.json",
+    "selected_program": "REPAIR_PROGRAM_SELF_BUILD_REQUIRED_MODULES_001",
+    "next_allowed_step": "PHASE105_SCALE_TRIAL_10_30_100_ITEM_SIMULATION_V1"
+  },
+  "phase105_scale_trial_10_30_100_item_simulation_v1": {
+    "status": "COMPLETED",
+    "scale_trial_contract": "self_build_batch/scale_trials/SCALE_TRIAL_10_30_100_ITEM_SIMULATION_V1.json",
+    "schema": "contracts/self_development/scale_trial_10_30_100_item_simulation_v1.schema.json",
+    "scale_trial_result": "self_build_batch/scale_trials/BATCH_PLAN_EXAMPLE_V1_SCALE_TRIAL_RESULT.json",
+    "proof": "proofs/self_development/SCALE_TRIAL_10_30_100_ITEM_SIMULATION_V1.json",
+    "report": "reports/self_development/SCALE_TRIAL_10_30_100_ITEM_SIMULATION_V1_REPORT.json",
+    "scale_tiers": [
+      10,
+      30,
+      100
+    ],
+    "total_simulated_item_count": 140,
+    "next_allowed_step": "PHASE106_SCALE_TRIAL_PROMOTION_GATE_AND_ROUTE_LOCK_REFRESH_V1"
+  },
+  "phase106_scale_trial_promotion_gate_and_route_lock_refresh_v1": {
+    "status": "COMPLETED",
+    "schema": "contracts/self_development/scale_trial_promotion_gate_and_route_lock_refresh_v1.schema.json",
+    "route_lock_v3": "route_locks/AGENT_BUILDER_NEXT_15_STEPS_LOCK_V3_SELF_PACK_AUTHOR.md",
+    "route_transition_report": "reports/route_locks/ROUTE_V2_R2_TO_V3_SELF_PACK_AUTHOR_REPORT.json",
+    "route_transition_proof": "proofs/route_locks/ROUTE_V2_R2_TO_V3_SELF_PACK_AUTHOR_PROOF.json",
+    "proof": "proofs/self_development/SCALE_TRIAL_PROMOTION_GATE_AND_ROUTE_LOCK_REFRESH_V1.json",
+    "report": "reports/self_development/SCALE_TRIAL_PROMOTION_GATE_AND_ROUTE_LOCK_REFRESH_V1_REPORT.json",
+    "source_scale_trial_proof": "proofs/self_development/SCALE_TRIAL_10_30_100_ITEM_SIMULATION_V1.json",
+    "source_scale_trial_result": "self_build_batch/scale_trials/BATCH_PLAN_EXAMPLE_V1_SCALE_TRIAL_RESULT.json",
+    "scale_trial_promoted_as": "SIMULATION_PROVEN",
+    "full_autonomy_claimed": false,
+    "codex_dependency_risk_recorded": true,
+    "next_allowed_step": "PHASE107_BUILDER_SELF_PACK_AUTHOR_V1"
+  },
+  "phase107_builder_self_pack_author_v1": {
+    "status": "COMPLETED",
+    "schema": "contracts/self_development/builder_self_pack_author_v1.schema.json",
+    "self_pack_author_contract": "self_build_batch/self_pack_author/BUILDER_SELF_PACK_AUTHOR_V1.json",
+    "generated_candidate_path": "self_build_batch/self_pack_author/generated_candidates/PHASE108_BUILDER_GENERATED_PACK_ADMISSION_V1_CANDIDATE",
+    "proof": "proofs/self_development/BUILDER_SELF_PACK_AUTHOR_V1.json",
+    "report": "reports/self_development/BUILDER_SELF_PACK_AUTHOR_V1_REPORT.json",
+    "generated_by_builder_runtime": true,
+    "codex_authored_candidate": false,
+    "candidate_registered_live": false,
+    "candidate_executed": false,
+    "next_allowed_step": "PHASE108_BUILDER_GENERATED_PACK_ADMISSION_V1"
+  },
+  "phase108_builder_generated_pack_admission_v1": "COMPLETED",
+  "phase108_next_allowed_step": "PHASE109_BUILDER_EXECUTES_OWN_GENERATED_NEXT_PACK_V1",
+  "phase161e_self_map_auto_refresh": {
+    "status": "ACCEPTED_EVIDENCE_REFERENCE_CANDIDATE",
+    "accepted_head": "777326e87a797b9b90e6411aff7da0a4379455c4",
+    "proof_path": "proofs/self_development/PHASE161E_SELF_MAP_AUTO_REFRESH_PROOF.json",
+    "active_map_path": "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+    "protected_promotion_status": "OWNER_REVIEW_REQUIRED"
+  },
+  "phase88_self_build_program_generator_v1": "COMPLETED",
+  "promoted_capabilities": [
+    {
+      "phase": "PHASE165O_GUARDED_PROMOTION_APPLY_FOR_REUSABLE_SELF_BUILD_ORGAN",
+      "promoted_utc": "2026-06-11T05:11:27.2317936Z",
+      "organ_id": "reusable_owner_material_self_build_organ_v1",
+      "capability": "owner_material_dynamic_self_build_loop",
+      "status": "PROMOTED_GUARDED",
+      "promotion_basis": "PHASE165O hardened canonical dynamic contract trial accepted idempotently",
+      "proof_chain": [
+        "proofs/self_development/PHASE165O_HARDEN_CANONICAL_DYNAMIC_CONTRACT_FOR_REUSABLE_ORGAN_V1.json",
+        "proofs/self_development/PHASE165O_RUN_HARDENED_CANONICAL_DYNAMIC_CONTRACT_TRIAL_V1.json",
+        "proofs/self_development/PHASE165O_HARDENED_CANONICAL_TRIAL_IDEMPOTENT_VALIDATOR_REPAIR_V1.json",
+        "proofs/self_development/PHASE165O_PROMOTION_READINESS_DECISION_AFTER_HARDENED_TRIAL_V1.json",
+        "proofs/self_development/PHASE165O_GUARDED_PROMOTION_SCOPE_FOR_REUSABLE_SELF_BUILD_ORGAN_V1.json"
+      ],
+      "boundaries": {
+        "no_orchestrator_run": true,
+        "no_task_queue_mutation": true,
+        "no_genesis_state_mutation": true,
+        "no_route_lock_mutation": true,
+        "no_external_fetch_or_install": true,
+        "no_codex": true
+      }
+    }
+  ],
+  "phase165o_last_promoted_capability": "owner_material_dynamic_self_build_loop"
+}

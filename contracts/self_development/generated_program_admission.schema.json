@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_id": "generated_program_admission_v1",
+  "title": "Generated Program Admission V1",
+  "type": "object",
+  "required": [
+    "status",
+    "program_id",
+    "source_program_path",
+    "source_generator_report_path",
+    "source_generator_proof_path",
+    "admission_decision",
+    "admission_performed",
+    "execution_performed",
+    "generated_at",
+    "next_allowed_step"
+  ],
+  "properties": {
+    "status": {
+      "const": "PASS"
+    },
+    "program_id": {
+      "const": "SELF_BUILD_PROGRAM_001"
+    },
+    "admission_decision": {
+      "const": "ADMIT_CANDIDATE_FOR_CONTROLLED_EXECUTION"
+    },
+    "admission_performed": {
+      "const": true
+    },
+    "execution_performed": {
+      "const": false
+    },
+    "next_allowed_step": {
+      "const": "PHASE90_BUILDER_EXECUTES_OWN_GENERATED_SELF_BUILD_PROGRAM_V1"
+    }
+  },
+  "additionalProperties": true
+}

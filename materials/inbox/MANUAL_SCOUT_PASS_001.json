@@ -1,0 +1,204 @@
+{
+  "scout_pass_id": "MANUAL_SCOUT_PASS_001",
+  "created_at": "2026-05-28T19:19:05.8886156Z",
+  "created_by": "E-Factory Control GPT",
+  "purpose": "First controlled candidate material list for Agent Builder material acquisition. No install, no trust, no import. PHASE80 will import after validation.",
+  "route_context": {
+    "current_step": "STEP4_MANUAL_SCOUT_PASS_001",
+    "previous_completed_step": "PHASE79_MATERIAL_ACQUISITION_BOOTSTRAP_V1",
+    "next_allowed_step": "PHASE80_MANUAL_SCOUT_PASS_IMPORT_V1"
+  },
+  "candidates": [
+    {
+      "material_id": "mat_json_schema_ajv_001",
+      "name": "Ajv",
+      "material_type": "LIBRARY",
+      "source_url": "https://ajv.js.org/",
+      "source_origin": "official_project_site",
+      "provenance_status": "OFFICIAL_SOURCE_IDENTIFIED",
+      "license_status": "MIT_REPORTED_BY_OFFICIAL_LICENSE_PAGE",
+      "security_status": "NOT_SCANNED",
+      "usage_mode": "USE_AS_TOOL",
+      "status": "CANDIDATE",
+      "risk_level": "LOW",
+      "owner_approval_required": false,
+      "priority": 1,
+      "capability_fit": [
+        "validate_json_schema",
+        "contract_validation",
+        "registry_validation"
+      ],
+      "notes": "Primary candidate for JSON Schema validation wrapper. Do not install during STEP4."
+    },
+    {
+      "material_id": "mat_python_jsonschema_001",
+      "name": "python-jsonschema",
+      "material_type": "LIBRARY",
+      "source_url": "https://pypi.org/project/jsonschema/",
+      "source_origin": "official_package_registry_and_project_repo",
+      "provenance_status": "OFFICIAL_SOURCE_IDENTIFIED",
+      "license_status": "MIT_REPORTED_BY_PYPI",
+      "security_status": "NOT_SCANNED",
+      "usage_mode": "USE_AS_TOOL",
+      "status": "CANDIDATE",
+      "risk_level": "LOW",
+      "owner_approval_required": false,
+      "priority": 2,
+      "capability_fit": [
+        "validate_json_schema",
+        "python_validation_fallback"
+      ],
+      "notes": "Fallback candidate for Python-side JSON Schema validation. Do not install during STEP4."
+    },
+    {
+      "material_id": "mat_template_copier_001",
+      "name": "Copier",
+      "material_type": "CLI",
+      "source_url": "https://github.com/copier-org/copier",
+      "source_origin": "official_github_repo",
+      "provenance_status": "OFFICIAL_SOURCE_IDENTIFIED",
+      "license_status": "LICENSE_REVIEW_REQUIRED_BEFORE_USE",
+      "security_status": "NOT_SCANNED",
+      "usage_mode": "USE_AS_TOOL",
+      "status": "CANDIDATE",
+      "risk_level": "MEDIUM",
+      "owner_approval_required": false,
+      "priority": 3,
+      "capability_fit": [
+        "render_template_bundle",
+        "scaffold_operation",
+        "scaffold_agent_package"
+      ],
+      "notes": "Candidate for rendering project/template bundles. Needs wrapper and smoke test later."
+    },
+    {
+      "material_id": "mat_sbom_syft_001",
+      "name": "Syft",
+      "material_type": "CLI",
+      "source_url": "https://github.com/anchore/syft",
+      "source_origin": "official_github_repo",
+      "provenance_status": "OFFICIAL_SOURCE_IDENTIFIED",
+      "license_status": "APACHE_2_0_REPORTED_BY_OFFICIAL_REPO",
+      "security_status": "NOT_SCANNED",
+      "usage_mode": "WRAP_ONLY",
+      "status": "CANDIDATE",
+      "risk_level": "MEDIUM",
+      "owner_approval_required": false,
+      "priority": 4,
+      "capability_fit": [
+        "generate_sbom",
+        "material_package_inventory"
+      ],
+      "notes": "Candidate for SBOM generation. Later must be wrapped, not called ad hoc."
+    },
+    {
+      "material_id": "mat_vuln_grype_001",
+      "name": "Grype",
+      "material_type": "CLI",
+      "source_url": "https://github.com/anchore/grype",
+      "source_origin": "official_github_repo",
+      "provenance_status": "OFFICIAL_SOURCE_IDENTIFIED",
+      "license_status": "APACHE_2_0_REPORTED_BY_OFFICIAL_REPO",
+      "security_status": "NOT_SCANNED",
+      "usage_mode": "WRAP_ONLY",
+      "status": "CANDIDATE",
+      "risk_level": "MEDIUM",
+      "owner_approval_required": false,
+      "priority": 5,
+      "capability_fit": [
+        "scan_vulnerabilities",
+        "material_security_report"
+      ],
+      "notes": "Candidate vulnerability scanner. Requires wrapper and controlled test input later."
+    },
+    {
+      "material_id": "mat_vuln_osv_scanner_001",
+      "name": "OSV-Scanner",
+      "material_type": "CLI",
+      "source_url": "https://google.github.io/osv-scanner/",
+      "source_origin": "official_documentation",
+      "provenance_status": "OFFICIAL_SOURCE_IDENTIFIED",
+      "license_status": "LICENSE_REVIEW_REQUIRED_BEFORE_USE",
+      "security_status": "NOT_SCANNED",
+      "usage_mode": "WRAP_ONLY",
+      "status": "CANDIDATE",
+      "risk_level": "MEDIUM",
+      "owner_approval_required": false,
+      "priority": 6,
+      "capability_fit": [
+        "scan_vulnerabilities",
+        "dependency_vulnerability_lookup"
+      ],
+      "notes": "Candidate scanner connected to OSV database. Do not install during STEP4."
+    },
+    {
+      "material_id": "mat_license_scancode_toolkit_001",
+      "name": "ScanCode Toolkit",
+      "material_type": "CLI",
+      "source_url": "https://github.com/aboutcode-org/scancode-toolkit",
+      "source_origin": "official_github_repo",
+      "provenance_status": "OFFICIAL_SOURCE_IDENTIFIED",
+      "license_status": "APACHE_2_0_OVERALL_WITH_SECONDARY_LICENSES_REVIEW_REQUIRED",
+      "security_status": "NOT_SCANNED",
+      "usage_mode": "WRAP_ONLY",
+      "status": "OWNER_APPROVAL_REQUIRED",
+      "risk_level": "HIGH",
+      "owner_approval_required": true,
+      "priority": 7,
+      "capability_fit": [
+        "scan_material_rights",
+        "license_and_origin_deep_scan"
+      ],
+      "notes": "Powerful but heavier compliance tool. Needs explicit owner approval and deep review before use."
+    },
+    {
+      "material_id": "mat_policy_opa_001",
+      "name": "Open Policy Agent",
+      "material_type": "CLI",
+      "source_url": "https://openpolicyagent.org/",
+      "source_origin": "official_project_site",
+      "provenance_status": "OFFICIAL_SOURCE_IDENTIFIED",
+      "license_status": "APACHE_2_0_REPORTED_BY_OFFICIAL_SITE",
+      "security_status": "NOT_SCANNED",
+      "usage_mode": "WRAP_ONLY",
+      "status": "REFERENCE_ONLY",
+      "risk_level": "MEDIUM",
+      "owner_approval_required": false,
+      "priority": 8,
+      "capability_fit": [
+        "evaluate_material_policy",
+        "policy_gate"
+      ],
+      "notes": "Strong future policy engine. Keep reference-only until simple material policy exists."
+    },
+    {
+      "material_id": "mat_policy_conftest_001",
+      "name": "Conftest",
+      "material_type": "CLI",
+      "source_url": "https://openpolicyagent.org/ecosystem/entry/conftest",
+      "source_origin": "official_opa_ecosystem_page",
+      "provenance_status": "OFFICIAL_SOURCE_IDENTIFIED",
+      "license_status": "LICENSE_REVIEW_REQUIRED_BEFORE_USE",
+      "security_status": "NOT_SCANNED",
+      "usage_mode": "REFERENCE_ONLY",
+      "status": "REFERENCE_ONLY",
+      "risk_level": "MEDIUM",
+      "owner_approval_required": false,
+      "priority": 9,
+      "capability_fit": [
+        "policy_tests_for_structured_config",
+        "future_ci_policy_checks"
+      ],
+      "notes": "Useful reference for policy-as-code checks. Not a PHASE80 import priority."
+    }
+  ],
+  "cut_list": [
+    "Do not install candidates during STEP4.",
+    "Do not mark any candidate as TRUSTED.",
+    "Do not mutate materials/MATERIAL_CATALOG.json.",
+    "Do not run automatic scout.",
+    "Do not create external agents.",
+    "Do not add GitHub Actions workflows.",
+    "Do not add large agent frameworks to core."
+  ]
+}

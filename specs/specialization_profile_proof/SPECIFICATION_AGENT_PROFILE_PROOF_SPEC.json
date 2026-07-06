@@ -1,0 +1,38 @@
+{
+  "agent_id": "specification_blueprint_agent",
+  "display_name": "Specification Blueprint Agent",
+  "mission": "Turn structured specification requests into normalized blueprint outputs.",
+  "agent_kind": "specification_agent",
+  "package_profile": "operational_specialized",
+  "runtime": {
+    "shell": "PowerShell",
+    "entrypoint": "orchestrator/run.ps1"
+  },
+  "inputs": [
+    {
+      "name": "request",
+      "type": "json",
+      "required": true,
+      "description": "Structured specification request."
+    }
+  ],
+  "outputs": [
+    {
+      "name": "result",
+      "type": "json",
+      "required": true,
+      "description": "Structured blueprint synthesis result."
+    }
+  ],
+  "capabilities": [
+    "synthesize structured blueprint sections",
+    "emit specialized specification runtime output"
+  ],
+  "validation": [
+    "specialized overlay is applied",
+    "runtime result operation is spec_blueprint_synthesis"
+  ],
+  "forbidden_scope": [
+    "do not claim free-form agent code synthesis"
+  ]
+}

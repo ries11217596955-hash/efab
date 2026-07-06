@@ -1,0 +1,59 @@
+﻿{
+    "schema":  "tracked_school_source_template_filter_healthy_internal_probe_v1",
+    "status":  "PASS_SCHOOL_SOURCE_TEMPLATE_FILTER_HEALTHY_INTERNAL_V1",
+    "created_at":  "2026-07-06T19:30:35.5421622+04:00",
+    "filter_status":  "PASS_USE_INTERNAL_FACTORY",
+    "selected_source":  "InternalFactory",
+    "reason":  "internal_factory_healthy",
+    "metrics":  {
+                    "duplicate_rate":  0.05,
+                    "novelty_score":  0.82,
+                    "validator_pass_rate":  0.96,
+                    "quarantine_rate":  0.02,
+                    "external_required":  false,
+                    "codex_required":  false,
+                    "codex_available":  true,
+                    "topic":  "healthy_internal_factory_candidate_generation"
+                },
+    "query_template":  {
+                           "goal":  "continue school candidate generation from stable internal factory",
+                           "topic":  "healthy_internal_factory_candidate_generation",
+                           "source_need":  "official_docs",
+                           "freshness_need":  "stable",
+                           "preferred_domains":  [
+
+                                                 ],
+                           "blocked_result_types":  [
+                                                        "ad",
+                                                        "sponsored",
+                                                        "coupon",
+                                                        "seo_farm",
+                                                        "scraped_mirror",
+                                                        "ai_content_farm",
+                                                        "tracking_campaign_url",
+                                                        "login_wall_without_content"
+                                                    ],
+                           "minimum_authority_score":  0.8,
+                           "reject_ads_sponsored":  true,
+                           "cross_check_required":  false
+                       },
+    "authority_tier":  {
+                           "tier":  "official_docs",
+                           "authority_score":  0.95,
+                           "action":  "prefer"
+                       },
+    "runtime_proof":  ".runtime/school_source_template_filter/school_template_filter_healthy_internal_20260706_193100/SCHOOL_SOURCE_TEMPLATE_FILTER_DECISION_V1.json",
+    "blocked_result_types":  [
+                                 "ad",
+                                 "sponsored",
+                                 "coupon",
+                                 "seo_farm",
+                                 "scraped_mirror",
+                                 "ai_content_farm",
+                                 "tracking_campaign_url",
+                                 "login_wall_without_content"
+                             ],
+    "codex_selected":  false,
+    "external_selected":  false,
+    "boundary":  "Proves healthy InternalFactory metrics select InternalFactory and produce ad/sponsored rejection plus official_docs authority preference. No Codex/Web route selected."
+}

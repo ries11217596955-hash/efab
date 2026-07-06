@@ -1,0 +1,46 @@
+﻿{
+    "schema":  "school_source_router_policy_v1",
+    "status":  "ACTIVE_MINIMAL_INTERNAL_FACTORY_FIRST",
+    "default_source_mode":  "Auto",
+    "allowed_sources":  [
+                            "InternalFactory",
+                            "CodexSourcePort",
+                            "ExternalWorldSourcePort"
+                        ],
+    "enabled_sources":  [
+                            "InternalFactory"
+                        ],
+    "selection_order":  [
+                            "InternalFactory",
+                            "CodexSourcePort",
+                            "ExternalWorldSourcePort"
+                        ],
+    "source_authority_boundary":  "Sources produce material candidates only. They are not school brain, not route authority, and cannot write compact memory directly.",
+    "internal_factory":  {
+                             "enabled":  true,
+                             "script":  "operations/school/curriculum/candidate_factory/generate_codex_curriculum_candidate_factory_run_v1.ps1",
+                             "proven":  true
+                         },
+    "codex_source_port":  {
+                              "enabled":  false,
+                              "status":  "REGISTERED_NOT_ENABLED",
+                              "boundary":  "Codex may produce CODEX_DRAFT candidate material only after explicit governed port enablement.",
+                              "script":  "operations/school/curriculum/source_router/run_school_codex_source_port_v1.ps1",
+                              "default_enabled":  false
+                          },
+    "external_world_source_port":  {
+                                       "enabled":  false,
+                                       "status":  "REGISTERED_NOT_ENABLED",
+                                       "boundary":  "ExternalWorld may produce sourced material candidates only after explicit governed port enablement and source validator.",
+                                       "script":  "operations/school/curriculum/source_router/run_school_external_world_source_port_v1.ps1",
+                                       "validator":  "operations/school/curriculum/source_router/validate_external_world_source_material_v1.ps1",
+                                       "default_enabled":  false
+                                   },
+    "acceptance_path":  "source material -\u003e factory/normalizer -\u003e existing validators -\u003e school proof -\u003e finalizer -\u003e intake -\u003e merge queue -\u003e compact memory",
+    "template_filter":  {
+                            "enabled":  true,
+                            "script":  "operations/school/curriculum/source_router/template_filter/run_school_source_template_filter_v1.ps1",
+                            "policy":  "operations/school/curriculum/source_router/template_filter/school_source_template_filter_policy.json",
+                            "auto_boundary":  "Auto may use template filter decision, but selected source must still be enabled in source router policy."
+                        }
+}

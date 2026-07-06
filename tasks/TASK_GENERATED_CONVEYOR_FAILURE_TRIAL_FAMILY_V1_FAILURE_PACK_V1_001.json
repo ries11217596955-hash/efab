@@ -1,0 +1,18 @@
+{
+  "task_id": "TASK_GENERATED_CONVEYOR_FAILURE_TRIAL_FAMILY_V1_FAILURE_PACK_V1_001",
+  "capability_id": "generated_conveyor_failure_trial_family_v1_failure_pack_v1",
+  "objective": "Execute a tiny disposable generated-family failure trial pack as proof that the autonomous conveyor records controlled generated-pack failure evidence and recovers the Builder queue to NONE.",
+  "execution_kind": "GENERATED_FAMILY_CONVEYOR_FAILURE_TRIAL_PACK",
+  "expected_gate": "GENERATED_CONVEYOR_FAILURE_TRIAL_FAMILY_V1_FAILURE_PACK_V1",
+  "runtime_report_path": "reports/generated_family_autonomous_conveyor/GENERATED_CONVEYOR_FAILURE_TRIAL_FAMILY_V1_FAILURE_PACK_V1_REPORT.json",
+  "runtime_proof_path": "proofs/GENERATED_CONVEYOR_FAILURE_TRIAL_FAMILY_V1_FAILURE_PACK_V1.json",
+  "family_id": "conveyor_failure_trial_family_v1",
+  "semantic_role": "CONVEYOR_FAILURE_RECOVERY_PROOF",
+  "materialization_status": "SEEDED_FOR_PHASE66_FAILURE_RECOVERY_TRIAL",
+  "forbidden_scope": [
+    "do not git commit from generated failure trial pack",
+    "do not git push from generated failure trial pack",
+    "do not activate a follow-on generated task",
+    "do not create a full product family"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "schema": "accepted_atom_retention_batch_manifest_schema_v1",
+  "required": [
+    "schema",
+    "batch_id",
+    "started_utc",
+    "completed_utc",
+    "accepted_count",
+    "failed_count",
+    "quarantined_count",
+    "receipts_hash",
+    "validator_status",
+    "heavy_trace_pruned",
+    "repo_growth_bytes"
+  ]
+}

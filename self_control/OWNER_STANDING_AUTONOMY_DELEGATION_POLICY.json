@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "policy_id": "OWNER_STANDING_AUTONOMY_DELEGATION_POLICY_V1",
+  "created_by": "PHASE138D_OWNER_APPROVED_SANDBOX_BRANCH_MERGE_V1",
+  "source": "owner_current_instruction_no_interactive_questions_create_autonomy",
+  "interactive_owner_prompt_allowed": false,
+  "standing_delegation_enabled": true,
+  "autonomous_progress_allowed_when_gates_pass": true,
+  "stop_without_question_when_gate_fails": true,
+  "production_adoption_allowed": false,
+  "trusted_material_allowed": false,
+  "external_fetch_allowed": false,
+  "dependency_install_allowed": false,
+  "executable_use_allowed": false,
+  "merge_allowed_when": [
+    "source_branch_clean",
+    "target_branch_clean",
+    "previous_proofs_pass",
+    "no_production_adoption",
+    "trusted_material_count_zero",
+    "no_external_fetch",
+    "no_dependency_install",
+    "no_executable_use",
+    "merge_has_no_conflicts",
+    "diff_scope_allowed"
+  ],
+  "next_allowed_step": "PHASE138D_OWNER_APPROVED_SANDBOX_BRANCH_MERGE_V1"
+}

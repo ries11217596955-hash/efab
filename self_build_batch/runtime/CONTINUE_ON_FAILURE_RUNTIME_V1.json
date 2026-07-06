@@ -1,0 +1,70 @@
+{
+  "runtime_id": "CONTINUE_ON_FAILURE_RUNTIME_V1",
+  "version": "V1",
+  "status": "ACTIVE_RUNTIME_CONTRACT",
+  "phase": "PHASE99_CONTINUE_ON_FAILURE_RUNTIME_V1",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "generated_at": "2026-05-29T16:58:57.1779158Z",
+  "input_sources": [
+    "self_build_batch/ledger/ITEM_LEVEL_EXECUTION_LEDGER_V1.json",
+    "self_build_batch/ledger/BATCH_PLAN_EXAMPLE_V1_LEDGER_DRY_RUN.json",
+    "self_build_batch/admission/BATCH_PLAN_EXAMPLE_V1_ADMISSION.json",
+    "contracts/operations/self_build_delivery_conveyor_v1.json"
+  ],
+  "output_schema": "contracts/self_development/continue_on_failure_runtime_v1.schema.json",
+  "failure_classes": [
+    "SAFE_ITEM_FAILURE",
+    "ITEM_VALIDATION_FAILURE",
+    "ITEM_POLICY_BLOCK",
+    "BLOCKED_DEPENDENCY",
+    "MISSING_MATERIAL",
+    "SYSTEMIC_FAILURE",
+    "POLICY_VIOLATION",
+    "REPO_CORRUPTION"
+  ],
+  "continue_rules": {
+    "continue_after_safe_item_failure": true,
+    "continue_after_quarantined_item": true,
+    "continue_after_skipped_by_policy_when_item_scope_isolated": true,
+    "record_failure_before_continuing": true,
+    "record_quarantine_before_continuing": true,
+    "never_hide_failed_item": true
+  },
+  "stop_rules": {
+    "stop_on_systemic_failure": true,
+    "stop_on_policy_violation": true,
+    "stop_on_repo_corruption": true,
+    "stop_on_missing_ledger": true,
+    "stop_on_missing_admission": true,
+    "stop_on_unbounded_loop_risk": true
+  },
+  "ledger_update_contract": {
+    "item_attempt_must_be_recorded": true,
+    "pass_requires_proof": true,
+    "failed_requires_reason": true,
+    "quarantined_requires_reason": true,
+    "blocked_requires_reason": true,
+    "assistance_required_must_be_explicit": true
+  },
+  "simulation_contract": {
+    "simulation_id": "Stable simulation artifact identifier.",
+    "status": "SIMULATION_ONLY",
+    "source_dry_run_ledger": "Source dry-run ledger path.",
+    "execution_performed": false,
+    "real_items_executed": false,
+    "real_items_marked_pass": false,
+    "scenario_results": "Simulation-only per-item outcomes; must not mutate real ledger entries.",
+    "next_allowed_step": "PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1"
+  },
+  "runtime_policy": {
+    "runtime_contract_created_only": true,
+    "real_batch_execution_performed": false,
+    "simulation_only": true,
+    "quarantine_registry_not_created": true,
+    "no_external_agent_production": true,
+    "no_external_install": true,
+    "no_external_fetch": true
+  },
+  "execution_allowed": false,
+  "next_allowed_step": "PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1"
+}

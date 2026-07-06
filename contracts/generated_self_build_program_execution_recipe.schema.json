@@ -1,0 +1,94 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "generated_self_build_program_execution_recipe.schema.json",
+  "title": "Generated Self-Build Program Execution Recipe",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "recipe_id",
+    "program_manifest_path",
+    "target_profile_id",
+    "target_agent_kind",
+    "pack_id",
+    "task_id",
+    "capability_id",
+    "expected_gate",
+    "semantic_role",
+    "recipe_kind",
+    "input_artifacts",
+    "invocation_contract",
+    "expected_assertions",
+    "proof_contract",
+    "next_transition"
+  ],
+  "properties": {
+    "recipe_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "program_manifest_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target_profile_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target_agent_kind": {
+      "type": "string",
+      "minLength": 1
+    },
+    "pack_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "capability_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "expected_gate": {
+      "type": "string",
+      "minLength": 1
+    },
+    "semantic_role": {
+      "type": "string",
+      "enum": [
+        "PROFILE_MATERIALIZATION",
+        "SPECIALIZED_CLOSURE_PROOF",
+        "SEED_CONSUMPTION_PROOF"
+      ]
+    },
+    "recipe_kind": {
+      "type": "string",
+      "enum": [
+        "PROFILE_MATERIALIZATION_RECIPE_V1",
+        "SPECIALIZED_CLOSURE_PROOF_RECIPE_V1",
+        "SEED_CONSUMPTION_PROOF_RECIPE_V1"
+      ]
+    },
+    "input_artifacts": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "invocation_contract": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "expected_assertions": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "proof_contract": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "next_transition": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  }
+}

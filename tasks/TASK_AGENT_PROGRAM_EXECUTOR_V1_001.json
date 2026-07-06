@@ -1,0 +1,41 @@
+{
+  "task_id": "TASK_AGENT_PROGRAM_EXECUTOR_V1_001",
+  "capability_id": "agent_program_executor_v1",
+  "objective": "Prepare a Builder self-build pack that reads the first agent production PROGRAM.json and creates an execution plan for producing an agent from that program.",
+  "execution_kind": "SELF_BUILD_AGENT_PROGRAM_EXECUTOR_V1",
+  "phase": "PHASE_71",
+  "expected_gate": "AGENT_PROGRAM_EXECUTOR_V1",
+  "source_program_path": "agent_programs/remediation_intake_operator_agent_v1/PROGRAM.json",
+  "execution_plan_json_runtime_path": "agent_program_runs/remediation_intake_operator_agent_v1/EXECUTION_PLAN.json",
+  "execution_plan_markdown_runtime_path": "agent_program_runs/remediation_intake_operator_agent_v1/EXECUTION_PLAN.md",
+  "runtime_report_path": "reports/external_agent_production/AGENT_PROGRAM_EXECUTOR_V1_REPORT.json",
+  "runtime_proof_path": "proofs/AGENT_PROGRAM_EXECUTOR_V1.json",
+  "scope": [
+    "read agent_programs/remediation_intake_operator_agent_v1/PROGRAM.json only at Builder runtime",
+    "validate that the program contains the required production fields",
+    "create agent_program_runs/remediation_intake_operator_agent_v1/EXECUTION_PLAN.json only at Builder runtime",
+    "create agent_program_runs/remediation_intake_operator_agent_v1/EXECUTION_PLAN.md only at Builder runtime",
+    "copy validate_agent_program_executor_v1.ps1 into validators only at Builder runtime",
+    "write AGENT_PROGRAM_EXECUTOR_V1 proof and report only after validation evidence",
+    "complete PHASE71 task and capability only after validation evidence"
+  ],
+  "validation": [
+    "PowerShell parser check passes for PHASE71 APPLY.ps1",
+    "PowerShell parser check passes for PHASE71 validator payload",
+    "changed JSON files parse successfully",
+    "TASK_QUEUE active_task_id points to TASK_AGENT_PROGRAM_EXECUTOR_V1_001",
+    "agent_program_runs/proof/report/root-validator runtime outputs are not precommitted",
+    "generated_agents, agent_catalog, and agent_programs files are not changed during preparation"
+  ],
+  "forbidden_scope": [
+    "do not create a second agent",
+    "do not change generated_agents files",
+    "do not change agent_catalog files",
+    "do not change agent_programs files",
+    "do not change GitHub workflow files",
+    "do not change orchestrator/run.ps1",
+    "do not modify old proof/report files",
+    "do not commit or push during preparation",
+    "do not run PHASE71 runtime during preparation"
+  ]
+}

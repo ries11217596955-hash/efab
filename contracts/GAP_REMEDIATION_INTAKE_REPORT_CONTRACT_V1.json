@@ -1,0 +1,20 @@
+{
+  "contract_id": "GAP_REMEDIATION_INTAKE_REPORT_CONTRACT_V1",
+  "contract_version": "1.0",
+  "required_fields": [
+    "report_id",
+    "run_id",
+    "status",
+    "source_gap_report_path",
+    "candidate_path",
+    "candidate_profile_id",
+    "candidate_agent_kind",
+    "candidate_package_profile",
+    "required_build_move",
+    "operator_summary"
+  ],
+  "required_values": {
+    "status": "PASS",
+    "required_build_move": "CREATE_SPECIALIZATION_PROFILE_AND_REGISTRY_MAPPING"
+  }
+}

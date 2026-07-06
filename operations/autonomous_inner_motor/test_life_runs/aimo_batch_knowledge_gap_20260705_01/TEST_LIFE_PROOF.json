@@ -1,0 +1,526 @@
+{
+    "schema":  "AUTONOMOUS_INNER_MOTOR_RUN_PROOF",
+    "organ_id":  "AUTONOMOUS_INNER_MOTOR_ORGAN",
+    "run_id":  "aimo_batch_knowledge_gap_20260705_01",
+    "mode":  "SandboxTestLife",
+    "maturity_level":  "SANDBOX_TEST_LIFE_HARD_WALLS",
+    "created_at":  "2026-07-05T17:12:50.9599697+04:00",
+    "repo_state":  {
+                       "root":  "C:/Users/Azerbaijan/Downloads/e-factory-agent-builder",
+                       "branch":  "thin-control",
+                       "head":  "f487d5357e4f705e77fc5424af6c6837c26da375",
+                       "status_before":  "M operations/autonomous_inner_motor/motor_policy.json\r\n M operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+                       "status_after":  "M operations/autonomous_inner_motor/motor_policy.json\r\n M operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1\r\n?? operations/autonomous_inner_motor/test_life_runs/aimo_batch_knowledge_gap_20260705_01/STOP_REQUESTED.txt\r\n?? operations/autonomous_inner_motor/test_life_runs/aimo_batch_knowledge_gap_20260705_01/TEST_LIFE_PROOF.json\r\n?? operations/knowledge_acquisition_port/runs/aimo_batch_knowledge_gap_20260705_01_cycle1_batch_knowledge_gap/BATCH_KNOWLEDGE_ACQUISITION_PROOF.json\r\n?? operations/knowledge_acquisition_port/runs/aimo_batch_knowledge_gap_20260705_01_cycle1_batch_knowledge_gap/BATCH_SOURCE_DIGEST_AND_PROMOTION_DECISION.json"
+                   },
+    "memory_state":  {
+                         "before":  {
+                                        "root":  ".runtime/active_compact_semantic_memory_v1",
+                                        "run_id":  "file_atom_absorption_20260703_153235",
+                                        "runtime_ready":  false,
+                                        "cell_count":  600,
+                                        "cells_sha256":  "1545A79B11DF1BDA4571093D28E3F3558019C13CEF402D9F465A38A5F83C70A7",
+                                        "manifest_status":  "PASS_COMPACT_SEMANTIC_DIGESTION_ORGAN_V1"
+                                    },
+                         "after":  {
+                                       "root":  ".runtime/active_compact_semantic_memory_v1",
+                                       "run_id":  "file_atom_absorption_20260703_153235",
+                                       "runtime_ready":  false,
+                                       "cell_count":  600,
+                                       "cells_sha256":  "1545A79B11DF1BDA4571093D28E3F3558019C13CEF402D9F465A38A5F83C70A7",
+                                       "manifest_status":  "PASS_COMPACT_SEMANTIC_DIGESTION_ORGAN_V1"
+                                   },
+                         "unchanged":  true
+                     },
+    "school_state":  {
+                         "active_detected":  false,
+                         "matching_processes":  [
+                                                    null
+                                                ]
+                     },
+    "policy_snapshot":  {
+                            "schema":  "AUTONOMOUS_INNER_MOTOR_POLICY",
+                            "organ_id":  "AUTONOMOUS_INNER_MOTOR_ORGAN",
+                            "status":  "CONSTRUCTION_STARTED_POLICY_LOCKED",
+                            "active_maturity_level":  "SANDBOX_TEST_LIFE_HARD_WALLS",
+                            "runner_contract":  "single_runner_only_no_runner_per_level",
+                            "allowed_modes":  [
+                                                  "Diagnostic",
+                                                  "ReadOnly",
+                                                  "SandboxExploration",
+                                                  "SandboxTestLife"
+                                              ],
+                            "disabled_modes":  [
+                                                   "SandboxAction",
+                                                   "GovernedRepoAction",
+                                                   "Continuous",
+                                                   "LiveAuthority"
+                                               ],
+                            "max_cycles":  1,
+                            "max_duration_seconds":  120,
+                            "mutation_allowed":  false,
+                            "active_memory_mutation_allowed":  false,
+                            "git_mutation_allowed":  false,
+                            "codex_launch_allowed":  false,
+                            "web_research_allowed":  false,
+                            "background_process_allowed":  false,
+                            "school_priority":  {
+                                                    "enabled":  true,
+                                                    "active_school_detection_required":  true,
+                                                    "allowed_when_school_active":  [
+                                                                                       "WAIT_FOR_SCHOOL",
+                                                                                       "OBSERVE_SCHOOL_READONLY",
+                                                                                       "SUMMARIZE_AFTER_SCHOOL",
+                                                                                       "BLOCKED_BY_ACTIVE_SCHOOL"
+                                                                                   ],
+                                                    "forbidden_when_school_active":  [
+                                                                                         "START_SECOND_SCHOOL",
+                                                                                         "MUTATE_ACTIVE_MEMORY",
+                                                                                         "MUTATE_SCHOOL_STATE",
+                                                                                         "START_LIVE_DAEMON"
+                                                                                     ]
+                                                },
+                            "source_ladder":  [
+                                                  "active_law_settings",
+                                                  "current_repo_runtime_proof",
+                                                  "active_compact_memory",
+                                                  "internal_library",
+                                                  "archived_reference",
+                                                  "web_external_sources"
+                                              ],
+                            "ports":  {
+                                          "school_port":  {
+                                                              "enabled":  true,
+                                                              "authority":  "contract_only",
+                                                              "priority":  "higher_than_motor_self_cycle"
+                                                          },
+                                          "active_memory_port":  {
+                                                                     "enabled":  true,
+                                                                     "default":  "read_only",
+                                                                     "mutation":  "disabled_until_governed_promotion"
+                                                                 },
+                                          "internal_library_port":  {
+                                                                        "enabled":  false,
+                                                                        "planned":  true,
+                                                                        "priority":  "above_web"
+                                                                    },
+                                          "web_research_port":  {
+                                                                    "enabled":  false,
+                                                                    "planned":  true,
+                                                                    "boundary":  "external_facts_only_not_runtime_truth"
+                                                                },
+                                          "tool_action_port":  {
+                                                                   "enabled":  false,
+                                                                   "planned":  true,
+                                                                   "boundary":  "policy_and_validator_required"
+                                                               },
+                                          "validator_port":  {
+                                                                 "enabled":  true,
+                                                                 "required":  true
+                                                             },
+                                          "rollback_port":  {
+                                                                "enabled":  true,
+                                                                "required_before_risky_mutation":  true
+                                                            }
+                                      },
+                            "allowed_read_paths":  [
+                                                       "AGENTS.md",
+                                                       "operations/autonomy_diagnostics",
+                                                       "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
+                                                       ".runtime/active_compact_semantic_memory_v1/manifest.json",
+                                                       ".runtime/active_compact_semantic_memory_v1/cells.jsonl"
+                                                   ],
+                            "allowed_write_paths":  [
+                                                        "operations/autonomous_inner_motor",
+                                                        "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
+                                                    ],
+                            "forbidden_paths":  [
+                                                    ".runtime/active_compact_semantic_memory_v1",
+                                                    "runtime_sessions/live_growth",
+                                                    "runtime_sessions/live_growth_console",
+                                                    "runtime_sessions/live_growth_self_growth",
+                                                    ".runtime/school_runs",
+                                                    "route_locks",
+                                                    "orchestrator/run.ps1"
+                                                ],
+                            "required_proof_outputs":  [
+                                                           "repo_state",
+                                                           "memory_state",
+                                                           "school_state",
+                                                           "self_question_trace",
+                                                           "decision_trace",
+                                                           "heartbeat",
+                                                           "stop_reason",
+                                                           "policy_snapshot",
+                                                           "validator_result"
+                                                       ],
+                            "stop_conditions":  [
+                                                    "OWNER_STOP",
+                                                    "ACTIVE_SCHOOL_OWNS_STATE",
+                                                    "POLICY_DENIED",
+                                                    "VALIDATOR_REQUIRED",
+                                                    "PROTECTIVE_CHECKPOINT",
+                                                    "MAX_CYCLES_REACHED",
+                                                    "MAX_DURATION_REACHED"
+                                                ],
+                            "promotion_rule":  "Maturity can only be opened by policy update plus validator proof; never by creating a new runner.",
+                            "sandbox_exploration":  {
+                                                        "enabled":  true,
+                                                        "rule":  "maximum_behavior_freedom_inside_hard_walls_one_compact_proof_file",
+                                                        "allowed_write_root":  "operations/autonomous_inner_motor/sandbox_runs",
+                                                        "proof_file_name":  "SANDBOX_EXPLORATION_PROOF.json",
+                                                        "max_cycles":  16,
+                                                        "max_events":  120,
+                                                        "max_proof_bytes":  250000,
+                                                        "max_run_dirs_kept":  10,
+                                                        "no_extra_files":  true,
+                                                        "no_raw_dump":  true,
+                                                        "compact_event_rule":  "write compact event, decision, risk, self_oppression signal, and conclusion; do not dump raw thought noise"
+                                                    },
+                            "sandbox_test_life":  {
+                                                      "enabled":  true,
+                                                      "rule":  "no_cycle_limit_no_time_limit_inside_hard_walls_one_rolling_compact_proof_file",
+                                                      "allowed_write_root":  "operations/autonomous_inner_motor/test_life_runs",
+                                                      "proof_file_name":  "TEST_LIFE_PROOF.json",
+                                                      "stop_file_name":  "STOP_REQUESTED.txt",
+                                                      "no_cycle_limit":  true,
+                                                      "no_time_limit":  true,
+                                                      "step_sleep_seconds":  1,
+                                                      "rolling_recent_events_kept":  80,
+                                                      "no_extra_files":  true,
+                                                      "no_raw_dump":  true,
+                                                      "active_memory_mutation_allowed":  false,
+                                                      "school_start_allowed":  false,
+                                                      "codex_allowed":  false,
+                                                      "web_allowed":  false,
+                                                      "child_background_process_allowed":  false,
+                                                      "development_reflex_enabled":  true,
+                                                      "active_memory_consult_required":  true,
+                                                      "reflex_library_entrypoint":  "operations/reflex_library/invoke_reflex.ps1",
+                                                      "development_rule":  "each cycle chooses a read-only development task, consults active memory, uses reflexes, records relevance/gap; when memory lacks executable knowledge, it decomposes task X into a bounded parts bundle and may call the governed batch knowledge acquisition port for CODEX_DRAFT before returning to X",
+                                                      "knowledge_acquisition_port_allowed":  true,
+                                                      "knowledge_acquisition_port_entrypoint":  "operations/knowledge_acquisition_port/ask_codex_knowledge_source.ps1",
+                                                      "knowledge_acquisition_source":  "CODEX_READONLY_SOURCE",
+                                                      "max_knowledge_acquisition_calls_per_run":  1,
+                                                      "knowledge_acquisition_timeout_seconds":  120,
+                                                      "knowledge_gap_relevance_triggers":  [
+                                                                                               "LOW_RELEVANCE",
+                                                                                               "NO_USEFUL_MEMORY"
+                                                                                           ],
+                                                      "governed_extra_proof_roots":  [
+                                                                                         "operations/knowledge_acquisition_port/runs"
+                                                                                     ],
+                                                      "codex_direct_allowed":  false,
+                                                      "batch_knowledge_acquisition_port_allowed":  true,
+                                                      "batch_knowledge_acquisition_port_entrypoint":  "operations/knowledge_acquisition_port/ask_codex_batch_knowledge_source.ps1",
+                                                      "batch_knowledge_acquisition_source":  "CODEX_BATCH_READONLY_SOURCE",
+                                                      "max_batch_knowledge_acquisition_calls_per_run":  1,
+                                                      "max_decomposition_parts_per_batch":  10,
+                                                      "batch_knowledge_preferred_over_single":  true
+                                                  }
+                        },
+    "self_question_trace":  [
+                                {
+                                    "question":  "Who am I in current repo/runtime?",
+                                    "answer":  "AUTONOMOUS_INNER_MOTOR_ORGAN, one policy-gated runner, not whole brain."
+                                },
+                                {
+                                    "question":  "What is my safe cage?",
+                                    "answer":  "Mode policy, forbidden active surfaces, no external effects, compact proof budget."
+                                },
+                                {
+                                    "question":  "What active memory is available?",
+                                    "answer":  "cells=600; run_id=file_atom_absorption_20260703_153235; runtime_ready=False"
+                                },
+                                {
+                                    "question":  "Is school or another long process active?",
+                                    "answer":  "school_active=False; process_count=1"
+                                },
+                                {
+                                    "question":  "What proof do I owe?",
+                                    "answer":  "memory before/after, school state, policy snapshot, decision/risk/self-oppression compact events, stop reason, mutation audit."
+                                }
+                            ],
+    "decision_trace":  {
+                           "allowed_mode":  false,
+                           "policy_allows_mode":  false,
+                           "selected_next_path":  "DEVELOP_USING_REFLEX_AND_MEMORY_UNTIL_STOP_FILE",
+                           "rationale":  "SandboxTestLife now grows by selecting read-only development tasks, consulting active memory, and using reflexes before repeating."
+                       },
+    "selected_next_path":  "DEVELOP_USING_REFLEX_AND_MEMORY_UNTIL_STOP_FILE",
+    "stop_reason":  "STOP_FILE_REQUESTED",
+    "heartbeat":  {
+                      "status":  "STOPPED_PROTECTIVE_CHECKPOINT",
+                      "written_at":  "2026-07-05T17:13:37.4852352+04:00",
+                      "run_root":  "operations\\autonomous_inner_motor\\test_life_runs\\aimo_batch_knowledge_gap_20260705_01"
+                  },
+    "mutation_audit":  {
+                           "active_memory_mutated":  false,
+                           "git_commit_created":  false,
+                           "codex_launched":  false,
+                           "web_research_performed":  false,
+                           "school_started":  false,
+                           "background_process_started":  false,
+                           "writes_limited_to_run_root":  true
+                       },
+    "cycles":  [
+
+               ],
+    "risk_summary":  null,
+    "compaction_budget":  null,
+    "final_self_diagnosis":  {
+                                 "current_summary":  "Sandbox development life consults active memory, detects KNOWLEDGE_GAP_FOR_X, decomposes X into a bounded parts bundle, and can call governed batch source for CODEX_DRAFT before returning to task.",
+                                 "current_strength":  "can consult compact memory, classify relevance, decompose task into \u003c=10 parts, call governed batch knowledge acquisition once per run, and record parent return plan",
+                                 "current_risk":  "Batch Codex knowledge is CODEX_DRAFT only and must not become authority; source call is bounded, digest-only, and must remain rare/policy gated",
+                                 "next_policy_question":  "Should batch decomposition become a promotion request pattern after repeated/predicted broad use, and which validator should accept CODEX_DRAFT before action?"
+                             },
+    "stop_file_path":  null,
+    "controller":  {
+                       "pid":  11876,
+                       "run_root":  "operations\\autonomous_inner_motor\\test_life_runs\\aimo_batch_knowledge_gap_20260705_01",
+                       "stop_file_path":  "operations\\autonomous_inner_motor\\test_life_runs\\aimo_batch_knowledge_gap_20260705_01\\STOP_REQUESTED.txt",
+                       "stop_rule":  "Owner or harness may create STOP_REQUESTED.txt; normal development uses task/reflex/memory loop instead of treadmill."
+                   },
+    "test_life":  {
+                      "started_at":  "2026-07-05T17:12:51.0753368+04:00",
+                      "last_heartbeat_at":  "2026-07-05T17:13:36.0603884+04:00",
+                      "total_cycles":  2,
+                      "no_cycle_limit":  true,
+                      "no_time_limit":  true,
+                      "step_sleep_seconds":  1,
+                      "rolling_recent_events_kept":  80,
+                      "recent_events":  [
+                                            {
+                                                "cycle":  1,
+                                                "at":  "2026-07-05T17:13:34.6944153+04:00",
+                                                "selected":  "development_task_with_memory_and_reflex",
+                                                "current_task":  "choose_next_safe_growth_step",
+                                                "reflexes_used":  [
+                                                                      "COMPARE_TASK_TO_MEMORY",
+                                                                      "INSPECT_ACTIVE_MEMORY",
+                                                                      "DECOMPOSE_TASK_BUNDLE",
+                                                                      "BATCH_KNOWLEDGE_ACQUISITION_PORT"
+                                                                  ],
+                                                "memory_relevance":  "LOW_RELEVANCE",
+                                                "candidates_checked":  5,
+                                                "gap_after_memory":  "memory candidate exists but relevance is weak",
+                                                "result":  "DEVELOPMENT_EVENT_RECORDED",
+                                                "knowledge_gap_signal":  "KNOWLEDGE_GAP_FOR_X",
+                                                "knowledge_acquisition_status":  "PASS_CODEX_BATCH_DRAFT_RETURNED",
+                                                "batch_part_count":  10,
+                                                "batch_next_small_action":  "Compare the active route constraints against candidate diagnostic actions and choose the smallest read-only or quick-smoke step that advances accepted atom retention-to-reuse wiring without touching protected runtime state.",
+                                                "return_to_task_hint":  "Compare the active route constraints against candidate diagnostic actions and choose the smallest read-only or quick-smoke step that advances accepted atom retention-to-reuse wiring without touching protected runtime state.",
+                                                "compact_observation":  "task=choose_next_safe_growth_step; memory_relevance=LOW_RELEVANCE; next_need=task-selection/reflex-use knowledge connected to active memory"
+                                            },
+                                            {
+                                                "cycle":  2,
+                                                "at":  "2026-07-05T17:13:36.0603884+04:00",
+                                                "selected":  "development_task_with_memory_and_reflex",
+                                                "current_task":  "understand_own_policy_limits",
+                                                "reflexes_used":  [
+                                                                      "COMPARE_TASK_TO_MEMORY",
+                                                                      "READ_FILE_SUMMARY",
+                                                                      "DECOMPOSE_TASK_BUNDLE"
+                                                                  ],
+                                                "memory_relevance":  "LOW_RELEVANCE",
+                                                "candidates_checked":  5,
+                                                "gap_after_memory":  "memory candidate exists but relevance is weak",
+                                                "result":  "DEVELOPMENT_EVENT_RECORDED",
+                                                "knowledge_gap_signal":  "KNOWLEDGE_GAP_FOR_X",
+                                                "knowledge_acquisition_status":  null,
+                                                "batch_part_count":  10,
+                                                "batch_next_small_action":  null,
+                                                "return_to_task_hint":  null,
+                                                "compact_observation":  "task=understand_own_policy_limits; memory_relevance=LOW_RELEVANCE; next_need=task-selection/reflex-use knowledge connected to active memory"
+                                            }
+                                        ],
+                      "counters":  {
+                                       "development_task_selections":  2,
+                                       "reflex_invocations":  4,
+                                       "memory_queries":  2,
+                                       "memory_partial_matches":  0,
+                                       "memory_low_relevance":  2,
+                                       "memory_no_matches":  0,
+                                       "repo_status_reads":  0,
+                                       "policy_reads":  1,
+                                       "compact_rewrites":  0,
+                                       "knowledge_gap_signals":  2,
+                                       "knowledge_acquisition_requests":  1,
+                                       "knowledge_acquisition_successes":  1,
+                                       "knowledge_acquisition_failures":  0,
+                                       "return_to_task_hints":  1,
+                                       "task_decompositions":  2,
+                                       "batch_knowledge_acquisition_requests":  1,
+                                       "batch_knowledge_acquisition_successes":  1,
+                                       "batch_knowledge_acquisition_failures":  0,
+                                       "batch_parts_total":  20,
+                                       "parent_return_plans":  1
+                                   }
+                  },
+    "validator_result":  {
+                             "status":  "NOT_RUN_INSIDE_RUNNER",
+                             "note":  "External validator validates proof after runner exits."
+                         },
+    "boundary":  "Sandbox development life. Hard walls remain; each cycle may decompose X into \u003c=10 parts and call governed batch source only after local knowledge gap.",
+    "development_trace":  {
+                              "current_task":  "understand_own_policy_limits",
+                              "last_memory_relevance":  "LOW_RELEVANCE",
+                              "last_gap_after_memory":  "memory candidate exists but relevance is weak",
+                              "next_learning_need":  "task-selection/reflex-use knowledge connected to active memory",
+                              "memory_use_trace":  [
+                                                       {
+                                                           "cycle":  2,
+                                                           "current_task":  "understand_own_policy_limits",
+                                                           "memory_query":  "policy limits allowed modes sandbox mutation proof",
+                                                           "relevance":  "LOW_RELEVANCE",
+                                                           "candidates_checked":  5,
+                                                           "best_match":  {
+                                                                              "cell_index":  400,
+                                                                              "score":  1,
+                                                                              "summary":  "\"Factory curriculum theme route|proof_boundary|experience_curriculum is a Builder learning ladder theme. Current observed step is level 10 from source_mode experience_curriculum.\""
+                                                                          },
+                                                           "gap_after_memory":  "memory candidate exists but relevance is weak",
+                                                           "next_learning_need":  "task-selection/reflex-use knowledge connected to active memory"
+                                                       }
+                                                   ],
+                              "reflex_use_trace":  [
+                                                       {
+                                                           "cycle":  2,
+                                                           "used_reflexes":  [
+                                                                                 "COMPARE_TASK_TO_MEMORY",
+                                                                                 "READ_FILE_SUMMARY",
+                                                                                 "DECOMPOSE_TASK_BUNDLE"
+                                                                             ],
+                                                           "secondary_status":  "PASS"
+                                                       }
+                                                   ],
+                              "knowledge_gap_trace":  [
+                                                          {
+                                                              "cycle":  2,
+                                                              "current_task":  "understand_own_policy_limits",
+                                                              "signal":  "KNOWLEDGE_GAP_FOR_X",
+                                                              "trigger_relevance":  "LOW_RELEVANCE",
+                                                              "knowledge_need":  "Executable knowledge missing or weak for task \u0027understand_own_policy_limits\u0027. Need safe learning steps, validation checks, and return-to-task guidance before retrying X.",
+                                                              "acquisition_attempted":  false,
+                                                              "acquisition_status":  null,
+                                                              "acquisition_proof_path":  null,
+                                                              "return_to_task_hint":  null
+                                                          }
+                                                      ],
+                              "knowledge_acquisition_trace":  [
+                                                                  {
+                                                                      "cycle":  1,
+                                                                      "kind":  "BATCH",
+                                                                      "source":  "CODEX_BATCH_READONLY_SOURCE",
+                                                                      "status":  "PASS_CODEX_BATCH_DRAFT_RETURNED",
+                                                                      "answer_status":  "CODEX_DRAFT",
+                                                                      "shape_valid":  true,
+                                                                      "proof_path":  "operations\\knowledge_acquisition_port\\runs\\aimo_batch_knowledge_gap_20260705_01_cycle1_batch_knowledge_gap\\BATCH_KNOWLEDGE_ACQUISITION_PROOF.json",
+                                                                      "digest_path":  "operations\\knowledge_acquisition_port\\runs\\aimo_batch_knowledge_gap_20260705_01_cycle1_batch_knowledge_gap\\BATCH_SOURCE_DIGEST_AND_PROMOTION_DECISION.json",
+                                                                      "part_count":  10,
+                                                                      "parent_return_plan":  {
+                                                                                                 "how_to_rebuild_x":  "Define safe-growth intent, identify current knowledge and gaps, use read-only learning to rank one bounded candidate, attach a validation gate, and return it as CODEX_DRAFT for parent verification.",
+                                                                                                 "next_small_action":  "Compare the active route constraints against candidate diagnostic actions and choose the smallest read-only or quick-smoke step that advances accepted atom retention-to-reuse wiring without touching protected runtime state.",
+                                                                                                 "proof_needed":  [
+                                                                                                                      "fresh local policy/route consistency check",
+                                                                                                                      "candidate-specific validator or owner-run proof path",
+                                                                                                                      "confirmation that no protected files or runtime state are modified"
+                                                                                                                  ]
+                                                                                             },
+                                                                      "next_small_action":  "Compare the active route constraints against candidate diagnostic actions and choose the smallest read-only or quick-smoke step that advances accepted atom retention-to-reuse wiring without touching protected runtime state.",
+                                                                      "safe_learning_steps":  [
+                                                                                                  null
+                                                                                              ],
+                                                                      "validation_needed":  [
+                                                                                                null
+                                                                                            ],
+                                                                      "return_to_task_hint":  "Compare the active route constraints against candidate diagnostic actions and choose the smallest read-only or quick-smoke step that advances accepted atom retention-to-reuse wiring without touching protected runtime state."
+                                                                  }
+                                                              ],
+                              "task_decomposition_trace":  [
+                                                               {
+                                                                   "cycle":  2,
+                                                                   "parent_task":  "understand_own_policy_limits",
+                                                                   "part_count":  10,
+                                                                   "parts":  [
+                                                                                 {
+                                                                                     "id":  "X1",
+                                                                                     "name":  "task intent",
+                                                                                     "local_guess":  "what parent task wants: understand_own_policy_limits"
+                                                                                 },
+                                                                                 {
+                                                                                     "id":  "X2",
+                                                                                     "name":  "required output",
+                                                                                     "local_guess":  "artifact/result that must be returned to parent"
+                                                                                 },
+                                                                                 {
+                                                                                     "id":  "X3",
+                                                                                     "name":  "available knowledge",
+                                                                                     "local_guess":  "what active memory/reflexes already cover"
+                                                                                 },
+                                                                                 {
+                                                                                     "id":  "X4",
+                                                                                     "name":  "missing knowledge",
+                                                                                     "local_guess":  "what blocks executable action now"
+                                                                                 },
+                                                                                 {
+                                                                                     "id":  "X5",
+                                                                                     "name":  "safe learning path",
+                                                                                     "local_guess":  "how to learn without mutation or authority leap"
+                                                                                 },
+                                                                                 {
+                                                                                     "id":  "X6",
+                                                                                     "name":  "validation gate",
+                                                                                     "local_guess":  "proof needed before claiming success"
+                                                                                 },
+                                                                                 {
+                                                                                     "id":  "X7",
+                                                                                     "name":  "source boundary",
+                                                                                     "local_guess":  "Codex/web/source is draft, not authority"
+                                                                                 },
+                                                                                 {
+                                                                                     "id":  "X8",
+                                                                                     "name":  "return to parent",
+                                                                                     "local_guess":  "how resolved parts rebuild original task"
+                                                                                 },
+                                                                                 {
+                                                                                     "id":  "X9",
+                                                                                     "name":  "retention decision",
+                                                                                     "local_guess":  "digest source and avoid raw bloat"
+                                                                                 },
+                                                                                 {
+                                                                                     "id":  "X10",
+                                                                                     "name":  "promotion decision",
+                                                                                     "local_guess":  "case pattern vs atom/reflex/organ candidate"
+                                                                                 }
+                                                                             ]
+                                                               }
+                                                           ],
+                              "batch_knowledge_acquisition_trace":  [
+                                                                        {
+                                                                            "cycle":  1,
+                                                                            "source":  "CODEX_BATCH_READONLY_SOURCE",
+                                                                            "status":  "PASS_CODEX_BATCH_DRAFT_RETURNED",
+                                                                            "answer_status":  "CODEX_DRAFT",
+                                                                            "shape_valid":  true,
+                                                                            "proof_path":  "operations\\knowledge_acquisition_port\\runs\\aimo_batch_knowledge_gap_20260705_01_cycle1_batch_knowledge_gap\\BATCH_KNOWLEDGE_ACQUISITION_PROOF.json",
+                                                                            "digest_path":  "operations\\knowledge_acquisition_port\\runs\\aimo_batch_knowledge_gap_20260705_01_cycle1_batch_knowledge_gap\\BATCH_SOURCE_DIGEST_AND_PROMOTION_DECISION.json",
+                                                                            "part_count":  10,
+                                                                            "parent_return_plan":  {
+                                                                                                       "how_to_rebuild_x":  "Define safe-growth intent, identify current knowledge and gaps, use read-only learning to rank one bounded candidate, attach a validation gate, and return it as CODEX_DRAFT for parent verification.",
+                                                                                                       "next_small_action":  "Compare the active route constraints against candidate diagnostic actions and choose the smallest read-only or quick-smoke step that advances accepted atom retention-to-reuse wiring without touching protected runtime state.",
+                                                                                                       "proof_needed":  [
+                                                                                                                            "fresh local policy/route consistency check",
+                                                                                                                            "candidate-specific validator or owner-run proof path",
+                                                                                                                            "confirmation that no protected files or runtime state are modified"
+                                                                                                                        ]
+                                                                                                   },
+                                                                            "next_small_action":  "Compare the active route constraints against candidate diagnostic actions and choose the smallest read-only or quick-smoke step that advances accepted atom retention-to-reuse wiring without touching protected runtime state.",
+                                                                            "proof_needed":  [
+                                                                                                 "fresh local policy/route consistency check",
+                                                                                                 "candidate-specific validator or owner-run proof path",
+                                                                                                 "confirmation that no protected files or runtime state are modified"
+                                                                                             ]
+                                                                        }
+                                                                    ]
+                          }
+}

@@ -1,0 +1,76 @@
+{
+    "schema":  "KNOWLEDGE_ACQUISITION_PROOF_V1",
+    "source":  "CODEX_READONLY_SOURCE",
+    "status":  "PASS_CODEX_DRAFT_RETURNED",
+    "checked_at":  "2026-07-05T14:01:07.4739881+04:00",
+    "run_id":  "aimo_knowledge_gap_codex_port_20260705_01_cycle1_knowledge_gap",
+    "current_task":  "choose_next_safe_growth_step",
+    "knowledge_need":  "Executable knowledge missing or weak for task \u0027choose_next_safe_growth_step\u0027. Need safe learning steps, validation checks, and return-to-task guidance before retrying X.",
+    "already_checked":  "active_memory:LOW_RELEVANCE; reflexes=COMPARE_TASK_TO_MEMORY,INSPECT_ACTIVE_MEMORY,KNOWLEDGE_ACQUISITION_PORT; repo_policy_map read-only surfaces available; school not query source",
+    "template_path":  "operations/knowledge_acquisition_port/CODEX_KNOWLEDGE_REQUEST_TEMPLATE.md",
+    "answer_schema":  "CODEX_KNOWLEDGE_ANSWER_SCHEMA_V1",
+    "answer_schema_path":  "operations/knowledge_acquisition_port/codex_knowledge_answer_schema.json",
+    "codex_command":  "codex exec --skip-git-repo-check --sandbox read-only --ephemeral --output-last-message \u003crun_root\u003e/codex_last_message.json.txt -",
+    "codex_exit_code":  0,
+    "codex_answer_status":  "CODEX_DRAFT",
+    "codex_answer_json_valid":  true,
+    "codex_answer_required_shape_valid":  true,
+    "codex_answer_sha256":  "9BEB94B046D8A1F6ECBDFC2EF2D2836C27EF1421BA060CC14605848509E39D16",
+    "source_role":  "CODEX_READONLY_SOURCE",
+    "candidate_knowledge":  "For choose_next_safe_growth_step, the missing executable knowledge is a bounded decision rule for choosing a small next action from already authorized route context without treating memory, school outputs, or Codex as authority. The agent needs to know the current task constraints, which repo surfaces are read-only references, which areas are protected, how to classify a candidate step as safe or blocked, what validation evidence is required before execution, and how to return to the parent task with a narrow candidate instead of expanding scope.",
+    "missing_concepts":  [
+                             "current route constraint for the parent task",
+                             "safe candidate step definition",
+                             "protected surface and runtime boundary check",
+                             "difference between learning, planning, execution, and proof",
+                             "minimum validation evidence required before action",
+                             "fallback behavior when memory is low relevance"
+                         ],
+    "suggested_decomposition":  [
+                                    "identify the parent task objective in one sentence",
+                                    "list allowed read-only knowledge sources",
+                                    "derive 2 to 3 candidate next steps",
+                                    "reject candidates touching protected or live runtime areas",
+                                    "choose the smallest candidate with a clear validation path",
+                                    "return candidate plus required proof gate to the parent task"
+                                ],
+    "safe_learning_steps":  [
+                                "read the current task statement and route snapshot only",
+                                "read repo policy or command-file guidance relevant to safe execution boundaries",
+                                "inspect only named read-only planning surfaces already available to the agent",
+                                "compare each candidate step against protected-area and runtime rules",
+                                "record uncertainty explicitly instead of filling gaps from school or stale memory"
+                            ],
+    "validation_needed":  [
+                              "confirm the candidate does not require file mutation, runtime supervision, or protected-state changes",
+                              "confirm the candidate has a bounded validation check before execution",
+                              "confirm no route conflict exists between the candidate and current task X",
+                              "confirm evidence source is current enough for the decision being made",
+                              "return NOT_PROVEN_UNTIL_VALIDATED until the selected step passes its validation gate"
+                          ],
+    "return_to_task_hint":  "After learning, return to choose_next_safe_growth_step with one narrow candidate step, its scope boundary, why safer alternatives were rejected, and the exact validation gate required before acting.",
+    "limits":  "NOT_PROVEN_UNTIL_VALIDATED; this draft did not inspect the repo, run validators, prove any route state, or authorize execution. Do not assume runtime readiness, accepted memory correctness, school query authority, or that any candidate is safe until validated against current repo policy and task constraints.",
+    "mutation_audit":  {
+                           "active_memory_mutated":  false,
+                           "codex_file_write_requested":  false,
+                           "codex_shell_execution_requested":  false,
+                           "repo_status_before":  [
+                                                      " M operations/autonomous_inner_motor/motor_policy.json",
+                                                      " M operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+                                                      " M operations/knowledge_acquisition_port/ask_codex_knowledge_source.ps1",
+                                                      "?? operations/knowledge_acquisition_port/runs/aimo_knowledge_gap_codex_port_20260705_01_cycle1_knowledge_gap/aimo_call_input.json",
+                                                      "?? operations/knowledge_acquisition_port/runs/aimo_knowledge_gap_codex_port_20260705_01_cycle1_knowledge_gap/aimo_call_stderr.txt",
+                                                      "?? operations/knowledge_acquisition_port/runs/aimo_knowledge_gap_codex_port_20260705_01_cycle1_knowledge_gap/aimo_call_stdout.txt"
+                                                  ],
+                           "repo_status_after":  [
+                                                     " M operations/autonomous_inner_motor/motor_policy.json",
+                                                     " M operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+                                                     " M operations/knowledge_acquisition_port/ask_codex_knowledge_source.ps1",
+                                                     "?? operations/knowledge_acquisition_port/runs/aimo_knowledge_gap_codex_port_20260705_01_cycle1_knowledge_gap/aimo_call_input.json",
+                                                     "?? operations/knowledge_acquisition_port/runs/aimo_knowledge_gap_codex_port_20260705_01_cycle1_knowledge_gap/aimo_call_stderr.txt",
+                                                     "?? operations/knowledge_acquisition_port/runs/aimo_knowledge_gap_codex_port_20260705_01_cycle1_knowledge_gap/aimo_call_stdout.txt",
+                                                     "?? operations/knowledge_acquisition_port/runs/aimo_knowledge_gap_codex_port_20260705_01_cycle1_knowledge_gap/codex_last_message.json.txt"
+                                                 ]
+                       },
+    "boundary":  "CODEX_DRAFT only; agent must validate before acting; template is mandatory."
+}

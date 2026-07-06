@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_id": "smoke_install_trial_report_v1",
+  "title": "Smoke Install Trial Report",
+  "type": "object",
+  "required": [
+    "report_id",
+    "phase",
+    "capability_id",
+    "status",
+    "generated_at",
+    "operation_id",
+    "related_material_id",
+    "package_name",
+    "install_mode",
+    "sandbox_path",
+    "venv_path",
+    "sandbox_path_inside_repo",
+    "python_discovered",
+    "python_version",
+    "pip_version",
+    "package_version",
+    "venv_created",
+    "sandbox_install_attempted",
+    "sandbox_install_exit_code",
+    "package_import_pass",
+    "smoke_valid_case_pass",
+    "smoke_invalid_case_pass",
+    "global_install_performed",
+    "repo_dependency_folder_created",
+    "operation_marked_trusted",
+    "material_marked_trusted",
+    "execution_scope",
+    "fixture_paths",
+    "command_evidence_summary",
+    "protected_state_hashes_before",
+    "protected_state_hashes_after",
+    "protected_state_unchanged",
+    "next_allowed_step",
+    "cut_list"
+  ],
+  "properties": {
+    "report_id": {
+      "type": "string"
+    },
+    "phase": {
+      "const": "PHASE_85"
+    },
+    "capability_id": {
+      "const": "first_smoke_install_trial_v1"
+    },
+    "status": {
+      "enum": [
+        "PASS",
+        "FAIL"
+      ]
+    },
+    "operation_id": {
+      "const": "validate_json_schema_with_python_jsonschema"
+    },
+    "related_material_id": {
+      "const": "mat_python_jsonschema_001"
+    },
+    "install_mode": {
+      "const": "TEMP_VENV_ONLY"
+    },
+    "execution_scope": {
+      "const": "TEMP_VENV_ONLY"
+    },
+    "sandbox_path_inside_repo": {
+      "const": false
+    },
+    "global_install_performed": {
+      "const": false
+    },
+    "repo_dependency_folder_created": {
+      "const": false
+    },
+    "operation_marked_trusted": {
+      "const": false
+    },
+    "material_marked_trusted": {
+      "const": false
+    },
+    "fixture_paths": {
+      "type": "object"
+    },
+    "command_evidence_summary": {
+      "type": "object"
+    },
+    "protected_state_hashes_before": {
+      "type": "object"
+    },
+    "protected_state_hashes_after": {
+      "type": "object"
+    },
+    "protected_state_unchanged": {
+      "type": "boolean"
+    },
+    "next_allowed_step": {
+      "const": "PHASE86_OPERATION_RUNTIME_SKELETON_V1"
+    }
+  },
+  "additionalProperties": true
+}

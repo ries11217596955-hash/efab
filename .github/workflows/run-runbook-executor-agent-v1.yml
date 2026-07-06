@@ -1,0 +1,76 @@
+name: Run Runbook Executor Agent v1
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-runbook-executor-agent-v1:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate agent files
+        shell: pwsh
+        run: |
+          $required = @(
+            "generated_agents/runbook_executor_agent_v1/run.ps1",
+            "generated_agents/runbook_executor_agent_v1/INPUT_EXAMPLE.json",
+            "generated_agents/runbook_executor_agent_v1/AGENT_SPEC.json"
+          )
+
+          foreach ($path in $required) {
+            if (-not (Test-Path $path)) {
+              throw "Required file missing: $path"
+            }
+          }
+
+          Get-Content "generated_agents/runbook_executor_agent_v1/AGENT_SPEC.json" -Raw | ConvertFrom-Json | Out-Null
+          Get-Content "generated_agents/runbook_executor_agent_v1/INPUT_EXAMPLE.json" -Raw | ConvertFrom-Json | Out-Null
+
+      - name: Run Runbook Executor Agent v1
+        shell: pwsh
+        run: |
+          pwsh -NoProfile -ExecutionPolicy Bypass -File generated_agents/runbook_executor_agent_v1/run.ps1 `
+            -InputPath generated_agents/runbook_executor_agent_v1/INPUT_EXAMPLE.json `
+            -OutputPath generated_agents/runbook_executor_agent_v1/GITHUB_ACTION_OUTPUT.json
+
+      - name: Validate output
+        shell: pwsh
+        run: |
+          $outputPath = "generated_agents/runbook_executor_agent_v1/GITHUB_ACTION_OUTPUT.json"
+
+          if (-not (Test-Path $outputPath)) {
+            throw "Output file missing: $outputPath"
+          }
+
+          $output = Get-Content $outputPath -Raw | ConvertFrom-Json
+
+          foreach ($field in @(
+            "execution_checklist",
+            "risk_flags",
+            "required_evidence",
+            "next_operator_action",
+            "validation_status"
+          )) {
+            if (-not $output.PSObject.Properties.Name.Contains($field)) {
+              throw "Output field missing: $field"
+            }
+          }
+
+          if ([string]$output.validation_status -ne "PASS") {
+            throw "validation_status must be PASS"
+          }
+
+          Write-Output "RUNBOOK_EXECUTOR_GITHUB_ACTION_STATUS=PASS"
+
+      - name: Upload output artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: runbook-executor-agent-v1-output
+          path: |
+            generated_agents/runbook_executor_agent_v1/GITHUB_ACTION_OUTPUT.json
+            generated_agents/runbook_executor_agent_v1/AGENT_SPEC.json
+            generated_agents/runbook_executor_agent_v1/README.md
+            generated_agents/runbook_executor_agent_v1/RUNBOOK.md

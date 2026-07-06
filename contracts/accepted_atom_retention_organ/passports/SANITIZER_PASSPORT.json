@@ -1,0 +1,34 @@
+{
+  "schema": "efab_sanitizer_passport_v1",
+  "organ_id": "accepted_atom_retention_organ",
+  "status": "CANDIDATE",
+  "delete_allowed_only_after": [
+    "post_validation_pass",
+    "successful_acceptance",
+    "compact_receipt_written",
+    "batch_manifest_written"
+  ],
+  "allowed_delete_scope": [
+    "successful work/current sandbox",
+    "successful cand/ctrl/exec/fin traces",
+    "successful before_copies",
+    "successful rollback_copies",
+    "successful full fingerprints",
+    "old successful checkpoints"
+  ],
+  "forbidden_delete_scope": [
+    "failed traces",
+    "quarantine traces",
+    "rollback_required traces",
+    "source code",
+    "validators",
+    "contracts",
+    "schemas",
+    "thin stubs",
+    "queue pointer",
+    "compact receipts",
+    "batch manifest"
+  ],
+  "live_runtime_deletion_enabled": false,
+  "reason": "Deletion policy proven only in synthetic sandbox. Real runner integration pending."
+}

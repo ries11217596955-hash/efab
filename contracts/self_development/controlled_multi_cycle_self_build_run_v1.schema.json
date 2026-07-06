@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_id": "controlled_multi_cycle_self_build_run_v1",
+  "title": "Controlled Multi-Cycle Self-Build Run V1",
+  "type": "object",
+  "required": [
+    "controlled_run_id",
+    "version",
+    "status",
+    "active_line",
+    "input_sources",
+    "run_policy",
+    "cycle_contract",
+    "selected_program",
+    "max_cycles",
+    "cycles",
+    "cycle_count",
+    "execution_performed",
+    "next_allowed_step"
+  ],
+  "properties": {
+    "controlled_run_id": {
+      "type": "string"
+    },
+    "version": {
+      "const": "V1"
+    },
+    "status": {
+      "type": "string"
+    },
+    "active_line": {
+      "const": "AGENT_BUILDER / SELF_BUILD"
+    },
+    "input_sources": {
+      "type": "array",
+      "minItems": 3
+    },
+    "run_policy": {
+      "type": "object"
+    },
+    "cycle_contract": {
+      "type": "object"
+    },
+    "selected_program": {
+      "const": "REPAIR_PROGRAM_SELF_BUILD_REQUIRED_MODULES_001"
+    },
+    "max_cycles": {
+      "const": 2
+    },
+    "cycles": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "cycle_count": {
+      "const": 2
+    },
+    "execution_performed": {
+      "type": "boolean"
+    },
+    "next_allowed_step": {
+      "const": "PHASE105_SCALE_TRIAL_10_30_100_ITEM_SIMULATION_V1"
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_id": "quarantine_and_blocker_registry_v1",
+  "title": "Quarantine And Blocker Registry V1",
+  "type": "object",
+  "required": [
+    "registry_id",
+    "version",
+    "status",
+    "active_line",
+    "input_sources",
+    "registry_policy",
+    "record_status_values",
+    "records",
+    "record_count",
+    "execution_performed",
+    "next_allowed_step"
+  ],
+  "properties": {
+    "registry_id": {
+      "type": "string"
+    },
+    "version": {
+      "const": "V1"
+    },
+    "status": {
+      "type": "string"
+    },
+    "active_line": {
+      "const": "AGENT_BUILDER / SELF_BUILD"
+    },
+    "input_sources": {
+      "type": "array"
+    },
+    "registry_policy": {
+      "type": "object"
+    },
+    "record_status_values": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "FAILED",
+          "QUARANTINED",
+          "BLOCKED",
+          "NEEDS_OWNER_DECISION",
+          "NEEDS_CODEX_REPAIR",
+          "NEEDS_MATERIAL",
+          "SKIPPED_BY_POLICY"
+        ]
+      }
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "record_id",
+          "item_id",
+          "source_gap",
+          "record_type",
+          "status",
+          "reason",
+          "evidence_paths",
+          "related_proof_or_report",
+          "assistance_required",
+          "owner_decision_required",
+          "codex_repair_required",
+          "material_required",
+          "retry_allowed",
+          "retry_conditions",
+          "next_action"
+        ]
+      }
+    },
+    "record_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "execution_performed": {
+      "const": false
+    },
+    "next_allowed_step": {
+      "const": "PHASE101_BATCH_PROOF_AGGREGATOR_V1"
+    }
+  },
+  "additionalProperties": true
+}

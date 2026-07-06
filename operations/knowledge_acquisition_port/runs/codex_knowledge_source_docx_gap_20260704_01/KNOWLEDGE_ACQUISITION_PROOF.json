@@ -1,0 +1,60 @@
+{
+    "schema":  "KNOWLEDGE_ACQUISITION_PROOF_V1",
+    "source":  "CODEX_READONLY_SOURCE",
+    "status":  "PASS_CODEX_DRAFT_RETURNED",
+    "checked_at":  "2026-07-04T16:17:45.3544141+04:00",
+    "run_id":  "codex_knowledge_source_docx_gap_20260704_01",
+    "current_task":  "Create a Word file with one sentence",
+    "knowledge_need":  "The agent does not know what a Word file/docx is, what components are needed to create one, and how to validate that knowledge before trying the task.",
+    "already_checked":  "active memory has no executable docx creation method; reflex registry has read-only file/json/repo/memory reflexes only; repo has no confirmed docx creation reflex yet",
+    "codex_command":  "codex exec --skip-git-repo-check --sandbox read-only --ephemeral --output-last-message \u003crun_root\u003e/codex_last_message.json.txt -",
+    "codex_exit_code":  0,
+    "codex_answer_status":  "CODEX_DRAFT",
+    "codex_answer_json_valid":  true,
+    "codex_answer_sha256":  "A24F4D3F30833AA46C1FEBC8699927FAE992074A122CE74BC859715B400E3754",
+    "candidate_knowledge":  "CODEX_DRAFT: A .docx Word file is an Office Open XML ZIP package, not plain text. For a minimal one-sentence document, the package needs [Content_Types].xml, _rels/.rels, and word/document.xml containing the sentence inside WordprocessingML paragraph/run/text elements. Optional but common parts include docProps/core.xml, docProps/app.xml, and word/styles.xml. The safest creation route is to use an existing docx library if available; otherwise generate the minimal OOXML files and zip them with correct paths and XML namespaces.",
+    "missing_concepts":  [
+                             "Difference between legacy .doc and modern .docx",
+                             "A .docx is a ZIP container with required internal paths",
+                             "Office Open XML / WordprocessingML basics",
+                             "Required relationship file _rels/.rels",
+                             "Required content type declarations",
+                             "How to encode text safely in XML",
+                             "How to verify a generated file is a valid ZIP and valid docx structure"
+                         ],
+    "suggested_decomposition":  [
+                                    "Define the exact sentence to place in the document",
+                                    "Choose creation method: existing docx library preferred; manual OOXML zip only if no library exists",
+                                    "Create minimal document.xml with one paragraph containing one text run",
+                                    "Create required package metadata files",
+                                    "Zip the internal files into a .docx with correct relative paths",
+                                    "Validate structure before considering task attempted"
+                                ],
+    "validation_needed":  [
+                              "Confirm output file extension is .docx",
+                              "Confirm file is a readable ZIP archive",
+                              "Confirm required entries exist: [Content_Types].xml, _rels/.rels, word/document.xml",
+                              "Confirm _rels/.rels points to word/document.xml as the main office document",
+                              "Confirm word/document.xml contains the exact requested sentence",
+                              "If possible, open with Microsoft Word, LibreOffice, or a docx parser and confirm no repair warning"
+                          ],
+    "return_to_task_hint":  "Before creating the Word file, teach or add a small docx creation reflex that either calls a known library or writes the minimal OOXML package, then run a structural validation reflex on a tiny test sentence.",
+    "limits":  "Advisory CODEX_DRAFT only. No files inspected, created, modified, or validated here. This does not decide the agent route and is not proof that the local repo already supports docx creation.",
+    "mutation_audit":  {
+                           "active_memory_mutated":  false,
+                           "codex_file_write_requested":  false,
+                           "codex_shell_execution_requested":  false,
+                           "repo_status_before":  [
+                                                      "?? operations/knowledge_acquisition_port/KNOWLEDGE_ACQUISITION_PORT_CONTRACT.md",
+                                                      "?? operations/knowledge_acquisition_port/ask_codex_knowledge_source.ps1",
+                                                      "?? operations/knowledge_acquisition_port/codex_readonly_source_policy.json"
+                                                  ],
+                           "repo_status_after":  [
+                                                     "?? operations/knowledge_acquisition_port/KNOWLEDGE_ACQUISITION_PORT_CONTRACT.md",
+                                                     "?? operations/knowledge_acquisition_port/ask_codex_knowledge_source.ps1",
+                                                     "?? operations/knowledge_acquisition_port/codex_readonly_source_policy.json",
+                                                     "?? operations/knowledge_acquisition_port/runs/codex_knowledge_source_docx_gap_20260704_01/codex_last_message.json.txt"
+                                                 ]
+                       },
+    "boundary":  "CODEX_DRAFT only; agent must validate before acting."
+}

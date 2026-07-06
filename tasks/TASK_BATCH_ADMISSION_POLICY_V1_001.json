@@ -1,0 +1,28 @@
+{
+  "task_id": "TASK_BATCH_ADMISSION_POLICY_V1_001",
+  "phase": "PHASE97",
+  "pack_id": "PHASE97_BATCH_ADMISSION_POLICY_V1",
+  "status": "READY",
+  "active_line": "AGENT_BUILDER / SELF_BUILD",
+  "mode": "SELF_BUILD",
+  "capability_id": "batch_admission_policy_v1",
+  "gate": "BATCH_ADMISSION_POLICY_V1",
+  "path": "tasks/TASK_BATCH_ADMISSION_POLICY_V1_001.json",
+  "baseline_commit": "bdf0174",
+  "route_lock": "AGENT_BUILDER_NEXT_15_STEPS_LOCK_V2_R2.md",
+  "source_batch_plan": "self_build_batch/plans/BATCH_PLAN_EXAMPLE_V1.json",
+  "next_allowed_step": "PHASE98_ITEM_LEVEL_EXECUTION_LEDGER_V1",
+  "purpose": "Define Batch Admission Policy V1 and conditionally review the example batch plan without allowing execution.",
+  "cut_list": [
+    "No Builder runtime from Codex",
+    "No batch execution",
+    "No item PASS marking",
+    "No item-level execution ledger",
+    "No PHASE98 execution",
+    "No GitHub workflow creation",
+    "No external agent production",
+    "No installs",
+    "No external fetch",
+    "No PHASE78-PHASE96 pack edits"
+  ]
+}

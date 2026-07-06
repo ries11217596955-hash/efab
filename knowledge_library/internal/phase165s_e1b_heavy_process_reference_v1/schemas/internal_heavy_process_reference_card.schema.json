@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Internal Heavy Process Reference Card",
+  "type": "object",
+  "required": [
+    "id",
+    "phase",
+    "kind",
+    "title",
+    "process_class",
+    "when_to_use",
+    "do_not_use_for",
+    "inputs",
+    "procedure",
+    "proof_required",
+    "risks",
+    "output",
+    "atomization_rule",
+    "source_status"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "phase": {
+      "type": "string"
+    },
+    "kind": {
+      "const": "internal_heavy_process_reference_card"
+    },
+    "title": {
+      "type": "string"
+    },
+    "process_class": {
+      "type": "string"
+    },
+    "when_to_use": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "do_not_use_for": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "procedure": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "proof_required": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "output": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "atomization_rule": {
+      "type": "string"
+    },
+    "source_status": {
+      "type": "string"
+    }
+  }
+}

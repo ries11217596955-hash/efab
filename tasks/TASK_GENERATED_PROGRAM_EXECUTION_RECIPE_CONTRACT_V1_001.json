@@ -1,0 +1,24 @@
+{
+  "task_id": "TASK_GENERATED_PROGRAM_EXECUTION_RECIPE_CONTRACT_V1_001",
+  "capability_id": "generated_program_execution_recipe_contract_v1",
+  "objective": "Define and prove program-owned execution recipe artifacts for the already-consumed monitoring_agent_v1 generated self-build program.",
+  "execution_kind": "SELF_BUILD_RECIPE_CONTRACT_PROOF",
+  "expected_gate": "GENERATED_PROGRAM_EXECUTION_RECIPE_CONTRACT_V1",
+  "target_program_manifest": "self_build_programs/generated/monitoring_agent_v1/SELF_BUILD_PROGRAM_MANIFEST.json",
+  "required_prior_proofs": [
+    "proofs/GENERATED_PROGRAM_LIVE_ADMISSION_PROOF_V1.json",
+    "proofs/GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1.json",
+    "proofs/GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1.json",
+    "proofs/GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1.json"
+  ],
+  "forbidden_scope": [
+    "do not modify generated APPLY.ps1 files",
+    "do not modify generated PACK.json files",
+    "do not modify generated task contract files",
+    "do not modify generated patch files",
+    "do not modify admission behavior",
+    "do not refactor executable materialization",
+    "do not claim generic executable materialization is complete",
+    "do not create PHASE59"
+  ]
+}

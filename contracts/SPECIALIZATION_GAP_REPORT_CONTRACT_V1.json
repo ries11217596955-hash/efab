@@ -1,0 +1,24 @@
+{
+  "contract_id": "SPECIALIZATION_GAP_REPORT_CONTRACT_V1",
+  "contract_version": "1.0",
+  "required_fields": [
+    "report_id",
+    "run_id",
+    "status",
+    "diagnostic_status",
+    "raw_idea_path",
+    "derived_spec_path",
+    "derived_agent_id",
+    "missing_agent_kind",
+    "requested_package_profile",
+    "resolver_status",
+    "resolver_reason",
+    "required_next_move",
+    "operator_summary"
+  ],
+  "required_values": {
+    "status": "PASS",
+    "diagnostic_status": "MISSING_SPECIALIZATION_PROFILE",
+    "required_next_move": "ADD_OR_MAP_SPECIALIZATION_PROFILE"
+  }
+}

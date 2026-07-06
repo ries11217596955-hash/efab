@@ -1,0 +1,24 @@
+{
+  "schema": "CONTROLLED_RUNTIME_MEMORY_BLOAT_BLOCKER_1100_V1",
+  "status": "CONTROLLED_RUNTIME_MEMORY_BLOAT_BLOCKED",
+  "source_trial": "DETACHED_30000_CONTROLLED_RUNTIME",
+  "completed_cycles": 11,
+  "batch_size": 100,
+  "total_accepted": 1100,
+  "total_receipts": 1100,
+  "failed_cycles": 0,
+  "stop_reason": "UNEXPECTED_TRACKED_CHANGE",
+  "dirty_files": [
+    "packs/registry.json",
+    "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+    "reports/self_development/accepted_change_memory_snapshot.json"
+  ],
+  "dirty_json_parse": "PASS",
+  "diff_insertions": 187030,
+  "diff_deletions": 24,
+  "size_assessment": "LARGE",
+  "decision": "DO_NOT_ACCEPT_MEMORY_DELTA",
+  "rollback_required": true,
+  "runtime_ready": false,
+  "next_required": "FIX_ACCEPTED_CORE_MEMORY_COMPACTION_OR_DELTA_ISOLATION"
+}

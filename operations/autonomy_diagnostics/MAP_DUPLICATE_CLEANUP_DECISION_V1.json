@@ -1,0 +1,54 @@
+{
+    "schema":  "MAP_DUPLICATE_CLEANUP_DECISION_V1",
+    "status":  "CLEANUP_APPLIED_OLD_MAP_CLUSTER_REMOVED",
+    "checked_at":  "2026-07-04T10:06:52.4952257+04:00",
+    "branch":  "thin-control",
+    "head_before_cleanup":  "d060dcb471d901c0ce4e6dcb05a988f2795325c2",
+    "active_keep":  [
+                        "operations/map_control",
+                        "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
+                        "validators/validate_branch_agnostic_map_refresh_contract_001.ps1",
+                        "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+                        "reports/self_development/agent_body_map.json",
+                        "reports/self_development/agent_body_map.md",
+                        "reports/self_development/branch_agnostic_map_refresh_result.json"
+                    ],
+    "protected_status_keep_not_canonical_map":  [
+                                                    "self_control/CURRENT_AGENT_BUILDER_STATE.json",
+                                                    "self_knowledge/ROADMAP_STATE.json"
+                                                ],
+    "removed_old_cluster":  [
+                                ".github/workflows/self-map-auto-refresh-after-push.yml",
+                                "modules/build_builder_agent_body_map_001.ps1",
+                                "modules/discover_builder_existing_self_map_organs_001.ps1",
+                                "modules/inspect_builder_acceptance_pipeline_self_map_refresh_policy_001.ps1",
+                                "modules/inspect_builder_agent_body_map_freshness_001.ps1",
+                                "modules/inspect_builder_self_map_refresh_readiness_001.ps1",
+                                "modules/invoke_builder_acceptance_pipeline_with_self_map_refresh_001.ps1",
+                                "modules/invoke_builder_github_push_self_map_auto_refresh_001.ps1",
+                                "modules/invoke_builder_self_map_refresh_after_acceptance_001.ps1",
+                                "modules/invoke_existing_self_map_next_action_selector_readonly_wrapper_v1.ps1",
+                                "modules/select_builder_self_map_next_action_001.ps1",
+                                "modules/validate_builder_acceptance_pipeline_self_map_refresh_enforcement_001.ps1",
+                                "modules/validate_builder_acceptance_self_map_refresh_contract_001.ps1",
+                                "modules/validate_builder_github_push_self_map_auto_refresh_workflow_001.ps1",
+                                "modules/validate_builder_self_map_next_action_contract_001.ps1",
+                                "modules/write_builder_github_push_self_map_auto_refresh_delivery_001.ps1",
+                                "modules/write_builder_self_map_memory_report_001.ps1",
+                                "validators/validate_existing_self_map_next_action_selector_readonly_wrapper_v1.ps1",
+                                "validators/validate_phase161c_agent_body_map_reuse_and_self_model_sync_v1.ps1",
+                                "validators/validate_phase161d_body_map_classifier_hardening_v1.ps1",
+                                "validators/validate_phase161e_self_map_auto_refresh_after_acceptance_v1.ps1",
+                                "validators/validate_phase161h_acceptance_pipeline_self_map_refresh_enforcement_v1.ps1",
+                                "validators/validate_phase161i_github_push_self_map_auto_refresh_workflow_v1.ps1",
+                                "validators/validate_phase161j_self_map_next_action_selector_v1.ps1"
+                            ],
+    "removal_reasons":  [
+                            "old phase161 phase110 lane",
+                            "branch hardcoded remote push workflow",
+                            "full body map builder too heavy for current local loop",
+                            "old next action freshness wrappers not canonical"
+                        ],
+    "live_process_action":  "SandboxTestLife not stopped because no danger observed",
+    "deletion_scope":  "tracked old map refresh cluster only; no protected state; no runtime proof; no active compact memory mutation"
+}
