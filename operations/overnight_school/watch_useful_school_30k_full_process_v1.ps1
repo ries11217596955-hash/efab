@@ -1,11 +1,12 @@
-﻿param(
+param(
   [string]$ManagedRunId = 'managed_run-20260629-204736-8a6b4c8f',
   [string]$RunDir = '',
   [int]$RefreshSeconds = 5,
   [int]$TailLines = 18
 )
 $ErrorActionPreference='Continue'
-Set-Location 'C:/Users/Azerbaijan/Downloads/e-factory-agent-builder'
+$RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot '../..')).Path
+Set-Location $RepoRoot
 
 function Read-JsonSafe([string]$Path){
   if(Test-Path $Path){

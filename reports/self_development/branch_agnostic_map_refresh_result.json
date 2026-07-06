@@ -1,21 +1,24 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-06T22:56:58.5422811+04:00",
+    "checked_at":  "2026-07-06T23:02:10.5099334+04:00",
     "branch":  "main",
-    "observed_head":  "0d4b0eebc81c851eb02f86fb70d675f1c0b83d2f",
-    "subject_head":  "0d4b0eebc81c851eb02f86fb70d675f1c0b83d2f",
+    "observed_head":  "b03f9d69d54777b11ae00a197af0efeee4dd5883",
+    "subject_head":  "b03f9d69d54777b11ae00a197af0efeee4dd5883",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
+                          "AGENTS.md",
+                          "docs/operations/CURRENT_REPO_ROOT_AND_REMOTE.md",
+                          "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json"
                       ],
     "structural_paths":  [
-
+                             "AGENTS.md"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -28,7 +31,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  552,
-                                    "sha256":  "bb0f4a3b332fa25f7d3e0eadaf5290071edcc5d6e09286155120217e9a784b96"
+                                    "sha256":  "697af90025d8f9dd9f8788c9d1ecc2c32621a14e0a483cb1b964b5c3855a626e"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -51,5 +54,5 @@
                          "component_count":  7,
                          "structural_path_count":  552
                      },
-    "refreshed_at":  "2026-07-06T22:56:59.2789848+04:00"
+    "refreshed_at":  "2026-07-06T23:02:11.1913299+04:00"
 }

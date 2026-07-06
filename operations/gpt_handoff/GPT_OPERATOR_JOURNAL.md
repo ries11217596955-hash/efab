@@ -104,3 +104,9 @@ Night-school note:
 - OLD_REPO_ROLE: C:\Users\Azerbaijan\Downloads\e-factory-agent-builder = archive/reference only.
 - Proof before pointer update: local/remote synced at 0d4b0eebc81c851eb02f86fb70d675f1c0b83d2f; map validator PASS.
 - Canonical pointer file: docs/operations/CURRENT_REPO_ROOT_AND_REMOTE.md
+2026-07-06 - Pre-night-run chat checkpoint
+- Where stopped: clean repo cutover completed; active repo is H:\efab/main with origin https://github.com/ries11217596955-hash/efab.git.
+- Fixed this turn: found stale overnight scripts pointing to old C:/Users/Azerbaijan/Downloads/e-factory-agent-builder path; repaired to repo-relative root.
+- Updated current status pointer: docs/operations/GROWTH_SYSTEM_STATUS_AND_NEXT_PORTS_20260706.md
+- Night target: operations/overnight_school/run_useful_school_30k_full_process_v1.ps1
+- Proof boundary: night run is PROVEN_LAB candidate only until final proof is inspected.

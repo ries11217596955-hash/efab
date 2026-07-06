@@ -1,6 +1,7 @@
-﻿param([string]$ProofPath='tests/accepted_atom_retention/USEFUL_SCHOOL_30K_FULL_PROCESS_V1_PROOF.json')
+param([string]$ProofPath='tests/accepted_atom_retention/USEFUL_SCHOOL_30K_FULL_PROCESS_V1_PROOF.json')
 $ErrorActionPreference='Stop'
-Set-Location 'C:/Users/Azerbaijan/Downloads/e-factory-agent-builder'
+$RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot '../..')).Path
+Set-Location $RepoRoot
 if(-not(Test-Path $ProofPath)){ throw "PROOF_MISSING=$ProofPath" }
 $P=Get-Content $ProofPath -Raw | ConvertFrom-Json
 function Assert($Cond,[string]$Msg){ if(-not $Cond){ throw $Msg } }

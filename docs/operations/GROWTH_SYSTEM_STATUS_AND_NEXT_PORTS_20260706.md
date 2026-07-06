@@ -1,120 +1,75 @@
-# Growth System Status and Next Ports - 2026-07-06
+# Growth System Status and Next Ports - 2026-07-06 Current Pointer
 
-Status: ACTIVE_POINTER
+Status: ACTIVE_CURRENT_STATUS_POINTER_V2
+Updated: 2026-07-06T23:01:00+04:00
 
-## What is proven now
-
-School has a governed path into compact memory:
-
-```text
-School
--> canonical school runner
--> finalizer
--> compact memory knowledge packet
--> intake validation
--> merge queue lock/checkpoint
--> active compact memory
--> recall/use surface
-```
-
-Proven components:
-
-- 300k Live school result recorded: `351a071509306044bb719e2ed593bfe3642340e7`, `97987377e1ec2d1526ba18619ed1534c2b699577`.
-- Multi-source compact memory intake signal: `ca61e01a7f023a4025f1bf73092cf0f9197354d2`.
-- Growth signal corrected to support selected path, not choose path: `b3f02c7d3b52468a200d6cd8eecf22597f2496f0`.
-- Multi-source compact memory merge queue: `b416f4c6459b3c77e91884583ffd259e2008cc9e`.
-- Packet submit-to-merge wiring: `10ef30cc96d9b4aedfe97a871b55e6431bc9137e`.
-- Finalizer auto-merge proof: `22f63ce18dd22fbeb51254384607f587d671c005`.
-- Autonomous school cycle controller: `2905a5f344db42c0f6adfc3da0875f9ba75e5439`.
-- Autonomous school control interface: `8606451a58efed6b5cc9fba0890e1d9075791541`.
-- Per-cycle SLA law: `4ea7e22a369fcd7fb1218ff1cf5e82054983b7db`.
-- Per-cycle SLA proof: `a07f3461da7c2a5a8fbd33e5c2855d88b498190e`.
-
-## Current school law
+## Current canonical repo
 
 ```text
-default_count = 50000
-default_max_cycle_runtime_minutes = 60
-default_max_total_runtime_minutes = 0
-default_max_cycles = 0
+ACTIVE_WORKING_REPO=H:\efab
+ACTIVE_GITHUB_REPO=https://github.com/ries11217596955-hash/efab.git
+ACTIVE_BRANCH=main
+OLD_REPO=C:\Users\Azerbaijan\Downloads\e-factory-agent-builder
+OLD_REPO_ROLE=ARCHIVE_REFERENCE_ONLY
 ```
 
-Meaning:
+## What was closed in this chat
 
 ```text
-50k cycle <= 60 minutes -> continue to next cycle
-50k cycle > 60 minutes -> finish finalizer/intake/merge safely, then stop before next cycle
+CLEAN_REPO_CUTOVER=PROVEN
+GITHUB_BACKUP_SYNC=PROVEN
+ACTIVE_REPO_POINTER=PROVEN
+AGENTS_REPO_IDENTITY_UPDATED=PROVEN
+JOURNAL_CUTOVER_POINTER_ADDED=PROVEN
+MAP_VALIDATOR_STATUS=PASS_AGENT_BODY_COMPOSITION_MAP_CURRENT_V1
 ```
 
-This is a per-cycle SLA, not a total session timer.
+## What was found after cutover
 
-## What is not yet enabled
-
-Parallel School + AgentLife is not yet enabled as final behavior.
-
-Current status:
+The overnight school run/watch/validate scripts still contained hard-coded old repo root:
 
 ```text
-School autonomous cycle: built/proven
-Multi-source memory intake/merge: built/proven
-AgentLife packet path: built/proven
-AIMO parallel life during active school: NOT_PROVEN / NOT_ENABLED
+C:/Users/Azerbaijan/Downloads/e-factory-agent-builder
 ```
 
-AIMO still needs compatibility repair so active school no longer means agent life must fully stop. The new law should be: AIMO may live in parallel, but all memory writes go through intake/merge queue and must respect merge locks/backoff.
+This is a repo-context mismatch risk. These scripts must resolve repo root from `$PSScriptRoot` and run under `H:\efab`.
 
-## Next organ
+## Current route
 
-`AIMO_MULTI_SOURCE_MEMORY_COMPATIBILITY_V1`
+Owner wants a night test run before sleep.
 
-Target:
+Night test must be treated as:
 
 ```text
-School process -> intake -> merge queue -> compact memory
-Agent life     -> intake -> merge queue -> compact memory
+PROVEN_LAB candidate only until final proof is inspected.
+NOT_PROVEN_LIVE until a fresh final proof exists.
 ```
 
-Rules:
+## Night run target
 
-- sources do not write active compact memory directly
-- memory merge queue serializes writes
-- AIMO can submit AgentLife packets
-- AIMO uses memory_support_hint after path selection, not as route authority
-- AIMO must back off if merge lock is active
-- school-active state should become a coordination signal, not a hard stop by default
-
-## Future ports to design later
-
-### School + Codex / External World
-
-Future source router must define:
+Use the existing overnight 30k full-process school mechanics runner after root repair:
 
 ```text
-InternalFactory -> first/default scaling source
-CodexSourcePort -> semantic expansion / repair patterns / edge cases
-ExternalWorldSourcePort -> real-world material / current facts / environmental signals
-SchoolValidator -> only accepted material becomes packet
-Intake/MergeQueue -> only path into compact memory
+operations/overnight_school/run_useful_school_30k_full_process_v1.ps1
 ```
 
-Boundary: Codex and External World are material suppliers, not school brain and not route authority.
-
-### Agent + Codex / External World / Reflex
-
-Future agent source/reflex layer must define:
+Expected proof class:
 
 ```text
-AgentLife chosen task/path
--> memory support lookup
--> if knowledge gap remains, request Codex/ExternalWorld material under contract
--> convert result to packet candidate
--> validate
--> intake/merge
--> reflex candidate only after repeated/proven behavior need
+PROVEN_LAB_MECHANICS_NOT_LIVE
 ```
 
-Boundary: Codex/ExternalWorld cannot decide agent path. Reflex promotion must be validator/proof based, not convenience based.
+## Next morning check
 
-## Stop condition for this phase
+Use:
 
-This phase is not complete until AIMO is proven to live safely while school cycle is active, with no direct active memory mutation and with correct backoff around merge queue locks.
+```text
+operations/overnight_school/validate_useful_school_30k_full_process_v1.ps1
+```
+
+And inspect:
+
+```text
+H:/bridge/overnight_school_runs/<latest>/LIVE_STATUS.json
+H:/bridge/overnight_school_runs/<latest>/USEFUL_SCHOOL_30K_FULL_PROCESS_V1_PROOF.json
+```

@@ -1,4 +1,4 @@
-﻿param(
+param(
   [int]$TargetAcceptedCount = 30000,
   [int]$ChunkSize = 5000,
   [int]$SubchunkSize = 100,
@@ -8,7 +8,8 @@
   [string]$RepoProofPath = 'tests/accepted_atom_retention/USEFUL_SCHOOL_30K_FULL_PROCESS_V1_PROOF.json'
 )
 $ErrorActionPreference='Stop'
-Set-Location 'C:/Users/Azerbaijan/Downloads/e-factory-agent-builder'
+$RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot '../..')).Path
+Set-Location $RepoRoot
 
 function Get-Sha256Text([string]$Text){
   $sha=[System.Security.Cryptography.SHA256]::Create()
