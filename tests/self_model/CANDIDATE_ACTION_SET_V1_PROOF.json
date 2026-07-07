@@ -1,0 +1,31 @@
+﻿{
+    "schema":  "candidate_action_set_validation_v1",
+    "status":  "PASS_CANDIDATE_ACTION_SET_V1",
+    "candidate_set_path":  "reports/self_development/CANDIDATE_ACTION_SET_V1.json",
+    "missing_sources_candidate_set_path":  "reports/self_development/CANDIDATE_ACTION_SET_V1_MISSING_SOURCES_TEST.json",
+    "live_process_touched":  false,
+    "active_memory_mutated":  false,
+    "tests":  [
+                  {
+                      "name":  "candidate_actions_generated_from_gap_map",
+                      "status":  "PASS"
+                  },
+                  {
+                      "name":  "required_output_fields_present",
+                      "status":  "PASS"
+                  },
+                  {
+                      "name":  "no_candidate_depends_on_school",
+                      "status":  "PASS"
+                  },
+                  {
+                      "name":  "missing_sources_still_generate_self_build_candidate",
+                      "status":  "PASS"
+                  },
+                  {
+                      "name":  "phase_f_does_not_score_or_select",
+                      "status":  "PASS"
+                  }
+              ],
+    "created_at":  "2026-07-07T21:54:54.4335927+04:00"
+}

@@ -1,22 +1,36 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-07T21:35:24.2996358+04:00",
+    "checked_at":  "2026-07-07T21:55:03.3848880+04:00",
     "branch":  "main",
-    "observed_head":  "33aee672fe0ded2fad688717398f67cb60eef552",
-    "subject_head":  "33aee672fe0ded2fad688717398f67cb60eef552",
+    "observed_head":  "14b787ff26382f5da7264bbd861b464686e2386d",
+    "subject_head":  "14b787ff26382f5da7264bbd861b464686e2386d",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
+                          "operations/self_model/export_builder_gap_map_v1.ps1",
+                          "operations/self_model/export_current_body_capability_snapshot_v1.ps1",
+                          "operations/self_model/validate_builder_gap_map_v1.ps1",
+                          "operations/self_model/validate_builder_identity_contract_v1.ps1",
+                          "operations/self_model/validate_current_body_capability_snapshot_v1.ps1",
+                          "reports/self_development/BUILDER_GAP_MAP_V1.json",
+                          "reports/self_development/CURRENT_BODY_CAPABILITY_SNAPSHOT_V1.json",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "route_locks/AGENT_BUILDER_NEXT_15_STEPS_LOCK_V4_IDENTITY_BASED_SELECTION.md"
+                          "self_model/BUILDER_IDENTITY_CONTRACT_V1.json",
+                          "tests/self_model/BUILDER_GAP_MAP_V1_PROOF.json",
+                          "tests/self_model/BUILDER_IDENTITY_CONTRACT_V1_PROOF.json",
+                          "tests/self_model/CURRENT_BODY_CAPABILITY_SNAPSHOT_V1_PROOF.json"
                       ],
     "structural_paths":  [
-
+                             "operations/self_model/export_builder_gap_map_v1.ps1",
+                             "operations/self_model/export_current_body_capability_snapshot_v1.ps1",
+                             "operations/self_model/validate_builder_gap_map_v1.ps1",
+                             "operations/self_model/validate_builder_identity_contract_v1.ps1",
+                             "operations/self_model/validate_current_body_capability_snapshot_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -28,8 +42,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  592,
-                                    "sha256":  "52518dab570b2345993ec6edfb971f9d71583ae3aa140e2129313ccdde83b021"
+                                    "structural_file_count":  596,
+                                    "sha256":  "73e02a4669f86529b1644a9cbfb06d195a0528e0ece538cf107126975f8f984c"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -50,7 +64,7 @@
                          "builder":  "AGENT_BODY_COMPOSITION_MAP_V1",
                          "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                          "component_count":  7,
-                         "structural_path_count":  592
+                         "structural_path_count":  596
                      },
-    "refreshed_at":  "2026-07-07T21:35:25.5679782+04:00"
+    "refreshed_at":  "2026-07-07T21:55:04.6678293+04:00"
 }
