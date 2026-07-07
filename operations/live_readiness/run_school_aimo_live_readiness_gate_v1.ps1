@@ -12,7 +12,7 @@ $RepoRoot=(Resolve-Path (Join-Path $PSScriptRoot '../..')).Path
 Set-Location $RepoRoot
 function GitStatusShort(){ @(git status --short --untracked-files=all) }
 function WriteJson($Path,$Obj){ New-Item -ItemType Directory -Force -Path (Split-Path $Path -Parent) | Out-Null; $Obj | ConvertTo-Json -Depth 30 | Set-Content -Path $Path -Encoding UTF8 }
-function ReadJson($Path){ if(-not(Test-Path $Path)){ return $null }; return (Get-Content $Path -Raw | ConvertFrom-Json) }
+function ReadJson($Path){ if([string]::IsNullOrWhiteSpace([string]$Path)){ return $null }; if(-not(Test-Path $Path)){ return $null }; return (Get-Content $Path -Raw | ConvertFrom-Json) }
 function RelevantRuntimeChildProcesses(){
   @(Get-CimInstance Win32_Process -ErrorAction SilentlyContinue | Where-Object {
     -not [string]::IsNullOrWhiteSpace([string]$_.CommandLine) -and (
