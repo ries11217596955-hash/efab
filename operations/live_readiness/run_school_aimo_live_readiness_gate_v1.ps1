@@ -11,9 +11,23 @@ Set-Location $RepoRoot
 function GitStatusShort(){ @(git status --short --untracked-files=all) }
 function WriteJson($Path,$Obj){ New-Item -ItemType Directory -Force -Path (Split-Path $Path -Parent) | Out-Null; $Obj | ConvertTo-Json -Depth 30 | Set-Content -Path $Path -Encoding UTF8 }
 function ReadJson($Path){ if(-not(Test-Path $Path)){ return $null }; return (Get-Content $Path -Raw | ConvertFrom-Json) }
+function GetIgnoredPidChain(){
+  $ids=@($PID)
+  try {
+    $current=Get-CimInstance Win32_Process -Filter "ProcessId=$PID" -ErrorAction SilentlyContinue
+    while($current -and $current.ParentProcessId){
+      $parentId=[int]$current.ParentProcessId
+      if($ids -contains $parentId){ break }
+      $ids += $parentId
+      $current=Get-CimInstance Win32_Process -Filter "ProcessId=$parentId" -ErrorAction SilentlyContinue
+    }
+  } catch {}
+  return @($ids)
+}
+$script:IgnoredProcessIds=@(GetIgnoredPidChain)
 function RelevantProcesses(){
   @(Get-CimInstance Win32_Process -ErrorAction SilentlyContinue | Where-Object {
-    $_.ProcessId -ne $PID -and
+    ($script:IgnoredProcessIds -notcontains [int]$_.ProcessId) -and
     -not [string]::IsNullOrWhiteSpace([string]$_.CommandLine) -and
     [string]$_.CommandLine -notlike '*run_school_aimo_live_readiness_gate_v1.ps1*' -and
     [string]$_.CommandLine -notlike '*validate_school_aimo_live_readiness_gate_v1.ps1*' -and (
