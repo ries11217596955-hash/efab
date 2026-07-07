@@ -169,3 +169,9 @@ Night-school note:
 - Evidence: sandbox hash changed on controlled mutation and was restored to checkpoint; final_state=baseline; active_memory_mutated=false; tracked_repo_mutated=false.
 - Boundary: lab rollback contract only, not live runtime rollback execution.
 - Proof: tests/live_readiness/LIVE_ROLLBACK_CONTRACT_V1_PROOF.json.
+
+2026-07-07 - Live readiness gate updated after rollback contract
+- Result: PASS_SCHOOL_AIMO_LIVE_READINESS_GATE_NO_GO_V1; decision=NO_GO_LIVE_READINESS_BLOCKED; live_ready=false.
+- Rollback contract validation=PASS_LIVE_ROLLBACK_CONTRACT_V1; LIVE_ROLLBACK_PLAN_NOT_PROVEN removed from go_blockers.
+- Remaining go blockers: OWNER_LIVE_AUTHORIZATION_MISSING, PRIOR_PROOF_RUNTIME_READY_FALSE, LIVE_QUARANTINE_PLAN_NOT_PROVEN, LIVE_CONTINUOUS_RUNTIME_NOT_PROVEN.
+- Proof: tests/live_readiness/SCHOOL_AIMO_LIVE_READINESS_GATE_V1_PROOF.json.
