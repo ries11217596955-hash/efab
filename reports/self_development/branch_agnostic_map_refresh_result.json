@@ -1,30 +1,30 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-07T15:44:23.8489695+04:00",
+    "checked_at":  "2026-07-07T15:47:12.6315804+04:00",
     "branch":  "main",
-    "observed_head":  "5a272540ebd27a7edfff04e3e694d7072ef960b9",
-    "subject_head":  "5a272540ebd27a7edfff04e3e694d7072ef960b9",
+    "observed_head":  "6c2f9ac5c5905b75646aeef617df4f823f01fbf1",
+    "subject_head":  "6c2f9ac5c5905b75646aeef617df4f823f01fbf1",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "operations/memory/episodic/validate_episode_cell_v1.ps1",
-                          "operations/memory/episodic/write_episode_cell_v1.ps1",
-                          "operations/reasoning/run_reasoning_episode_v1.ps1",
-                          "operations/reasoning/validate_reasoning_episode_v1.ps1",
+                          "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+                          "operations/memory/episodic/get_episode_recall_v1.ps1",
+                          "operations/memory/episodic/validate_episode_recall_v1.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
+                          "tests/autonomous_inner_motor/GROWTH_DIRECTED_TASK_SELECTION_V1_PROOF.json",
                           "tests/memory/episodic/EPISODIC_MEMORY_CELL_V1_PROOF.json",
+                          "tests/memory/episodic/EPISODIC_RECALL_V1_PROOF.json",
                           "tests/reasoning/REASONING_EPISODE_V1_PROOF.json"
                       ],
     "structural_paths":  [
-                             "operations/memory/episodic/validate_episode_cell_v1.ps1",
-                             "operations/memory/episodic/write_episode_cell_v1.ps1",
-                             "operations/reasoning/run_reasoning_episode_v1.ps1",
-                             "operations/reasoning/validate_reasoning_episode_v1.ps1"
+                             "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+                             "operations/memory/episodic/get_episode_recall_v1.ps1",
+                             "operations/memory/episodic/validate_episode_recall_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -60,5 +60,5 @@
                          "component_count":  7,
                          "structural_path_count":  581
                      },
-    "refreshed_at":  "2026-07-07T15:44:24.9840713+04:00"
+    "refreshed_at":  "2026-07-07T15:47:13.8003661+04:00"
 }

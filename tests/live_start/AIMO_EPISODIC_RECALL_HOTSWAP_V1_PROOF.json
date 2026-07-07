@@ -1,0 +1,185 @@
+﻿{
+    "schema":  "aimo_episodic_recall_hotswap_v1",
+    "status":  "PASS_AIMO_EPISODIC_RECALL_HOTSWAP_V1",
+    "proof_label":  "PROVEN_LIVE_AIMO_RESTARTED_WITH_EPISODIC_RECALL_WIRING",
+    "repo":  {
+                 "head":  "6c2f9ac5c5905b75646aeef617df4f823f01fbf1",
+                 "branch":  "main",
+                 "ahead_behind":  "0 0",
+                 "dirty_before":  [
+
+                                  ]
+             },
+    "school":  {
+                   "pid":  11816,
+                   "alive_before":  true,
+                   "touched":  false
+               },
+    "old_aimo":  {
+                     "pid":  4148,
+                     "run_id":  "live_aimo_aimo_growth_selector_hotswap_v3_20260707T105709Z",
+                     "alive_before":  true,
+                     "stop_path":  ".runtime\\autonomous_inner_motor\\test_life_runs\\live_aimo_aimo_growth_selector_hotswap_v3_20260707T105709Z\\STOP_REQUESTED.txt",
+                     "stop_events":  [
+                                         {
+                                             "at":  "2026-07-07T15:45:15.2193696+04:00",
+                                             "old_aimo_alive":  true
+                                         },
+                                         {
+                                             "at":  "2026-07-07T15:45:17.2241079+04:00",
+                                             "old_aimo_alive":  false
+                                         }
+                                     ],
+                     "forced_stop":  false,
+                     "alive_after":  false
+                 },
+    "new_aimo":  {
+                     "pid":  3188,
+                     "run_id":  "live_aimo_aimo_episodic_recall_hotswap_v1_20260707T114513Z",
+                     "alive":  true,
+                     "stdout":  "H:\\efab\\.runtime\\live_start\\controlled_live_school_aimo_v1_20260707T070037Z\\school_restarts\\aimo_agent_restarts\\aimo_episodic_recall_hotswap_v1_20260707T114513Z\\aimo.stdout.txt",
+                     "stderr":  "H:\\efab\\.runtime\\live_start\\controlled_live_school_aimo_v1_20260707T070037Z\\school_restarts\\aimo_agent_restarts\\aimo_episodic_recall_hotswap_v1_20260707T114513Z\\aimo.stderr.txt",
+                     "stderr_size":  0,
+                     "proof_path":  ".runtime\\autonomous_inner_motor\\test_life_runs\\live_aimo_aimo_episodic_recall_hotswap_v1_20260707T114513Z\\TEST_LIFE_PROOF.json",
+                     "cycles":  48,
+                     "recall_event_count":  48,
+                     "recall_statuses":  [
+                                             {
+                                                 "status":  "EPISODIC_RECALL_AVAILABLE",
+                                                 "count":  48
+                                             }
+                                         ]
+                 },
+    "observation":  {
+                        "observe_seconds":  100,
+                        "heartbeat_seconds":  10,
+                        "heartbeats":  [
+                                           {
+                                               "at":  "2026-07-07T15:45:27.3005849+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  4,
+                                               "last_task":  "follow_growth_signal_follow_growth_signal_understand_own_policy_limits",
+                                               "last_selection_reason":  "ACTIVE_GROWTH_SIGNAL_TOPIC",
+                                               "last_episodic_recall_status":  "EPISODIC_RECALL_AVAILABLE",
+                                               "last_episodic_recall_available":  true,
+                                               "last_episodic_top":  "aimo_growth_selector_ordered_payload_failure_v1",
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T15:45:37.3500101+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  9,
+                                               "last_task":  "follow_growth_signal_follow_growth_signal_understand_own_policy_limits",
+                                               "last_selection_reason":  "ACTIVE_GROWTH_SIGNAL_TOPIC",
+                                               "last_episodic_recall_status":  "EPISODIC_RECALL_AVAILABLE",
+                                               "last_episodic_recall_available":  true,
+                                               "last_episodic_top":  "aimo_growth_selector_ordered_payload_failure_v1",
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T15:45:47.3825209+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  14,
+                                               "last_task":  "follow_growth_signal_follow_growth_signal_understand_own_policy_limits",
+                                               "last_selection_reason":  "ACTIVE_GROWTH_SIGNAL_TOPIC",
+                                               "last_episodic_recall_status":  "EPISODIC_RECALL_AVAILABLE",
+                                               "last_episodic_recall_available":  true,
+                                               "last_episodic_top":  "aimo_growth_selector_ordered_payload_failure_v1",
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T15:45:57.3985041+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  19,
+                                               "last_task":  "follow_growth_signal_follow_growth_signal_understand_own_policy_limits",
+                                               "last_selection_reason":  "ACTIVE_GROWTH_SIGNAL_TOPIC",
+                                               "last_episodic_recall_status":  "EPISODIC_RECALL_AVAILABLE",
+                                               "last_episodic_recall_available":  true,
+                                               "last_episodic_top":  "aimo_growth_selector_ordered_payload_failure_v1",
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T15:46:07.4325822+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  24,
+                                               "last_task":  "follow_growth_signal_follow_growth_signal_understand_own_policy_limits",
+                                               "last_selection_reason":  "ACTIVE_GROWTH_SIGNAL_TOPIC",
+                                               "last_episodic_recall_status":  "EPISODIC_RECALL_AVAILABLE",
+                                               "last_episodic_recall_available":  true,
+                                               "last_episodic_top":  "aimo_growth_selector_ordered_payload_failure_v1",
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T15:46:17.4441591+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  28,
+                                               "last_task":  "follow_growth_signal_follow_growth_signal_understand_own_policy_limits",
+                                               "last_selection_reason":  "ACTIVE_GROWTH_SIGNAL_TOPIC",
+                                               "last_episodic_recall_status":  "EPISODIC_RECALL_AVAILABLE",
+                                               "last_episodic_recall_available":  true,
+                                               "last_episodic_top":  "aimo_growth_selector_ordered_payload_failure_v1",
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T15:46:27.4741624+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  33,
+                                               "last_task":  "follow_growth_signal_follow_growth_signal_understand_own_policy_limits",
+                                               "last_selection_reason":  "ACTIVE_GROWTH_SIGNAL_TOPIC",
+                                               "last_episodic_recall_status":  "EPISODIC_RECALL_AVAILABLE",
+                                               "last_episodic_recall_available":  true,
+                                               "last_episodic_top":  "aimo_growth_selector_ordered_payload_failure_v1",
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T15:46:37.5083190+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  38,
+                                               "last_task":  "follow_growth_signal_follow_growth_signal_understand_own_policy_limits",
+                                               "last_selection_reason":  "ACTIVE_GROWTH_SIGNAL_TOPIC",
+                                               "last_episodic_recall_status":  "EPISODIC_RECALL_AVAILABLE",
+                                               "last_episodic_recall_available":  true,
+                                               "last_episodic_top":  "aimo_growth_selector_ordered_payload_failure_v1",
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T15:46:47.5323759+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  43,
+                                               "last_task":  "follow_growth_signal_follow_growth_signal_understand_own_policy_limits",
+                                               "last_selection_reason":  "ACTIVE_GROWTH_SIGNAL_TOPIC",
+                                               "last_episodic_recall_status":  "EPISODIC_RECALL_AVAILABLE",
+                                               "last_episodic_recall_available":  true,
+                                               "last_episodic_top":  "aimo_growth_selector_ordered_payload_failure_v1",
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T15:46:57.5582323+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  48,
+                                               "last_task":  "follow_growth_signal_follow_growth_signal_understand_own_policy_limits",
+                                               "last_selection_reason":  "ACTIVE_GROWTH_SIGNAL_TOPIC",
+                                               "last_episodic_recall_status":  "EPISODIC_RECALL_AVAILABLE",
+                                               "last_episodic_recall_available":  true,
+                                               "last_episodic_top":  "aimo_growth_selector_ordered_payload_failure_v1",
+                                               "stderr_size":  0
+                                           }
+                                       ]
+                    },
+    "blockers":  [
+
+                 ],
+    "boundary":  "AIMO-only hotswap to episodic recall wiring. School observed but not modified. No active memory direct mutation.",
+    "started_at":  "2026-07-07T15:45:13.1832077+04:00",
+    "finished_at":  "2026-07-07T15:46:57.7131317+04:00"
+}
