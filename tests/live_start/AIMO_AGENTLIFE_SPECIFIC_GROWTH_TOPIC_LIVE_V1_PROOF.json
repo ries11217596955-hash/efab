@@ -1,0 +1,294 @@
+﻿{
+    "schema":  "aimo_agentlife_specific_growth_topic_live_v1",
+    "status":  "PASS_AIMO_AGENTLIFE_SPECIFIC_GROWTH_TOPIC_LIVE_V1",
+    "proof_label":  "PROVEN_LIVE_AIMO_AGENTLIFE_PACKET_EMITS_SPECIFIC_DERIVED_GROWTH_TOPIC",
+    "repo":  {
+                 "head":  "a6118664ffa97f50a475dbc631e37cabcae7c0d7",
+                 "branch":  "main",
+                 "ahead_behind":  "0 0",
+                 "dirty_before":  [
+
+                                  ]
+             },
+    "school":  {
+                   "pid":  11816,
+                   "alive_before":  true,
+                   "alive_after":  true,
+                   "touched":  false
+               },
+    "old_aimo":  {
+                     "pid":  5856,
+                     "run_id":  "live_aimo_aimo_actionable_growth_signal_hotswap_v2_20260707T144227Z",
+                     "stop_path":  ".runtime\\autonomous_inner_motor\\test_life_runs\\live_aimo_aimo_actionable_growth_signal_hotswap_v2_20260707T144227Z\\STOP_REQUESTED.txt",
+                     "forced":  false,
+                     "events":  [
+                                    {
+                                        "at":  "2026-07-07T19:12:07.6014428+04:00",
+                                        "alive":  true
+                                    },
+                                    {
+                                        "at":  "2026-07-07T19:12:09.6260265+04:00",
+                                        "alive":  false
+                                    }
+                                ],
+                     "alive_after":  false
+                 },
+    "probe_aimo":  {
+                       "pid":  11112,
+                       "run_id":  "live_aimo_agentlife_specific_growth_topic_probe_20260707T151209Z",
+                       "stdout":  "H:\\efab\\.runtime\\live_start\\controlled_live_school_aimo_v1_20260707T070037Z\\school_restarts\\aimo_agent_restarts\\agentlife_specific_growth_topic_probe_20260707T151209Z\\aimo.stdout.txt",
+                       "stderr":  "H:\\efab\\.runtime\\live_start\\controlled_live_school_aimo_v1_20260707T070037Z\\school_restarts\\aimo_agent_restarts\\agentlife_specific_growth_topic_probe_20260707T151209Z\\aimo.stderr.txt",
+                       "proof_path":  ".runtime\\autonomous_inner_motor\\test_life_runs\\live_aimo_agentlife_specific_growth_topic_probe_20260707T151209Z\\TEST_LIFE_PROOF.json",
+                       "stop":  {
+                                    "pid":  11112,
+                                    "run_id":  "live_aimo_agentlife_specific_growth_topic_probe_20260707T151209Z",
+                                    "stop_path":  ".runtime\\autonomous_inner_motor\\test_life_runs\\live_aimo_agentlife_specific_growth_topic_probe_20260707T151209Z\\STOP_REQUESTED.txt",
+                                    "forced":  false,
+                                    "events":  [
+                                                   {
+                                                       "at":  "2026-07-07T19:12:56.9366617+04:00",
+                                                       "alive":  true
+                                                   },
+                                                   {
+                                                       "at":  "2026-07-07T19:12:58.9424389+04:00",
+                                                       "alive":  true
+                                                   },
+                                                   {
+                                                       "at":  "2026-07-07T19:13:00.9605343+04:00",
+                                                       "alive":  true
+                                                   },
+                                                   {
+                                                       "at":  "2026-07-07T19:13:02.9764984+04:00",
+                                                       "alive":  true
+                                                   },
+                                                   {
+                                                       "at":  "2026-07-07T19:13:05.0023648+04:00",
+                                                       "alive":  true
+                                                   },
+                                                   {
+                                                       "at":  "2026-07-07T19:13:07.0259344+04:00",
+                                                       "alive":  true
+                                                   },
+                                                   {
+                                                       "at":  "2026-07-07T19:13:09.0261204+04:00",
+                                                       "alive":  false
+                                                   }
+                                               ],
+                                    "alive_after":  false
+                                },
+                       "observe":  [
+                                       {
+                                           "at":  "2026-07-07T19:12:14.7101636+04:00",
+                                           "alive":  true,
+                                           "cycles":  1,
+                                           "selector_task":  "follow_growth_signal_growth_signal_topic_is_too_generic_for_useful_task",
+                                           "selector_topic":  "growth_signal_topic_is_too_generic_for_useful_task",
+                                           "selector_next":  "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "stderr_size":  0
+                                       },
+                                       {
+                                           "at":  "2026-07-07T19:12:19.7762788+04:00",
+                                           "alive":  true,
+                                           "cycles":  2,
+                                           "selector_task":  "follow_growth_signal_growth_signal_topic_is_too_generic_for_useful_task",
+                                           "selector_topic":  "growth_signal_topic_is_too_generic_for_useful_task",
+                                           "selector_next":  "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "stderr_size":  0
+                                       },
+                                       {
+                                           "at":  "2026-07-07T19:12:24.7868274+04:00",
+                                           "alive":  true,
+                                           "cycles":  3,
+                                           "selector_task":  "follow_growth_signal_growth_signal_topic_is_too_generic_for_useful_task",
+                                           "selector_topic":  "growth_signal_topic_is_too_generic_for_useful_task",
+                                           "selector_next":  "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "stderr_size":  0
+                                       },
+                                       {
+                                           "at":  "2026-07-07T19:12:29.8017057+04:00",
+                                           "alive":  true,
+                                           "cycles":  5,
+                                           "selector_task":  "follow_growth_signal_growth_signal_topic_is_too_generic_for_useful_task",
+                                           "selector_topic":  "growth_signal_topic_is_too_generic_for_useful_task",
+                                           "selector_next":  "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "stderr_size":  0
+                                       },
+                                       {
+                                           "at":  "2026-07-07T19:12:34.8296727+04:00",
+                                           "alive":  true,
+                                           "cycles":  6,
+                                           "selector_task":  "follow_growth_signal_growth_signal_topic_is_too_generic_for_useful_task",
+                                           "selector_topic":  "growth_signal_topic_is_too_generic_for_useful_task",
+                                           "selector_next":  "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "stderr_size":  0
+                                       },
+                                       {
+                                           "at":  "2026-07-07T19:12:39.8603979+04:00",
+                                           "alive":  true,
+                                           "cycles":  8,
+                                           "selector_task":  "follow_growth_signal_growth_signal_topic_is_too_generic_for_useful_task",
+                                           "selector_topic":  "growth_signal_topic_is_too_generic_for_useful_task",
+                                           "selector_next":  "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "stderr_size":  0
+                                       },
+                                       {
+                                           "at":  "2026-07-07T19:12:44.8743103+04:00",
+                                           "alive":  true,
+                                           "cycles":  9,
+                                           "selector_task":  "follow_growth_signal_growth_signal_topic_is_too_generic_for_useful_task",
+                                           "selector_topic":  "growth_signal_topic_is_too_generic_for_useful_task",
+                                           "selector_next":  "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "stderr_size":  0
+                                       },
+                                       {
+                                           "at":  "2026-07-07T19:12:49.8923394+04:00",
+                                           "alive":  true,
+                                           "cycles":  10,
+                                           "selector_task":  "follow_growth_signal_growth_signal_topic_is_too_generic_for_useful_task",
+                                           "selector_topic":  "growth_signal_topic_is_too_generic_for_useful_task",
+                                           "selector_next":  "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "stderr_size":  0
+                                       },
+                                       {
+                                           "at":  "2026-07-07T19:12:54.8926523+04:00",
+                                           "alive":  true,
+                                           "cycles":  12,
+                                           "selector_task":  "follow_growth_signal_growth_signal_topic_is_too_generic_for_useful_task",
+                                           "selector_topic":  "growth_signal_topic_is_too_generic_for_useful_task",
+                                           "selector_next":  "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "stderr_size":  0
+                                       }
+                                   ],
+                       "packet_path":  ".runtime\\autonomous_inner_motor\\test_life_runs\\live_aimo_agentlife_specific_growth_topic_probe_20260707T151209Z\\agentlife_packets\\AGENTLIFE_KNOWLEDGE_PACKET.json",
+                       "packet_topic":  "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                       "packet_next_action_candidate":  "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                       "packet_specific_gap":  "validated_memory_topic_requires_bounded_next_action:growth_signal_topic_is_too_generic_for_useful_task",
+                       "packet_proof_needed_count":  3,
+                       "packet_generic_leak_count":  0
+                   },
+    "final_aimo":  {
+                       "pid":  8912,
+                       "run_id":  "live_aimo_agentlife_specific_growth_topic_final_20260707T151309Z",
+                       "stdout":  "H:\\efab\\.runtime\\live_start\\controlled_live_school_aimo_v1_20260707T070037Z\\school_restarts\\aimo_agent_restarts\\agentlife_specific_growth_topic_final_20260707T151309Z\\aimo.stdout.txt",
+                       "stderr":  "H:\\efab\\.runtime\\live_start\\controlled_live_school_aimo_v1_20260707T070037Z\\school_restarts\\aimo_agent_restarts\\agentlife_specific_growth_topic_final_20260707T151309Z\\aimo.stderr.txt",
+                       "stderr_size":  0,
+                       "proof_path":  ".runtime\\autonomous_inner_motor\\test_life_runs\\live_aimo_agentlife_specific_growth_topic_final_20260707T151309Z\\TEST_LIFE_PROOF.json",
+                       "cycles":  16,
+                       "observe":  [
+                                       {
+                                           "at":  "2026-07-07T19:13:14.1285108+04:00",
+                                           "alive":  true,
+                                           "cycles":  1,
+                                           "selector_task":  "follow_growth_signal_derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "selector_topic":  "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "selector_next":  "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "stderr_size":  0
+                                       },
+                                       {
+                                           "at":  "2026-07-07T19:13:19.1602783+04:00",
+                                           "alive":  true,
+                                           "cycles":  2,
+                                           "selector_task":  "follow_growth_signal_derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "selector_topic":  "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "selector_next":  "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "stderr_size":  0
+                                       },
+                                       {
+                                           "at":  "2026-07-07T19:13:24.1759442+04:00",
+                                           "alive":  true,
+                                           "cycles":  4,
+                                           "selector_task":  "follow_growth_signal_derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "selector_topic":  "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "selector_next":  "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "stderr_size":  0
+                                       },
+                                       {
+                                           "at":  "2026-07-07T19:13:29.2018137+04:00",
+                                           "alive":  true,
+                                           "cycles":  5,
+                                           "selector_task":  "follow_growth_signal_derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "selector_topic":  "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "selector_next":  "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "stderr_size":  0
+                                       },
+                                       {
+                                           "at":  "2026-07-07T19:13:34.2260303+04:00",
+                                           "alive":  true,
+                                           "cycles":  6,
+                                           "selector_task":  "follow_growth_signal_derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "selector_topic":  "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "selector_next":  "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "stderr_size":  0
+                                       },
+                                       {
+                                           "at":  "2026-07-07T19:13:39.2518906+04:00",
+                                           "alive":  true,
+                                           "cycles":  8,
+                                           "selector_task":  "follow_growth_signal_derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "selector_topic":  "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "selector_next":  "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "stderr_size":  0
+                                       },
+                                       {
+                                           "at":  "2026-07-07T19:13:44.2694867+04:00",
+                                           "alive":  true,
+                                           "cycles":  9,
+                                           "selector_task":  "follow_growth_signal_derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "selector_topic":  "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "selector_next":  "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "stderr_size":  0
+                                       },
+                                       {
+                                           "at":  "2026-07-07T19:13:49.3080664+04:00",
+                                           "alive":  true,
+                                           "cycles":  10,
+                                           "selector_task":  "follow_growth_signal_derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "selector_topic":  "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "selector_next":  "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "stderr_size":  0
+                                       },
+                                       {
+                                           "at":  "2026-07-07T19:13:54.3239058+04:00",
+                                           "alive":  true,
+                                           "cycles":  12,
+                                           "selector_task":  "follow_growth_signal_derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "selector_topic":  "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "selector_next":  "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "stderr_size":  0
+                                       },
+                                       {
+                                           "at":  "2026-07-07T19:13:59.3423779+04:00",
+                                           "alive":  true,
+                                           "cycles":  13,
+                                           "selector_task":  "follow_growth_signal_derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "selector_topic":  "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "selector_next":  "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "stderr_size":  0
+                                       },
+                                       {
+                                           "at":  "2026-07-07T19:14:04.3669687+04:00",
+                                           "alive":  true,
+                                           "cycles":  14,
+                                           "selector_task":  "follow_growth_signal_derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "selector_topic":  "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "selector_next":  "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "stderr_size":  0
+                                       },
+                                       {
+                                           "at":  "2026-07-07T19:14:09.3915905+04:00",
+                                           "alive":  true,
+                                           "cycles":  16,
+                                           "selector_task":  "follow_growth_signal_derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "selector_topic":  "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "selector_next":  "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                           "stderr_size":  0
+                                       }
+                                   ],
+                       "alive":  true
+                   },
+    "blockers":  [
+
+                 ],
+    "boundary":  "AIMO-only live sequence. Probe AIMO was stopped to force AgentLife packet emission; final AIMO remains live. School was observed but not modified.",
+    "created_at":  "2026-07-07T19:14:09.5429814+04:00"
+}

@@ -1,22 +1,34 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-07T19:09:52.1918211+04:00",
+    "checked_at":  "2026-07-07T19:14:43.4106541+04:00",
     "branch":  "main",
-    "observed_head":  "61a7ee31c0982daa3c88e70c912f0b542e9a42d9",
-    "subject_head":  "61a7ee31c0982daa3c88e70c912f0b542e9a42d9",
+    "observed_head":  "a6118664ffa97f50a475dbc631e37cabcae7c0d7",
+    "subject_head":  "a6118664ffa97f50a475dbc631e37cabcae7c0d7",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
+                          "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+                          "operations/autonomous_inner_motor/validate_agentlife_specific_growth_topic_v1.ps1",
+                          "operations/autonomous_inner_motor/validate_growth_directed_task_selection_v1.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "tests/live_start/AIMO_ACTIONABLE_GROWTH_SIGNAL_HOTSWAP_V1_PROOF.json"
+                          "tests/autonomous_inner_motor/AGENTLIFE_SPECIFIC_GROWTH_TOPIC_V1_PROOF.json",
+                          "tests/autonomous_inner_motor/GROWTH_DIRECTED_TASK_SELECTION_V1_PROOF.json",
+                          "tests/compact_memory_intake/GROWTH_SIGNAL_QUALITY_V1_PROOF.json",
+                          "tests/memory/episodic/EPISODIC_MEMORY_CELL_V1_PROOF.json",
+                          "tests/memory/episodic/EPISODIC_RECALL_V1_PROOF.json",
+                          "tests/reasoning/EPISODIC_DECISION_TASK_FORK_V1_PROOF.json",
+                          "tests/reasoning/EPISODIC_RECALL_DECISION_V1_PROOF.json",
+                          "tests/reasoning/REASONING_EPISODE_V1_PROOF.json"
                       ],
     "structural_paths":  [
-
+                             "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+                             "operations/autonomous_inner_motor/validate_agentlife_specific_growth_topic_v1.ps1",
+                             "operations/autonomous_inner_motor/validate_growth_directed_task_selection_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -52,5 +64,5 @@
                          "component_count":  7,
                          "structural_path_count":  587
                      },
-    "refreshed_at":  "2026-07-07T19:09:53.3756069+04:00"
+    "refreshed_at":  "2026-07-07T19:14:44.6018200+04:00"
 }
