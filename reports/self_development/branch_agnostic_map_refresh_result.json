@@ -1,18 +1,16 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-07T18:41:39.1700462+04:00",
+    "checked_at":  "2026-07-07T18:45:38.4544568+04:00",
     "branch":  "main",
-    "observed_head":  "df4ca757f4fecb56a5d5ee00c69135575f0c5298",
-    "subject_head":  "df4ca757f4fecb56a5d5ee00c69135575f0c5298",
+    "observed_head":  "0191f00e286a7797b529676fd93b45c211d26a92",
+    "subject_head":  "0191f00e286a7797b529676fd93b45c211d26a92",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
                           "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
                           "operations/autonomous_inner_motor/validate_growth_directed_task_selection_v1.ps1",
-                          "operations/compact_memory_intake/submit_compact_memory_packet_v1.ps1",
-                          "operations/compact_memory_intake/validate_growth_signal_quality_v1.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
@@ -27,9 +25,7 @@
                       ],
     "structural_paths":  [
                              "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
-                             "operations/autonomous_inner_motor/validate_growth_directed_task_selection_v1.ps1",
-                             "operations/compact_memory_intake/submit_compact_memory_packet_v1.ps1",
-                             "operations/compact_memory_intake/validate_growth_signal_quality_v1.ps1"
+                             "operations/autonomous_inner_motor/validate_growth_directed_task_selection_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -65,5 +61,5 @@
                          "component_count":  7,
                          "structural_path_count":  586
                      },
-    "refreshed_at":  "2026-07-07T18:41:40.3455824+04:00"
+    "refreshed_at":  "2026-07-07T18:45:39.6044971+04:00"
 }

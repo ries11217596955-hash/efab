@@ -1,0 +1,63 @@
+﻿{
+    "schema":  "aimo_actionable_growth_signal_hotswap_v1",
+    "status":  "PASS_AIMO_ACTIONABLE_GROWTH_SIGNAL_HOTSWAP_V1",
+    "proof_label":  "PROVEN_LIVE_AIMO_RUNNING_WITH_ACTIONABLE_GROWTH_SIGNAL_CONTRACT_AND_BRIDGE_PASSTHROUGH",
+    "repo":  {
+                 "head":  "0191f00e286a7797b529676fd93b45c211d26a92",
+                 "branch":  "main",
+                 "ahead_behind":  "0 0",
+                 "dirty_before":  [
+
+                                  ]
+             },
+    "proof_correction":  {
+                             "corrected":  true,
+                             "reason":  "previous proof command completed observation but failed during proof-builder on literal \\ntry typo; this proof is read-only over the current live AIMO runtime proof"
+                         },
+    "school":  {
+                   "pid":  11816,
+                   "alive":  true,
+                   "touched":  false
+               },
+    "new_aimo":  {
+                     "pid":  5856,
+                     "run_id":  "live_aimo_aimo_actionable_growth_signal_hotswap_v2_20260707T144227Z",
+                     "alive":  true,
+                     "stdout":  "H:\\efab\\.runtime\\live_start\\controlled_live_school_aimo_v1_20260707T070037Z\\school_restarts\\aimo_agent_restarts\\aimo_actionable_growth_signal_hotswap_v2_20260707T144227Z\\aimo.stdout.txt",
+                     "stderr":  "H:\\efab\\.runtime\\live_start\\controlled_live_school_aimo_v1_20260707T070037Z\\school_restarts\\aimo_agent_restarts\\aimo_actionable_growth_signal_hotswap_v2_20260707T144227Z\\aimo.stderr.txt",
+                     "stderr_size":  0,
+                     "proof_path":  ".runtime\\autonomous_inner_motor\\test_life_runs\\live_aimo_aimo_actionable_growth_signal_hotswap_v2_20260707T144227Z\\TEST_LIFE_PROOF.json",
+                     "cycles":  45,
+                     "selector_next_action_event_count":  1,
+                     "selector_specific_gap_event_count":  1,
+                     "selector_validator_hint_event_count":  1,
+                     "selector_proof_needed_event_count":  1,
+                     "selector_task_samples":  [
+                                                   "follow_growth_signal_growth_signal_topic_is_too_generic_for_useful_task"
+                                               ],
+                     "selector_specific_gap_samples":  [
+                                                           "validated_memory_topic_requires_bounded_next_action:growth_signal_topic_is_too_generic_for_useful_task"
+                                                       ],
+                     "selector_next_action_samples":  [
+                                                          "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta"
+                                                      ]
+                 },
+    "active_growth_signal":  {
+                                 "path":  ".runtime/compact_memory_growth_signal_v1/ACTIVE_GROWTH_SIGNAL.json",
+                                 "topics":  [
+                                                "growth_signal_topic_is_too_generic_for_useful_task"
+                                            ],
+                                 "specific_gap":  "validated_memory_topic_requires_bounded_next_action:growth_signal_topic_is_too_generic_for_useful_task",
+                                 "next_action_candidate":  "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                                 "proof_needed_count":  3,
+                                 "validator_hint":  "validate growth signal has specific_gap, next_action_candidate, proof_needed, validator_hint, and non-generated semantic topic",
+                                 "signal_quality":  "NEEDS_SPECIFICITY",
+                                 "contract_ok":  true,
+                                 "generic_topic_leak_count":  0
+                             },
+    "blockers":  [
+
+                 ],
+    "boundary":  "Read-only proof for current live AIMO after hotswap. School observed but not modified. Active memory direct mutation remains false.",
+    "created_at":  "2026-07-07T18:45:17.8358388+04:00"
+}
