@@ -1,22 +1,26 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-07T14:45:45.8484439+04:00",
+    "checked_at":  "2026-07-07T14:50:59.2328052+04:00",
     "branch":  "main",
-    "observed_head":  "b07219836034e87709713aaacdb7b3a97820a321",
-    "subject_head":  "b07219836034e87709713aaacdb7b3a97820a321",
+    "observed_head":  "9d171df7f86d340ec11515e1a9e2f85b31220b3d",
+    "subject_head":  "9d171df7f86d340ec11515e1a9e2f85b31220b3d",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
+                          "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+                          "operations/autonomous_inner_motor/validate_growth_directed_task_selection_v1.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "tests/live_start/SCHOOL_ONLY_RESTART_AFTER_MEMORY_FIX_V1_PROOF.json"
+                          "tests/autonomous_inner_motor/ACTIVE_MEMORY_STATE_BACKOFF_V1_PROOF.json",
+                          "tests/autonomous_inner_motor/GROWTH_DIRECTED_TASK_SELECTION_V1_PROOF.json"
                       ],
     "structural_paths":  [
-
+                             "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+                             "operations/autonomous_inner_motor/validate_growth_directed_task_selection_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -29,7 +33,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  575,
-                                    "sha256":  "2bfee796fa8e8c69c3d75d3b0064ea55744ee36cf1a92ee3ac537ee15f6fde4f"
+                                    "sha256":  "9fa9efb02e59390622bba196c057542baedbd6713d8c47fdeddd2b324ed923a2"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -52,5 +56,5 @@
                          "component_count":  7,
                          "structural_path_count":  575
                      },
-    "refreshed_at":  "2026-07-07T14:45:46.9083950+04:00"
+    "refreshed_at":  "2026-07-07T14:51:00.2826321+04:00"
 }

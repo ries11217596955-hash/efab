@@ -611,9 +611,6 @@ if ($Mode -eq 'SandboxTestLife') {
     $memoryTrace = [ordered]@{
       cycle = $cycle
       current_task = $task.name
-      task_selection_reason = $selector.reason
-      useful_intent = $selector.useful_intent
-      task_selection_overrode_static_rotation = $selector.overrides_static_rotation
       memory_query = $task.query
       relevance = $relevance
       candidates_checked = $memoryCompare.result.candidates_checked
@@ -697,6 +694,9 @@ if ($Mode -eq 'SandboxTestLife') {
       at = (Get-Date).ToString('o')
       selected = 'development_task_with_memory_and_reflex'
       current_task = $task.name
+      task_selection_reason = $selector.reason
+      useful_intent = $selector.useful_intent
+      task_selection_overrode_static_rotation = $selector.overrides_static_rotation
       reflexes_used = @($usedReflexes.ToArray())
       memory_relevance = $relevance
       candidates_checked = $memoryCompare.result.candidates_checked
