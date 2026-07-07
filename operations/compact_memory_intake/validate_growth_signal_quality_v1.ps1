@@ -45,6 +45,17 @@ $schoolContext|ConvertTo-Json -Depth 50|Set-Content $schoolPath -Encoding UTF8
 $out=@(& powershell -NoProfile -ExecutionPolicy Bypass -File $submit -PacketPath $schoolPath -PolicyPath $policyPath *>&1|ForEach-Object{[string]$_})
 $status=($out|Where-Object{$_ -match '^INTAKE_STATUS='}|Select-Object -Last 1)-replace '^INTAKE_STATUS=',''
 Assert ($status -eq 'PASS_MULTI_SOURCE_COMPACT_MEMORY_INTAKE_SUBMIT_V1') 'SCHOOL_CONTEXT_SUBMIT_NOT_PASS'
+$agentLifeResidue=[ordered]@{
+  schema='compact_memory_knowledge_packet_v1'; source_kind='AgentLife'; source_id='validator_agentlife_residue_after_school'; source_proof='tests/live_start/AIMO_CONCRETE_GROWTH_TOPIC_DERIVATION_LIVE_V1_PROOF.json'; emitted_at=(Get-Date).ToString('o')
+  influence=[ordered]@{ maturity_delta=0.1; memory_support_policy='ALLOW_BOUNDED_TASK_SELECTION_WHEN_TOPIC_OR_MEMORY_DELTA_MATCHES'; focus_boosts=@('understand_own_policy_limits','aimo_sandbox_test_life') }
+  quality_summary=[ordered]@{ atom_count=1; min_quality_score=0.62; min_novelty_score=0.10; classifier='AGENTLIFE_RUNTIME_SUMMARY_ATOM' }
+  atoms=@([ordered]@{ id='agentlife-residue'; topic='understand_own_policy_limits'; level=1; quality_score=0.62; novelty_score=0.10; kind='agentlife_cycle_summary'; summary='More recent AgentLife residue should not override fresher School-memory priority when resolving meta derivation.' })
+}
+$residuePath=Join-Path $testRoot 'agentlife_residue_after_school.json'
+$agentLifeResidue|ConvertTo-Json -Depth 50|Set-Content $residuePath -Encoding UTF8
+$out=@(& powershell -NoProfile -ExecutionPolicy Bypass -File $submit -PacketPath $residuePath -PolicyPath $policyPath *>&1|ForEach-Object{[string]$_})
+$status=($out|Where-Object{$_ -match '^INTAKE_STATUS='}|Select-Object -Last 1)-replace '^INTAKE_STATUS=',''
+Assert ($status -eq 'PASS_MULTI_SOURCE_COMPACT_MEMORY_INTAKE_SUBMIT_V1') 'AGENTLIFE_RESIDUE_SUBMIT_NOT_PASS'
 $derivedGeneric=[ordered]@{
   schema='compact_memory_knowledge_packet_v1'; source_kind='AgentLife'; source_id='validator_generic_after_school'; source_proof='tests/live_start/AIMO_AGENTLIFE_SPECIFIC_GROWTH_TOPIC_LIVE_V1_PROOF.json'; emitted_at=(Get-Date).ToString('o')
   influence=[ordered]@{ maturity_delta=0.1; memory_support_policy='ALLOW_BOUNDED_TASK_SELECTION_WHEN_TOPIC_OR_MEMORY_DELTA_MATCHES'; focus_boosts=@('derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta','aimo_sandbox_test_life'); next_action_candidate='derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta'; specific_gap='validated_memory_topic_requires_bounded_next_action:growth_signal_topic_is_too_generic_for_useful_task' }

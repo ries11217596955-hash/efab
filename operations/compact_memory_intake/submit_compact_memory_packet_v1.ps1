@@ -1,4 +1,4 @@
-param(
+﻿param(
   [Parameter(Mandatory=$true)][string]$PacketPath,
   [string]$PolicyPath = "operations/compact_memory_intake/multi_source_compact_memory_intake_policy.json"
 )
@@ -43,17 +43,26 @@ function Resolve-SpecificGrowthTopicFromRecentPackets([string]$QueueRoot,[string
   $currentFull=$null
   if(-not [string]::IsNullOrWhiteSpace($CurrentPacketPath) -and (Test-Path -LiteralPath $CurrentPacketPath)) { $currentFull=(Resolve-Path -LiteralPath $CurrentPacketPath).Path }
   $candidates=@(Get-ChildItem -LiteralPath $QueueRoot -File -Filter '*.json' -ErrorAction SilentlyContinue | Sort-Object LastWriteTime -Descending)
+  $packetRows=@()
   foreach($file in $candidates) {
     if($currentFull -and ((Resolve-Path -LiteralPath $file.FullName).Path -eq $currentFull)) { continue }
     try { $p=Get-Content -LiteralPath $file.FullName -Raw | ConvertFrom-Json } catch { continue }
-    $sourceKind=[string]$p.source_kind
-    $sourceId=[string]$p.source_id
     $atom=@($p.atoms | Select-Object -First 1)
     if($null -eq $atom) { continue }
-    $topic=Convert-ToGrowthSignalSlug ([string]$atom.topic)
     $focus=@()
     if($p.influence -and $p.influence.focus_boosts) { $focus=@($p.influence.focus_boosts | ForEach-Object {[string]$_}) }
-    $hasSchoolFresh = ($sourceKind -eq 'School' -and (@($focus) -contains 'fresh_school_memory' -or @($focus) -contains 'recall_use_behavior_delta' -or $topic -eq 'school_topics_plan'))
+    $row = New-Object PSObject
+    $row | Add-Member -NotePropertyName file -NotePropertyValue $file
+    $row | Add-Member -NotePropertyName packet -NotePropertyValue $p
+    $row | Add-Member -NotePropertyName atom -NotePropertyValue $atom
+    $row | Add-Member -NotePropertyName source_kind -NotePropertyValue ([string]$p.source_kind)
+    $row | Add-Member -NotePropertyName source_id -NotePropertyValue ([string]$p.source_id)
+    $row | Add-Member -NotePropertyName topic -NotePropertyValue (Convert-ToGrowthSignalSlug ([string]$atom.topic))
+    $row | Add-Member -NotePropertyName focus -NotePropertyValue ([string[]]@($focus))
+    $packetRows += $row
+  }
+  foreach($row in $packetRows) {
+    $hasSchoolFresh = ($row.source_kind -eq 'School' -and (@($row.focus) -contains 'fresh_school_memory' -or @($row.focus) -contains 'recall_use_behavior_delta' -or $row.topic -eq 'school_topics_plan'))
     if($hasSchoolFresh) {
       $result.found=$true
       $result.topic='route_fresh_school_memory_to_next_growth_action'
@@ -61,23 +70,25 @@ function Resolve-SpecificGrowthTopicFromRecentPackets([string]$QueueRoot,[string
       $result.specific_gap='fresh_school_memory_exists_but_autonomous_selector_needs_one_concrete_builder_task'
       $result.validator_hint='validate derivation uses latest School packet proof refs and does not emit meta growth-topic action'
       $result.proof_needed=@('latest School queue packet','school proof ref or active memory manifest','derivation validator PASS','live or lab observation of AIMO selecting route_fresh_school_memory_to_next_growth_action')
-      $result.source_packet_path=$file.FullName
-      $result.source_kind=$sourceKind
-      $result.source_id=$sourceId
-      $result.reason='LATEST_SCHOOL_PACKET_HAS_FRESH_MEMORY_DELTA_HINT'
+      $result.source_packet_path=$row.file.FullName
+      $result.source_kind=$row.source_kind
+      $result.source_id=$row.source_id
+      $result.reason='SCHOOL_PACKET_PRIORITY_HAS_FRESH_MEMORY_DELTA_HINT'
       return $result
     }
-    if($sourceKind -eq 'AgentLife' -and $topic -ne 'growth_signal_specificity_gap' -and $topic -ne 'derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta' -and $topic -notlike 'growth_signal_topic_is_too_generic*') {
+  }
+  foreach($row in $packetRows) {
+    if($row.source_kind -eq 'AgentLife' -and $row.topic -ne 'growth_signal_specificity_gap' -and $row.topic -ne 'derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta' -and $row.topic -notlike 'growth_signal_topic_is_too_generic*') {
       $result.found=$true
-      $result.topic=$topic
-      $result.next_action_candidate="inspect_$topic`_and_return_one_bounded_next_action_candidate"
-      $result.specific_gap="agentlife_recent_non_generic_topic_requires_one_bounded_next_action:$topic"
+      $result.topic=$row.topic
+      $result.next_action_candidate="inspect_$($row.topic)`_and_return_one_bounded_next_action_candidate"
+      $result.specific_gap="agentlife_recent_non_generic_topic_requires_one_bounded_next_action:$($row.topic)"
       $result.validator_hint='validate derivation preserves non-generic AgentLife topic and returns one bounded next action with proof refs'
       $result.proof_needed=@('latest non-generic AgentLife queue packet','AIMO proof ref','derivation validator PASS')
-      $result.source_packet_path=$file.FullName
-      $result.source_kind=$sourceKind
-      $result.source_id=$sourceId
-      $result.reason='LATEST_AGENTLIFE_PACKET_HAS_NON_GENERIC_TOPIC'
+      $result.source_packet_path=$row.file.FullName
+      $result.source_kind=$row.source_kind
+      $result.source_id=$row.source_id
+      $result.reason='LATEST_AGENTLIFE_PACKET_HAS_NON_GENERIC_TOPIC_NO_SCHOOL_FRESH_PACKET_FOUND'
       return $result
     }
   }
