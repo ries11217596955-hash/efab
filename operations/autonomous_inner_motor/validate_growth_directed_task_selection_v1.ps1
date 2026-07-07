@@ -6,7 +6,7 @@ $script='operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1'
 $tokens=$null; $errors=$null
 $ast=[System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path $script),[ref]$tokens,[ref]$errors)
 Assert (@($errors).Count -eq 0) 'AIMO_SCRIPT_PARSE_ERRORS'
-foreach($name in @('Convert-ToTaskSafeSlug','Select-GrowthDirectedDevelopmentTask')){
+foreach($name in @('Get-SelectorField','Convert-ToTaskSafeSlug','Select-GrowthDirectedDevelopmentTask')){
   $func=@($ast.FindAll({ param($n) $n -is [System.Management.Automation.Language.FunctionDefinitionAst] -and $n.Name -eq $name }, $true))[0]
   Assert ($null -ne $func) "FUNCTION_MISSING:$name"
   Invoke-Expression $func.Extent.Text
@@ -31,6 +31,11 @@ Assert ($signal.reason -eq 'ACTIVE_GROWTH_SIGNAL_TOPIC') 'GROWTH_SIGNAL_REASON_N
 Assert ($signal.task.name -eq 'follow_growth_signal_route_new_school_atoms_to_growth_action') 'GROWTH_SIGNAL_TASK_NAME_BAD'
 Assert ($signal.overrides_static_rotation -eq $true) 'GROWTH_SIGNAL_DID_NOT_OVERRIDE_ROTATION'
 Assert ($signal.task.target -eq '.runtime/compact_memory_growth_signal_v1/ACTIVE_GROWTH_SIGNAL.json') 'GROWTH_SIGNAL_TARGET_BAD'
+$growthOrdered=[ordered]@{ available=$true; source_kind='School'; packet_id='packet_ordered'; topics=@('ordered_growth_signal_topic'); focus_boosts=@('ordered_boost') }
+$signalOrdered=Select-GrowthDirectedDevelopmentTask -DevelopmentTasks $tasks -Cycle 3 -GrowthSignal $growthOrdered -CurrentMemoryState $same -PreviousMemoryState $curr
+Assert ($signalOrdered.reason -eq 'ACTIVE_GROWTH_SIGNAL_TOPIC') 'ORDERED_GROWTH_SIGNAL_REASON_NOT_SELECTED'
+Assert ($signalOrdered.task.name -eq 'follow_growth_signal_ordered_growth_signal_topic') 'ORDERED_GROWTH_SIGNAL_TASK_NAME_BAD'
+Assert ($signalOrdered.signal_packet_id -eq 'packet_ordered') 'ORDERED_GROWTH_SIGNAL_PACKET_BAD'
 $fallback=Select-GrowthDirectedDevelopmentTask -DevelopmentTasks $tasks -Cycle 2 -GrowthSignal $noGrowth -CurrentMemoryState $same -PreviousMemoryState $curr
 Assert ($fallback.reason -eq 'NO_FRESH_GROWTH_SIGNAL_OR_MEMORY_DELTA') 'FALLBACK_REASON_BAD'
 Assert ($fallback.task.name -eq 'understand_own_policy_limits') 'FALLBACK_ROTATION_BAD'

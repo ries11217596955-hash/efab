@@ -221,6 +221,15 @@ $MemoryBefore = Get-ActiveMemoryState
 $Processes = Get-ProcessMatches
 
 
+function Get-SelectorField($Object, [string]$Name, $Default = $null) {
+  if($null -eq $Object) { return $Default }
+  try {
+    $value = $Object[$Name]
+    if($null -ne $value) { return $value }
+  } catch {}
+  if($Object.PSObject -and $Object.PSObject.Properties[$Name]) { return $Object.PSObject.Properties[$Name].Value }
+  return $Default
+}
 function Convert-ToTaskSafeSlug([string]$Value) {
   if([string]::IsNullOrWhiteSpace($Value)) { return 'unknown' }
   $slug = ($Value.ToLowerInvariant() -replace '[^a-z0-9_\-]+','_').Trim('_')
@@ -239,12 +248,12 @@ function Select-GrowthDirectedDevelopmentTask {
   if($DevelopmentTasks.Count -lt 1) { throw 'NO_DEVELOPMENT_TASKS' }
   $fallback = $DevelopmentTasks[($Cycle - 1) % $DevelopmentTasks.Count]
   $fallbackTask = [ordered]@{ name=$fallback.name; query=$fallback.query; target=$fallback.target }
-  $currentHash = if($CurrentMemoryState -and $CurrentMemoryState.PSObject.Properties['cells_sha256']) { [string]$CurrentMemoryState.cells_sha256 } else { '' }
-  $previousHash = if($PreviousMemoryState -and $PreviousMemoryState.PSObject.Properties['cells_sha256']) { [string]$PreviousMemoryState.cells_sha256 } else { '' }
-  $currentRun = if($CurrentMemoryState -and $CurrentMemoryState.PSObject.Properties['run_id']) { [string]$CurrentMemoryState.run_id } else { '' }
-  $previousRun = if($PreviousMemoryState -and $PreviousMemoryState.PSObject.Properties['run_id']) { [string]$PreviousMemoryState.run_id } else { '' }
-  $currentAvailable = ($CurrentMemoryState -and $CurrentMemoryState.PSObject.Properties['available'] -and [bool]$CurrentMemoryState.available)
-  $previousAvailable = ($PreviousMemoryState -and $PreviousMemoryState.PSObject.Properties['available'] -and [bool]$PreviousMemoryState.available)
+  $currentHash = [string](Get-SelectorField $CurrentMemoryState 'cells_sha256' '')
+  $previousHash = [string](Get-SelectorField $PreviousMemoryState 'cells_sha256' '')
+  $currentRun = [string](Get-SelectorField $CurrentMemoryState 'run_id' '')
+  $previousRun = [string](Get-SelectorField $PreviousMemoryState 'run_id' '')
+  $currentAvailable = [bool](Get-SelectorField $CurrentMemoryState 'available' $false)
+  $previousAvailable = [bool](Get-SelectorField $PreviousMemoryState 'available' $false)
   if($currentAvailable -and $previousAvailable -and -not [string]::IsNullOrWhiteSpace($currentHash) -and -not [string]::IsNullOrWhiteSpace($previousHash) -and $currentHash -ne $previousHash) {
     return [ordered]@{
       status='SELECTED_GROWTH_DIRECTED_TASK'
@@ -259,24 +268,24 @@ function Select-GrowthDirectedDevelopmentTask {
       current_cells_sha256=$currentHash
     }
   }
-  $growthAvailable = ($GrowthSignal -and $GrowthSignal.PSObject.Properties['available'] -and [bool]$GrowthSignal.available)
+  $growthAvailable = [bool](Get-SelectorField $GrowthSignal 'available' $false)
   if($growthAvailable) {
     $topics = @()
-    foreach($topicCandidate in @($GrowthSignal.topics)) { if(-not [string]::IsNullOrWhiteSpace([string]$topicCandidate)) { $topics += [string]$topicCandidate } }
+    foreach($topicCandidate in @((Get-SelectorField $GrowthSignal 'topics' @()))) { if(-not [string]::IsNullOrWhiteSpace([string]$topicCandidate)) { $topics += [string]$topicCandidate } }
     $boosts = @()
-    foreach($boostCandidate in @($GrowthSignal.focus_boosts)) { if(-not [string]::IsNullOrWhiteSpace([string]$boostCandidate)) { $boosts += [string]$boostCandidate } }
+    foreach($boostCandidate in @((Get-SelectorField $GrowthSignal 'focus_boosts' @()))) { if(-not [string]::IsNullOrWhiteSpace([string]$boostCandidate)) { $boosts += [string]$boostCandidate } }
     $topic = if(@($topics).Count -gt 0) { [string]@($topics)[0] } elseif(@($boosts).Count -gt 0) { [string]@($boosts)[0] } else { 'active_growth_signal' }
     $slug = Convert-ToTaskSafeSlug $topic
     return [ordered]@{
       status='SELECTED_GROWTH_DIRECTED_TASK'
       reason='ACTIVE_GROWTH_SIGNAL_TOPIC'
-      source=if($GrowthSignal.PSObject.Properties['source_kind']){[string]$GrowthSignal.source_kind}else{'growth_signal'}
+      source=[string](Get-SelectorField $GrowthSignal 'source_kind' 'growth_signal')
       task=[ordered]@{ name="follow_growth_signal_$slug"; query=("growth signal topic {0}; inspect fresh memory support and produce one bounded next useful action with proof need" -f $topic); target='.runtime/compact_memory_growth_signal_v1/ACTIVE_GROWTH_SIGNAL.json' }
       useful_intent='turn_growth_signal_into_one_bounded_next_action_candidate'
       overrides_static_rotation=$true
       topics=@($topics)
       focus_boosts=@($boosts)
-      signal_packet_id=if($GrowthSignal.PSObject.Properties['packet_id']){[string]$GrowthSignal.packet_id}else{$null}
+      signal_packet_id=(Get-SelectorField $GrowthSignal 'packet_id' $null)
     }
   }
   return [ordered]@{ status='SELECTED_STATIC_ROTATION_TASK'; reason='NO_FRESH_GROWTH_SIGNAL_OR_MEMORY_DELTA'; source='static_development_task_rotation'; task=$fallbackTask; useful_intent='continue_safe_baseline_self_development'; overrides_static_rotation=$false }

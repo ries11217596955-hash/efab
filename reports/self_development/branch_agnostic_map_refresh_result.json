@@ -1,16 +1,15 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-07T14:50:59.2328052+04:00",
+    "checked_at":  "2026-07-07T14:55:52.6328843+04:00",
     "branch":  "main",
-    "observed_head":  "9d171df7f86d340ec11515e1a9e2f85b31220b3d",
-    "subject_head":  "9d171df7f86d340ec11515e1a9e2f85b31220b3d",
+    "observed_head":  "383887feef4b3be0deb1259a8519660b0d6250fc",
+    "subject_head":  "383887feef4b3be0deb1259a8519660b0d6250fc",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
                           "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
-                          "operations/autonomous_inner_motor/validate_growth_directed_task_selection_v1.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
@@ -19,8 +18,7 @@
                           "tests/autonomous_inner_motor/GROWTH_DIRECTED_TASK_SELECTION_V1_PROOF.json"
                       ],
     "structural_paths":  [
-                             "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
-                             "operations/autonomous_inner_motor/validate_growth_directed_task_selection_v1.ps1"
+                             "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -33,7 +31,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  575,
-                                    "sha256":  "9fa9efb02e59390622bba196c057542baedbd6713d8c47fdeddd2b324ed923a2"
+                                    "sha256":  "469600807f963c62f445397c04103cfb1fef27888f4bb4d560a8c67e3bf2ee46"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -56,5 +54,5 @@
                          "component_count":  7,
                          "structural_path_count":  575
                      },
-    "refreshed_at":  "2026-07-07T14:51:00.2826321+04:00"
+    "refreshed_at":  "2026-07-07T14:55:53.8228788+04:00"
 }
