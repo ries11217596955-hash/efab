@@ -1,15 +1,16 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-07T14:55:52.6328843+04:00",
+    "checked_at":  "2026-07-07T14:59:01.5325005+04:00",
     "branch":  "main",
-    "observed_head":  "383887feef4b3be0deb1259a8519660b0d6250fc",
-    "subject_head":  "383887feef4b3be0deb1259a8519660b0d6250fc",
+    "observed_head":  "0460f316b6576fc388b85f4429032b6bd9e209ed",
+    "subject_head":  "0460f316b6576fc388b85f4429032b6bd9e209ed",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
                           "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+                          "operations/autonomous_inner_motor/validate_growth_directed_task_selection_v1.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
@@ -18,7 +19,8 @@
                           "tests/autonomous_inner_motor/GROWTH_DIRECTED_TASK_SELECTION_V1_PROOF.json"
                       ],
     "structural_paths":  [
-                             "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1"
+                             "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+                             "operations/autonomous_inner_motor/validate_growth_directed_task_selection_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -54,5 +56,5 @@
                          "component_count":  7,
                          "structural_path_count":  575
                      },
-    "refreshed_at":  "2026-07-07T14:55:53.8228788+04:00"
+    "refreshed_at":  "2026-07-07T14:59:02.5833607+04:00"
 }

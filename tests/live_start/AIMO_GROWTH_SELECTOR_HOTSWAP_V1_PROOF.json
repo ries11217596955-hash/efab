@@ -1,0 +1,179 @@
+﻿{
+    "schema":  "aimo_growth_selector_hotswap_v1",
+    "status":  "PASS_AIMO_GROWTH_SELECTOR_HOTSWAP_V1",
+    "proof_label":  "PROVEN_LIVE_AIMO_RESTARTED_WITH_GROWTH_DIRECTED_TASK_SELECTION",
+    "repo":  {
+                 "head":  "0460f316b6576fc388b85f4429032b6bd9e209ed",
+                 "branch":  "main",
+                 "ahead_behind":  "0 0",
+                 "dirty_before":  [
+
+                                  ]
+             },
+    "school":  {
+                   "pid":  11816,
+                   "alive_before":  true,
+                   "touched":  false
+               },
+    "old_aimo":  {
+                     "pid":  7328,
+                     "run_id":  "live_aimo_aimo_growth_selector_hotswap_v2_20260707T105137Z",
+                     "alive_before":  true,
+                     "stop_path":  ".runtime\\autonomous_inner_motor\\test_life_runs\\live_aimo_aimo_growth_selector_hotswap_v2_20260707T105137Z\\STOP_REQUESTED.txt",
+                     "stop_events":  [
+                                         {
+                                             "at":  "2026-07-07T14:57:11.7639748+04:00",
+                                             "old_aimo_alive":  true
+                                         },
+                                         {
+                                             "at":  "2026-07-07T14:57:13.7643995+04:00",
+                                             "old_aimo_alive":  false
+                                         }
+                                     ],
+                     "forced_stop":  false,
+                     "alive_after":  false
+                 },
+    "new_aimo":  {
+                     "pid":  4148,
+                     "run_id":  "live_aimo_aimo_growth_selector_hotswap_v3_20260707T105709Z",
+                     "alive":  true,
+                     "stdout":  "H:\\efab\\.runtime\\live_start\\controlled_live_school_aimo_v1_20260707T070037Z\\school_restarts\\aimo_agent_restarts\\aimo_growth_selector_hotswap_v3_20260707T105709Z\\aimo.stdout.txt",
+                     "stderr":  "H:\\efab\\.runtime\\live_start\\controlled_live_school_aimo_v1_20260707T070037Z\\school_restarts\\aimo_agent_restarts\\aimo_growth_selector_hotswap_v3_20260707T105709Z\\aimo.stderr.txt",
+                     "stderr_size":  0,
+                     "proof_path":  ".runtime\\autonomous_inner_motor\\test_life_runs\\live_aimo_aimo_growth_selector_hotswap_v3_20260707T105709Z\\TEST_LIFE_PROOF.json",
+                     "cycles":  23,
+                     "reason_counts":  [
+                                           {
+                                               "reason":  "ACTIVE_GROWTH_SIGNAL_TOPIC",
+                                               "count":  22
+                                           },
+                                           {
+                                               "reason":  "ACTIVE_MEMORY_DELTA_FROM_SCHOOL",
+                                               "count":  1
+                                           }
+                                       ],
+                     "task_counts":  [
+                                         {
+                                             "task":  "follow_growth_signal_understand_own_policy_limits",
+                                             "count":  22
+                                         },
+                                         {
+                                             "task":  "inspect_school_memory_delta",
+                                             "count":  1
+                                         }
+                                     ],
+                     "growth_available":  true,
+                     "growth_topics":  "understand_own_policy_limits"
+                 },
+    "observation":  {
+                        "observe_seconds":  90,
+                        "heartbeat_seconds":  10,
+                        "heartbeats":  [
+                                           {
+                                               "at":  "2026-07-07T14:57:23.8145189+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  0,
+                                               "growth_available":  null,
+                                               "last_task":  null,
+                                               "last_selection_reason":  null,
+                                               "last_useful_intent":  null,
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T14:57:33.8643427+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  0,
+                                               "growth_available":  null,
+                                               "last_task":  null,
+                                               "last_selection_reason":  null,
+                                               "last_useful_intent":  null,
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T14:57:43.8647138+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  0,
+                                               "growth_available":  null,
+                                               "last_task":  null,
+                                               "last_selection_reason":  null,
+                                               "last_useful_intent":  null,
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T14:57:53.8801969+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  0,
+                                               "growth_available":  null,
+                                               "last_task":  null,
+                                               "last_selection_reason":  null,
+                                               "last_useful_intent":  null,
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T14:58:03.8991167+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  0,
+                                               "growth_available":  null,
+                                               "last_task":  null,
+                                               "last_selection_reason":  null,
+                                               "last_useful_intent":  null,
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T14:58:13.9325216+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  5,
+                                               "growth_available":  true,
+                                               "last_task":  "follow_growth_signal_understand_own_policy_limits",
+                                               "last_selection_reason":  "ACTIVE_GROWTH_SIGNAL_TOPIC",
+                                               "last_useful_intent":  "turn_growth_signal_into_one_bounded_next_action_candidate",
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T14:58:23.9646249+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  11,
+                                               "growth_available":  true,
+                                               "last_task":  "follow_growth_signal_understand_own_policy_limits",
+                                               "last_selection_reason":  "ACTIVE_GROWTH_SIGNAL_TOPIC",
+                                               "last_useful_intent":  "turn_growth_signal_into_one_bounded_next_action_candidate",
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T14:58:33.9826722+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  17,
+                                               "growth_available":  true,
+                                               "last_task":  "follow_growth_signal_understand_own_policy_limits",
+                                               "last_selection_reason":  "ACTIVE_GROWTH_SIGNAL_TOPIC",
+                                               "last_useful_intent":  "turn_growth_signal_into_one_bounded_next_action_candidate",
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T14:58:43.9985955+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  23,
+                                               "growth_available":  true,
+                                               "last_task":  "follow_growth_signal_understand_own_policy_limits",
+                                               "last_selection_reason":  "ACTIVE_GROWTH_SIGNAL_TOPIC",
+                                               "last_useful_intent":  "turn_growth_signal_into_one_bounded_next_action_candidate",
+                                               "stderr_size":  0
+                                           }
+                                       ]
+                    },
+    "blockers":  [
+
+                 ],
+    "boundary":  "AIMO-only hotswap to growth-directed selector with ordered-signal access and event-level reason proof. School observed but not modified. No active memory direct mutation.",
+    "started_at":  "2026-07-07T14:57:09.7326830+04:00",
+    "finished_at":  "2026-07-07T14:58:44.1487350+04:00"
+}
