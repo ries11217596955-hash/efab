@@ -1,10 +1,10 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-06T23:06:11.1276357+04:00",
+    "checked_at":  "2026-07-07T08:02:25.8083468+04:00",
     "branch":  "main",
-    "observed_head":  "d830611ac62d85ac06dfd9494591e114f7f9f4b3",
-    "subject_head":  "d830611ac62d85ac06dfd9494591e114f7f9f4b3",
+    "observed_head":  "9aa2a5604697479011cd6eed132282b9e5cfe84c",
+    "subject_head":  "9aa2a5604697479011cd6eed132282b9e5cfe84c",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
@@ -14,7 +14,8 @@
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
-                          "reports/self_development/branch_agnostic_map_refresh_result.json"
+                          "reports/self_development/branch_agnostic_map_refresh_result.json",
+                          "tests/accepted_atom_retention/USEFUL_SCHOOL_30K_FULL_PROCESS_V1_PROOF.json"
                       ],
     "structural_paths":  [
 
@@ -29,8 +30,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  552,
-                                    "sha256":  "9d38098b46384d58009e19ba0f1596d218e475ed98a0f6fc33aa867adbd35425"
+                                    "structural_file_count":  554,
+                                    "sha256":  "868112b14e0d6052c08dfcc6bff7b71a33c87d76727e3eff548c41ec1b21ecc3"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -51,7 +52,7 @@
                          "builder":  "AGENT_BODY_COMPOSITION_MAP_V1",
                          "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                          "component_count":  7,
-                         "structural_path_count":  552
+                         "structural_path_count":  554
                      },
-    "refreshed_at":  "2026-07-06T23:06:11.8123080+04:00"
+    "refreshed_at":  "2026-07-07T08:02:26.6989328+04:00"
 }
