@@ -1,0 +1,31 @@
+﻿{
+    "schema":  "builder_mission_scoring_validation_v1",
+    "status":  "PASS_BUILDER_MISSION_SCORING_V1",
+    "scoring_report_path":  "reports/self_development/BUILDER_MISSION_SCORING_V1.json",
+    "fake_latest_signal_test_path":  "reports/self_development/BUILDER_MISSION_SCORING_V1_FAKE_LATEST_SIGNAL_TEST.json",
+    "live_process_touched":  false,
+    "active_memory_mutated":  false,
+    "tests":  [
+                  {
+                      "name":  "scores_all_candidates_without_selection",
+                      "status":  "PASS"
+                  },
+                  {
+                      "name":  "source_agnostic_selector_scores_top",
+                      "status":  "PASS"
+                  },
+                  {
+                      "name":  "child_agent_jump_penalized_until_self_build_proven",
+                      "status":  "PASS"
+                  },
+                  {
+                      "name":  "school_dependency_and_latest_signal_authority_penalized",
+                      "status":  "PASS"
+                  },
+                  {
+                      "name":  "scoring_does_not_touch_live_or_active_memory",
+                      "status":  "PASS"
+                  }
+              ],
+    "created_at":  "2026-07-07T22:06:55.1440289+04:00"
+}

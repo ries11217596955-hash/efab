@@ -1,36 +1,35 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-07T21:55:03.3848880+04:00",
+    "checked_at":  "2026-07-07T22:07:03.7998344+04:00",
     "branch":  "main",
-    "observed_head":  "14b787ff26382f5da7264bbd861b464686e2386d",
-    "subject_head":  "14b787ff26382f5da7264bbd861b464686e2386d",
+    "observed_head":  "7d1a681c6e578f021ed934f1be034e3b1f8e2ae8",
+    "subject_head":  "7d1a681c6e578f021ed934f1be034e3b1f8e2ae8",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "operations/self_model/export_builder_gap_map_v1.ps1",
-                          "operations/self_model/export_current_body_capability_snapshot_v1.ps1",
-                          "operations/self_model/validate_builder_gap_map_v1.ps1",
-                          "operations/self_model/validate_builder_identity_contract_v1.ps1",
-                          "operations/self_model/validate_current_body_capability_snapshot_v1.ps1",
-                          "reports/self_development/BUILDER_GAP_MAP_V1.json",
-                          "reports/self_development/CURRENT_BODY_CAPABILITY_SNAPSHOT_V1.json",
+                          "operations/self_model/export_candidate_action_set_v1.ps1",
+                          "operations/self_model/export_source_evidence_inventory_v1.ps1",
+                          "operations/self_model/validate_candidate_action_set_v1.ps1",
+                          "operations/self_model/validate_source_evidence_inventory_v1.ps1",
+                          "reports/self_development/CANDIDATE_ACTION_SET_V1.json",
+                          "reports/self_development/CANDIDATE_ACTION_SET_V1_MISSING_SOURCES_TEST.json",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+                          "reports/self_development/SOURCE_EVIDENCE_INVENTORY_V1.json",
+                          "reports/self_development/SOURCE_EVIDENCE_INVENTORY_V1_MISSING_SOURCES_FOR_CANDIDATES_TEST.json",
+                          "reports/self_development/SOURCE_EVIDENCE_INVENTORY_V1_SCHOOL_MISSING_TEST.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "self_model/BUILDER_IDENTITY_CONTRACT_V1.json",
-                          "tests/self_model/BUILDER_GAP_MAP_V1_PROOF.json",
-                          "tests/self_model/BUILDER_IDENTITY_CONTRACT_V1_PROOF.json",
-                          "tests/self_model/CURRENT_BODY_CAPABILITY_SNAPSHOT_V1_PROOF.json"
+                          "tests/self_model/CANDIDATE_ACTION_SET_V1_PROOF.json",
+                          "tests/self_model/SOURCE_EVIDENCE_INVENTORY_V1_PROOF.json"
                       ],
     "structural_paths":  [
-                             "operations/self_model/export_builder_gap_map_v1.ps1",
-                             "operations/self_model/export_current_body_capability_snapshot_v1.ps1",
-                             "operations/self_model/validate_builder_gap_map_v1.ps1",
-                             "operations/self_model/validate_builder_identity_contract_v1.ps1",
-                             "operations/self_model/validate_current_body_capability_snapshot_v1.ps1"
+                             "operations/self_model/export_candidate_action_set_v1.ps1",
+                             "operations/self_model/export_source_evidence_inventory_v1.ps1",
+                             "operations/self_model/validate_candidate_action_set_v1.ps1",
+                             "operations/self_model/validate_source_evidence_inventory_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -42,8 +41,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  596,
-                                    "sha256":  "73e02a4669f86529b1644a9cbfb06d195a0528e0ece538cf107126975f8f984c"
+                                    "structural_file_count":  598,
+                                    "sha256":  "8d8c08142c4972526f8b57c948e622f470e28af57fd6d59ff589abaaba59c049"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -64,7 +63,7 @@
                          "builder":  "AGENT_BODY_COMPOSITION_MAP_V1",
                          "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                          "component_count":  7,
-                         "structural_path_count":  596
+                         "structural_path_count":  598
                      },
-    "refreshed_at":  "2026-07-07T21:55:04.6678293+04:00"
+    "refreshed_at":  "2026-07-07T22:07:05.0837272+04:00"
 }

@@ -1,0 +1,232 @@
+﻿{
+    "schema":  "candidate_action_set_v1",
+    "status":  "CANDIDATE_ACTION_SET_EXPORTED",
+    "route_lock":  "route_locks/AGENT_BUILDER_NEXT_15_STEPS_LOCK_V4_IDENTITY_BASED_SELECTION.md",
+    "identity_contract_path":  "self_model/BUILDER_IDENTITY_CONTRACT_V1.json",
+    "gap_map_path":  "reports/self_development/BUILDER_GAP_MAP_V1.json",
+    "evidence_inventory_path":  "reports/self_development/SOURCE_EVIDENCE_INVENTORY_V1.json",
+    "generator_rule":  "generate_candidates_from_identity_plus_gap_map_plus_evidence; do_not_score_or_select_in_phase_f",
+    "candidates":  [
+                       {
+                           "id":  "build_source_agnostic_path_selector_v1",
+                           "selected_next_action":  "build_source_agnostic_path_selector_v1",
+                           "candidate_kind":  "self_build_selector",
+                           "identity_alignment":  "primary_mission:build_repair_verify_and_improve_self",
+                           "selected_gap":  "source_agnostic_path_selector_missing",
+                           "mission_relevance":  "primary_self_build",
+                           "reason":  "Critical gap blocks V4 identity-based selection; sources must enrich but not command.",
+                           "proof_needed":  [
+                                                "lab source-agnostic selector proof",
+                                                "negative School missing/stale/failed proof",
+                                                "controlled live AIMO proof later"
+                                            ],
+                           "validator_needed":  [
+                                                    "validate_source_agnostic_path_selector_v1",
+                                                    "validate_single_source_dependency_negative_cases_v1"
+                                                ],
+                           "source_refs_used":  [
+                                                    "builder_identity_contract",
+                                                    "current_body_capability_snapshot",
+                                                    "builder_gap_map",
+                                                    "source_evidence_inventory"
+                                                ],
+                           "source_refs_rejected":  [
+                                                        "latest_runtime_packets_as_authority",
+                                                        "school_as_required_brain",
+                                                        "agentlife_residue_as_direction"
+                                                    ],
+                           "why_not_latest_signal":  "Latest runtime packet is only freshness evidence; this candidate closes the critical Builder gap.",
+                           "fallback_if_source_missing":  "bounded_static_self_build_task_from_gap_map",
+                           "depends_on_school":  false,
+                           "status":  "CANDIDATE_READY_FOR_SCORING"
+                       },
+                       {
+                           "id":  "build_builder_mission_scoring_v1",
+                           "selected_next_action":  "build_builder_mission_scoring_v1",
+                           "candidate_kind":  "self_build_scoring",
+                           "identity_alignment":  "primary_mission:build_repair_verify_and_improve_self",
+                           "selected_gap":  "builder_mission_scoring_missing",
+                           "mission_relevance":  "primary_self_build",
+                           "reason":  "A scoring layer is needed before final selection can prefer mission value over freshness.",
+                           "proof_needed":  [
+                                                "scoring proof JSON"
+                                            ],
+                           "validator_needed":  [
+                                                    "validate_builder_mission_scoring_v1"
+                                                ],
+                           "source_refs_used":  [
+                                                    "builder_identity_contract",
+                                                    "builder_gap_map"
+                                                ],
+                           "source_refs_rejected":  [
+                                                        "latest_signal_priority_without_scoring"
+                                                    ],
+                           "why_not_latest_signal":  "Latest signal is not enough until candidate scoring exists.",
+                           "fallback_if_source_missing":  "choose_critical_gap_order_without_source_dependency",
+                           "depends_on_school":  false,
+                           "status":  "CANDIDATE_READY_FOR_SCORING"
+                       },
+                       {
+                           "id":  "wire_builder_identity_contract_into_aimo_lab_v1",
+                           "selected_next_action":  "wire_builder_identity_contract_into_aimo_lab_v1",
+                           "candidate_kind":  "aimo_lab_wiring",
+                           "identity_alignment":  "primary_mission:build_repair_verify_and_improve_self",
+                           "selected_gap":  "identity_contract_not_wired_into_aimo",
+                           "mission_relevance":  "primary_self_build",
+                           "reason":  "Identity contract is proven as law but not consumed by AIMO yet.",
+                           "proof_needed":  [
+                                                "AIMO lab integration proof"
+                                            ],
+                           "validator_needed":  [
+                                                    "validate_aimo_identity_contract_integration_v1"
+                                                ],
+                           "source_refs_used":  [
+                                                    "builder_identity_contract",
+                                                    "current_body_capability_snapshot"
+                                                ],
+                           "source_refs_rejected":  [
+                                                        "AIMO_current_task_without_identity_contract"
+                                                    ],
+                           "why_not_latest_signal":  "Latest source cannot wire identity into AIMO.",
+                           "fallback_if_source_missing":  "do_not_hotswap_live_until_lab_pass",
+                           "depends_on_school":  false,
+                           "status":  "CANDIDATE_READY_FOR_SCORING"
+                       },
+                       {
+                           "id":  "add_provenance_and_rejection_trace_v1",
+                           "selected_next_action":  "add_provenance_and_rejection_trace_v1",
+                           "candidate_kind":  "trace",
+                           "identity_alignment":  "primary_mission:build_repair_verify_and_improve_self",
+                           "selected_gap":  "provenance_rejection_trace_missing",
+                           "mission_relevance":  "primary_self_build",
+                           "reason":  "Trustworthy selection needs source_refs_used, source_refs_rejected, and why_not_latest_signal.",
+                           "proof_needed":  [
+                                                "trace proof JSON"
+                                            ],
+                           "validator_needed":  [
+                                                    "validate_rejection_trace_non_empty_v1"
+                                                ],
+                           "source_refs_used":  [
+                                                    "builder_identity_contract",
+                                                    "source_evidence_inventory"
+                                                ],
+                           "source_refs_rejected":  [
+                                                        "opaque_selection_without_rejection_reasons"
+                                                    ],
+                           "why_not_latest_signal":  "Latest signal may be rejected; rejection reason must be explicit.",
+                           "fallback_if_source_missing":  "emit_minimal_identity_gap_reason_when_sources_missing",
+                           "depends_on_school":  false,
+                           "status":  "CANDIDATE_READY_FOR_SCORING"
+                       },
+                       {
+                           "id":  "add_latest_signal_overfit_negative_tests_v1",
+                           "selected_next_action":  "add_latest_signal_overfit_negative_tests_v1",
+                           "candidate_kind":  "validator",
+                           "identity_alignment":  "primary_mission:build_repair_verify_and_improve_self",
+                           "selected_gap":  "latest_signal_overfit_negative_tests_missing",
+                           "mission_relevance":  "primary_self_build",
+                           "reason":  "V4 requires proof that fresh but low-value source loses to higher Builder gap.",
+                           "proof_needed":  [
+                                                "negative test proof"
+                                            ],
+                           "validator_needed":  [
+                                                    "validate_latest_signal_overfit_rejection_v1"
+                                                ],
+                           "source_refs_used":  [
+                                                    "builder_gap_map",
+                                                    "source_evidence_inventory"
+                                                ],
+                           "source_refs_rejected":  [
+                                                        "fresh_agentlife_residue_as_authority"
+                                                    ],
+                           "why_not_latest_signal":  "Latest signal is intentionally not selected when mission relevance is lower.",
+                           "fallback_if_source_missing":  "use_builder_gap_map_when_latest_signal_low_value",
+                           "depends_on_school":  false,
+                           "status":  "CANDIDATE_READY_FOR_SCORING"
+                       },
+                       {
+                           "id":  "add_single_source_dependency_negative_tests_v1",
+                           "selected_next_action":  "add_single_source_dependency_negative_tests_v1",
+                           "candidate_kind":  "validator",
+                           "identity_alignment":  "primary_mission:build_repair_verify_and_improve_self",
+                           "selected_gap":  "single_source_dependency_negative_tests_missing",
+                           "mission_relevance":  "primary_self_build",
+                           "reason":  "Selector must continue without School, AgentLife, or any single packet.",
+                           "proof_needed":  [
+                                                "missing/stale/failed source proof"
+                                            ],
+                           "validator_needed":  [
+                                                    "validate_single_source_dependency_negative_cases_v1"
+                                                ],
+                           "source_refs_used":  [
+                                                    "source_evidence_inventory",
+                                                    "builder_gap_map"
+                                                ],
+                           "source_refs_rejected":  [
+                                                        "school_required_for_selection"
+                                                    ],
+                           "why_not_latest_signal":  "Latest or single source is optional; missing source must not block.",
+                           "fallback_if_source_missing":  "fallback_to_identity_and_gap_map",
+                           "depends_on_school":  false,
+                           "status":  "CANDIDATE_READY_FOR_SCORING"
+                       },
+                       {
+                           "id":  "defer_child_agent_factory_until_self_build_selector_proven",
+                           "selected_next_action":  "defer_child_agent_factory_until_self_build_selector_proven",
+                           "candidate_kind":  "defer_secondary",
+                           "identity_alignment":  "primary_mission:build_repair_verify_and_improve_self",
+                           "selected_gap":  "child_agent_factory_not_ready_future_blocker",
+                           "mission_relevance":  "secondary_child_agent_future",
+                           "reason":  "Child-agent factory is secondary and must wait for source-agnostic self-build selector proof.",
+                           "proof_needed":  [
+                                                "future Owner review after V4 slice"
+                                            ],
+                           "validator_needed":  [
+                                                    "child_agent_readiness_validator_later"
+                                                ],
+                           "source_refs_used":  [
+                                                    "builder_identity_contract",
+                                                    "builder_gap_map"
+                                                ],
+                           "source_refs_rejected":  [
+                                                        "premature_child_agent_jump"
+                                                    ],
+                           "why_not_latest_signal":  "Latest signal cannot override primary mission maturity gate.",
+                           "fallback_if_source_missing":  "continue_self_build_selector_slice",
+                           "depends_on_school":  false,
+                           "status":  "CANDIDATE_READY_FOR_SCORING"
+                       },
+                       {
+                           "id":  "follow_latest_school_packet_without_gap_v1",
+                           "selected_next_action":  "follow_latest_school_packet_without_gap_v1",
+                           "candidate_kind":  "latest_signal_follow",
+                           "identity_alignment":  "weak:latest_signal_over_identity",
+                           "selected_gap":  "unknown_latest_signal_gap",
+                           "mission_relevance":  "secondary_child_agent_future",
+                           "reason":  "Fake negative candidate that follows latest School packet without known Builder gap.",
+                           "proof_needed":  [
+                                                "fake proof"
+                                            ],
+                           "validator_needed":  [
+                                                    "fake validator"
+                                                ],
+                           "source_refs_used":  [
+                                                    "latest_runtime_packets_as_authority",
+                                                    "school_optional_source"
+                                                ],
+                           "source_refs_rejected":  [
+
+                                                    ],
+                           "why_not_latest_signal":  "",
+                           "fallback_if_source_missing":  "",
+                           "depends_on_school":  true,
+                           "status":  "CANDIDATE_READY_FOR_SCORING"
+                       }
+                   ],
+    "candidate_count":  8,
+    "scoring_not_performed":  true,
+    "selection_not_performed":  true,
+    "live_process_touched":  false,
+    "active_memory_mutated":  false,
+    "created_at":  "2026-07-07T22:06:52.0679297+04:00"
+}
