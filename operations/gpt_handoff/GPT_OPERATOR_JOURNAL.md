@@ -130,3 +130,10 @@ Night-school note:
 - Evidence: AIMO SandboxTestLife cycles=3 while School active; AIMO detected school_active=true; AgentLife packet submitted via compact_memory_intake; merge deferred/backoff during school; post-school merge PASS.
 - Proof: tests/parallel_life/SCHOOL_AIMO_PARALLEL_LAB_V1_PROOF.json.
 - Boundary: lab mechanics only, not live readiness. First failed wrapper attempt is not success proof; final proof assembled from runtime evidence and validated.
+
+2026-07-07 - Repeatable School + AIMO parallel harness pass
+- Result: PASS_SCHOOL_AIMO_PARALLEL_LAB_V1; proof_label=PROVEN_LAB_PARALLEL_MECHANICS_NOT_LIVE.
+- Harness now writes proof itself and validates without manual recovery assembly.
+- Evidence: AIMO cycles=111, AIMO detected active School, AgentLife packet submitted via compact_memory_intake, merge was deferred/backoff during School, post-School merge PASS.
+- School controlled_stop=true after evidence capture; this is lab repeatability, not live readiness.
+- Proof: tests/parallel_life/SCHOOL_AIMO_PARALLEL_LAB_V1_PROOF.json.
