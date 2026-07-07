@@ -1,26 +1,22 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-07T09:42:18.9480718+04:00",
+    "checked_at":  "2026-07-07T09:43:29.4080640+04:00",
     "branch":  "main",
-    "observed_head":  "3951aa03ad902a1a51563a94f14c94d7570f3893",
-    "subject_head":  "3951aa03ad902a1a51563a94f14c94d7570f3893",
+    "observed_head":  "cff2ac530c0a6cce779064d5c860e17dd9b1914a",
+    "subject_head":  "cff2ac530c0a6cce779064d5c860e17dd9b1914a",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
                           "operations/live_readiness/run_detached_long_runtime_stopfile_contract_v1.ps1",
-                          "operations/live_readiness/run_detached_stopfile_contract_worker_v1.ps1",
-                          "operations/live_readiness/validate_detached_long_runtime_stopfile_contract_v1.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json"
                       ],
     "structural_paths":  [
-                             "operations/live_readiness/run_detached_long_runtime_stopfile_contract_v1.ps1",
-                             "operations/live_readiness/run_detached_stopfile_contract_worker_v1.ps1",
-                             "operations/live_readiness/validate_detached_long_runtime_stopfile_contract_v1.ps1"
+                             "operations/live_readiness/run_detached_long_runtime_stopfile_contract_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -56,5 +52,5 @@
                          "component_count":  7,
                          "structural_path_count":  561
                      },
-    "refreshed_at":  "2026-07-07T09:42:20.1825782+04:00"
+    "refreshed_at":  "2026-07-07T09:43:30.6322748+04:00"
 }

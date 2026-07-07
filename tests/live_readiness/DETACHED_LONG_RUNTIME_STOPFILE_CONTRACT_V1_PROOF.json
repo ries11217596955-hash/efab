@@ -1,0 +1,102 @@
+﻿{
+    "schema":  "detached_long_runtime_stopfile_contract_v1",
+    "status":  "PASS_DETACHED_LONG_RUNTIME_STOPFILE_CONTRACT_V1",
+    "proof_label":  "PROVEN_LAB_DETACHED_LONG_RUNTIME_STOPFILE_CONTRACT_NOT_LIVE",
+    "run_id":  "detached_long_runtime_stopfile_contract_v1_20260707T054248Z",
+    "repo":  {
+                 "root":  "H:/efab",
+                 "branch":  "main",
+                 "head":  "cff2ac530c0a6cce779064d5c860e17dd9b1914a",
+                 "origin":  "https://github.com/ries11217596955-hash/efab.git",
+                 "ahead_behind":  "0\t0",
+                 "dirty_before":  [
+
+                                  ],
+                 "dirty_after_before_proof_write":  [
+
+                                                    ]
+             },
+    "detached_process":  {
+                             "worker_pid":  9852,
+                             "child_exit":  0,
+                             "started_at":  "2026-07-07T09:42:46.5645918+04:00",
+                             "stop_requested_at":  "2026-07-07T09:42:53.3143005+04:00",
+                             "finished_at":  "2026-07-07T09:42:54.8740001+04:00",
+                             "duration_seconds":  8.309,
+                             "stopped_within_grace":  true,
+                             "stop_grace_seconds":  20,
+                             "worker_alive_after_stop":  false
+                         },
+    "contract":  {
+                     "run_root":  ".runtime\\live_readiness\\detached_long_runtime_stopfile_contract_v1_20260707T054248Z",
+                     "stopfile_path":  ".runtime\\live_readiness\\detached_long_runtime_stopfile_contract_v1_20260707T054248Z\\STOP_REQUESTED.txt",
+                     "heartbeat_path":  ".runtime\\live_readiness\\detached_long_runtime_stopfile_contract_v1_20260707T054248Z\\heartbeat.json",
+                     "exit_proof_path":  ".runtime\\live_readiness\\detached_long_runtime_stopfile_contract_v1_20260707T054248Z\\worker_exit_proof.json",
+                     "stdout_path":  ".runtime\\live_readiness\\detached_long_runtime_stopfile_contract_v1_20260707T054248Z\\worker.stdout.txt",
+                     "stderr_path":  ".runtime\\live_readiness\\detached_long_runtime_stopfile_contract_v1_20260707T054248Z\\worker.stderr.txt",
+                     "min_heartbeat_count":  3,
+                     "heartbeat_seconds":  2,
+                     "heartbeat_reached_at":  "2026-07-07T09:42:53.3143005+04:00",
+                     "heartbeat_events":  [
+                                              {
+                                                  "at":  "2026-07-07T09:42:49.2326078+04:00",
+                                                  "count":  1,
+                                                  "elapsed_seconds":  0.05,
+                                                  "stopfile_seen":  false
+                                              },
+                                              {
+                                                  "at":  "2026-07-07T09:42:50.2647289+04:00",
+                                                  "count":  1,
+                                                  "elapsed_seconds":  0.05,
+                                                  "stopfile_seen":  false
+                                              },
+                                              {
+                                                  "at":  "2026-07-07T09:42:51.2823064+04:00",
+                                                  "count":  2,
+                                                  "elapsed_seconds":  2.141,
+                                                  "stopfile_seen":  false
+                                              },
+                                              {
+                                                  "at":  "2026-07-07T09:42:52.2986466+04:00",
+                                                  "count":  2,
+                                                  "elapsed_seconds":  2.141,
+                                                  "stopfile_seen":  false
+                                              },
+                                              {
+                                                  "at":  "2026-07-07T09:42:53.3143005+04:00",
+                                                  "count":  3,
+                                                  "elapsed_seconds":  4.143,
+                                                  "stopfile_seen":  false
+                                              }
+                                          ],
+                     "final_heartbeat":  {
+                                             "schema":  "detached_stopfile_worker_heartbeat_v1",
+                                             "pid":  9852,
+                                             "heartbeat_count":  4,
+                                             "at":  "2026-07-07T09:42:54.5984454+04:00",
+                                             "elapsed_seconds":  6.166,
+                                             "stopfile_seen":  true,
+                                             "active_memory_mutated":  false
+                                         },
+                     "worker_exit_proof":  {
+                                               "schema":  "detached_stopfile_worker_exit_v1",
+                                               "status":  "PASS_DETACHED_STOPFILE_WORKER_EXIT_V1",
+                                               "pid":  9852,
+                                               "exit_reason":  "STOPFILE_OBSERVED",
+                                               "stopfile_seen":  true,
+                                               "stopfile_path":  ".runtime\\live_readiness\\detached_long_runtime_stopfile_contract_v1_20260707T054248Z\\STOP_REQUESTED.txt",
+                                               "heartbeat_path":  ".runtime\\live_readiness\\detached_long_runtime_stopfile_contract_v1_20260707T054248Z\\heartbeat.json",
+                                               "heartbeat_count":  4,
+                                               "started_at":  "2026-07-07T09:42:48.4326231+04:00",
+                                               "finished_at":  "2026-07-07T09:42:54.5984454+04:00",
+                                               "duration_seconds":  6.166,
+                                               "active_memory_mutated":  false,
+                                               "runtime_ready":  false
+                                           }
+                 },
+    "blockers":  [
+
+                 ],
+    "boundary":  "Lab contract proof only: detached worker emits heartbeat, observes stopfile, exits cleanly within grace. Not live runtime execution.",
+    "runtime_ready":  false
+}

@@ -175,3 +175,21 @@ LIVE_READINESS_GATE_PROOF=tests/live_readiness/SCHOOL_AIMO_LIVE_READINESS_GATE_V
 ` 
 
 Decision: NO-GO for live. This is a successful safety gate result, not a failure. Lab/live-like prerequisites passed; live remains blocked until explicit Owner live authorization plus proven rollback, quarantine, detached stopfile contract, and continuous runtime proof.
+
+## Detached long-runtime stopfile contract result
+
+`	ext
+DETACHED_STOPFILE_CONTRACT_STATUS=PASS_DETACHED_LONG_RUNTIME_STOPFILE_CONTRACT_V1
+DETACHED_STOPFILE_CONTRACT_PROOF_LABEL=PROVEN_LAB_DETACHED_LONG_RUNTIME_STOPFILE_CONTRACT_NOT_LIVE
+DETACHED_STOPFILE_CONTRACT_RUN_ID=detached_long_runtime_stopfile_contract_v1_20260707T054248Z
+DETACHED_STOPFILE_CONTRACT_REPO_HEAD=cff2ac530c0a6cce779064d5c860e17dd9b1914a
+DETACHED_STOPFILE_CONTRACT_WORKER_PID=9852
+DETACHED_STOPFILE_CONTRACT_CHILD_EXIT=0
+DETACHED_STOPFILE_CONTRACT_HEARTBEATS=4
+DETACHED_STOPFILE_CONTRACT_EXIT_REASON=STOPFILE_OBSERVED
+DETACHED_STOPFILE_CONTRACT_STOPPED_WITHIN_GRACE=True
+DETACHED_STOPFILE_CONTRACT_RUNTIME_READY=false
+DETACHED_STOPFILE_CONTRACT_PROOF=tests/live_readiness/DETACHED_LONG_RUNTIME_STOPFILE_CONTRACT_V1_PROOF.json
+` 
+
+Boundary: lab contract proof only; detached worker heartbeat + stopfile + clean exit proven, not live runtime execution.
