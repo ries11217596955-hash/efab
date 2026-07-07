@@ -1,0 +1,33 @@
+﻿{
+    "schema":  "episodic_decision_task_fork_validation_v1",
+    "status":  "PASS_EPISODIC_DECISION_TASK_FORK_V1",
+    "tests":  [
+                  {
+                      "name":  "keep_task_when_no_recall_decision",
+                      "status":  "PASS",
+                      "action":  "KEEP_TASK"
+                  },
+                  {
+                      "name":  "generic_recall_does_not_fork",
+                      "status":  "PASS",
+                      "action":  "KEEP_TASK"
+                  },
+                  {
+                      "name":  "validation_guardrail_decision_forks_task",
+                      "status":  "PASS",
+                      "action":  "FORK_TO_VALIDATION_TASK",
+                      "forked_task":  "validate_guardrails_before_follow_growth_signal_understand_own_policy_limits"
+                  },
+                  {
+                      "name":  "fork_query_preserves_original_and_proof_need",
+                      "status":  "PASS"
+                  },
+                  {
+                      "name":  "aimo_fork_wiring_static_check",
+                      "status":  "PASS"
+                  }
+              ],
+    "live_process_touched":  false,
+    "active_memory_mutated":  false,
+    "created_at":  "2026-07-07T17:33:17.1334193+04:00"
+}

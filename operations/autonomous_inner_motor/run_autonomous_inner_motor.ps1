@@ -16,6 +16,8 @@ $EpisodicRecallPath = Join-Path 'operations/memory/episodic' 'get_episode_recall
 if(Test-Path $EpisodicRecallPath) { . $EpisodicRecallPath }
 $ReasoningDecisionPath = Join-Path 'operations/reasoning' 'select_decision_from_episodic_recall_v1.ps1'
 if(Test-Path $ReasoningDecisionPath) { . $ReasoningDecisionPath }
+$ReasoningForkPath = Join-Path 'operations/reasoning' 'select_task_fork_from_episodic_decision_v1.ps1'
+if(Test-Path $ReasoningForkPath) { . $ReasoningForkPath }
 
 function Get-GitStatusShort {
   $s = git status --short --untracked-files=all
@@ -355,6 +357,7 @@ if ($Mode -eq 'SandboxTestLife') {
     task_decomposition_trace = @()
     episodic_recall_trace = @()
     episodic_decision_trace = @()
+    episodic_fork_trace = @()
     batch_knowledge_acquisition_trace = @()
   }
   $Payload['boundary'] = 'Sandbox development life. Hard walls remain; each cycle may decompose X into <=10 parts and call governed batch source only after local knowledge gap.'
@@ -618,6 +621,17 @@ if ($Mode -eq 'SandboxTestLife') {
       $Payload.development_trace.current_task_query_with_episodic_recall = $task.query
       $Payload.development_trace.current_task_query_with_episodic_decision = $task.query
     }
+    if(Get-Command Get-TaskForkFromEpisodicDecision -ErrorAction SilentlyContinue) {
+      $episodicFork = Get-TaskForkFromEpisodicDecision -TaskName $task.name -TaskQuery $task.query -TaskTarget $task.target -EpisodicDecision $episodicDecision
+    } else {
+      $episodicFork = [ordered]@{ available=$false; status='EPISODIC_FORK_HELPER_MISSING'; fork_available=$false; fork_action='KEEP_TASK'; fork_reason='fork helper not loaded'; original_task=$task; forked_task=$null; required_guardrails=@(); selected_episode_ids=@() }
+    }
+    $Payload.development_trace.episodic_fork_trace = @($episodicFork)
+    if($episodicFork.fork_available -and $episodicFork.forked_task) {
+      $task = $episodicFork.forked_task
+      $Payload.development_trace.current_task = $task.name
+      $Payload.development_trace.current_task_query_with_episodic_fork = $task.query
+    }
 
 
     $usedReflexes = New-Object System.Collections.Generic.List[string]
@@ -743,6 +757,11 @@ if ($Mode -eq 'SandboxTestLife') {
       episodic_decision_action = $episodicDecision.decision_action
       episodic_decision_question = $episodicDecision.question_to_self
       episodic_decision_guardrail_count = @($episodicDecision.required_guardrails).Count
+      episodic_fork_status = $episodicFork.status
+      episodic_fork_action = $episodicFork.fork_action
+      episodic_fork_reason = $episodicFork.fork_reason
+      episodic_forked_from_task = $(if($episodicFork.original_task){$episodicFork.original_task.name}else{$null})
+      episodic_fork_guardrail_count = @($episodicFork.required_guardrails).Count
       reflexes_used = @($usedReflexes.ToArray())
       memory_relevance = $relevance
       candidates_checked = $memoryCompare.result.candidates_checked
