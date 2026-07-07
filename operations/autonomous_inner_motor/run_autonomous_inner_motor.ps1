@@ -205,7 +205,21 @@ function Emit-AgentLifeKnowledgePacket($Payload,[string]$RunRoot,[string]$RunId,
   $r.school_active_before=[bool]$Payload.school_state.active_detected
   $packetRoot=Join-Path $RunRoot 'agentlife_packets'; New-Item -ItemType Directory -Force -Path $packetRoot|Out-Null
   $last=$null; if($Payload.test_life.recent_events -and @($Payload.test_life.recent_events).Count -gt 0){$last=@($Payload.test_life.recent_events)[-1]}
-  $topic=if($last -and $last.current_task){[string]$last.current_task}else{'aimo_sandbox_test_life'}
+  $topic='aimo_sandbox_test_life'
+  $topicSource='fallback'
+  $selectorTrace=@()
+  if($Payload.development_trace -and $Payload.development_trace.task_selection_trace){$selectorTrace=@($Payload.development_trace.task_selection_trace)}
+  $lastSelector=if(@($selectorTrace).Count -gt 0){$selectorTrace[-1]}else{$null}
+  if($lastSelector -and $lastSelector.PSObject.Properties['normalized_topic'] -and -not [string]::IsNullOrWhiteSpace([string]$lastSelector.normalized_topic)){
+    $topic=[string]$lastSelector.normalized_topic
+    $topicSource='selector_normalized_topic'
+  } elseif($last -and $last.current_task) {
+    $topic=Normalize-GrowthSignalTopicForTask ([string]$last.current_task)
+    $topicSource='normalized_last_current_task'
+  }
+  if($topic -in @('follow','follow_gr','follow_growth','growth_signal','validate_guardrails')){$topic='active_growth_signal';$topicSource='service_prefix_residue_fallback'}
+  $r['agentlife_topic_source']=$topicSource
+  $r['agentlife_topic']=$topic
   $packetPath=Join-Path $packetRoot 'AGENTLIFE_KNOWLEDGE_PACKET.json'
   $packet=[ordered]@{schema='compact_memory_knowledge_packet_v1';source_kind='AgentLife';source_id=$RunId;source_proof=$ProofPath;emitted_at=(Get-Date).ToString('o');influence=[ordered]@{maturity_delta=0.1;memory_support_policy='ALLOW_BOUNDED_TASK_SELECTION_WHEN_TOPIC_OR_MEMORY_DELTA_MATCHES';focus_boosts=@($topic,'aimo_sandbox_test_life','agentlife_cycle_learning')};quality_summary=[ordered]@{atom_count=1;min_quality_score=0.62;min_novelty_score=0.10;classifier='AGENTLIFE_RUNTIME_SUMMARY_ATOM'};atoms=@([ordered]@{id="agentlife-$RunId-cycle-$($Payload.test_life.total_cycles)";topic=$topic;level=1;quality_score=0.62;novelty_score=0.10;kind='agentlife_cycle_summary';summary="AIMO SandboxTestLife completed cycle $($Payload.test_life.total_cycles), used memory/reflex/source traces, and returned a compact AgentLife learning packet without direct active memory mutation.";evidence=[ordered]@{aimo_proof=$ProofPath;cycles=[int]$Payload.test_life.total_cycles;stop_reason=[string]$Payload.stop_reason;direct_active_memory_write_allowed=[bool]$Payload.memory_coordination.direct_active_memory_write_allowed};uses=@('support bounded task selection when topic or memory delta matches','do not mutate active memory directly','return one next useful action candidate with proof need')})}
   $packet|ConvertTo-Json -Depth 60|Set-Content -LiteralPath $packetPath -Encoding UTF8; $r.packet_path=$packetPath
@@ -259,6 +273,8 @@ function Normalize-GrowthSignalTopicForTask([string]$Value) {
     $changed = ($before -ne $slug)
   }
   if([string]::IsNullOrWhiteSpace($slug)) { return 'active_growth_signal' }
+  # SERVICE_PREFIX_RESIDUE_FALLBACK: a truncated generated task name like follow_gr is not a semantic growth topic.
+  if($slug -in @('follow','follow_gr','follow_growth','growth_signal','validate_guardrails')) { return 'active_growth_signal' }
   if($slug.Length -gt 64) { $slug = $slug.Substring(0,64).Trim('_','-') }
   if([string]::IsNullOrWhiteSpace($slug)) { return 'active_growth_signal' }
   return $slug

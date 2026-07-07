@@ -45,6 +45,11 @@ Assert ($normalizedSignal.topic_was_normalized -eq $true) 'REPEATED_PREFIX_NORMA
 Assert ($normalizedSignal.task.name -eq 'follow_growth_signal_understand_own_policy') 'REPEATED_PREFIX_TASK_NAME_NOT_NORMALIZED'
 Assert ($normalizedSignal.task.name -notmatch 'follow_growth_signal_follow_growth_signal') 'REPEATED_PREFIX_TASK_NAME_STILL_RECURSIVE'
 Assert ($normalizedSignal.task.query -match 'growth signal topic understand_own_policy') 'REPEATED_PREFIX_QUERY_NOT_NORMALIZED'
+$truncatedResidueGrowth=[ordered]@{ available=$true; source_kind='AgentLife'; packet_id='packet_truncated_residue'; topics=@('validate_guardrails_before_follow_growth_signal_follow_growth_signal_follow_growth_signal_follow_gr'); focus_boosts=@('validate_guardrails_before_follow_growth_signal_follow_growth_signal_follow_growth_signal_follow_gr') }
+$truncatedResidueSignal=Select-GrowthDirectedDevelopmentTask -DevelopmentTasks $tasks -Cycle 5 -GrowthSignal $truncatedResidueGrowth -CurrentMemoryState $same -PreviousMemoryState $curr
+Assert ($truncatedResidueSignal.normalized_topic -eq 'active_growth_signal') 'TRUNCATED_SERVICE_RESIDUE_NORMALIZED_TOPIC_BAD'
+Assert ($truncatedResidueSignal.task.name -eq 'follow_growth_signal_active_growth_signal') 'TRUNCATED_SERVICE_RESIDUE_TASK_NAME_BAD'
+Assert ($truncatedResidueSignal.task.name -notmatch 'follow_growth_signal_follow_growth_signal') 'TRUNCATED_SERVICE_RESIDUE_STILL_RECURSIVE'
 $fallback=Select-GrowthDirectedDevelopmentTask -DevelopmentTasks $tasks -Cycle 2 -GrowthSignal $noGrowth -CurrentMemoryState $same -PreviousMemoryState $curr
 Assert ($fallback.reason -eq 'NO_FRESH_GROWTH_SIGNAL_OR_MEMORY_DELTA') 'FALLBACK_REASON_BAD'
 Assert ($fallback.task.name -eq 'understand_own_policy_limits') 'FALLBACK_ROTATION_BAD'
@@ -57,6 +62,7 @@ $out=[ordered]@{
     [ordered]@{name='memory_delta_overrides_static_rotation'; status='PASS'; selected_task=$delta.task.name; reason=$delta.reason},
     [ordered]@{name='growth_signal_topic_overrides_static_rotation'; status='PASS'; selected_task=$signal.task.name; reason=$signal.reason},
     [ordered]@{name='growth_signal_repeated_prefix_is_normalized'; status='PASS'; selected_task=$normalizedSignal.task.name; raw_topic=$normalizedSignal.raw_topic; normalized_topic=$normalizedSignal.normalized_topic; reason=$normalizedSignal.reason},
+    [ordered]@{name='growth_signal_truncated_service_residue_falls_back'; status='PASS'; selected_task=$truncatedResidueSignal.task.name; raw_topic=$truncatedResidueSignal.raw_topic; normalized_topic=$truncatedResidueSignal.normalized_topic; reason=$truncatedResidueSignal.reason},
     [ordered]@{name='no_signal_falls_back_to_static_rotation'; status='PASS'; selected_task=$fallback.task.name; reason=$fallback.reason}
   )
   live_process_touched=$false
