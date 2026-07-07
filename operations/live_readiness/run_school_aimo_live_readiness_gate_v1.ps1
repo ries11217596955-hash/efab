@@ -33,6 +33,7 @@ $processes=@(RelevantRuntimeChildProcesses)
 $liveLike=ReadJson $LiveLikeProofPath
 $stopfileContract=ReadJson $StopfileContractProofPath
 $rollbackContract=ReadJson $RollbackContractProofPath
+$rejectContract=ReadJson $RejectAndForgetProofPath
 $mapOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File validators/validate_agent_body_composition_map_current_v1.ps1 *>&1 | ForEach-Object {[string]$_})
 $mapExit=$LASTEXITCODE
 $mapStatus=(($mapOut | Where-Object { $_ -match '^STATUS=' } | Select-Object -Last 1) -replace '^STATUS=','')
@@ -53,6 +54,12 @@ if($rollbackContract){
   $rollbackContractValidationOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File operations/live_readiness/validate_live_rollback_contract_v1.ps1 -ProofPath $RollbackContractProofPath *>&1 | ForEach-Object {[string]$_})
   $rollbackContractValidationExit=$LASTEXITCODE
   $rollbackContractValidationStatus=(($rollbackContractValidationOut | Where-Object { $_ -match '^VALIDATION_PASS=' } | Select-Object -Last 1) -replace '^VALIDATION_PASS=','')
+}
+$rejectContractValidationOut=@(); $rejectContractValidationExit=$null; $rejectContractValidationStatus='NOT_ATTEMPTED'
+if($rejectContract){
+  $rejectContractValidationOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File operations/live_readiness/validate_live_reject_and_forget_contract_v1.ps1 -ProofPath $RejectAndForgetProofPath *>&1 | ForEach-Object {[string]$_})
+  $rejectContractValidationExit=$LASTEXITCODE
+  $rejectContractValidationStatus=(($rejectContractValidationOut | Where-Object { $_ -match '^VALIDATION_PASS=' } | Select-Object -Last 1) -replace '^VALIDATION_PASS=','')
 }
 $proofChecks=[ordered]@{
   live_like_proof_present=($null -ne $liveLike)
@@ -76,6 +83,14 @@ $proofChecks=[ordered]@{
   rollback_contract_final_state=if($rollbackContract){$rollbackContract.rollback.final_state}else{$null}
   rollback_contract_active_memory_mutated=if($rollbackContract){$rollbackContract.safety.active_memory_mutated}else{$null}
   rollback_contract_tracked_repo_mutated=if($rollbackContract){$rollbackContract.safety.tracked_repo_mutated}else{$null}
+  reject_contract_present=($null -ne $rejectContract)
+  reject_contract_status=if($rejectContract){$rejectContract.status}else{$null}
+  reject_contract_mode=if($rejectContract){$rejectContract.reject.mode}else{$null}
+  reject_contract_raw_packet_exists_after_disposal=if($rejectContract){$rejectContract.bad_input.raw_packet_exists_after_disposal}else{$null}
+  reject_contract_manifest_contains_raw_payload=if($rejectContract){$rejectContract.reject.manifest_contains_raw_payload}else{$null}
+  reject_contract_accepted=if($rejectContract){$rejectContract.reject.accepted}else{$null}
+  reject_contract_merged=if($rejectContract){$rejectContract.reject.merged}else{$null}
+  reject_contract_executed=if($rejectContract){$rejectContract.reject.executed}else{$null}
 }
 $passedPrereqs=@(); $missingPrereqs=@()
 if(($RepoRoot -replace '\\','/') -eq 'H:/efab'){ $passedPrereqs += 'CANONICAL_ROOT_H_EFAB' } else { $missingPrereqs += 'CANONICAL_ROOT_H_EFAB' }
@@ -94,11 +109,12 @@ if($liveLike -and $liveLike.parallel_harness.intake_status -eq 'PASS_MULTI_SOURC
 if($liveLike -and $liveLike.parallel_harness.merge_after_school_status -eq 'PASS_MULTI_SOURCE_COMPACT_MEMORY_MERGE_QUEUE_V1'){ $passedPrereqs += 'POST_SCHOOL_MERGE_PASS' } else { $missingPrereqs += 'POST_SCHOOL_MERGE_PASS' }
 if($stopfileContractValidationStatus -eq 'PASS_DETACHED_LONG_RUNTIME_STOPFILE_CONTRACT_V1' -and $stopfileContractValidationExit -eq 0){ $passedPrereqs += 'DETACHED_LONG_RUNTIME_STOPFILE_CONTRACT_PASS' } else { $missingPrereqs += 'DETACHED_LONG_RUNTIME_STOPFILE_CONTRACT_PASS' }
 if($rollbackContractValidationStatus -eq 'PASS_LIVE_ROLLBACK_CONTRACT_V1' -and $rollbackContractValidationExit -eq 0){ $passedPrereqs += 'LIVE_ROLLBACK_CONTRACT_PASS' } else { $missingPrereqs += 'LIVE_ROLLBACK_CONTRACT_PASS' }
+if($rejectContractValidationStatus -eq 'PASS_LIVE_REJECT_AND_FORGET_CONTRACT_V1' -and $rejectContractValidationExit -eq 0){ $passedPrereqs += 'LIVE_REJECT_AND_FORGET_CONTRACT_PASS' } else { $missingPrereqs += 'LIVE_REJECT_AND_FORGET_CONTRACT_PASS' }
 $goBlockers=@()
 if(-not $OwnerLiveAuthorization){ $goBlockers += 'OWNER_LIVE_AUTHORIZATION_MISSING' }
 if($liveLike -and $liveLike.runtime_ready -ne $true){ $goBlockers += 'PRIOR_PROOF_RUNTIME_READY_FALSE' }
 if($rollbackContractValidationStatus -ne 'PASS_LIVE_ROLLBACK_CONTRACT_V1' -or $rollbackContractValidationExit -ne 0){ $goBlockers += 'LIVE_ROLLBACK_PLAN_NOT_PROVEN' }
-$goBlockers += 'LIVE_QUARANTINE_PLAN_NOT_PROVEN'
+if($rejectContractValidationStatus -ne 'PASS_LIVE_REJECT_AND_FORGET_CONTRACT_V1' -or $rejectContractValidationExit -ne 0){ $goBlockers += 'LIVE_QUARANTINE_PLAN_NOT_PROVEN' }
 if($stopfileContractValidationStatus -ne 'PASS_DETACHED_LONG_RUNTIME_STOPFILE_CONTRACT_V1' -or $stopfileContractValidationExit -ne 0){ $goBlockers += 'DETACHED_LONG_RUNTIME_STOPFILE_CONTRACT_NOT_PROVEN' }
 $goBlockers += 'LIVE_CONTINUOUS_RUNTIME_NOT_PROVEN'
 $gateBlockers=@(); if($missingPrereqs.Count -gt 0){ $gateBlockers += @($missingPrereqs) }
@@ -113,8 +129,8 @@ $result=[ordered]@{
   decision=$decision
   live_ready=$liveReady
   repo=[ordered]@{ root=($RepoRoot -replace '\\','/'); branch=$branch; head=$head; origin=$origin; ahead_behind=$aheadBehind; dirty_before=@($dirtyBefore); active_process_count=$processes.Count }
-  checks=[ordered]@{ passed=@($passedPrereqs); missing=@($missingPrereqs); go_blockers=@($goBlockers); map_status=$mapStatus; map_exit=$mapExit; live_like_validation_status=$liveLikeValidationStatus; live_like_validation_exit=$liveLikeValidationExit; stopfile_contract_validation_status=$stopfileContractValidationStatus; stopfile_contract_validation_exit=$stopfileContractValidationExit; rollback_contract_validation_status=$rollbackContractValidationStatus; rollback_contract_validation_exit=$rollbackContractValidationExit; proof_checks=$proofChecks }
-  required_next_to_be_live_ready=@('explicit Owner live authorization','proved quarantine plan','continuous runtime proof with live boundary, not lab controlled-stop')
+  checks=[ordered]@{ passed=@($passedPrereqs); missing=@($missingPrereqs); go_blockers=@($goBlockers); map_status=$mapStatus; map_exit=$mapExit; live_like_validation_status=$liveLikeValidationStatus; live_like_validation_exit=$liveLikeValidationExit; stopfile_contract_validation_status=$stopfileContractValidationStatus; stopfile_contract_validation_exit=$stopfileContractValidationExit; rollback_contract_validation_status=$rollbackContractValidationStatus; rollback_contract_validation_exit=$rollbackContractValidationExit; reject_contract_validation_status=$rejectContractValidationStatus; reject_contract_validation_exit=$rejectContractValidationExit; proof_checks=$proofChecks }
+  required_next_to_be_live_ready=@('explicit Owner live authorization','continuous runtime proof with live boundary, not lab controlled-stop')
   boundary='Readiness decision only. This gate does not launch live runtime. NO-GO is a valid safe pass when prerequisites are proven but live blockers remain.'
   runtime_ready=$false
   started_at=$startedAt.ToString('o')

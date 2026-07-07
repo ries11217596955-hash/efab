@@ -1,24 +1,24 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-07T10:02:59.2656705+04:00",
+    "checked_at":  "2026-07-07T10:03:50.9232976+04:00",
     "branch":  "main",
-    "observed_head":  "37f03fecad5ad84109d3022e45afc55251f05a1c",
-    "subject_head":  "37f03fecad5ad84109d3022e45afc55251f05a1c",
+    "observed_head":  "5fc95fd2c3fb0d23fc55e175e0839c09ac3b938c",
+    "subject_head":  "5fc95fd2c3fb0d23fc55e175e0839c09ac3b938c",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "operations/live_readiness/run_live_reject_and_forget_contract_v1.ps1",
-                          "operations/live_readiness/validate_live_reject_and_forget_contract_v1.ps1",
+                          "docs/operations/GROWTH_SYSTEM_STATUS_AND_NEXT_PORTS_20260706.md",
+                          "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
-                          "reports/self_development/branch_agnostic_map_refresh_result.json"
+                          "reports/self_development/branch_agnostic_map_refresh_result.json",
+                          "tests/live_readiness/LIVE_REJECT_AND_FORGET_CONTRACT_V1_PROOF.json"
                       ],
     "structural_paths":  [
-                             "operations/live_readiness/run_live_reject_and_forget_contract_v1.ps1",
-                             "operations/live_readiness/validate_live_reject_and_forget_contract_v1.ps1"
+
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -31,7 +31,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  565,
-                                    "sha256":  "b5453d0a0b95aa95899de5ccab95ff92b9416d5980a28b32f782d5cd6242c8a2"
+                                    "sha256":  "ceff0f2421d7d25173edf5efab38380501a306c0bc23740b05d436b36f07d742"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -54,5 +54,5 @@
                          "component_count":  7,
                          "structural_path_count":  565
                      },
-    "refreshed_at":  "2026-07-07T10:03:01.0481111+04:00"
+    "refreshed_at":  "2026-07-07T10:03:52.4643002+04:00"
 }
