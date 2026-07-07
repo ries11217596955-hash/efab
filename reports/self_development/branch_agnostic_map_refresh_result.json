@@ -1,35 +1,28 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-07T22:07:03.7998344+04:00",
+    "checked_at":  "2026-07-07T22:24:16.2336191+04:00",
     "branch":  "main",
-    "observed_head":  "7d1a681c6e578f021ed934f1be034e3b1f8e2ae8",
-    "subject_head":  "7d1a681c6e578f021ed934f1be034e3b1f8e2ae8",
+    "observed_head":  "818553f82cd7127a0375f94d4fa980c7581967c1",
+    "subject_head":  "818553f82cd7127a0375f94d4fa980c7581967c1",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "operations/self_model/export_candidate_action_set_v1.ps1",
-                          "operations/self_model/export_source_evidence_inventory_v1.ps1",
-                          "operations/self_model/validate_candidate_action_set_v1.ps1",
-                          "operations/self_model/validate_source_evidence_inventory_v1.ps1",
-                          "reports/self_development/CANDIDATE_ACTION_SET_V1.json",
-                          "reports/self_development/CANDIDATE_ACTION_SET_V1_MISSING_SOURCES_TEST.json",
+                          "operations/self_model/export_builder_mission_scoring_v1.ps1",
+                          "operations/self_model/validate_builder_mission_scoring_v1.ps1",
+                          "reports/self_development/BUILDER_MISSION_SCORING_V1.json",
+                          "reports/self_development/BUILDER_MISSION_SCORING_V1_FAKE_LATEST_SIGNAL_TEST.json",
+                          "reports/self_development/CANDIDATE_ACTION_SET_V1_FAKE_LATEST_SIGNAL_TEST.json",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-                          "reports/self_development/SOURCE_EVIDENCE_INVENTORY_V1.json",
-                          "reports/self_development/SOURCE_EVIDENCE_INVENTORY_V1_MISSING_SOURCES_FOR_CANDIDATES_TEST.json",
-                          "reports/self_development/SOURCE_EVIDENCE_INVENTORY_V1_SCHOOL_MISSING_TEST.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "tests/self_model/CANDIDATE_ACTION_SET_V1_PROOF.json",
-                          "tests/self_model/SOURCE_EVIDENCE_INVENTORY_V1_PROOF.json"
+                          "tests/self_model/BUILDER_MISSION_SCORING_V1_PROOF.json"
                       ],
     "structural_paths":  [
-                             "operations/self_model/export_candidate_action_set_v1.ps1",
-                             "operations/self_model/export_source_evidence_inventory_v1.ps1",
-                             "operations/self_model/validate_candidate_action_set_v1.ps1",
-                             "operations/self_model/validate_source_evidence_inventory_v1.ps1"
+                             "operations/self_model/export_builder_mission_scoring_v1.ps1",
+                             "operations/self_model/validate_builder_mission_scoring_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -41,8 +34,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  598,
-                                    "sha256":  "8d8c08142c4972526f8b57c948e622f470e28af57fd6d59ff589abaaba59c049"
+                                    "structural_file_count":  600,
+                                    "sha256":  "d9854d653090d206b73922f373e14fcb4f2b4ab2790a28555f29264984256d00"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -63,7 +56,7 @@
                          "builder":  "AGENT_BODY_COMPOSITION_MAP_V1",
                          "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                          "component_count":  7,
-                         "structural_path_count":  598
+                         "structural_path_count":  600
                      },
-    "refreshed_at":  "2026-07-07T22:07:05.0837272+04:00"
+    "refreshed_at":  "2026-07-07T22:24:17.6180332+04:00"
 }
