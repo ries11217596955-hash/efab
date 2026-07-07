@@ -13,7 +13,24 @@ Set-Location $RepoRoot
 function GitStatusShort(){ @(git status --short --untracked-files=all) }
 function WriteJson($Path,$Obj){ New-Item -ItemType Directory -Force -Path (Split-Path $Path -Parent) | Out-Null; $Obj | ConvertTo-Json -Depth 40 | Set-Content -Path $Path -Encoding UTF8 }
 function ReadJson($Path){ if([string]::IsNullOrWhiteSpace([string]$Path)){ return $null }; if(-not(Test-Path $Path)){ return $null }; return (Get-Content $Path -Raw | ConvertFrom-Json) }
-function RuntimeProcesses(){ @(Get-CimInstance Win32_Process -ErrorAction SilentlyContinue | Where-Object { -not [string]::IsNullOrWhiteSpace([string]$_.CommandLine) -and ([string]$_.CommandLine -like '*run_agent_school.ps1*' -or [string]$_.CommandLine -like '*run_autonomous_inner_motor.ps1*' -or [string]$_.CommandLine -like '*run_school_aimo_parallel_lab_v1.ps1*' -or [string]$_.CommandLine -like '*run_school_aimo_live_like_observation_gate_v1.ps1*') }) }
+function RuntimeProcesses(){
+  $selfPid=[int]$PID
+  $parentIds=@{}
+  $cur=$selfPid
+  for($i=0;$i -lt 8;$i++){
+    $p=Get-CimInstance Win32_Process -Filter "ProcessId=$cur" -ErrorAction SilentlyContinue
+    if(-not $p -or -not $p.ParentProcessId){ break }
+    $parentIds[[int]$p.ParentProcessId]=$true
+    $cur=[int]$p.ParentProcessId
+  }
+  @(Get-CimInstance Win32_Process -ErrorAction SilentlyContinue | Where-Object {
+    if([int]$_.ProcessId -eq $selfPid){ return $false }
+    if($parentIds.ContainsKey([int]$_.ProcessId)){ return $false }
+    if([string]::IsNullOrWhiteSpace([string]$_.CommandLine)){ return $false }
+    $cmd=[string]$_.CommandLine
+    return ($cmd -like '* -File *run_agent_school.ps1*' -or $cmd -like '* -File *run_autonomous_inner_motor.ps1*' -or $cmd -like '* -File *run_school_aimo_parallel_lab_v1.ps1*' -or $cmd -like '* -File *run_school_aimo_live_like_observation_gate_v1.ps1*')
+  })
+}
 function RunValidation($Script,$ProofPath){
   $out=@(& powershell -NoProfile -ExecutionPolicy Bypass -File $Script -ProofPath $ProofPath *>&1 | ForEach-Object {[string]$_})
   $exit=$LASTEXITCODE
