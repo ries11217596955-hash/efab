@@ -1,30 +1,22 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-07T18:05:53.9640888+04:00",
+    "checked_at":  "2026-07-07T18:34:10.7009868+04:00",
     "branch":  "main",
-    "observed_head":  "b904d8103095e37790c738cef3ef6215a9f9dd8a",
-    "subject_head":  "b904d8103095e37790c738cef3ef6215a9f9dd8a",
+    "observed_head":  "5aa57ebd6828bbb4d1f4fde8f9525ea4653cd189",
+    "subject_head":  "5aa57ebd6828bbb4d1f4fde8f9525ea4653cd189",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
-                          "operations/autonomous_inner_motor/validate_growth_directed_task_selection_v1.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "tests/autonomous_inner_motor/GROWTH_DIRECTED_TASK_SELECTION_V1_PROOF.json",
-                          "tests/memory/episodic/EPISODIC_MEMORY_CELL_V1_PROOF.json",
-                          "tests/memory/episodic/EPISODIC_RECALL_V1_PROOF.json",
-                          "tests/reasoning/EPISODIC_DECISION_TASK_FORK_V1_PROOF.json",
-                          "tests/reasoning/EPISODIC_RECALL_DECISION_V1_PROOF.json",
-                          "tests/reasoning/REASONING_EPISODE_V1_PROOF.json"
+                          "tests/live_start/AIMO_GROWTH_TASK_SLUG_NORMALIZATION_HOTSWAP_V1_PROOF.json"
                       ],
     "structural_paths":  [
-                             "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
-                             "operations/autonomous_inner_motor/validate_growth_directed_task_selection_v1.ps1"
+
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -36,8 +28,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  585,
-                                    "sha256":  "8a416abf7566bc3aa3b1b35f84c58ca7d4540ce594abdce7ecee1f57b206baeb"
+                                    "structural_file_count":  586,
+                                    "sha256":  "88cb946fe70dc6fddc0bdd7aad420807613fdcb3763c1ad536a69c6c767b433e"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -58,7 +50,7 @@
                          "builder":  "AGENT_BODY_COMPOSITION_MAP_V1",
                          "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                          "component_count":  7,
-                         "structural_path_count":  585
+                         "structural_path_count":  586
                      },
-    "refreshed_at":  "2026-07-07T18:05:55.1383544+04:00"
+    "refreshed_at":  "2026-07-07T18:34:11.8983657+04:00"
 }

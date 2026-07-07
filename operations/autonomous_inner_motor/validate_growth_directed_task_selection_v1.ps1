@@ -50,6 +50,26 @@ $truncatedResidueSignal=Select-GrowthDirectedDevelopmentTask -DevelopmentTasks $
 Assert ($truncatedResidueSignal.normalized_topic -eq 'active_growth_signal') 'TRUNCATED_SERVICE_RESIDUE_NORMALIZED_TOPIC_BAD'
 Assert ($truncatedResidueSignal.task.name -eq 'follow_growth_signal_active_growth_signal') 'TRUNCATED_SERVICE_RESIDUE_TASK_NAME_BAD'
 Assert ($truncatedResidueSignal.task.name -notmatch 'follow_growth_signal_follow_growth_signal') 'TRUNCATED_SERVICE_RESIDUE_STILL_RECURSIVE'
+$actionableContractGrowth=[ordered]@{
+  available=$true
+  source_kind='School'
+  packet_id='packet_actionable_contract'
+  topics=@('selector_validator_missing_live_payload_shape')
+  focus_boosts=@('selector','payload_shape')
+  specific_gap='selector_validator_missing_live_payload_shape'
+  next_action_candidate='add_ordered_payload_negative_case_to_selector_validator'
+  validator_hint='validate ordered dictionary and PSCustomObject selector inputs'
+  proof_needed=@('selector validator PASS','ordered payload regression proof')
+}
+$actionableContractSignal=Select-GrowthDirectedDevelopmentTask -DevelopmentTasks $tasks -Cycle 6 -GrowthSignal $actionableContractGrowth -CurrentMemoryState $same -PreviousMemoryState $curr
+Assert ($actionableContractSignal.normalized_topic -eq 'selector_validator_missing_live_payload_shape') 'ACTIONABLE_CONTRACT_NORMALIZED_TOPIC_BAD'
+Assert ($actionableContractSignal.specific_gap -eq 'selector_validator_missing_live_payload_shape') 'ACTIONABLE_CONTRACT_SPECIFIC_GAP_BAD'
+Assert ($actionableContractSignal.next_action_candidate -eq 'add_ordered_payload_negative_case_to_selector_validator') 'ACTIONABLE_CONTRACT_NEXT_ACTION_BAD'
+Assert ($actionableContractSignal.validator_hint -like '*ordered dictionary*') 'ACTIONABLE_CONTRACT_VALIDATOR_HINT_BAD'
+Assert ($actionableContractSignal.task.query -like '*specific_gap selector_validator_missing_live_payload_shape*') 'ACTIONABLE_CONTRACT_QUERY_MISSING_SPECIFIC_GAP'
+Assert ($actionableContractSignal.task.query -like '*next_action_candidate add_ordered_payload_negative_case_to_selector_validator*') 'ACTIONABLE_CONTRACT_QUERY_MISSING_NEXT_ACTION'
+Assert ($actionableContractSignal.task.query -like '*validator_hint validate ordered dictionary*') 'ACTIONABLE_CONTRACT_QUERY_MISSING_VALIDATOR_HINT'
+Assert ($actionableContractSignal.task.query -like '*proof_needed selector validator PASS*') 'ACTIONABLE_CONTRACT_QUERY_MISSING_PROOF_NEEDED'
 $fallback=Select-GrowthDirectedDevelopmentTask -DevelopmentTasks $tasks -Cycle 2 -GrowthSignal $noGrowth -CurrentMemoryState $same -PreviousMemoryState $curr
 Assert ($fallback.reason -eq 'NO_FRESH_GROWTH_SIGNAL_OR_MEMORY_DELTA') 'FALLBACK_REASON_BAD'
 Assert ($fallback.task.name -eq 'understand_own_policy_limits') 'FALLBACK_ROTATION_BAD'
@@ -63,6 +83,7 @@ $out=[ordered]@{
     [ordered]@{name='growth_signal_topic_overrides_static_rotation'; status='PASS'; selected_task=$signal.task.name; reason=$signal.reason},
     [ordered]@{name='growth_signal_repeated_prefix_is_normalized'; status='PASS'; selected_task=$normalizedSignal.task.name; raw_topic=$normalizedSignal.raw_topic; normalized_topic=$normalizedSignal.normalized_topic; reason=$normalizedSignal.reason},
     [ordered]@{name='growth_signal_truncated_service_residue_falls_back'; status='PASS'; selected_task=$truncatedResidueSignal.task.name; raw_topic=$truncatedResidueSignal.raw_topic; normalized_topic=$truncatedResidueSignal.normalized_topic; reason=$truncatedResidueSignal.reason},
+    [ordered]@{name='growth_signal_actionable_contract_drives_query'; status='PASS'; selected_task=$actionableContractSignal.task.name; normalized_topic=$actionableContractSignal.normalized_topic; next_action_candidate=$actionableContractSignal.next_action_candidate; reason=$actionableContractSignal.reason},
     [ordered]@{name='no_signal_falls_back_to_static_rotation'; status='PASS'; selected_task=$fallback.task.name; reason=$fallback.reason}
   )
   live_process_touched=$false

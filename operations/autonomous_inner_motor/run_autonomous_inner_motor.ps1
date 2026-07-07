@@ -319,15 +319,29 @@ function Select-GrowthDirectedDevelopmentTask {
     $rawTopic = if(@($topics).Count -gt 0) { [string]@($topics)[0] } elseif(@($boosts).Count -gt 0) { [string]@($boosts)[0] } else { 'active_growth_signal' }
     $slug = Normalize-GrowthSignalTopicForTask $rawTopic
     $topic = $slug
+    $nextActionCandidate = [string](Get-SelectorField $GrowthSignal 'next_action_candidate' '')
+    $specificGap = [string](Get-SelectorField $GrowthSignal 'specific_gap' '')
+    $validatorHint = [string](Get-SelectorField $GrowthSignal 'validator_hint' '')
+    $proofNeeded = @(Get-SelectorField $GrowthSignal 'proof_needed' @())
+    $queryParts = @(("growth signal topic {0}" -f $topic))
+    if(-not [string]::IsNullOrWhiteSpace($specificGap)){ $queryParts += ("specific_gap {0}" -f $specificGap) }
+    if(-not [string]::IsNullOrWhiteSpace($nextActionCandidate)){ $queryParts += ("next_action_candidate {0}" -f $nextActionCandidate) }
+    if(-not [string]::IsNullOrWhiteSpace($validatorHint)){ $queryParts += ("validator_hint {0}" -f $validatorHint) }
+    if(@($proofNeeded).Count -gt 0){ $queryParts += ("proof_needed {0}" -f ((@($proofNeeded) | Select-Object -First 3) -join ' | ')) }
+    $queryParts += 'inspect fresh memory support and produce one bounded next useful action with proof need'
     return [ordered]@{
       status='SELECTED_GROWTH_DIRECTED_TASK'
       reason='ACTIVE_GROWTH_SIGNAL_TOPIC'
       source=[string](Get-SelectorField $GrowthSignal 'source_kind' 'growth_signal')
-      task=[ordered]@{ name="follow_growth_signal_$slug"; query=("growth signal topic {0}; inspect fresh memory support and produce one bounded next useful action with proof need" -f $topic); target='.runtime/compact_memory_growth_signal_v1/ACTIVE_GROWTH_SIGNAL.json' }
+      task=[ordered]@{ name="follow_growth_signal_$slug"; query=($queryParts -join '; '); target='.runtime/compact_memory_growth_signal_v1/ACTIVE_GROWTH_SIGNAL.json' }
       useful_intent='turn_growth_signal_into_one_bounded_next_action_candidate'
       overrides_static_rotation=$true
       topics=@($topics)
       normalized_topic=$topic
+      specific_gap=$specificGap
+      next_action_candidate=$nextActionCandidate
+      validator_hint=$validatorHint
+      proof_needed=@($proofNeeded)
       raw_topic=$rawTopic
       topic_was_normalized=([string]$rawTopic -ne [string]$topic)
       focus_boosts=@($boosts)
