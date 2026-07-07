@@ -6,18 +6,18 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "4ae444e6bee52b240b7889f2215f4f999d0588c8",
-    "subject_head":  "4ae444e6bee52b240b7889f2215f4f999d0588c8",
-    "generated_at":  "2026-07-07T09:52:12.4987113+04:00",
+    "observed_head_at_generation":  "8a00cef8691d85022af531ae8a956c696dd63c86",
+    "subject_head":  "8a00cef8691d85022af531ae8a956c696dd63c86",
+    "generated_at":  "2026-07-07T10:02:15.5241843+04:00",
     "generator":  "invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "role":  "canonical local body composition/status map: what exists, where it is, freshness, last runtime/proof signal",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  563,
+    "structural_path_count":  565,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  563,
-                                    "sha256":  "1da81357cb63b5863bc39d12e8ca071276c5a48a73be7a6752d2eba10d682133"
+                                    "structural_file_count":  565,
+                                    "sha256":  "b5453d0a0b95aa95899de5ccab95ff92b9416d5980a28b32f782d5cd6242c8a2"
                                 },
     "module_count":  207,
     "validator_count":  174,
@@ -318,9 +318,9 @@
                                                  "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
                                              ],
                            "latest_git_commit":  {
-                                                     "head":  "d8997cfc70ec5501d0510b412dc1f60343a89c26",
-                                                     "committed_at":  "2026-07-07T09:50:06+04:00",
-                                                     "subject":  "proof: record live rollback contract"
+                                                     "head":  "8a00cef8691d85022af531ae8a956c696dd63c86",
+                                                     "committed_at":  "2026-07-07T09:52:09+04:00",
+                                                     "subject":  "proof: refresh readiness gate after rollback contract"
                                                  },
                            "latest_runtime_artifact":  null
                        }
