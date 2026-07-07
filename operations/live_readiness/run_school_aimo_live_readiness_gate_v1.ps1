@@ -5,6 +5,7 @@ param(
   [string]$LiveLikeProofPath = 'tests/live_like/SCHOOL_AIMO_LIVE_LIKE_OBSERVATION_GATE_V1_PROOF.json',
   [string]$StopfileContractProofPath = 'tests/live_readiness/DETACHED_LONG_RUNTIME_STOPFILE_CONTRACT_V1_PROOF.json',
   [string]$RollbackContractProofPath = 'tests/live_readiness/LIVE_ROLLBACK_CONTRACT_V1_PROOF.json',
+  [string]$RejectAndForgetProofPath = 'tests/live_readiness/LIVE_REJECT_AND_FORGET_CONTRACT_V1_PROOF.json',
   [string]$ProofPath = 'tests/live_readiness/SCHOOL_AIMO_LIVE_READINESS_GATE_V1_PROOF.json'
 )
 $ErrorActionPreference='Stop'
