@@ -1,0 +1,47 @@
+﻿{
+    "schema":  "aimo_source_agnostic_lab_integration_validation_v1",
+    "status":  "PASS_AIMO_SOURCE_AGNOSTIC_LAB_INTEGRATION_V1",
+    "script":  "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+    "selection_report_path":  "reports/self_development/SOURCE_AGNOSTIC_PATH_SELECTION_V1.json",
+    "lab_runtime":  {
+                        "run_id":  "phase_i_source_agnostic_lab_gate_20260707T183014Z",
+                        "pid":  13128,
+                        "proof_path":  ".runtime\\autonomous_inner_motor\\test_life_runs\\phase_i_source_agnostic_lab_gate_20260707T183014Z\\TEST_LIFE_PROOF.json",
+                        "stdout":  ".runtime/autonomous_inner_motor/phase_i_source_agnostic_lab_gate_stdout.txt",
+                        "stderr":  ".runtime/autonomous_inner_motor/phase_i_source_agnostic_lab_gate_stderr.txt",
+                        "stderr_size":  0,
+                        "forced_stop":  false,
+                        "observed_source_agnostic_selection":  true,
+                        "cycles":  1
+                    },
+    "tests":  [
+                  {
+                      "name":  "default_path_unchanged_without_gate",
+                      "status":  "PASS",
+                      "reason":  "ACTIVE_MEMORY_DELTA_FROM_SCHOOL"
+                  },
+                  {
+                      "name":  "lab_gate_selects_source_agnostic_path",
+                      "status":  "PASS",
+                      "selected_task":  "build_source_agnostic_path_selector_v1",
+                      "selected_gap":  "source_agnostic_path_selector_missing"
+                  },
+                  {
+                      "name":  "selection_trace_contains_identity_gap_and_rejections",
+                      "status":  "PASS"
+                  },
+                  {
+                      "name":  "sandbox_test_life_lab_run_observed_gate_selection",
+                      "status":  "PASS",
+                      "run_id":  "phase_i_source_agnostic_lab_gate_20260707T183014Z",
+                      "cycles":  1
+                  },
+                  {
+                      "name":  "live_not_touched_by_validator",
+                      "status":  "PASS"
+                  }
+              ],
+    "live_process_touched":  false,
+    "active_memory_mutated":  false,
+    "created_at":  "2026-07-07T22:30:38.5441225+04:00"
+}

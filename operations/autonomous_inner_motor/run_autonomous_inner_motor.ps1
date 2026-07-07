@@ -1,7 +1,8 @@
 ﻿param(
   [ValidateSet('Diagnostic','ReadOnly','SandboxExploration','SandboxTestLife','SandboxStudyLife','SandboxAction','GovernedRepoAction','Continuous','LiveAuthority')]
   [string]$Mode = 'Diagnostic',
-  [string]$RunId = "aimo_$(Get-Date -Format 'yyyyMMdd_HHmmss')"
+  [string]$RunId = "aimo_$(Get-Date -Format 'yyyyMMdd_HHmmss')",
+  [switch]$UseSourceAgnosticPathSelectionLabGate
 )
 
 $ErrorActionPreference = 'Stop'
@@ -347,11 +348,54 @@ function Select-GrowthDirectedDevelopmentTask {
     [Parameter(Mandatory=$true)][int]$Cycle,
     $GrowthSignal,
     $CurrentMemoryState,
-    $PreviousMemoryState
+    $PreviousMemoryState,
+    [switch]$UseSourceAgnosticPathSelectionLabGate,
+    [string]$SourceAgnosticPathSelectionPath='reports/self_development/SOURCE_AGNOSTIC_PATH_SELECTION_V1.json'
   )
   if($DevelopmentTasks.Count -lt 1) { throw 'NO_DEVELOPMENT_TASKS' }
   $fallback = $DevelopmentTasks[($Cycle - 1) % $DevelopmentTasks.Count]
   $fallbackTask = [ordered]@{ name=$fallback.name; query=$fallback.query; target=$fallback.target }
+  if($UseSourceAgnosticPathSelectionLabGate) {
+    if(-not (Test-Path -LiteralPath $SourceAgnosticPathSelectionPath)) { throw "SOURCE_AGNOSTIC_SELECTION_REPORT_MISSING:$SourceAgnosticPathSelectionPath" }
+    $sourceAgnosticSelection = Get-Content -LiteralPath $SourceAgnosticPathSelectionPath -Raw | ConvertFrom-Json
+    if([string]$sourceAgnosticSelection.status -ne 'SOURCE_AGNOSTIC_PATH_SELECTED_LAB') { throw "SOURCE_AGNOSTIC_SELECTION_STATUS_BAD:$($sourceAgnosticSelection.status)" }
+    $selectionAction = [string]$sourceAgnosticSelection.selected_next_action
+    if([string]::IsNullOrWhiteSpace($selectionAction)) { throw 'SOURCE_AGNOSTIC_SELECTED_NEXT_ACTION_EMPTY' }
+    $selectionQueryParts = @(
+      ("source_agnostic_selected_action {0}" -f $selectionAction),
+      ("identity_alignment {0}" -f [string]$sourceAgnosticSelection.identity_alignment),
+      ("selected_gap {0}" -f [string]$sourceAgnosticSelection.selected_gap),
+      ("selected_gap_severity {0}" -f [string]$sourceAgnosticSelection.selected_gap_severity),
+      ("why_not_latest_signal {0}" -f [string]$sourceAgnosticSelection.why_not_latest_signal),
+      ("why_not_school_dependency {0}" -f [string]$sourceAgnosticSelection.why_not_school_dependency),
+      ("proof_needed {0}" -f ((@($sourceAgnosticSelection.proof_needed) | Select-Object -First 4) -join ' | ')),
+      ("validator_needed {0}" -f ((@($sourceAgnosticSelection.validator_needed) | Select-Object -First 4) -join ' | ')),
+      ("source_refs_used {0}" -f ((@($sourceAgnosticSelection.source_refs_used) | Select-Object -First 5) -join ' | ')),
+      ("source_refs_rejected {0}" -f ((@($sourceAgnosticSelection.source_refs_rejected) | Select-Object -First 8) -join ' | '))
+    )
+    return [ordered]@{
+      status='SELECTED_GROWTH_DIRECTED_TASK'
+      reason='SOURCE_AGNOSTIC_PATH_SELECTION_LAB_GATE'
+      source='source_agnostic_path_selection_v1'
+      task=[ordered]@{ name=$selectionAction; query=($selectionQueryParts -join '; '); target=$SourceAgnosticPathSelectionPath }
+      useful_intent='execute_identity_gap_scored_source_agnostic_next_step'
+      overrides_static_rotation=$true
+      lab_gate_enabled=$true
+      source_agnostic_selection_path=$SourceAgnosticPathSelectionPath
+      selected_candidate_id=[string]$sourceAgnosticSelection.selected_candidate_id
+      selected_score=[int]$sourceAgnosticSelection.selected_score
+      normalized_topic=$selectionAction
+      specific_gap=[string]$sourceAgnosticSelection.selected_gap
+      next_action_candidate=$selectionAction
+      validator_hint=([string](@($sourceAgnosticSelection.validator_needed) -join ' | '))
+      proof_needed=@($sourceAgnosticSelection.proof_needed)
+      identity_alignment=[string]$sourceAgnosticSelection.identity_alignment
+      source_refs_used=@($sourceAgnosticSelection.source_refs_used)
+      source_refs_rejected=@($sourceAgnosticSelection.source_refs_rejected)
+      why_not_latest_signal=[string]$sourceAgnosticSelection.why_not_latest_signal
+      fallback_if_source_missing=[string]$sourceAgnosticSelection.fallback_if_source_missing
+    }
+  }
   $currentHash = [string](Get-SelectorField $CurrentMemoryState 'cells_sha256' '')
   $previousHash = [string](Get-SelectorField $PreviousMemoryState 'cells_sha256' '')
   $currentRun = [string](Get-SelectorField $CurrentMemoryState 'run_id' '')
@@ -707,7 +751,7 @@ if ($Mode -eq 'SandboxTestLife') {
     $currentMemoryState = Get-ActiveMemoryState
     $currentGrowthSignal = Get-AgentGrowthSignal
     $Payload.growth_signal = $currentGrowthSignal
-    $selector = Select-GrowthDirectedDevelopmentTask -DevelopmentTasks $developmentTasks -Cycle $cycle -GrowthSignal $currentGrowthSignal -CurrentMemoryState $currentMemoryState -PreviousMemoryState $lastObservedMemoryState
+    $selector = Select-GrowthDirectedDevelopmentTask -DevelopmentTasks $developmentTasks -Cycle $cycle -GrowthSignal $currentGrowthSignal -CurrentMemoryState $currentMemoryState -PreviousMemoryState $lastObservedMemoryState -UseSourceAgnosticPathSelectionLabGate:$UseSourceAgnosticPathSelectionLabGate
     $task = $selector.task
     $Payload.test_life.counters.development_task_selections += 1
     $Payload.development_trace.current_task = $task.name
@@ -1311,3 +1355,4 @@ Write-Host "AIMO_STOP_REASON=$($out.stop_reason)"
 Write-Host "AIMO_SELECTED_NEXT_PATH=$($out.selected_next_path)"
 Write-Host "AIMO_PROOF=$ProofPath"
 exit 0
+
