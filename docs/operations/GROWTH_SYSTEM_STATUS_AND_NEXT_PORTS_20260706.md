@@ -245,3 +245,22 @@ LIVE_READINESS_AFTER_ROLLBACK_PROOF=tests/live_readiness/SCHOOL_AIMO_LIVE_READIN
 ` 
 
 Decision remains NO-GO for live, but rollback contract is now proven and no longer a readiness blocker. Remaining blockers: Owner live authorization, prior proof runtime_ready=false, quarantine, and continuous runtime proof.
+
+## Live reject-and-forget contract result
+
+`	ext
+LIVE_REJECT_AND_FORGET_CONTRACT_STATUS=PASS_LIVE_REJECT_AND_FORGET_CONTRACT_V1
+LIVE_REJECT_AND_FORGET_CONTRACT_PROOF_LABEL=PROVEN_LAB_REJECT_AND_FORGET_QUARANTINE_ALTERNATIVE_NOT_LIVE
+LIVE_REJECT_AND_FORGET_CONTRACT_RUN_ID=live_reject_and_forget_contract_v1_20260707T060237Z
+LIVE_REJECT_AND_FORGET_CONTRACT_REPO_HEAD=37f03fecad5ad84109d3022e45afc55251f05a1c
+LIVE_REJECT_AND_FORGET_CONTRACT_MODE=REJECT_AND_FORGET_NO_RAW_PAYLOAD
+LIVE_REJECT_AND_FORGET_CONTRACT_RAW_PACKET_EXISTS_AFTER_DISPOSAL=False
+LIVE_REJECT_AND_FORGET_CONTRACT_MANIFEST_CONTAINS_RAW_PAYLOAD=False
+LIVE_REJECT_AND_FORGET_CONTRACT_ACCEPTED=False
+LIVE_REJECT_AND_FORGET_CONTRACT_MERGED=False
+LIVE_REJECT_AND_FORGET_CONTRACT_EXECUTED=False
+LIVE_REJECT_AND_FORGET_CONTRACT_RUNTIME_READY=false
+LIVE_REJECT_AND_FORGET_CONTRACT_PROOF=tests/live_readiness/LIVE_REJECT_AND_FORGET_CONTRACT_V1_PROOF.json
+` 
+
+Boundary: lab reject-and-forget proof only; bad input is rejected, not merged/executed, raw packet discarded, only compact digest/reason manifest retained. This replaces quarantine-as-garbage-archive.

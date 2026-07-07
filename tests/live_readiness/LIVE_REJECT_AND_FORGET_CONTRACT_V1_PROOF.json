@@ -1,0 +1,56 @@
+﻿{
+    "schema":  "live_reject_and_forget_contract_v1",
+    "status":  "PASS_LIVE_REJECT_AND_FORGET_CONTRACT_V1",
+    "proof_label":  "PROVEN_LAB_REJECT_AND_FORGET_QUARANTINE_ALTERNATIVE_NOT_LIVE",
+    "run_id":  "live_reject_and_forget_contract_v1_20260707T060237Z",
+    "repo":  {
+                 "root":  "H:/efab",
+                 "branch":  "main",
+                 "head":  "37f03fecad5ad84109d3022e45afc55251f05a1c",
+                 "origin":  "https://github.com/ries11217596955-hash/efab.git",
+                 "ahead_behind":  "0\t0",
+                 "dirty_before":  [
+
+                                  ],
+                 "dirty_after_before_proof_write":  [
+
+                                                    ]
+             },
+    "bad_input":  {
+                      "packet_path":  ".runtime\\live_readiness\\live_reject_and_forget_contract_v1_20260707T060237Z\\incoming\\bad_packet.json",
+                      "packet_sha256":  "4e9eff1a01000f2e4a4f4d81dce80c26c54806202cb827e75dbbcd6cddf69b3a",
+                      "payload_sha256":  "ce7aa3bd0463db58bfaf4378be478f1380914e83255428ecf8eede37195b9cef",
+                      "raw_packet_exists_after_disposal":  false,
+                      "payload_value_retained_in_proof":  false
+                  },
+    "reject":  {
+                   "mode":  "REJECT_AND_FORGET_NO_RAW_PAYLOAD",
+                   "manifest_path":  ".runtime\\live_readiness\\live_reject_and_forget_contract_v1_20260707T060237Z\\reject_ledger\\reject_manifest.json",
+                   "manifest_contains_raw_payload":  false,
+                   "reason_codes":  [
+                                        "MISSING_TYPE",
+                                        "MISSING_VALIDATED_CONTENT",
+                                        "MISSING_AUTHORITY",
+                                        "MALFORMED_TRUE"
+                                    ],
+                   "accepted":  false,
+                   "merged":  false,
+                   "executed":  false,
+                   "merge_target_exists":  false,
+                   "disposal_action":  "raw_packet_deleted_after_digest"
+               },
+    "safety":  {
+                   "active_memory_mutated":  false,
+                   "tracked_repo_mutated":  false,
+                   "raw_payload_retained":  false,
+                   "compact_digest_retained":  true,
+                   "report_bloat_control":  "manifest_only_no_payload"
+               },
+    "blockers":  [
+
+                 ],
+    "boundary":  "Lab reject-and-forget contract only: bad packet is rejected, raw payload discarded, only compact digest/reason manifest retained. This replaces quarantine-as-garbage-archive.",
+    "runtime_ready":  false,
+    "started_at":  "2026-07-07T10:02:36.3143567+04:00",
+    "finished_at":  "2026-07-07T10:02:37.9000030+04:00"
+}

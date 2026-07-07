@@ -175,3 +175,9 @@ Night-school note:
 - Rollback contract validation=PASS_LIVE_ROLLBACK_CONTRACT_V1; LIVE_ROLLBACK_PLAN_NOT_PROVEN removed from go_blockers.
 - Remaining go blockers: OWNER_LIVE_AUTHORIZATION_MISSING, PRIOR_PROOF_RUNTIME_READY_FALSE, LIVE_QUARANTINE_PLAN_NOT_PROVEN, LIVE_CONTINUOUS_RUNTIME_NOT_PROVEN.
 - Proof: tests/live_readiness/SCHOOL_AIMO_LIVE_READINESS_GATE_V1_PROOF.json.
+
+2026-07-07 - Live reject-and-forget contract pass
+- Result: PASS_LIVE_REJECT_AND_FORGET_CONTRACT_V1; proof_label=PROVEN_LAB_REJECT_AND_FORGET_QUARANTINE_ALTERNATIVE_NOT_LIVE.
+- Owner decision reflected: no garbage quarantine archive. Bad packet rejected; raw packet deleted; manifest contains only digest/reason/source/disposal evidence; accepted=false; merged=false; executed=false.
+- Boundary: lab reject-and-forget contract only, not live runtime execution.
+- Proof: tests/live_readiness/LIVE_REJECT_AND_FORGET_CONTRACT_V1_PROOF.json.
