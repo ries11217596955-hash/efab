@@ -1,0 +1,106 @@
+﻿{
+    "schema":  "aimo_agent_only_restart_v1",
+    "status":  "PASS_AIMO_AGENT_ONLY_RESTART_V1",
+    "proof_label":  "PROVEN_LIVE_AIMO_AGENT_ONLY_RESTART_WITH_SCHOOL_UNTOUCHED",
+    "restart_id":  "aimo_agent_only_restart_v1_20260707T075024Z",
+    "live_run_id":  "controlled_live_school_aimo_v1_20260707T070037Z",
+    "repo":  {
+                 "root":  "H:/efab",
+                 "branch":  "main",
+                 "head":  "2eced4f38b1ae2eb7ba4a23280c0c6d0b43af928",
+                 "origin":  "https://github.com/ries11217596955-hash/efab.git",
+                 "ahead_behind":  "0\t0",
+                 "dirty_before":  [
+
+                                  ]
+             },
+    "school":  {
+                   "pid":  2708,
+                   "alive_before":  true,
+                   "untouched":  true
+               },
+    "old_aimo":  {
+                     "pid":  13264,
+                     "alive_before":  false
+                 },
+    "new_aimo":  {
+                     "pid":  10168,
+                     "mode":  "SandboxTestLife",
+                     "run_id":  "live_aimo_aimo_agent_only_restart_v1_20260707T075024Z",
+                     "alive":  true,
+                     "stdout":  ".runtime\\live_start\\controlled_live_school_aimo_v1_20260707T070037Z\\aimo_agent_restarts\\aimo_agent_only_restart_v1_20260707T075024Z\\aimo.stdout.txt",
+                     "stderr":  ".runtime\\live_start\\controlled_live_school_aimo_v1_20260707T070037Z\\aimo_agent_restarts\\aimo_agent_only_restart_v1_20260707T075024Z\\aimo.stderr.txt",
+                     "stderr_size":  0,
+                     "proof_path":  ".runtime\\autonomous_inner_motor\\test_life_runs\\live_aimo_aimo_agent_only_restart_v1_20260707T075024Z\\TEST_LIFE_PROOF.json",
+                     "cycles":  1,
+                     "school_active":  true,
+                     "memory_before_status":  null,
+                     "memory_before_available":  null
+                 },
+    "observation":  {
+                        "observe_seconds":  60,
+                        "heartbeat_seconds":  10,
+                        "heartbeats":  [
+                                           {
+                                               "at":  "2026-07-07T11:50:34.3825807+04:00",
+                                               "school_pid":  2708,
+                                               "school_alive":  true,
+                                               "old_aimo_pid":  13264,
+                                               "new_aimo_pid":  10168,
+                                               "new_aimo_alive":  true,
+                                               "elapsed_seconds":  10.1
+                                           },
+                                           {
+                                               "at":  "2026-07-07T11:50:44.4147339+04:00",
+                                               "school_pid":  2708,
+                                               "school_alive":  true,
+                                               "old_aimo_pid":  13264,
+                                               "new_aimo_pid":  10168,
+                                               "new_aimo_alive":  true,
+                                               "elapsed_seconds":  20.132
+                                           },
+                                           {
+                                               "at":  "2026-07-07T11:50:54.4326601+04:00",
+                                               "school_pid":  2708,
+                                               "school_alive":  true,
+                                               "old_aimo_pid":  13264,
+                                               "new_aimo_pid":  10168,
+                                               "new_aimo_alive":  true,
+                                               "elapsed_seconds":  30.15
+                                           },
+                                           {
+                                               "at":  "2026-07-07T11:51:04.4420977+04:00",
+                                               "school_pid":  2708,
+                                               "school_alive":  true,
+                                               "old_aimo_pid":  13264,
+                                               "new_aimo_pid":  10168,
+                                               "new_aimo_alive":  true,
+                                               "elapsed_seconds":  40.159
+                                           },
+                                           {
+                                               "at":  "2026-07-07T11:51:14.4490877+04:00",
+                                               "school_pid":  2708,
+                                               "school_alive":  true,
+                                               "old_aimo_pid":  13264,
+                                               "new_aimo_pid":  10168,
+                                               "new_aimo_alive":  true,
+                                               "elapsed_seconds":  50.166
+                                           },
+                                           {
+                                               "at":  "2026-07-07T11:51:24.4648454+04:00",
+                                               "school_pid":  2708,
+                                               "school_alive":  true,
+                                               "old_aimo_pid":  13264,
+                                               "new_aimo_pid":  10168,
+                                               "new_aimo_alive":  true,
+                                               "elapsed_seconds":  60.182
+                                           }
+                                       ]
+                    },
+    "blockers":  [
+
+                 ],
+    "boundary":  "Agent-only restart. School process is observed but not modified or stopped.",
+    "started_at":  "2026-07-07T11:50:24.2826224+04:00",
+    "finished_at":  "2026-07-07T11:51:24.4987373+04:00"
+}

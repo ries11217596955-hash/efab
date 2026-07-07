@@ -1,25 +1,29 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-07T11:50:01.8326262+04:00",
+    "checked_at":  "2026-07-07T11:51:43.7145937+04:00",
     "branch":  "main",
-    "observed_head":  "3ef38316944a2fc16cf9afea342f84db30162e2d",
-    "subject_head":  "3ef38316944a2fc16cf9afea342f84db30162e2d",
+    "observed_head":  "2eced4f38b1ae2eb7ba4a23280c0c6d0b43af928",
+    "subject_head":  "2eced4f38b1ae2eb7ba4a23280c0c6d0b43af928",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "docs/operations/GROWTH_SYSTEM_STATUS_AND_NEXT_PORTS_20260706.md",
-                          "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                          "operations/live_start/stop_school_aimo_controlled_live_v1.ps1",
+                          "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+                          "operations/autonomous_inner_motor/validate_active_memory_state_backoff_v1.ps1",
+                          "operations/live_start/restart_aimo_agent_only_v1.ps1",
+                          "operations/live_start/validate_aimo_agent_only_restart_v1.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "tests/live_start/SCHOOL_AIMO_CONTROLLED_LIVE_START_V1_PROOF.json"
+                          "tests/autonomous_inner_motor/ACTIVE_MEMORY_STATE_BACKOFF_V1_PROOF.json"
                       ],
     "structural_paths":  [
-                             "operations/live_start/stop_school_aimo_controlled_live_v1.ps1"
+                             "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+                             "operations/autonomous_inner_motor/validate_active_memory_state_backoff_v1.ps1",
+                             "operations/live_start/restart_aimo_agent_only_v1.ps1",
+                             "operations/live_start/validate_aimo_agent_only_restart_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -55,5 +59,5 @@
                          "component_count":  7,
                          "structural_path_count":  573
                      },
-    "refreshed_at":  "2026-07-07T11:50:02.8488382+04:00"
+    "refreshed_at":  "2026-07-07T11:51:44.7079514+04:00"
 }
