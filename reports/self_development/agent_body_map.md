@@ -2,9 +2,9 @@
 
 Status: ACTIVE_DERIVED_VIEW
 Branch: main
-Observed head at generation: a6118664ffa97f50a475dbc631e37cabcae7c0d7
-Generated: 2026-07-07T19:14:44.4105898+04:00
-Body source fingerprint: a87a00a969ced48e38543789bdc08f0846ff6d09ed2282f9e99440c1b6f50175
+Observed head at generation: 2705176525a2c42f319a2bee14e2a56b55da6884
+Generated: 2026-07-07T19:27:13.1103296+04:00
+Body source fingerprint: f408d4883ad5d280c2eeabbcc9c68d9f370baffd04ee985f6baf690135ebc585
 
 Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
@@ -17,8 +17,8 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 ## Components
 
 - `school` - PRESENT_ON_CURRENT_BRANCH, root `operations/school`, files=97, scripts=59, required_present=True, latest_runtime=.runtime/school_runs/school_factory_digest_use_real_1000000_20260707_140233/AGENT_SCHOOL_CANONICAL_ENTRYPOINT_V1.json
-- `school_source_router` - PRESENT_ON_CURRENT_BRANCH, root `operations/school/curriculum/source_router`, files=8, scripts=6, required_present=True, latest_runtime=.runtime/school_source_template_filter/school_source_router_filter_school_factory_digest_use_real_1000000_20260707_140233_chunk_104_of_200/SCHOOL_SOURCE_TEMPLATE_FILTER_DECISION_V1.json
-- `compact_memory_intake` - PRESENT_ON_CURRENT_BRANCH, root `operations/compact_memory_intake`, files=10, scripts=6, required_present=True, latest_runtime=.runtime/compact_memory_intake_v1/merge_runs/merge_queue_20260707_191257/COMPACT_MEMORY_MERGE_QUEUE_RESULT_V1.json
+- `school_source_router` - PRESENT_ON_CURRENT_BRANCH, root `operations/school/curriculum/source_router`, files=8, scripts=6, required_present=True, latest_runtime=.runtime/school_source_template_filter/school_source_router_filter_school_factory_digest_use_real_1000000_20260707_140233_chunk_107_of_200/SCHOOL_SOURCE_TEMPLATE_FILTER_DECISION_V1.json
+- `compact_memory_intake` - PRESENT_ON_CURRENT_BRANCH, root `operations/compact_memory_intake`, files=10, scripts=6, required_present=True, latest_runtime=.runtime/file_atom_absorption/file_atom_absorption_20260707_192459/staging/digestible_atoms.jsonl
 - `autonomous_inner_motor` - PRESENT_ON_CURRENT_BRANCH, root `operations/autonomous_inner_motor`, files=65, scripts=4, required_present=True, latest_runtime=.runtime/autonomous_inner_motor/test_life_runs/live_aimo_agentlife_specific_growth_topic_final_20260707T151309Z/TEST_LIFE_PROOF.json
 - `knowledge_acquisition_port` - PRESENT_ON_CURRENT_BRANCH, root `operations/knowledge_acquisition_port`, files=50, scripts=2, required_present=True, latest_runtime=.runtime/knowledge_acquisition_port/runs/live_aimo_aimo_growth_selector_hotswap_v3_20260707T105709Z_cycle1_batch_knowledge_gap/BATCH_SOURCE_DIGEST_AND_PROMOTION_DECISION.json
 - `map_control` - PRESENT_ON_CURRENT_BRANCH, root `operations/map_control`, files=2, scripts=0, required_present=True, latest_runtime=none_observed

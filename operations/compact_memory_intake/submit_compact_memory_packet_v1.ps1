@@ -37,6 +37,52 @@ function Convert-ToBoundedList($Value) {
   }
   return @($out.ToArray())
 }
+function Resolve-SpecificGrowthTopicFromRecentPackets([string]$QueueRoot,[string]$CurrentPacketPath) {
+  $result=[ordered]@{ found=$false; topic=$null; next_action_candidate=$null; specific_gap=$null; validator_hint=$null; proof_needed=@(); source_packet_path=$null; source_kind=$null; source_id=$null; reason='NO_RECENT_SOURCE_PACKET' }
+  if([string]::IsNullOrWhiteSpace($QueueRoot) -or -not (Test-Path -LiteralPath $QueueRoot)) { return $result }
+  $currentFull=$null
+  if(-not [string]::IsNullOrWhiteSpace($CurrentPacketPath) -and (Test-Path -LiteralPath $CurrentPacketPath)) { $currentFull=(Resolve-Path -LiteralPath $CurrentPacketPath).Path }
+  $candidates=@(Get-ChildItem -LiteralPath $QueueRoot -File -Filter '*.json' -ErrorAction SilentlyContinue | Sort-Object LastWriteTime -Descending)
+  foreach($file in $candidates) {
+    if($currentFull -and ((Resolve-Path -LiteralPath $file.FullName).Path -eq $currentFull)) { continue }
+    try { $p=Get-Content -LiteralPath $file.FullName -Raw | ConvertFrom-Json } catch { continue }
+    $sourceKind=[string]$p.source_kind
+    $sourceId=[string]$p.source_id
+    $atom=@($p.atoms | Select-Object -First 1)
+    if($null -eq $atom) { continue }
+    $topic=Convert-ToGrowthSignalSlug ([string]$atom.topic)
+    $focus=@()
+    if($p.influence -and $p.influence.focus_boosts) { $focus=@($p.influence.focus_boosts | ForEach-Object {[string]$_}) }
+    $hasSchoolFresh = ($sourceKind -eq 'School' -and (@($focus) -contains 'fresh_school_memory' -or @($focus) -contains 'recall_use_behavior_delta' -or $topic -eq 'school_topics_plan'))
+    if($hasSchoolFresh) {
+      $result.found=$true
+      $result.topic='route_fresh_school_memory_to_next_growth_action'
+      $result.next_action_candidate='select_one_fresh_school_memory_delta_and_convert_to_bounded_builder_task'
+      $result.specific_gap='fresh_school_memory_exists_but_autonomous_selector_needs_one_concrete_builder_task'
+      $result.validator_hint='validate derivation uses latest School packet proof refs and does not emit meta growth-topic action'
+      $result.proof_needed=@('latest School queue packet','school proof ref or active memory manifest','derivation validator PASS','live or lab observation of AIMO selecting route_fresh_school_memory_to_next_growth_action')
+      $result.source_packet_path=$file.FullName
+      $result.source_kind=$sourceKind
+      $result.source_id=$sourceId
+      $result.reason='LATEST_SCHOOL_PACKET_HAS_FRESH_MEMORY_DELTA_HINT'
+      return $result
+    }
+    if($sourceKind -eq 'AgentLife' -and $topic -ne 'growth_signal_specificity_gap' -and $topic -ne 'derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta' -and $topic -notlike 'growth_signal_topic_is_too_generic*') {
+      $result.found=$true
+      $result.topic=$topic
+      $result.next_action_candidate="inspect_$topic`_and_return_one_bounded_next_action_candidate"
+      $result.specific_gap="agentlife_recent_non_generic_topic_requires_one_bounded_next_action:$topic"
+      $result.validator_hint='validate derivation preserves non-generic AgentLife topic and returns one bounded next action with proof refs'
+      $result.proof_needed=@('latest non-generic AgentLife queue packet','AIMO proof ref','derivation validator PASS')
+      $result.source_packet_path=$file.FullName
+      $result.source_kind=$sourceKind
+      $result.source_id=$sourceId
+      $result.reason='LATEST_AGENTLIFE_PACKET_HAS_NON_GENERIC_TOPIC'
+      return $result
+    }
+  }
+  return $result
+}
 if(-not (Test-Path $PacketPath)){ throw "PACKET_MISSING:$PacketPath" }
 $policy=Get-Content $PolicyPath -Raw | ConvertFrom-Json
 $packet=Get-Content $PacketPath -Raw | ConvertFrom-Json
@@ -68,20 +114,33 @@ if([string]::IsNullOrWhiteSpace($specificGap)){
 }
 $specificGapSlug=Convert-ToGrowthSignalSlug $specificGap
 if($primaryTopic -eq 'growth_signal_specificity_gap' -and $specificGapSlug -ne 'growth_signal_specificity_gap') { $actionableTopics=@($specificGapSlug) }
+$derivedGrowthTopic=$null
 $nextActionCandidate=[string](Get-PacketInfluenceField $packet 'next_action_candidate' $null)
 if([string]::IsNullOrWhiteSpace($nextActionCandidate)){
-  if($specificGap -like '*too_generic*') { $nextActionCandidate='derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta' }
+  if($specificGap -like '*too_generic*' -or $primaryTopic -eq 'derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta') {
+    $derivedGrowthTopic=Resolve-SpecificGrowthTopicFromRecentPackets -QueueRoot $queueRoot -CurrentPacketPath $queuePath
+    if($derivedGrowthTopic.found) {
+      $actionableTopics=@([string]$derivedGrowthTopic.topic)
+      $primaryTopic=[string]$derivedGrowthTopic.topic
+      $specificGap=[string]$derivedGrowthTopic.specific_gap
+      $specificGapSlug=Convert-ToGrowthSignalSlug $specificGap
+      $nextActionCandidate=[string]$derivedGrowthTopic.next_action_candidate
+    } else {
+      $nextActionCandidate='derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta'
+    }
+  }
   elseif($primaryTopic -eq 'growth_signal_specificity_gap') { $nextActionCandidate='replace_generic_growth_signal_with_source_specific_gap_and_validator_hint' }
   else { $nextActionCandidate="inspect_$primaryTopic`_and_return_one_bounded_next_action_candidate" }
 }
 $validatorHint=[string](Get-PacketInfluenceField $packet 'validator_hint' $null)
 if([string]::IsNullOrWhiteSpace($validatorHint)){
-  if($nextActionCandidate -like '*growth_topic*' -or $specificGap -like '*too_generic*') { $validatorHint='validate growth signal has specific_gap, next_action_candidate, proof_needed, validator_hint, and non-generated semantic topic' }
+  if($derivedGrowthTopic -and $derivedGrowthTopic.found) { $validatorHint=[string]$derivedGrowthTopic.validator_hint }
+  elseif($nextActionCandidate -like '*growth_topic*' -or $specificGap -like '*too_generic*' -or $primaryTopic -eq 'derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta') { $validatorHint='validate growth signal has specific_gap, next_action_candidate, proof_needed, validator_hint, and non-generated semantic topic' }
   else { $validatorHint='validate proposed action against real packet shape, negative generic-topic case, and proof refs before live use' }
 }
 $proofNeeded=Convert-ToBoundedList (Get-PacketInfluenceField $packet 'proof_needed' @())
-if(@($proofNeeded).Count -lt 1){ $proofNeeded=@('producer proof JSON','negative generic-topic validator','live or lab observation showing AIMO selected a bounded action from the signal') }
-$signalQuality=if($primaryTopic -eq 'growth_signal_specificity_gap' -or $specificGap -like '*too_generic*'){'NEEDS_SPECIFICITY'}else{'ACTIONABLE'}
+if(@($proofNeeded).Count -lt 1){ if($derivedGrowthTopic -and $derivedGrowthTopic.found){ $proofNeeded=@($derivedGrowthTopic.proof_needed) } else { $proofNeeded=@('producer proof JSON','negative generic-topic validator','live or lab observation showing AIMO selected a bounded action from the signal') } }
+$signalQuality=if($derivedGrowthTopic -and $derivedGrowthTopic.found){'ACTIONABLE_DERIVED'}elseif($primaryTopic -eq 'growth_signal_specificity_gap' -or $specificGap -like '*too_generic*' -or $primaryTopic -eq 'derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta'){'NEEDS_SPECIFICITY'}else{'ACTIONABLE'}
 $focusBoosts=Convert-ToBoundedList (@($rawFocusBoosts) + @($specificGapSlug,$nextActionCandidate,'proof_needed','validator_hint'))
 $growthSignal=[ordered]@{
   schema='compact_memory_growth_signal_v1'
@@ -103,6 +162,7 @@ $growthSignal=[ordered]@{
   proof_needed=@($proofNeeded)
   validator_hint=$validatorHint
   signal_quality=$signalQuality
+  derived_from_recent_packet=$(if($derivedGrowthTopic){$derivedGrowthTopic}else{$null})
   actionable_contract=[ordered]@{ specific_gap_required=$true; next_action_candidate_required=$true; proof_needed_required=$true; validator_hint_required=$true; generated_task_name_as_topic_allowed=$false }
   active_memory_mutated_by_intake=$false
 }
