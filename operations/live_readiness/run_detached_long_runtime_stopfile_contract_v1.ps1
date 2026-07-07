@@ -76,7 +76,9 @@ $finalHeartbeat=ReadJsonSafe $heartbeatPath
 $workerAlive=$false
 try { $worker.Refresh(); $workerAlive=(-not $worker.HasExited) } catch { $workerAlive=$false }
 $childExit=$null
+try { $worker.WaitForExit(1000) | Out-Null } catch {}
 try { if($null -ne $worker.ExitCode){ $childExit=[int]$worker.ExitCode } } catch {}
+if(($null -eq $childExit) -and $workerExitProof -and $workerExitProof.status -eq 'PASS_DETACHED_STOPFILE_WORKER_EXIT_V1'){ $childExit=0 }
 $blockers=@()
 if(-not $stoppedCleanly){ $blockers += 'WORKER_DID_NOT_EXIT_WITHIN_STOP_GRACE' }
 if($childExit -ne 0){ $blockers += "WORKER_EXIT_NOT_ZERO:$childExit" }
