@@ -159,3 +159,19 @@ LIVE_LIKE_GATE_PROOF=tests/live_like/SCHOOL_AIMO_LIVE_LIKE_OBSERVATION_GATE_V1_P
 ` 
 
 Boundary: live-like lab observation only; proves heartbeat/watchdog/duration around repeatable School+AIMO parallel mechanics, not full live readiness or continuous autonomous runtime.
+
+## School + AIMO live readiness gate result
+
+`	ext
+LIVE_READINESS_GATE_STATUS=PASS_SCHOOL_AIMO_LIVE_READINESS_GATE_NO_GO_V1
+LIVE_READINESS_GATE_DECISION=NO_GO_LIVE_READINESS_BLOCKED
+LIVE_READINESS_GATE_LIVE_READY=False
+LIVE_READINESS_GATE_RUNTIME_READY=false
+LIVE_READINESS_GATE_REPO_HEAD=86c8a4b8573d69ff44dbded984b6db01c7071b9e
+LIVE_READINESS_GATE_PREREQ_MISSING_COUNT=0
+LIVE_READINESS_GATE_PASSED_COUNT=14
+LIVE_READINESS_GATE_GO_BLOCKERS=OWNER_LIVE_AUTHORIZATION_MISSING,PRIOR_PROOF_RUNTIME_READY_FALSE,LIVE_ROLLBACK_PLAN_NOT_PROVEN,LIVE_QUARANTINE_PLAN_NOT_PROVEN,DETACHED_LONG_RUNTIME_STOPFILE_CONTRACT_NOT_PROVEN,LIVE_CONTINUOUS_RUNTIME_NOT_PROVEN
+LIVE_READINESS_GATE_PROOF=tests/live_readiness/SCHOOL_AIMO_LIVE_READINESS_GATE_V1_PROOF.json
+` 
+
+Decision: NO-GO for live. This is a successful safety gate result, not a failure. Lab/live-like prerequisites passed; live remains blocked until explicit Owner live authorization plus proven rollback, quarantine, detached stopfile contract, and continuous runtime proof.

@@ -1,0 +1,76 @@
+﻿{
+    "schema":  "school_aimo_live_readiness_gate_v1",
+    "status":  "PASS_SCHOOL_AIMO_LIVE_READINESS_GATE_NO_GO_V1",
+    "proof_label":  "PROVEN_LAB_LIVE_READINESS_GATE_DECISION_NOT_LIVE_EXECUTION",
+    "decision":  "NO_GO_LIVE_READINESS_BLOCKED",
+    "live_ready":  false,
+    "repo":  {
+                 "root":  "H:/efab",
+                 "branch":  "main",
+                 "head":  "86c8a4b8573d69ff44dbded984b6db01c7071b9e",
+                 "origin":  "https://github.com/ries11217596955-hash/efab.git",
+                 "ahead_behind":  "0\t0",
+                 "dirty_before":  [
+
+                                  ],
+                 "active_process_count":  0
+             },
+    "checks":  {
+                   "passed":  [
+                                  "CANONICAL_ROOT_H_EFAB",
+                                  "BRANCH_MAIN",
+                                  "ORIGIN_EFAB",
+                                  "REMOTE_SYNCED_0_0",
+                                  "WORKTREE_CLEAN",
+                                  "NO_ACTIVE_CONFLICTING_PROCESS",
+                                  "MAP_VALIDATOR_PASS",
+                                  "LIVE_LIKE_GATE_VALIDATOR_PASS",
+                                  "LIVE_LIKE_MIN_DURATION_PASS",
+                                  "LIVE_LIKE_MIN_HEARTBEATS_PASS",
+                                  "LIVE_LIKE_WATCHDOG_CLEAN",
+                                  "AGENTLIFE_PACKET_BACKOFF_PASS",
+                                  "COMPACT_MEMORY_INTAKE_PASS",
+                                  "POST_SCHOOL_MERGE_PASS"
+                              ],
+                   "missing":  [
+
+                               ],
+                   "go_blockers":  [
+                                       "OWNER_LIVE_AUTHORIZATION_MISSING",
+                                       "PRIOR_PROOF_RUNTIME_READY_FALSE",
+                                       "LIVE_ROLLBACK_PLAN_NOT_PROVEN",
+                                       "LIVE_QUARANTINE_PLAN_NOT_PROVEN",
+                                       "DETACHED_LONG_RUNTIME_STOPFILE_CONTRACT_NOT_PROVEN",
+                                       "LIVE_CONTINUOUS_RUNTIME_NOT_PROVEN"
+                                   ],
+                   "map_status":  "PASS_AGENT_BODY_COMPOSITION_MAP_CURRENT_V1",
+                   "map_exit":  0,
+                   "live_like_validation_status":  "PASS_SCHOOL_AIMO_LIVE_LIKE_OBSERVATION_GATE_V1",
+                   "live_like_validation_exit":  0,
+                   "proof_checks":  {
+                                        "live_like_proof_present":  true,
+                                        "live_like_status":  "PASS_SCHOOL_AIMO_LIVE_LIKE_OBSERVATION_GATE_V1",
+                                        "live_like_label":  "PROVEN_LAB_LIVE_LIKE_OBSERVATION_NOT_LIVE_READY",
+                                        "live_like_duration_seconds":  192.508,
+                                        "live_like_heartbeats":  19,
+                                        "live_like_watchdog_violations":  0,
+                                        "live_like_runtime_ready":  false,
+                                        "parallel_status":  "PASS_SCHOOL_AIMO_PARALLEL_LAB_V1",
+                                        "parallel_validation":  "PASS_SCHOOL_AIMO_PARALLEL_LAB_V1",
+                                        "packet_status":  "PASS_AGENTLIFE_PACKET_SUBMITTED_SCHOOL_ACTIVE_BACKOFF",
+                                        "intake_status":  "PASS_MULTI_SOURCE_COMPACT_MEMORY_INTAKE_SUBMIT_V1",
+                                        "merge_status":  "PASS_MULTI_SOURCE_COMPACT_MEMORY_MERGE_QUEUE_V1"
+                                    }
+               },
+    "required_next_to_be_live_ready":  [
+                                           "explicit Owner live authorization",
+                                           "proved detached long-runtime stopfile contract",
+                                           "proved rollback plan",
+                                           "proved quarantine plan",
+                                           "continuous runtime proof with live boundary, not lab controlled-stop"
+                                       ],
+    "boundary":  "Readiness decision only. This gate does not launch live runtime. NO-GO is a valid safe pass when prerequisites are proven but live blockers remain.",
+    "runtime_ready":  false,
+    "started_at":  "2026-07-07T09:18:01.2519906+04:00",
+    "finished_at":  "2026-07-07T09:18:05.8084382+04:00"
+}

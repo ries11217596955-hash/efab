@@ -144,3 +144,10 @@ Night-school note:
 - Parallel evidence inside gate: status=PASS_SCHOOL_AIMO_PARALLEL_LAB_V1, validation=PASS_SCHOOL_AIMO_PARALLEL_LAB_V1, AIMO cycles=106, AgentLife packet/intake/merge PASS.
 - Boundary: live-like lab observation, not full live readiness and not continuous autonomous runtime.
 - Proof: tests/live_like/SCHOOL_AIMO_LIVE_LIKE_OBSERVATION_GATE_V1_PROOF.json.
+
+2026-07-07 - School + AIMO live readiness gate no-go pass
+- Result: PASS_SCHOOL_AIMO_LIVE_READINESS_GATE_NO_GO_V1; decision=NO_GO_LIVE_READINESS_BLOCKED; live_ready=false; runtime_ready=false.
+- Prereqs passed: root/branch/origin/sync/clean/no active runtime child process/map/live-like validator/live-like duration/heartbeat/watchdog/AgentLife packet/intake/merge.
+- Go blockers: OWNER_LIVE_AUTHORIZATION_MISSING, PRIOR_PROOF_RUNTIME_READY_FALSE, LIVE_ROLLBACK_PLAN_NOT_PROVEN, LIVE_QUARANTINE_PLAN_NOT_PROVEN, DETACHED_LONG_RUNTIME_STOPFILE_CONTRACT_NOT_PROVEN, LIVE_CONTINUOUS_RUNTIME_NOT_PROVEN.
+- Meaning: safe gate works; do not launch longer/live runtime yet.
+- Proof: tests/live_readiness/SCHOOL_AIMO_LIVE_READINESS_GATE_V1_PROOF.json.
