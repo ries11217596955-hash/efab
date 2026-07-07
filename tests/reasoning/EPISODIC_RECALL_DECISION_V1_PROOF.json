@@ -1,0 +1,33 @@
+﻿{
+    "schema":  "episodic_recall_decision_validation_v1",
+    "status":  "PASS_EPISODIC_RECALL_DECISION_V1",
+    "tests":  [
+                  {
+                      "name":  "no_recall_keeps_task",
+                      "status":  "PASS",
+                      "action":  "KEEP_TASK"
+                  },
+                  {
+                      "name":  "generic_recall_applies_reuse_hint",
+                      "status":  "PASS",
+                      "action":  "APPLY_REUSE_HINT"
+                  },
+                  {
+                      "name":  "selector_payload_recall_requires_validation_guardrail",
+                      "status":  "PASS",
+                      "action":  "REQUIRE_VALIDATION_GUARDRAIL",
+                      "guardrails":  [
+                                         "validate live-shaped payload/object shape before accepting selector or routing behavior",
+                                         "test PSCustomObject and ordered dictionary input shapes",
+                                         "do not treat episodic recall as proof; preserve proof_refs and run validators"
+                                     ]
+                  },
+                  {
+                      "name":  "aimo_decision_wiring_static_check",
+                      "status":  "PASS"
+                  }
+              ],
+    "live_process_touched":  false,
+    "active_memory_mutated":  false,
+    "created_at":  "2026-07-07T17:22:31.5303918+04:00"
+}

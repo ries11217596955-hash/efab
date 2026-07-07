@@ -14,6 +14,8 @@ $Policy = Get-Content $PolicyPath -Raw | ConvertFrom-Json
 
 $EpisodicRecallPath = Join-Path 'operations/memory/episodic' 'get_episode_recall_v1.ps1'
 if(Test-Path $EpisodicRecallPath) { . $EpisodicRecallPath }
+$ReasoningDecisionPath = Join-Path 'operations/reasoning' 'select_decision_from_episodic_recall_v1.ps1'
+if(Test-Path $ReasoningDecisionPath) { . $ReasoningDecisionPath }
 
 function Get-GitStatusShort {
   $s = git status --short --untracked-files=all
@@ -352,6 +354,7 @@ if ($Mode -eq 'SandboxTestLife') {
     knowledge_acquisition_trace = @()
     task_decomposition_trace = @()
     episodic_recall_trace = @()
+    episodic_decision_trace = @()
     batch_knowledge_acquisition_trace = @()
   }
   $Payload['boundary'] = 'Sandbox development life. Hard walls remain; each cycle may decompose X into <=10 parts and call governed batch source only after local knowledge gap.'
@@ -603,10 +606,17 @@ if ($Mode -eq 'SandboxTestLife') {
       $episodicRecall = [ordered]@{ available=$false; status='EPISODIC_RECALL_HELPER_MISSING'; query_terms=@($episodicQueryTerms); selected=@(); reuse_hints=@(); guardrails=@('episodic recall helper not loaded') }
     }
     $Payload.development_trace.episodic_recall_trace = @($episodicRecall)
-    if($episodicRecall.available -and @($episodicRecall.reuse_hints).Count -gt 0) {
-      $task = [ordered]@{ name=$task.name; target=$task.target; query=($task.query + '; episodic_reuse_hint: ' + ((@($episodicRecall.reuse_hints) | Select-Object -First 2) -join ' | ')) }
+    if(Get-Command Get-ReasoningDecisionFromEpisodicRecall -ErrorAction SilentlyContinue) {
+      $episodicDecision = Get-ReasoningDecisionFromEpisodicRecall -TaskName $task.name -TaskQuery $task.query -TaskTarget $task.target -SelectorReason $selector.reason -UsefulIntent $selector.useful_intent -EpisodicRecall $episodicRecall
+    } else {
+      $episodicDecision = [ordered]@{ available=$false; status='EPISODIC_DECISION_HELPER_MISSING'; decision_action='KEEP_TASK'; decision_reason='decision helper not loaded'; rewritten_query=$task.query; required_guardrails=@(); selected_episode_ids=@(); question_to_self='decision helper missing' }
+    }
+    $Payload.development_trace.episodic_decision_trace = @($episodicDecision)
+    if($episodicDecision.rewritten_query -and [string]$episodicDecision.rewritten_query -ne [string]$task.query) {
+      $task = [ordered]@{ name=$task.name; target=$task.target; query=[string]$episodicDecision.rewritten_query }
       $Payload.development_trace.current_task = $task.name
       $Payload.development_trace.current_task_query_with_episodic_recall = $task.query
+      $Payload.development_trace.current_task_query_with_episodic_decision = $task.query
     }
 
 
@@ -729,6 +739,10 @@ if ($Mode -eq 'SandboxTestLife') {
       episodic_recall_status = $episodicRecall.status
       episodic_recall_available = $episodicRecall.available
       episodic_recall_top_episode = $(if($episodicRecall.available -and @($episodicRecall.selected).Count -gt 0){$episodicRecall.selected[0].episode_id}else{$null})
+      episodic_decision_status = $episodicDecision.status
+      episodic_decision_action = $episodicDecision.decision_action
+      episodic_decision_question = $episodicDecision.question_to_self
+      episodic_decision_guardrail_count = @($episodicDecision.required_guardrails).Count
       reflexes_used = @($usedReflexes.ToArray())
       memory_relevance = $relevance
       candidates_checked = $memoryCompare.result.candidates_checked

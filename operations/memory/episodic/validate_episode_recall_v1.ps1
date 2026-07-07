@@ -1,4 +1,4 @@
-﻿$ErrorActionPreference='Stop'
+$ErrorActionPreference='Stop'
 $RepoRoot=(Resolve-Path (Join-Path $PSScriptRoot '../../..')).Path
 Set-Location $RepoRoot
 function Assert($Cond,[string]$Msg){ if(-not $Cond){ throw $Msg } }
@@ -35,7 +35,7 @@ $aimo='operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1'
 $aimoText=Get-Content $aimo -Raw
 Assert ($aimoText -match 'Get-EpisodicMemoryRecall') 'AIMO_RECALL_CALL_MISSING'
 Assert ($aimoText -match 'episodic_recall_trace') 'AIMO_RECALL_TRACE_MISSING'
-Assert ($aimoText -match 'episodic_reuse_hint') 'AIMO_QUERY_AUGMENT_MISSING'
+Assert (($aimoText -match 'current_task_query_with_episodic_decision') -or ($aimoText -match 'episodic_reuse_hint')) 'AIMO_QUERY_AUGMENT_OR_DECISION_REWRITE_MISSING'
 $proof=[ordered]@{
   schema='episodic_recall_validation_v1'
   status='PASS_EPISODIC_RECALL_V1'
