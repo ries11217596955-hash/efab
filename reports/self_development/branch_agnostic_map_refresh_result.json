@@ -1,30 +1,22 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-07T13:53:39.5083644+04:00",
+    "checked_at":  "2026-07-07T14:04:17.9173038+04:00",
     "branch":  "main",
-    "observed_head":  "daed8d806fcb4b9150b99a20279b2b89239bbaca",
-    "subject_head":  "daed8d806fcb4b9150b99a20279b2b89239bbaca",
+    "observed_head":  "290cb7c9d28f0e1814e0ddce673b770a73991adf",
+    "subject_head":  "290cb7c9d28f0e1814e0ddce673b770a73991adf",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
-                          "operations/autonomous_inner_motor/validate_active_memory_state_backoff_v1.ps1",
-                          "operations/school/digestion/absorb_atom_file_via_digest_pipeline_v1.ps1",
-                          "operations/school/digestion/validate_active_memory_publish_retry_v1.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "tests/autonomous_inner_motor/ACTIVE_MEMORY_STATE_BACKOFF_V1_PROOF.json",
-                          "tests/school/digestion/ACTIVE_MEMORY_PUBLISH_RETRY_V1_PROOF.json"
+                          "tests/live_start/AIMO_MANIFEST_ONLY_HOTSWAP_V1_PROOF.json"
                       ],
     "structural_paths":  [
-                             "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
-                             "operations/autonomous_inner_motor/validate_active_memory_state_backoff_v1.ps1",
-                             "operations/school/digestion/absorb_atom_file_via_digest_pipeline_v1.ps1",
-                             "operations/school/digestion/validate_active_memory_publish_retry_v1.ps1"
+
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -60,5 +52,5 @@
                          "component_count":  7,
                          "structural_path_count":  574
                      },
-    "refreshed_at":  "2026-07-07T13:53:40.4558490+04:00"
+    "refreshed_at":  "2026-07-07T14:04:18.9325026+04:00"
 }

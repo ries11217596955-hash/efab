@@ -1,0 +1,171 @@
+﻿{
+    "schema":  "school_only_restart_after_memory_fix_v1",
+    "status":  "PASS_SCHOOL_ONLY_RESTART_AFTER_MEMORY_FIX_V1",
+    "proof_label":  "PROVEN_LIVE_SCHOOL_RESTARTED_AFTER_ACTIVE_MEMORY_LOCK_FIX_INITIAL_OBSERVATION",
+    "restart_id":  "school_only_restart_after_memory_fix_v1_20260707T100232Z",
+    "repo":  {
+                 "root":  "H:/efab",
+                 "branch":  "main",
+                 "head":  "290cb7c9d28f0e1814e0ddce673b770a73991adf",
+                 "origin":  "https://github.com/ries11217596955-hash/efab.git",
+                 "ahead_behind":  "0 0",
+                 "dirty_before":  [
+
+                                  ]
+             },
+    "old_school":  {
+                       "pid":  2708,
+                       "alive_before":  false
+                   },
+    "school":  {
+                   "pid":  11816,
+                   "alive":  true,
+                   "mode":  "Live",
+                   "count":  1000000,
+                   "topics_plan":  "operations/school/curriculum/topics/builder_night_school_topics_v1.json",
+                   "stdout":  ".runtime\\live_start\\controlled_live_school_aimo_v1_20260707T070037Z\\school_restarts\\school_only_restart_after_memory_fix_v1_20260707T100232Z\\school.stdout.txt",
+                   "stderr":  ".runtime\\live_start\\controlled_live_school_aimo_v1_20260707T070037Z\\school_restarts\\school_only_restart_after_memory_fix_v1_20260707T100232Z\\school.stderr.txt",
+                   "stderr_size":  0,
+                   "stdout_lines":  627,
+                   "validation_pass_events":  102,
+                   "processed_events":  101,
+                   "accepted_events":  101,
+                   "streaming_pass_events":  1
+               },
+    "aimo":  {
+                 "pid":  4984,
+                 "alive_before":  true,
+                 "alive_after":  true,
+                 "touched":  false,
+                 "source_proof":  "tests/live_start/AIMO_MANIFEST_ONLY_HOTSWAP_V1_PROOF.json"
+             },
+    "observation":  {
+                        "observe_seconds":  90,
+                        "heartbeat_seconds":  10,
+                        "heartbeats":  [
+                                           {
+                                               "at":  "2026-07-07T14:02:42.6639548+04:00",
+                                               "school_pid":  11816,
+                                               "school_alive":  true,
+                                               "aimo_pid":  4984,
+                                               "aimo_alive":  true,
+                                               "elapsed_seconds":  10.076,
+                                               "stdout_lines":  0,
+                                               "validation_pass_events":  0,
+                                               "processed_events":  0,
+                                               "streaming_pass_events":  0,
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T14:02:52.7264244+04:00",
+                                               "school_pid":  11816,
+                                               "school_alive":  true,
+                                               "aimo_pid":  4984,
+                                               "aimo_alive":  true,
+                                               "elapsed_seconds":  20.134,
+                                               "stdout_lines":  62,
+                                               "validation_pass_events":  11,
+                                               "processed_events":  11,
+                                               "streaming_pass_events":  0,
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T14:03:02.7825601+04:00",
+                                               "school_pid":  11816,
+                                               "school_alive":  true,
+                                               "aimo_pid":  4984,
+                                               "aimo_alive":  true,
+                                               "elapsed_seconds":  30.19,
+                                               "stdout_lines":  344,
+                                               "validation_pass_events":  56,
+                                               "processed_events":  56,
+                                               "streaming_pass_events":  0,
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T14:03:12.8143344+04:00",
+                                               "school_pid":  11816,
+                                               "school_alive":  true,
+                                               "aimo_pid":  4984,
+                                               "aimo_alive":  true,
+                                               "elapsed_seconds":  40.222,
+                                               "stdout_lines":  440,
+                                               "validation_pass_events":  72,
+                                               "processed_events":  72,
+                                               "streaming_pass_events":  0,
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T14:03:22.8489046+04:00",
+                                               "school_pid":  11816,
+                                               "school_alive":  true,
+                                               "aimo_pid":  4984,
+                                               "aimo_alive":  true,
+                                               "elapsed_seconds":  50.256,
+                                               "stdout_lines":  530,
+                                               "validation_pass_events":  87,
+                                               "processed_events":  87,
+                                               "streaming_pass_events":  0,
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T14:03:32.9146780+04:00",
+                                               "school_pid":  11816,
+                                               "school_alive":  true,
+                                               "aimo_pid":  4984,
+                                               "aimo_alive":  true,
+                                               "elapsed_seconds":  60.322,
+                                               "stdout_lines":  614,
+                                               "validation_pass_events":  101,
+                                               "processed_events":  101,
+                                               "streaming_pass_events":  0,
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T14:03:42.9825584+04:00",
+                                               "school_pid":  11816,
+                                               "school_alive":  true,
+                                               "aimo_pid":  4984,
+                                               "aimo_alive":  true,
+                                               "elapsed_seconds":  70.39,
+                                               "stdout_lines":  627,
+                                               "validation_pass_events":  102,
+                                               "processed_events":  101,
+                                               "streaming_pass_events":  1,
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T14:03:53.0147939+04:00",
+                                               "school_pid":  11816,
+                                               "school_alive":  true,
+                                               "aimo_pid":  4984,
+                                               "aimo_alive":  true,
+                                               "elapsed_seconds":  80.422,
+                                               "stdout_lines":  627,
+                                               "validation_pass_events":  102,
+                                               "processed_events":  101,
+                                               "streaming_pass_events":  1,
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T14:04:03.0641220+04:00",
+                                               "school_pid":  11816,
+                                               "school_alive":  true,
+                                               "aimo_pid":  4984,
+                                               "aimo_alive":  true,
+                                               "elapsed_seconds":  90.472,
+                                               "stdout_lines":  627,
+                                               "validation_pass_events":  102,
+                                               "processed_events":  101,
+                                               "streaming_pass_events":  1,
+                                               "stderr_size":  0
+                                           }
+                                       ]
+                    },
+    "blockers":  [
+
+                 ],
+    "boundary":  "School-only restart after active memory lock fix. Existing AIMO observed, not restarted or modified.",
+    "started_at":  "2026-07-07T14:02:32.5925551+04:00",
+    "finished_at":  "2026-07-07T14:04:03.1824762+04:00"
+}
