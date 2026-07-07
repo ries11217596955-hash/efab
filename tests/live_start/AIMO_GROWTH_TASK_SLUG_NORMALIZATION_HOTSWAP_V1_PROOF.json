@@ -1,0 +1,60 @@
+﻿{
+    "schema":  "aimo_growth_task_slug_normalization_hotswap_v1",
+    "status":  "PASS_AIMO_GROWTH_TASK_SLUG_NORMALIZATION_HOTSWAP_V1",
+    "proof_label":  "PROVEN_LIVE_AIMO_RUNNING_WITH_GROWTH_TASK_SLUG_NORMALIZATION_AND_SEMANTIC_TOPIC_PRODUCER",
+    "repo":  {
+                 "head":  "b904d8103095e37790c738cef3ef6215a9f9dd8a",
+                 "branch":  "main",
+                 "ahead_behind":  "0 0",
+                 "dirty_before":  [
+                                      "?? tests/live_start/AIMO_GROWTH_TASK_SLUG_NORMALIZATION_HOTSWAP_V1_PROOF.json"
+                                  ]
+             },
+    "proof_correction":  {
+                             "corrected":  true,
+                             "reason":  "previous checker treated follow_gr as a substring; follow_gr is part of valid follow_growth_signal, so residue must be checked as a token/whole slug",
+                             "previous_false_blockers":  [
+                                                             "FOLLOW_GR_RESIDUE_IN_CURRENT_TASK:31",
+                                                             "FOLLOW_GR_RESIDUE_IN_SELECTOR_TASK:1",
+                                                             "NO_NORMALIZED_GROWTH_TOPIC_OBSERVED"
+                                                         ]
+                         },
+    "school":  {
+                   "pid":  11816,
+                   "alive":  true,
+                   "cpu":  3852.125,
+                   "working_set_mb":  85.2,
+                   "touched":  false
+               },
+    "new_aimo":  {
+                     "pid":  9296,
+                     "run_id":  "live_aimo_aimo_growth_task_slug_normalization_hotswap_v2_20260707T140133Z",
+                     "alive":  true,
+                     "proof_path":  ".runtime\\autonomous_inner_motor\\test_life_runs\\live_aimo_aimo_growth_task_slug_normalization_hotswap_v2_20260707T140133Z\\TEST_LIFE_PROOF.json",
+                     "stderr":  "H:\\efab\\.runtime\\live_start\\controlled_live_school_aimo_v1_20260707T070037Z\\school_restarts\\aimo_agent_restarts\\aimo_growth_task_slug_normalization_hotswap_v2_20260707T140133Z\\aimo.stderr.txt",
+                     "stderr_size":  0,
+                     "cycles":  79,
+                     "recursive_current_task_count":  0,
+                     "recursive_selector_task_count":  0,
+                     "follow_gr_token_current_task_count":  0,
+                     "follow_gr_token_selector_task_count":  0,
+                     "normalized_topics":  [
+                                               "active_growth_signal"
+                                           ],
+                     "selector_task_samples":  [
+                                                   "follow_growth_signal_active_growth_signal"
+                                               ],
+                     "current_task_samples":  [
+                                                  "validate_guardrails_before_follow_growth_signal_active_growth_signal",
+                                                  "validate_guardrails_before_follow_growth_signal_active_growth_signal",
+                                                  "validate_guardrails_before_follow_growth_signal_active_growth_signal",
+                                                  "validate_guardrails_before_follow_growth_signal_active_growth_signal",
+                                                  "validate_guardrails_before_follow_growth_signal_active_growth_signal"
+                                              ]
+                 },
+    "blockers":  [
+
+                 ],
+    "boundary":  "Read-only correction proof for the current live AIMO after growth task slug normalization. No restart, no School mutation, no active memory direct mutation.",
+    "created_at":  "2026-07-07T18:05:51.6990364+04:00"
+}
