@@ -41,8 +41,8 @@ function Get-ActiveMemoryState {
           status = 'ACTIVE_MEMORY_AVAILABLE'
           run_id = $manifest.run_id
           runtime_ready = $manifest.runtime_ready
-          cell_count = (Get-Content $cellsPath | Measure-Object -Line).Lines
-          cells_sha256 = (Get-FileHash -Algorithm SHA256 $cellsPath).Hash
+          cell_count = [int]$manifest.cell_count
+          cells_sha256 = [string]$manifest.cells_sha256
           manifest_status = $manifest.status
           missing_paths = @()
           attempt_count = $attempt

@@ -6,18 +6,18 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "2eced4f38b1ae2eb7ba4a23280c0c6d0b43af928",
-    "subject_head":  "2eced4f38b1ae2eb7ba4a23280c0c6d0b43af928",
-    "generated_at":  "2026-07-07T11:51:44.5824611+04:00",
+    "observed_head_at_generation":  "5eb020d215d285b74f6f0e9671d62517d1b9d86f",
+    "subject_head":  "5eb020d215d285b74f6f0e9671d62517d1b9d86f",
+    "generated_at":  "2026-07-07T13:51:23.6142045+04:00",
     "generator":  "invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "role":  "canonical local body composition/status map: what exists, where it is, freshness, last runtime/proof signal",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  573,
+    "structural_path_count":  574,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  573,
-                                    "sha256":  "daff3c13810a5ea87fc2c191ab38246f0f3c91334d9dd101f2fe1c7e85197a62"
+                                    "structural_file_count":  574,
+                                    "sha256":  "d8d8d0faf72046abb3e9225d5d493b934516e7ddbc581aa94b14212a017e5a3d"
                                 },
     "module_count":  207,
     "validator_count":  174,
@@ -28,10 +28,10 @@
                            "role":  "candidate learning factory and school lifecycle",
                            "root":  "operations/school",
                            "status":  "PRESENT_ON_CURRENT_BRANCH",
-                           "file_count":  96,
-                           "script_count":  58,
+                           "file_count":  97,
+                           "script_count":  59,
                            "policy_count":  4,
-                           "validator_count":  27,
+                           "validator_count":  28,
                            "proof_file_count":  12,
                            "doc_count":  15,
                            "required_files":  [
@@ -72,6 +72,7 @@
                                                       "operations/school/curriculum/source_router/validate_external_world_source_material_v1.ps1",
                                                       "operations/school/curriculum/streaming_absorption/validate_codex_curriculum_streaming_absorption_v1.ps1",
                                                       "operations/school/curriculum/validate_curriculum_school_v1.ps1",
+                                                      "operations/school/digestion/validate_active_memory_publish_retry_v1.ps1",
                                                       "operations/school/digestion/validate_compact_semantic_digestion_organ_v1.ps1",
                                                       "operations/school/finalize_agent_school_run_v1.ps1",
                                                       "operations/school/memory/validate_compact_memory_recall_use_probe_v1.ps1",
@@ -92,8 +93,8 @@
                                                  },
                            "latest_runtime_artifact":  {
                                                            "path":  ".runtime/school_runs/school_factory_digest_use_real_1000000_20260707_110037/AGENT_SCHOOL_CANONICAL_ENTRYPOINT_V1.json",
-                                                           "last_write":  "2026-07-07T11:50:28.9315257+04:00",
-                                                           "bytes":  43265
+                                                           "last_write":  "2026-07-07T12:21:12.9632565+04:00",
+                                                           "bytes":  71312
                                                        }
                        },
                        {
@@ -139,8 +140,8 @@
                                                      "subject":  "chore: initial clean builder snapshot"
                                                  },
                            "latest_runtime_artifact":  {
-                                                           "path":  ".runtime/school_source_template_filter/school_source_router_filter_school_factory_digest_use_real_1000000_20260707_110037_chunk_29_of_200/SCHOOL_SOURCE_TEMPLATE_FILTER_DECISION_V1.json",
-                                                           "last_write":  "2026-07-07T11:50:29.7581497+04:00",
+                                                           "path":  ".runtime/school_source_template_filter/school_source_router_filter_school_factory_digest_use_real_1000000_20260707_110037_chunk_41_of_200/SCHOOL_SOURCE_TEMPLATE_FILTER_DECISION_V1.json",
+                                                           "last_write":  "2026-07-07T12:18:46.4984793+04:00",
                                                            "bytes":  3268
                                                        }
                        },
@@ -182,9 +183,9 @@
                                                      "subject":  "chore: initial clean builder snapshot"
                                                  },
                            "latest_runtime_artifact":  {
-                                                           "path":  ".runtime/file_atom_absorption/file_atom_absorption_20260707_115126/staging/digestible_atoms.jsonl",
-                                                           "last_write":  "2026-07-07T11:51:33.2325859+04:00",
-                                                           "bytes":  4002604
+                                                           "path":  ".runtime/active_compact_semantic_memory_v1/manifest.json",
+                                                           "last_write":  "2026-07-07T12:18:42.8643582+04:00",
+                                                           "bytes":  968
                                                        }
                        },
                        {
@@ -219,8 +220,8 @@
                                                  },
                            "latest_runtime_artifact":  {
                                                            "path":  ".runtime/autonomous_inner_motor/test_life_runs/live_aimo_aimo_agent_only_restart_v1_20260707T075024Z/TEST_LIFE_PROOF.json",
-                                                           "last_write":  "2026-07-07T11:51:43.7832262+04:00",
-                                                           "bytes":  82705
+                                                           "last_write":  "2026-07-07T13:51:22.9326636+04:00",
+                                                           "bytes":  205908
                                                        }
                        },
                        {
@@ -356,18 +357,18 @@
                                         "live_process_touched":  false,
                                         "latest_active_compact_memory_manifest":  {
                                                                                       "path":  ".runtime/active_compact_semantic_memory_v1/manifest.json",
-                                                                                      "last_write":  "2026-07-07T11:50:25.9982130+04:00",
+                                                                                      "last_write":  "2026-07-07T12:18:42.8643582+04:00",
                                                                                       "bytes":  968
                                                                                   },
                                         "latest_school_runtime_artifact":  {
                                                                                "path":  ".runtime/school_runs/school_factory_digest_use_real_1000000_20260707_110037/AGENT_SCHOOL_CANONICAL_ENTRYPOINT_V1.json",
-                                                                               "last_write":  "2026-07-07T11:50:28.9315257+04:00",
-                                                                               "bytes":  43265
+                                                                               "last_write":  "2026-07-07T12:21:12.9632565+04:00",
+                                                                               "bytes":  71312
                                                                            },
                                         "latest_aimo_runtime_artifact":  {
                                                                              "path":  ".runtime/autonomous_inner_motor/test_life_runs/live_aimo_aimo_agent_only_restart_v1_20260707T075024Z/TEST_LIFE_PROOF.json",
-                                                                             "last_write":  "2026-07-07T11:51:43.7832262+04:00",
-                                                                             "bytes":  82705
+                                                                             "last_write":  "2026-07-07T13:51:22.9326636+04:00",
+                                                                             "bytes":  205908
                                                                          }
                                     },
     "freshness_rule":  "Trust currentness by body_source_fingerprint, not by self-referential commit HEAD.",

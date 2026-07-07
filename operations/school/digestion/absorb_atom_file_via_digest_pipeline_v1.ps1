@@ -20,6 +20,49 @@ function GetField($Obj,[string[]]$Names){
   foreach($n in $Names){ if($Obj.PSObject.Properties[$n]){ $v=[string]$Obj.PSObject.Properties[$n].Value; if(-not [string]::IsNullOrWhiteSpace($v)){ return $v } } }
   return ''
 }
+function Invoke-FileSystemActionWithRetry {
+  param(
+    [Parameter(Mandatory=$true)][scriptblock]$Action,
+    [string]$ActionName = 'file_system_action',
+    [int]$MaxAttempts = 30,
+    [int]$DelayMs = 500
+  )
+  $lastError = $null
+  for($attempt=1; $attempt -le [Math]::Max(1,$MaxAttempts); $attempt++){
+    try {
+      & $Action
+      return [ordered]@{ status='PASS_FILE_SYSTEM_ACTION_WITH_RETRY'; action=$ActionName; attempts=$attempt; last_error=$null }
+    } catch {
+      $lastError = $_.Exception.Message
+      if($attempt -lt [Math]::Max(1,$MaxAttempts)){ Start-Sleep -Milliseconds $DelayMs }
+    }
+  }
+  throw ("FILE_SYSTEM_RETRY_EXHAUSTED:{0}:attempts={1}:last_error={2}" -f $ActionName,[Math]::Max(1,$MaxAttempts),$lastError)
+}
+function Publish-ActiveMemoryRootWithRetry {
+  param(
+    [Parameter(Mandatory=$true)][string]$CandidateMemoryRoot,
+    [Parameter(Mandatory=$true)][string]$TargetMemoryRoot,
+    [int]$MaxAttempts = 30,
+    [int]$DelayMs = 500
+  )
+  if(-not(Test-Path $CandidateMemoryRoot)){ throw "CANDIDATE_MEMORY_ROOT_MISSING:$CandidateMemoryRoot" }
+  $targetParent=Split-Path $TargetMemoryRoot -Parent
+  if($targetParent){ EnsureDir $targetParent }
+  $removeResult=[ordered]@{ status='SKIPPED_TARGET_NOT_PRESENT'; action='remove_existing_target_memory_root'; attempts=0; last_error=$null }
+  if(Test-Path $TargetMemoryRoot){
+    $removeResult = Invoke-FileSystemActionWithRetry -ActionName 'remove_existing_target_memory_root' -MaxAttempts $MaxAttempts -DelayMs $DelayMs -Action { Remove-Item -LiteralPath $TargetMemoryRoot -Recurse -Force -ErrorAction Stop }
+  }
+  $copyResult = Invoke-FileSystemActionWithRetry -ActionName 'copy_candidate_to_target_memory_root' -MaxAttempts $MaxAttempts -DelayMs $DelayMs -Action { Copy-Item -LiteralPath $CandidateMemoryRoot -Destination $TargetMemoryRoot -Recurse -Force -ErrorAction Stop }
+  return [ordered]@{
+    status='PASS_ACTIVE_MEMORY_ROOT_PUBLISHED_WITH_RETRY'
+    remove_result=$removeResult
+    copy_result=$copyResult
+    target_memory_root=$TargetMemoryRoot
+    candidate_memory_root=$CandidateMemoryRoot
+    lock_tolerant=$true
+  }
+}
 if(-not (Test-Path $InputPath)){ throw "INPUT_FILE_MISSING:$InputPath" }
 $resolvedInput=(Resolve-Path $InputPath).Path
 $repoRuntime=(Join-Path $repoRoot '.runtime')
@@ -130,10 +173,7 @@ $routeAfter=Get-Content operations/school/curriculum/incremental_active_store/AC
 $ledgerAfter=Get-Content operations/school/curriculum/incremental_active_store/ACTIVE_REPO_BODY_ROUTE_REPLAY_LEDGER_V1.json -Raw|ConvertFrom-Json
 if([int]$routeBefore.routed_active_count -ne [int]$routeAfter.routed_active_count){ throw 'ROUTE_MUTATED_BY_FILE_ABSORPTION' }
 if([int]$ledgerBefore.replayed_active_count -ne [int]$ledgerAfter.replayed_active_count){ throw 'LEDGER_MUTATED_BY_FILE_ABSORPTION' }
-if(Test-Path $targetMemoryRoot){ Remove-Item $targetMemoryRoot -Recurse -Force }
-$targetParent=Split-Path $targetMemoryRoot -Parent
-if($targetParent){ EnsureDir $targetParent }
-Copy-Item -Path $candidateMemoryRoot -Destination $targetMemoryRoot -Recurse -Force
+$publishResult=Publish-ActiveMemoryRootWithRetry -CandidateMemoryRoot $candidateMemoryRoot -TargetMemoryRoot $targetMemoryRoot
 $report=[ordered]@{
   schema='file_atom_absorption_pipeline_v1'
   status='PASS_FILE_ATOM_ABSORPTION_PIPELINE_V1'
@@ -145,6 +185,7 @@ $report=[ordered]@{
   selected_validation_tier=$selectedTier
   memory_root=$targetMemoryRoot
   candidate_memory_root=$candidateMemoryRoot
+  active_memory_publish=$publishResult
   digest_status=$digestStatus
   digested_cells=[int]$manifest.cell_count
   merged_count=[int]$manifest.merged_count

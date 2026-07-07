@@ -21,7 +21,7 @@ Assert ($missingResult.backoff_recommended -eq $true) 'MISSING_BACKOFF_NOT_TRUE'
 Assert (@($missingResult.missing_paths).Count -ge 1) 'MISSING_PATHS_EMPTY'
 $goodRoot=Join-Path $sandbox 'good_memory_root'
 New-Item -ItemType Directory -Force -Path $goodRoot | Out-Null
-$manifest=[ordered]@{ status='PASS_TEST_MEMORY'; run_id=$runId; runtime_ready=$false }
+$manifest=[ordered]@{ status='PASS_TEST_MEMORY'; run_id=$runId; runtime_ready=$false; cell_count=2; cells_sha256='TEST_CELLS_SHA256_FROM_MANIFEST' }
 $manifest | ConvertTo-Json -Depth 10 | Set-Content -Path (Join-Path $goodRoot 'manifest.json') -Encoding UTF8
 @('{"cell":"one"}','{"cell":"two"}') | Set-Content -Path (Join-Path $goodRoot 'cells.jsonl') -Encoding UTF8
 $goodResult=Get-ActiveMemoryState -MemoryRoot $goodRoot -MaxRetries 1 -RetryDelayMs 1
@@ -29,7 +29,7 @@ Assert ($goodResult.available -eq $true) 'GOOD_AVAILABLE_NOT_TRUE'
 Assert ($goodResult.status -eq 'ACTIVE_MEMORY_AVAILABLE') "GOOD_STATUS_BAD:$($goodResult.status)"
 Assert ($goodResult.run_id -eq $runId) 'GOOD_RUN_ID_MISMATCH'
 Assert ($goodResult.cell_count -eq 2) "GOOD_CELL_COUNT_BAD:$($goodResult.cell_count)"
-Assert (-not [string]::IsNullOrWhiteSpace([string]$goodResult.cells_sha256)) 'GOOD_HASH_MISSING'
+Assert ($goodResult.cells_sha256 -eq 'TEST_CELLS_SHA256_FROM_MANIFEST') 'GOOD_HASH_NOT_FROM_MANIFEST'
 $out=[ordered]@{
   schema='active_memory_state_backoff_validation_v1'
   status='PASS_ACTIVE_MEMORY_STATE_BACKOFF_V1'
