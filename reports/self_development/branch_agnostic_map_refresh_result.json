@@ -1,22 +1,24 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-07T09:43:29.4080640+04:00",
+    "checked_at":  "2026-07-07T09:45:44.6323277+04:00",
     "branch":  "main",
-    "observed_head":  "cff2ac530c0a6cce779064d5c860e17dd9b1914a",
-    "subject_head":  "cff2ac530c0a6cce779064d5c860e17dd9b1914a",
+    "observed_head":  "1bb5aac619522a318c63a721d361c3b193a29475",
+    "subject_head":  "1bb5aac619522a318c63a721d361c3b193a29475",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "operations/live_readiness/run_detached_long_runtime_stopfile_contract_v1.ps1",
+                          "docs/operations/GROWTH_SYSTEM_STATUS_AND_NEXT_PORTS_20260706.md",
+                          "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
-                          "reports/self_development/branch_agnostic_map_refresh_result.json"
+                          "reports/self_development/branch_agnostic_map_refresh_result.json",
+                          "tests/live_readiness/DETACHED_LONG_RUNTIME_STOPFILE_CONTRACT_V1_PROOF.json"
                       ],
     "structural_paths":  [
-                             "operations/live_readiness/run_detached_long_runtime_stopfile_contract_v1.ps1"
+
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -29,7 +31,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  561,
-                                    "sha256":  "30dd7e77f6ff8d1686c6dfce0f6b5840b2a439c20ee5c1ba00acd1c51ecdd21e"
+                                    "sha256":  "b1cd9ffeef1e50ab4db6847c861439f073bf752657eb448f2ff68d7e7f451b5c"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -52,5 +54,5 @@
                          "component_count":  7,
                          "structural_path_count":  561
                      },
-    "refreshed_at":  "2026-07-07T09:43:30.6322748+04:00"
+    "refreshed_at":  "2026-07-07T09:45:45.8988845+04:00"
 }

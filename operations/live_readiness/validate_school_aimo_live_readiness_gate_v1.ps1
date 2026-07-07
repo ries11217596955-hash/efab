@@ -12,11 +12,13 @@ Assert ($P.repo.branch -eq 'main') 'BRANCH_NOT_MAIN'
 Assert ($P.repo.origin -eq 'https://github.com/ries11217596955-hash/efab.git') 'ORIGIN_MISMATCH'
 Assert ((($P.repo.ahead_behind -replace '\s+',' ') -eq '0 0')) "AHEAD_BEHIND_NOT_SYNCED:$($P.repo.ahead_behind)"
 Assert (@($P.repo.dirty_before).Count -eq 0) 'DIRTY_BEFORE_NOT_EMPTY'
-Assert ($P.repo.active_process_count -eq 0) 'ACTIVE_PROCESS_CONFLICT'
+Assert ($P.repo.active_process_count -eq 0) 'ACTIVE_RUNTIME_CHILD_PROCESS_CONFLICT'
 Assert ($P.checks.map_status -eq 'PASS_AGENT_BODY_COMPOSITION_MAP_CURRENT_V1') 'MAP_NOT_PASS'
 Assert ($P.checks.map_exit -eq 0) 'MAP_EXIT_NOT_ZERO'
 Assert ($P.checks.live_like_validation_status -eq 'PASS_SCHOOL_AIMO_LIVE_LIKE_OBSERVATION_GATE_V1') 'LIVE_LIKE_VALIDATION_NOT_PASS'
 Assert ($P.checks.live_like_validation_exit -eq 0) 'LIVE_LIKE_VALIDATION_EXIT_NOT_ZERO'
+Assert ($P.checks.stopfile_contract_validation_status -eq 'PASS_DETACHED_LONG_RUNTIME_STOPFILE_CONTRACT_V1') 'STOPFILE_CONTRACT_VALIDATION_NOT_PASS'
+Assert ($P.checks.stopfile_contract_validation_exit -eq 0) 'STOPFILE_CONTRACT_VALIDATION_EXIT_NOT_ZERO'
 Assert (@($P.checks.missing).Count -eq 0) "PREREQ_MISSING:$(@($P.checks.missing)-join ',')"
 Assert ($P.checks.proof_checks.live_like_duration_seconds -ge 180) 'LIVE_LIKE_DURATION_TOO_SHORT'
 Assert ($P.checks.proof_checks.live_like_heartbeats -ge 10) 'LIVE_LIKE_HEARTBEATS_TOO_LOW'
@@ -24,6 +26,10 @@ Assert ($P.checks.proof_checks.live_like_watchdog_violations -eq 0) 'LIVE_LIKE_W
 Assert ($P.checks.proof_checks.packet_status -eq 'PASS_AGENTLIFE_PACKET_SUBMITTED_SCHOOL_ACTIVE_BACKOFF') 'PACKET_NOT_PASS'
 Assert ($P.checks.proof_checks.intake_status -eq 'PASS_MULTI_SOURCE_COMPACT_MEMORY_INTAKE_SUBMIT_V1') 'INTAKE_NOT_PASS'
 Assert ($P.checks.proof_checks.merge_status -eq 'PASS_MULTI_SOURCE_COMPACT_MEMORY_MERGE_QUEUE_V1') 'MERGE_NOT_PASS'
+Assert ($P.checks.proof_checks.stopfile_contract_status -eq 'PASS_DETACHED_LONG_RUNTIME_STOPFILE_CONTRACT_V1') 'STOPFILE_CONTRACT_STATUS_NOT_PASS'
+Assert ($P.checks.proof_checks.stopfile_contract_child_exit -eq 0) 'STOPFILE_CONTRACT_CHILD_EXIT_NOT_ZERO'
+Assert ($P.checks.proof_checks.stopfile_contract_stopped_within_grace -eq $true) 'STOPFILE_CONTRACT_NOT_STOPPED_WITHIN_GRACE'
+Assert ($P.checks.proof_checks.stopfile_contract_exit_reason -eq 'STOPFILE_OBSERVED') 'STOPFILE_CONTRACT_EXIT_REASON_NOT_STOPFILE'
 if($P.status -eq 'PASS_SCHOOL_AIMO_LIVE_READINESS_GATE_NO_GO_V1'){
   Assert ($P.live_ready -eq $false) 'NO_GO_BUT_LIVE_READY_TRUE'
   Assert ($P.decision -eq 'NO_GO_LIVE_READINESS_BLOCKED') 'NO_GO_DECISION_MISMATCH'
@@ -31,6 +37,7 @@ if($P.status -eq 'PASS_SCHOOL_AIMO_LIVE_READINESS_GATE_NO_GO_V1'){
   Assert (@($P.checks.go_blockers) -contains 'OWNER_LIVE_AUTHORIZATION_MISSING') 'OWNER_AUTH_BLOCKER_MISSING'
   Assert (@($P.checks.go_blockers) -contains 'LIVE_ROLLBACK_PLAN_NOT_PROVEN') 'ROLLBACK_BLOCKER_MISSING'
   Assert (@($P.checks.go_blockers) -contains 'LIVE_QUARANTINE_PLAN_NOT_PROVEN') 'QUARANTINE_BLOCKER_MISSING'
+  Assert (-not (@($P.checks.go_blockers) -contains 'DETACHED_LONG_RUNTIME_STOPFILE_CONTRACT_NOT_PROVEN')) 'DETACHED_STOPFILE_BLOCKER_SHOULD_BE_CLEARED'
   Assert ($P.runtime_ready -eq $false) 'NO_GO_RUNTIME_READY_NOT_FALSE'
   Write-Host 'VALIDATION_PASS=PASS_SCHOOL_AIMO_LIVE_READINESS_GATE_NO_GO_V1'
 } elseif($P.status -eq 'PASS_SCHOOL_AIMO_LIVE_READINESS_GATE_GO_V1'){
