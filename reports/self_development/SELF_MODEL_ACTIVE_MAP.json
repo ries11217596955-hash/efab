@@ -6,9 +6,9 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "2705176525a2c42f319a2bee14e2a56b55da6884",
-    "subject_head":  "2705176525a2c42f319a2bee14e2a56b55da6884",
-    "generated_at":  "2026-07-07T19:27:13.1103296+04:00",
+    "observed_head_at_generation":  "5ac904242f49008ed0c32e76ffb204f962c17e90",
+    "subject_head":  "5ac904242f49008ed0c32e76ffb204f962c17e90",
+    "generated_at":  "2026-07-07T19:32:14.2629611+04:00",
     "generator":  "invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "role":  "canonical local body composition/status map: what exists, where it is, freshness, last runtime/proof signal",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
@@ -17,7 +17,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  587,
-                                    "sha256":  "f408d4883ad5d280c2eeabbcc9c68d9f370baffd04ee985f6baf690135ebc585"
+                                    "sha256":  "a0cda8c7cdaa7eedf91d4a18415865d46e1383f483b0c95bc725a495c44e974d"
                                 },
     "module_count":  207,
     "validator_count":  174,
@@ -92,9 +92,9 @@
                                                      "subject":  "fix: make active memory rotation lock tolerant"
                                                  },
                            "latest_runtime_artifact":  {
-                                                           "path":  ".runtime/school_runs/school_factory_digest_use_real_1000000_20260707_140233/AGENT_SCHOOL_CANONICAL_ENTRYPOINT_V1.json",
-                                                           "last_write":  "2026-07-07T19:23:57.7278544+04:00",
-                                                           "bytes":  148173
+                                                           "path":  ".runtime/school_runs/school_factory_digest_use_real_1000000_20260707_140233/memory_checkpoints/chunk_108_offset_535000/active_compact_semantic_memory_v1/manifest.json",
+                                                           "last_write":  "2026-07-07T19:28:47.3040923+04:00",
+                                                           "bytes":  962
                                                        }
                        },
                        {
@@ -140,8 +140,8 @@
                                                      "subject":  "chore: initial clean builder snapshot"
                                                  },
                            "latest_runtime_artifact":  {
-                                                           "path":  ".runtime/school_source_template_filter/school_source_router_filter_school_factory_digest_use_real_1000000_20260707_140233_chunk_107_of_200/SCHOOL_SOURCE_TEMPLATE_FILTER_DECISION_V1.json",
-                                                           "last_write":  "2026-07-07T19:23:58.6374933+04:00",
+                                                           "path":  ".runtime/school_source_template_filter/school_source_router_filter_school_factory_digest_use_real_1000000_20260707_140233_chunk_108_of_200/SCHOOL_SOURCE_TEMPLATE_FILTER_DECISION_V1.json",
+                                                           "last_write":  "2026-07-07T19:28:18.0037673+04:00",
                                                            "bytes":  3269
                                                        }
                        },
@@ -179,14 +179,14 @@
                                                  "operations/compact_memory_intake/run_compact_memory_queue_maintenance_v1.ps1"
                                              ],
                            "latest_git_commit":  {
-                                                     "head":  "df4ca757f4fecb56a5d5ee00c69135575f0c5298",
-                                                     "committed_at":  "2026-07-07T18:34:08+04:00",
-                                                     "subject":  "feat: make growth signals actionable"
+                                                     "head":  "5ac904242f49008ed0c32e76ffb204f962c17e90",
+                                                     "committed_at":  "2026-07-07T19:27:10+04:00",
+                                                     "subject":  "feat: derive concrete growth topic from recent packets"
                                                  },
                            "latest_runtime_artifact":  {
-                                                           "path":  ".runtime/file_atom_absorption/file_atom_absorption_20260707_192459/staging/digestible_atoms.jsonl",
-                                                           "last_write":  "2026-07-07T19:25:06.1940553+04:00",
-                                                           "bytes":  4010802
+                                                           "path":  ".runtime/compact_memory_intake_v1/merge_runs/merge_queue_20260707_192938/COMPACT_MEMORY_MERGE_QUEUE_RESULT_V1.json",
+                                                           "last_write":  "2026-07-07T19:29:48.7282468+04:00",
+                                                           "bytes":  3136
                                                        }
                        },
                        {
@@ -222,9 +222,9 @@
                                                      "subject":  "feat: derive specific AgentLife growth topics"
                                                  },
                            "latest_runtime_artifact":  {
-                                                           "path":  ".runtime/autonomous_inner_motor/test_life_runs/live_aimo_agentlife_specific_growth_topic_final_20260707T151309Z/TEST_LIFE_PROOF.json",
-                                                           "last_write":  "2026-07-07T19:27:09.6605114+04:00",
-                                                           "bytes":  389993
+                                                           "path":  ".runtime/autonomous_inner_motor/test_life_runs/live_aimo_concrete_growth_topic_final_20260707T152950Z/TEST_LIFE_PROOF.json",
+                                                           "last_write":  "2026-07-07T19:32:13.5241821+04:00",
+                                                           "bytes":  229734
                                                        }
                        },
                        {
@@ -360,18 +360,18 @@
                                         "live_process_touched":  false,
                                         "latest_active_compact_memory_manifest":  {
                                                                                       "path":  ".runtime/active_compact_semantic_memory_v1/manifest.json",
-                                                                                      "last_write":  "2026-07-07T19:23:52.8119455+04:00",
-                                                                                      "bytes":  970
+                                                                                      "last_write":  "2026-07-07T19:29:47.5381690+04:00",
+                                                                                      "bytes":  962
                                                                                   },
                                         "latest_school_runtime_artifact":  {
-                                                                               "path":  ".runtime/school_runs/school_factory_digest_use_real_1000000_20260707_140233/AGENT_SCHOOL_CANONICAL_ENTRYPOINT_V1.json",
-                                                                               "last_write":  "2026-07-07T19:23:57.7278544+04:00",
-                                                                               "bytes":  148173
+                                                                               "path":  ".runtime/school_runs/school_factory_digest_use_real_1000000_20260707_140233/memory_checkpoints/chunk_108_offset_535000/active_compact_semantic_memory_v1/manifest.json",
+                                                                               "last_write":  "2026-07-07T19:28:47.3040923+04:00",
+                                                                               "bytes":  962
                                                                            },
                                         "latest_aimo_runtime_artifact":  {
-                                                                             "path":  ".runtime/autonomous_inner_motor/test_life_runs/live_aimo_agentlife_specific_growth_topic_final_20260707T151309Z/TEST_LIFE_PROOF.json",
-                                                                             "last_write":  "2026-07-07T19:27:09.6605114+04:00",
-                                                                             "bytes":  389993
+                                                                             "path":  ".runtime/autonomous_inner_motor/test_life_runs/live_aimo_concrete_growth_topic_final_20260707T152950Z/TEST_LIFE_PROOF.json",
+                                                                             "last_write":  "2026-07-07T19:32:13.5241821+04:00",
+                                                                             "bytes":  229734
                                                                          }
                                     },
     "freshness_rule":  "Trust currentness by body_source_fingerprint, not by self-referential commit HEAD.",

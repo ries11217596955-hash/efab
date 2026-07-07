@@ -1,22 +1,32 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-07T19:27:12.0783975+04:00",
+    "checked_at":  "2026-07-07T19:32:13.2629778+04:00",
     "branch":  "main",
-    "observed_head":  "2705176525a2c42f319a2bee14e2a56b55da6884",
-    "subject_head":  "2705176525a2c42f319a2bee14e2a56b55da6884",
+    "observed_head":  "5ac904242f49008ed0c32e76ffb204f962c17e90",
+    "subject_head":  "5ac904242f49008ed0c32e76ffb204f962c17e90",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
+                          "operations/compact_memory_intake/submit_compact_memory_packet_v1.ps1",
+                          "operations/compact_memory_intake/validate_growth_signal_quality_v1.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "tests/live_start/AIMO_AGENTLIFE_SPECIFIC_GROWTH_TOPIC_LIVE_V1_PROOF.json"
+                          "tests/autonomous_inner_motor/AGENTLIFE_SPECIFIC_GROWTH_TOPIC_V1_PROOF.json",
+                          "tests/autonomous_inner_motor/GROWTH_DIRECTED_TASK_SELECTION_V1_PROOF.json",
+                          "tests/compact_memory_intake/GROWTH_SIGNAL_QUALITY_V1_PROOF.json",
+                          "tests/memory/episodic/EPISODIC_MEMORY_CELL_V1_PROOF.json",
+                          "tests/memory/episodic/EPISODIC_RECALL_V1_PROOF.json",
+                          "tests/reasoning/EPISODIC_DECISION_TASK_FORK_V1_PROOF.json",
+                          "tests/reasoning/EPISODIC_RECALL_DECISION_V1_PROOF.json",
+                          "tests/reasoning/REASONING_EPISODE_V1_PROOF.json"
                       ],
     "structural_paths":  [
-
+                             "operations/compact_memory_intake/submit_compact_memory_packet_v1.ps1",
+                             "operations/compact_memory_intake/validate_growth_signal_quality_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -29,7 +39,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  587,
-                                    "sha256":  "f408d4883ad5d280c2eeabbcc9c68d9f370baffd04ee985f6baf690135ebc585"
+                                    "sha256":  "a0cda8c7cdaa7eedf91d4a18415865d46e1383f483b0c95bc725a495c44e974d"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -52,5 +62,5 @@
                          "component_count":  7,
                          "structural_path_count":  587
                      },
-    "refreshed_at":  "2026-07-07T19:27:13.2940620+04:00"
+    "refreshed_at":  "2026-07-07T19:32:14.4384370+04:00"
 }

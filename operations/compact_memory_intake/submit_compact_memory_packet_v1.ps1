@@ -116,20 +116,23 @@ $specificGapSlug=Convert-ToGrowthSignalSlug $specificGap
 if($primaryTopic -eq 'growth_signal_specificity_gap' -and $specificGapSlug -ne 'growth_signal_specificity_gap') { $actionableTopics=@($specificGapSlug) }
 $derivedGrowthTopic=$null
 $nextActionCandidate=[string](Get-PacketInfluenceField $packet 'next_action_candidate' $null)
-if([string]::IsNullOrWhiteSpace($nextActionCandidate)){
-  if($specificGap -like '*too_generic*' -or $primaryTopic -eq 'derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta') {
-    $derivedGrowthTopic=Resolve-SpecificGrowthTopicFromRecentPackets -QueueRoot $queueRoot -CurrentPacketPath $queuePath
-    if($derivedGrowthTopic.found) {
-      $actionableTopics=@([string]$derivedGrowthTopic.topic)
-      $primaryTopic=[string]$derivedGrowthTopic.topic
-      $specificGap=[string]$derivedGrowthTopic.specific_gap
-      $specificGapSlug=Convert-ToGrowthSignalSlug $specificGap
-      $nextActionCandidate=[string]$derivedGrowthTopic.next_action_candidate
-    } else {
-      $nextActionCandidate='derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta'
-    }
+$nextActionIsMetaDerivation=($nextActionCandidate -eq 'derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta')
+$topicIsMetaDerivation=($primaryTopic -eq 'derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta')
+$needsDerivation=($specificGap -like '*too_generic*' -or $topicIsMetaDerivation -or $nextActionIsMetaDerivation)
+if($needsDerivation) {
+  $derivedGrowthTopic=Resolve-SpecificGrowthTopicFromRecentPackets -QueueRoot $queueRoot -CurrentPacketPath $queuePath
+  if($derivedGrowthTopic.found) {
+    $actionableTopics=@([string]$derivedGrowthTopic.topic)
+    $primaryTopic=[string]$derivedGrowthTopic.topic
+    $specificGap=[string]$derivedGrowthTopic.specific_gap
+    $specificGapSlug=Convert-ToGrowthSignalSlug $specificGap
+    $nextActionCandidate=[string]$derivedGrowthTopic.next_action_candidate
+  } elseif([string]::IsNullOrWhiteSpace($nextActionCandidate)) {
+    $nextActionCandidate='derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta'
   }
-  elseif($primaryTopic -eq 'growth_signal_specificity_gap') { $nextActionCandidate='replace_generic_growth_signal_with_source_specific_gap_and_validator_hint' }
+}
+if([string]::IsNullOrWhiteSpace($nextActionCandidate)){
+  if($primaryTopic -eq 'growth_signal_specificity_gap') { $nextActionCandidate='replace_generic_growth_signal_with_source_specific_gap_and_validator_hint' }
   else { $nextActionCandidate="inspect_$primaryTopic`_and_return_one_bounded_next_action_candidate" }
 }
 $validatorHint=[string](Get-PacketInfluenceField $packet 'validator_hint' $null)

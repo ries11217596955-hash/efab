@@ -47,7 +47,7 @@ $status=($out|Where-Object{$_ -match '^INTAKE_STATUS='}|Select-Object -Last 1)-r
 Assert ($status -eq 'PASS_MULTI_SOURCE_COMPACT_MEMORY_INTAKE_SUBMIT_V1') 'SCHOOL_CONTEXT_SUBMIT_NOT_PASS'
 $derivedGeneric=[ordered]@{
   schema='compact_memory_knowledge_packet_v1'; source_kind='AgentLife'; source_id='validator_generic_after_school'; source_proof='tests/live_start/AIMO_AGENTLIFE_SPECIFIC_GROWTH_TOPIC_LIVE_V1_PROOF.json'; emitted_at=(Get-Date).ToString('o')
-  influence=[ordered]@{ maturity_delta=0.1; memory_support_policy='ALLOW_BOUNDED_TASK_SELECTION_WHEN_TOPIC_OR_MEMORY_DELTA_MATCHES'; focus_boosts=@('derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta','aimo_sandbox_test_life') }
+  influence=[ordered]@{ maturity_delta=0.1; memory_support_policy='ALLOW_BOUNDED_TASK_SELECTION_WHEN_TOPIC_OR_MEMORY_DELTA_MATCHES'; focus_boosts=@('derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta','aimo_sandbox_test_life'); next_action_candidate='derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta'; specific_gap='validated_memory_topic_requires_bounded_next_action:growth_signal_topic_is_too_generic_for_useful_task' }
   quality_summary=[ordered]@{ atom_count=1; min_quality_score=0.66; min_novelty_score=0.14; classifier='AGENTLIFE_ACTIONABLE_RUNTIME_SUMMARY_ATOM' }
   atoms=@([ordered]@{ id='agentlife-derive'; topic='derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta'; level=1; quality_score=0.66; novelty_score=0.14; kind='agentlife_actionable_cycle_summary'; summary='AIMO selected meta derivation action after generic signal.' })
 }
@@ -98,3 +98,4 @@ $proof|ConvertTo-Json -Depth 50|Set-Content $proofPath -Encoding UTF8
 Write-Host 'VALIDATION_PASS=PASS_GROWTH_SIGNAL_QUALITY_V1'
 Write-Host ('PROOF_PATH='+$proofPath)
 Write-Host 'LIVE_PROCESS_TOUCHED=false'
+
