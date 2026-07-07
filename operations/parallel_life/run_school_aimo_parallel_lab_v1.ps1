@@ -1,6 +1,6 @@
 param(
   [int]$SchoolCount = 10000,
-  [int]$MinAimoCycles = 1,
+  [int]$MinAimoCycles = 2,
   [int]$MaxWaitSeconds = 240,
   [string]$TopicsPlan = 'operations/school/curriculum/topics/builder_night_school_topics_v1.json',
   [string]$ProofPath = 'tests/parallel_life/SCHOOL_AIMO_PARALLEL_LAB_V1_PROOF.json'
@@ -57,7 +57,8 @@ while(((Get-Date)-$aimoStart).TotalSeconds -lt [Math]::Min($MaxWaitSeconds,180))
   if($p){
     $aimoProofSeen=$true
     if($p.test_life){ $aimoCycles=[int]$p.test_life.total_cycles }
-    if($aimoCycles -ge $MinAimoCycles){ break }
+    $packetReady=($null -ne $p.agentlife_packet_emitter -and $p.agentlife_packet_emitter.intake_status -eq 'PASS_MULTI_SOURCE_COMPACT_MEMORY_INTAKE_SUBMIT_V1')
+    if(($aimoCycles -ge $MinAimoCycles) -and $packetReady){ break }
   }
   try { $aimo.Refresh() } catch {}
   if($aimo.HasExited){ break }
