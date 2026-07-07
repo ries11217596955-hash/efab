@@ -74,6 +74,13 @@ $fallback=Select-GrowthDirectedDevelopmentTask -DevelopmentTasks $tasks -Cycle 2
 Assert ($fallback.reason -eq 'NO_FRESH_GROWTH_SIGNAL_OR_MEMORY_DELTA') 'FALLBACK_REASON_BAD'
 Assert ($fallback.task.name -eq 'understand_own_policy_limits') 'FALLBACK_ROTATION_BAD'
 Assert ($fallback.overrides_static_rotation -eq $false) 'FALLBACK_SHOULD_NOT_OVERRIDE'
+$aimoText=Get-Content $script -Raw
+Assert ($aimoText -match 'specific_gap=\$s\.specific_gap') 'BRIDGE_CONTRACT_FIELD_SPECIFIC_GAP_MISSING'
+Assert ($aimoText -match 'next_action_candidate=\$s\.next_action_candidate') 'BRIDGE_CONTRACT_FIELD_NEXT_ACTION_MISSING'
+Assert ($aimoText -match 'proof_needed=@\(\$s\.proof_needed\)') 'BRIDGE_CONTRACT_FIELD_PROOF_NEEDED_MISSING'
+Assert ($aimoText -match 'validator_hint=\$s\.validator_hint') 'BRIDGE_CONTRACT_FIELD_VALIDATOR_HINT_MISSING'
+Assert ($aimoText -match 'signal_quality=\$s\.signal_quality') 'BRIDGE_CONTRACT_FIELD_SIGNAL_QUALITY_MISSING'
+Assert ($aimoText -match 'actionable_contract=\$s\.actionable_contract') 'BRIDGE_CONTRACT_FIELD_ACTIONABLE_CONTRACT_MISSING'
 $out=[ordered]@{
   schema='growth_directed_task_selection_validation_v1'
   status='PASS_GROWTH_DIRECTED_TASK_SELECTION_V1'
@@ -84,6 +91,7 @@ $out=[ordered]@{
     [ordered]@{name='growth_signal_repeated_prefix_is_normalized'; status='PASS'; selected_task=$normalizedSignal.task.name; raw_topic=$normalizedSignal.raw_topic; normalized_topic=$normalizedSignal.normalized_topic; reason=$normalizedSignal.reason},
     [ordered]@{name='growth_signal_truncated_service_residue_falls_back'; status='PASS'; selected_task=$truncatedResidueSignal.task.name; raw_topic=$truncatedResidueSignal.raw_topic; normalized_topic=$truncatedResidueSignal.normalized_topic; reason=$truncatedResidueSignal.reason},
     [ordered]@{name='growth_signal_actionable_contract_drives_query'; status='PASS'; selected_task=$actionableContractSignal.task.name; normalized_topic=$actionableContractSignal.normalized_topic; next_action_candidate=$actionableContractSignal.next_action_candidate; reason=$actionableContractSignal.reason},
+    [ordered]@{name='growth_signal_bridge_passes_actionable_contract_fields'; status='PASS'},
     [ordered]@{name='no_signal_falls_back_to_static_rotation'; status='PASS'; selected_task=$fallback.task.name; reason=$fallback.reason}
   )
   live_process_touched=$false

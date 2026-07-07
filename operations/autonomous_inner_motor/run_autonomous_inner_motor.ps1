@@ -110,6 +110,13 @@ function Get-AgentGrowthSignal {
       memory_support_policy=$s.memory_support_policy
       created_at=$s.created_at
       behavior_rule=$s.behavior_rule
+      specific_gap=$s.specific_gap
+      next_action_candidate=$s.next_action_candidate
+      proof_needed=@($s.proof_needed)
+      validator_hint=$s.validator_hint
+      signal_quality=$s.signal_quality
+      actionable_contract=$s.actionable_contract
+      active_memory_mutated_by_intake=$s.active_memory_mutated_by_intake
     }
   } catch {
     return [ordered]@{ available=$false; path=$signalPath; status='BAD_GROWTH_SIGNAL'; error=$_.Exception.Message }
