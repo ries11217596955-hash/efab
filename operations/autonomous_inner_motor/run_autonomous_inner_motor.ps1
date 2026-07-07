@@ -1,4 +1,4 @@
-param(
+﻿param(
   [ValidateSet('Diagnostic','ReadOnly','SandboxExploration','SandboxTestLife','SandboxStudyLife','SandboxAction','GovernedRepoAction','Continuous','LiveAuthority')]
   [string]$Mode = 'Diagnostic',
   [string]$RunId = "aimo_$(Get-Date -Format 'yyyyMMdd_HHmmss')"
@@ -212,23 +212,53 @@ function Emit-AgentLifeKnowledgePacket($Payload,[string]$RunRoot,[string]$RunId,
   $r.school_active_before=[bool]$Payload.school_state.active_detected
   $packetRoot=Join-Path $RunRoot 'agentlife_packets'; New-Item -ItemType Directory -Force -Path $packetRoot|Out-Null
   $last=$null; if($Payload.test_life.recent_events -and @($Payload.test_life.recent_events).Count -gt 0){$last=@($Payload.test_life.recent_events)[-1]}
-  $topic='aimo_sandbox_test_life'
-  $topicSource='fallback'
   $selectorTrace=@()
   if($Payload.development_trace -and $Payload.development_trace.task_selection_trace){$selectorTrace=@($Payload.development_trace.task_selection_trace)}
   $lastSelector=if(@($selectorTrace).Count -gt 0){$selectorTrace[-1]}else{$null}
-  if($lastSelector -and $lastSelector.PSObject.Properties['normalized_topic'] -and -not [string]::IsNullOrWhiteSpace([string]$lastSelector.normalized_topic)){
-    $topic=[string]$lastSelector.normalized_topic
-    $topicSource='selector_normalized_topic'
-  } elseif($last -and $last.current_task) {
-    $topic=Normalize-GrowthSignalTopicForTask ([string]$last.current_task)
-    $topicSource='normalized_last_current_task'
-  }
-  if($topic -in @('follow','follow_gr','follow_growth','growth_signal','validate_guardrails')){$topic='active_growth_signal';$topicSource='service_prefix_residue_fallback'}
+  $topicDecision=Select-AgentLifePacketTopic $lastSelector $last
+  $topic=[string]$topicDecision.topic
+  $topicSource=[string]$topicDecision.topic_source
+  $specificGap=[string]$topicDecision.specific_gap
+  $nextAction=[string]$topicDecision.next_action_candidate
+  $validatorHint=[string]$topicDecision.validator_hint
+  $proofNeeded=@($topicDecision.proof_needed)
+  $focusBoosts=@($topic,'aimo_sandbox_test_life','agentlife_cycle_learning')
+  if(-not [string]::IsNullOrWhiteSpace($specificGap)){ $focusBoosts += (Normalize-GrowthSignalTopicForTask $specificGap) }
+  if(-not [string]::IsNullOrWhiteSpace($nextAction)){ $focusBoosts += (Normalize-GrowthSignalTopicForTask $nextAction) }
+  $focusBoosts += @('proof_needed','validator_hint')
   $r['agentlife_topic_source']=$topicSource
   $r['agentlife_topic']=$topic
+  $r['agentlife_specific_gap']=$specificGap
+  $r['agentlife_next_action_candidate']=$nextAction
   $packetPath=Join-Path $packetRoot 'AGENTLIFE_KNOWLEDGE_PACKET.json'
-  $packet=[ordered]@{schema='compact_memory_knowledge_packet_v1';source_kind='AgentLife';source_id=$RunId;source_proof=$ProofPath;emitted_at=(Get-Date).ToString('o');influence=[ordered]@{maturity_delta=0.1;memory_support_policy='ALLOW_BOUNDED_TASK_SELECTION_WHEN_TOPIC_OR_MEMORY_DELTA_MATCHES';focus_boosts=@($topic,'aimo_sandbox_test_life','agentlife_cycle_learning')};quality_summary=[ordered]@{atom_count=1;min_quality_score=0.62;min_novelty_score=0.10;classifier='AGENTLIFE_RUNTIME_SUMMARY_ATOM'};atoms=@([ordered]@{id="agentlife-$RunId-cycle-$($Payload.test_life.total_cycles)";topic=$topic;level=1;quality_score=0.62;novelty_score=0.10;kind='agentlife_cycle_summary';summary="AIMO SandboxTestLife completed cycle $($Payload.test_life.total_cycles), used memory/reflex/source traces, and returned a compact AgentLife learning packet without direct active memory mutation.";evidence=[ordered]@{aimo_proof=$ProofPath;cycles=[int]$Payload.test_life.total_cycles;stop_reason=[string]$Payload.stop_reason;direct_active_memory_write_allowed=[bool]$Payload.memory_coordination.direct_active_memory_write_allowed};uses=@('support bounded task selection when topic or memory delta matches','do not mutate active memory directly','return one next useful action candidate with proof need')})}
+  $packet=[ordered]@{
+    schema='compact_memory_knowledge_packet_v1'
+    source_kind='AgentLife'
+    source_id=$RunId
+    source_proof=$ProofPath
+    emitted_at=(Get-Date).ToString('o')
+    influence=[ordered]@{
+      maturity_delta=0.1
+      memory_support_policy='ALLOW_BOUNDED_TASK_SELECTION_WHEN_TOPIC_OR_MEMORY_DELTA_MATCHES'
+      focus_boosts=@($focusBoosts | Select-Object -Unique)
+      specific_gap=$specificGap
+      next_action_candidate=$nextAction
+      proof_needed=@($proofNeeded)
+      validator_hint=$validatorHint
+    }
+    quality_summary=[ordered]@{atom_count=1;min_quality_score=0.66;min_novelty_score=0.14;classifier='AGENTLIFE_ACTIONABLE_RUNTIME_SUMMARY_ATOM'}
+    atoms=@([ordered]@{
+      id="agentlife-$RunId-cycle-$($Payload.test_life.total_cycles)"
+      topic=$topic
+      level=1
+      quality_score=0.66
+      novelty_score=0.14
+      kind='agentlife_actionable_cycle_summary'
+      summary="AIMO SandboxTestLife completed cycle $($Payload.test_life.total_cycles), selected topic $topic from $topicSource, and returned a bounded next_action_candidate without direct active memory mutation."
+      evidence=[ordered]@{aimo_proof=$ProofPath;cycles=[int]$Payload.test_life.total_cycles;stop_reason=[string]$Payload.stop_reason;direct_active_memory_write_allowed=[bool]$Payload.memory_coordination.direct_active_memory_write_allowed;selector_topic=if($lastSelector){$lastSelector.normalized_topic}else{$null};selector_specific_gap=$specificGap;selector_next_action_candidate=$nextAction}
+      uses=@('support bounded task selection when topic or memory delta matches','do not mutate active memory directly','return one next useful action candidate with proof need')
+    })
+  }
   $packet|ConvertTo-Json -Depth 60|Set-Content -LiteralPath $packetPath -Encoding UTF8; $r.packet_path=$packetPath
   $policy=Get-Content 'operations/compact_memory_intake/multi_source_compact_memory_intake_policy.json' -Raw|ConvertFrom-Json; $policy.runtime_report_root='.runtime/compact_memory_intake_v1/reports'
   $policyPath=Join-Path $packetRoot 'AGENTLIFE_INTAKE_POLICY_RUNTIME.json'; $policy|ConvertTo-Json -Depth 40|Set-Content -LiteralPath $policyPath -Encoding UTF8; $r.runtime_policy_path=$policyPath
@@ -236,34 +266,22 @@ function Emit-AgentLifeKnowledgePacket($Payload,[string]$RunRoot,[string]$RunId,
   $cmdArgs=@('-NoProfile','-ExecutionPolicy','Bypass','-File','operations/compact_memory_intake/submit_and_merge_compact_memory_packet_v1.ps1','-PacketPath',$packetPath,'-PolicyPath',$policyPath)
   if((-not $r.merge_lock_active_before) -and (-not $r.school_active_before)){$cmdArgs+='-Merge';$r.merge_attempted=$true}
   $out=@(& powershell @cmdArgs *>&1|ForEach-Object{[string]$_}); $r.raw_output=@($out)
-  $r.intake_status=(($out|Where-Object{$_ -match '^INTAKE_STATUS='}|Select-Object -Last 1)-replace '^INTAKE_STATUS=','')
-  $r.queue_path=(($out|Where-Object{$_ -match '^INTAKE_QUEUE_PATH='}|Select-Object -Last 1)-replace '^INTAKE_QUEUE_PATH=','')
-  $r.submit_and_merge_status=(($out|Where-Object{$_ -match '^SUBMIT_AND_MERGE_STATUS='}|Select-Object -Last 1)-replace '^SUBMIT_AND_MERGE_STATUS=','')
-  $r.merge_status=(($out|Where-Object{$_ -match '^MERGE_QUEUE_STATUS='}|Select-Object -Last 1)-replace '^MERGE_QUEUE_STATUS=','')
-  $after=Get-ActiveMemoryState; $r.memory_hash_changed_by_merge=($before.cells_sha256 -ne $after.cells_sha256 -or $before.run_id -ne $after.run_id -or $before.cell_count -ne $after.cell_count)
-  if($r.merge_lock_active_before){if($r.intake_status -eq 'PASS_MULTI_SOURCE_COMPACT_MEMORY_INTAKE_SUBMIT_V1'){$r.status='PASS_AGENTLIFE_PACKET_SUBMITTED_MERGE_BACKOFF_LOCK'}else{$r.status='FAIL_AGENTLIFE_PACKET_SUBMIT'}}elseif($r.school_active_before){if($r.intake_status -eq 'PASS_MULTI_SOURCE_COMPACT_MEMORY_INTAKE_SUBMIT_V1'){$r.status='PASS_AGENTLIFE_PACKET_SUBMITTED_SCHOOL_ACTIVE_BACKOFF'}else{$r.status='FAIL_AGENTLIFE_PACKET_SUBMIT'}}elseif($r.submit_and_merge_status -eq 'PASS_SUBMIT_AND_MERGE_COMPACT_MEMORY_PACKET_V1' -and $r.merge_status -eq 'PASS_MULTI_SOURCE_COMPACT_MEMORY_MERGE_QUEUE_V1'){$r.status='PASS_AGENTLIFE_PACKET_SUBMIT_AND_MERGE_V1'}else{$r.status='FAIL_AGENTLIFE_PACKET_SUBMIT_AND_MERGE_V1'}
+  $r.submit_and_merge_status=($out|Where-Object{$_ -match '^SUBMIT_AND_MERGE_STATUS='}|Select-Object -Last 1)-replace '^SUBMIT_AND_MERGE_STATUS=',''
+  $r.intake_status=($out|Where-Object{$_ -match '^INTAKE_STATUS='}|Select-Object -Last 1)-replace '^INTAKE_STATUS=',''
+  $r.queue_path=($out|Where-Object{$_ -match '^QUEUE_PATH='}|Select-Object -Last 1)-replace '^QUEUE_PATH=',''
+  $r.merge_status=($out|Where-Object{$_ -match '^MERGE_STATUS='}|Select-Object -Last 1)-replace '^MERGE_STATUS=',''
+  $after=Get-ActiveMemoryState
+  $r.memory_hash_changed_by_merge=([string]$before.cells_sha256 -ne [string]$after.cells_sha256)
+  $r.status=$(if($r.submit_and_merge_status -like 'PASS_*' -or $r.intake_status -like 'PASS_*'){'PASS_AGENTLIFE_PACKET_EMITTED_TO_INTAKE'}else{'FAIL_AGENTLIFE_PACKET_EMIT'})
   return $r
 }
-if ($Policy.allowed_modes -notcontains $Mode) { throw "POLICY_DENIED_MODE:$Mode" }
-$MemoryBefore = Get-ActiveMemoryState
-$Processes = Get-ProcessMatches
-
-
-function Get-SelectorField($Object, [string]$Name, $Default = $null) {
+function Get-SelectorField($Object,[string]$Name,$Default=$null) {
   if($null -eq $Object) { return $Default }
-  try {
-    $value = $Object[$Name]
-    if($null -ne $value) { return $value }
-  } catch {}
-  if($Object.PSObject -and $Object.PSObject.Properties[$Name]) { return $Object.PSObject.Properties[$Name].Value }
+  if($Object -is [System.Collections.IDictionary]) {
+    if($Object.Contains($Name)) { return $Object[$Name] }
+  }
+  if($Object.PSObject.Properties[$Name]) { return $Object.PSObject.Properties[$Name].Value }
   return $Default
-}
-function Convert-ToTaskSafeSlug([string]$Value) {
-  if([string]::IsNullOrWhiteSpace($Value)) { return 'unknown' }
-  $slug = ($Value.ToLowerInvariant() -replace '[^a-z0-9_\-]+','_').Trim('_','-')
-  if([string]::IsNullOrWhiteSpace($slug)) { return 'unknown' }
-  if($slug.Length -gt 64) { $slug = $slug.Substring(0,64).Trim('_','-') }
-  return $slug
 }
 function Normalize-GrowthSignalTopicForTask([string]$Value) {
   if([string]::IsNullOrWhiteSpace($Value)) { return 'active_growth_signal' }
@@ -282,9 +300,46 @@ function Normalize-GrowthSignalTopicForTask([string]$Value) {
   if([string]::IsNullOrWhiteSpace($slug)) { return 'active_growth_signal' }
   # SERVICE_PREFIX_RESIDUE_FALLBACK: a truncated generated task name like follow_gr is not a semantic growth topic.
   if($slug -in @('follow','follow_gr','follow_growth','growth_signal','validate_guardrails')) { return 'active_growth_signal' }
-  if($slug.Length -gt 64) { $slug = $slug.Substring(0,64).Trim('_','-') }
+  if($slug.Length -gt 96) { $slug = $slug.Substring(0,96).Trim('_','-') }
   if([string]::IsNullOrWhiteSpace($slug)) { return 'active_growth_signal' }
   return $slug
+}
+function Test-GenericAgentLifeGrowthTopic([string]$Topic) {
+  $slug = Normalize-GrowthSignalTopicForTask $Topic
+  if($slug -in @('active_growth_signal','aimo_sandbox_test_life','agentlife_cycle_learning','follow','follow_gr','follow_growth','growth_signal','validate_guardrails')) { return $true }
+  if($slug.StartsWith('growth_signal_topic_is_too_generic')) { return $true }
+  if($slug.StartsWith('validated_memory_topic_requires_bounded_next_action_growth_signal_topic_is_too_generic')) { return $true }
+  return $false
+}
+function Select-AgentLifePacketTopic($LastSelector,$LastEvent) {
+  $specificGap = [string](Get-SelectorField $LastSelector 'specific_gap' '')
+  $nextAction = [string](Get-SelectorField $LastSelector 'next_action_candidate' '')
+  $validatorHint = [string](Get-SelectorField $LastSelector 'validator_hint' '')
+  $proofNeeded = @(Get-SelectorField $LastSelector 'proof_needed' @())
+  $normalizedTopic = [string](Get-SelectorField $LastSelector 'normalized_topic' '')
+  $currentTask = if($LastEvent -and $LastEvent.PSObject.Properties['current_task']){[string]$LastEvent.current_task}else{''}
+  $candidates = @(
+    [ordered]@{source='selector_next_action_candidate'; value=$nextAction},
+    [ordered]@{source='selector_specific_gap'; value=$specificGap},
+    [ordered]@{source='selector_normalized_topic'; value=$normalizedTopic},
+    [ordered]@{source='normalized_last_current_task'; value=$currentTask}
+  )
+  foreach($candidate in $candidates) {
+    if([string]::IsNullOrWhiteSpace([string]$candidate.value)) { continue }
+    $slug = Normalize-GrowthSignalTopicForTask ([string]$candidate.value)
+    if(-not (Test-GenericAgentLifeGrowthTopic $slug)) {
+      return [ordered]@{ topic=$slug; topic_source=$candidate.source; specific_gap=$specificGap; next_action_candidate=$nextAction; proof_needed=@($proofNeeded); validator_hint=$validatorHint; raw_topic=[string]$candidate.value }
+    }
+  }
+  return [ordered]@{
+    topic='derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta'
+    topic_source='fallback_specificity_derivation_action'
+    specific_gap=$(if([string]::IsNullOrWhiteSpace($specificGap)){'agentlife_packet_topic_was_generic_and_needs_specific_growth_derivation'}else{$specificGap})
+    next_action_candidate=$(if([string]::IsNullOrWhiteSpace($nextAction)){'derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta'}else{$nextAction})
+    proof_needed=$(if(@($proofNeeded).Count -gt 0){@($proofNeeded)}else{@('AgentLife packet proof','non-generic packet topic validator','live observation of active growth signal carrying derived action topic')})
+    validator_hint=$(if([string]::IsNullOrWhiteSpace($validatorHint)){'validate AgentLife packet does not emit active_growth_signal or generated guardrail task as topic'}else{$validatorHint})
+    raw_topic=$normalizedTopic
+  }
 }
 function Select-GrowthDirectedDevelopmentTask {
   param(

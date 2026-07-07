@@ -1,12 +1,18 @@
-$ErrorActionPreference='Stop'
+﻿$ErrorActionPreference='Stop'
 $RepoRoot=(Resolve-Path (Join-Path $PSScriptRoot '../..')).Path
 Set-Location $RepoRoot
 function Assert($Cond,[string]$Msg){ if(-not $Cond){ throw $Msg } }
+function Get-SelectorField($Object,[string]$Name,$Default=$null) {
+  if($null -eq $Object) { return $Default }
+  if($Object -is [System.Collections.IDictionary] -and $Object.Contains($Name)) { return $Object[$Name] }
+  if($Object.PSObject.Properties[$Name]) { return $Object.PSObject.Properties[$Name].Value }
+  return $Default
+}
 $script='operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1'
 $tokens=$null; $errors=$null
 $ast=[System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path $script),[ref]$tokens,[ref]$errors)
 Assert (@($errors).Count -eq 0) 'AIMO_SCRIPT_PARSE_ERRORS'
-foreach($name in @('Get-SelectorField','Convert-ToTaskSafeSlug','Normalize-GrowthSignalTopicForTask','Select-GrowthDirectedDevelopmentTask')){
+foreach($name in @('Get-SelectorField','Normalize-GrowthSignalTopicForTask','Select-GrowthDirectedDevelopmentTask')){
   $func=@($ast.FindAll({ param($n) $n -is [System.Management.Automation.Language.FunctionDefinitionAst] -and $n.Name -eq $name }, $true))[0]
   Assert ($null -ne $func) "FUNCTION_MISSING:$name"
   Invoke-Expression $func.Extent.Text
@@ -104,3 +110,4 @@ $out | ConvertTo-Json -Depth 30 | Set-Content -Path $proof -Encoding UTF8
 Write-Host 'VALIDATION_PASS=PASS_GROWTH_DIRECTED_TASK_SELECTION_V1'
 Write-Host "PROOF_PATH=$proof"
 Write-Host 'LIVE_PROCESS_TOUCHED=false'
+

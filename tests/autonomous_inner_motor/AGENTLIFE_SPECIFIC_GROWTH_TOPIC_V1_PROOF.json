@@ -1,0 +1,31 @@
+﻿{
+    "schema":  "agentlife_specific_growth_topic_validation_v1",
+    "status":  "PASS_AGENTLIFE_SPECIFIC_GROWTH_TOPIC_V1",
+    "tests":  [
+                  {
+                      "name":  "generic_selector_promotes_next_action_topic",
+                      "status":  "PASS",
+                      "topic":  "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                      "source":  "selector_next_action_candidate"
+                  },
+                  {
+                      "name":  "actionable_selector_prefers_next_action",
+                      "status":  "PASS",
+                      "topic":  "add_ordered_payload_negative_case_to_selector_validator",
+                      "source":  "selector_next_action_candidate"
+                  },
+                  {
+                      "name":  "no_selector_falls_back_to_specific_derivation_action",
+                      "status":  "PASS",
+                      "topic":  "derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta",
+                      "source":  "fallback_specificity_derivation_action"
+                  },
+                  {
+                      "name":  "agentlife_packet_writes_contract_fields",
+                      "status":  "PASS"
+                  }
+              ],
+    "live_process_touched":  false,
+    "active_memory_mutated":  false,
+    "created_at":  "2026-07-07T19:09:36.1945844+04:00"
+}
