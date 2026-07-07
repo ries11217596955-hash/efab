@@ -29,7 +29,7 @@ git fetch origin main --quiet
 $aheadBehind=(git rev-list --left-right --count HEAD...origin/main).Trim()
 $aheadBehindNorm=($aheadBehind -replace '\s+',' ')
 $dirtyBefore=GitStatusShort
-$processes=RelevantProcesses
+$processes=@(RelevantProcesses)
 $liveLike=ReadJson $LiveLikeProofPath
 $mapOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File validators/validate_agent_body_composition_map_current_v1.ps1 *>&1 | ForEach-Object {[string]$_})
 $mapExit=$LASTEXITCODE
