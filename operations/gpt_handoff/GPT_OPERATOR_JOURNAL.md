@@ -137,3 +137,10 @@ Night-school note:
 - Evidence: AIMO cycles=111, AIMO detected active School, AgentLife packet submitted via compact_memory_intake, merge was deferred/backoff during School, post-School merge PASS.
 - School controlled_stop=true after evidence capture; this is lab repeatability, not live readiness.
 - Proof: tests/parallel_life/SCHOOL_AIMO_PARALLEL_LAB_V1_PROOF.json.
+
+2026-07-07 - School + AIMO live-like observation gate pass
+- Result: PASS_SCHOOL_AIMO_LIVE_LIKE_OBSERVATION_GATE_V1; proof_label=PROVEN_LAB_LIVE_LIKE_OBSERVATION_NOT_LIVE_READY.
+- Observation: duration_seconds=192.508, heartbeat_count=19, watchdog_violations=0, child_exit=0.
+- Parallel evidence inside gate: status=PASS_SCHOOL_AIMO_PARALLEL_LAB_V1, validation=PASS_SCHOOL_AIMO_PARALLEL_LAB_V1, AIMO cycles=106, AgentLife packet/intake/merge PASS.
+- Boundary: live-like lab observation, not full live readiness and not continuous autonomous runtime.
+- Proof: tests/live_like/SCHOOL_AIMO_LIVE_LIKE_OBSERVATION_GATE_V1_PROOF.json.
