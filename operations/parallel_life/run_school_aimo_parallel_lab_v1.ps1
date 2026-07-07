@@ -81,8 +81,8 @@ if($packet -and $packet.queue_path -and (Test-Path $packet.queue_path)){
   $mergeAfterSchool.proof_path=(($mergeOut|Where-Object{$_ -match '^MERGE_QUEUE_PROOF='}|Select-Object -Last 1)-replace '^MERGE_QUEUE_PROOF=','')
   $mergeAfterSchool.exit_code=$LASTEXITCODE
 }
-$schoolExit=0; try { $schoolExit=$school.ExitCode } catch { $schoolExit=0 }
-$aimoExit=0; try { $aimoExit=$aimo.ExitCode } catch { $aimoExit=0 }
+$schoolExit=0; try { if($null -ne $school.ExitCode){ $schoolExit=[int]$school.ExitCode } } catch { $schoolExit=0 }
+$aimoExit=0; try { if($null -ne $aimo.ExitCode){ $aimoExit=[int]$aimo.ExitCode } } catch { $aimoExit=0 }
 $blockers=@()
 if($schoolExit -ne 0){$blockers += "SCHOOL_EXIT_$schoolExit"}
 if($aimoExit -ne 0){$blockers += "AIMO_EXIT_$aimoExit"}
