@@ -6,18 +6,18 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "8781943630355f702444e4f059f5514614efb44d",
-    "subject_head":  "8781943630355f702444e4f059f5514614efb44d",
-    "generated_at":  "2026-07-07T11:02:49.5864249+04:00",
+    "observed_head_at_generation":  "3ef38316944a2fc16cf9afea342f84db30162e2d",
+    "subject_head":  "3ef38316944a2fc16cf9afea342f84db30162e2d",
+    "generated_at":  "2026-07-07T11:50:02.7326213+04:00",
     "generator":  "invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "role":  "canonical local body composition/status map: what exists, where it is, freshness, last runtime/proof signal",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  570,
+    "structural_path_count":  573,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  570,
-                                    "sha256":  "3ebff79b4bb0c7527c8af7eef5875ac54599e3ebd6cb7ce7a554eb4baab598f7"
+                                    "structural_file_count":  573,
+                                    "sha256":  "daff3c13810a5ea87fc2c191ab38246f0f3c91334d9dd101f2fe1c7e85197a62"
                                 },
     "module_count":  207,
     "validator_count":  174,
@@ -92,8 +92,8 @@
                                                  },
                            "latest_runtime_artifact":  {
                                                            "path":  ".runtime/school_runs/school_factory_digest_use_real_1000000_20260707_110037/AGENT_SCHOOL_CANONICAL_ENTRYPOINT_V1.json",
-                                                           "last_write":  "2026-07-07T11:02:08.7633970+04:00",
-                                                           "bytes":  7003
+                                                           "last_write":  "2026-07-07T11:48:18.8981570+04:00",
+                                                           "bytes":  41921
                                                        }
                        },
                        {
@@ -139,9 +139,9 @@
                                                      "subject":  "chore: initial clean builder snapshot"
                                                  },
                            "latest_runtime_artifact":  {
-                                                           "path":  ".runtime/school_source_template_filter/school_source_router_filter_school_factory_digest_use_real_1000000_20260707_110037_chunk_2_of_200/SCHOOL_SOURCE_TEMPLATE_FILTER_DECISION_V1.json",
-                                                           "last_write":  "2026-07-07T11:02:09.5582529+04:00",
-                                                           "bytes":  3267
+                                                           "path":  ".runtime/school_source_template_filter/school_source_router_filter_school_factory_digest_use_real_1000000_20260707_110037_chunk_28_of_200/SCHOOL_SOURCE_TEMPLATE_FILTER_DECISION_V1.json",
+                                                           "last_write":  "2026-07-07T11:48:19.7826270+04:00",
+                                                           "bytes":  3268
                                                        }
                        },
                        {
@@ -182,9 +182,9 @@
                                                      "subject":  "chore: initial clean builder snapshot"
                                                  },
                            "latest_runtime_artifact":  {
-                                                           "path":  ".runtime/active_compact_semantic_memory_v1/manifest.json",
-                                                           "last_write":  "2026-07-07T11:02:07.0583792+04:00",
-                                                           "bytes":  966
+                                                           "path":  ".runtime/file_atom_absorption/file_atom_absorption_20260707_114917/staging/digestible_atoms.jsonl",
+                                                           "last_write":  "2026-07-07T11:49:23.5324513+04:00",
+                                                           "bytes":  3995112
                                                        }
                        },
                        {
@@ -192,10 +192,10 @@
                            "role":  "bounded inner motor / test life runtime surface",
                            "root":  "operations/autonomous_inner_motor",
                            "status":  "PRESENT_ON_CURRENT_BRANCH",
-                           "file_count":  62,
-                           "script_count":  1,
+                           "file_count":  63,
+                           "script_count":  2,
                            "policy_count":  1,
-                           "validator_count":  12,
+                           "validator_count":  13,
                            "proof_file_count":  30,
                            "doc_count":  10,
                            "required_files":  [
@@ -206,7 +206,8 @@
                                                       ],
                            "required_files_present":  true,
                            "entrypoint_scripts":  [
-                                                      "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1"
+                                                      "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+                                                      "operations/autonomous_inner_motor/validate_active_memory_state_backoff_v1.ps1"
                                                   ],
                            "notable_files":  [
                                                  "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1"
@@ -218,8 +219,8 @@
                                                  },
                            "latest_runtime_artifact":  {
                                                            "path":  ".runtime/autonomous_inner_motor/test_life_runs/live_aimo_controlled_live_school_aimo_v1_20260707T070037Z/TEST_LIFE_PROOF.json",
-                                                           "last_write":  "2026-07-07T11:02:48.3762258+04:00",
-                                                           "bytes":  175193
+                                                           "last_write":  "2026-07-07T11:13:12.8826870+04:00",
+                                                           "bytes":  202562
                                                        }
                        },
                        {
@@ -318,9 +319,9 @@
                                                  "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
                                              ],
                            "latest_git_commit":  {
-                                                     "head":  "479bb92861558256dc3d6226b5d2bcdefcedd57c",
-                                                     "committed_at":  "2026-07-07T10:40:11+04:00",
-                                                     "subject":  "proof: record final technical live readiness gate"
+                                                     "head":  "3ef38316944a2fc16cf9afea342f84db30162e2d",
+                                                     "committed_at":  "2026-07-07T11:02:46+04:00",
+                                                     "subject":  "proof: record controlled live start"
                                                  },
                            "latest_runtime_artifact":  null
                        }
@@ -355,18 +356,18 @@
                                         "live_process_touched":  false,
                                         "latest_active_compact_memory_manifest":  {
                                                                                       "path":  ".runtime/active_compact_semantic_memory_v1/manifest.json",
-                                                                                      "last_write":  "2026-07-07T11:02:07.0583792+04:00",
-                                                                                      "bytes":  966
+                                                                                      "last_write":  "2026-07-07T11:48:16.5583355+04:00",
+                                                                                      "bytes":  968
                                                                                   },
                                         "latest_school_runtime_artifact":  {
                                                                                "path":  ".runtime/school_runs/school_factory_digest_use_real_1000000_20260707_110037/AGENT_SCHOOL_CANONICAL_ENTRYPOINT_V1.json",
-                                                                               "last_write":  "2026-07-07T11:02:08.7633970+04:00",
-                                                                               "bytes":  7003
+                                                                               "last_write":  "2026-07-07T11:48:18.8981570+04:00",
+                                                                               "bytes":  41921
                                                                            },
                                         "latest_aimo_runtime_artifact":  {
                                                                              "path":  ".runtime/autonomous_inner_motor/test_life_runs/live_aimo_controlled_live_school_aimo_v1_20260707T070037Z/TEST_LIFE_PROOF.json",
-                                                                             "last_write":  "2026-07-07T11:02:49.5353294+04:00",
-                                                                             "bytes":  182605
+                                                                             "last_write":  "2026-07-07T11:13:12.8826870+04:00",
+                                                                             "bytes":  202562
                                                                          }
                                     },
     "freshness_rule":  "Trust currentness by body_source_fingerprint, not by self-referential commit HEAD.",

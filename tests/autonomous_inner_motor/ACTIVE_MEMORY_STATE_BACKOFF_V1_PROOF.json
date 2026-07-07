@@ -1,0 +1,31 @@
+﻿{
+    "schema":  "active_memory_state_backoff_validation_v1",
+    "status":  "PASS_ACTIVE_MEMORY_STATE_BACKOFF_V1",
+    "script":  "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+    "missing_result":  {
+                           "root":  ".runtime\\validation\\aimo_memory_backoff_validation_20260707T074958Z\\missing_memory_root",
+                           "available":  false,
+                           "status":  "MEMORY_TEMPORARILY_UNAVAILABLE",
+                           "run_id":  null,
+                           "runtime_ready":  false,
+                           "cell_count":  0,
+                           "cells_sha256":  null,
+                           "manifest_status":  "MISSING_OR_ROTATING",
+                           "missing_paths":  [
+                                                 ".runtime\\validation\\aimo_memory_backoff_validation_20260707T074958Z\\missing_memory_root\\manifest.json",
+                                                 ".runtime\\validation\\aimo_memory_backoff_validation_20260707T074958Z\\missing_memory_root\\cells.jsonl"
+                                             ],
+                           "attempt_count":  1,
+                           "backoff_recommended":  true
+                       },
+    "good_result":  {
+                        "available":  true,
+                        "status":  "ACTIVE_MEMORY_AVAILABLE",
+                        "run_id":  "aimo_memory_backoff_validation_20260707T074958Z",
+                        "cell_count":  2,
+                        "manifest_status":  "PASS_TEST_MEMORY"
+                    },
+    "school_touched":  false,
+    "live_process_touched":  false,
+    "created_at":  "2026-07-07T11:49:59.1326660+04:00"
+}

@@ -23,17 +23,65 @@ function Get-ProcessMatches {
 }
 
 function Get-ActiveMemoryState {
-  $memRoot = '.runtime/active_compact_semantic_memory_v1'
+  param(
+    [string]$MemoryRoot = '.runtime/active_compact_semantic_memory_v1',
+    [int]$MaxRetries = 3,
+    [int]$RetryDelayMs = 250
+  )
+  $memRoot = $MemoryRoot
   $manifestPath = Join-Path $memRoot 'manifest.json'
   $cellsPath = Join-Path $memRoot 'cells.jsonl'
-  $manifest = Get-Content $manifestPath -Raw | ConvertFrom-Json
+  for($attempt=1; $attempt -le [Math]::Max(1,$MaxRetries); $attempt++) {
+    if((Test-Path $manifestPath) -and (Test-Path $cellsPath)) {
+      try {
+        $manifest = Get-Content $manifestPath -Raw | ConvertFrom-Json
+        return [ordered]@{
+          root = $memRoot
+          available = $true
+          status = 'ACTIVE_MEMORY_AVAILABLE'
+          run_id = $manifest.run_id
+          runtime_ready = $manifest.runtime_ready
+          cell_count = (Get-Content $cellsPath | Measure-Object -Line).Lines
+          cells_sha256 = (Get-FileHash -Algorithm SHA256 $cellsPath).Hash
+          manifest_status = $manifest.status
+          missing_paths = @()
+          attempt_count = $attempt
+          backoff_recommended = $false
+        }
+      } catch {
+        return [ordered]@{
+          root = $memRoot
+          available = $false
+          status = 'ACTIVE_MEMORY_READ_ERROR'
+          run_id = $null
+          runtime_ready = $false
+          cell_count = 0
+          cells_sha256 = $null
+          manifest_status = 'READ_ERROR'
+          missing_paths = @()
+          error = $_.Exception.Message
+          attempt_count = $attempt
+          backoff_recommended = $true
+        }
+      }
+    }
+    if($attempt -lt [Math]::Max(1,$MaxRetries)) { Start-Sleep -Milliseconds $RetryDelayMs }
+  }
+  $missing=@()
+  if(-not(Test-Path $manifestPath)){ $missing += $manifestPath }
+  if(-not(Test-Path $cellsPath)){ $missing += $cellsPath }
   return [ordered]@{
     root = $memRoot
-    run_id = $manifest.run_id
-    runtime_ready = $manifest.runtime_ready
-    cell_count = (Get-Content $cellsPath | Measure-Object -Line).Lines
-    cells_sha256 = (Get-FileHash -Algorithm SHA256 $cellsPath).Hash
-    manifest_status = $manifest.status
+    available = $false
+    status = 'MEMORY_TEMPORARILY_UNAVAILABLE'
+    run_id = $null
+    runtime_ready = $false
+    cell_count = 0
+    cells_sha256 = $null
+    manifest_status = 'MISSING_OR_ROTATING'
+    missing_paths = @($missing)
+    attempt_count = [Math]::Max(1,$MaxRetries)
+    backoff_recommended = $true
   }
 }
 
