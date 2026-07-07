@@ -1,0 +1,160 @@
+﻿{
+    "schema":  "builder_gap_map_v1",
+    "status":  "GAP_MAP_EXPORTED",
+    "route_lock":  "route_locks/AGENT_BUILDER_NEXT_15_STEPS_LOCK_V4_IDENTITY_BASED_SELECTION.md",
+    "identity_contract_path":  "self_model/BUILDER_IDENTITY_CONTRACT_V1.json",
+    "snapshot_path":  "reports/self_development/CURRENT_BODY_CAPABILITY_SNAPSHOT_V1.json",
+    "gap_count":  7,
+    "gaps":  [
+                 {
+                     "id":  "source_agnostic_path_selector_missing",
+                     "title":  "AIMO selector is not source-agnostic yet",
+                     "severity":  "CRITICAL",
+                     "mission_relevance":  "primary_self_build",
+                     "category":  "selector",
+                     "reason":  "Current live task still shows source-shaped selection; V4 requires identity/gap based selection.",
+                     "proof_needed":  [
+                                          "lab path selector proof",
+                                          "controlled live AIMO proof"
+                                      ],
+                     "validator_needed":  [
+                                              "source-agnostic selector validator",
+                                              "School missing/stale/failed negative tests"
+                                          ],
+                     "blocks":  [
+                                    "identity_based_next_step_selection",
+                                    "school_independence"
+                                ],
+                     "source_dependency_risk":  true,
+                     "status":  "OPEN"
+                 },
+                 {
+                     "id":  "builder_mission_scoring_missing",
+                     "title":  "No Builder mission scoring layer",
+                     "severity":  "HIGH",
+                     "mission_relevance":  "primary_self_build",
+                     "category":  "scoring",
+                     "reason":  "Candidates are not scored by self-build leverage, proof path, dependency reduction, and overfitting risk.",
+                     "proof_needed":  [
+                                          "scoring proof JSON"
+                                      ],
+                     "validator_needed":  [
+                                              "latest signal loses to higher Builder gap validator"
+                                          ],
+                     "blocks":  [
+                                    "source_agnostic_path_selector"
+                                ],
+                     "source_dependency_risk":  false,
+                     "status":  "OPEN"
+                 },
+                 {
+                     "id":  "identity_contract_not_wired_into_aimo",
+                     "title":  "Identity contract exists but is not wired into AIMO selection",
+                     "severity":  "HIGH",
+                     "mission_relevance":  "primary_self_build",
+                     "category":  "wiring",
+                     "reason":  "Contract is lab-proven as law but AIMO task selection does not consume it yet.",
+                     "proof_needed":  [
+                                          "AIMO lab integration proof",
+                                          "live hotswap proof"
+                                      ],
+                     "validator_needed":  [
+                                              "AIMO identity contract integration validator"
+                                          ],
+                     "blocks":  [
+                                    "identity_based_next_step_selection"
+                                ],
+                     "source_dependency_risk":  false,
+                     "status":  "OPEN"
+                 },
+                 {
+                     "id":  "provenance_rejection_trace_missing",
+                     "title":  "Selected action lacks full source use/rejection trace",
+                     "severity":  "HIGH",
+                     "mission_relevance":  "primary_self_build",
+                     "category":  "trace",
+                     "reason":  "AIMO needs source_refs_used, source_refs_rejected, and why_not_latest_signal for trustworthy selection.",
+                     "proof_needed":  [
+                                          "trace proof JSON"
+                                      ],
+                     "validator_needed":  [
+                                              "rejection reasons non-empty validator"
+                                          ],
+                     "blocks":  [
+                                    "auditable_selection"
+                                ],
+                     "source_dependency_risk":  false,
+                     "status":  "OPEN"
+                 },
+                 {
+                     "id":  "latest_signal_overfit_negative_tests_missing",
+                     "title":  "Latest-signal overfit negative tests are missing",
+                     "severity":  "HIGH",
+                     "mission_relevance":  "primary_self_build",
+                     "category":  "validator",
+                     "reason":  "Route V4 requires proof that a fresh but low-value signal loses to a higher Builder gap.",
+                     "proof_needed":  [
+                                          "negative test proof"
+                                      ],
+                     "validator_needed":  [
+                                              "latest-signal rejection validator"
+                                          ],
+                     "blocks":  [
+                                    "identity_based_next_step_selection"
+                                ],
+                     "source_dependency_risk":  true,
+                     "status":  "OPEN"
+                 },
+                 {
+                     "id":  "single_source_dependency_negative_tests_missing",
+                     "title":  "Single-source dependency negative tests are missing",
+                     "severity":  "HIGH",
+                     "mission_relevance":  "primary_self_build",
+                     "category":  "validator",
+                     "reason":  "School, AgentLife, or any single packet must be absent/stale/failed without blocking next-step choice.",
+                     "proof_needed":  [
+                                          "missing/stale/failed source proof"
+                                      ],
+                     "validator_needed":  [
+                                              "source dependency negative validator"
+                                          ],
+                     "blocks":  [
+                                    "school_independence"
+                                ],
+                     "source_dependency_risk":  true,
+                     "status":  "OPEN"
+                 },
+                 {
+                     "id":  "child_agent_factory_not_ready_future_blocker",
+                     "title":  "Child-agent factory is not ready and must stay secondary",
+                     "severity":  "MEDIUM",
+                     "mission_relevance":  "secondary_child_agent_future",
+                     "category":  "future_factory",
+                     "reason":  "Child agents remain blocked until self-build selector, proof discipline, and source-agnostic planning are mature.",
+                     "proof_needed":  [
+                                          "future route proof after owner review"
+                                      ],
+                     "validator_needed":  [
+                                              "child-agent readiness validator later"
+                                          ],
+                     "blocks":  [
+                                    "child_agent_production"
+                                ],
+                     "source_dependency_risk":  false,
+                     "status":  "OPEN"
+                 }
+             ],
+    "priority_order":  [
+                           "source_agnostic_path_selector_missing",
+                           "latest_signal_overfit_negative_tests_missing",
+                           "single_source_dependency_negative_tests_missing",
+                           "provenance_rejection_trace_missing",
+                           "builder_mission_scoring_missing",
+                           "identity_contract_not_wired_into_aimo",
+                           "child_agent_factory_not_ready_future_blocker"
+                       ],
+    "next_recommended_phase":  "PHASE_E_SOURCE_EVIDENCE_INVENTORY_V1",
+    "live_process_touched":  false,
+    "active_memory_mutated":  false,
+    "created_at":  "2026-07-07T21:35:15.5937555+04:00"
+}
