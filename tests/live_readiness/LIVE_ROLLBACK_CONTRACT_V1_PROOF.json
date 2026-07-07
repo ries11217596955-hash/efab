@@ -1,0 +1,45 @@
+﻿{
+    "schema":  "live_rollback_contract_v1",
+    "status":  "PASS_LIVE_ROLLBACK_CONTRACT_V1",
+    "proof_label":  "PROVEN_LAB_LIVE_ROLLBACK_CONTRACT_NOT_LIVE",
+    "run_id":  "live_rollback_contract_v1_20260707T054944Z",
+    "repo":  {
+                 "root":  "H:/efab",
+                 "branch":  "main",
+                 "head":  "a92cb208f2326a9efad00688323ab17155f01145",
+                 "origin":  "https://github.com/ries11217596955-hash/efab.git",
+                 "ahead_behind":  "0\t0",
+                 "dirty_before":  [
+
+                                  ],
+                 "dirty_after_before_proof_write":  [
+
+                                                    ]
+             },
+    "rollback":  {
+                     "run_root":  ".runtime\\live_readiness\\live_rollback_contract_v1_20260707T054944Z",
+                     "target_path":  ".runtime\\live_readiness\\live_rollback_contract_v1_20260707T054944Z\\sandbox_state.json",
+                     "checkpoint_path":  ".runtime\\live_readiness\\live_rollback_contract_v1_20260707T054944Z\\checkpoint_sandbox_state.json",
+                     "manifest_path":  ".runtime\\live_readiness\\live_rollback_contract_v1_20260707T054944Z\\rollback_manifest.json",
+                     "hash_before":  "3201ae31d1c5ad340847d9cb0aac9738ab4a46d2dd154463ca688c36a86e5c90",
+                     "hash_mutated":  "96e5086ea0abaecc68ea60540821e696c55a7d43d9ee2260a27b6a948687d21d",
+                     "hash_after_rollback":  "3201ae31d1c5ad340847d9cb0aac9738ab4a46d2dd154463ca688c36a86e5c90",
+                     "checkpoint_hash":  "3201ae31d1c5ad340847d9cb0aac9738ab4a46d2dd154463ca688c36a86e5c90",
+                     "mutation_changed_hash":  true,
+                     "restored_to_checkpoint":  true,
+                     "final_state":  "baseline",
+                     "rollback_action":  "copy_checkpoint_over_target"
+                 },
+    "safety":  {
+                   "active_memory_mutated":  false,
+                   "tracked_repo_mutated":  false,
+                   "sandbox_only":  true
+               },
+    "blockers":  [
+
+                 ],
+    "boundary":  "Lab rollback contract only: checkpoint, controlled sandbox mutation, rollback restore verified by hash/state. Not live runtime rollback execution.",
+    "runtime_ready":  false,
+    "started_at":  "2026-07-07T09:49:43.3329977+04:00",
+    "finished_at":  "2026-07-07T09:49:44.9326973+04:00"
+}

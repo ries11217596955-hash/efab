@@ -210,3 +210,21 @@ LIVE_READINESS_AFTER_STOPFILE_PROOF=tests/live_readiness/SCHOOL_AIMO_LIVE_READIN
 ` 
 
 Decision remains NO-GO for live, but detached long-runtime stopfile contract is now proven and no longer a readiness blocker. Remaining blockers: Owner live authorization, prior proof runtime_ready=false, rollback, quarantine, and continuous runtime proof.
+
+## Live rollback contract result
+
+`	ext
+LIVE_ROLLBACK_CONTRACT_STATUS=PASS_LIVE_ROLLBACK_CONTRACT_V1
+LIVE_ROLLBACK_CONTRACT_PROOF_LABEL=PROVEN_LAB_LIVE_ROLLBACK_CONTRACT_NOT_LIVE
+LIVE_ROLLBACK_CONTRACT_RUN_ID=live_rollback_contract_v1_20260707T054944Z
+LIVE_ROLLBACK_CONTRACT_REPO_HEAD=a92cb208f2326a9efad00688323ab17155f01145
+LIVE_ROLLBACK_CONTRACT_MUTATION_CHANGED_HASH=True
+LIVE_ROLLBACK_CONTRACT_RESTORED_TO_CHECKPOINT=True
+LIVE_ROLLBACK_CONTRACT_FINAL_STATE=baseline
+LIVE_ROLLBACK_CONTRACT_ACTIVE_MEMORY_MUTATED=false
+LIVE_ROLLBACK_CONTRACT_TRACKED_REPO_MUTATED=false
+LIVE_ROLLBACK_CONTRACT_RUNTIME_READY=false
+LIVE_ROLLBACK_CONTRACT_PROOF=tests/live_readiness/LIVE_ROLLBACK_CONTRACT_V1_PROOF.json
+` 
+
+Boundary: lab rollback contract only; checkpoint + controlled sandbox mutation + rollback hash restore proven, not live runtime rollback execution.

@@ -163,3 +163,9 @@ Night-school note:
 - Detached stopfile contract validation=PASS_DETACHED_LONG_RUNTIME_STOPFILE_CONTRACT_V1; DETACHED_LONG_RUNTIME_STOPFILE_CONTRACT_NOT_PROVEN removed from go_blockers.
 - Remaining go blockers: OWNER_LIVE_AUTHORIZATION_MISSING, PRIOR_PROOF_RUNTIME_READY_FALSE, LIVE_ROLLBACK_PLAN_NOT_PROVEN, LIVE_QUARANTINE_PLAN_NOT_PROVEN, LIVE_CONTINUOUS_RUNTIME_NOT_PROVEN.
 - Proof: tests/live_readiness/SCHOOL_AIMO_LIVE_READINESS_GATE_V1_PROOF.json.
+
+2026-07-07 - Live rollback contract pass
+- Result: PASS_LIVE_ROLLBACK_CONTRACT_V1; proof_label=PROVEN_LAB_LIVE_ROLLBACK_CONTRACT_NOT_LIVE.
+- Evidence: sandbox hash changed on controlled mutation and was restored to checkpoint; final_state=baseline; active_memory_mutated=false; tracked_repo_mutated=false.
+- Boundary: lab rollback contract only, not live runtime rollback execution.
+- Proof: tests/live_readiness/LIVE_ROLLBACK_CONTRACT_V1_PROOF.json.
