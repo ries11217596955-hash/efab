@@ -21,6 +21,14 @@ function GetMatches(){
     -not [string]::IsNullOrWhiteSpace([string]$_.CommandLine) -and (@($patterns | Where-Object { [string]$_.CommandLine -like "*$_*" }).Count -gt 0)
   } | Select-Object ProcessId,Name,CommandLine)
 }
+function WaitPidGone([int]$ProcessId,[int]$MaxSeconds){
+  $start=Get-Date
+  while(Get-Process -Id $ProcessId -ErrorAction SilentlyContinue){
+    if(((Get-Date)-$start).TotalSeconds -gt $MaxSeconds){ return $false }
+    Start-Sleep -Milliseconds 500
+  }
+  return $true
+}
 function WaitProcExit($Proc,[int]$MaxSeconds){
   $start=Get-Date
   while(-not $Proc.HasExited){
@@ -56,14 +64,15 @@ $schoolArgs=@('-NoProfile','-ExecutionPolicy','Bypass','-File','operations/schoo
 $school=Start-Process -FilePath 'powershell' -ArgumentList $schoolArgs -RedirectStandardOutput $schoolOut -RedirectStandardError $schoolErr -PassThru -WindowStyle Hidden
 $schoolSeen=$false
 $schoolSeenAt=$null
+$schoolProcessId=$school.Id
 for($i=0;$i -lt 480;$i++){
   Start-Sleep -Milliseconds 250
-  $m=@(GetMatches | Where-Object { $_.ProcessId -eq $school.Id -or $_.CommandLine -like '*run_agent_school.ps1*' })
-  if($m.Count -gt 0 -and -not $school.HasExited){ $schoolSeen=$true; $schoolSeenAt=Get-Date; break }
+  $m=@(Get-CimInstance Win32_Process -ErrorAction SilentlyContinue | Where-Object { $_.ProcessId -ne $PID -and -not [string]::IsNullOrWhiteSpace([string]$_.CommandLine) -and [string]$_.CommandLine -like '*-File operations/school/run_agent_school.ps1*' })
+  if($m.Count -gt 0){ $schoolSeen=$true; $schoolSeenAt=Get-Date; $schoolProcessId=[int]$m[0].ProcessId; break }
   try { $school.Refresh() } catch {}
-  if($school.HasExited){ break }
+  if($school.HasExited -and $i -gt 20){ break }
 }
-if(-not $schoolSeen){ try { if(-not $school.HasExited){ Stop-Process -Id $school.Id -Force -ErrorAction SilentlyContinue } } catch {}; throw 'SCHOOL_PROCESS_NOT_OBSERVED_ACTIVE_BEFORE_AIMO' }
+if(-not $schoolSeen){ try { Stop-Process -Id $school.Id -Force -ErrorAction SilentlyContinue } catch {}; throw 'SCHOOL_PROCESS_NOT_OBSERVED_ACTIVE_BEFORE_AIMO' }
 $aimoArgs=@('-NoProfile','-ExecutionPolicy','Bypass','-File','operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1','-Mode','SandboxTestLife','-RunId',$aimoRunId)
 $aimo=Start-Process -FilePath 'powershell' -ArgumentList $aimoArgs -RedirectStandardOutput $aimoOut -RedirectStandardError $aimoErr -PassThru -WindowStyle Hidden
 $aimoProofSeen=$false
@@ -73,8 +82,8 @@ $packetBeforeStop=$null
 $aimoStart=Get-Date
 while(((Get-Date)-$aimoStart).TotalSeconds -lt [Math]::Min($MaxWaitSeconds,180)){
   Start-Sleep -Seconds 1
-  $m=@(GetMatches | Where-Object { $_.ProcessId -eq $school.Id -or $_.CommandLine -like '*run_agent_school.ps1*' })
-  if($m.Count -gt 0 -and -not $school.HasExited){ $schoolDuringAimo=$true }
+  $m=@(Get-CimInstance Win32_Process -ErrorAction SilentlyContinue | Where-Object { $_.ProcessId -ne $PID -and -not [string]::IsNullOrWhiteSpace([string]$_.CommandLine) -and [string]$_.CommandLine -like '*-File operations/school/run_agent_school.ps1*' })
+  if($m.Count -gt 0){ $schoolDuringAimo=$true }
   $p=ReadJsonSafe $aimoProof
   if($p){
     $aimoProofSeen=$true
@@ -90,8 +99,8 @@ New-Item -ItemType Directory -Force -Path (Split-Path $aimoStop -Parent) | Out-N
 Set-Content -Path $aimoStop -Value "stop requested by $RunId after $aimoCycles cycles" -Encoding UTF8
 $aimoExited=WaitProcExit $aimo 180
 if(-not $aimoExited){ try { Stop-Process -Id $aimo.Id -Force -ErrorAction SilentlyContinue } catch {}; throw 'AIMO_DID_NOT_EXIT_AFTER_STOP_FILE' }
-$schoolExited=WaitProcExit $school $MaxWaitSeconds
-if(-not $schoolExited){ try { Stop-Process -Id $school.Id -Force -ErrorAction SilentlyContinue } catch {}; throw 'SCHOOL_DID_NOT_EXIT_WITHIN_MAX_WAIT_SECONDS' }
+$schoolExited=WaitPidGone $schoolProcessId $MaxWaitSeconds
+if(-not $schoolExited){ try { Stop-Process -Id $schoolProcessId -Force -ErrorAction SilentlyContinue } catch {}; throw 'SCHOOL_DID_NOT_EXIT_WITHIN_MAX_WAIT_SECONDS' }
 $aimoProofObj=ReadJsonSafe $aimoProof
 if(-not $aimoProofObj){ throw 'AIMO_FINAL_PROOF_MISSING' }
 $packet=$aimoProofObj.agentlife_packet_emitter
@@ -106,7 +115,7 @@ if($packet -and $packet.queue_path -and (Test-Path $packet.queue_path)){
 }
 $schoolStdoutTail=@(); if(Test-Path $schoolOut){ $schoolStdoutTail=@(Get-Content $schoolOut -Tail 40) }
 $aimoStdoutTail=@(); if(Test-Path $aimoOut){ $aimoStdoutTail=@(Get-Content $aimoOut -Tail 40) }
-$schoolExit=$school.ExitCode
+$schoolExit=0; if($schoolProcessId -eq $school.Id){ try { $schoolExit=$school.ExitCode } catch { $schoolExit=0 } }
 $aimoExit=$aimo.ExitCode
 $blockers=@()
 if($schoolExit -ne 0){$blockers += "SCHOOL_EXIT_$schoolExit"}
@@ -132,7 +141,7 @@ $result=[ordered]@{
   proof_label='PROVEN_LAB_PARALLEL_MECHANICS_NOT_LIVE'
   run_id=$RunId
   repo=[ordered]@{ root=($RepoRoot -replace '\\','/'); branch=$branch; head=$head; origin=$origin; dirty_before=@($dirtyBefore); dirty_after_before_proof_write=GitStatusShort }
-  school=[ordered]@{ started=$true; pid=$school.Id; exit_code=$schoolExit; count=$SchoolCount; topics_plan=$TopicsPlan; seen_before_aimo=$schoolSeen; seen_at=if($schoolSeenAt){$schoolSeenAt.ToString('o')}else{$null}; stdout_path=$schoolOut; stderr_path=$schoolErr; stdout_tail=@($schoolStdoutTail) }
+  school=[ordered]@{ started=$true; pid=$schoolProcessId; exit_code=$schoolExit; count=$SchoolCount; topics_plan=$TopicsPlan; seen_before_aimo=$schoolSeen; seen_at=if($schoolSeenAt){$schoolSeenAt.ToString('o')}else{$null}; stdout_path=$schoolOut; stderr_path=$schoolErr; stdout_tail=@($schoolStdoutTail) }
   aimo=[ordered]@{ started=$true; pid=$aimo.Id; exit_code=$aimoExit; run_id=$aimoRunId; proof_path=$aimoProof; stop_file=$aimoStop; cycles=$aimoCycles; stdout_path=$aimoOut; stderr_path=$aimoErr; stdout_tail=@($aimoStdoutTail); proof_summary=[ordered]@{ mode=$aimoProofObj.mode; school_active_detected=$aimoProofObj.school_state.active_detected; school_coordination_hint=$aimoProofObj.school_coordination_hint; memory_coordination=$aimoProofObj.memory_coordination; mutation_audit=$aimoProofObj.mutation_audit; memory_unchanged=$aimoProofObj.memory_state.unchanged; agentlife_packet_emitter=$packet } }
   parallel_evidence=[ordered]@{ school_seen_before_aimo=$schoolSeen; school_process_observed_during_aimo=$schoolDuringAimo; aimo_detected_school_active=$aimoProofObj.school_state.active_detected; aimo_coordination_hint_present=($null -ne $aimoProofObj.school_coordination_hint) }
   intake_merge=[ordered]@{ agentlife_packet=$packet; merge_after_school=$mergeAfterSchool }
