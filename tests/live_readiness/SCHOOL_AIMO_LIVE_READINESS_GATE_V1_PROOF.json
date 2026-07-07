@@ -7,7 +7,7 @@
     "repo":  {
                  "root":  "H:/efab",
                  "branch":  "main",
-                 "head":  "4ae444e6bee52b240b7889f2215f4f999d0588c8",
+                 "head":  "202d23f5142f0d088066f701e77fa803d16f45f5",
                  "origin":  "https://github.com/ries11217596955-hash/efab.git",
                  "ahead_behind":  "0\t0",
                  "dirty_before":  [
@@ -32,7 +32,8 @@
                                   "COMPACT_MEMORY_INTAKE_PASS",
                                   "POST_SCHOOL_MERGE_PASS",
                                   "DETACHED_LONG_RUNTIME_STOPFILE_CONTRACT_PASS",
-                                  "LIVE_ROLLBACK_CONTRACT_PASS"
+                                  "LIVE_ROLLBACK_CONTRACT_PASS",
+                                  "LIVE_REJECT_AND_FORGET_CONTRACT_PASS"
                               ],
                    "missing":  [
 
@@ -40,7 +41,6 @@
                    "go_blockers":  [
                                        "OWNER_LIVE_AUTHORIZATION_MISSING",
                                        "PRIOR_PROOF_RUNTIME_READY_FALSE",
-                                       "LIVE_QUARANTINE_PLAN_NOT_PROVEN",
                                        "LIVE_CONTINUOUS_RUNTIME_NOT_PROVEN"
                                    ],
                    "map_status":  "PASS_AGENT_BODY_COMPOSITION_MAP_CURRENT_V1",
@@ -51,6 +51,8 @@
                    "stopfile_contract_validation_exit":  0,
                    "rollback_contract_validation_status":  "PASS_LIVE_ROLLBACK_CONTRACT_V1",
                    "rollback_contract_validation_exit":  0,
+                   "reject_contract_validation_status":  "PASS_LIVE_REJECT_AND_FORGET_CONTRACT_V1",
+                   "reject_contract_validation_exit":  0,
                    "proof_checks":  {
                                         "live_like_proof_present":  true,
                                         "live_like_status":  "PASS_SCHOOL_AIMO_LIVE_LIKE_OBSERVATION_GATE_V1",
@@ -72,16 +74,23 @@
                                         "rollback_contract_restored_to_checkpoint":  true,
                                         "rollback_contract_final_state":  "baseline",
                                         "rollback_contract_active_memory_mutated":  false,
-                                        "rollback_contract_tracked_repo_mutated":  false
+                                        "rollback_contract_tracked_repo_mutated":  false,
+                                        "reject_contract_present":  true,
+                                        "reject_contract_status":  "PASS_LIVE_REJECT_AND_FORGET_CONTRACT_V1",
+                                        "reject_contract_mode":  "REJECT_AND_FORGET_NO_RAW_PAYLOAD",
+                                        "reject_contract_raw_packet_exists_after_disposal":  false,
+                                        "reject_contract_manifest_contains_raw_payload":  false,
+                                        "reject_contract_accepted":  false,
+                                        "reject_contract_merged":  false,
+                                        "reject_contract_executed":  false
                                     }
                },
     "required_next_to_be_live_ready":  [
                                            "explicit Owner live authorization",
-                                           "proved quarantine plan",
                                            "continuous runtime proof with live boundary, not lab controlled-stop"
                                        ],
     "boundary":  "Readiness decision only. This gate does not launch live runtime. NO-GO is a valid safe pass when prerequisites are proven but live blockers remain.",
     "runtime_ready":  false,
-    "started_at":  "2026-07-07T09:51:43.6824589+04:00",
-    "finished_at":  "2026-07-07T09:51:48.5984839+04:00"
+    "started_at":  "2026-07-07T10:05:43.0145963+04:00",
+    "finished_at":  "2026-07-07T10:05:48.8082987+04:00"
 }
