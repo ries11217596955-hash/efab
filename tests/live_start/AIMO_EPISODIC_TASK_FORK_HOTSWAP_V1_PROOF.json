@@ -1,0 +1,203 @@
+﻿{
+    "schema":  "aimo_episodic_task_fork_hotswap_v1",
+    "status":  "PASS_AIMO_EPISODIC_TASK_FORK_HOTSWAP_V1",
+    "proof_label":  "PROVEN_LIVE_AIMO_RESTARTED_WITH_EPISODIC_DECISION_TASK_FORK",
+    "repo":  {
+                 "head":  "3c62f84826275d7e9b55bf621be5228cdcbbb868",
+                 "branch":  "main",
+                 "ahead_behind":  "0 0",
+                 "dirty_before":  [
+
+                                  ]
+             },
+    "school":  {
+                   "pid":  11816,
+                   "alive_before":  true,
+                   "touched":  false
+               },
+    "old_aimo":  {
+                     "pid":  10512,
+                     "run_id":  "live_aimo_aimo_episodic_decision_hotswap_v1_20260707T132325Z",
+                     "alive_before":  true,
+                     "stop_path":  ".runtime\\autonomous_inner_motor\\test_life_runs\\live_aimo_aimo_episodic_decision_hotswap_v1_20260707T132325Z\\STOP_REQUESTED.txt",
+                     "stop_events":  [
+                                         {
+                                             "at":  "2026-07-07T17:34:15.3296453+04:00",
+                                             "old_aimo_alive":  true
+                                         },
+                                         {
+                                             "at":  "2026-07-07T17:34:17.3545301+04:00",
+                                             "old_aimo_alive":  false
+                                         }
+                                     ],
+                     "forced_stop":  false,
+                     "alive_after":  false
+                 },
+    "new_aimo":  {
+                     "pid":  9148,
+                     "run_id":  "live_aimo_aimo_episodic_task_fork_hotswap_v1_20260707T133413Z",
+                     "alive":  true,
+                     "stdout":  "H:\\efab\\.runtime\\live_start\\controlled_live_school_aimo_v1_20260707T070037Z\\school_restarts\\aimo_agent_restarts\\aimo_episodic_task_fork_hotswap_v1_20260707T133413Z\\aimo.stdout.txt",
+                     "stderr":  "H:\\efab\\.runtime\\live_start\\controlled_live_school_aimo_v1_20260707T070037Z\\school_restarts\\aimo_agent_restarts\\aimo_episodic_task_fork_hotswap_v1_20260707T133413Z\\aimo.stderr.txt",
+                     "stderr_size":  0,
+                     "proof_path":  ".runtime\\autonomous_inner_motor\\test_life_runs\\live_aimo_aimo_episodic_task_fork_hotswap_v1_20260707T133413Z\\TEST_LIFE_PROOF.json",
+                     "cycles":  32,
+                     "fork_event_count":  32,
+                     "fork_actions":  [
+                                          {
+                                              "action":  "FORK_TO_VALIDATION_TASK",
+                                              "count":  32
+                                          }
+                                      ],
+                     "forked_task_count":  32,
+                     "original_task_samples":  [
+                                                   "follow_growth_signal_follow_growth_signal_follow_growth_signal_follow_growth_signal_u",
+                                                   "follow_growth_signal_follow_growth_signal_follow_growth_signal_follow_growth_signal_u",
+                                                   "follow_growth_signal_follow_growth_signal_follow_growth_signal_follow_growth_signal_u",
+                                                   "follow_growth_signal_follow_growth_signal_follow_growth_signal_follow_growth_signal_u",
+                                                   "follow_growth_signal_follow_growth_signal_follow_growth_signal_follow_growth_signal_u"
+                                               ]
+                 },
+    "observation":  {
+                        "observe_seconds":  100,
+                        "heartbeat_seconds":  10,
+                        "heartbeats":  [
+                                           {
+                                               "at":  "2026-07-07T17:34:27.4288811+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  3,
+                                               "current_task":  "validate_guardrails_before_follow_growth_signal_follow_growth_signal_follow_growth_signal_follow_gr",
+                                               "decision_action":  "REQUIRE_VALIDATION_GUARDRAIL",
+                                               "fork_status":  "TASK_FORK_CREATED",
+                                               "fork_action":  "FORK_TO_VALIDATION_TASK",
+                                               "forked_from":  "follow_growth_signal_follow_growth_signal_follow_growth_signal_follow_growth_signal_u",
+                                               "fork_guardrail_count":  3,
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T17:34:37.4797867+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  6,
+                                               "current_task":  "validate_guardrails_before_follow_growth_signal_follow_growth_signal_follow_growth_signal_follow_gr",
+                                               "decision_action":  "REQUIRE_VALIDATION_GUARDRAIL",
+                                               "fork_status":  "TASK_FORK_CREATED",
+                                               "fork_action":  "FORK_TO_VALIDATION_TASK",
+                                               "forked_from":  "follow_growth_signal_follow_growth_signal_follow_growth_signal_follow_growth_signal_u",
+                                               "fork_guardrail_count":  3,
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T17:34:47.5133541+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  9,
+                                               "current_task":  "validate_guardrails_before_follow_growth_signal_follow_growth_signal_follow_growth_signal_follow_gr",
+                                               "decision_action":  "REQUIRE_VALIDATION_GUARDRAIL",
+                                               "fork_status":  "TASK_FORK_CREATED",
+                                               "fork_action":  "FORK_TO_VALIDATION_TASK",
+                                               "forked_from":  "follow_growth_signal_follow_growth_signal_follow_growth_signal_follow_growth_signal_u",
+                                               "fork_guardrail_count":  3,
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T17:34:57.5635447+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  13,
+                                               "current_task":  "validate_guardrails_before_follow_growth_signal_follow_growth_signal_follow_growth_signal_follow_gr",
+                                               "decision_action":  "REQUIRE_VALIDATION_GUARDRAIL",
+                                               "fork_status":  "TASK_FORK_CREATED",
+                                               "fork_action":  "FORK_TO_VALIDATION_TASK",
+                                               "forked_from":  "follow_growth_signal_follow_growth_signal_follow_growth_signal_follow_growth_signal_u",
+                                               "fork_guardrail_count":  3,
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T17:35:07.5849125+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  16,
+                                               "current_task":  "validate_guardrails_before_follow_growth_signal_follow_growth_signal_follow_growth_signal_follow_gr",
+                                               "decision_action":  "REQUIRE_VALIDATION_GUARDRAIL",
+                                               "fork_status":  "TASK_FORK_CREATED",
+                                               "fork_action":  "FORK_TO_VALIDATION_TASK",
+                                               "forked_from":  "follow_growth_signal_follow_growth_signal_follow_growth_signal_follow_growth_signal_u",
+                                               "fork_guardrail_count":  3,
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T17:35:17.6144010+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  20,
+                                               "current_task":  "validate_guardrails_before_follow_growth_signal_follow_growth_signal_follow_growth_signal_follow_gr",
+                                               "decision_action":  "REQUIRE_VALIDATION_GUARDRAIL",
+                                               "fork_status":  "TASK_FORK_CREATED",
+                                               "fork_action":  "FORK_TO_VALIDATION_TASK",
+                                               "forked_from":  "follow_growth_signal_follow_growth_signal_follow_growth_signal_follow_growth_signal_u",
+                                               "fork_guardrail_count":  3,
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T17:35:27.6399727+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  23,
+                                               "current_task":  "validate_guardrails_before_follow_growth_signal_follow_growth_signal_follow_growth_signal_follow_gr",
+                                               "decision_action":  "REQUIRE_VALIDATION_GUARDRAIL",
+                                               "fork_status":  "TASK_FORK_CREATED",
+                                               "fork_action":  "FORK_TO_VALIDATION_TASK",
+                                               "forked_from":  "follow_growth_signal_follow_growth_signal_follow_growth_signal_follow_growth_signal_u",
+                                               "fork_guardrail_count":  3,
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T17:35:37.6465501+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  26,
+                                               "current_task":  "validate_guardrails_before_follow_growth_signal_follow_growth_signal_follow_growth_signal_follow_gr",
+                                               "decision_action":  "REQUIRE_VALIDATION_GUARDRAIL",
+                                               "fork_status":  "TASK_FORK_CREATED",
+                                               "fork_action":  "FORK_TO_VALIDATION_TASK",
+                                               "forked_from":  "follow_growth_signal_follow_growth_signal_follow_growth_signal_follow_growth_signal_u",
+                                               "fork_guardrail_count":  3,
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T17:35:47.6804092+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  29,
+                                               "current_task":  "validate_guardrails_before_follow_growth_signal_follow_growth_signal_follow_growth_signal_follow_gr",
+                                               "decision_action":  "REQUIRE_VALIDATION_GUARDRAIL",
+                                               "fork_status":  "TASK_FORK_CREATED",
+                                               "fork_action":  "FORK_TO_VALIDATION_TASK",
+                                               "forked_from":  "follow_growth_signal_follow_growth_signal_follow_growth_signal_follow_growth_signal_u",
+                                               "fork_guardrail_count":  3,
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T17:35:57.6996490+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  32,
+                                               "current_task":  "validate_guardrails_before_follow_growth_signal_follow_growth_signal_follow_growth_signal_follow_gr",
+                                               "decision_action":  "REQUIRE_VALIDATION_GUARDRAIL",
+                                               "fork_status":  "TASK_FORK_CREATED",
+                                               "fork_action":  "FORK_TO_VALIDATION_TASK",
+                                               "forked_from":  "follow_growth_signal_follow_growth_signal_follow_growth_signal_follow_growth_signal_u",
+                                               "fork_guardrail_count":  3,
+                                               "stderr_size":  0
+                                           }
+                                       ]
+                    },
+    "blockers":  [
+
+                 ],
+    "boundary":  "AIMO-only hotswap to episodic decision task fork. School observed but not modified. No active memory direct mutation.",
+    "started_at":  "2026-07-07T17:34:13.2793697+04:00",
+    "finished_at":  "2026-07-07T17:35:57.8648828+04:00"
+}
