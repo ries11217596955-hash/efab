@@ -31,8 +31,6 @@ function RelevantProcesses(){
     -not [string]::IsNullOrWhiteSpace([string]$_.CommandLine) -and
     [string]$_.CommandLine -notlike '*run_school_aimo_live_readiness_gate_v1.ps1*' -and
     [string]$_.CommandLine -notlike '*validate_school_aimo_live_readiness_gate_v1.ps1*' -and (
-      [string]$_.CommandLine -like '*run_school_aimo_live_like_observation_gate_v1.ps1*' -or
-      [string]$_.CommandLine -like '*run_school_aimo_parallel_lab_v1.ps1*' -or
       [string]$_.CommandLine -like '*run_agent_school.ps1*' -or
       [string]$_.CommandLine -like '*run_autonomous_inner_motor.ps1*'
     )
