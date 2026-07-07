@@ -1,7 +1,7 @@
 param(
   [int]$SchoolCount = 1000000,
-  [string]$TopicsPlan = 'useful_school_live_parallel_default_v1',
-  [string]$AimoMode = 'Continuous',
+  [string]$TopicsPlan = 'operations/school/curriculum/topics/builder_night_school_topics_v1.json',
+  [string]$AimoMode = 'SandboxTestLife',
   [int]$ObserveSeconds = 60,
   [int]$HeartbeatSeconds = 10,
   [string]$OwnerAuthProofPath = 'tests/live_readiness/SCHOOL_AIMO_LIVE_READINESS_GATE_OWNER_AUTH_PROOF.json',
