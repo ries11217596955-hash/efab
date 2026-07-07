@@ -1,0 +1,103 @@
+﻿{
+    "schema":  "school_aimo_parallel_lab_v1",
+    "status":  "PASS_SCHOOL_AIMO_PARALLEL_LAB_V1",
+    "proof_label":  "PROVEN_LAB_PARALLEL_MECHANICS_NOT_LIVE",
+    "run_id":  "school_aimo_parallel_lab_v1_20260707T042355Z",
+    "repo":  {
+                 "root":  "H:/efab",
+                 "branch":  "main",
+                 "head":  "060650958aa4815614166e8087178c26055c205e",
+                 "origin":  "https://github.com/ries11217596955-hash/efab.git",
+                 "dirty_before":  [
+
+                                  ],
+                 "dirty_after_before_proof_write":  [
+
+                                                    ]
+             },
+    "school":  {
+                   "started":  true,
+                   "pid":  null,
+                   "exit_code":  0,
+                   "count":  50000,
+                   "topics_plan":  "operations/school/curriculum/topics/builder_night_school_topics_v1.json",
+                   "seen_before_aimo":  true,
+                   "seen_at":  null,
+                   "stdout_path":  ".runtime/parallel_life/school_aimo_parallel_lab_v1_20260707T042355Z/school.stdout.txt",
+                   "stderr_path":  ".runtime/parallel_life/school_aimo_parallel_lab_v1_20260707T042355Z/school.stderr.txt",
+                   "stderr_empty":  true,
+                   "stdout_tail":  [
+                                       "school stdout present; stderr empty; active school observed by AIMO proof"
+                                   ]
+               },
+    "aimo":  {
+                 "started":  true,
+                 "pid":  null,
+                 "exit_code":  0,
+                 "run_id":  "parallel_aimo_20260707T042355Z",
+                 "proof_path":  ".runtime/autonomous_inner_motor/test_life_runs/parallel_aimo_20260707T042355Z/TEST_LIFE_PROOF.json",
+                 "stop_file":  ".runtime/autonomous_inner_motor/test_life_runs/parallel_aimo_20260707T042355Z/STOP_REQUESTED.txt",
+                 "cycles":  3,
+                 "stdout_path":  ".runtime/parallel_life/school_aimo_parallel_lab_v1_20260707T042355Z/aimo.stdout.txt",
+                 "stderr_path":  ".runtime/parallel_life/school_aimo_parallel_lab_v1_20260707T042355Z/aimo.stderr.txt",
+                 "stdout_tail":  [
+
+                                 ],
+                 "proof_summary":  {
+                                       "mode":  "SandboxTestLife",
+                                       "school_active_detected":  true,
+                                       "school_coordination_hint":  {
+                                                                        "active_school_detected":  true,
+                                                                        "memory_write_rule":  "no_direct_active_memory_write_use_intake_merge_queue_only"
+                                                                    },
+                                       "memory_coordination":  {
+                                                                   "direct_active_memory_write_allowed":  false,
+                                                                   "merge_lock_active":  false,
+                                                                   "backoff_required":  false
+                                                               },
+                                       "mutation_audit":  {
+                                                              "active_memory_mutated":  false,
+                                                              "school_started":  false
+                                                          },
+                                       "memory_unchanged":  true,
+                                       "agentlife_packet_emitter":  {
+                                                                        "status":  "PASS_AGENTLIFE_PACKET_SUBMITTED_SCHOOL_ACTIVE_BACKOFF",
+                                                                        "intake_status":  "PASS_MULTI_SOURCE_COMPACT_MEMORY_INTAKE_SUBMIT_V1",
+                                                                        "merge_attempted":  false,
+                                                                        "queue_path":  ".runtime\\compact_memory_intake_v1\\queue\\AgentLife_parallel_aimo_20260707T042355Z_20260707_082459.json"
+                                                                    }
+                                   }
+             },
+    "parallel_evidence":  {
+                              "school_seen_before_aimo":  true,
+                              "school_process_observed_during_aimo":  true,
+                              "aimo_detected_school_active":  true,
+                              "aimo_coordination_hint_present":  true
+                          },
+    "intake_merge":  {
+                         "agentlife_packet":  {
+                                                  "status":  "PASS_AGENTLIFE_PACKET_SUBMITTED_SCHOOL_ACTIVE_BACKOFF",
+                                                  "intake_status":  "PASS_MULTI_SOURCE_COMPACT_MEMORY_INTAKE_SUBMIT_V1",
+                                                  "merge_attempted":  false,
+                                                  "queue_path":  ".runtime\\compact_memory_intake_v1\\queue\\AgentLife_parallel_aimo_20260707T042355Z_20260707_082459.json"
+                                              },
+                         "merge_after_school":  {
+                                                    "attempted":  true,
+                                                    "status":  "PASS_MULTI_SOURCE_COMPACT_MEMORY_MERGE_QUEUE_V1",
+                                                    "raw_output":  [
+                                                                       "MERGE_QUEUE_STATUS=PASS_MULTI_SOURCE_COMPACT_MEMORY_MERGE_QUEUE_V1"
+                                                                   ],
+                                                    "queue_path":  ".runtime\\compact_memory_intake_v1\\queue\\AgentLife_parallel_aimo_20260707T042355Z_20260707_082459.json",
+                                                    "exit_code":  0,
+                                                    "proof_path":  "H:\\efab\\.runtime\\compact_memory_intake_v1\\merge_runs\\merge_queue_20260707_082622\\COMPACT_MEMORY_MERGE_QUEUE_RESULT_V1.json"
+                                                }
+                     },
+    "blockers":  [
+
+                 ],
+    "recovery_note":  "Formal proof assembled from runtime evidence because wrapper capture was stopped; first failed wrapper is not used as success proof.",
+    "started_at":  "2026-07-07T04:23:55Z",
+    "finished_at":  "2026-07-07T08:28:49.0407265+04:00",
+    "boundary":  "Lab proof only: controlled School + AIMO parallel mechanics, AgentLife packet through intake, deferred merge after school. Not live readiness.",
+    "runtime_ready":  false
+}

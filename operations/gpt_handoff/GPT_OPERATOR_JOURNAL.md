@@ -124,3 +124,9 @@ Night-school note:
 - Result: PASS; accepted_total=30000; rejected_total=3000; proof_label=PROVEN_LAB_MECHANICS_NOT_LIVE; runtime_ready=false.
 - Repo proof: tests/accepted_atom_retention/USEFUL_SCHOOL_30K_FULL_PROCESS_V1_PROOF.json.
 - Boundary: lab mechanics proof only, not live readiness.
+
+2026-07-07 - School + AIMO parallel lab proof
+- Result: PASS_SCHOOL_AIMO_PARALLEL_LAB_V1; proof_label=PROVEN_LAB_PARALLEL_MECHANICS_NOT_LIVE.
+- Evidence: AIMO SandboxTestLife cycles=3 while School active; AIMO detected school_active=true; AgentLife packet submitted via compact_memory_intake; merge deferred/backoff during school; post-school merge PASS.
+- Proof: tests/parallel_life/SCHOOL_AIMO_PARALLEL_LAB_V1_PROOF.json.
+- Boundary: lab mechanics only, not live readiness. First failed wrapper attempt is not success proof; final proof assembled from runtime evidence and validated.

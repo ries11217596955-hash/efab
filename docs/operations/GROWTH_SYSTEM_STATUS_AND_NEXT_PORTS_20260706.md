@@ -102,3 +102,19 @@ NIGHT_REPO_PROOF=tests/accepted_atom_retention/USEFUL_SCHOOL_30K_FULL_PROCESS_V1
 ` 
 
 Boundary: this proves lab mechanics, not live runtime readiness.
+
+## School + AIMO parallel lab result
+
+`	ext
+PARALLEL_LAB_STATUS=PASS_SCHOOL_AIMO_PARALLEL_LAB_V1
+PARALLEL_LAB_PROOF_LABEL=PROVEN_LAB_PARALLEL_MECHANICS_NOT_LIVE
+PARALLEL_LAB_AIMO_CYCLES=3
+PARALLEL_LAB_AIMO_DETECTED_SCHOOL=True
+PARALLEL_LAB_AGENTLIFE_PACKET_STATUS=PASS_AGENTLIFE_PACKET_SUBMITTED_SCHOOL_ACTIVE_BACKOFF
+PARALLEL_LAB_INTAKE_STATUS=PASS_MULTI_SOURCE_COMPACT_MEMORY_INTAKE_SUBMIT_V1
+PARALLEL_LAB_MERGE_AFTER_SCHOOL=PASS_MULTI_SOURCE_COMPACT_MEMORY_MERGE_QUEUE_V1
+PARALLEL_LAB_RUNTIME_READY=false
+PARALLEL_LAB_PROOF=tests/parallel_life/SCHOOL_AIMO_PARALLEL_LAB_V1_PROOF.json
+` 
+
+Boundary: lab parallel mechanics proof only; not live readiness. Note: formal proof was assembled from runtime evidence after a diagnostic wrapper was stopped; first failed wrapper attempt is not treated as success proof.
