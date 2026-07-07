@@ -200,7 +200,7 @@ function Emit-AgentLifeKnowledgePacket($Payload,[string]$RunRoot,[string]$RunId,
   $last=$null; if($Payload.test_life.recent_events -and @($Payload.test_life.recent_events).Count -gt 0){$last=@($Payload.test_life.recent_events)[-1]}
   $topic=if($last -and $last.current_task){[string]$last.current_task}else{'aimo_sandbox_test_life'}
   $packetPath=Join-Path $packetRoot 'AGENTLIFE_KNOWLEDGE_PACKET.json'
-  $packet=[ordered]@{schema='compact_memory_knowledge_packet_v1';source_kind='AgentLife';source_id=$RunId;source_proof=$ProofPath;emitted_at=(Get-Date).ToString('o');influence=[ordered]@{maturity_delta=0.1;memory_support_policy='CHECK_FRESH_MEMORY_AGAINST_SELECTED_PATH_BEFORE_EXECUTION';focus_boosts=@($topic,'aimo_sandbox_test_life','agentlife_cycle_learning')};quality_summary=[ordered]@{atom_count=1;min_quality_score=0.62;min_novelty_score=0.10;classifier='AGENTLIFE_RUNTIME_SUMMARY_ATOM'};atoms=@([ordered]@{id="agentlife-$RunId-cycle-$($Payload.test_life.total_cycles)";topic=$topic;level=1;quality_score=0.62;novelty_score=0.10;kind='agentlife_cycle_summary';summary="AIMO SandboxTestLife completed cycle $($Payload.test_life.total_cycles), used memory/reflex/source traces, and returned a compact AgentLife learning packet without direct active memory mutation.";evidence=[ordered]@{aimo_proof=$ProofPath;cycles=[int]$Payload.test_life.total_cycles;stop_reason=[string]$Payload.stop_reason;direct_active_memory_write_allowed=[bool]$Payload.memory_coordination.direct_active_memory_write_allowed};uses=@('support selected path only','do not override route selection','inspect before execution when topic matches')})}
+  $packet=[ordered]@{schema='compact_memory_knowledge_packet_v1';source_kind='AgentLife';source_id=$RunId;source_proof=$ProofPath;emitted_at=(Get-Date).ToString('o');influence=[ordered]@{maturity_delta=0.1;memory_support_policy='ALLOW_BOUNDED_TASK_SELECTION_WHEN_TOPIC_OR_MEMORY_DELTA_MATCHES';focus_boosts=@($topic,'aimo_sandbox_test_life','agentlife_cycle_learning')};quality_summary=[ordered]@{atom_count=1;min_quality_score=0.62;min_novelty_score=0.10;classifier='AGENTLIFE_RUNTIME_SUMMARY_ATOM'};atoms=@([ordered]@{id="agentlife-$RunId-cycle-$($Payload.test_life.total_cycles)";topic=$topic;level=1;quality_score=0.62;novelty_score=0.10;kind='agentlife_cycle_summary';summary="AIMO SandboxTestLife completed cycle $($Payload.test_life.total_cycles), used memory/reflex/source traces, and returned a compact AgentLife learning packet without direct active memory mutation.";evidence=[ordered]@{aimo_proof=$ProofPath;cycles=[int]$Payload.test_life.total_cycles;stop_reason=[string]$Payload.stop_reason;direct_active_memory_write_allowed=[bool]$Payload.memory_coordination.direct_active_memory_write_allowed};uses=@('support bounded task selection when topic or memory delta matches','do not mutate active memory directly','return one next useful action candidate with proof need')})}
   $packet|ConvertTo-Json -Depth 60|Set-Content -LiteralPath $packetPath -Encoding UTF8; $r.packet_path=$packetPath
   $policy=Get-Content 'operations/compact_memory_intake/multi_source_compact_memory_intake_policy.json' -Raw|ConvertFrom-Json; $policy.runtime_report_root='.runtime/compact_memory_intake_v1/reports'
   $policyPath=Join-Path $packetRoot 'AGENTLIFE_INTAKE_POLICY_RUNTIME.json'; $policy|ConvertTo-Json -Depth 40|Set-Content -LiteralPath $policyPath -Encoding UTF8; $r.runtime_policy_path=$policyPath
@@ -220,6 +220,67 @@ if ($Policy.allowed_modes -notcontains $Mode) { throw "POLICY_DENIED_MODE:$Mode"
 $MemoryBefore = Get-ActiveMemoryState
 $Processes = Get-ProcessMatches
 
+
+function Convert-ToTaskSafeSlug([string]$Value) {
+  if([string]::IsNullOrWhiteSpace($Value)) { return 'unknown' }
+  $slug = ($Value.ToLowerInvariant() -replace '[^a-z0-9_\-]+','_').Trim('_')
+  if([string]::IsNullOrWhiteSpace($slug)) { return 'unknown' }
+  if($slug.Length -gt 64) { $slug = $slug.Substring(0,64).Trim('_') }
+  return $slug
+}
+function Select-GrowthDirectedDevelopmentTask {
+  param(
+    [Parameter(Mandatory=$true)][object[]]$DevelopmentTasks,
+    [Parameter(Mandatory=$true)][int]$Cycle,
+    $GrowthSignal,
+    $CurrentMemoryState,
+    $PreviousMemoryState
+  )
+  if($DevelopmentTasks.Count -lt 1) { throw 'NO_DEVELOPMENT_TASKS' }
+  $fallback = $DevelopmentTasks[($Cycle - 1) % $DevelopmentTasks.Count]
+  $fallbackTask = [ordered]@{ name=$fallback.name; query=$fallback.query; target=$fallback.target }
+  $currentHash = if($CurrentMemoryState -and $CurrentMemoryState.PSObject.Properties['cells_sha256']) { [string]$CurrentMemoryState.cells_sha256 } else { '' }
+  $previousHash = if($PreviousMemoryState -and $PreviousMemoryState.PSObject.Properties['cells_sha256']) { [string]$PreviousMemoryState.cells_sha256 } else { '' }
+  $currentRun = if($CurrentMemoryState -and $CurrentMemoryState.PSObject.Properties['run_id']) { [string]$CurrentMemoryState.run_id } else { '' }
+  $previousRun = if($PreviousMemoryState -and $PreviousMemoryState.PSObject.Properties['run_id']) { [string]$PreviousMemoryState.run_id } else { '' }
+  $currentAvailable = ($CurrentMemoryState -and $CurrentMemoryState.PSObject.Properties['available'] -and [bool]$CurrentMemoryState.available)
+  $previousAvailable = ($PreviousMemoryState -and $PreviousMemoryState.PSObject.Properties['available'] -and [bool]$PreviousMemoryState.available)
+  if($currentAvailable -and $previousAvailable -and -not [string]::IsNullOrWhiteSpace($currentHash) -and -not [string]::IsNullOrWhiteSpace($previousHash) -and $currentHash -ne $previousHash) {
+    return [ordered]@{
+      status='SELECTED_GROWTH_DIRECTED_TASK'
+      reason='ACTIVE_MEMORY_DELTA_FROM_SCHOOL'
+      source='active_compact_memory_manifest'
+      task=[ordered]@{ name='inspect_school_memory_delta'; query=("active memory changed from run {0} to {1}; summarize what changed and choose one next useful growth gap from compact memory" -f $previousRun,$currentRun); target='.runtime/active_compact_semantic_memory_v1/manifest.json' }
+      useful_intent='convert_new_school_memory_delta_into_one_next_growth_action'
+      overrides_static_rotation=$true
+      previous_memory_run_id=$previousRun
+      current_memory_run_id=$currentRun
+      previous_cells_sha256=$previousHash
+      current_cells_sha256=$currentHash
+    }
+  }
+  $growthAvailable = ($GrowthSignal -and $GrowthSignal.PSObject.Properties['available'] -and [bool]$GrowthSignal.available)
+  if($growthAvailable) {
+    $topics = @()
+    foreach($topicCandidate in @($GrowthSignal.topics)) { if(-not [string]::IsNullOrWhiteSpace([string]$topicCandidate)) { $topics += [string]$topicCandidate } }
+    $boosts = @()
+    foreach($boostCandidate in @($GrowthSignal.focus_boosts)) { if(-not [string]::IsNullOrWhiteSpace([string]$boostCandidate)) { $boosts += [string]$boostCandidate } }
+    $topic = if(@($topics).Count -gt 0) { [string]@($topics)[0] } elseif(@($boosts).Count -gt 0) { [string]@($boosts)[0] } else { 'active_growth_signal' }
+    $slug = Convert-ToTaskSafeSlug $topic
+    return [ordered]@{
+      status='SELECTED_GROWTH_DIRECTED_TASK'
+      reason='ACTIVE_GROWTH_SIGNAL_TOPIC'
+      source=if($GrowthSignal.PSObject.Properties['source_kind']){[string]$GrowthSignal.source_kind}else{'growth_signal'}
+      task=[ordered]@{ name="follow_growth_signal_$slug"; query=("growth signal topic {0}; inspect fresh memory support and produce one bounded next useful action with proof need" -f $topic); target='.runtime/compact_memory_growth_signal_v1/ACTIVE_GROWTH_SIGNAL.json' }
+      useful_intent='turn_growth_signal_into_one_bounded_next_action_candidate'
+      overrides_static_rotation=$true
+      topics=@($topics)
+      focus_boosts=@($boosts)
+      signal_packet_id=if($GrowthSignal.PSObject.Properties['packet_id']){[string]$GrowthSignal.packet_id}else{$null}
+    }
+  }
+  return [ordered]@{ status='SELECTED_STATIC_ROTATION_TASK'; reason='NO_FRESH_GROWTH_SIGNAL_OR_MEMORY_DELTA'; source='static_development_task_rotation'; task=$fallbackTask; useful_intent='continue_safe_baseline_self_development'; overrides_static_rotation=$false }
+}
 
 if ($Mode -eq 'SandboxTestLife') {
   $runRoot = Join-Path '.runtime/autonomous_inner_motor/test_life_runs' $RunId
@@ -502,15 +563,23 @@ if ($Mode -eq 'SandboxTestLife') {
   $cycle = 0
   $knowledgeAcquisitionCalls = 0
   $batchKnowledgeAcquisitionCalls = 0
+  $lastObservedMemoryState = Get-ActiveMemoryState
   while ($true) {
     if (Test-Path $StopPath) {
       $Payload['stop_reason'] = 'STOP_FILE_REQUESTED'
       break
     }
     $cycle += 1
-    $task = $developmentTasks[($cycle - 1) % $developmentTasks.Count]
+    $currentMemoryState = Get-ActiveMemoryState
+    $currentGrowthSignal = Get-AgentGrowthSignal
+    $Payload.growth_signal = $currentGrowthSignal
+    $selector = Select-GrowthDirectedDevelopmentTask -DevelopmentTasks $developmentTasks -Cycle $cycle -GrowthSignal $currentGrowthSignal -CurrentMemoryState $currentMemoryState -PreviousMemoryState $lastObservedMemoryState
+    $task = $selector.task
     $Payload.test_life.counters.development_task_selections += 1
     $Payload.development_trace.current_task = $task.name
+    $Payload.development_trace.current_memory_state = $currentMemoryState
+    $Payload.development_trace.task_selection_trace = @($selector)
+
 
     $usedReflexes = New-Object System.Collections.Generic.List[string]
     $memoryCompare = Invoke-LocalReflex -Reflex 'COMPARE_TASK_TO_MEMORY' -Task $task.name -Query $task.query -TargetPath $null
@@ -542,6 +611,9 @@ if ($Mode -eq 'SandboxTestLife') {
     $memoryTrace = [ordered]@{
       cycle = $cycle
       current_task = $task.name
+      task_selection_reason = $selector.reason
+      useful_intent = $selector.useful_intent
+      task_selection_overrode_static_rotation = $selector.overrides_static_rotation
       memory_query = $task.query
       relevance = $relevance
       candidates_checked = $memoryCompare.result.candidates_checked
@@ -650,6 +722,7 @@ if ($Mode -eq 'SandboxTestLife') {
     }
     $Payload['stop_reason'] = 'RUNNING_UNTIL_STOP_FILE'
     $Payload = Complete-Proof $Payload $ProofPath $MemoryBefore
+    $lastObservedMemoryState = $currentMemoryState
     Start-Sleep -Seconds ([int]$Policy.sandbox_test_life.step_sleep_seconds)
   }
   $Payload.heartbeat.status = 'STOPPED_BY_STOP_FILE'

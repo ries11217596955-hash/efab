@@ -1,0 +1,28 @@
+﻿{
+    "schema":  "growth_directed_task_selection_validation_v1",
+    "status":  "PASS_GROWTH_DIRECTED_TASK_SELECTION_V1",
+    "script":  "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+    "tests":  [
+                  {
+                      "name":  "memory_delta_overrides_static_rotation",
+                      "status":  "PASS",
+                      "selected_task":  "inspect_school_memory_delta",
+                      "reason":  "ACTIVE_MEMORY_DELTA_FROM_SCHOOL"
+                  },
+                  {
+                      "name":  "growth_signal_topic_overrides_static_rotation",
+                      "status":  "PASS",
+                      "selected_task":  "follow_growth_signal_route_new_school_atoms_to_growth_action",
+                      "reason":  "ACTIVE_GROWTH_SIGNAL_TOPIC"
+                  },
+                  {
+                      "name":  "no_signal_falls_back_to_static_rotation",
+                      "status":  "PASS",
+                      "selected_task":  "understand_own_policy_limits",
+                      "reason":  "NO_FRESH_GROWTH_SIGNAL_OR_MEMORY_DELTA"
+                  }
+              ],
+    "live_process_touched":  false,
+    "active_memory_mutated":  false,
+    "created_at":  "2026-07-07T14:45:37.2492456+04:00"
+}

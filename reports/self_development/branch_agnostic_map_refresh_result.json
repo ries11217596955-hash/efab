@@ -1,10 +1,10 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-07T14:04:17.9173038+04:00",
+    "checked_at":  "2026-07-07T14:45:45.8484439+04:00",
     "branch":  "main",
-    "observed_head":  "290cb7c9d28f0e1814e0ddce673b770a73991adf",
-    "subject_head":  "290cb7c9d28f0e1814e0ddce673b770a73991adf",
+    "observed_head":  "b07219836034e87709713aaacdb7b3a97820a321",
+    "subject_head":  "b07219836034e87709713aaacdb7b3a97820a321",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
@@ -13,7 +13,7 @@
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "tests/live_start/AIMO_MANIFEST_ONLY_HOTSWAP_V1_PROOF.json"
+                          "tests/live_start/SCHOOL_ONLY_RESTART_AFTER_MEMORY_FIX_V1_PROOF.json"
                       ],
     "structural_paths":  [
 
@@ -28,8 +28,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  574,
-                                    "sha256":  "d8d8d0faf72046abb3e9225d5d493b934516e7ddbc581aa94b14212a017e5a3d"
+                                    "structural_file_count":  575,
+                                    "sha256":  "2bfee796fa8e8c69c3d75d3b0064ea55744ee36cf1a92ee3ac537ee15f6fde4f"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -50,7 +50,7 @@
                          "builder":  "AGENT_BODY_COMPOSITION_MAP_V1",
                          "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                          "component_count":  7,
-                         "structural_path_count":  574
+                         "structural_path_count":  575
                      },
-    "refreshed_at":  "2026-07-07T14:04:18.9325026+04:00"
+    "refreshed_at":  "2026-07-07T14:45:46.9083950+04:00"
 }
