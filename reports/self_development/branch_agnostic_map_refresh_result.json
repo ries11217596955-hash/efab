@@ -1,24 +1,24 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-07T09:50:09.0325932+04:00",
+    "checked_at":  "2026-07-07T09:51:21.9036122+04:00",
     "branch":  "main",
-    "observed_head":  "a92cb208f2326a9efad00688323ab17155f01145",
-    "subject_head":  "a92cb208f2326a9efad00688323ab17155f01145",
+    "observed_head":  "d8997cfc70ec5501d0510b412dc1f60343a89c26",
+    "subject_head":  "d8997cfc70ec5501d0510b412dc1f60343a89c26",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "operations/live_readiness/run_live_rollback_contract_v1.ps1",
-                          "operations/live_readiness/validate_live_rollback_contract_v1.ps1",
+                          "docs/operations/GROWTH_SYSTEM_STATUS_AND_NEXT_PORTS_20260706.md",
+                          "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
-                          "reports/self_development/branch_agnostic_map_refresh_result.json"
+                          "reports/self_development/branch_agnostic_map_refresh_result.json",
+                          "tests/live_readiness/LIVE_ROLLBACK_CONTRACT_V1_PROOF.json"
                       ],
     "structural_paths":  [
-                             "operations/live_readiness/run_live_rollback_contract_v1.ps1",
-                             "operations/live_readiness/validate_live_rollback_contract_v1.ps1"
+
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -31,7 +31,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  563,
-                                    "sha256":  "60ea45ec0b7bf494c2293ed94375bcdf54ca296415c2edd09c3d934310e8581a"
+                                    "sha256":  "1da81357cb63b5863bc39d12e8ca071276c5a48a73be7a6752d2eba10d682133"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -54,5 +54,5 @@
                          "component_count":  7,
                          "structural_path_count":  563
                      },
-    "refreshed_at":  "2026-07-07T09:50:10.3825179+04:00"
+    "refreshed_at":  "2026-07-07T09:51:23.1824499+04:00"
 }
