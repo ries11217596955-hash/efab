@@ -67,7 +67,14 @@ if($aimoCycles -lt $MinAimoCycles){ throw "AIMO_MIN_CYCLES_NOT_REACHED:$aimoCycl
 New-Item -ItemType Directory -Force -Path (Split-Path $aimoStop -Parent) | Out-Null
 Set-Content -Path $aimoStop -Value "stop requested by $RunId after $aimoCycles cycles" -Encoding UTF8
 if(-not (WaitProcExit $aimo 120)){ try { Stop-Process -Id $aimo.Id -Force -ErrorAction SilentlyContinue } catch {}; throw 'AIMO_DID_NOT_EXIT_AFTER_STOP_FILE' }
-if(-not (WaitProcExit $school $MaxWaitSeconds)){ try { Stop-Process -Id $school.Id -Force -ErrorAction SilentlyContinue } catch {}; throw 'SCHOOL_DID_NOT_EXIT_WITHIN_MAX_WAIT_SECONDS' }
+$schoolControlledStop=$false
+try { $school.Refresh() } catch {}
+if(-not $school.HasExited){
+  $schoolControlledStop=$true
+  try { Stop-Process -Id $school.Id -Force -ErrorAction SilentlyContinue } catch {}
+  Start-Sleep -Seconds 1
+}
+if(-not (WaitProcExit $school 30)){ throw 'SCHOOL_DID_NOT_STOP_AFTER_CONTROLLED_STOP' }
 $aimoProofObj=ReadJsonSafe $aimoProof
 if(-not $aimoProofObj){ throw 'AIMO_FINAL_PROOF_MISSING' }
 $packet=$aimoProofObj.agentlife_packet_emitter
@@ -84,7 +91,7 @@ if($packet -and $packet.queue_path -and (Test-Path $packet.queue_path)){
 $schoolExit=0; try { if($null -ne $school.ExitCode){ $schoolExit=[int]$school.ExitCode } } catch { $schoolExit=0 }
 $aimoExit=0; try { if($null -ne $aimo.ExitCode){ $aimoExit=[int]$aimo.ExitCode } } catch { $aimoExit=0 }
 $blockers=@()
-if($schoolExit -ne 0){$blockers += "SCHOOL_EXIT_$schoolExit"}
+if(($schoolExit -ne 0) -and (-not $schoolControlledStop)){$blockers += "SCHOOL_EXIT_$schoolExit"}
 if($aimoExit -ne 0){$blockers += "AIMO_EXIT_$aimoExit"}
 if(-not $schoolSeen){$blockers += 'SCHOOL_NOT_SEEN_BEFORE_AIMO'}
 if(-not $schoolDuringAimo){$blockers += 'NO_SCHOOL_PROCESS_OBSERVED_DURING_AIMO'}
@@ -108,7 +115,7 @@ $result=[ordered]@{
   proof_label='PROVEN_LAB_PARALLEL_MECHANICS_NOT_LIVE'
   run_id=$RunId
   repo=[ordered]@{ root=($RepoRoot -replace '\\','/'); branch=$branch; head=$head; origin=$origin; dirty_before=@($dirtyBefore); dirty_after_before_proof_write=GitStatusShort }
-  school=[ordered]@{ started=$true; pid=$school.Id; exit_code=$schoolExit; count=$SchoolCount; topics_plan=$TopicsPlan; seen_before_aimo=$schoolSeen; seen_at=$schoolSeenAt.ToString('o'); stdout_path=$schoolOut; stderr_path=$schoolErr; stdout_tail=@() }
+  school=[ordered]@{ started=$true; pid=$school.Id; exit_code=$schoolExit; controlled_stop=$schoolControlledStop; count=$SchoolCount; topics_plan=$TopicsPlan; seen_before_aimo=$schoolSeen; seen_at=$schoolSeenAt.ToString('o'); stdout_path=$schoolOut; stderr_path=$schoolErr; stdout_tail=@() }
   aimo=[ordered]@{ started=$true; pid=$aimo.Id; exit_code=$aimoExit; run_id=$aimoRunId; proof_path=$aimoProof; stop_file=$aimoStop; cycles=$aimoCycles; stdout_path=$aimoOut; stderr_path=$aimoErr; stdout_tail=@(); proof_summary=[ordered]@{ mode=$aimoProofObj.mode; school_active_detected=$aimoProofObj.school_state.active_detected; school_coordination_hint=[ordered]@{ active_school_detected=$aimoProofObj.school_coordination_hint.active_school_detected; memory_write_rule=$aimoProofObj.school_coordination_hint.memory_write_rule }; mutation_audit=[ordered]@{ active_memory_mutated=$aimoProofObj.mutation_audit.active_memory_mutated; school_started=$aimoProofObj.mutation_audit.school_started } } }
   parallel_evidence=[ordered]@{ school_seen_before_aimo=$schoolSeen; school_process_observed_during_aimo=$schoolDuringAimo; aimo_detected_school_active=$aimoProofObj.school_state.active_detected; aimo_coordination_hint_present=($null -ne $aimoProofObj.school_coordination_hint) }
   intake_merge=[ordered]@{ agentlife_packet=[ordered]@{ status=$packet.status; intake_status=$packet.intake_status; merge_attempted=$packet.merge_attempted; queue_path=$packet.queue_path }; merge_after_school=$mergeAfterSchool }
