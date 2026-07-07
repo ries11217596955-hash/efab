@@ -1,22 +1,24 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-07T08:57:01.6487401+04:00",
+    "checked_at":  "2026-07-07T09:04:56.7464938+04:00",
     "branch":  "main",
-    "observed_head":  "65340885fd6544a7772fd79a5cb3691fc1f4ffaf",
-    "subject_head":  "65340885fd6544a7772fd79a5cb3691fc1f4ffaf",
+    "observed_head":  "a92910d17091d19df2e80d2267f2ff60f17e503c",
+    "subject_head":  "a92910d17091d19df2e80d2267f2ff60f17e503c",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "operations/parallel_life/run_school_aimo_parallel_lab_v1.ps1",
+                          "docs/operations/GROWTH_SYSTEM_STATUS_AND_NEXT_PORTS_20260706.md",
+                          "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
-                          "reports/self_development/branch_agnostic_map_refresh_result.json"
+                          "reports/self_development/branch_agnostic_map_refresh_result.json",
+                          "tests/parallel_life/SCHOOL_AIMO_PARALLEL_LAB_V1_PROOF.json"
                       ],
     "structural_paths":  [
-                             "operations/parallel_life/run_school_aimo_parallel_lab_v1.ps1"
+
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -28,8 +30,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  554,
-                                    "sha256":  "0360a4ea307b2d6ac21f958e53b70251a8a0701b94d2c3eb050f15cc003339c2"
+                                    "structural_file_count":  556,
+                                    "sha256":  "67c1982447496d135dda17e205ddf4bf596c3dd86c3f51f4c810dcb26a7a3d4c"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -50,7 +52,7 @@
                          "builder":  "AGENT_BODY_COMPOSITION_MAP_V1",
                          "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                          "component_count":  7,
-                         "structural_path_count":  554
+                         "structural_path_count":  556
                      },
-    "refreshed_at":  "2026-07-07T08:57:03.2273565+04:00"
+    "refreshed_at":  "2026-07-07T09:04:58.4141273+04:00"
 }
