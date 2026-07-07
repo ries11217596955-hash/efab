@@ -12,6 +12,9 @@ $PolicyPath = Join-Path $OrganRoot 'motor_policy.json'
 $Policy = Get-Content $PolicyPath -Raw | ConvertFrom-Json
 # Sandbox one-file proof contract marker: SANDBOX_EXPLORATION_PROOF.json; test-life proof marker: TEST_LIFE_PROOF.json
 
+$EpisodicRecallPath = Join-Path 'operations/memory/episodic' 'get_episode_recall_v1.ps1'
+if(Test-Path $EpisodicRecallPath) { . $EpisodicRecallPath }
+
 function Get-GitStatusShort {
   $s = git status --short --untracked-files=all
   return (($s | Out-String).Trim())
@@ -348,6 +351,7 @@ if ($Mode -eq 'SandboxTestLife') {
     knowledge_gap_trace = @()
     knowledge_acquisition_trace = @()
     task_decomposition_trace = @()
+    episodic_recall_trace = @()
     batch_knowledge_acquisition_trace = @()
   }
   $Payload['boundary'] = 'Sandbox development life. Hard walls remain; each cycle may decompose X into <=10 parts and call governed batch source only after local knowledge gap.'
@@ -588,6 +592,22 @@ if ($Mode -eq 'SandboxTestLife') {
     $Payload.development_trace.current_task = $task.name
     $Payload.development_trace.current_memory_state = $currentMemoryState
     $Payload.development_trace.task_selection_trace = @($selector)
+    $episodicQueryTerms = @($task.name,$task.query,$selector.reason,$selector.useful_intent)
+    if($currentGrowthSignal -and (Get-Command Get-SelectorField -ErrorAction SilentlyContinue)) {
+      $episodicQueryTerms += @((Get-SelectorField $currentGrowthSignal 'topics' @()))
+      $episodicQueryTerms += @((Get-SelectorField $currentGrowthSignal 'focus_boosts' @()))
+    }
+    if(Get-Command Get-EpisodicMemoryRecall -ErrorAction SilentlyContinue) {
+      $episodicRecall = Get-EpisodicMemoryRecall -QueryTerms $episodicQueryTerms
+    } else {
+      $episodicRecall = [ordered]@{ available=$false; status='EPISODIC_RECALL_HELPER_MISSING'; query_terms=@($episodicQueryTerms); selected=@(); reuse_hints=@(); guardrails=@('episodic recall helper not loaded') }
+    }
+    $Payload.development_trace.episodic_recall_trace = @($episodicRecall)
+    if($episodicRecall.available -and @($episodicRecall.reuse_hints).Count -gt 0) {
+      $task = [ordered]@{ name=$task.name; target=$task.target; query=($task.query + '; episodic_reuse_hint: ' + ((@($episodicRecall.reuse_hints) | Select-Object -First 2) -join ' | ')) }
+      $Payload.development_trace.current_task = $task.name
+      $Payload.development_trace.current_task_query_with_episodic_recall = $task.query
+    }
 
 
     $usedReflexes = New-Object System.Collections.Generic.List[string]
@@ -706,6 +726,9 @@ if ($Mode -eq 'SandboxTestLife') {
       task_selection_reason = $selector.reason
       useful_intent = $selector.useful_intent
       task_selection_overrode_static_rotation = $selector.overrides_static_rotation
+      episodic_recall_status = $episodicRecall.status
+      episodic_recall_available = $episodicRecall.available
+      episodic_recall_top_episode = $(if($episodicRecall.available -and @($episodicRecall.selected).Count -gt 0){$episodicRecall.selected[0].episode_id}else{$null})
       reflexes_used = @($usedReflexes.ToArray())
       memory_relevance = $relevance
       candidates_checked = $memoryCompare.result.candidates_checked
