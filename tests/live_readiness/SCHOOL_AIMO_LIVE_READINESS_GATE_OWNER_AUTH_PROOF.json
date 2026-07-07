@@ -1,0 +1,88 @@
+﻿{
+    "schema":  "school_aimo_live_readiness_gate_v1",
+    "status":  "PASS_SCHOOL_AIMO_LIVE_READINESS_GATE_GO_V1",
+    "proof_label":  "PROVEN_LAB_LIVE_READINESS_GATE_DECISION_NOT_LIVE_EXECUTION",
+    "decision":  "GO_LIVE_READY",
+    "live_ready":  true,
+    "technical_runtime_ready":  true,
+    "runtime_ready":  true,
+    "owner_live_authorized":  true,
+    "repo":  {
+                 "root":  "H:/efab",
+                 "branch":  "main",
+                 "head":  "3f66e14875af6918bac45600cd146d7b16cdb350",
+                 "origin":  "https://github.com/ries11217596955-hash/efab.git",
+                 "ahead_behind":  "0\t0",
+                 "dirty_before":  [
+
+                                  ],
+                 "active_process_count":  0
+             },
+    "checks":  {
+                   "passed":  [
+                                  "CANONICAL_ROOT_H_EFAB",
+                                  "BRANCH_MAIN",
+                                  "ORIGIN_EFAB",
+                                  "REMOTE_SYNCED_0_0",
+                                  "WORKTREE_CLEAN",
+                                  "NO_ACTIVE_RUNTIME_PROCESS",
+                                  "MAP_VALIDATOR_PASS",
+                                  "LIVE_LIKE_GATE_PASS",
+                                  "DETACHED_STOPFILE_CONTRACT_PASS",
+                                  "LIVE_ROLLBACK_CONTRACT_PASS",
+                                  "LIVE_REJECT_AND_FORGET_CONTRACT_PASS",
+                                  "SCHOOL_AIMO_CONTINUOUS_RUNTIME_PROOF_PASS"
+                              ],
+                   "missing":  [
+
+                               ],
+                   "go_blockers":  [
+
+                                   ],
+                   "map_status":  "PASS_AGENT_BODY_COMPOSITION_MAP_CURRENT_V1",
+                   "map_exit":  0,
+                   "live_like_validation_status":  "PASS_SCHOOL_AIMO_LIVE_LIKE_OBSERVATION_GATE_V1",
+                   "live_like_validation_exit":  0,
+                   "stopfile_contract_validation_status":  "PASS_DETACHED_LONG_RUNTIME_STOPFILE_CONTRACT_V1",
+                   "stopfile_contract_validation_exit":  0,
+                   "rollback_contract_validation_status":  "PASS_LIVE_ROLLBACK_CONTRACT_V1",
+                   "rollback_contract_validation_exit":  0,
+                   "reject_contract_validation_status":  "PASS_LIVE_REJECT_AND_FORGET_CONTRACT_V1",
+                   "reject_contract_validation_exit":  0,
+                   "continuous_runtime_validation_status":  "PASS_SCHOOL_AIMO_CONTINUOUS_RUNTIME_PROOF_V1",
+                   "continuous_runtime_validation_exit":  0,
+                   "proof_checks":  {
+                                        "live_like_status":  "PASS_SCHOOL_AIMO_LIVE_LIKE_OBSERVATION_GATE_V1",
+                                        "live_like_duration_seconds":  192.508,
+                                        "live_like_heartbeats":  19,
+                                        "live_like_watchdog_violations":  0,
+                                        "packet_status":  "PASS_AGENTLIFE_PACKET_SUBMITTED_SCHOOL_ACTIVE_BACKOFF",
+                                        "intake_status":  "PASS_MULTI_SOURCE_COMPACT_MEMORY_INTAKE_SUBMIT_V1",
+                                        "merge_status":  "PASS_MULTI_SOURCE_COMPACT_MEMORY_MERGE_QUEUE_V1",
+                                        "stopfile_status":  "PASS_DETACHED_LONG_RUNTIME_STOPFILE_CONTRACT_V1",
+                                        "stopfile_child_exit":  0,
+                                        "rollback_status":  "PASS_LIVE_ROLLBACK_CONTRACT_V1",
+                                        "rollback_restored_to_checkpoint":  true,
+                                        "rollback_final_state":  "baseline",
+                                        "reject_status":  "PASS_LIVE_REJECT_AND_FORGET_CONTRACT_V1",
+                                        "reject_mode":  "REJECT_AND_FORGET_NO_RAW_PAYLOAD",
+                                        "reject_accepted":  false,
+                                        "reject_merged":  false,
+                                        "reject_executed":  false,
+                                        "continuous_status":  "PASS_SCHOOL_AIMO_CONTINUOUS_RUNTIME_PROOF_V1",
+                                        "continuous_technical_runtime_ready":  true,
+                                        "continuous_runtime_ready":  true,
+                                        "continuous_duration":  191.776,
+                                        "continuous_heartbeats":  19,
+                                        "continuous_packet":  "PASS_AGENTLIFE_PACKET_SUBMITTED_SCHOOL_ACTIVE_BACKOFF",
+                                        "continuous_intake":  "PASS_MULTI_SOURCE_COMPACT_MEMORY_INTAKE_SUBMIT_V1",
+                                        "continuous_merge":  "PASS_MULTI_SOURCE_COMPACT_MEMORY_MERGE_QUEUE_V1"
+                                    }
+               },
+    "required_next_to_be_live_ready":  [
+                                           "explicit Owner live authorization"
+                                       ],
+    "boundary":  "Readiness decision only. Technical runtime readiness may be true, but live_ready requires explicit Owner live authorization. Not PROVEN_LIVE.",
+    "started_at":  "2026-07-07T10:54:09.4325714+04:00",
+    "finished_at":  "2026-07-07T10:54:14.6168967+04:00"
+}
