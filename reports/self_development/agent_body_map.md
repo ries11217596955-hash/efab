@@ -2,9 +2,9 @@
 
 Status: ACTIVE_DERIVED_VIEW
 Branch: main
-Observed head at generation: 7fa6d288a9add1e8bbf01f37c676e35a44bc5564
-Generated: 2026-07-07T08:09:23.1483090+04:00
-Body source fingerprint: 604b8bc81ed918fd0e21c82185d1eca51b2e9fd3a098592529fe6041340337c5
+Observed head at generation: 78a5f6fc3101a361238c1772f8a8fdd26b85965a
+Generated: 2026-07-07T08:15:06.7237068+04:00
+Body source fingerprint: 1d234aa17a59a993ab2af85522e8c59555146ffce63fdf7a076964d48631033c
 
 Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
@@ -16,11 +16,11 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
 ## Components
 
-- `school` - PRESENT_ON_CURRENT_BRANCH, root `operations/school`, files=96, scripts=58, required_present=True, latest_runtime=.runtime/school_runs/school_factory_digest_use_test_50000_20260707_080700/AGENT_SCHOOL_CANONICAL_ENTRYPOINT_V1.json
-- `school_source_router` - PRESENT_ON_CURRENT_BRANCH, root `operations/school/curriculum/source_router`, files=8, scripts=6, required_present=True, latest_runtime=.runtime/school_source_template_filter/school_source_router_filter_school_factory_digest_use_test_50000_20260707_080700_chunk_2_of_10/SCHOOL_SOURCE_TEMPLATE_FILTER_DECISION_V1.json
-- `compact_memory_intake` - PRESENT_ON_CURRENT_BRANCH, root `operations/compact_memory_intake`, files=9, scripts=5, required_present=True, latest_runtime=none_observed
-- `autonomous_inner_motor` - PRESENT_ON_CURRENT_BRANCH, root `operations/autonomous_inner_motor`, files=62, scripts=1, required_present=True, latest_runtime=none_observed
-- `knowledge_acquisition_port` - PRESENT_ON_CURRENT_BRANCH, root `operations/knowledge_acquisition_port`, files=50, scripts=2, required_present=True, latest_runtime=none_observed
+- `school` - PRESENT_ON_CURRENT_BRANCH, root `operations/school`, files=96, scripts=58, required_present=True, latest_runtime=.runtime/school_runs/school_factory_digest_use_test_50000_20260707_081235/AGENT_SCHOOL_CANONICAL_ENTRYPOINT_V1.json
+- `school_source_router` - PRESENT_ON_CURRENT_BRANCH, root `operations/school/curriculum/source_router`, files=8, scripts=6, required_present=True, latest_runtime=.runtime/school_source_template_filter/school_source_router_filter_school_factory_digest_use_test_50000_20260707_081235_chunk_3_of_10/SCHOOL_SOURCE_TEMPLATE_FILTER_DECISION_V1.json
+- `compact_memory_intake` - PRESENT_ON_CURRENT_BRANCH, root `operations/compact_memory_intake`, files=9, scripts=5, required_present=True, latest_runtime=.runtime/active_compact_semantic_memory_v1/manifest.json
+- `autonomous_inner_motor` - PRESENT_ON_CURRENT_BRANCH, root `operations/autonomous_inner_motor`, files=62, scripts=1, required_present=True, latest_runtime=.runtime/autonomous_inner_motor/test_life_runs/parallel_aimo_20260707T041235Z/TEST_LIFE_PROOF.json
+- `knowledge_acquisition_port` - PRESENT_ON_CURRENT_BRANCH, root `operations/knowledge_acquisition_port`, files=50, scripts=2, required_present=True, latest_runtime=.runtime/knowledge_acquisition_port/runs/parallel_aimo_20260707T041235Z_cycle1_batch_knowledge_gap/BATCH_SOURCE_DIGEST_AND_PROMOTION_DECISION.json
 - `map_control` - PRESENT_ON_CURRENT_BRANCH, root `operations/map_control`, files=2, scripts=0, required_present=True, latest_runtime=none_observed
 - `gpt_handoff` - PRESENT_ON_CURRENT_BRANCH, root `operations/gpt_handoff`, files=3, scripts=0, required_present=True, latest_runtime=none_observed
 

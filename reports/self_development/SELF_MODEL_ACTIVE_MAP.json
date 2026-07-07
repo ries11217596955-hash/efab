@@ -6,9 +6,9 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "7fa6d288a9add1e8bbf01f37c676e35a44bc5564",
-    "subject_head":  "7fa6d288a9add1e8bbf01f37c676e35a44bc5564",
-    "generated_at":  "2026-07-07T08:09:23.1483090+04:00",
+    "observed_head_at_generation":  "78a5f6fc3101a361238c1772f8a8fdd26b85965a",
+    "subject_head":  "78a5f6fc3101a361238c1772f8a8fdd26b85965a",
+    "generated_at":  "2026-07-07T08:15:06.7237068+04:00",
     "generator":  "invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "role":  "canonical local body composition/status map: what exists, where it is, freshness, last runtime/proof signal",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
@@ -17,7 +17,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  554,
-                                    "sha256":  "604b8bc81ed918fd0e21c82185d1eca51b2e9fd3a098592529fe6041340337c5"
+                                    "sha256":  "1d234aa17a59a993ab2af85522e8c59555146ffce63fdf7a076964d48631033c"
                                 },
     "module_count":  207,
     "validator_count":  174,
@@ -91,9 +91,9 @@
                                                      "subject":  "chore: initial clean builder snapshot"
                                                  },
                            "latest_runtime_artifact":  {
-                                                           "path":  ".runtime/school_runs/school_factory_digest_use_test_50000_20260707_080700/AGENT_SCHOOL_CANONICAL_ENTRYPOINT_V1.json",
-                                                           "last_write":  "2026-07-07T08:08:00.2324482+04:00",
-                                                           "bytes":  6162
+                                                           "path":  ".runtime/school_runs/school_factory_digest_use_test_50000_20260707_081235/AGENT_SCHOOL_CANONICAL_ENTRYPOINT_V1.json",
+                                                           "last_write":  "2026-07-07T08:14:37.8824654+04:00",
+                                                           "bytes":  6968
                                                        }
                        },
                        {
@@ -139,8 +139,8 @@
                                                      "subject":  "chore: initial clean builder snapshot"
                                                  },
                            "latest_runtime_artifact":  {
-                                                           "path":  ".runtime/school_source_template_filter/school_source_router_filter_school_factory_digest_use_test_50000_20260707_080700_chunk_2_of_10/SCHOOL_SOURCE_TEMPLATE_FILTER_DECISION_V1.json",
-                                                           "last_write":  "2026-07-07T08:08:01.0823612+04:00",
+                                                           "path":  ".runtime/school_source_template_filter/school_source_router_filter_school_factory_digest_use_test_50000_20260707_081235_chunk_3_of_10/SCHOOL_SOURCE_TEMPLATE_FILTER_DECISION_V1.json",
+                                                           "last_write":  "2026-07-07T08:14:38.6988155+04:00",
                                                            "bytes":  3264
                                                        }
                        },
@@ -181,7 +181,11 @@
                                                      "committed_at":  "2026-07-06T22:42:23+04:00",
                                                      "subject":  "chore: initial clean builder snapshot"
                                                  },
-                           "latest_runtime_artifact":  null
+                           "latest_runtime_artifact":  {
+                                                           "path":  ".runtime/active_compact_semantic_memory_v1/manifest.json",
+                                                           "last_write":  "2026-07-07T08:12:07.0987889+04:00",
+                                                           "bytes":  895
+                                                       }
                        },
                        {
                            "id":  "autonomous_inner_motor",
@@ -212,7 +216,11 @@
                                                      "committed_at":  "2026-07-06T22:42:23+04:00",
                                                      "subject":  "chore: initial clean builder snapshot"
                                                  },
-                           "latest_runtime_artifact":  null
+                           "latest_runtime_artifact":  {
+                                                           "path":  ".runtime/autonomous_inner_motor/test_life_runs/parallel_aimo_20260707T041235Z/TEST_LIFE_PROOF.json",
+                                                           "last_write":  "2026-07-07T08:14:45.7648546+04:00",
+                                                           "bytes":  179497
+                                                       }
                        },
                        {
                            "id":  "knowledge_acquisition_port",
@@ -246,7 +254,11 @@
                                                      "committed_at":  "2026-07-06T22:42:23+04:00",
                                                      "subject":  "chore: initial clean builder snapshot"
                                                  },
-                           "latest_runtime_artifact":  null
+                           "latest_runtime_artifact":  {
+                                                           "path":  ".runtime/knowledge_acquisition_port/runs/parallel_aimo_20260707T041235Z_cycle1_batch_knowledge_gap/BATCH_SOURCE_DIGEST_AND_PROMOTION_DECISION.json",
+                                                           "last_write":  "2026-07-07T08:13:28.3826559+04:00",
+                                                           "bytes":  20010
+                                                       }
                        },
                        {
                            "id":  "map_control",
@@ -341,13 +353,21 @@
                                             ],
     "current_runtime_observation":  {
                                         "live_process_touched":  false,
-                                        "latest_active_compact_memory_manifest":  null,
+                                        "latest_active_compact_memory_manifest":  {
+                                                                                      "path":  ".runtime/active_compact_semantic_memory_v1/manifest.json",
+                                                                                      "last_write":  "2026-07-07T08:12:07.0987889+04:00",
+                                                                                      "bytes":  895
+                                                                                  },
                                         "latest_school_runtime_artifact":  {
-                                                                               "path":  ".runtime/school_runs/school_factory_digest_use_test_50000_20260707_080700/AGENT_SCHOOL_CANONICAL_ENTRYPOINT_V1.json",
-                                                                               "last_write":  "2026-07-07T08:08:00.2324482+04:00",
-                                                                               "bytes":  6162
+                                                                               "path":  ".runtime/school_runs/school_factory_digest_use_test_50000_20260707_081235/AGENT_SCHOOL_CANONICAL_ENTRYPOINT_V1.json",
+                                                                               "last_write":  "2026-07-07T08:14:37.8824654+04:00",
+                                                                               "bytes":  6968
                                                                            },
-                                        "latest_aimo_runtime_artifact":  null
+                                        "latest_aimo_runtime_artifact":  {
+                                                                             "path":  ".runtime/autonomous_inner_motor/test_life_runs/parallel_aimo_20260707T041235Z/TEST_LIFE_PROOF.json",
+                                                                             "last_write":  "2026-07-07T08:14:45.7648546+04:00",
+                                                                             "bytes":  179497
+                                                                         }
                                     },
     "freshness_rule":  "Trust currentness by body_source_fingerprint, not by self-referential commit HEAD.",
     "boundary":  "This is the single canonical composition/status map. It does not describe how to invoke capabilities; capability invocation belongs to a separate capability map."
