@@ -6,9 +6,9 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "5eb020d215d285b74f6f0e9671d62517d1b9d86f",
-    "subject_head":  "5eb020d215d285b74f6f0e9671d62517d1b9d86f",
-    "generated_at":  "2026-07-07T13:51:23.6142045+04:00",
+    "observed_head_at_generation":  "daed8d806fcb4b9150b99a20279b2b89239bbaca",
+    "subject_head":  "daed8d806fcb4b9150b99a20279b2b89239bbaca",
+    "generated_at":  "2026-07-07T13:53:40.3327753+04:00",
     "generator":  "invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "role":  "canonical local body composition/status map: what exists, where it is, freshness, last runtime/proof signal",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
@@ -87,9 +87,9 @@
                                                  "operations/school/SCHOOL_CANONICAL_RUN_CONTRACT_V1.md"
                                              ],
                            "latest_git_commit":  {
-                                                     "head":  "ad0083bf2a144ee4540884e37db292ca30be657f",
-                                                     "committed_at":  "2026-07-06T22:42:23+04:00",
-                                                     "subject":  "chore: initial clean builder snapshot"
+                                                     "head":  "daed8d806fcb4b9150b99a20279b2b89239bbaca",
+                                                     "committed_at":  "2026-07-07T13:51:20+04:00",
+                                                     "subject":  "fix: make active memory rotation lock tolerant"
                                                  },
                            "latest_runtime_artifact":  {
                                                            "path":  ".runtime/school_runs/school_factory_digest_use_real_1000000_20260707_110037/AGENT_SCHOOL_CANONICAL_ENTRYPOINT_V1.json",
@@ -183,9 +183,9 @@
                                                      "subject":  "chore: initial clean builder snapshot"
                                                  },
                            "latest_runtime_artifact":  {
-                                                           "path":  ".runtime/active_compact_semantic_memory_v1/manifest.json",
-                                                           "last_write":  "2026-07-07T12:18:42.8643582+04:00",
-                                                           "bytes":  968
+                                                           "path":  ".runtime/compact_memory_intake_v1/reports/COMPACT_MEMORY_INTAKE_SUBMISSION_AgentLife_live_aimo_aimo_agent_only_restart_v1_20260707T075024Z_20260707_135210.json",
+                                                           "last_write":  "2026-07-07T13:52:10.4482729+04:00",
+                                                           "bytes":  948
                                                        }
                        },
                        {
@@ -214,14 +214,14 @@
                                                  "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1"
                                              ],
                            "latest_git_commit":  {
-                                                     "head":  "2eced4f38b1ae2eb7ba4a23280c0c6d0b43af928",
-                                                     "committed_at":  "2026-07-07T11:49:59+04:00",
-                                                     "subject":  "fix: make aimo tolerate rotating active memory"
+                                                     "head":  "daed8d806fcb4b9150b99a20279b2b89239bbaca",
+                                                     "committed_at":  "2026-07-07T13:51:20+04:00",
+                                                     "subject":  "fix: make active memory rotation lock tolerant"
                                                  },
                            "latest_runtime_artifact":  {
-                                                           "path":  ".runtime/autonomous_inner_motor/test_life_runs/live_aimo_aimo_agent_only_restart_v1_20260707T075024Z/TEST_LIFE_PROOF.json",
-                                                           "last_write":  "2026-07-07T13:51:22.9326636+04:00",
-                                                           "bytes":  205908
+                                                           "path":  ".runtime/autonomous_inner_motor/test_life_runs/live_aimo_aimo_manifest_only_hotswap_v1_20260707T095207Z/TEST_LIFE_PROOF.json",
+                                                           "last_write":  "2026-07-07T13:53:39.7085760+04:00",
+                                                           "bytes":  94364
                                                        }
                        },
                        {
@@ -257,9 +257,9 @@
                                                      "subject":  "chore: initial clean builder snapshot"
                                                  },
                            "latest_runtime_artifact":  {
-                                                           "path":  ".runtime/knowledge_acquisition_port/runs/live_aimo_aimo_agent_only_restart_v1_20260707T075024Z_cycle1_batch_knowledge_gap/BATCH_SOURCE_DIGEST_AND_PROMOTION_DECISION.json",
-                                                           "last_write":  "2026-07-07T11:51:23.9145104+04:00",
-                                                           "bytes":  20400
+                                                           "path":  ".runtime/knowledge_acquisition_port/runs/live_aimo_aimo_manifest_only_hotswap_v1_20260707T095207Z_cycle1_batch_knowledge_gap/BATCH_KNOWLEDGE_ACQUISITION_PROOF.json",
+                                                           "last_write":  "2026-07-07T13:53:07.9322536+04:00",
+                                                           "bytes":  4467
                                                        }
                        },
                        {
@@ -366,9 +366,9 @@
                                                                                "bytes":  71312
                                                                            },
                                         "latest_aimo_runtime_artifact":  {
-                                                                             "path":  ".runtime/autonomous_inner_motor/test_life_runs/live_aimo_aimo_agent_only_restart_v1_20260707T075024Z/TEST_LIFE_PROOF.json",
-                                                                             "last_write":  "2026-07-07T13:51:22.9326636+04:00",
-                                                                             "bytes":  205908
+                                                                             "path":  ".runtime/autonomous_inner_motor/test_life_runs/live_aimo_aimo_manifest_only_hotswap_v1_20260707T095207Z/TEST_LIFE_PROOF.json",
+                                                                             "last_write":  "2026-07-07T13:53:39.7085760+04:00",
+                                                                             "bytes":  94364
                                                                          }
                                     },
     "freshness_rule":  "Trust currentness by body_source_fingerprint, not by self-referential commit HEAD.",

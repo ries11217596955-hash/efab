@@ -1,0 +1,101 @@
+﻿{
+    "schema":  "aimo_manifest_only_hotswap_v1",
+    "status":  "PASS_AIMO_MANIFEST_ONLY_HOTSWAP_V1",
+    "proof_label":  "PROVEN_LIVE_AIMO_RESTARTED_WITH_MANIFEST_ONLY_MEMORY_READ",
+    "repo":  {
+                 "head":  "daed8d806fcb4b9150b99a20279b2b89239bbaca",
+                 "branch":  "main",
+                 "ahead_behind":  "0 0",
+                 "dirty_before":  [
+
+                                  ]
+             },
+    "school":  {
+                   "pid":  2708,
+                   "alive_before":  false,
+                   "touched":  false
+               },
+    "old_aimo":  {
+                     "pid":  10168,
+                     "run_id":  "live_aimo_aimo_agent_only_restart_v1_20260707T075024Z",
+                     "alive_before":  true,
+                     "stop_path":  ".runtime\\autonomous_inner_motor\\test_life_runs\\live_aimo_aimo_agent_only_restart_v1_20260707T075024Z\\STOP_REQUESTED.txt",
+                     "stop_events":  [
+                                         {
+                                             "at":  "2026-07-07T13:52:09.9239016+04:00",
+                                             "old_aimo_alive":  true
+                                         },
+                                         {
+                                             "at":  "2026-07-07T13:52:11.9340567+04:00",
+                                             "old_aimo_alive":  false
+                                         }
+                                     ],
+                     "forced_stop":  false,
+                     "alive_after":  false
+                 },
+    "new_aimo":  {
+                     "pid":  4984,
+                     "run_id":  "live_aimo_aimo_manifest_only_hotswap_v1_20260707T095207Z",
+                     "alive":  true,
+                     "stdout":  ".runtime\\live_start\\controlled_live_school_aimo_v1_20260707T070037Z\\aimo_agent_restarts\\aimo_manifest_only_hotswap_v1_20260707T095207Z\\aimo.stdout.txt",
+                     "stderr":  ".runtime\\live_start\\controlled_live_school_aimo_v1_20260707T070037Z\\aimo_agent_restarts\\aimo_manifest_only_hotswap_v1_20260707T095207Z\\aimo.stderr.txt",
+                     "stderr_size":  0,
+                     "proof_path":  ".runtime\\autonomous_inner_motor\\test_life_runs\\live_aimo_aimo_manifest_only_hotswap_v1_20260707T095207Z\\TEST_LIFE_PROOF.json",
+                     "cycles":  3,
+                     "memory_before_status":  null,
+                     "memory_before_cell_count":  null,
+                     "memory_before_cells_sha256":  null
+                 },
+    "observation":  {
+                        "heartbeats":  [
+                                           {
+                                               "at":  "2026-07-07T13:52:21.9799402+04:00",
+                                               "new_aimo_pid":  4984,
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  false,
+                                               "elapsed_seconds":  14.097
+                                           },
+                                           {
+                                               "at":  "2026-07-07T13:52:31.9990077+04:00",
+                                               "new_aimo_pid":  4984,
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  false,
+                                               "elapsed_seconds":  24.117
+                                           },
+                                           {
+                                               "at":  "2026-07-07T13:52:42.0143002+04:00",
+                                               "new_aimo_pid":  4984,
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  false,
+                                               "elapsed_seconds":  34.129
+                                           },
+                                           {
+                                               "at":  "2026-07-07T13:52:52.0170608+04:00",
+                                               "new_aimo_pid":  4984,
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  false,
+                                               "elapsed_seconds":  44.132
+                                           },
+                                           {
+                                               "at":  "2026-07-07T13:53:02.0173938+04:00",
+                                               "new_aimo_pid":  4984,
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  false,
+                                               "elapsed_seconds":  54.132
+                                           },
+                                           {
+                                               "at":  "2026-07-07T13:53:12.0299521+04:00",
+                                               "new_aimo_pid":  4984,
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  false,
+                                               "elapsed_seconds":  64.145
+                                           }
+                                       ]
+                    },
+    "blockers":  [
+
+                 ],
+    "boundary":  "AIMO-only hotswap; old AIMO stopped so it cannot keep reading active cells.jsonl; new AIMO runs code that reads cell_count/hash from manifest.",
+    "started_at":  "2026-07-07T13:52:07.8851264+04:00",
+    "finished_at":  "2026-07-07T13:53:12.1514612+04:00"
+}
