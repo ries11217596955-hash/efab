@@ -1,0 +1,186 @@
+﻿{
+    "schema":  "aimo_episodic_decision_hotswap_v1",
+    "status":  "PASS_AIMO_EPISODIC_DECISION_HOTSWAP_V1",
+    "proof_label":  "PROVEN_LIVE_AIMO_RESTARTED_WITH_EPISODIC_RECALL_DECISION_LAYER",
+    "repo":  {
+                 "head":  "1c3bc4c13417a31a6c9d21f377fd31e56d543277",
+                 "branch":  "main",
+                 "ahead_behind":  "0 0",
+                 "dirty_before":  [
+
+                                  ]
+             },
+    "school":  {
+                   "pid":  11816,
+                   "alive_before":  true,
+                   "touched":  false
+               },
+    "old_aimo":  {
+                     "pid":  3188,
+                     "run_id":  "live_aimo_aimo_episodic_recall_hotswap_v1_20260707T114513Z",
+                     "alive_before":  true,
+                     "stop_path":  ".runtime\\autonomous_inner_motor\\test_life_runs\\live_aimo_aimo_episodic_recall_hotswap_v1_20260707T114513Z\\STOP_REQUESTED.txt",
+                     "stop_events":  [
+                                         {
+                                             "at":  "2026-07-07T17:23:27.4410547+04:00",
+                                             "old_aimo_alive":  true
+                                         },
+                                         {
+                                             "at":  "2026-07-07T17:23:29.4657277+04:00",
+                                             "old_aimo_alive":  false
+                                         }
+                                     ],
+                     "forced_stop":  false,
+                     "alive_after":  false
+                 },
+    "new_aimo":  {
+                     "pid":  10512,
+                     "run_id":  "live_aimo_aimo_episodic_decision_hotswap_v1_20260707T132325Z",
+                     "alive":  true,
+                     "stdout":  "H:\\efab\\.runtime\\live_start\\controlled_live_school_aimo_v1_20260707T070037Z\\school_restarts\\aimo_agent_restarts\\aimo_episodic_decision_hotswap_v1_20260707T132325Z\\aimo.stdout.txt",
+                     "stderr":  "H:\\efab\\.runtime\\live_start\\controlled_live_school_aimo_v1_20260707T070037Z\\school_restarts\\aimo_agent_restarts\\aimo_episodic_decision_hotswap_v1_20260707T132325Z\\aimo.stderr.txt",
+                     "stderr_size":  0,
+                     "proof_path":  ".runtime\\autonomous_inner_motor\\test_life_runs\\live_aimo_aimo_episodic_decision_hotswap_v1_20260707T132325Z\\TEST_LIFE_PROOF.json",
+                     "cycles":  37,
+                     "decision_event_count":  37,
+                     "decision_actions":  [
+                                              {
+                                                  "action":  "REQUIRE_VALIDATION_GUARDRAIL",
+                                                  "count":  37
+                                              }
+                                          ],
+                     "guarded_event_count":  37
+                 },
+    "observation":  {
+                        "observe_seconds":  100,
+                        "heartbeat_seconds":  10,
+                        "heartbeats":  [
+                                           {
+                                               "at":  "2026-07-07T17:23:39.5409566+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  3,
+                                               "last_task":  "follow_growth_signal_follow_growth_signal_follow_growth_signal_understand_own_policy",
+                                               "last_recall_status":  "EPISODIC_RECALL_AVAILABLE",
+                                               "last_decision_status":  "EPISODIC_DECISION_AVAILABLE",
+                                               "last_decision_action":  "REQUIRE_VALIDATION_GUARDRAIL",
+                                               "last_guardrail_count":  3,
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T17:23:49.6000160+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  7,
+                                               "last_task":  "follow_growth_signal_follow_growth_signal_follow_growth_signal_understand_own_policy",
+                                               "last_recall_status":  "EPISODIC_RECALL_AVAILABLE",
+                                               "last_decision_status":  "EPISODIC_DECISION_AVAILABLE",
+                                               "last_decision_action":  "REQUIRE_VALIDATION_GUARDRAIL",
+                                               "last_guardrail_count":  3,
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T17:23:59.6161956+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  11,
+                                               "last_task":  "follow_growth_signal_follow_growth_signal_follow_growth_signal_understand_own_policy",
+                                               "last_recall_status":  "EPISODIC_RECALL_AVAILABLE",
+                                               "last_decision_status":  "EPISODIC_DECISION_AVAILABLE",
+                                               "last_decision_action":  "REQUIRE_VALIDATION_GUARDRAIL",
+                                               "last_guardrail_count":  3,
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T17:24:09.6417163+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  14,
+                                               "last_task":  "follow_growth_signal_follow_growth_signal_follow_growth_signal_understand_own_policy",
+                                               "last_recall_status":  "EPISODIC_RECALL_AVAILABLE",
+                                               "last_decision_status":  "EPISODIC_DECISION_AVAILABLE",
+                                               "last_decision_action":  "REQUIRE_VALIDATION_GUARDRAIL",
+                                               "last_guardrail_count":  3,
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T17:24:19.6664126+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  18,
+                                               "last_task":  "follow_growth_signal_follow_growth_signal_follow_growth_signal_understand_own_policy",
+                                               "last_recall_status":  "EPISODIC_RECALL_AVAILABLE",
+                                               "last_decision_status":  "EPISODIC_DECISION_AVAILABLE",
+                                               "last_decision_action":  "REQUIRE_VALIDATION_GUARDRAIL",
+                                               "last_guardrail_count":  3,
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T17:24:29.7008522+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  22,
+                                               "last_task":  "follow_growth_signal_follow_growth_signal_follow_growth_signal_understand_own_policy",
+                                               "last_recall_status":  "EPISODIC_RECALL_AVAILABLE",
+                                               "last_decision_status":  "EPISODIC_DECISION_AVAILABLE",
+                                               "last_decision_action":  "REQUIRE_VALIDATION_GUARDRAIL",
+                                               "last_guardrail_count":  3,
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T17:24:39.7280707+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  26,
+                                               "last_task":  "follow_growth_signal_follow_growth_signal_follow_growth_signal_understand_own_policy",
+                                               "last_recall_status":  "EPISODIC_RECALL_AVAILABLE",
+                                               "last_decision_status":  "EPISODIC_DECISION_AVAILABLE",
+                                               "last_decision_action":  "REQUIRE_VALIDATION_GUARDRAIL",
+                                               "last_guardrail_count":  3,
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T17:24:49.7512834+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  30,
+                                               "last_task":  "follow_growth_signal_follow_growth_signal_follow_growth_signal_understand_own_policy",
+                                               "last_recall_status":  "EPISODIC_RECALL_AVAILABLE",
+                                               "last_decision_status":  "EPISODIC_DECISION_AVAILABLE",
+                                               "last_decision_action":  "REQUIRE_VALIDATION_GUARDRAIL",
+                                               "last_guardrail_count":  3,
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T17:24:59.7672867+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  33,
+                                               "last_task":  "follow_growth_signal_follow_growth_signal_follow_growth_signal_understand_own_policy",
+                                               "last_recall_status":  "EPISODIC_RECALL_AVAILABLE",
+                                               "last_decision_status":  "EPISODIC_DECISION_AVAILABLE",
+                                               "last_decision_action":  "REQUIRE_VALIDATION_GUARDRAIL",
+                                               "last_guardrail_count":  3,
+                                               "stderr_size":  0
+                                           },
+                                           {
+                                               "at":  "2026-07-07T17:25:09.8014650+04:00",
+                                               "new_aimo_alive":  true,
+                                               "school_alive":  true,
+                                               "cycles":  37,
+                                               "last_task":  "inspect_school_memory_delta",
+                                               "last_recall_status":  "EPISODIC_RECALL_AVAILABLE",
+                                               "last_decision_status":  "EPISODIC_DECISION_AVAILABLE",
+                                               "last_decision_action":  "REQUIRE_VALIDATION_GUARDRAIL",
+                                               "last_guardrail_count":  3,
+                                               "stderr_size":  0
+                                           }
+                                       ]
+                    },
+    "blockers":  [
+
+                 ],
+    "boundary":  "AIMO-only hotswap to episodic recall decision layer. School observed but not modified. No active memory direct mutation.",
+    "started_at":  "2026-07-07T17:23:25.3863355+04:00",
+    "finished_at":  "2026-07-07T17:25:09.9788346+04:00"
+}
