@@ -68,6 +68,7 @@ foreach($cand in @($candidateSet.candidates)){
   $row|Add-Member -NotePropertyName source_refs_used -NotePropertyValue ([string[]]@($cand.source_refs_used))
   $row|Add-Member -NotePropertyName source_refs_rejected -NotePropertyValue ([string[]]@($cand.source_refs_rejected))
   $row|Add-Member -NotePropertyName why_not_latest_signal -NotePropertyValue ([string]$cand.why_not_latest_signal)
+  $row|Add-Member -NotePropertyName fallback_if_source_missing -NotePropertyValue ([string]$cand.fallback_if_source_missing)
   $row|Add-Member -NotePropertyName depends_on_school -NotePropertyValue ([bool]$cand.depends_on_school)
   $scored=@($scored)+$row
 }

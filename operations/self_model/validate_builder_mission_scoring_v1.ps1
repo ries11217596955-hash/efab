@@ -17,6 +17,7 @@ foreach($row in $c){
   Assert (@($row.score_rationale).Count -ge 3) "RATIONALE_TOO_SHORT:$($row.id)"
   Assert (@($row.proof_needed).Count -ge 1) "PROOF_NEEDED_MISSING:$($row.id)"
   Assert (@($row.validator_needed).Count -ge 1) "VALIDATOR_NEEDED_MISSING:$($row.id)"
+  Assert (-not [string]::IsNullOrWhiteSpace([string]$row.fallback_if_source_missing)) "FALLBACK_MISSING:$($row.id)"
   Assert ($row.depends_on_school -eq $false) "SCORED_CANDIDATE_DEPENDS_ON_SCHOOL:$($row.id)"
 }
 $top=$c|Select-Object -First 1

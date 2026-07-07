@@ -1,0 +1,127 @@
+﻿{
+    "schema":  "provenance_rejection_trace_v1",
+    "status":  "PASS_PROVENANCE_REJECTION_TRACE_V1",
+    "route_lock":  "route_locks/AGENT_BUILDER_NEXT_15_STEPS_LOCK_V4_IDENTITY_BASED_SELECTION.md",
+    "canonical_selection_path":  "reports/self_development/SOURCE_AGNOSTIC_PATH_SELECTION_V1.json",
+    "selected_next_action":  "build_source_agnostic_path_selector_v1",
+    "selected_gap":  "source_agnostic_path_selector_missing",
+    "trace_required_fields":  [
+                                  "selected_next_action",
+                                  "identity_alignment",
+                                  "selected_gap",
+                                  "proof_needed",
+                                  "validator_needed",
+                                  "source_refs_used",
+                                  "source_refs_rejected",
+                                  "why_not_latest_signal",
+                                  "why_not_school_dependency",
+                                  "why_not_child_agent_jump",
+                                  "fallback_if_source_missing"
+                              ],
+    "source_refs_used":  [
+                             "builder_identity_contract",
+                             "current_body_capability_snapshot",
+                             "builder_gap_map",
+                             "source_evidence_inventory"
+                         ],
+    "source_refs_rejected":  [
+                                 "latest_runtime_packets_as_authority",
+                                 "school_as_required_brain",
+                                 "agentlife_residue_as_direction",
+                                 "latest_signal_as_authority",
+                                 "child_agent_jump_before_self_build_selector_proven"
+                             ],
+    "why_not_latest_signal":  "Latest runtime packet is only freshness evidence; this candidate closes the critical Builder gap.",
+    "why_not_school_dependency":  "School is optional evidence; selection is driven by identity, gap severity, proof path, and dependency reduction.",
+    "fallback_if_source_missing":  "bounded_static_self_build_task_from_gap_map",
+    "phase_j_case_checks":  [
+                                {
+                                    "case_id":  "school_missing_runtime_missing",
+                                    "status":  "PASS",
+                                    "selection_path":  "reports/self_development/SOURCE_AGNOSTIC_PATH_SELECTION_V1_PHASE_J_school_missing_runtime_missing.json",
+                                    "fallback_if_source_missing":  "bounded_static_self_build_task_from_gap_map",
+                                    "rejected":  [
+                                                     "latest_runtime_packets_as_authority",
+                                                     "school_as_required_brain",
+                                                     "agentlife_residue_as_direction",
+                                                     "latest_signal_as_authority",
+                                                     "child_agent_jump_before_self_build_selector_proven"
+                                                 ]
+                                },
+                                {
+                                    "case_id":  "school_stale_runtime_missing",
+                                    "status":  "PASS",
+                                    "selection_path":  "reports/self_development/SOURCE_AGNOSTIC_PATH_SELECTION_V1_PHASE_J_school_stale_runtime_missing.json",
+                                    "fallback_if_source_missing":  "bounded_static_self_build_task_from_gap_map",
+                                    "rejected":  [
+                                                     "latest_runtime_packets_as_authority",
+                                                     "school_as_required_brain",
+                                                     "agentlife_residue_as_direction",
+                                                     "latest_signal_as_authority",
+                                                     "child_agent_jump_before_self_build_selector_proven"
+                                                 ]
+                                },
+                                {
+                                    "case_id":  "school_failed_runtime_missing",
+                                    "status":  "PASS",
+                                    "selection_path":  "reports/self_development/SOURCE_AGNOSTIC_PATH_SELECTION_V1_PHASE_J_school_failed_runtime_missing.json",
+                                    "fallback_if_source_missing":  "bounded_static_self_build_task_from_gap_map",
+                                    "rejected":  [
+                                                     "latest_runtime_packets_as_authority",
+                                                     "school_as_required_brain",
+                                                     "agentlife_residue_as_direction",
+                                                     "latest_signal_as_authority",
+                                                     "child_agent_jump_before_self_build_selector_proven"
+                                                 ]
+                                },
+                                {
+                                    "case_id":  "fresh_agentlife_residue",
+                                    "status":  "PASS",
+                                    "selection_path":  "reports/self_development/SOURCE_AGNOSTIC_PATH_SELECTION_V1_PHASE_J_fresh_agentlife_residue.json",
+                                    "fallback_if_source_missing":  "bounded_static_self_build_task_from_gap_map",
+                                    "rejected":  [
+                                                     "latest_runtime_packets_as_authority",
+                                                     "school_as_required_brain",
+                                                     "agentlife_residue_as_direction",
+                                                     "latest_signal_as_authority",
+                                                     "child_agent_jump_before_self_build_selector_proven"
+                                                 ]
+                                },
+                                {
+                                    "case_id":  "stale_agentlife_residue",
+                                    "status":  "PASS",
+                                    "selection_path":  "reports/self_development/SOURCE_AGNOSTIC_PATH_SELECTION_V1_PHASE_J_stale_agentlife_residue.json",
+                                    "fallback_if_source_missing":  "bounded_static_self_build_task_from_gap_map",
+                                    "rejected":  [
+                                                     "latest_runtime_packets_as_authority",
+                                                     "school_as_required_brain",
+                                                     "agentlife_residue_as_direction",
+                                                     "latest_signal_as_authority",
+                                                     "child_agent_jump_before_self_build_selector_proven"
+                                                 ]
+                                },
+                                {
+                                    "case_id":  "all_optional_sources_missing",
+                                    "status":  "PASS",
+                                    "selection_path":  "reports/self_development/SOURCE_AGNOSTIC_PATH_SELECTION_V1_PHASE_J_all_optional_sources_missing.json",
+                                    "fallback_if_source_missing":  "bounded_static_self_build_task_from_gap_map",
+                                    "rejected":  [
+                                                     "latest_runtime_packets_as_authority",
+                                                     "school_as_required_brain",
+                                                     "agentlife_residue_as_direction",
+                                                     "latest_signal_as_authority",
+                                                     "child_agent_jump_before_self_build_selector_proven"
+                                                 ]
+                                }
+                            ],
+    "aimo_lab_gate_trace":  {
+                                "status":  "PASS",
+                                "reason":  "SOURCE_AGNOSTIC_PATH_SELECTION_LAB_GATE",
+                                "task_name":  "build_source_agnostic_path_selector_v1",
+                                "target":  "reports/self_development/SOURCE_AGNOSTIC_PATH_SELECTION_V1.json",
+                                "query_contains_trace":  true
+                            },
+    "live_process_touched":  false,
+    "active_memory_mutated":  false,
+    "created_at":  "2026-07-07T22:56:36.6182625+04:00"
+}

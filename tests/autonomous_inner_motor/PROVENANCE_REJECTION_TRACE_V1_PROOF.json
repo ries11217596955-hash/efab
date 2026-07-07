@@ -1,0 +1,39 @@
+﻿{
+    "schema":  "provenance_rejection_trace_validation_v1",
+    "status":  "PASS_PROVENANCE_REJECTION_TRACE_V1",
+    "report_path":  "reports/self_development/PROVENANCE_REJECTION_TRACE_V1.json",
+    "canonical_selection_path":  "reports/self_development/SOURCE_AGNOSTIC_PATH_SELECTION_V1.json",
+    "checked_phase_j_cases":  [
+                                  "school_missing_runtime_missing",
+                                  "school_stale_runtime_missing",
+                                  "school_failed_runtime_missing",
+                                  "fresh_agentlife_residue",
+                                  "stale_agentlife_residue",
+                                  "all_optional_sources_missing"
+                              ],
+    "live_process_touched":  false,
+    "active_memory_mutated":  false,
+    "tests":  [
+                  {
+                      "name":  "canonical_selection_trace_fields_non_empty",
+                      "status":  "PASS"
+                  },
+                  {
+                      "name":  "required_rejection_reasons_present",
+                      "status":  "PASS"
+                  },
+                  {
+                      "name":  "fallback_if_source_missing_carried_from_candidate_to_scoring_to_selection",
+                      "status":  "PASS"
+                  },
+                  {
+                      "name":  "phase_j_variant_selections_have_trace",
+                      "status":  "PASS"
+                  },
+                  {
+                      "name":  "aimo_lab_gate_selector_emits_trace_fields",
+                      "status":  "PASS"
+                  }
+              ],
+    "created_at":  "2026-07-07T22:56:36.6601112+04:00"
+}

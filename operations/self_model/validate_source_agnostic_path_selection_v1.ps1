@@ -18,6 +18,7 @@ foreach($r in @('latest_signal_as_authority','school_as_required_brain','agentli
 Assert ($j.why_not_latest_signal -like '*Latest runtime packet*' -or $j.why_not_latest_signal -like '*Latest signal*') 'WHY_NOT_LATEST_BAD'
 Assert ($j.why_not_school_dependency -like 'School is optional evidence*') 'WHY_NOT_SCHOOL_BAD'
 Assert ($j.why_not_child_agent_jump -like 'Child-agent factory is secondary*') 'WHY_NOT_CHILD_AGENT_BAD'
+Assert (-not [string]::IsNullOrWhiteSpace([string]$j.fallback_if_source_missing)) 'FALLBACK_EMPTY'
 Assert ($j.selection_basis.identity_first -eq $true) 'IDENTITY_FIRST_BAD'
 Assert ($j.selection_basis.candidate_depends_on_school -eq $false) 'SELECTED_DEPENDS_ON_SCHOOL_BAD'
 Assert ($j.selection_basis.latest_signal_is_authority -eq $false) 'LATEST_AUTHORITY_BAD'
