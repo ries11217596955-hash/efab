@@ -157,3 +157,9 @@ Night-school note:
 - Evidence: detached worker pid=9852, heartbeats=4, stopfile observed, exit_reason=STOPFILE_OBSERVED, child_exit=0, stopped_within_grace=true.
 - Boundary: lab stopfile contract only, not live runtime execution.
 - Proof: tests/live_readiness/DETACHED_LONG_RUNTIME_STOPFILE_CONTRACT_V1_PROOF.json.
+
+2026-07-07 - Live readiness gate updated after detached stopfile contract
+- Result: PASS_SCHOOL_AIMO_LIVE_READINESS_GATE_NO_GO_V1; decision=NO_GO_LIVE_READINESS_BLOCKED; live_ready=false.
+- Detached stopfile contract validation=PASS_DETACHED_LONG_RUNTIME_STOPFILE_CONTRACT_V1; DETACHED_LONG_RUNTIME_STOPFILE_CONTRACT_NOT_PROVEN removed from go_blockers.
+- Remaining go blockers: OWNER_LIVE_AUTHORIZATION_MISSING, PRIOR_PROOF_RUNTIME_READY_FALSE, LIVE_ROLLBACK_PLAN_NOT_PROVEN, LIVE_QUARANTINE_PLAN_NOT_PROVEN, LIVE_CONTINUOUS_RUNTIME_NOT_PROVEN.
+- Proof: tests/live_readiness/SCHOOL_AIMO_LIVE_READINESS_GATE_V1_PROOF.json.
