@@ -21,7 +21,7 @@ if(($RepoRoot -replace '\\','/') -ne 'H:/efab'){ throw "REPO_ROOT_MISMATCH:$Repo
 if($branch -ne 'main'){ throw "BRANCH_MISMATCH:$branch" }
 if($origin -ne 'https://github.com/ries11217596955-hash/efab.git'){ throw "ORIGIN_MISMATCH:$origin" }
 if($dirtyBefore.Count -gt 0){ throw "DIRTY_BEFORE_PARALLEL_LAB:$($dirtyBefore -join ';')" }
-$existing=@(Get-CimInstance Win32_Process -ErrorAction SilentlyContinue | Where-Object { $_.ProcessId -ne $PID -and -not [string]::IsNullOrWhiteSpace([string]$_.CommandLine) -and (([string]$_.CommandLine -like '*run_agent_school.ps1*') -or ([string]$_.CommandLine -like '*run_autonomous_inner_motor.ps1*') -or ([string]$_.CommandLine -like '*run_school_aimo_parallel_lab_v1.ps1*')) })
+$existing=@(Get-CimInstance Win32_Process -ErrorAction SilentlyContinue | Where-Object { $_.ProcessId -ne $PID -and -not [string]::IsNullOrWhiteSpace([string]$_.CommandLine) -and (([string]$_.CommandLine -like '*run_agent_school.ps1*') -or ([string]$_.CommandLine -like '*run_autonomous_inner_motor.ps1*')) })
 if($existing.Count -gt 0){ throw "ACTIVE_PROCESS_CONFLICT:$($existing.Count)" }
 $RunId='school_aimo_parallel_lab_v1_' + (Get-Date).ToUniversalTime().ToString('yyyyMMddTHHmmssZ')
 $RunRoot=Join-Path '.runtime/parallel_life' $RunId
