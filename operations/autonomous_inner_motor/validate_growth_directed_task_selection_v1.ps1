@@ -6,7 +6,7 @@ $script='operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1'
 $tokens=$null; $errors=$null
 $ast=[System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path $script),[ref]$tokens,[ref]$errors)
 Assert (@($errors).Count -eq 0) 'AIMO_SCRIPT_PARSE_ERRORS'
-foreach($name in @('Get-SelectorField','Convert-ToTaskSafeSlug','Select-GrowthDirectedDevelopmentTask')){
+foreach($name in @('Get-SelectorField','Convert-ToTaskSafeSlug','Normalize-GrowthSignalTopicForTask','Select-GrowthDirectedDevelopmentTask')){
   $func=@($ast.FindAll({ param($n) $n -is [System.Management.Automation.Language.FunctionDefinitionAst] -and $n.Name -eq $name }, $true))[0]
   Assert ($null -ne $func) "FUNCTION_MISSING:$name"
   Invoke-Expression $func.Extent.Text
@@ -36,6 +36,15 @@ $signalOrdered=Select-GrowthDirectedDevelopmentTask -DevelopmentTasks $tasks -Cy
 Assert ($signalOrdered.reason -eq 'ACTIVE_GROWTH_SIGNAL_TOPIC') 'ORDERED_GROWTH_SIGNAL_REASON_NOT_SELECTED'
 Assert ($signalOrdered.task.name -eq 'follow_growth_signal_ordered_growth_signal_topic') 'ORDERED_GROWTH_SIGNAL_TASK_NAME_BAD'
 Assert ($signalOrdered.signal_packet_id -eq 'packet_ordered') 'ORDERED_GROWTH_SIGNAL_PACKET_BAD'
+$repeatedGrowth=[ordered]@{ available=$true; source_kind='AgentLife'; packet_id='packet_repeated'; topics=@('follow_growth_signal_follow_growth_signal_follow_growth_signal_understand_own_policy'); focus_boosts=@('follow_growth_signal_follow_growth_signal_follow_growth_signal_understand_own_policy') }
+$normalizedSignal=Select-GrowthDirectedDevelopmentTask -DevelopmentTasks $tasks -Cycle 4 -GrowthSignal $repeatedGrowth -CurrentMemoryState $same -PreviousMemoryState $curr
+Assert ($normalizedSignal.reason -eq 'ACTIVE_GROWTH_SIGNAL_TOPIC') 'REPEATED_PREFIX_GROWTH_SIGNAL_REASON_BAD'
+Assert ($normalizedSignal.raw_topic -eq 'follow_growth_signal_follow_growth_signal_follow_growth_signal_understand_own_policy') 'REPEATED_PREFIX_RAW_TOPIC_BAD'
+Assert ($normalizedSignal.normalized_topic -eq 'understand_own_policy') 'REPEATED_PREFIX_NORMALIZED_TOPIC_BAD'
+Assert ($normalizedSignal.topic_was_normalized -eq $true) 'REPEATED_PREFIX_NORMALIZATION_FLAG_BAD'
+Assert ($normalizedSignal.task.name -eq 'follow_growth_signal_understand_own_policy') 'REPEATED_PREFIX_TASK_NAME_NOT_NORMALIZED'
+Assert ($normalizedSignal.task.name -notmatch 'follow_growth_signal_follow_growth_signal') 'REPEATED_PREFIX_TASK_NAME_STILL_RECURSIVE'
+Assert ($normalizedSignal.task.query -match 'growth signal topic understand_own_policy') 'REPEATED_PREFIX_QUERY_NOT_NORMALIZED'
 $fallback=Select-GrowthDirectedDevelopmentTask -DevelopmentTasks $tasks -Cycle 2 -GrowthSignal $noGrowth -CurrentMemoryState $same -PreviousMemoryState $curr
 Assert ($fallback.reason -eq 'NO_FRESH_GROWTH_SIGNAL_OR_MEMORY_DELTA') 'FALLBACK_REASON_BAD'
 Assert ($fallback.task.name -eq 'understand_own_policy_limits') 'FALLBACK_ROTATION_BAD'
@@ -47,6 +56,7 @@ $out=[ordered]@{
   tests=@(
     [ordered]@{name='memory_delta_overrides_static_rotation'; status='PASS'; selected_task=$delta.task.name; reason=$delta.reason},
     [ordered]@{name='growth_signal_topic_overrides_static_rotation'; status='PASS'; selected_task=$signal.task.name; reason=$signal.reason},
+    [ordered]@{name='growth_signal_repeated_prefix_is_normalized'; status='PASS'; selected_task=$normalizedSignal.task.name; raw_topic=$normalizedSignal.raw_topic; normalized_topic=$normalizedSignal.normalized_topic; reason=$normalizedSignal.reason},
     [ordered]@{name='no_signal_falls_back_to_static_rotation'; status='PASS'; selected_task=$fallback.task.name; reason=$fallback.reason}
   )
   live_process_touched=$false

@@ -239,9 +239,28 @@ function Get-SelectorField($Object, [string]$Name, $Default = $null) {
 }
 function Convert-ToTaskSafeSlug([string]$Value) {
   if([string]::IsNullOrWhiteSpace($Value)) { return 'unknown' }
-  $slug = ($Value.ToLowerInvariant() -replace '[^a-z0-9_\-]+','_').Trim('_')
+  $slug = ($Value.ToLowerInvariant() -replace '[^a-z0-9_\-]+','_').Trim('_','-')
   if([string]::IsNullOrWhiteSpace($slug)) { return 'unknown' }
-  if($slug.Length -gt 64) { $slug = $slug.Substring(0,64).Trim('_') }
+  if($slug.Length -gt 64) { $slug = $slug.Substring(0,64).Trim('_','-') }
+  return $slug
+}
+function Normalize-GrowthSignalTopicForTask([string]$Value) {
+  if([string]::IsNullOrWhiteSpace($Value)) { return 'active_growth_signal' }
+  $slug = (([string]$Value).ToLowerInvariant() -replace '[^a-z0-9_\-]+','_').Trim('_','-')
+  if([string]::IsNullOrWhiteSpace($slug)) { return 'active_growth_signal' }
+  $changed = $true
+  while($changed) {
+    $before = $slug
+    foreach($prefix in @('validate_guardrails_before_','follow_growth_signal_')) {
+      while($slug.StartsWith($prefix) -and $slug.Length -gt $prefix.Length) {
+        $slug = $slug.Substring($prefix.Length).Trim('_','-')
+      }
+    }
+    $changed = ($before -ne $slug)
+  }
+  if([string]::IsNullOrWhiteSpace($slug)) { return 'active_growth_signal' }
+  if($slug.Length -gt 64) { $slug = $slug.Substring(0,64).Trim('_','-') }
+  if([string]::IsNullOrWhiteSpace($slug)) { return 'active_growth_signal' }
   return $slug
 }
 function Select-GrowthDirectedDevelopmentTask {
@@ -281,8 +300,9 @@ function Select-GrowthDirectedDevelopmentTask {
     foreach($topicCandidate in @((Get-SelectorField $GrowthSignal 'topics' @()))) { if(-not [string]::IsNullOrWhiteSpace([string]$topicCandidate)) { $topics += [string]$topicCandidate } }
     $boosts = @()
     foreach($boostCandidate in @((Get-SelectorField $GrowthSignal 'focus_boosts' @()))) { if(-not [string]::IsNullOrWhiteSpace([string]$boostCandidate)) { $boosts += [string]$boostCandidate } }
-    $topic = if(@($topics).Count -gt 0) { [string]@($topics)[0] } elseif(@($boosts).Count -gt 0) { [string]@($boosts)[0] } else { 'active_growth_signal' }
-    $slug = Convert-ToTaskSafeSlug $topic
+    $rawTopic = if(@($topics).Count -gt 0) { [string]@($topics)[0] } elseif(@($boosts).Count -gt 0) { [string]@($boosts)[0] } else { 'active_growth_signal' }
+    $slug = Normalize-GrowthSignalTopicForTask $rawTopic
+    $topic = $slug
     return [ordered]@{
       status='SELECTED_GROWTH_DIRECTED_TASK'
       reason='ACTIVE_GROWTH_SIGNAL_TOPIC'
@@ -291,6 +311,9 @@ function Select-GrowthDirectedDevelopmentTask {
       useful_intent='turn_growth_signal_into_one_bounded_next_action_candidate'
       overrides_static_rotation=$true
       topics=@($topics)
+      normalized_topic=$topic
+      raw_topic=$rawTopic
+      topic_was_normalized=([string]$rawTopic -ne [string]$topic)
       focus_boosts=@($boosts)
       signal_packet_id=(Get-SelectorField $GrowthSignal 'packet_id' $null)
     }
