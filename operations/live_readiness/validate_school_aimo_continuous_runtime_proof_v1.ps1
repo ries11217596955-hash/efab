@@ -5,6 +5,13 @@ Set-Location $RepoRoot
 function Assert($Cond,[string]$Msg){ if(-not $Cond){ throw $Msg } }
 if(-not(Test-Path $ProofPath)){ throw "PROOF_MISSING=$ProofPath" }
 $P=Get-Content $ProofPath -Raw | ConvertFrom-Json
+$NormalizedWatchdogViolations=@()
+foreach($w in @($P.continuous_observation.watchdog_violations)){
+  if($null -eq $w){ continue }
+  $wj=($w | ConvertTo-Json -Compress)
+  if([string]::IsNullOrWhiteSpace([string]$wj) -or $wj -eq '{}' -or $wj -eq 'null'){ continue }
+  $NormalizedWatchdogViolations += $w
+}
 Assert ($P.schema -eq 'school_aimo_continuous_runtime_proof_v1') 'SCHEMA_MISMATCH'
 Assert ($P.status -eq 'PASS_SCHOOL_AIMO_CONTINUOUS_RUNTIME_PROOF_V1') "STATUS_NOT_PASS:$($P.status)"
 Assert ($P.proof_label -eq 'PROVEN_LAB_SUPERVISED_CONTINUOUS_RUNTIME_READY_CANDIDATE_NOT_OWNER_LIVE') 'PROOF_LABEL_MISMATCH'
@@ -21,7 +28,7 @@ Assert ($P.safety_contracts.reject_and_forget_status -eq 'PASS_LIVE_REJECT_AND_F
 Assert ($P.continuous_observation.child_status -eq 'PASS_SCHOOL_AIMO_LIVE_LIKE_OBSERVATION_GATE_V1') 'CHILD_LIVE_LIKE_NOT_PASS'
 Assert ($P.continuous_observation.duration_seconds -ge $P.continuous_observation.min_required_seconds) 'DURATION_TOO_SHORT'
 Assert ($P.continuous_observation.heartbeat_count -ge 2) 'HEARTBEATS_TOO_LOW'
-Assert (@($P.continuous_observation.watchdog_violations).Count -eq 0) 'WATCHDOG_VIOLATIONS'
+Assert ($NormalizedWatchdogViolations.Count -eq 0) 'WATCHDOG_VIOLATIONS'
 Assert ($P.continuous_observation.child_exit -eq 0) 'CHILD_EXIT_NOT_ZERO'
 Assert ($P.continuous_observation.live_like_validation_status -eq 'PASS_SCHOOL_AIMO_LIVE_LIKE_OBSERVATION_GATE_V1') 'CHILD_VALIDATOR_NOT_PASS'
 Assert ($P.parallel_runtime.school_plus_aimo_status -eq 'PASS_SCHOOL_AIMO_PARALLEL_LAB_V1') 'PARALLEL_NOT_PASS'

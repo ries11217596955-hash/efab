@@ -55,6 +55,15 @@ $liveLikeValidationExit=$LASTEXITCODE
 $liveLikeValidationStatus=(($liveLikeValidationOut | Where-Object { $_ -match '^VALIDATION_PASS=' } | Select-Object -Last 1) -replace '^VALIDATION_PASS=','')
 $activeAfter=@(RuntimeProcesses)
 $dirtyAfter=GitStatusShort
+$childWatchdogViolations=@()
+if($liveLikeObj -and $liveLikeObj.observation -and $null -ne $liveLikeObj.observation.watchdog_violations){
+  foreach($w in @($liveLikeObj.observation.watchdog_violations)){
+    if($null -eq $w){ continue }
+    $wj=($w | ConvertTo-Json -Compress)
+    if([string]::IsNullOrWhiteSpace([string]$wj) -or $wj -eq '{}' -or $wj -eq 'null'){ continue }
+    $childWatchdogViolations += $w
+  }
+}
 $blockers=@()
 if($stopfileValidationStatus -ne 'PASS_DETACHED_LONG_RUNTIME_STOPFILE_CONTRACT_V1' -or $stopfileValidationExit -ne 0){ $blockers += 'STOPFILE_CONTRACT_NOT_PASS' }
 if($rollbackValidationStatus -ne 'PASS_LIVE_ROLLBACK_CONTRACT_V1' -or $rollbackValidationExit -ne 0){ $blockers += 'ROLLBACK_CONTRACT_NOT_PASS' }
@@ -64,7 +73,7 @@ if(-not $liveLikeObj){ $blockers += 'LIVE_LIKE_CHILD_PROOF_MISSING' } else {
   if($liveLikeObj.status -ne 'PASS_SCHOOL_AIMO_LIVE_LIKE_OBSERVATION_GATE_V1'){ $blockers += "LIVE_LIKE_STATUS_NOT_PASS:$($liveLikeObj.status)" }
   if($liveLikeObj.observation.duration_seconds -lt $MinContinuousSeconds){ $blockers += "CONTINUOUS_DURATION_TOO_SHORT:$($liveLikeObj.observation.duration_seconds)<$MinContinuousSeconds" }
   if($liveLikeObj.observation.heartbeat_count -lt 2){ $blockers += 'INSUFFICIENT_CONTINUOUS_HEARTBEATS' }
-  if(@($liveLikeObj.observation.watchdog_violations).Count -gt 0){ $blockers += 'CONTINUOUS_WATCHDOG_VIOLATIONS' }
+  if($childWatchdogViolations.Count -gt 0){ $blockers += 'CONTINUOUS_WATCHDOG_VIOLATIONS' }
   if($liveLikeObj.parallel_harness.status -ne 'PASS_SCHOOL_AIMO_PARALLEL_LAB_V1'){ $blockers += 'PARALLEL_CHILD_NOT_PASS' }
   if($liveLikeObj.parallel_harness.packet_status -ne 'PASS_AGENTLIFE_PACKET_SUBMITTED_SCHOOL_ACTIVE_BACKOFF'){ $blockers += 'AGENTLIFE_PACKET_NOT_PASS' }
   if($liveLikeObj.parallel_harness.intake_status -ne 'PASS_MULTI_SOURCE_COMPACT_MEMORY_INTAKE_SUBMIT_V1'){ $blockers += 'INTAKE_NOT_PASS' }
@@ -89,7 +98,7 @@ $result=[ordered]@{
   run_id='school_aimo_continuous_runtime_proof_v1_' + (Get-Date).ToUniversalTime().ToString('yyyyMMddTHHmmssZ')
   repo=[ordered]@{ root=($RepoRoot -replace '\\','/'); branch=$branch; head=$head; origin=$origin; ahead_behind=$aheadBehind; dirty_before=@($dirtyBefore); dirty_after_before_proof_write=@($dirtyAfter); active_processes_before=$activeBefore.Count; active_processes_after=$activeAfter.Count }
   safety_contracts=[ordered]@{ stopfile_status=$stopfileValidationStatus; stopfile_exit=$stopfileValidationExit; rollback_status=$rollbackValidationStatus; rollback_exit=$rollbackValidationExit; reject_and_forget_status=$rejectValidationStatus; reject_and_forget_exit=$rejectValidationExit }
-  continuous_observation=[ordered]@{ min_required_seconds=$MinContinuousSeconds; heartbeat_seconds=$HeartbeatSeconds; child_proof_path=$ChildLiveLikeProofPath; child_status=if($liveLikeObj){$liveLikeObj.status}else{$null}; duration_seconds=if($liveLikeObj){$liveLikeObj.observation.duration_seconds}else{$null}; heartbeat_count=if($liveLikeObj){$liveLikeObj.observation.heartbeat_count}else{$null}; watchdog_violations=if($liveLikeObj){@($liveLikeObj.observation.watchdog_violations)}else{@()}; child_exit=if($liveLikeObj){$liveLikeObj.observation.child_exit}else{$null}; live_like_validation_status=$liveLikeValidationStatus; live_like_validation_exit=$liveLikeValidationExit }
+  continuous_observation=[ordered]@{ min_required_seconds=$MinContinuousSeconds; heartbeat_seconds=$HeartbeatSeconds; child_proof_path=$ChildLiveLikeProofPath; child_status=if($liveLikeObj){$liveLikeObj.status}else{$null}; duration_seconds=if($liveLikeObj){$liveLikeObj.observation.duration_seconds}else{$null}; heartbeat_count=if($liveLikeObj){$liveLikeObj.observation.heartbeat_count}else{$null}; watchdog_violations=@($childWatchdogViolations); child_exit=if($liveLikeObj){$liveLikeObj.observation.child_exit}else{$null}; live_like_validation_status=$liveLikeValidationStatus; live_like_validation_exit=$liveLikeValidationExit }
   parallel_runtime=[ordered]@{ school_plus_aimo_status=if($liveLikeObj){$liveLikeObj.parallel_harness.status}else{$null}; aimo_cycles=if($liveLikeObj){$liveLikeObj.parallel_harness.aimo_cycles}else{$null}; school_controlled_stop=if($liveLikeObj){$liveLikeObj.parallel_harness.school_controlled_stop}else{$null}; packet_status=if($liveLikeObj){$liveLikeObj.parallel_harness.packet_status}else{$null}; intake_status=if($liveLikeObj){$liveLikeObj.parallel_harness.intake_status}else{$null}; merge_after_school_status=if($liveLikeObj){$liveLikeObj.parallel_harness.merge_after_school_status}else{$null} }
   technical_runtime_ready=$technicalRuntimeReady
   owner_live_authorized=$false
