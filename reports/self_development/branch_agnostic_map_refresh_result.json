@@ -1,24 +1,25 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-07T10:37:19.0085606+04:00",
+    "checked_at":  "2026-07-07T10:39:04.8738035+04:00",
     "branch":  "main",
-    "observed_head":  "6130269f33c01b231090c2196d344d2972ffabaa",
-    "subject_head":  "6130269f33c01b231090c2196d344d2972ffabaa",
+    "observed_head":  "b5d896569c12c7cb2d4404f8ee0c8cdcf6272d18",
+    "subject_head":  "b5d896569c12c7cb2d4404f8ee0c8cdcf6272d18",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "operations/live_readiness/run_school_aimo_continuous_runtime_proof_v1.ps1",
-                          "operations/live_readiness/validate_school_aimo_continuous_runtime_proof_v1.ps1",
+                          "docs/operations/GROWTH_SYSTEM_STATUS_AND_NEXT_PORTS_20260706.md",
+                          "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
-                          "reports/self_development/branch_agnostic_map_refresh_result.json"
+                          "reports/self_development/branch_agnostic_map_refresh_result.json",
+                          "tests/live_readiness/SCHOOL_AIMO_CONTINUOUS_RUNTIME_PROOF_V1_LIVE_LIKE_CHILD_PROOF.json",
+                          "tests/live_readiness/SCHOOL_AIMO_CONTINUOUS_RUNTIME_PROOF_V1_PROOF.json"
                       ],
     "structural_paths":  [
-                             "operations/live_readiness/run_school_aimo_continuous_runtime_proof_v1.ps1",
-                             "operations/live_readiness/validate_school_aimo_continuous_runtime_proof_v1.ps1"
+
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -31,7 +32,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  567,
-                                    "sha256":  "229d1e6e8056b158e899bd4c538e8e96ee586d42579f3340a360e76170867888"
+                                    "sha256":  "34c11c9bb3daadccf0443c18b04d8d052eee20fcf58368e6a1aebbbf67f16a45"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -54,5 +55,5 @@
                          "component_count":  7,
                          "structural_path_count":  567
                      },
-    "refreshed_at":  "2026-07-07T10:37:19.8825517+04:00"
+    "refreshed_at":  "2026-07-07T10:39:05.7742364+04:00"
 }
