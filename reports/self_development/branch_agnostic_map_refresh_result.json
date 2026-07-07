@@ -1,22 +1,24 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-07T08:29:10.8986489+04:00",
+    "checked_at":  "2026-07-07T08:35:10.3985837+04:00",
     "branch":  "main",
-    "observed_head":  "060650958aa4815614166e8087178c26055c205e",
-    "subject_head":  "060650958aa4815614166e8087178c26055c205e",
+    "observed_head":  "2a215af98800d76a51ecc84f956895a3847918f9",
+    "subject_head":  "2a215af98800d76a51ecc84f956895a3847918f9",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "operations/parallel_life/run_school_aimo_parallel_lab_v1.ps1",
+                          "docs/operations/GROWTH_SYSTEM_STATUS_AND_NEXT_PORTS_20260706.md",
+                          "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
-                          "reports/self_development/branch_agnostic_map_refresh_result.json"
+                          "reports/self_development/branch_agnostic_map_refresh_result.json",
+                          "tests/parallel_life/SCHOOL_AIMO_PARALLEL_LAB_V1_PROOF.json"
                       ],
     "structural_paths":  [
-                             "operations/parallel_life/run_school_aimo_parallel_lab_v1.ps1"
+
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -29,7 +31,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  554,
-                                    "sha256":  "1d234aa17a59a993ab2af85522e8c59555146ffce63fdf7a076964d48631033c"
+                                    "sha256":  "6975951bab61b46def26707db5a4fef863188c0a217f670a7f80ccb9a364e567"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -52,5 +54,5 @@
                          "component_count":  7,
                          "structural_path_count":  554
                      },
-    "refreshed_at":  "2026-07-07T08:29:11.8823191+04:00"
+    "refreshed_at":  "2026-07-07T08:35:11.3142935+04:00"
 }

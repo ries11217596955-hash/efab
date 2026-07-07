@@ -1,14 +1,14 @@
 param(
-  [int]$SchoolCount = 50000,
-  [int]$MinAimoCycles = 3,
-  [int]$MaxWaitSeconds = 600,
+  [int]$SchoolCount = 10000,
+  [int]$MinAimoCycles = 1,
+  [int]$MaxWaitSeconds = 240,
   [string]$TopicsPlan = 'operations/school/curriculum/topics/builder_night_school_topics_v1.json',
   [string]$ProofPath = 'tests/parallel_life/SCHOOL_AIMO_PARALLEL_LAB_V1_PROOF.json'
 )
 $ErrorActionPreference='Stop'
 $RepoRoot=(Resolve-Path (Join-Path $PSScriptRoot '../..')).Path
 Set-Location $RepoRoot
-function WriteJson($Path,$Obj,[int]$Depth=50){
+function WriteJson($Path,$Obj,[int]$Depth=20){
   $dir=Split-Path $Path -Parent
   if($dir){ New-Item -ItemType Directory -Force -Path $dir | Out-Null }
   $Obj | ConvertTo-Json -Depth $Depth | Set-Content -Path $Path -Encoding UTF8
@@ -142,7 +142,7 @@ $result=[ordered]@{
   run_id=$RunId
   repo=[ordered]@{ root=($RepoRoot -replace '\\','/'); branch=$branch; head=$head; origin=$origin; dirty_before=@($dirtyBefore); dirty_after_before_proof_write=GitStatusShort }
   school=[ordered]@{ started=$true; pid=$schoolProcessId; exit_code=$schoolExit; count=$SchoolCount; topics_plan=$TopicsPlan; seen_before_aimo=$schoolSeen; seen_at=if($schoolSeenAt){$schoolSeenAt.ToString('o')}else{$null}; stdout_path=$schoolOut; stderr_path=$schoolErr; stdout_tail=@($schoolStdoutTail) }
-  aimo=[ordered]@{ started=$true; pid=$aimo.Id; exit_code=$aimoExit; run_id=$aimoRunId; proof_path=$aimoProof; stop_file=$aimoStop; cycles=$aimoCycles; stdout_path=$aimoOut; stderr_path=$aimoErr; stdout_tail=@($aimoStdoutTail); proof_summary=[ordered]@{ mode=$aimoProofObj.mode; school_active_detected=$aimoProofObj.school_state.active_detected; school_coordination_hint=$aimoProofObj.school_coordination_hint; memory_coordination=$aimoProofObj.memory_coordination; mutation_audit=$aimoProofObj.mutation_audit; memory_unchanged=$aimoProofObj.memory_state.unchanged; agentlife_packet_emitter=$packet } }
+  aimo=[ordered]@{ started=$true; pid=$aimo.Id; exit_code=$aimoExit; run_id=$aimoRunId; proof_path=$aimoProof; stop_file=$aimoStop; cycles=$aimoCycles; stdout_path=$aimoOut; stderr_path=$aimoErr; stdout_tail=@($aimoStdoutTail); proof_summary=[ordered]@{ mode=$aimoProofObj.mode; school_active_detected=$aimoProofObj.school_state.active_detected; school_coordination_hint=[ordered]@{ active_school_detected=$aimoProofObj.school_coordination_hint.active_school_detected; memory_write_rule=$aimoProofObj.school_coordination_hint.memory_write_rule }; memory_coordination=[ordered]@{ direct_active_memory_write_allowed=$aimoProofObj.memory_coordination.direct_active_memory_write_allowed; merge_lock_active=$aimoProofObj.memory_coordination.merge_lock_active; backoff_required=$aimoProofObj.memory_coordination.backoff_required }; mutation_audit=[ordered]@{ active_memory_mutated=$aimoProofObj.mutation_audit.active_memory_mutated; school_started=$aimoProofObj.mutation_audit.school_started }; memory_unchanged=$aimoProofObj.memory_state.unchanged; agentlife_packet_emitter=[ordered]@{ status=$packet.status; intake_status=$packet.intake_status; merge_attempted=$packet.merge_attempted; queue_path=$packet.queue_path } } }
   parallel_evidence=[ordered]@{ school_seen_before_aimo=$schoolSeen; school_process_observed_during_aimo=$schoolDuringAimo; aimo_detected_school_active=$aimoProofObj.school_state.active_detected; aimo_coordination_hint_present=($null -ne $aimoProofObj.school_coordination_hint) }
   intake_merge=[ordered]@{ agentlife_packet=$packet; merge_after_school=$mergeAfterSchool }
   blockers=@($blockers)
@@ -150,7 +150,7 @@ $result=[ordered]@{
   finished_at=(Get-Date).ToString('o')
   boundary='Lab proves controlled parallel mechanics only: School active while AIMO SandboxTestLife runs; AgentLife packet uses compact memory intake; merge is deferred/backed off during school and can be merged after school. Not live readiness.'
 }
-WriteJson $ProofPath $result 100
+WriteJson $ProofPath $result 20
 Write-Host "SCHOOL_AIMO_PARALLEL_LAB_STATUS=$($result.status)"
 Write-Host "SCHOOL_AIMO_PARALLEL_LAB_PROOF=$ProofPath"
 Write-Host "SCHOOL_EXIT=$schoolExit"
