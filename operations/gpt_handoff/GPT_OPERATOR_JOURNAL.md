@@ -203,3 +203,9 @@ Night-school note:
 - Continuous proof accepted: PASS_SCHOOL_AIMO_CONTINUOUS_RUNTIME_PROOF_V1; duration=191.776s; heartbeats=19.
 - Boundary: technical readiness, not PROVEN_LIVE and not live execution.
 - Proof: tests/live_readiness/SCHOOL_AIMO_LIVE_READINESS_GATE_V1_PROOF.json.
+
+2026-07-07 - Owner-authorized controlled live start
+- Result: PASS_SCHOOL_AIMO_CONTROLLED_LIVE_START_V1; label=PROVEN_LIVE_INITIAL_CONTROLLED_START_NOT_LONG_SOAK.
+- School PID=2708; AIMO PID=13264; AIMO mode=SandboxTestLife; topics_plan=operations/school/curriculum/topics/builder_night_school_topics_v1.json; heartbeats=6; blockers empty.
+- Stop path: .runtime\live_start\controlled_live_school_aimo_v1_20260707T070037Z\STOP_ALL_REQUESTED.txt; stop script: operations/live_start/stop_school_aimo_controlled_live_v1.ps1.
+- Boundary: initial live start only; long-term live soak still requires continued monitoring proof.

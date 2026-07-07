@@ -323,3 +323,22 @@ FINAL_LIVE_READINESS_PROOF=tests/live_readiness/SCHOOL_AIMO_LIVE_READINESS_GATE_
 ` 
 
 Meaning: all technical readiness gates are proven in lab/supervised mode. Live remains intentionally blocked until explicit Owner live authorization. This is not PROVEN_LIVE and does not start live execution.
+
+## Owner-authorized controlled live start
+
+`	ext
+CONTROLLED_LIVE_START_STATUS=PASS_SCHOOL_AIMO_CONTROLLED_LIVE_START_V1
+CONTROLLED_LIVE_START_LABEL=PROVEN_LIVE_INITIAL_CONTROLLED_START_NOT_LONG_SOAK
+CONTROLLED_LIVE_START_RUN_ID=controlled_live_school_aimo_v1_20260707T070037Z
+CONTROLLED_LIVE_START_SCHOOL_PID=2708
+CONTROLLED_LIVE_START_AIMO_PID=13264
+CONTROLLED_LIVE_START_SCHOOL_ALIVE=True
+CONTROLLED_LIVE_START_AIMO_ALIVE=True
+CONTROLLED_LIVE_START_AIMO_MODE=SandboxTestLife
+CONTROLLED_LIVE_START_TOPICS_PLAN=operations/school/curriculum/topics/builder_night_school_topics_v1.json
+CONTROLLED_LIVE_START_HEARTBEATS=6
+CONTROLLED_LIVE_START_STOP_ALL_PATH=.runtime\live_start\controlled_live_school_aimo_v1_20260707T070037Z\STOP_ALL_REQUESTED.txt
+CONTROLLED_LIVE_START_PROOF=tests/live_start/SCHOOL_AIMO_CONTROLLED_LIVE_START_V1_PROOF.json
+` 
+
+Boundary: initial controlled live start proven; long soak is not yet proven. A stop script is available at operations/live_start/stop_school_aimo_controlled_live_v1.ps1.
