@@ -13,7 +13,10 @@ function WriteJson($Path,$Obj){ New-Item -ItemType Directory -Force -Path (Split
 function ReadJson($Path){ if(-not(Test-Path $Path)){ return $null }; return (Get-Content $Path -Raw | ConvertFrom-Json) }
 function RelevantProcesses(){
   @(Get-CimInstance Win32_Process -ErrorAction SilentlyContinue | Where-Object {
-    -not [string]::IsNullOrWhiteSpace([string]$_.CommandLine) -and (
+    $_.ProcessId -ne $PID -and
+    -not [string]::IsNullOrWhiteSpace([string]$_.CommandLine) -and
+    [string]$_.CommandLine -notlike '*run_school_aimo_live_readiness_gate_v1.ps1*' -and
+    [string]$_.CommandLine -notlike '*validate_school_aimo_live_readiness_gate_v1.ps1*' -and (
       [string]$_.CommandLine -like '*run_school_aimo_live_like_observation_gate_v1.ps1*' -or
       [string]$_.CommandLine -like '*run_school_aimo_parallel_lab_v1.ps1*' -or
       [string]$_.CommandLine -like '*run_agent_school.ps1*' -or
