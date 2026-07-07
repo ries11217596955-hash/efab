@@ -188,3 +188,10 @@ Night-school note:
 - Reject contract validation=PASS_LIVE_REJECT_AND_FORGET_CONTRACT_V1; LIVE_QUARANTINE_PLAN_NOT_PROVEN removed from go_blockers.
 - Remaining go blockers: OWNER_LIVE_AUTHORIZATION_MISSING, PRIOR_PROOF_RUNTIME_READY_FALSE, LIVE_CONTINUOUS_RUNTIME_NOT_PROVEN.
 - Proof: tests/live_readiness/SCHOOL_AIMO_LIVE_READINESS_GATE_V1_PROOF.json.
+
+2026-07-07 - School + AIMO supervised continuous runtime proof pass
+- Result: PASS_SCHOOL_AIMO_CONTINUOUS_RUNTIME_PROOF_V1; proof_label=PROVEN_LAB_SUPERVISED_CONTINUOUS_RUNTIME_READY_CANDIDATE_NOT_OWNER_LIVE.
+- Evidence: duration=191.776s; heartbeats=19; AIMO cycles=122; packet=PASS_AGENTLIFE_PACKET_SUBMITTED_SCHOOL_ACTIVE_BACKOFF; intake=PASS_MULTI_SOURCE_COMPACT_MEMORY_INTAKE_SUBMIT_V1; merge=PASS_MULTI_SOURCE_COMPACT_MEMORY_MERGE_QUEUE_V1; blockers empty.
+- Safety contracts prevalidated: stopfile, rollback, reject-and-forget.
+- Boundary: technical runtime-ready candidate, not Owner-authorized live and not PROVEN_LIVE.
+- Proof: tests/live_readiness/SCHOOL_AIMO_CONTINUOUS_RUNTIME_PROOF_V1_PROOF.json.

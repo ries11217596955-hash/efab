@@ -1,0 +1,61 @@
+﻿{
+    "schema":  "school_aimo_continuous_runtime_proof_v1",
+    "status":  "PASS_SCHOOL_AIMO_CONTINUOUS_RUNTIME_PROOF_V1",
+    "proof_label":  "PROVEN_LAB_SUPERVISED_CONTINUOUS_RUNTIME_READY_CANDIDATE_NOT_OWNER_LIVE",
+    "run_id":  "school_aimo_continuous_runtime_proof_v1_20260707T063656Z",
+    "repo":  {
+                 "root":  "H:/efab",
+                 "branch":  "main",
+                 "head":  "6130269f33c01b231090c2196d344d2972ffabaa",
+                 "origin":  "https://github.com/ries11217596955-hash/efab.git",
+                 "ahead_behind":  "0\t0",
+                 "dirty_before":  [
+
+                                  ],
+                 "dirty_after_before_proof_write":  [
+                                                        "?? tests/live_readiness/SCHOOL_AIMO_CONTINUOUS_RUNTIME_PROOF_V1_LIVE_LIKE_CHILD_PROOF.json"
+                                                    ],
+                 "active_processes_before":  0,
+                 "active_processes_after":  0
+             },
+    "safety_contracts":  {
+                             "stopfile_status":  "PASS_DETACHED_LONG_RUNTIME_STOPFILE_CONTRACT_V1",
+                             "stopfile_exit":  0,
+                             "rollback_status":  "PASS_LIVE_ROLLBACK_CONTRACT_V1",
+                             "rollback_exit":  0,
+                             "reject_and_forget_status":  "PASS_LIVE_REJECT_AND_FORGET_CONTRACT_V1",
+                             "reject_and_forget_exit":  0
+                         },
+    "continuous_observation":  {
+                                   "min_required_seconds":  180,
+                                   "heartbeat_seconds":  10,
+                                   "child_proof_path":  "tests/live_readiness/SCHOOL_AIMO_CONTINUOUS_RUNTIME_PROOF_V1_LIVE_LIKE_CHILD_PROOF.json",
+                                   "child_status":  "PASS_SCHOOL_AIMO_LIVE_LIKE_OBSERVATION_GATE_V1",
+                                   "duration_seconds":  191.776,
+                                   "heartbeat_count":  19,
+                                   "watchdog_violations":  [
+
+                                                           ],
+                                   "child_exit":  0,
+                                   "live_like_validation_status":  "PASS_SCHOOL_AIMO_LIVE_LIKE_OBSERVATION_GATE_V1",
+                                   "live_like_validation_exit":  0
+                               },
+    "parallel_runtime":  {
+                             "school_plus_aimo_status":  "PASS_SCHOOL_AIMO_PARALLEL_LAB_V1",
+                             "aimo_cycles":  122,
+                             "school_controlled_stop":  false,
+                             "packet_status":  "PASS_AGENTLIFE_PACKET_SUBMITTED_SCHOOL_ACTIVE_BACKOFF",
+                             "intake_status":  "PASS_MULTI_SOURCE_COMPACT_MEMORY_INTAKE_SUBMIT_V1",
+                             "merge_after_school_status":  "PASS_MULTI_SOURCE_COMPACT_MEMORY_MERGE_QUEUE_V1"
+                         },
+    "technical_runtime_ready":  true,
+    "owner_live_authorized":  false,
+    "live_ready":  false,
+    "blockers":  [
+
+                 ],
+    "boundary":  "Supervised bounded continuous runtime proof only. Technical runtime-ready candidate when PASS, but not owner-authorized live execution and not PROVEN_LIVE.",
+    "runtime_ready":  true,
+    "started_at":  "2026-07-07T10:33:40.8822007+04:00",
+    "finished_at":  "2026-07-07T10:36:56.4584678+04:00"
+}
