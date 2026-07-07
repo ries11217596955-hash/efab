@@ -1,4 +1,4 @@
-﻿param(
+param(
   [Parameter(Mandatory=$true)][string]$PacketPath,
   [string]$PolicyPath = "operations/compact_memory_intake/multi_source_compact_memory_intake_policy.json"
 )
@@ -129,7 +129,8 @@ $derivedGrowthTopic=$null
 $nextActionCandidate=[string](Get-PacketInfluenceField $packet 'next_action_candidate' $null)
 $nextActionIsMetaDerivation=($nextActionCandidate -eq 'derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta')
 $topicIsMetaDerivation=($primaryTopic -eq 'derive_specific_growth_topic_from_latest_agentlife_or_school_memory_delta')
-$needsDerivation=($specificGap -like '*too_generic*' -or $topicIsMetaDerivation -or $nextActionIsMetaDerivation)
+$topicIsGeneratedInspectResidue=($primaryTopic -like 'inspect_*_and_return_one_bounded_next_action_candidate')
+$needsDerivation=($specificGap -like '*too_generic*' -or $topicIsMetaDerivation -or $nextActionIsMetaDerivation -or $topicIsGeneratedInspectResidue)
 if($needsDerivation) {
   $derivedGrowthTopic=Resolve-SpecificGrowthTopicFromRecentPackets -QueueRoot $queueRoot -CurrentPacketPath $queuePath
   if($derivedGrowthTopic.found) {
