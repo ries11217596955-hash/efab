@@ -56,14 +56,14 @@ $schoolArgs=@('-NoProfile','-ExecutionPolicy','Bypass','-File','operations/schoo
 $school=Start-Process -FilePath 'powershell' -ArgumentList $schoolArgs -RedirectStandardOutput $schoolOut -RedirectStandardError $schoolErr -PassThru -WindowStyle Hidden
 $schoolSeen=$false
 $schoolSeenAt=$null
-for($i=0;$i -lt 80;$i++){
+for($i=0;$i -lt 480;$i++){
   Start-Sleep -Milliseconds 250
   $m=@(GetMatches | Where-Object { $_.ProcessId -eq $school.Id -or $_.CommandLine -like '*run_agent_school.ps1*' })
   if($m.Count -gt 0 -and -not $school.HasExited){ $schoolSeen=$true; $schoolSeenAt=Get-Date; break }
   try { $school.Refresh() } catch {}
   if($school.HasExited){ break }
 }
-if(-not $schoolSeen){ throw 'SCHOOL_PROCESS_NOT_OBSERVED_ACTIVE_BEFORE_AIMO' }
+if(-not $schoolSeen){ try { if(-not $school.HasExited){ Stop-Process -Id $school.Id -Force -ErrorAction SilentlyContinue } } catch {}; throw 'SCHOOL_PROCESS_NOT_OBSERVED_ACTIVE_BEFORE_AIMO' }
 $aimoArgs=@('-NoProfile','-ExecutionPolicy','Bypass','-File','operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1','-Mode','SandboxTestLife','-RunId',$aimoRunId)
 $aimo=Start-Process -FilePath 'powershell' -ArgumentList $aimoArgs -RedirectStandardOutput $aimoOut -RedirectStandardError $aimoErr -PassThru -WindowStyle Hidden
 $aimoProofSeen=$false

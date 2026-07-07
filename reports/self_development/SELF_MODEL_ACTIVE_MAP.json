@@ -6,9 +6,9 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "9aa2a5604697479011cd6eed132282b9e5cfe84c",
-    "subject_head":  "9aa2a5604697479011cd6eed132282b9e5cfe84c",
-    "generated_at":  "2026-07-07T08:02:26.6142899+04:00",
+    "observed_head_at_generation":  "b33b899575305456e861ca62d84fa185d2141ded",
+    "subject_head":  "b33b899575305456e861ca62d84fa185d2141ded",
+    "generated_at":  "2026-07-07T08:06:40.5325364+04:00",
     "generator":  "invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "role":  "canonical local body composition/status map: what exists, where it is, freshness, last runtime/proof signal",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
@@ -17,7 +17,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  554,
-                                    "sha256":  "868112b14e0d6052c08dfcc6bff7b71a33c87d76727e3eff548c41ec1b21ecc3"
+                                    "sha256":  "dbc2ca505ea2141fe5533915a980949e943bd6a5da727dd862f8ff5d7dffe7cf"
                                 },
     "module_count":  207,
     "validator_count":  174,
@@ -90,7 +90,11 @@
                                                      "committed_at":  "2026-07-06T22:42:23+04:00",
                                                      "subject":  "chore: initial clean builder snapshot"
                                                  },
-                           "latest_runtime_artifact":  null
+                           "latest_runtime_artifact":  {
+                                                           "path":  ".runtime/school_runs/school_factory_digest_use_test_50000_20260707_080250/AGENT_SCHOOL_CANONICAL_ENTRYPOINT_V1.json",
+                                                           "last_write":  "2026-07-07T08:05:42.9822890+04:00",
+                                                           "bytes":  7654
+                                                       }
                        },
                        {
                            "id":  "school_source_router",
@@ -134,7 +138,11 @@
                                                      "committed_at":  "2026-07-06T22:42:23+04:00",
                                                      "subject":  "chore: initial clean builder snapshot"
                                                  },
-                           "latest_runtime_artifact":  null
+                           "latest_runtime_artifact":  {
+                                                           "path":  ".runtime/school_source_template_filter/school_source_router_filter_school_factory_digest_use_test_50000_20260707_080250_chunk_4_of_10/SCHOOL_SOURCE_TEMPLATE_FILTER_DECISION_V1.json",
+                                                           "last_write":  "2026-07-07T08:05:43.7824839+04:00",
+                                                           "bytes":  3264
+                                                       }
                        },
                        {
                            "id":  "compact_memory_intake",
@@ -334,7 +342,11 @@
     "current_runtime_observation":  {
                                         "live_process_touched":  false,
                                         "latest_active_compact_memory_manifest":  null,
-                                        "latest_school_runtime_artifact":  null,
+                                        "latest_school_runtime_artifact":  {
+                                                                               "path":  ".runtime/school_runs/school_factory_digest_use_test_50000_20260707_080250/AGENT_SCHOOL_CANONICAL_ENTRYPOINT_V1.json",
+                                                                               "last_write":  "2026-07-07T08:05:42.9822890+04:00",
+                                                                               "bytes":  7654
+                                                                           },
                                         "latest_aimo_runtime_artifact":  null
                                     },
     "freshness_rule":  "Trust currentness by body_source_fingerprint, not by self-referential commit HEAD.",
