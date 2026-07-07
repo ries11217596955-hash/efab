@@ -1,29 +1,27 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-07T22:30:47.0415890+04:00",
+    "checked_at":  "2026-07-07T22:45:37.5441794+04:00",
     "branch":  "main",
-    "observed_head":  "a36c6634b94f7f18a7d475d6eae184ab6265dfac",
-    "subject_head":  "a36c6634b94f7f18a7d475d6eae184ab6265dfac",
+    "observed_head":  "e119d3462eec2d77b98811e6d17c18f07b1fe1cf",
+    "subject_head":  "e119d3462eec2d77b98811e6d17c18f07b1fe1cf",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "operations/self_model/export_source_agnostic_path_selection_v1.ps1",
-                          "operations/self_model/validate_source_agnostic_path_selection_v1.ps1",
-                          "reports/self_development/BUILDER_MISSION_SCORING_V1_MISSING_SOURCES_TEST.json",
+                          "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+                          "operations/autonomous_inner_motor/validate_aimo_source_agnostic_lab_integration_v1.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-                          "reports/self_development/SOURCE_AGNOSTIC_PATH_SELECTION_V1.json",
-                          "reports/self_development/SOURCE_AGNOSTIC_PATH_SELECTION_V1_FAKE_LATEST_SIGNAL_TEST.json",
-                          "reports/self_development/SOURCE_AGNOSTIC_PATH_SELECTION_V1_MISSING_SOURCES_TEST.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "tests/self_model/SOURCE_AGNOSTIC_PATH_SELECTION_V1_PROOF.json"
+                          "tests/autonomous_inner_motor/AGENTLIFE_SPECIFIC_GROWTH_TOPIC_V1_PROOF.json",
+                          "tests/autonomous_inner_motor/AIMO_SOURCE_AGNOSTIC_LAB_INTEGRATION_V1_PROOF.json",
+                          "tests/autonomous_inner_motor/GROWTH_DIRECTED_TASK_SELECTION_V1_PROOF.json"
                       ],
     "structural_paths":  [
-                             "operations/self_model/export_source_agnostic_path_selection_v1.ps1",
-                             "operations/self_model/validate_source_agnostic_path_selection_v1.ps1"
+                             "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+                             "operations/autonomous_inner_motor/validate_aimo_source_agnostic_lab_integration_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -35,8 +33,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  601,
-                                    "sha256":  "42292aea7bce1547a6dae7608a4fe9695e545274d2f5233ae7c5b5b934d5f9eb"
+                                    "structural_file_count":  602,
+                                    "sha256":  "78fd3a36bdfe6f929c82d3aac227ffc59d4a6193abceeafc85c3f5d224d4e5ce"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -57,7 +55,7 @@
                          "builder":  "AGENT_BODY_COMPOSITION_MAP_V1",
                          "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                          "component_count":  7,
-                         "structural_path_count":  601
+                         "structural_path_count":  602
                      },
-    "refreshed_at":  "2026-07-07T22:30:48.3182828+04:00"
+    "refreshed_at":  "2026-07-07T22:45:38.9182572+04:00"
 }

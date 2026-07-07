@@ -1,0 +1,47 @@
+﻿{
+    "schema":  "single_source_dependency_negative_cases_validation_v1",
+    "status":  "PASS_SINGLE_SOURCE_DEPENDENCY_NEGATIVE_CASES_V1",
+    "report_path":  "reports/self_development/SINGLE_SOURCE_DEPENDENCY_NEGATIVE_CASES_V1.json",
+    "case_count":  6,
+    "case_ids":  [
+                     "school_missing_runtime_missing",
+                     "school_stale_runtime_missing",
+                     "school_failed_runtime_missing",
+                     "fresh_agentlife_residue",
+                     "stale_agentlife_residue",
+                     "all_optional_sources_missing"
+                 ],
+    "live_process_touched":  false,
+    "active_memory_mutated":  false,
+    "tests":  [
+                  {
+                      "name":  "school_missing_runtime_missing_non_blocking",
+                      "status":  "PASS"
+                  },
+                  {
+                      "name":  "school_stale_non_blocking",
+                      "status":  "PASS"
+                  },
+                  {
+                      "name":  "school_failed_non_blocking",
+                      "status":  "PASS"
+                  },
+                  {
+                      "name":  "fresh_agentlife_residue_not_authority",
+                      "status":  "PASS"
+                  },
+                  {
+                      "name":  "stale_agentlife_residue_not_authority",
+                      "status":  "PASS"
+                  },
+                  {
+                      "name":  "all_optional_sources_missing_still_self_builds",
+                      "status":  "PASS"
+                  },
+                  {
+                      "name":  "aimo_lab_gate_consumes_missing_optional_sources_variant",
+                      "status":  "PASS"
+                  }
+              ],
+    "created_at":  "2026-07-07T22:45:27.9841783+04:00"
+}

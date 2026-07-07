@@ -1,0 +1,238 @@
+﻿{
+    "schema":  "source_evidence_inventory_v1",
+    "status":  "SOURCE_EVIDENCE_INVENTORY_EXPORTED",
+    "route_lock":  "route_locks/AGENT_BUILDER_NEXT_15_STEPS_LOCK_V4_IDENTITY_BASED_SELECTION.md",
+    "source_authority_rule":  "sources_can_suggest_not_command; builder_identity_and_gap_map_drive_selection",
+    "school_dependency_rule":  "school_optional_and_non_blocking",
+    "latest_signal_rule":  "latest_signal_is_freshness_modifier_not_authority",
+    "simulation":  {
+                       "school_missing":  false,
+                       "runtime_sources_missing":  false,
+                       "phase_j_case":  "school_failed_runtime_missing"
+                   },
+    "sources":  [
+                    {
+                        "id":  "builder_identity_contract",
+                        "kind":  "identity_contract",
+                        "authority":  "primary_internal_law",
+                        "path":  "self_model/BUILDER_IDENTITY_CONTRACT_V1.json",
+                        "health":  "AVAILABLE",
+                        "priority_hint":  100,
+                        "signals":  [
+                                        "self_build_first",
+                                        "child_agents_second",
+                                        "latest_signal_not_authority",
+                                        "school_not_required"
+                                    ],
+                        "proof_refs":  [
+                                           "tests/self_model/BUILDER_IDENTITY_CONTRACT_V1_PROOF.json"
+                                       ],
+                        "notes":  "Selection law, not a source packet.",
+                        "can_command":  false,
+                        "can_suggest":  true,
+                        "required_for_selection":  false
+                    },
+                    {
+                        "id":  "current_body_capability_snapshot",
+                        "kind":  "body_capability_snapshot",
+                        "authority":  "primary_internal_state",
+                        "path":  "reports/self_development/CURRENT_BODY_CAPABILITY_SNAPSHOT_V1.json",
+                        "health":  "AVAILABLE",
+                        "priority_hint":  95,
+                        "signals":  [
+                                        "built_wired_lab_live_distinction",
+                                        "capability_map"
+                                    ],
+                        "proof_refs":  [
+                                           "tests/self_model/CURRENT_BODY_CAPABILITY_SNAPSHOT_V1_PROOF.json"
+                                       ],
+                        "notes":  "Current self/body/capability map.",
+                        "can_command":  false,
+                        "can_suggest":  true,
+                        "required_for_selection":  false
+                    },
+                    {
+                        "id":  "builder_gap_map",
+                        "kind":  "gap_map",
+                        "authority":  "primary_internal_state",
+                        "path":  "reports/self_development/BUILDER_GAP_MAP_V1.json",
+                        "health":  "AVAILABLE",
+                        "priority_hint":  94,
+                        "signals":  [
+                                        "known_gaps",
+                                        "mission_relevance",
+                                        "proof_needed",
+                                        "validator_needed"
+                                    ],
+                        "proof_refs":  [
+                                           "tests/self_model/BUILDER_GAP_MAP_V1_PROOF.json"
+                                       ],
+                        "notes":  "Primary source for what to build next.",
+                        "can_command":  false,
+                        "can_suggest":  true,
+                        "required_for_selection":  false
+                    },
+                    {
+                        "id":  "owner_route_lock_v4",
+                        "kind":  "owner_route",
+                        "authority":  "strong_route_signal",
+                        "path":  "route_locks/AGENT_BUILDER_NEXT_15_STEPS_LOCK_V4_IDENTITY_BASED_SELECTION.md",
+                        "health":  "AVAILABLE",
+                        "priority_hint":  90,
+                        "signals":  [
+                                        "route_boundaries",
+                                        "review_gate",
+                                        "do_not_require_school"
+                                    ],
+                        "proof_refs":  [
+                                           "route_locks/AGENT_BUILDER_NEXT_15_STEPS_LOCK_V4_IDENTITY_BASED_SELECTION.md"
+                                       ],
+                        "notes":  "Owner-approved route lock; becomes bounded tasks through validators.",
+                        "can_command":  false,
+                        "can_suggest":  true,
+                        "required_for_selection":  false
+                    },
+                    {
+                        "id":  "validator_proof_set",
+                        "kind":  "validator_reports",
+                        "authority":  "high_value_evidence",
+                        "path":  "tests/*",
+                        "health":  "AVAILABLE",
+                        "priority_hint":  80,
+                        "signals":  [
+                                        "proof_state",
+                                        "validator_state",
+                                        "acceptance_boundaries"
+                                    ],
+                        "proof_refs":  [
+                                           "tests/self_model/BUILDER_IDENTITY_CONTRACT_V1_PROOF.json",
+                                           "tests/self_model/CURRENT_BODY_CAPABILITY_SNAPSHOT_V1_PROOF.json",
+                                           "tests/self_model/BUILDER_GAP_MAP_V1_PROOF.json",
+                                           "tests/compact_memory_intake/GROWTH_SIGNAL_QUALITY_V1_PROOF.json",
+                                           "tests/autonomous_inner_motor/GROWTH_DIRECTED_TASK_SELECTION_V1_PROOF.json"
+                                       ],
+                        "notes":  "Validators can raise gaps and proof paths but do not choose alone.",
+                        "can_command":  false,
+                        "can_suggest":  true,
+                        "required_for_selection":  false
+                    },
+                    {
+                        "id":  "aimo_live_baseline",
+                        "kind":  "live_proof",
+                        "authority":  "evidence_not_brain",
+                        "path":  "tests/live_start/AIMO_CONCRETE_GROWTH_TASK_SELECTION_LIVE_V1_PROOF.json",
+                        "health":  "PASS_AIMO_CONCRETE_GROWTH_TASK_SELECTION_LIVE_V1",
+                        "priority_hint":  70,
+                        "signals":  [
+                                        "current_live_baseline",
+                                        "concrete_task_selection",
+                                        "not_source_agnostic_yet"
+                                    ],
+                        "proof_refs":  [
+                                           "tests/live_start/AIMO_CONCRETE_GROWTH_TASK_SELECTION_LIVE_V1_PROOF.json"
+                                       ],
+                        "notes":  "Useful live baseline; not proof of identity-based selection.",
+                        "can_command":  false,
+                        "can_suggest":  true,
+                        "required_for_selection":  false
+                    },
+                    {
+                        "id":  "school_optional_source",
+                        "kind":  "optional_material_source",
+                        "authority":  "optional_evidence_only",
+                        "path":  "tests/live_start/SCHOOL_ONLY_RESTART_AFTER_MEMORY_FIX_V1_PROOF.json",
+                        "health":  "FAILED",
+                        "priority_hint":  30,
+                        "signals":  [
+                                        "fresh_material_possible",
+                                        "optional_not_required",
+                                        "not_brain"
+                                    ],
+                        "proof_refs":  [
+                                           "tests/live_start/SCHOOL_ONLY_RESTART_AFTER_MEMORY_FIX_V1_PROOF.json"
+                                       ],
+                        "notes":  "School may provide material if healthy; selection must continue without it.",
+                        "can_command":  false,
+                        "can_suggest":  false,
+                        "required_for_selection":  false
+                    },
+                    {
+                        "id":  "episodic_memory_proofs",
+                        "kind":  "memory_lesson_source",
+                        "authority":  "evidence_not_proof_by_itself",
+                        "path":  "tests/memory/episodic",
+                        "health":  "AVAILABLE",
+                        "priority_hint":  50,
+                        "signals":  [
+                                        "lessons",
+                                        "recall",
+                                        "prior_failures"
+                                    ],
+                        "proof_refs":  [
+                                           "tests/memory/episodic/EPISODIC_RECALL_V1_PROOF.json",
+                                           "tests/memory/episodic/EPISODIC_MEMORY_CELL_V1_PROOF.json"
+                                       ],
+                        "notes":  "Memory can inform candidates but is not authority or proof alone.",
+                        "can_command":  false,
+                        "can_suggest":  true,
+                        "required_for_selection":  false
+                    },
+                    {
+                        "id":  "reasoning_episode_proofs",
+                        "kind":  "reasoning_lesson_source",
+                        "authority":  "evidence_not_proof_by_itself",
+                        "path":  "tests/reasoning",
+                        "health":  "AVAILABLE",
+                        "priority_hint":  50,
+                        "signals":  [
+                                        "reasoning_episode",
+                                        "decision_lessons"
+                                    ],
+                        "proof_refs":  [
+                                           "tests/reasoning/REASONING_EPISODE_V1_PROOF.json",
+                                           "tests/reasoning/EPISODIC_RECALL_DECISION_V1_PROOF.json"
+                                       ],
+                        "notes":  "Reasoning traces can suggest candidate shapes.",
+                        "can_command":  false,
+                        "can_suggest":  true,
+                        "required_for_selection":  false
+                    },
+                    {
+                        "id":  "latest_runtime_packets",
+                        "kind":  "runtime_source_packets",
+                        "authority":  "freshness_modifier_only",
+                        "path":  ".runtime/compact_memory_intake_v1/queue",
+                        "health":  "MISSING",
+                        "priority_hint":  20,
+                        "signals":  [
+                                        "freshness_modifier",
+                                        "possible_residue",
+                                        "must_be_filtered"
+                                    ],
+                        "proof_refs":  [
+
+                                       ],
+                        "notes":  "Latest packets are evidence only and must not command selection.",
+                        "can_command":  false,
+                        "can_suggest":  false,
+                        "required_for_selection":  false
+                    }
+                ],
+    "latest_runtime_packets":  [
+
+                               ],
+    "required_sources_for_selection":  [
+                                           "builder_identity_contract",
+                                           "current_body_capability_snapshot",
+                                           "builder_gap_map"
+                                       ],
+    "optional_sources":  [
+                             "school_optional_source",
+                             "latest_runtime_packets",
+                             "episodic_memory_proofs",
+                             "reasoning_episode_proofs"
+                         ],
+    "live_process_touched":  false,
+    "active_memory_mutated":  false,
+    "created_at":  "2026-07-07T22:44:44.8683761+04:00"
+}
