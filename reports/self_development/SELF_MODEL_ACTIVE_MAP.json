@@ -6,18 +6,18 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "c103c58ba174a6eff071c4d31b738f64a1df6398",
-    "subject_head":  "c103c58ba174a6eff071c4d31b738f64a1df6398",
-    "generated_at":  "2026-07-08T10:43:57.1333525+04:00",
+    "observed_head_at_generation":  "ac36a834e197f25e20db4a7eb4a0704934e534e8",
+    "subject_head":  "ac36a834e197f25e20db4a7eb4a0704934e534e8",
+    "generated_at":  "2026-07-08T12:39:21.5916530+04:00",
     "generator":  "invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "role":  "canonical local body composition/status map: what exists, where it is, freshness, last runtime/proof signal",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  616,
+    "structural_path_count":  617,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  616,
-                                    "sha256":  "e186d2c03555ebcb8529d60b47906d3447b8eaef719cafd325e67f6977f5fe29"
+                                    "structural_file_count":  617,
+                                    "sha256":  "7cabb0f7cc761a767cd1168ac4d42d3a513e13f69ea09f0fce4f2e69eb26ea86"
                                 },
     "module_count":  207,
     "validator_count":  174,
@@ -224,14 +224,14 @@
                                                  "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1"
                                              ],
                            "latest_git_commit":  {
-                                                     "head":  "c103c58ba174a6eff071c4d31b738f64a1df6398",
-                                                     "committed_at":  "2026-07-08T10:37:56+04:00",
-                                                     "subject":  "proof: restart live aimo with runtime hygiene cleanup"
+                                                     "head":  "ac36a834e197f25e20db4a7eb4a0704934e534e8",
+                                                     "committed_at":  "2026-07-08T10:43:54+04:00",
+                                                     "subject":  "docs: demote explicit aimo source agnostic gate"
                                                  },
                            "latest_runtime_artifact":  {
                                                            "path":  ".runtime/autonomous_inner_motor/test_life_runs/live_aimo_no_gate_runtime_hygiene_v1_20260708T063710Z/TEST_LIFE_PROOF.json",
-                                                           "last_write":  "2026-07-08T10:43:56.0159926+04:00",
-                                                           "bytes":  354526
+                                                           "last_write":  "2026-07-08T12:39:16.0072757+04:00",
+                                                           "bytes":  379991
                                                        }
                        },
                        {
@@ -377,8 +377,8 @@
                                                                            },
                                         "latest_aimo_runtime_artifact":  {
                                                                              "path":  ".runtime/autonomous_inner_motor/test_life_runs/live_aimo_no_gate_runtime_hygiene_v1_20260708T063710Z/TEST_LIFE_PROOF.json",
-                                                                             "last_write":  "2026-07-08T10:43:56.0159926+04:00",
-                                                                             "bytes":  354526
+                                                                             "last_write":  "2026-07-08T12:39:16.0072757+04:00",
+                                                                             "bytes":  379991
                                                                          }
                                     },
     "freshness_rule":  "Trust currentness by body_source_fingerprint, not by self-referential commit HEAD.",

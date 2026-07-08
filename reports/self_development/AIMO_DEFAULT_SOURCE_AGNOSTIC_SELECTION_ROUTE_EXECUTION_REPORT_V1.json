@@ -1,0 +1,66 @@
+﻿{
+    "schema":  "aimo_default_source_agnostic_selection_route_execution_report_v1",
+    "status":  "PASS_ROUTE_EXECUTION_REPORT_V1_OWNER_REVIEW_REQUIRED",
+    "route":  "AIMO_DEFAULT_SOURCE_AGNOSTIC_SELECTION_V1",
+    "repo":  {
+                 "head":  "ac36a834e197f25e20db4a7eb4a0704934e534e8",
+                 "short_head":  "ac36a83",
+                 "ahead_behind":  "0\t0",
+                 "dirty":  false
+             },
+    "completed":  {
+                      "phase_b_contract":  "PASS_AIMO_DEFAULT_SOURCE_AGNOSTIC_SELECTOR_CONTRACT_V1",
+                      "phase_c_default_lab":  "PASS_AIMO_DEFAULT_PATH_LAB_IMPLEMENTATION_V1_WITH_SHARED_RUNTIME_WARNING",
+                      "phase_d_legacy_demoted":  "PASS_AIMO_LEGACY_SELECTOR_DEMOTION_V1",
+                      "phase_e_live_preflight":  "PASS_AIMO_DEFAULT_NO_GATE_LIVE_HOTSWAP_PREFLIGHT_V1",
+                      "phase_f_no_gate_live":  "PASS_AIMO_DEFAULT_NO_GATE_LIVE_HOTSWAP_V1",
+                      "runtime_hygiene_code":  "PASS_AIMO_RUNTIME_HYGIENE_CLEANUP_V1",
+                      "runtime_hygiene_live":  "PASS_AIMO_RUNTIME_HYGIENE_LIVE_HOTSWAP_V1",
+                      "explicit_gate_demoted":  "PASS_AIMO_EXPLICIT_GATE_DEMOTION_V1",
+                      "school_runtime_hygiene_gap_recorded":  "PASS_SCHOOL_RUNTIME_HYGIENE_GAP_V1"
+                  },
+    "live_current":  {
+                         "live_aimo_count":  1,
+                         "pid":  10612,
+                         "command":  "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -NoProfile -ExecutionPolicy Bypass -File operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1 -Mode SandboxTestLife -RunId live_aimo_no_gate_runtime_hygiene_v1_20260708T063710Z ",
+                         "has_explicit_gate":  false,
+                         "run_id":  "live_aimo_no_gate_runtime_hygiene_v1_20260708T063710Z",
+                         "cleanup_enabled_proven":  true,
+                         "default_no_gate_proven":  true
+                     },
+    "proven":  {
+                   "source_agnostic_selector_is_default_in_lab":  true,
+                   "source_agnostic_selector_is_default_in_live":  true,
+                   "explicit_gate_not_required_for_live_default":  true,
+                   "legacy_school_latest_paths_demoted_from_default_authority":  true,
+                   "live_aimo_exactly_one":  true,
+                   "live_runtime_hygiene_cleanup_enabled":  true,
+                   "transient_runtime_paths_absent":  true,
+                   "repo_clean_synced":  true
+               },
+    "not_proven":  {
+                       "active_memory_purity_isolated_from_live":  true,
+                       "emergency_fallback_when_source_agnostic_report_missing_or_invalid":  true,
+                       "child_agent_factory_readiness":  true,
+                       "school_runtime_hygiene_repair_implemented":  true,
+                       "deeper_self_model_route_completed":  true
+                   },
+    "blockers_before_large_school":  {
+                                         "school_runtime_hygiene_repair_required":  true,
+                                         "reason":  "School 1M run was successful but produced large transient checkpoint/candidate mass."
+                                     },
+    "recommended_next_route":  {
+                                   "name":  "DEEPER_SELF_MODEL_V1",
+                                   "start_condition":  "Owner review accepts this route report",
+                                   "first_goal":  "teach Builder to model its identity/body/capabilities/gaps/proofs more deeply now that default AIMO path is stable"
+                               },
+    "owner_review_gate":  {
+                              "status":  "OWNER_REVIEW_REQUIRED",
+                              "do_not_continue_to_next_route_without_owner_acceptance":  true,
+                              "question":  "Accept AIMO_DEFAULT_SOURCE_AGNOSTIC_SELECTION_V1 as complete within stated proof boundaries?"
+                          },
+    "runtime_size_mb":  50.19,
+    "live_process_touched":  false,
+    "active_memory_mutated":  false,
+    "created_at":  "2026-07-08T12:38:55.1575676+04:00"
+}
