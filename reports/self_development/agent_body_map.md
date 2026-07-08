@@ -2,121 +2,120 @@
 
 Status: ACTIVE_DERIVED_VIEW
 Branch: main
-Observed head at generation: 03da0851ec9a34265aa7ffec759c17a2f99f0283
-Generated: 2026-07-08T15:23:57.0945323+04:00
-Body source fingerprint: 2c2f5469568cf3de9f9b0632ed5958c5d313488303c754cbfb77ed8bd672b79b
+Observed head at generation: ee0d4cffdff6814705a9c634cab961515c3bcbfb
+Generated: 2026-07-08T16:28:13.7539024+04:00
+Body source fingerprint: 7deaf4bf1655405dd4327e3bc1bb38720724bd9eb9498d2dee8072cdb9c50da3
 
 Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
 ## Boundary
 
-- This is the body composition/status map: what exists, where it is, and latest runtime/proof signal.
-- This is not the capability invocation map: how to launch/use skills belongs elsewhere.
-- Legacy self_knowledge/roadmap files are references, not the current composition map.
+- Confirmed components come from explicit current repo evidence and required-component declarations.
+- Primary evidence candidates come from bounded tracked-file discovery and require triage.
+- Legacy maps and prior snapshots are hints only; they do not create confirmed components.
+- This is not the capability invocation map.
 
-## Components
+## Counts
 
-- `school` - PRESENT_ON_CURRENT_BRANCH, root `operations/school`, files=97, scripts=59, required_present=True, latest_runtime=.runtime/school_runs/school_factory_digest_use_real_1000000_20260707_140233/AGENT_SCHOOL_CANONICAL_ENTRYPOINT_V1.json
-- `school_source_router` - PRESENT_ON_CURRENT_BRANCH, root `operations/school/curriculum/source_router`, files=8, scripts=6, required_present=True, latest_runtime=none_observed
-- `compact_memory_intake` - PRESENT_ON_CURRENT_BRANCH, root `operations/compact_memory_intake`, files=10, scripts=6, required_present=True, latest_runtime=.runtime/compact_memory_intake_v1/merge_runs/merge_queue_20260708_103652/COMPACT_MEMORY_MERGE_QUEUE_RESULT_V1.json
-- `autonomous_inner_motor` - PRESENT_ON_CURRENT_BRANCH, root `operations/autonomous_inner_motor`, files=76, scripts=15, required_present=True, latest_runtime=.runtime/autonomous_inner_motor/test_life_runs/live_aimo_no_gate_runtime_hygiene_v1_20260708T063710Z/TEST_LIFE_PROOF.json
-- `knowledge_acquisition_port` - PRESENT_ON_CURRENT_BRANCH, root `operations/knowledge_acquisition_port`, files=50, scripts=2, required_present=True, latest_runtime=.runtime/knowledge_acquisition_port/runs/live_aimo_aimo_growth_selector_hotswap_v3_20260707T105709Z_cycle1_batch_knowledge_gap/BATCH_SOURCE_DIGEST_AND_PROMOTION_DECISION.json
-- `map_control` - PRESENT_ON_CURRENT_BRANCH, root `operations/map_control`, files=2, scripts=0, required_present=True, latest_runtime=none_observed
-- `gpt_handoff` - PRESENT_ON_CURRENT_BRANCH, root `operations/gpt_handoff`, files=3, scripts=0, required_present=True, latest_runtime=none_observed
-- `episodic_memory` - PRESENT_OR_EVIDENCE_INDEXED, root `evidence://reports/self_development/CURRENT_BODY_CAPABILITY_SNAPSHOT_V1.json#episodic_memory`, files=0, scripts=0, required_present=True, latest_runtime=none_observed
-- `reasoning_episode` - PRESENT_OR_EVIDENCE_INDEXED, root `evidence://reports/self_development/CURRENT_BODY_CAPABILITY_SNAPSHOT_V1.json#reasoning_episode`, files=0, scripts=0, required_present=True, latest_runtime=none_observed
-- `builder_identity_contract` - PRESENT_OR_EVIDENCE_INDEXED, root `evidence://reports/self_development/CURRENT_BODY_CAPABILITY_SNAPSHOT_V1.json#builder_identity_contract`, files=0, scripts=0, required_present=True, latest_runtime=none_observed
-- `source_agnostic_path_selector` - PRESENT_OR_EVIDENCE_INDEXED, root `evidence://reports/self_development/CURRENT_BODY_CAPABILITY_SNAPSHOT_V1.json#source_agnostic_path_selector`, files=0, scripts=0, required_present=True, latest_runtime=none_observed
-- `builder_mission_scoring` - PRESENT_OR_EVIDENCE_INDEXED, root `evidence://reports/self_development/CURRENT_BODY_CAPABILITY_SNAPSHOT_V1.json#builder_mission_scoring`, files=0, scripts=0, required_present=True, latest_runtime=none_observed
-- `provenance_rejection_trace` - PRESENT_OR_EVIDENCE_INDEXED, root `evidence://reports/self_development/CURRENT_BODY_CAPABILITY_SNAPSHOT_V1.json#provenance_rejection_trace`, files=0, scripts=0, required_present=True, latest_runtime=none_observed
-- `child_agent_factory` - PRESENT_OR_EVIDENCE_INDEXED, root `evidence://reports/self_development/CURRENT_BODY_CAPABILITY_SNAPSHOT_V1.json#child_agent_factory`, files=0, scripts=0, required_present=True, latest_runtime=none_observed
-- `operations_self_model` - PRESENT_OR_EVIDENCE_INDEXED, root `operations\self_model`, files=23, scripts=23, required_present=True, latest_runtime=none_observed
-- `contracts_accepted_atom_retention_organ` - PRESENT_OR_EVIDENCE_INDEXED, root `contracts\accepted_atom_retention_organ`, files=10, scripts=0, required_present=True, latest_runtime=none_observed
-- `contracts_accepted_atom_retention_organ_passports` - PRESENT_OR_EVIDENCE_INDEXED, root `contracts\accepted_atom_retention_organ\passports`, files=7, scripts=0, required_present=True, latest_runtime=none_observed
-- `living_learning_environment_sandbox_phase152_maximal_body_organ_pack_and_sandbox_execution_001` - PRESENT_OR_EVIDENCE_INDEXED, root `living_learning_environment\sandbox\PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001`, files=28, scripts=0, required_present=True, latest_runtime=none_observed
-- `self_build_programs_generated` - PRESENT_OR_EVIDENCE_INDEXED, root `self_build_programs\generated`, files=42, scripts=8, required_present=True, latest_runtime=none_observed
-- `self_build_programs_generated_monitoring_agent_v1` - PRESENT_OR_EVIDENCE_INDEXED, root `self_build_programs\generated\monitoring_agent_v1`, files=16, scripts=3, required_present=True, latest_runtime=none_observed
-- `self_build_programs_generated_remediation_intake_agent_v1` - PRESENT_OR_EVIDENCE_INDEXED, root `self_build_programs\generated\remediation_intake_agent_v1`, files=16, scripts=3, required_present=True, latest_runtime=none_observed
-- `living_learning_environment_body` - PRESENT_OR_EVIDENCE_INDEXED, root `living_learning_environment\body`, files=36, scripts=0, required_present=True, latest_runtime=none_observed
-- `living_learning_environment_sandbox` - PRESENT_OR_EVIDENCE_INDEXED, root `living_learning_environment\sandbox`, files=35, scripts=0, required_present=True, latest_runtime=none_observed
-- `packs_phase11_factory_build_external_agent_mode_v1` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE11_FACTORY_BUILD_EXTERNAL_AGENT_MODE_V1`, files=6, scripts=4, required_present=True, latest_runtime=none_observed
-- `packs_phase12_production_factory_proof_v1` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE12_PRODUCTION_FACTORY_PROOF_V1`, files=4, scripts=2, required_present=True, latest_runtime=none_observed
-- `packs_phase14_real_generated_agent_runtime_v2` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE14_REAL_GENERATED_AGENT_RUNTIME_V2`, files=7, scripts=3, required_present=True, latest_runtime=none_observed
-- `packs_phase16_factory_build_external_agent_mode_v2` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE16_FACTORY_BUILD_EXTERNAL_AGENT_MODE_V2`, files=6, scripts=4, required_present=True, latest_runtime=none_observed
-- `packs_phase17_operational_factory_proof_v2` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE17_OPERATIONAL_FACTORY_PROOF_V2`, files=4, scripts=2, required_present=True, latest_runtime=none_observed
-- `packs_phase18_architect_to_spec_handoff_v1` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE18_ARCHITECT_TO_SPEC_HANDOFF_V1`, files=6, scripts=3, required_present=True, latest_runtime=none_observed
-- `packs_phase20_idea_to_agent_factory_proof_v1` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE20_IDEA_TO_AGENT_FACTORY_PROOF_V1`, files=4, scripts=2, required_present=True, latest_runtime=none_observed
-- `packs_phase23_idea_to_specialized_agent_factory_proof_v1` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE23_IDEA_TO_SPECIALIZED_AGENT_FACTORY_PROOF_V1`, files=4, scripts=2, required_present=True, latest_runtime=none_observed
-- `packs_phase25_specification_agent_specialization_profile_v1` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE25_SPECIFICATION_AGENT_SPECIALIZATION_PROFILE_V1`, files=8, scripts=3, required_present=True, latest_runtime=none_observed
-- `packs_phase26_multi_profile_specialized_factory_proof_v1` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE26_MULTI_PROFILE_SPECIALIZED_FACTORY_PROOF_V1`, files=5, scripts=2, required_present=True, latest_runtime=none_observed
-- `packs_phase29_missing_profile_factory_proof_v1` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE29_MISSING_PROFILE_FACTORY_PROOF_V1`, files=4, scripts=2, required_present=True, latest_runtime=none_observed
-- `packs_phase31_decision_support_agent_specialization_profile_v1` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE31_DECISION_SUPPORT_AGENT_SPECIALIZATION_PROFILE_V1`, files=8, scripts=3, required_present=True, latest_runtime=none_observed
-- `packs_phase32_gap_closure_specialized_factory_proof_v1` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE32_GAP_CLOSURE_SPECIALIZED_FACTORY_PROOF_V1`, files=3, scripts=2, required_present=True, latest_runtime=none_observed
-- `packs_phase35_runtime_gap_to_candidate_factory_proof_v1` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE35_RUNTIME_GAP_TO_CANDIDATE_FACTORY_PROOF_V1`, files=3, scripts=2, required_present=True, latest_runtime=none_observed
-- `packs_phase43_specialized_gap_auto_program_seed_runtime_v1` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE43_SPECIALIZED_GAP_AUTO_PROGRAM_SEED_RUNTIME_V1`, files=5, scripts=3, required_present=True, latest_runtime=none_observed
-- `packs_phase44_one_run_remediation_program_seed_proof_v1` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE44_ONE_RUN_REMEDIATION_PROGRAM_SEED_PROOF_V1`, files=3, scripts=2, required_present=True, latest_runtime=none_observed
-- `packs_phase47_remediation_program_seed_consumption_closure_proof_v1` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE47_REMEDIATION_PROGRAM_SEED_CONSUMPTION_CLOSURE_PROOF_V1`, files=3, scripts=2, required_present=True, latest_runtime=none_observed
-- `packs_phase49_remediation_seed_program_materialization_v1` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE49_REMEDIATION_SEED_PROGRAM_MATERIALIZATION_V1`, files=5, scripts=3, required_present=True, latest_runtime=none_observed
-- `packs_phase50_one_run_remediation_seed_program_synthesis_proof_v1` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE50_ONE_RUN_REMEDIATION_SEED_PROGRAM_SYNTHESIS_PROOF_V1`, files=3, scripts=2, required_present=True, latest_runtime=none_observed
-- `packs_phase52_generated_agent_action_launch_contract_v1` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE52_GENERATED_AGENT_ACTION_LAUNCH_CONTRACT_V1`, files=6, scripts=3, required_present=True, latest_runtime=none_observed
-- `packs_phase53_action_ready_generated_agent_proof_v1` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE53_ACTION_READY_GENERATED_AGENT_PROOF_V1`, files=4, scripts=2, required_present=True, latest_runtime=none_observed
-- `packs_phase57_generated_program_live_admission_proof_v1` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE57_GENERATED_PROGRAM_LIVE_ADMISSION_PROOF_V1`, files=4, scripts=3, required_present=True, latest_runtime=none_observed
-- `packs_phase61_second_generated_program_family_proof_v1` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE61_SECOND_GENERATED_PROGRAM_FAMILY_PROOF_V1`, files=3, scripts=2, required_present=True, latest_runtime=none_observed
-- `reports_self_development` - PRESENT_OR_EVIDENCE_INDEXED, root `reports\self_development`, files=56, scripts=0, required_present=True, latest_runtime=none_observed
-- `self_build_programs_canonical_trials` - PRESENT_OR_EVIDENCE_INDEXED, root `self_build_programs\canonical_trials`, files=8, scripts=2, required_present=True, latest_runtime=none_observed
-- `self_build_programs_dry_runs` - PRESENT_OR_EVIDENCE_INDEXED, root `self_build_programs\dry_runs`, files=7, scripts=1, required_present=True, latest_runtime=none_observed
-- `tests_self_development` - PRESENT_OR_EVIDENCE_INDEXED, root `tests\self_development`, files=11, scripts=0, required_present=True, latest_runtime=none_observed
-- `packs_phase11_factory_build_external_agent_mode_v1_payload` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE11_FACTORY_BUILD_EXTERNAL_AGENT_MODE_V1\payload`, files=4, scripts=3, required_present=True, latest_runtime=none_observed
-- `packs_phase12_production_factory_proof_v1_payload` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE12_PRODUCTION_FACTORY_PROOF_V1\payload`, files=2, scripts=1, required_present=True, latest_runtime=none_observed
-- `packs_phase14_real_generated_agent_runtime_v2_payload` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE14_REAL_GENERATED_AGENT_RUNTIME_V2\payload`, files=5, scripts=2, required_present=True, latest_runtime=none_observed
-- `packs_phase16_factory_build_external_agent_mode_v2_payload` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE16_FACTORY_BUILD_EXTERNAL_AGENT_MODE_V2\payload`, files=4, scripts=3, required_present=True, latest_runtime=none_observed
-- `packs_phase17_operational_factory_proof_v2_payload` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE17_OPERATIONAL_FACTORY_PROOF_V2\payload`, files=2, scripts=1, required_present=True, latest_runtime=none_observed
-- `packs_phase18_architect_to_spec_handoff_v1_payload` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE18_ARCHITECT_TO_SPEC_HANDOFF_V1\payload`, files=4, scripts=2, required_present=True, latest_runtime=none_observed
-- `packs_phase20_idea_to_agent_factory_proof_v1_payload` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE20_IDEA_TO_AGENT_FACTORY_PROOF_V1\payload`, files=2, scripts=1, required_present=True, latest_runtime=none_observed
-- `packs_phase23_idea_to_specialized_agent_factory_proof_v1_payload` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE23_IDEA_TO_SPECIALIZED_AGENT_FACTORY_PROOF_V1\payload`, files=2, scripts=1, required_present=True, latest_runtime=none_observed
-- `packs_phase25_specification_agent_specialization_profile_v1_payload` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE25_SPECIFICATION_AGENT_SPECIALIZATION_PROFILE_V1\payload`, files=6, scripts=2, required_present=True, latest_runtime=none_observed
-- `packs_phase26_multi_profile_specialized_factory_proof_v1_payload` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE26_MULTI_PROFILE_SPECIALIZED_FACTORY_PROOF_V1\payload`, files=3, scripts=1, required_present=True, latest_runtime=none_observed
-- `packs_phase29_missing_profile_factory_proof_v1_payload` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE29_MISSING_PROFILE_FACTORY_PROOF_V1\payload`, files=2, scripts=1, required_present=True, latest_runtime=none_observed
-- `packs_phase31_decision_support_agent_specialization_profile_v1_payload` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE31_DECISION_SUPPORT_AGENT_SPECIALIZATION_PROFILE_V1\payload`, files=6, scripts=2, required_present=True, latest_runtime=none_observed
-- `packs_phase43_specialized_gap_auto_program_seed_runtime_v1_payload` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE43_SPECIALIZED_GAP_AUTO_PROGRAM_SEED_RUNTIME_V1\payload`, files=3, scripts=2, required_present=True, latest_runtime=none_observed
-- `packs_phase49_remediation_seed_program_materialization_v1_payload` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE49_REMEDIATION_SEED_PROGRAM_MATERIALIZATION_V1\payload`, files=3, scripts=2, required_present=True, latest_runtime=none_observed
-- `packs_phase52_generated_agent_action_launch_contract_v1_payload` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE52_GENERATED_AGENT_ACTION_LAUNCH_CONTRACT_V1\payload`, files=4, scripts=2, required_present=True, latest_runtime=none_observed
-- `packs_phase53_action_ready_generated_agent_proof_v1_payload` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE53_ACTION_READY_GENERATED_AGENT_PROOF_V1\payload`, files=2, scripts=1, required_present=True, latest_runtime=none_observed
-- `self_build_programs_canonical_trials_phase165n_first_dynamic_owner_material_canonical_trial_v1` - PRESENT_OR_EVIDENCE_INDEXED, root `self_build_programs\canonical_trials\PHASE165N_FIRST_DYNAMIC_OWNER_MATERIAL_CANONICAL_TRIAL_V1`, files=4, scripts=1, required_present=True, latest_runtime=none_observed
-- `self_build_programs_dry_runs_phase165m_owner_material_dynamic_self_build_dry_run_v1` - PRESENT_OR_EVIDENCE_INDEXED, root `self_build_programs\dry_runs\PHASE165M_OWNER_MATERIAL_DYNAMIC_SELF_BUILD_DRY_RUN_V1`, files=7, scripts=1, required_present=True, latest_runtime=none_observed
-- `docs_operations` - PRESENT_OR_EVIDENCE_INDEXED, root `docs\operations`, files=28, scripts=0, required_present=True, latest_runtime=none_observed
-- `packs_phase32_gap_closure_specialized_factory_proof_v1_payload` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE32_GAP_CLOSURE_SPECIALIZED_FACTORY_PROOF_V1\payload`, files=1, scripts=1, required_present=True, latest_runtime=none_observed
-- `packs_phase35_runtime_gap_to_candidate_factory_proof_v1_payload` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE35_RUNTIME_GAP_TO_CANDIDATE_FACTORY_PROOF_V1\payload`, files=1, scripts=1, required_present=True, latest_runtime=none_observed
-- `packs_phase44_one_run_remediation_program_seed_proof_v1_payload` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE44_ONE_RUN_REMEDIATION_PROGRAM_SEED_PROOF_V1\payload`, files=1, scripts=1, required_present=True, latest_runtime=none_observed
-- `packs_phase47_remediation_program_seed_consumption_closure_proof_v1_payload` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE47_REMEDIATION_PROGRAM_SEED_CONSUMPTION_CLOSURE_PROOF_V1\payload`, files=1, scripts=1, required_present=True, latest_runtime=none_observed
-- `packs_phase50_one_run_remediation_seed_program_synthesis_proof_v1_payload` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE50_ONE_RUN_REMEDIATION_SEED_PROGRAM_SYNTHESIS_PROOF_V1\payload`, files=1, scripts=1, required_present=True, latest_runtime=none_observed
-- `packs_phase57_generated_program_live_admission_proof_v1_payload` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE57_GENERATED_PROGRAM_LIVE_ADMISSION_PROOF_V1\payload`, files=2, scripts=2, required_present=True, latest_runtime=none_observed
-- `packs_phase61_second_generated_program_family_proof_v1_payload` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE61_SECOND_GENERATED_PROGRAM_FAMILY_PROOF_V1\payload`, files=1, scripts=1, required_present=True, latest_runtime=none_observed
-- `packs_phase12_production_factory_proof_v1_payload_validators` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE12_PRODUCTION_FACTORY_PROOF_V1\payload\validators`, files=1, scripts=1, required_present=True, latest_runtime=none_observed
-- `packs_phase17_operational_factory_proof_v2_payload_validators` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE17_OPERATIONAL_FACTORY_PROOF_V2\payload\validators`, files=1, scripts=1, required_present=True, latest_runtime=none_observed
-- `packs_phase20_idea_to_agent_factory_proof_v1_payload_validators` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE20_IDEA_TO_AGENT_FACTORY_PROOF_V1\payload\validators`, files=1, scripts=1, required_present=True, latest_runtime=none_observed
-- `packs_phase23_idea_to_specialized_agent_factory_proof_v1_payload_validators` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE23_IDEA_TO_SPECIALIZED_AGENT_FACTORY_PROOF_V1\payload\validators`, files=1, scripts=1, required_present=True, latest_runtime=none_observed
-- `packs_phase26_multi_profile_specialized_factory_proof_v1_payload_validators` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE26_MULTI_PROFILE_SPECIALIZED_FACTORY_PROOF_V1\payload\validators`, files=1, scripts=1, required_present=True, latest_runtime=none_observed
-- `packs_phase29_missing_profile_factory_proof_v1_payload_validators` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE29_MISSING_PROFILE_FACTORY_PROOF_V1\payload\validators`, files=1, scripts=1, required_present=True, latest_runtime=none_observed
-- `packs_phase32_gap_closure_specialized_factory_proof_v1_payload_validators` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE32_GAP_CLOSURE_SPECIALIZED_FACTORY_PROOF_V1\payload\validators`, files=1, scripts=1, required_present=True, latest_runtime=none_observed
-- `packs_phase35_runtime_gap_to_candidate_factory_proof_v1_payload_validators` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE35_RUNTIME_GAP_TO_CANDIDATE_FACTORY_PROOF_V1\payload\validators`, files=1, scripts=1, required_present=True, latest_runtime=none_observed
-- `packs_phase44_one_run_remediation_program_seed_proof_v1_payload_validators` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE44_ONE_RUN_REMEDIATION_PROGRAM_SEED_PROOF_V1\payload\validators`, files=1, scripts=1, required_present=True, latest_runtime=none_observed
-- `packs_phase47_remediation_program_seed_consumption_closure_proof_v1_payload_validators` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE47_REMEDIATION_PROGRAM_SEED_CONSUMPTION_CLOSURE_PROOF_V1\payload\validators`, files=1, scripts=1, required_present=True, latest_runtime=none_observed
-- `packs_phase50_one_run_remediation_seed_program_synthesis_proof_v1_payload_validators` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE50_ONE_RUN_REMEDIATION_SEED_PROGRAM_SYNTHESIS_PROOF_V1\payload\validators`, files=1, scripts=1, required_present=True, latest_runtime=none_observed
-- `packs_phase53_action_ready_generated_agent_proof_v1_payload_validators` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE53_ACTION_READY_GENERATED_AGENT_PROOF_V1\payload\validators`, files=1, scripts=1, required_present=True, latest_runtime=none_observed
-- `packs_phase57_generated_program_live_admission_proof_v1_payload_validators` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE57_GENERATED_PROGRAM_LIVE_ADMISSION_PROOF_V1\payload\validators`, files=1, scripts=1, required_present=True, latest_runtime=none_observed
-- `packs_phase61_second_generated_program_family_proof_v1_payload_validators` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE61_SECOND_GENERATED_PROGRAM_FAMILY_PROOF_V1\payload\validators`, files=1, scripts=1, required_present=True, latest_runtime=none_observed
-- `knowledge_library` - PRESENT_OR_EVIDENCE_INDEXED, root `knowledge_library`, files=91, scripts=0, required_present=True, latest_runtime=none_observed
-- `modules_self_development` - PRESENT_OR_EVIDENCE_INDEXED, root `modules\self_development`, files=20, scripts=20, required_present=True, latest_runtime=none_observed
-- `packs_phase10_generated_agent_validation_harness_v1` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE10_GENERATED_AGENT_VALIDATION_HARNESS_V1`, files=6, scripts=3, required_present=True, latest_runtime=none_observed
-- `packs_phase103_repair_loop_generator_v1` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE103_REPAIR_LOOP_GENERATOR_V1`, files=3, scripts=2, required_present=True, latest_runtime=none_observed
-- `packs_phase104_controlled_multi_cycle_self_build_run_v1` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE104_CONTROLLED_MULTI_CYCLE_SELF_BUILD_RUN_V1`, files=3, scripts=2, required_present=True, latest_runtime=none_observed
-- `packs_phase42_remediation_program_seed_contract_v1` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE42_REMEDIATION_PROGRAM_SEED_CONTRACT_V1`, files=6, scripts=3, required_present=True, latest_runtime=none_observed
-- `packs_phase48_remediation_seed_program_blueprint_contract_v1` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE48_REMEDIATION_SEED_PROGRAM_BLUEPRINT_CONTRACT_V1`, files=6, scripts=3, required_present=True, latest_runtime=none_observed
-- `packs_phase5_external_agent_spec_intake` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE5_EXTERNAL_AGENT_SPEC_INTAKE`, files=7, scripts=3, required_present=True, latest_runtime=none_observed
-- `packs_phase55_generated_program_admission_readiness_gate_v1` - PRESENT_OR_EVIDENCE_INDEXED, root `packs\PHASE55_GENERATED_PROGRAM_ADMISSION_READINESS_GATE_V1`, files=4, scripts=3, required_present=True, latest_runtime=none_observed
+- Confirmed components: 7
+- Primary evidence candidates: 156
+- Legacy unverified hints: 4
+- Rejected or stale hints: 3
+
+## Confirmed Components
+
+- `school` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/school`, files=97, scripts=59, required_present=True
+- `school_source_router` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/school/curriculum/source_router`, files=8, scripts=6, required_present=True
+- `compact_memory_intake` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/compact_memory_intake`, files=10, scripts=6, required_present=True
+- `autonomous_inner_motor` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/autonomous_inner_motor`, files=76, scripts=15, required_present=True
+- `knowledge_acquisition_port` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/knowledge_acquisition_port`, files=50, scripts=2, required_present=True
+- `map_control` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/map_control`, files=2, scripts=0, required_present=True
+- `gpt_handoff` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/gpt_handoff`, files=3, scripts=0, required_present=True
+
+## Candidate Triage Queue
+
+- `contracts_accepted_atom_retention_organ` - root `contracts/accepted_atom_retention_organ`, files=10, scripts=0, validators=0, proofs=1, needs_triage=True
+- `contracts_controlled_runtime` - root `contracts/controlled_runtime`, files=12, scripts=0, validators=0, proofs=0, needs_triage=True
+- `contracts_materials` - root `contracts/materials`, files=6, scripts=0, validators=0, proofs=0, needs_triage=True
+- `contracts_operations` - root `contracts/operations`, files=6, scripts=0, validators=0, proofs=0, needs_triage=True
+- `contracts_self_development` - root `contracts/self_development`, files=22, scripts=0, validators=0, proofs=2, needs_triage=True
+- `contracts_self_knowledge` - root `contracts/self_knowledge`, files=6, scripts=0, validators=0, proofs=0, needs_triage=True
+- `living_learning_environment_admission_reviews` - root `living_learning_environment/admission_reviews`, files=13, scripts=0, validators=0, proofs=0, needs_triage=True
+- `living_learning_environment_body` - root `living_learning_environment/body`, files=36, scripts=0, validators=0, proofs=1, needs_triage=True
+- `living_learning_environment_module_requests` - root `living_learning_environment/module_requests`, files=2, scripts=0, validators=0, proofs=0, needs_triage=True
+- `living_learning_environment_observations` - root `living_learning_environment/observations`, files=1, scripts=0, validators=0, proofs=0, needs_triage=True
+- `living_learning_environment_promotion_candidates` - root `living_learning_environment/promotion_candidates`, files=2, scripts=0, validators=0, proofs=0, needs_triage=True
+- `living_learning_environment_promotion_gates` - root `living_learning_environment/promotion_gates`, files=1, scripts=0, validators=0, proofs=0, needs_triage=True
+- `living_learning_environment_proposals` - root `living_learning_environment/proposals`, files=2, scripts=0, validators=0, proofs=0, needs_triage=True
+- `living_learning_environment_reading_sessions` - root `living_learning_environment/reading_sessions`, files=4, scripts=0, validators=0, proofs=0, needs_triage=True
+- `living_learning_environment_reuse_trials` - root `living_learning_environment/reuse_trials`, files=19, scripts=0, validators=2, proofs=1, needs_triage=True
+- `living_learning_environment_sandbox` - root `living_learning_environment/sandbox`, files=35, scripts=0, validators=1, proofs=1, needs_triage=True
+- `living_learning_environment_self_growth_cycles` - root `living_learning_environment/self_growth_cycles`, files=35, scripts=0, validators=2, proofs=0, needs_triage=True
+- `living_learning_environment_self_growth_runtime` - root `living_learning_environment/self_growth_runtime`, files=6, scripts=0, validators=0, proofs=0, needs_triage=True
+- `living_learning_environment_trial_reviews` - root `living_learning_environment/trial_reviews`, files=15, scripts=0, validators=1, proofs=0, needs_triage=True
+- `modules_materials` - root `modules/materials`, files=4, scripts=4, validators=0, proofs=0, needs_triage=True
+- `modules_operations` - root `modules/operations`, files=4, scripts=4, validators=0, proofs=0, needs_triage=True
+- `modules_route_locks` - root `modules/route_locks`, files=1, scripts=1, validators=0, proofs=0, needs_triage=True
+- `modules_self_development` - root `modules/self_development`, files=20, scripts=20, validators=0, proofs=1, needs_triage=True
+- `operations_active_behavior` - root `operations/active_behavior`, files=10, scripts=6, validators=2, proofs=0, needs_triage=True
+- `operations_autonomy_diagnostics` - root `operations/autonomy_diagnostics`, files=29, scripts=0, validators=0, proofs=0, needs_triage=True
+- `operations_bridge_diagnostics` - root `operations/bridge_diagnostics`, files=2, scripts=0, validators=0, proofs=2, needs_triage=True
+- `operations_contracts` - root `operations/contracts`, files=3, scripts=0, validators=2, proofs=0, needs_triage=True
+- `operations_live_like` - root `operations/live_like`, files=2, scripts=2, validators=1, proofs=0, needs_triage=True
+- `operations_live_readiness` - root `operations/live_readiness`, files=11, scripts=11, validators=5, proofs=2, needs_triage=True
+- `operations_live_start` - root `operations/live_start`, files=5, scripts=5, validators=2, proofs=0, needs_triage=True
+- `operations_memory` - root `operations/memory`, files=4, scripts=4, validators=2, proofs=0, needs_triage=True
+- `operations_overnight_school` - root `operations/overnight_school`, files=3, scripts=3, validators=1, proofs=0, needs_triage=True
+- `operations_parallel_life` - root `operations/parallel_life`, files=2, scripts=2, validators=1, proofs=0, needs_triage=True
+- `operations_readme_md` - root `operations/README.md`, files=1, scripts=0, validators=0, proofs=0, needs_triage=True
+- `operations_reasoning` - root `operations/reasoning`, files=6, scripts=6, validators=3, proofs=0, needs_triage=True
+- `operations_reflex_library` - root `operations/reflex_library`, files=2, scripts=1, validators=0, proofs=0, needs_triage=True
+- `operations_runtime` - root `operations/runtime`, files=2, scripts=0, validators=0, proofs=0, needs_triage=True
+- `operations_self_model` - root `operations/self_model`, files=27, scripts=27, validators=20, proofs=0, needs_triage=True
+- `operations_smoke_trials` - root `operations/smoke_trials`, files=4, scripts=0, validators=3, proofs=0, needs_triage=True
+- `packs_phase10_generated_agent_validation_harness_v1` - root `packs/PHASE10_GENERATED_AGENT_VALIDATION_HARNESS_V1`, files=6, scripts=3, validators=2, proofs=0, needs_triage=True
+- `packs_phase100_quarantine_and_blocker_registry_v1` - root `packs/PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1`, files=3, scripts=2, validators=0, proofs=0, needs_triage=True
+- `packs_phase101_batch_proof_aggregator_v1` - root `packs/PHASE101_BATCH_PROOF_AGGREGATOR_V1`, files=3, scripts=2, validators=0, proofs=3, needs_triage=True
+- `packs_phase102_auto_next_gap_decision_v1` - root `packs/PHASE102_AUTO_NEXT_GAP_DECISION_V1`, files=3, scripts=2, validators=0, proofs=0, needs_triage=True
+- `packs_phase103_repair_loop_generator_v1` - root `packs/PHASE103_REPAIR_LOOP_GENERATOR_V1`, files=3, scripts=2, validators=0, proofs=0, needs_triage=True
+- `packs_phase104_controlled_multi_cycle_self_build_run_v1` - root `packs/PHASE104_CONTROLLED_MULTI_CYCLE_SELF_BUILD_RUN_V1`, files=3, scripts=2, validators=0, proofs=0, needs_triage=True
+- `packs_phase105_scale_trial_10_30_100_item_simulation_v1` - root `packs/PHASE105_SCALE_TRIAL_10_30_100_ITEM_SIMULATION_V1`, files=3, scripts=2, validators=0, proofs=0, needs_triage=True
+- `packs_phase106_scale_trial_promotion_gate_and_route_lock_refresh_v1` - root `packs/PHASE106_SCALE_TRIAL_PROMOTION_GATE_AND_ROUTE_LOCK_REFRESH_V1`, files=3, scripts=2, validators=0, proofs=0, needs_triage=True
+- `packs_phase107_builder_self_pack_author_v1` - root `packs/PHASE107_BUILDER_SELF_PACK_AUTHOR_V1`, files=3, scripts=2, validators=0, proofs=0, needs_triage=True
+- `packs_phase11_factory_build_external_agent_mode_v1` - root `packs/PHASE11_FACTORY_BUILD_EXTERNAL_AGENT_MODE_V1`, files=6, scripts=4, validators=1, proofs=1, needs_triage=True
+- `packs_phase12_production_factory_proof_v1` - root `packs/PHASE12_PRODUCTION_FACTORY_PROOF_V1`, files=4, scripts=2, validators=1, proofs=4, needs_triage=True
+- `packs_phase13_production_truth_reset_v2` - root `packs/PHASE13_PRODUCTION_TRUTH_RESET_V2`, files=4, scripts=2, validators=1, proofs=0, needs_triage=True
+- `packs_phase14_real_generated_agent_runtime_v2` - root `packs/PHASE14_REAL_GENERATED_AGENT_RUNTIME_V2`, files=7, scripts=3, validators=1, proofs=0, needs_triage=True
+- `packs_phase15_operational_validation_harness_v2` - root `packs/PHASE15_OPERATIONAL_VALIDATION_HARNESS_V2`, files=6, scripts=3, validators=2, proofs=0, needs_triage=True
+- `packs_phase16_factory_build_external_agent_mode_v2` - root `packs/PHASE16_FACTORY_BUILD_EXTERNAL_AGENT_MODE_V2`, files=6, scripts=4, validators=1, proofs=1, needs_triage=True
+- `packs_phase164k_owner_candidate_self_growth_adapter_v1` - root `packs/PHASE164K_OWNER_CANDIDATE_SELF_GROWTH_ADAPTER_V1`, files=2, scripts=2, validators=0, proofs=0, needs_triage=True
+- `packs_phase17_operational_factory_proof_v2` - root `packs/PHASE17_OPERATIONAL_FACTORY_PROOF_V2`, files=4, scripts=2, validators=1, proofs=4, needs_triage=True
+- `packs_phase18_architect_to_spec_handoff_v1` - root `packs/PHASE18_ARCHITECT_TO_SPEC_HANDOFF_V1`, files=6, scripts=3, validators=1, proofs=1, needs_triage=True
+- `packs_phase19_build_from_raw_idea_mode_v1` - root `packs/PHASE19_BUILD_FROM_RAW_IDEA_MODE_V1`, files=6, scripts=3, validators=1, proofs=2, needs_triage=True
+- `packs_phase20_idea_to_agent_factory_proof_v1` - root `packs/PHASE20_IDEA_TO_AGENT_FACTORY_PROOF_V1`, files=4, scripts=2, validators=1, proofs=4, needs_triage=True
+- `packs_phase21_specialization_overlay_resolution_v1` - root `packs/PHASE21_SPECIALIZATION_OVERLAY_RESOLUTION_V1`, files=7, scripts=4, validators=1, proofs=0, needs_triage=True
+- `packs_phase22_build_from_raw_idea_specialized_mode_v1` - root `packs/PHASE22_BUILD_FROM_RAW_IDEA_SPECIALIZED_MODE_V1`, files=6, scripts=3, validators=1, proofs=2, needs_triage=True
+- `packs_phase23_idea_to_specialized_agent_factory_proof_v1` - root `packs/PHASE23_IDEA_TO_SPECIALIZED_AGENT_FACTORY_PROOF_V1`, files=4, scripts=2, validators=1, proofs=4, needs_triage=True
+- `packs_phase24_specialization_profile_registry_v1` - root `packs/PHASE24_SPECIALIZATION_PROFILE_REGISTRY_V1`, files=6, scripts=3, validators=1, proofs=0, needs_triage=True
+- `packs_phase25_specification_agent_specialization_profile_v1` - root `packs/PHASE25_SPECIFICATION_AGENT_SPECIALIZATION_PROFILE_V1`, files=8, scripts=3, validators=1, proofs=2, needs_triage=True
+- `packs_phase26_multi_profile_specialized_factory_proof_v1` - root `packs/PHASE26_MULTI_PROFILE_SPECIALIZED_FACTORY_PROOF_V1`, files=5, scripts=2, validators=1, proofs=5, needs_triage=True
+- `packs_phase27_specialization_gap_contract_v1` - root `packs/PHASE27_SPECIALIZATION_GAP_CONTRACT_V1`, files=6, scripts=3, validators=1, proofs=0, needs_triage=True
+- `packs_phase28_no_match_diagnostic_mode_v1` - root `packs/PHASE28_NO_MATCH_DIAGNOSTIC_MODE_V1`, files=6, scripts=3, validators=1, proofs=2, needs_triage=True
+- `packs_phase29_missing_profile_factory_proof_v1` - root `packs/PHASE29_MISSING_PROFILE_FACTORY_PROOF_V1`, files=4, scripts=2, validators=1, proofs=4, needs_triage=True
+- `packs_phase30_gap_to_profile_candidate_brief_v1` - root `packs/PHASE30_GAP_TO_PROFILE_CANDIDATE_BRIEF_V1`, files=5, scripts=3, validators=1, proofs=0, needs_triage=True
+- `packs_phase31_decision_support_agent_specialization_profile_v1` - root `packs/PHASE31_DECISION_SUPPORT_AGENT_SPECIALIZATION_PROFILE_V1`, files=8, scripts=3, validators=1, proofs=2, needs_triage=True
+- `packs_phase32_gap_closure_specialized_factory_proof_v1` - root `packs/PHASE32_GAP_CLOSURE_SPECIALIZED_FACTORY_PROOF_V1`, files=3, scripts=2, validators=1, proofs=3, needs_triage=True
+- `packs_phase33_gap_remediation_intake_mode_v1` - root `packs/PHASE33_GAP_REMEDIATION_INTAKE_MODE_V1`, files=5, scripts=3, validators=1, proofs=0, needs_triage=True
+- `packs_phase34_candidate_intake_report_contract_v1` - root `packs/PHASE34_CANDIDATE_INTAKE_REPORT_CONTRACT_V1`, files=7, scripts=4, validators=1, proofs=1, needs_triage=True
+- `packs_phase35_runtime_gap_to_candidate_factory_proof_v1` - root `packs/PHASE35_RUNTIME_GAP_TO_CANDIDATE_FACTORY_PROOF_V1`, files=3, scripts=2, validators=1, proofs=3, needs_triage=True
+- `packs_phase36_workflow_execution_family_reachability_v1` - root `packs/PHASE36_WORKFLOW_EXECUTION_FAMILY_REACHABILITY_V1`, files=6, scripts=3, validators=1, proofs=1, needs_triage=True
+- `packs_phase37_intake_driven_workflow_execution_profile_v1` - root `packs/PHASE37_INTAKE_DRIVEN_WORKFLOW_EXECUTION_PROFILE_V1`, files=8, scripts=3, validators=1, proofs=2, needs_triage=True
+- `packs_phase38_runtime_gap_remediation_closure_proof_v1` - root `packs/PHASE38_RUNTIME_GAP_REMEDIATION_CLOSURE_PROOF_V1`, files=3, scripts=2, validators=1, proofs=3, needs_triage=True
+- `packs_phase39_monitoring_gap_reachability_v1` - root `packs/PHASE39_MONITORING_GAP_REACHABILITY_V1`, files=6, scripts=3, validators=1, proofs=1, needs_triage=True
+- `packs_phase4_self_validation_release_gates` - root `packs/PHASE4_SELF_VALIDATION_RELEASE_GATES`, files=7, scripts=4, validators=2, proofs=0, needs_triage=True
+- `packs_phase40_specialized_gap_auto_intake_runtime_v1` - root `packs/PHASE40_SPECIALIZED_GAP_AUTO_INTAKE_RUNTIME_V1`, files=5, scripts=3, validators=1, proofs=1, needs_triage=True
 
 ## Freshness
 
-- Currentness criterion: body source fingerprint
+- Currentness criterion: body source fingerprint over bounded primary evidence files.
 - Required components present: True
