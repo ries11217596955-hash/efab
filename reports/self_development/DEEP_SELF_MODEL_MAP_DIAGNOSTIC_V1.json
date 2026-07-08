@@ -1,0 +1,139 @@
+﻿{
+    "schema":  "deep_self_model_map_diagnostic_v1",
+    "status":  "DIAGNOSTIC_COMPLETE_RECOMMEND_TWO_MAP_ORGANS_WITH_THIN_SELF_MODEL_LINK",
+    "purpose":  "Diagnose existing agent inventory/body map and capability/skill invocation map before creating any new organ.",
+    "repo":  {
+                 "head":  "0b55e65685df77bf9fe1e4fd41c6bf1ea3525ab2",
+                 "short_head":  "0b55e65",
+                 "ahead_behind":  "0\t0",
+                 "dirty":  false
+             },
+    "current_live":  {
+                         "live_aimo_count":  1,
+                         "pid":  10612,
+                         "has_gate":  false,
+                         "runtime_size_mb":  50.19
+                     },
+    "inventory_map_findings":  {
+                                   "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+                                   "human_body_map":  "reports/self_development/agent_body_map.md",
+                                   "compatibility_body_map":  "reports/self_development/agent_body_map.json",
+                                   "validator":  "validators/validate_agent_body_composition_map_current_v1.ps1",
+                                   "status":  "EXISTS_AND_VALIDATED",
+                                   "boundary_from_current_map":  "single canonical composition/status map; does not describe how to invoke capabilities; capability invocation belongs to separate capability map",
+                                   "role":  "what organs/components exist, current status, composition, runtime observations, legacy/noncanonical surfaces"
+                               },
+    "capability_map_findings":  {
+                                    "root_capability_roadmap":  "CAPABILITY_ROADMAP.json",
+                                    "task_contract_store":  "tasks/*.json",
+                                    "task_json_count":  112,
+                                    "has_schema_count":  0,
+                                    "has_mode_count":  33,
+                                    "has_inputs_count":  0,
+                                    "has_outputs_count":  0,
+                                    "has_validator_count":  11,
+                                    "has_command_count":  64,
+                                    "has_proof_count":  86,
+                                    "status":  "EXISTS_AS_MATERIAL_STORE_NOT_MATURE_ORGAN",
+                                    "diagnosis":  "Capability/skill data exists, but not as a canonical invocation map. Task files lack schema and standard input/output/invocation contracts.",
+                                    "role_needed":  "what Builder can do, invocation modes, commands/scripts, inputs, outputs, validators, proof paths, safety boundaries, owning organ, maturity level"
+                                },
+    "duplicate_and_legacy_findings":  [
+                                          {
+                                              "path":  "self_knowledge/BUILDER_SELF_MODEL.json",
+                                              "classification":  "LEGACY_SELF_MODEL_REFERENCE",
+                                              "action":  "KEEP_AS_REFERENCE_NOT_CANONICAL",
+                                              "reason":  "Broad historical self model; overlaps with current map but not current canonical composition map."
+                                          },
+                                          {
+                                              "path":  "self_knowledge/ROADMAP_STATE.json",
+                                              "classification":  "LEGACY_ROADMAP_REFERENCE",
+                                              "action":  "KEEP_AS_REFERENCE_NOT_CANONICAL",
+                                              "reason":  "Historical roadmap state; should not drive current route without fresh proof."
+                                          },
+                                          {
+                                              "path":  "CAPABILITY_ROADMAP.json",
+                                              "classification":  "CAPABILITY_ROADMAP_NOT_COMPOSITION_MAP",
+                                              "action":  "USE_AS_SOURCE_MATERIAL_FOR_CAPABILITY_INVOCATION_MAP",
+                                              "reason":  "Capability roadmap belongs to skill/invocation side, not body composition."
+                                          },
+                                          {
+                                              "path":  "GENESIS_STATE.json",
+                                              "classification":  "GENESIS_STATIC_STATE_REFERENCE",
+                                              "action":  "KEEP_AS_REFERENCE_NOT_CURRENT_STATUS",
+                                              "reason":  "Genesis/static state is not current live composition or invocation map."
+                                          },
+                                          {
+                                              "path":  "tasks/*.json",
+                                              "classification":  "TASK_CONTRACT_MATERIAL_STORE",
+                                              "action":  "NORMALIZE_INTO_CAPABILITY_INVOCATION_MAP_LATER",
+                                              "reason":  "112 task contracts exist but fields are inconsistent."
+                                          }
+                                      ],
+    "design_decision":  {
+                            "recommendation":  "DO_NOT_MERGE_INTO_ONE_BIG_ORGAN",
+                            "preferred_architecture":  "TWO_MAP_ORGANS_PLUS_THIN_SELF_MODEL_LINK",
+                            "organ_1":  "Agent Body / Organ Inventory Map: identity of organs, responsibilities, status, proof boundaries.",
+                            "organ_2":  "Capability Invocation Map: skills/actions, how to invoke, inputs/outputs, validators, proof requirements, owner organ.",
+                            "link":  "Deep Self Model Index: connects organs to capabilities and checks contradictions; does not duplicate both maps raw.",
+                            "reason":  "One combined organ would mix existence/status with invocation procedure and become noisy, harder to validate, and unsafe for routing."
+                        },
+    "gaps_to_fix_before_new_organs":  [
+                                          {
+                                              "gap":  "CAPABILITY_INVOCATION_MAP_NOT_CANONICAL",
+                                              "severity":  "HIGH",
+                                              "fix":  "Create canonical capability invocation map from CAPABILITY_ROADMAP + tasks + validators, with schema and validator."
+                                          },
+                                          {
+                                              "gap":  "ORGAN_TO_CAPABILITY_LINK_MISSING",
+                                              "severity":  "HIGH",
+                                              "fix":  "Each capability should point to owning organ/component and each organ should list exported capabilities by id."
+                                          },
+                                          {
+                                              "gap":  "TASK_CONTRACTS_HAVE_NO_SCHEMA",
+                                              "severity":  "HIGH",
+                                              "fix":  "Normalize fields: capability_id, invocation_mode, command/script, inputs, outputs, validator, proof, safety boundary, maturity."
+                                          },
+                                          {
+                                              "gap":  "LEGACY_SELF_KNOWLEDGE_SURFACES_NOT_QUARANTINED_BY_VALIDATOR",
+                                              "severity":  "MEDIUM",
+                                              "fix":  "Validator should classify legacy maps as reference only, not current authority."
+                                          },
+                                          {
+                                              "gap":  "NO_DELETION_CANDIDATES_YET",
+                                              "severity":  "MEDIUM",
+                                              "fix":  "Do not delete until canonical replacement and migration proof exist."
+                                          }
+                                      ],
+    "proposed_next_steps":  [
+                                {
+                                    "step":  1,
+                                    "name":  "Freeze deletion",
+                                    "action":  "No files/organs deleted during diagnostics."
+                                },
+                                {
+                                    "step":  2,
+                                    "name":  "Create Capability Invocation Map contract",
+                                    "action":  "Define schema, required fields, maturity levels, and validator."
+                                },
+                                {
+                                    "step":  3,
+                                    "name":  "Generate draft capability map from current tasks",
+                                    "action":  "Normalize existing 112 task contracts into candidate capabilities."
+                                },
+                                {
+                                    "step":  4,
+                                    "name":  "Link capability ids to organ inventory",
+                                    "action":  "Add cross-reference layer, not raw merge."
+                                },
+                                {
+                                    "step":  5,
+                                    "name":  "Then decide update/delete",
+                                    "action":  "Only after validators prove canonical surfaces replace legacy surfaces."
+                                }
+                            ],
+    "no_delete_policy":  "No silent deletion. Legacy/duplicate surfaces are classified only; deletion requires separate migration proof and Owner approval.",
+    "live_process_touched":  false,
+    "active_memory_mutated":  false,
+    "created_at":  "2026-07-08T12:54:53.3311141+04:00"
+}
