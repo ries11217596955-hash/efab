@@ -6,18 +6,18 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "8f45d3944a1c5f36e810170e90912b949de4b026",
-    "subject_head":  "8f45d3944a1c5f36e810170e90912b949de4b026",
-    "generated_at":  "2026-07-08T07:46:39.7355724+04:00",
+    "observed_head_at_generation":  "a66ca1ec2e12e09d44f3e8b43a2bea1931b00ea1",
+    "subject_head":  "a66ca1ec2e12e09d44f3e8b43a2bea1931b00ea1",
+    "generated_at":  "2026-07-08T08:04:47.2003271+04:00",
     "generator":  "invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "role":  "canonical local body composition/status map: what exists, where it is, freshness, last runtime/proof signal",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  604,
+    "structural_path_count":  605,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  604,
-                                    "sha256":  "d200429e3b84ba0c3e2cec53864c775edcc9e376d574392abfa13e41115a274e"
+                                    "structural_file_count":  605,
+                                    "sha256":  "ba5bfa878fa04224d9488316e0b43be92cc913ed05455bb22bf3335211d6abd3"
                                 },
     "module_count":  207,
     "validator_count":  174,
@@ -221,14 +221,14 @@
                                                  "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1"
                                              ],
                            "latest_git_commit":  {
-                                                     "head":  "fa18d854808e3d0edc925f655218ec02949e1ef1",
-                                                     "committed_at":  "2026-07-07T22:56:44+04:00",
-                                                     "subject":  "feat: require provenance rejection trace fallback"
+                                                     "head":  "a66ca1ec2e12e09d44f3e8b43a2bea1931b00ea1",
+                                                     "committed_at":  "2026-07-08T07:46:36+04:00",
+                                                     "subject":  "proof: record source agnostic aimo live hotswap"
                                                  },
                            "latest_runtime_artifact":  {
                                                            "path":  ".runtime/autonomous_inner_motor/test_life_runs/live_aimo_source_agnostic_path_selection_v1_20260708T034501Z/TEST_LIFE_PROOF.json",
-                                                           "last_write":  "2026-07-08T07:46:33.9885374+04:00",
-                                                           "bytes":  148883
+                                                           "last_write":  "2026-07-08T08:04:43.1577356+04:00",
+                                                           "bytes":  376501
                                                        }
                        },
                        {
@@ -374,8 +374,8 @@
                                                                            },
                                         "latest_aimo_runtime_artifact":  {
                                                                              "path":  ".runtime/autonomous_inner_motor/test_life_runs/live_aimo_source_agnostic_path_selection_v1_20260708T034501Z/TEST_LIFE_PROOF.json",
-                                                                             "last_write":  "2026-07-08T07:46:33.9885374+04:00",
-                                                                             "bytes":  148883
+                                                                             "last_write":  "2026-07-08T08:04:43.1577356+04:00",
+                                                                             "bytes":  376501
                                                                          }
                                     },
     "freshness_rule":  "Trust currentness by body_source_fingerprint, not by self-referential commit HEAD.",

@@ -1,0 +1,192 @@
+﻿{
+    "schema":  "agent_builder_route_v4_execution_report_phase_m_v1",
+    "status":  "PASS_ROUTE_EXECUTION_REPORT_V1",
+    "route_lock":  "route_locks/AGENT_BUILDER_NEXT_15_STEPS_LOCK_V4_IDENTITY_BASED_SELECTION.md",
+    "report_path":  "docs/operations/AGENT_BUILDER_ROUTE_V4_EXECUTION_REPORT_PHASE_M.md",
+    "repo":  {
+                 "head":  "a66ca1ec2e12e09d44f3e8b43a2bea1931b00ea1",
+                 "short_head":  "a66ca1e",
+                 "branch":  "main",
+                 "ahead_behind":  "0\t0",
+                 "dirty":  false
+             },
+    "phases_completed":  [
+                             "PHASE_A",
+                             "PHASE_B",
+                             "PHASE_C",
+                             "PHASE_D",
+                             "PHASE_E",
+                             "PHASE_F",
+                             "PHASE_G",
+                             "PHASE_H",
+                             "PHASE_I",
+                             "PHASE_J",
+                             "PHASE_K",
+                             "PHASE_L",
+                             "PHASE_M"
+                         ],
+    "phases_remaining_before_owner_review":  [
+                                                 "PHASE_N_OWNER_REVIEW_GATE",
+                                                 "PHASE_O_NEXT_ROUTE_LOCK_DRAFT_ONLY_AFTER_OWNER_DECISION"
+                                             ],
+    "proofs":  {
+                   "phase_a_route_lock":  {
+                                              "status":  "PASS_ROUTE_LOCK_COMMITTED",
+                                              "path":  "route_locks/AGENT_BUILDER_NEXT_15_STEPS_LOCK_V4_IDENTITY_BASED_SELECTION.md",
+                                              "commit":  "33aee67"
+                                          },
+                   "phase_b_identity":  {
+                                            "status":  "PASS_BUILDER_IDENTITY_CONTRACT_V1",
+                                            "path":  "tests/self_model/BUILDER_IDENTITY_CONTRACT_V1_PROOF.json",
+                                            "commit":  "14b787f"
+                                        },
+                   "phase_c_snapshot":  {
+                                            "status":  "PASS_CURRENT_BODY_CAPABILITY_SNAPSHOT_V1",
+                                            "path":  "tests/self_model/CURRENT_BODY_CAPABILITY_SNAPSHOT_V1_PROOF.json",
+                                            "commit":  "14b787f"
+                                        },
+                   "phase_d_gap_map":  {
+                                           "status":  "PASS_BUILDER_GAP_MAP_V1",
+                                           "path":  "tests/self_model/BUILDER_GAP_MAP_V1_PROOF.json",
+                                           "commit":  "14b787f"
+                                       },
+                   "phase_e_source_inventory":  {
+                                                    "status":  "PASS_SOURCE_EVIDENCE_INVENTORY_V1",
+                                                    "path":  "tests/self_model/SOURCE_EVIDENCE_INVENTORY_V1_PROOF.json",
+                                                    "commit":  "7d1a681"
+                                                },
+                   "phase_f_candidate_set":  {
+                                                 "status":  "PASS_CANDIDATE_ACTION_SET_V1",
+                                                 "path":  "tests/self_model/CANDIDATE_ACTION_SET_V1_PROOF.json",
+                                                 "commit":  "7d1a681"
+                                             },
+                   "phase_g_scoring":  {
+                                           "status":  "PASS_BUILDER_MISSION_SCORING_V1",
+                                           "path":  "tests/self_model/BUILDER_MISSION_SCORING_V1_PROOF.json",
+                                           "commit":  "818553f/fa18d85"
+                                       },
+                   "phase_h_selection":  {
+                                             "status":  "PASS_SOURCE_AGNOSTIC_PATH_SELECTION_V1",
+                                             "path":  "tests/self_model/SOURCE_AGNOSTIC_PATH_SELECTION_V1_PROOF.json",
+                                             "commit":  "a36c663/fa18d85"
+                                         },
+                   "phase_i_aimo_lab_gate":  {
+                                                 "status":  "PASS_AIMO_SOURCE_AGNOSTIC_LAB_INTEGRATION_V1",
+                                                 "path":  "tests/autonomous_inner_motor/AIMO_SOURCE_AGNOSTIC_LAB_INTEGRATION_V1_PROOF.json",
+                                                 "commit":  "e119d34"
+                                             },
+                   "phase_j_dependency_negatives":  {
+                                                        "status":  "PASS_SINGLE_SOURCE_DEPENDENCY_NEGATIVE_CASES_V1",
+                                                        "path":  "tests/autonomous_inner_motor/SINGLE_SOURCE_DEPENDENCY_NEGATIVE_CASES_V1_PROOF.json",
+                                                        "commit":  "f94118d"
+                                                    },
+                   "phase_k_trace":  {
+                                         "status":  "PASS_PROVENANCE_REJECTION_TRACE_V1",
+                                         "path":  "tests/autonomous_inner_motor/PROVENANCE_REJECTION_TRACE_V1_PROOF.json",
+                                         "commit":  "fa18d85"
+                                     },
+                   "phase_l_live_hotswap":  {
+                                                "status":  "PASS_AIMO_SOURCE_AGNOSTIC_LIVE_HOTSWAP_V1",
+                                                "path":  "tests/live_start/AIMO_SOURCE_AGNOSTIC_LIVE_HOTSWAP_V1_PROOF.json",
+                                                "commit":  "a66ca1e"
+                                            }
+               },
+    "live_state":  {
+                       "live_aimo_count":  1,
+                       "live_aimo_pid":  10044,
+                       "live_aimo_command":  "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -NoProfile -ExecutionPolicy Bypass -File operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1 -Mode SandboxTestLife -RunId live_aimo_source_agnostic_path_selection_v1_20260708T034501Z -UseSourceAgnosticPathSelectionLabGate ",
+                       "live_gate_present":  true,
+                       "live_hotswap_status":  "PASS_AIMO_SOURCE_AGNOSTIC_LIVE_HOTSWAP_V1",
+                       "selected_task":  "build_source_agnostic_path_selector_v1",
+                       "selected_gap":  "source_agnostic_path_selector_missing",
+                       "stderr_size":  0,
+                       "school_required":  false,
+                       "school_alive_during_hotswap":  false
+                   },
+    "proven_lab":  [
+                       "Builder identity contract exists and rejects chatbot/tool-wrapper/School-follower/latest-signal-follower behavior.",
+                       "Body/capability snapshot distinguishes built vs wired vs lab_proven vs live_proven.",
+                       "Gap map marks source_agnostic_path_selector_missing as CRITICAL primary_self_build gap.",
+                       "Sources are inventory evidence only, not command authority.",
+                       "Candidate actions generated from identity + gap map + evidence and do not depend on School.",
+                       "Builder mission scoring ranks source-agnostic selector top and penalizes latest-signal/School-following fake candidate.",
+                       "Source-agnostic lab selection chooses build_source_agnostic_path_selector_v1 with rejection trace.",
+                       "AIMO lab gate can consume selection report without changing default path when gate is absent.",
+                       "Negative cases prove School missing/stale/failed and AgentLife residue do not block self-build selection.",
+                       "Provenance/rejection trace fields are non-empty and fallback is carried candidate to scoring to selection to AIMO trace."
+                   ],
+    "proven_live":  [
+                        "Old live AIMO was stopped gracefully and replaced.",
+                        "Exactly one live AIMO process is running after hotswap.",
+                        "New live AIMO is running with explicit UseSourceAgnosticPathSelectionLabGate.",
+                        "Live AIMO selected build_source_agnostic_path_selector_v1 for source_agnostic_path_selector_missing.",
+                        "Live hotswap stderr size is 0.",
+                        "School was not alive during hotswap and was not required."
+                    ],
+    "not_proven":  [
+                       "Ungated/default live AIMO path uses source-agnostic selector.",
+                       "Child-agent factory readiness.",
+                       "Child-agent production safety/maturity.",
+                       "Permanent removal of explicit lab gate from live path.",
+                       "New route after Owner review."
+                   ],
+    "failures_repairs":  [
+                             {
+                                 "issue":  "Initial School-specific direction risk",
+                                 "repair":  "Reframed V4 route around identity/gap/source-agnostic selection rather than School."
+                             },
+                             {
+                                 "issue":  "PowerShell inline if / hashtable key / array append issues during E/F implementation",
+                                 "repair":  "Rewrote exporters using explicit health variables, PSObject rows, and array-safe append."
+                             },
+                             {
+                                 "issue":  "fallback_if_source_missing missing from scoring/selection trace",
+                                 "repair":  "Patched scoring propagation and added PHASE_K validator."
+                             },
+                             {
+                                 "issue":  "Generated report timestamp/runtime noise after validators",
+                                 "repair":  "Rejected non-semantic regenerated noise before final clean proofs."
+                             },
+                             {
+                                 "issue":  "School process was not alive before PHASE_L",
+                                 "repair":  "Did not restart or require School; used this as live evidence that source-agnostic AIMO hotswap does not depend on School."
+                             }
+                         ],
+    "remaining_gaps":  [
+                           {
+                               "id":  "ungated_live_path_not_source_agnostic",
+                               "status":  "OPEN",
+                               "severity":  "HIGH",
+                               "reason":  "Current live proof uses explicit gate; default path remains not proven source-agnostic."
+                           },
+                           {
+                               "id":  "route_review_required",
+                               "status":  "OPEN",
+                               "severity":  "HIGH",
+                               "reason":  "Route lock requires Owner review before continuing or drafting next route."
+                           },
+                           {
+                               "id":  "child_agent_factory_not_ready",
+                               "status":  "OPEN",
+                               "severity":  "MEDIUM",
+                               "reason":  "Intentionally deferred until self-build selector proof is reviewed."
+                           },
+                           {
+                               "id":  "school_dead_observed",
+                               "status":  "OBSERVED_NON_BLOCKING",
+                               "severity":  "LOW",
+                               "reason":  "School PID from old proof is dead; source-agnostic AIMO does not require it, but School health policy remains future work if School is still desired as optional source."
+                           }
+                       ],
+    "acceptance":  {
+                       "route_execution_report_written":  true,
+                       "does_not_claim_child_agent_readiness":  true,
+                       "owner_review_required_next":  true,
+                       "no_live_mutation_by_phase_m":  true,
+                       "live_readonly_checked":  true
+                   },
+    "next_step":  "PHASE_N_OWNER_REVIEW_GATE",
+    "live_process_touched":  false,
+    "active_memory_mutated":  false,
+    "created_at":  "2026-07-08T08:03:29.0268820+04:00"
+}
