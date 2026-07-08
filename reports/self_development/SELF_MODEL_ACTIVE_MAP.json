@@ -6,19 +6,19 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "e48198f9aa72c78f51499c77a10bed6fa49f1f81",
-    "subject_head":  "e48198f9aa72c78f51499c77a10bed6fa49f1f81",
-    "generated_at":  "2026-07-08T16:54:12.1655635+04:00",
+    "observed_head_at_generation":  "3b507d0b3f92793c82eb05a86974aadd55afca5c",
+    "subject_head":  "3b507d0b3f92793c82eb05a86974aadd55afca5c",
+    "generated_at":  "2026-07-08T17:06:26.2758234+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  1600,
+    "structural_path_count":  1608,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1600,
-                                    "sha256":  "d684ec921288a6001cf56935a54fd318bcf21006c9a1d25a13c0e43f505f8406"
+                                    "structural_file_count":  1608,
+                                    "sha256":  "730fd2fa4a457891928c5a3a3228690ef35f11571d9adae8f3858f942e05a85f"
                                 },
     "module_count":  207,
     "validator_count":  174,
@@ -2611,15 +2611,15 @@
                                             "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                                             "discovery_method":  "bounded_git_ls_files_path_discovery",
                                             "evidence_counts":  {
-                                                                    "files":  30,
-                                                                    "scripts":  30,
+                                                                    "files":  31,
+                                                                    "scripts":  31,
                                                                     "validators":  20,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  4,
                                                                     "docs":  0
                                                                 },
-                                            "file_count":  30,
-                                            "script_count":  30,
+                                            "file_count":  31,
+                                            "script_count":  31,
                                             "validator_count":  20,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  4,
@@ -2644,7 +2644,7 @@
                                                                    "operations/self_model/validate_map_authority_repair_v1.ps1",
                                                                    "operations/self_model/validate_next_route_lock_and_health_audit_v1.ps1",
                                                                    "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
-                                                                   "operations/self_model/validate_route_v4_execution_report_phase_m_v1.ps1"
+                                                                   "operations/self_model/validate_organ_passport_draft_generator_fast_lane_v1.ps1"
                                                                ],
                                             "proof_refs":  [
 
@@ -2708,7 +2708,7 @@
                                                                           "operations/self_model/validate_map_authority_repair_v1.ps1",
                                                                           "operations/self_model/validate_next_route_lock_and_health_audit_v1.ps1",
                                                                           "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
-                                                                          "operations/self_model/validate_route_v4_execution_report_phase_m_v1.ps1"
+                                                                          "operations/self_model/validate_organ_passport_draft_generator_fast_lane_v1.ps1"
                                                                       ],
                                             "needs_triage":  true,
                                             "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
@@ -8239,6 +8239,47 @@
                                             "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
                                             "source_ref":  "bounded_tracked_file_discovery_v1",
                                             "is_required_component":  false
+                                        },
+                                        {
+                                            "id":  "self_model_organ_passports",
+                                            "path":  "self_model/organ_passports",
+                                            "root":  "self_model/organ_passports",
+                                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
+                                            "discovery_method":  "bounded_git_ls_files_path_discovery",
+                                            "evidence_counts":  {
+                                                                    "files":  2,
+                                                                    "scripts":  0,
+                                                                    "validators":  0,
+                                                                    "proofs":  0,
+                                                                    "contracts_or_policies":  1,
+                                                                    "docs":  0
+                                                                },
+                                            "file_count":  2,
+                                            "script_count":  0,
+                                            "validator_count":  0,
+                                            "proof_file_count":  0,
+                                            "contract_or_policy_count":  1,
+                                            "doc_count":  0,
+                                            "validator_refs":  [
+
+                                                               ],
+                                            "proof_refs":  [
+
+                                                           ],
+                                            "contract_or_policy_refs":  [
+                                                                            "self_model/organ_passports/contracts_accepted_atom_retention_organ/ORGAN_PASSPORT_V1.json"
+                                                                        ],
+                                            "notable_files":  [
+                                                                  "self_model/organ_passports/contracts_accepted_atom_retention_organ/ORGAN_PASSPORT_V1.json",
+                                                                  "self_model/organ_passports/operations_self_model/ORGAN_PASSPORT_V1.json"
+                                                              ],
+                                            "primary_evidence_refs":  [
+                                                                          "self_model/organ_passports/contracts_accepted_atom_retention_organ/ORGAN_PASSPORT_V1.json"
+                                                                      ],
+                                            "needs_triage":  true,
+                                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
+                                            "source_ref":  "bounded_tracked_file_discovery_v1",
+                                            "is_required_component":  false
                                         }
                                     ],
     "legacy_unverified_hints":  [
@@ -8294,11 +8335,11 @@
                                 ],
     "component_authority_summary":  {
                                         "confirmed_components":  7,
-                                        "primary_evidence_candidates":  156,
+                                        "primary_evidence_candidates":  157,
                                         "legacy_unverified_hints":  4,
                                         "rejected_or_stale_hints":  3,
                                         "required_components":  7,
-                                        "total_components_in_compatibility_view":  163,
+                                        "total_components_in_compatibility_view":  164,
                                         "bounded_discovery_pathspecs":  [
                                                                             "operations",
                                                                             "modules",
@@ -10909,15 +10950,15 @@
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                            "discovery_method":  "bounded_git_ls_files_path_discovery",
                            "evidence_counts":  {
-                                                   "files":  30,
-                                                   "scripts":  30,
+                                                   "files":  31,
+                                                   "scripts":  31,
                                                    "validators":  20,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  4,
                                                    "docs":  0
                                                },
-                           "file_count":  30,
-                           "script_count":  30,
+                           "file_count":  31,
+                           "script_count":  31,
                            "validator_count":  20,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  4,
@@ -10942,7 +10983,7 @@
                                                   "operations/self_model/validate_map_authority_repair_v1.ps1",
                                                   "operations/self_model/validate_next_route_lock_and_health_audit_v1.ps1",
                                                   "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
-                                                  "operations/self_model/validate_route_v4_execution_report_phase_m_v1.ps1"
+                                                  "operations/self_model/validate_organ_passport_draft_generator_fast_lane_v1.ps1"
                                               ],
                            "proof_refs":  [
 
@@ -11006,7 +11047,7 @@
                                                          "operations/self_model/validate_map_authority_repair_v1.ps1",
                                                          "operations/self_model/validate_next_route_lock_and_health_audit_v1.ps1",
                                                          "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
-                                                         "operations/self_model/validate_route_v4_execution_report_phase_m_v1.ps1"
+                                                         "operations/self_model/validate_organ_passport_draft_generator_fast_lane_v1.ps1"
                                                      ],
                            "needs_triage":  true,
                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
@@ -16532,6 +16573,47 @@
                                              ],
                            "primary_evidence_refs":  [
                                                          "self_build_programs/regression/VALIDATE_PHASE165_SELF_BUILD_LOOP_REGRESSION_V1.ps1"
+                                                     ],
+                           "needs_triage":  true,
+                           "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
+                           "source_ref":  "bounded_tracked_file_discovery_v1",
+                           "is_required_component":  false
+                       },
+                       {
+                           "id":  "self_model_organ_passports",
+                           "path":  "self_model/organ_passports",
+                           "root":  "self_model/organ_passports",
+                           "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
+                           "discovery_method":  "bounded_git_ls_files_path_discovery",
+                           "evidence_counts":  {
+                                                   "files":  2,
+                                                   "scripts":  0,
+                                                   "validators":  0,
+                                                   "proofs":  0,
+                                                   "contracts_or_policies":  1,
+                                                   "docs":  0
+                                               },
+                           "file_count":  2,
+                           "script_count":  0,
+                           "validator_count":  0,
+                           "proof_file_count":  0,
+                           "contract_or_policy_count":  1,
+                           "doc_count":  0,
+                           "validator_refs":  [
+
+                                              ],
+                           "proof_refs":  [
+
+                                          ],
+                           "contract_or_policy_refs":  [
+                                                           "self_model/organ_passports/contracts_accepted_atom_retention_organ/ORGAN_PASSPORT_V1.json"
+                                                       ],
+                           "notable_files":  [
+                                                 "self_model/organ_passports/contracts_accepted_atom_retention_organ/ORGAN_PASSPORT_V1.json",
+                                                 "self_model/organ_passports/operations_self_model/ORGAN_PASSPORT_V1.json"
+                                             ],
+                           "primary_evidence_refs":  [
+                                                         "self_model/organ_passports/contracts_accepted_atom_retention_organ/ORGAN_PASSPORT_V1.json"
                                                      ],
                            "needs_triage":  true,
                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",

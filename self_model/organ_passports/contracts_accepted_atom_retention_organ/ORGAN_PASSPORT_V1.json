@@ -1,0 +1,116 @@
+﻿{
+    "schema":  "organ_passport_v1",
+    "status":  "PASSPORT_DRAFT_FROM_EVIDENCE",
+    "organ_id":  "contracts_accepted_atom_retention_organ",
+    "display_name":  "Accepted Atom Retention Organ",
+    "purpose":  "Retain accepted atoms through governed contracts/passport evidence and prevent accepted work from being lost or reclassified as raw material.",
+    "responsibilities":  [
+                             "hold accepted atom retention contract and legacy passport material",
+                             "provide evidence for retention lifecycle/capability/proof/sanitizer boundaries",
+                             "serve as candidate organ for accepted atom retention after canonical validation"
+                         ],
+    "what_it_is_not":  [
+                           "not active organ acceptance",
+                           "not capability invocation map",
+                           "not child-agent readiness proof",
+                           "not live runtime proof",
+                           "not deletion or migration authority"
+                       ],
+    "owning_root":  "contracts/accepted_atom_retention_organ",
+    "owned_files":  [
+                        "contracts/accepted_atom_retention_organ/ACCEPTED_ATOM_RETENTION_ORGAN_CONTRACT.md",
+                        "contracts/accepted_atom_retention_organ/ACCEPTED_ATOM_RETENTION_ORGAN_CONTRACT_STATUS.json",
+                        "contracts/accepted_atom_retention_organ/OLD_D2B_RUNNER_RETENTION_PATCH_PLAN.md",
+                        "contracts/accepted_atom_retention_organ/passports/CAPABILITY_PASSPORT.json",
+                        "contracts/accepted_atom_retention_organ/passports/INTEGRATION_PASSPORT.json",
+                        "contracts/accepted_atom_retention_organ/passports/LIFECYCLE_PASSPORT.json",
+                        "contracts/accepted_atom_retention_organ/passports/ORGAN_PASSPORT.json",
+                        "contracts/accepted_atom_retention_organ/passports/PASSPORT_INDEX.json",
+                        "contracts/accepted_atom_retention_organ/passports/PROOF_PASSPORT.json",
+                        "contracts/accepted_atom_retention_organ/passports/SANITIZER_PASSPORT.json"
+                    ],
+    "inputs":  [
+                   "canonical body map candidate entry",
+                   "primary evidence refs from BODY_MAP_CANDIDATE_TRIAGE_V1",
+                   "triage promotion plan fast lane"
+               ],
+    "outputs":  [
+                    "draft canonical organ passport",
+                    "human passport summary",
+                    "passport draft generator proof"
+                ],
+    "invocation_surfaces":  [
+
+                            ],
+    "dependencies":  [
+                         "self_model/ORGAN_PASSPORT_V1_CONTRACT.json",
+                         "reports/self_development/BODY_MAP_CANDIDATE_TRIAGE_V1.json",
+                         "reports/self_development/BODY_MAP_TRIAGE_PROMOTION_PLAN_V1.json"
+                     ],
+    "validators":  [
+
+                   ],
+    "proof_refs":  [
+                       "contracts/accepted_atom_retention_organ/passports/PROOF_PASSPORT.json"
+                   ],
+    "runtime_refs":  [
+
+                     ],
+    "exported_capabilities":  [
+
+                              ],
+    "safety_boundaries":  [
+                              "draft only",
+                              "no PASSPORT_ACTIVE claim",
+                              "no PROVEN_LIVE claim",
+                              "no child-agent readiness claim",
+                              "missing evidence recorded as gaps",
+                              "activation requires separate validator/proof/owner acceptance"
+                          ],
+    "failure_modes":  [
+                          "misclassified organ candidate",
+                          "owned files include material not organ behavior",
+                          "validator evidence supports draft only, not live readiness",
+                          "legacy passport-like material may be stale"
+                      ],
+    "rollback_or_quarantine":  [
+                                   "delete canonical draft passport files before activation",
+                                   "keep legacy source material untouched",
+                                   "do not mutate owning root during rollback"
+                               ],
+    "maturity":  "DRAFT",
+    "live_or_lab_status":  "NOT_PROVEN",
+    "gaps":  [
+                 "active passport validator not yet run for live behavior",
+                 "capability invocation map link not generated",
+                 "runtime proof not provided",
+                 "owner/route acceptance for activation not provided"
+             ],
+    "source_evidence":  [
+                            {
+                                "type":  "candidate_triage",
+                                "path":  "reports/self_development/BODY_MAP_CANDIDATE_TRIAGE_V1.json",
+                                "candidate_id":  "contracts_accepted_atom_retention_organ",
+                                "status":  "PASS_BODY_MAP_CANDIDATE_TRIAGE_V1"
+                            },
+                            {
+                                "type":  "promotion_plan",
+                                "path":  "reports/self_development/BODY_MAP_TRIAGE_PROMOTION_PLAN_V1.json",
+                                "candidate_id":  "contracts_accepted_atom_retention_organ",
+                                "status":  "PASS_BODY_MAP_TRIAGE_PROMOTION_PLAN_V1"
+                            },
+                            {
+                                "type":  "owned_root",
+                                "path":  "contracts/accepted_atom_retention_organ",
+                                "tracked_file_count":  10,
+                                "script_count":  0
+                            },
+                            {
+                                "type":  "existing_passport_like_file",
+                                "path":  "contracts/accepted_atom_retention_organ/passports/ORGAN_PASSPORT.json",
+                                "raw_authority":  false,
+                                "use":  "legacy source material only"
+                            }
+                        ],
+    "last_validated_at":  "2026-07-08T17:05:33.8999148+04:00"
+}

@@ -2,9 +2,9 @@
 
 Status: ACTIVE_DERIVED_VIEW
 Branch: main
-Observed head at generation: e48198f9aa72c78f51499c77a10bed6fa49f1f81
-Generated: 2026-07-08T16:54:12.1655635+04:00
-Body source fingerprint: d684ec921288a6001cf56935a54fd318bcf21006c9a1d25a13c0e43f505f8406
+Observed head at generation: 3b507d0b3f92793c82eb05a86974aadd55afca5c
+Generated: 2026-07-08T17:06:26.2758234+04:00
+Body source fingerprint: 730fd2fa4a457891928c5a3a3228690ef35f11571d9adae8f3858f942e05a85f
 
 Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
@@ -18,7 +18,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 ## Counts
 
 - Confirmed components: 7
-- Primary evidence candidates: 156
+- Primary evidence candidates: 157
 - Legacy unverified hints: 4
 - Rejected or stale hints: 3
 
@@ -71,7 +71,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `operations_reasoning` - root `operations/reasoning`, files=6, scripts=6, validators=3, proofs=0, needs_triage=True
 - `operations_reflex_library` - root `operations/reflex_library`, files=2, scripts=1, validators=0, proofs=0, needs_triage=True
 - `operations_runtime` - root `operations/runtime`, files=2, scripts=0, validators=0, proofs=0, needs_triage=True
-- `operations_self_model` - root `operations/self_model`, files=30, scripts=30, validators=20, proofs=0, needs_triage=True
+- `operations_self_model` - root `operations/self_model`, files=31, scripts=31, validators=20, proofs=0, needs_triage=True
 - `operations_smoke_trials` - root `operations/smoke_trials`, files=4, scripts=0, validators=3, proofs=0, needs_triage=True
 - `packs_phase10_generated_agent_validation_harness_v1` - root `packs/PHASE10_GENERATED_AGENT_VALIDATION_HARNESS_V1`, files=6, scripts=3, validators=2, proofs=0, needs_triage=True
 - `packs_phase100_quarantine_and_blocker_registry_v1` - root `packs/PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1`, files=3, scripts=2, validators=0, proofs=0, needs_triage=True

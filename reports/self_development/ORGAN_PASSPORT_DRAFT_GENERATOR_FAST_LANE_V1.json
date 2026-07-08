@@ -1,0 +1,43 @@
+﻿{
+    "schema":  "organ_passport_draft_generator_fast_lane_v1",
+    "status":  "PASS_ORGAN_PASSPORT_DRAFT_GENERATOR_FAST_LANE_V1",
+    "purpose":  "Generate canonical draft organ passports only for candidate-ready fast-lane body-map candidates.",
+    "source_plan":  "reports/self_development/BODY_MAP_TRIAGE_PROMOTION_PLAN_V1.json",
+    "source_triage":  "reports/self_development/BODY_MAP_CANDIDATE_TRIAGE_V1.json",
+    "generated_count":  2,
+    "generated_drafts":  [
+                             {
+                                 "organ_id":  "contracts_accepted_atom_retention_organ",
+                                 "passport_path":  "self_model\\organ_passports\\contracts_accepted_atom_retention_organ\\ORGAN_PASSPORT_V1.json",
+                                 "doc_path":  "docs\\operations\\organ_passports\\contracts_accepted_atom_retention_organ\\ORGAN_PASSPORT_V1.md",
+                                 "owning_root":  "contracts/accepted_atom_retention_organ",
+                                 "status":  "PASSPORT_DRAFT_FROM_EVIDENCE",
+                                 "maturity":  "DRAFT",
+                                 "live_or_lab_status":  "NOT_PROVEN",
+                                 "owned_file_count":  10,
+                                 "validator_count":  0
+                             },
+                             {
+                                 "organ_id":  "operations_self_model",
+                                 "passport_path":  "self_model\\organ_passports\\operations_self_model\\ORGAN_PASSPORT_V1.json",
+                                 "doc_path":  "docs\\operations\\organ_passports\\operations_self_model\\ORGAN_PASSPORT_V1.md",
+                                 "owning_root":  "operations/self_model",
+                                 "status":  "PASSPORT_DRAFT_FROM_EVIDENCE",
+                                 "maturity":  "DRAFT",
+                                 "live_or_lab_status":  "NOT_PROVEN",
+                                 "owned_file_count":  30,
+                                 "validator_count":  20
+                             }
+                         ],
+    "boundaries":  {
+                       "draft_only":  true,
+                       "no_active_passports_created":  true,
+                       "no_live_claims":  true,
+                       "no_body_map_mutation_performed":  true,
+                       "no_owning_root_mutation":  true,
+                       "passport_generator_for_all_candidates_blocked":  true,
+                       "live_process_touched":  false
+                   },
+    "next_step":  "VALIDATE_AND_REVIEW_DRAFT_PASSPORTS_BEFORE_ACTIVATION_OR_CAPABILITY_MAP_LINK",
+    "created_at":  "2026-07-08T17:05:34.0229654+04:00"
+}

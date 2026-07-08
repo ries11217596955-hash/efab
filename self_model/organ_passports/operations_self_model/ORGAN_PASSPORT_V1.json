@@ -1,0 +1,274 @@
+﻿{
+    "schema":  "organ_passport_v1",
+    "status":  "PASSPORT_DRAFT_FROM_EVIDENCE",
+    "organ_id":  "operations_self_model",
+    "display_name":  "Builder Self-Model Control Organ",
+    "purpose":  "Maintain Builder self-model evidence, map authority, validator chain, and bounded self-development reports.",
+    "responsibilities":  [
+                             "validate and export Builder self-model/material evidence",
+                             "maintain map authority and body-map validators",
+                             "produce bounded self-development validation reports",
+                             "protect separation between map, capability map, passport, and proof surfaces"
+                         ],
+    "what_it_is_not":  [
+                           "not active organ acceptance",
+                           "not capability invocation map",
+                           "not child-agent readiness proof",
+                           "not live runtime proof",
+                           "not deletion or migration authority"
+                       ],
+    "owning_root":  "operations/self_model",
+    "owned_files":  [
+                        "operations/self_model/export_builder_gap_map_v1.ps1",
+                        "operations/self_model/export_builder_mission_scoring_v1.ps1",
+                        "operations/self_model/export_candidate_action_set_v1.ps1",
+                        "operations/self_model/export_current_body_capability_snapshot_v1.ps1",
+                        "operations/self_model/export_source_agnostic_path_selection_v1.ps1",
+                        "operations/self_model/export_source_evidence_inventory_v1.ps1",
+                        "operations/self_model/validate_aimo_default_route_execution_report_v1.ps1",
+                        "operations/self_model/validate_aimo_default_source_agnostic_selector_contract_v1.ps1",
+                        "operations/self_model/validate_body_map_candidate_triage_v1.ps1",
+                        "operations/self_model/validate_body_map_primary_evidence_rebuild_v1.ps1",
+                        "operations/self_model/validate_body_map_triage_promotion_plan_v1.ps1",
+                        "operations/self_model/validate_builder_gap_map_v1.ps1",
+                        "operations/self_model/validate_builder_identity_contract_v1.ps1",
+                        "operations/self_model/validate_builder_mission_scoring_v1.ps1",
+                        "operations/self_model/validate_candidate_action_set_v1.ps1",
+                        "operations/self_model/validate_capability_invocation_map_v1_contract.ps1",
+                        "operations/self_model/validate_codex_context_budget_and_body_map_task_v1.ps1",
+                        "operations/self_model/validate_current_body_capability_snapshot_v1.ps1",
+                        "operations/self_model/validate_deep_self_model_map_diagnostic_v1.ps1",
+                        "operations/self_model/validate_expanded_organ_candidate_inventory_audit_v1.ps1",
+                        "operations/self_model/validate_legacy_duplicate_map_removal_v1.ps1",
+                        "operations/self_model/validate_map_authority_duplicate_audit_v1.ps1",
+                        "operations/self_model/validate_map_authority_repair_v1.ps1",
+                        "operations/self_model/validate_next_route_lock_and_health_audit_v1.ps1",
+                        "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
+                        "operations/self_model/validate_route_v4_execution_report_phase_m_v1.ps1",
+                        "operations/self_model/validate_runtime_cleanup_v1.ps1",
+                        "operations/self_model/validate_school_runtime_hygiene_gap_v1.ps1",
+                        "operations/self_model/validate_source_agnostic_path_selection_v1.ps1",
+                        "operations/self_model/validate_source_evidence_inventory_v1.ps1"
+                    ],
+    "inputs":  [
+                   "canonical body map candidate entry",
+                   "primary evidence refs from BODY_MAP_CANDIDATE_TRIAGE_V1",
+                   "triage promotion plan fast lane"
+               ],
+    "outputs":  [
+                    "draft canonical organ passport",
+                    "human passport summary",
+                    "passport draft generator proof"
+                ],
+    "invocation_surfaces":  [
+                                {
+                                    "surface":  "script",
+                                    "path":  "operations/self_model/export_builder_gap_map_v1.ps1",
+                                    "status":  "observed_primary_evidence_not_invocation_contract"
+                                },
+                                {
+                                    "surface":  "script",
+                                    "path":  "operations/self_model/export_builder_mission_scoring_v1.ps1",
+                                    "status":  "observed_primary_evidence_not_invocation_contract"
+                                },
+                                {
+                                    "surface":  "script",
+                                    "path":  "operations/self_model/export_candidate_action_set_v1.ps1",
+                                    "status":  "observed_primary_evidence_not_invocation_contract"
+                                },
+                                {
+                                    "surface":  "script",
+                                    "path":  "operations/self_model/export_current_body_capability_snapshot_v1.ps1",
+                                    "status":  "observed_primary_evidence_not_invocation_contract"
+                                },
+                                {
+                                    "surface":  "script",
+                                    "path":  "operations/self_model/export_source_agnostic_path_selection_v1.ps1",
+                                    "status":  "observed_primary_evidence_not_invocation_contract"
+                                },
+                                {
+                                    "surface":  "script",
+                                    "path":  "operations/self_model/export_source_evidence_inventory_v1.ps1",
+                                    "status":  "observed_primary_evidence_not_invocation_contract"
+                                },
+                                {
+                                    "surface":  "script",
+                                    "path":  "operations/self_model/validate_aimo_default_route_execution_report_v1.ps1",
+                                    "status":  "observed_primary_evidence_not_invocation_contract"
+                                },
+                                {
+                                    "surface":  "script",
+                                    "path":  "operations/self_model/validate_aimo_default_source_agnostic_selector_contract_v1.ps1",
+                                    "status":  "observed_primary_evidence_not_invocation_contract"
+                                },
+                                {
+                                    "surface":  "script",
+                                    "path":  "operations/self_model/validate_body_map_candidate_triage_v1.ps1",
+                                    "status":  "observed_primary_evidence_not_invocation_contract"
+                                },
+                                {
+                                    "surface":  "script",
+                                    "path":  "operations/self_model/validate_body_map_primary_evidence_rebuild_v1.ps1",
+                                    "status":  "observed_primary_evidence_not_invocation_contract"
+                                },
+                                {
+                                    "surface":  "script",
+                                    "path":  "operations/self_model/validate_body_map_triage_promotion_plan_v1.ps1",
+                                    "status":  "observed_primary_evidence_not_invocation_contract"
+                                },
+                                {
+                                    "surface":  "script",
+                                    "path":  "operations/self_model/validate_builder_gap_map_v1.ps1",
+                                    "status":  "observed_primary_evidence_not_invocation_contract"
+                                },
+                                {
+                                    "surface":  "script",
+                                    "path":  "operations/self_model/validate_builder_identity_contract_v1.ps1",
+                                    "status":  "observed_primary_evidence_not_invocation_contract"
+                                },
+                                {
+                                    "surface":  "script",
+                                    "path":  "operations/self_model/validate_builder_mission_scoring_v1.ps1",
+                                    "status":  "observed_primary_evidence_not_invocation_contract"
+                                },
+                                {
+                                    "surface":  "script",
+                                    "path":  "operations/self_model/validate_candidate_action_set_v1.ps1",
+                                    "status":  "observed_primary_evidence_not_invocation_contract"
+                                },
+                                {
+                                    "surface":  "script",
+                                    "path":  "operations/self_model/validate_capability_invocation_map_v1_contract.ps1",
+                                    "status":  "observed_primary_evidence_not_invocation_contract"
+                                },
+                                {
+                                    "surface":  "script",
+                                    "path":  "operations/self_model/validate_codex_context_budget_and_body_map_task_v1.ps1",
+                                    "status":  "observed_primary_evidence_not_invocation_contract"
+                                },
+                                {
+                                    "surface":  "script",
+                                    "path":  "operations/self_model/validate_current_body_capability_snapshot_v1.ps1",
+                                    "status":  "observed_primary_evidence_not_invocation_contract"
+                                },
+                                {
+                                    "surface":  "script",
+                                    "path":  "operations/self_model/validate_deep_self_model_map_diagnostic_v1.ps1",
+                                    "status":  "observed_primary_evidence_not_invocation_contract"
+                                },
+                                {
+                                    "surface":  "script",
+                                    "path":  "operations/self_model/validate_expanded_organ_candidate_inventory_audit_v1.ps1",
+                                    "status":  "observed_primary_evidence_not_invocation_contract"
+                                },
+                                {
+                                    "surface":  "script",
+                                    "path":  "operations/self_model/validate_legacy_duplicate_map_removal_v1.ps1",
+                                    "status":  "observed_primary_evidence_not_invocation_contract"
+                                },
+                                {
+                                    "surface":  "script",
+                                    "path":  "operations/self_model/validate_map_authority_duplicate_audit_v1.ps1",
+                                    "status":  "observed_primary_evidence_not_invocation_contract"
+                                },
+                                {
+                                    "surface":  "script",
+                                    "path":  "operations/self_model/validate_map_authority_repair_v1.ps1",
+                                    "status":  "observed_primary_evidence_not_invocation_contract"
+                                },
+                                {
+                                    "surface":  "script",
+                                    "path":  "operations/self_model/validate_next_route_lock_and_health_audit_v1.ps1",
+                                    "status":  "observed_primary_evidence_not_invocation_contract"
+                                },
+                                {
+                                    "surface":  "script",
+                                    "path":  "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
+                                    "status":  "observed_primary_evidence_not_invocation_contract"
+                                }
+                            ],
+    "dependencies":  [
+                         "self_model/ORGAN_PASSPORT_V1_CONTRACT.json",
+                         "reports/self_development/BODY_MAP_CANDIDATE_TRIAGE_V1.json",
+                         "reports/self_development/BODY_MAP_TRIAGE_PROMOTION_PLAN_V1.json"
+                     ],
+    "validators":  [
+                       "operations/self_model/validate_aimo_default_route_execution_report_v1.ps1",
+                       "operations/self_model/validate_aimo_default_source_agnostic_selector_contract_v1.ps1",
+                       "operations/self_model/validate_body_map_primary_evidence_rebuild_v1.ps1",
+                       "operations/self_model/validate_builder_gap_map_v1.ps1",
+                       "operations/self_model/validate_builder_identity_contract_v1.ps1",
+                       "operations/self_model/validate_builder_mission_scoring_v1.ps1",
+                       "operations/self_model/validate_candidate_action_set_v1.ps1",
+                       "operations/self_model/validate_capability_invocation_map_v1_contract.ps1",
+                       "operations/self_model/validate_codex_context_budget_and_body_map_task_v1.ps1",
+                       "operations/self_model/validate_current_body_capability_snapshot_v1.ps1",
+                       "operations/self_model/validate_deep_self_model_map_diagnostic_v1.ps1",
+                       "operations/self_model/validate_expanded_organ_candidate_inventory_audit_v1.ps1",
+                       "operations/self_model/validate_legacy_duplicate_map_removal_v1.ps1",
+                       "operations/self_model/validate_map_authority_duplicate_audit_v1.ps1",
+                       "operations/self_model/validate_map_authority_repair_v1.ps1",
+                       "operations/self_model/validate_next_route_lock_and_health_audit_v1.ps1",
+                       "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
+                       "operations/self_model/validate_route_v4_execution_report_phase_m_v1.ps1",
+                       "operations/self_model/validate_runtime_cleanup_v1.ps1",
+                       "operations/self_model/validate_school_runtime_hygiene_gap_v1.ps1"
+                   ],
+    "proof_refs":  [
+
+                   ],
+    "runtime_refs":  [
+
+                     ],
+    "exported_capabilities":  [
+
+                              ],
+    "safety_boundaries":  [
+                              "draft only",
+                              "no PASSPORT_ACTIVE claim",
+                              "no PROVEN_LIVE claim",
+                              "no child-agent readiness claim",
+                              "missing evidence recorded as gaps",
+                              "activation requires separate validator/proof/owner acceptance"
+                          ],
+    "failure_modes":  [
+                          "misclassified organ candidate",
+                          "owned files include material not organ behavior",
+                          "validator evidence supports draft only, not live readiness",
+                          "legacy passport-like material may be stale"
+                      ],
+    "rollback_or_quarantine":  [
+                                   "delete canonical draft passport files before activation",
+                                   "keep legacy source material untouched",
+                                   "do not mutate owning root during rollback"
+                               ],
+    "maturity":  "DRAFT",
+    "live_or_lab_status":  "NOT_PROVEN",
+    "gaps":  [
+                 "active passport validator not yet run for live behavior",
+                 "capability invocation map link not generated",
+                 "runtime proof not provided",
+                 "owner/route acceptance for activation not provided"
+             ],
+    "source_evidence":  [
+                            {
+                                "type":  "candidate_triage",
+                                "path":  "reports/self_development/BODY_MAP_CANDIDATE_TRIAGE_V1.json",
+                                "candidate_id":  "operations_self_model",
+                                "status":  "PASS_BODY_MAP_CANDIDATE_TRIAGE_V1"
+                            },
+                            {
+                                "type":  "promotion_plan",
+                                "path":  "reports/self_development/BODY_MAP_TRIAGE_PROMOTION_PLAN_V1.json",
+                                "candidate_id":  "operations_self_model",
+                                "status":  "PASS_BODY_MAP_TRIAGE_PROMOTION_PLAN_V1"
+                            },
+                            {
+                                "type":  "owned_root",
+                                "path":  "operations/self_model",
+                                "tracked_file_count":  30,
+                                "script_count":  30
+                            }
+                        ],
+    "last_validated_at":  "2026-07-08T17:05:34.0179614+04:00"
+}

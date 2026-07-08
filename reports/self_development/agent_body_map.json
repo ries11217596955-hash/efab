@@ -2,16 +2,16 @@
     "schema":  "AGENT_BODY_MAP_COMPATIBILITY_VIEW_V2",
     "source":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
     "branch":  "main",
-    "observed_head_at_generation":  "e48198f9aa72c78f51499c77a10bed6fa49f1f81",
-    "generated_at":  "2026-07-08T16:54:12.1655635+04:00",
+    "observed_head_at_generation":  "3b507d0b3f92793c82eb05a86974aadd55afca5c",
+    "generated_at":  "2026-07-08T17:06:26.2758234+04:00",
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1600,
-                                    "sha256":  "d684ec921288a6001cf56935a54fd318bcf21006c9a1d25a13c0e43f505f8406"
+                                    "structural_file_count":  1608,
+                                    "sha256":  "730fd2fa4a457891928c5a3a3228690ef35f11571d9adae8f3858f942e05a85f"
                                 },
     "map_kind":  "DERIVED_HUMAN_COMPATIBILITY_VIEW",
     "confirmed_component_count":  7,
-    "primary_evidence_candidate_count":  156,
+    "primary_evidence_candidate_count":  157,
     "components":  [
                        {
                            "id":  "school",
@@ -545,8 +545,8 @@
                            "id":  "operations_self_model",
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                            "root":  "operations/self_model",
-                           "file_count":  30,
-                           "script_count":  30,
+                           "file_count":  31,
+                           "script_count":  31,
                            "required_files_present":  null,
                            "is_required_component":  false,
                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
@@ -1963,6 +1963,18 @@
                            "root":  "self_build_programs/regression",
                            "file_count":  1,
                            "script_count":  1,
+                           "required_files_present":  null,
+                           "is_required_component":  false,
+                           "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
+                           "source_ref":  "bounded_tracked_file_discovery_v1",
+                           "needs_triage":  true
+                       },
+                       {
+                           "id":  "self_model_organ_passports",
+                           "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
+                           "root":  "self_model/organ_passports",
+                           "file_count":  2,
+                           "script_count":  0,
                            "required_files_present":  null,
                            "is_required_component":  false,
                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",

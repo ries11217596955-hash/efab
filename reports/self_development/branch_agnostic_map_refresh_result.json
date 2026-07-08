@@ -1,28 +1,38 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-08T16:53:46.5600502+04:00",
+    "checked_at":  "2026-07-08T17:06:01.7047880+04:00",
     "branch":  "main",
-    "observed_head":  "e48198f9aa72c78f51499c77a10bed6fa49f1f81",
-    "subject_head":  "e48198f9aa72c78f51499c77a10bed6fa49f1f81",
+    "observed_head":  "3b507d0b3f92793c82eb05a86974aadd55afca5c",
+    "subject_head":  "3b507d0b3f92793c82eb05a86974aadd55afca5c",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "docs/operations/LEGACY_DUPLICATE_MAP_REMOVAL_V1.md",
-                          "operations/self_model/validate_legacy_duplicate_map_removal_v1.ps1",
+                          "docs/operations/BODY_MAP_CANDIDATE_TRIAGE_V1.md",
+                          "docs/operations/BODY_MAP_TRIAGE_PROMOTION_PLAN_V1.md",
+                          "operations/self_model/validate_body_map_candidate_triage_v1.ps1",
+                          "operations/self_model/validate_body_map_triage_promotion_plan_v1.ps1",
+                          "reports/self_development/BODY_MAP_CANDIDATE_TRIAGE_V1.json",
                           "reports/self_development/BODY_MAP_PRIMARY_EVIDENCE_REBUILD_V1.json",
+                          "reports/self_development/BODY_MAP_TRIAGE_PROMOTION_PLAN_V1.json",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
+                          "tests/self_development/BODY_MAP_CANDIDATE_TRIAGE_V1_PROOF.json",
                           "tests/self_development/BODY_MAP_PRIMARY_EVIDENCE_REBUILD_V1_PROOF.json",
-                          "tests/self_development/LEGACY_DUPLICATE_MAP_REMOVAL_V1_PROOF.json"
+                          "tests/self_development/BODY_MAP_TRIAGE_PROMOTION_PLAN_V1_PROOF.json"
                       ],
     "structural_paths":  [
-                             "docs/operations/LEGACY_DUPLICATE_MAP_REMOVAL_V1.md",
-                             "operations/self_model/validate_legacy_duplicate_map_removal_v1.ps1",
-                             "tests/self_development/LEGACY_DUPLICATE_MAP_REMOVAL_V1_PROOF.json"
+                             "docs/operations/BODY_MAP_CANDIDATE_TRIAGE_V1.md",
+                             "docs/operations/BODY_MAP_TRIAGE_PROMOTION_PLAN_V1.md",
+                             "operations/self_model/validate_body_map_candidate_triage_v1.ps1",
+                             "operations/self_model/validate_body_map_triage_promotion_plan_v1.ps1",
+                             "reports/self_development/BODY_MAP_CANDIDATE_TRIAGE_V1.json",
+                             "reports/self_development/BODY_MAP_TRIAGE_PROMOTION_PLAN_V1.json",
+                             "tests/self_development/BODY_MAP_CANDIDATE_TRIAGE_V1_PROOF.json",
+                             "tests/self_development/BODY_MAP_TRIAGE_PROMOTION_PLAN_V1_PROOF.json"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -34,8 +44,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1600,
-                                    "sha256":  "d684ec921288a6001cf56935a54fd318bcf21006c9a1d25a13c0e43f505f8406"
+                                    "structural_file_count":  1608,
+                                    "sha256":  "730fd2fa4a457891928c5a3a3228690ef35f11571d9adae8f3858f942e05a85f"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -57,16 +67,16 @@
                          "builder":  "AGENT_BODY_COMPOSITION_MAP_PRIMARY_EVIDENCE_V1",
                          "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                          "confirmed_component_count":  7,
-                         "primary_evidence_candidate_count":  156,
+                         "primary_evidence_candidate_count":  157,
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
-                         "total_component_count":  163,
-                         "structural_path_count":  1600,
+                         "total_component_count":  164,
+                         "structural_path_count":  1608,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-08T16:54:12.3154265+04:00"
+    "refreshed_at":  "2026-07-08T17:06:26.4258919+04:00"
 }
