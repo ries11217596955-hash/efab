@@ -6,18 +6,18 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "64f60dcdb30e57e676351ad415893bc5bcd807ec",
-    "subject_head":  "64f60dcdb30e57e676351ad415893bc5bcd807ec",
-    "generated_at":  "2026-07-08T10:37:58.9389297+04:00",
+    "observed_head_at_generation":  "c103c58ba174a6eff071c4d31b738f64a1df6398",
+    "subject_head":  "c103c58ba174a6eff071c4d31b738f64a1df6398",
+    "generated_at":  "2026-07-08T10:43:57.1333525+04:00",
     "generator":  "invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "role":  "canonical local body composition/status map: what exists, where it is, freshness, last runtime/proof signal",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  615,
+    "structural_path_count":  616,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  615,
-                                    "sha256":  "c53b31a9a77db20d2422fd8fbac1902ef5b9cb3ca253453729381844484ce8d8"
+                                    "structural_file_count":  616,
+                                    "sha256":  "e186d2c03555ebcb8529d60b47906d3447b8eaef719cafd325e67f6977f5fe29"
                                 },
     "module_count":  207,
     "validator_count":  174,
@@ -190,10 +190,10 @@
                            "role":  "bounded inner motor / test life runtime surface",
                            "root":  "operations/autonomous_inner_motor",
                            "status":  "PRESENT_ON_CURRENT_BRANCH",
-                           "file_count":  75,
-                           "script_count":  14,
+                           "file_count":  76,
+                           "script_count":  15,
                            "policy_count":  1,
-                           "validator_count":  25,
+                           "validator_count":  26,
                            "proof_file_count":  30,
                            "doc_count":  10,
                            "required_files":  [
@@ -210,6 +210,7 @@
                                                       "operations/autonomous_inner_motor/validate_aimo_default_no_gate_live_hotswap_preflight_v1.ps1",
                                                       "operations/autonomous_inner_motor/validate_aimo_default_no_gate_live_hotswap_v1.ps1",
                                                       "operations/autonomous_inner_motor/validate_aimo_default_path_lab_implementation_v1.ps1",
+                                                      "operations/autonomous_inner_motor/validate_aimo_explicit_gate_demotion_v1.ps1",
                                                       "operations/autonomous_inner_motor/validate_aimo_legacy_selector_demotion_v1.ps1",
                                                       "operations/autonomous_inner_motor/validate_aimo_runtime_hygiene_cleanup_v1.ps1",
                                                       "operations/autonomous_inner_motor/validate_aimo_runtime_hygiene_live_hotswap_v1.ps1",
@@ -223,14 +224,14 @@
                                                  "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1"
                                              ],
                            "latest_git_commit":  {
-                                                     "head":  "64f60dcdb30e57e676351ad415893bc5bcd807ec",
-                                                     "committed_at":  "2026-07-08T10:36:04+04:00",
-                                                     "subject":  "fix: clean transient aimo runtime artifacts"
+                                                     "head":  "c103c58ba174a6eff071c4d31b738f64a1df6398",
+                                                     "committed_at":  "2026-07-08T10:37:56+04:00",
+                                                     "subject":  "proof: restart live aimo with runtime hygiene cleanup"
                                                  },
                            "latest_runtime_artifact":  {
                                                            "path":  ".runtime/autonomous_inner_motor/test_life_runs/live_aimo_no_gate_runtime_hygiene_v1_20260708T063710Z/TEST_LIFE_PROOF.json",
-                                                           "last_write":  "2026-07-08T10:37:54.7893178+04:00",
-                                                           "bytes":  119755
+                                                           "last_write":  "2026-07-08T10:43:56.0159926+04:00",
+                                                           "bytes":  354526
                                                        }
                        },
                        {
@@ -376,8 +377,8 @@
                                                                            },
                                         "latest_aimo_runtime_artifact":  {
                                                                              "path":  ".runtime/autonomous_inner_motor/test_life_runs/live_aimo_no_gate_runtime_hygiene_v1_20260708T063710Z/TEST_LIFE_PROOF.json",
-                                                                             "last_write":  "2026-07-08T10:37:54.7893178+04:00",
-                                                                             "bytes":  119755
+                                                                             "last_write":  "2026-07-08T10:43:56.0159926+04:00",
+                                                                             "bytes":  354526
                                                                          }
                                     },
     "freshness_rule":  "Trust currentness by body_source_fingerprint, not by self-referential commit HEAD.",

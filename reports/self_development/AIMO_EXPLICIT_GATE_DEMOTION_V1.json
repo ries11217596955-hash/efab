@@ -1,0 +1,49 @@
+﻿{
+    "schema":  "aimo_explicit_gate_demotion_v1",
+    "status":  "PASS_AIMO_EXPLICIT_GATE_DEMOTION_V1",
+    "decision":  "KEEP_AS_EMERGENCY_DEBUG_SWITCH_NOT_DEFAULT_AUTHORITY",
+    "script":  "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+    "evidence":  {
+                     "live_runtime_hygiene_status":  "PASS_AIMO_RUNTIME_HYGIENE_LIVE_HOTSWAP_V1",
+                     "default_no_gate_live_status":  "PASS_AIMO_DEFAULT_NO_GATE_LIVE_HOTSWAP_V1",
+                     "legacy_demotion_status":  "PASS_AIMO_LEGACY_SELECTOR_DEMOTION_V1",
+                     "current_live_count":  1,
+                     "current_live_pid":  10612,
+                     "current_live_has_gate":  false,
+                     "current_live_command":  "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -NoProfile -ExecutionPolicy Bypass -File operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1 -Mode SandboxTestLife -RunId live_aimo_no_gate_runtime_hygiene_v1_20260708T063710Z "
+                 },
+    "code_state":  {
+                       "switch_still_present":  true,
+                       "gate_reason_still_present":  true,
+                       "default_reason_present":  true,
+                       "explicit_gate_required_false_present":  true,
+                       "legacy_demoted_marker_present":  true
+                   },
+    "policy":  {
+                   "default_behavior":  "SOURCE_AGNOSTIC_PATH_SELECTION_DEFAULT_WITHOUT_GATE",
+                   "gate_behavior":  "SOURCE_AGNOSTIC_PATH_SELECTION_LAB_GATE_ONLY_WHEN_EXPLICITLY_REQUESTED",
+                   "allowed_use":  [
+                                       "emergency rollback comparison",
+                                       "debug/proof comparison",
+                                       "short transition compatibility"
+                                   ],
+                   "forbidden_use":  [
+                                         "normal live default",
+                                         "School brain dependency",
+                                         "latest signal authority",
+                                         "child agent readiness proof"
+                                     ],
+                   "deletion_policy":  "Do not delete now. Remove only after fallback and rollback route prove a better replacement."
+               },
+    "boundaries":  {
+                       "switch_removed":  false,
+                       "emergency_fallback_missing_source_report_not_proven":  true,
+                       "active_memory_purity_not_claimed":  true,
+                       "child_agent_factory_readiness":  "NOT_PROVEN",
+                       "school_runtime_hygiene_repair_still_future":  true
+                   },
+    "live_process_touched":  false,
+    "active_memory_mutated":  false,
+    "next_phase":  "ROUTE_EXECUTION_REPORT_AND_OWNER_REVIEW_GATE",
+    "created_at":  "2026-07-08T10:43:31.0950070+04:00"
+}
