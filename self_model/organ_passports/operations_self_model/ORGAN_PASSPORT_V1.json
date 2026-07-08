@@ -209,13 +209,14 @@
                        "operations/self_model/validate_map_authority_duplicate_audit_v1.ps1",
                        "operations/self_model/validate_map_authority_repair_v1.ps1",
                        "operations/self_model/validate_next_route_lock_and_health_audit_v1.ps1",
+                       "operations/self_model/validate_operations_self_model_organ_lab_validation_v1.ps1",
                        "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
                        "operations/self_model/validate_route_v4_execution_report_phase_m_v1.ps1",
                        "operations/self_model/validate_runtime_cleanup_v1.ps1",
                        "operations/self_model/validate_school_runtime_hygiene_gap_v1.ps1"
                    ],
     "proof_refs":  [
-
+                       "tests/self_development/OPERATIONS_SELF_MODEL_ORGAN_LAB_VALIDATION_V1_PROOF.json"
                    ],
     "runtime_refs":  [
 
@@ -242,13 +243,15 @@
                                    "keep legacy source material untouched",
                                    "do not mutate owning root during rollback"
                                ],
-    "maturity":  "DRAFT",
-    "live_or_lab_status":  "NOT_PROVEN",
+    "maturity":  "VALIDATED_LAB",
+    "live_or_lab_status":  "PROVEN_LAB",
     "gaps":  [
                  "active passport validator not yet run for live behavior",
                  "capability invocation map link not generated",
-                 "runtime proof not provided",
-                 "owner/route acceptance for activation not provided"
+                 "owner/route acceptance for activation not provided",
+                 "PASSPORT_ACTIVE still blocked until owner/route acceptance",
+                 "PROVEN_LIVE still blocked; live AIMO absent after reboot",
+                 "runtime proof not provided"
              ],
     "source_evidence":  [
                             {
@@ -270,5 +273,5 @@
                                 "script_count":  30
                             }
                         ],
-    "last_validated_at":  "2026-07-08T17:05:34.0179614+04:00"
+    "last_validated_at":  "2026-07-08T17:28:02.7911785+04:00"
 }

@@ -1,0 +1,71 @@
+﻿{
+    "schema":  "operations_self_model_organ_lab_validation_v1",
+    "status":  "PASS_OPERATIONS_SELF_MODEL_ORGAN_LAB_VALIDATION_V1",
+    "organ_id":  "operations_self_model",
+    "passport_path":  "self_model/organ_passports/operations_self_model/ORGAN_PASSPORT_V1.json",
+    "owning_root":  "operations/self_model",
+    "owned_file_count":  30,
+    "existing_validator_ref_count":  20,
+    "non_live_dedicated_runset":  [
+                                      {
+                                          "validator":  "operations/self_model/validate_body_map_primary_evidence_rebuild_v1.ps1",
+                                          "exit_code":  0,
+                                          "result":  "PASS"
+                                      },
+                                      {
+                                          "validator":  "operations/self_model/validate_body_map_candidate_triage_v1.ps1",
+                                          "exit_code":  0,
+                                          "result":  "PASS"
+                                      },
+                                      {
+                                          "validator":  "operations/self_model/validate_body_map_triage_promotion_plan_v1.ps1",
+                                          "exit_code":  0,
+                                          "result":  "PASS"
+                                      },
+                                      {
+                                          "validator":  "operations/self_model/validate_legacy_duplicate_map_removal_v1.ps1",
+                                          "exit_code":  0,
+                                          "result":  "PASS"
+                                      },
+                                      {
+                                          "validator":  "operations/self_model/validate_builder_identity_contract_v1.ps1",
+                                          "exit_code":  0,
+                                          "result":  "PASS"
+                                      },
+                                      {
+                                          "validator":  "validators/validate_agent_body_composition_map_current_v1.ps1",
+                                          "exit_code":  0,
+                                          "result":  "PASS"
+                                      }
+                                  ],
+    "excluded_live_dependent_validators":  [
+                                               {
+                                                   "validator":  "operations/self_model/validate_capability_invocation_map_v1_contract.ps1",
+                                                   "reason":  "requires live AIMO; owner reported PC reboot and LIVE_AIMO_COUNT=0",
+                                                   "current_live_aimo_count":  0,
+                                                   "excluded_from_lab_proof":  true
+                                               },
+                                               {
+                                                   "validator":  "operations/self_model/validate_aimo_default_source_agnostic_selector_contract_v1.ps1",
+                                                   "reason":  "requires live AIMO; owner reported PC reboot and LIVE_AIMO_COUNT=0",
+                                                   "current_live_aimo_count":  0,
+                                                   "excluded_from_lab_proof":  true
+                                               }
+                                           ],
+    "validation_result":  {
+                              "passport_status":  "PASSPORT_DRAFT_FROM_EVIDENCE",
+                              "maturity":  "VALIDATED_LAB",
+                              "live_or_lab_status":  "PROVEN_LAB",
+                              "active_passport":  false,
+                              "proven_live":  false
+                          },
+    "boundaries":  {
+                       "lab_only":  true,
+                       "no_passport_active_created":  true,
+                       "no_proven_live_claim":  true,
+                       "no_live_process_touched":  true,
+                       "live_dependent_validator_excluded":  true,
+                       "active_requires_owner_or_route_acceptance_later":  true
+                   },
+    "created_at":  "2026-07-08T17:28:02.7497750+04:00"
+}

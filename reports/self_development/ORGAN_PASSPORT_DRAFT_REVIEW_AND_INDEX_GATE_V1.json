@@ -1,13 +1,14 @@
 ﻿{
     "schema":  "organ_passport_draft_review_and_index_gate_v1",
     "status":  "PASS_ORGAN_PASSPORT_DRAFT_REVIEW_AND_INDEX_GATE_V1",
-    "purpose":  "Review generated draft passports, build canonical draft index, and define promotion gate without activating passports.",
-    "source_generator_report":  "reports/self_development/ORGAN_PASSPORT_DRAFT_GENERATOR_FAST_LANE_V1.json",
     "passport_index":  "self_model/organ_passports/_index/ORGAN_PASSPORT_DRAFT_INDEX_V1.json",
     "reviewed_count":  2,
     "decisions":  {
+                      "lab_validated_not_active":  [
+                                                       "operations_self_model"
+                                                   ],
                       "lab_validation_candidates":  [
-                                                        "operations_self_model"
+
                                                     ],
                       "blocked_no_validator":  [
                                                    "contracts_accepted_atom_retention_organ"
@@ -15,9 +16,9 @@
                       "active_passports":  [
 
                                            ],
-                      "live_claims":  [
+                      "proven_live_claims":  [
 
-                                      ]
+                                             ]
                   },
     "items":  [
                   {
@@ -37,14 +38,13 @@
                                                   ],
                       "validator_count":  0,
                       "existing_validator_count":  0,
-                      "missing_validator_count":  0,
                       "proof_ref_count":  1,
                       "existing_proof_ref_count":  1,
                       "active_claim_detected":  false,
                       "live_claim_detected":  false,
                       "lab_validation_candidate":  false,
+                      "lab_validated_not_active":  false,
                       "review_decision":  "BLOCKED_NO_VALIDATOR_EVIDENCE",
-                      "reason":  "draft has structure, but no validator references; cannot promote to validated lab",
                       "next_action":  "CREATE_OR_LINK_VALIDATOR_BEFORE_PROMOTION"
                   },
                   {
@@ -52,8 +52,8 @@
                       "passport_path":  "self_model/organ_passports/operations_self_model/ORGAN_PASSPORT_V1.json",
                       "doc_path":  "docs/operations/organ_passports/operations_self_model/ORGAN_PASSPORT_V1.md",
                       "status":  "PASSPORT_DRAFT_FROM_EVIDENCE",
-                      "maturity":  "DRAFT",
-                      "live_or_lab_status":  "NOT_PROVEN",
+                      "maturity":  "VALIDATED_LAB",
+                      "live_or_lab_status":  "PROVEN_LAB",
                       "owning_root":  "operations/self_model",
                       "owned_file_count":  30,
                       "owned_files_missing":  [
@@ -62,28 +62,25 @@
                       "required_fields_missing":  [
 
                                                   ],
-                      "validator_count":  20,
-                      "existing_validator_count":  20,
-                      "missing_validator_count":  0,
-                      "proof_ref_count":  0,
-                      "existing_proof_ref_count":  0,
+                      "validator_count":  21,
+                      "existing_validator_count":  21,
+                      "proof_ref_count":  1,
+                      "existing_proof_ref_count":  1,
                       "active_claim_detected":  false,
                       "live_claim_detected":  false,
-                      "lab_validation_candidate":  true,
-                      "review_decision":  "LAB_VALIDATION_CANDIDATE_NOT_PROMOTED",
-                      "reason":  "draft has required fields, owned files exist, and validator evidence exists; still needs explicit lab validation route before maturity change",
-                      "next_action":  "RUN_OR_CREATE_DEDICATED_ORGAN_LAB_VALIDATOR_BEFORE_VALIDATED_LAB"
+                      "lab_validation_candidate":  false,
+                      "lab_validated_not_active":  true,
+                      "review_decision":  "LAB_VALIDATED_NOT_ACTIVE",
+                      "next_action":  "AWAIT_OWNER_OR_ROUTE_ACCEPTANCE_FOR_PASSPORT_ACTIVE_AND_LIVE_RESTART_FOR_PROVEN_LIVE"
                   }
               ],
     "boundaries":  {
                        "review_only":  true,
-                       "no_status_mutation":  true,
                        "no_active_passports_created":  true,
-                       "no_live_claims_created":  true,
-                       "no_body_map_mutation":  true,
+                       "no_proven_live_claims_created":  true,
                        "activation_requires_separate_owner_or_route_acceptance":  true,
                        "live_process_touched":  false
                    },
-    "recommended_next_step":  "DEDICATED_LAB_VALIDATOR_FOR_OPERATIONS_SELF_MODEL_DRAFT_V1",
-    "created_at":  "2026-07-08T17:16:00.9664033+04:00"
+    "recommended_next_step":  "OWNER_ROUTE_ACCEPTANCE_GATE_FOR_OPERATIONS_SELF_MODEL_ACTIVE_OR_RESTART_LIVE_AIMO_FOR_PROVEN_LIVE",
+    "created_at":  "2026-07-08T17:29:10.4315953+04:00"
 }

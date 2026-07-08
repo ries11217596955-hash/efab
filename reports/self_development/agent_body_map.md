@@ -2,9 +2,9 @@
 
 Status: ACTIVE_DERIVED_VIEW
 Branch: main
-Observed head at generation: b42fab85bd07fba564496862723cef1adea05ecc
-Generated: 2026-07-08T17:19:11.2160331+04:00
-Body source fingerprint: 9e0f75fa503397f219d35ca3a61f816143025320dbd18cfc26c682a93d01bbee
+Observed head at generation: 3335bfe01852c51487511d991157a6f5178f1f9f
+Generated: 2026-07-08T17:31:10.9998192+04:00
+Body source fingerprint: 62fc73e574af6791688db53e3bb7defcdd1a634e510356286fb5b06fff77f224
 
 Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
@@ -71,7 +71,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `operations_reasoning` - root `operations/reasoning`, files=6, scripts=6, validators=3, proofs=0, needs_triage=True
 - `operations_reflex_library` - root `operations/reflex_library`, files=2, scripts=1, validators=0, proofs=0, needs_triage=True
 - `operations_runtime` - root `operations/runtime`, files=2, scripts=0, validators=0, proofs=0, needs_triage=True
-- `operations_self_model` - root `operations/self_model`, files=32, scripts=32, validators=20, proofs=0, needs_triage=True
+- `operations_self_model` - root `operations/self_model`, files=33, scripts=33, validators=20, proofs=0, needs_triage=True
 - `operations_smoke_trials` - root `operations/smoke_trials`, files=4, scripts=0, validators=3, proofs=0, needs_triage=True
 - `packs_phase10_generated_agent_validation_harness_v1` - root `packs/PHASE10_GENERATED_AGENT_VALIDATION_HARNESS_V1`, files=6, scripts=3, validators=2, proofs=0, needs_triage=True
 - `packs_phase100_quarantine_and_blocker_registry_v1` - root `packs/PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1`, files=3, scripts=2, validators=0, proofs=0, needs_triage=True
