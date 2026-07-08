@@ -5,16 +5,16 @@
     "source_canonical_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
     "source_counts":  {
                           "confirmed_components":  7,
-                          "primary_evidence_candidates":  156,
+                          "primary_evidence_candidates":  157,
                           "legacy_unverified_hints":  4,
                           "rejected_or_stale_hints":  3,
-                          "compatibility_components":  163
+                          "compatibility_components":  164
                       },
     "triage_counts":  {
-                          "total":  156,
+                          "total":  157,
                           "organ_candidates":  17,
                           "sub_organ_or_capability_candidates":  4,
-                          "not_organs_or_material":  119,
+                          "not_organs_or_material":  120,
                           "class_counts":  [
                                                {
                                                    "triage_class":  "CONTRACT_SURFACE",
@@ -39,6 +39,10 @@
                                                {
                                                    "triage_class":  "PACK_OR_PROOF_BUNDLE",
                                                    "count":  105
+                                               },
+                                               {
+                                                   "triage_class":  "PASSPORT_REGISTRY_SURFACE",
+                                                   "count":  1
                                                },
                                                {
                                                    "triage_class":  "REAL_ORGAN_CANDIDATE",
@@ -72,7 +76,7 @@
                                                             },
                                                             {
                                                                 "passport_readiness":  "NOT_ORGAN",
-                                                                "count":  119
+                                                                "count":  120
                                                             }
                                                         ]
                       },
@@ -5695,6 +5699,38 @@
                       "primary_evidence_refs":  [
                                                     "self_build_programs/regression/VALIDATE_PHASE165_SELF_BUILD_LOOP_REGRESSION_V1.ps1"
                                                 ]
+                  },
+                  {
+                      "candidate_id":  "self_model_organ_passports",
+                      "path":  "self_model/organ_passports",
+                      "triage_class":  "PASSPORT_REGISTRY_SURFACE",
+                      "confidence":  "HIGH",
+                      "evidence_strength":  "MEDIUM",
+                      "reason":  "canonical passport registry/index surface created by draft passport generation; supports organ governance but is not an organ",
+                      "next_action":  "INDEX_AS_PASSPORT_REGISTRY_EVIDENCE",
+                      "passport_readiness":  "NOT_ORGAN",
+                      "organ_candidate":  false,
+                      "sub_organ_or_capability_candidate":  false,
+                      "source_counts":  {
+                                            "files":  2,
+                                            "scripts":  0,
+                                            "validators":  0,
+                                            "proofs":  0,
+                                            "contracts_or_policies":  1,
+                                            "docs":  0
+                                        },
+                      "validator_refs":  [
+
+                                         ],
+                      "proof_refs":  [
+
+                                     ],
+                      "contract_or_policy_refs":  [
+                                                      "self_model/organ_passports/contracts_accepted_atom_retention_organ/ORGAN_PASSPORT_V1.json"
+                                                  ],
+                      "primary_evidence_refs":  [
+                                                    "self_model/organ_passports/contracts_accepted_atom_retention_organ/ORGAN_PASSPORT_V1.json"
+                                                ]
                   }
               ],
     "boundaries":  {
@@ -5710,5 +5746,5 @@
                                    "BODY_MAP_TRIAGE_REVIEW_AND_PROMOTION_PLAN_V1",
                                    "ORGAN_PASSPORT_DRAFT_GENERATOR_FOR_CANDIDATE_READY_ONLY"
                                ],
-    "created_at":  "2026-07-08T16:52:13.9815736+04:00"
+    "created_at":  "2026-07-08T17:17:37.3975495+04:00"
 }
