@@ -2,9 +2,9 @@
 
 Status: ACTIVE_DERIVED_VIEW
 Branch: main
-Observed head at generation: 0c0bfcda2b5a7ba273069385396752813e4dcd09
-Generated: 2026-07-08T18:57:23.7754616+04:00
-Body source fingerprint: 528d46789e8e17451f59cc8baa1c6307e8a8c234e408799b0fd26e788c07de48
+Observed head at generation: c43cd6aee9e1aeb7ea989f2a6491ddcc0568c9f0
+Generated: 2026-07-08T19:26:15.3622236+04:00
+Body source fingerprint: 76ecd7912c8c53b2d3fc5fbc37e421cda98007f04969e563c6a724f2580c6d77
 
 Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
@@ -18,7 +18,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 ## Counts
 
 - Confirmed components: 8
-- Primary evidence candidates: 156
+- Primary evidence candidates: 157
 - Legacy unverified hints: 4
 - Rejected or stale hints: 3
 
@@ -60,6 +60,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `modules_self_development` - root `modules/self_development`, files=20, scripts=20, validators=0, proofs=1, needs_triage=True
 - `operations_active_behavior` - root `operations/active_behavior`, files=10, scripts=6, validators=2, proofs=0, needs_triage=True
 - `operations_autonomy_diagnostics` - root `operations/autonomy_diagnostics`, files=29, scripts=0, validators=0, proofs=0, needs_triage=True
+- `operations_body_control_cortex` - root `operations/body_control_cortex`, files=2, scripts=2, validators=1, proofs=0, needs_triage=True
 - `operations_bridge_diagnostics` - root `operations/bridge_diagnostics`, files=2, scripts=0, validators=0, proofs=2, needs_triage=True
 - `operations_contracts` - root `operations/contracts`, files=3, scripts=0, validators=2, proofs=0, needs_triage=True
 - `operations_live_like` - root `operations/live_like`, files=2, scripts=2, validators=1, proofs=0, needs_triage=True
@@ -114,7 +115,6 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `packs_phase39_monitoring_gap_reachability_v1` - root `packs/PHASE39_MONITORING_GAP_REACHABILITY_V1`, files=6, scripts=3, validators=1, proofs=1, needs_triage=True
 - `packs_phase4_self_validation_release_gates` - root `packs/PHASE4_SELF_VALIDATION_RELEASE_GATES`, files=7, scripts=4, validators=2, proofs=0, needs_triage=True
 - `packs_phase40_specialized_gap_auto_intake_runtime_v1` - root `packs/PHASE40_SPECIALIZED_GAP_AUTO_INTAKE_RUNTIME_V1`, files=5, scripts=3, validators=1, proofs=1, needs_triage=True
-- `packs_phase41_one_run_gap_remediation_packet_proof_v1` - root `packs/PHASE41_ONE_RUN_GAP_REMEDIATION_PACKET_PROOF_V1`, files=3, scripts=2, validators=1, proofs=3, needs_triage=True
 
 ## Freshness
 

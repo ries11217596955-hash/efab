@@ -1,12 +1,11 @@
 ﻿{
     "schema":  "body_map_triage_promotion_plan_v1",
     "status":  "PASS_BODY_MAP_TRIAGE_PROMOTION_PLAN_V1",
-    "purpose":  "Turn candidate triage into a bounded execution plan without accepting candidates as organs.",
     "source_triage":  "reports/self_development/BODY_MAP_CANDIDATE_TRIAGE_V1.json",
     "summary":  {
-                    "total_triaged":  156,
-                    "real_organ_candidates":  16,
-                    "candidate_ready_for_draft":  1,
+                    "total_triaged":  157,
+                    "real_organ_candidates":  17,
+                    "candidate_ready_for_draft":  2,
                     "needs_review":  26,
                     "owner_link_blocked":  9,
                     "blocked":  0,
@@ -35,6 +34,21 @@
                                                           "contracts/accepted_atom_retention_organ/passports/PASSPORT_INDEX.json",
                                                           "contracts/accepted_atom_retention_organ/passports/PROOF_PASSPORT.json",
                                                           "contracts/accepted_atom_retention_organ/passports/SANITIZER_PASSPORT.json"
+                                                      ]
+                      },
+                      {
+                          "candidate_id":  "operations_body_control_cortex",
+                          "path":  "operations/body_control_cortex",
+                          "confidence":  "HIGH",
+                          "next_action":  "CREATE_ORGAN_PASSPORT_DRAFT_FROM_BODY_CONTROL_CORTEX_EVIDENCE",
+                          "validator_refs":  [
+                                                 "operations/body_control_cortex/validate_body_control_cortex_v1.ps1"
+                                             ],
+                          "proof_refs":  [
+
+                                         ],
+                          "contract_or_policy_refs":  [
+
                                                       ]
                       }
                   ],
@@ -248,71 +262,6 @@
                             "reason":  "self-build program surface; may be factory/material, needs owner link before organ claim"
                         }
                     ],
-    "link_lane":  [
-                      {
-                          "candidate_id":  "contracts_controlled_runtime",
-                          "path":  "contracts/controlled_runtime",
-                          "triage_class":  "CONTRACT_SURFACE",
-                          "next_action":  "LINK_CONTRACT_TO_OWNING_ORGAN",
-                          "reason":  "contract evidence surface; supports organs but not organ unless explicit organ contract"
-                      },
-                      {
-                          "candidate_id":  "contracts_materials",
-                          "path":  "contracts/materials",
-                          "triage_class":  "CONTRACT_SURFACE",
-                          "next_action":  "LINK_CONTRACT_TO_OWNING_ORGAN",
-                          "reason":  "contract evidence surface; supports organs but not organ unless explicit organ contract"
-                      },
-                      {
-                          "candidate_id":  "contracts_operations",
-                          "path":  "contracts/operations",
-                          "triage_class":  "CONTRACT_SURFACE",
-                          "next_action":  "LINK_CONTRACT_TO_OWNING_ORGAN",
-                          "reason":  "contract evidence surface; supports organs but not organ unless explicit organ contract"
-                      },
-                      {
-                          "candidate_id":  "contracts_self_development",
-                          "path":  "contracts/self_development",
-                          "triage_class":  "CONTRACT_SURFACE",
-                          "next_action":  "LINK_CONTRACT_TO_OWNING_ORGAN",
-                          "reason":  "contract evidence surface; supports organs but not organ unless explicit organ contract"
-                      },
-                      {
-                          "candidate_id":  "contracts_self_knowledge",
-                          "path":  "contracts/self_knowledge",
-                          "triage_class":  "CONTRACT_SURFACE",
-                          "next_action":  "LINK_CONTRACT_TO_OWNING_ORGAN",
-                          "reason":  "contract evidence surface; supports organs but not organ unless explicit organ contract"
-                      },
-                      {
-                          "candidate_id":  "modules_materials",
-                          "path":  "modules/materials",
-                          "triage_class":  "MODULE_OR_CAPABILITY_SURFACE",
-                          "next_action":  "MAP_TO_CAPABILITY_INVOCATION_OR_OWNING_ORGAN",
-                          "reason":  "module surface with code; skill/capability candidate, not organ by default"
-                      },
-                      {
-                          "candidate_id":  "modules_operations",
-                          "path":  "modules/operations",
-                          "triage_class":  "MODULE_OR_CAPABILITY_SURFACE",
-                          "next_action":  "MAP_TO_CAPABILITY_INVOCATION_OR_OWNING_ORGAN",
-                          "reason":  "module surface with code; skill/capability candidate, not organ by default"
-                      },
-                      {
-                          "candidate_id":  "modules_route_locks",
-                          "path":  "modules/route_locks",
-                          "triage_class":  "MODULE_OR_CAPABILITY_SURFACE",
-                          "next_action":  "MAP_TO_CAPABILITY_INVOCATION_OR_OWNING_ORGAN",
-                          "reason":  "module surface with code; skill/capability candidate, not organ by default"
-                      },
-                      {
-                          "candidate_id":  "modules_self_development",
-                          "path":  "modules/self_development",
-                          "triage_class":  "MODULE_OR_CAPABILITY_SURFACE",
-                          "next_action":  "MAP_TO_CAPABILITY_INVOCATION_OR_OWNING_ORGAN",
-                          "reason":  "module surface with code; skill/capability candidate, not organ by default"
-                      }
-                  ],
     "not_organ_bucket":  {
                              "count":  120,
                              "action":  "exclude from organ passport generator; keep as evidence/material for later maps"
@@ -334,9 +283,10 @@
                        "no_body_map_mutation_performed":  false,
                        "no_candidate_accepted_as_organ_from_triage_alone":  true,
                        "operations_self_model_promoted_by_lab_validation":  true,
+                       "body_control_cortex_candidate_not_active":  true,
                        "passport_generator_for_all_candidates_blocked":  true,
                        "live_process_touched":  false
                    },
-    "recommended_next_step":  "MAP_PHASE_CLOSED_FOR_OPERATIONS_SELF_MODEL",
-    "created_at":  "2026-07-08T17:55:50.6658398+04:00"
+    "recommended_next_step":  "CREATE_BODY_CONTROL_CORTEX_ORGAN_PASSPORT_DRAFT_OR_EXPAND_DIAGNOSTIC_GRAPH",
+    "created_at":  "2026-07-08T19:23:39.7995758+04:00"
 }

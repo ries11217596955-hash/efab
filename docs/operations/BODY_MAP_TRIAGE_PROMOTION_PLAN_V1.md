@@ -4,6 +4,6 @@ status: PASS_BODY_MAP_TRIAGE_PROMOTION_PLAN_V1
 
 total triaged: 157
 candidate ready for draft: 2
-not organ: 120
+body_control_cortex ready for draft: True
 
-Boundary: no active passport creation; no candidate accepted as organ from triage alone.
+Boundary: no active passport creation; body_control_cortex is candidate only.
