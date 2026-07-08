@@ -1,4 +1,4 @@
-# AGENTS.md â€” EF Agent Builder Codex Command File
+﻿# AGENTS.md Ã¢â‚¬â€ EF Agent Builder Codex Command File
 
 Status: ACTIVE_CODEX_COMMAND_FILE_V3
 Owner decision: AGENTS.md is a command file, not a history archive.
@@ -110,6 +110,49 @@ SELF_MAP_ROLLUP_POLICY: atom/subchunk map updates blocked; rollup/capability/mod
 runtime_ready=false
 ```
 
+
+---
+## 2A. Hard Codex context budget gate
+
+When a task package gives an exact read list, that list is the context budget.
+
+Codex must not read the whole repo to “understand context”.
+
+Allowed discovery before PREFLIGHT_PASS:
+
+```text
+git status --short
+git rev-parse --short HEAD
+git rev-list --left-right --count HEAD...origin/main
+git ls-files <explicit pathspecs from task only>
+Select-String / grep only over explicit pathspecs from task
+Get-ChildItem only for explicit shallow directories named in task
+```
+
+Forbidden unless the task explicitly grants `ALLOW_BROAD_REPO_SCAN=true`:
+
+```text
+git ls-files without pathspecs
+Get-ChildItem -Recurse from repo root
+reading all reports/**
+reading all tests/**
+reading all operations/**
+reading all modules/**
+reading all docs/**
+opening legacy maps as authority
+```
+
+If Codex needs a file outside the task read list, it must stop with:
+
+```text
+STATUS: BLOCKED_PREFLIGHT
+BLOCKER: READ_BUDGET_EXPANSION_REQUIRED
+REQUESTED_FILES:
+WHY_NEEDED:
+FILES_CHANGED_BEFORE_PREFLIGHT_PASS: NO
+```
+
+For map/body/self-model work, old maps are never authority unless the task explicitly says so. They may only be used as bounded hints, hashes, or deletion targets.
 Codex context budget cut-list:
 
 ```text
@@ -141,7 +184,7 @@ replacement for proof
 Codex output is `CODEX_DRAFT` until validated by repo/test/runtime/proof evidence.
 
 Codex may be active and productive.
-Safety means planned, bounded, validated execution â€” not waiting for Owner after every step.
+Safety means planned, bounded, validated execution Ã¢â‚¬â€ not waiting for Owner after every step.
 
 ---
 
@@ -522,5 +565,6 @@ update AGENTS.md only through explicit AGENTS.md update task
 
 This file must stay compact.
 Do not turn AGENTS.md into a ledger, report, or archive.
+
 
 

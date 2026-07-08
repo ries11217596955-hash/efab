@@ -1,26 +1,27 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-08T14:59:28.3787424+04:00",
+    "checked_at":  "2026-07-08T15:23:48.7278730+04:00",
     "branch":  "main",
-    "observed_head":  "3e677140f1db0a0021ae9246944864b127c54ee2",
-    "subject_head":  "3e677140f1db0a0021ae9246944864b127c54ee2",
+    "observed_head":  "03da0851ec9a34265aa7ffec759c17a2f99f0283",
+    "subject_head":  "03da0851ec9a34265aa7ffec759c17a2f99f0283",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "docs/operations/MAP_AUTHORITY_DUPLICATE_AUDIT_V1.md",
-                          "operations/self_model/validate_map_authority_duplicate_audit_v1.ps1",
-                          "reports/self_development/MAP_AUTHORITY_DUPLICATE_AUDIT_V1.json",
+                          "docs/operations/MAP_AUTHORITY_REPAIR_V1.md",
+                          "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
+                          "operations/self_model/validate_map_authority_repair_v1.ps1",
+                          "reports/self_development/MAP_AUTHORITY_REPAIR_V1.json",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "tests/self_development/EXPANDED_ORGAN_CANDIDATE_INVENTORY_AUDIT_V1_PROOF.json",
-                          "tests/self_development/MAP_AUTHORITY_DUPLICATE_AUDIT_V1_PROOF.json"
+                          "tests/self_development/MAP_AUTHORITY_REPAIR_V1_PROOF.json"
                       ],
     "structural_paths":  [
-                             "operations/self_model/validate_map_authority_duplicate_audit_v1.ps1"
+                             "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
+                             "operations/self_model/validate_map_authority_repair_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -32,8 +33,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  623,
-                                    "sha256":  "3c864680943c84009689bfb5ae15d5d98c30f850fcf8a921aa86cbc04f9169c7"
+                                    "structural_file_count":  624,
+                                    "sha256":  "2c2f5469568cf3de9f9b0632ed5958c5d313488303c754cbfb77ed8bd672b79b"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -57,7 +58,7 @@
                          "required_component_count":  7,
                          "snapshot_imported":  7,
                          "expanded_candidates_imported":  85,
-                         "structural_path_count":  623
+                         "structural_path_count":  624
                      },
-    "refreshed_at":  "2026-07-08T14:59:36.9528186+04:00"
+    "refreshed_at":  "2026-07-08T15:23:57.2284697+04:00"
 }
