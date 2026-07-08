@@ -1,0 +1,87 @@
+﻿{
+    "schema":  "aimo_source_agnostic_live_hotswap_v1",
+    "status":  "PASS_AIMO_SOURCE_AGNOSTIC_LIVE_HOTSWAP_V1",
+    "label":  "PROVEN_LIVE_AIMO_HOTSWAPPED_TO_SOURCE_AGNOSTIC_PATH_SELECTION_GATE",
+    "route_lock":  "route_locks/AGENT_BUILDER_NEXT_15_STEPS_LOCK_V4_IDENTITY_BASED_SELECTION.md",
+    "repo":  {
+                 "head":  "8f45d3944a1c5f36e810170e90912b949de4b026",
+                 "short_head":  "8f45d39",
+                 "branch":  "main",
+                 "ahead_behind_after_start":  "0\t0",
+                 "dirty_after_start":  false
+             },
+    "checkpoint_path":  "tests/live_start/AIMO_SOURCE_AGNOSTIC_LIVE_HOTSWAP_V1_CHECKPOINT.json",
+    "old_live":  {
+                     "pid":  8912,
+                     "run_id":  "live_aimo_concrete_growth_topic_inspect_residue_final_20260707T165949Z",
+                     "proof_path":  ".runtime\\autonomous_inner_motor\\test_life_runs\\live_aimo_concrete_growth_topic_inspect_residue_final_20260707T165949Z\\TEST_LIFE_PROOF.json",
+                     "cycles_before_stop":  7644,
+                     "stop_path":  ".runtime\\autonomous_inner_motor\\test_life_runs\\live_aimo_concrete_growth_topic_inspect_residue_final_20260707T165949Z\\STOP_REQUESTED.txt",
+                     "stopped":  true,
+                     "forced_stop":  false
+                 },
+    "new_live":  {
+                     "pid":  10044,
+                     "run_id":  "live_aimo_source_agnostic_path_selection_v1_20260708T034501Z",
+                     "proof_path":  ".runtime\\autonomous_inner_motor\\test_life_runs\\live_aimo_source_agnostic_path_selection_v1_20260708T034501Z\\TEST_LIFE_PROOF.json",
+                     "stdout":  ".runtime\\autonomous_inner_motor\\test_life_runs\\live_aimo_source_agnostic_path_selection_v1_20260708T034501Z\\LIVE_STDOUT.txt",
+                     "stderr":  ".runtime\\autonomous_inner_motor\\test_life_runs\\live_aimo_source_agnostic_path_selection_v1_20260708T034501Z\\LIVE_STDERR.txt",
+                     "stderr_size":  0,
+                     "alive_after_proof":  true,
+                     "command_line":  "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -NoProfile -ExecutionPolicy Bypass -File operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1 -Mode SandboxTestLife -RunId live_aimo_source_agnostic_path_selection_v1_20260708T034501Z -UseSourceAgnosticPathSelectionLabGate ",
+                     "live_count_after_hotswap":  1,
+                     "gate_flag_present":  true
+                 },
+    "selected":  {
+                     "reason":  "SOURCE_AGNOSTIC_PATH_SELECTION_LAB_GATE",
+                     "task_name":  "build_source_agnostic_path_selector_v1",
+                     "task_target":  "reports/self_development/SOURCE_AGNOSTIC_PATH_SELECTION_V1.json",
+                     "specific_gap":  "source_agnostic_path_selector_missing",
+                     "next_action_candidate":  "build_source_agnostic_path_selector_v1",
+                     "identity_alignment":  "primary_mission:build_repair_verify_and_improve_self; secondary_mission:child_agents_after_self_build_selector_proven",
+                     "fallback_if_source_missing":  "bounded_static_self_build_task_from_gap_map",
+                     "source_refs_rejected":  [
+                                                  "latest_runtime_packets_as_authority",
+                                                  "school_as_required_brain",
+                                                  "agentlife_residue_as_direction",
+                                                  "latest_signal_as_authority",
+                                                  "child_agent_jump_before_self_build_selector_proven"
+                                              ],
+                     "source_refs_used":  [
+                                              "builder_identity_contract",
+                                              "current_body_capability_snapshot",
+                                              "builder_gap_map",
+                                              "source_evidence_inventory"
+                                          ],
+                     "proof_needed":  [
+                                          "lab source-agnostic selector proof",
+                                          "negative School missing/stale/failed proof",
+                                          "controlled live AIMO proof later"
+                                      ],
+                     "query_contains_trace":  true
+                 },
+    "canonical_selection":  {
+                                "path":  "reports/self_development/SOURCE_AGNOSTIC_PATH_SELECTION_V1.json",
+                                "selected_next_action":  "build_source_agnostic_path_selector_v1",
+                                "selected_gap":  "source_agnostic_path_selector_missing",
+                                "fallback_if_source_missing":  "bounded_static_self_build_task_from_gap_map",
+                                "source_refs_rejected":  [
+                                                             "latest_runtime_packets_as_authority",
+                                                             "school_as_required_brain",
+                                                             "agentlife_residue_as_direction",
+                                                             "latest_signal_as_authority",
+                                                             "child_agent_jump_before_self_build_selector_proven"
+                                                         ]
+                            },
+    "school":  {
+                   "pid":  11816,
+                   "alive_during_hotswap":  false,
+                   "required_for_selection":  false,
+                   "note":  "School was not alive at preflight; hotswap still succeeded because selector is source-agnostic."
+               },
+    "boundary":  "This proves controlled live AIMO hotswap to explicit source-agnostic selection gate. It does not yet prove the ungated/default live path uses source-agnostic selection.",
+    "live_process_touched":  true,
+    "old_live_replaced":  true,
+    "active_memory_mutated":  false,
+    "created_at":  "2026-07-08T07:45:07.5717093+04:00"
+}

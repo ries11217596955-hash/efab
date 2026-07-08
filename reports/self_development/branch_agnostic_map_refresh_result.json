@@ -1,51 +1,22 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-08T04:02:07.9069995+04:00",
+    "checked_at":  "2026-07-08T07:46:38.6060140+04:00",
     "branch":  "main",
-    "observed_head":  "fa18d854808e3d0edc925f655218ec02949e1ef1",
-    "subject_head":  "fa18d854808e3d0edc925f655218ec02949e1ef1",
+    "observed_head":  "8f45d3944a1c5f36e810170e90912b949de4b026",
+    "subject_head":  "8f45d3944a1c5f36e810170e90912b949de4b026",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "operations/autonomous_inner_motor/validate_provenance_rejection_trace_v1.ps1",
-                          "operations/self_model/export_builder_mission_scoring_v1.ps1",
-                          "operations/self_model/validate_builder_mission_scoring_v1.ps1",
-                          "operations/self_model/validate_source_agnostic_path_selection_v1.ps1",
-                          "reports/self_development/BUILDER_MISSION_SCORING_V1.json",
-                          "reports/self_development/BUILDER_MISSION_SCORING_V1_FAKE_LATEST_SIGNAL_TEST.json",
-                          "reports/self_development/BUILDER_MISSION_SCORING_V1_MISSING_SOURCES_TEST.json",
-                          "reports/self_development/BUILDER_MISSION_SCORING_V1_PHASE_J_all_optional_sources_missing.json",
-                          "reports/self_development/BUILDER_MISSION_SCORING_V1_PHASE_J_fresh_agentlife_residue.json",
-                          "reports/self_development/BUILDER_MISSION_SCORING_V1_PHASE_J_school_failed_runtime_missing.json",
-                          "reports/self_development/BUILDER_MISSION_SCORING_V1_PHASE_J_school_missing_runtime_missing.json",
-                          "reports/self_development/BUILDER_MISSION_SCORING_V1_PHASE_J_school_stale_runtime_missing.json",
-                          "reports/self_development/BUILDER_MISSION_SCORING_V1_PHASE_J_stale_agentlife_residue.json",
-                          "reports/self_development/PROVENANCE_REJECTION_TRACE_V1.json",
+                          "docs/operations/SCHOOL_RUN_RESULT_20260708_040204_Live_1000000_school_factory_digest_use_real_1000000_20260707_140233.md",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-                          "reports/self_development/SOURCE_AGNOSTIC_PATH_SELECTION_V1.json",
-                          "reports/self_development/SOURCE_AGNOSTIC_PATH_SELECTION_V1_FAKE_LATEST_SIGNAL_TEST.json",
-                          "reports/self_development/SOURCE_AGNOSTIC_PATH_SELECTION_V1_MISSING_SOURCES_TEST.json",
-                          "reports/self_development/SOURCE_AGNOSTIC_PATH_SELECTION_V1_PHASE_J_all_optional_sources_missing.json",
-                          "reports/self_development/SOURCE_AGNOSTIC_PATH_SELECTION_V1_PHASE_J_fresh_agentlife_residue.json",
-                          "reports/self_development/SOURCE_AGNOSTIC_PATH_SELECTION_V1_PHASE_J_school_failed_runtime_missing.json",
-                          "reports/self_development/SOURCE_AGNOSTIC_PATH_SELECTION_V1_PHASE_J_school_missing_runtime_missing.json",
-                          "reports/self_development/SOURCE_AGNOSTIC_PATH_SELECTION_V1_PHASE_J_school_stale_runtime_missing.json",
-                          "reports/self_development/SOURCE_AGNOSTIC_PATH_SELECTION_V1_PHASE_J_stale_agentlife_residue.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
-                          "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "tests/autonomous_inner_motor/PROVENANCE_REJECTION_TRACE_V1_PROOF.json",
-                          "tests/autonomous_inner_motor/SINGLE_SOURCE_DEPENDENCY_NEGATIVE_CASES_V1_PROOF.json",
-                          "tests/self_model/BUILDER_MISSION_SCORING_V1_PROOF.json",
-                          "tests/self_model/SOURCE_AGNOSTIC_PATH_SELECTION_V1_PROOF.json"
+                          "reports/self_development/branch_agnostic_map_refresh_result.json"
                       ],
     "structural_paths":  [
-                             "operations/autonomous_inner_motor/validate_provenance_rejection_trace_v1.ps1",
-                             "operations/self_model/export_builder_mission_scoring_v1.ps1",
-                             "operations/self_model/validate_builder_mission_scoring_v1.ps1",
-                             "operations/self_model/validate_source_agnostic_path_selection_v1.ps1"
+
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -57,8 +28,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  603,
-                                    "sha256":  "61d33053457316b9e261057073f4811d55a051fa78909aea975716ca7b64be62"
+                                    "structural_file_count":  604,
+                                    "sha256":  "d200429e3b84ba0c3e2cec53864c775edcc9e376d574392abfa13e41115a274e"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -79,7 +50,7 @@
                          "builder":  "AGENT_BODY_COMPOSITION_MAP_V1",
                          "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                          "component_count":  7,
-                         "structural_path_count":  603
+                         "structural_path_count":  604
                      },
-    "refreshed_at":  "2026-07-08T04:02:10.3071539+04:00"
+    "refreshed_at":  "2026-07-08T07:46:39.9815996+04:00"
 }

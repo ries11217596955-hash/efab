@@ -6,18 +6,18 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "fa18d854808e3d0edc925f655218ec02949e1ef1",
-    "subject_head":  "fa18d854808e3d0edc925f655218ec02949e1ef1",
-    "generated_at":  "2026-07-08T04:02:10.0730635+04:00",
+    "observed_head_at_generation":  "8f45d3944a1c5f36e810170e90912b949de4b026",
+    "subject_head":  "8f45d3944a1c5f36e810170e90912b949de4b026",
+    "generated_at":  "2026-07-08T07:46:39.7355724+04:00",
     "generator":  "invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "role":  "canonical local body composition/status map: what exists, where it is, freshness, last runtime/proof signal",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  603,
+    "structural_path_count":  604,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  603,
-                                    "sha256":  "61d33053457316b9e261057073f4811d55a051fa78909aea975716ca7b64be62"
+                                    "structural_file_count":  604,
+                                    "sha256":  "d200429e3b84ba0c3e2cec53864c775edcc9e376d574392abfa13e41115a274e"
                                 },
     "module_count":  207,
     "validator_count":  174,
@@ -184,9 +184,9 @@
                                                      "subject":  "fix: treat generated inspect residue as derivation trigger"
                                                  },
                            "latest_runtime_artifact":  {
-                                                           "path":  ".runtime/compact_memory_intake_v1/maintenance_runs/queue_maintenance_20260708_040037/COMPACT_MEMORY_QUEUE_MAINTENANCE_RESULT_V1.json",
-                                                           "last_write":  "2026-07-08T04:02:04.3383484+04:00",
-                                                           "bytes":  7858
+                                                           "path":  ".runtime/compact_memory_intake_v1/merge_runs/merge_queue_20260708_074610/COMPACT_MEMORY_MERGE_QUEUE_RESULT_V1.json",
+                                                           "last_write":  "2026-07-08T07:46:27.1530105+04:00",
+                                                           "bytes":  3126
                                                        }
                        },
                        {
@@ -194,10 +194,10 @@
                            "role":  "bounded inner motor / test life runtime surface",
                            "root":  "operations/autonomous_inner_motor",
                            "status":  "PRESENT_ON_CURRENT_BRANCH",
-                           "file_count":  68,
-                           "script_count":  7,
+                           "file_count":  69,
+                           "script_count":  8,
                            "policy_count":  1,
-                           "validator_count":  18,
+                           "validator_count":  19,
                            "proof_file_count":  30,
                            "doc_count":  10,
                            "required_files":  [
@@ -212,6 +212,7 @@
                                                       "operations/autonomous_inner_motor/validate_active_memory_state_backoff_v1.ps1",
                                                       "operations/autonomous_inner_motor/validate_agentlife_specific_growth_topic_v1.ps1",
                                                       "operations/autonomous_inner_motor/validate_aimo_source_agnostic_lab_integration_v1.ps1",
+                                                      "operations/autonomous_inner_motor/validate_aimo_source_agnostic_live_hotswap_v1.ps1",
                                                       "operations/autonomous_inner_motor/validate_growth_directed_task_selection_v1.ps1",
                                                       "operations/autonomous_inner_motor/validate_provenance_rejection_trace_v1.ps1",
                                                       "operations/autonomous_inner_motor/validate_single_source_dependency_negative_cases_v1.ps1"
@@ -225,9 +226,9 @@
                                                      "subject":  "feat: require provenance rejection trace fallback"
                                                  },
                            "latest_runtime_artifact":  {
-                                                           "path":  ".runtime/autonomous_inner_motor/test_life_runs/live_aimo_concrete_growth_topic_inspect_residue_final_20260707T165949Z/TEST_LIFE_PROOF.json",
-                                                           "last_write":  "2026-07-08T04:02:06.0569171+04:00",
-                                                           "bytes":  382837
+                                                           "path":  ".runtime/autonomous_inner_motor/test_life_runs/live_aimo_source_agnostic_path_selection_v1_20260708T034501Z/TEST_LIFE_PROOF.json",
+                                                           "last_write":  "2026-07-08T07:46:33.9885374+04:00",
+                                                           "bytes":  148883
                                                        }
                        },
                        {
@@ -363,7 +364,7 @@
                                         "live_process_touched":  false,
                                         "latest_active_compact_memory_manifest":  {
                                                                                       "path":  ".runtime/active_compact_semantic_memory_v1/manifest.json",
-                                                                                      "last_write":  "2026-07-08T04:02:02.3348591+04:00",
+                                                                                      "last_write":  "2026-07-08T07:46:25.2218819+04:00",
                                                                                       "bytes":  962
                                                                                   },
                                         "latest_school_runtime_artifact":  {
@@ -372,9 +373,9 @@
                                                                                "bytes":  278056
                                                                            },
                                         "latest_aimo_runtime_artifact":  {
-                                                                             "path":  ".runtime/autonomous_inner_motor/test_life_runs/live_aimo_concrete_growth_topic_inspect_residue_final_20260707T165949Z/TEST_LIFE_PROOF.json",
-                                                                             "last_write":  "2026-07-08T04:02:06.0569171+04:00",
-                                                                             "bytes":  382837
+                                                                             "path":  ".runtime/autonomous_inner_motor/test_life_runs/live_aimo_source_agnostic_path_selection_v1_20260708T034501Z/TEST_LIFE_PROOF.json",
+                                                                             "last_write":  "2026-07-08T07:46:33.9885374+04:00",
+                                                                             "bytes":  148883
                                                                          }
                                     },
     "freshness_rule":  "Trust currentness by body_source_fingerprint, not by self-referential commit HEAD.",
