@@ -1,0 +1,111 @@
+﻿{
+    "schema":  "aimo_legacy_selector_demotion_v1",
+    "status":  "PASS_AIMO_LEGACY_SELECTOR_DEMOTION_V1",
+    "script":  "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+    "selection_report":  "reports/self_development/SOURCE_AGNOSTIC_PATH_SELECTION_V1.json",
+    "contract":  "self_model/AIMO_DEFAULT_SOURCE_AGNOSTIC_SELECTOR_CONTRACT_V1.json",
+    "line_order":  {
+                       "default_selector_line":  380,
+                       "school_legacy_line":  417,
+                       "growth_legacy_line":  449,
+                       "default_before_legacy":  true
+                   },
+    "cases":  [
+                  {
+                      "case":  "school_memory_delta_present",
+                      "status":  "PASS",
+                      "selected_reason":  "SOURCE_AGNOSTIC_PATH_SELECTION_DEFAULT",
+                      "selected_task":  "build_source_agnostic_path_selector_v1",
+                      "forbidden_reason_not_selected":  "ACTIVE_MEMORY_DELTA_FROM_SCHOOL",
+                      "legacy_selector_demoted":  true,
+                      "explicit_gate_required":  false,
+                      "source_refs_rejected":  [
+                                                   "latest_runtime_packets_as_authority",
+                                                   "school_as_required_brain",
+                                                   "agentlife_residue_as_direction",
+                                                   "latest_signal_as_authority",
+                                                   "child_agent_jump_before_self_build_selector_proven"
+                                               ]
+                  },
+                  {
+                      "case":  "latest_growth_signal_present",
+                      "status":  "PASS",
+                      "selected_reason":  "SOURCE_AGNOSTIC_PATH_SELECTION_DEFAULT",
+                      "selected_task":  "build_source_agnostic_path_selector_v1",
+                      "forbidden_reason_not_selected":  "ACTIVE_GROWTH_SIGNAL_TOPIC",
+                      "legacy_selector_demoted":  true,
+                      "explicit_gate_required":  false,
+                      "source_refs_rejected":  [
+                                                   "latest_runtime_packets_as_authority",
+                                                   "school_as_required_brain",
+                                                   "agentlife_residue_as_direction",
+                                                   "latest_signal_as_authority",
+                                                   "child_agent_jump_before_self_build_selector_proven"
+                                               ]
+                  },
+                  {
+                      "case":  "school_delta_and_latest_signal_present",
+                      "status":  "PASS",
+                      "selected_reason":  "SOURCE_AGNOSTIC_PATH_SELECTION_DEFAULT",
+                      "selected_task":  "build_source_agnostic_path_selector_v1",
+                      "forbidden_reason_not_selected":  "ACTIVE_MEMORY_DELTA_FROM_SCHOOL",
+                      "legacy_selector_demoted":  true,
+                      "explicit_gate_required":  false,
+                      "source_refs_rejected":  [
+                                                   "latest_runtime_packets_as_authority",
+                                                   "school_as_required_brain",
+                                                   "agentlife_residue_as_direction",
+                                                   "latest_signal_as_authority",
+                                                   "child_agent_jump_before_self_build_selector_proven"
+                                               ]
+                  },
+                  {
+                      "case":  "no_optional_signals",
+                      "status":  "PASS",
+                      "selected_reason":  "SOURCE_AGNOSTIC_PATH_SELECTION_DEFAULT",
+                      "selected_task":  "build_source_agnostic_path_selector_v1",
+                      "forbidden_reason_not_selected":  "NO_FRESH_GROWTH_SIGNAL_OR_MEMORY_DELTA",
+                      "legacy_selector_demoted":  true,
+                      "explicit_gate_required":  false,
+                      "source_refs_rejected":  [
+                                                   "latest_runtime_packets_as_authority",
+                                                   "school_as_required_brain",
+                                                   "agentlife_residue_as_direction",
+                                                   "latest_signal_as_authority",
+                                                   "child_agent_jump_before_self_build_selector_proven"
+                                               ]
+                  }
+              ],
+    "compatibility_gate":  {
+                               "status":  "PASS",
+                               "reason":  "SOURCE_AGNOSTIC_PATH_SELECTION_LAB_GATE",
+                               "task":  "build_source_agnostic_path_selector_v1"
+                           },
+    "legacy_default_authority":  {
+                                     "status":  "DEMOTED",
+                                     "forbidden_reasons_not_selected":  [
+                                                                            "ACTIVE_MEMORY_DELTA_FROM_SCHOOL",
+                                                                            "ACTIVE_GROWTH_SIGNAL_TOPIC",
+                                                                            "NO_FRESH_GROWTH_SIGNAL_OR_MEMORY_DELTA"
+                                                                        ],
+                                     "source_refs_rejected_required":  [
+                                                                           "school_as_required_brain",
+                                                                           "latest_signal_as_authority"
+                                                                       ]
+                                 },
+    "boundary":  {
+                     "legacy_fallback_on_missing_source_agnostic_report":  "NOT_TESTED",
+                     "note":  "legacy emergency fallback on missing/invalid SOURCE_AGNOSTIC_PATH_SELECTION_V1 is NOT proven by PHASE_D; current acceptance is only demotion from default authority.",
+                     "child_agent_factory_readiness":  "NOT_PROVEN"
+                 },
+    "runtime_size_mb":  49.19,
+    "live_state":  {
+                       "live_aimo_count":  1,
+                       "live_pid":  10044,
+                       "live_process_touched":  false
+                   },
+    "active_memory_mutated":  false,
+    "live_process_touched":  false,
+    "next_phase":  "PHASE_E_DEFAULT_SELECTOR_LIVE_HOTSWAP_PREFLIGHT_OR_ISOLATED_PROOF_GUARD",
+    "created_at":  "2026-07-08T09:35:45.8752298+04:00"
+}
