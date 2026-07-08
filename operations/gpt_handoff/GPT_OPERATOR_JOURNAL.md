@@ -1,4 +1,4 @@
-# GPT Operator Journal - Active Compact Pointer
+﻿# GPT Operator Journal - Active Compact Pointer
 
 Status: ACTIVE_COMPACT_JOURNAL
 Created: 2026-07-05T15:43:33.8961641+04:00
@@ -25,7 +25,7 @@ Root cause found by forensic sampling and git history:
 1. Normal journal grew to about 30.7 MB by commit `2ed93c2`.
 2. At commit `8823c07` it jumped to about 750.8 MB.
 3. At commit `7401ccc` it jumped to about 1.671 GB.
-4. Samples in the inflated regions are mojibake/corrupted repeated text such as `AÃ¯Â¿Â½A...`, not valid markdown notes.
+4. Samples in the inflated regions are mojibake/corrupted repeated text such as `AÃƒÂ¯Ã‚Â¿Ã‚Â½A...`, not valid markdown notes.
 5. Most likely mechanism: Windows PowerShell full-file read/write normalization read a UTF-8/no-BOM journal through the wrong default encoding, then re-encoded corrupted text as UTF-8. Repeating that expanded the file again.
 
 The old oversized content remains reachable through git history if forensic recovery is ever required. It is no longer the active working journal.
@@ -209,3 +209,15 @@ Night-school note:
 - School PID=2708; AIMO PID=13264; AIMO mode=SandboxTestLife; topics_plan=operations/school/curriculum/topics/builder_night_school_topics_v1.json; heartbeats=6; blockers empty.
 - Stop path: .runtime\live_start\controlled_live_school_aimo_v1_20260707T070037Z\STOP_ALL_REQUESTED.txt; stop script: operations/live_start/stop_school_aimo_controlled_live_v1.ps1.
 - Boundary: initial live start only; long-term live soak still requires continued monitoring proof.
+
+2026-07-08 - Owner concept: Body Control Cortex / diagnostic organism, not just maps
+- Owner correction: do not reduce body understanding to numeric inventory, passport counts, or one very detailed map. Builder must understand its body like an organism: organs, dependencies, symptoms, root causes, invalid/duplicate/junk surfaces, sleeping/live-down modules, lab/live boundaries, and safe probes.
+- Core analogy: if the agent â€œhas a painful leg,â€ it must not merely report the symptom. It must trace whether the cause is the leg itself, an upstream organ, missing runtime, invalid passport, stale validator, disconnected module, duplicate authority, or sleeping subsystem.
+- Architectural decision candidate: introduce BODY_CONTROL_CORTEX_V1 as a body-to-brain organ, not the brain itself. It should combine BODY_OBJECT_REGISTRY, ORGAN_PASSPORT_REGISTRY, CAPABILITY_INVOCATION_MAP, BODY_DEPENDENCY_GRAPH, BODY_HEALTH_STATE, DIAGNOSTIC_RULES, and ROOT_CAUSE_TRACE signals into compact actionable packets for the brain/action policy.
+- Layer boundary: canonical body map = anatomy/composition; organ passports = trust/maturity/ownership; capability invocation map = what can be done; dependency graph = what affects what; health state = current working/degraded/blocked/stale/live-down status; diagnostic rules = symptom vs root-cause reasoning.
+- Required behavior: no claim that all body objects are organs. 164 body objects/surfaces are not 164 organs. Full organ passports are for confirmed organs and promoted organ candidates only; other objects need registry/support-surface records and owner/parent links.
+- Diagnostic rule seed: validator failure is a symptom until upstream dependencies, live/lab boundary, passport state, stale authority, duplicate maps, runtime state, and proof freshness are checked.
+- Current proven context: BODY_MAP_PHASE_CLOSURE_V1 passed; operations_self_model is confirmed in canonical map and lab validated; legacy duplicate maps are absent; LIVE_AIMO_COUNT=0 after reboot; PROVEN_LIVE and child-agent readiness remain not proven.
+- Next route candidate: BODY_CONTROL_CORTEX_V1 design/build package. Do not jump straight to child agents, live restart, or full passport generation for all candidates before the diagnostic organism model is specified.
+- Status: STRATEGY_SUPPORTED / NOT_IMPLEMENTED. This entry records Owner intent and architecture direction only; no runtime behavior is claimed.
+
