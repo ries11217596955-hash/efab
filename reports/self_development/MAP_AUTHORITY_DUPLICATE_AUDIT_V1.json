@@ -1,0 +1,351 @@
+﻿{
+    "schema":  "map_authority_duplicate_audit_v1",
+    "status":  "PASS_MAP_AUTHORITY_DUPLICATE_AUDIT_V1",
+    "purpose":  "Audit whether current organ/body map is the only map, whether duplicates/legacy maps exist, and why the current map reports only 7 organs.",
+    "repo":  {
+                 "head":  "42e8ca33fb13a37a3f795b2d7cf6b7f1f1e26fc2",
+                 "short_head":  "42e8ca3",
+                 "ahead_behind":  "0\t0",
+                 "dirty":  false
+             },
+    "map_like_file_count":  124,
+    "audited_core_surfaces":  [
+                                  {
+                                      "path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+                                      "exists":  true,
+                                      "bytes":  31951,
+                                      "sha256":  "582618CFA52E7F38361D6CD35C09DF2522557566F47B623DB6EEC44ABFF52E79",
+                                      "schema":  "AGENT_BODY_COMPOSITION_MAP_V1",
+                                      "status":  "",
+                                      "classification":  "CURRENT_CANONICAL_BY_GENERATOR_BUT_INCOMPLETE_HARDCODED",
+                                      "component_count":  7,
+                                      "body_component_count":  null,
+                                      "capability_count":  null,
+                                      "module_inventory_modules_count":  null,
+                                      "generated_programs_count":  null,
+                                      "produced_agents_count":  null,
+                                      "launch_surfaces_count":  null,
+                                      "proof_index_count":  null,
+                                      "report_index_count":  null,
+                                      "notes":  [
+                                                    "Current map output target of map refresh module. Contains 7 components."
+                                                ]
+                                  },
+                                  {
+                                      "path":  "reports/self_development/agent_body_map.json",
+                                      "exists":  true,
+                                      "bytes":  5845,
+                                      "sha256":  "1E890B5B04E59F25A746A3C788D8BECF13C0E4C36A7C02FF043B367D525787A8",
+                                      "schema":  "AGENT_BODY_MAP_COMPATIBILITY_VIEW_V1",
+                                      "status":  "",
+                                      "classification":  "DERIVED_COMPATIBILITY_VIEW",
+                                      "component_count":  7,
+                                      "body_component_count":  null,
+                                      "capability_count":  null,
+                                      "module_inventory_modules_count":  null,
+                                      "generated_programs_count":  null,
+                                      "produced_agents_count":  null,
+                                      "launch_surfaces_count":  null,
+                                      "proof_index_count":  null,
+                                      "report_index_count":  null,
+                                      "notes":  [
+                                                    "Derived from SELF_MODEL_ACTIVE_MAP.json, not independent source."
+                                                ]
+                                  },
+                                  {
+                                      "path":  "reports/self_development/agent_body_map.md",
+                                      "exists":  true,
+                                      "bytes":  2366,
+                                      "sha256":  "02BBA4B78B2EFC0D5006BAA4F27F8E091DAAADDC73697DD1FCC167E2D8E717B7",
+                                      "schema":  null,
+                                      "status":  null,
+                                      "classification":  "DERIVED_HUMAN_VIEW",
+                                      "component_count":  null,
+                                      "body_component_count":  null,
+                                      "capability_count":  null,
+                                      "module_inventory_modules_count":  null,
+                                      "generated_programs_count":  null,
+                                      "produced_agents_count":  null,
+                                      "launch_surfaces_count":  null,
+                                      "proof_index_count":  null,
+                                      "report_index_count":  null,
+                                      "notes":  [
+                                                    "Human summary generated from same 7 components."
+                                                ]
+                                  },
+                                  {
+                                      "path":  "reports/self_development/CURRENT_BODY_CAPABILITY_SNAPSHOT_V1.json",
+                                      "exists":  true,
+                                      "bytes":  6634,
+                                      "sha256":  "09B9B63F3364DBDC97824261DD683F76526CC312D423F6FA5E2DAD83AB3F7AA1",
+                                      "schema":  "current_body_capability_snapshot_v1",
+                                      "status":  "SNAPSHOT_EXPORTED",
+                                      "classification":  "OLDER_OR_PARALLEL_SELF_MODEL_SNAPSHOT_WITH_MORE_COMPONENTS",
+                                      "component_count":  10,
+                                      "body_component_count":  null,
+                                      "capability_count":  null,
+                                      "module_inventory_modules_count":  null,
+                                      "generated_programs_count":  null,
+                                      "produced_agents_count":  null,
+                                      "launch_surfaces_count":  null,
+                                      "proof_index_count":  null,
+                                      "report_index_count":  null,
+                                      "notes":  [
+                                                    "Contains 10 components but is not the current composition-map output target."
+                                                ]
+                                  },
+                                  {
+                                      "path":  "self_knowledge/BUILDER_SELF_MODEL.json",
+                                      "exists":  true,
+                                      "bytes":  182539,
+                                      "sha256":  "26B6CB1F5F3A9E1AE39023A740B4D53267E596FEFA439A1E55687003810577A0",
+                                      "schema":  "",
+                                      "status":  "",
+                                      "classification":  "LEGACY_BROAD_SELF_KNOWLEDGE_MAP_WITH_MORE_INVENTORY",
+                                      "component_count":  null,
+                                      "body_component_count":  null,
+                                      "capability_count":  87,
+                                      "module_inventory_modules_count":  42,
+                                      "generated_programs_count":  38,
+                                      "produced_agents_count":  93,
+                                      "launch_surfaces_count":  4,
+                                      "proof_index_count":  74,
+                                      "report_index_count":  34,
+                                      "notes":  [
+                                                    "Large legacy self model; has module/capability/generated program/agent inventories."
+                                                ]
+                                  },
+                                  {
+                                      "path":  "self_model/BUILDER_SELF_MODEL.json",
+                                      "exists":  true,
+                                      "bytes":  3847,
+                                      "sha256":  "D34C021B5838471E11C2997CA370B589B7728FAB4B5F3CC5ACE30555C809E0AA",
+                                      "schema":  "",
+                                      "status":  "PASS",
+                                      "classification":  "SMALL_CURRENT_SELF_MODEL_REFERENCE_NOT_BODY_MAP",
+                                      "component_count":  null,
+                                      "body_component_count":  null,
+                                      "capability_count":  null,
+                                      "module_inventory_modules_count":  null,
+                                      "generated_programs_count":  null,
+                                      "produced_agents_count":  null,
+                                      "launch_surfaces_count":  null,
+                                      "proof_index_count":  null,
+                                      "report_index_count":  null,
+                                      "notes":  [
+                                                    "Small self-model reference, not composition inventory."
+                                                ]
+                                  },
+                                  {
+                                      "path":  "self_control/CURRENT_AGENT_BUILDER_STATE.json",
+                                      "exists":  true,
+                                      "bytes":  837,
+                                      "sha256":  "AD3883FDB28E6DA4FAAD20E1CBE47D9CEA99217D5AFE8C1C9D06AA94908C061D",
+                                      "schema":  "",
+                                      "status":  "PASS",
+                                      "classification":  "UNKNOWN",
+                                      "component_count":  null,
+                                      "body_component_count":  null,
+                                      "capability_count":  null,
+                                      "module_inventory_modules_count":  null,
+                                      "generated_programs_count":  null,
+                                      "produced_agents_count":  null,
+                                      "launch_surfaces_count":  null,
+                                      "proof_index_count":  null,
+                                      "report_index_count":  null,
+                                      "notes":  [
+
+                                                ]
+                                  },
+                                  {
+                                      "path":  "CAPABILITY_ROADMAP.json",
+                                      "exists":  true,
+                                      "bytes":  32579,
+                                      "sha256":  "E554F11FD7D5CDDF7B19CC37E451E87DAFBB8E920A8280666F29E31A95A19597",
+                                      "schema":  "",
+                                      "status":  "",
+                                      "classification":  "CAPABILITY_ROADMAP_NOT_BODY_MAP",
+                                      "component_count":  null,
+                                      "body_component_count":  null,
+                                      "capability_count":  96,
+                                      "module_inventory_modules_count":  null,
+                                      "generated_programs_count":  null,
+                                      "produced_agents_count":  null,
+                                      "launch_surfaces_count":  null,
+                                      "proof_index_count":  null,
+                                      "report_index_count":  null,
+                                      "notes":  [
+                                                    "Capability inventory source, not organ body map."
+                                                ]
+                                  },
+                                  {
+                                      "path":  "GENESIS_STATE.json",
+                                      "exists":  true,
+                                      "bytes":  22115,
+                                      "sha256":  "6EB22FEE813A5A9643AF674AD6CD173E88AB9BDCB955CD3E09A897FCE72D6F9D",
+                                      "schema":  "",
+                                      "status":  "",
+                                      "classification":  "GENESIS_STATIC_REFERENCE_NOT_CURRENT_BODY_MAP",
+                                      "component_count":  null,
+                                      "body_component_count":  null,
+                                      "capability_count":  null,
+                                      "module_inventory_modules_count":  null,
+                                      "generated_programs_count":  null,
+                                      "produced_agents_count":  null,
+                                      "launch_surfaces_count":  null,
+                                      "proof_index_count":  null,
+                                      "report_index_count":  null,
+                                      "notes":  [
+                                                    "Genesis/static state, not current body map."
+                                                ]
+                                  },
+                                  {
+                                      "path":  "self_build_programs/promotions/PHASE165O_REUSABLE_OWNER_MATERIAL_SELF_BUILD_ORGAN_V1/registry_after_promotion.json",
+                                      "exists":  true,
+                                      "bytes":  131144,
+                                      "sha256":  "38E2C3490F7141C2AB855EB085A58CEBBC18BB325CE02B933599CAED51BF20B4",
+                                      "schema":  "",
+                                      "status":  "",
+                                      "classification":  "PROMOTION_REGISTRY_REFERENCE_NOT_CURRENT_BODY_MAP",
+                                      "component_count":  null,
+                                      "body_component_count":  null,
+                                      "capability_count":  null,
+                                      "module_inventory_modules_count":  null,
+                                      "generated_programs_count":  null,
+                                      "produced_agents_count":  null,
+                                      "launch_surfaces_count":  null,
+                                      "proof_index_count":  null,
+                                      "report_index_count":  null,
+                                      "notes":  [
+
+                                                ]
+                                  },
+                                  {
+                                      "path":  "self_build_programs/promotions/PHASE165O_REUSABLE_OWNER_MATERIAL_SELF_BUILD_ORGAN_V1/capability_roadmap_after_promotion.json",
+                                      "exists":  true,
+                                      "bytes":  32579,
+                                      "sha256":  "E554F11FD7D5CDDF7B19CC37E451E87DAFBB8E920A8280666F29E31A95A19597",
+                                      "schema":  "",
+                                      "status":  "",
+                                      "classification":  "PROMOTED_CAPABILITY_ROADMAP_COPY_NOT_BODY_MAP",
+                                      "component_count":  null,
+                                      "body_component_count":  null,
+                                      "capability_count":  96,
+                                      "module_inventory_modules_count":  null,
+                                      "generated_programs_count":  null,
+                                      "produced_agents_count":  null,
+                                      "launch_surfaces_count":  null,
+                                      "proof_index_count":  null,
+                                      "report_index_count":  null,
+                                      "notes":  [
+
+                                                ]
+                                  }
+                              ],
+    "current_canonical":  {
+                              "path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+                              "component_count":  7,
+                              "component_ids":  [
+                                                    "school",
+                                                    "school_source_router",
+                                                    "compact_memory_intake",
+                                                    "autonomous_inner_motor",
+                                                    "knowledge_acquisition_port",
+                                                    "map_control",
+                                                    "gpt_handoff"
+                                                ],
+                              "generated_by":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
+                              "new_component_lines_count":  7,
+                              "new_component_lines":  [
+                                                          {
+                                                              "line":  164,
+                                                              "text":  "(New-Component \u0027school\u0027 \u0027operations/school\u0027 @(\u0027operations/school/run_agent_school.ps1\u0027,\u0027operations/school/finalize_agent_school_run_v1.ps1\u0027,\u0027operations/school/SCHOOL_CANONICAL_RUN_CONTRACT_V1.md\u0027) @(\u0027.runtime/school_runs\u0027,\u0027.runtime/autonomous_school_cycles\u0027) \u0027candidate learning factory and school lifecycle\u0027),"
+                                                          },
+                                                          {
+                                                              "line":  165,
+                                                              "text":  "(New-Component \u0027school_source_router\u0027 \u0027operations/school/curriculum/source_router\u0027 @(\u0027operations/school/curriculum/source_router/run_school_source_router_v1.ps1\u0027,\u0027operations/school/curriculum/source_router/run_school_codex_source_port_v1.ps1\u0027,\u0027operations/school/curriculum/source_router/run_school_external_world_source_port_v1.ps1\u0027,\u0027operations/school/curriculum/source_router/template_filter/run_school_source_template_filter_v1.ps1\u0027,\u0027operations/school/curriculum/source_router/template_filter/school_source_template_filter_policy.json\u0027) @(\u0027.runtime/school_source_router\u0027,\u0027.runtime/school_source_ports\u0027,\u0027.runtime/school_source_template_filter\u0027) \u0027governed source selection before school material intake\u0027),"
+                                                          },
+                                                          {
+                                                              "line":  166,
+                                                              "text":  "(New-Component \u0027compact_memory_intake\u0027 \u0027operations/compact_memory_intake\u0027 @(\u0027operations/compact_memory_intake/submit_compact_memory_packet_v1.ps1\u0027,\u0027operations/compact_memory_intake/merge_compact_memory_intake_queue_v1.ps1\u0027,\u0027operations/compact_memory_intake/run_compact_memory_queue_maintenance_v1.ps1\u0027) @(\u0027.runtime/compact_memory_intake_v1\u0027,\u0027.runtime/active_compact_semantic_memory_v1\u0027,\u0027.runtime/file_atom_absorption\u0027) \u0027only governed packet/intake/merge path into compact memory\u0027),"
+                                                          },
+                                                          {
+                                                              "line":  167,
+                                                              "text":  "(New-Component \u0027autonomous_inner_motor\u0027 \u0027operations/autonomous_inner_motor\u0027 @(\u0027operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1\u0027) @(\u0027.runtime/autonomous_inner_motor\u0027) \u0027bounded inner motor / test life runtime surface\u0027),"
+                                                          },
+                                                          {
+                                                              "line":  168,
+                                                              "text":  "(New-Component \u0027knowledge_acquisition_port\u0027 \u0027operations/knowledge_acquisition_port\u0027 @(\u0027operations/knowledge_acquisition_port/ask_codex_knowledge_source.ps1\u0027,\u0027operations/knowledge_acquisition_port/ask_codex_batch_knowledge_source.ps1\u0027) @(\u0027.runtime/knowledge_acquisition_port\u0027) \u0027bounded knowledge acquisition material port\u0027),"
+                                                          },
+                                                          {
+                                                              "line":  169,
+                                                              "text":  "(New-Component \u0027map_control\u0027 \u0027operations/map_control\u0027 @(\u0027operations/map_control/BRANCH_AGNOSTIC_MAP_REFRESH_CONTRACT.md\u0027,\u0027operations/map_control/branch_agnostic_map_refresh_policy.json\u0027) @() \u0027map governance / freshness contract\u0027),"
+                                                          },
+                                                          {
+                                                              "line":  170,
+                                                              "text":  "(New-Component \u0027gpt_handoff\u0027 \u0027operations/gpt_handoff\u0027 @(\u0027operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md\u0027) @() \u0027GPT/operator compact handoff surface\u0027)"
+                                                          }
+                                                      ],
+                              "validator_required_line":  [
+
+                                                          ],
+                              "root_cause":  "The current canonical body map is produced from a hardcoded New-Component list in the refresh module, so repeated refreshes preserve the narrow list."
+                          },
+    "other_maps_with_more_or_different_inventory":  [
+                                                        {
+                                                            "path":  "reports/self_development/CURRENT_BODY_CAPABILITY_SNAPSHOT_V1.json",
+                                                            "component_count":  10,
+                                                            "component_names":  [
+                                                                                    "autonomous_inner_motor",
+                                                                                    "compact_memory_intake",
+                                                                                    "episodic_memory",
+                                                                                    "reasoning_episode",
+                                                                                    "school",
+                                                                                    "builder_identity_contract",
+                                                                                    "source_agnostic_path_selector",
+                                                                                    "builder_mission_scoring",
+                                                                                    "provenance_rejection_trace",
+                                                                                    "child_agent_factory"
+                                                                                ],
+                                                            "classification":  "parallel/older snapshot with 10 components; not current map authority"
+                                                        },
+                                                        {
+                                                            "path":  "self_knowledge/BUILDER_SELF_MODEL.json",
+                                                            "module_inventory_modules":  42,
+                                                            "capabilities":  87,
+                                                            "generated_programs":  38,
+                                                            "produced_agents":  93,
+                                                            "classification":  "legacy broad inventory; richer than current body map but not current authority"
+                                                        },
+                                                        {
+                                                            "path":  "CAPABILITY_ROADMAP.json",
+                                                            "capabilities":  96,
+                                                            "classification":  "capability source, not organ map"
+                                                        }
+                                                    ],
+    "expanded_candidate_audit":  {
+                                     "path":  "reports/self_development/EXPANDED_ORGAN_CANDIDATE_INVENTORY_AUDIT_V1.json",
+                                     "selected_candidates":  160,
+                                     "unregistered_strong":  85,
+                                     "classification":  "proves repo contains many organ-like surfaces outside current body map"
+                                 },
+    "findings":  {
+                     "there_are_multiple_maps":  true,
+                     "current_map_is_not_the_only_map":  true,
+                     "current_map_is_current_authority_by_generator":  true,
+                     "current_map_is_incomplete_for_full_body_inventory":  true,
+                     "another_map_shows_more_components":  true,
+                     "old_self_knowledge_shows_much_more_inventory":  true,
+                     "refresh_and_validator_are_too_narrow":  true,
+                     "previous_repairs_did_not_fix_root_cause":  true
+                 },
+    "boundaries":  {
+                       "do_not_delete_duplicate_maps":  true,
+                       "do_not_promote_legacy_map_raw":  true,
+                       "do_not_run_passport_generator_until_map_authority_repaired":  true,
+                       "body_map_mutation_not_performed":  true,
+                       "live_process_touched":  false
+                   },
+    "recommended_next_step":  "MAP_AUTHORITY_REPAIR_V1_UNIFY_CURRENT_BODY_MAP_WITH_LEGACY_AND_SNAPSHOT_EVIDENCE_USING_VALIDATOR",
+    "created_at":  "2026-07-08T14:29:32.9749628+04:00"
+}

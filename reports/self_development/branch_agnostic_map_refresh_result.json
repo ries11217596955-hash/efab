@@ -1,28 +1,26 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-08T14:17:47.2521903+04:00",
+    "checked_at":  "2026-07-08T14:29:57.8386203+04:00",
     "branch":  "main",
-    "observed_head":  "0c1f321ab61c73ca5b034917983bfbc4024f7d65",
-    "subject_head":  "0c1f321ab61c73ca5b034917983bfbc4024f7d65",
+    "observed_head":  "42e8ca33fb13a37a3f795b2d7cf6b7f1f1e26fc2",
+    "subject_head":  "42e8ca33fb13a37a3f795b2d7cf6b7f1f1e26fc2",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "docs/operations/ORGAN_PASSPORT_COVERAGE_AUDIT_V1.md",
-                          "docs/operations/ORGAN_PASSPORT_V1_CONTRACT.md",
-                          "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
-                          "reports/self_development/ORGAN_PASSPORT_COVERAGE_AUDIT_V1.json",
+                          "docs/operations/EXPANDED_ORGAN_CANDIDATE_INVENTORY_AUDIT_V1.md",
+                          "operations/self_model/validate_expanded_organ_candidate_inventory_audit_v1.ps1",
+                          "reports/self_development/EXPANDED_ORGAN_CANDIDATE_INVENTORY_AUDIT_V1.json",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "self_model/ORGAN_PASSPORT_V1_CONTRACT.json",
-                          "tests/self_development/CAPABILITY_INVOCATION_MAP_V1_CONTRACT_PROOF.json",
+                          "tests/self_development/EXPANDED_ORGAN_CANDIDATE_INVENTORY_AUDIT_V1_PROOF.json",
                           "tests/self_development/ORGAN_PASSPORT_CONTRACT_AND_COVERAGE_AUDIT_V1_PROOF.json"
                       ],
     "structural_paths":  [
-                             "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1"
+                             "operations/self_model/validate_expanded_organ_candidate_inventory_audit_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -34,8 +32,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  621,
-                                    "sha256":  "f57d0a695aa5dab34f17c7be9703e6b752d583bc30f80bb904f58123868df2af"
+                                    "structural_file_count":  622,
+                                    "sha256":  "b28260336bd9595805444583b9b1613bb570ca4700938eea20ac974704fa25c5"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -56,7 +54,7 @@
                          "builder":  "AGENT_BODY_COMPOSITION_MAP_V1",
                          "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                          "component_count":  7,
-                         "structural_path_count":  621
+                         "structural_path_count":  622
                      },
-    "refreshed_at":  "2026-07-08T14:17:48.3021690+04:00"
+    "refreshed_at":  "2026-07-08T14:29:58.8906847+04:00"
 }
