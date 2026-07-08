@@ -1,0 +1,24 @@
+﻿{
+    "schema":  "aimo_runtime_hygiene_live_hotswap_checkpoint_v1",
+    "status":  "CHECKPOINT_BEFORE_RESTART_NO_GATE_AIMO_WITH_RUNTIME_HYGIENE",
+    "repo":  {
+                 "head":  "64f60dcdb30e57e676351ad415893bc5bcd807ec",
+                 "short_head":  "64f60dc",
+                 "ahead_behind":  "0\t0",
+                 "dirty":  false
+             },
+    "old_live":  {
+                     "pid":  11436,
+                     "run_id":  "live_aimo_default_source_agnostic_no_gate_v1_20260708T055605Z",
+                     "command_line":  "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -NoProfile -ExecutionPolicy Bypass -File operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1 -Mode SandboxTestLife -RunId live_aimo_default_source_agnostic_no_gate_v1_20260708T055605Z ",
+                     "run_dir":  ".runtime\\autonomous_inner_motor\\test_life_runs\\live_aimo_default_source_agnostic_no_gate_v1_20260708T055605Z",
+                     "proof_path":  ".runtime\\autonomous_inner_motor\\test_life_runs\\live_aimo_default_source_agnostic_no_gate_v1_20260708T055605Z\\TEST_LIFE_PROOF.json",
+                     "cycles":  443,
+                     "gated":  false
+                 },
+    "rollback":  {
+                     "command_line":  "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -NoProfile -ExecutionPolicy Bypass -File operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1 -Mode SandboxTestLife -RunId live_aimo_default_source_agnostic_no_gate_v1_20260708T055605Z ",
+                     "note":  "If cleanup-enabled no-gate restart fails, restart previous no-gate command with rollback run id."
+                 },
+    "created_at":  "2026-07-08T10:36:50.0023744+04:00"
+}

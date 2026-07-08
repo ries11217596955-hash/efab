@@ -1,0 +1,96 @@
+﻿{
+    "schema":  "aimo_runtime_hygiene_live_hotswap_v1",
+    "status":  "PASS_AIMO_RUNTIME_HYGIENE_LIVE_HOTSWAP_V1",
+    "checkpoint_path":  "tests/live_start/AIMO_RUNTIME_HYGIENE_LIVE_HOTSWAP_V1_CHECKPOINT.json",
+    "repo":  {
+                 "head":  "64f60dcdb30e57e676351ad415893bc5bcd807ec",
+                 "short_head":  "64f60dc",
+                 "ahead_behind":  "0\t0",
+                 "dirty":  false
+             },
+    "old_live":  {
+                     "pid":  11436,
+                     "run_id":  "live_aimo_default_source_agnostic_no_gate_v1_20260708T055605Z",
+                     "stopped":  true,
+                     "forced_stop":  false,
+                     "cycles_before_stop":  443,
+                     "was_gated":  false
+                 },
+    "new_live":  {
+                     "pid":  10612,
+                     "run_id":  "live_aimo_no_gate_runtime_hygiene_v1_20260708T063710Z",
+                     "command_line":  "powershell -NoProfile -ExecutionPolicy Bypass -File operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1 -Mode SandboxTestLife -RunId live_aimo_no_gate_runtime_hygiene_v1_20260708T063710Z",
+                     "proof_path":  ".runtime\\autonomous_inner_motor\\test_life_runs\\live_aimo_no_gate_runtime_hygiene_v1_20260708T063710Z\\TEST_LIFE_PROOF.json",
+                     "stdout":  ".runtime\\autonomous_inner_motor\\test_life_runs\\live_aimo_no_gate_runtime_hygiene_v1_20260708T063710Z\\stdout.txt",
+                     "stderr":  ".runtime\\autonomous_inner_motor\\test_life_runs\\live_aimo_no_gate_runtime_hygiene_v1_20260708T063710Z\\stderr.txt",
+                     "stderr_size":  0,
+                     "alive_after_proof":  true,
+                     "gated":  false,
+                     "observed_default_selection":  true,
+                     "observed_runtime_hygiene_cleanup":  true
+                 },
+    "selection":  {
+                      "reason":  "SOURCE_AGNOSTIC_PATH_SELECTION_DEFAULT",
+                      "task":  "build_source_agnostic_path_selector_v1",
+                      "specific_gap":  "source_agnostic_path_selector_missing",
+                      "lab_gate_enabled":  false,
+                      "explicit_gate_required":  false,
+                      "legacy_selector_demoted":  true
+                  },
+    "runtime_hygiene_cleanup":  {
+                                    "schema":  "aimo_transient_runtime_cleanup_v1",
+                                    "reason":  "cycle_before_proof",
+                                    "run_id":  "live_aimo_no_gate_runtime_hygiene_v1_20260708T063710Z",
+                                    "items":  [
+                                                  {
+                                                      "path":  ".runtime/compact_memory_intake_v1/checkpoints",
+                                                      "exists_before":  true,
+                                                      "tracked_count":  0,
+                                                      "size_mb_before":  33.99,
+                                                      "file_count_before":  3,
+                                                      "deleted":  true
+                                                  },
+                                                  {
+                                                      "path":  ".runtime/file_atom_absorption",
+                                                      "exists_before":  true,
+                                                      "tracked_count":  0,
+                                                      "size_mb_before":  33.99,
+                                                      "file_count_before":  4,
+                                                      "deleted":  true
+                                                  }
+                                              ],
+                                    "created_at":  "2026-07-08T10:37:16.2531379+04:00"
+                                },
+    "transient_states_after":  [
+                                   {
+                                       "path":  ".runtime/compact_memory_intake_v1/checkpoints",
+                                       "exists":  false,
+                                       "size_mb":  0,
+                                       "file_count":  0
+                                   },
+                                   {
+                                       "path":  ".runtime/file_atom_absorption",
+                                       "exists":  false,
+                                       "size_mb":  0,
+                                       "file_count":  0
+                                   }
+                               ],
+    "runtime_size_mb":  49.91,
+    "final_live":  {
+                       "count":  1,
+                       "pids":  [
+                                    10612
+                                ],
+                       "commands":  [
+                                        "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -NoProfile -ExecutionPolicy Bypass -File operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1 -Mode SandboxTestLife -RunId live_aimo_no_gate_runtime_hygiene_v1_20260708T063710Z "
+                                    ]
+                   },
+    "live_process_touched":  true,
+    "active_memory_mutation_attribution":  "LIVE_AIMO_RUNNING_SHARED_RUNTIME",
+    "boundaries":  {
+                       "child_agent_factory_readiness":  "NOT_PROVEN",
+                       "legacy_emergency_fallback_not_proven":  true,
+                       "school_runtime_hygiene_repair_still_future":  true
+                   },
+    "created_at":  "2026-07-08T10:37:19.5548830+04:00"
+}
