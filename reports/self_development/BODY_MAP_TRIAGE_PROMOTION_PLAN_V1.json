@@ -1,0 +1,599 @@
+﻿{
+    "schema":  "body_map_triage_promotion_plan_v1",
+    "status":  "PASS_BODY_MAP_TRIAGE_PROMOTION_PLAN_V1",
+    "purpose":  "Turn candidate triage into a bounded execution plan without accepting candidates as organs.",
+    "source_triage":  "reports/self_development/BODY_MAP_CANDIDATE_TRIAGE_V1.json",
+    "summary":  {
+                    "total_triaged":  156,
+                    "real_organ_candidates":  17,
+                    "candidate_ready_for_draft":  2,
+                    "needs_review":  26,
+                    "owner_link_blocked":  9,
+                    "blocked":  0,
+                    "not_organ":  119
+                },
+    "fast_lane":  [
+                      {
+                          "candidate_id":  "contracts_accepted_atom_retention_organ",
+                          "path":  "contracts/accepted_atom_retention_organ",
+                          "confidence":  "HIGH",
+                          "next_action":  "NORMALIZE_EXISTING_CONTRACT_TO_ORGAN_PASSPORT_V1",
+                          "validator_refs":  [
+
+                                             ],
+                          "proof_refs":  [
+                                             "contracts/accepted_atom_retention_organ/passports/PROOF_PASSPORT.json"
+                                         ],
+                          "contract_or_policy_refs":  [
+                                                          "contracts/accepted_atom_retention_organ/ACCEPTED_ATOM_RETENTION_ORGAN_CONTRACT.md",
+                                                          "contracts/accepted_atom_retention_organ/ACCEPTED_ATOM_RETENTION_ORGAN_CONTRACT_STATUS.json",
+                                                          "contracts/accepted_atom_retention_organ/OLD_D2B_RUNNER_RETENTION_PATCH_PLAN.md",
+                                                          "contracts/accepted_atom_retention_organ/passports/CAPABILITY_PASSPORT.json",
+                                                          "contracts/accepted_atom_retention_organ/passports/INTEGRATION_PASSPORT.json",
+                                                          "contracts/accepted_atom_retention_organ/passports/LIFECYCLE_PASSPORT.json",
+                                                          "contracts/accepted_atom_retention_organ/passports/ORGAN_PASSPORT.json",
+                                                          "contracts/accepted_atom_retention_organ/passports/PASSPORT_INDEX.json",
+                                                          "contracts/accepted_atom_retention_organ/passports/PROOF_PASSPORT.json",
+                                                          "contracts/accepted_atom_retention_organ/passports/SANITIZER_PASSPORT.json"
+                                                      ]
+                      },
+                      {
+                          "candidate_id":  "operations_self_model",
+                          "path":  "operations/self_model",
+                          "confidence":  "HIGH",
+                          "next_action":  "CREATE_ORGAN_PASSPORT_DRAFT_FROM_PRIMARY_EVIDENCE",
+                          "validator_refs":  [
+                                                 "operations/self_model/validate_aimo_default_route_execution_report_v1.ps1",
+                                                 "operations/self_model/validate_aimo_default_source_agnostic_selector_contract_v1.ps1",
+                                                 "operations/self_model/validate_body_map_primary_evidence_rebuild_v1.ps1",
+                                                 "operations/self_model/validate_builder_gap_map_v1.ps1",
+                                                 "operations/self_model/validate_builder_identity_contract_v1.ps1",
+                                                 "operations/self_model/validate_builder_mission_scoring_v1.ps1",
+                                                 "operations/self_model/validate_candidate_action_set_v1.ps1",
+                                                 "operations/self_model/validate_capability_invocation_map_v1_contract.ps1",
+                                                 "operations/self_model/validate_codex_context_budget_and_body_map_task_v1.ps1",
+                                                 "operations/self_model/validate_current_body_capability_snapshot_v1.ps1",
+                                                 "operations/self_model/validate_deep_self_model_map_diagnostic_v1.ps1",
+                                                 "operations/self_model/validate_expanded_organ_candidate_inventory_audit_v1.ps1",
+                                                 "operations/self_model/validate_legacy_duplicate_map_removal_v1.ps1",
+                                                 "operations/self_model/validate_map_authority_duplicate_audit_v1.ps1",
+                                                 "operations/self_model/validate_map_authority_repair_v1.ps1",
+                                                 "operations/self_model/validate_next_route_lock_and_health_audit_v1.ps1",
+                                                 "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
+                                                 "operations/self_model/validate_route_v4_execution_report_phase_m_v1.ps1",
+                                                 "operations/self_model/validate_runtime_cleanup_v1.ps1",
+                                                 "operations/self_model/validate_school_runtime_hygiene_gap_v1.ps1"
+                                             ],
+                          "proof_refs":  [
+
+                                         ],
+                          "contract_or_policy_refs":  [
+                                                          "operations/self_model/validate_aimo_default_source_agnostic_selector_contract_v1.ps1",
+                                                          "operations/self_model/validate_builder_identity_contract_v1.ps1",
+                                                          "operations/self_model/validate_capability_invocation_map_v1_contract.ps1",
+                                                          "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1"
+                                                      ]
+                      }
+                  ],
+    "review_lane":  [
+                        {
+                            "candidate_id":  "operations_active_behavior",
+                            "path":  "operations/active_behavior",
+                            "triage_class":  "REAL_ORGAN_CANDIDATE",
+                            "confidence":  "MEDIUM",
+                            "next_action":  "OWNER_OR_VALIDATOR_REVIEW_FOR_ORGAN_PROMOTION",
+                            "reason":  "top-level operations surface with scripts/evidence; may be independent organ or component"
+                        },
+                        {
+                            "candidate_id":  "operations_autonomy_diagnostics",
+                            "path":  "operations/autonomy_diagnostics",
+                            "triage_class":  "REAL_ORGAN_CANDIDATE",
+                            "confidence":  "MEDIUM",
+                            "next_action":  "OWNER_OR_VALIDATOR_REVIEW_FOR_ORGAN_PROMOTION",
+                            "reason":  "top-level operations surface with scripts/evidence; may be independent organ or component"
+                        },
+                        {
+                            "candidate_id":  "operations_bridge_diagnostics",
+                            "path":  "operations/bridge_diagnostics",
+                            "triage_class":  "REAL_ORGAN_CANDIDATE",
+                            "confidence":  "MEDIUM",
+                            "next_action":  "OWNER_OR_VALIDATOR_REVIEW_FOR_ORGAN_PROMOTION",
+                            "reason":  "top-level operations surface with scripts/evidence; may be independent organ or component"
+                        },
+                        {
+                            "candidate_id":  "operations_contracts",
+                            "path":  "operations/contracts",
+                            "triage_class":  "REAL_ORGAN_CANDIDATE",
+                            "confidence":  "MEDIUM",
+                            "next_action":  "OWNER_OR_VALIDATOR_REVIEW_FOR_ORGAN_PROMOTION",
+                            "reason":  "top-level operations surface with scripts/evidence; may be independent organ or component"
+                        },
+                        {
+                            "candidate_id":  "operations_live_like",
+                            "path":  "operations/live_like",
+                            "triage_class":  "REAL_ORGAN_CANDIDATE",
+                            "confidence":  "MEDIUM",
+                            "next_action":  "OWNER_OR_VALIDATOR_REVIEW_FOR_ORGAN_PROMOTION",
+                            "reason":  "top-level operations surface with scripts/evidence; may be independent organ or component"
+                        },
+                        {
+                            "candidate_id":  "operations_live_readiness",
+                            "path":  "operations/live_readiness",
+                            "triage_class":  "REAL_ORGAN_CANDIDATE",
+                            "confidence":  "MEDIUM",
+                            "next_action":  "OWNER_OR_VALIDATOR_REVIEW_FOR_ORGAN_PROMOTION",
+                            "reason":  "top-level operations surface with scripts/evidence; may be independent organ or component"
+                        },
+                        {
+                            "candidate_id":  "operations_live_start",
+                            "path":  "operations/live_start",
+                            "triage_class":  "REAL_ORGAN_CANDIDATE",
+                            "confidence":  "MEDIUM",
+                            "next_action":  "OWNER_OR_VALIDATOR_REVIEW_FOR_ORGAN_PROMOTION",
+                            "reason":  "top-level operations surface with scripts/evidence; may be independent organ or component"
+                        },
+                        {
+                            "candidate_id":  "operations_memory",
+                            "path":  "operations/memory",
+                            "triage_class":  "REAL_ORGAN_CANDIDATE",
+                            "confidence":  "MEDIUM",
+                            "next_action":  "OWNER_OR_VALIDATOR_REVIEW_FOR_ORGAN_PROMOTION",
+                            "reason":  "top-level operations surface with scripts/evidence; may be independent organ or component"
+                        },
+                        {
+                            "candidate_id":  "operations_overnight_school",
+                            "path":  "operations/overnight_school",
+                            "triage_class":  "REAL_ORGAN_CANDIDATE",
+                            "confidence":  "MEDIUM",
+                            "next_action":  "OWNER_OR_VALIDATOR_REVIEW_FOR_ORGAN_PROMOTION",
+                            "reason":  "top-level operations surface with scripts/evidence; may be independent organ or component"
+                        },
+                        {
+                            "candidate_id":  "operations_parallel_life",
+                            "path":  "operations/parallel_life",
+                            "triage_class":  "REAL_ORGAN_CANDIDATE",
+                            "confidence":  "MEDIUM",
+                            "next_action":  "OWNER_OR_VALIDATOR_REVIEW_FOR_ORGAN_PROMOTION",
+                            "reason":  "top-level operations surface with scripts/evidence; may be independent organ or component"
+                        },
+                        {
+                            "candidate_id":  "operations_readme_md",
+                            "path":  "operations/README.md",
+                            "triage_class":  "REAL_ORGAN_CANDIDATE",
+                            "confidence":  "MEDIUM",
+                            "next_action":  "OWNER_OR_VALIDATOR_REVIEW_FOR_ORGAN_PROMOTION",
+                            "reason":  "top-level operations surface with scripts/evidence; may be independent organ or component"
+                        },
+                        {
+                            "candidate_id":  "operations_reasoning",
+                            "path":  "operations/reasoning",
+                            "triage_class":  "REAL_ORGAN_CANDIDATE",
+                            "confidence":  "MEDIUM",
+                            "next_action":  "OWNER_OR_VALIDATOR_REVIEW_FOR_ORGAN_PROMOTION",
+                            "reason":  "top-level operations surface with scripts/evidence; may be independent organ or component"
+                        },
+                        {
+                            "candidate_id":  "operations_reflex_library",
+                            "path":  "operations/reflex_library",
+                            "triage_class":  "REAL_ORGAN_CANDIDATE",
+                            "confidence":  "MEDIUM",
+                            "next_action":  "OWNER_OR_VALIDATOR_REVIEW_FOR_ORGAN_PROMOTION",
+                            "reason":  "top-level operations surface with scripts/evidence; may be independent organ or component"
+                        },
+                        {
+                            "candidate_id":  "operations_runtime",
+                            "path":  "operations/runtime",
+                            "triage_class":  "REAL_ORGAN_CANDIDATE",
+                            "confidence":  "MEDIUM",
+                            "next_action":  "OWNER_OR_VALIDATOR_REVIEW_FOR_ORGAN_PROMOTION",
+                            "reason":  "top-level operations surface with scripts/evidence; may be independent organ or component"
+                        },
+                        {
+                            "candidate_id":  "operations_smoke_trials",
+                            "path":  "operations/smoke_trials",
+                            "triage_class":  "REAL_ORGAN_CANDIDATE",
+                            "confidence":  "MEDIUM",
+                            "next_action":  "OWNER_OR_VALIDATOR_REVIEW_FOR_ORGAN_PROMOTION",
+                            "reason":  "top-level operations surface with scripts/evidence; may be independent organ or component"
+                        },
+                        {
+                            "candidate_id":  "self_build_programs_absorption",
+                            "path":  "self_build_programs/absorption",
+                            "triage_class":  "SELF_BUILD_PROGRAM_SURFACE",
+                            "confidence":  "MEDIUM",
+                            "next_action":  "CLASSIFY_AS_PROGRAM_FACTORY_OR_MATERIAL",
+                            "reason":  "self-build program surface; may be factory/material, needs owner link before organ claim"
+                        },
+                        {
+                            "candidate_id":  "self_build_programs_admission",
+                            "path":  "self_build_programs/admission",
+                            "triage_class":  "SELF_BUILD_PROGRAM_SURFACE",
+                            "confidence":  "MEDIUM",
+                            "next_action":  "CLASSIFY_AS_PROGRAM_FACTORY_OR_MATERIAL",
+                            "reason":  "self-build program surface; may be factory/material, needs owner link before organ claim"
+                        },
+                        {
+                            "candidate_id":  "self_build_programs_canonical_trials",
+                            "path":  "self_build_programs/canonical_trials",
+                            "triage_class":  "SELF_BUILD_PROGRAM_SURFACE",
+                            "confidence":  "MEDIUM",
+                            "next_action":  "CLASSIFY_AS_PROGRAM_FACTORY_OR_MATERIAL",
+                            "reason":  "self-build program surface; may be factory/material, needs owner link before organ claim"
+                        },
+                        {
+                            "candidate_id":  "self_build_programs_contracts",
+                            "path":  "self_build_programs/contracts",
+                            "triage_class":  "SELF_BUILD_PROGRAM_SURFACE",
+                            "confidence":  "MEDIUM",
+                            "next_action":  "CLASSIFY_AS_PROGRAM_FACTORY_OR_MATERIAL",
+                            "reason":  "self-build program surface; may be factory/material, needs owner link before organ claim"
+                        },
+                        {
+                            "candidate_id":  "self_build_programs_dry_runs",
+                            "path":  "self_build_programs/dry_runs",
+                            "triage_class":  "SELF_BUILD_PROGRAM_SURFACE",
+                            "confidence":  "MEDIUM",
+                            "next_action":  "CLASSIFY_AS_PROGRAM_FACTORY_OR_MATERIAL",
+                            "reason":  "self-build program surface; may be factory/material, needs owner link before organ claim"
+                        },
+                        {
+                            "candidate_id":  "self_build_programs_executions",
+                            "path":  "self_build_programs/executions",
+                            "triage_class":  "SELF_BUILD_PROGRAM_SURFACE",
+                            "confidence":  "MEDIUM",
+                            "next_action":  "CLASSIFY_AS_PROGRAM_FACTORY_OR_MATERIAL",
+                            "reason":  "self-build program surface; may be factory/material, needs owner link before organ claim"
+                        },
+                        {
+                            "candidate_id":  "self_build_programs_generator",
+                            "path":  "self_build_programs/generator",
+                            "triage_class":  "SELF_BUILD_PROGRAM_SURFACE",
+                            "confidence":  "MEDIUM",
+                            "next_action":  "CLASSIFY_AS_PROGRAM_FACTORY_OR_MATERIAL",
+                            "reason":  "self-build program surface; may be factory/material, needs owner link before organ claim"
+                        },
+                        {
+                            "candidate_id":  "self_build_programs_integration",
+                            "path":  "self_build_programs/integration",
+                            "triage_class":  "SELF_BUILD_PROGRAM_SURFACE",
+                            "confidence":  "MEDIUM",
+                            "next_action":  "CLASSIFY_AS_PROGRAM_FACTORY_OR_MATERIAL",
+                            "reason":  "self-build program surface; may be factory/material, needs owner link before organ claim"
+                        },
+                        {
+                            "candidate_id":  "self_build_programs_quarantine",
+                            "path":  "self_build_programs/quarantine",
+                            "triage_class":  "SELF_BUILD_PROGRAM_SURFACE",
+                            "confidence":  "MEDIUM",
+                            "next_action":  "CLASSIFY_AS_PROGRAM_FACTORY_OR_MATERIAL",
+                            "reason":  "self-build program surface; may be factory/material, needs owner link before organ claim"
+                        },
+                        {
+                            "candidate_id":  "self_build_programs_memory",
+                            "path":  "self_build_programs/memory",
+                            "triage_class":  "SELF_BUILD_PROGRAM_SURFACE",
+                            "confidence":  "MEDIUM",
+                            "next_action":  "CLASSIFY_AS_PROGRAM_FACTORY_OR_MATERIAL",
+                            "reason":  "self-build program surface; may be factory/material, needs owner link before organ claim"
+                        },
+                        {
+                            "candidate_id":  "self_build_programs_regression",
+                            "path":  "self_build_programs/regression",
+                            "triage_class":  "SELF_BUILD_PROGRAM_SURFACE",
+                            "confidence":  "MEDIUM",
+                            "next_action":  "CLASSIFY_AS_PROGRAM_FACTORY_OR_MATERIAL",
+                            "reason":  "self-build program surface; may be factory/material, needs owner link before organ claim"
+                        }
+                    ],
+    "link_lane":  [
+                      {
+                          "candidate_id":  "contracts_controlled_runtime",
+                          "path":  "contracts/controlled_runtime",
+                          "triage_class":  "CONTRACT_SURFACE",
+                          "next_action":  "LINK_CONTRACT_TO_OWNING_ORGAN",
+                          "reason":  "contract evidence surface; supports organs but not organ unless explicit organ contract"
+                      },
+                      {
+                          "candidate_id":  "contracts_materials",
+                          "path":  "contracts/materials",
+                          "triage_class":  "CONTRACT_SURFACE",
+                          "next_action":  "LINK_CONTRACT_TO_OWNING_ORGAN",
+                          "reason":  "contract evidence surface; supports organs but not organ unless explicit organ contract"
+                      },
+                      {
+                          "candidate_id":  "contracts_operations",
+                          "path":  "contracts/operations",
+                          "triage_class":  "CONTRACT_SURFACE",
+                          "next_action":  "LINK_CONTRACT_TO_OWNING_ORGAN",
+                          "reason":  "contract evidence surface; supports organs but not organ unless explicit organ contract"
+                      },
+                      {
+                          "candidate_id":  "contracts_self_development",
+                          "path":  "contracts/self_development",
+                          "triage_class":  "CONTRACT_SURFACE",
+                          "next_action":  "LINK_CONTRACT_TO_OWNING_ORGAN",
+                          "reason":  "contract evidence surface; supports organs but not organ unless explicit organ contract"
+                      },
+                      {
+                          "candidate_id":  "contracts_self_knowledge",
+                          "path":  "contracts/self_knowledge",
+                          "triage_class":  "CONTRACT_SURFACE",
+                          "next_action":  "LINK_CONTRACT_TO_OWNING_ORGAN",
+                          "reason":  "contract evidence surface; supports organs but not organ unless explicit organ contract"
+                      },
+                      {
+                          "candidate_id":  "modules_materials",
+                          "path":  "modules/materials",
+                          "triage_class":  "MODULE_OR_CAPABILITY_SURFACE",
+                          "next_action":  "MAP_TO_CAPABILITY_INVOCATION_OR_OWNING_ORGAN",
+                          "reason":  "module surface with code; skill/capability candidate, not organ by default"
+                      },
+                      {
+                          "candidate_id":  "modules_operations",
+                          "path":  "modules/operations",
+                          "triage_class":  "MODULE_OR_CAPABILITY_SURFACE",
+                          "next_action":  "MAP_TO_CAPABILITY_INVOCATION_OR_OWNING_ORGAN",
+                          "reason":  "module surface with code; skill/capability candidate, not organ by default"
+                      },
+                      {
+                          "candidate_id":  "modules_route_locks",
+                          "path":  "modules/route_locks",
+                          "triage_class":  "MODULE_OR_CAPABILITY_SURFACE",
+                          "next_action":  "MAP_TO_CAPABILITY_INVOCATION_OR_OWNING_ORGAN",
+                          "reason":  "module surface with code; skill/capability candidate, not organ by default"
+                      },
+                      {
+                          "candidate_id":  "modules_self_development",
+                          "path":  "modules/self_development",
+                          "triage_class":  "MODULE_OR_CAPABILITY_SURFACE",
+                          "next_action":  "MAP_TO_CAPABILITY_INVOCATION_OR_OWNING_ORGAN",
+                          "reason":  "module surface with code; skill/capability candidate, not organ by default"
+                      }
+                  ],
+    "not_organ_bucket":  {
+                             "count":  119,
+                             "action":  "exclude_from_organ_passport_generator; keep as evidence/material for capability/proof/doc maps"
+                         },
+    "execution_order":  [
+                            {
+                                "rank":  1,
+                                "candidate_id":  "contracts_accepted_atom_retention_organ",
+                                "path":  "contracts/accepted_atom_retention_organ",
+                                "lane":  "FAST_PASSPORT_DRAFT",
+                                "action":  "GENERATE_DRAFT_ORGAN_PASSPORT_FROM_PRIMARY_EVIDENCE",
+                                "reason":  "explicit accepted_atom_retention_organ contract/passport surface exists",
+                                "required_guard":  "draft only; no ACTIVE passport until validator/passport proof",
+                                "owner_decision_required":  false
+                            },
+                            {
+                                "rank":  2,
+                                "candidate_id":  "operations_self_model",
+                                "path":  "operations/self_model",
+                                "lane":  "FAST_PASSPORT_DRAFT",
+                                "action":  "GENERATE_DRAFT_ORGAN_PASSPORT_FROM_PRIMARY_EVIDENCE",
+                                "reason":  "operations/self_model owns validators/reports around Builder self-model and map authority",
+                                "required_guard":  "draft only; no ACTIVE passport until validator/passport proof",
+                                "owner_decision_required":  false
+                            },
+                            {
+                                "rank":  3,
+                                "candidate_id":  "operations_active_behavior",
+                                "path":  "operations/active_behavior",
+                                "lane":  "REVIEW_FOR_ORGAN_PROMOTION",
+                                "action":  "REVIEW_WITH_EVIDENCE_BEFORE_PASSPORT",
+                                "reason":  "top-level operations surface with scripts/evidence; may be independent organ or component",
+                                "required_guard":  "do not promote without owner/validator decision",
+                                "owner_decision_required":  true
+                            },
+                            {
+                                "rank":  4,
+                                "candidate_id":  "operations_autonomy_diagnostics",
+                                "path":  "operations/autonomy_diagnostics",
+                                "lane":  "REVIEW_FOR_ORGAN_PROMOTION",
+                                "action":  "REVIEW_WITH_EVIDENCE_BEFORE_PASSPORT",
+                                "reason":  "top-level operations surface with scripts/evidence; may be independent organ or component",
+                                "required_guard":  "do not promote without owner/validator decision",
+                                "owner_decision_required":  true
+                            },
+                            {
+                                "rank":  5,
+                                "candidate_id":  "operations_bridge_diagnostics",
+                                "path":  "operations/bridge_diagnostics",
+                                "lane":  "REVIEW_FOR_ORGAN_PROMOTION",
+                                "action":  "REVIEW_WITH_EVIDENCE_BEFORE_PASSPORT",
+                                "reason":  "top-level operations surface with scripts/evidence; may be independent organ or component",
+                                "required_guard":  "do not promote without owner/validator decision",
+                                "owner_decision_required":  true
+                            },
+                            {
+                                "rank":  6,
+                                "candidate_id":  "operations_contracts",
+                                "path":  "operations/contracts",
+                                "lane":  "REVIEW_FOR_ORGAN_PROMOTION",
+                                "action":  "REVIEW_WITH_EVIDENCE_BEFORE_PASSPORT",
+                                "reason":  "top-level operations surface with scripts/evidence; may be independent organ or component",
+                                "required_guard":  "do not promote without owner/validator decision",
+                                "owner_decision_required":  true
+                            },
+                            {
+                                "rank":  7,
+                                "candidate_id":  "operations_live_like",
+                                "path":  "operations/live_like",
+                                "lane":  "REVIEW_FOR_ORGAN_PROMOTION",
+                                "action":  "REVIEW_WITH_EVIDENCE_BEFORE_PASSPORT",
+                                "reason":  "top-level operations surface with scripts/evidence; may be independent organ or component",
+                                "required_guard":  "do not promote without owner/validator decision",
+                                "owner_decision_required":  true
+                            },
+                            {
+                                "rank":  8,
+                                "candidate_id":  "operations_live_readiness",
+                                "path":  "operations/live_readiness",
+                                "lane":  "REVIEW_FOR_ORGAN_PROMOTION",
+                                "action":  "REVIEW_WITH_EVIDENCE_BEFORE_PASSPORT",
+                                "reason":  "top-level operations surface with scripts/evidence; may be independent organ or component",
+                                "required_guard":  "do not promote without owner/validator decision",
+                                "owner_decision_required":  true
+                            },
+                            {
+                                "rank":  9,
+                                "candidate_id":  "operations_live_start",
+                                "path":  "operations/live_start",
+                                "lane":  "REVIEW_FOR_ORGAN_PROMOTION",
+                                "action":  "REVIEW_WITH_EVIDENCE_BEFORE_PASSPORT",
+                                "reason":  "top-level operations surface with scripts/evidence; may be independent organ or component",
+                                "required_guard":  "do not promote without owner/validator decision",
+                                "owner_decision_required":  true
+                            },
+                            {
+                                "rank":  10,
+                                "candidate_id":  "operations_memory",
+                                "path":  "operations/memory",
+                                "lane":  "REVIEW_FOR_ORGAN_PROMOTION",
+                                "action":  "REVIEW_WITH_EVIDENCE_BEFORE_PASSPORT",
+                                "reason":  "top-level operations surface with scripts/evidence; may be independent organ or component",
+                                "required_guard":  "do not promote without owner/validator decision",
+                                "owner_decision_required":  true
+                            },
+                            {
+                                "rank":  11,
+                                "candidate_id":  "operations_overnight_school",
+                                "path":  "operations/overnight_school",
+                                "lane":  "REVIEW_FOR_ORGAN_PROMOTION",
+                                "action":  "REVIEW_WITH_EVIDENCE_BEFORE_PASSPORT",
+                                "reason":  "top-level operations surface with scripts/evidence; may be independent organ or component",
+                                "required_guard":  "do not promote without owner/validator decision",
+                                "owner_decision_required":  true
+                            },
+                            {
+                                "rank":  12,
+                                "candidate_id":  "operations_parallel_life",
+                                "path":  "operations/parallel_life",
+                                "lane":  "REVIEW_FOR_ORGAN_PROMOTION",
+                                "action":  "REVIEW_WITH_EVIDENCE_BEFORE_PASSPORT",
+                                "reason":  "top-level operations surface with scripts/evidence; may be independent organ or component",
+                                "required_guard":  "do not promote without owner/validator decision",
+                                "owner_decision_required":  true
+                            },
+                            {
+                                "rank":  13,
+                                "candidate_id":  "operations_readme_md",
+                                "path":  "operations/README.md",
+                                "lane":  "REVIEW_FOR_ORGAN_PROMOTION",
+                                "action":  "REVIEW_WITH_EVIDENCE_BEFORE_PASSPORT",
+                                "reason":  "top-level operations surface with scripts/evidence; may be independent organ or component",
+                                "required_guard":  "do not promote without owner/validator decision",
+                                "owner_decision_required":  true
+                            },
+                            {
+                                "rank":  14,
+                                "candidate_id":  "operations_reasoning",
+                                "path":  "operations/reasoning",
+                                "lane":  "REVIEW_FOR_ORGAN_PROMOTION",
+                                "action":  "REVIEW_WITH_EVIDENCE_BEFORE_PASSPORT",
+                                "reason":  "top-level operations surface with scripts/evidence; may be independent organ or component",
+                                "required_guard":  "do not promote without owner/validator decision",
+                                "owner_decision_required":  true
+                            },
+                            {
+                                "rank":  15,
+                                "candidate_id":  "contracts_controlled_runtime",
+                                "path":  "contracts/controlled_runtime",
+                                "lane":  "OWNER_LINK_REQUIRED",
+                                "action":  "LINK_TO_OWNING_ORGAN_OR_CAPABILITY_MAP",
+                                "reason":  "contract evidence surface; supports organs but not organ unless explicit organ contract",
+                                "required_guard":  "no standalone passport until owning organ is known",
+                                "owner_decision_required":  true
+                            },
+                            {
+                                "rank":  16,
+                                "candidate_id":  "contracts_materials",
+                                "path":  "contracts/materials",
+                                "lane":  "OWNER_LINK_REQUIRED",
+                                "action":  "LINK_TO_OWNING_ORGAN_OR_CAPABILITY_MAP",
+                                "reason":  "contract evidence surface; supports organs but not organ unless explicit organ contract",
+                                "required_guard":  "no standalone passport until owning organ is known",
+                                "owner_decision_required":  true
+                            },
+                            {
+                                "rank":  17,
+                                "candidate_id":  "contracts_operations",
+                                "path":  "contracts/operations",
+                                "lane":  "OWNER_LINK_REQUIRED",
+                                "action":  "LINK_TO_OWNING_ORGAN_OR_CAPABILITY_MAP",
+                                "reason":  "contract evidence surface; supports organs but not organ unless explicit organ contract",
+                                "required_guard":  "no standalone passport until owning organ is known",
+                                "owner_decision_required":  true
+                            },
+                            {
+                                "rank":  18,
+                                "candidate_id":  "contracts_self_development",
+                                "path":  "contracts/self_development",
+                                "lane":  "OWNER_LINK_REQUIRED",
+                                "action":  "LINK_TO_OWNING_ORGAN_OR_CAPABILITY_MAP",
+                                "reason":  "contract evidence surface; supports organs but not organ unless explicit organ contract",
+                                "required_guard":  "no standalone passport until owning organ is known",
+                                "owner_decision_required":  true
+                            },
+                            {
+                                "rank":  19,
+                                "candidate_id":  "contracts_self_knowledge",
+                                "path":  "contracts/self_knowledge",
+                                "lane":  "OWNER_LINK_REQUIRED",
+                                "action":  "LINK_TO_OWNING_ORGAN_OR_CAPABILITY_MAP",
+                                "reason":  "contract evidence surface; supports organs but not organ unless explicit organ contract",
+                                "required_guard":  "no standalone passport until owning organ is known",
+                                "owner_decision_required":  true
+                            },
+                            {
+                                "rank":  20,
+                                "candidate_id":  "modules_materials",
+                                "path":  "modules/materials",
+                                "lane":  "OWNER_LINK_REQUIRED",
+                                "action":  "LINK_TO_OWNING_ORGAN_OR_CAPABILITY_MAP",
+                                "reason":  "module surface with code; skill/capability candidate, not organ by default",
+                                "required_guard":  "no standalone passport until owning organ is known",
+                                "owner_decision_required":  true
+                            },
+                            {
+                                "rank":  21,
+                                "candidate_id":  "modules_operations",
+                                "path":  "modules/operations",
+                                "lane":  "OWNER_LINK_REQUIRED",
+                                "action":  "LINK_TO_OWNING_ORGAN_OR_CAPABILITY_MAP",
+                                "reason":  "module surface with code; skill/capability candidate, not organ by default",
+                                "required_guard":  "no standalone passport until owning organ is known",
+                                "owner_decision_required":  true
+                            },
+                            {
+                                "rank":  22,
+                                "candidate_id":  "modules_route_locks",
+                                "path":  "modules/route_locks",
+                                "lane":  "OWNER_LINK_REQUIRED",
+                                "action":  "LINK_TO_OWNING_ORGAN_OR_CAPABILITY_MAP",
+                                "reason":  "module surface with code; skill/capability candidate, not organ by default",
+                                "required_guard":  "no standalone passport until owning organ is known",
+                                "owner_decision_required":  true
+                            },
+                            {
+                                "rank":  23,
+                                "candidate_id":  "modules_self_development",
+                                "path":  "modules/self_development",
+                                "lane":  "OWNER_LINK_REQUIRED",
+                                "action":  "LINK_TO_OWNING_ORGAN_OR_CAPABILITY_MAP",
+                                "reason":  "module surface with code; skill/capability candidate, not organ by default",
+                                "required_guard":  "no standalone passport until owning organ is known",
+                                "owner_decision_required":  true
+                            }
+                        ],
+    "boundaries":  {
+                       "no_active_passports_created":  true,
+                       "no_body_map_mutation_performed":  true,
+                       "no_candidate_accepted_as_organ":  true,
+                       "next_generator_scope":  "only CANDIDATE_READY_FOR_DRAFT items; draft passports only",
+                       "passport_generator_for_all_candidates_blocked":  true,
+                       "live_process_touched":  false
+                   },
+    "recommended_next_step":  "ORGAN_PASSPORT_DRAFT_GENERATOR_FOR_CANDIDATE_READY_ONLY_V1",
+    "created_at":  "2026-07-08T16:53:17.1997462+04:00"
+}

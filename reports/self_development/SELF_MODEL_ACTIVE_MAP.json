@@ -6,19 +6,19 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "8470224bb1681687f9e059927a28e699309b2de3",
-    "subject_head":  "8470224bb1681687f9e059927a28e699309b2de3",
-    "generated_at":  "2026-07-08T16:44:47.6154556+04:00",
+    "observed_head_at_generation":  "e48198f9aa72c78f51499c77a10bed6fa49f1f81",
+    "subject_head":  "e48198f9aa72c78f51499c77a10bed6fa49f1f81",
+    "generated_at":  "2026-07-08T16:54:12.1655635+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  1592,
+    "structural_path_count":  1600,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1592,
-                                    "sha256":  "acf1f704fbf820a44d15a8d55d031f04149ba82f44f1d6c3cd2bcbddd2ea6939"
+                                    "structural_file_count":  1600,
+                                    "sha256":  "d684ec921288a6001cf56935a54fd318bcf21006c9a1d25a13c0e43f505f8406"
                                 },
     "module_count":  207,
     "validator_count":  174,
@@ -2611,15 +2611,15 @@
                                             "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                                             "discovery_method":  "bounded_git_ls_files_path_discovery",
                                             "evidence_counts":  {
-                                                                    "files":  28,
-                                                                    "scripts":  28,
+                                                                    "files":  30,
+                                                                    "scripts":  30,
                                                                     "validators":  20,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  4,
                                                                     "docs":  0
                                                                 },
-                                            "file_count":  28,
-                                            "script_count":  28,
+                                            "file_count":  30,
+                                            "script_count":  30,
                                             "validator_count":  20,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  4,
@@ -2627,7 +2627,9 @@
                                             "validator_refs":  [
                                                                    "operations/self_model/validate_aimo_default_route_execution_report_v1.ps1",
                                                                    "operations/self_model/validate_aimo_default_source_agnostic_selector_contract_v1.ps1",
+                                                                   "operations/self_model/validate_body_map_candidate_triage_v1.ps1",
                                                                    "operations/self_model/validate_body_map_primary_evidence_rebuild_v1.ps1",
+                                                                   "operations/self_model/validate_body_map_triage_promotion_plan_v1.ps1",
                                                                    "operations/self_model/validate_builder_gap_map_v1.ps1",
                                                                    "operations/self_model/validate_builder_identity_contract_v1.ps1",
                                                                    "operations/self_model/validate_builder_mission_scoring_v1.ps1",
@@ -2642,9 +2644,7 @@
                                                                    "operations/self_model/validate_map_authority_repair_v1.ps1",
                                                                    "operations/self_model/validate_next_route_lock_and_health_audit_v1.ps1",
                                                                    "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
-                                                                   "operations/self_model/validate_route_v4_execution_report_phase_m_v1.ps1",
-                                                                   "operations/self_model/validate_runtime_cleanup_v1.ps1",
-                                                                   "operations/self_model/validate_school_runtime_hygiene_gap_v1.ps1"
+                                                                   "operations/self_model/validate_route_v4_execution_report_phase_m_v1.ps1"
                                                                ],
                                             "proof_refs":  [
 
@@ -2664,7 +2664,9 @@
                                                                   "operations/self_model/export_source_evidence_inventory_v1.ps1",
                                                                   "operations/self_model/validate_aimo_default_route_execution_report_v1.ps1",
                                                                   "operations/self_model/validate_aimo_default_source_agnostic_selector_contract_v1.ps1",
+                                                                  "operations/self_model/validate_body_map_candidate_triage_v1.ps1",
                                                                   "operations/self_model/validate_body_map_primary_evidence_rebuild_v1.ps1",
+                                                                  "operations/self_model/validate_body_map_triage_promotion_plan_v1.ps1",
                                                                   "operations/self_model/validate_builder_gap_map_v1.ps1",
                                                                   "operations/self_model/validate_builder_identity_contract_v1.ps1",
                                                                   "operations/self_model/validate_builder_mission_scoring_v1.ps1",
@@ -2678,9 +2680,7 @@
                                                                   "operations/self_model/validate_map_authority_duplicate_audit_v1.ps1",
                                                                   "operations/self_model/validate_map_authority_repair_v1.ps1",
                                                                   "operations/self_model/validate_next_route_lock_and_health_audit_v1.ps1",
-                                                                  "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
-                                                                  "operations/self_model/validate_route_v4_execution_report_phase_m_v1.ps1",
-                                                                  "operations/self_model/validate_runtime_cleanup_v1.ps1"
+                                                                  "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1"
                                                               ],
                                             "primary_evidence_refs":  [
                                                                           "operations/self_model/export_builder_gap_map_v1.ps1",
@@ -2691,7 +2691,9 @@
                                                                           "operations/self_model/export_source_evidence_inventory_v1.ps1",
                                                                           "operations/self_model/validate_aimo_default_route_execution_report_v1.ps1",
                                                                           "operations/self_model/validate_aimo_default_source_agnostic_selector_contract_v1.ps1",
+                                                                          "operations/self_model/validate_body_map_candidate_triage_v1.ps1",
                                                                           "operations/self_model/validate_body_map_primary_evidence_rebuild_v1.ps1",
+                                                                          "operations/self_model/validate_body_map_triage_promotion_plan_v1.ps1",
                                                                           "operations/self_model/validate_builder_gap_map_v1.ps1",
                                                                           "operations/self_model/validate_builder_identity_contract_v1.ps1",
                                                                           "operations/self_model/validate_builder_mission_scoring_v1.ps1",
@@ -2706,9 +2708,7 @@
                                                                           "operations/self_model/validate_map_authority_repair_v1.ps1",
                                                                           "operations/self_model/validate_next_route_lock_and_health_audit_v1.ps1",
                                                                           "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
-                                                                          "operations/self_model/validate_route_v4_execution_report_phase_m_v1.ps1",
-                                                                          "operations/self_model/validate_runtime_cleanup_v1.ps1",
-                                                                          "operations/self_model/validate_school_runtime_hygiene_gap_v1.ps1"
+                                                                          "operations/self_model/validate_route_v4_execution_report_phase_m_v1.ps1"
                                                                       ],
                                             "needs_triage":  true,
                                             "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
@@ -10909,15 +10909,15 @@
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                            "discovery_method":  "bounded_git_ls_files_path_discovery",
                            "evidence_counts":  {
-                                                   "files":  28,
-                                                   "scripts":  28,
+                                                   "files":  30,
+                                                   "scripts":  30,
                                                    "validators":  20,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  4,
                                                    "docs":  0
                                                },
-                           "file_count":  28,
-                           "script_count":  28,
+                           "file_count":  30,
+                           "script_count":  30,
                            "validator_count":  20,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  4,
@@ -10925,7 +10925,9 @@
                            "validator_refs":  [
                                                   "operations/self_model/validate_aimo_default_route_execution_report_v1.ps1",
                                                   "operations/self_model/validate_aimo_default_source_agnostic_selector_contract_v1.ps1",
+                                                  "operations/self_model/validate_body_map_candidate_triage_v1.ps1",
                                                   "operations/self_model/validate_body_map_primary_evidence_rebuild_v1.ps1",
+                                                  "operations/self_model/validate_body_map_triage_promotion_plan_v1.ps1",
                                                   "operations/self_model/validate_builder_gap_map_v1.ps1",
                                                   "operations/self_model/validate_builder_identity_contract_v1.ps1",
                                                   "operations/self_model/validate_builder_mission_scoring_v1.ps1",
@@ -10940,9 +10942,7 @@
                                                   "operations/self_model/validate_map_authority_repair_v1.ps1",
                                                   "operations/self_model/validate_next_route_lock_and_health_audit_v1.ps1",
                                                   "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
-                                                  "operations/self_model/validate_route_v4_execution_report_phase_m_v1.ps1",
-                                                  "operations/self_model/validate_runtime_cleanup_v1.ps1",
-                                                  "operations/self_model/validate_school_runtime_hygiene_gap_v1.ps1"
+                                                  "operations/self_model/validate_route_v4_execution_report_phase_m_v1.ps1"
                                               ],
                            "proof_refs":  [
 
@@ -10962,7 +10962,9 @@
                                                  "operations/self_model/export_source_evidence_inventory_v1.ps1",
                                                  "operations/self_model/validate_aimo_default_route_execution_report_v1.ps1",
                                                  "operations/self_model/validate_aimo_default_source_agnostic_selector_contract_v1.ps1",
+                                                 "operations/self_model/validate_body_map_candidate_triage_v1.ps1",
                                                  "operations/self_model/validate_body_map_primary_evidence_rebuild_v1.ps1",
+                                                 "operations/self_model/validate_body_map_triage_promotion_plan_v1.ps1",
                                                  "operations/self_model/validate_builder_gap_map_v1.ps1",
                                                  "operations/self_model/validate_builder_identity_contract_v1.ps1",
                                                  "operations/self_model/validate_builder_mission_scoring_v1.ps1",
@@ -10976,9 +10978,7 @@
                                                  "operations/self_model/validate_map_authority_duplicate_audit_v1.ps1",
                                                  "operations/self_model/validate_map_authority_repair_v1.ps1",
                                                  "operations/self_model/validate_next_route_lock_and_health_audit_v1.ps1",
-                                                 "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
-                                                 "operations/self_model/validate_route_v4_execution_report_phase_m_v1.ps1",
-                                                 "operations/self_model/validate_runtime_cleanup_v1.ps1"
+                                                 "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1"
                                              ],
                            "primary_evidence_refs":  [
                                                          "operations/self_model/export_builder_gap_map_v1.ps1",
@@ -10989,7 +10989,9 @@
                                                          "operations/self_model/export_source_evidence_inventory_v1.ps1",
                                                          "operations/self_model/validate_aimo_default_route_execution_report_v1.ps1",
                                                          "operations/self_model/validate_aimo_default_source_agnostic_selector_contract_v1.ps1",
+                                                         "operations/self_model/validate_body_map_candidate_triage_v1.ps1",
                                                          "operations/self_model/validate_body_map_primary_evidence_rebuild_v1.ps1",
+                                                         "operations/self_model/validate_body_map_triage_promotion_plan_v1.ps1",
                                                          "operations/self_model/validate_builder_gap_map_v1.ps1",
                                                          "operations/self_model/validate_builder_identity_contract_v1.ps1",
                                                          "operations/self_model/validate_builder_mission_scoring_v1.ps1",
@@ -11004,9 +11006,7 @@
                                                          "operations/self_model/validate_map_authority_repair_v1.ps1",
                                                          "operations/self_model/validate_next_route_lock_and_health_audit_v1.ps1",
                                                          "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
-                                                         "operations/self_model/validate_route_v4_execution_report_phase_m_v1.ps1",
-                                                         "operations/self_model/validate_runtime_cleanup_v1.ps1",
-                                                         "operations/self_model/validate_school_runtime_hygiene_gap_v1.ps1"
+                                                         "operations/self_model/validate_route_v4_execution_report_phase_m_v1.ps1"
                                                      ],
                            "needs_triage":  true,
                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
