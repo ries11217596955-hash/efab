@@ -3,9 +3,9 @@
     "status":  "PASS_BODY_MAP_TRIAGE_PROMOTION_PLAN_V1",
     "source_triage":  "reports/self_development/BODY_MAP_CANDIDATE_TRIAGE_V1.json",
     "summary":  {
-                    "total_triaged":  157,
-                    "real_organ_candidates":  17,
-                    "candidate_ready_for_draft":  2,
+                    "total_triaged":  156,
+                    "real_organ_candidates":  16,
+                    "candidate_ready_for_draft":  1,
                     "needs_review":  26,
                     "owner_link_blocked":  9,
                     "blocked":  0,
@@ -34,21 +34,6 @@
                                                           "contracts/accepted_atom_retention_organ/passports/PASSPORT_INDEX.json",
                                                           "contracts/accepted_atom_retention_organ/passports/PROOF_PASSPORT.json",
                                                           "contracts/accepted_atom_retention_organ/passports/SANITIZER_PASSPORT.json"
-                                                      ]
-                      },
-                      {
-                          "candidate_id":  "operations_body_control_cortex",
-                          "path":  "operations/body_control_cortex",
-                          "confidence":  "HIGH",
-                          "next_action":  "CREATE_ORGAN_PASSPORT_DRAFT_FROM_BODY_CONTROL_CORTEX_EVIDENCE",
-                          "validator_refs":  [
-                                                 "operations/body_control_cortex/validate_body_control_cortex_v1.ps1"
-                                             ],
-                          "proof_refs":  [
-
-                                         ],
-                          "contract_or_policy_refs":  [
-
                                                       ]
                       }
                   ],
@@ -278,15 +263,22 @@
                                       "proven_live":  false
                                   }
                               ],
+    "removed_wrong_route_artifacts":  [
+                                          {
+                                              "artifact_id":  "body_control_cortex_v1",
+                                              "reason":  "Owner clarified intended Codex was OpenAI/local coding agent, not cortex metaphor",
+                                              "action":  "deleted and removed from triage fast lane"
+                                          }
+                                      ],
     "boundaries":  {
                        "no_active_passports_created":  true,
                        "no_body_map_mutation_performed":  false,
                        "no_candidate_accepted_as_organ_from_triage_alone":  true,
                        "operations_self_model_promoted_by_lab_validation":  true,
-                       "body_control_cortex_candidate_not_active":  true,
+                       "wrong_route_cortex_removed":  true,
                        "passport_generator_for_all_candidates_blocked":  true,
                        "live_process_touched":  false
                    },
-    "recommended_next_step":  "CREATE_BODY_CONTROL_CORTEX_ORGAN_PASSPORT_DRAFT_OR_EXPAND_DIAGNOSTIC_GRAPH",
-    "created_at":  "2026-07-08T19:23:39.7995758+04:00"
+    "recommended_next_step":  "BUILD_CODEX_OPERATOR_PIPELINE_V1_FOR_LOCAL_OPENAI_CODEX",
+    "created_at":  "2026-07-08T21:02:23.3904891+04:00"
 }

@@ -221,3 +221,10 @@ Night-school note:
 - Next route candidate: BODY_CONTROL_CORTEX_V1 design/build package. Do not jump straight to child agents, live restart, or full passport generation for all candidates before the diagnostic organism model is specified.
 - Status: STRATEGY_SUPPORTED / NOT_IMPLEMENTED. This entry records Owner intent and architecture direction only; no runtime behavior is claimed.
 
+
+2026-07-08 - Correction: remove wrong-route Cortex artifact; Owner meant OpenAI Codex
+- Owner correction: the intended topic was Codex as the top OpenAI coding agent available via ChatGPT subscription, not “Cortex” / brain-cortex metaphor.
+- Action: BODY_CONTROL_CORTEX_V1 route must be removed from active repo body, triage fast lane, and future route planning. Do not create a passport for Cortex. Do not treat Cortex as organ candidate or diagnostic authority.
+- Reason: term came from GPT misunderstanding/audio-route mismatch, not Owner intent. Keeping it would pollute Builder vocabulary and map semantics.
+- Correct route: governed local Codex usage pipeline. ChatGPT operator/conductor writes bounded tasks; local Codex executes under PREFLIGHT; validators/proofs decide acceptance; Owner keeps authority over live/dangerous decisions.
+- Status: CORRECTION_APPLIED_IN_PROGRESS / CORTEX_WRONG_ROUTE_ARTIFACT_TO_DELETE.

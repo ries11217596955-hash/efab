@@ -5,14 +5,14 @@
     "source_canonical_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
     "source_counts":  {
                           "confirmed_components":  8,
-                          "primary_evidence_candidates":  157,
+                          "primary_evidence_candidates":  156,
                           "legacy_unverified_hints":  4,
                           "rejected_or_stale_hints":  3,
-                          "compatibility_components":  165
+                          "compatibility_components":  164
                       },
     "triage_counts":  {
-                          "total":  157,
-                          "organ_candidates":  17,
+                          "total":  156,
+                          "organ_candidates":  16,
                           "sub_organ_or_capability_candidates":  4,
                           "not_organs_or_material":  120,
                           "class_counts":  [
@@ -46,7 +46,7 @@
                                                },
                                                {
                                                    "triage_class":  "REAL_ORGAN_CANDIDATE",
-                                                   "count":  17
+                                                   "count":  16
                                                },
                                                {
                                                    "triage_class":  "SANDBOX_PROOF_OR_EXPERIMENT_SURFACE",
@@ -68,7 +68,7 @@
                                                             },
                                                             {
                                                                 "passport_readiness":  "CANDIDATE_READY_FOR_DRAFT",
-                                                                "count":  2
+                                                                "count":  1
                                                             },
                                                             {
                                                                 "passport_readiness":  "NEEDS_REVIEW",
@@ -5666,39 +5666,6 @@
                       "primary_evidence_refs":  [
                                                     "self_model/organ_passports/contracts_accepted_atom_retention_organ/ORGAN_PASSPORT_V1.json"
                                                 ]
-                  },
-                  {
-                      "candidate_id":  "operations_body_control_cortex",
-                      "path":  "operations/body_control_cortex",
-                      "triage_class":  "REAL_ORGAN_CANDIDATE",
-                      "confidence":  "HIGH",
-                      "evidence_strength":  "HIGH",
-                      "reason":  "body-to-brain diagnostic cortex implementation surface with generator, validator, model, report, and proof; candidate for organ passport, not active",
-                      "next_action":  "CREATE_ORGAN_PASSPORT_DRAFT_FROM_BODY_CONTROL_CORTEX_EVIDENCE",
-                      "passport_readiness":  "CANDIDATE_READY_FOR_DRAFT",
-                      "organ_candidate":  true,
-                      "sub_organ_or_capability_candidate":  false,
-                      "source_counts":  {
-                                            "files":  2,
-                                            "scripts":  2,
-                                            "validators":  1,
-                                            "proofs":  0,
-                                            "contracts_or_policies":  0,
-                                            "docs":  0
-                                        },
-                      "validator_refs":  [
-                                             "operations/body_control_cortex/validate_body_control_cortex_v1.ps1"
-                                         ],
-                      "proof_refs":  [
-
-                                     ],
-                      "contract_or_policy_refs":  [
-
-                                                  ],
-                      "primary_evidence_refs":  [
-                                                    "operations/body_control_cortex/build_body_control_cortex_v1.ps1",
-                                                    "operations/body_control_cortex/validate_body_control_cortex_v1.ps1"
-                                                ]
                   }
               ],
     "boundaries":  {
@@ -5714,5 +5681,5 @@
                                    "BODY_MAP_TRIAGE_REVIEW_AND_PROMOTION_PLAN_V1",
                                    "ORGAN_PASSPORT_DRAFT_GENERATOR_FOR_CANDIDATE_READY_ONLY"
                                ],
-    "created_at":  "2026-07-08T19:23:39.7161148+04:00"
+    "created_at":  "2026-07-08T21:02:23.3058583+04:00"
 }

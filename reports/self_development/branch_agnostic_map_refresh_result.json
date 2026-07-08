@@ -1,22 +1,18 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-08T21:03:25.1038175+04:00",
+    "checked_at":  "2026-07-08T21:04:42.8922390+04:00",
     "branch":  "main",
-    "observed_head":  "08e5b9dc9a2db4420131f85409a8c51dc2d6cade",
-    "subject_head":  "08e5b9dc9a2db4420131f85409a8c51dc2d6cade",
+    "observed_head":  "dc8defb1b002e732a80f0baf695321dae055de6d",
+    "subject_head":  "dc8defb1b002e732a80f0baf695321dae055de6d",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
                           "docs/operations/BODY_CONTROL_CORTEX_V1.md",
-                          "docs/operations/BODY_MAP_CANDIDATE_TRIAGE_V1.md",
-                          "docs/operations/BODY_MAP_TRIAGE_PROMOTION_PLAN_V1.md",
                           "operations/body_control_cortex/build_body_control_cortex_v1.ps1",
                           "operations/body_control_cortex/validate_body_control_cortex_v1.ps1",
                           "reports/self_development/BODY_CONTROL_CORTEX_V1_REPORT.json",
-                          "reports/self_development/BODY_MAP_CANDIDATE_TRIAGE_V1.json",
-                          "reports/self_development/BODY_MAP_TRIAGE_PROMOTION_PLAN_V1.json",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
@@ -28,13 +24,9 @@
                       ],
     "structural_paths":  [
                              "docs/operations/BODY_CONTROL_CORTEX_V1.md",
-                             "docs/operations/BODY_MAP_CANDIDATE_TRIAGE_V1.md",
-                             "docs/operations/BODY_MAP_TRIAGE_PROMOTION_PLAN_V1.md",
                              "operations/body_control_cortex/build_body_control_cortex_v1.ps1",
                              "operations/body_control_cortex/validate_body_control_cortex_v1.ps1",
                              "reports/self_development/BODY_CONTROL_CORTEX_V1_REPORT.json",
-                             "reports/self_development/BODY_MAP_CANDIDATE_TRIAGE_V1.json",
-                             "reports/self_development/BODY_MAP_TRIAGE_PROMOTION_PLAN_V1.json",
                              "self_model/body_control_cortex/BODY_CONTROL_CORTEX_V1.json",
                              "tests/self_development/BODY_CONTROL_CORTEX_V1_PROOF.json",
                              "tests/self_development/BODY_MAP_CANDIDATE_TRIAGE_V1_PROOF.json",
@@ -85,5 +77,5 @@
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-08T21:03:50.5273431+04:00"
+    "refreshed_at":  "2026-07-08T21:05:08.4065553+04:00"
 }
