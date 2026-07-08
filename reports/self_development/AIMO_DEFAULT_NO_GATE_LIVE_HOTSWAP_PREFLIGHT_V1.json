@@ -1,0 +1,56 @@
+﻿{
+    "schema":  "aimo_default_no_gate_live_hotswap_preflight_v1",
+    "status":  "PASS_AIMO_DEFAULT_NO_GATE_LIVE_HOTSWAP_PREFLIGHT_V1",
+    "route":  "AIMO_DEFAULT_SOURCE_AGNOSTIC_SELECTION_V1",
+    "repo":  {
+                 "head":  "535ea8b9e46896b3ac6b5a640a6f64b87635a50c",
+                 "short_head":  "535ea8b",
+                 "ahead_behind":  "0\t0",
+                 "dirty":  false
+             },
+    "proof_dependencies":  {
+                               "phase_b_contract":  "PASS_AIMO_DEFAULT_SOURCE_AGNOSTIC_SELECTOR_CONTRACT_V1",
+                               "phase_c_default_lab":  "PASS_AIMO_DEFAULT_PATH_LAB_IMPLEMENTATION_V1_WITH_SHARED_RUNTIME_WARNING",
+                               "phase_d_legacy_demoted":  "PASS_AIMO_LEGACY_SELECTOR_DEMOTION_V1",
+                               "runtime_cleanup":  "PASS_RUNTIME_CLEANUP_V1_CURRENT_VALIDATION",
+                               "school_hygiene_gap":  "PASS_SCHOOL_RUNTIME_HYGIENE_GAP_V1",
+                               "previous_live_gate":  "PASS_AIMO_SOURCE_AGNOSTIC_LIVE_HOTSWAP_V1"
+                           },
+    "code_markers":  {
+                         "default_reason_present":  true,
+                         "default_enabled_marker_present":  true,
+                         "explicit_gate_required_false_present":  true,
+                         "legacy_demoted_marker_present":  true,
+                         "lab_proof_no_mutation_switch_present":  true,
+                         "legacy_school_reason_present":  true,
+                         "legacy_growth_reason_present":  true
+                     },
+    "live_now":  {
+                     "live_aimo_count":  1,
+                     "live_pid":  10044,
+                     "command_line":  "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -NoProfile -ExecutionPolicy Bypass -File operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1 -Mode SandboxTestLife -RunId live_aimo_source_agnostic_path_selection_v1_20260708T034501Z -UseSourceAgnosticPathSelectionLabGate ",
+                     "currently_gated":  true
+                 },
+    "proposed_live_hotswap":  {
+                                  "old_pid_to_stop":  10044,
+                                  "new_run_id_template":  "live_aimo_default_source_agnostic_no_gate_v1_\u003cUTC\u003e",
+                                  "new_command":  "powershell -NoProfile -ExecutionPolicy Bypass -File operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1 -Mode SandboxTestLife -RunId \u003cnew_run_id\u003e",
+                                  "must_not_include":  "-UseSourceAgnosticPathSelectionLabGate",
+                                  "expected_selection_reason":  "SOURCE_AGNOSTIC_PATH_SELECTION_DEFAULT",
+                                  "expected_task":  "build_source_agnostic_path_selector_v1",
+                                  "rollback":  "restart previous gated command from checkpoint if no-gate live proof fails before acceptance"
+                              },
+    "boundaries":  {
+                       "live_hotswap_not_performed":  true,
+                       "active_memory_purity_not_claimed":  true,
+                       "active_memory_reason":  "Live AIMO shares .runtime active memory; isolated proof mode not implemented.",
+                       "legacy_emergency_fallback_missing_source_report_not_proven":  true,
+                       "child_agent_factory_readiness":  "NOT_PROVEN"
+                   },
+    "runtime_size_mb":  49.3,
+    "safe_to_attempt_controlled_no_gate_hotswap":  true,
+    "live_process_touched":  false,
+    "active_memory_mutated":  false,
+    "next_phase":  "PHASE_F_CONTROLLED_LIVE_HOTSWAP_WITHOUT_EXPLICIT_GATE",
+    "created_at":  "2026-07-08T09:45:17.5184638+04:00"
+}

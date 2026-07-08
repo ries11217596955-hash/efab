@@ -6,18 +6,18 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "84b4f3011fbdbac670860cf1426ff00d1384cbed",
-    "subject_head":  "84b4f3011fbdbac670860cf1426ff00d1384cbed",
-    "generated_at":  "2026-07-08T09:36:30.1162126+04:00",
+    "observed_head_at_generation":  "535ea8b9e46896b3ac6b5a640a6f64b87635a50c",
+    "subject_head":  "535ea8b9e46896b3ac6b5a640a6f64b87635a50c",
+    "generated_at":  "2026-07-08T09:46:17.3864008+04:00",
     "generator":  "invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "role":  "canonical local body composition/status map: what exists, where it is, freshness, last runtime/proof signal",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  611,
+    "structural_path_count":  612,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  611,
-                                    "sha256":  "2ffecc87cc329101edf9d5fad293d1055a4f34867e8f06aa501fe35354956ee4"
+                                    "structural_file_count":  612,
+                                    "sha256":  "e771966963e51494d548e9137064be81b3979783a8b0891e2d32b0a5d4056b65"
                                 },
     "module_count":  207,
     "validator_count":  174,
@@ -180,8 +180,8 @@
                                                      "subject":  "fix: treat generated inspect residue as derivation trigger"
                                                  },
                            "latest_runtime_artifact":  {
-                                                           "path":  ".runtime/compact_memory_intake_v1/merge_runs/merge_queue_20260708_093601/COMPACT_MEMORY_MERGE_QUEUE_RESULT_V1.json",
-                                                           "last_write":  "2026-07-08T09:36:18.5339436+04:00",
+                                                           "path":  ".runtime/compact_memory_intake_v1/merge_runs/merge_queue_20260708_094549/COMPACT_MEMORY_MERGE_QUEUE_RESULT_V1.json",
+                                                           "last_write":  "2026-07-08T09:46:06.4366151+04:00",
                                                            "bytes":  3140
                                                        }
                        },
@@ -190,10 +190,10 @@
                            "role":  "bounded inner motor / test life runtime surface",
                            "root":  "operations/autonomous_inner_motor",
                            "status":  "PRESENT_ON_CURRENT_BRANCH",
-                           "file_count":  71,
-                           "script_count":  10,
+                           "file_count":  72,
+                           "script_count":  11,
                            "policy_count":  1,
-                           "validator_count":  21,
+                           "validator_count":  22,
                            "proof_file_count":  30,
                            "doc_count":  10,
                            "required_files":  [
@@ -207,6 +207,7 @@
                                                       "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
                                                       "operations/autonomous_inner_motor/validate_active_memory_state_backoff_v1.ps1",
                                                       "operations/autonomous_inner_motor/validate_agentlife_specific_growth_topic_v1.ps1",
+                                                      "operations/autonomous_inner_motor/validate_aimo_default_no_gate_live_hotswap_preflight_v1.ps1",
                                                       "operations/autonomous_inner_motor/validate_aimo_default_path_lab_implementation_v1.ps1",
                                                       "operations/autonomous_inner_motor/validate_aimo_legacy_selector_demotion_v1.ps1",
                                                       "operations/autonomous_inner_motor/validate_aimo_source_agnostic_lab_integration_v1.ps1",
@@ -219,14 +220,14 @@
                                                  "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1"
                                              ],
                            "latest_git_commit":  {
-                                                     "head":  "84b4f3011fbdbac670860cf1426ff00d1384cbed",
-                                                     "committed_at":  "2026-07-08T09:18:11+04:00",
-                                                     "subject":  "feat: make source agnostic selector default in aimo lab"
+                                                     "head":  "535ea8b9e46896b3ac6b5a640a6f64b87635a50c",
+                                                     "committed_at":  "2026-07-08T09:36:27+04:00",
+                                                     "subject":  "test: prove legacy aimo selector is demoted"
                                                  },
                            "latest_runtime_artifact":  {
                                                            "path":  ".runtime/autonomous_inner_motor/test_life_runs/live_aimo_source_agnostic_path_selection_v1_20260708T034501Z/TEST_LIFE_PROOF.json",
-                                                           "last_write":  "2026-07-08T09:36:24.2501578+04:00",
-                                                           "bytes":  376383
+                                                           "last_write":  "2026-07-08T09:46:14.9782240+04:00",
+                                                           "bytes":  376773
                                                        }
                        },
                        {
@@ -362,7 +363,7 @@
                                         "live_process_touched":  false,
                                         "latest_active_compact_memory_manifest":  {
                                                                                       "path":  ".runtime/active_compact_semantic_memory_v1/manifest.json",
-                                                                                      "last_write":  "2026-07-08T09:36:16.6343936+04:00",
+                                                                                      "last_write":  "2026-07-08T09:46:04.5188134+04:00",
                                                                                       "bytes":  962
                                                                                   },
                                         "latest_school_runtime_artifact":  {
@@ -372,8 +373,8 @@
                                                                            },
                                         "latest_aimo_runtime_artifact":  {
                                                                              "path":  ".runtime/autonomous_inner_motor/test_life_runs/live_aimo_source_agnostic_path_selection_v1_20260708T034501Z/TEST_LIFE_PROOF.json",
-                                                                             "last_write":  "2026-07-08T09:36:30.0842938+04:00",
-                                                                             "bytes":  376609
+                                                                             "last_write":  "2026-07-08T09:46:14.9782240+04:00",
+                                                                             "bytes":  376773
                                                                          }
                                     },
     "freshness_rule":  "Trust currentness by body_source_fingerprint, not by self-referential commit HEAD.",
