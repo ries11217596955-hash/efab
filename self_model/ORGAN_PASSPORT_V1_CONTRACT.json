@@ -1,0 +1,122 @@
+﻿{
+    "schema":  "organ_passport_v1_contract",
+    "status":  "ACTIVE_CONTRACT",
+    "purpose":  "Define a canonical evidence-based passport contract for each Builder organ/component.",
+    "not_a":  [
+                  "body_map_replacement",
+                  "capability_invocation_map",
+                  "raw_archive_dump",
+                  "manual_story_doc",
+                  "deletion_decision"
+              ],
+    "canonical_passport_location":  "self_model/organ_passports/\u003corgan_id\u003e/ORGAN_PASSPORT_V1.json",
+    "canonical_passport_doc_location":  "docs/operations/organ_passports/\u003corgan_id\u003e/ORGAN_PASSPORT_V1.md",
+    "required_fields":  [
+                            "schema",
+                            "status",
+                            "organ_id",
+                            "display_name",
+                            "purpose",
+                            "responsibilities",
+                            "what_it_is_not",
+                            "owning_root",
+                            "owned_files",
+                            "inputs",
+                            "outputs",
+                            "invocation_surfaces",
+                            "dependencies",
+                            "validators",
+                            "proof_refs",
+                            "runtime_refs",
+                            "exported_capabilities",
+                            "safety_boundaries",
+                            "failure_modes",
+                            "rollback_or_quarantine",
+                            "maturity",
+                            "live_or_lab_status",
+                            "gaps",
+                            "source_evidence",
+                            "last_validated_at"
+                        ],
+    "allowed_passport_status":  [
+                                    "PASSPORT_ACTIVE",
+                                    "PASSPORT_DRAFT_FROM_EVIDENCE",
+                                    "PASSPORT_MISSING_BUT_EVIDENCE_EXISTS",
+                                    "PASSPORT_MISSING_NO_EVIDENCE",
+                                    "PASSPORT_LEGACY_CONFLICT",
+                                    "PASSPORT_NEEDS_REPAIR",
+                                    "PASSPORT_DEPRECATED_REFERENCE"
+                                ],
+    "allowed_maturity":  [
+                             "MATERIAL_ONLY",
+                             "DRAFT",
+                             "VALIDATED_LAB",
+                             "VALIDATED_LIVE",
+                             "ACTIVE",
+                             "DEPRECATED",
+                             "BLOCKED"
+                         ],
+    "allowed_live_or_lab_status":  [
+                                       "NOT_IMPLEMENTED",
+                                       "NOT_PROVEN",
+                                       "PROVEN_LAB",
+                                       "PROVEN_LIVE",
+                                       "OWNER_REPORTED",
+                                       "LEGACY_REFERENCE",
+                                       "BLOCKED"
+                                   ],
+    "evidence_sources_allowed":  [
+                                     "body_map_component_entry",
+                                     "owned_root_files",
+                                     "validators",
+                                     "proof_json",
+                                     "reports",
+                                     "runtime_artifacts",
+                                     "task_contracts",
+                                     "existing_legacy_contracts",
+                                     "existing_passport_like_files"
+                                 ],
+    "auto_draft_policy":  {
+                              "allowed":  true,
+                              "status_for_generated":  "PASSPORT_DRAFT_FROM_EVIDENCE",
+                              "rule":  "Auto-draft must copy only observed evidence. Missing fields become gaps. No guessing.",
+                              "draft_not_active":  true
+                          },
+    "activation_policy":  {
+                              "active_requires_validator":  true,
+                              "active_requires_proof_refs":  true,
+                              "active_requires_owner_or_route_acceptance":  true,
+                              "active_cannot_claim_live_without_fresh_live_proof":  true
+                          },
+    "audit_policy":  {
+                         "audit_does_not_delete":  true,
+                         "audit_does_not_create_active_passports":  true,
+                         "audit_may_classify_legacy":  true,
+                         "audit_may_recommend_generator":  true
+                     },
+    "capability_link_contract":  {
+                                     "passport_exports_capability_ids":  true,
+                                     "capability_map_points_back_to_organ_id":  true,
+                                     "do_not_duplicate_invocation_detail_in_body_map":  true
+                                 },
+    "safety_rules":  [
+                         "No passport may be marked PASSPORT_ACTIVE without validator and proof references.",
+                         "No passport may claim PROVEN_LIVE without fresh live proof.",
+                         "No passport may claim child-agent readiness without dedicated child-agent readiness validator.",
+                         "No missing evidence may be filled by guesswork; record a gap instead.",
+                         "No audit result may delete, move, or demote files without separate migration proof and Owner approval."
+                     ],
+    "acceptance_for_contract_and_audit":  [
+                                              "contract exists and parses",
+                                              "audit enumerates current body-map components",
+                                              "audit classifies passport coverage for each component",
+                                              "audit does not create active passports",
+                                              "audit does not delete files",
+                                              "live process is not touched",
+                                              "validator proves no false child readiness or live claims"
+                                          ],
+    "source_body_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+    "live_process_touched":  false,
+    "active_memory_mutated":  false,
+    "created_at":  "2026-07-08T14:04:18.9619030+04:00"
+}
