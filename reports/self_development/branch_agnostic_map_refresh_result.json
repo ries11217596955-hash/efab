@@ -1,22 +1,44 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-08T19:25:49.9496758+04:00",
+    "checked_at":  "2026-07-08T21:03:25.1038175+04:00",
     "branch":  "main",
-    "observed_head":  "c43cd6aee9e1aeb7ea989f2a6491ddcc0568c9f0",
-    "subject_head":  "c43cd6aee9e1aeb7ea989f2a6491ddcc0568c9f0",
+    "observed_head":  "08e5b9dc9a2db4420131f85409a8c51dc2d6cade",
+    "subject_head":  "08e5b9dc9a2db4420131f85409a8c51dc2d6cade",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
+                          "docs/operations/BODY_CONTROL_CORTEX_V1.md",
+                          "docs/operations/BODY_MAP_CANDIDATE_TRIAGE_V1.md",
+                          "docs/operations/BODY_MAP_TRIAGE_PROMOTION_PLAN_V1.md",
+                          "operations/body_control_cortex/build_body_control_cortex_v1.ps1",
+                          "operations/body_control_cortex/validate_body_control_cortex_v1.ps1",
+                          "reports/self_development/BODY_CONTROL_CORTEX_V1_REPORT.json",
+                          "reports/self_development/BODY_MAP_CANDIDATE_TRIAGE_V1.json",
+                          "reports/self_development/BODY_MAP_TRIAGE_PROMOTION_PLAN_V1.json",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
-                          "reports/self_development/branch_agnostic_map_refresh_result.json"
+                          "reports/self_development/branch_agnostic_map_refresh_result.json",
+                          "self_model/body_control_cortex/BODY_CONTROL_CORTEX_V1.json",
+                          "tests/self_development/BODY_CONTROL_CORTEX_V1_PROOF.json",
+                          "tests/self_development/BODY_MAP_CANDIDATE_TRIAGE_V1_PROOF.json",
+                          "tests/self_development/BODY_MAP_TRIAGE_PROMOTION_PLAN_V1_PROOF.json"
                       ],
     "structural_paths":  [
-                             "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
+                             "docs/operations/BODY_CONTROL_CORTEX_V1.md",
+                             "docs/operations/BODY_MAP_CANDIDATE_TRIAGE_V1.md",
+                             "docs/operations/BODY_MAP_TRIAGE_PROMOTION_PLAN_V1.md",
+                             "operations/body_control_cortex/build_body_control_cortex_v1.ps1",
+                             "operations/body_control_cortex/validate_body_control_cortex_v1.ps1",
+                             "reports/self_development/BODY_CONTROL_CORTEX_V1_REPORT.json",
+                             "reports/self_development/BODY_MAP_CANDIDATE_TRIAGE_V1.json",
+                             "reports/self_development/BODY_MAP_TRIAGE_PROMOTION_PLAN_V1.json",
+                             "self_model/body_control_cortex/BODY_CONTROL_CORTEX_V1.json",
+                             "tests/self_development/BODY_CONTROL_CORTEX_V1_PROOF.json",
+                             "tests/self_development/BODY_MAP_CANDIDATE_TRIAGE_V1_PROOF.json",
+                             "tests/self_development/BODY_MAP_TRIAGE_PROMOTION_PLAN_V1_PROOF.json"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -28,8 +50,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1628,
-                                    "sha256":  "76ecd7912c8c53b2d3fc5fbc37e421cda98007f04969e563c6a724f2580c6d77"
+                                    "structural_file_count":  1622,
+                                    "sha256":  "fe5f2912dd58fe7a8c9d5468066612bb73d1246ff86b622cbdbb73a494263c9e"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -52,16 +74,16 @@
                          "builder":  "AGENT_BODY_COMPOSITION_MAP_PRIMARY_EVIDENCE_V1",
                          "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                          "confirmed_component_count":  8,
-                         "primary_evidence_candidate_count":  157,
+                         "primary_evidence_candidate_count":  156,
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
-                         "total_component_count":  165,
-                         "structural_path_count":  1628,
+                         "total_component_count":  164,
+                         "structural_path_count":  1622,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-08T19:26:15.4995156+04:00"
+    "refreshed_at":  "2026-07-08T21:03:50.5273431+04:00"
 }
