@@ -1,26 +1,26 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-08T14:29:57.8386203+04:00",
+    "checked_at":  "2026-07-08T14:59:28.3787424+04:00",
     "branch":  "main",
-    "observed_head":  "42e8ca33fb13a37a3f795b2d7cf6b7f1f1e26fc2",
-    "subject_head":  "42e8ca33fb13a37a3f795b2d7cf6b7f1f1e26fc2",
+    "observed_head":  "3e677140f1db0a0021ae9246944864b127c54ee2",
+    "subject_head":  "3e677140f1db0a0021ae9246944864b127c54ee2",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "docs/operations/EXPANDED_ORGAN_CANDIDATE_INVENTORY_AUDIT_V1.md",
-                          "operations/self_model/validate_expanded_organ_candidate_inventory_audit_v1.ps1",
-                          "reports/self_development/EXPANDED_ORGAN_CANDIDATE_INVENTORY_AUDIT_V1.json",
+                          "docs/operations/MAP_AUTHORITY_DUPLICATE_AUDIT_V1.md",
+                          "operations/self_model/validate_map_authority_duplicate_audit_v1.ps1",
+                          "reports/self_development/MAP_AUTHORITY_DUPLICATE_AUDIT_V1.json",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
                           "tests/self_development/EXPANDED_ORGAN_CANDIDATE_INVENTORY_AUDIT_V1_PROOF.json",
-                          "tests/self_development/ORGAN_PASSPORT_CONTRACT_AND_COVERAGE_AUDIT_V1_PROOF.json"
+                          "tests/self_development/MAP_AUTHORITY_DUPLICATE_AUDIT_V1_PROOF.json"
                       ],
     "structural_paths":  [
-                             "operations/self_model/validate_expanded_organ_candidate_inventory_audit_v1.ps1"
+                             "operations/self_model/validate_map_authority_duplicate_audit_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -32,8 +32,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  622,
-                                    "sha256":  "b28260336bd9595805444583b9b1613bb570ca4700938eea20ac974704fa25c5"
+                                    "structural_file_count":  623,
+                                    "sha256":  "3c864680943c84009689bfb5ae15d5d98c30f850fcf8a921aa86cbc04f9169c7"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -53,8 +53,11 @@
                          "result":  "PASS",
                          "builder":  "AGENT_BODY_COMPOSITION_MAP_V1",
                          "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-                         "component_count":  7,
-                         "structural_path_count":  622
+                         "component_count":  99,
+                         "required_component_count":  7,
+                         "snapshot_imported":  7,
+                         "expanded_candidates_imported":  85,
+                         "structural_path_count":  623
                      },
-    "refreshed_at":  "2026-07-08T14:29:58.8906847+04:00"
+    "refreshed_at":  "2026-07-08T14:59:36.9528186+04:00"
 }

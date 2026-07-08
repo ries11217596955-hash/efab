@@ -1,0 +1,62 @@
+﻿{
+    "schema":  "map_authority_repair_v1",
+    "status":  "PASS_MAP_AUTHORITY_REPAIR_V1_DYNAMIC_FULL_BODY_INVENTORY",
+    "purpose":  "Repair the current auto-refreshed canonical body map so it is not limited to hardcoded components.",
+    "repaired_file":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
+    "canonical_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+    "derived_views":  [
+                          "reports/self_development/agent_body_map.json",
+                          "reports/self_development/agent_body_map.md"
+                      ],
+    "before":  {
+                   "current_canonical_components":  7,
+                   "root_cause":  "hardcoded New-Component list only"
+               },
+    "after":  {
+                  "total_components":  99,
+                  "required_components":  7,
+                  "snapshot_imported":  7,
+                  "expanded_candidates_imported":  85,
+                  "authority_groups":  [
+                                           {
+                                               "authority_class":  "CURRENT_REQUIRED_COMPONENT",
+                                               "count":  7
+                                           },
+                                           {
+                                               "authority_class":  "PARALLEL_SNAPSHOT_COMPONENT_NEEDS_TRIAGE",
+                                               "count":  7
+                                           },
+                                           {
+                                               "authority_class":  "REPO_DISCOVERED_CANDIDATE_NEEDS_TRIAGE",
+                                               "count":  85
+                                           }
+                                       ]
+              },
+    "source_maps_used_as_material":  [
+                                         {
+                                             "path":  "reports/self_development/CURRENT_BODY_CAPABILITY_SNAPSHOT_V1.json",
+                                             "use":  "snapshot component import",
+                                             "raw_authority":  false
+                                         },
+                                         {
+                                             "path":  "reports/self_development/EXPANDED_ORGAN_CANDIDATE_INVENTORY_AUDIT_V1.json",
+                                             "use":  "repo candidate import",
+                                             "raw_authority":  false
+                                         },
+                                         {
+                                             "path":  "self_knowledge/BUILDER_SELF_MODEL.json",
+                                             "use":  "legacy summary only",
+                                             "raw_authority":  false
+                                         }
+                                     ],
+    "boundaries":  {
+                       "candidates_require_triage":  true,
+                       "passport_generator_still_blocked_until_triage":  true,
+                       "child_agent_factory_readiness":  "NOT_PROVEN",
+                       "legacy_maps_not_deleted_yet":  true,
+                       "old_maps_should_be_removed_or_archived_only_after_repair_proof_commit":  true,
+                       "live_process_touched":  false
+                   },
+    "recommended_next_step":  "LEGACY_MAP_REMOVAL_OR_ARCHIVE_V1_AFTER_OWNER_APPROVAL_AND_ROLLBACK_PROOF",
+    "created_at":  "2026-07-08T14:59:02.6025502+04:00"
+}
