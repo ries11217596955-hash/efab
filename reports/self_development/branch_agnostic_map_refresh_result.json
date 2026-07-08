@@ -1,26 +1,29 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-08T16:27:48.7133580+04:00",
+    "checked_at":  "2026-07-08T16:43:23.6499719+04:00",
     "branch":  "main",
-    "observed_head":  "ee0d4cffdff6814705a9c634cab961515c3bcbfb",
-    "subject_head":  "ee0d4cffdff6814705a9c634cab961515c3bcbfb",
+    "observed_head":  "41cb3e392a037ca55bf67be38d9bd5eabd4fe0be",
+    "subject_head":  "41cb3e392a037ca55bf67be38d9bd5eabd4fe0be",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "AGENTS.md",
-                          "codex_tasks/CODEX_TASK_REBUILD_BODY_MAP_PRIMARY_EVIDENCE_V1.md",
-                          "operations/self_model/validate_codex_context_budget_and_body_map_task_v1.ps1",
+                          "docs/operations/BODY_MAP_PRIMARY_EVIDENCE_REBUILD_V1.md",
+                          "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
+                          "operations/self_model/validate_body_map_primary_evidence_rebuild_v1.ps1",
+                          "reports/self_development/BODY_MAP_PRIMARY_EVIDENCE_REBUILD_V1.json",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "tests/self_development/CODEX_CONTEXT_BUDGET_AND_BODY_MAP_TASK_V1_PROOF.json"
+                          "tests/self_development/BODY_MAP_PRIMARY_EVIDENCE_REBUILD_V1_PROOF.json",
+                          "validators/validate_agent_body_composition_map_current_v1.ps1"
                       ],
     "structural_paths":  [
-                             "operations/self_model/validate_codex_context_budget_and_body_map_task_v1.ps1",
-                             "tests/self_development/CODEX_CONTEXT_BUDGET_AND_BODY_MAP_TASK_V1_PROOF.json"
+                             "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
+                             "operations/self_model/validate_body_map_primary_evidence_rebuild_v1.ps1",
+                             "validators/validate_agent_body_composition_map_current_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -33,7 +36,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  1589,
-                                    "sha256":  "7deaf4bf1655405dd4327e3bc1bb38720724bd9eb9498d2dee8072cdb9c50da3"
+                                    "sha256":  "5e30bbf1c9c8c2dd21d52ad551ba7ee800722c337122c57fee9b63f0521ec536"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -66,5 +69,5 @@
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-08T16:28:13.9039815+04:00"
+    "refreshed_at":  "2026-07-08T16:43:48.1548489+04:00"
 }
