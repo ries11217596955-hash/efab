@@ -1,26 +1,28 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-08T09:46:16.4816810+04:00",
+    "checked_at":  "2026-07-08T09:57:32.1054588+04:00",
     "branch":  "main",
-    "observed_head":  "535ea8b9e46896b3ac6b5a640a6f64b87635a50c",
-    "subject_head":  "535ea8b9e46896b3ac6b5a640a6f64b87635a50c",
+    "observed_head":  "fa884c86c7103ab029307756bf18086ba114fe8f",
+    "subject_head":  "fa884c86c7103ab029307756bf18086ba114fe8f",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "operations/autonomous_inner_motor/validate_aimo_legacy_selector_demotion_v1.ps1",
+                          "docs/operations/AIMO_DEFAULT_NO_GATE_LIVE_HOTSWAP_PREFLIGHT_V1.md",
+                          "operations/autonomous_inner_motor/validate_aimo_default_no_gate_live_hotswap_preflight_v1.ps1",
+                          "reports/self_development/AIMO_DEFAULT_NO_GATE_LIVE_HOTSWAP_PREFLIGHT_V1.json",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
                           "tests/autonomous_inner_motor/AIMO_DEFAULT_PATH_LAB_IMPLEMENTATION_V1_PROOF.json",
                           "tests/autonomous_inner_motor/AIMO_LEGACY_SELECTOR_DEMOTION_V1_PROOF.json",
-                          "tests/self_development/AIMO_DEFAULT_SOURCE_AGNOSTIC_SELECTOR_CONTRACT_V1_PROOF.json",
+                          "tests/live_start/AIMO_DEFAULT_NO_GATE_LIVE_HOTSWAP_PREFLIGHT_V1_PROOF.json",
                           "tests/self_development/RUNTIME_CLEANUP_V1_CURRENT_VALIDATION.json"
                       ],
     "structural_paths":  [
-                             "operations/autonomous_inner_motor/validate_aimo_legacy_selector_demotion_v1.ps1"
+                             "operations/autonomous_inner_motor/validate_aimo_default_no_gate_live_hotswap_preflight_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -32,8 +34,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  612,
-                                    "sha256":  "e771966963e51494d548e9137064be81b3979783a8b0891e2d32b0a5d4056b65"
+                                    "structural_file_count":  613,
+                                    "sha256":  "3b16565c1c0b7b303b5454ef866317180830c764139d86208a8c04e3fee0c4cc"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -54,7 +56,7 @@
                          "builder":  "AGENT_BODY_COMPOSITION_MAP_V1",
                          "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                          "component_count":  7,
-                         "structural_path_count":  612
+                         "structural_path_count":  613
                      },
-    "refreshed_at":  "2026-07-08T09:46:17.5028617+04:00"
+    "refreshed_at":  "2026-07-08T09:57:33.1395992+04:00"
 }
