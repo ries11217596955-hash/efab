@@ -1,0 +1,49 @@
+﻿{
+    "schema":  "next_route_prefight_health_audit_v1",
+    "status":  "PASS_WITH_WARNINGS_NEXT_ROUTE_PREFLIGHT_HEALTH_AUDIT_V1",
+    "repo":  {
+                 "head":  "7261ccb87424d36d5cb9eba1d5db1729dcd80867",
+                 "short_head":  "7261ccb",
+                 "branch":  "main",
+                 "ahead_behind":  "0\t0",
+                 "dirty":  false,
+                 "tracked_size_mb":  10.72,
+                 "git_objects":  "count: 4290; size: 4.77 MiB; in-pack: 0; packs: 0; size-pack: 0 bytes; prune-packable: 0; garbage: 0; size-garbage: 0 bytes"
+             },
+    "runtime":  {
+                    "runtime_size_mb":  4572.46,
+                    "warning":  "runtime_is_large_due_to_school_checkpoints_not_git_bloat",
+                    "school_checkpoint_size_mb":  3545.42
+                },
+    "live_aimo":  {
+                      "count":  1,
+                      "pid":  10044,
+                      "command_line":  "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -NoProfile -ExecutionPolicy Bypass -File operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1 -Mode SandboxTestLife -RunId live_aimo_source_agnostic_path_selection_v1_20260708T034501Z -UseSourceAgnosticPathSelectionLabGate ",
+                      "gate_present":  true
+                  },
+    "school":  {
+                   "process_count":  0,
+                   "process_alive":  false,
+                   "last_run_id":  "school_factory_digest_use_real_1000000_20260707_140233",
+                   "last_status":  "PASS_REAL_FACTORY_DIGEST_RECALL_USE_V1",
+                   "ready_atoms":  1000000,
+                   "chunk_count":  200,
+                   "runtime_ready":  false,
+                   "interpretation":  "School last 1M run appears complete/proven, not crashed. School process is not currently alive. runtime_ready=False remains a separate boundary."
+               },
+    "sequence_decision":  {
+                              "step_1":  "Runtime autonomy hardening: make source-agnostic AIMO default path",
+                              "step_2":  "Deeper self-model",
+                              "step_3":  "Memory/provenance hardening",
+                              "step_4":  "Child-agent factory deferred"
+                          },
+    "blockers":  [
+                     "explicit_gate_still_required_for_live_source_agnostic_AIMO",
+                     "runtime_hygiene_needed_for_large_school_checkpoints",
+                     "School_runtime_ready_false_should_not_be_confused_with_crash"
+                 ],
+    "safe_to_continue":  true,
+    "live_process_touched":  false,
+    "active_memory_mutated":  false,
+    "created_at":  "2026-07-08T08:22:35.8149088+04:00"
+}

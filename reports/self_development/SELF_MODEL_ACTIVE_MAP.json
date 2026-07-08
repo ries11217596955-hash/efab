@@ -6,18 +6,18 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "a66ca1ec2e12e09d44f3e8b43a2bea1931b00ea1",
-    "subject_head":  "a66ca1ec2e12e09d44f3e8b43a2bea1931b00ea1",
-    "generated_at":  "2026-07-08T08:04:47.2003271+04:00",
+    "observed_head_at_generation":  "7261ccb87424d36d5cb9eba1d5db1729dcd80867",
+    "subject_head":  "7261ccb87424d36d5cb9eba1d5db1729dcd80867",
+    "generated_at":  "2026-07-08T08:23:21.9472580+04:00",
     "generator":  "invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "role":  "canonical local body composition/status map: what exists, where it is, freshness, last runtime/proof signal",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  605,
+    "structural_path_count":  606,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  605,
-                                    "sha256":  "ba5bfa878fa04224d9488316e0b43be92cc913ed05455bb22bf3335211d6abd3"
+                                    "structural_file_count":  606,
+                                    "sha256":  "ad4f45370711b5eb52789c1effe1ae336584bf938615e6cea8d01044127506a8"
                                 },
     "module_count":  207,
     "validator_count":  174,
@@ -227,8 +227,8 @@
                                                  },
                            "latest_runtime_artifact":  {
                                                            "path":  ".runtime/autonomous_inner_motor/test_life_runs/live_aimo_source_agnostic_path_selection_v1_20260708T034501Z/TEST_LIFE_PROOF.json",
-                                                           "last_write":  "2026-07-08T08:04:43.1577356+04:00",
-                                                           "bytes":  376501
+                                                           "last_write":  "2026-07-08T08:23:21.4155456+04:00",
+                                                           "bytes":  376468
                                                        }
                        },
                        {
@@ -374,8 +374,8 @@
                                                                            },
                                         "latest_aimo_runtime_artifact":  {
                                                                              "path":  ".runtime/autonomous_inner_motor/test_life_runs/live_aimo_source_agnostic_path_selection_v1_20260708T034501Z/TEST_LIFE_PROOF.json",
-                                                                             "last_write":  "2026-07-08T08:04:43.1577356+04:00",
-                                                                             "bytes":  376501
+                                                                             "last_write":  "2026-07-08T08:23:21.4155456+04:00",
+                                                                             "bytes":  376468
                                                                          }
                                     },
     "freshness_rule":  "Trust currentness by body_source_fingerprint, not by self-referential commit HEAD.",
