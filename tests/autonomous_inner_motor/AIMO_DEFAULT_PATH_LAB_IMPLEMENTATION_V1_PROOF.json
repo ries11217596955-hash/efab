@@ -1,0 +1,73 @@
+﻿{
+    "schema":  "aimo_default_path_lab_implementation_v1",
+    "status":  "PASS_AIMO_DEFAULT_PATH_LAB_IMPLEMENTATION_V1_WITH_SHARED_RUNTIME_WARNING",
+    "script":  "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+    "contract_path":  "self_model/AIMO_DEFAULT_SOURCE_AGNOSTIC_SELECTOR_CONTRACT_V1.json",
+    "direct_default":  {
+                           "reason":  "SOURCE_AGNOSTIC_PATH_SELECTION_DEFAULT",
+                           "task":  "build_source_agnostic_path_selector_v1",
+                           "gap":  "source_agnostic_path_selector_missing",
+                           "lab_gate_enabled":  false,
+                           "explicit_gate_required":  false,
+                           "legacy_selector_demoted":  true
+                       },
+    "compatibility_gate":  {
+                               "reason":  "SOURCE_AGNOSTIC_PATH_SELECTION_LAB_GATE",
+                               "task":  "build_source_agnostic_path_selector_v1",
+                               "lab_gate_enabled":  true
+                           },
+    "no_gate_lab_runtime":  {
+                                "run_id":  "phase_c_default_source_agnostic_no_gate_20260708T051730Z",
+                                "pid":  5424,
+                                "proof_path":  ".runtime\\autonomous_inner_motor\\test_life_runs\\phase_c_default_source_agnostic_no_gate_20260708T051730Z\\TEST_LIFE_PROOF.json",
+                                "stdout":  ".runtime/autonomous_inner_motor/phase_c_default_source_agnostic_no_gate_stdout.txt",
+                                "stderr":  ".runtime/autonomous_inner_motor/phase_c_default_source_agnostic_no_gate_stderr.txt",
+                                "stderr_size":  0,
+                                "forced_stop":  false,
+                                "observed_default_source_agnostic_selection":  true,
+                                "cycles":  2,
+                                "knowledge_acquisition_disabled_for_lab_proof":  true
+                            },
+    "transient_cleanup":  [
+                              {
+                                  "path":  ".runtime/compact_memory_intake_v1/checkpoints",
+                                  "exists_before":  true,
+                                  "tracked_count":  0,
+                                  "size_mb_before":  33.99,
+                                  "file_count_before":  3,
+                                  "deleted":  true
+                              },
+                              {
+                                  "path":  ".runtime/file_atom_absorption",
+                                  "exists_before":  true,
+                                  "tracked_count":  0,
+                                  "size_mb_before":  33.99,
+                                  "file_count_before":  4,
+                                  "deleted":  true
+                              }
+                          ],
+    "active_memory_hash_guard":  {
+                                     "cells_before":  "871906027603DF8D485D8A8AC78529BB4C74AB70006DA3C73B87514141078C77",
+                                     "cells_after":  "AE7302CAAB7198DB9D6BF06BC26F5E0FC11E940B622157710AAA23321F1D9607",
+                                     "cells_unchanged":  false,
+                                     "manifest_before":  "5A0367EA5A1E37D5F13D8D820F1FC627581FC522F846D07CD6632D716A0E1DC6",
+                                     "manifest_after":  "4D484131FA58FD01CFB8EBEF861DC1B5C77FE5BAC6FD93EF5C72E6F10F7AC186",
+                                     "manifest_unchanged":  false,
+                                     "boundary":  "Cannot attribute active memory hash changes while live AIMO shares the same active memory runtime."
+                                 },
+    "warning":  {
+                    "shared_runtime_active_memory_attribution":  "UNKNOWN_WHILE_LIVE_AIMO_ACTIVE",
+                    "repair_added":  "DisableKnowledgeAcquisitionForLabProof",
+                    "boundary":  "Selector default is proven. Active memory purity requires isolated runtime or stopped live AIMO; not claimed here."
+                },
+    "live_state":  {
+                       "live_aimo_count":  1,
+                       "live_pid":  10044,
+                       "current_live_still_gated":  true
+                   },
+    "runtime_size_mb_after_cleanup":  49.19,
+    "live_process_touched":  false,
+    "active_memory_mutation_attribution":  "UNKNOWN_SHARED_RUNTIME_LIVE_AIMO_ACTIVE",
+    "next_phase":  "PHASE_D_LEGACY_SELECTOR_DEMOTION_VALIDATOR",
+    "created_at":  "2026-07-08T09:18:03.4795225+04:00"
+}

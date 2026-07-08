@@ -30,7 +30,11 @@ $prev=[pscustomobject]@{ available=$true; run_id='old_run'; cells_sha256='OLD_HA
 $curr=[pscustomobject]@{ available=$true; run_id='new_run'; cells_sha256='NEW_HASH' }
 $noGrowth=[pscustomobject]@{ available=$false; topics=@(); focus_boosts=@() }
 $withoutGate=Select-GrowthDirectedDevelopmentTask -DevelopmentTasks $tasks -Cycle 1 -GrowthSignal $noGrowth -CurrentMemoryState $curr -PreviousMemoryState $prev
-Assert ($withoutGate.reason -eq 'ACTIVE_MEMORY_DELTA_FROM_SCHOOL') 'DEFAULT_PATH_REGRESSION_BAD'
+Assert ($withoutGate.reason -eq 'SOURCE_AGNOSTIC_PATH_SELECTION_DEFAULT') 'DEFAULT_PATH_NOT_SOURCE_AGNOSTIC'
+Assert ($withoutGate.task.name -eq 'build_source_agnostic_path_selector_v1') 'DEFAULT_PATH_TASK_NAME_BAD'
+Assert ($withoutGate.lab_gate_enabled -eq $false) 'DEFAULT_PATH_LAB_GATE_SHOULD_BE_FALSE'
+Assert ($withoutGate.explicit_gate_required -eq $false) 'DEFAULT_PATH_EXPLICIT_GATE_REQUIRED_BAD'
+Assert ($withoutGate.legacy_selector_demoted -eq $true) 'DEFAULT_PATH_LEGACY_NOT_DEMOTED'
 $withGate=Select-GrowthDirectedDevelopmentTask -DevelopmentTasks $tasks -Cycle 1 -GrowthSignal $noGrowth -CurrentMemoryState $curr -PreviousMemoryState $prev -UseSourceAgnosticPathSelectionLabGate
 Assert ($withGate.reason -eq 'SOURCE_AGNOSTIC_PATH_SELECTION_LAB_GATE') 'LAB_GATE_REASON_BAD'
 Assert ($withGate.task.name -eq 'build_source_agnostic_path_selector_v1') 'LAB_GATE_TASK_NAME_BAD'
@@ -89,7 +93,7 @@ $out=[ordered]@{
   selection_report_path=$selectionPath
   lab_runtime=[ordered]@{run_id=$runId;pid=$p.Id;proof_path=$proofPath;stdout=$stdout;stderr=$stderr;stderr_size=$stderrSize;forced_stop=$forced;observed_source_agnostic_selection=$observed;cycles=$runtimeProof.test_life.total_cycles}
   tests=@(
-    [ordered]@{name='default_path_unchanged_without_gate';status='PASS';reason=$withoutGate.reason},
+    [ordered]@{name='default_path_source_agnostic_without_gate';status='PASS';reason=$withoutGate.reason;selected_task=$withoutGate.task.name},
     [ordered]@{name='lab_gate_selects_source_agnostic_path';status='PASS';selected_task=$withGate.task.name;selected_gap=$withGate.specific_gap},
     [ordered]@{name='selection_trace_contains_identity_gap_and_rejections';status='PASS'},
     [ordered]@{name='sandbox_test_life_lab_run_observed_gate_selection';status='PASS';run_id=$runId;cycles=$runtimeProof.test_life.total_cycles},

@@ -2,7 +2,8 @@
   [ValidateSet('Diagnostic','ReadOnly','SandboxExploration','SandboxTestLife','SandboxStudyLife','SandboxAction','GovernedRepoAction','Continuous','LiveAuthority')]
   [string]$Mode = 'Diagnostic',
   [string]$RunId = "aimo_$(Get-Date -Format 'yyyyMMdd_HHmmss')",
-  [switch]$UseSourceAgnosticPathSelectionLabGate
+  [switch]$UseSourceAgnosticPathSelectionLabGate,
+  [switch]$DisableKnowledgeAcquisitionForLabProof
 )
 
 $ErrorActionPreference = 'Stop'
@@ -355,7 +356,9 @@ function Select-GrowthDirectedDevelopmentTask {
   if($DevelopmentTasks.Count -lt 1) { throw 'NO_DEVELOPMENT_TASKS' }
   $fallback = $DevelopmentTasks[($Cycle - 1) % $DevelopmentTasks.Count]
   $fallbackTask = [ordered]@{ name=$fallback.name; query=$fallback.query; target=$fallback.target }
-  if($UseSourceAgnosticPathSelectionLabGate) {
+  $sourceAgnosticDefaultEnabled = $true
+  $sourceAgnosticSelectorEnabled = ($UseSourceAgnosticPathSelectionLabGate -or $sourceAgnosticDefaultEnabled)
+  if($sourceAgnosticSelectorEnabled) {
     if(-not (Test-Path -LiteralPath $SourceAgnosticPathSelectionPath)) { throw "SOURCE_AGNOSTIC_SELECTION_REPORT_MISSING:$SourceAgnosticPathSelectionPath" }
     $sourceAgnosticSelection = Get-Content -LiteralPath $SourceAgnosticPathSelectionPath -Raw | ConvertFrom-Json
     if([string]$sourceAgnosticSelection.status -ne 'SOURCE_AGNOSTIC_PATH_SELECTED_LAB') { throw "SOURCE_AGNOSTIC_SELECTION_STATUS_BAD:$($sourceAgnosticSelection.status)" }
@@ -371,16 +374,22 @@ function Select-GrowthDirectedDevelopmentTask {
       ("proof_needed {0}" -f ((@($sourceAgnosticSelection.proof_needed) | Select-Object -First 4) -join ' | ')),
       ("validator_needed {0}" -f ((@($sourceAgnosticSelection.validator_needed) | Select-Object -First 4) -join ' | ')),
       ("source_refs_used {0}" -f ((@($sourceAgnosticSelection.source_refs_used) | Select-Object -First 5) -join ' | ')),
-      ("source_refs_rejected {0}" -f ((@($sourceAgnosticSelection.source_refs_rejected) | Select-Object -First 8) -join ' | '))
+      ("source_refs_rejected {0}" -f ((@($sourceAgnosticSelection.source_refs_rejected) | Select-Object -First 8) -join ' | ')),
+      ("fallback_if_source_missing {0}" -f [string]$sourceAgnosticSelection.fallback_if_source_missing)
     )
+    $selectorReason = if($UseSourceAgnosticPathSelectionLabGate) { 'SOURCE_AGNOSTIC_PATH_SELECTION_LAB_GATE' } else { 'SOURCE_AGNOSTIC_PATH_SELECTION_DEFAULT' }
+    $selectorSource = if($UseSourceAgnosticPathSelectionLabGate) { 'source_agnostic_path_selection_v1_gate' } else { 'source_agnostic_path_selection_v1_default' }
     return [ordered]@{
       status='SELECTED_GROWTH_DIRECTED_TASK'
-      reason='SOURCE_AGNOSTIC_PATH_SELECTION_LAB_GATE'
-      source='source_agnostic_path_selection_v1'
+      reason=$selectorReason
+      source=$selectorSource
       task=[ordered]@{ name=$selectionAction; query=($selectionQueryParts -join '; '); target=$SourceAgnosticPathSelectionPath }
       useful_intent='execute_identity_gap_scored_source_agnostic_next_step'
       overrides_static_rotation=$true
-      lab_gate_enabled=$true
+      lab_gate_enabled=[bool]$UseSourceAgnosticPathSelectionLabGate
+      source_agnostic_default_enabled=$sourceAgnosticDefaultEnabled
+      explicit_gate_required=$false
+      legacy_selector_demoted=$true
       source_agnostic_selection_path=$SourceAgnosticPathSelectionPath
       selected_candidate_id=[string]$sourceAgnosticSelection.selected_candidate_id
       selected_score=[int]$sourceAgnosticSelection.selected_score
@@ -751,6 +760,7 @@ if ($Mode -eq 'SandboxTestLife') {
     $currentMemoryState = Get-ActiveMemoryState
     $currentGrowthSignal = Get-AgentGrowthSignal
     $Payload.growth_signal = $currentGrowthSignal
+    $Payload.development_trace.knowledge_acquisition_disabled_for_lab_proof = [bool]$DisableKnowledgeAcquisitionForLabProof
     $selector = Select-GrowthDirectedDevelopmentTask -DevelopmentTasks $developmentTasks -Cycle $cycle -GrowthSignal $currentGrowthSignal -CurrentMemoryState $currentMemoryState -PreviousMemoryState $lastObservedMemoryState -UseSourceAgnosticPathSelectionLabGate:$UseSourceAgnosticPathSelectionLabGate
     $task = $selector.task
     $Payload.test_life.counters.development_task_selections += 1
@@ -852,7 +862,7 @@ if ($Mode -eq 'SandboxTestLife') {
       $Payload.test_life.counters.batch_parts_total += @($decompositionParts).Count
       $usedReflexes.Add('DECOMPOSE_TASK_BUNDLE') | Out-Null
     }
-    if($knowledgeGapSignal -and [bool]$Policy.sandbox_test_life.batch_knowledge_acquisition_port_allowed -and $batchKnowledgeAcquisitionCalls -lt [int]$Policy.sandbox_test_life.max_batch_knowledge_acquisition_calls_per_run) {
+    if($knowledgeGapSignal -and (-not $DisableKnowledgeAcquisitionForLabProof) -and [bool]$Policy.sandbox_test_life.batch_knowledge_acquisition_port_allowed -and $batchKnowledgeAcquisitionCalls -lt [int]$Policy.sandbox_test_life.max_batch_knowledge_acquisition_calls_per_run) {
       $batchKnowledgeAcquisitionCalls += 1
       $Payload.test_life.counters.knowledge_acquisition_requests += 1
       $Payload.test_life.counters.batch_knowledge_acquisition_requests += 1
@@ -874,7 +884,7 @@ if ($Mode -eq 'SandboxTestLife') {
         $Payload.test_life.counters.knowledge_acquisition_failures += 1
         $Payload.test_life.counters.batch_knowledge_acquisition_failures += 1
       }
-    } elseif($knowledgeGapSignal -and [bool]$Policy.sandbox_test_life.knowledge_acquisition_port_allowed -and (-not [bool]$Policy.sandbox_test_life.batch_knowledge_preferred_over_single) -and $knowledgeAcquisitionCalls -lt [int]$Policy.sandbox_test_life.max_knowledge_acquisition_calls_per_run) {
+    } elseif($knowledgeGapSignal -and (-not $DisableKnowledgeAcquisitionForLabProof) -and [bool]$Policy.sandbox_test_life.knowledge_acquisition_port_allowed -and (-not [bool]$Policy.sandbox_test_life.batch_knowledge_preferred_over_single) -and $knowledgeAcquisitionCalls -lt [int]$Policy.sandbox_test_life.max_knowledge_acquisition_calls_per_run) {
       $knowledgeAcquisitionCalls += 1
       $Payload.test_life.counters.knowledge_acquisition_requests += 1
       $usedReflexes.Add('KNOWLEDGE_ACQUISITION_PORT') | Out-Null
