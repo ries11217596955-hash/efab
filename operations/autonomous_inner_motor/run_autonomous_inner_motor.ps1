@@ -466,6 +466,25 @@ function Select-GrowthDirectedDevelopmentTask {
   return [ordered]@{ status='SELECTED_STATIC_ROTATION_TASK'; reason='NO_FRESH_GROWTH_SIGNAL_OR_MEMORY_DELTA'; source='static_development_task_rotation'; task=$fallbackTask; useful_intent='continue_safe_baseline_self_development'; overrides_static_rotation=$false }
 }
 
+function Remove-AimoTransientRuntimeTrash([string]$Reason,[string]$RunId) {
+  $targets=@('.runtime/compact_memory_intake_v1/checkpoints','.runtime/file_atom_absorption')
+  $removed=@()
+  foreach($target in $targets){
+    $exists=Test-Path $target
+    $sizeBefore=0; $filesBefore=0; $trackedCount=0; $deleted=$false
+    if($exists){
+      $sizeBefore=(Get-ChildItem $target -Recurse -File -ErrorAction SilentlyContinue|Measure-Object Length -Sum).Sum
+      $filesBefore=(Get-ChildItem $target -Recurse -File -ErrorAction SilentlyContinue|Measure-Object).Count
+      $trackedCount=@(git ls-files -- $target).Count
+      if($trackedCount -eq 0){
+        Remove-Item -LiteralPath $target -Recurse -Force -ErrorAction SilentlyContinue
+        $deleted=$true
+      }
+    }
+    $removed += [ordered]@{path=$target;exists_before=$exists;tracked_count=$trackedCount;size_mb_before=[Math]::Round($sizeBefore/1MB,2);file_count_before=$filesBefore;deleted=$deleted}
+  }
+  return [ordered]@{schema='aimo_transient_runtime_cleanup_v1';reason=$Reason;run_id=$RunId;items=@($removed);created_at=(Get-Date).ToString('o')}
+}
 if ($Mode -eq 'SandboxTestLife') {
   $runRoot = Join-Path '.runtime/autonomous_inner_motor/test_life_runs' $RunId
   New-Item -ItemType Directory -Force -Path $runRoot | Out-Null
@@ -955,12 +974,14 @@ if ($Mode -eq 'SandboxTestLife') {
       next_policy_question = 'Should batch decomposition become a promotion request pattern after repeated/predicted broad use, and which validator should accept CODEX_DRAFT before action?'
     }
     $Payload['stop_reason'] = 'RUNNING_UNTIL_STOP_FILE'
+    $Payload.development_trace.runtime_hygiene_cleanup = Remove-AimoTransientRuntimeTrash -Reason 'cycle_before_proof' -RunId $RunId
     $Payload = Complete-Proof $Payload $ProofPath $MemoryBefore
     $lastObservedMemoryState = $currentMemoryState
     Start-Sleep -Seconds ([int]$Policy.sandbox_test_life.step_sleep_seconds)
   }
   $Payload.heartbeat.status = 'STOPPED_BY_STOP_FILE'
   $Payload['agentlife_packet_emitter'] = Emit-AgentLifeKnowledgePacket $Payload $runRoot $RunId $ProofPath
+  $Payload.development_trace.runtime_hygiene_cleanup_on_stop = Remove-AimoTransientRuntimeTrash -Reason 'stop_before_final_proof' -RunId $RunId
   $Payload = Complete-Proof $Payload $ProofPath $MemoryBefore
   Write-Host "AIMO_STATUS=STOPPED"
   Write-Host "AIMO_MODE=SandboxTestLife"

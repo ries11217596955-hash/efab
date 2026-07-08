@@ -1,0 +1,45 @@
+﻿{
+    "schema":  "aimo_runtime_hygiene_cleanup_validation_v1",
+    "status":  "PASS_AIMO_RUNTIME_HYGIENE_CLEANUP_V1",
+    "cleanup_function":  "Remove-AimoTransientRuntimeTrash",
+    "cleaned_paths":  [
+                          ".runtime/compact_memory_intake_v1/checkpoints",
+                          ".runtime/file_atom_absorption"
+                      ],
+    "before_runtime_size_mb":  49.8,
+    "after_runtime_size_mb":  49.8,
+    "cleanup_result":  {
+                           "schema":  "aimo_transient_runtime_cleanup_v1",
+                           "reason":  "validator_fake_transient_cleanup",
+                           "run_id":  "validator_runtime_hygiene_cleanup_v1",
+                           "items":  [
+                                         {
+                                             "path":  ".runtime/compact_memory_intake_v1/checkpoints",
+                                             "exists_before":  true,
+                                             "tracked_count":  0,
+                                             "size_mb_before":  0,
+                                             "file_count_before":  1,
+                                             "deleted":  true
+                                         },
+                                         {
+                                             "path":  ".runtime/file_atom_absorption",
+                                             "exists_before":  true,
+                                             "tracked_count":  0,
+                                             "size_mb_before":  0,
+                                             "file_count_before":  1,
+                                             "deleted":  true
+                                         }
+                                     ],
+                           "created_at":  "2026-07-08T10:35:57.2000420+04:00"
+                       },
+    "preserved":  {
+                      "active_manifest":  true,
+                      "active_cells":  true,
+                      "live_proof":  true
+                  },
+    "live_pid_now":  11436,
+    "live_process_touched_by_validator":  false,
+    "active_memory_mutated":  false,
+    "boundary":  "Code is fixed for future AIMO cycles. Current live process must be hotswapped/restarted to load this code.",
+    "created_at":  "2026-07-08T10:35:57.6659166+04:00"
+}
