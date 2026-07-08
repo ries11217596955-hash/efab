@@ -1,29 +1,25 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-08T16:43:23.6499719+04:00",
+    "checked_at":  "2026-07-08T16:44:23.2256473+04:00",
     "branch":  "main",
-    "observed_head":  "41cb3e392a037ca55bf67be38d9bd5eabd4fe0be",
-    "subject_head":  "41cb3e392a037ca55bf67be38d9bd5eabd4fe0be",
+    "observed_head":  "8470224bb1681687f9e059927a28e699309b2de3",
+    "subject_head":  "8470224bb1681687f9e059927a28e699309b2de3",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "docs/operations/BODY_MAP_PRIMARY_EVIDENCE_REBUILD_V1.md",
-                          "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
-                          "operations/self_model/validate_body_map_primary_evidence_rebuild_v1.ps1",
-                          "reports/self_development/BODY_MAP_PRIMARY_EVIDENCE_REBUILD_V1.json",
+                          "reports/self_development/CURRENT_BODY_CAPABILITY_SNAPSHOT_V1.json",
+                          "reports/self_development/LEGACY_DUPLICATE_MAP_REMOVAL_V1.json",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "tests/self_development/BODY_MAP_PRIMARY_EVIDENCE_REBUILD_V1_PROOF.json",
-                          "validators/validate_agent_body_composition_map_current_v1.ps1"
+                          "self_knowledge/BUILDER_SELF_MODEL.json"
                       ],
     "structural_paths":  [
-                             "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
-                             "operations/self_model/validate_body_map_primary_evidence_rebuild_v1.ps1",
-                             "validators/validate_agent_body_composition_map_current_v1.ps1"
+                             "reports/self_development/CURRENT_BODY_CAPABILITY_SNAPSHOT_V1.json",
+                             "reports/self_development/LEGACY_DUPLICATE_MAP_REMOVAL_V1.json"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -35,8 +31,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1589,
-                                    "sha256":  "5e30bbf1c9c8c2dd21d52ad551ba7ee800722c337122c57fee9b63f0521ec536"
+                                    "structural_file_count":  1592,
+                                    "sha256":  "acf1f704fbf820a44d15a8d55d031f04149ba82f44f1d6c3cd2bcbddd2ea6939"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -62,12 +58,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  163,
-                         "structural_path_count":  1589,
+                         "structural_path_count":  1592,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-08T16:43:48.1548489+04:00"
+    "refreshed_at":  "2026-07-08T16:44:47.7913755+04:00"
 }

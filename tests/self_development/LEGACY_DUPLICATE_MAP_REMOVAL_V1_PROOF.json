@@ -1,0 +1,45 @@
+﻿{
+    "schema":  "legacy_duplicate_map_removal_v1_proof",
+    "status":  "PASS_LEGACY_DUPLICATE_MAP_REMOVAL_V1",
+    "deleted_maps":  [
+                         {
+                             "path":  "reports/self_development/CURRENT_BODY_CAPABILITY_SNAPSHOT_V1.json",
+                             "sha256":  "09B9B63F3364DBDC97824261DD683F76526CC312D423F6FA5E2DAD83AB3F7AA1",
+                             "bytes":  6634
+                         },
+                         {
+                             "path":  "self_knowledge/BUILDER_SELF_MODEL.json",
+                             "sha256":  "26B6CB1F5F3A9E1AE39023A740B4D53267E596FEFA439A1E55687003810577A0",
+                             "bytes":  182539
+                         }
+                     ],
+    "deleted_maps_absent":  [
+                                {
+                                    "path":  "reports/self_development/CURRENT_BODY_CAPABILITY_SNAPSHOT_V1.json",
+                                    "exists":  false
+                                },
+                                {
+                                    "path":  "self_knowledge/BUILDER_SELF_MODEL.json",
+                                    "exists":  false
+                                }
+                            ],
+    "canonical_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+    "confirmed_components":  7,
+    "primary_evidence_candidates":  156,
+    "legacy_unverified_hints":  4,
+    "rejected_or_stale_hints":  3,
+    "compatibility_components":  163,
+    "legacy_maps_raw_authority":  false,
+    "old_maps_read_as_authority":  false,
+    "passport_generator_blocked_until_candidate_triage":  true,
+    "child_agent_factory_readiness":  "NOT_PROVEN",
+    "refresh_status":  "MAP_REFRESHED",
+    "refresh_trigger_reason":  "legacy_duplicate_map_removal_v1",
+    "validators":  [
+                       "PASS_BODY_MAP_PRIMARY_EVIDENCE_REBUILD_V1",
+                       "PASS_AGENT_BODY_COMPOSITION_MAP_CURRENT_V1"
+                   ],
+    "deletion_owner_approved":  true,
+    "live_process_touched":  false,
+    "created_at":  "2026-07-08T16:42:58.9504487+04:00"
+}
