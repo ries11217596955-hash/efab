@@ -1,26 +1,26 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-08T08:38:22.3853043+04:00",
+    "checked_at":  "2026-07-08T08:56:44.0241294+04:00",
     "branch":  "main",
-    "observed_head":  "4f5a1b70666e313825b187764f8e8eea3476a544",
-    "subject_head":  "4f5a1b70666e313825b187764f8e8eea3476a544",
+    "observed_head":  "15e1740919ca514989c5f14ce1682338b4c9a470",
+    "subject_head":  "15e1740919ca514989c5f14ce1682338b4c9a470",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "docs/operations/NEXT_SEQUENCE_AND_HEALTH_AUDIT_20260708.md",
-                          "operations/self_model/validate_next_route_lock_and_health_audit_v1.ps1",
-                          "reports/self_development/NEXT_ROUTE_PREFLIGHT_HEALTH_AUDIT_V1.json",
+                          "docs/operations/RUNTIME_CLEANUP_V1_REPORT.md",
+                          "operations/self_model/validate_runtime_cleanup_v1.ps1",
+                          "reports/self_development/RUNTIME_CLEANUP_V1_REPORT.json",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "route_locks/AIMO_DEFAULT_SOURCE_AGNOSTIC_SELECTION_V1_ROUTE_LOCK.md",
-                          "tests/self_development/NEXT_ROUTE_LOCK_AND_HEALTH_AUDIT_V1_PROOF.json"
+                          "tests/self_development/RUNTIME_CLEANUP_V1_CURRENT_VALIDATION.json",
+                          "tests/self_development/RUNTIME_CLEANUP_V1_PROOF.json"
                       ],
     "structural_paths":  [
-                             "operations/self_model/validate_next_route_lock_and_health_audit_v1.ps1"
+                             "operations/self_model/validate_runtime_cleanup_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -32,8 +32,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  607,
-                                    "sha256":  "337c5f935bd5a3e15b80c6ee554fd863e41474e9cab7fd6383a5a50bd8fb1825"
+                                    "structural_file_count":  608,
+                                    "sha256":  "85c59eeff277e89a408b65c47c2286d6ee006cc1955c926ee5c168d19311de20"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -54,7 +54,7 @@
                          "builder":  "AGENT_BODY_COMPOSITION_MAP_V1",
                          "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                          "component_count":  7,
-                         "structural_path_count":  607
+                         "structural_path_count":  608
                      },
-    "refreshed_at":  "2026-07-08T08:38:23.3448843+04:00"
+    "refreshed_at":  "2026-07-08T08:56:44.9903962+04:00"
 }

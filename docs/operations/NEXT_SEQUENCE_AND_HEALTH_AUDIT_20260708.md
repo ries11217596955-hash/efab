@@ -40,3 +40,18 @@ Interpretation: School appears completed/proven, not crashed. It is not currentl
 Route lock: oute_locks/AIMO_DEFAULT_SOURCE_AGNOSTIC_SELECTION_V1_ROUTE_LOCK.md
 
 Goal: make source-agnostic identity/gap/scoring selector the AIMO default path, not an explicit gate.
+
+## Runtime cleanup correction - 2026-07-08
+
+The cleanup report is not 200 MB. Current measured sizes:
+
+- reports directory: 0.55 MB
+- RUNTIME_CLEANUP_V1_REPORT.json: 4796 bytes
+- .runtime directory after cleanup: 48.51 MB
+- active compact memory cells.jsonl: 33.92 MB
+
+Interpretation: the remaining runtime size is mostly compact active memory and current proof/runtime traces, not report bloat.
+
+## Added future repair
+
+SCHOOL_RUNTIME_HYGIENE_REPAIR_V1 is now recorded as a future repair item. School proved it can finish the 1M run, but it produced too much transient checkpoint/candidate mass. Before any new large School run, we need a retention/cleanup policy and validator.

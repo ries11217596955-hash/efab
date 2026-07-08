@@ -1,0 +1,28 @@
+﻿{
+    "schema":  "school_runtime_hygiene_gap_v1",
+    "status":  "SCHOOL_RUNTIME_HYGIENE_REPAIR_REQUIRED",
+    "label":  "NOT_CRASH_BUT_RUNTIME_HYGIENE_DEFECT",
+    "evidence":  {
+                     "school_last_status":  "PASS_REAL_FACTORY_DIGEST_RECALL_USE_V1",
+                     "ready_atoms":  1000000,
+                     "runtime_ready":  false,
+                     "runtime_before_cleanup_mb":  4572.46,
+                     "runtime_after_cleanup_mb":  48.51,
+                     "freed_mb":  4523.95,
+                     "reports_size_mb":  0.55,
+                     "active_compact_memory_cells_mb":  33.92
+                 },
+    "problem":  "School scale run can complete successfully while leaving large untracked transient checkpoint/candidate/filter mass in .runtime.",
+    "root_gap":  "No proven School retention/cleanup budget policy for checkpoint-heavy scale runs.",
+    "required_future_repair":  [
+                                   "checkpoint_retention_policy",
+                                   "post_success_cleanup_or_quarantine",
+                                   "runtime_budget_validator",
+                                   "canonical_proof_preservation_negative_test",
+                                   "active_memory_preservation_negative_test"
+                               ],
+    "boundary":  "Not blocker for current default AIMO selector route because School is optional. Blocker before new large School reruns.",
+    "live_process_touched":  false,
+    "active_memory_mutated":  false,
+    "created_at":  "2026-07-08T08:56:24.3080630+04:00"
+}

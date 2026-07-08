@@ -13,7 +13,11 @@
     "runtime":  {
                     "runtime_size_mb":  4572.46,
                     "warning":  "runtime_is_large_due_to_school_checkpoints_not_git_bloat",
-                    "school_checkpoint_size_mb":  3545.42
+                    "school_checkpoint_size_mb":  3545.42,
+                    "runtime_size_mb_after_cleanup":  48.51,
+                    "reports_size_mb":  0.55,
+                    "active_compact_memory_cells_mb":  33.92,
+                    "cleanup_status":  "PASS_RUNTIME_CLEANUP_V1"
                 },
     "live_aimo":  {
                       "count":  1,
@@ -29,7 +33,8 @@
                    "ready_atoms":  1000000,
                    "chunk_count":  200,
                    "runtime_ready":  false,
-                   "interpretation":  "School last 1M run appears complete/proven, not crashed. School process is not currently alive. runtime_ready=False remains a separate boundary."
+                   "interpretation":  "School last 1M run appears complete/proven, not crashed. However, it produced large transient runtime checkpoint/candidate mass. This is a hygiene defect requiring future repair before large School reruns.",
+                   "runtime_hygiene_gap":  "SCHOOL_RUNTIME_HYGIENE_REPAIR_V1_REQUIRED_BEFORE_LARGE_SCHOOL_RERUNS"
                },
     "sequence_decision":  {
                               "step_1":  "Runtime autonomy hardening: make source-agnostic AIMO default path",
@@ -40,7 +45,8 @@
     "blockers":  [
                      "explicit_gate_still_required_for_live_source_agnostic_AIMO",
                      "runtime_hygiene_needed_for_large_school_checkpoints",
-                     "School_runtime_ready_false_should_not_be_confused_with_crash"
+                     "School_runtime_ready_false_should_not_be_confused_with_crash",
+                     "school_runtime_hygiene_repair_required_before_large_reruns"
                  ],
     "safe_to_continue":  true,
     "live_process_touched":  false,

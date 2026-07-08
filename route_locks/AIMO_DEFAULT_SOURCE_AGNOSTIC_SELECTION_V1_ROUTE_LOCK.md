@@ -37,10 +37,10 @@ NOT_PROVEN:
 
 - Repo is clean/synced at route creation.
 - Tracked repo is not bloated; tracked files are about 10.72 MB and git objects about 4.77 MiB.
-- `.runtime` is large, about 4.57 GB, mainly School 1,000,000 run checkpoints.
+- `.runtime` was large, about 4.57 GB, mainly School 1,000,000 run checkpoints; after RUNTIME_CLEANUP_V1 it is about 48.51 MB.
 - Latest School 1,000,000 run is `PASS_REAL_FACTORY_DIGEST_RECALL_USE_V1`, 1,000,000 ready atoms, 200 chunks.
 - School process is not alive now. Evidence indicates completed run, not crash.
-- School `runtime_ready=False` remains a boundary and should not be misread as failure of source-agnostic AIMO.
+- School `runtime_ready=False` remains a boundary and should not be misread as failure of source-agnostic AIMO.\n- School runtime hygiene is NOT clean: large checkpoint/candidate mass was produced during scale runs and required cleanup. This must be repaired before any new large School run.
 
 ## Goal
 
@@ -107,12 +107,39 @@ Make source-agnostic identity/gap/scoring selection the normal AIMO default path
 12. PHASE_L - Next route draft only after Owner decision
     - No automatic child-agent jump.
 
+
+## Future repair backlog
+
+### SCHOOL_RUNTIME_HYGIENE_REPAIR_V1
+
+status: OWNER_ACCEPTED_FUTURE_REPAIR
+
+Problem:
+- School 1,000,000 run completed with `PASS_REAL_FACTORY_DIGEST_RECALL_USE_V1`, but produced large transient runtime mass.
+- The mass was not git bloat, but it made the local runtime workspace unsafe and slow to work with.
+- Cleanup removed untracked checkpoint/candidate/filter mass and reduced `.runtime` from about 4.57 GB to about 48.51 MB.
+
+Root gap:
+- School lacks a proven retention/cleanup policy for checkpoint-heavy scale runs.
+- School can finish successfully while leaving runtime trash behind.
+
+Required future fix before large School reruns:
+- Add School checkpoint retention policy.
+- Keep only canonical proof, compact final evidence, and bounded rollback checkpoint if required.
+- Delete/quarantine transient chunk memory checkpoints after canonical proof is written.
+- Add validator that fails if a School run leaves `.runtime` above a configured budget.
+- Add negative test proving cleanup does not delete canonical School proof or active compact memory.
+
+Boundary:
+- This repair is not part of the current default-AIMO-selector route unless PHASE_G expands into a hygiene guard.
+- Do not run another 1M School job before this repair is implemented or explicitly accepted by Owner.
 ## Hard prohibitions
 
 - Do not claim child-agent readiness.
 - Do not make School required for selection.
-- Do not delete `.runtime` checkpoint mass without explicit cleanup authority.
+- Do not delete `.runtime` checkpoint mass without explicit cleanup authority.\n- Do not run another large School job until SCHOOL_RUNTIME_HYGIENE_REPAIR_V1 is implemented or Owner explicitly accepts the runtime cost.
 - Do not leave duplicate live AIMO processes.
 - Do not hotswap live before lab no-gate proof passes.
 - Do not treat `runtime_ready=False` as School crash without proof.
 - Do not continue into deeper self-model until this route reports and Owner reviews.
+
