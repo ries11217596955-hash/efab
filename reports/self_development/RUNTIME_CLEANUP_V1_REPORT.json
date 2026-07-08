@@ -1,0 +1,88 @@
+﻿{
+    "schema":  "runtime_cleanup_v1",
+    "status":  "PASS_RUNTIME_CLEANUP_V1",
+    "action":  "delete_untracked_transient_runtime_checkpoint_mass",
+    "repo":  {
+                 "head":  "4f5a1b70666e313825b187764f8e8eea3476a544",
+                 "short_head":  "4f5a1b7",
+                 "branch":  "main",
+                 "ahead_behind":  "0\t0",
+                 "dirty_before":  false,
+                 "tracked_size_mb_before":  10.73,
+                 "tracked_size_mb_after":  10.73,
+                 "git_objects_before":  "count: 4317; size: 4.80 MiB; in-pack: 0; packs: 0; size-pack: 0 bytes; prune-packable: 0; garbage: 0; size-garbage: 0 bytes"
+             },
+    "runtime":  {
+                    "size_mb_before":  4572.46,
+                    "size_mb_after":  48.51,
+                    "freed_mb":  4523.95
+                },
+    "deleted_items":  [
+                          {
+                              "path":  ".runtime/school_runs/school_factory_digest_use_real_1000000_20260707_140233/memory_checkpoints",
+                              "exists_before":  true,
+                              "tracked_count":  0,
+                              "size_bytes_before":  3717638203,
+                              "size_mb_before":  3545.42,
+                              "file_count_before":  600,
+                              "deleted":  true,
+                              "delete_allowed":  true
+                          },
+                          {
+                              "path":  ".runtime/compact_memory_intake_v1/checkpoints",
+                              "exists_before":  true,
+                              "tracked_count":  0,
+                              "size_bytes_before":  583302320,
+                              "size_mb_before":  556.28,
+                              "file_count_before":  204,
+                              "deleted":  true,
+                              "delete_allowed":  true
+                          },
+                          {
+                              "path":  ".runtime/file_atom_absorption",
+                              "exists_before":  true,
+                              "tracked_count":  0,
+                              "size_bytes_before":  285090665,
+                              "size_mb_before":  271.88,
+                              "file_count_before":  32,
+                              "deleted":  true,
+                              "delete_allowed":  true
+                          },
+                          {
+                              "path":  ".runtime/school_source_template_filter",
+                              "exists_before":  true,
+                              "tracked_count":  0,
+                              "size_bytes_before":  931269,
+                              "size_mb_before":  0.89,
+                              "file_count_before":  285,
+                              "deleted":  true,
+                              "delete_allowed":  true
+                          },
+                          {
+                              "path":  ".runtime/school_runs/school_factory_digest_use_real_1000000_20260707_110037/memory_checkpoints",
+                              "exists_before":  true,
+                              "tracked_count":  0,
+                              "size_mb_before":  149.48,
+                              "file_count_before":  123,
+                              "deleted":  true,
+                              "delete_allowed":  true,
+                              "pass":  "second_pass"
+                          }
+                      ],
+    "preserved":  {
+                      "active_memory_manifest_status":  "PASS_COMPACT_SEMANTIC_DIGESTION_ORGAN_V1",
+                      "active_memory_total_bytes":  35634023,
+                      "active_memory_runtime_ready":  false,
+                      "school_canonical_status":  "PASS_REAL_FACTORY_DIGEST_RECALL_USE_V1",
+                      "school_ready_atoms":  1000000,
+                      "school_runtime_ready":  false,
+                      "live_aimo_runtime_proof_exists":  true,
+                      "live_aimo_count":  1,
+                      "live_aimo_pid":  10044,
+                      "live_aimo_gate_present":  true
+                  },
+    "boundary":  "Deleted only untracked transient runtime checkpoint/candidate/filter mass. Did not delete active compact memory, growth signal, live AIMO runtime proof, or canonical School proof. Git history was not rewritten. Second pass also removed leftover old School memory_checkpoints.",
+    "live_process_touched":  false,
+    "active_memory_mutated":  false,
+    "created_at":  "2026-07-08T08:37:10.4688255+04:00"
+}

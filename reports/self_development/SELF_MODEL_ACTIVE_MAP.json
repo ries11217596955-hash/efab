@@ -6,18 +6,18 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "7261ccb87424d36d5cb9eba1d5db1729dcd80867",
-    "subject_head":  "7261ccb87424d36d5cb9eba1d5db1729dcd80867",
-    "generated_at":  "2026-07-08T08:23:21.9472580+04:00",
+    "observed_head_at_generation":  "4f5a1b70666e313825b187764f8e8eea3476a544",
+    "subject_head":  "4f5a1b70666e313825b187764f8e8eea3476a544",
+    "generated_at":  "2026-07-08T08:38:23.2347094+04:00",
     "generator":  "invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "role":  "canonical local body composition/status map: what exists, where it is, freshness, last runtime/proof signal",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  606,
+    "structural_path_count":  607,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  606,
-                                    "sha256":  "ad4f45370711b5eb52789c1effe1ae336584bf938615e6cea8d01044127506a8"
+                                    "structural_file_count":  607,
+                                    "sha256":  "337c5f935bd5a3e15b80c6ee554fd863e41474e9cab7fd6383a5a50bd8fb1825"
                                 },
     "module_count":  207,
     "validator_count":  174,
@@ -139,11 +139,7 @@
                                                      "committed_at":  "2026-07-06T22:42:23+04:00",
                                                      "subject":  "chore: initial clean builder snapshot"
                                                  },
-                           "latest_runtime_artifact":  {
-                                                           "path":  ".runtime/school_source_template_filter/school_source_router_filter_school_factory_digest_use_real_1000000_20260707_140233_chunk_200_of_200/SCHOOL_SOURCE_TEMPLATE_FILTER_DECISION_V1.json",
-                                                           "last_write":  "2026-07-08T03:53:32.9279425+04:00",
-                                                           "bytes":  3269
-                                                       }
+                           "latest_runtime_artifact":  null
                        },
                        {
                            "id":  "compact_memory_intake",
@@ -227,8 +223,8 @@
                                                  },
                            "latest_runtime_artifact":  {
                                                            "path":  ".runtime/autonomous_inner_motor/test_life_runs/live_aimo_source_agnostic_path_selection_v1_20260708T034501Z/TEST_LIFE_PROOF.json",
-                                                           "last_write":  "2026-07-08T08:23:21.4155456+04:00",
-                                                           "bytes":  376468
+                                                           "last_write":  "2026-07-08T08:38:21.9852709+04:00",
+                                                           "bytes":  376409
                                                        }
                        },
                        {
@@ -374,8 +370,8 @@
                                                                            },
                                         "latest_aimo_runtime_artifact":  {
                                                                              "path":  ".runtime/autonomous_inner_motor/test_life_runs/live_aimo_source_agnostic_path_selection_v1_20260708T034501Z/TEST_LIFE_PROOF.json",
-                                                                             "last_write":  "2026-07-08T08:23:21.4155456+04:00",
-                                                                             "bytes":  376468
+                                                                             "last_write":  "2026-07-08T08:38:21.9852709+04:00",
+                                                                             "bytes":  376409
                                                                          }
                                     },
     "freshness_rule":  "Trust currentness by body_source_fingerprint, not by self-referential commit HEAD.",

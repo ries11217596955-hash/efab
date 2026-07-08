@@ -1,0 +1,27 @@
+﻿{
+    "schema":  "runtime_cleanup_v1_validation",
+    "status":  "PASS_RUNTIME_CLEANUP_V1",
+    "report_path":  "reports/self_development/RUNTIME_CLEANUP_V1_REPORT.json",
+    "doc_path":  "docs/operations/RUNTIME_CLEANUP_V1_REPORT.md",
+    "runtime_size_mb_before":  4572.46,
+    "runtime_size_mb_after":  48.51,
+    "freed_mb":  4523.95,
+    "preserved_paths_checked":  [
+                                    ".runtime/active_compact_semantic_memory_v1/manifest.json",
+                                    ".runtime/active_compact_semantic_memory_v1/cells.jsonl",
+                                    ".runtime/active_compact_semantic_memory_v1/index.json",
+                                    ".runtime/compact_memory_growth_signal_v1/ACTIVE_GROWTH_SIGNAL.json",
+                                    ".runtime/school_runs/school_factory_digest_use_real_1000000_20260707_140233/AGENT_SCHOOL_CANONICAL_ENTRYPOINT_V1.json",
+                                    ".runtime/autonomous_inner_motor/test_life_runs/live_aimo_source_agnostic_path_selection_v1_20260708T034501Z/TEST_LIFE_PROOF.json"
+                                ],
+    "deleted_paths":  [
+                          ".runtime/school_runs/school_factory_digest_use_real_1000000_20260707_140233/memory_checkpoints",
+                          ".runtime/compact_memory_intake_v1/checkpoints",
+                          ".runtime/file_atom_absorption",
+                          ".runtime/school_source_template_filter",
+                          ".runtime/school_runs/school_factory_digest_use_real_1000000_20260707_110037/memory_checkpoints"
+                      ],
+    "live_process_touched":  false,
+    "active_memory_mutated":  false,
+    "created_at":  "2026-07-08T08:37:10.5047594+04:00"
+}
