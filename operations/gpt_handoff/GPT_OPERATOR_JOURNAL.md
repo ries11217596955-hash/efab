@@ -228,3 +228,10 @@ Night-school note:
 - Reason: term came from GPT misunderstanding/audio-route mismatch, not Owner intent. Keeping it would pollute Builder vocabulary and map semantics.
 - Correct route: governed local Codex usage pipeline. ChatGPT operator/conductor writes bounded tasks; local Codex executes under PREFLIGHT; validators/proofs decide acceptance; Owner keeps authority over live/dangerous decisions.
 - Status: CORRECTION_APPLIED_IN_PROGRESS / CORTEX_WRONG_ROUTE_ARTIFACT_TO_DELETE.
+
+2026-07-09 - Build: ORGAN_PROMOTION_LANES_V1 persistent growth gate
+- Owner route: do not process all candidates manually one by one. Build a permanent mechanism that classifies current and future body surfaces into promotion lanes.
+- Built: ORGAN_PROMOTION_LANES_V1 as persistent_growth_gate with build script, validator, model, report, proof, and documentation.
+- Current result: all current body-map candidates are assigned lane decisions. Lanes are not organ acceptance; no active passport, no live claim, and no full passport generation for all candidates.
+- First calibration sample remains accepted_atom_retention_organ. New growth gate itself is a REAL_ORGAN_CANDIDATE / CANDIDATE_READY_FOR_DRAFT, not active.
+- Correct next route: prove candidate -> passport draft -> validator -> proof using the calibration sample, then use lane policy for batch decisions.

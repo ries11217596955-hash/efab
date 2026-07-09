@@ -2,8 +2,9 @@
 
 status: PASS_BODY_MAP_TRIAGE_PROMOTION_PLAN_V1
 
-total triaged: 156
-candidate ready for draft: 1
+total triaged: 157
+candidate ready for draft: 2
 
-Correction: Body Control Cortex route removed. Next recommended route: CODEX_OPERATOR_PIPELINE_V1 for governed local OpenAI Codex execution.
+Organ promotion lanes built as persistent growth gate candidate.
+Next recommended step: use accepted_atom_retention_organ as calibration sample for candidate -> passport draft -> validator -> proof.
 Boundary: no active passport creation; no candidate accepted as organ from triage alone.

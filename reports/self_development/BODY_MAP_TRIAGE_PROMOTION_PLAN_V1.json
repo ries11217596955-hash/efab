@@ -3,9 +3,9 @@
     "status":  "PASS_BODY_MAP_TRIAGE_PROMOTION_PLAN_V1",
     "source_triage":  "reports/self_development/BODY_MAP_CANDIDATE_TRIAGE_V1.json",
     "summary":  {
-                    "total_triaged":  156,
-                    "real_organ_candidates":  16,
-                    "candidate_ready_for_draft":  1,
+                    "total_triaged":  157,
+                    "real_organ_candidates":  17,
+                    "candidate_ready_for_draft":  2,
                     "needs_review":  26,
                     "owner_link_blocked":  9,
                     "blocked":  0,
@@ -34,6 +34,21 @@
                                                           "contracts/accepted_atom_retention_organ/passports/PASSPORT_INDEX.json",
                                                           "contracts/accepted_atom_retention_organ/passports/PROOF_PASSPORT.json",
                                                           "contracts/accepted_atom_retention_organ/passports/SANITIZER_PASSPORT.json"
+                                                      ]
+                      },
+                      {
+                          "candidate_id":  "operations_organ_promotion_lanes",
+                          "path":  "operations/organ_promotion_lanes",
+                          "confidence":  "HIGH",
+                          "next_action":  "DRAFT_ORGAN_PASSPORT_AFTER_ACCEPTANCE_BOUNDARY_REVIEW",
+                          "validator_refs":  [
+                                                 "operations/organ_promotion_lanes/validate_organ_promotion_lanes_v1.ps1"
+                                             ],
+                          "proof_refs":  [
+
+                                         ],
+                          "contract_or_policy_refs":  [
+
                                                       ]
                       }
                   ],
@@ -263,6 +278,16 @@
                                       "proven_live":  false
                                   }
                               ],
+    "new_growth_gate_candidates":  [
+                                       {
+                                           "component_id":  "operations_organ_promotion_lanes",
+                                           "root":  "operations/organ_promotion_lanes",
+                                           "basis":  "PASS_ORGAN_PROMOTION_LANES_V1",
+                                           "role":  "persistent_growth_gate",
+                                           "active_passport":  false,
+                                           "proven_live":  false
+                                       }
+                                   ],
     "removed_wrong_route_artifacts":  [
                                           {
                                               "artifact_id":  "body_control_cortex_v1",
@@ -275,10 +300,11 @@
                        "no_body_map_mutation_performed":  false,
                        "no_candidate_accepted_as_organ_from_triage_alone":  true,
                        "operations_self_model_promoted_by_lab_validation":  true,
+                       "organ_promotion_lanes_persistent_gate_built":  true,
                        "wrong_route_cortex_removed":  true,
                        "passport_generator_for_all_candidates_blocked":  true,
                        "live_process_touched":  false
                    },
-    "recommended_next_step":  "BUILD_CODEX_OPERATOR_PIPELINE_V1_FOR_LOCAL_OPENAI_CODEX",
-    "created_at":  "2026-07-08T21:02:23.3904891+04:00"
+    "recommended_next_step":  "DRAFT_PASSPORT_FOR_ACCEPTED_ATOM_RETENTION_ORGAN_AS_CALIBRATION_SAMPLE",
+    "created_at":  "2026-07-09T09:10:24.6355776+04:00"
 }

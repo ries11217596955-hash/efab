@@ -2,16 +2,16 @@
     "schema":  "AGENT_BODY_MAP_COMPATIBILITY_VIEW_V2",
     "source":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
     "branch":  "main",
-    "observed_head_at_generation":  "dc8defb1b002e732a80f0baf695321dae055de6d",
-    "generated_at":  "2026-07-08T21:05:08.2544949+04:00",
+    "observed_head_at_generation":  "95a13596bb94f1be87d17b5963c02da5b2d2a4d8",
+    "generated_at":  "2026-07-09T09:12:48.4671232+04:00",
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1622,
-                                    "sha256":  "fe5f2912dd58fe7a8c9d5468066612bb73d1246ff86b622cbdbb73a494263c9e"
+                                    "structural_file_count":  1628,
+                                    "sha256":  "1fa1453f9bf098404897a89304037ebc3df45a6726faa81e2a035372a73d1e32"
                                 },
     "map_kind":  "DERIVED_HUMAN_COMPATIBILITY_VIEW",
     "confirmed_component_count":  8,
-    "primary_evidence_candidate_count":  156,
+    "primary_evidence_candidate_count":  157,
     "components":  [
                        {
                            "id":  "school",
@@ -475,6 +475,18 @@
                            "root":  "operations/memory",
                            "file_count":  4,
                            "script_count":  4,
+                           "required_files_present":  null,
+                           "is_required_component":  false,
+                           "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
+                           "source_ref":  "bounded_tracked_file_discovery_v1",
+                           "needs_triage":  true
+                       },
+                       {
+                           "id":  "operations_organ_promotion_lanes",
+                           "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
+                           "root":  "operations/organ_promotion_lanes",
+                           "file_count":  2,
+                           "script_count":  2,
                            "required_files_present":  null,
                            "is_required_component":  false,
                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
