@@ -241,3 +241,24 @@ Night-school note:
 - Result: PASS_ACCEPTED_ATOM_RETENTION_ORGAN_CALIBRATION_V1. Contract passport bundle validator passes, self-model passport draft remains PASSPORT_DRAFT_FROM_EVIDENCE / NOT_PROVEN.
 - Boundary: activation/runtime readiness is blocked by missing accepted atom micro-proof and missing contract fixture. No active passport, no PROVEN_LIVE, no runtime_ready, no child-agent readiness.
 - Lane update: accepted_atom_retention_organ moved from FAST_LANE_PASSPORT_DRAFT to CALIBRATED_PASSPORT_DRAFT_BLOCKED_RUNTIME. Remaining fast-lane candidates can use the same boundary pattern.
+
+## 2026-07-09 — Архитектурный поворот: взгляд на Builder как на живой организм
+
+Итог серии обсуждений.
+
+Главное изменение произошло не в коде, а в способе мышления.
+
+Мы сознательно перестали смотреть на Builder как на набор файлов, скриптов, репозиторий или LLM с инструментами. Вместо этого начали анализировать его как живой организм, глазами архитектора, системного инженера и врача-анатома.
+
+Ключевые выводы:
+- Карта отвечает только на вопрос «что существует» и не является мозгом.
+- Паспорт не определяет Identity, а лишь фиксирует результат диагностики.
+- Разделены три уровня: Законы → Органы → Brain.
+- Источник истины: Evidence → Organ → Signal → Brain → Decision.
+- Brain должен слушать сигналы организма, а не перечитывать репозиторий.
+- Разделены Body Model («что существует») и Body State («что происходит сейчас»).
+- Самопознание разделено на Self Description, Self Observation и Self Understanding.
+- Следующий этап — строить не отдельные органы, а внутренний жизненный цикл Builder: Body Model → Body State → Signals → Reasoning → Brain → Decision → Action → State Change → Verification → Learning.
+
+Статус:
+Это рабочая архитектурная заметка для сохранения направления проекта. Это НЕ закон, НЕ контракт и НЕ активная память агента.
