@@ -2,16 +2,16 @@
     "schema":  "AGENT_BODY_MAP_COMPATIBILITY_VIEW_V2",
     "source":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
     "branch":  "main",
-    "observed_head_at_generation":  "95a13596bb94f1be87d17b5963c02da5b2d2a4d8",
-    "generated_at":  "2026-07-09T09:12:48.4671232+04:00",
+    "observed_head_at_generation":  "08b3672e9aae633c62b1591ddbfd6cf1ee890509",
+    "generated_at":  "2026-07-09T12:30:37.2021149+04:00",
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1628,
-                                    "sha256":  "1fa1453f9bf098404897a89304037ebc3df45a6726faa81e2a035372a73d1e32"
+                                    "structural_file_count":  1633,
+                                    "sha256":  "500bb6666411017f737a5794e6b929ad9d9c8cddff94e451eef3b71341cbd090"
                                 },
     "map_kind":  "DERIVED_HUMAN_COMPATIBILITY_VIEW",
     "confirmed_component_count":  8,
-    "primary_evidence_candidate_count":  157,
+    "primary_evidence_candidate_count":  158,
     "components":  [
                        {
                            "id":  "school",
@@ -379,6 +379,18 @@
                            "root":  "modules/self_development",
                            "file_count":  20,
                            "script_count":  20,
+                           "required_files_present":  null,
+                           "is_required_component":  false,
+                           "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
+                           "source_ref":  "bounded_tracked_file_discovery_v1",
+                           "needs_triage":  true
+                       },
+                       {
+                           "id":  "operations_accepted_atom_retention_calibration",
+                           "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
+                           "root":  "operations/accepted_atom_retention_calibration",
+                           "file_count":  2,
+                           "script_count":  2,
                            "required_files_present":  null,
                            "is_required_component":  false,
                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",

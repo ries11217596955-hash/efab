@@ -235,3 +235,9 @@ Night-school note:
 - Current result: all current body-map candidates are assigned lane decisions. Lanes are not organ acceptance; no active passport, no live claim, and no full passport generation for all candidates.
 - First calibration sample remains accepted_atom_retention_organ. New growth gate itself is a REAL_ORGAN_CANDIDATE / CANDIDATE_READY_FOR_DRAFT, not active.
 - Correct next route: prove candidate -> passport draft -> validator -> proof using the calibration sample, then use lane policy for batch decisions.
+
+2026-07-09 - Calibration: accepted_atom_retention_organ passport draft
+- Route: use accepted_atom_retention_organ as calibration sample for candidate -> passport draft -> validator -> proof, without promoting it active.
+- Result: PASS_ACCEPTED_ATOM_RETENTION_ORGAN_CALIBRATION_V1. Contract passport bundle validator passes, self-model passport draft remains PASSPORT_DRAFT_FROM_EVIDENCE / NOT_PROVEN.
+- Boundary: activation/runtime readiness is blocked by missing accepted atom micro-proof and missing contract fixture. No active passport, no PROVEN_LIVE, no runtime_ready, no child-agent readiness.
+- Lane update: accepted_atom_retention_organ moved from FAST_LANE_PASSPORT_DRAFT to CALIBRATED_PASSPORT_DRAFT_BLOCKED_RUNTIME. Remaining fast-lane candidates can use the same boundary pattern.

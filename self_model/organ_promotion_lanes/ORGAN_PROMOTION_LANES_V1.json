@@ -9,18 +9,29 @@
     "source_passport_index":  "self_model/organ_passports/_index/ORGAN_PASSPORT_DRAFT_INDEX_V1.json",
     "counts":  {
                    "confirmed_components":  8,
-                   "source_candidates":  157,
-                   "triage_items":  157,
-                   "lane_decisions":  157,
-                   "lanes":  7,
-                   "fast_lane_passport_draft":  2,
+                   "source_candidates":  158,
+                   "triage_items":  158,
+                   "lane_decisions":  158,
+                   "lanes":  8,
+                   "fast_lane_passport_draft":  1,
+                   "calibrated_passport_draft_blocked_runtime":  1,
                    "owner_link_required":  9,
                    "review_lane":  26,
-                   "material_or_archive":  120,
+                   "material_or_archive":  121,
                    "passport_index_count":  2,
                    "active_passports":  0
                },
     "lanes":  [
+                  {
+                      "lane":  "CALIBRATED_PASSPORT_DRAFT_BLOCKED_RUNTIME",
+                      "count":  1,
+                      "promotion_allowed":  0,
+                      "passport_draft_allowed":  0,
+                      "active_allowed":  0,
+                      "sample_candidates":  [
+                                                "contracts_accepted_atom_retention_organ"
+                                            ]
+                  },
                   {
                       "lane":  "EVIDENCE_MATERIAL_BUCKET",
                       "count":  107,
@@ -40,12 +51,11 @@
                   },
                   {
                       "lane":  "FAST_LANE_PASSPORT_DRAFT",
-                      "count":  2,
+                      "count":  1,
                       "promotion_allowed":  0,
-                      "passport_draft_allowed":  2,
+                      "passport_draft_allowed":  1,
                       "active_allowed":  0,
                       "sample_candidates":  [
-                                                "contracts_accepted_atom_retention_organ",
                                                 "operations_organ_promotion_lanes"
                                             ]
                   },
@@ -112,11 +122,12 @@
                   },
                   {
                       "lane":  "SUPPORT_MATERIAL_BUCKET",
-                      "count":  1,
+                      "count":  2,
                       "promotion_allowed":  0,
                       "passport_draft_allowed":  0,
                       "active_allowed":  0,
                       "sample_candidates":  [
+                                                "operations_accepted_atom_retention_calibration",
                                                 "self_build_programs_generated"
                                             ]
                   }
@@ -126,7 +137,12 @@
                              "lane":  "FAST_LANE_PASSPORT_DRAFT",
                              "batch_action":  "generate_or_normalize_passport_draft_one_at_a_time_until_validator_template_is_proven",
                              "acceptance":  "passport draft + dedicated validator + proof; no active passport",
-                             "current_strategy":  "use accepted_atom_retention_organ as calibration sample"
+                             "current_strategy":  "use next ready candidate after accepted_atom calibration"
+                         },
+                         {
+                             "lane":  "CALIBRATED_PASSPORT_DRAFT_BLOCKED_RUNTIME",
+                             "batch_action":  "keep draft passport; block activation until missing runtime/micro proof is restored",
+                             "acceptance":  "passport validator pass + calibration proof + blocker record; no active passport"
                          },
                          {
                              "lane":  "OWNER_LINK_REQUIRED",
@@ -164,20 +180,19 @@
                                "candidate_id":  "contracts_accepted_atom_retention_organ",
                                "path":  "contracts/accepted_atom_retention_organ",
                                "triage_class":  "REAL_ORGAN_CANDIDATE",
-                               "passport_readiness":  "CANDIDATE_READY_FOR_DRAFT",
-                               "lane":  "FAST_LANE_PASSPORT_DRAFT",
-                               "decision":  "DRAFT_PASSPORT_CANDIDATE",
+                               "passport_readiness":  "PASSPORT_DRAFT_VALIDATED_BLOCKED_RUNTIME_PROOF",
+                               "lane":  "CALIBRATED_PASSPORT_DRAFT_BLOCKED_RUNTIME",
+                               "decision":  "KEEP_DRAFT_BLOCKED_UNTIL_RUNTIME_PROOF",
                                "promotion_allowed":  false,
-                               "passport_draft_allowed":  true,
+                               "passport_draft_allowed":  false,
                                "active_allowed":  false,
                                "required_gates":  [
-                                                      "passport_draft",
-                                                      "dedicated_validator",
-                                                      "proof_json",
-                                                      "acceptance_boundary",
-                                                      "no_active_without_owner_route"
+                                                      "passport_draft_validated",
+                                                      "runtime_or_micro_proof_blocker_recorded",
+                                                      "no_active_without_missing_proof_restored",
+                                                      "owner_route_acceptance_required"
                                                   ],
-                               "reason":  "explicit accepted_atom_retention_organ contract/passport surface exists",
+                               "reason":  "self-model passport draft calibrated by PASS_ACCEPTED_ATOM_RETENTION_ORGAN_CALIBRATION_V1; activation blocked by missing runtime/micro proof",
                                "validator_refs":  [
 
                                                   ],
@@ -701,6 +716,29 @@
                                                   ],
                                "proof_refs":  [
                                                   "modules/self_development/write_batch_proof_aggregator_v1.ps1"
+                                              ]
+                           },
+                           {
+                               "candidate_id":  "operations_accepted_atom_retention_calibration",
+                               "path":  "operations/accepted_atom_retention_calibration",
+                               "triage_class":  "MODULE_OR_CAPABILITY_SURFACE",
+                               "passport_readiness":  "NOT_ORGAN",
+                               "lane":  "SUPPORT_MATERIAL_BUCKET",
+                               "decision":  "KEEP_AS_MATERIAL_NOT_ORGAN",
+                               "promotion_allowed":  false,
+                               "passport_draft_allowed":  false,
+                               "active_allowed":  false,
+                               "required_gates":  [
+                                                      "keep_as_support_material",
+                                                      "exclude_from_passport_generator",
+                                                      "promote_only_if_new_requirement_validator_appears"
+                                                  ],
+                               "reason":  "calibration support scripts/reports for accepted_atom_retention_organ; not a standalone organ",
+                               "validator_refs":  [
+                                                      "operations/accepted_atom_retention_calibration/validate_accepted_atom_retention_organ_calibration_v1.ps1"
+                                                  ],
+                               "proof_refs":  [
+
                                               ]
                            },
                            {
@@ -3905,7 +3943,7 @@
     "persistent_contract":  {
                                 "not_temporary":  true,
                                 "first_run_handles_current_candidates":  true,
-                                "future_role":  "classify_new_body_surfaces_into_promotion_lanes_before_any_passport_or_organ_claim",
+                                "future_role":  "classify_new_body_surfaces_into_promotion_lanes_before_any passport or organ claim",
                                 "no_active_promotion_without_passport_validator_proof":  true,
                                 "no_full_passport_generation_for_all_candidates":  true,
                                 "no_candidate_accepted_as_organ_from_lanes_alone":  true,
@@ -3913,9 +3951,9 @@
                                 "live_process_touched":  false
                             },
     "next_recommended_actions":  [
-                                     "Use calibration candidate accepted_atom_retention_organ to prove candidate -\u003e passport draft -\u003e validator -\u003e proof path.",
-                                     "Batch-block OWNER_LINK_REQUIRED items until parent organ/Owner decision exists.",
-                                     "Keep material/archive buckets out of organ passport generation."
+                                     "Restore/generate missing accepted_atom micro-proof before any runtime/active claim.",
+                                     "Use remaining FAST_LANE candidates only after calibration boundary is accepted.",
+                                     "Batch-block OWNER_LINK_REQUIRED items until parent organ/Owner decision exists."
                                  ],
-    "created_at":  "2026-07-09T09:11:21.4908702+04:00"
+    "created_at":  "2026-07-09T12:28:59.2859035+04:00"
 }

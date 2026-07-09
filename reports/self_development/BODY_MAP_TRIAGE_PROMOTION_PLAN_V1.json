@@ -3,39 +3,15 @@
     "status":  "PASS_BODY_MAP_TRIAGE_PROMOTION_PLAN_V1",
     "source_triage":  "reports/self_development/BODY_MAP_CANDIDATE_TRIAGE_V1.json",
     "summary":  {
-                    "total_triaged":  157,
+                    "total_triaged":  158,
                     "real_organ_candidates":  17,
-                    "candidate_ready_for_draft":  2,
+                    "candidate_ready_for_draft":  1,
+                    "calibrated_passport_draft_blocked_runtime":  1,
                     "needs_review":  26,
                     "owner_link_blocked":  9,
-                    "blocked":  0,
-                    "not_organ":  120
+                    "not_organ":  121
                 },
     "fast_lane":  [
-                      {
-                          "candidate_id":  "contracts_accepted_atom_retention_organ",
-                          "path":  "contracts/accepted_atom_retention_organ",
-                          "confidence":  "HIGH",
-                          "next_action":  "NORMALIZE_EXISTING_CONTRACT_TO_ORGAN_PASSPORT_V1",
-                          "validator_refs":  [
-
-                                             ],
-                          "proof_refs":  [
-                                             "contracts/accepted_atom_retention_organ/passports/PROOF_PASSPORT.json"
-                                         ],
-                          "contract_or_policy_refs":  [
-                                                          "contracts/accepted_atom_retention_organ/ACCEPTED_ATOM_RETENTION_ORGAN_CONTRACT.md",
-                                                          "contracts/accepted_atom_retention_organ/ACCEPTED_ATOM_RETENTION_ORGAN_CONTRACT_STATUS.json",
-                                                          "contracts/accepted_atom_retention_organ/OLD_D2B_RUNNER_RETENTION_PATCH_PLAN.md",
-                                                          "contracts/accepted_atom_retention_organ/passports/CAPABILITY_PASSPORT.json",
-                                                          "contracts/accepted_atom_retention_organ/passports/INTEGRATION_PASSPORT.json",
-                                                          "contracts/accepted_atom_retention_organ/passports/LIFECYCLE_PASSPORT.json",
-                                                          "contracts/accepted_atom_retention_organ/passports/ORGAN_PASSPORT.json",
-                                                          "contracts/accepted_atom_retention_organ/passports/PASSPORT_INDEX.json",
-                                                          "contracts/accepted_atom_retention_organ/passports/PROOF_PASSPORT.json",
-                                                          "contracts/accepted_atom_retention_organ/passports/SANITIZER_PASSPORT.json"
-                                                      ]
-                      },
                       {
                           "candidate_id":  "operations_organ_promotion_lanes",
                           "path":  "operations/organ_promotion_lanes",
@@ -46,12 +22,18 @@
                                              ],
                           "proof_refs":  [
 
-                                         ],
-                          "contract_or_policy_refs":  [
-
-                                                      ]
+                                         ]
                       }
                   ],
+    "calibrated_lane":  [
+                            {
+                                "candidate_id":  "contracts_accepted_atom_retention_organ",
+                                "path":  "contracts/accepted_atom_retention_organ",
+                                "confidence":  "HIGH",
+                                "next_action":  "RESTORE_MICRO_PROOF_BEFORE_ACTIVE_OR_RUNTIME_CLAIM",
+                                "decision":  "PASSPORT_DRAFT_VALIDATED_BLOCKED_RUNTIME_PROOF"
+                            }
+                        ],
     "review_lane":  [
                         {
                             "candidate_id":  "operations_active_behavior",
@@ -263,7 +245,7 @@
                         }
                     ],
     "not_organ_bucket":  {
-                             "count":  120,
+                             "count":  121,
                              "action":  "exclude from organ passport generator; keep as evidence/material for later maps"
                          },
     "promoted_to_confirmed":  [
@@ -278,33 +260,29 @@
                                       "proven_live":  false
                                   }
                               ],
-    "new_growth_gate_candidates":  [
+    "calibrated_passport_drafts":  [
                                        {
-                                           "component_id":  "operations_organ_promotion_lanes",
-                                           "root":  "operations/organ_promotion_lanes",
-                                           "basis":  "PASS_ORGAN_PROMOTION_LANES_V1",
-                                           "role":  "persistent_growth_gate",
+                                           "component_id":  "contracts_accepted_atom_retention_organ",
+                                           "root":  "contracts/accepted_atom_retention_organ",
+                                           "basis":  "PASS_ACCEPTED_ATOM_RETENTION_ORGAN_CALIBRATION_V1",
+                                           "passport_status":  "PASSPORT_DRAFT_FROM_EVIDENCE",
+                                           "maturity":  "DRAFT_VALIDATED_STRUCTURE_ONLY",
+                                           "live_or_lab_status":  "NOT_PROVEN",
                                            "active_passport":  false,
-                                           "proven_live":  false
+                                           "proven_live":  false,
+                                           "blocker":  "missing runtime/micro proof"
                                        }
                                    ],
-    "removed_wrong_route_artifacts":  [
-                                          {
-                                              "artifact_id":  "body_control_cortex_v1",
-                                              "reason":  "Owner clarified intended Codex was OpenAI/local coding agent, not cortex metaphor",
-                                              "action":  "deleted and removed from triage fast lane"
-                                          }
-                                      ],
     "boundaries":  {
                        "no_active_passports_created":  true,
-                       "no_body_map_mutation_performed":  false,
                        "no_candidate_accepted_as_organ_from_triage_alone":  true,
-                       "operations_self_model_promoted_by_lab_validation":  true,
-                       "organ_promotion_lanes_persistent_gate_built":  true,
-                       "wrong_route_cortex_removed":  true,
+                       "accepted_atom_calibrated_not_active":  true,
                        "passport_generator_for_all_candidates_blocked":  true,
-                       "live_process_touched":  false
+                       "live_process_touched":  false,
+                       "operations_self_model_promoted_by_lab_validation":  true,
+                       "wrong_route_cortex_removed":  true,
+                       "organ_promotion_lanes_persistent_gate_built":  true
                    },
-    "recommended_next_step":  "DRAFT_PASSPORT_FOR_ACCEPTED_ATOM_RETENTION_ORGAN_AS_CALIBRATION_SAMPLE",
-    "created_at":  "2026-07-09T09:10:24.6355776+04:00"
+    "recommended_next_step":  "RESTORE_OR_REGENERATE_ACCEPTED_ATOM_MICRO_PROOF_FOR_RUNTIME_VALIDATION_OR_MOVE_TO_NEXT_FAST_LANE_CANDIDATE",
+    "created_at":  "2026-07-09T12:29:31.0677935+04:00"
 }

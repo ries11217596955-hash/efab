@@ -2,9 +2,9 @@
 
 status: PASS_BODY_MAP_CANDIDATE_TRIAGE_V1
 
-total candidates: 157
+total candidates: 158
 organ candidates: 17
-not-organ/material surfaces: 120
+not-organ/material surfaces: 121
 
+Accepted atom retention organ calibrated: PASSPORT_DRAFT_VALIDATED_BLOCKED_RUNTIME_PROOF.
 Correction retained: wrong-route Cortex removed.
-New growth gate: `operations_organ_promotion_lanes` classified as REAL_ORGAN_CANDIDATE / CANDIDATE_READY_FOR_DRAFT based on PASS_ORGAN_PROMOTION_LANES_V1.

@@ -2,9 +2,9 @@
 
 status: PASS_BODY_MAP_TRIAGE_PROMOTION_PLAN_V1
 
-total triaged: 157
-candidate ready for draft: 2
+total triaged: 158
+candidate ready for draft: 1
+calibrated passport draft blocked runtime: 1
 
-Organ promotion lanes built as persistent growth gate candidate.
-Next recommended step: use accepted_atom_retention_organ as calibration sample for candidate -> passport draft -> validator -> proof.
+Accepted atom retention organ is calibrated but blocked from active/runtime by missing micro proof.
 Boundary: no active passport creation; no candidate accepted as organ from triage alone.

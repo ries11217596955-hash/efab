@@ -14,7 +14,9 @@ Assert ($r.status -eq 'PASS_ORGAN_PASSPORT_DRAFT_REVIEW_AND_INDEX_GATE_V1') 'REP
 Assert ($p.status -eq 'PASS_ORGAN_PASSPORT_DRAFT_REVIEW_AND_INDEX_GATE_V1') 'PROOF_STATUS_BAD'
 Assert ($idx.status -eq 'PASS_ORGAN_PASSPORT_DRAFT_INDEX_V1') 'INDEX_STATUS_BAD'
 $items=@($r.items)
+$idxItems=@($idx.passports)
 Assert ($items.Count -eq 2) 'REVIEWED_COUNT_BAD'
+Assert ($idxItems.Count -eq 2) 'INDEX_COUNT_BAD'
 foreach($it in $items){
   Assert (Test-Path $it.passport_path) ("PASSPORT_MISSING:{0}" -f $it.organ_id)
   $pass=Get-Content $it.passport_path -Raw|ConvertFrom-Json
@@ -26,9 +28,12 @@ foreach($it in $items){
   Assert ($it.live_claim_detected -eq $false) ("PROVEN_LIVE_CLAIM_DETECTED:{0}" -f $it.organ_id)
 }
 Assert (@($items|Where-Object{$_.organ_id -eq 'operations_self_model' -and $_.review_decision -eq 'LAB_VALIDATED_NOT_ACTIVE'}).Count -eq 1) 'OPERATIONS_SELF_MODEL_NOT_LAB_VALIDATED_NOT_ACTIVE'
-Assert (@($items|Where-Object{$_.organ_id -eq 'contracts_accepted_atom_retention_organ' -and $_.review_decision -eq 'BLOCKED_NO_VALIDATOR_EVIDENCE'}).Count -eq 1) 'ACCEPTED_ATOM_NOT_BLOCKED_NO_VALIDATOR'
+Assert (@($items|Where-Object{$_.organ_id -eq 'contracts_accepted_atom_retention_organ' -and $_.review_decision -eq 'PASSPORT_DRAFT_VALIDATED_BLOCKED_RUNTIME_PROOF'}).Count -eq 1) 'ACCEPTED_ATOM_NOT_CALIBRATED_BLOCKED_RUNTIME'
+Assert (@($idxItems|Where-Object{$_.organ_id -eq 'contracts_accepted_atom_retention_organ' -and $_.review_decision -eq 'PASSPORT_DRAFT_VALIDATED_BLOCKED_RUNTIME_PROOF'}).Count -eq 1) 'INDEX_ACCEPTED_ATOM_NOT_CALIBRATED'
 Assert ($p.no_active_passports_created -eq $true) 'PROOF_ACTIVE_FALSE'
 Assert ($p.no_proven_live_claims -eq $true) 'PROOF_PROVEN_LIVE_FALSE'
+Assert ($p.accepted_atom_calibrated -eq $true) 'PROOF_ACCEPTED_ATOM_CALIBRATION_MISSING'
+Assert ($p.accepted_atom_review_decision -eq 'PASSPORT_DRAFT_VALIDATED_BLOCKED_RUNTIME_PROOF') 'PROOF_ACCEPTED_ATOM_DECISION_BAD'
 foreach($legacy in @('reports/self_development/CURRENT_BODY_CAPABILITY_SNAPSHOT_V1.json','self_knowledge/BUILDER_SELF_MODEL.json')){Assert (-not(Test-Path $legacy)) ("LEGACY_MAP_PRESENT:{0}" -f $legacy)}
 Write-Host 'VALIDATION_PASS=PASS_ORGAN_PASSPORT_DRAFT_REVIEW_AND_INDEX_GATE_V1'
 Write-Host ('REPORT_PATH='+$reportPath)

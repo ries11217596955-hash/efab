@@ -2,9 +2,9 @@
 
 Status: ACTIVE_DERIVED_VIEW
 Branch: main
-Observed head at generation: 95a13596bb94f1be87d17b5963c02da5b2d2a4d8
-Generated: 2026-07-09T09:12:48.4671232+04:00
-Body source fingerprint: 1fa1453f9bf098404897a89304037ebc3df45a6726faa81e2a035372a73d1e32
+Observed head at generation: 08b3672e9aae633c62b1591ddbfd6cf1ee890509
+Generated: 2026-07-09T12:30:37.2021149+04:00
+Body source fingerprint: 500bb6666411017f737a5794e6b929ad9d9c8cddff94e451eef3b71341cbd090
 
 Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
@@ -18,7 +18,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 ## Counts
 
 - Confirmed components: 8
-- Primary evidence candidates: 157
+- Primary evidence candidates: 158
 - Legacy unverified hints: 4
 - Rejected or stale hints: 3
 
@@ -58,6 +58,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `modules_operations` - root `modules/operations`, files=4, scripts=4, validators=0, proofs=0, needs_triage=True
 - `modules_route_locks` - root `modules/route_locks`, files=1, scripts=1, validators=0, proofs=0, needs_triage=True
 - `modules_self_development` - root `modules/self_development`, files=20, scripts=20, validators=0, proofs=1, needs_triage=True
+- `operations_accepted_atom_retention_calibration` - root `operations/accepted_atom_retention_calibration`, files=2, scripts=2, validators=1, proofs=0, needs_triage=True
 - `operations_active_behavior` - root `operations/active_behavior`, files=10, scripts=6, validators=2, proofs=0, needs_triage=True
 - `operations_autonomy_diagnostics` - root `operations/autonomy_diagnostics`, files=29, scripts=0, validators=0, proofs=0, needs_triage=True
 - `operations_bridge_diagnostics` - root `operations/bridge_diagnostics`, files=2, scripts=0, validators=0, proofs=2, needs_triage=True
@@ -114,7 +115,6 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `packs_phase38_runtime_gap_remediation_closure_proof_v1` - root `packs/PHASE38_RUNTIME_GAP_REMEDIATION_CLOSURE_PROOF_V1`, files=3, scripts=2, validators=1, proofs=3, needs_triage=True
 - `packs_phase39_monitoring_gap_reachability_v1` - root `packs/PHASE39_MONITORING_GAP_REACHABILITY_V1`, files=6, scripts=3, validators=1, proofs=1, needs_triage=True
 - `packs_phase4_self_validation_release_gates` - root `packs/PHASE4_SELF_VALIDATION_RELEASE_GATES`, files=7, scripts=4, validators=2, proofs=0, needs_triage=True
-- `packs_phase40_specialized_gap_auto_intake_runtime_v1` - root `packs/PHASE40_SPECIALIZED_GAP_AUTO_INTAKE_RUNTIME_V1`, files=5, scripts=3, validators=1, proofs=1, needs_triage=True
 
 ## Freshness
 
