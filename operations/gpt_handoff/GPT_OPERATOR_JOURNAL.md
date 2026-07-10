@@ -903,3 +903,42 @@ Boundaries:
 - No paths moved.
 - No runtime touched.
 - No passport deleted.
+
+## 2026-07-10 — PHASE84-86 operation-runtime retirement and deletion V1
+
+STATUS: PASS / DELETED_LEGACY_OPERATION_RUNTIME_CHAIN
+
+Owner decision: prove first, then delete if safe.
+
+Proof path:
+- tests/self_development/PHASE84_86_OPERATION_RUNTIME_RETIREMENT_AND_DELETE_V1_PROOF.json
+- reports/self_development/PHASE84_86_OPERATION_RUNTIME_RETIREMENT_AND_DELETE_V1.json
+
+Deleted/retired:
+- operations/smoke_trials
+- operations/contracts
+- operations/registry.json
+- operations/runtime
+- modules/operations/register_operation_contracts.ps1
+- modules/operations/run_first_smoke_install_trial.ps1
+- modules/operations/invoke_operation_runtime.ps1
+- modules/operations/write_operation_contract_report.ps1
+- PHASE84/85/86 packs and tasks
+- related organ passports and docs
+- stale generated self-build programs referencing retired contracts/registry
+
+Patched:
+- modules/self_development/write_self_development_decision_kernel_report.ps1 no longer expects retired operation artifacts.
+- modules/self_development/write_self_build_program_generator_report.ps1 no longer references retired registry/contracts.
+- CAPABILITY_ROADMAP.json and retired schemas no longer point at old active gate ids.
+
+Validation:
+- Retirement/delete validator PASS.
+- Active refs remain: 0.
+- Branch-agnostic map refresh PASS.
+- Agent body composition map current PASS.
+- Decision kernel writer PASS post-retirement.
+
+Boundaries:
+- No live runtime touched.
+- This deletes only the retired legacy operation-runtime chain, not current Builder runtime organs.

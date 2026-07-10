@@ -6,21 +6,21 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "f7ecd30ed6c7662834da4163d4d0ca453978a1b5",
-    "subject_head":  "f7ecd30ed6c7662834da4163d4d0ca453978a1b5",
-    "generated_at":  "2026-07-10T21:32:16.7976073+04:00",
+    "observed_head_at_generation":  "96c3d6f2a4f9560838d18e10fefd1615cf0867e1",
+    "subject_head":  "96c3d6f2a4f9560838d18e10fefd1615cf0867e1",
+    "generated_at":  "2026-07-10T21:46:40.9288554+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  2008,
+    "structural_path_count":  1974,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2008,
-                                    "sha256":  "77f56568b547db068a02348ff4df08b203df3ddb80b9a65decb293b81291fc5f"
+                                    "structural_file_count":  1974,
+                                    "sha256":  "fc72064b6681ef3fd9f62e948240bdd22961347a8c0b9fe1bd9dd6b443ee7a96"
                                 },
-    "module_count":  207,
+    "module_count":  203,
     "validator_count":  174,
     "confirmed_components":  [
                                  {
@@ -597,11 +597,11 @@
                                      "root":  "operations/self_model",
                                      "status":  "CONFIRMED_PRIMARY_EVIDENCE_PRESENT",
                                      "confirmation_basis":  "explicit_required_component_with_primary_repo_evidence",
-                                     "file_count":  63,
-                                     "script_count":  63,
+                                     "file_count":  62,
+                                     "script_count":  62,
                                      "validator_count":  30,
                                      "proof_file_count":  2,
-                                     "contract_or_policy_count":  6,
+                                     "contract_or_policy_count":  4,
                                      "doc_count":  0,
                                      "required_files":  [
                                                             "operations/self_model/validate_operations_self_model_organ_lab_validation_v1.ps1",
@@ -640,27 +640,24 @@
                                                             "operations/self_model/validate_operations_live_start_controlled_live_cycle_v1.ps1",
                                                             "operations/self_model/validate_operations_live_start_lab_boundary_gate_v1.ps1",
                                                             "operations/self_model/validate_operations_self_model_organ_lab_validation_v1.ps1",
-                                                            "operations/self_model/validate_operations_trial_contracts_deletion_gate_v1.ps1",
                                                             "operations/self_model/validate_organ_passport_calibration_v1.ps1",
                                                             "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
-                                                            "operations/self_model/validate_organ_passport_coverage_batch_v2.ps1"
+                                                            "operations/self_model/validate_organ_passport_coverage_batch_v2.ps1",
+                                                            "operations/self_model/validate_organ_passport_draft_generator_fast_lane_v1.ps1"
                                                         ],
                                      "proof_refs":  [
                                                         "operations/self_model/build_organ_passport_proof_run_calibration_v1.ps1",
                                                         "operations/self_model/validate_organ_passport_proof_run_calibration_v1.ps1"
                                                     ],
                                      "contract_or_policy_refs":  [
-                                                                     "operations/self_model/build_operations_trial_contracts_deletion_gate_v1.ps1",
                                                                      "operations/self_model/validate_aimo_default_source_agnostic_selector_contract_v1.ps1",
                                                                      "operations/self_model/validate_builder_identity_contract_v1.ps1",
                                                                      "operations/self_model/validate_capability_invocation_map_v1_contract.ps1",
-                                                                     "operations/self_model/validate_operations_trial_contracts_deletion_gate_v1.ps1",
                                                                      "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1"
                                                                  ],
                                      "primary_evidence_refs":  [
                                                                    "operations/self_model/build_memory_reasoning_lab_validation_v1.ps1",
                                                                    "operations/self_model/build_operations_live_readiness_lab_validation_v1.ps1",
-                                                                   "operations/self_model/build_operations_trial_contracts_deletion_gate_v1.ps1",
                                                                    "operations/self_model/build_organ_passport_proof_run_calibration_v1.ps1",
                                                                    "operations/self_model/validate_aimo_default_route_execution_report_v1.ps1",
                                                                    "operations/self_model/validate_aimo_default_source_agnostic_selector_contract_v1.ps1",
@@ -672,7 +669,6 @@
                                                                    "operations/self_model/validate_builder_identity_contract_v1.ps1",
                                                                    "operations/self_model/validate_capability_invocation_map_v1_contract.ps1",
                                                                    "operations/self_model/validate_operations_self_model_organ_lab_validation_v1.ps1",
-                                                                   "operations/self_model/validate_operations_trial_contracts_deletion_gate_v1.ps1",
                                                                    "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
                                                                    "operations/self_model/validate_organ_passport_proof_run_calibration_v1.ps1",
                                                                    "reports/self_development/OPERATIONS_SELF_MODEL_ORGAN_LAB_VALIDATION_V1.json",
@@ -705,7 +701,6 @@
                                                                 "operations/self_model/validate_operations_live_start_controlled_live_cycle_v1.ps1",
                                                                 "operations/self_model/validate_operations_live_start_lab_boundary_gate_v1.ps1",
                                                                 "operations/self_model/validate_operations_self_model_organ_lab_validation_v1.ps1",
-                                                                "operations/self_model/validate_operations_trial_contracts_deletion_gate_v1.ps1",
                                                                 "operations/self_model/validate_organ_passport_calibration_v1.ps1",
                                                                 "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
                                                                 "operations/self_model/validate_organ_passport_coverage_batch_v2.ps1",
@@ -718,13 +713,14 @@
                                                                 "operations/self_model/validate_organ_passport_static_count_regression_guard_v1.ps1",
                                                                 "operations/self_model/validate_organ_passport_tail_dedup_audit_v1.ps1",
                                                                 "operations/self_model/validate_owner_facing_organ_cleanup_queue_v1.ps1",
+                                                                "operations/self_model/validate_phase84_86_operation_runtime_retirement_and_delete_v1.ps1",
                                                                 "operations/self_model/validate_route_reality_alignment_v1.ps1",
                                                                 "operations/self_model/validate_route_v4_execution_report_phase_m_v1.ps1"
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "f7ecd30ed6c7662834da4163d4d0ca453978a1b5",
-                                                               "committed_at":  "2026-07-10T21:16:37+04:00",
-                                                               "subject":  "passport: queue owner cleanup decisions"
+                                                               "head":  "96c3d6f2a4f9560838d18e10fefd1615cf0867e1",
+                                                               "committed_at":  "2026-07-10T21:31:42+04:00",
+                                                               "subject":  "passport: block trial contracts deletion gate"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -768,9 +764,9 @@
 
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "f7ecd30ed6c7662834da4163d4d0ca453978a1b5",
-                                                               "committed_at":  "2026-07-10T21:16:37+04:00",
-                                                               "subject":  "passport: queue owner cleanup decisions"
+                                                               "head":  "96c3d6f2a4f9560838d18e10fefd1615cf0867e1",
+                                                               "committed_at":  "2026-07-10T21:31:42+04:00",
+                                                               "subject":  "passport: block trial contracts deletion gate"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -1912,53 +1908,6 @@
                                             "is_required_component":  false
                                         },
                                         {
-                                            "id":  "modules_operations",
-                                            "path":  "modules/operations",
-                                            "root":  "modules/operations",
-                                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                                            "discovery_method":  "bounded_git_ls_files_path_discovery",
-                                            "evidence_counts":  {
-                                                                    "files":  4,
-                                                                    "scripts":  4,
-                                                                    "validators":  0,
-                                                                    "proofs":  0,
-                                                                    "contracts_or_policies":  2,
-                                                                    "docs":  0
-                                                                },
-                                            "file_count":  4,
-                                            "script_count":  4,
-                                            "validator_count":  0,
-                                            "proof_file_count":  0,
-                                            "contract_or_policy_count":  2,
-                                            "doc_count":  0,
-                                            "validator_refs":  [
-
-                                                               ],
-                                            "proof_refs":  [
-
-                                                           ],
-                                            "contract_or_policy_refs":  [
-                                                                            "modules/operations/register_operation_contracts.ps1",
-                                                                            "modules/operations/write_operation_contract_report.ps1"
-                                                                        ],
-                                            "notable_files":  [
-                                                                  "modules/operations/invoke_operation_runtime.ps1",
-                                                                  "modules/operations/register_operation_contracts.ps1",
-                                                                  "modules/operations/run_first_smoke_install_trial.ps1",
-                                                                  "modules/operations/write_operation_contract_report.ps1"
-                                                              ],
-                                            "primary_evidence_refs":  [
-                                                                          "modules/operations/invoke_operation_runtime.ps1",
-                                                                          "modules/operations/register_operation_contracts.ps1",
-                                                                          "modules/operations/run_first_smoke_install_trial.ps1",
-                                                                          "modules/operations/write_operation_contract_report.ps1"
-                                                                      ],
-                                            "needs_triage":  true,
-                                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                                            "source_ref":  "bounded_tracked_file_discovery_v1",
-                                            "is_required_component":  false
-                                        },
-                                        {
                                             "id":  "modules_route_locks",
                                             "path":  "modules/route_locks",
                                             "root":  "modules/route_locks",
@@ -2266,53 +2215,6 @@
                                             "primary_evidence_refs":  [
                                                                           "operations/bridge_diagnostics/BRIDGE_INTERRUPTION_DURING_SOURCE_DIGEST_PROOF_20260705_V1.json",
                                                                           "operations/bridge_diagnostics/BRIDGE_INTERRUPTION_DURING_SOURCE_DIGEST_PROOF_20260705_V1.md"
-                                                                      ],
-                                            "needs_triage":  true,
-                                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                                            "source_ref":  "bounded_tracked_file_discovery_v1",
-                                            "is_required_component":  false
-                                        },
-                                        {
-                                            "id":  "operations_contracts",
-                                            "path":  "operations/contracts",
-                                            "root":  "operations/contracts",
-                                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                                            "discovery_method":  "bounded_git_ls_files_path_discovery",
-                                            "evidence_counts":  {
-                                                                    "files":  3,
-                                                                    "scripts":  0,
-                                                                    "validators":  2,
-                                                                    "proofs":  0,
-                                                                    "contracts_or_policies":  3,
-                                                                    "docs":  0
-                                                                },
-                                            "file_count":  3,
-                                            "script_count":  0,
-                                            "validator_count":  2,
-                                            "proof_file_count":  0,
-                                            "contract_or_policy_count":  3,
-                                            "doc_count":  0,
-                                            "validator_refs":  [
-                                                                   "operations/contracts/validate_json_schema_with_ajv.contract.json",
-                                                                   "operations/contracts/validate_json_schema_with_python_jsonschema.contract.json"
-                                                               ],
-                                            "proof_refs":  [
-
-                                                           ],
-                                            "contract_or_policy_refs":  [
-                                                                            "operations/contracts/.gitkeep",
-                                                                            "operations/contracts/validate_json_schema_with_ajv.contract.json",
-                                                                            "operations/contracts/validate_json_schema_with_python_jsonschema.contract.json"
-                                                                        ],
-                                            "notable_files":  [
-                                                                  "operations/contracts/.gitkeep",
-                                                                  "operations/contracts/validate_json_schema_with_ajv.contract.json",
-                                                                  "operations/contracts/validate_json_schema_with_python_jsonschema.contract.json"
-                                                              ],
-                                            "primary_evidence_refs":  [
-                                                                          "operations/contracts/.gitkeep",
-                                                                          "operations/contracts/validate_json_schema_with_ajv.contract.json",
-                                                                          "operations/contracts/validate_json_schema_with_python_jsonschema.contract.json"
                                                                       ],
                                             "needs_triage":  true,
                                             "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
@@ -2783,94 +2685,6 @@
                                                               ],
                                             "primary_evidence_refs":  [
                                                                           "operations/reflex_library/invoke_reflex.ps1"
-                                                                      ],
-                                            "needs_triage":  true,
-                                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                                            "source_ref":  "bounded_tracked_file_discovery_v1",
-                                            "is_required_component":  false
-                                        },
-                                        {
-                                            "id":  "operations_runtime",
-                                            "path":  "operations/runtime",
-                                            "root":  "operations/runtime",
-                                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                                            "discovery_method":  "bounded_git_ls_files_path_discovery",
-                                            "evidence_counts":  {
-                                                                    "files":  2,
-                                                                    "scripts":  0,
-                                                                    "validators":  0,
-                                                                    "proofs":  0,
-                                                                    "contracts_or_policies":  0,
-                                                                    "docs":  1
-                                                                },
-                                            "file_count":  2,
-                                            "script_count":  0,
-                                            "validator_count":  0,
-                                            "proof_file_count":  0,
-                                            "contract_or_policy_count":  0,
-                                            "doc_count":  1,
-                                            "validator_refs":  [
-
-                                                               ],
-                                            "proof_refs":  [
-
-                                                           ],
-                                            "contract_or_policy_refs":  [
-
-                                                                        ],
-                                            "notable_files":  [
-                                                                  "operations/runtime/README.md",
-                                                                  "operations/runtime/requests/FIRST_OPERATION_RUNTIME_DRY_RUN_REQUEST.json"
-                                                              ],
-                                            "primary_evidence_refs":  [
-
-                                                                      ],
-                                            "needs_triage":  true,
-                                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                                            "source_ref":  "bounded_tracked_file_discovery_v1",
-                                            "is_required_component":  false
-                                        },
-                                        {
-                                            "id":  "operations_smoke_trials",
-                                            "path":  "operations/smoke_trials",
-                                            "root":  "operations/smoke_trials",
-                                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                                            "discovery_method":  "bounded_git_ls_files_path_discovery",
-                                            "evidence_counts":  {
-                                                                    "files":  4,
-                                                                    "scripts":  0,
-                                                                    "validators":  3,
-                                                                    "proofs":  0,
-                                                                    "contracts_or_policies":  0,
-                                                                    "docs":  0
-                                                                },
-                                            "file_count":  4,
-                                            "script_count":  0,
-                                            "validator_count":  3,
-                                            "proof_file_count":  0,
-                                            "contract_or_policy_count":  0,
-                                            "doc_count":  0,
-                                            "validator_refs":  [
-                                                                   "operations/smoke_trials/fixtures/json_schema_validation/invalid_instance.json",
-                                                                   "operations/smoke_trials/fixtures/json_schema_validation/schema.json",
-                                                                   "operations/smoke_trials/fixtures/json_schema_validation/valid_instance.json"
-                                                               ],
-                                            "proof_refs":  [
-
-                                                           ],
-                                            "contract_or_policy_refs":  [
-
-                                                                        ],
-                                            "notable_files":  [
-                                                                  "operations/smoke_trials/FIRST_SMOKE_INSTALL_TRIAL_V1_PLAN.json",
-                                                                  "operations/smoke_trials/fixtures/json_schema_validation/invalid_instance.json",
-                                                                  "operations/smoke_trials/fixtures/json_schema_validation/schema.json",
-                                                                  "operations/smoke_trials/fixtures/json_schema_validation/valid_instance.json"
-                                                              ],
-                                            "primary_evidence_refs":  [
-                                                                          "operations/smoke_trials/fixtures/json_schema_validation/invalid_instance.json",
-                                                                          "operations/smoke_trials/fixtures/json_schema_validation/schema.json",
-                                                                          "operations/smoke_trials/fixtures/json_schema_validation/valid_instance.json"
                                                                       ],
                                             "needs_triage":  true,
                                             "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
@@ -7043,138 +6857,6 @@
                                             "is_required_component":  false
                                         },
                                         {
-                                            "id":  "packs_phase84_first_wrapper_operation_contracts_v1",
-                                            "path":  "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1",
-                                            "root":  "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1",
-                                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                                            "discovery_method":  "bounded_git_ls_files_path_discovery",
-                                            "evidence_counts":  {
-                                                                    "files":  3,
-                                                                    "scripts":  2,
-                                                                    "validators":  0,
-                                                                    "proofs":  0,
-                                                                    "contracts_or_policies":  3,
-                                                                    "docs":  0
-                                                                },
-                                            "file_count":  3,
-                                            "script_count":  2,
-                                            "validator_count":  0,
-                                            "proof_file_count":  0,
-                                            "contract_or_policy_count":  3,
-                                            "doc_count":  0,
-                                            "validator_refs":  [
-
-                                                               ],
-                                            "proof_refs":  [
-
-                                                           ],
-                                            "contract_or_policy_refs":  [
-                                                                            "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1/APPLY.ps1",
-                                                                            "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1/PACK.json",
-                                                                            "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1/VALIDATE.ps1"
-                                                                        ],
-                                            "notable_files":  [
-                                                                  "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1/APPLY.ps1",
-                                                                  "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1/PACK.json",
-                                                                  "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1/VALIDATE.ps1"
-                                                              ],
-                                            "primary_evidence_refs":  [
-                                                                          "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1/APPLY.ps1",
-                                                                          "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1/PACK.json",
-                                                                          "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1/VALIDATE.ps1"
-                                                                      ],
-                                            "needs_triage":  true,
-                                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                                            "source_ref":  "bounded_tracked_file_discovery_v1",
-                                            "is_required_component":  false
-                                        },
-                                        {
-                                            "id":  "packs_phase85_first_smoke_install_trial_v1",
-                                            "path":  "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1",
-                                            "root":  "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1",
-                                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                                            "discovery_method":  "bounded_git_ls_files_path_discovery",
-                                            "evidence_counts":  {
-                                                                    "files":  3,
-                                                                    "scripts":  2,
-                                                                    "validators":  0,
-                                                                    "proofs":  0,
-                                                                    "contracts_or_policies":  0,
-                                                                    "docs":  0
-                                                                },
-                                            "file_count":  3,
-                                            "script_count":  2,
-                                            "validator_count":  0,
-                                            "proof_file_count":  0,
-                                            "contract_or_policy_count":  0,
-                                            "doc_count":  0,
-                                            "validator_refs":  [
-
-                                                               ],
-                                            "proof_refs":  [
-
-                                                           ],
-                                            "contract_or_policy_refs":  [
-
-                                                                        ],
-                                            "notable_files":  [
-                                                                  "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/APPLY.ps1",
-                                                                  "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/PACK.json",
-                                                                  "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/VALIDATE.ps1"
-                                                              ],
-                                            "primary_evidence_refs":  [
-                                                                          "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/APPLY.ps1",
-                                                                          "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/VALIDATE.ps1"
-                                                                      ],
-                                            "needs_triage":  true,
-                                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                                            "source_ref":  "bounded_tracked_file_discovery_v1",
-                                            "is_required_component":  false
-                                        },
-                                        {
-                                            "id":  "packs_phase86_operation_runtime_skeleton_v1",
-                                            "path":  "packs/PHASE86_OPERATION_RUNTIME_SKELETON_V1",
-                                            "root":  "packs/PHASE86_OPERATION_RUNTIME_SKELETON_V1",
-                                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                                            "discovery_method":  "bounded_git_ls_files_path_discovery",
-                                            "evidence_counts":  {
-                                                                    "files":  3,
-                                                                    "scripts":  2,
-                                                                    "validators":  0,
-                                                                    "proofs":  0,
-                                                                    "contracts_or_policies":  0,
-                                                                    "docs":  0
-                                                                },
-                                            "file_count":  3,
-                                            "script_count":  2,
-                                            "validator_count":  0,
-                                            "proof_file_count":  0,
-                                            "contract_or_policy_count":  0,
-                                            "doc_count":  0,
-                                            "validator_refs":  [
-
-                                                               ],
-                                            "proof_refs":  [
-
-                                                           ],
-                                            "contract_or_policy_refs":  [
-
-                                                                        ],
-                                            "notable_files":  [
-                                                                  "packs/PHASE86_OPERATION_RUNTIME_SKELETON_V1/APPLY.ps1",
-                                                                  "packs/PHASE86_OPERATION_RUNTIME_SKELETON_V1/PACK.json",
-                                                                  "packs/PHASE86_OPERATION_RUNTIME_SKELETON_V1/VALIDATE.ps1"
-                                                              ],
-                                            "primary_evidence_refs":  [
-                                                                          "packs/PHASE86_OPERATION_RUNTIME_SKELETON_V1/APPLY.ps1",
-                                                                          "packs/PHASE86_OPERATION_RUNTIME_SKELETON_V1/VALIDATE.ps1"
-                                                                      ],
-                                            "needs_triage":  true,
-                                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                                            "source_ref":  "bounded_tracked_file_discovery_v1",
-                                            "is_required_component":  false
-                                        },
-                                        {
                                             "id":  "packs_phase87_self_development_decision_kernel_v1",
                                             "path":  "packs/PHASE87_SELF_DEVELOPMENT_DECISION_KERNEL_V1",
                                             "root":  "packs/PHASE87_SELF_DEVELOPMENT_DECISION_KERNEL_V1",
@@ -8060,14 +7742,14 @@
                                             "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                                             "discovery_method":  "bounded_git_ls_files_path_discovery",
                                             "evidence_counts":  {
-                                                                    "files":  42,
+                                                                    "files":  40,
                                                                     "scripts":  8,
                                                                     "validators":  0,
                                                                     "proofs":  16,
                                                                     "contracts_or_policies":  0,
                                                                     "docs":  0
                                                                 },
-                                            "file_count":  42,
+                                            "file_count":  40,
                                             "script_count":  8,
                                             "validator_count":  0,
                                             "proof_file_count":  16,
@@ -8098,8 +7780,6 @@
 
                                                                         ],
                                             "notable_files":  [
-                                                                  "self_build_programs/generated/PHASE164O_SELF_BUILD_PROGRAM_OWNER_MATERIAL_PROBE.json",
-                                                                  "self_build_programs/generated/SELF_BUILD_PROGRAM_001.json",
                                                                   "self_build_programs/generated/SELF_BUILD_PROGRAM_OWNER_MATERIAL_INPUT_BOOTSTRAP_001_V1_001.json",
                                                                   "self_build_programs/generated/SELF_BUILD_PROGRAM_V2_EXAMPLE_001.json",
                                                                   "self_build_programs/generated/conveyor_failure_trial_family_v1/SELF_BUILD_PROGRAM_MANIFEST.json",
@@ -8122,7 +7802,9 @@
                                                                   "self_build_programs/generated/monitoring_agent_v1/patches/PACK_REGISTRY_PATCH.json",
                                                                   "self_build_programs/generated/monitoring_agent_v1/patches/TASK_QUEUE_SEED.json",
                                                                   "self_build_programs/generated/monitoring_agent_v1/tasks/TASK_GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1_001.json",
-                                                                  "self_build_programs/generated/monitoring_agent_v1/tasks/TASK_GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1_001.json"
+                                                                  "self_build_programs/generated/monitoring_agent_v1/tasks/TASK_GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1_001.json",
+                                                                  "self_build_programs/generated/monitoring_agent_v1/tasks/TASK_GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_001.json",
+                                                                  "self_build_programs/generated/remediation_intake_agent_v1/SELF_BUILD_PROGRAM_MANIFEST.json"
                                                               ],
                                             "primary_evidence_refs":  [
                                                                           "self_build_programs/generated/conveyor_failure_trial_family_v1/packs/GENERATED_CONVEYOR_FAILURE_TRIAL_FAMILY_V1_FAILURE_PACK_V1/APPLY.ps1",
@@ -8362,14 +8044,14 @@
                                             "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                                             "discovery_method":  "bounded_git_ls_files_path_discovery",
                                             "evidence_counts":  {
-                                                                    "files":  160,
+                                                                    "files":  154,
                                                                     "scripts":  0,
                                                                     "validators":  3,
                                                                     "proofs":  18,
                                                                     "contracts_or_policies":  20,
                                                                     "docs":  0
                                                                 },
-                                            "file_count":  160,
+                                            "file_count":  154,
                                             "script_count":  0,
                                             "validator_count":  3,
                                             "proof_file_count":  18,
@@ -8407,7 +8089,6 @@
                                                                             "self_model/organ_passports/contracts_operations/ORGAN_PASSPORT_V1.json",
                                                                             "self_model/organ_passports/contracts_self_development/ORGAN_PASSPORT_V1.json",
                                                                             "self_model/organ_passports/contracts_self_knowledge/ORGAN_PASSPORT_V1.json",
-                                                                            "self_model/organ_passports/operations_contracts/ORGAN_PASSPORT_V1.json",
                                                                             "self_model/organ_passports/packs_phase27_specialization_gap_contract_v1/ORGAN_PASSPORT_V1.json",
                                                                             "self_model/organ_passports/packs_phase34_candidate_intake_report_contract_v1/ORGAN_PASSPORT_V1.json",
                                                                             "self_model/organ_passports/packs_phase42_remediation_program_seed_contract_v1/ORGAN_PASSPORT_V1.json",
@@ -8420,7 +8101,8 @@
                                                                             "self_model/organ_passports/packs_phase8_production_spec_contract_v1/ORGAN_PASSPORT_V1.json",
                                                                             "self_model/organ_passports/packs_phase81_material_admission_policy_v1/ORGAN_PASSPORT_V1.json",
                                                                             "self_model/organ_passports/packs_phase83_operation_contract_skeleton_v1/ORGAN_PASSPORT_V1.json",
-                                                                            "self_model/organ_passports/packs_phase84_first_wrapper_operation_contracts_v1/ORGAN_PASSPORT_V1.json"
+                                                                            "self_model/organ_passports/packs_phase92_self_build_backlog_contract_v1/ORGAN_PASSPORT_V1.json",
+                                                                            "self_model/organ_passports/packs_phase97_batch_admission_policy_v1/ORGAN_PASSPORT_V1.json"
                                                                         ],
                                             "notable_files":  [
                                                                   "self_model/organ_passports/_index/ORGAN_PASSPORT_DRAFT_INDEX_V1.json",
@@ -8456,7 +8138,6 @@
                                                                           "self_model/organ_passports/contracts_operations/ORGAN_PASSPORT_V1.json",
                                                                           "self_model/organ_passports/contracts_self_development/ORGAN_PASSPORT_V1.json",
                                                                           "self_model/organ_passports/contracts_self_knowledge/ORGAN_PASSPORT_V1.json",
-                                                                          "self_model/organ_passports/operations_contracts/ORGAN_PASSPORT_V1.json",
                                                                           "self_model/organ_passports/packs_phase10_generated_agent_validation_harness_v1/ORGAN_PASSPORT_V1.json",
                                                                           "self_model/organ_passports/packs_phase101_batch_proof_aggregator_v1/ORGAN_PASSPORT_V1.json",
                                                                           "self_model/organ_passports/packs_phase12_production_factory_proof_v1/ORGAN_PASSPORT_V1.json",
@@ -8490,7 +8171,8 @@
                                                                           "self_model/organ_passports/packs_phase8_production_spec_contract_v1/ORGAN_PASSPORT_V1.json",
                                                                           "self_model/organ_passports/packs_phase81_material_admission_policy_v1/ORGAN_PASSPORT_V1.json",
                                                                           "self_model/organ_passports/packs_phase83_operation_contract_skeleton_v1/ORGAN_PASSPORT_V1.json",
-                                                                          "self_model/organ_passports/packs_phase84_first_wrapper_operation_contracts_v1/ORGAN_PASSPORT_V1.json"
+                                                                          "self_model/organ_passports/packs_phase92_self_build_backlog_contract_v1/ORGAN_PASSPORT_V1.json",
+                                                                          "self_model/organ_passports/packs_phase97_batch_admission_policy_v1/ORGAN_PASSPORT_V1.json"
                                                                       ],
                                             "needs_triage":  true,
                                             "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
@@ -8551,11 +8233,11 @@
                                 ],
     "component_authority_summary":  {
                                         "confirmed_components":  8,
-                                        "primary_evidence_candidates":  158,
+                                        "primary_evidence_candidates":  151,
                                         "legacy_unverified_hints":  4,
                                         "rejected_or_stale_hints":  3,
                                         "required_components":  8,
-                                        "total_components_in_compatibility_view":  166,
+                                        "total_components_in_compatibility_view":  159,
                                         "bounded_discovery_pathspecs":  [
                                                                             "operations",
                                                                             "modules",
@@ -9154,11 +8836,11 @@
                            "root":  "operations/self_model",
                            "status":  "CONFIRMED_PRIMARY_EVIDENCE_PRESENT",
                            "confirmation_basis":  "explicit_required_component_with_primary_repo_evidence",
-                           "file_count":  63,
-                           "script_count":  63,
+                           "file_count":  62,
+                           "script_count":  62,
                            "validator_count":  30,
                            "proof_file_count":  2,
-                           "contract_or_policy_count":  6,
+                           "contract_or_policy_count":  4,
                            "doc_count":  0,
                            "required_files":  [
                                                   "operations/self_model/validate_operations_self_model_organ_lab_validation_v1.ps1",
@@ -9197,27 +8879,24 @@
                                                   "operations/self_model/validate_operations_live_start_controlled_live_cycle_v1.ps1",
                                                   "operations/self_model/validate_operations_live_start_lab_boundary_gate_v1.ps1",
                                                   "operations/self_model/validate_operations_self_model_organ_lab_validation_v1.ps1",
-                                                  "operations/self_model/validate_operations_trial_contracts_deletion_gate_v1.ps1",
                                                   "operations/self_model/validate_organ_passport_calibration_v1.ps1",
                                                   "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
-                                                  "operations/self_model/validate_organ_passport_coverage_batch_v2.ps1"
+                                                  "operations/self_model/validate_organ_passport_coverage_batch_v2.ps1",
+                                                  "operations/self_model/validate_organ_passport_draft_generator_fast_lane_v1.ps1"
                                               ],
                            "proof_refs":  [
                                               "operations/self_model/build_organ_passport_proof_run_calibration_v1.ps1",
                                               "operations/self_model/validate_organ_passport_proof_run_calibration_v1.ps1"
                                           ],
                            "contract_or_policy_refs":  [
-                                                           "operations/self_model/build_operations_trial_contracts_deletion_gate_v1.ps1",
                                                            "operations/self_model/validate_aimo_default_source_agnostic_selector_contract_v1.ps1",
                                                            "operations/self_model/validate_builder_identity_contract_v1.ps1",
                                                            "operations/self_model/validate_capability_invocation_map_v1_contract.ps1",
-                                                           "operations/self_model/validate_operations_trial_contracts_deletion_gate_v1.ps1",
                                                            "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1"
                                                        ],
                            "primary_evidence_refs":  [
                                                          "operations/self_model/build_memory_reasoning_lab_validation_v1.ps1",
                                                          "operations/self_model/build_operations_live_readiness_lab_validation_v1.ps1",
-                                                         "operations/self_model/build_operations_trial_contracts_deletion_gate_v1.ps1",
                                                          "operations/self_model/build_organ_passport_proof_run_calibration_v1.ps1",
                                                          "operations/self_model/validate_aimo_default_route_execution_report_v1.ps1",
                                                          "operations/self_model/validate_aimo_default_source_agnostic_selector_contract_v1.ps1",
@@ -9229,7 +8908,6 @@
                                                          "operations/self_model/validate_builder_identity_contract_v1.ps1",
                                                          "operations/self_model/validate_capability_invocation_map_v1_contract.ps1",
                                                          "operations/self_model/validate_operations_self_model_organ_lab_validation_v1.ps1",
-                                                         "operations/self_model/validate_operations_trial_contracts_deletion_gate_v1.ps1",
                                                          "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
                                                          "operations/self_model/validate_organ_passport_proof_run_calibration_v1.ps1",
                                                          "reports/self_development/OPERATIONS_SELF_MODEL_ORGAN_LAB_VALIDATION_V1.json",
@@ -9262,7 +8940,6 @@
                                                       "operations/self_model/validate_operations_live_start_controlled_live_cycle_v1.ps1",
                                                       "operations/self_model/validate_operations_live_start_lab_boundary_gate_v1.ps1",
                                                       "operations/self_model/validate_operations_self_model_organ_lab_validation_v1.ps1",
-                                                      "operations/self_model/validate_operations_trial_contracts_deletion_gate_v1.ps1",
                                                       "operations/self_model/validate_organ_passport_calibration_v1.ps1",
                                                       "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
                                                       "operations/self_model/validate_organ_passport_coverage_batch_v2.ps1",
@@ -9275,13 +8952,14 @@
                                                       "operations/self_model/validate_organ_passport_static_count_regression_guard_v1.ps1",
                                                       "operations/self_model/validate_organ_passport_tail_dedup_audit_v1.ps1",
                                                       "operations/self_model/validate_owner_facing_organ_cleanup_queue_v1.ps1",
+                                                      "operations/self_model/validate_phase84_86_operation_runtime_retirement_and_delete_v1.ps1",
                                                       "operations/self_model/validate_route_reality_alignment_v1.ps1",
                                                       "operations/self_model/validate_route_v4_execution_report_phase_m_v1.ps1"
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "f7ecd30ed6c7662834da4163d4d0ca453978a1b5",
-                                                     "committed_at":  "2026-07-10T21:16:37+04:00",
-                                                     "subject":  "passport: queue owner cleanup decisions"
+                                                     "head":  "96c3d6f2a4f9560838d18e10fefd1615cf0867e1",
+                                                     "committed_at":  "2026-07-10T21:31:42+04:00",
+                                                     "subject":  "passport: block trial contracts deletion gate"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -9325,9 +9003,9 @@
 
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "f7ecd30ed6c7662834da4163d4d0ca453978a1b5",
-                                                     "committed_at":  "2026-07-10T21:16:37+04:00",
-                                                     "subject":  "passport: queue owner cleanup decisions"
+                                                     "head":  "96c3d6f2a4f9560838d18e10fefd1615cf0867e1",
+                                                     "committed_at":  "2026-07-10T21:31:42+04:00",
+                                                     "subject":  "passport: block trial contracts deletion gate"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -10467,53 +10145,6 @@
                            "is_required_component":  false
                        },
                        {
-                           "id":  "modules_operations",
-                           "path":  "modules/operations",
-                           "root":  "modules/operations",
-                           "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                           "discovery_method":  "bounded_git_ls_files_path_discovery",
-                           "evidence_counts":  {
-                                                   "files":  4,
-                                                   "scripts":  4,
-                                                   "validators":  0,
-                                                   "proofs":  0,
-                                                   "contracts_or_policies":  2,
-                                                   "docs":  0
-                                               },
-                           "file_count":  4,
-                           "script_count":  4,
-                           "validator_count":  0,
-                           "proof_file_count":  0,
-                           "contract_or_policy_count":  2,
-                           "doc_count":  0,
-                           "validator_refs":  [
-
-                                              ],
-                           "proof_refs":  [
-
-                                          ],
-                           "contract_or_policy_refs":  [
-                                                           "modules/operations/register_operation_contracts.ps1",
-                                                           "modules/operations/write_operation_contract_report.ps1"
-                                                       ],
-                           "notable_files":  [
-                                                 "modules/operations/invoke_operation_runtime.ps1",
-                                                 "modules/operations/register_operation_contracts.ps1",
-                                                 "modules/operations/run_first_smoke_install_trial.ps1",
-                                                 "modules/operations/write_operation_contract_report.ps1"
-                                             ],
-                           "primary_evidence_refs":  [
-                                                         "modules/operations/invoke_operation_runtime.ps1",
-                                                         "modules/operations/register_operation_contracts.ps1",
-                                                         "modules/operations/run_first_smoke_install_trial.ps1",
-                                                         "modules/operations/write_operation_contract_report.ps1"
-                                                     ],
-                           "needs_triage":  true,
-                           "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                           "source_ref":  "bounded_tracked_file_discovery_v1",
-                           "is_required_component":  false
-                       },
-                       {
                            "id":  "modules_route_locks",
                            "path":  "modules/route_locks",
                            "root":  "modules/route_locks",
@@ -10821,53 +10452,6 @@
                            "primary_evidence_refs":  [
                                                          "operations/bridge_diagnostics/BRIDGE_INTERRUPTION_DURING_SOURCE_DIGEST_PROOF_20260705_V1.json",
                                                          "operations/bridge_diagnostics/BRIDGE_INTERRUPTION_DURING_SOURCE_DIGEST_PROOF_20260705_V1.md"
-                                                     ],
-                           "needs_triage":  true,
-                           "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                           "source_ref":  "bounded_tracked_file_discovery_v1",
-                           "is_required_component":  false
-                       },
-                       {
-                           "id":  "operations_contracts",
-                           "path":  "operations/contracts",
-                           "root":  "operations/contracts",
-                           "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                           "discovery_method":  "bounded_git_ls_files_path_discovery",
-                           "evidence_counts":  {
-                                                   "files":  3,
-                                                   "scripts":  0,
-                                                   "validators":  2,
-                                                   "proofs":  0,
-                                                   "contracts_or_policies":  3,
-                                                   "docs":  0
-                                               },
-                           "file_count":  3,
-                           "script_count":  0,
-                           "validator_count":  2,
-                           "proof_file_count":  0,
-                           "contract_or_policy_count":  3,
-                           "doc_count":  0,
-                           "validator_refs":  [
-                                                  "operations/contracts/validate_json_schema_with_ajv.contract.json",
-                                                  "operations/contracts/validate_json_schema_with_python_jsonschema.contract.json"
-                                              ],
-                           "proof_refs":  [
-
-                                          ],
-                           "contract_or_policy_refs":  [
-                                                           "operations/contracts/.gitkeep",
-                                                           "operations/contracts/validate_json_schema_with_ajv.contract.json",
-                                                           "operations/contracts/validate_json_schema_with_python_jsonschema.contract.json"
-                                                       ],
-                           "notable_files":  [
-                                                 "operations/contracts/.gitkeep",
-                                                 "operations/contracts/validate_json_schema_with_ajv.contract.json",
-                                                 "operations/contracts/validate_json_schema_with_python_jsonschema.contract.json"
-                                             ],
-                           "primary_evidence_refs":  [
-                                                         "operations/contracts/.gitkeep",
-                                                         "operations/contracts/validate_json_schema_with_ajv.contract.json",
-                                                         "operations/contracts/validate_json_schema_with_python_jsonschema.contract.json"
                                                      ],
                            "needs_triage":  true,
                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
@@ -11338,94 +10922,6 @@
                                              ],
                            "primary_evidence_refs":  [
                                                          "operations/reflex_library/invoke_reflex.ps1"
-                                                     ],
-                           "needs_triage":  true,
-                           "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                           "source_ref":  "bounded_tracked_file_discovery_v1",
-                           "is_required_component":  false
-                       },
-                       {
-                           "id":  "operations_runtime",
-                           "path":  "operations/runtime",
-                           "root":  "operations/runtime",
-                           "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                           "discovery_method":  "bounded_git_ls_files_path_discovery",
-                           "evidence_counts":  {
-                                                   "files":  2,
-                                                   "scripts":  0,
-                                                   "validators":  0,
-                                                   "proofs":  0,
-                                                   "contracts_or_policies":  0,
-                                                   "docs":  1
-                                               },
-                           "file_count":  2,
-                           "script_count":  0,
-                           "validator_count":  0,
-                           "proof_file_count":  0,
-                           "contract_or_policy_count":  0,
-                           "doc_count":  1,
-                           "validator_refs":  [
-
-                                              ],
-                           "proof_refs":  [
-
-                                          ],
-                           "contract_or_policy_refs":  [
-
-                                                       ],
-                           "notable_files":  [
-                                                 "operations/runtime/README.md",
-                                                 "operations/runtime/requests/FIRST_OPERATION_RUNTIME_DRY_RUN_REQUEST.json"
-                                             ],
-                           "primary_evidence_refs":  [
-
-                                                     ],
-                           "needs_triage":  true,
-                           "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                           "source_ref":  "bounded_tracked_file_discovery_v1",
-                           "is_required_component":  false
-                       },
-                       {
-                           "id":  "operations_smoke_trials",
-                           "path":  "operations/smoke_trials",
-                           "root":  "operations/smoke_trials",
-                           "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                           "discovery_method":  "bounded_git_ls_files_path_discovery",
-                           "evidence_counts":  {
-                                                   "files":  4,
-                                                   "scripts":  0,
-                                                   "validators":  3,
-                                                   "proofs":  0,
-                                                   "contracts_or_policies":  0,
-                                                   "docs":  0
-                                               },
-                           "file_count":  4,
-                           "script_count":  0,
-                           "validator_count":  3,
-                           "proof_file_count":  0,
-                           "contract_or_policy_count":  0,
-                           "doc_count":  0,
-                           "validator_refs":  [
-                                                  "operations/smoke_trials/fixtures/json_schema_validation/invalid_instance.json",
-                                                  "operations/smoke_trials/fixtures/json_schema_validation/schema.json",
-                                                  "operations/smoke_trials/fixtures/json_schema_validation/valid_instance.json"
-                                              ],
-                           "proof_refs":  [
-
-                                          ],
-                           "contract_or_policy_refs":  [
-
-                                                       ],
-                           "notable_files":  [
-                                                 "operations/smoke_trials/FIRST_SMOKE_INSTALL_TRIAL_V1_PLAN.json",
-                                                 "operations/smoke_trials/fixtures/json_schema_validation/invalid_instance.json",
-                                                 "operations/smoke_trials/fixtures/json_schema_validation/schema.json",
-                                                 "operations/smoke_trials/fixtures/json_schema_validation/valid_instance.json"
-                                             ],
-                           "primary_evidence_refs":  [
-                                                         "operations/smoke_trials/fixtures/json_schema_validation/invalid_instance.json",
-                                                         "operations/smoke_trials/fixtures/json_schema_validation/schema.json",
-                                                         "operations/smoke_trials/fixtures/json_schema_validation/valid_instance.json"
                                                      ],
                            "needs_triage":  true,
                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
@@ -15598,138 +15094,6 @@
                            "is_required_component":  false
                        },
                        {
-                           "id":  "packs_phase84_first_wrapper_operation_contracts_v1",
-                           "path":  "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1",
-                           "root":  "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1",
-                           "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                           "discovery_method":  "bounded_git_ls_files_path_discovery",
-                           "evidence_counts":  {
-                                                   "files":  3,
-                                                   "scripts":  2,
-                                                   "validators":  0,
-                                                   "proofs":  0,
-                                                   "contracts_or_policies":  3,
-                                                   "docs":  0
-                                               },
-                           "file_count":  3,
-                           "script_count":  2,
-                           "validator_count":  0,
-                           "proof_file_count":  0,
-                           "contract_or_policy_count":  3,
-                           "doc_count":  0,
-                           "validator_refs":  [
-
-                                              ],
-                           "proof_refs":  [
-
-                                          ],
-                           "contract_or_policy_refs":  [
-                                                           "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1/APPLY.ps1",
-                                                           "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1/PACK.json",
-                                                           "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1/VALIDATE.ps1"
-                                                       ],
-                           "notable_files":  [
-                                                 "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1/APPLY.ps1",
-                                                 "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1/PACK.json",
-                                                 "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1/VALIDATE.ps1"
-                                             ],
-                           "primary_evidence_refs":  [
-                                                         "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1/APPLY.ps1",
-                                                         "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1/PACK.json",
-                                                         "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1/VALIDATE.ps1"
-                                                     ],
-                           "needs_triage":  true,
-                           "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                           "source_ref":  "bounded_tracked_file_discovery_v1",
-                           "is_required_component":  false
-                       },
-                       {
-                           "id":  "packs_phase85_first_smoke_install_trial_v1",
-                           "path":  "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1",
-                           "root":  "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1",
-                           "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                           "discovery_method":  "bounded_git_ls_files_path_discovery",
-                           "evidence_counts":  {
-                                                   "files":  3,
-                                                   "scripts":  2,
-                                                   "validators":  0,
-                                                   "proofs":  0,
-                                                   "contracts_or_policies":  0,
-                                                   "docs":  0
-                                               },
-                           "file_count":  3,
-                           "script_count":  2,
-                           "validator_count":  0,
-                           "proof_file_count":  0,
-                           "contract_or_policy_count":  0,
-                           "doc_count":  0,
-                           "validator_refs":  [
-
-                                              ],
-                           "proof_refs":  [
-
-                                          ],
-                           "contract_or_policy_refs":  [
-
-                                                       ],
-                           "notable_files":  [
-                                                 "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/APPLY.ps1",
-                                                 "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/PACK.json",
-                                                 "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/VALIDATE.ps1"
-                                             ],
-                           "primary_evidence_refs":  [
-                                                         "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/APPLY.ps1",
-                                                         "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/VALIDATE.ps1"
-                                                     ],
-                           "needs_triage":  true,
-                           "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                           "source_ref":  "bounded_tracked_file_discovery_v1",
-                           "is_required_component":  false
-                       },
-                       {
-                           "id":  "packs_phase86_operation_runtime_skeleton_v1",
-                           "path":  "packs/PHASE86_OPERATION_RUNTIME_SKELETON_V1",
-                           "root":  "packs/PHASE86_OPERATION_RUNTIME_SKELETON_V1",
-                           "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                           "discovery_method":  "bounded_git_ls_files_path_discovery",
-                           "evidence_counts":  {
-                                                   "files":  3,
-                                                   "scripts":  2,
-                                                   "validators":  0,
-                                                   "proofs":  0,
-                                                   "contracts_or_policies":  0,
-                                                   "docs":  0
-                                               },
-                           "file_count":  3,
-                           "script_count":  2,
-                           "validator_count":  0,
-                           "proof_file_count":  0,
-                           "contract_or_policy_count":  0,
-                           "doc_count":  0,
-                           "validator_refs":  [
-
-                                              ],
-                           "proof_refs":  [
-
-                                          ],
-                           "contract_or_policy_refs":  [
-
-                                                       ],
-                           "notable_files":  [
-                                                 "packs/PHASE86_OPERATION_RUNTIME_SKELETON_V1/APPLY.ps1",
-                                                 "packs/PHASE86_OPERATION_RUNTIME_SKELETON_V1/PACK.json",
-                                                 "packs/PHASE86_OPERATION_RUNTIME_SKELETON_V1/VALIDATE.ps1"
-                                             ],
-                           "primary_evidence_refs":  [
-                                                         "packs/PHASE86_OPERATION_RUNTIME_SKELETON_V1/APPLY.ps1",
-                                                         "packs/PHASE86_OPERATION_RUNTIME_SKELETON_V1/VALIDATE.ps1"
-                                                     ],
-                           "needs_triage":  true,
-                           "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                           "source_ref":  "bounded_tracked_file_discovery_v1",
-                           "is_required_component":  false
-                       },
-                       {
                            "id":  "packs_phase87_self_development_decision_kernel_v1",
                            "path":  "packs/PHASE87_SELF_DEVELOPMENT_DECISION_KERNEL_V1",
                            "root":  "packs/PHASE87_SELF_DEVELOPMENT_DECISION_KERNEL_V1",
@@ -16615,14 +15979,14 @@
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                            "discovery_method":  "bounded_git_ls_files_path_discovery",
                            "evidence_counts":  {
-                                                   "files":  42,
+                                                   "files":  40,
                                                    "scripts":  8,
                                                    "validators":  0,
                                                    "proofs":  16,
                                                    "contracts_or_policies":  0,
                                                    "docs":  0
                                                },
-                           "file_count":  42,
+                           "file_count":  40,
                            "script_count":  8,
                            "validator_count":  0,
                            "proof_file_count":  16,
@@ -16653,8 +16017,6 @@
 
                                                        ],
                            "notable_files":  [
-                                                 "self_build_programs/generated/PHASE164O_SELF_BUILD_PROGRAM_OWNER_MATERIAL_PROBE.json",
-                                                 "self_build_programs/generated/SELF_BUILD_PROGRAM_001.json",
                                                  "self_build_programs/generated/SELF_BUILD_PROGRAM_OWNER_MATERIAL_INPUT_BOOTSTRAP_001_V1_001.json",
                                                  "self_build_programs/generated/SELF_BUILD_PROGRAM_V2_EXAMPLE_001.json",
                                                  "self_build_programs/generated/conveyor_failure_trial_family_v1/SELF_BUILD_PROGRAM_MANIFEST.json",
@@ -16677,7 +16039,9 @@
                                                  "self_build_programs/generated/monitoring_agent_v1/patches/PACK_REGISTRY_PATCH.json",
                                                  "self_build_programs/generated/monitoring_agent_v1/patches/TASK_QUEUE_SEED.json",
                                                  "self_build_programs/generated/monitoring_agent_v1/tasks/TASK_GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1_001.json",
-                                                 "self_build_programs/generated/monitoring_agent_v1/tasks/TASK_GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1_001.json"
+                                                 "self_build_programs/generated/monitoring_agent_v1/tasks/TASK_GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1_001.json",
+                                                 "self_build_programs/generated/monitoring_agent_v1/tasks/TASK_GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_001.json",
+                                                 "self_build_programs/generated/remediation_intake_agent_v1/SELF_BUILD_PROGRAM_MANIFEST.json"
                                              ],
                            "primary_evidence_refs":  [
                                                          "self_build_programs/generated/conveyor_failure_trial_family_v1/packs/GENERATED_CONVEYOR_FAILURE_TRIAL_FAMILY_V1_FAILURE_PACK_V1/APPLY.ps1",
@@ -16917,14 +16281,14 @@
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                            "discovery_method":  "bounded_git_ls_files_path_discovery",
                            "evidence_counts":  {
-                                                   "files":  160,
+                                                   "files":  154,
                                                    "scripts":  0,
                                                    "validators":  3,
                                                    "proofs":  18,
                                                    "contracts_or_policies":  20,
                                                    "docs":  0
                                                },
-                           "file_count":  160,
+                           "file_count":  154,
                            "script_count":  0,
                            "validator_count":  3,
                            "proof_file_count":  18,
@@ -16962,7 +16326,6 @@
                                                            "self_model/organ_passports/contracts_operations/ORGAN_PASSPORT_V1.json",
                                                            "self_model/organ_passports/contracts_self_development/ORGAN_PASSPORT_V1.json",
                                                            "self_model/organ_passports/contracts_self_knowledge/ORGAN_PASSPORT_V1.json",
-                                                           "self_model/organ_passports/operations_contracts/ORGAN_PASSPORT_V1.json",
                                                            "self_model/organ_passports/packs_phase27_specialization_gap_contract_v1/ORGAN_PASSPORT_V1.json",
                                                            "self_model/organ_passports/packs_phase34_candidate_intake_report_contract_v1/ORGAN_PASSPORT_V1.json",
                                                            "self_model/organ_passports/packs_phase42_remediation_program_seed_contract_v1/ORGAN_PASSPORT_V1.json",
@@ -16975,7 +16338,8 @@
                                                            "self_model/organ_passports/packs_phase8_production_spec_contract_v1/ORGAN_PASSPORT_V1.json",
                                                            "self_model/organ_passports/packs_phase81_material_admission_policy_v1/ORGAN_PASSPORT_V1.json",
                                                            "self_model/organ_passports/packs_phase83_operation_contract_skeleton_v1/ORGAN_PASSPORT_V1.json",
-                                                           "self_model/organ_passports/packs_phase84_first_wrapper_operation_contracts_v1/ORGAN_PASSPORT_V1.json"
+                                                           "self_model/organ_passports/packs_phase92_self_build_backlog_contract_v1/ORGAN_PASSPORT_V1.json",
+                                                           "self_model/organ_passports/packs_phase97_batch_admission_policy_v1/ORGAN_PASSPORT_V1.json"
                                                        ],
                            "notable_files":  [
                                                  "self_model/organ_passports/_index/ORGAN_PASSPORT_DRAFT_INDEX_V1.json",
@@ -17011,7 +16375,6 @@
                                                          "self_model/organ_passports/contracts_operations/ORGAN_PASSPORT_V1.json",
                                                          "self_model/organ_passports/contracts_self_development/ORGAN_PASSPORT_V1.json",
                                                          "self_model/organ_passports/contracts_self_knowledge/ORGAN_PASSPORT_V1.json",
-                                                         "self_model/organ_passports/operations_contracts/ORGAN_PASSPORT_V1.json",
                                                          "self_model/organ_passports/packs_phase10_generated_agent_validation_harness_v1/ORGAN_PASSPORT_V1.json",
                                                          "self_model/organ_passports/packs_phase101_batch_proof_aggregator_v1/ORGAN_PASSPORT_V1.json",
                                                          "self_model/organ_passports/packs_phase12_production_factory_proof_v1/ORGAN_PASSPORT_V1.json",
@@ -17045,7 +16408,8 @@
                                                          "self_model/organ_passports/packs_phase8_production_spec_contract_v1/ORGAN_PASSPORT_V1.json",
                                                          "self_model/organ_passports/packs_phase81_material_admission_policy_v1/ORGAN_PASSPORT_V1.json",
                                                          "self_model/organ_passports/packs_phase83_operation_contract_skeleton_v1/ORGAN_PASSPORT_V1.json",
-                                                         "self_model/organ_passports/packs_phase84_first_wrapper_operation_contracts_v1/ORGAN_PASSPORT_V1.json"
+                                                         "self_model/organ_passports/packs_phase92_self_build_backlog_contract_v1/ORGAN_PASSPORT_V1.json",
+                                                         "self_model/organ_passports/packs_phase97_batch_admission_policy_v1/ORGAN_PASSPORT_V1.json"
                                                      ],
                            "needs_triage":  true,
                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",

@@ -1,4 +1,4 @@
-[CmdletBinding()]
+﻿[CmdletBinding()]
 param(
   [string]$OutputReportPath = "reports/self_development/SELF_DEVELOPMENT_DECISION_KERNEL_REPORT.json",
   [string]$RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..\..")).Path,
@@ -8,7 +8,6 @@ param(
 $ErrorActionPreference = "Stop"
 
 $CurrentPhase = "PHASE87_SELF_DEVELOPMENT_DECISION_KERNEL_V1"
-$LastProvenPhase = "PHASE86_OPERATION_RUNTIME_SKELETON_V1"
 $LastProvenCommitExpected = "89a7b5b"
 $RecommendedNextStepId = "PHASE88_SELF_BUILD_PROGRAM_GENERATOR_V1"
 
@@ -34,21 +33,9 @@ $OptionalEvidence = @(
   @{ path = "proofs/materials/MATERIAL_POLICY_V1.json"; kind = "json" },
   @{ path = "reports/materials/FIRST_QUARANTINE_TRIAL_REPORT.json"; kind = "json" },
   @{ path = "proofs/materials/FIRST_QUARANTINE_TRIAL_V1.json"; kind = "json" },
-  @{ path = "reports/operations/OPERATION_CONTRACT_SKELETON_REPORT.json"; kind = "json" },
-  @{ path = "proofs/operations/OPERATION_CONTRACT_SKELETON_V1.json"; kind = "json" },
-  @{ path = "reports/operations/FIRST_WRAPPER_OPERATION_CONTRACTS_REPORT.json"; kind = "json" },
-  @{ path = "proofs/operations/FIRST_WRAPPER_OPERATION_CONTRACTS_V1.json"; kind = "json" },
-  @{ path = "reports/operations/FIRST_SMOKE_INSTALL_TRIAL_REPORT.json"; kind = "json" },
-  @{ path = "proofs/operations/FIRST_SMOKE_INSTALL_TRIAL_V1.json"; kind = "json" },
-  @{ path = "reports/operations/OPERATION_RUNTIME_SKELETON_REPORT.json"; kind = "json" },
-  @{ path = "proofs/operations/OPERATION_RUNTIME_SKELETON_V1.json"; kind = "json" },
   @{ path = "materials/MATERIAL_CATALOG.json"; kind = "json" },
   @{ path = "materials/MATERIAL_POLICY.json"; kind = "json" },
   @{ path = "materials/quarantine/QUARANTINE_BATCH_001.json"; kind = "json" },
-  @{ path = "operations/registry.json"; kind = "json" },
-  @{ path = "operations/contracts/validate_json_schema_with_ajv.contract.json"; kind = "json" },
-  @{ path = "operations/contracts/validate_json_schema_with_python_jsonschema.contract.json"; kind = "json" },
-  @{ path = "operations/runtime/requests/FIRST_OPERATION_RUNTIME_DRY_RUN_REQUEST.json"; kind = "json" },
   @{ path = "reports/planning/AGENT_BUILDER_NEXT_15_STEPS_LOCK_V1.md"; kind = "text" }
 )
 
@@ -263,14 +250,15 @@ function Read-OwnerMaterialInput {
 }
 Write-Host "SELF_DEVELOPMENT_DECISION_KERNEL_START"
 
+$requiredObjects = @{}
 foreach ($required in $RequiredCoreEvidence) {
-  Set-Variable -Name ("Required_" + ($required.path -replace "[^A-Za-z0-9]", "_")) -Value (Read-Evidence -Path $required.path -Kind $required.kind -Required $true)
+  $requiredObjects[$required.path] = Read-Evidence -Path $required.path -Kind $required.kind -Required $true
 }
 
-$roadmap = Get-Variable -Name "Required_CAPABILITY_ROADMAP_json" -ValueOnly
-$genesis = Get-Variable -Name "Required_GENESIS_STATE_json" -ValueOnly
-$queue = Get-Variable -Name "Required_TASK_QUEUE_json" -ValueOnly
-$registry = Get-Variable -Name "Required_packs_registry_json" -ValueOnly
+$roadmap = $requiredObjects["CAPABILITY_ROADMAP.json"]
+$genesis = $requiredObjects["GENESIS_STATE.json"]
+$queue = $requiredObjects["TASK_QUEUE.json"]
+$registry = $requiredObjects["packs/registry.json"]
 
 $optionalObjects = @{}
 foreach ($optional in $OptionalEvidence) {
@@ -292,11 +280,8 @@ $policy = $optionalObjects["materials/MATERIAL_POLICY.json"]
 $policyDecisions = Get-ArrayProperty -Object $policy -Names @("decisions", "materials")
 $quarantineBatch = $optionalObjects["materials/quarantine/QUARANTINE_BATCH_001.json"]
 $selectedMaterialIds = Get-ArrayProperty -Object $quarantineBatch -Names @("selected_material_ids")
-$operationRegistry = $optionalObjects["operations/registry.json"]
 $operations = Get-ArrayProperty -Object $operationRegistry -Names @("operations")
 $trustedOperations = @($operations | Where-Object { "$(Get-PropertyValue -Object $_ -Name "status")" -eq "TRUSTED_OPERATION" })
-$phase86Proof = $optionalObjects["proofs/operations/OPERATION_RUNTIME_SKELETON_V1.json"]
-$phase86Report = $optionalObjects["reports/operations/OPERATION_RUNTIME_SKELETON_REPORT.json"]
 
 $capabilitySummary = [ordered]@{
   roadmap_capability_count = @($capabilities).Count
@@ -387,5 +372,7 @@ Write-Host "SELF_DEVELOPMENT_DECISION_REPORT_WRITTEN=$OutputReportPath"
 Write-Host "SELF_DEVELOPMENT_DECISION_KERNEL_COMPLETE"
 
 return [pscustomobject]$report
+
+
 
 

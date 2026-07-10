@@ -2,9 +2,9 @@
 
 Status: ACTIVE_DERIVED_VIEW
 Branch: main
-Observed head at generation: f7ecd30ed6c7662834da4163d4d0ca453978a1b5
-Generated: 2026-07-10T21:32:16.7976073+04:00
-Body source fingerprint: 77f56568b547db068a02348ff4df08b203df3ddb80b9a65decb293b81291fc5f
+Observed head at generation: 96c3d6f2a4f9560838d18e10fefd1615cf0867e1
+Generated: 2026-07-10T21:46:40.9288554+04:00
+Body source fingerprint: fc72064b6681ef3fd9f62e948240bdd22961347a8c0b9fe1bd9dd6b443ee7a96
 
 Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
@@ -18,7 +18,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 ## Counts
 
 - Confirmed components: 8
-- Primary evidence candidates: 158
+- Primary evidence candidates: 151
 - Legacy unverified hints: 4
 - Rejected or stale hints: 3
 
@@ -30,7 +30,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `autonomous_inner_motor` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/autonomous_inner_motor`, files=76, scripts=15, required_present=True
 - `knowledge_acquisition_port` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/knowledge_acquisition_port`, files=50, scripts=2, required_present=True
 - `map_control` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/map_control`, files=2, scripts=0, required_present=True
-- `operations_self_model` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/self_model`, files=63, scripts=63, required_present=True
+- `operations_self_model` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/self_model`, files=62, scripts=62, required_present=True
 - `gpt_handoff` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/gpt_handoff`, files=3, scripts=0, required_present=True
 
 ## Candidate Triage Queue
@@ -55,14 +55,12 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `living_learning_environment_self_growth_runtime` - root `living_learning_environment/self_growth_runtime`, files=6, scripts=0, validators=0, proofs=0, needs_triage=True
 - `living_learning_environment_trial_reviews` - root `living_learning_environment/trial_reviews`, files=15, scripts=0, validators=1, proofs=0, needs_triage=True
 - `modules_materials` - root `modules/materials`, files=4, scripts=4, validators=0, proofs=0, needs_triage=True
-- `modules_operations` - root `modules/operations`, files=4, scripts=4, validators=0, proofs=0, needs_triage=True
 - `modules_route_locks` - root `modules/route_locks`, files=1, scripts=1, validators=0, proofs=0, needs_triage=True
 - `modules_self_development` - root `modules/self_development`, files=20, scripts=20, validators=0, proofs=1, needs_triage=True
 - `operations_accepted_atom_retention_calibration` - root `operations/accepted_atom_retention_calibration`, files=2, scripts=2, validators=1, proofs=0, needs_triage=True
 - `operations_active_behavior` - root `operations/active_behavior`, files=10, scripts=6, validators=2, proofs=0, needs_triage=True
 - `operations_autonomy_diagnostics` - root `operations/autonomy_diagnostics`, files=29, scripts=0, validators=0, proofs=0, needs_triage=True
 - `operations_bridge_diagnostics` - root `operations/bridge_diagnostics`, files=2, scripts=0, validators=0, proofs=2, needs_triage=True
-- `operations_contracts` - root `operations/contracts`, files=3, scripts=0, validators=2, proofs=0, needs_triage=True
 - `operations_live_like` - root `operations/live_like`, files=2, scripts=2, validators=1, proofs=0, needs_triage=True
 - `operations_live_readiness` - root `operations/live_readiness`, files=11, scripts=11, validators=5, proofs=2, needs_triage=True
 - `operations_live_start` - root `operations/live_start`, files=5, scripts=5, validators=2, proofs=0, needs_triage=True
@@ -73,8 +71,6 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `operations_readme_md` - root `operations/README.md`, files=1, scripts=0, validators=0, proofs=0, needs_triage=True
 - `operations_reasoning` - root `operations/reasoning`, files=6, scripts=6, validators=3, proofs=0, needs_triage=True
 - `operations_reflex_library` - root `operations/reflex_library`, files=2, scripts=1, validators=0, proofs=0, needs_triage=True
-- `operations_runtime` - root `operations/runtime`, files=2, scripts=0, validators=0, proofs=0, needs_triage=True
-- `operations_smoke_trials` - root `operations/smoke_trials`, files=4, scripts=0, validators=3, proofs=0, needs_triage=True
 - `packs_phase10_generated_agent_validation_harness_v1` - root `packs/PHASE10_GENERATED_AGENT_VALIDATION_HARNESS_V1`, files=6, scripts=3, validators=2, proofs=0, needs_triage=True
 - `packs_phase100_quarantine_and_blocker_registry_v1` - root `packs/PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1`, files=3, scripts=2, validators=0, proofs=0, needs_triage=True
 - `packs_phase101_batch_proof_aggregator_v1` - root `packs/PHASE101_BATCH_PROOF_AGGREGATOR_V1`, files=3, scripts=2, validators=0, proofs=3, needs_triage=True
@@ -115,6 +111,10 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `packs_phase38_runtime_gap_remediation_closure_proof_v1` - root `packs/PHASE38_RUNTIME_GAP_REMEDIATION_CLOSURE_PROOF_V1`, files=3, scripts=2, validators=1, proofs=3, needs_triage=True
 - `packs_phase39_monitoring_gap_reachability_v1` - root `packs/PHASE39_MONITORING_GAP_REACHABILITY_V1`, files=6, scripts=3, validators=1, proofs=1, needs_triage=True
 - `packs_phase4_self_validation_release_gates` - root `packs/PHASE4_SELF_VALIDATION_RELEASE_GATES`, files=7, scripts=4, validators=2, proofs=0, needs_triage=True
+- `packs_phase40_specialized_gap_auto_intake_runtime_v1` - root `packs/PHASE40_SPECIALIZED_GAP_AUTO_INTAKE_RUNTIME_V1`, files=5, scripts=3, validators=1, proofs=1, needs_triage=True
+- `packs_phase41_one_run_gap_remediation_packet_proof_v1` - root `packs/PHASE41_ONE_RUN_GAP_REMEDIATION_PACKET_PROOF_V1`, files=3, scripts=2, validators=1, proofs=3, needs_triage=True
+- `packs_phase42_remediation_program_seed_contract_v1` - root `packs/PHASE42_REMEDIATION_PROGRAM_SEED_CONTRACT_V1`, files=6, scripts=3, validators=1, proofs=0, needs_triage=True
+- `packs_phase43_specialized_gap_auto_program_seed_runtime_v1` - root `packs/PHASE43_SPECIALIZED_GAP_AUTO_PROGRAM_SEED_RUNTIME_V1`, files=5, scripts=3, validators=1, proofs=1, needs_triage=True
 
 ## Freshness
 

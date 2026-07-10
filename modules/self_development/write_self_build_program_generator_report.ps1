@@ -1,4 +1,4 @@
-param(
+﻿param(
   [string]$DecisionReportPath = "reports/self_development/SELF_DEVELOPMENT_DECISION_KERNEL_REPORT.json",
   [string]$DecisionProofPath = "proofs/self_development/SELF_DEVELOPMENT_DECISION_KERNEL_V1.json",
   [string]$ProgramOutputPath = "self_build_programs/generated/SELF_BUILD_PROGRAM_001.json",
@@ -93,8 +93,6 @@ $program = [ordered]@{
     "orchestrator/run.ps1",
     "materials/MATERIAL_CATALOG.json",
     "materials/MATERIAL_POLICY.json",
-    "operations/registry.json",
-    "operations/contracts/",
     "generated_agents/",
     "applied_agents/"
   )
