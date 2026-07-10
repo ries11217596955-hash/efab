@@ -877,3 +877,29 @@ Boundaries:
 - No passport downclassified.
 - No PASSPORT_ACTIVE created.
 - No live runtime touched.
+
+## 2026-07-10 — Operations Trial/Contracts deletion gate V1
+
+STATUS: BLOCKED_DELETE_DEPENDENCY_FOUND / NO_DELETION
+
+Owner asked to check Trial and contracts for likely deletion.
+
+Result:
+- Direct deletion is blocked.
+- operations/smoke_trials is referenced by modules/operations/run_first_smoke_install_trial.ps1.
+- operations/contracts is referenced by modules/operations/register_operation_contracts.ps1, modules/operations/invoke_operation_runtime.ps1, modules/operations/run_first_smoke_install_trial.ps1, operations/registry.json, and old generated packs.
+
+Decision:
+- Do not delete operations/smoke_trials or operations/contracts directly.
+- First retire or migrate the old PHASE84-86 operation-runtime chain, then delete target folders/passports.
+
+Proof:
+- reports/self_development/OPERATIONS_TRIAL_CONTRACTS_DELETION_GATE_V1.json
+- reports/self_development/OPERATIONS_TRIAL_CONTRACTS_DELETION_GATE_V1.md
+- tests/self_development/OPERATIONS_TRIAL_CONTRACTS_DELETION_GATE_V1_PROOF.json
+
+Boundaries:
+- No files deleted.
+- No paths moved.
+- No runtime touched.
+- No passport deleted.

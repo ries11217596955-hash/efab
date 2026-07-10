@@ -1,0 +1,644 @@
+﻿{
+    "schema":  "operations_trial_contracts_deletion_gate_v1",
+    "status":  "BLOCKED_OPERATIONS_TRIAL_CONTRACTS_DELETION_GATE_V1",
+    "target_paths":  [
+                         "operations/smoke_trials",
+                         "operations/contracts",
+                         "self_model/organ_passports/operations_smoke_trials",
+                         "self_model/organ_passports/operations_contracts"
+                     ],
+    "decision":  "BLOCK_DELETE_DEPENDENCY_FOUND",
+    "can_delete_now":  false,
+    "blockers":  [
+                     "SMOKE_TRIALS_REFERENCED_BY_OPERATION_MODULES",
+                     "CONTRACTS_REFERENCED_BY_OPERATION_MODULES_OR_REGISTRY"
+                 ],
+    "dependency_scan":  [
+                            {
+                                "pattern":  "operations/smoke_trials",
+                                "operational_hit_count":  18,
+                                "operational_files":  [
+                                                          "docs/operations/organ_passports/operations_smoke_trials/ORGAN_PASSPORT_V1.md",
+                                                          "modules/operations/run_first_smoke_install_trial.ps1",
+                                                          "operations/runtime/requests/FIRST_OPERATION_RUNTIME_DRY_RUN_REQUEST.json",
+                                                          "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/APPLY.ps1",
+                                                          "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/VALIDATE.ps1",
+                                                          "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json"
+                                                      ],
+                                "hits_sample":  [
+                                                    {
+                                                        "file":  "docs/operations/organ_passports/operations_smoke_trials/ORGAN_PASSPORT_V1.md",
+                                                        "line":  6,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "owning_root: operations/smoke_trials"
+                                                    },
+                                                    {
+                                                        "file":  "modules/operations/run_first_smoke_install_trial.ps1",
+                                                        "line":  4,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "[string]$PlanPath = \"operations/smoke_trials/FIRST_SMOKE_INSTALL_TRIAL_V1_PLAN.json\","
+                                                    },
+                                                    {
+                                                        "file":  "modules/operations/run_first_smoke_install_trial.ps1",
+                                                        "line":  6,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "[string]$FixturesRoot = \"operations/smoke_trials/fixtures/json_schema_validation\","
+                                                    },
+                                                    {
+                                                        "file":  "operations/runtime/requests/FIRST_OPERATION_RUNTIME_DRY_RUN_REQUEST.json",
+                                                        "line":  6,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"schema_path\": \"operations/smoke_trials/fixtures/json_schema_validation/schema.json\","
+                                                    },
+                                                    {
+                                                        "file":  "operations/runtime/requests/FIRST_OPERATION_RUNTIME_DRY_RUN_REQUEST.json",
+                                                        "line":  7,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"instance_path\": \"operations/smoke_trials/fixtures/json_schema_validation/valid_instance.json\","
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/APPLY.ps1",
+                                                        "line":  18,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "$PlanPath = \"operations/smoke_trials/FIRST_SMOKE_INSTALL_TRIAL_V1_PLAN.json\""
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/APPLY.ps1",
+                                                        "line":  20,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "$FixturesRoot = \"operations/smoke_trials/fixtures/json_schema_validation\""
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/APPLY.ps1",
+                                                        "line":  241,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/smoke_trials/fixtures/json_schema_validation/schema.json\","
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/APPLY.ps1",
+                                                        "line":  242,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/smoke_trials/fixtures/json_schema_validation/valid_instance.json\","
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/APPLY.ps1",
+                                                        "line":  243,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/smoke_trials/fixtures/json_schema_validation/invalid_instance.json\","
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/VALIDATE.ps1",
+                                                        "line":  14,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "$PlanPath = \"operations/smoke_trials/FIRST_SMOKE_INSTALL_TRIAL_V1_PLAN.json\""
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/VALIDATE.ps1",
+                                                        "line":  22,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/smoke_trials/fixtures/json_schema_validation/schema.json\","
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/VALIDATE.ps1",
+                                                        "line":  23,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/smoke_trials/fixtures/json_schema_validation/valid_instance.json\","
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/VALIDATE.ps1",
+                                                        "line":  24,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/smoke_trials/fixtures/json_schema_validation/invalid_instance.json\""
+                                                    },
+                                                    {
+                                                        "file":  "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json",
+                                                        "line":  1257,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"path\":  \"operations/smoke_trials\","
+                                                    },
+                                                    {
+                                                        "file":  "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json",
+                                                        "line":  1273,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/smoke_trials/fixtures/json_schema_validation/invalid_instance.json\","
+                                                    },
+                                                    {
+                                                        "file":  "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json",
+                                                        "line":  1274,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/smoke_trials/fixtures/json_schema_validation/schema.json\","
+                                                    },
+                                                    {
+                                                        "file":  "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json",
+                                                        "line":  1275,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/smoke_trials/fixtures/json_schema_validation/valid_instance.json\""
+                                                    }
+                                                ]
+                            },
+                            {
+                                "pattern":  "FIRST_SMOKE_INSTALL_TRIAL_V1_PLAN",
+                                "operational_hit_count":  3,
+                                "operational_files":  [
+                                                          "modules/operations/run_first_smoke_install_trial.ps1",
+                                                          "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/APPLY.ps1",
+                                                          "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/VALIDATE.ps1"
+                                                      ],
+                                "hits_sample":  [
+                                                    {
+                                                        "file":  "modules/operations/run_first_smoke_install_trial.ps1",
+                                                        "line":  4,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "[string]$PlanPath = \"operations/smoke_trials/FIRST_SMOKE_INSTALL_TRIAL_V1_PLAN.json\","
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/APPLY.ps1",
+                                                        "line":  18,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "$PlanPath = \"operations/smoke_trials/FIRST_SMOKE_INSTALL_TRIAL_V1_PLAN.json\""
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/VALIDATE.ps1",
+                                                        "line":  14,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "$PlanPath = \"operations/smoke_trials/FIRST_SMOKE_INSTALL_TRIAL_V1_PLAN.json\""
+                                                    }
+                                                ]
+                            },
+                            {
+                                "pattern":  "json_schema_validation",
+                                "operational_hit_count":  13,
+                                "operational_files":  [
+                                                          "modules/operations/run_first_smoke_install_trial.ps1",
+                                                          "operations/runtime/requests/FIRST_OPERATION_RUNTIME_DRY_RUN_REQUEST.json",
+                                                          "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/APPLY.ps1",
+                                                          "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/VALIDATE.ps1",
+                                                          "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json"
+                                                      ],
+                                "hits_sample":  [
+                                                    {
+                                                        "file":  "modules/operations/run_first_smoke_install_trial.ps1",
+                                                        "line":  6,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "[string]$FixturesRoot = \"operations/smoke_trials/fixtures/json_schema_validation\","
+                                                    },
+                                                    {
+                                                        "file":  "operations/runtime/requests/FIRST_OPERATION_RUNTIME_DRY_RUN_REQUEST.json",
+                                                        "line":  6,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"schema_path\": \"operations/smoke_trials/fixtures/json_schema_validation/schema.json\","
+                                                    },
+                                                    {
+                                                        "file":  "operations/runtime/requests/FIRST_OPERATION_RUNTIME_DRY_RUN_REQUEST.json",
+                                                        "line":  7,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"instance_path\": \"operations/smoke_trials/fixtures/json_schema_validation/valid_instance.json\","
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/APPLY.ps1",
+                                                        "line":  20,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "$FixturesRoot = \"operations/smoke_trials/fixtures/json_schema_validation\""
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/APPLY.ps1",
+                                                        "line":  241,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/smoke_trials/fixtures/json_schema_validation/schema.json\","
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/APPLY.ps1",
+                                                        "line":  242,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/smoke_trials/fixtures/json_schema_validation/valid_instance.json\","
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/APPLY.ps1",
+                                                        "line":  243,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/smoke_trials/fixtures/json_schema_validation/invalid_instance.json\","
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/VALIDATE.ps1",
+                                                        "line":  22,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/smoke_trials/fixtures/json_schema_validation/schema.json\","
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/VALIDATE.ps1",
+                                                        "line":  23,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/smoke_trials/fixtures/json_schema_validation/valid_instance.json\","
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/VALIDATE.ps1",
+                                                        "line":  24,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/smoke_trials/fixtures/json_schema_validation/invalid_instance.json\""
+                                                    },
+                                                    {
+                                                        "file":  "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json",
+                                                        "line":  1273,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/smoke_trials/fixtures/json_schema_validation/invalid_instance.json\","
+                                                    },
+                                                    {
+                                                        "file":  "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json",
+                                                        "line":  1274,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/smoke_trials/fixtures/json_schema_validation/schema.json\","
+                                                    },
+                                                    {
+                                                        "file":  "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json",
+                                                        "line":  1275,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/smoke_trials/fixtures/json_schema_validation/valid_instance.json\""
+                                                    }
+                                                ]
+                            },
+                            {
+                                "pattern":  "operations/contracts",
+                                "operational_hit_count":  39,
+                                "operational_files":  [
+                                                          "docs/operations/organ_passports/operations_contracts/ORGAN_PASSPORT_V1.md",
+                                                          "modules/operations/invoke_operation_runtime.ps1",
+                                                          "modules/operations/register_operation_contracts.ps1",
+                                                          "modules/operations/run_first_smoke_install_trial.ps1",
+                                                          "modules/self_development/write_self_build_program_generator_report.ps1",
+                                                          "modules/self_development/write_self_development_decision_kernel_report.ps1",
+                                                          "operations/registry.json",
+                                                          "packs/PHASE83_OPERATION_CONTRACT_SKELETON_V1/APPLY.ps1",
+                                                          "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1/APPLY.ps1",
+                                                          "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1/VALIDATE.ps1",
+                                                          "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/APPLY.ps1",
+                                                          "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/VALIDATE.ps1",
+                                                          "packs/PHASE86_OPERATION_RUNTIME_SKELETON_V1/APPLY.ps1",
+                                                          "packs/PHASE86_OPERATION_RUNTIME_SKELETON_V1/VALIDATE.ps1",
+                                                          "self_build_programs/generated/PHASE164O_SELF_BUILD_PROGRAM_OWNER_MATERIAL_PROBE.json",
+                                                          "self_build_programs/generated/SELF_BUILD_PROGRAM_001.json",
+                                                          "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json"
+                                                      ],
+                                "hits_sample":  [
+                                                    {
+                                                        "file":  "docs/operations/organ_passports/operations_contracts/ORGAN_PASSPORT_V1.md",
+                                                        "line":  6,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "owning_root: operations/contracts"
+                                                    },
+                                                    {
+                                                        "file":  "modules/operations/invoke_operation_runtime.ps1",
+                                                        "line":  5,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "[string]$ContractsRoot = \"operations/contracts\","
+                                                    },
+                                                    {
+                                                        "file":  "modules/operations/invoke_operation_runtime.ps1",
+                                                        "line":  29,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/contracts/validate_json_schema_with_ajv.contract.json\","
+                                                    },
+                                                    {
+                                                        "file":  "modules/operations/invoke_operation_runtime.ps1",
+                                                        "line":  30,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/contracts/validate_json_schema_with_python_jsonschema.contract.json\","
+                                                    },
+                                                    {
+                                                        "file":  "modules/operations/register_operation_contracts.ps1",
+                                                        "line":  4,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "[string]$ContractsRoot = \"operations/contracts\","
+                                                    },
+                                                    {
+                                                        "file":  "modules/operations/register_operation_contracts.ps1",
+                                                        "line":  230,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "contract_path = \"operations/contracts/$([System.IO.Path]::GetFileName($Contract.__contract_file_name))\""
+                                                    },
+                                                    {
+                                                        "file":  "modules/operations/register_operation_contracts.ps1",
+                                                        "line":  315,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "$contractPaths = @($OperationContractFiles | ForEach-Object { \"operations/contracts/$_\" })"
+                                                    },
+                                                    {
+                                                        "file":  "modules/operations/run_first_smoke_install_trial.ps1",
+                                                        "line":  5,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "[string]$OperationContractPath = \"operations/contracts/validate_json_schema_with_python_jsonschema.contract.json\","
+                                                    },
+                                                    {
+                                                        "file":  "modules/operations/run_first_smoke_install_trial.ps1",
+                                                        "line":  27,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/contracts/validate_json_schema_with_ajv.contract.json\","
+                                                    },
+                                                    {
+                                                        "file":  "modules/operations/run_first_smoke_install_trial.ps1",
+                                                        "line":  28,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/contracts/validate_json_schema_with_python_jsonschema.contract.json\""
+                                                    },
+                                                    {
+                                                        "file":  "modules/self_development/write_self_build_program_generator_report.ps1",
+                                                        "line":  97,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/contracts/\","
+                                                    },
+                                                    {
+                                                        "file":  "modules/self_development/write_self_development_decision_kernel_report.ps1",
+                                                        "line":  49,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "@{ path = \"operations/contracts/validate_json_schema_with_ajv.contract.json\"; kind = \"json\" },"
+                                                    },
+                                                    {
+                                                        "file":  "modules/self_development/write_self_development_decision_kernel_report.ps1",
+                                                        "line":  50,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "@{ path = \"operations/contracts/validate_json_schema_with_python_jsonschema.contract.json\"; kind = \"json\" },"
+                                                    },
+                                                    {
+                                                        "file":  "operations/registry.json",
+                                                        "line":  14,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"contract_path\": \"operations/contracts/validate_json_schema_with_ajv.contract.json\","
+                                                    },
+                                                    {
+                                                        "file":  "operations/registry.json",
+                                                        "line":  27,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"contract_path\": \"operations/contracts/validate_json_schema_with_python_jsonschema.contract.json\","
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE83_OPERATION_CONTRACT_SKELETON_V1/APPLY.ps1",
+                                                        "line":  318,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "foreach ($directory in @(\"contracts/operations\", \"operations/contracts\", \"reports/operations\", \"proofs/operations\")) {"
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1/APPLY.ps1",
+                                                        "line":  17,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "$ContractsRoot = \"operations/contracts\""
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1/APPLY.ps1",
+                                                        "line":  24,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/contracts/validate_json_schema_with_ajv.contract.json\","
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1/APPLY.ps1",
+                                                        "line":  25,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/contracts/validate_json_schema_with_python_jsonschema.contract.json\""
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1/VALIDATE.ps1",
+                                                        "line":  19,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/contracts/validate_json_schema_with_ajv.contract.json\","
+                                                    }
+                                                ]
+                            },
+                            {
+                                "pattern":  "validate_json_schema_with_ajv.contract.json",
+                                "operational_hit_count":  13,
+                                "operational_files":  [
+                                                          "modules/operations/invoke_operation_runtime.ps1",
+                                                          "modules/operations/register_operation_contracts.ps1",
+                                                          "modules/operations/run_first_smoke_install_trial.ps1",
+                                                          "modules/self_development/write_self_development_decision_kernel_report.ps1",
+                                                          "operations/registry.json",
+                                                          "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1/APPLY.ps1",
+                                                          "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1/VALIDATE.ps1",
+                                                          "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/APPLY.ps1",
+                                                          "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/VALIDATE.ps1",
+                                                          "packs/PHASE86_OPERATION_RUNTIME_SKELETON_V1/APPLY.ps1",
+                                                          "packs/PHASE86_OPERATION_RUNTIME_SKELETON_V1/VALIDATE.ps1",
+                                                          "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json"
+                                                      ],
+                                "hits_sample":  [
+                                                    {
+                                                        "file":  "modules/operations/invoke_operation_runtime.ps1",
+                                                        "line":  29,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/contracts/validate_json_schema_with_ajv.contract.json\","
+                                                    },
+                                                    {
+                                                        "file":  "modules/operations/register_operation_contracts.ps1",
+                                                        "line":  9,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"validate_json_schema_with_ajv.contract.json\","
+                                                    },
+                                                    {
+                                                        "file":  "modules/operations/register_operation_contracts.ps1",
+                                                        "line":  43,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"validate_json_schema_with_ajv.contract.json\" = @{"
+                                                    },
+                                                    {
+                                                        "file":  "modules/operations/run_first_smoke_install_trial.ps1",
+                                                        "line":  27,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/contracts/validate_json_schema_with_ajv.contract.json\","
+                                                    },
+                                                    {
+                                                        "file":  "modules/self_development/write_self_development_decision_kernel_report.ps1",
+                                                        "line":  49,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "@{ path = \"operations/contracts/validate_json_schema_with_ajv.contract.json\"; kind = \"json\" },"
+                                                    },
+                                                    {
+                                                        "file":  "operations/registry.json",
+                                                        "line":  14,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"contract_path\": \"operations/contracts/validate_json_schema_with_ajv.contract.json\","
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1/APPLY.ps1",
+                                                        "line":  24,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/contracts/validate_json_schema_with_ajv.contract.json\","
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1/VALIDATE.ps1",
+                                                        "line":  19,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/contracts/validate_json_schema_with_ajv.contract.json\","
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/APPLY.ps1",
+                                                        "line":  32,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/contracts/validate_json_schema_with_ajv.contract.json\","
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/VALIDATE.ps1",
+                                                        "line":  119,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/contracts/validate_json_schema_with_ajv.contract.json\","
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE86_OPERATION_RUNTIME_SKELETON_V1/APPLY.ps1",
+                                                        "line":  34,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/contracts/validate_json_schema_with_ajv.contract.json\","
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE86_OPERATION_RUNTIME_SKELETON_V1/VALIDATE.ps1",
+                                                        "line":  117,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/contracts/validate_json_schema_with_ajv.contract.json\","
+                                                    },
+                                                    {
+                                                        "file":  "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json",
+                                                        "line":  937,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/contracts/validate_json_schema_with_ajv.contract.json\","
+                                                    }
+                                                ]
+                            },
+                            {
+                                "pattern":  "validate_json_schema_with_python_jsonschema.contract.json",
+                                "operational_hit_count":  18,
+                                "operational_files":  [
+                                                          "modules/operations/invoke_operation_runtime.ps1",
+                                                          "modules/operations/register_operation_contracts.ps1",
+                                                          "modules/operations/run_first_smoke_install_trial.ps1",
+                                                          "modules/self_development/write_self_development_decision_kernel_report.ps1",
+                                                          "operations/registry.json",
+                                                          "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1/APPLY.ps1",
+                                                          "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1/VALIDATE.ps1",
+                                                          "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/APPLY.ps1",
+                                                          "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/VALIDATE.ps1",
+                                                          "packs/PHASE86_OPERATION_RUNTIME_SKELETON_V1/APPLY.ps1",
+                                                          "packs/PHASE86_OPERATION_RUNTIME_SKELETON_V1/VALIDATE.ps1",
+                                                          "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json"
+                                                      ],
+                                "hits_sample":  [
+                                                    {
+                                                        "file":  "modules/operations/invoke_operation_runtime.ps1",
+                                                        "line":  30,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/contracts/validate_json_schema_with_python_jsonschema.contract.json\","
+                                                    },
+                                                    {
+                                                        "file":  "modules/operations/register_operation_contracts.ps1",
+                                                        "line":  10,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"validate_json_schema_with_python_jsonschema.contract.json\""
+                                                    },
+                                                    {
+                                                        "file":  "modules/operations/register_operation_contracts.ps1",
+                                                        "line":  56,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"validate_json_schema_with_python_jsonschema.contract.json\" = @{"
+                                                    },
+                                                    {
+                                                        "file":  "modules/operations/run_first_smoke_install_trial.ps1",
+                                                        "line":  5,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "[string]$OperationContractPath = \"operations/contracts/validate_json_schema_with_python_jsonschema.contract.json\","
+                                                    },
+                                                    {
+                                                        "file":  "modules/operations/run_first_smoke_install_trial.ps1",
+                                                        "line":  28,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/contracts/validate_json_schema_with_python_jsonschema.contract.json\""
+                                                    },
+                                                    {
+                                                        "file":  "modules/self_development/write_self_development_decision_kernel_report.ps1",
+                                                        "line":  50,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "@{ path = \"operations/contracts/validate_json_schema_with_python_jsonschema.contract.json\"; kind = \"json\" },"
+                                                    },
+                                                    {
+                                                        "file":  "operations/registry.json",
+                                                        "line":  27,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"contract_path\": \"operations/contracts/validate_json_schema_with_python_jsonschema.contract.json\","
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1/APPLY.ps1",
+                                                        "line":  25,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/contracts/validate_json_schema_with_python_jsonschema.contract.json\""
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1/VALIDATE.ps1",
+                                                        "line":  20,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/contracts/validate_json_schema_with_python_jsonschema.contract.json\""
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/APPLY.ps1",
+                                                        "line":  19,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "$OperationContractPath = \"operations/contracts/validate_json_schema_with_python_jsonschema.contract.json\""
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/APPLY.ps1",
+                                                        "line":  33,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/contracts/validate_json_schema_with_python_jsonschema.contract.json\""
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/VALIDATE.ps1",
+                                                        "line":  16,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "$OperationContractPath = \"operations/contracts/validate_json_schema_with_python_jsonschema.contract.json\""
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/VALIDATE.ps1",
+                                                        "line":  120,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/contracts/validate_json_schema_with_python_jsonschema.contract.json\","
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE86_OPERATION_RUNTIME_SKELETON_V1/APPLY.ps1",
+                                                        "line":  21,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "$OperationContractPath = \"operations/contracts/validate_json_schema_with_python_jsonschema.contract.json\""
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE86_OPERATION_RUNTIME_SKELETON_V1/APPLY.ps1",
+                                                        "line":  35,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/contracts/validate_json_schema_with_python_jsonschema.contract.json\","
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE86_OPERATION_RUNTIME_SKELETON_V1/VALIDATE.ps1",
+                                                        "line":  18,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "$OperationContractPath = \"operations/contracts/validate_json_schema_with_python_jsonschema.contract.json\""
+                                                    },
+                                                    {
+                                                        "file":  "packs/PHASE86_OPERATION_RUNTIME_SKELETON_V1/VALIDATE.ps1",
+                                                        "line":  118,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/contracts/validate_json_schema_with_python_jsonschema.contract.json\","
+                                                    },
+                                                    {
+                                                        "file":  "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json",
+                                                        "line":  938,
+                                                        "historical_or_generated":  false,
+                                                        "text":  "\"operations/contracts/validate_json_schema_with_python_jsonschema.contract.json\""
+                                                    }
+                                                ]
+                            }
+                        ],
+    "interpretation":  {
+                           "user_hypothesis":  "likely unused / written and forgotten",
+                           "observed_result":  "not safe to delete directly: old operation-runtime modules and registry still reference target paths",
+                           "safe_next":  "either keep as legacy reference, or first retire/migrate PHASE84-86 operation-runtime chain, then delete"
+                       },
+    "boundaries":  {
+                       "scan_only":  true,
+                       "no_files_deleted":  true,
+                       "no_paths_moved":  true,
+                       "no_runtime_touched":  true,
+                       "no_passport_deleted":  true
+                   },
+    "created_at":  "2026-07-10T21:30:18.0475658+04:00"
+}
