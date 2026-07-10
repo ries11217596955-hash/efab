@@ -942,3 +942,63 @@ Validation:
 Boundaries:
 - No live runtime touched.
 - This deletes only the retired legacy operation-runtime chain, not current Builder runtime organs.
+
+## 2026-07-10 — Architecture lens shift: from engineer-view to living-cell anatomy
+
+STATUS: STRATEGY_SUPPORTED / ACTIVE_ARCHITECTURAL_DIRECTION / NOT_IMPLEMENTED_AS_WAKE_LOGIC_YET
+
+Owner correction / strategic insight:
+- The Agent Builder must not be treated as a chatbot, a pile of scripts, a Codex wrapper, or a simple "LLM + tools" system.
+- The stronger lens is: Builder as a living cell / organism with organs, memory, senses, hands, legs, immune boundaries, metabolism, and a wake/sleep/action cycle.
+- The operator lens must shift from programmer-only view to architect + doctor/anatomist view.
+
+How we got here:
+- Earlier passport work exposed that many folders/scripts looked like organs but were actually materials, fixtures, legacy dependencies, or duplicated historical chain remnants.
+- The old engineering view asked: "Does this file/folder exist and is it referenced?"
+- The living-cell/anatomy view asked a better question: "What role does this part play in the body, what organ boundary does it have, what proof keeps it alive, and can the organism safely act without it?"
+- This changed the method from building more code to classifying body parts: organ / material / fixture / legacy dependency / dead tissue / immune risk / proof surface.
+- The PHASE84-86 retirement confirmed the method: first prove whether a dependency is active body tissue, then retire/delete only after active references are zero and validators pass.
+
+Architectural consequence:
+- An organ is not a folder.
+- A contract is not automatically an organ.
+- A used dependency is not automatically a living organ.
+- A validator is not maturity by itself.
+- A body map is not the body, but it is an anatomical scan of the body.
+- A passport is not proof; it is an organ identity card that must point to proof.
+
+New wake/action direction:
+- The next Builder growth should define how the organism wakes up and acts.
+- Wake logic must not be a generic scheduler or chatbot loop.
+- Wake logic should be a biological control loop:
+  1. Sense current body state.
+  2. Read active memory/context, not raw archive dumps.
+  3. Detect stimulus: Owner command, repo change, runtime signal, failed validator, stale proof, blocked organ, pending route lock, or scheduled self-check.
+  4. Classify stimulus: threat, growth opportunity, maintenance, proof request, cleanup, route decision, or child-agent production candidate.
+  5. Select mode/lens: anatomist, surgeon, immune system, builder, memory curator, bridge operator, or strategist.
+  6. Choose smallest safe action atom.
+  7. Run preflight and proof boundary.
+  8. Act only inside authority/passport/route constraints.
+  9. Validate result.
+  10. Write compact memory/useful journal entry.
+  11. Return-to-parent: update map/status/next action instead of self-completing.
+
+Wake/action law candidate:
+- Wake without observation is forbidden.
+- Action without classification is forbidden.
+- Mutation without proof boundary is forbidden.
+- Organ growth without validator is forbidden.
+- Delete only after active-body dependency scan passes.
+- Long-running/live action requires explicit boundary and stop/rollback proof.
+- The Builder must never self-declare complete; it can only return a proven state and next smallest action.
+
+Development implication:
+- Before building more capability, the system needs a small explicit Wake/Act organ or control circuit.
+- That circuit should reuse the existing inner motor laws, evidence law, live/lab boundary, passport discipline, and body map validation.
+- The first implementation should be a lab-only wake/action protocol report and validator, not autonomous live runtime.
+- Acceptance should require negative tests: no action on unclear input, no mutation without preflight, no live action without authority, no deletion without dependency scan, no organ promotion without proof.
+
+Current boundary:
+- This is an architectural direction recorded in the journal.
+- It is not yet implemented as an active wake/action runtime.
+- Next safe move is to produce a compact Wake/Act Control Circuit V1 requirement + lab validator.
