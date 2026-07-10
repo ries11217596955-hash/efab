@@ -1,0 +1,123 @@
+﻿{
+    "schema":  "memory_reasoning_lab_validation_v1",
+    "status":  "PASS_MEMORY_REASONING_LAB_VALIDATION_V1",
+    "validated_organs":  [
+                             "operations_memory",
+                             "operations_reasoning"
+                         ],
+    "results":  [
+                    {
+                        "organ_id":  "operations_memory",
+                        "passport_path":  "self_model/organ_passports/operations_memory/ORGAN_PASSPORT_V1.json",
+                        "validators_passed":  2,
+                        "proof_refs":  [
+                                           "tests/memory/episodic/EPISODIC_MEMORY_CELL_V1_PROOF.json",
+                                           "tests/memory/episodic/EPISODIC_RECALL_V1_PROOF.json"
+                                       ],
+                        "maturity":  "VALIDATED_LAB",
+                        "live_or_lab_status":  "PROVEN_LAB",
+                        "runs":  [
+                                     {
+                                         "validator":  "operations/memory/episodic/validate_episode_cell_v1.ps1",
+                                         "exit_code":  0,
+                                         "status":  [
+                                                        "PASS_EPISODIC_MEMORY_CELL_V1"
+                                                    ],
+                                         "proof_path":  [
+                                                            "tests/memory/episodic/EPISODIC_MEMORY_CELL_V1_PROOF.json"
+                                                        ],
+                                         "output":  [
+                                                        "VALIDATION_PASS=PASS_EPISODIC_MEMORY_CELL_V1",
+                                                        "PROOF_PATH=tests/memory/episodic/EPISODIC_MEMORY_CELL_V1_PROOF.json",
+                                                        "REAL_EPISODE_CELL_PATH=.runtime\\episodic_memory_v1\\validator_cells\\aimo_growth_selector_ordered_payload_failure_v1.json",
+                                                        "LIVE_PROCESS_TOUCHED=false"
+                                                    ]
+                                     },
+                                     {
+                                         "validator":  "operations/memory/episodic/validate_episode_recall_v1.ps1",
+                                         "exit_code":  0,
+                                         "status":  [
+                                                        "PASS_EPISODIC_RECALL_V1"
+                                                    ],
+                                         "proof_path":  [
+                                                            "tests/memory/episodic/EPISODIC_RECALL_V1_PROOF.json"
+                                                        ],
+                                         "output":  [
+                                                        "VALIDATION_PASS=PASS_EPISODIC_RECALL_V1",
+                                                        "PROOF_PATH=tests/memory/episodic/EPISODIC_RECALL_V1_PROOF.json",
+                                                        "TOP_EPISODE=recall_real_aimo_selector_ordered_payload_lesson_v1",
+                                                        "LIVE_PROCESS_TOUCHED=false"
+                                                    ]
+                                     }
+                                 ]
+                    },
+                    {
+                        "organ_id":  "operations_reasoning",
+                        "passport_path":  "self_model/organ_passports/operations_reasoning/ORGAN_PASSPORT_V1.json",
+                        "validators_passed":  3,
+                        "proof_refs":  [
+                                           "tests/reasoning/EPISODIC_DECISION_TASK_FORK_V1_PROOF.json",
+                                           "tests/reasoning/EPISODIC_RECALL_DECISION_V1_PROOF.json",
+                                           "tests/reasoning/REASONING_EPISODE_V1_PROOF.json"
+                                       ],
+                        "maturity":  "VALIDATED_LAB",
+                        "live_or_lab_status":  "PROVEN_LAB",
+                        "runs":  [
+                                     {
+                                         "validator":  "operations/reasoning/validate_episodic_decision_task_fork_v1.ps1",
+                                         "exit_code":  0,
+                                         "status":  [
+                                                        "PASS_EPISODIC_DECISION_TASK_FORK_V1"
+                                                    ],
+                                         "proof_path":  [
+                                                            "tests/reasoning/EPISODIC_DECISION_TASK_FORK_V1_PROOF.json"
+                                                        ],
+                                         "output":  [
+                                                        "VALIDATION_PASS=PASS_EPISODIC_DECISION_TASK_FORK_V1",
+                                                        "PROOF_PATH=tests/reasoning/EPISODIC_DECISION_TASK_FORK_V1_PROOF.json",
+                                                        "LIVE_PROCESS_TOUCHED=false"
+                                                    ]
+                                     },
+                                     {
+                                         "validator":  "operations/reasoning/validate_episodic_recall_decision_v1.ps1",
+                                         "exit_code":  0,
+                                         "status":  [
+                                                        "PASS_EPISODIC_RECALL_DECISION_V1"
+                                                    ],
+                                         "proof_path":  [
+                                                            "tests/reasoning/EPISODIC_RECALL_DECISION_V1_PROOF.json"
+                                                        ],
+                                         "output":  [
+                                                        "VALIDATION_PASS=PASS_EPISODIC_RECALL_DECISION_V1",
+                                                        "PROOF_PATH=tests/reasoning/EPISODIC_RECALL_DECISION_V1_PROOF.json",
+                                                        "LIVE_PROCESS_TOUCHED=false"
+                                                    ]
+                                     },
+                                     {
+                                         "validator":  "operations/reasoning/validate_reasoning_episode_v1.ps1",
+                                         "exit_code":  0,
+                                         "status":  [
+                                                        "PASS_REASONING_EPISODE_V1"
+                                                    ],
+                                         "proof_path":  [
+                                                            "tests/reasoning/REASONING_EPISODE_V1_PROOF.json"
+                                                        ],
+                                         "output":  [
+                                                        "VALIDATION_PASS=PASS_REASONING_EPISODE_V1",
+                                                        "PROOF_PATH=tests/reasoning/REASONING_EPISODE_V1_PROOF.json",
+                                                        "REASONING_REPORT_PATH=.runtime\\reasoning\\episodes\\reasoning_episode_validator_real_replay_v1\\REASONING_EPISODE_REPORT.json",
+                                                        "EPISODIC_CELL_PATH=.runtime\\episodic_memory_v1\\reasoning_cells\\reasoning_episode_aimo_selector_ordered_payload_lesson_v1.json",
+                                                        "LIVE_PROCESS_TOUCHED=false"
+                                                    ]
+                                     }
+                                 ]
+                    }
+                ],
+    "boundaries":  {
+                       "lab_validation_only":  true,
+                       "no_active_passports_created":  true,
+                       "no_proven_live_claim":  true,
+                       "live_process_touched":  false
+                   },
+    "created_at":  "2026-07-10T20:22:41.3167439+04:00"
+}

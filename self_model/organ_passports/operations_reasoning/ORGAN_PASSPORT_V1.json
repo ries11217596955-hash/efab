@@ -57,9 +57,11 @@
                        "operations/reasoning/validate_reasoning_episode_v1.ps1"
                    ],
     "proof_refs":  [
+                       "reports/self_development/MEMORY_REASONING_LAB_VALIDATION_V1.json",
                        "tests/reasoning/EPISODIC_DECISION_TASK_FORK_V1_PROOF.json",
                        "tests/reasoning/EPISODIC_RECALL_DECISION_V1_PROOF.json",
-                       "tests/reasoning/REASONING_EPISODE_V1_PROOF.json"
+                       "tests/reasoning/REASONING_EPISODE_V1_PROOF.json",
+                       "tests/self_development/MEMORY_REASONING_LAB_VALIDATION_V1_PROOF.json"
                    ],
     "runtime_refs":  [
 
@@ -74,7 +76,8 @@
                               "no PASSPORT_ACTIVE claim",
                               "no PROVEN_LIVE claim",
                               "no live process touched",
-                              "activation requires separate validator/proof/Owner acceptance"
+                              "activation requires separate validator/proof/Owner acceptance",
+                              "lab validated does not equal active organ"
                           ],
     "failure_modes":  [
                           "stale body map",
@@ -87,17 +90,16 @@
                                    "rerun review/index gate",
                                    "rerun map refresh/currentness validator"
                                ],
-    "maturity":  "DRAFT",
-    "live_or_lab_status":  "NOT_PROVEN",
+    "maturity":  "VALIDATED_LAB",
+    "live_or_lab_status":  "PROVEN_LAB",
     "gaps":  [
-                 "READY_FOR_LAB_VALIDATION only; dedicated lab validation still required",
-                 "PROVEN_LIVE forbidden",
-                 "PASSPORT_ACTIVE forbidden"
+                 "PASSPORT_ACTIVE forbidden until activation validator and owner acceptance",
+                 "PROVEN_LIVE forbidden; this is lab validation only"
              ],
     "source_evidence":  [
                             "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json",
                             "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                             "reports/self_development/ORGAN_PASSPORT_REVIEW_LANE_BATCH_GENERATOR_V1.json"
                         ],
-    "last_validated_at":  "2026-07-10T20:15:55.3366704+04:00"
+    "last_validated_at":  "2026-07-10T20:22:41.3167439+04:00"
 }

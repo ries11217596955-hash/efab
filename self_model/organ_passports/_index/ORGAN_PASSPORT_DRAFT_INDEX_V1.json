@@ -1090,11 +1090,11 @@
                         "source_lane":  "REVIEW_LANE",
                         "passport_path":  "self_model/organ_passports/operations_reasoning/ORGAN_PASSPORT_V1.json",
                         "status":  "PASSPORT_DRAFT_FROM_EVIDENCE",
-                        "maturity":  "DRAFT",
-                        "live_or_lab_status":  "NOT_PROVEN",
+                        "maturity":  "VALIDATED_LAB",
+                        "live_or_lab_status":  "PROVEN_LAB",
                         "owning_root":  "operations/reasoning",
                         "validator_count":  3,
-                        "proof_count":  3
+                        "proof_count":  5
                     },
                     {
                         "organ_id":  "operations_readme_md",
@@ -1150,11 +1150,11 @@
                         "source_lane":  "REVIEW_LANE",
                         "passport_path":  "self_model/organ_passports/operations_memory/ORGAN_PASSPORT_V1.json",
                         "status":  "PASSPORT_DRAFT_FROM_EVIDENCE",
-                        "maturity":  "DRAFT",
-                        "live_or_lab_status":  "NOT_PROVEN",
+                        "maturity":  "VALIDATED_LAB",
+                        "live_or_lab_status":  "PROVEN_LAB",
                         "owning_root":  "operations/memory",
                         "validator_count":  2,
-                        "proof_count":  2
+                        "proof_count":  4
                     },
                     {
                         "organ_id":  "operations_live_start",
@@ -1919,5 +1919,5 @@
                        "no_proven_live_claims_created":  true,
                        "live_process_touched":  false
                    },
-    "created_at":  "2026-07-10T20:16:25.9612146+04:00"
+    "created_at":  "2026-07-10T20:23:06.5620318+04:00"
 }

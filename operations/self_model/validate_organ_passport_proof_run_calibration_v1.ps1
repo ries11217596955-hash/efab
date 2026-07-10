@@ -29,9 +29,16 @@ foreach($id in @('operations_live_start','operations_memory','operations_reasoni
   $pp=Get-Content "self_model/organ_passports/$id/ORGAN_PASSPORT_V1.json" -Raw|ConvertFrom-Json
   Assert (@($pp.proof_refs).Count -ge 1) "PASSPORT_PROOF_REFS_NOT_ADDED:$id"
   Assert ($pp.live_or_lab_status -ne 'PROVEN_LIVE') "PROVEN_LIVE_FORBIDDEN:$id"
-  Assert ($pp.maturity -ne 'VALIDATED_LAB') "VALIDATED_LAB_PREMATURE:$id"
+  if($pp.maturity -eq 'VALIDATED_LAB'){
+    $laterProof='tests/self_development/MEMORY_REASONING_LAB_VALIDATION_V1_PROOF.json'
+    Assert (Test-Path $laterProof) "VALIDATED_LAB_REQUIRES_LATER_PROOF:$id"
+    $later=Get-Content $laterProof -Raw|ConvertFrom-Json
+    Assert (@($later.validated_organs) -contains $id) "VALIDATED_LAB_NOT_IN_LATER_PROOF:$id"
+    Assert ($later.status -eq 'PASS_MEMORY_REASONING_LAB_VALIDATION_V1') "LATER_PROOF_STATUS_BAD:$id"
+  }
 }
 Write-Host 'VALIDATION_PASS=PASS_ORGAN_PASSPORT_PROOF_RUN_CALIBRATION_V1'
 Write-Host 'READY_FOR_LAB_VALIDATION=operations_live_start,operations_memory,operations_reasoning'
 Write-Host "REPORT_PATH=$reportPath"
 Write-Host "PROOF_PATH=$proofPath"
+

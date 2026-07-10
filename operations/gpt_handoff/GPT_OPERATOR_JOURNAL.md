@@ -703,3 +703,28 @@ Boundaries:
 
 Next concrete step:
 - Run dedicated lab-validation on the three ready candidates, probably starting with operations_memory or operations_reasoning before live_start.
+
+## 2026-07-10 — Memory + reasoning lab validation V1
+
+STATUS: PROOF_PASS / VALIDATED_LAB / PROVEN_LAB / NOT_PROVEN_LIVE
+
+Built:
+- Added combined lab validation builder: operations/self_model/build_memory_reasoning_lab_validation_v1.ps1.
+- Added validator: operations/self_model/validate_memory_reasoning_lab_validation_v1.ps1.
+- Created report/proof:
+  - reports/self_development/MEMORY_REASONING_LAB_VALIDATION_V1.json
+  - tests/self_development/MEMORY_REASONING_LAB_VALIDATION_V1_PROOF.json
+
+Result:
+- operations_memory validated with 2 validators.
+- operations_reasoning validated with 3 validators.
+- Both passports moved to VALIDATED_LAB / PROVEN_LAB.
+
+Boundaries:
+- Lab validation only.
+- No PASSPORT_ACTIVE claim.
+- No PROVEN_LIVE claim.
+- No live runtime touched.
+
+Next concrete step:
+- Decide whether to lab-validate operations_live_start or first repair the remaining single-validator/contract-reference candidates.
