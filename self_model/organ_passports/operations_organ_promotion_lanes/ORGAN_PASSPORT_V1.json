@@ -41,11 +41,14 @@
                          "passport draft/index gate"
                      ],
     "validators":  [
-                       "operations/organ_promotion_lanes/validate_organ_promotion_lanes_v1.ps1"
+                       "operations/organ_promotion_lanes/validate_organ_promotion_lanes_v1.ps1",
+                       "operations/organ_promotion_lanes/validate_organ_promotion_lanes_signal_contract_v1.ps1"
                    ],
     "proof_refs":  [
+                       "reports/self_development/ORGAN_PROMOTION_LANES_LIFECYCLE_PASS_V1.json",
                        "reports/self_development/ORGAN_PROMOTION_LANES_V1_REPORT.json",
                        "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json",
+                       "tests/self_development/ORGAN_PROMOTION_LANES_LIFECYCLE_PASS_V1_PROOF.json",
                        "tests/self_development/ORGAN_PROMOTION_LANES_V1_PROOF.json"
                    ],
     "runtime_refs":  [
@@ -75,13 +78,12 @@
                                    "rerun organ promotion lanes validator",
                                    "rerun passport review/index gate"
                                ],
-    "maturity":  "DRAFT",
-    "live_or_lab_status":  "NOT_PROVEN",
+    "maturity":  "VALIDATED_LAB",
+    "live_or_lab_status":  "PROVEN_LAB",
     "gaps":  [
-                 "runtime proof missing",
-                 "ACTIVE status forbidden",
+                 "PASSPORT_ACTIVE forbidden until active wiring contract exists",
                  "PROVEN_LIVE forbidden",
-                 "auto map refresh on commit not proven"
+                 "Living Loop Brain consumption of lane signals not implemented yet"
              ],
     "source_evidence":  [
                             "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json",
@@ -89,5 +91,11 @@
                             "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                             "reports/self_development/ORGAN_PASSPORT_DRAFT_GENERATOR_FAST_LANE_V1.json"
                         ],
-    "last_validated_at":  "2026-07-10T19:03:45.4345888+04:00"
+    "last_validated_at":  "2026-07-10T19:03:45.4345888+04:00",
+    "lifecycle_decision":  {
+                               "decision":  "PROMOTE_TO_VALIDATED_LAB_KEEP_NON_ACTIVE",
+                               "reason":  "two independent validators pass; lane decisions are normalized signals, not organ acceptance",
+                               "state_change":  "DRAFT_NOT_PROVEN_TO_VALIDATED_LAB_PROVEN_LAB",
+                               "created_at":  "2026-07-11T00:59:56.9481805+04:00"
+                           }
 }

@@ -9,16 +9,16 @@
     "source_passport_index":  "self_model/organ_passports/_index/ORGAN_PASSPORT_DRAFT_INDEX_V1.json",
     "counts":  {
                    "confirmed_components":  8,
-                   "source_candidates":  158,
-                   "triage_items":  158,
-                   "lane_decisions":  158,
+                   "source_candidates":  151,
+                   "triage_items":  151,
+                   "lane_decisions":  151,
                    "lanes":  8,
                    "fast_lane_passport_draft":  1,
                    "calibrated_passport_draft_blocked_runtime":  1,
-                   "owner_link_required":  9,
-                   "review_lane":  26,
-                   "material_or_archive":  121,
-                   "passport_index_count":  2,
+                   "owner_link_required":  8,
+                   "review_lane":  23,
+                   "material_or_archive":  118,
+                   "passport_index_count":  1,
                    "active_passports":  0
                },
     "lanes":  [
@@ -34,7 +34,7 @@
                   },
                   {
                       "lane":  "EVIDENCE_MATERIAL_BUCKET",
-                      "count":  107,
+                      "count":  104,
                       "promotion_allowed":  0,
                       "passport_draft_allowed":  0,
                       "active_allowed":  0,
@@ -88,7 +88,7 @@
                   },
                   {
                       "lane":  "OWNER_LINK_REQUIRED",
-                      "count":  9,
+                      "count":  8,
                       "promotion_allowed":  0,
                       "passport_draft_allowed":  0,
                       "active_allowed":  0,
@@ -99,13 +99,13 @@
                                                 "contracts_self_development",
                                                 "contracts_self_knowledge",
                                                 "modules_materials",
-                                                "modules_operations",
-                                                "modules_route_locks"
+                                                "modules_route_locks",
+                                                "modules_self_development"
                                             ]
                   },
                   {
                       "lane":  "REVIEW_LANE",
-                      "count":  26,
+                      "count":  23,
                       "promotion_allowed":  0,
                       "passport_draft_allowed":  0,
                       "active_allowed":  0,
@@ -113,11 +113,11 @@
                                                 "operations_active_behavior",
                                                 "operations_autonomy_diagnostics",
                                                 "operations_bridge_diagnostics",
-                                                "operations_contracts",
                                                 "operations_live_like",
                                                 "operations_live_readiness",
                                                 "operations_live_start",
-                                                "operations_memory"
+                                                "operations_memory",
+                                                "operations_overnight_school"
                                             ]
                   },
                   {
@@ -647,30 +647,6 @@
                                               ]
                            },
                            {
-                               "candidate_id":  "modules_operations",
-                               "path":  "modules/operations",
-                               "triage_class":  "MODULE_OR_CAPABILITY_SURFACE",
-                               "passport_readiness":  "BLOCKED_UNTIL_OWNER_ORGAN_LINK",
-                               "lane":  "OWNER_LINK_REQUIRED",
-                               "decision":  "BLOCK_UNTIL_PARENT_OR_OWNER_LINK",
-                               "promotion_allowed":  false,
-                               "passport_draft_allowed":  false,
-                               "active_allowed":  false,
-                               "required_gates":  [
-                                                      "owner_parent_link_decision",
-                                                      "parent_organ_contract",
-                                                      "dedicated_validator_or_parent_validator",
-                                                      "proof_json"
-                                                  ],
-                               "reason":  "module surface with code; skill/capability candidate, not organ by default",
-                               "validator_refs":  [
-
-                                                  ],
-                               "proof_refs":  [
-
-                                              ]
-                           },
-                           {
                                "candidate_id":  "modules_route_locks",
                                "path":  "modules/route_locks",
                                "triage_class":  "MODULE_OR_CAPABILITY_SURFACE",
@@ -813,31 +789,6 @@
                                "proof_refs":  [
                                                   "operations/bridge_diagnostics/BRIDGE_INTERRUPTION_DURING_SOURCE_DIGEST_PROOF_20260705_V1.json",
                                                   "operations/bridge_diagnostics/BRIDGE_INTERRUPTION_DURING_SOURCE_DIGEST_PROOF_20260705_V1.md"
-                                              ]
-                           },
-                           {
-                               "candidate_id":  "operations_contracts",
-                               "path":  "operations/contracts",
-                               "triage_class":  "REAL_ORGAN_CANDIDATE",
-                               "passport_readiness":  "NEEDS_REVIEW",
-                               "lane":  "REVIEW_LANE",
-                               "decision":  "REVIEW_BEFORE_PROMOTION",
-                               "promotion_allowed":  false,
-                               "passport_draft_allowed":  false,
-                               "active_allowed":  false,
-                               "required_gates":  [
-                                                      "evidence_review",
-                                                      "organ_requirement_statement",
-                                                      "validator_or_reject_reason",
-                                                      "lane_reclassification"
-                                                  ],
-                               "reason":  "top-level operations surface with scripts/evidence; may be independent organ or component",
-                               "validator_refs":  [
-                                                      "operations/contracts/validate_json_schema_with_ajv.contract.json",
-                                                      "operations/contracts/validate_json_schema_with_python_jsonschema.contract.json"
-                                                  ],
-                               "proof_refs":  [
-
                                               ]
                            },
                            {
@@ -1085,56 +1036,6 @@
                                "reason":  "top-level operations surface with scripts/evidence; may be independent organ or component",
                                "validator_refs":  [
 
-                                                  ],
-                               "proof_refs":  [
-
-                                              ]
-                           },
-                           {
-                               "candidate_id":  "operations_runtime",
-                               "path":  "operations/runtime",
-                               "triage_class":  "REAL_ORGAN_CANDIDATE",
-                               "passport_readiness":  "NEEDS_REVIEW",
-                               "lane":  "REVIEW_LANE",
-                               "decision":  "REVIEW_BEFORE_PROMOTION",
-                               "promotion_allowed":  false,
-                               "passport_draft_allowed":  false,
-                               "active_allowed":  false,
-                               "required_gates":  [
-                                                      "evidence_review",
-                                                      "organ_requirement_statement",
-                                                      "validator_or_reject_reason",
-                                                      "lane_reclassification"
-                                                  ],
-                               "reason":  "top-level operations surface with scripts/evidence; may be independent organ or component",
-                               "validator_refs":  [
-
-                                                  ],
-                               "proof_refs":  [
-
-                                              ]
-                           },
-                           {
-                               "candidate_id":  "operations_smoke_trials",
-                               "path":  "operations/smoke_trials",
-                               "triage_class":  "REAL_ORGAN_CANDIDATE",
-                               "passport_readiness":  "NEEDS_REVIEW",
-                               "lane":  "REVIEW_LANE",
-                               "decision":  "REVIEW_BEFORE_PROMOTION",
-                               "promotion_allowed":  false,
-                               "passport_draft_allowed":  false,
-                               "active_allowed":  false,
-                               "required_gates":  [
-                                                      "evidence_review",
-                                                      "organ_requirement_statement",
-                                                      "validator_or_reject_reason",
-                                                      "lane_reclassification"
-                                                  ],
-                               "reason":  "top-level operations surface with scripts/evidence; may be independent organ or component",
-                               "validator_refs":  [
-                                                      "operations/smoke_trials/fixtures/json_schema_validation/invalid_instance.json",
-                                                      "operations/smoke_trials/fixtures/json_schema_validation/schema.json",
-                                                      "operations/smoke_trials/fixtures/json_schema_validation/valid_instance.json"
                                                   ],
                                "proof_refs":  [
 
@@ -3223,75 +3124,6 @@
                                               ]
                            },
                            {
-                               "candidate_id":  "packs_phase84_first_wrapper_operation_contracts_v1",
-                               "path":  "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1",
-                               "triage_class":  "PACK_OR_PROOF_BUNDLE",
-                               "passport_readiness":  "NOT_ORGAN",
-                               "lane":  "EVIDENCE_MATERIAL_BUCKET",
-                               "decision":  "KEEP_AS_MATERIAL_NOT_ORGAN",
-                               "promotion_allowed":  false,
-                               "passport_draft_allowed":  false,
-                               "active_allowed":  false,
-                               "required_gates":  [
-                                                      "keep_as_evidence",
-                                                      "link_to_parent_when_needed",
-                                                      "exclude_from_passport_generator"
-                                                  ],
-                               "reason":  "phase/packs bundle; may contain proof/capability material but not organ by default",
-                               "validator_refs":  [
-
-                                                  ],
-                               "proof_refs":  [
-
-                                              ]
-                           },
-                           {
-                               "candidate_id":  "packs_phase85_first_smoke_install_trial_v1",
-                               "path":  "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1",
-                               "triage_class":  "PACK_OR_PROOF_BUNDLE",
-                               "passport_readiness":  "NOT_ORGAN",
-                               "lane":  "EVIDENCE_MATERIAL_BUCKET",
-                               "decision":  "KEEP_AS_MATERIAL_NOT_ORGAN",
-                               "promotion_allowed":  false,
-                               "passport_draft_allowed":  false,
-                               "active_allowed":  false,
-                               "required_gates":  [
-                                                      "keep_as_evidence",
-                                                      "link_to_parent_when_needed",
-                                                      "exclude_from_passport_generator"
-                                                  ],
-                               "reason":  "phase/packs bundle; may contain proof/capability material but not organ by default",
-                               "validator_refs":  [
-
-                                                  ],
-                               "proof_refs":  [
-
-                                              ]
-                           },
-                           {
-                               "candidate_id":  "packs_phase86_operation_runtime_skeleton_v1",
-                               "path":  "packs/PHASE86_OPERATION_RUNTIME_SKELETON_V1",
-                               "triage_class":  "PACK_OR_PROOF_BUNDLE",
-                               "passport_readiness":  "NOT_ORGAN",
-                               "lane":  "EVIDENCE_MATERIAL_BUCKET",
-                               "decision":  "KEEP_AS_MATERIAL_NOT_ORGAN",
-                               "promotion_allowed":  false,
-                               "passport_draft_allowed":  false,
-                               "active_allowed":  false,
-                               "required_gates":  [
-                                                      "keep_as_evidence",
-                                                      "link_to_parent_when_needed",
-                                                      "exclude_from_passport_generator"
-                                                  ],
-                               "reason":  "phase/packs bundle; may contain proof/capability material but not organ by default",
-                               "validator_refs":  [
-
-                                                  ],
-                               "proof_refs":  [
-
-                                              ]
-                           },
-                           {
                                "candidate_id":  "packs_phase87_self_development_decision_kernel_v1",
                                "path":  "packs/PHASE87_SELF_DEVELOPMENT_DECISION_KERNEL_V1",
                                "triage_class":  "PACK_OR_PROOF_BUNDLE",
@@ -3955,5 +3787,5 @@
                                      "Use remaining FAST_LANE candidates only after calibration boundary is accepted.",
                                      "Batch-block OWNER_LINK_REQUIRED items until parent organ/Owner decision exists."
                                  ],
-    "created_at":  "2026-07-09T12:28:59.2859035+04:00"
+    "created_at":  "2026-07-11T00:58:49.1643962+04:00"
 }

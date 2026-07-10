@@ -5,14 +5,14 @@ status: PASS_ORGAN_PROMOTION_LANES_V1
 Purpose: persistent growth gate. It turns body-map candidate triage into lanes so Builder does not process all candidates manually or promote materials as organs.
 
 Counts:
-- source candidates: 158
-- lane decisions: 158
+- source candidates: 151
+- lane decisions: 151
 - lanes: 8
 - fast lane passport draft: 1
 - calibrated passport draft blocked runtime: 1
-- owner link required: 9
-- review lane: 26
-- material/archive: 121
+- owner link required: 8
+- review lane: 23
+- material/archive: 118
 
 Boundary:
 - lanes are not organ acceptance.

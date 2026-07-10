@@ -1111,3 +1111,77 @@ Current boundary:
 - This journal import is strategy-supported architectural memory.
 - It is not an implementation, not a live loop, not a new organ, not a PASSPORT_ACTIVE claim.
 - Next safe repo action is to choose and run/prove the second full passport lifecycle candidate, then update the body map/passport index and extract Living Loop requirements from that proof.
+
+## 2026-07-11 — Second passport lifecycle pass: operations_organ_promotion_lanes V1
+
+STATUS: PASS / SECOND_LIFECYCLE_PASS / VALIDATED_LAB_NON_ACTIVE
+
+Context:
+- Owner accepted the organism architecture memory and authorized starting the first practical step.
+- Correct next step was not abstract Wake/Act or Living Loop implementation.
+- Correct next step was proving another real passport lifecycle pass from current body state.
+
+Candidate selected:
+- operations_organ_promotion_lanes
+
+Why this candidate:
+- It was a real organ draft, not pack/material/fixture.
+- It already had proof refs but only one validator surface.
+- It directly protects the organism from false organs by turning body candidates into lanes/signals.
+
+Observed blocker before pass:
+- Base validator failed with TRIAGE_MAP_COUNT_MISMATCH.
+- Root cause: BODY_MAP_CANDIDATE_TRIAGE_V1 still contained 7 retired PHASE84-86/Trial/Contracts candidates after the deletion pass.
+- This proved the living-cell point: stale body state must be repaired before maturity decisions.
+
+Repair:
+- Removed stale retired candidates from BODY_MAP_CANDIDATE_TRIAGE_V1:
+  - modules_operations
+  - operations_contracts
+  - operations_runtime
+  - operations_smoke_trials
+  - packs_phase84_first_wrapper_operation_contracts_v1
+  - packs_phase85_first_smoke_install_trial_v1
+  - packs_phase86_operation_runtime_skeleton_v1
+- Triage count now matches active map primary candidates: 151.
+- Rebuilt ORGAN_PROMOTION_LANES_V1 from repaired triage.
+
+New validation surface:
+- Added operations/organ_promotion_lanes/validate_organ_promotion_lanes_signal_contract_v1.ps1.
+- It verifies lane decisions as normalized organism signals, not organ acceptance.
+- It enforces: matching map/triage/decision ids, required gates, no active_allowed, review/owner/material signals present, and no raw repo-as-Brain-input assumption.
+
+Lifecycle proof:
+- Added operations/organ_promotion_lanes/build_organ_promotion_lanes_lifecycle_pass_v1.ps1.
+- Added operations/organ_promotion_lanes/validate_organ_promotion_lanes_lifecycle_pass_v1.ps1.
+- Added reports/self_development/ORGAN_PROMOTION_LANES_LIFECYCLE_PASS_V1.json.
+- Added tests/self_development/ORGAN_PROMOTION_LANES_LIFECYCLE_PASS_V1_PROOF.json.
+
+Lifecycle decision:
+- operations_organ_promotion_lanes promoted from DRAFT / NOT_PROVEN to VALIDATED_LAB / PROVEN_LAB.
+- Passport now has 2 validators and 5 proof refs.
+- No PASSPORT_ACTIVE created.
+- No live runtime touched.
+- Active/live status remains forbidden until separate active wiring contract exists.
+
+State-change verification:
+- Passport updated.
+- Passport index updated.
+- Body map refreshed.
+- Agent body composition map current validator PASS.
+- Triage validator PASS.
+- Base lanes validator PASS.
+- Signal contract validator PASS.
+- Lifecycle pass validator PASS.
+
+Architectural lesson:
+- This is a real organism lifecycle pass, not just a document.
+- The cycle exposed stale Body State, repaired it, rebuilt signals, added independent validation, changed passport state, refreshed map/index, and returned proof.
+- This is the kind of repeated evidence from which Living Loop Contract V1 should later be extracted.
+
+Boundary:
+- Not live.
+- Not autonomous runtime.
+- Not Brain implementation.
+- Not Wake/Act implementation.
+- This is passport lifecycle hardening and state-change proof.

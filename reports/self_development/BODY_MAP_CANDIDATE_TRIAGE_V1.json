@@ -862,42 +862,6 @@
                                                 ]
                   },
                   {
-                      "candidate_id":  "modules_operations",
-                      "path":  "modules/operations",
-                      "triage_class":  "MODULE_OR_CAPABILITY_SURFACE",
-                      "confidence":  "MEDIUM",
-                      "evidence_strength":  "MEDIUM",
-                      "reason":  "module surface with code; skill/capability candidate, not organ by default",
-                      "next_action":  "MAP_TO_CAPABILITY_INVOCATION_OR_OWNING_ORGAN",
-                      "passport_readiness":  "BLOCKED_UNTIL_OWNER_ORGAN_LINK",
-                      "organ_candidate":  false,
-                      "sub_organ_or_capability_candidate":  true,
-                      "source_counts":  {
-                                            "files":  4,
-                                            "scripts":  4,
-                                            "validators":  0,
-                                            "proofs":  0,
-                                            "contracts_or_policies":  2,
-                                            "docs":  0
-                                        },
-                      "validator_refs":  [
-
-                                         ],
-                      "proof_refs":  [
-
-                                     ],
-                      "contract_or_policy_refs":  [
-                                                      "modules/operations/register_operation_contracts.ps1",
-                                                      "modules/operations/write_operation_contract_report.ps1"
-                                                  ],
-                      "primary_evidence_refs":  [
-                                                    "modules/operations/invoke_operation_runtime.ps1",
-                                                    "modules/operations/register_operation_contracts.ps1",
-                                                    "modules/operations/run_first_smoke_install_trial.ps1",
-                                                    "modules/operations/write_operation_contract_report.ps1"
-                                                ]
-                  },
-                  {
                       "candidate_id":  "modules_route_locks",
                       "path":  "modules/route_locks",
                       "triage_class":  "MODULE_OR_CAPABILITY_SURFACE",
@@ -1107,43 +1071,6 @@
                       "primary_evidence_refs":  [
                                                     "operations/bridge_diagnostics/BRIDGE_INTERRUPTION_DURING_SOURCE_DIGEST_PROOF_20260705_V1.json",
                                                     "operations/bridge_diagnostics/BRIDGE_INTERRUPTION_DURING_SOURCE_DIGEST_PROOF_20260705_V1.md"
-                                                ]
-                  },
-                  {
-                      "candidate_id":  "operations_contracts",
-                      "path":  "operations/contracts",
-                      "triage_class":  "REAL_ORGAN_CANDIDATE",
-                      "confidence":  "MEDIUM",
-                      "evidence_strength":  "MEDIUM",
-                      "reason":  "top-level operations surface with scripts/evidence; may be independent organ or component",
-                      "next_action":  "OWNER_OR_VALIDATOR_REVIEW_FOR_ORGAN_PROMOTION",
-                      "passport_readiness":  "NEEDS_REVIEW",
-                      "organ_candidate":  true,
-                      "sub_organ_or_capability_candidate":  false,
-                      "source_counts":  {
-                                            "files":  3,
-                                            "scripts":  0,
-                                            "validators":  2,
-                                            "proofs":  0,
-                                            "contracts_or_policies":  3,
-                                            "docs":  0
-                                        },
-                      "validator_refs":  [
-                                             "operations/contracts/validate_json_schema_with_ajv.contract.json",
-                                             "operations/contracts/validate_json_schema_with_python_jsonschema.contract.json"
-                                         ],
-                      "proof_refs":  [
-
-                                     ],
-                      "contract_or_policy_refs":  [
-                                                      "operations/contracts/.gitkeep",
-                                                      "operations/contracts/validate_json_schema_with_ajv.contract.json",
-                                                      "operations/contracts/validate_json_schema_with_python_jsonschema.contract.json"
-                                                  ],
-                      "primary_evidence_refs":  [
-                                                    "operations/contracts/.gitkeep",
-                                                    "operations/contracts/validate_json_schema_with_ajv.contract.json",
-                                                    "operations/contracts/validate_json_schema_with_python_jsonschema.contract.json"
                                                 ]
                   },
                   {
@@ -1506,74 +1433,6 @@
                                                   ],
                       "primary_evidence_refs":  [
                                                     "operations/reflex_library/invoke_reflex.ps1"
-                                                ]
-                  },
-                  {
-                      "candidate_id":  "operations_runtime",
-                      "path":  "operations/runtime",
-                      "triage_class":  "REAL_ORGAN_CANDIDATE",
-                      "confidence":  "MEDIUM",
-                      "evidence_strength":  "LOW",
-                      "reason":  "top-level operations surface with scripts/evidence; may be independent organ or component",
-                      "next_action":  "OWNER_OR_VALIDATOR_REVIEW_FOR_ORGAN_PROMOTION",
-                      "passport_readiness":  "NEEDS_REVIEW",
-                      "organ_candidate":  true,
-                      "sub_organ_or_capability_candidate":  false,
-                      "source_counts":  {
-                                            "files":  2,
-                                            "scripts":  0,
-                                            "validators":  0,
-                                            "proofs":  0,
-                                            "contracts_or_policies":  0,
-                                            "docs":  1
-                                        },
-                      "validator_refs":  [
-
-                                         ],
-                      "proof_refs":  [
-
-                                     ],
-                      "contract_or_policy_refs":  [
-
-                                                  ],
-                      "primary_evidence_refs":  [
-
-                                                ]
-                  },
-                  {
-                      "candidate_id":  "operations_smoke_trials",
-                      "path":  "operations/smoke_trials",
-                      "triage_class":  "REAL_ORGAN_CANDIDATE",
-                      "confidence":  "MEDIUM",
-                      "evidence_strength":  "MEDIUM",
-                      "reason":  "top-level operations surface with scripts/evidence; may be independent organ or component",
-                      "next_action":  "OWNER_OR_VALIDATOR_REVIEW_FOR_ORGAN_PROMOTION",
-                      "passport_readiness":  "NEEDS_REVIEW",
-                      "organ_candidate":  true,
-                      "sub_organ_or_capability_candidate":  false,
-                      "source_counts":  {
-                                            "files":  4,
-                                            "scripts":  0,
-                                            "validators":  3,
-                                            "proofs":  0,
-                                            "contracts_or_policies":  0,
-                                            "docs":  0
-                                        },
-                      "validator_refs":  [
-                                             "operations/smoke_trials/fixtures/json_schema_validation/invalid_instance.json",
-                                             "operations/smoke_trials/fixtures/json_schema_validation/schema.json",
-                                             "operations/smoke_trials/fixtures/json_schema_validation/valid_instance.json"
-                                         ],
-                      "proof_refs":  [
-
-                                     ],
-                      "contract_or_policy_refs":  [
-
-                                                  ],
-                      "primary_evidence_refs":  [
-                                                    "operations/smoke_trials/fixtures/json_schema_validation/invalid_instance.json",
-                                                    "operations/smoke_trials/fixtures/json_schema_validation/schema.json",
-                                                    "operations/smoke_trials/fixtures/json_schema_validation/valid_instance.json"
                                                 ]
                   },
                   {
@@ -4719,108 +4578,6 @@
                                                 ]
                   },
                   {
-                      "candidate_id":  "packs_phase84_first_wrapper_operation_contracts_v1",
-                      "path":  "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1",
-                      "triage_class":  "PACK_OR_PROOF_BUNDLE",
-                      "confidence":  "MEDIUM",
-                      "evidence_strength":  "MEDIUM",
-                      "reason":  "phase/packs bundle; may contain proof/capability material but not organ by default",
-                      "next_action":  "KEEP_AS_PACK_EVIDENCE_OR_MERGE",
-                      "passport_readiness":  "NOT_ORGAN",
-                      "organ_candidate":  false,
-                      "sub_organ_or_capability_candidate":  false,
-                      "source_counts":  {
-                                            "files":  3,
-                                            "scripts":  2,
-                                            "validators":  0,
-                                            "proofs":  0,
-                                            "contracts_or_policies":  3,
-                                            "docs":  0
-                                        },
-                      "validator_refs":  [
-
-                                         ],
-                      "proof_refs":  [
-
-                                     ],
-                      "contract_or_policy_refs":  [
-                                                      "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1/APPLY.ps1",
-                                                      "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1/PACK.json",
-                                                      "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1/VALIDATE.ps1"
-                                                  ],
-                      "primary_evidence_refs":  [
-                                                    "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1/APPLY.ps1",
-                                                    "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1/PACK.json",
-                                                    "packs/PHASE84_FIRST_WRAPPER_OPERATION_CONTRACTS_V1/VALIDATE.ps1"
-                                                ]
-                  },
-                  {
-                      "candidate_id":  "packs_phase85_first_smoke_install_trial_v1",
-                      "path":  "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1",
-                      "triage_class":  "PACK_OR_PROOF_BUNDLE",
-                      "confidence":  "MEDIUM",
-                      "evidence_strength":  "MEDIUM",
-                      "reason":  "phase/packs bundle; may contain proof/capability material but not organ by default",
-                      "next_action":  "KEEP_AS_PACK_EVIDENCE_OR_MERGE",
-                      "passport_readiness":  "NOT_ORGAN",
-                      "organ_candidate":  false,
-                      "sub_organ_or_capability_candidate":  false,
-                      "source_counts":  {
-                                            "files":  3,
-                                            "scripts":  2,
-                                            "validators":  0,
-                                            "proofs":  0,
-                                            "contracts_or_policies":  0,
-                                            "docs":  0
-                                        },
-                      "validator_refs":  [
-
-                                         ],
-                      "proof_refs":  [
-
-                                     ],
-                      "contract_or_policy_refs":  [
-
-                                                  ],
-                      "primary_evidence_refs":  [
-                                                    "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/APPLY.ps1",
-                                                    "packs/PHASE85_FIRST_SMOKE_INSTALL_TRIAL_V1/VALIDATE.ps1"
-                                                ]
-                  },
-                  {
-                      "candidate_id":  "packs_phase86_operation_runtime_skeleton_v1",
-                      "path":  "packs/PHASE86_OPERATION_RUNTIME_SKELETON_V1",
-                      "triage_class":  "PACK_OR_PROOF_BUNDLE",
-                      "confidence":  "MEDIUM",
-                      "evidence_strength":  "MEDIUM",
-                      "reason":  "phase/packs bundle; may contain proof/capability material but not organ by default",
-                      "next_action":  "KEEP_AS_PACK_EVIDENCE_OR_MERGE",
-                      "passport_readiness":  "NOT_ORGAN",
-                      "organ_candidate":  false,
-                      "sub_organ_or_capability_candidate":  false,
-                      "source_counts":  {
-                                            "files":  3,
-                                            "scripts":  2,
-                                            "validators":  0,
-                                            "proofs":  0,
-                                            "contracts_or_policies":  0,
-                                            "docs":  0
-                                        },
-                      "validator_refs":  [
-
-                                         ],
-                      "proof_refs":  [
-
-                                     ],
-                      "contract_or_policy_refs":  [
-
-                                                  ],
-                      "primary_evidence_refs":  [
-                                                    "packs/PHASE86_OPERATION_RUNTIME_SKELETON_V1/APPLY.ps1",
-                                                    "packs/PHASE86_OPERATION_RUNTIME_SKELETON_V1/VALIDATE.ps1"
-                                                ]
-                  },
-                  {
                       "candidate_id":  "packs_phase87_self_development_decision_kernel_v1",
                       "path":  "packs/PHASE87_SELF_DEVELOPMENT_DECISION_KERNEL_V1",
                       "triage_class":  "PACK_OR_PROOF_BUNDLE",
@@ -5751,5 +5508,20 @@
                                    "BODY_MAP_TRIAGE_REVIEW_AND_PROMOTION_PLAN_V1",
                                    "ORGAN_PASSPORT_DRAFT_GENERATOR_FOR_CANDIDATE_READY_ONLY"
                                ],
-    "created_at":  "2026-07-09T12:26:09.7673453+04:00"
+    "created_at":  "2026-07-09T12:26:09.7673453+04:00",
+    "repair_note":  {
+                        "status":  "REMOVED_RETIRED_CANDIDATES_AFTER_PHASE84_86_RETIREMENT",
+                        "removed_count":  7,
+                        "removed_candidate_ids":  [
+                                                      "modules_operations",
+                                                      "operations_contracts",
+                                                      "operations_runtime",
+                                                      "operations_smoke_trials",
+                                                      "packs_phase84_first_wrapper_operation_contracts_v1",
+                                                      "packs_phase85_first_smoke_install_trial_v1",
+                                                      "packs_phase86_operation_runtime_skeleton_v1"
+                                                  ],
+                        "map_primary_evidence_candidates":  151,
+                        "created_at":  "2026-07-11T00:58:41.3982143+04:00"
+                    }
 }
