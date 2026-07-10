@@ -53,9 +53,12 @@
                        "operations/live_start/validate_school_aimo_controlled_live_start_v1.ps1"
                    ],
     "proof_refs":  [
+                       "reports/self_development/OPERATIONS_LIVE_START_CONTROLLED_LIVE_CYCLE_V1.json",
                        "reports/self_development/OPERATIONS_LIVE_START_LAB_BOUNDARY_GATE_V1.json",
                        "tests/live_start/AIMO_AGENT_ONLY_RESTART_V1_PROOF.json",
                        "tests/live_start/SCHOOL_AIMO_CONTROLLED_LIVE_START_V1_PROOF.json",
+                       "tests/live_start/SCHOOL_AIMO_CONTROLLED_LIVE_STOP_V1_PROOF.json",
+                       "tests/self_development/OPERATIONS_LIVE_START_CONTROLLED_LIVE_CYCLE_V1_PROOF.json",
                        "tests/self_development/OPERATIONS_LIVE_START_LAB_BOUNDARY_GATE_V1_PROOF.json"
                    ],
     "runtime_refs":  [
@@ -68,7 +71,9 @@
                               ],
     "safety_boundaries":  [
                               "activation requires separate validator/proof/Owner acceptance",
+                              "controlled stop proof required after live start",
                               "draft only",
+                              "initial live proof does not equal long soak",
                               "lab-validation blocked by live-boundary proof labels",
                               "no live process touched",
                               "no live start during lab-boundary gate",
@@ -86,18 +91,17 @@
                                    "rerun review/index gate",
                                    "rerun map refresh/currentness validator"
                                ],
-    "maturity":  "DRAFT",
-    "live_or_lab_status":  "NOT_PROVEN",
+    "maturity":  "VALIDATED_LIVE_INITIAL",
+    "live_or_lab_status":  "PROVEN_LIVE_INITIAL_STOPPED",
     "gaps":  [
-                 "BLOCKED_LIVE_BOUNDARY: existing validators/proofs assert PROVEN_LIVE or live_started; cannot convert to PROVEN_LAB",
-                 "requires dedicated lab-only validator/proof that does not require live start",
-                 "PASSPORT_ACTIVE forbidden",
-                 "PROVEN_LIVE forbidden without fresh live authorization and live proof"
+                 "long-running live soak still required before PASSPORT_ACTIVE",
+                 "PASSPORT_ACTIVE still requires separate activation validator and owner acceptance",
+                 "initial controlled live cycle is proven and stopped"
              ],
     "source_evidence":  [
                             "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json",
                             "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                             "reports/self_development/ORGAN_PASSPORT_REVIEW_LANE_BATCH_GENERATOR_V1.json"
                         ],
-    "last_validated_at":  "2026-07-10T20:38:20.6356465+04:00"
+    "last_validated_at":  "2026-07-10T20:48:35.6785836+04:00"
 }

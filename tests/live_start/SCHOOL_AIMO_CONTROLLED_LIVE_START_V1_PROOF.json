@@ -2,13 +2,13 @@
     "schema":  "school_aimo_controlled_live_start_v1",
     "status":  "PASS_SCHOOL_AIMO_CONTROLLED_LIVE_START_V1",
     "proof_label":  "PROVEN_LIVE_INITIAL_CONTROLLED_START_NOT_LONG_SOAK",
-    "run_id":  "controlled_live_school_aimo_v1_20260707T070037Z",
+    "run_id":  "controlled_live_school_aimo_v1_20260710T164650Z",
     "owner_authorized":  true,
     "owner_auth_proof":  "tests/live_readiness/SCHOOL_AIMO_LIVE_READINESS_GATE_OWNER_AUTH_PROOF.json",
     "repo":  {
                  "root":  "H:/efab",
                  "branch":  "main",
-                 "head":  "8781943630355f702444e4f059f5514614efb44d",
+                 "head":  "df77cf5ba0288f833ae87f9243540030e99852eb",
                  "origin":  "https://github.com/ries11217596955-hash/efab.git",
                  "ahead_behind":  "0\t0",
                  "dirty_before":  [
@@ -18,75 +18,51 @@
                  "active_processes_after":  2
              },
     "launch":  {
-                   "school_pid":  2708,
-                   "aimo_pid":  13264,
+                   "school_pid":  9460,
+                   "aimo_pid":  11088,
                    "school_alive":  true,
                    "aimo_alive":  true,
                    "school_count":  1000000,
                    "topics_plan":  "operations/school/curriculum/topics/builder_night_school_topics_v1.json",
                    "aimo_mode":  "SandboxTestLife",
-                   "aimo_run_id":  "live_aimo_controlled_live_school_aimo_v1_20260707T070037Z"
+                   "aimo_run_id":  "live_aimo_controlled_live_school_aimo_v1_20260710T164650Z"
                },
     "controls":  {
-                     "run_root":  ".runtime\\live_start\\controlled_live_school_aimo_v1_20260707T070037Z",
-                     "passport_path":  ".runtime\\live_start\\controlled_live_school_aimo_v1_20260707T070037Z\\LIVE_START_PASSPORT.json",
-                     "stop_all_path":  ".runtime\\live_start\\controlled_live_school_aimo_v1_20260707T070037Z\\STOP_ALL_REQUESTED.txt",
-                     "school_stdout":  ".runtime\\live_start\\controlled_live_school_aimo_v1_20260707T070037Z\\school.stdout.txt",
-                     "school_stderr":  ".runtime\\live_start\\controlled_live_school_aimo_v1_20260707T070037Z\\school.stderr.txt",
-                     "aimo_stdout":  ".runtime\\live_start\\controlled_live_school_aimo_v1_20260707T070037Z\\aimo.stdout.txt",
-                     "aimo_stderr":  ".runtime\\live_start\\controlled_live_school_aimo_v1_20260707T070037Z\\aimo.stderr.txt"
+                     "run_root":  ".runtime\\live_start\\controlled_live_school_aimo_v1_20260710T164650Z",
+                     "passport_path":  ".runtime\\live_start\\controlled_live_school_aimo_v1_20260710T164650Z\\LIVE_START_PASSPORT.json",
+                     "stop_all_path":  ".runtime\\live_start\\controlled_live_school_aimo_v1_20260710T164650Z\\STOP_ALL_REQUESTED.txt",
+                     "school_stdout":  ".runtime\\live_start\\controlled_live_school_aimo_v1_20260710T164650Z\\school.stdout.txt",
+                     "school_stderr":  ".runtime\\live_start\\controlled_live_school_aimo_v1_20260710T164650Z\\school.stderr.txt",
+                     "aimo_stdout":  ".runtime\\live_start\\controlled_live_school_aimo_v1_20260710T164650Z\\aimo.stdout.txt",
+                     "aimo_stderr":  ".runtime\\live_start\\controlled_live_school_aimo_v1_20260710T164650Z\\aimo.stderr.txt"
                  },
     "observation":  {
-                        "observe_seconds":  60,
+                        "observe_seconds":  30,
                         "heartbeat_seconds":  10,
                         "heartbeats":  [
                                            {
-                                               "at":  "2026-07-07T11:00:50.1240060+04:00",
-                                               "school_pid":  2708,
+                                               "at":  "2026-07-10T20:47:03.7379569+04:00",
+                                               "school_pid":  9460,
                                                "school_alive":  true,
-                                               "aimo_pid":  13264,
+                                               "aimo_pid":  11088,
                                                "aimo_alive":  true,
-                                               "elapsed_seconds":  14.375
+                                               "elapsed_seconds":  14.568
                                            },
                                            {
-                                               "at":  "2026-07-07T11:01:00.1738292+04:00",
-                                               "school_pid":  2708,
+                                               "at":  "2026-07-10T20:47:13.7879656+04:00",
+                                               "school_pid":  9460,
                                                "school_alive":  true,
-                                               "aimo_pid":  13264,
+                                               "aimo_pid":  11088,
                                                "aimo_alive":  true,
-                                               "elapsed_seconds":  24.425
+                                               "elapsed_seconds":  24.609
                                            },
                                            {
-                                               "at":  "2026-07-07T11:01:10.1744215+04:00",
-                                               "school_pid":  2708,
+                                               "at":  "2026-07-10T20:47:23.7944162+04:00",
+                                               "school_pid":  9460,
                                                "school_alive":  true,
-                                               "aimo_pid":  13264,
+                                               "aimo_pid":  11088,
                                                "aimo_alive":  true,
-                                               "elapsed_seconds":  34.425
-                                           },
-                                           {
-                                               "at":  "2026-07-07T11:01:20.1803339+04:00",
-                                               "school_pid":  2708,
-                                               "school_alive":  true,
-                                               "aimo_pid":  13264,
-                                               "aimo_alive":  true,
-                                               "elapsed_seconds":  44.431
-                                           },
-                                           {
-                                               "at":  "2026-07-07T11:01:30.1984058+04:00",
-                                               "school_pid":  2708,
-                                               "school_alive":  true,
-                                               "aimo_pid":  13264,
-                                               "aimo_alive":  true,
-                                               "elapsed_seconds":  54.449
-                                           },
-                                           {
-                                               "at":  "2026-07-07T11:01:40.1986650+04:00",
-                                               "school_pid":  2708,
-                                               "school_alive":  true,
-                                               "aimo_pid":  13264,
-                                               "aimo_alive":  true,
-                                               "elapsed_seconds":  64.45
+                                               "elapsed_seconds":  34.616
                                            }
                                        ]
                     },
@@ -95,6 +71,6 @@
                  ],
     "boundary":  "Initial live start proof only. It proves owner-authorized launch and initial parallel aliveness, not long-term live soak.",
     "live_started":  true,
-    "started_at":  "2026-07-07T11:00:35.7489338+04:00",
-    "finished_at":  "2026-07-07T11:01:40.2581298+04:00"
+    "started_at":  "2026-07-10T20:46:49.1785944+04:00",
+    "finished_at":  "2026-07-10T20:47:23.8628478+04:00"
 }

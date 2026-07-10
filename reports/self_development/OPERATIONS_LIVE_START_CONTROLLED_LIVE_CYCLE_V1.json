@@ -1,0 +1,36 @@
+﻿{
+    "schema":  "operations_live_start_controlled_live_cycle_v1",
+    "status":  "PASS_OPERATIONS_LIVE_START_CONTROLLED_LIVE_CYCLE_V1",
+    "organ_id":  "operations_live_start",
+    "passport_path":  "self_model/organ_passports/operations_live_start/ORGAN_PASSPORT_V1.json",
+    "start":  {
+                  "status":  "PASS_SCHOOL_AIMO_CONTROLLED_LIVE_START_V1",
+                  "run_id":  "controlled_live_school_aimo_v1_20260710T164650Z",
+                  "school_pid":  9460,
+                  "aimo_pid":  11088,
+                  "heartbeats":  3,
+                  "live_started":  true,
+                  "owner_authorized":  true,
+                  "proof_path":  "tests/live_start/SCHOOL_AIMO_CONTROLLED_LIVE_START_V1_PROOF.json"
+              },
+    "stop":  {
+                 "status":  "PASS_SCHOOL_AIMO_CONTROLLED_LIVE_STOP_V1",
+                 "school_alive_after":  false,
+                 "aimo_alive_after":  false,
+                 "forced_stop_pids":  [
+                                          11088,
+                                          9460
+                                      ],
+                 "proof_path":  "tests/live_start/SCHOOL_AIMO_CONTROLLED_LIVE_STOP_V1_PROOF.json"
+             },
+    "decision":  "PROMOTE_TO_VALIDATED_LIVE_INITIAL_STOPPED",
+    "boundaries":  {
+                       "controlled_live_cycle_only":  true,
+                       "passport_active_created":  false,
+                       "long_soak_proven":  false,
+                       "runtime_active_after":  false,
+                       "live_process_touched":  true,
+                       "stopped_after_proof":  true
+                   },
+    "created_at":  "2026-07-10T20:48:35.7130068+04:00"
+}

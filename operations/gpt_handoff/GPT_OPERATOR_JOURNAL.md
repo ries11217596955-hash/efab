@@ -756,3 +756,34 @@ Boundaries:
 - No PASSPORT_ACTIVE claim.
 - No PROVEN_LIVE claim.
 - No live runtime touched.
+
+## 2026-07-10 — Operations live start controlled live cycle V1
+
+STATUS: PROOF_PASS / VALIDATED_LIVE_INITIAL / PROVEN_LIVE_INITIAL_STOPPED
+
+Owner correction:
+- Owner clarified that live execution is acceptable for this agent because it has already been run and observed before.
+
+Executed:
+- Ran operations/live_start/start_school_aimo_controlled_live_v1.ps1 with 30s observation.
+- Validated start proof via operations/live_start/validate_school_aimo_controlled_live_start_v1.ps1.
+- Ran operations/live_start/stop_school_aimo_controlled_live_v1.ps1.
+- Added controlled live-cycle builder/validator:
+  - operations/self_model/build_operations_live_start_controlled_live_cycle_v1.ps1
+  - operations/self_model/validate_operations_live_start_controlled_live_cycle_v1.ps1
+
+Proof:
+- Start PASS: tests/live_start/SCHOOL_AIMO_CONTROLLED_LIVE_START_V1_PROOF.json
+- Stop PASS: tests/live_start/SCHOOL_AIMO_CONTROLLED_LIVE_STOP_V1_PROOF.json
+- Cycle PASS: tests/self_development/OPERATIONS_LIVE_START_CONTROLLED_LIVE_CYCLE_V1_PROOF.json
+
+Result:
+- operations_live_start moved to VALIDATED_LIVE_INITIAL / PROVEN_LIVE_INITIAL_STOPPED.
+- Start heartbeats passed.
+- Controlled stop passed.
+- Runtime active after proof: false.
+
+Boundaries:
+- This is initial controlled live proof, not long soak.
+- PASSPORT_ACTIVE was not created.
+- Further active/live maturity requires separate long-soak/activation proof.
