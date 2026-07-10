@@ -1,0 +1,346 @@
+﻿{
+    "schema":  "organ_passport_calibration_v1",
+    "status":  "PASS_ORGAN_PASSPORT_CALIBRATION_V1",
+    "source_triage":  "reports/self_development/ORGAN_PASSPORT_MATURITY_TRIAGE_V1.json",
+    "organ_draft_count":  27,
+    "by_decision":  [
+                        {
+                            "calibration_decision":  "BLOCKED_OR_TOO_GENERIC",
+                            "count":  16
+                        },
+                        {
+                            "calibration_decision":  "NEEDS_PROOF_RUN",
+                            "count":  9
+                        },
+                        {
+                            "calibration_decision":  "NEEDS_VALIDATOR_SURFACE",
+                            "count":  1
+                        },
+                        {
+                            "calibration_decision":  "READY_FOR_LAB_VALIDATION",
+                            "count":  1
+                        }
+                    ],
+    "ready_for_lab_validation_count":  1,
+    "lab_validation_shortlist":  [
+                                     {
+                                         "organ_id":  "operations_live_readiness",
+                                         "calibration_decision":  "READY_FOR_LAB_VALIDATION",
+                                         "reason":  "has validators and proof references; candidate may enter lab validation, not activation",
+                                         "passport_kind":  "ORGAN_DRAFT_REVIEW",
+                                         "source_lane":  "REVIEW_LANE",
+                                         "validator_count":  5,
+                                         "proof_count":  2,
+                                         "passport_path":  "self_model/organ_passports/operations_live_readiness/ORGAN_PASSPORT_V1.json",
+                                         "next_action":  "READY FOR LAB VALIDATION"
+                                     }
+                                 ],
+    "items":  [
+                  {
+                      "organ_id":  "operations_autonomy_diagnostics",
+                      "calibration_decision":  "BLOCKED_OR_TOO_GENERIC",
+                      "reason":  "lacks validator and proof surface or is too generic for lab validation",
+                      "passport_kind":  "ORGAN_DRAFT_REVIEW",
+                      "source_lane":  "REVIEW_LANE",
+                      "validator_count":  0,
+                      "proof_count":  0,
+                      "passport_path":  "self_model/organ_passports/operations_autonomy_diagnostics/ORGAN_PASSPORT_V1.json",
+                      "next_action":  "BLOCKED OR TOO GENERIC"
+                  },
+                  {
+                      "organ_id":  "operations_organ_promotion_lanes",
+                      "calibration_decision":  "BLOCKED_OR_TOO_GENERIC",
+                      "reason":  "lacks validator and proof surface or is too generic for lab validation",
+                      "passport_kind":  "ORGAN_DRAFT_FAST_LANE",
+                      "source_lane":  "FAST_LANE_PASSPORT_DRAFT",
+                      "validator_count":  1,
+                      "proof_count":  3,
+                      "passport_path":  "self_model/organ_passports/operations_organ_promotion_lanes/ORGAN_PASSPORT_V1.json",
+                      "next_action":  "BLOCKED OR TOO GENERIC"
+                  },
+                  {
+                      "organ_id":  "operations_readme_md",
+                      "calibration_decision":  "BLOCKED_OR_TOO_GENERIC",
+                      "reason":  "lacks validator and proof surface or is too generic for lab validation",
+                      "passport_kind":  "ORGAN_DRAFT_REVIEW",
+                      "source_lane":  "REVIEW_LANE",
+                      "validator_count":  0,
+                      "proof_count":  0,
+                      "passport_path":  "self_model/organ_passports/operations_readme_md/ORGAN_PASSPORT_V1.json",
+                      "next_action":  "BLOCKED OR TOO GENERIC"
+                  },
+                  {
+                      "organ_id":  "operations_reflex_library",
+                      "calibration_decision":  "BLOCKED_OR_TOO_GENERIC",
+                      "reason":  "lacks validator and proof surface or is too generic for lab validation",
+                      "passport_kind":  "ORGAN_DRAFT_REVIEW",
+                      "source_lane":  "REVIEW_LANE",
+                      "validator_count":  0,
+                      "proof_count":  0,
+                      "passport_path":  "self_model/organ_passports/operations_reflex_library/ORGAN_PASSPORT_V1.json",
+                      "next_action":  "BLOCKED OR TOO GENERIC"
+                  },
+                  {
+                      "organ_id":  "operations_runtime",
+                      "calibration_decision":  "BLOCKED_OR_TOO_GENERIC",
+                      "reason":  "lacks validator and proof surface or is too generic for lab validation",
+                      "passport_kind":  "ORGAN_DRAFT_REVIEW",
+                      "source_lane":  "REVIEW_LANE",
+                      "validator_count":  0,
+                      "proof_count":  0,
+                      "passport_path":  "self_model/organ_passports/operations_runtime/ORGAN_PASSPORT_V1.json",
+                      "next_action":  "BLOCKED OR TOO GENERIC"
+                  },
+                  {
+                      "organ_id":  "self_build_programs_absorption",
+                      "calibration_decision":  "BLOCKED_OR_TOO_GENERIC",
+                      "reason":  "lacks validator and proof surface or is too generic for lab validation",
+                      "passport_kind":  "ORGAN_DRAFT_REVIEW",
+                      "source_lane":  "REVIEW_LANE",
+                      "validator_count":  0,
+                      "proof_count":  0,
+                      "passport_path":  "self_model/organ_passports/self_build_programs_absorption/ORGAN_PASSPORT_V1.json",
+                      "next_action":  "BLOCKED OR TOO GENERIC"
+                  },
+                  {
+                      "organ_id":  "self_build_programs_admission",
+                      "calibration_decision":  "BLOCKED_OR_TOO_GENERIC",
+                      "reason":  "lacks validator and proof surface or is too generic for lab validation",
+                      "passport_kind":  "ORGAN_DRAFT_REVIEW",
+                      "source_lane":  "REVIEW_LANE",
+                      "validator_count":  0,
+                      "proof_count":  0,
+                      "passport_path":  "self_model/organ_passports/self_build_programs_admission/ORGAN_PASSPORT_V1.json",
+                      "next_action":  "BLOCKED OR TOO GENERIC"
+                  },
+                  {
+                      "organ_id":  "self_build_programs_canonical_trials",
+                      "calibration_decision":  "BLOCKED_OR_TOO_GENERIC",
+                      "reason":  "lacks validator and proof surface or is too generic for lab validation",
+                      "passport_kind":  "ORGAN_DRAFT_REVIEW",
+                      "source_lane":  "REVIEW_LANE",
+                      "validator_count":  0,
+                      "proof_count":  0,
+                      "passport_path":  "self_model/organ_passports/self_build_programs_canonical_trials/ORGAN_PASSPORT_V1.json",
+                      "next_action":  "BLOCKED OR TOO GENERIC"
+                  },
+                  {
+                      "organ_id":  "self_build_programs_contracts",
+                      "calibration_decision":  "BLOCKED_OR_TOO_GENERIC",
+                      "reason":  "lacks validator and proof surface or is too generic for lab validation",
+                      "passport_kind":  "ORGAN_DRAFT_REVIEW",
+                      "source_lane":  "REVIEW_LANE",
+                      "validator_count":  0,
+                      "proof_count":  0,
+                      "passport_path":  "self_model/organ_passports/self_build_programs_contracts/ORGAN_PASSPORT_V1.json",
+                      "next_action":  "BLOCKED OR TOO GENERIC"
+                  },
+                  {
+                      "organ_id":  "self_build_programs_dry_runs",
+                      "calibration_decision":  "BLOCKED_OR_TOO_GENERIC",
+                      "reason":  "lacks validator and proof surface or is too generic for lab validation",
+                      "passport_kind":  "ORGAN_DRAFT_REVIEW",
+                      "source_lane":  "REVIEW_LANE",
+                      "validator_count":  0,
+                      "proof_count":  0,
+                      "passport_path":  "self_model/organ_passports/self_build_programs_dry_runs/ORGAN_PASSPORT_V1.json",
+                      "next_action":  "BLOCKED OR TOO GENERIC"
+                  },
+                  {
+                      "organ_id":  "self_build_programs_executions",
+                      "calibration_decision":  "BLOCKED_OR_TOO_GENERIC",
+                      "reason":  "lacks validator and proof surface or is too generic for lab validation",
+                      "passport_kind":  "ORGAN_DRAFT_REVIEW",
+                      "source_lane":  "REVIEW_LANE",
+                      "validator_count":  0,
+                      "proof_count":  0,
+                      "passport_path":  "self_model/organ_passports/self_build_programs_executions/ORGAN_PASSPORT_V1.json",
+                      "next_action":  "BLOCKED OR TOO GENERIC"
+                  },
+                  {
+                      "organ_id":  "self_build_programs_generator",
+                      "calibration_decision":  "BLOCKED_OR_TOO_GENERIC",
+                      "reason":  "lacks validator and proof surface or is too generic for lab validation",
+                      "passport_kind":  "ORGAN_DRAFT_REVIEW",
+                      "source_lane":  "REVIEW_LANE",
+                      "validator_count":  0,
+                      "proof_count":  0,
+                      "passport_path":  "self_model/organ_passports/self_build_programs_generator/ORGAN_PASSPORT_V1.json",
+                      "next_action":  "BLOCKED OR TOO GENERIC"
+                  },
+                  {
+                      "organ_id":  "self_build_programs_integration",
+                      "calibration_decision":  "BLOCKED_OR_TOO_GENERIC",
+                      "reason":  "lacks validator and proof surface or is too generic for lab validation",
+                      "passport_kind":  "ORGAN_DRAFT_REVIEW",
+                      "source_lane":  "REVIEW_LANE",
+                      "validator_count":  0,
+                      "proof_count":  0,
+                      "passport_path":  "self_model/organ_passports/self_build_programs_integration/ORGAN_PASSPORT_V1.json",
+                      "next_action":  "BLOCKED OR TOO GENERIC"
+                  },
+                  {
+                      "organ_id":  "self_build_programs_quarantine",
+                      "calibration_decision":  "BLOCKED_OR_TOO_GENERIC",
+                      "reason":  "lacks validator and proof surface or is too generic for lab validation",
+                      "passport_kind":  "ORGAN_DRAFT_REVIEW",
+                      "source_lane":  "REVIEW_LANE",
+                      "validator_count":  0,
+                      "proof_count":  0,
+                      "passport_path":  "self_model/organ_passports/self_build_programs_quarantine/ORGAN_PASSPORT_V1.json",
+                      "next_action":  "BLOCKED OR TOO GENERIC"
+                  },
+                  {
+                      "organ_id":  "self_build_programs_memory",
+                      "calibration_decision":  "BLOCKED_OR_TOO_GENERIC",
+                      "reason":  "lacks validator and proof surface or is too generic for lab validation",
+                      "passport_kind":  "ORGAN_DRAFT_REVIEW",
+                      "source_lane":  "REVIEW_LANE",
+                      "validator_count":  0,
+                      "proof_count":  0,
+                      "passport_path":  "self_model/organ_passports/self_build_programs_memory/ORGAN_PASSPORT_V1.json",
+                      "next_action":  "BLOCKED OR TOO GENERIC"
+                  },
+                  {
+                      "organ_id":  "self_build_programs_regression",
+                      "calibration_decision":  "BLOCKED_OR_TOO_GENERIC",
+                      "reason":  "lacks validator and proof surface or is too generic for lab validation",
+                      "passport_kind":  "ORGAN_DRAFT_REVIEW",
+                      "source_lane":  "REVIEW_LANE",
+                      "validator_count":  0,
+                      "proof_count":  0,
+                      "passport_path":  "self_model/organ_passports/self_build_programs_regression/ORGAN_PASSPORT_V1.json",
+                      "next_action":  "BLOCKED OR TOO GENERIC"
+                  },
+                  {
+                      "organ_id":  "operations_active_behavior",
+                      "calibration_decision":  "NEEDS_PROOF_RUN",
+                      "reason":  "has validator surface but lacks proof refs; run/attach proof before lab validation",
+                      "passport_kind":  "ORGAN_DRAFT_REVIEW",
+                      "source_lane":  "REVIEW_LANE",
+                      "validator_count":  2,
+                      "proof_count":  0,
+                      "passport_path":  "self_model/organ_passports/operations_active_behavior/ORGAN_PASSPORT_V1.json",
+                      "next_action":  "NEEDS PROOF RUN"
+                  },
+                  {
+                      "organ_id":  "operations_contracts",
+                      "calibration_decision":  "NEEDS_PROOF_RUN",
+                      "reason":  "has validator surface but lacks proof refs; run/attach proof before lab validation",
+                      "passport_kind":  "ORGAN_DRAFT_REVIEW",
+                      "source_lane":  "REVIEW_LANE",
+                      "validator_count":  2,
+                      "proof_count":  0,
+                      "passport_path":  "self_model/organ_passports/operations_contracts/ORGAN_PASSPORT_V1.json",
+                      "next_action":  "NEEDS PROOF RUN"
+                  },
+                  {
+                      "organ_id":  "operations_live_like",
+                      "calibration_decision":  "NEEDS_PROOF_RUN",
+                      "reason":  "has validator surface but lacks proof refs; run/attach proof before lab validation",
+                      "passport_kind":  "ORGAN_DRAFT_REVIEW",
+                      "source_lane":  "REVIEW_LANE",
+                      "validator_count":  1,
+                      "proof_count":  0,
+                      "passport_path":  "self_model/organ_passports/operations_live_like/ORGAN_PASSPORT_V1.json",
+                      "next_action":  "NEEDS PROOF RUN"
+                  },
+                  {
+                      "organ_id":  "operations_live_start",
+                      "calibration_decision":  "NEEDS_PROOF_RUN",
+                      "reason":  "has validator surface but lacks proof refs; run/attach proof before lab validation",
+                      "passport_kind":  "ORGAN_DRAFT_REVIEW",
+                      "source_lane":  "REVIEW_LANE",
+                      "validator_count":  2,
+                      "proof_count":  0,
+                      "passport_path":  "self_model/organ_passports/operations_live_start/ORGAN_PASSPORT_V1.json",
+                      "next_action":  "NEEDS PROOF RUN"
+                  },
+                  {
+                      "organ_id":  "operations_memory",
+                      "calibration_decision":  "NEEDS_PROOF_RUN",
+                      "reason":  "has validator surface but lacks proof refs; run/attach proof before lab validation",
+                      "passport_kind":  "ORGAN_DRAFT_REVIEW",
+                      "source_lane":  "REVIEW_LANE",
+                      "validator_count":  2,
+                      "proof_count":  0,
+                      "passport_path":  "self_model/organ_passports/operations_memory/ORGAN_PASSPORT_V1.json",
+                      "next_action":  "NEEDS PROOF RUN"
+                  },
+                  {
+                      "organ_id":  "operations_overnight_school",
+                      "calibration_decision":  "NEEDS_PROOF_RUN",
+                      "reason":  "has validator surface but lacks proof refs; run/attach proof before lab validation",
+                      "passport_kind":  "ORGAN_DRAFT_REVIEW",
+                      "source_lane":  "REVIEW_LANE",
+                      "validator_count":  1,
+                      "proof_count":  0,
+                      "passport_path":  "self_model/organ_passports/operations_overnight_school/ORGAN_PASSPORT_V1.json",
+                      "next_action":  "NEEDS PROOF RUN"
+                  },
+                  {
+                      "organ_id":  "operations_parallel_life",
+                      "calibration_decision":  "NEEDS_PROOF_RUN",
+                      "reason":  "has validator surface but lacks proof refs; run/attach proof before lab validation",
+                      "passport_kind":  "ORGAN_DRAFT_REVIEW",
+                      "source_lane":  "REVIEW_LANE",
+                      "validator_count":  1,
+                      "proof_count":  0,
+                      "passport_path":  "self_model/organ_passports/operations_parallel_life/ORGAN_PASSPORT_V1.json",
+                      "next_action":  "NEEDS PROOF RUN"
+                  },
+                  {
+                      "organ_id":  "operations_reasoning",
+                      "calibration_decision":  "NEEDS_PROOF_RUN",
+                      "reason":  "has validator surface but lacks proof refs; run/attach proof before lab validation",
+                      "passport_kind":  "ORGAN_DRAFT_REVIEW",
+                      "source_lane":  "REVIEW_LANE",
+                      "validator_count":  3,
+                      "proof_count":  0,
+                      "passport_path":  "self_model/organ_passports/operations_reasoning/ORGAN_PASSPORT_V1.json",
+                      "next_action":  "NEEDS PROOF RUN"
+                  },
+                  {
+                      "organ_id":  "operations_smoke_trials",
+                      "calibration_decision":  "NEEDS_PROOF_RUN",
+                      "reason":  "has validator surface but lacks proof refs; run/attach proof before lab validation",
+                      "passport_kind":  "ORGAN_DRAFT_REVIEW",
+                      "source_lane":  "REVIEW_LANE",
+                      "validator_count":  3,
+                      "proof_count":  0,
+                      "passport_path":  "self_model/organ_passports/operations_smoke_trials/ORGAN_PASSPORT_V1.json",
+                      "next_action":  "NEEDS PROOF RUN"
+                  },
+                  {
+                      "organ_id":  "operations_bridge_diagnostics",
+                      "calibration_decision":  "NEEDS_VALIDATOR_SURFACE",
+                      "reason":  "has proof refs but lacks validator surface; add validator before lab validation",
+                      "passport_kind":  "ORGAN_DRAFT_REVIEW",
+                      "source_lane":  "REVIEW_LANE",
+                      "validator_count":  0,
+                      "proof_count":  2,
+                      "passport_path":  "self_model/organ_passports/operations_bridge_diagnostics/ORGAN_PASSPORT_V1.json",
+                      "next_action":  "NEEDS VALIDATOR SURFACE"
+                  },
+                  {
+                      "organ_id":  "operations_live_readiness",
+                      "calibration_decision":  "READY_FOR_LAB_VALIDATION",
+                      "reason":  "has validators and proof references; candidate may enter lab validation, not activation",
+                      "passport_kind":  "ORGAN_DRAFT_REVIEW",
+                      "source_lane":  "REVIEW_LANE",
+                      "validator_count":  5,
+                      "proof_count":  2,
+                      "passport_path":  "self_model/organ_passports/operations_live_readiness/ORGAN_PASSPORT_V1.json",
+                      "next_action":  "READY FOR LAB VALIDATION"
+                  }
+              ],
+    "boundaries":  {
+                       "calibration_only":  true,
+                       "no_passport_status_mutation":  true,
+                       "no_validated_lab_claim_created":  true,
+                       "no_active_passports_created":  true,
+                       "no_live_claims":  true,
+                       "live_process_touched":  false
+                   },
+    "created_at":  "2026-07-10T20:06:49.3920288+04:00"
+}

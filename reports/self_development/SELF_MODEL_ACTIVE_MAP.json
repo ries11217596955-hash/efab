@@ -6,19 +6,19 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "561e92ed152f170e20d37f8ab614910420de4639",
-    "subject_head":  "561e92ed152f170e20d37f8ab614910420de4639",
-    "generated_at":  "2026-07-10T20:04:15.3855454+04:00",
+    "observed_head_at_generation":  "63f5e6019f34ec6360ab8b4b4a946a35d794650c",
+    "subject_head":  "63f5e6019f34ec6360ab8b4b4a946a35d794650c",
+    "generated_at":  "2026-07-10T20:08:28.4413486+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  1966,
+    "structural_path_count":  1970,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1966,
-                                    "sha256":  "93e1511236a22ecd22dde7844cc9341fc37a1b56927489b35093c67ab7c5cc29"
+                                    "structural_file_count":  1970,
+                                    "sha256":  "0533917ab0992f628aefc01605e1bdf9c75e3ec0c612f93fadbb93f5f3994136"
                                 },
     "module_count":  207,
     "validator_count":  174,
@@ -597,8 +597,8 @@
                                      "root":  "operations/self_model",
                                      "status":  "CONFIRMED_PRIMARY_EVIDENCE_PRESENT",
                                      "confirmation_basis":  "explicit_required_component_with_primary_repo_evidence",
-                                     "file_count":  43,
-                                     "script_count":  43,
+                                     "file_count":  45,
+                                     "script_count":  45,
                                      "validator_count":  30,
                                      "proof_file_count":  0,
                                      "contract_or_policy_count":  4,
@@ -634,6 +634,7 @@
                                                             "operations/self_model/validate_map_authority_repair_v1.ps1",
                                                             "operations/self_model/validate_next_route_lock_and_health_audit_v1.ps1",
                                                             "operations/self_model/validate_operations_self_model_organ_lab_validation_v1.ps1",
+                                                            "operations/self_model/validate_organ_passport_calibration_v1.ps1",
                                                             "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
                                                             "operations/self_model/validate_organ_passport_coverage_batch_v2.ps1",
                                                             "operations/self_model/validate_organ_passport_draft_generator_fast_lane_v1.ps1",
@@ -642,8 +643,7 @@
                                                             "operations/self_model/validate_organ_passport_review_lane_batch_v1.ps1",
                                                             "operations/self_model/validate_organ_passport_static_count_regression_guard_v1.ps1",
                                                             "operations/self_model/validate_route_reality_alignment_v1.ps1",
-                                                            "operations/self_model/validate_route_v4_execution_report_phase_m_v1.ps1",
-                                                            "operations/self_model/validate_runtime_cleanup_v1.ps1"
+                                                            "operations/self_model/validate_route_v4_execution_report_phase_m_v1.ps1"
                                                         ],
                                      "proof_refs":  [
 
@@ -693,6 +693,7 @@
                                                                 "operations/self_model/validate_map_authority_repair_v1.ps1",
                                                                 "operations/self_model/validate_next_route_lock_and_health_audit_v1.ps1",
                                                                 "operations/self_model/validate_operations_self_model_organ_lab_validation_v1.ps1",
+                                                                "operations/self_model/validate_organ_passport_calibration_v1.ps1",
                                                                 "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
                                                                 "operations/self_model/validate_organ_passport_coverage_batch_v2.ps1",
                                                                 "operations/self_model/validate_organ_passport_draft_generator_fast_lane_v1.ps1",
@@ -708,8 +709,8 @@
                                                                 "operations/self_model/validate_source_evidence_inventory_v1.ps1"
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "561e92ed152f170e20d37f8ab614910420de4639",
-                                                               "committed_at":  "2026-07-10T20:02:45+04:00",
+                                                               "head":  "63f5e6019f34ec6360ab8b4b4a946a35d794650c",
+                                                               "committed_at":  "2026-07-10T20:04:19+04:00",
                                                                "subject":  "passport: add maturity triage"
                                                            },
                                      "latest_runtime_artifact":  null,
@@ -754,8 +755,8 @@
 
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "561e92ed152f170e20d37f8ab614910420de4639",
-                                                               "committed_at":  "2026-07-10T20:02:45+04:00",
+                                                               "head":  "63f5e6019f34ec6360ab8b4b4a946a35d794650c",
+                                                               "committed_at":  "2026-07-10T20:04:19+04:00",
                                                                "subject":  "passport: add maturity triage"
                                                            },
                                      "latest_runtime_artifact":  null,
@@ -9140,8 +9141,8 @@
                            "root":  "operations/self_model",
                            "status":  "CONFIRMED_PRIMARY_EVIDENCE_PRESENT",
                            "confirmation_basis":  "explicit_required_component_with_primary_repo_evidence",
-                           "file_count":  43,
-                           "script_count":  43,
+                           "file_count":  45,
+                           "script_count":  45,
                            "validator_count":  30,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  4,
@@ -9177,6 +9178,7 @@
                                                   "operations/self_model/validate_map_authority_repair_v1.ps1",
                                                   "operations/self_model/validate_next_route_lock_and_health_audit_v1.ps1",
                                                   "operations/self_model/validate_operations_self_model_organ_lab_validation_v1.ps1",
+                                                  "operations/self_model/validate_organ_passport_calibration_v1.ps1",
                                                   "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
                                                   "operations/self_model/validate_organ_passport_coverage_batch_v2.ps1",
                                                   "operations/self_model/validate_organ_passport_draft_generator_fast_lane_v1.ps1",
@@ -9185,8 +9187,7 @@
                                                   "operations/self_model/validate_organ_passport_review_lane_batch_v1.ps1",
                                                   "operations/self_model/validate_organ_passport_static_count_regression_guard_v1.ps1",
                                                   "operations/self_model/validate_route_reality_alignment_v1.ps1",
-                                                  "operations/self_model/validate_route_v4_execution_report_phase_m_v1.ps1",
-                                                  "operations/self_model/validate_runtime_cleanup_v1.ps1"
+                                                  "operations/self_model/validate_route_v4_execution_report_phase_m_v1.ps1"
                                               ],
                            "proof_refs":  [
 
@@ -9236,6 +9237,7 @@
                                                       "operations/self_model/validate_map_authority_repair_v1.ps1",
                                                       "operations/self_model/validate_next_route_lock_and_health_audit_v1.ps1",
                                                       "operations/self_model/validate_operations_self_model_organ_lab_validation_v1.ps1",
+                                                      "operations/self_model/validate_organ_passport_calibration_v1.ps1",
                                                       "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
                                                       "operations/self_model/validate_organ_passport_coverage_batch_v2.ps1",
                                                       "operations/self_model/validate_organ_passport_draft_generator_fast_lane_v1.ps1",
@@ -9251,8 +9253,8 @@
                                                       "operations/self_model/validate_source_evidence_inventory_v1.ps1"
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "561e92ed152f170e20d37f8ab614910420de4639",
-                                                     "committed_at":  "2026-07-10T20:02:45+04:00",
+                                                     "head":  "63f5e6019f34ec6360ab8b4b4a946a35d794650c",
+                                                     "committed_at":  "2026-07-10T20:04:19+04:00",
                                                      "subject":  "passport: add maturity triage"
                                                  },
                            "latest_runtime_artifact":  null,
@@ -9297,8 +9299,8 @@
 
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "561e92ed152f170e20d37f8ab614910420de4639",
-                                                     "committed_at":  "2026-07-10T20:02:45+04:00",
+                                                     "head":  "63f5e6019f34ec6360ab8b4b4a946a35d794650c",
+                                                     "committed_at":  "2026-07-10T20:04:19+04:00",
                                                      "subject":  "passport: add maturity triage"
                                                  },
                            "latest_runtime_artifact":  null,

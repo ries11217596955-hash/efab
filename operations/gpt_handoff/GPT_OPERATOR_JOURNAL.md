@@ -602,3 +602,38 @@ Boundaries:
 
 Next concrete step:
 - Run calibration on the 27 CALIBRATE_ORGAN_DRAFT passports and select the first small group that can move toward VALIDATED_LAB.
+
+## 2026-07-10 — Passport calibration V1
+
+STATUS: PROOF_PASS / CALIBRATION_ONLY / NOT_PROVEN_LIVE
+
+Built:
+- Added calibration builder: operations/self_model/build_organ_passport_calibration_v1.ps1.
+- Added calibration validator: operations/self_model/validate_organ_passport_calibration_v1.ps1.
+- Created report/proof:
+  - reports/self_development/ORGAN_PASSPORT_CALIBRATION_V1.json
+  - tests/self_development/ORGAN_PASSPORT_CALIBRATION_V1_PROOF.json
+
+Result over 27 organ drafts:
+- READY_FOR_LAB_VALIDATION: 1
+- NEEDS_PROOF_RUN: 9
+- NEEDS_VALIDATOR_SURFACE: 1
+- BLOCKED_OR_TOO_GENERIC: 16
+
+Shortlist:
+- operations_live_readiness
+
+Meaning:
+- Only operations_live_readiness currently has enough validator+proof surface to enter lab-validation work.
+- This is not VALIDATED_LAB yet; it is a candidate for the next validator/proof pass.
+
+Boundaries:
+- Calibration only.
+- No passport status mutation.
+- No VALIDATED_LAB claim created.
+- No PASSPORT_ACTIVE claim.
+- No PROVEN_LIVE claim.
+- No live runtime touched.
+
+Next concrete step:
+- Run a dedicated lab-validation pass for operations_live_readiness.
