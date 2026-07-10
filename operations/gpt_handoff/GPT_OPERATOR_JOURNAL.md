@@ -410,3 +410,46 @@ Still blocked / not claimed:
 
 Next concrete step:
 - Decide whether to add a tracked/installable map refresh trigger/hook mechanism, or keep manual refresh as required after structural passport/generator changes.
+
+## 2026-07-10 — Route reality alignment + auto-map-refresh proof correction
+
+STATUS: PROOF_PASS / ROUTE_POINTER_ALIGNED / NOT_PROVEN_LIVE
+
+Checked:
+- Repo fresh truth before mutation: main, HEAD 4b1d260, working tree clean, origin/main synced.
+- ACTIVE_ROUTE_LOCK.json still pointed to old V3_PHASE161_BATCH_SCHOOL_PREP despite the passport-generator pass being current work.
+- Lifecycle-contract work exists as stash@{0}; it was inspected as file list only and not applied.
+- core.hooksPath is .githooks.
+- .githooks/pre-commit invokes modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1 with TriggerReason git_pre_commit_composition_map_auto_refresh, then runs validators/validate_agent_body_composition_map_current_v1.ps1, then stages map outputs.
+
+Correction to previous journal note:
+- The earlier statement “full automatic refresh on commit remains NOT_IMPLEMENTED/NOT_PROVEN from hook evidence” was incomplete.
+- .git/hooks has no hook files, but Git is configured to use .githooks.
+- Therefore auto-map refresh on local commit is PROVEN_LOCAL_PRE_COMMIT via core.hooksPath=.githooks and pre-commit content.
+- This is not a PROVEN_LIVE runtime claim.
+
+Fixed:
+- Added active route lock: route_locks/AGENT_BUILDER_NEXT_15_STEPS_LOCK_V6_ORGAN_PASSPORT_SYSTEM.md.
+- Updated route_locks/ACTIVE_ROUTE_LOCK.json to V6_ORGAN_PASSPORT_SYSTEM.
+- Added route/hook proof validator: operations/self_model/validate_route_reality_alignment_v1.ps1.
+- Created report/proof:
+  - reports/self_development/ROUTE_REALITY_ALIGNMENT_V1.json
+  - tests/self_development/ROUTE_REALITY_ALIGNMENT_V1_PROOF.json
+
+Route decision:
+- Current active line is AGENT_BUILDER / SELF_BUILD / ORGAN_PASSPORT_SYSTEM / REPEATABLE_DRAFT_PIPELINE.
+- V5 lifecycle-contract stash is preserved backlog material, not active route.
+- Next target phase: PASSPORT_REPEATABILITY_SECOND_SAMPLE_V1.
+
+Proofs passed:
+- PASS_ROUTE_REALITY_ALIGNMENT_V1
+
+Boundaries:
+- No live runtime touched.
+- No PASSPORT_ACTIVE claim.
+- No PROVEN_LIVE claim.
+- Lifecycle-contract stash not applied.
+- No new architecture organ created.
+
+Next concrete step:
+- Run PASSPORT_REPEATABILITY_SECOND_SAMPLE_V1: select next FAST_LANE_PASSPORT_DRAFT candidate, generate draft, validate generator/index/lanes/map, then commit/push.

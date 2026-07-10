@@ -1,22 +1,44 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-10T19:06:48.2834064+04:00",
+    "checked_at":  "2026-07-10T19:17:27.4639095+04:00",
     "branch":  "main",
-    "observed_head":  "b58ae4cec01ddd25ffafadabd4391a43ace80b77",
-    "subject_head":  "b58ae4cec01ddd25ffafadabd4391a43ace80b77",
+    "observed_head":  "4b1d260fda00b9b7fbd8e2f1d09be9d92319a95b",
+    "subject_head":  "4b1d260fda00b9b7fbd8e2f1d09be9d92319a95b",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
+                          "docs/operations/organ_passports/operations_organ_promotion_lanes/ORGAN_PASSPORT_V1.md",
                           "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
+                          "operations/self_model/build_organ_passport_draft_generator_fast_lane_v1.ps1",
+                          "operations/self_model/validate_organ_passport_draft_generator_fast_lane_v1.ps1",
+                          "operations/self_model/validate_organ_passport_draft_review_and_index_gate_v1.ps1",
+                          "reports/self_development/ORGAN_PASSPORT_DRAFT_GENERATOR_FAST_LANE_V1.json",
+                          "reports/self_development/ORGAN_PASSPORT_DRAFT_REVIEW_AND_INDEX_GATE_V1.json",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
-                          "reports/self_development/branch_agnostic_map_refresh_result.json"
+                          "reports/self_development/branch_agnostic_map_refresh_result.json",
+                          "self_model/organ_passports/_index/ORGAN_PASSPORT_DRAFT_INDEX_V1.json",
+                          "self_model/organ_passports/operations_organ_promotion_lanes/ORGAN_PASSPORT_V1.json",
+                          "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json",
+                          "tests/self_development/ORGAN_PASSPORT_DRAFT_GENERATOR_FAST_LANE_V1_PROOF.json",
+                          "tests/self_development/ORGAN_PASSPORT_DRAFT_REVIEW_AND_INDEX_GATE_V1_PROOF.json"
                       ],
     "structural_paths":  [
-                             "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
+                             "docs/operations/organ_passports/operations_organ_promotion_lanes/ORGAN_PASSPORT_V1.md",
+                             "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
+                             "operations/self_model/build_organ_passport_draft_generator_fast_lane_v1.ps1",
+                             "operations/self_model/validate_organ_passport_draft_generator_fast_lane_v1.ps1",
+                             "operations/self_model/validate_organ_passport_draft_review_and_index_gate_v1.ps1",
+                             "reports/self_development/ORGAN_PASSPORT_DRAFT_GENERATOR_FAST_LANE_V1.json",
+                             "reports/self_development/ORGAN_PASSPORT_DRAFT_REVIEW_AND_INDEX_GATE_V1.json",
+                             "self_model/organ_passports/_index/ORGAN_PASSPORT_DRAFT_INDEX_V1.json",
+                             "self_model/organ_passports/operations_organ_promotion_lanes/ORGAN_PASSPORT_V1.json",
+                             "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json",
+                             "tests/self_development/ORGAN_PASSPORT_DRAFT_GENERATOR_FAST_LANE_V1_PROOF.json",
+                             "tests/self_development/ORGAN_PASSPORT_DRAFT_REVIEW_AND_INDEX_GATE_V1_PROOF.json"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -28,8 +50,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1636,
-                                    "sha256":  "552e42fd2445efa26bd676aac79bfee9215a6e7bdf3a0715a0280f64020397f5"
+                                    "structural_file_count":  1639,
+                                    "sha256":  "95ea9ff38edd28dd7a131f21035b7982a73911527134c85d535b910860cc719a"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -56,12 +78,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  166,
-                         "structural_path_count":  1636,
+                         "structural_path_count":  1639,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-10T19:07:13.4859086+04:00"
+    "refreshed_at":  "2026-07-10T19:17:52.5380808+04:00"
 }
