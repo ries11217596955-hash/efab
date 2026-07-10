@@ -75,7 +75,11 @@
                    ],
     "proof_refs":  [
                        "operations/live_readiness/run_school_aimo_continuous_runtime_proof_v1.ps1",
-                       "operations/live_readiness/validate_school_aimo_continuous_runtime_proof_v1.ps1"
+                       "operations/live_readiness/validate_school_aimo_continuous_runtime_proof_v1.ps1",
+                       "reports/self_development/OPERATIONS_LIVE_READINESS_LAB_VALIDATION_V1.json",
+                       "tests/live_readiness/SCHOOL_AIMO_CONTINUOUS_RUNTIME_PROOF_V1_PROOF.json",
+                       "tests/live_readiness/SCHOOL_AIMO_LIVE_READINESS_GATE_V1_PROOF.json",
+                       "tests/self_development/OPERATIONS_LIVE_READINESS_LAB_VALIDATION_V1_PROOF.json"
                    ],
     "runtime_refs":  [
 
@@ -90,7 +94,8 @@
                               "no PASSPORT_ACTIVE claim",
                               "no PROVEN_LIVE claim",
                               "no live process touched",
-                              "activation requires separate validator/proof/Owner acceptance"
+                              "activation requires separate validator/proof/Owner acceptance",
+                              "lab validated does not equal live authorization"
                           ],
     "failure_modes":  [
                           "stale body map",
@@ -103,18 +108,16 @@
                                    "rerun review/index gate",
                                    "rerun map refresh/currentness validator"
                                ],
-    "maturity":  "DRAFT",
-    "live_or_lab_status":  "NOT_PROVEN",
+    "maturity":  "VALIDATED_LAB",
+    "live_or_lab_status":  "PROVEN_LAB",
     "gaps":  [
-                 "organ-specific calibration missing",
-                 "runtime proof missing",
-                 "ACTIVE status forbidden",
-                 "PROVEN_LIVE forbidden"
+                 "PROVEN_LIVE forbidden until Owner live authorization and separate live proof",
+                 "PASSPORT_ACTIVE forbidden until activation validator and owner acceptance"
              ],
     "source_evidence":  [
                             "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json",
                             "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                             "reports/self_development/ORGAN_PASSPORT_REVIEW_LANE_BATCH_GENERATOR_V1.json"
                         ],
-    "last_validated_at":  "2026-07-10T19:31:16.4067065+04:00"
+    "last_validated_at":  "2026-07-10T20:11:08.7267248+04:00"
 }

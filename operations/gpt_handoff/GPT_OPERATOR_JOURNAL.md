@@ -637,3 +637,35 @@ Boundaries:
 
 Next concrete step:
 - Run a dedicated lab-validation pass for operations_live_readiness.
+
+## 2026-07-10 — Operations live readiness lab validation V1
+
+STATUS: PROOF_PASS / VALIDATED_LAB / PROVEN_LAB / NOT_PROVEN_LIVE
+
+Built:
+- Added lab validation builder: operations/self_model/build_operations_live_readiness_lab_validation_v1.ps1.
+- Added validator: operations/self_model/validate_operations_live_readiness_lab_validation_v1.ps1.
+- Created report/proof:
+  - reports/self_development/OPERATIONS_LIVE_READINESS_LAB_VALIDATION_V1.json
+  - tests/self_development/OPERATIONS_LIVE_READINESS_LAB_VALIDATION_V1_PROOF.json
+
+Result:
+- operations_live_readiness validators passed: 5/5.
+- Passport maturity updated to VALIDATED_LAB.
+- live_or_lab_status updated to PROVEN_LAB.
+- Technical runtime readiness: true.
+- Live readiness: false.
+- Live blocker: OWNER_LIVE_AUTHORIZATION_MISSING.
+
+Meaning:
+- The organ is lab-validated as a live-readiness gate/check surface.
+- It is not live-authorized and not active.
+
+Boundaries:
+- No PASSPORT_ACTIVE claim.
+- No PROVEN_LIVE claim.
+- No live process touched.
+- Lab validated does not equal live authorization.
+
+Next concrete step:
+- Use the same pattern to move the 9 NEEDS_PROOF_RUN drafts toward proof-run readiness, starting with the highest-signal non-live organ.

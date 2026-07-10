@@ -1,0 +1,115 @@
+﻿{
+    "schema":  "operations_live_readiness_lab_validation_v1",
+    "status":  "PASS_OPERATIONS_LIVE_READINESS_LAB_VALIDATION_V1",
+    "organ_id":  "operations_live_readiness",
+    "passport_path":  "self_model/organ_passports/operations_live_readiness/ORGAN_PASSPORT_V1.json",
+    "validators":  [
+                       {
+                           "validator":  "operations/live_readiness/validate_detached_long_runtime_stopfile_contract_v1.ps1",
+                           "exit_code":  0,
+                           "status":  [
+                                          "PASS_DETACHED_LONG_RUNTIME_STOPFILE_CONTRACT_V1"
+                                      ],
+                           "proof_path":  [
+                                              "tests/live_readiness/DETACHED_LONG_RUNTIME_STOPFILE_CONTRACT_V1_PROOF.json"
+                                          ],
+                           "output":  [
+                                          "VALIDATION_PASS=PASS_DETACHED_LONG_RUNTIME_STOPFILE_CONTRACT_V1",
+                                          "PROOF_PATH=tests/live_readiness/DETACHED_LONG_RUNTIME_STOPFILE_CONTRACT_V1_PROOF.json",
+                                          "RUNTIME_READY=false"
+                                      ]
+                       },
+                       {
+                           "validator":  "operations/live_readiness/validate_live_reject_and_forget_contract_v1.ps1",
+                           "exit_code":  0,
+                           "status":  [
+                                          "PASS_LIVE_REJECT_AND_FORGET_CONTRACT_V1"
+                                      ],
+                           "proof_path":  [
+                                              "tests/live_readiness/LIVE_REJECT_AND_FORGET_CONTRACT_V1_PROOF.json"
+                                          ],
+                           "output":  [
+                                          "VALIDATION_PASS=PASS_LIVE_REJECT_AND_FORGET_CONTRACT_V1",
+                                          "PROOF_PATH=tests/live_readiness/LIVE_REJECT_AND_FORGET_CONTRACT_V1_PROOF.json",
+                                          "RUNTIME_READY=false"
+                                      ]
+                       },
+                       {
+                           "validator":  "operations/live_readiness/validate_live_rollback_contract_v1.ps1",
+                           "exit_code":  0,
+                           "status":  [
+                                          "PASS_LIVE_ROLLBACK_CONTRACT_V1"
+                                      ],
+                           "proof_path":  [
+                                              "tests/live_readiness/LIVE_ROLLBACK_CONTRACT_V1_PROOF.json"
+                                          ],
+                           "output":  [
+                                          "VALIDATION_PASS=PASS_LIVE_ROLLBACK_CONTRACT_V1",
+                                          "PROOF_PATH=tests/live_readiness/LIVE_ROLLBACK_CONTRACT_V1_PROOF.json",
+                                          "RUNTIME_READY=false"
+                                      ]
+                       },
+                       {
+                           "validator":  "operations/live_readiness/validate_school_aimo_continuous_runtime_proof_v1.ps1",
+                           "exit_code":  0,
+                           "status":  [
+                                          "PASS_SCHOOL_AIMO_CONTINUOUS_RUNTIME_PROOF_V1"
+                                      ],
+                           "proof_path":  [
+                                              "tests/live_readiness/SCHOOL_AIMO_CONTINUOUS_RUNTIME_PROOF_V1_PROOF.json"
+                                          ],
+                           "output":  [
+                                          "VALIDATION_PASS=PASS_SCHOOL_AIMO_CONTINUOUS_RUNTIME_PROOF_V1",
+                                          "PROOF_PATH=tests/live_readiness/SCHOOL_AIMO_CONTINUOUS_RUNTIME_PROOF_V1_PROOF.json",
+                                          "TECHNICAL_RUNTIME_READY=true",
+                                          "LIVE_READY=false"
+                                      ]
+                       },
+                       {
+                           "validator":  "operations/live_readiness/validate_school_aimo_live_readiness_gate_v1.ps1",
+                           "exit_code":  0,
+                           "status":  [
+                                          "PASS_SCHOOL_AIMO_LIVE_READINESS_GATE_NO_GO_V1"
+                                      ],
+                           "proof_path":  [
+                                              "tests/live_readiness/SCHOOL_AIMO_LIVE_READINESS_GATE_V1_PROOF.json"
+                                          ],
+                           "output":  [
+                                          "VALIDATION_PASS=PASS_SCHOOL_AIMO_LIVE_READINESS_GATE_NO_GO_V1",
+                                          "PROOF_PATH=tests/live_readiness/SCHOOL_AIMO_LIVE_READINESS_GATE_V1_PROOF.json",
+                                          "TECHNICAL_RUNTIME_READY=True",
+                                          "LIVE_READY=False"
+                                      ]
+                       }
+                   ],
+    "gate":  {
+                 "status":  "PASS_SCHOOL_AIMO_LIVE_READINESS_GATE_NO_GO_V1",
+                 "technical_runtime_ready":  true,
+                 "runtime_ready":  true,
+                 "live_ready":  false,
+                 "owner_live_authorized":  false,
+                 "decision":  "NO_GO_LIVE_AUTHORIZATION_REQUIRED",
+                 "go_blockers":  [
+                                     "OWNER_LIVE_AUTHORIZATION_MISSING"
+                                 ]
+             },
+    "continuous":  {
+                       "status":  "PASS_SCHOOL_AIMO_CONTINUOUS_RUNTIME_PROOF_V1",
+                       "technical_runtime_ready":  true,
+                       "live_ready":  false
+                   },
+    "passport_update":  {
+                            "maturity":  "VALIDATED_LAB",
+                            "live_or_lab_status":  "PROVEN_LAB",
+                            "status_preserved":  "PASSPORT_DRAFT_FROM_EVIDENCE"
+                        },
+    "boundaries":  {
+                       "lab_validation_only":  true,
+                       "no_active_passports_created":  true,
+                       "no_proven_live_claim":  true,
+                       "live_process_touched":  false,
+                       "live_authorization_missing":  true,
+                       "live_ready":  false
+                   },
+    "created_at":  "2026-07-10T20:11:08.7611256+04:00"
+}
