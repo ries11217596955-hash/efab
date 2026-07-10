@@ -787,3 +787,36 @@ Boundaries:
 - This is initial controlled live proof, not long soak.
 - PASSPORT_ACTIVE was not created.
 - Further active/live maturity requires separate long-soak/activation proof.
+
+## 2026-07-10 — Organ passport maturity summary V1
+
+STATUS: SUMMARY_PASS / NO_DELETION / NO_MATURITY_CHANGE
+
+Built:
+- operations/self_model/build_organ_passport_maturity_summary_v1.ps1
+- operations/self_model/validate_organ_passport_maturity_summary_v1.ps1
+- reports/self_development/ORGAN_PASSPORT_MATURITY_SUMMARY_V1.json
+- tests/self_development/ORGAN_PASSPORT_MATURITY_SUMMARY_V1_PROOF.json
+
+Result:
+- Total passports: 159
+- Validated/proven count: 5
+- Drafts with validators: 86
+
+Meaning:
+- “Repair” does not mean the runtime organ is broken.
+- It means classification/proof cleanup: detect duplicates, downclassify materials, add missing proof surface, or promote only with fresh evidence.
+- Deletion requires a separate Owner decision.
+
+Next five review candidates:
+- operations_contracts — validators without proof refs
+- operations_smoke_trials — validators without proof refs
+- operations_active_behavior — validators without proof refs
+- operations_organ_promotion_lanes — single validator surface
+- operations_overnight_school — single validator surface
+
+Boundaries:
+- Summary only.
+- No files deleted.
+- No passport maturity changed.
+- No live runtime touched.
