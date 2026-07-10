@@ -569,3 +569,36 @@ Boundaries:
 
 Next concrete step:
 - Build a passport maturity triage: which passports stay reference/material, which need owner-link, which can become calibrated organ drafts, and which can later move toward VALIDATED_LAB.
+
+## 2026-07-10 — Passport maturity triage V1
+
+STATUS: PROOF_PASS / TRIAGE_ONLY / NOT_PROVEN_LIVE
+
+Built:
+- Added maturity triage builder: operations/self_model/build_organ_passport_maturity_triage_v1.ps1.
+- Added validator: operations/self_model/validate_organ_passport_maturity_triage_v1.ps1.
+- Created report/proof:
+  - reports/self_development/ORGAN_PASSPORT_MATURITY_TRIAGE_V1.json
+  - tests/self_development/ORGAN_PASSPORT_MATURITY_TRIAGE_V1_PROOF.json
+
+Result:
+- Total passports: 159
+- CALIBRATE_ORGAN_DRAFT: 27
+- KEEP_AS_REFERENCE_MATERIAL: 121
+- OWNER_LINK_REQUIRED: 9
+- BLOCKED_RUNTIME_PROOF: 1
+- KEEP_META_PASSPORT: 1
+
+Meaning:
+- We now know which passport group should move toward organ calibration next.
+- 121 entries are explicitly not active organ targets right now; they stay reference/material unless later promoted.
+
+Boundaries:
+- Triage only.
+- No passport status mutation.
+- No PASSPORT_ACTIVE claim.
+- No PROVEN_LIVE claim.
+- No live runtime touched.
+
+Next concrete step:
+- Run calibration on the 27 CALIBRATE_ORGAN_DRAFT passports and select the first small group that can move toward VALIDATED_LAB.
