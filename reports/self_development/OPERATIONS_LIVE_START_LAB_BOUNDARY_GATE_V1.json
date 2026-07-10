@@ -1,0 +1,43 @@
+﻿{
+    "schema":  "operations_live_start_lab_boundary_gate_v1",
+    "status":  "BLOCKED_OPERATIONS_LIVE_START_LAB_BOUNDARY_GATE_V1",
+    "organ_id":  "operations_live_start",
+    "passport_path":  "self_model/organ_passports/operations_live_start/ORGAN_PASSPORT_V1.json",
+    "validators":  [
+                       "operations/live_start/validate_aimo_agent_only_restart_v1.ps1",
+                       "operations/live_start/validate_school_aimo_controlled_live_start_v1.ps1"
+                   ],
+    "inspected_proofs":  [
+                             {
+                                 "path":  "tests/live_start/AIMO_AGENT_ONLY_RESTART_V1_PROOF.json",
+                                 "schema":  "aimo_agent_only_restart_v1",
+                                 "status":  "PASS_AIMO_AGENT_ONLY_RESTART_V1",
+                                 "proof_label":  "PROVEN_LIVE_AIMO_AGENT_ONLY_RESTART_WITH_SCHOOL_UNTOUCHED",
+                                 "owner_authorized":  null,
+                                 "live_started":  null,
+                                 "repo_head":  "2eced4f38b1ae2eb7ba4a23280c0c6d0b43af928",
+                                 "active_processes_after":  null
+                             },
+                             {
+                                 "path":  "tests/live_start/SCHOOL_AIMO_CONTROLLED_LIVE_START_V1_PROOF.json",
+                                 "schema":  "school_aimo_controlled_live_start_v1",
+                                 "status":  "PASS_SCHOOL_AIMO_CONTROLLED_LIVE_START_V1",
+                                 "proof_label":  "PROVEN_LIVE_INITIAL_CONTROLLED_START_NOT_LONG_SOAK",
+                                 "owner_authorized":  true,
+                                 "live_started":  true,
+                                 "repo_head":  "8781943630355f702444e4f059f5514614efb44d",
+                                 "active_processes_after":  2
+                             }
+                         ],
+    "decision":  "DO_NOT_PROMOTE_TO_VALIDATED_LAB",
+    "root_cause":  "validators/proofs are live-start proofs, not lab-only organ validation proofs",
+    "required_next":  "create separate lab-only live-start contract validator that checks preconditions/control surfaces without starting live runtime",
+    "boundaries":  {
+                       "lab_boundary_gate_only":  true,
+                       "no_validated_lab_claim_created":  true,
+                       "no_active_passports_created":  true,
+                       "no_proven_live_claim":  true,
+                       "live_process_touched":  false
+                   },
+    "created_at":  "2026-07-10T20:38:20.6728651+04:00"
+}

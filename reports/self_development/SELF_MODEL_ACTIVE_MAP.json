@@ -6,19 +6,19 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "45c8374839d0f93f3c309ecebb22a98b7707b2f0",
-    "subject_head":  "45c8374839d0f93f3c309ecebb22a98b7707b2f0",
-    "generated_at":  "2026-07-10T20:24:50.6266729+04:00",
+    "observed_head_at_generation":  "919717db7796e308a753406373d356da3bb907bb",
+    "subject_head":  "919717db7796e308a753406373d356da3bb907bb",
+    "generated_at":  "2026-07-10T20:40:13.4464052+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  1982,
+    "structural_path_count":  1986,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1982,
-                                    "sha256":  "16bf79c73df0bddf1d1083707c51ff9c44892e87e3eb5642a3b79a4adbd45110"
+                                    "structural_file_count":  1986,
+                                    "sha256":  "45967a9a2a71a3626e1e95db003dd4c6b1c10155c271ae57ac8e38d1a1054872"
                                 },
     "module_count":  207,
     "validator_count":  174,
@@ -597,8 +597,8 @@
                                      "root":  "operations/self_model",
                                      "status":  "CONFIRMED_PRIMARY_EVIDENCE_PRESENT",
                                      "confirmation_basis":  "explicit_required_component_with_primary_repo_evidence",
-                                     "file_count":  51,
-                                     "script_count":  51,
+                                     "file_count":  53,
+                                     "script_count":  53,
                                      "validator_count":  30,
                                      "proof_file_count":  2,
                                      "contract_or_policy_count":  4,
@@ -637,13 +637,13 @@
                                                             "operations/self_model/validate_memory_reasoning_lab_validation_v1.ps1",
                                                             "operations/self_model/validate_next_route_lock_and_health_audit_v1.ps1",
                                                             "operations/self_model/validate_operations_live_readiness_lab_validation_v1.ps1",
+                                                            "operations/self_model/validate_operations_live_start_lab_boundary_gate_v1.ps1",
                                                             "operations/self_model/validate_operations_self_model_organ_lab_validation_v1.ps1",
                                                             "operations/self_model/validate_organ_passport_calibration_v1.ps1",
                                                             "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
                                                             "operations/self_model/validate_organ_passport_coverage_batch_v2.ps1",
                                                             "operations/self_model/validate_organ_passport_draft_generator_fast_lane_v1.ps1",
-                                                            "operations/self_model/validate_organ_passport_draft_review_and_index_gate_v1.ps1",
-                                                            "operations/self_model/validate_organ_passport_maturity_triage_v1.ps1"
+                                                            "operations/self_model/validate_organ_passport_draft_review_and_index_gate_v1.ps1"
                                                         ],
                                      "proof_refs":  [
                                                         "operations/self_model/build_organ_passport_proof_run_calibration_v1.ps1",
@@ -698,6 +698,7 @@
                                                                 "operations/self_model/validate_memory_reasoning_lab_validation_v1.ps1",
                                                                 "operations/self_model/validate_next_route_lock_and_health_audit_v1.ps1",
                                                                 "operations/self_model/validate_operations_live_readiness_lab_validation_v1.ps1",
+                                                                "operations/self_model/validate_operations_live_start_lab_boundary_gate_v1.ps1",
                                                                 "operations/self_model/validate_operations_self_model_organ_lab_validation_v1.ps1",
                                                                 "operations/self_model/validate_organ_passport_calibration_v1.ps1",
                                                                 "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
@@ -716,9 +717,9 @@
                                                                 "operations/self_model/validate_source_evidence_inventory_v1.ps1"
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "45c8374839d0f93f3c309ecebb22a98b7707b2f0",
-                                                               "committed_at":  "2026-07-10T20:17:22+04:00",
-                                                               "subject":  "passport: run proof calibration for draft organs"
+                                                               "head":  "919717db7796e308a753406373d356da3bb907bb",
+                                                               "committed_at":  "2026-07-10T20:24:16+04:00",
+                                                               "subject":  "passport: validate memory and reasoning in lab"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -762,9 +763,9 @@
 
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "45c8374839d0f93f3c309ecebb22a98b7707b2f0",
-                                                               "committed_at":  "2026-07-10T20:17:22+04:00",
-                                                               "subject":  "passport: run proof calibration for draft organs"
+                                                               "head":  "919717db7796e308a753406373d356da3bb907bb",
+                                                               "committed_at":  "2026-07-10T20:24:16+04:00",
+                                                               "subject":  "passport: validate memory and reasoning in lab"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -9148,8 +9149,8 @@
                            "root":  "operations/self_model",
                            "status":  "CONFIRMED_PRIMARY_EVIDENCE_PRESENT",
                            "confirmation_basis":  "explicit_required_component_with_primary_repo_evidence",
-                           "file_count":  51,
-                           "script_count":  51,
+                           "file_count":  53,
+                           "script_count":  53,
                            "validator_count":  30,
                            "proof_file_count":  2,
                            "contract_or_policy_count":  4,
@@ -9188,13 +9189,13 @@
                                                   "operations/self_model/validate_memory_reasoning_lab_validation_v1.ps1",
                                                   "operations/self_model/validate_next_route_lock_and_health_audit_v1.ps1",
                                                   "operations/self_model/validate_operations_live_readiness_lab_validation_v1.ps1",
+                                                  "operations/self_model/validate_operations_live_start_lab_boundary_gate_v1.ps1",
                                                   "operations/self_model/validate_operations_self_model_organ_lab_validation_v1.ps1",
                                                   "operations/self_model/validate_organ_passport_calibration_v1.ps1",
                                                   "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
                                                   "operations/self_model/validate_organ_passport_coverage_batch_v2.ps1",
                                                   "operations/self_model/validate_organ_passport_draft_generator_fast_lane_v1.ps1",
-                                                  "operations/self_model/validate_organ_passport_draft_review_and_index_gate_v1.ps1",
-                                                  "operations/self_model/validate_organ_passport_maturity_triage_v1.ps1"
+                                                  "operations/self_model/validate_organ_passport_draft_review_and_index_gate_v1.ps1"
                                               ],
                            "proof_refs":  [
                                               "operations/self_model/build_organ_passport_proof_run_calibration_v1.ps1",
@@ -9249,6 +9250,7 @@
                                                       "operations/self_model/validate_memory_reasoning_lab_validation_v1.ps1",
                                                       "operations/self_model/validate_next_route_lock_and_health_audit_v1.ps1",
                                                       "operations/self_model/validate_operations_live_readiness_lab_validation_v1.ps1",
+                                                      "operations/self_model/validate_operations_live_start_lab_boundary_gate_v1.ps1",
                                                       "operations/self_model/validate_operations_self_model_organ_lab_validation_v1.ps1",
                                                       "operations/self_model/validate_organ_passport_calibration_v1.ps1",
                                                       "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
@@ -9267,9 +9269,9 @@
                                                       "operations/self_model/validate_source_evidence_inventory_v1.ps1"
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "45c8374839d0f93f3c309ecebb22a98b7707b2f0",
-                                                     "committed_at":  "2026-07-10T20:17:22+04:00",
-                                                     "subject":  "passport: run proof calibration for draft organs"
+                                                     "head":  "919717db7796e308a753406373d356da3bb907bb",
+                                                     "committed_at":  "2026-07-10T20:24:16+04:00",
+                                                     "subject":  "passport: validate memory and reasoning in lab"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -9313,9 +9315,9 @@
 
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "45c8374839d0f93f3c309ecebb22a98b7707b2f0",
-                                                     "committed_at":  "2026-07-10T20:17:22+04:00",
-                                                     "subject":  "passport: run proof calibration for draft organs"
+                                                     "head":  "919717db7796e308a753406373d356da3bb907bb",
+                                                     "committed_at":  "2026-07-10T20:24:16+04:00",
+                                                     "subject":  "passport: validate memory and reasoning in lab"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,

@@ -728,3 +728,31 @@ Boundaries:
 
 Next concrete step:
 - Decide whether to lab-validate operations_live_start or first repair the remaining single-validator/contract-reference candidates.
+
+## 2026-07-10 — Operations live start lab boundary gate V1
+
+STATUS: BLOCKED_BY_LIVE_BOUNDARY / NOT_VALIDATED_LAB / NOT_PROVEN_LIVE
+
+Built:
+- Added builder: operations/self_model/build_operations_live_start_lab_boundary_gate_v1.ps1.
+- Added validator: operations/self_model/validate_operations_live_start_lab_boundary_gate_v1.ps1.
+- Created report/proof:
+  - reports/self_development/OPERATIONS_LIVE_START_LAB_BOUNDARY_GATE_V1.json
+  - tests/self_development/OPERATIONS_LIVE_START_LAB_BOUNDARY_GATE_V1_PROOF.json
+
+Result:
+- operations_live_start was NOT promoted to VALIDATED_LAB.
+- Passport remains DRAFT / NOT_PROVEN.
+- Existing validators/proofs assert PROVEN_LIVE or live_started, so they are not acceptable as lab-only proof.
+
+Decision:
+- DO_NOT_PROMOTE_TO_VALIDATED_LAB.
+
+Required next:
+- Create a dedicated lab-only live-start contract validator that checks prerequisites/control surfaces without starting live runtime.
+
+Boundaries:
+- No VALIDATED_LAB claim created.
+- No PASSPORT_ACTIVE claim.
+- No PROVEN_LIVE claim.
+- No live runtime touched.
