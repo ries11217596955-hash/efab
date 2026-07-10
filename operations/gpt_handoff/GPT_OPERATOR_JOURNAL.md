@@ -262,3 +262,99 @@ Night-school note:
 
 Статус:
 Это рабочая архитектурная заметка для сохранения направления проекта. Это НЕ закон, НЕ контракт и НЕ активная память агента.
+
+## 2026-07-09 — Architecture decision: contract must become an immune gate, not a chat note
+
+Owner correction / clarification:
+- A contract is not just a document, journal entry, or chat agreement.
+- For Builder, a real contract means: the organism cannot accept a violation even if Owner, GPT, or Codex forgets the rule.
+- The correct metaphor is biological: membrane / immune gate / admission barrier.
+
+Decision:
+- Lifecycle contract must become a non-bypassable acceptance gate for future organs and lifecycle surfaces.
+- If a new organ/module/passport does not show its lifecycle role, evidence input, signal output, forbidden actions, validator and proof boundary, Builder must classify it as BLOCKED_CONTRACT / NOT_ORGAN, not as a mature organ.
+- The contract must be wired into promotion/admission behavior, especially ORGAN_PROMOTION_LANES, before it can protect the organism.
+
+Architecture boundary:
+- Journal text alone is STRATEGY_MEMORY only.
+- A markdown contract alone is not enough.
+- A validator without promotion/admission use is not enough.
+- A gate without proof is not mature.
+- Correct target: law + validator + promotion/admission gate + proof + restore pointer.
+
+Living-cell lens preserved:
+- Builder is being treated as a living cell / organism, not as scripts, repo files, or an LLM wrapper.
+- We analyze it as architect, systems engineer, and doctor-anatomist.
+- First question before implementation remains: what law of Builder life are we protecting?
+
+Proposed next Builder-growth object:
+- ORGAN_LIFECYCLE_CONTRACT_GATE_V1 as candidate immune/admission gate.
+- Purpose: prevent future organ promotion when lifecycle contract is missing or violated.
+- Required check: Evidence -> Organ -> Signal -> Brain -> Decision -> Action -> Verification -> Learning.
+- Status now: ARCHITECTURE_DECISION_RECORDED / NOT_IMPLEMENTED / NOT_VALIDATED / NOT_WIRED.
+
+Next safe action:
+- Draft bounded requirement for ORGAN_LIFECYCLE_CONTRACT_GATE_V1.
+- Before any file-write implementation, run read-only PREFLIGHT to locate existing ORGAN_PROMOTION_LANES anchors, current validators, proof surfaces, and possible lifecycle contract placement.
+- No claim of active contract until validator and promotion/admission gate proof exists.
+
+## 2026-07-10 — Owner accepted read-only anatomical inspection before lifecycle gate implementation
+
+Owner decision:
+- Proceed with read-only anatomical inspection of the Builder body before implementing ORGAN_LIFECYCLE_CONTRACT_GATE_V1.
+- Update journal first, then inspect what exists and what is missing.
+
+Reason:
+- The project must continue the living-cell architecture line.
+- Builder is not being treated as scripts/repo/LLM wrapper.
+- The next object is not a new organ implementation, but an immune/admission gate candidate that prevents false organs from entering the organism.
+
+Accepted boundary:
+- Do not write Gate implementation yet.
+- Do not create a new organ yet.
+- Do not make Gate a second Brain.
+- Do not modify live runtime.
+- Do not claim active contract, validator, mature gate, or promotion wiring without proof.
+
+Immediate next action:
+- Run PHASE_C read-only anatomical inspection.
+- Locate ORGAN_PROMOTION_LANES anchors, accepted_atom_retention_organ calibration surfaces, validators, reports, proofs, and possible lifecycle contract placement.
+- Return a human-readable anatomy report: what exists, what is missing, where the immune gate should attach, and what must not be touched.
+
+Status:
+- OWNER_DECISION_RECORDED.
+- INSPECTION_AUTHORIZED_READ_ONLY.
+- NOT_IMPLEMENTED / NOT_VALIDATED / NOT_WIRED / NO_LIVE_PROOF.
+
+## 2026-07-10 — Strategy note: Builder must grow through immune admission before organ expansion
+
+Strategic position:
+- Builder is being designed as a self-developing living electronic cell / organism, not as a script collection, repository, module bundle, or LLM tool wrapper.
+- The current priority is not adding more organs. The current priority is making the organism capable of refusing false organs.
+- A living cell cannot grow safely if every folder, script, passport, report, or validator can be mistaken for an organ.
+
+Architectural meaning:
+- ORGAN_PROMOTION_LANES already sorts body-surface candidates into lanes, but sorting is not enough.
+- The missing layer is an immune/admission gate that checks whether a candidate satisfies the life contract before passport draft, promotion, Brain use, or live wiring.
+- ORGAN_LIFECYCLE_CONTRACT_GATE_V1 is therefore a second-order protection mechanism, not a normal work organ and not a second Brain.
+
+Core law to protect:
+- Evidence becomes usable only through an Organ that produces a Signal.
+- Brain listens to Signals; Brain must not treat raw repository reading as body truth.
+- A candidate that cannot declare lifecycle role, evidence input, signal output, boundaries, validator, and proof boundary must not enter the organism as an organ.
+
+Smallest next strategic move:
+- Draft the human requirement contract for ORGAN_LIFECYCLE_CONTRACT_GATE_V1 before implementation.
+- Keep the first version small: organ/not-organ, lifecycle role, evidence input, signal output, forbidden actions, validator presence, proof boundary, and Brain/Identity/Body Map boundary checks.
+- Defer maturity checks such as full authority, rollback, quarantine, live wiring, and memory/reuse until the minimal gate shape is agreed.
+
+Status:
+- STRATEGY_RECORDED.
+- GATE_REQUIREMENT_NEXT.
+- NOT_IMPLEMENTED / NOT_VALIDATED / NOT_WIRED / NO_LIVE_PROOF.
+
+## 2026-07-10 — Architectural direction
+- Decision: stop treating self-build as a collection of independent organs.
+- New architecture: Body Model -> Body State -> Reasoner -> Brain -> Living Loop.
+- Distinction fixed: Laws define constraints; Organs produce signals; Brain consumes signals; Artifacts are evidence, not decisions.
+- Next implementation target: define the Living Loop contract first, then derive Identity/Capability/Health organs from it.

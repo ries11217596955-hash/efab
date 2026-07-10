@@ -1,64 +1,22 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-09T18:26:45.6497212+04:00",
+    "checked_at":  "2026-07-10T09:57:01.3578932+04:00",
     "branch":  "main",
-    "observed_head":  "db5af6d8532b1e74ac05a7ea3b4d369486a5b047",
-    "subject_head":  "db5af6d8532b1e74ac05a7ea3b4d369486a5b047",
+    "observed_head":  "c157a6f44b9ae2f9fc522fe0973e1e04c8407259",
+    "subject_head":  "c157a6f44b9ae2f9fc522fe0973e1e04c8407259",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "docs/operations/ACCEPTED_ATOM_RETENTION_ORGAN_CALIBRATION_V1.md",
-                          "docs/operations/BODY_MAP_CANDIDATE_TRIAGE_V1.md",
-                          "docs/operations/BODY_MAP_TRIAGE_PROMOTION_PLAN_V1.md",
-                          "docs/operations/ORGAN_PROMOTION_LANES_V1.md",
-                          "operations/accepted_atom_retention_calibration/build_accepted_atom_retention_organ_calibration_v1.ps1",
-                          "operations/accepted_atom_retention_calibration/validate_accepted_atom_retention_organ_calibration_v1.ps1",
                           "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                          "operations/organ_promotion_lanes/build_organ_promotion_lanes_v1.ps1",
-                          "operations/organ_promotion_lanes/validate_organ_promotion_lanes_v1.ps1",
-                          "operations/self_model/validate_organ_passport_draft_review_and_index_gate_v1.ps1",
-                          "reports/self_development/ACCEPTED_ATOM_RETENTION_ORGAN_CALIBRATION_V1.json",
-                          "reports/self_development/BODY_MAP_CANDIDATE_TRIAGE_V1.json",
-                          "reports/self_development/BODY_MAP_TRIAGE_PROMOTION_PLAN_V1.json",
-                          "reports/self_development/ORGAN_PASSPORT_DRAFT_REVIEW_AND_INDEX_GATE_V1.json",
-                          "reports/self_development/ORGAN_PROMOTION_LANES_V1_REPORT.json",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
-                          "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "self_model/organ_passports/_index/ORGAN_PASSPORT_DRAFT_INDEX_V1.json",
-                          "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json",
-                          "tests/self_development/ACCEPTED_ATOM_RETENTION_ORGAN_CALIBRATION_V1_PROOF.json",
-                          "tests/self_development/BODY_MAP_CANDIDATE_TRIAGE_V1_PROOF.json",
-                          "tests/self_development/BODY_MAP_TRIAGE_PROMOTION_PLAN_V1_PROOF.json",
-                          "tests/self_development/ORGAN_PASSPORT_DRAFT_REVIEW_AND_INDEX_GATE_V1_PROOF.json",
-                          "tests/self_development/ORGAN_PROMOTION_LANES_V1_PROOF.json"
+                          "reports/self_development/branch_agnostic_map_refresh_result.json"
                       ],
     "structural_paths":  [
-                             "docs/operations/ACCEPTED_ATOM_RETENTION_ORGAN_CALIBRATION_V1.md",
-                             "docs/operations/BODY_MAP_CANDIDATE_TRIAGE_V1.md",
-                             "docs/operations/BODY_MAP_TRIAGE_PROMOTION_PLAN_V1.md",
-                             "docs/operations/ORGAN_PROMOTION_LANES_V1.md",
-                             "operations/accepted_atom_retention_calibration/build_accepted_atom_retention_organ_calibration_v1.ps1",
-                             "operations/accepted_atom_retention_calibration/validate_accepted_atom_retention_organ_calibration_v1.ps1",
-                             "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                             "operations/organ_promotion_lanes/build_organ_promotion_lanes_v1.ps1",
-                             "operations/organ_promotion_lanes/validate_organ_promotion_lanes_v1.ps1",
-                             "operations/self_model/validate_organ_passport_draft_review_and_index_gate_v1.ps1",
-                             "reports/self_development/ACCEPTED_ATOM_RETENTION_ORGAN_CALIBRATION_V1.json",
-                             "reports/self_development/BODY_MAP_CANDIDATE_TRIAGE_V1.json",
-                             "reports/self_development/BODY_MAP_TRIAGE_PROMOTION_PLAN_V1.json",
-                             "reports/self_development/ORGAN_PASSPORT_DRAFT_REVIEW_AND_INDEX_GATE_V1.json",
-                             "reports/self_development/ORGAN_PROMOTION_LANES_V1_REPORT.json",
-                             "self_model/organ_passports/_index/ORGAN_PASSPORT_DRAFT_INDEX_V1.json",
-                             "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json",
-                             "tests/self_development/ACCEPTED_ATOM_RETENTION_ORGAN_CALIBRATION_V1_PROOF.json",
-                             "tests/self_development/BODY_MAP_CANDIDATE_TRIAGE_V1_PROOF.json",
-                             "tests/self_development/BODY_MAP_TRIAGE_PROMOTION_PLAN_V1_PROOF.json",
-                             "tests/self_development/ORGAN_PASSPORT_DRAFT_REVIEW_AND_INDEX_GATE_V1_PROOF.json",
-                             "tests/self_development/ORGAN_PROMOTION_LANES_V1_PROOF.json"
+                             "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -71,7 +29,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  1633,
-                                    "sha256":  "a58bb0a3128eba8d1f4ffb1570e13da8eb21a6bbfa1036fffdf0cb9469cfdb97"
+                                    "sha256":  "3982c38bc9fac6d54ffe9b88a8cf615ae40ad1c411fdc4cc1a8da98a6078448d"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -105,5 +63,5 @@
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-09T18:27:12.3743426+04:00"
+    "refreshed_at":  "2026-07-10T09:57:28.9356267+04:00"
 }
