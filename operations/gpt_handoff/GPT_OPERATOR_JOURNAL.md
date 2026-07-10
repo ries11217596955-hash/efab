@@ -358,3 +358,55 @@ Status:
 - New architecture: Body Model -> Body State -> Reasoner -> Brain -> Living Loop.
 - Distinction fixed: Laws define constraints; Organs produce signals; Brain consumes signals; Artifacts are evidence, not decisions.
 - Next implementation target: define the Living Loop contract first, then derive Identity/Capability/Health organs from it.
+
+## 2026-07-10 — Passport Draft Generator production pass / operations_organ_promotion_lanes
+
+STATUS: PROOF_PASS / NOT_PROVEN_LIVE
+
+Checked:
+- Bridge/root fresh truth: H:\efab, branch main, HEAD b58ae4c, dirty state existed before pass.
+- Dirty state was unrelated lifecycle-contract route work: ACTIVE_ROUTE_LOCK V5 + organ_lifecycle_contract_gate requirement. It was preserved via git stash before passport work, not deleted and not mixed into passport commit.
+- Existing passport generator surface was found at operations/self_model/validate_organ_passport_draft_generator_fast_lane_v1.ps1 with report/proof PASS_ORGAN_PASSPORT_DRAFT_GENERATOR_FAST_LANE_V1.
+
+Root cause:
+- The previous “Passport Draft Generator” was not a reusable production generator. It was a static validator/report/proof pair hard-coded to generated_count=2.
+- The review/index gate was also hard-coded to two passports. This blocked normal reuse for the next fast-lane candidate.
+
+Fixed:
+- Added repeatable build command: operations/self_model/build_organ_passport_draft_generator_fast_lane_v1.ps1.
+- Updated generator validator to allow repeatable fast-lane passport drafts and require operations_organ_promotion_lanes target presence.
+- Reworked review/index gate to scan canonical self_model/organ_passports/*/ORGAN_PASSPORT_V1.json instead of assuming exactly two passports.
+- Generator now creates/normalizes passport draft, doc, report, proof, index, and lane passport refs without ACTIVE/PROVEN_LIVE claims.
+
+Candidate processed:
+- operations_organ_promotion_lanes
+- Passport: self_model/organ_passports/operations_organ_promotion_lanes/ORGAN_PASSPORT_V1.json
+- Doc: docs/operations/organ_passports/operations_organ_promotion_lanes/ORGAN_PASSPORT_V1.md
+- Status: PASSPORT_DRAFT_FROM_EVIDENCE
+- Maturity: DRAFT
+- Live/lab: NOT_PROVEN
+
+Validators/proofs passed:
+- PASS_ORGAN_PASSPORT_DRAFT_GENERATOR_FAST_LANE_V1
+- PASS_ORGAN_PASSPORT_DRAFT_REVIEW_AND_INDEX_GATE_V1
+- PASS_ORGAN_PROMOTION_LANES_V1
+- MAP_REFRESHED via modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1
+- PASS_AGENT_BODY_COMPOSITION_MAP_CURRENT_V1
+
+Map auto-refresh finding:
+- No .git/hooks/pre-commit or .git/hooks/post-commit hook was present during this pass.
+- Therefore full automatic refresh on commit is NOT_PROVEN / not active from hook evidence.
+- Manual refresh works and passed.
+- The map refresh fingerprint uses sorted structural path + file sha256 and excludes reports/runtime/proofs/gpt_handoff archives.
+- A generator can create passport/report/index changes while the map remains stale until refresh script is invoked, unless a future hook/trigger is installed.
+- Stale map is caught by validators/validate_agent_body_composition_map_current_v1.ps1 after refresh/validation flow.
+
+Still blocked / not claimed:
+- No PASSPORT_ACTIVE claim.
+- No PROVEN_LIVE claim.
+- No live runtime touched.
+- No child-agent readiness claim.
+- Full auto-refresh-on-commit remains NOT_IMPLEMENTED/NOT_PROVEN from hook evidence.
+
+Next concrete step:
+- Decide whether to add a tracked/installable map refresh trigger/hook mechanism, or keep manual refresh as required after structural passport/generator changes.

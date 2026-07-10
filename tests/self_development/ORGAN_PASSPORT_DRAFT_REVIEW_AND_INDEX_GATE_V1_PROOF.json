@@ -3,13 +3,17 @@
     "status":  "PASS_ORGAN_PASSPORT_DRAFT_REVIEW_AND_INDEX_GATE_V1",
     "report_path":  "reports/self_development/ORGAN_PASSPORT_DRAFT_REVIEW_AND_INDEX_GATE_V1.json",
     "index_path":  "self_model/organ_passports/_index/ORGAN_PASSPORT_DRAFT_INDEX_V1.json",
-    "reviewed_count":  2,
-    "lab_validated_not_active_count":  1,
-    "blocked_no_validator_count":  0,
+    "reviewed_count":  3,
+    "reviewed_organ_ids":  [
+                               "operations_self_model",
+                               "operations_organ_promotion_lanes",
+                               "contracts_accepted_atom_retention_organ"
+                           ],
+    "operations_organ_promotion_lanes_reviewed":  true,
     "no_active_passports_created":  true,
     "no_proven_live_claims":  true,
-    "live_process_touched":  false,
-    "created_at":  "2026-07-09T12:27:58.2859269+04:00",
     "accepted_atom_calibrated":  true,
-    "accepted_atom_review_decision":  "PASSPORT_DRAFT_VALIDATED_BLOCKED_RUNTIME_PROOF"
+    "accepted_atom_review_decision":  "PASSPORT_DRAFT_VALIDATED_BLOCKED_RUNTIME_PROOF",
+    "live_process_touched":  false,
+    "created_at":  "2026-07-10T19:06:26.5616808+04:00"
 }

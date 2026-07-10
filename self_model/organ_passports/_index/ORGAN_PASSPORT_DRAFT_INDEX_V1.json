@@ -2,67 +2,89 @@
     "schema":  "organ_passport_draft_index_v1",
     "status":  "PASS_ORGAN_PASSPORT_DRAFT_INDEX_V1",
     "generated_from":  "self_model/organ_passports/*/ORGAN_PASSPORT_V1.json",
-    "passport_count":  2,
-    "active_count":  0,
-    "lab_validated_not_active_count":  1,
-    "lab_validation_candidate_count":  0,
-    "blocked_no_validator_count":  0,
+    "draft_count":  3,
     "passports":  [
-                      {
-                          "organ_id":  "contracts_accepted_atom_retention_organ",
-                          "passport_path":  "self_model/organ_passports/contracts_accepted_atom_retention_organ/ORGAN_PASSPORT_V1.json",
-                          "doc_path":  "docs/operations/organ_passports/contracts_accepted_atom_retention_organ/ORGAN_PASSPORT_V1.md",
-                          "status":  "PASSPORT_DRAFT_FROM_EVIDENCE",
-                          "maturity":  "DRAFT",
-                          "live_or_lab_status":  "NOT_PROVEN",
-                          "owning_root":  "contracts/accepted_atom_retention_organ",
-                          "owned_file_count":  10,
-                          "owned_files_missing":  [
-
-                                                  ],
-                          "required_fields_missing":  [
-
-                                                      ],
-                          "validator_count":  1,
-                          "existing_validator_count":  1,
-                          "proof_ref_count":  1,
-                          "existing_proof_ref_count":  1,
-                          "active_claim_detected":  false,
-                          "live_claim_detected":  false,
-                          "lab_validation_candidate":  false,
-                          "lab_validated_not_active":  false,
-                          "review_decision":  "PASSPORT_DRAFT_VALIDATED_BLOCKED_RUNTIME_PROOF",
-                          "next_action":  "RESTORE_MICRO_PROOF_BEFORE_ACTIVE_OR_RUNTIME_CLAIM",
-                          "calibration_ref":  "reports/self_development/ACCEPTED_ATOM_RETENTION_ORGAN_CALIBRATION_V1.json",
-                          "blocker":  "missing runtime/micro proof"
-                      },
                       {
                           "organ_id":  "operations_self_model",
                           "passport_path":  "self_model/organ_passports/operations_self_model/ORGAN_PASSPORT_V1.json",
-                          "doc_path":  "docs/operations/organ_passports/operations_self_model/ORGAN_PASSPORT_V1.md",
+                          "owning_root":  "operations/self_model",
+                          "review_decision":  "LAB_VALIDATED_NOT_ACTIVE",
                           "status":  "PASSPORT_DRAFT_FROM_EVIDENCE",
                           "maturity":  "VALIDATED_LAB",
                           "live_or_lab_status":  "PROVEN_LAB",
-                          "owning_root":  "operations/self_model",
-                          "owned_file_count":  30,
-                          "owned_files_missing":  [
-
-                                                  ],
-                          "required_fields_missing":  [
-
-                                                      ],
                           "validator_count":  21,
-                          "existing_validator_count":  21,
-                          "proof_ref_count":  1,
-                          "existing_proof_ref_count":  1,
+                          "proof_count":  1,
                           "active_claim_detected":  false,
-                          "live_claim_detected":  false,
-                          "lab_validation_candidate":  false,
-                          "lab_validated_not_active":  true,
-                          "review_decision":  "LAB_VALIDATED_NOT_ACTIVE",
-                          "next_action":  "AWAIT_OWNER_OR_ROUTE_ACCEPTANCE_FOR_PASSPORT_ACTIVE_AND_LIVE_RESTART_FOR_PROVEN_LIVE"
+                          "live_claim_detected":  false
+                      },
+                      {
+                          "organ_id":  "operations_organ_promotion_lanes",
+                          "passport_path":  "self_model/organ_passports/operations_organ_promotion_lanes/ORGAN_PASSPORT_V1.json",
+                          "owning_root":  "operations/organ_promotion_lanes",
+                          "review_decision":  "PASSPORT_DRAFT_VALIDATED_BLOCKED_RUNTIME_PROOF",
+                          "status":  "PASSPORT_DRAFT_FROM_EVIDENCE",
+                          "maturity":  "DRAFT",
+                          "live_or_lab_status":  "NOT_PROVEN",
+                          "validator_count":  1,
+                          "proof_count":  3,
+                          "active_claim_detected":  false,
+                          "live_claim_detected":  false
+                      },
+                      {
+                          "organ_id":  "contracts_accepted_atom_retention_organ",
+                          "passport_path":  "self_model/organ_passports/contracts_accepted_atom_retention_organ/ORGAN_PASSPORT_V1.json",
+                          "owning_root":  "contracts/accepted_atom_retention_organ",
+                          "review_decision":  "PASSPORT_DRAFT_VALIDATED_BLOCKED_RUNTIME_PROOF",
+                          "status":  "PASSPORT_DRAFT_FROM_EVIDENCE",
+                          "maturity":  "DRAFT",
+                          "live_or_lab_status":  "NOT_PROVEN",
+                          "validator_count":  0,
+                          "proof_count":  1,
+                          "active_claim_detected":  false,
+                          "live_claim_detected":  false
                       }
                   ],
+    "entries":  [
+                    {
+                        "organ_id":  "operations_self_model",
+                        "passport_path":  "self_model/organ_passports/operations_self_model/ORGAN_PASSPORT_V1.json",
+                        "owning_root":  "operations/self_model",
+                        "review_decision":  "LAB_VALIDATED_NOT_ACTIVE",
+                        "status":  "PASSPORT_DRAFT_FROM_EVIDENCE",
+                        "maturity":  "VALIDATED_LAB",
+                        "live_or_lab_status":  "PROVEN_LAB",
+                        "validator_count":  21,
+                        "proof_count":  1,
+                        "active_claim_detected":  false,
+                        "live_claim_detected":  false
+                    },
+                    {
+                        "organ_id":  "operations_organ_promotion_lanes",
+                        "passport_path":  "self_model/organ_passports/operations_organ_promotion_lanes/ORGAN_PASSPORT_V1.json",
+                        "owning_root":  "operations/organ_promotion_lanes",
+                        "review_decision":  "PASSPORT_DRAFT_VALIDATED_BLOCKED_RUNTIME_PROOF",
+                        "status":  "PASSPORT_DRAFT_FROM_EVIDENCE",
+                        "maturity":  "DRAFT",
+                        "live_or_lab_status":  "NOT_PROVEN",
+                        "validator_count":  1,
+                        "proof_count":  3,
+                        "active_claim_detected":  false,
+                        "live_claim_detected":  false
+                    },
+                    {
+                        "organ_id":  "contracts_accepted_atom_retention_organ",
+                        "passport_path":  "self_model/organ_passports/contracts_accepted_atom_retention_organ/ORGAN_PASSPORT_V1.json",
+                        "owning_root":  "contracts/accepted_atom_retention_organ",
+                        "review_decision":  "PASSPORT_DRAFT_VALIDATED_BLOCKED_RUNTIME_PROOF",
+                        "status":  "PASSPORT_DRAFT_FROM_EVIDENCE",
+                        "maturity":  "DRAFT",
+                        "live_or_lab_status":  "NOT_PROVEN",
+                        "validator_count":  0,
+                        "proof_count":  1,
+                        "active_claim_detected":  false,
+                        "live_claim_detected":  false
+                    }
+                ],
     "boundaries":  {
                        "index_only":  true,
                        "no_status_mutation":  true,
@@ -70,5 +92,5 @@
                        "no_proven_live_claims_created":  true,
                        "live_process_touched":  false
                    },
-    "created_at":  "2026-07-09T12:27:58.2521437+04:00"
+    "created_at":  "2026-07-10T19:06:26.5616808+04:00"
 }

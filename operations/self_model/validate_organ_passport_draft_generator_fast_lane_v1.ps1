@@ -11,7 +11,7 @@ $p=Get-Content $proofPath -Raw|ConvertFrom-Json
 Assert ($r.status -eq 'PASS_ORGAN_PASSPORT_DRAFT_GENERATOR_FAST_LANE_V1') 'REPORT_STATUS_BAD'
 Assert ($p.status -eq 'PASS_ORGAN_PASSPORT_DRAFT_GENERATOR_FAST_LANE_V1') 'PROOF_STATUS_BAD'
 $drafts=@($r.generated_drafts)
-Assert ($drafts.Count -eq 2) 'DRAFT_COUNT_BAD'
+Assert ($drafts.Count -ge 2) 'DRAFT_COUNT_BAD'; Assert (@($drafts|Where-Object{$_.organ_id -eq 'operations_organ_promotion_lanes'}).Count -eq 1) 'TARGET_OPERATIONS_ORGAN_PROMOTION_LANES_DRAFT_MISSING'
 foreach($d in $drafts){
   Assert (Test-Path $d.passport_path) ("PASSPORT_MISSING:{0}" -f $d.passport_path)
   Assert (Test-Path $d.doc_path) ("PASSPORT_DOC_MISSING:{0}" -f $d.doc_path)
@@ -27,9 +27,10 @@ foreach($d in $drafts){
 }
 Assert ($r.boundaries.no_active_passports_created -eq $true) 'ACTIVE_BOUNDARY_BAD'
 Assert ($r.boundaries.no_live_claims -eq $true) 'LIVE_CLAIM_BOUNDARY_BAD'
-Assert ($r.boundaries.passport_generator_for_all_candidates_blocked -eq $true) 'ALL_CANDIDATES_BLOCK_BAD'
+Assert ($r.boundaries.passport_generator_for_all_candidates_blocked -eq $true) 'ALL_CANDIDATES_BLOCK_BAD'; Assert ($r.boundaries.passport_generator_repeatable_fast_lane -eq $true) 'REPEATABLE_FAST_LANE_BOUNDARY_MISSING'
 Assert ($p.no_active_passports_created -eq $true) 'PROOF_ACTIVE_FALSE'
 foreach($legacy in @('reports/self_development/CURRENT_BODY_CAPABILITY_SNAPSHOT_V1.json','self_knowledge/BUILDER_SELF_MODEL.json')){Assert (-not(Test-Path $legacy)) ("LEGACY_MAP_PRESENT:{0}" -f $legacy)}
 Write-Host 'VALIDATION_PASS=PASS_ORGAN_PASSPORT_DRAFT_GENERATOR_FAST_LANE_V1'
 Write-Host ('REPORT_PATH='+$reportPath)
 Write-Host ('PROOF_PATH='+$proofPath)
+

@@ -1,10 +1,11 @@
 ﻿{
     "schema":  "organ_passport_draft_generator_fast_lane_v1",
     "status":  "PASS_ORGAN_PASSPORT_DRAFT_GENERATOR_FAST_LANE_V1",
-    "purpose":  "Generate canonical draft organ passports only for candidate-ready fast-lane body-map candidates.",
+    "purpose":  "Generate canonical draft organ passports for candidate-ready fast-lane body-map candidates through a repeatable production command.",
     "source_plan":  "reports/self_development/BODY_MAP_TRIAGE_PROMOTION_PLAN_V1.json",
     "source_triage":  "reports/self_development/BODY_MAP_CANDIDATE_TRIAGE_V1.json",
-    "generated_count":  2,
+    "input_candidate_id":  "operations_organ_promotion_lanes",
+    "generated_count":  3,
     "generated_drafts":  [
                              {
                                  "organ_id":  "contracts_accepted_atom_retention_organ",
@@ -27,17 +28,43 @@
                                  "live_or_lab_status":  "NOT_PROVEN",
                                  "owned_file_count":  30,
                                  "validator_count":  20
+                             },
+                             {
+                                 "organ_id":  "operations_organ_promotion_lanes",
+                                 "passport_path":  "self_model/organ_passports/operations_organ_promotion_lanes/ORGAN_PASSPORT_V1.json",
+                                 "doc_path":  "docs/operations/organ_passports/operations_organ_promotion_lanes/ORGAN_PASSPORT_V1.md",
+                                 "owning_root":  "operations/organ_promotion_lanes",
+                                 "status":  "PASSPORT_DRAFT_FROM_EVIDENCE",
+                                 "maturity":  "DRAFT",
+                                 "live_or_lab_status":  "NOT_PROVEN",
+                                 "owned_file_count":  2,
+                                 "validator_count":  1
                              }
                          ],
+    "current_run_generated":  [
+                                  {
+                                      "organ_id":  "operations_organ_promotion_lanes",
+                                      "passport_path":  "self_model/organ_passports/operations_organ_promotion_lanes/ORGAN_PASSPORT_V1.json",
+                                      "doc_path":  "docs/operations/organ_passports/operations_organ_promotion_lanes/ORGAN_PASSPORT_V1.md",
+                                      "owning_root":  "operations/organ_promotion_lanes",
+                                      "status":  "PASSPORT_DRAFT_FROM_EVIDENCE",
+                                      "maturity":  "DRAFT",
+                                      "live_or_lab_status":  "NOT_PROVEN",
+                                      "owned_file_count":  2,
+                                      "validator_count":  1
+                                  }
+                              ],
     "boundaries":  {
                        "draft_only":  true,
                        "no_active_passports_created":  true,
                        "no_live_claims":  true,
                        "no_body_map_mutation_performed":  true,
                        "no_owning_root_mutation":  true,
+                       "passport_generator_repeatable_fast_lane":  true,
                        "passport_generator_for_all_candidates_blocked":  true,
                        "live_process_touched":  false
                    },
-    "next_step":  "VALIDATE_AND_REVIEW_DRAFT_PASSPORTS_BEFORE_ACTIVATION_OR_CAPABILITY_MAP_LINK",
-    "created_at":  "2026-07-08T17:05:34.0229654+04:00"
+    "root_cause_fixed":  "Previous fast-lane generator proof was a static validator/report pair, not an invocable repeatable generator. This build command creates/normalizes the draft, updates lane refs, rebuilds index, and leaves activation/live claims blocked.",
+    "next_step":  "RUN_REVIEW_INDEX_GATE_AND_MAP_REFRESH_VALIDATOR",
+    "created_at":  "2026-07-10T19:03:45.6321632+04:00"
 }

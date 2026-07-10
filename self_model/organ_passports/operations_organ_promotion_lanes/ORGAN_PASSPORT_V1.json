@@ -1,0 +1,93 @@
+﻿{
+    "schema":  "ORGAN_PASSPORT_V1",
+    "status":  "PASSPORT_DRAFT_FROM_EVIDENCE",
+    "organ_id":  "operations_organ_promotion_lanes",
+    "display_name":  " param($m) $m.Value.ToUpperInvariant() perations  param($m) $m.Value.ToUpperInvariant() rgan  param($m) $m.Value.ToUpperInvariant() romotion  param($m) $m.Value.ToUpperInvariant() anes",
+    "purpose":  "persistent growth gate with build script, validator, model, report, and proof for all current candidates",
+    "responsibilities":  [
+                             "Classify body-map candidates into promotion lanes",
+                             "Preserve candidate route/gate decision evidence",
+                             "Prevent candidate promotion without passport/runtime/owner gates"
+                         ],
+    "what_it_is_not":  [
+                           "not an active organ claim",
+                           "not a PROVEN_LIVE claim",
+                           "not a mature passport",
+                           "not a child-agent factory",
+                           "not a replacement for validators"
+                       ],
+    "owning_root":  "operations/organ_promotion_lanes",
+    "owned_files":  [
+                        "operations/organ_promotion_lanes/build_organ_promotion_lanes_v1.ps1",
+                        "operations/organ_promotion_lanes/validate_organ_promotion_lanes_v1.ps1"
+                    ],
+    "inputs":  [
+                   "reports/self_development/BODY_MAP_CANDIDATE_TRIAGE_V1.json",
+                   "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+                   "body-map candidate evidence"
+               ],
+    "outputs":  [
+                    "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json",
+                    "reports/self_development/ORGAN_PROMOTION_LANES_V1_REPORT.json",
+                    "tests/self_development/ORGAN_PROMOTION_LANES_V1_PROOF.json"
+                ],
+    "invocation_surfaces":  [
+                                "operations/organ_promotion_lanes/build_organ_promotion_lanes_v1.ps1",
+                                "operations/organ_promotion_lanes/validate_organ_promotion_lanes_v1.ps1"
+                            ],
+    "dependencies":  [
+                         "canonical body map",
+                         "candidate triage report",
+                         "passport draft/index gate"
+                     ],
+    "validators":  [
+                       "operations/organ_promotion_lanes/validate_organ_promotion_lanes_v1.ps1"
+                   ],
+    "proof_refs":  [
+                       "reports/self_development/ORGAN_PROMOTION_LANES_V1_REPORT.json",
+                       "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json",
+                       "tests/self_development/ORGAN_PROMOTION_LANES_V1_PROOF.json"
+                   ],
+    "runtime_refs":  [
+
+                     ],
+    "exported_capabilities":  [
+                                  "candidate_lane_classification",
+                                  "passport_draft_routing",
+                                  "promotion_boundary_preservation"
+                              ],
+    "safety_boundaries":  [
+                              "draft only",
+                              "no PASSPORT_ACTIVE claim",
+                              "no PROVEN_LIVE claim",
+                              "no live process touched",
+                              "no accepted-core mutation",
+                              "activation requires separate owner/route acceptance"
+                          ],
+    "failure_modes":  [
+                          "stale body map",
+                          "candidate misclassified",
+                          "passport draft missing index entry",
+                          "validator/proof drift"
+                      ],
+    "rollback_or_quarantine":  [
+                                   "revert passport draft files",
+                                   "rerun organ promotion lanes validator",
+                                   "rerun passport review/index gate"
+                               ],
+    "maturity":  "DRAFT",
+    "live_or_lab_status":  "NOT_PROVEN",
+    "gaps":  [
+                 "runtime proof missing",
+                 "ACTIVE status forbidden",
+                 "PROVEN_LIVE forbidden",
+                 "auto map refresh on commit not proven"
+             ],
+    "source_evidence":  [
+                            "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json",
+                            "reports/self_development/BODY_MAP_CANDIDATE_TRIAGE_V1.json",
+                            "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+                            "reports/self_development/ORGAN_PASSPORT_DRAFT_GENERATOR_FAST_LANE_V1.json"
+                        ],
+    "last_validated_at":  "2026-07-10T19:03:45.4345888+04:00"
+}
