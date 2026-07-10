@@ -1,0 +1,109 @@
+﻿{
+    "schema":  "ORGAN_PASSPORT_V1",
+    "status":  "PASSPORT_DRAFT_FROM_EVIDENCE",
+    "organ_id":  "operations_active_behavior",
+    "display_name":  "param($m)$m.Value.ToUpperInvariant()perations param($m)$m.Value.ToUpperInvariant()ctive param($m)$m.Value.ToUpperInvariant()ehavior",
+    "purpose":  "top-level operations surface with scripts/evidence; may be independent organ or component",
+    "responsibilities":  [
+                             "Maintain the bounded capability surface under operations/active_behavior",
+                             "Preserve owned files/invocations/validators as draft organ evidence",
+                             "Remain draft-only until separate maturity proof and owner acceptance"
+                         ],
+    "what_it_is_not":  [
+                           "not PASSPORT_ACTIVE",
+                           "not PROVEN_LIVE",
+                           "not a mature organ",
+                           "not a child-agent factory",
+                           "not a replacement for validators"
+                       ],
+    "owning_root":  "operations/active_behavior",
+    "owned_files":  [
+                        "operations/active_behavior/invoke_active_behavior_retrieval_v1.ps1",
+                        "operations/active_behavior/invoke_active_behavior_task_decision_v1.ps1",
+                        "operations/active_behavior/promote_fresh_1000_behavior_absorption_v1.ps1",
+                        "operations/active_behavior/rollback/active_behavior_absorption_fresh_1000_v1/packs__registry.json.before.json",
+                        "operations/active_behavior/rollback/active_behavior_absorption_fresh_1000_v1/reports__self_development__accepted_change_memory_snapshot.json.before.json",
+                        "operations/active_behavior/rollback/active_behavior_absorption_fresh_1000_v1/reports__self_development__SELF_MODEL_ACTIVE_MAP.json.before.json",
+                        "operations/active_behavior/rollback/active_behavior_absorption_fresh_1000_v1/rollback_manifest.json",
+                        "operations/active_behavior/rollback_active_behavior_absorption_promotion_v1.ps1",
+                        "operations/active_behavior/validate_active_behavior_absorption_promotion_v1.ps1",
+                        "operations/active_behavior/validate_active_behavior_task_decision_flow_v1.ps1"
+                    ],
+    "inputs":  [
+                   "canonical body map",
+                   "review-lane decision",
+                   "tracked owned files"
+               ],
+    "outputs":  [
+                    "operations/active_behavior/invoke_active_behavior_retrieval_v1.ps1",
+                    "operations/active_behavior/invoke_active_behavior_task_decision_v1.ps1",
+                    "operations/active_behavior/promote_fresh_1000_behavior_absorption_v1.ps1",
+                    "operations/active_behavior/rollback/active_behavior_absorption_fresh_1000_v1/packs__registry.json.before.json",
+                    "operations/active_behavior/rollback/active_behavior_absorption_fresh_1000_v1/reports__self_development__accepted_change_memory_snapshot.json.before.json",
+                    "operations/active_behavior/rollback/active_behavior_absorption_fresh_1000_v1/reports__self_development__SELF_MODEL_ACTIVE_MAP.json.before.json",
+                    "operations/active_behavior/rollback/active_behavior_absorption_fresh_1000_v1/rollback_manifest.json",
+                    "operations/active_behavior/rollback_active_behavior_absorption_promotion_v1.ps1",
+                    "operations/active_behavior/validate_active_behavior_absorption_promotion_v1.ps1",
+                    "operations/active_behavior/validate_active_behavior_task_decision_flow_v1.ps1"
+                ],
+    "invocation_surfaces":  [
+                                "operations/active_behavior/invoke_active_behavior_retrieval_v1.ps1",
+                                "operations/active_behavior/invoke_active_behavior_task_decision_v1.ps1",
+                                "operations/active_behavior/promote_fresh_1000_behavior_absorption_v1.ps1",
+                                "operations/active_behavior/rollback_active_behavior_absorption_promotion_v1.ps1",
+                                "operations/active_behavior/validate_active_behavior_absorption_promotion_v1.ps1",
+                                "operations/active_behavior/validate_active_behavior_task_decision_flow_v1.ps1"
+                            ],
+    "dependencies":  [
+                         "canonical body map",
+                         "organ promotion lanes",
+                         "passport review/index gate"
+                     ],
+    "validators":  [
+                       "operations/active_behavior/validate_active_behavior_absorption_promotion_v1.ps1",
+                       "operations/active_behavior/validate_active_behavior_task_decision_flow_v1.ps1"
+                   ],
+    "proof_refs":  [
+
+                   ],
+    "runtime_refs":  [
+
+                     ],
+    "exported_capabilities":  [
+                                  "draft_organ_evidence_surface",
+                                  "owned_file_inventory",
+                                  "invocation_and_validator_inventory"
+                              ],
+    "safety_boundaries":  [
+                              "draft only",
+                              "no PASSPORT_ACTIVE claim",
+                              "no PROVEN_LIVE claim",
+                              "no live process touched",
+                              "activation requires separate validator/proof/Owner acceptance"
+                          ],
+    "failure_modes":  [
+                          "stale body map",
+                          "review-lane misclassification",
+                          "generic draft needs organ-specific calibration",
+                          "validator/proof drift"
+                      ],
+    "rollback_or_quarantine":  [
+                                   "revert passport draft files",
+                                   "rerun review/index gate",
+                                   "rerun map refresh/currentness validator"
+                               ],
+    "maturity":  "DRAFT",
+    "live_or_lab_status":  "NOT_PROVEN",
+    "gaps":  [
+                 "organ-specific calibration missing",
+                 "runtime proof missing",
+                 "ACTIVE status forbidden",
+                 "PROVEN_LIVE forbidden"
+             ],
+    "source_evidence":  [
+                            "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json",
+                            "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+                            "reports/self_development/ORGAN_PASSPORT_REVIEW_LANE_BATCH_GENERATOR_V1.json"
+                        ],
+    "last_validated_at":  "2026-07-10T19:31:15.7221270+04:00"
+}

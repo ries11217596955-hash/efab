@@ -1,35 +1,37 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-10T19:22:09.0707318+04:00",
+    "checked_at":  "2026-07-10T19:33:23.0664039+04:00",
     "branch":  "main",
-    "observed_head":  "995d0ff80928fae29408a47c41b13a4118b9454c",
-    "subject_head":  "995d0ff80928fae29408a47c41b13a4118b9454c",
+    "observed_head":  "5ec6cf7bd99473bcf17ef4e3e5ddc465308a7f74",
+    "subject_head":  "5ec6cf7bd99473bcf17ef4e3e5ddc465308a7f74",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
                           "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                          "operations/self_model/validate_route_reality_alignment_v1.ps1",
+                          "operations/self_model/validate_organ_passport_static_count_regression_guard_v1.ps1",
                           "reports/self_development/ORGAN_PASSPORT_DRAFT_REVIEW_AND_INDEX_GATE_V1.json",
+                          "reports/self_development/ORGAN_PASSPORT_STATIC_COUNT_REGRESSION_GUARD_V1.json",
                           "reports/self_development/ROUTE_REALITY_ALIGNMENT_V1.json",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "route_locks/ACTIVE_ROUTE_LOCK.json",
-                          "route_locks/AGENT_BUILDER_NEXT_15_STEPS_LOCK_V6_ORGAN_PASSPORT_SYSTEM.md",
                           "self_model/organ_passports/_index/ORGAN_PASSPORT_DRAFT_INDEX_V1.json",
                           "tests/self_development/ORGAN_PASSPORT_DRAFT_REVIEW_AND_INDEX_GATE_V1_PROOF.json",
+                          "tests/self_development/ORGAN_PASSPORT_STATIC_COUNT_REGRESSION_GUARD_V1_PROOF.json",
                           "tests/self_development/ROUTE_REALITY_ALIGNMENT_V1_PROOF.json"
                       ],
     "structural_paths":  [
                              "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                             "operations/self_model/validate_route_reality_alignment_v1.ps1",
+                             "operations/self_model/validate_organ_passport_static_count_regression_guard_v1.ps1",
                              "reports/self_development/ORGAN_PASSPORT_DRAFT_REVIEW_AND_INDEX_GATE_V1.json",
+                             "reports/self_development/ORGAN_PASSPORT_STATIC_COUNT_REGRESSION_GUARD_V1.json",
                              "reports/self_development/ROUTE_REALITY_ALIGNMENT_V1.json",
                              "self_model/organ_passports/_index/ORGAN_PASSPORT_DRAFT_INDEX_V1.json",
                              "tests/self_development/ORGAN_PASSPORT_DRAFT_REVIEW_AND_INDEX_GATE_V1_PROOF.json",
+                             "tests/self_development/ORGAN_PASSPORT_STATIC_COUNT_REGRESSION_GUARD_V1_PROOF.json",
                              "tests/self_development/ROUTE_REALITY_ALIGNMENT_V1_PROOF.json"
                          ],
     "output_root":  "reports/self_development",
@@ -42,8 +44,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1642,
-                                    "sha256":  "d993851e543ac676f559f6c86c3ce7564e7c40039c00b9631b4a283599c3e313"
+                                    "structural_file_count":  1674,
+                                    "sha256":  "3f1e7da53d987d82130d86b7f1a3331c6cd3d7c1d02c045be23d0c8c2977da02"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -70,12 +72,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  166,
-                         "structural_path_count":  1642,
+                         "structural_path_count":  1674,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-10T19:22:34.2389472+04:00"
+    "refreshed_at":  "2026-07-10T19:33:48.5906403+04:00"
 }

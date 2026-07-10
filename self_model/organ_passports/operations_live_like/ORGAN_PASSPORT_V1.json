@@ -1,0 +1,88 @@
+﻿{
+    "schema":  "ORGAN_PASSPORT_V1",
+    "status":  "PASSPORT_DRAFT_FROM_EVIDENCE",
+    "organ_id":  "operations_live_like",
+    "display_name":  "param($m)$m.Value.ToUpperInvariant()perations param($m)$m.Value.ToUpperInvariant()ive param($m)$m.Value.ToUpperInvariant()ike",
+    "purpose":  "top-level operations surface with scripts/evidence; may be independent organ or component",
+    "responsibilities":  [
+                             "Maintain the bounded capability surface under operations/live_like",
+                             "Preserve owned files/invocations/validators as draft organ evidence",
+                             "Remain draft-only until separate maturity proof and owner acceptance"
+                         ],
+    "what_it_is_not":  [
+                           "not PASSPORT_ACTIVE",
+                           "not PROVEN_LIVE",
+                           "not a mature organ",
+                           "not a child-agent factory",
+                           "not a replacement for validators"
+                       ],
+    "owning_root":  "operations/live_like",
+    "owned_files":  [
+                        "operations/live_like/run_school_aimo_live_like_observation_gate_v1.ps1",
+                        "operations/live_like/validate_school_aimo_live_like_observation_gate_v1.ps1"
+                    ],
+    "inputs":  [
+                   "canonical body map",
+                   "review-lane decision",
+                   "tracked owned files"
+               ],
+    "outputs":  [
+                    "operations/live_like/run_school_aimo_live_like_observation_gate_v1.ps1",
+                    "operations/live_like/validate_school_aimo_live_like_observation_gate_v1.ps1"
+                ],
+    "invocation_surfaces":  [
+                                "operations/live_like/run_school_aimo_live_like_observation_gate_v1.ps1",
+                                "operations/live_like/validate_school_aimo_live_like_observation_gate_v1.ps1"
+                            ],
+    "dependencies":  [
+                         "canonical body map",
+                         "organ promotion lanes",
+                         "passport review/index gate"
+                     ],
+    "validators":  [
+                       "operations/live_like/validate_school_aimo_live_like_observation_gate_v1.ps1operations/live_like/validate_school_aimo_live_like_observation_gate_v1.ps1"
+                   ],
+    "proof_refs":  [
+
+                   ],
+    "runtime_refs":  [
+
+                     ],
+    "exported_capabilities":  [
+                                  "draft_organ_evidence_surface",
+                                  "owned_file_inventory",
+                                  "invocation_and_validator_inventory"
+                              ],
+    "safety_boundaries":  [
+                              "draft only",
+                              "no PASSPORT_ACTIVE claim",
+                              "no PROVEN_LIVE claim",
+                              "no live process touched",
+                              "activation requires separate validator/proof/Owner acceptance"
+                          ],
+    "failure_modes":  [
+                          "stale body map",
+                          "review-lane misclassification",
+                          "generic draft needs organ-specific calibration",
+                          "validator/proof drift"
+                      ],
+    "rollback_or_quarantine":  [
+                                   "revert passport draft files",
+                                   "rerun review/index gate",
+                                   "rerun map refresh/currentness validator"
+                               ],
+    "maturity":  "DRAFT",
+    "live_or_lab_status":  "NOT_PROVEN",
+    "gaps":  [
+                 "organ-specific calibration missing",
+                 "runtime proof missing",
+                 "ACTIVE status forbidden",
+                 "PROVEN_LIVE forbidden"
+             ],
+    "source_evidence":  [
+                            "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json",
+                            "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+                            "reports/self_development/ORGAN_PASSPORT_REVIEW_LANE_BATCH_GENERATOR_V1.json"
+                        ],
+    "last_validated_at":  "2026-07-10T19:31:16.2715487+04:00"
+}

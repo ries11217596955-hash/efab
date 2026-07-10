@@ -487,3 +487,52 @@ Boundaries:
 
 Next concrete step:
 - Continue within V6 passport-system route by choosing whether to add this guard to a broader route validator chain or move to lifecycle-contract stash decision.
+
+## 2026-07-10 — Review-lane passport batch for operations organs
+
+STATUS: PROOF_PASS / PASSPORT_COVERAGE_EXPANDED / NOT_PROVEN_LIVE
+
+Owner correction:
+- The goal is not to stop at regression guard; we are building passports for other organs.
+- Fast-lane eligible set had only one already-processed candidate, so the real blocker was lane eligibility, not generator repeatability.
+
+Built:
+- Added review-lane batch generator: operations/self_model/build_organ_passport_review_lane_batch_v1.ps1.
+- Added review-lane batch validator: operations/self_model/validate_organ_passport_review_lane_batch_v1.ps1.
+- Generated 14 draft passports for operations review-lane surfaces.
+- Total passport draft count is now 17.
+
+Generated passports:
+- operations_active_behavior
+- operations_autonomy_diagnostics
+- operations_bridge_diagnostics
+- operations_contracts
+- operations_live_like
+- operations_live_readiness
+- operations_live_start
+- operations_memory
+- operations_overnight_school
+- operations_parallel_life
+- operations_reasoning
+- operations_reflex_library
+- operations_runtime
+- operations_smoke_trials
+
+Proofs passed:
+- PASS_ORGAN_PASSPORT_REVIEW_LANE_BATCH_GENERATOR_V1
+- PASS_ORGAN_PASSPORT_DRAFT_REVIEW_AND_INDEX_GATE_V1
+- PASS_ORGAN_PASSPORT_DRAFT_GENERATOR_FAST_LANE_V1
+- PASS_ORGAN_PASSPORT_STATIC_COUNT_REGRESSION_GUARD_V1
+- PASS_ORGAN_PROMOTION_LANES_V1
+- MAP_REFRESHED
+- PASS_AGENT_BODY_COMPOSITION_MAP_CURRENT_V1
+
+Boundaries:
+- Draft passports only.
+- No PASSPORT_ACTIVE claim.
+- No PROVEN_LIVE claim.
+- No live runtime touched.
+- Review-lane generation does not promote organs to ACTIVE; it creates draft evidence surfaces requiring later calibration.
+
+Next concrete step:
+- Calibrate/triage the new draft passports: decide which remain generic draft, which need organ-specific requirements, and which can move toward validated lab maturity.
