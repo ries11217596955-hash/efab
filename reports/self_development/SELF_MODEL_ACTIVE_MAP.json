@@ -6,19 +6,19 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "4b1d260fda00b9b7fbd8e2f1d09be9d92319a95b",
-    "subject_head":  "4b1d260fda00b9b7fbd8e2f1d09be9d92319a95b",
-    "generated_at":  "2026-07-10T19:17:52.3879555+04:00",
+    "observed_head_at_generation":  "995d0ff80928fae29408a47c41b13a4118b9454c",
+    "subject_head":  "995d0ff80928fae29408a47c41b13a4118b9454c",
+    "generated_at":  "2026-07-10T19:22:34.0889788+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  1639,
+    "structural_path_count":  1642,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1639,
-                                    "sha256":  "95ea9ff38edd28dd7a131f21035b7982a73911527134c85d535b910860cc719a"
+                                    "structural_file_count":  1642,
+                                    "sha256":  "d993851e543ac676f559f6c86c3ce7564e7c40039c00b9631b4a283599c3e313"
                                 },
     "module_count":  207,
     "validator_count":  174,
@@ -597,9 +597,9 @@
                                      "root":  "operations/self_model",
                                      "status":  "CONFIRMED_PRIMARY_EVIDENCE_PRESENT",
                                      "confirmation_basis":  "explicit_required_component_with_primary_repo_evidence",
-                                     "file_count":  36,
-                                     "script_count":  36,
-                                     "validator_count":  29,
+                                     "file_count":  37,
+                                     "script_count":  37,
+                                     "validator_count":  30,
                                      "proof_file_count":  0,
                                      "contract_or_policy_count":  4,
                                      "doc_count":  0,
@@ -637,6 +637,7 @@
                                                             "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
                                                             "operations/self_model/validate_organ_passport_draft_generator_fast_lane_v1.ps1",
                                                             "operations/self_model/validate_organ_passport_draft_review_and_index_gate_v1.ps1",
+                                                            "operations/self_model/validate_organ_passport_static_count_regression_guard_v1.ps1",
                                                             "operations/self_model/validate_route_reality_alignment_v1.ps1",
                                                             "operations/self_model/validate_route_v4_execution_report_phase_m_v1.ps1",
                                                             "operations/self_model/validate_runtime_cleanup_v1.ps1",
@@ -695,6 +696,7 @@
                                                                 "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
                                                                 "operations/self_model/validate_organ_passport_draft_generator_fast_lane_v1.ps1",
                                                                 "operations/self_model/validate_organ_passport_draft_review_and_index_gate_v1.ps1",
+                                                                "operations/self_model/validate_organ_passport_static_count_regression_guard_v1.ps1",
                                                                 "operations/self_model/validate_route_reality_alignment_v1.ps1",
                                                                 "operations/self_model/validate_route_v4_execution_report_phase_m_v1.ps1",
                                                                 "operations/self_model/validate_runtime_cleanup_v1.ps1",
@@ -703,9 +705,9 @@
                                                                 "operations/self_model/validate_source_evidence_inventory_v1.ps1"
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "4b1d260fda00b9b7fbd8e2f1d09be9d92319a95b",
-                                                               "committed_at":  "2026-07-10T19:06:45+04:00",
-                                                               "subject":  "passport generator: make fast-lane drafts repeatable"
+                                                               "head":  "995d0ff80928fae29408a47c41b13a4118b9454c",
+                                                               "committed_at":  "2026-07-10T19:17:24+04:00",
+                                                               "subject":  "route: align active passport system lock"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -749,9 +751,9 @@
 
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "4b1d260fda00b9b7fbd8e2f1d09be9d92319a95b",
-                                                               "committed_at":  "2026-07-10T19:06:45+04:00",
-                                                               "subject":  "passport generator: make fast-lane drafts repeatable"
+                                                               "head":  "995d0ff80928fae29408a47c41b13a4118b9454c",
+                                                               "committed_at":  "2026-07-10T19:17:24+04:00",
+                                                               "subject":  "route: align active passport system lock"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -9036,9 +9038,9 @@
                            "root":  "operations/self_model",
                            "status":  "CONFIRMED_PRIMARY_EVIDENCE_PRESENT",
                            "confirmation_basis":  "explicit_required_component_with_primary_repo_evidence",
-                           "file_count":  36,
-                           "script_count":  36,
-                           "validator_count":  29,
+                           "file_count":  37,
+                           "script_count":  37,
+                           "validator_count":  30,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  4,
                            "doc_count":  0,
@@ -9076,6 +9078,7 @@
                                                   "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
                                                   "operations/self_model/validate_organ_passport_draft_generator_fast_lane_v1.ps1",
                                                   "operations/self_model/validate_organ_passport_draft_review_and_index_gate_v1.ps1",
+                                                  "operations/self_model/validate_organ_passport_static_count_regression_guard_v1.ps1",
                                                   "operations/self_model/validate_route_reality_alignment_v1.ps1",
                                                   "operations/self_model/validate_route_v4_execution_report_phase_m_v1.ps1",
                                                   "operations/self_model/validate_runtime_cleanup_v1.ps1",
@@ -9134,6 +9137,7 @@
                                                       "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
                                                       "operations/self_model/validate_organ_passport_draft_generator_fast_lane_v1.ps1",
                                                       "operations/self_model/validate_organ_passport_draft_review_and_index_gate_v1.ps1",
+                                                      "operations/self_model/validate_organ_passport_static_count_regression_guard_v1.ps1",
                                                       "operations/self_model/validate_route_reality_alignment_v1.ps1",
                                                       "operations/self_model/validate_route_v4_execution_report_phase_m_v1.ps1",
                                                       "operations/self_model/validate_runtime_cleanup_v1.ps1",
@@ -9142,9 +9146,9 @@
                                                       "operations/self_model/validate_source_evidence_inventory_v1.ps1"
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "4b1d260fda00b9b7fbd8e2f1d09be9d92319a95b",
-                                                     "committed_at":  "2026-07-10T19:06:45+04:00",
-                                                     "subject":  "passport generator: make fast-lane drafts repeatable"
+                                                     "head":  "995d0ff80928fae29408a47c41b13a4118b9454c",
+                                                     "committed_at":  "2026-07-10T19:17:24+04:00",
+                                                     "subject":  "route: align active passport system lock"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -9188,9 +9192,9 @@
 
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "4b1d260fda00b9b7fbd8e2f1d09be9d92319a95b",
-                                                     "committed_at":  "2026-07-10T19:06:45+04:00",
-                                                     "subject":  "passport generator: make fast-lane drafts repeatable"
+                                                     "head":  "995d0ff80928fae29408a47c41b13a4118b9454c",
+                                                     "committed_at":  "2026-07-10T19:17:24+04:00",
+                                                     "subject":  "route: align active passport system lock"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,

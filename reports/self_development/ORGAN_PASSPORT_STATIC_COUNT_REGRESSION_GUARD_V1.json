@@ -1,0 +1,28 @@
+﻿{
+    "schema":  "organ_passport_static_count_regression_guard_v1",
+    "status":  "PASS_ORGAN_PASSPORT_STATIC_COUNT_REGRESSION_GUARD_V1",
+    "purpose":  "Prevent regression of the passport generator/review gate back to static two-passport assumptions.",
+    "checked_files":  [
+                          "operations/self_model/build_organ_passport_draft_generator_fast_lane_v1.ps1",
+                          "operations/self_model/validate_organ_passport_draft_generator_fast_lane_v1.ps1",
+                          "operations/self_model/validate_organ_passport_draft_review_and_index_gate_v1.ps1"
+                      ],
+    "forbidden_static_count_patterns":  [
+                                            "Assert \\(\\$drafts\\.Count -eq 2\\)",
+                                            "Assert \\(\\$items\\.Count -eq 2\\)",
+                                            "Assert \\(\\$idxItems\\.Count -eq 2\\)",
+                                            "Assert \\(\\@\\(\\$index\\.entries\\)\\.Count -eq 2\\)",
+                                            "DRAFT_COUNT_BAD\u0027\\s*\\)??\\s*$"
+                                        ],
+    "generator_report_generated_count":  3,
+    "passport_file_scan_count":  3,
+    "index_draft_count":  3,
+    "target_candidate":  "operations_organ_promotion_lanes",
+    "target_present_in_generator_report":  true,
+    "target_present_in_index":  true,
+    "repeatable_fast_lane_boundary_present":  true,
+    "no_active_claims":  true,
+    "no_proven_live_claims":  true,
+    "live_process_touched":  false,
+    "created_at":  "2026-07-10T19:21:20.6543826+04:00"
+}

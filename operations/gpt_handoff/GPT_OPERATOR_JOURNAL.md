@@ -453,3 +453,37 @@ Boundaries:
 
 Next concrete step:
 - Run PASSPORT_REPEATABILITY_SECOND_SAMPLE_V1: select next FAST_LANE_PASSPORT_DRAFT candidate, generate draft, validate generator/index/lanes/map, then commit/push.
+
+## 2026-07-10 — Passport static-count regression guard
+
+STATUS: PROOF_PASS / REGRESSION_GUARD_ACTIVE / NOT_PROVEN_LIVE
+
+Owner correction:
+- Do not run another passport generator sample merely for count; the generator already has multi-draft evidence.
+- Current generator report has 3 draft passports including operations_organ_promotion_lanes.
+
+Built:
+- Added operations/self_model/validate_organ_passport_static_count_regression_guard_v1.ps1.
+- Created report/proof:
+  - reports/self_development/ORGAN_PASSPORT_STATIC_COUNT_REGRESSION_GUARD_V1.json
+  - tests/self_development/ORGAN_PASSPORT_STATIC_COUNT_REGRESSION_GUARD_V1_PROOF.json
+
+Guard checks:
+- Rejects static two-passport assumptions such as Count -eq 2 in generator/review/index logic.
+- Requires build command to be invocable by CandidateId.
+- Requires scan-based indexing/review over self_model/organ_passports/*/ORGAN_PASSPORT_V1.json.
+- Requires operations_organ_promotion_lanes target presence checks.
+- Requires generator report generated_count >= 3.
+- Requires index draft_count to match passport file scan count.
+
+Proofs passed:
+- PASS_ORGAN_PASSPORT_STATIC_COUNT_REGRESSION_GUARD_V1
+
+Boundaries:
+- No passport generated in this pass.
+- No PASSPORT_ACTIVE claim.
+- No PROVEN_LIVE claim.
+- No live runtime touched.
+
+Next concrete step:
+- Continue within V6 passport-system route by choosing whether to add this guard to a broader route validator chain or move to lifecycle-contract stash decision.
