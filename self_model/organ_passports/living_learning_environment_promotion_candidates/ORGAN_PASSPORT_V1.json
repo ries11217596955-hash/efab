@@ -1,0 +1,88 @@
+﻿{
+    "schema":  "ORGAN_PASSPORT_V1",
+    "status":  "PASSPORT_DRAFT_FROM_EVIDENCE",
+    "organ_id":  "living_learning_environment_promotion_candidates",
+    "passport_kind":  "LEGACY_ARCHIVE_REFERENCE",
+    "source_lane":  "LEGACY_OR_ARCHIVE_BUCKET",
+    "display_name":  "param($m)$m.Value.ToUpperInvariant()iving param($m)$m.Value.ToUpperInvariant()earning param($m)$m.Value.ToUpperInvariant()nvironment param($m)$m.Value.ToUpperInvariant()romotion param($m)$m.Value.ToUpperInvariant()andidates",
+    "purpose":  "legacy learning environment material; needs migration/owner link before current organ claim",
+    "responsibilities":  [
+                             "Preserve coverage reference for living_learning_environment/promotion_candidates",
+                             "Make this candidate searchable and visible in the passport index",
+                             "Prevent material/support/archive evidence from being confused with an active organ"
+                         ],
+    "what_it_is_not":  [
+                           "not PASSPORT_ACTIVE",
+                           "not PROVEN_LIVE",
+                           "not proof of mature organ status",
+                           "not a child-agent factory",
+                           "not a replacement for validators or owner decision"
+                       ],
+    "owning_root":  "living_learning_environment/promotion_candidates",
+    "owned_files":  [
+                        "living_learning_environment/promotion_candidates/PHASE150_SELF_BUILD_PROGRAM_CANDIDATE_PROMOTION_CANDIDATE.json",
+                        "living_learning_environment/promotion_candidates/README.md"
+                    ],
+    "inputs":  [
+                   "organ promotion lane decision",
+                   "canonical body map",
+                   "tracked owned evidence"
+               ],
+    "outputs":  [
+                    "living_learning_environment/promotion_candidates/PHASE150_SELF_BUILD_PROGRAM_CANDIDATE_PROMOTION_CANDIDATE.json",
+                    "living_learning_environment/promotion_candidates/README.md"
+                ],
+    "invocation_surfaces":  [
+
+                            ],
+    "dependencies":  [
+                         "canonical body map",
+                         "organ promotion lanes",
+                         "passport coverage batch v2"
+                     ],
+    "validators":  [
+
+                   ],
+    "proof_refs":  [
+
+                   ],
+    "runtime_refs":  [
+
+                     ],
+    "exported_capabilities":  [
+                                  "candidate_visibility",
+                                  "coverage_inventory",
+                                  "evidence_reference_surface"
+                              ],
+    "safety_boundaries":  [
+                              "draft only",
+                              "no PASSPORT_ACTIVE claim",
+                              "no PROVEN_LIVE claim",
+                              "no live process touched",
+                              "kind marks material/support/archive/reference candidates explicitly"
+                          ],
+    "failure_modes":  [
+                          "candidate misclassified",
+                          "generic coverage passport needs later calibration",
+                          "stale lane decision",
+                          "validator/proof drift"
+                      ],
+    "rollback_or_quarantine":  [
+                                   "revert generated passport files",
+                                   "rerun coverage validator",
+                                   "rerun passport review/index gate"
+                               ],
+    "maturity":  "DRAFT",
+    "live_or_lab_status":  "NOT_PROVEN",
+    "gaps":  [
+                 "not calibrated for maturity",
+                 "runtime proof missing",
+                 "owner acceptance missing for active organ claim"
+             ],
+    "source_evidence":  [
+                            "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json",
+                            "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+                            "reports/self_development/ORGAN_PASSPORT_COVERAGE_BATCH_V2.json"
+                        ],
+    "last_validated_at":  "2026-07-10T19:45:44.9922743+04:00"
+}

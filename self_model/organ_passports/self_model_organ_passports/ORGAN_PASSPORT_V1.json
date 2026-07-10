@@ -1,0 +1,114 @@
+﻿{
+    "schema":  "ORGAN_PASSPORT_V1",
+    "status":  "PASSPORT_DRAFT_FROM_EVIDENCE",
+    "organ_id":  "self_model_organ_passports",
+    "passport_kind":  "GOVERNANCE_MATERIAL_REFERENCE",
+    "source_lane":  "GOVERNANCE_MATERIAL_BUCKET",
+    "display_name":  "param($m)$m.Value.ToUpperInvariant()elf param($m)$m.Value.ToUpperInvariant()odel param($m)$m.Value.ToUpperInvariant()rgan param($m)$m.Value.ToUpperInvariant()assports",
+    "purpose":  "canonical passport registry/index surface created by draft passport generation; supports organ governance but is not an organ",
+    "responsibilities":  [
+                             "Preserve coverage reference for self_model/organ_passports",
+                             "Make this candidate searchable and visible in the passport index",
+                             "Prevent material/support/archive evidence from being confused with an active organ"
+                         ],
+    "what_it_is_not":  [
+                           "not PASSPORT_ACTIVE",
+                           "not PROVEN_LIVE",
+                           "not proof of mature organ status",
+                           "not a child-agent factory",
+                           "not a replacement for validators or owner decision"
+                       ],
+    "owning_root":  "self_model/organ_passports",
+    "owned_files":  [
+                        "self_model/organ_passports/_index/ORGAN_PASSPORT_DRAFT_INDEX_V1.json",
+                        "self_model/organ_passports/contracts_accepted_atom_retention_organ/ORGAN_PASSPORT_V1.json",
+                        "self_model/organ_passports/operations_active_behavior/ORGAN_PASSPORT_V1.json",
+                        "self_model/organ_passports/operations_autonomy_diagnostics/ORGAN_PASSPORT_V1.json",
+                        "self_model/organ_passports/operations_bridge_diagnostics/ORGAN_PASSPORT_V1.json",
+                        "self_model/organ_passports/operations_contracts/ORGAN_PASSPORT_V1.json",
+                        "self_model/organ_passports/operations_live_like/ORGAN_PASSPORT_V1.json",
+                        "self_model/organ_passports/operations_live_readiness/ORGAN_PASSPORT_V1.json",
+                        "self_model/organ_passports/operations_live_start/ORGAN_PASSPORT_V1.json",
+                        "self_model/organ_passports/operations_memory/ORGAN_PASSPORT_V1.json",
+                        "self_model/organ_passports/operations_organ_promotion_lanes/ORGAN_PASSPORT_V1.json",
+                        "self_model/organ_passports/operations_overnight_school/ORGAN_PASSPORT_V1.json",
+                        "self_model/organ_passports/operations_parallel_life/ORGAN_PASSPORT_V1.json",
+                        "self_model/organ_passports/operations_reasoning/ORGAN_PASSPORT_V1.json",
+                        "self_model/organ_passports/operations_reflex_library/ORGAN_PASSPORT_V1.json",
+                        "self_model/organ_passports/operations_runtime/ORGAN_PASSPORT_V1.json",
+                        "self_model/organ_passports/operations_self_model/ORGAN_PASSPORT_V1.json",
+                        "self_model/organ_passports/operations_smoke_trials/ORGAN_PASSPORT_V1.json"
+                    ],
+    "inputs":  [
+                   "organ promotion lane decision",
+                   "canonical body map",
+                   "tracked owned evidence"
+               ],
+    "outputs":  [
+                    "self_model/organ_passports/_index/ORGAN_PASSPORT_DRAFT_INDEX_V1.json",
+                    "self_model/organ_passports/contracts_accepted_atom_retention_organ/ORGAN_PASSPORT_V1.json",
+                    "self_model/organ_passports/operations_active_behavior/ORGAN_PASSPORT_V1.json",
+                    "self_model/organ_passports/operations_autonomy_diagnostics/ORGAN_PASSPORT_V1.json",
+                    "self_model/organ_passports/operations_bridge_diagnostics/ORGAN_PASSPORT_V1.json",
+                    "self_model/organ_passports/operations_contracts/ORGAN_PASSPORT_V1.json",
+                    "self_model/organ_passports/operations_live_like/ORGAN_PASSPORT_V1.json",
+                    "self_model/organ_passports/operations_live_readiness/ORGAN_PASSPORT_V1.json",
+                    "self_model/organ_passports/operations_live_start/ORGAN_PASSPORT_V1.json",
+                    "self_model/organ_passports/operations_memory/ORGAN_PASSPORT_V1.json",
+                    "self_model/organ_passports/operations_organ_promotion_lanes/ORGAN_PASSPORT_V1.json",
+                    "self_model/organ_passports/operations_overnight_school/ORGAN_PASSPORT_V1.json"
+                ],
+    "invocation_surfaces":  [
+
+                            ],
+    "dependencies":  [
+                         "canonical body map",
+                         "organ promotion lanes",
+                         "passport coverage batch v2"
+                     ],
+    "validators":  [
+
+                   ],
+    "proof_refs":  [
+
+                   ],
+    "runtime_refs":  [
+
+                     ],
+    "exported_capabilities":  [
+                                  "candidate_visibility",
+                                  "coverage_inventory",
+                                  "evidence_reference_surface"
+                              ],
+    "safety_boundaries":  [
+                              "draft only",
+                              "no PASSPORT_ACTIVE claim",
+                              "no PROVEN_LIVE claim",
+                              "no live process touched",
+                              "kind marks material/support/archive/reference candidates explicitly"
+                          ],
+    "failure_modes":  [
+                          "candidate misclassified",
+                          "generic coverage passport needs later calibration",
+                          "stale lane decision",
+                          "validator/proof drift"
+                      ],
+    "rollback_or_quarantine":  [
+                                   "revert generated passport files",
+                                   "rerun coverage validator",
+                                   "rerun passport review/index gate"
+                               ],
+    "maturity":  "DRAFT",
+    "live_or_lab_status":  "NOT_PROVEN",
+    "gaps":  [
+                 "not calibrated for maturity",
+                 "runtime proof missing",
+                 "owner acceptance missing for active organ claim"
+             ],
+    "source_evidence":  [
+                            "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json",
+                            "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+                            "reports/self_development/ORGAN_PASSPORT_COVERAGE_BATCH_V2.json"
+                        ],
+    "last_validated_at":  "2026-07-10T19:45:59.4089670+04:00"
+}

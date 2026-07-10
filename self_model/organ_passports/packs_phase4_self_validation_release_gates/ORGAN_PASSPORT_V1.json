@@ -1,0 +1,102 @@
+﻿{
+    "schema":  "ORGAN_PASSPORT_V1",
+    "status":  "PASSPORT_DRAFT_FROM_EVIDENCE",
+    "organ_id":  "packs_phase4_self_validation_release_gates",
+    "passport_kind":  "EVIDENCE_MATERIAL_REFERENCE",
+    "source_lane":  "EVIDENCE_MATERIAL_BUCKET",
+    "display_name":  "param($m)$m.Value.ToUpperInvariant()acks param($m)$m.Value.ToUpperInvariant()hase4 param($m)$m.Value.ToUpperInvariant()elf param($m)$m.Value.ToUpperInvariant()alidation param($m)$m.Value.ToUpperInvariant()elease param($m)$m.Value.ToUpperInvariant()ates",
+    "purpose":  "phase/packs bundle; may contain proof/capability material but not organ by default",
+    "responsibilities":  [
+                             "Preserve coverage reference for packs/PHASE4_SELF_VALIDATION_RELEASE_GATES",
+                             "Make this candidate searchable and visible in the passport index",
+                             "Prevent material/support/archive evidence from being confused with an active organ"
+                         ],
+    "what_it_is_not":  [
+                           "not PASSPORT_ACTIVE",
+                           "not PROVEN_LIVE",
+                           "not proof of mature organ status",
+                           "not a child-agent factory",
+                           "not a replacement for validators or owner decision"
+                       ],
+    "owning_root":  "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES",
+    "owned_files":  [
+                        "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/APPLY.ps1",
+                        "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/PACK.json",
+                        "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/payload/contracts/failure_diagnostic.schema.json",
+                        "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/payload/modules/emit_failure_diagnostic.ps1",
+                        "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/payload/modules/validate_truth_alignment.ps1",
+                        "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/payload/tasks/TASK_EXTERNAL_AGENT_SPEC_INTAKE_001.json",
+                        "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/payload/validators/validate_self_validation_release_gates.ps1"
+                    ],
+    "inputs":  [
+                   "organ promotion lane decision",
+                   "canonical body map",
+                   "tracked owned evidence"
+               ],
+    "outputs":  [
+                    "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/APPLY.ps1",
+                    "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/PACK.json",
+                    "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/payload/contracts/failure_diagnostic.schema.json",
+                    "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/payload/modules/emit_failure_diagnostic.ps1",
+                    "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/payload/modules/validate_truth_alignment.ps1",
+                    "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/payload/tasks/TASK_EXTERNAL_AGENT_SPEC_INTAKE_001.json",
+                    "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/payload/validators/validate_self_validation_release_gates.ps1"
+                ],
+    "invocation_surfaces":  [
+                                "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/APPLY.ps1",
+                                "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/payload/modules/emit_failure_diagnostic.ps1",
+                                "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/payload/modules/validate_truth_alignment.ps1",
+                                "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/payload/validators/validate_self_validation_release_gates.ps1"
+                            ],
+    "dependencies":  [
+                         "canonical body map",
+                         "organ promotion lanes",
+                         "passport coverage batch v2"
+                     ],
+    "validators":  [
+                       "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/payload/modules/validate_truth_alignment.ps1",
+                       "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/payload/validators/validate_self_validation_release_gates.ps1"
+                   ],
+    "proof_refs":  [
+
+                   ],
+    "runtime_refs":  [
+
+                     ],
+    "exported_capabilities":  [
+                                  "candidate_visibility",
+                                  "coverage_inventory",
+                                  "evidence_reference_surface"
+                              ],
+    "safety_boundaries":  [
+                              "draft only",
+                              "no PASSPORT_ACTIVE claim",
+                              "no PROVEN_LIVE claim",
+                              "no live process touched",
+                              "kind marks material/support/archive/reference candidates explicitly"
+                          ],
+    "failure_modes":  [
+                          "candidate misclassified",
+                          "generic coverage passport needs later calibration",
+                          "stale lane decision",
+                          "validator/proof drift"
+                      ],
+    "rollback_or_quarantine":  [
+                                   "revert generated passport files",
+                                   "rerun coverage validator",
+                                   "rerun passport review/index gate"
+                               ],
+    "maturity":  "DRAFT",
+    "live_or_lab_status":  "NOT_PROVEN",
+    "gaps":  [
+                 "not calibrated for maturity",
+                 "runtime proof missing",
+                 "owner acceptance missing for active organ claim"
+             ],
+    "source_evidence":  [
+                            "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json",
+                            "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+                            "reports/self_development/ORGAN_PASSPORT_COVERAGE_BATCH_V2.json"
+                        ],
+    "last_validated_at":  "2026-07-10T19:45:50.9397288+04:00"
+}

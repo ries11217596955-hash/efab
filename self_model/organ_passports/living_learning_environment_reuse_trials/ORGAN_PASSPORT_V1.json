@@ -1,0 +1,116 @@
+﻿{
+    "schema":  "ORGAN_PASSPORT_V1",
+    "status":  "PASSPORT_DRAFT_FROM_EVIDENCE",
+    "organ_id":  "living_learning_environment_reuse_trials",
+    "passport_kind":  "LEGACY_ARCHIVE_REFERENCE",
+    "source_lane":  "LEGACY_OR_ARCHIVE_BUCKET",
+    "display_name":  "param($m)$m.Value.ToUpperInvariant()iving param($m)$m.Value.ToUpperInvariant()earning param($m)$m.Value.ToUpperInvariant()nvironment param($m)$m.Value.ToUpperInvariant()euse param($m)$m.Value.ToUpperInvariant()rials",
+    "purpose":  "legacy learning environment material; needs migration/owner link before current organ claim",
+    "responsibilities":  [
+                             "Preserve coverage reference for living_learning_environment/reuse_trials",
+                             "Make this candidate searchable and visible in the passport index",
+                             "Prevent material/support/archive evidence from being confused with an active organ"
+                         ],
+    "what_it_is_not":  [
+                           "not PASSPORT_ACTIVE",
+                           "not PROVEN_LIVE",
+                           "not proof of mature organ status",
+                           "not a child-agent factory",
+                           "not a replacement for validators or owner decision"
+                       ],
+    "owning_root":  "living_learning_environment/reuse_trials",
+    "owned_files":  [
+                        "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/cycle_009_gap_inventory_reuse.json",
+                        "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/cycle_010_repair_task_spec_reuse.json",
+                        "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/cycle_011_proof_summary_reuse.json",
+                        "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/generic_spec_execution_admission.json",
+                        "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/generic_spec_execution_request.json",
+                        "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/generic_spec_execution_validation_result.json",
+                        "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/generic_spec_sandbox_execution_result.json",
+                        "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/next_execution_ticket.json",
+                        "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/phase157_ticket_read.json",
+                        "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/reuse_trial_result.json",
+                        "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/reuse_trial_trace.json",
+                        "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/reviewed_candidate_skill_load.json",
+                        "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/runtime_stop_decision.json",
+                        "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/self_model_update_candidate.json",
+                        "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/self_written_build_spec_candidate.json",
+                        "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/self_written_build_spec_contract.json",
+                        "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/self_written_build_spec_validation_result.json",
+                        "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/skill_reuse_policy.json",
+                        "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/trial_boot.json"
+                    ],
+    "inputs":  [
+                   "organ promotion lane decision",
+                   "canonical body map",
+                   "tracked owned evidence"
+               ],
+    "outputs":  [
+                    "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/cycle_009_gap_inventory_reuse.json",
+                    "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/cycle_010_repair_task_spec_reuse.json",
+                    "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/cycle_011_proof_summary_reuse.json",
+                    "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/generic_spec_execution_admission.json",
+                    "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/generic_spec_execution_request.json",
+                    "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/generic_spec_execution_validation_result.json",
+                    "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/generic_spec_sandbox_execution_result.json",
+                    "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/next_execution_ticket.json",
+                    "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/phase157_ticket_read.json",
+                    "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/reuse_trial_result.json",
+                    "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/reuse_trial_trace.json",
+                    "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/reviewed_candidate_skill_load.json"
+                ],
+    "invocation_surfaces":  [
+
+                            ],
+    "dependencies":  [
+                         "canonical body map",
+                         "organ promotion lanes",
+                         "passport coverage batch v2"
+                     ],
+    "validators":  [
+                       "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/generic_spec_execution_validation_result.json",
+                       "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/self_written_build_spec_validation_result.json"
+                   ],
+    "proof_refs":  [
+                       "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/cycle_011_proof_summary_reuse.json"
+                   ],
+    "runtime_refs":  [
+
+                     ],
+    "exported_capabilities":  [
+                                  "candidate_visibility",
+                                  "coverage_inventory",
+                                  "evidence_reference_surface"
+                              ],
+    "safety_boundaries":  [
+                              "draft only",
+                              "no PASSPORT_ACTIVE claim",
+                              "no PROVEN_LIVE claim",
+                              "no live process touched",
+                              "kind marks material/support/archive/reference candidates explicitly"
+                          ],
+    "failure_modes":  [
+                          "candidate misclassified",
+                          "generic coverage passport needs later calibration",
+                          "stale lane decision",
+                          "validator/proof drift"
+                      ],
+    "rollback_or_quarantine":  [
+                                   "revert generated passport files",
+                                   "rerun coverage validator",
+                                   "rerun passport review/index gate"
+                               ],
+    "maturity":  "DRAFT",
+    "live_or_lab_status":  "NOT_PROVEN",
+    "gaps":  [
+                 "not calibrated for maturity",
+                 "runtime proof missing",
+                 "owner acceptance missing for active organ claim"
+             ],
+    "source_evidence":  [
+                            "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json",
+                            "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+                            "reports/self_development/ORGAN_PASSPORT_COVERAGE_BATCH_V2.json"
+                        ],
+    "last_validated_at":  "2026-07-10T19:45:45.4086032+04:00"
+}

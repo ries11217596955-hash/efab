@@ -1,0 +1,168 @@
+﻿{
+    "schema":  "ORGAN_PASSPORT_V1",
+    "status":  "PASSPORT_DRAFT_FROM_EVIDENCE",
+    "organ_id":  "self_build_programs_generated",
+    "passport_kind":  "SUPPORT_MATERIAL_REFERENCE",
+    "source_lane":  "SUPPORT_MATERIAL_BUCKET",
+    "display_name":  "param($m)$m.Value.ToUpperInvariant()elf param($m)$m.Value.ToUpperInvariant()uild param($m)$m.Value.ToUpperInvariant()rograms param($m)$m.Value.ToUpperInvariant()enerated",
+    "purpose":  "generated program/agent output surface; product/material, not Builder organ by default",
+    "responsibilities":  [
+                             "Preserve coverage reference for self_build_programs/generated",
+                             "Make this candidate searchable and visible in the passport index",
+                             "Prevent material/support/archive evidence from being confused with an active organ"
+                         ],
+    "what_it_is_not":  [
+                           "not PASSPORT_ACTIVE",
+                           "not PROVEN_LIVE",
+                           "not proof of mature organ status",
+                           "not a child-agent factory",
+                           "not a replacement for validators or owner decision"
+                       ],
+    "owning_root":  "self_build_programs/generated",
+    "owned_files":  [
+                        "self_build_programs/generated/conveyor_failure_trial_family_v1/packs/GENERATED_CONVEYOR_FAILURE_TRIAL_FAMILY_V1_FAILURE_PACK_V1/APPLY.ps1",
+                        "self_build_programs/generated/conveyor_failure_trial_family_v1/packs/GENERATED_CONVEYOR_FAILURE_TRIAL_FAMILY_V1_FAILURE_PACK_V1/PACK.json",
+                        "self_build_programs/generated/conveyor_failure_trial_family_v1/SELF_BUILD_PROGRAM_MANIFEST.json",
+                        "self_build_programs/generated/conveyor_trial_family_v1/packs/GENERATED_CONVEYOR_TRIAL_FAMILY_V1_LIVE_PACK_V1/APPLY.ps1",
+                        "self_build_programs/generated/conveyor_trial_family_v1/packs/GENERATED_CONVEYOR_TRIAL_FAMILY_V1_LIVE_PACK_V1/PACK.json",
+                        "self_build_programs/generated/conveyor_trial_family_v1/SELF_BUILD_PROGRAM_MANIFEST.json",
+                        "self_build_programs/generated/monitoring_agent_v1/execution_recipes/GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1_RECIPE.json",
+                        "self_build_programs/generated/monitoring_agent_v1/execution_recipes/GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1_RECIPE.json",
+                        "self_build_programs/generated/monitoring_agent_v1/execution_recipes/GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_RECIPE.json",
+                        "self_build_programs/generated/monitoring_agent_v1/packs/GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1/APPLY.ps1",
+                        "self_build_programs/generated/monitoring_agent_v1/packs/GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1/PACK.json",
+                        "self_build_programs/generated/monitoring_agent_v1/packs/GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1/APPLY.ps1",
+                        "self_build_programs/generated/monitoring_agent_v1/packs/GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1/PACK.json",
+                        "self_build_programs/generated/monitoring_agent_v1/packs/GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1/APPLY.ps1",
+                        "self_build_programs/generated/monitoring_agent_v1/packs/GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1/PACK.json",
+                        "self_build_programs/generated/monitoring_agent_v1/patches/CAPABILITY_ROADMAP_PATCH.json",
+                        "self_build_programs/generated/monitoring_agent_v1/patches/PACK_REGISTRY_PATCH.json",
+                        "self_build_programs/generated/monitoring_agent_v1/patches/TASK_QUEUE_SEED.json",
+                        "self_build_programs/generated/monitoring_agent_v1/SELF_BUILD_PROGRAM_MANIFEST.json",
+                        "self_build_programs/generated/monitoring_agent_v1/tasks/TASK_GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1_001.json",
+                        "self_build_programs/generated/monitoring_agent_v1/tasks/TASK_GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1_001.json",
+                        "self_build_programs/generated/monitoring_agent_v1/tasks/TASK_GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_001.json",
+                        "self_build_programs/generated/PHASE164O_SELF_BUILD_PROGRAM_OWNER_MATERIAL_PROBE.json",
+                        "self_build_programs/generated/remediation_intake_agent_v1/execution_recipes/GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1_RECIPE.json",
+                        "self_build_programs/generated/remediation_intake_agent_v1/execution_recipes/GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1_RECIPE.json",
+                        "self_build_programs/generated/remediation_intake_agent_v1/execution_recipes/GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_RECIPE.json",
+                        "self_build_programs/generated/remediation_intake_agent_v1/packs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1/APPLY.ps1",
+                        "self_build_programs/generated/remediation_intake_agent_v1/packs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1/PACK.json",
+                        "self_build_programs/generated/remediation_intake_agent_v1/packs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1/APPLY.ps1",
+                        "self_build_programs/generated/remediation_intake_agent_v1/packs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1/PACK.json",
+                        "self_build_programs/generated/remediation_intake_agent_v1/packs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1/APPLY.ps1",
+                        "self_build_programs/generated/remediation_intake_agent_v1/packs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1/PACK.json",
+                        "self_build_programs/generated/remediation_intake_agent_v1/patches/CAPABILITY_ROADMAP_PATCH.json",
+                        "self_build_programs/generated/remediation_intake_agent_v1/patches/PACK_REGISTRY_PATCH.json",
+                        "self_build_programs/generated/remediation_intake_agent_v1/patches/TASK_QUEUE_SEED.json",
+                        "self_build_programs/generated/remediation_intake_agent_v1/SELF_BUILD_PROGRAM_MANIFEST.json",
+                        "self_build_programs/generated/remediation_intake_agent_v1/tasks/TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1_001.json",
+                        "self_build_programs/generated/remediation_intake_agent_v1/tasks/TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1_001.json",
+                        "self_build_programs/generated/remediation_intake_agent_v1/tasks/TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_001.json",
+                        "self_build_programs/generated/SELF_BUILD_PROGRAM_001.json",
+                        "self_build_programs/generated/SELF_BUILD_PROGRAM_OWNER_MATERIAL_INPUT_BOOTSTRAP_001_V1_001.json",
+                        "self_build_programs/generated/SELF_BUILD_PROGRAM_V2_EXAMPLE_001.json"
+                    ],
+    "inputs":  [
+                   "organ promotion lane decision",
+                   "canonical body map",
+                   "tracked owned evidence"
+               ],
+    "outputs":  [
+                    "self_build_programs/generated/conveyor_failure_trial_family_v1/packs/GENERATED_CONVEYOR_FAILURE_TRIAL_FAMILY_V1_FAILURE_PACK_V1/APPLY.ps1",
+                    "self_build_programs/generated/conveyor_failure_trial_family_v1/packs/GENERATED_CONVEYOR_FAILURE_TRIAL_FAMILY_V1_FAILURE_PACK_V1/PACK.json",
+                    "self_build_programs/generated/conveyor_failure_trial_family_v1/SELF_BUILD_PROGRAM_MANIFEST.json",
+                    "self_build_programs/generated/conveyor_trial_family_v1/packs/GENERATED_CONVEYOR_TRIAL_FAMILY_V1_LIVE_PACK_V1/APPLY.ps1",
+                    "self_build_programs/generated/conveyor_trial_family_v1/packs/GENERATED_CONVEYOR_TRIAL_FAMILY_V1_LIVE_PACK_V1/PACK.json",
+                    "self_build_programs/generated/conveyor_trial_family_v1/SELF_BUILD_PROGRAM_MANIFEST.json",
+                    "self_build_programs/generated/monitoring_agent_v1/execution_recipes/GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1_RECIPE.json",
+                    "self_build_programs/generated/monitoring_agent_v1/execution_recipes/GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1_RECIPE.json",
+                    "self_build_programs/generated/monitoring_agent_v1/execution_recipes/GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_RECIPE.json",
+                    "self_build_programs/generated/monitoring_agent_v1/packs/GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1/APPLY.ps1",
+                    "self_build_programs/generated/monitoring_agent_v1/packs/GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1/PACK.json",
+                    "self_build_programs/generated/monitoring_agent_v1/packs/GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1/APPLY.ps1",
+                    "self_build_programs/generated/monitoring_agent_v1/packs/GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1/PACK.json",
+                    "self_build_programs/generated/monitoring_agent_v1/packs/GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1/APPLY.ps1",
+                    "self_build_programs/generated/monitoring_agent_v1/packs/GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1/PACK.json",
+                    "self_build_programs/generated/monitoring_agent_v1/patches/CAPABILITY_ROADMAP_PATCH.json",
+                    "self_build_programs/generated/monitoring_agent_v1/patches/PACK_REGISTRY_PATCH.json",
+                    "self_build_programs/generated/remediation_intake_agent_v1/packs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1/APPLY.ps1",
+                    "self_build_programs/generated/remediation_intake_agent_v1/packs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1/APPLY.ps1",
+                    "self_build_programs/generated/remediation_intake_agent_v1/packs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1/APPLY.ps1"
+                ],
+    "invocation_surfaces":  [
+                                "self_build_programs/generated/conveyor_failure_trial_family_v1/packs/GENERATED_CONVEYOR_FAILURE_TRIAL_FAMILY_V1_FAILURE_PACK_V1/APPLY.ps1",
+                                "self_build_programs/generated/conveyor_trial_family_v1/packs/GENERATED_CONVEYOR_TRIAL_FAMILY_V1_LIVE_PACK_V1/APPLY.ps1",
+                                "self_build_programs/generated/monitoring_agent_v1/packs/GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1/APPLY.ps1",
+                                "self_build_programs/generated/monitoring_agent_v1/packs/GENERATED_MONITORING_AGENT_V1_PROFILE_MATERIALIZATION_V1/APPLY.ps1",
+                                "self_build_programs/generated/monitoring_agent_v1/packs/GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1/APPLY.ps1",
+                                "self_build_programs/generated/remediation_intake_agent_v1/packs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1/APPLY.ps1",
+                                "self_build_programs/generated/remediation_intake_agent_v1/packs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_PROFILE_MATERIALIZATION_V1/APPLY.ps1",
+                                "self_build_programs/generated/remediation_intake_agent_v1/packs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1/APPLY.ps1"
+                            ],
+    "dependencies":  [
+                         "canonical body map",
+                         "organ promotion lanes",
+                         "passport coverage batch v2"
+                     ],
+    "validators":  [
+
+                   ],
+    "proof_refs":  [
+                       "self_build_programs/generated/monitoring_agent_v1/execution_recipes/GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1_RECIPE.json",
+                       "self_build_programs/generated/monitoring_agent_v1/execution_recipes/GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_RECIPE.json",
+                       "self_build_programs/generated/monitoring_agent_v1/packs/GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1/APPLY.ps1",
+                       "self_build_programs/generated/monitoring_agent_v1/packs/GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1/PACK.json",
+                       "self_build_programs/generated/monitoring_agent_v1/packs/GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1/APPLY.ps1",
+                       "self_build_programs/generated/monitoring_agent_v1/packs/GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1/PACK.json",
+                       "self_build_programs/generated/monitoring_agent_v1/tasks/TASK_GENERATED_MONITORING_AGENT_V1_CLOSURE_PROOF_V1_001.json",
+                       "self_build_programs/generated/monitoring_agent_v1/tasks/TASK_GENERATED_MONITORING_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_001.json",
+                       "self_build_programs/generated/remediation_intake_agent_v1/execution_recipes/GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1_RECIPE.json",
+                       "self_build_programs/generated/remediation_intake_agent_v1/execution_recipes/GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_RECIPE.json",
+                       "self_build_programs/generated/remediation_intake_agent_v1/packs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1/APPLY.ps1",
+                       "self_build_programs/generated/remediation_intake_agent_v1/packs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1/PACK.json",
+                       "self_build_programs/generated/remediation_intake_agent_v1/packs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1/APPLY.ps1",
+                       "self_build_programs/generated/remediation_intake_agent_v1/packs/GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1/PACK.json",
+                       "self_build_programs/generated/remediation_intake_agent_v1/tasks/TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_CLOSURE_PROOF_V1_001.json",
+                       "self_build_programs/generated/remediation_intake_agent_v1/tasks/TASK_GENERATED_REMEDIATION_INTAKE_AGENT_V1_SEED_CONSUMPTION_PROOF_V1_001.json"
+                   ],
+    "runtime_refs":  [
+
+                     ],
+    "exported_capabilities":  [
+                                  "candidate_visibility",
+                                  "coverage_inventory",
+                                  "evidence_reference_surface"
+                              ],
+    "safety_boundaries":  [
+                              "draft only",
+                              "no PASSPORT_ACTIVE claim",
+                              "no PROVEN_LIVE claim",
+                              "no live process touched",
+                              "kind marks material/support/archive/reference candidates explicitly"
+                          ],
+    "failure_modes":  [
+                          "candidate misclassified",
+                          "generic coverage passport needs later calibration",
+                          "stale lane decision",
+                          "validator/proof drift"
+                      ],
+    "rollback_or_quarantine":  [
+                                   "revert generated passport files",
+                                   "rerun coverage validator",
+                                   "rerun passport review/index gate"
+                               ],
+    "maturity":  "DRAFT",
+    "live_or_lab_status":  "NOT_PROVEN",
+    "gaps":  [
+                 "not calibrated for maturity",
+                 "runtime proof missing",
+                 "owner acceptance missing for active organ claim"
+             ],
+    "source_evidence":  [
+                            "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json",
+                            "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+                            "reports/self_development/ORGAN_PASSPORT_COVERAGE_BATCH_V2.json"
+                        ],
+    "last_validated_at":  "2026-07-10T19:45:58.7586168+04:00"
+}

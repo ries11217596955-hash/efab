@@ -1,0 +1,96 @@
+﻿{
+    "schema":  "ORGAN_PASSPORT_V1",
+    "status":  "PASSPORT_DRAFT_FROM_EVIDENCE",
+    "organ_id":  "contracts_materials",
+    "passport_kind":  "OWNER_LINK_REQUIRED_REFERENCE",
+    "source_lane":  "OWNER_LINK_REQUIRED",
+    "display_name":  "param($m)$m.Value.ToUpperInvariant()ontracts param($m)$m.Value.ToUpperInvariant()aterials",
+    "purpose":  "contract evidence surface; supports organs but not organ unless explicit organ contract",
+    "responsibilities":  [
+                             "Preserve coverage reference for contracts/materials",
+                             "Make this candidate searchable and visible in the passport index",
+                             "Prevent material/support/archive evidence from being confused with an active organ"
+                         ],
+    "what_it_is_not":  [
+                           "not PASSPORT_ACTIVE",
+                           "not PROVEN_LIVE",
+                           "not proof of mature organ status",
+                           "not a child-agent factory",
+                           "not a replacement for validators or owner decision"
+                       ],
+    "owning_root":  "contracts/materials",
+    "owned_files":  [
+                        "contracts/materials/manual_scout_pass.schema.json",
+                        "contracts/materials/material_candidate.schema.json",
+                        "contracts/materials/material_catalog.schema.json",
+                        "contracts/materials/material_quarantine_card.schema.json",
+                        "contracts/materials/material_policy.schema.json",
+                        "contracts/materials/material_request.schema.json"
+                    ],
+    "inputs":  [
+                   "organ promotion lane decision",
+                   "canonical body map",
+                   "tracked owned evidence"
+               ],
+    "outputs":  [
+                    "contracts/materials/manual_scout_pass.schema.json",
+                    "contracts/materials/material_candidate.schema.json",
+                    "contracts/materials/material_catalog.schema.json",
+                    "contracts/materials/material_quarantine_card.schema.json",
+                    "contracts/materials/material_policy.schema.json",
+                    "contracts/materials/material_request.schema.json"
+                ],
+    "invocation_surfaces":  [
+
+                            ],
+    "dependencies":  [
+                         "canonical body map",
+                         "organ promotion lanes",
+                         "passport coverage batch v2"
+                     ],
+    "validators":  [
+
+                   ],
+    "proof_refs":  [
+
+                   ],
+    "runtime_refs":  [
+
+                     ],
+    "exported_capabilities":  [
+                                  "candidate_visibility",
+                                  "coverage_inventory",
+                                  "evidence_reference_surface"
+                              ],
+    "safety_boundaries":  [
+                              "draft only",
+                              "no PASSPORT_ACTIVE claim",
+                              "no PROVEN_LIVE claim",
+                              "no live process touched",
+                              "kind marks material/support/archive/reference candidates explicitly"
+                          ],
+    "failure_modes":  [
+                          "candidate misclassified",
+                          "generic coverage passport needs later calibration",
+                          "stale lane decision",
+                          "validator/proof drift"
+                      ],
+    "rollback_or_quarantine":  [
+                                   "revert generated passport files",
+                                   "rerun coverage validator",
+                                   "rerun passport review/index gate"
+                               ],
+    "maturity":  "DRAFT",
+    "live_or_lab_status":  "NOT_PROVEN",
+    "gaps":  [
+                 "not calibrated for maturity",
+                 "runtime proof missing",
+                 "owner acceptance missing for active organ claim"
+             ],
+    "source_evidence":  [
+                            "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json",
+                            "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+                            "reports/self_development/ORGAN_PASSPORT_COVERAGE_BATCH_V2.json"
+                        ],
+    "last_validated_at":  "2026-07-10T19:45:44.0084941+04:00"
+}

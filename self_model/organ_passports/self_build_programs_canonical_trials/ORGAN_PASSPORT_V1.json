@@ -1,0 +1,101 @@
+﻿{
+    "schema":  "ORGAN_PASSPORT_V1",
+    "status":  "PASSPORT_DRAFT_FROM_EVIDENCE",
+    "organ_id":  "self_build_programs_canonical_trials",
+    "passport_kind":  "ORGAN_DRAFT_REVIEW",
+    "source_lane":  "REVIEW_LANE",
+    "display_name":  "param($m)$m.Value.ToUpperInvariant()elf param($m)$m.Value.ToUpperInvariant()uild param($m)$m.Value.ToUpperInvariant()rograms param($m)$m.Value.ToUpperInvariant()anonical param($m)$m.Value.ToUpperInvariant()rials",
+    "purpose":  "self-build program surface; may be factory/material, needs owner link before organ claim",
+    "responsibilities":  [
+                             "Maintain bounded draft organ evidence for self_build_programs/canonical_trials",
+                             "Expose owned files, invocations, validators, and proof references",
+                             "Stay draft-only until separate maturity proof and owner acceptance"
+                         ],
+    "what_it_is_not":  [
+                           "not PASSPORT_ACTIVE",
+                           "not PROVEN_LIVE",
+                           "not proof of mature organ status",
+                           "not a child-agent factory",
+                           "not a replacement for validators or owner decision"
+                       ],
+    "owning_root":  "self_build_programs/canonical_trials",
+    "owned_files":  [
+                        "self_build_programs/canonical_trials/PHASE165N_CANONICAL_TRIAL_GUARD_V1/GUARD_PHASE165N_CANONICAL_DYNAMIC_TRIAL_V1.ps1",
+                        "self_build_programs/canonical_trials/PHASE165N_FIRST_DYNAMIC_OWNER_MATERIAL_CANONICAL_TRIAL_V1/PHASE165N_FIRST_DYNAMIC_OWNER_MATERIAL_CANONICAL_TRIAL_RESULT_V1.json",
+                        "self_build_programs/canonical_trials/PHASE165N_FIRST_DYNAMIC_OWNER_MATERIAL_CANONICAL_TRIAL_V1/RUN_PHASE165N_FIRST_DYNAMIC_OWNER_MATERIAL_CANONICAL_TRIAL_V1.ps1",
+                        "self_build_programs/canonical_trials/PHASE165N_FIRST_DYNAMIC_OWNER_MATERIAL_CANONICAL_TRIAL_V1/TASK_QUEUE_AFTER_PHASE165N_CANONICAL_TRIAL_BEFORE_RESTORE.json",
+                        "self_build_programs/canonical_trials/PHASE165N_FIRST_DYNAMIC_OWNER_MATERIAL_CANONICAL_TRIAL_V1/TASK_QUEUE_BEFORE_PHASE165N_CANONICAL_TRIAL.json",
+                        "self_build_programs/canonical_trials/PHASE165O_HARDENED_CANONICAL_DYNAMIC_CONTRACT_TRIAL_V1/PHASE165O_HARDENED_CANONICAL_DYNAMIC_CONTRACT_TRIAL_RESULT_V1.json",
+                        "self_build_programs/canonical_trials/PHASE165O_HARDENED_CANONICAL_DYNAMIC_CONTRACT_TRIAL_V1/TASK_QUEUE_AFTER_PHASE165O_HARDENED_TRIAL_BEFORE_RESTORE.json",
+                        "self_build_programs/canonical_trials/PHASE165O_HARDENED_CANONICAL_DYNAMIC_CONTRACT_TRIAL_V1/TASK_QUEUE_BEFORE_PHASE165O_HARDENED_TRIAL.json"
+                    ],
+    "inputs":  [
+                   "organ promotion lane decision",
+                   "canonical body map",
+                   "tracked owned evidence"
+               ],
+    "outputs":  [
+                    "self_build_programs/canonical_trials/PHASE165N_CANONICAL_TRIAL_GUARD_V1/GUARD_PHASE165N_CANONICAL_DYNAMIC_TRIAL_V1.ps1",
+                    "self_build_programs/canonical_trials/PHASE165N_FIRST_DYNAMIC_OWNER_MATERIAL_CANONICAL_TRIAL_V1/PHASE165N_FIRST_DYNAMIC_OWNER_MATERIAL_CANONICAL_TRIAL_RESULT_V1.json",
+                    "self_build_programs/canonical_trials/PHASE165N_FIRST_DYNAMIC_OWNER_MATERIAL_CANONICAL_TRIAL_V1/RUN_PHASE165N_FIRST_DYNAMIC_OWNER_MATERIAL_CANONICAL_TRIAL_V1.ps1",
+                    "self_build_programs/canonical_trials/PHASE165N_FIRST_DYNAMIC_OWNER_MATERIAL_CANONICAL_TRIAL_V1/TASK_QUEUE_AFTER_PHASE165N_CANONICAL_TRIAL_BEFORE_RESTORE.json",
+                    "self_build_programs/canonical_trials/PHASE165N_FIRST_DYNAMIC_OWNER_MATERIAL_CANONICAL_TRIAL_V1/TASK_QUEUE_BEFORE_PHASE165N_CANONICAL_TRIAL.json",
+                    "self_build_programs/canonical_trials/PHASE165O_HARDENED_CANONICAL_DYNAMIC_CONTRACT_TRIAL_V1/PHASE165O_HARDENED_CANONICAL_DYNAMIC_CONTRACT_TRIAL_RESULT_V1.json",
+                    "self_build_programs/canonical_trials/PHASE165O_HARDENED_CANONICAL_DYNAMIC_CONTRACT_TRIAL_V1/TASK_QUEUE_AFTER_PHASE165O_HARDENED_TRIAL_BEFORE_RESTORE.json",
+                    "self_build_programs/canonical_trials/PHASE165O_HARDENED_CANONICAL_DYNAMIC_CONTRACT_TRIAL_V1/TASK_QUEUE_BEFORE_PHASE165O_HARDENED_TRIAL.json"
+                ],
+    "invocation_surfaces":  [
+                                "self_build_programs/canonical_trials/PHASE165N_CANONICAL_TRIAL_GUARD_V1/GUARD_PHASE165N_CANONICAL_DYNAMIC_TRIAL_V1.ps1",
+                                "self_build_programs/canonical_trials/PHASE165N_FIRST_DYNAMIC_OWNER_MATERIAL_CANONICAL_TRIAL_V1/RUN_PHASE165N_FIRST_DYNAMIC_OWNER_MATERIAL_CANONICAL_TRIAL_V1.ps1"
+                            ],
+    "dependencies":  [
+                         "canonical body map",
+                         "organ promotion lanes",
+                         "passport coverage batch v2"
+                     ],
+    "validators":  [
+
+                   ],
+    "proof_refs":  [
+
+                   ],
+    "runtime_refs":  [
+
+                     ],
+    "exported_capabilities":  [
+                                  "candidate_visibility",
+                                  "coverage_inventory",
+                                  "evidence_reference_surface"
+                              ],
+    "safety_boundaries":  [
+                              "draft only",
+                              "no PASSPORT_ACTIVE claim",
+                              "no PROVEN_LIVE claim",
+                              "no live process touched",
+                              "kind marks material/support/archive/reference candidates explicitly"
+                          ],
+    "failure_modes":  [
+                          "candidate misclassified",
+                          "generic coverage passport needs later calibration",
+                          "stale lane decision",
+                          "validator/proof drift"
+                      ],
+    "rollback_or_quarantine":  [
+                                   "revert generated passport files",
+                                   "rerun coverage validator",
+                                   "rerun passport review/index gate"
+                               ],
+    "maturity":  "DRAFT",
+    "live_or_lab_status":  "NOT_PROVEN",
+    "gaps":  [
+                 "not calibrated for maturity",
+                 "runtime proof missing",
+                 "owner acceptance missing for active organ claim"
+             ],
+    "source_evidence":  [
+                            "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json",
+                            "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+                            "reports/self_development/ORGAN_PASSPORT_COVERAGE_BATCH_V2.json"
+                        ],
+    "last_validated_at":  "2026-07-10T19:45:58.3178287+04:00"
+}

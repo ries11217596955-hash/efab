@@ -1,0 +1,101 @@
+﻿{
+    "schema":  "ORGAN_PASSPORT_V1",
+    "status":  "PASSPORT_DRAFT_FROM_EVIDENCE",
+    "organ_id":  "packs_phase5_external_agent_spec_intake",
+    "passport_kind":  "EVIDENCE_MATERIAL_REFERENCE",
+    "source_lane":  "EVIDENCE_MATERIAL_BUCKET",
+    "display_name":  "param($m)$m.Value.ToUpperInvariant()acks param($m)$m.Value.ToUpperInvariant()hase5 param($m)$m.Value.ToUpperInvariant()xternal param($m)$m.Value.ToUpperInvariant()gent param($m)$m.Value.ToUpperInvariant()pec param($m)$m.Value.ToUpperInvariant()ntake",
+    "purpose":  "phase/packs bundle; may contain proof/capability material but not organ by default",
+    "responsibilities":  [
+                             "Preserve coverage reference for packs/PHASE5_EXTERNAL_AGENT_SPEC_INTAKE",
+                             "Make this candidate searchable and visible in the passport index",
+                             "Prevent material/support/archive evidence from being confused with an active organ"
+                         ],
+    "what_it_is_not":  [
+                           "not PASSPORT_ACTIVE",
+                           "not PROVEN_LIVE",
+                           "not proof of mature organ status",
+                           "not a child-agent factory",
+                           "not a replacement for validators or owner decision"
+                       ],
+    "owning_root":  "packs/PHASE5_EXTERNAL_AGENT_SPEC_INTAKE",
+    "owned_files":  [
+                        "packs/PHASE5_EXTERNAL_AGENT_SPEC_INTAKE/APPLY.ps1",
+                        "packs/PHASE5_EXTERNAL_AGENT_SPEC_INTAKE/PACK.json",
+                        "packs/PHASE5_EXTERNAL_AGENT_SPEC_INTAKE/payload/contracts/external_agent_spec.schema.json",
+                        "packs/PHASE5_EXTERNAL_AGENT_SPEC_INTAKE/payload/modules/validate_external_agent_spec_template.ps1",
+                        "packs/PHASE5_EXTERNAL_AGENT_SPEC_INTAKE/payload/specs/external_agent_spec_template/SPEC_TEMPLATE.json",
+                        "packs/PHASE5_EXTERNAL_AGENT_SPEC_INTAKE/payload/tasks/TASK_EXTERNAL_AGENT_PACKAGE_GENERATOR_001.json",
+                        "packs/PHASE5_EXTERNAL_AGENT_SPEC_INTAKE/payload/validators/validate_external_agent_spec_intake.ps1"
+                    ],
+    "inputs":  [
+                   "organ promotion lane decision",
+                   "canonical body map",
+                   "tracked owned evidence"
+               ],
+    "outputs":  [
+                    "packs/PHASE5_EXTERNAL_AGENT_SPEC_INTAKE/APPLY.ps1",
+                    "packs/PHASE5_EXTERNAL_AGENT_SPEC_INTAKE/PACK.json",
+                    "packs/PHASE5_EXTERNAL_AGENT_SPEC_INTAKE/payload/contracts/external_agent_spec.schema.json",
+                    "packs/PHASE5_EXTERNAL_AGENT_SPEC_INTAKE/payload/modules/validate_external_agent_spec_template.ps1",
+                    "packs/PHASE5_EXTERNAL_AGENT_SPEC_INTAKE/payload/specs/external_agent_spec_template/SPEC_TEMPLATE.json",
+                    "packs/PHASE5_EXTERNAL_AGENT_SPEC_INTAKE/payload/tasks/TASK_EXTERNAL_AGENT_PACKAGE_GENERATOR_001.json",
+                    "packs/PHASE5_EXTERNAL_AGENT_SPEC_INTAKE/payload/validators/validate_external_agent_spec_intake.ps1"
+                ],
+    "invocation_surfaces":  [
+                                "packs/PHASE5_EXTERNAL_AGENT_SPEC_INTAKE/APPLY.ps1",
+                                "packs/PHASE5_EXTERNAL_AGENT_SPEC_INTAKE/payload/modules/validate_external_agent_spec_template.ps1",
+                                "packs/PHASE5_EXTERNAL_AGENT_SPEC_INTAKE/payload/validators/validate_external_agent_spec_intake.ps1"
+                            ],
+    "dependencies":  [
+                         "canonical body map",
+                         "organ promotion lanes",
+                         "passport coverage batch v2"
+                     ],
+    "validators":  [
+                       "packs/PHASE5_EXTERNAL_AGENT_SPEC_INTAKE/payload/modules/validate_external_agent_spec_template.ps1",
+                       "packs/PHASE5_EXTERNAL_AGENT_SPEC_INTAKE/payload/validators/validate_external_agent_spec_intake.ps1"
+                   ],
+    "proof_refs":  [
+
+                   ],
+    "runtime_refs":  [
+
+                     ],
+    "exported_capabilities":  [
+                                  "candidate_visibility",
+                                  "coverage_inventory",
+                                  "evidence_reference_surface"
+                              ],
+    "safety_boundaries":  [
+                              "draft only",
+                              "no PASSPORT_ACTIVE claim",
+                              "no PROVEN_LIVE claim",
+                              "no live process touched",
+                              "kind marks material/support/archive/reference candidates explicitly"
+                          ],
+    "failure_modes":  [
+                          "candidate misclassified",
+                          "generic coverage passport needs later calibration",
+                          "stale lane decision",
+                          "validator/proof drift"
+                      ],
+    "rollback_or_quarantine":  [
+                                   "revert generated passport files",
+                                   "rerun coverage validator",
+                                   "rerun passport review/index gate"
+                               ],
+    "maturity":  "DRAFT",
+    "live_or_lab_status":  "NOT_PROVEN",
+    "gaps":  [
+                 "not calibrated for maturity",
+                 "runtime proof missing",
+                 "owner acceptance missing for active organ claim"
+             ],
+    "source_evidence":  [
+                            "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json",
+                            "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+                            "reports/self_development/ORGAN_PASSPORT_COVERAGE_BATCH_V2.json"
+                        ],
+    "last_validated_at":  "2026-07-10T19:45:52.1343813+04:00"
+}

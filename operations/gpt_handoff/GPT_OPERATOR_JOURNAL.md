@@ -536,3 +536,36 @@ Boundaries:
 
 Next concrete step:
 - Calibrate/triage the new draft passports: decide which remain generic draft, which need organ-specific requirements, and which can move toward validated lab maturity.
+
+## 2026-07-10 — Passport coverage batch V2 / full lane coverage
+
+STATUS: PROOF_PASS / LANE_COVERAGE_COMPLETE / NOT_PROVEN_LIVE
+
+Owner correction:
+- Target was not 17 passports; target was broad passport coverage across the body-map candidate set.
+- Fresh repo count showed 158 lane decisions and 17 existing passport files.
+
+Built:
+- Added coverage generator: operations/self_model/build_organ_passport_coverage_batch_v2.ps1.
+- Added coverage validator: operations/self_model/validate_organ_passport_coverage_batch_v2.ps1.
+- Generated 142 additional draft coverage passports.
+- Lane coverage is now 158/158.
+- Total passport files are 159 because operations_self_model is a pre-existing self-model/meta passport outside lane decisions.
+
+Meaning:
+- The 158 lane candidates now all have passport coverage.
+- Material/evidence/support/archive candidates are marked as reference/material/support/legacy kinds, not as active organs.
+- This is coverage, not activation.
+
+Proofs passed:
+- PASS_ORGAN_PASSPORT_COVERAGE_BATCH_V2
+
+Boundaries:
+- Draft only.
+- No PASSPORT_ACTIVE claim.
+- No PROVEN_LIVE claim.
+- No live runtime touched.
+- Extra operations_self_model passport preserved, not deleted.
+
+Next concrete step:
+- Build a passport maturity triage: which passports stay reference/material, which need owner-link, which can become calibrated organ drafts, and which can later move toward VALIDATED_LAB.
