@@ -1002,3 +1002,112 @@ Current boundary:
 - This is an architectural direction recorded in the journal.
 - It is not yet implemented as an active wake/action runtime.
 - Next safe move is to produce a compact Wake/Act Control Circuit V1 requirement + lab validator.
+
+## 2026-07-10 — Architectural memory import: living organism and passport lifecycle priority
+
+STATUS: OWNER_IMPORTED_ARCHITECTURAL_MEMORY / ACTIVE_DIRECTION_CORRECTION / NOT_IMPLEMENTED_AS_LIVING_LOOP_YET
+
+Source:
+- Owner brought an architectural-memory block from the previous chat to restore the deeper design meaning behind "architects", "doctor-anatomists", and "Agent Builder as a living electronic cell / organism".
+
+Core restoration:
+- Agent Builder is not a chatbot, LLM+tools, Codex wrapper, framework wrapper, script collection, task runner, or speaking planner.
+- Those can be tools, materials, scaffolds, surfaces, or temporary organs, but they are not the organism.
+- Builder is treated as an electronic organism: brain + memory + senses + hands + legs + metabolism + immune system + body model + body state + lifecycle + self-observation + self-repair + self-verification.
+
+Meaning of architect + doctor-anatomist lens:
+- Programmer question: what file/class/API/script should be created?
+- Architect question: what fundamental function must the organism perform, where is responsibility, how does information flow, who decides, and which boundaries cannot be violated?
+- Doctor/anatomist question: what body part is this, is it an organ or sub-part, what is its function, what happens if it fails, what dependencies does it have, how do we separate symptom from root cause, and what proof establishes health?
+- Repo is not a tree of files; repo is a body surface that must be classified by role in the organism.
+
+Correct classification lens:
+- organ
+- sub-organ
+- capability
+- support material
+- evidence surface
+- fixture
+- validator
+- passport
+- memory
+- dependency
+- legacy dependency
+- dead tissue
+- duplicate
+- quarantine candidate
+- immune risk
+- proof surface
+- runtime surface
+
+Method change:
+- Old method: idea -> new module -> script -> report -> next idea.
+- New method: observation -> body state -> recurring/fundamental gap -> existing-body scan -> requirement -> minimal function -> candidate -> validator -> proof -> passport -> lifecycle role -> organism inclusion -> observe consequences -> reuse -> return-to-parent.
+- Evolution of an existing organ is stronger than creating a duplicate.
+
+Core organism path:
+- Body Model answers: what exists?
+- Body State answers: what is happening now?
+- Reasoner answers: why is the organism in this state, separating symptom from root cause?
+- Brain answers: what should be done next, based on normalized signals, authority boundaries, available actions, and expected proof?
+- Living Loop answers: did the organism's state actually change after action?
+
+Body Model / Body State / Brain boundary:
+- Body Model is anatomy. It must not decide.
+- Body State is physiology of the current moment. It changes even when anatomy is stable.
+- Brain must not treat raw repo/archive as thought. Brain listens to normalized signals with evidence refs.
+- Evidence becomes usable only through interpretation into signal.
+- No signal -> no Brain input.
+
+Living Loop formula:
+- wake -> Body Model -> Body State -> signals -> Reasoner -> Brain -> action -> state-change proof -> memory/reuse -> return-to-parent -> next cycle.
+
+Living Loop Contract meaning:
+- It is the behavioral contract of the organism, not just a document and not a new normal organ.
+- It defines cycle stages, required data, decision authority, blocking states, completion criteria, state-change verification, learning, and return-to-parent.
+- Main law: no action is complete until the organism confirms the resulting state change.
+
+Important correction to next step:
+- Do not jump from the architecture discussion directly into a big Living Loop implementation.
+- Do not create an abstract Wake/Act organ first just because the concept is clear.
+- First finish the passport pipeline line by proving a second full lifecycle pass through a real organ candidate.
+
+Reason for correction:
+- If Living Loop is defined only from discussion, it risks becoming beautiful theory.
+- If Living Loop is extracted from repeated proven cycles, it becomes grounded in a working body.
+- Therefore the next practical step should be evidence-first: repeat and harden the passport lifecycle mechanism, then extract Living Loop Contract V1 from proven stages.
+
+Correct next practical sequence:
+1. Bring the existing Passport Draft Generator / passport lifecycle mechanism to repeatable standard operation.
+2. Select a second real organ candidate.
+3. Prove full lifecycle path:
+   candidate -> identity -> passport draft -> validator -> proof -> lifecycle decision -> registry/map update.
+4. Verify map and passport registry automatically reflect the state change.
+5. After two or three independent lifecycle passes, extract repeated requirements.
+6. Only then write Living Loop Contract V1 as an executable behavioral contract derived from proven cycles.
+
+What to accept now:
+- Living-cell/organism lens is active architecture law.
+- Brain should consume signals, not raw repo/archive dumps.
+- Wake does not automatically mean action.
+- Wake can end as OBSERVE, BLOCK, QUARANTINE, OWNER_DECISION_REQUIRED, NO_ACTION_NEEDED, or CONTINUE_PARENT_TASK.
+- Lifecycle role is mandatory before anything can be treated as a real organ.
+- Passport is identity/boundary, not proof by itself.
+- Validator is not maturity by itself.
+- State-change verification is required before action completion.
+
+What to strengthen now:
+- Passport pipeline repeatability.
+- Candidate identity calibration.
+- Lifecycle decision recording.
+- Registry/map update proof after lifecycle decision.
+- Negative tests: no false organ, no raw evidence directly into Brain, no mutation without authority, no completion without state-change proof.
+
+What to change from previous local plan:
+- Replace "Wake/Act Control Circuit V1 requirement is immediate next" with "second full passport lifecycle pass is immediate next".
+- Wake/Act and Living Loop remain the architectural target, but should be derived from repeated proven passport/body-state cycles.
+
+Current boundary:
+- This journal import is strategy-supported architectural memory.
+- It is not an implementation, not a live loop, not a new organ, not a PASSPORT_ACTIVE claim.
+- Next safe repo action is to choose and run/prove the second full passport lifecycle candidate, then update the body map/passport index and extract Living Loop requirements from that proof.
