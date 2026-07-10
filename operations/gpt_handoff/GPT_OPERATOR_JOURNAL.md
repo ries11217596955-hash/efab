@@ -844,3 +844,36 @@ Boundaries:
 - No passport promoted.
 - No PASSPORT_ACTIVE created.
 - No live runtime touched.
+
+## 2026-07-10 — Owner-facing organ cleanup queue V1
+
+STATUS: QUEUE_PASS / OWNER_DECISION_QUEUE / NO_DELETION
+
+Built:
+- operations/self_model/build_owner_facing_organ_cleanup_queue_v1.ps1
+- operations/self_model/validate_owner_facing_organ_cleanup_queue_v1.ps1
+- reports/self_development/OWNER_FACING_ORGAN_CLEANUP_QUEUE_V1.json
+- reports/self_development/OWNER_FACING_ORGAN_CLEANUP_QUEUE_V1.md
+- tests/self_development/OWNER_FACING_ORGAN_CLEANUP_QUEUE_V1_PROOF.json
+
+Result:
+- Total queue items: 5
+- Owner decision required: 2
+- Safe keep/proof actions: 3
+
+Owner decision required:
+- operations_contracts: approve downclassify to reference or keep as draft.
+- operations_smoke_trials: approve delete-candidate path or keep as test reference.
+
+No-owner-decision-needed-for-now:
+- operations_active_behavior: keep draft; later run validators and attach proof refs.
+- operations_organ_promotion_lanes: keep governance draft; later add second validation surface.
+- operations_overnight_school: keep long-runtime draft; corrected validator link stays; later bounded proof/boundary gate.
+
+Boundaries:
+- Queue only.
+- No files deleted.
+- No passport promoted.
+- No passport downclassified.
+- No PASSPORT_ACTIVE created.
+- No live runtime touched.

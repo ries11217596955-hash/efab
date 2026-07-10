@@ -1,0 +1,84 @@
+﻿{
+    "schema":  "owner_facing_organ_cleanup_queue_v1",
+    "status":  "PASS_OWNER_FACING_ORGAN_CLEANUP_QUEUE_V1",
+    "source_audit":  "reports/self_development/ORGAN_PASSPORT_TAIL_DEDUP_AUDIT_V1.json",
+    "queue":  [
+                  {
+                      "organ_id":  "operations_contracts",
+                      "current_audit_decision":  "DOWNCLASSIFY_CANDIDATE",
+                      "classification":  "CONTRACT_MATERIAL_AGGREGATOR_NOT_ORGAN",
+                      "owner_decision_needed":  true,
+                      "owner_decision_prompt":  "OWNER_APPROVE_DOWNCLASSIFY_TO_REFERENCE_OR_KEEP_AS_DRAFT",
+                      "safe_action_now":  "mark as downclassify candidate in queue only",
+                      "next_no_delete_action":  "create follow-up patch to set passport_kind=GOVERNANCE_MATERIAL_REFERENCE or merge under existing contracts_* passports after Owner approval",
+                      "delete_risk":  "do not delete: may hold useful contract material and duplicate-map evidence",
+                      "evidence_reason":  "validator refs are .contract.json documents, not executable validators; multiple specific contracts_* passports already exist",
+                      "risk":  "duplicate aggregate organ over contract materials"
+                  },
+                  {
+                      "organ_id":  "operations_smoke_trials",
+                      "current_audit_decision":  "DOWNCLASSIFY_CANDIDATE",
+                      "classification":  "TEST_FIXTURE_MATERIAL_NOT_ORGAN",
+                      "owner_decision_needed":  true,
+                      "owner_decision_prompt":  "OWNER_APPROVE_DELETE_CANDIDATE_OR_KEEP_AS_TEST_REFERENCE",
+                      "safe_action_now":  "mark as delete/downclassify candidate in queue only",
+                      "next_no_delete_action":  "classify as TEST_FIXTURE_REFERENCE; deletion only after dependency scan and Owner approval",
+                      "delete_risk":  "do not delete yet: fixtures may still support validators/tests",
+                      "evidence_reason":  "validator refs are fixture JSON files, not executable validators; root contains plan plus fixtures",
+                      "risk":  "fixture folder falsely treated as organ"
+                  },
+                  {
+                      "organ_id":  "operations_active_behavior",
+                      "current_audit_decision":  "KEEP_AS_ORGAN_DRAFT",
+                      "classification":  "REAL_ORGAN_DRAFT_WITH_EXECUTABLE_VALIDATORS",
+                      "owner_decision_needed":  false,
+                      "owner_decision_prompt":  "NO_DELETE_KEEP_DRAFT",
+                      "safe_action_now":  "run existing executable validators in later proof-run packet, or leave DRAFT",
+                      "next_no_delete_action":  "run validators and attach proof_refs if they pass; otherwise keep draft with blockers",
+                      "delete_risk":  "deleting would remove plausible organ surface",
+                      "evidence_reason":  "two executable validators exist, but passport has no proof_refs",
+                      "risk":  "under-proven but plausible organ"
+                  },
+                  {
+                      "organ_id":  "operations_organ_promotion_lanes",
+                      "current_audit_decision":  "KEEP_AS_GOVERNANCE_DRAFT",
+                      "classification":  "GOVERNANCE_OR_META_ORGAN_DRAFT",
+                      "owner_decision_needed":  false,
+                      "owner_decision_prompt":  "NO_DELETE_KEEP_GOVERNANCE_DRAFT",
+                      "safe_action_now":  "add second independent validator surface before promotion",
+                      "next_no_delete_action":  "build/read-only second-surface validator that cross-checks lanes against passport index and body map",
+                      "delete_risk":  "deleting would break passport maturity/governance flow",
+                      "evidence_reason":  "has executable builder/validator/report/proof, but only one independent validator surface",
+                      "risk":  "single-surface governance organ accepted too early"
+                  },
+                  {
+                      "organ_id":  "operations_overnight_school",
+                      "current_audit_decision":  "REPAIR_PASSPORT_LINK_KEEP_DRAFT",
+                      "classification":  "LONG_RUNTIME_SCHOOL_DRAFT",
+                      "owner_decision_needed":  false,
+                      "owner_decision_prompt":  "NO_DELETE_KEEP_LONG_RUNTIME_DRAFT",
+                      "safe_action_now":  "keep corrected validator link; require long-runtime boundary before promotion",
+                      "next_no_delete_action":  "run only bounded validator/proof or create long-runtime boundary gate; no overnight/live run by default",
+                      "delete_risk":  "deleting could remove useful long-school process; promoting too early is also unsafe",
+                      "evidence_reason":  "validator path is duplicated/concatenated and does not exist; corrected path exists",
+                      "risk":  "bad passport reference plus heavy runtime treated as active organ"
+                  }
+              ],
+    "summary":  {
+                    "total":  5,
+                    "owner_decision_required":  2,
+                    "safe_keep_or_proof_actions":  3,
+                    "delete_candidates_without_deletion":  1,
+                    "downclassify_candidates_without_mutation":  2
+                },
+    "boundaries":  {
+                       "queue_only":  true,
+                       "no_files_deleted":  true,
+                       "no_passport_promoted":  true,
+                       "no_passport_downclassified":  true,
+                       "no_pasport_active_created":  true,
+                       "no_live_runtime_touched":  true,
+                       "owner_must_approve_deletion":  true
+                   },
+    "created_at":  "2026-07-10T21:15:17.7471966+04:00"
+}
