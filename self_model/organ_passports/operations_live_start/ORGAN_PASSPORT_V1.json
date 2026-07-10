@@ -53,7 +53,8 @@
                        "operations/live_start/validate_school_aimo_controlled_live_start_v1.ps1"
                    ],
     "proof_refs":  [
-
+                       "tests/live_start/AIMO_AGENT_ONLY_RESTART_V1_PROOF.json",
+                       "tests/live_start/SCHOOL_AIMO_CONTROLLED_LIVE_START_V1_PROOF.json"
                    ],
     "runtime_refs":  [
 
@@ -84,15 +85,14 @@
     "maturity":  "DRAFT",
     "live_or_lab_status":  "NOT_PROVEN",
     "gaps":  [
-                 "organ-specific calibration missing",
-                 "runtime proof missing",
-                 "ACTIVE status forbidden",
-                 "PROVEN_LIVE forbidden"
+                 "READY_FOR_LAB_VALIDATION only; dedicated lab validation still required",
+                 "PROVEN_LIVE forbidden",
+                 "PASSPORT_ACTIVE forbidden"
              ],
     "source_evidence":  [
                             "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json",
                             "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                             "reports/self_development/ORGAN_PASSPORT_REVIEW_LANE_BATCH_GENERATOR_V1.json"
                         ],
-    "last_validated_at":  "2026-07-10T19:31:16.5379619+04:00"
+    "last_validated_at":  "2026-07-10T20:15:50.6610164+04:00"
 }

@@ -57,7 +57,9 @@
                        "operations/reasoning/validate_reasoning_episode_v1.ps1"
                    ],
     "proof_refs":  [
-
+                       "tests/reasoning/EPISODIC_DECISION_TASK_FORK_V1_PROOF.json",
+                       "tests/reasoning/EPISODIC_RECALL_DECISION_V1_PROOF.json",
+                       "tests/reasoning/REASONING_EPISODE_V1_PROOF.json"
                    ],
     "runtime_refs":  [
 
@@ -88,15 +90,14 @@
     "maturity":  "DRAFT",
     "live_or_lab_status":  "NOT_PROVEN",
     "gaps":  [
-                 "organ-specific calibration missing",
-                 "runtime proof missing",
-                 "ACTIVE status forbidden",
-                 "PROVEN_LIVE forbidden"
+                 "READY_FOR_LAB_VALIDATION only; dedicated lab validation still required",
+                 "PROVEN_LIVE forbidden",
+                 "PASSPORT_ACTIVE forbidden"
              ],
     "source_evidence":  [
                             "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json",
                             "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                             "reports/self_development/ORGAN_PASSPORT_REVIEW_LANE_BATCH_GENERATOR_V1.json"
                         ],
-    "last_validated_at":  "2026-07-10T19:31:16.9564266+04:00"
+    "last_validated_at":  "2026-07-10T20:15:55.3366704+04:00"
 }

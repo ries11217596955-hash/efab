@@ -669,3 +669,37 @@ Boundaries:
 
 Next concrete step:
 - Use the same pattern to move the 9 NEEDS_PROOF_RUN drafts toward proof-run readiness, starting with the highest-signal non-live organ.
+
+## 2026-07-10 — Passport proof-run calibration V1
+
+STATUS: PROOF_PASS / PROOF_RUN_CALIBRATION_ONLY / NOT_PROVEN_LIVE
+
+Built:
+- Added proof-run calibration builder: operations/self_model/build_organ_passport_proof_run_calibration_v1.ps1.
+- Added validator: operations/self_model/validate_organ_passport_proof_run_calibration_v1.ps1.
+- Created report/proof:
+  - reports/self_development/ORGAN_PASSPORT_PROOF_RUN_CALIBRATION_V1.json
+  - tests/self_development/ORGAN_PASSPORT_PROOF_RUN_CALIBRATION_V1_PROOF.json
+
+Result over 9 NEEDS_PROOF_RUN passports:
+- READY_FOR_LAB_VALIDATION: 3
+  - operations_live_start
+  - operations_memory
+  - operations_reasoning
+- SINGLE_VALIDATOR_PROOF_NEEDS_SECOND_SURFACE: 3
+- CONTRACT_REFERENCE_NEEDS_EXECUTABLE_VALIDATOR: 2
+- BLOCKED_OR_TOO_GENERIC: 1
+
+Meaning:
+- Three more organs now have enough fresh proof refs to enter a dedicated lab-validation pass.
+- None were promoted to VALIDATED_LAB in this step.
+
+Boundaries:
+- Proof-run calibration only.
+- No VALIDATED_LAB claim created.
+- No PASSPORT_ACTIVE claim.
+- No PROVEN_LIVE claim.
+- No live runtime touched.
+
+Next concrete step:
+- Run dedicated lab-validation on the three ready candidates, probably starting with operations_memory or operations_reasoning before live_start.

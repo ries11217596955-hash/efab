@@ -6,19 +6,19 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "d2ed1d49e71bd4afc05bc22e4ed281ab21a16196",
-    "subject_head":  "d2ed1d49e71bd4afc05bc22e4ed281ab21a16196",
-    "generated_at":  "2026-07-10T20:13:24.5948175+04:00",
+    "observed_head_at_generation":  "54b90dec46d2b234260d91c91de1b3a536a40e95",
+    "subject_head":  "54b90dec46d2b234260d91c91de1b3a536a40e95",
+    "generated_at":  "2026-07-10T20:17:55.6615350+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  1974,
+    "structural_path_count":  1978,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1974,
-                                    "sha256":  "995df220169ac1fe3eea7b699e3079f441ed0d8be8c810401c25e71779c115d0"
+                                    "structural_file_count":  1978,
+                                    "sha256":  "ea90f16e55651ed98df9f858e643065ac7ae237d32dc29d27d7ba344efd70215"
                                 },
     "module_count":  207,
     "validator_count":  174,
@@ -597,10 +597,10 @@
                                      "root":  "operations/self_model",
                                      "status":  "CONFIRMED_PRIMARY_EVIDENCE_PRESENT",
                                      "confirmation_basis":  "explicit_required_component_with_primary_repo_evidence",
-                                     "file_count":  47,
-                                     "script_count":  47,
+                                     "file_count":  49,
+                                     "script_count":  49,
                                      "validator_count":  30,
-                                     "proof_file_count":  0,
+                                     "proof_file_count":  2,
                                      "contract_or_policy_count":  4,
                                      "doc_count":  0,
                                      "required_files":  [
@@ -642,11 +642,12 @@
                                                             "operations/self_model/validate_organ_passport_draft_generator_fast_lane_v1.ps1",
                                                             "operations/self_model/validate_organ_passport_draft_review_and_index_gate_v1.ps1",
                                                             "operations/self_model/validate_organ_passport_maturity_triage_v1.ps1",
-                                                            "operations/self_model/validate_organ_passport_review_lane_batch_v1.ps1",
-                                                            "operations/self_model/validate_organ_passport_static_count_regression_guard_v1.ps1"
+                                                            "operations/self_model/validate_organ_passport_proof_run_calibration_v1.ps1",
+                                                            "operations/self_model/validate_organ_passport_review_lane_batch_v1.ps1"
                                                         ],
                                      "proof_refs":  [
-
+                                                        "operations/self_model/build_organ_passport_proof_run_calibration_v1.ps1",
+                                                        "operations/self_model/validate_organ_passport_proof_run_calibration_v1.ps1"
                                                     ],
                                      "contract_or_policy_refs":  [
                                                                      "operations/self_model/validate_aimo_default_source_agnostic_selector_contract_v1.ps1",
@@ -656,6 +657,7 @@
                                                                  ],
                                      "primary_evidence_refs":  [
                                                                    "operations/self_model/build_operations_live_readiness_lab_validation_v1.ps1",
+                                                                   "operations/self_model/build_organ_passport_proof_run_calibration_v1.ps1",
                                                                    "operations/self_model/validate_aimo_default_route_execution_report_v1.ps1",
                                                                    "operations/self_model/validate_aimo_default_source_agnostic_selector_contract_v1.ps1",
                                                                    "operations/self_model/validate_body_map_candidate_triage_v1.ps1",
@@ -668,11 +670,13 @@
                                                                    "operations/self_model/validate_capability_invocation_map_v1_contract.ps1",
                                                                    "operations/self_model/validate_operations_self_model_organ_lab_validation_v1.ps1",
                                                                    "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
+                                                                   "operations/self_model/validate_organ_passport_proof_run_calibration_v1.ps1",
                                                                    "reports/self_development/OPERATIONS_SELF_MODEL_ORGAN_LAB_VALIDATION_V1.json",
                                                                    "self_model/organ_passports/operations_self_model/ORGAN_PASSPORT_V1.json",
                                                                    "tests/self_development/OPERATIONS_SELF_MODEL_ORGAN_LAB_VALIDATION_V1_PROOF.json"
                                                                ],
                                      "entrypoint_scripts":  [
+                                                                "operations/self_model/build_organ_passport_proof_run_calibration_v1.ps1",
                                                                 "operations/self_model/validate_aimo_default_route_execution_report_v1.ps1",
                                                                 "operations/self_model/validate_aimo_default_source_agnostic_selector_contract_v1.ps1",
                                                                 "operations/self_model/validate_body_map_candidate_triage_v1.ps1",
@@ -700,6 +704,7 @@
                                                                 "operations/self_model/validate_organ_passport_draft_generator_fast_lane_v1.ps1",
                                                                 "operations/self_model/validate_organ_passport_draft_review_and_index_gate_v1.ps1",
                                                                 "operations/self_model/validate_organ_passport_maturity_triage_v1.ps1",
+                                                                "operations/self_model/validate_organ_passport_proof_run_calibration_v1.ps1",
                                                                 "operations/self_model/validate_organ_passport_review_lane_batch_v1.ps1",
                                                                 "operations/self_model/validate_organ_passport_static_count_regression_guard_v1.ps1",
                                                                 "operations/self_model/validate_route_reality_alignment_v1.ps1",
@@ -710,9 +715,9 @@
                                                                 "operations/self_model/validate_source_evidence_inventory_v1.ps1"
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "d2ed1d49e71bd4afc05bc22e4ed281ab21a16196",
-                                                               "committed_at":  "2026-07-10T20:07:55+04:00",
-                                                               "subject":  "passport: calibrate organ drafts"
+                                                               "head":  "54b90dec46d2b234260d91c91de1b3a536a40e95",
+                                                               "committed_at":  "2026-07-10T20:12:50+04:00",
+                                                               "subject":  "passport: validate live readiness in lab"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -756,9 +761,9 @@
 
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "d2ed1d49e71bd4afc05bc22e4ed281ab21a16196",
-                                                               "committed_at":  "2026-07-10T20:07:55+04:00",
-                                                               "subject":  "passport: calibrate organ drafts"
+                                                               "head":  "54b90dec46d2b234260d91c91de1b3a536a40e95",
+                                                               "committed_at":  "2026-07-10T20:12:50+04:00",
+                                                               "subject":  "passport: validate live readiness in lab"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -9142,10 +9147,10 @@
                            "root":  "operations/self_model",
                            "status":  "CONFIRMED_PRIMARY_EVIDENCE_PRESENT",
                            "confirmation_basis":  "explicit_required_component_with_primary_repo_evidence",
-                           "file_count":  47,
-                           "script_count":  47,
+                           "file_count":  49,
+                           "script_count":  49,
                            "validator_count":  30,
-                           "proof_file_count":  0,
+                           "proof_file_count":  2,
                            "contract_or_policy_count":  4,
                            "doc_count":  0,
                            "required_files":  [
@@ -9187,11 +9192,12 @@
                                                   "operations/self_model/validate_organ_passport_draft_generator_fast_lane_v1.ps1",
                                                   "operations/self_model/validate_organ_passport_draft_review_and_index_gate_v1.ps1",
                                                   "operations/self_model/validate_organ_passport_maturity_triage_v1.ps1",
-                                                  "operations/self_model/validate_organ_passport_review_lane_batch_v1.ps1",
-                                                  "operations/self_model/validate_organ_passport_static_count_regression_guard_v1.ps1"
+                                                  "operations/self_model/validate_organ_passport_proof_run_calibration_v1.ps1",
+                                                  "operations/self_model/validate_organ_passport_review_lane_batch_v1.ps1"
                                               ],
                            "proof_refs":  [
-
+                                              "operations/self_model/build_organ_passport_proof_run_calibration_v1.ps1",
+                                              "operations/self_model/validate_organ_passport_proof_run_calibration_v1.ps1"
                                           ],
                            "contract_or_policy_refs":  [
                                                            "operations/self_model/validate_aimo_default_source_agnostic_selector_contract_v1.ps1",
@@ -9201,6 +9207,7 @@
                                                        ],
                            "primary_evidence_refs":  [
                                                          "operations/self_model/build_operations_live_readiness_lab_validation_v1.ps1",
+                                                         "operations/self_model/build_organ_passport_proof_run_calibration_v1.ps1",
                                                          "operations/self_model/validate_aimo_default_route_execution_report_v1.ps1",
                                                          "operations/self_model/validate_aimo_default_source_agnostic_selector_contract_v1.ps1",
                                                          "operations/self_model/validate_body_map_candidate_triage_v1.ps1",
@@ -9213,11 +9220,13 @@
                                                          "operations/self_model/validate_capability_invocation_map_v1_contract.ps1",
                                                          "operations/self_model/validate_operations_self_model_organ_lab_validation_v1.ps1",
                                                          "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
+                                                         "operations/self_model/validate_organ_passport_proof_run_calibration_v1.ps1",
                                                          "reports/self_development/OPERATIONS_SELF_MODEL_ORGAN_LAB_VALIDATION_V1.json",
                                                          "self_model/organ_passports/operations_self_model/ORGAN_PASSPORT_V1.json",
                                                          "tests/self_development/OPERATIONS_SELF_MODEL_ORGAN_LAB_VALIDATION_V1_PROOF.json"
                                                      ],
                            "entrypoint_scripts":  [
+                                                      "operations/self_model/build_organ_passport_proof_run_calibration_v1.ps1",
                                                       "operations/self_model/validate_aimo_default_route_execution_report_v1.ps1",
                                                       "operations/self_model/validate_aimo_default_source_agnostic_selector_contract_v1.ps1",
                                                       "operations/self_model/validate_body_map_candidate_triage_v1.ps1",
@@ -9245,6 +9254,7 @@
                                                       "operations/self_model/validate_organ_passport_draft_generator_fast_lane_v1.ps1",
                                                       "operations/self_model/validate_organ_passport_draft_review_and_index_gate_v1.ps1",
                                                       "operations/self_model/validate_organ_passport_maturity_triage_v1.ps1",
+                                                      "operations/self_model/validate_organ_passport_proof_run_calibration_v1.ps1",
                                                       "operations/self_model/validate_organ_passport_review_lane_batch_v1.ps1",
                                                       "operations/self_model/validate_organ_passport_static_count_regression_guard_v1.ps1",
                                                       "operations/self_model/validate_route_reality_alignment_v1.ps1",
@@ -9255,9 +9265,9 @@
                                                       "operations/self_model/validate_source_evidence_inventory_v1.ps1"
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "d2ed1d49e71bd4afc05bc22e4ed281ab21a16196",
-                                                     "committed_at":  "2026-07-10T20:07:55+04:00",
-                                                     "subject":  "passport: calibrate organ drafts"
+                                                     "head":  "54b90dec46d2b234260d91c91de1b3a536a40e95",
+                                                     "committed_at":  "2026-07-10T20:12:50+04:00",
+                                                     "subject":  "passport: validate live readiness in lab"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -9301,9 +9311,9 @@
 
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "d2ed1d49e71bd4afc05bc22e4ed281ab21a16196",
-                                                     "committed_at":  "2026-07-10T20:07:55+04:00",
-                                                     "subject":  "passport: calibrate organ drafts"
+                                                     "head":  "54b90dec46d2b234260d91c91de1b3a536a40e95",
+                                                     "committed_at":  "2026-07-10T20:12:50+04:00",
+                                                     "subject":  "passport: validate live readiness in lab"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,

@@ -1,0 +1,270 @@
+﻿{
+    "schema":  "organ_passport_proof_run_calibration_v1",
+    "status":  "PASS_ORGAN_PASSPORT_PROOF_RUN_CALIBRATION_V1",
+    "source_calibration":  "reports/self_development/ORGAN_PASSPORT_CALIBRATION_V1.json",
+    "target_count":  9,
+    "by_decision":  [
+                        {
+                            "decision":  "BLOCKED_OR_TOO_GENERIC",
+                            "count":  1
+                        },
+                        {
+                            "decision":  "CONTRACT_REFERENCE_NEEDS_EXECUTABLE_VALIDATOR",
+                            "count":  2
+                        },
+                        {
+                            "decision":  "READY_FOR_LAB_VALIDATION",
+                            "count":  3
+                        },
+                        {
+                            "decision":  "SINGLE_VALIDATOR_PROOF_NEEDS_SECOND_SURFACE",
+                            "count":  3
+                        }
+                    ],
+    "ready_for_lab_validation":  [
+                                     "operations_live_start",
+                                     "operations_memory",
+                                     "operations_reasoning"
+                                 ],
+    "single_validator_candidates":  [
+                                        "operations_live_like",
+                                        "operations_overnight_school",
+                                        "operations_parallel_life"
+                                    ],
+    "items":  [
+                  {
+                      "organ_id":  "operations_active_behavior",
+                      "passport_path":  "self_model/organ_passports/operations_active_behavior/ORGAN_PASSPORT_V1.json",
+                      "decision":  "BLOCKED_OR_TOO_GENERIC",
+                      "reason":  "no runnable proof validators passed",
+                      "validator_refs":  [
+                                             "operations/active_behavior/validate_active_behavior_absorption_promotion_v1.ps1",
+                                             "operations/active_behavior/validate_active_behavior_task_decision_flow_v1.ps1"
+                                         ],
+                      "json_contract_refs":  [
+
+                                             ],
+                      "passed_validator_count":  0,
+                      "proof_refs_added":  [
+
+                                           ],
+                      "blocked":  [
+                                      "VALIDATOR_EXCEPTION:operations/active_behavior/validate_active_behavior_absorption_promotion_v1.ps1:PROMOTION_REPORT_MISSING",
+                                      "VALIDATOR_EXCEPTION:operations/active_behavior/validate_active_behavior_task_decision_flow_v1.ps1:Resolve-Path : Cannot find path \u0027H:\\efab\\reports\\self_development\\accepted_change_memory_snapshot.json\u0027 because it does"
+                                  ],
+                      "missing_refs":  [
+
+                                       ],
+                      "live_or_lab_status":  "NOT_PROVEN",
+                      "maturity":  "DRAFT"
+                  },
+                  {
+                      "organ_id":  "operations_contracts",
+                      "passport_path":  "self_model/organ_passports/operations_contracts/ORGAN_PASSPORT_V1.json",
+                      "decision":  "CONTRACT_REFERENCE_NEEDS_EXECUTABLE_VALIDATOR",
+                      "reason":  "contract/json refs exist but no executable proof validator",
+                      "validator_refs":  [
+                                             "operations/contracts/validate_json_schema_with_ajv.contract.json",
+                                             "operations/contracts/validate_json_schema_with_python_jsonschema.contract.json"
+                                         ],
+                      "json_contract_refs":  [
+                                                 "operations/contracts/validate_json_schema_with_ajv.contract.json",
+                                                 "operations/contracts/validate_json_schema_with_python_jsonschema.contract.json"
+                                             ],
+                      "passed_validator_count":  0,
+                      "proof_refs_added":  [
+
+                                           ],
+                      "blocked":  [
+
+                                  ],
+                      "missing_refs":  [
+
+                                       ],
+                      "live_or_lab_status":  "NOT_PROVEN",
+                      "maturity":  "DRAFT"
+                  },
+                  {
+                      "organ_id":  "operations_live_like",
+                      "passport_path":  "self_model/organ_passports/operations_live_like/ORGAN_PASSPORT_V1.json",
+                      "decision":  "SINGLE_VALIDATOR_PROOF_NEEDS_SECOND_SURFACE",
+                      "reason":  "one executable validator passed; needs second independent validator/proof",
+                      "validator_refs":  "operations/live_like/validate_school_aimo_live_like_observation_gate_v1.ps1",
+                      "json_contract_refs":  [
+
+                                             ],
+                      "passed_validator_count":  1,
+                      "proof_refs_added":  [
+                                               "tests/live_like/SCHOOL_AIMO_LIVE_LIKE_OBSERVATION_GATE_V1_PROOF.json"
+                                           ],
+                      "blocked":  [
+
+                                  ],
+                      "missing_refs":  [
+
+                                       ],
+                      "live_or_lab_status":  "NOT_PROVEN",
+                      "maturity":  "DRAFT"
+                  },
+                  {
+                      "organ_id":  "operations_live_start",
+                      "passport_path":  "self_model/organ_passports/operations_live_start/ORGAN_PASSPORT_V1.json",
+                      "decision":  "READY_FOR_LAB_VALIDATION",
+                      "reason":  "two or more executable validators passed",
+                      "validator_refs":  [
+                                             "operations/live_start/validate_aimo_agent_only_restart_v1.ps1",
+                                             "operations/live_start/validate_school_aimo_controlled_live_start_v1.ps1"
+                                         ],
+                      "json_contract_refs":  [
+
+                                             ],
+                      "passed_validator_count":  2,
+                      "proof_refs_added":  [
+                                               "tests/live_start/AIMO_AGENT_ONLY_RESTART_V1_PROOF.json",
+                                               "tests/live_start/SCHOOL_AIMO_CONTROLLED_LIVE_START_V1_PROOF.json"
+                                           ],
+                      "blocked":  [
+
+                                  ],
+                      "missing_refs":  [
+
+                                       ],
+                      "live_or_lab_status":  "NOT_PROVEN",
+                      "maturity":  "DRAFT"
+                  },
+                  {
+                      "organ_id":  "operations_memory",
+                      "passport_path":  "self_model/organ_passports/operations_memory/ORGAN_PASSPORT_V1.json",
+                      "decision":  "READY_FOR_LAB_VALIDATION",
+                      "reason":  "two or more executable validators passed",
+                      "validator_refs":  [
+                                             "operations/memory/episodic/validate_episode_cell_v1.ps1",
+                                             "operations/memory/episodic/validate_episode_recall_v1.ps1"
+                                         ],
+                      "json_contract_refs":  [
+
+                                             ],
+                      "passed_validator_count":  2,
+                      "proof_refs_added":  [
+                                               "tests/memory/episodic/EPISODIC_MEMORY_CELL_V1_PROOF.json",
+                                               "tests/memory/episodic/EPISODIC_RECALL_V1_PROOF.json"
+                                           ],
+                      "blocked":  [
+
+                                  ],
+                      "missing_refs":  [
+
+                                       ],
+                      "live_or_lab_status":  "NOT_PROVEN",
+                      "maturity":  "DRAFT"
+                  },
+                  {
+                      "organ_id":  "operations_overnight_school",
+                      "passport_path":  "self_model/organ_passports/operations_overnight_school/ORGAN_PASSPORT_V1.json",
+                      "decision":  "SINGLE_VALIDATOR_PROOF_NEEDS_SECOND_SURFACE",
+                      "reason":  "one executable validator passed; needs second independent validator/proof",
+                      "validator_refs":  "operations/overnight_school/validate_useful_school_30k_full_process_v1.ps1",
+                      "json_contract_refs":  [
+
+                                             ],
+                      "passed_validator_count":  1,
+                      "proof_refs_added":  [
+                                               "tests/accepted_atom_retention/USEFUL_SCHOOL_30K_FULL_PROCESS_V1_PROOF.json"
+                                           ],
+                      "blocked":  [
+
+                                  ],
+                      "missing_refs":  [
+
+                                       ],
+                      "live_or_lab_status":  "NOT_PROVEN",
+                      "maturity":  "DRAFT"
+                  },
+                  {
+                      "organ_id":  "operations_parallel_life",
+                      "passport_path":  "self_model/organ_passports/operations_parallel_life/ORGAN_PASSPORT_V1.json",
+                      "decision":  "SINGLE_VALIDATOR_PROOF_NEEDS_SECOND_SURFACE",
+                      "reason":  "one executable validator passed; needs second independent validator/proof",
+                      "validator_refs":  "operations/parallel_life/validate_school_aimo_parallel_lab_v1.ps1",
+                      "json_contract_refs":  [
+
+                                             ],
+                      "passed_validator_count":  1,
+                      "proof_refs_added":  [
+                                               "tests/parallel_life/SCHOOL_AIMO_PARALLEL_LAB_V1_PROOF.json"
+                                           ],
+                      "blocked":  [
+
+                                  ],
+                      "missing_refs":  [
+
+                                       ],
+                      "live_or_lab_status":  "NOT_PROVEN",
+                      "maturity":  "DRAFT"
+                  },
+                  {
+                      "organ_id":  "operations_reasoning",
+                      "passport_path":  "self_model/organ_passports/operations_reasoning/ORGAN_PASSPORT_V1.json",
+                      "decision":  "READY_FOR_LAB_VALIDATION",
+                      "reason":  "two or more executable validators passed",
+                      "validator_refs":  [
+                                             "operations/reasoning/validate_episodic_decision_task_fork_v1.ps1",
+                                             "operations/reasoning/validate_episodic_recall_decision_v1.ps1",
+                                             "operations/reasoning/validate_reasoning_episode_v1.ps1"
+                                         ],
+                      "json_contract_refs":  [
+
+                                             ],
+                      "passed_validator_count":  3,
+                      "proof_refs_added":  [
+                                               "tests/reasoning/EPISODIC_DECISION_TASK_FORK_V1_PROOF.json",
+                                               "tests/reasoning/EPISODIC_RECALL_DECISION_V1_PROOF.json",
+                                               "tests/reasoning/REASONING_EPISODE_V1_PROOF.json"
+                                           ],
+                      "blocked":  [
+
+                                  ],
+                      "missing_refs":  [
+
+                                       ],
+                      "live_or_lab_status":  "NOT_PROVEN",
+                      "maturity":  "DRAFT"
+                  },
+                  {
+                      "organ_id":  "operations_smoke_trials",
+                      "passport_path":  "self_model/organ_passports/operations_smoke_trials/ORGAN_PASSPORT_V1.json",
+                      "decision":  "CONTRACT_REFERENCE_NEEDS_EXECUTABLE_VALIDATOR",
+                      "reason":  "contract/json refs exist but no executable proof validator",
+                      "validator_refs":  [
+                                             "operations/smoke_trials/fixtures/json_schema_validation/invalid_instance.json",
+                                             "operations/smoke_trials/fixtures/json_schema_validation/schema.json",
+                                             "operations/smoke_trials/fixtures/json_schema_validation/valid_instance.json"
+                                         ],
+                      "json_contract_refs":  [
+                                                 "operations/smoke_trials/fixtures/json_schema_validation/invalid_instance.json",
+                                                 "operations/smoke_trials/fixtures/json_schema_validation/schema.json",
+                                                 "operations/smoke_trials/fixtures/json_schema_validation/valid_instance.json"
+                                             ],
+                      "passed_validator_count":  0,
+                      "proof_refs_added":  [
+
+                                           ],
+                      "blocked":  [
+
+                                  ],
+                      "missing_refs":  [
+
+                                       ],
+                      "live_or_lab_status":  "NOT_PROVEN",
+                      "maturity":  "DRAFT"
+                  }
+              ],
+    "boundaries":  {
+                       "proof_run_calibration_only":  true,
+                       "no_validated_lab_claim_created":  true,
+                       "no_active_passports_created":  true,
+                       "no_proven_live_claim":  true,
+                       "live_process_touched":  false
+                   },
+    "created_at":  "2026-07-10T20:15:55.3452131+04:00"
+}

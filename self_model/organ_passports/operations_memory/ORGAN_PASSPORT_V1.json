@@ -50,7 +50,8 @@
                        "operations/memory/episodic/validate_episode_recall_v1.ps1"
                    ],
     "proof_refs":  [
-
+                       "tests/memory/episodic/EPISODIC_MEMORY_CELL_V1_PROOF.json",
+                       "tests/memory/episodic/EPISODIC_RECALL_V1_PROOF.json"
                    ],
     "runtime_refs":  [
 
@@ -81,15 +82,14 @@
     "maturity":  "DRAFT",
     "live_or_lab_status":  "NOT_PROVEN",
     "gaps":  [
-                 "organ-specific calibration missing",
-                 "runtime proof missing",
-                 "ACTIVE status forbidden",
-                 "PROVEN_LIVE forbidden"
+                 "READY_FOR_LAB_VALIDATION only; dedicated lab validation still required",
+                 "PROVEN_LIVE forbidden",
+                 "PASSPORT_ACTIVE forbidden"
              ],
     "source_evidence":  [
                             "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json",
                             "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                             "reports/self_development/ORGAN_PASSPORT_REVIEW_LANE_BATCH_GENERATOR_V1.json"
                         ],
-    "last_validated_at":  "2026-07-10T19:31:16.6402737+04:00"
+    "last_validated_at":  "2026-07-10T20:15:53.0364798+04:00"
 }
