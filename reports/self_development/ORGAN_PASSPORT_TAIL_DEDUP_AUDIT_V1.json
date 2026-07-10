@@ -1,0 +1,184 @@
+﻿{
+    "schema":  "organ_passport_tail_dedup_audit_v1",
+    "status":  "PASS_ORGAN_PASSPORT_TAIL_DEDUP_AUDIT_V1",
+    "audited_ids":  [
+                        "operations_contracts",
+                        "operations_smoke_trials",
+                        "operations_active_behavior",
+                        "operations_organ_promotion_lanes",
+                        "operations_overnight_school"
+                    ],
+    "decisions":  [
+                      {
+                          "organ_id":  "operations_contracts",
+                          "owning_root":  "operations/contracts",
+                          "maturity":  "DRAFT",
+                          "live_or_lab_status":  "NOT_PROVEN",
+                          "validator_refs":  [
+                                                 {
+                                                     "path":  "operations/contracts/validate_json_schema_with_ajv.contract.json",
+                                                     "exists":  true,
+                                                     "is_executable_ps1":  false
+                                                 },
+                                                 {
+                                                     "path":  "operations/contracts/validate_json_schema_with_python_jsonschema.contract.json",
+                                                     "exists":  true,
+                                                     "is_executable_ps1":  false
+                                                 }
+                                             ],
+                          "proof_ref_count":  0,
+                          "root_file_count":  3,
+                          "root_files_sample":  [
+                                                    "operations\\contracts\\.gitkeep",
+                                                    "operations\\contracts\\validate_json_schema_with_ajv.contract.json",
+                                                    "operations\\contracts\\validate_json_schema_with_python_jsonschema.contract.json"
+                                                ],
+                          "decision":  "DOWNCLASSIFY_CANDIDATE",
+                          "classification":  "CONTRACT_MATERIAL_AGGREGATOR_NOT_ORGAN",
+                          "recommended_action":  "MERGE_OR_REFERENCE_UNDER_EXISTING_CONTRACT_PASSPORTS",
+                          "reason":  "validator refs are .contract.json documents, not executable validators; multiple specific contracts_* passports already exist",
+                          "risk":  "duplicate aggregate organ over contract materials"
+                      },
+                      {
+                          "organ_id":  "operations_smoke_trials",
+                          "owning_root":  "operations/smoke_trials",
+                          "maturity":  "DRAFT",
+                          "live_or_lab_status":  "NOT_PROVEN",
+                          "validator_refs":  [
+                                                 {
+                                                     "path":  "operations/smoke_trials/fixtures/json_schema_validation/invalid_instance.json",
+                                                     "exists":  true,
+                                                     "is_executable_ps1":  false
+                                                 },
+                                                 {
+                                                     "path":  "operations/smoke_trials/fixtures/json_schema_validation/schema.json",
+                                                     "exists":  true,
+                                                     "is_executable_ps1":  false
+                                                 },
+                                                 {
+                                                     "path":  "operations/smoke_trials/fixtures/json_schema_validation/valid_instance.json",
+                                                     "exists":  true,
+                                                     "is_executable_ps1":  false
+                                                 }
+                                             ],
+                          "proof_ref_count":  0,
+                          "root_file_count":  4,
+                          "root_files_sample":  [
+                                                    "operations\\smoke_trials\\FIRST_SMOKE_INSTALL_TRIAL_V1_PLAN.json",
+                                                    "operations\\smoke_trials\\fixtures\\json_schema_validation\\invalid_instance.json",
+                                                    "operations\\smoke_trials\\fixtures\\json_schema_validation\\schema.json",
+                                                    "operations\\smoke_trials\\fixtures\\json_schema_validation\\valid_instance.json"
+                                                ],
+                          "decision":  "DOWNCLASSIFY_CANDIDATE",
+                          "classification":  "TEST_FIXTURE_MATERIAL_NOT_ORGAN",
+                          "recommended_action":  "REFERENCE_AS_SMOKE_FIXTURES_OR_DELETE_CANDIDATE_AFTER_OWNER_REVIEW",
+                          "reason":  "validator refs are fixture JSON files, not executable validators; root contains plan plus fixtures",
+                          "risk":  "fixture folder falsely treated as organ"
+                      },
+                      {
+                          "organ_id":  "operations_active_behavior",
+                          "owning_root":  "operations/active_behavior",
+                          "maturity":  "DRAFT",
+                          "live_or_lab_status":  "NOT_PROVEN",
+                          "validator_refs":  [
+                                                 {
+                                                     "path":  "operations/active_behavior/validate_active_behavior_absorption_promotion_v1.ps1",
+                                                     "exists":  true,
+                                                     "is_executable_ps1":  true
+                                                 },
+                                                 {
+                                                     "path":  "operations/active_behavior/validate_active_behavior_task_decision_flow_v1.ps1",
+                                                     "exists":  true,
+                                                     "is_executable_ps1":  true
+                                                 }
+                                             ],
+                          "proof_ref_count":  0,
+                          "root_file_count":  10,
+                          "root_files_sample":  [
+                                                    "operations\\active_behavior\\invoke_active_behavior_retrieval_v1.ps1",
+                                                    "operations\\active_behavior\\invoke_active_behavior_task_decision_v1.ps1",
+                                                    "operations\\active_behavior\\promote_fresh_1000_behavior_absorption_v1.ps1",
+                                                    "operations\\active_behavior\\rollback_active_behavior_absorption_promotion_v1.ps1",
+                                                    "operations\\active_behavior\\validate_active_behavior_absorption_promotion_v1.ps1",
+                                                    "operations\\active_behavior\\validate_active_behavior_task_decision_flow_v1.ps1",
+                                                    "operations\\active_behavior\\rollback\\active_behavior_absorption_fresh_1000_v1\\packs__registry.json.before.json",
+                                                    "operations\\active_behavior\\rollback\\active_behavior_absorption_fresh_1000_v1\\reports__self_development__accepted_change_memory_snapshot.json.before.json",
+                                                    "operations\\active_behavior\\rollback\\active_behavior_absorption_fresh_1000_v1\\reports__self_development__SELF_MODEL_ACTIVE_MAP.json.before.json",
+                                                    "operations\\active_behavior\\rollback\\active_behavior_absorption_fresh_1000_v1\\rollback_manifest.json"
+                                                ],
+                          "decision":  "KEEP_AS_ORGAN_DRAFT",
+                          "classification":  "REAL_ORGAN_DRAFT_WITH_EXECUTABLE_VALIDATORS",
+                          "recommended_action":  "RUN_VALIDATORS_AND_ATTACH_PROOF_REFS_OR_KEEP_DRAFT",
+                          "reason":  "two executable validators exist, but passport has no proof_refs",
+                          "risk":  "under-proven but plausible organ"
+                      },
+                      {
+                          "organ_id":  "operations_organ_promotion_lanes",
+                          "owning_root":  "operations/organ_promotion_lanes",
+                          "maturity":  "DRAFT",
+                          "live_or_lab_status":  "NOT_PROVEN",
+                          "validator_refs":  [
+                                                 {
+                                                     "path":  "operations/organ_promotion_lanes/validate_organ_promotion_lanes_v1.ps1",
+                                                     "exists":  true,
+                                                     "is_executable_ps1":  true
+                                                 }
+                                             ],
+                          "proof_ref_count":  3,
+                          "root_file_count":  2,
+                          "root_files_sample":  [
+                                                    "operations\\organ_promotion_lanes\\build_organ_promotion_lanes_v1.ps1",
+                                                    "operations\\organ_promotion_lanes\\validate_organ_promotion_lanes_v1.ps1"
+                                                ],
+                          "decision":  "KEEP_AS_GOVERNANCE_DRAFT",
+                          "classification":  "GOVERNANCE_OR_META_ORGAN_DRAFT",
+                          "recommended_action":  "ADD_SECOND_VALIDATION_SURFACE_BEFORE_PROMOTION",
+                          "reason":  "has executable builder/validator/report/proof, but only one independent validator surface",
+                          "risk":  "single-surface governance organ accepted too early"
+                      },
+                      {
+                          "organ_id":  "operations_overnight_school",
+                          "owning_root":  "operations/overnight_school",
+                          "maturity":  "DRAFT",
+                          "live_or_lab_status":  "NOT_PROVEN",
+                          "validator_refs":  [
+                                                 {
+                                                     "path":  "operations/overnight_school/validate_useful_school_30k_full_process_v1.ps1operations/overnight_school/validate_useful_school_30k_full_process_v1.ps1",
+                                                     "exists":  false,
+                                                     "is_executable_ps1":  true
+                                                 }
+                                             ],
+                          "proof_ref_count":  1,
+                          "root_file_count":  3,
+                          "root_files_sample":  [
+                                                    "operations\\overnight_school\\run_useful_school_30k_full_process_v1.ps1",
+                                                    "operations\\overnight_school\\validate_useful_school_30k_full_process_v1.ps1",
+                                                    "operations\\overnight_school\\watch_useful_school_30k_full_process_v1.ps1"
+                                                ],
+                          "decision":  "REPAIR_PASSPORT_LINK_KEEP_DRAFT",
+                          "classification":  "LONG_RUNTIME_SCHOOL_DRAFT",
+                          "recommended_action":  "FIX_CONCATENATED_VALIDATOR_PATH_AND_REVIEW_LONG_RUNTIME_BOUNDARY",
+                          "reason":  "validator path is duplicated/concatenated and does not exist; corrected path exists",
+                          "risk":  "bad passport reference plus heavy runtime treated as active organ"
+                      }
+                  ],
+    "summary":  {
+                    "downclassify_candidates":  2,
+                    "keep_as_draft":  2,
+                    "repaired_passport_links":  1,
+                    "delete_candidates_without_deletion":  1
+                },
+    "interpretation":  {
+                           "repair_means":  "dedup/downclassify/proof-surface cleanup, not runtime bug repair",
+                           "no_runtime_organ_claimed_broken":  true,
+                           "deletion_requires_owner_decision":  true
+                       },
+    "boundaries":  {
+                       "no_files_deleted":  true,
+                       "no_passport_promoted":  true,
+                       "no_passport_active_created":  true,
+                       "no_live_runtime_touched":  true,
+                       "only_metadata_link_repair":  true
+                   },
+    "created_at":  "2026-07-10T21:05:32.6132095+04:00"
+}

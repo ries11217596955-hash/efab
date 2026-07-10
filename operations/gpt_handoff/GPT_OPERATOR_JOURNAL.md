@@ -820,3 +820,27 @@ Boundaries:
 - No files deleted.
 - No passport maturity changed.
 - No live runtime touched.
+
+## 2026-07-10 — Organ passport tail dedup/downclassify audit V1
+
+STATUS: AUDIT_PASS / NO_DELETION / NO_PROMOTION
+
+Audited five maturity-tail candidates:
+- operations_contracts
+- operations_smoke_trials
+- operations_active_behavior
+- operations_organ_promotion_lanes
+- operations_overnight_school
+
+Decisions:
+- operations_contracts: DOWNCLASSIFY_CANDIDATE — contract-material aggregator, likely duplicate over specific contracts_* passports; validator refs are .contract.json, not executable validators.
+- operations_smoke_trials: DOWNCLASSIFY_CANDIDATE — smoke fixture material, not an organ; validator refs are fixture JSON files.
+- operations_active_behavior: KEEP_AS_ORGAN_DRAFT — has two executable validators but no proof refs; next step is proof-run or keep draft.
+- operations_organ_promotion_lanes: KEEP_AS_GOVERNANCE_DRAFT — has executable surface but only one independent validator; needs second surface before promotion.
+- operations_overnight_school: REPAIR_PASSPORT_LINK_KEEP_DRAFT — fixed concatenated validator path; still long-runtime draft requiring boundary review.
+
+Boundaries:
+- No files deleted.
+- No passport promoted.
+- No PASSPORT_ACTIVE created.
+- No live runtime touched.
