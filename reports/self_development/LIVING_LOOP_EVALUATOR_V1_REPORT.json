@@ -1,0 +1,65 @@
+﻿{
+    "schema":  "living_loop_evaluator_v1_report",
+    "status":  "PASS_LIVING_LOOP_EVALUATOR_V1",
+    "requirement":  "contracts/living_loop/LIVING_LOOP_EVALUATOR_V1_REQUIREMENT.md",
+    "contract_ref":  "contracts/living_loop/LIVING_LOOP_CONTRACT_V1.json",
+    "passport_index_ref":  "self_model/organ_passports/_index/ORGAN_PASSPORT_DRAFT_INDEX_V1.json",
+    "signals_ref":  "reports/self_development/LIVING_LOOP_EVALUATOR_V1_SIGNALS.json",
+    "cases":  [
+                  {
+                      "organ_id":  "operations_organ_promotion_lanes",
+                      "pattern":  "governance_signal_promotion",
+                      "decision":  "PROMOTE_TO_VALIDATED_LAB_KEEP_NON_ACTIVE",
+                      "signal_type":  "VALIDATED_LAB_NON_ACTIVE_SIGNAL",
+                      "body_state":  "VALIDATED_LAB_NON_ACTIVE",
+                      "evidence_ref":  "tests/self_development/ORGAN_PROMOTION_LANES_LIFECYCLE_PASS_V1_PROOF.json",
+                      "passport_ref":  "self_model/organ_passports/operations_organ_promotion_lanes/ORGAN_PASSPORT_V1.json"
+                  },
+                  {
+                      "organ_id":  "operations_parallel_life",
+                      "pattern":  "lab_coordination_promotion",
+                      "decision":  "PROMOTE_TO_VALIDATED_LAB_KEEP_NON_ACTIVE",
+                      "signal_type":  "VALIDATED_LAB_NON_ACTIVE_SIGNAL",
+                      "body_state":  "VALIDATED_LAB_NON_ACTIVE",
+                      "evidence_ref":  "tests/self_development/PARALLEL_LIFE_LIFECYCLE_PASS_V1_PROOF.json",
+                      "passport_ref":  "self_model/organ_passports/operations_parallel_life/ORGAN_PASSPORT_V1.json"
+                  },
+                  {
+                      "organ_id":  "operations_live_like",
+                      "pattern":  "live_boundary_observation_promotion",
+                      "decision":  "PROMOTE_TO_VALIDATED_LAB_KEEP_NON_ACTIVE",
+                      "signal_type":  "VALIDATED_LAB_NON_ACTIVE_SIGNAL",
+                      "body_state":  "VALIDATED_LAB_NON_ACTIVE",
+                      "evidence_ref":  "tests/self_development/LIVE_LIKE_LIFECYCLE_PASS_V1_PROOF.json",
+                      "passport_ref":  "self_model/organ_passports/operations_live_like/ORGAN_PASSPORT_V1.json"
+                  },
+                  {
+                      "organ_id":  "operations_active_behavior",
+                      "pattern":  "blocked_missing_source_proof",
+                      "decision":  "BLOCKED_BY_MISSING_SOURCE_PROOF",
+                      "signal_type":  "BLOCKED_MISSING_SOURCE_PROOF_SIGNAL",
+                      "body_state":  "DRAFT_BLOCKED",
+                      "evidence_ref":  "tests/self_development/ACTIVE_BEHAVIOR_BLOCKED_LIFECYCLE_PASS_V1_PROOF.json",
+                      "passport_ref":  "self_model/organ_passports/operations_active_behavior/ORGAN_PASSPORT_V1.json"
+                  }
+              ],
+    "counts":  {
+                   "total_signals":  7,
+                   "proof_base_cases":  4,
+                   "validated_lab_non_active_signals":  3,
+                   "blocked_missing_source_proof_signals":  1,
+                   "boundary_guard_signals":  2,
+                   "return_to_parent_signals":  1
+               },
+    "negative_guards":  {
+                            "no_fake_proof":  true,
+                            "no_passport_active_created":  true,
+                            "no_live_runtime_touched":  true,
+                            "runtime_ready_overclaim":  false,
+                            "live_ready_overclaim":  false,
+                            "autonomous_runtime_overclaim":  false,
+                            "non_mutating":  true
+                        },
+    "boundary":  "LAB_ONLY_SIGNAL_EVALUATOR_NO_PASSPORT_MUTATION_NO_LIVE_RUNTIME",
+    "created_at":  "2026-07-11T22:59:29.7636977+04:00"
+}

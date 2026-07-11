@@ -1461,3 +1461,85 @@ Boundary:
 
 Next safe direction:
 - Build a lab-only Living Loop evaluator that reads proof/passport/index state and emits normalized lifecycle signals without mutation unless a separate authority gate approves mutation.
+
+## 2026-07-11 — Living Loop Evaluator V1 lab-only signal organ candidate
+
+STATUS: PASS / LAB_ONLY_SIGNAL_EVALUATOR / NON_MUTATING / NOT_ACTIVE_RUNTIME
+
+Context:
+- Owner corrected wording: "small" must not mean weak or careless.
+- The right interpretation: first evaluator must be minimally scoped but built properly, with requirement, signal contract, builder, validator, report, proof, negative guards, and return-to-parent.
+
+Created:
+- contracts/living_loop/LIVING_LOOP_EVALUATOR_V1_REQUIREMENT.md
+- operations/living_loop/build_living_loop_evaluator_v1.ps1
+- operations/living_loop/validate_living_loop_evaluator_v1.ps1
+- reports/self_development/LIVING_LOOP_EVALUATOR_V1_SIGNALS.json
+- reports/self_development/LIVING_LOOP_EVALUATOR_V1_REPORT.json
+- tests/self_development/LIVING_LOOP_EVALUATOR_V1_PROOF.json
+
+Purpose:
+- Read Living Loop Contract V1, passport index, and lifecycle proof base.
+- Convert proof/passport/index state into normalized lifecycle signals.
+- Do not act as Brain.
+- Do not schedule tasks.
+- Do not mutate passports.
+- Do not touch live runtime.
+- Do not create PASSPORT_ACTIVE.
+
+Signals emitted:
+- total: 7
+- VALIDATED_LAB_NON_ACTIVE_SIGNAL: 3
+- BLOCKED_MISSING_SOURCE_PROOF_SIGNAL: 1
+- BOUNDARY_GUARD_SIGNAL: 2
+- RETURN_TO_PARENT_SIGNAL: 1
+
+Signal contract:
+- signal_id
+- organ_id
+- signal_type
+- severity
+- confidence
+- lifecycle_decision
+- body_state
+- evidence_ref
+- passport_ref
+- boundary flags
+- recommended_outcome
+- brain_input_allowed
+- reason
+
+Important signal meanings:
+- operations_organ_promotion_lanes -> validated lab governance/lane signal, no active authority.
+- operations_parallel_life -> validated lab coordination signal plus boundary guard.
+- operations_live_like -> validated lab live-like observation signal plus boundary guard; not live readiness.
+- operations_active_behavior -> blocked missing source proof signal; no fake proof, no promotion.
+- living_loop_evaluator_v1 -> return-to-parent signal.
+
+Negative guards proven:
+- no fake proof
+- no PASSPORT_ACTIVE
+- no live runtime touched
+- no runtime_ready overclaim
+- no live_ready overclaim
+- no autonomous_runtime overclaim
+- non-mutating evaluator
+- all signals have evidence refs
+- all signals have passport refs or explicit non-passported self-ref for evaluator return signal
+
+Architectural result:
+- We now have the first proof-to-signal layer after Living Loop Contract V1.
+- This is not Brain, but it gives Brain-safe input.
+- Raw lifecycle proofs are transformed into normalized Body State signals with evidence refs.
+- This is the first step toward Body State / signal bus, not an autonomous loop.
+
+Boundary:
+- Not active Brain.
+- Not wake/action runtime.
+- Not autonomous loop.
+- Not live process.
+- Not mutation authority.
+- Not PASSPORT_ACTIVE.
+
+Next safe direction:
+- Build Body State Aggregator V1 that reads evaluator signals and groups organism state into actionable categories: validated_lab_non_active, blocked, boundary_guarded, owner_decision_required, repair_required, no_action_needed.
