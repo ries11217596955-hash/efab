@@ -2,9 +2,9 @@
 
 Status: ACTIVE_DERIVED_VIEW
 Branch: main
-Observed head at generation: 0d923a453f4f3539474bebc60c8e5cf074ee9b8f
-Generated: 2026-07-11T14:05:15.4800028+04:00
-Body source fingerprint: 984d2c9faf8b98953cd8de7f032e7a69575e656c0d129def9d24bbf38191add7
+Observed head at generation: d876246add262043dae7789de353d345e52dee91
+Generated: 2026-07-11T15:01:26.4515216+04:00
+Body source fingerprint: 736447de2a79b48f398aaaf8c2ab8df28bf040c47ad79d60ecc4b9a3fa1b4141
 
 Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
@@ -61,7 +61,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `operations_active_behavior` - root `operations/active_behavior`, files=10, scripts=6, validators=2, proofs=0, needs_triage=True
 - `operations_autonomy_diagnostics` - root `operations/autonomy_diagnostics`, files=29, scripts=0, validators=0, proofs=0, needs_triage=True
 - `operations_bridge_diagnostics` - root `operations/bridge_diagnostics`, files=2, scripts=0, validators=0, proofs=2, needs_triage=True
-- `operations_live_like` - root `operations/live_like`, files=2, scripts=2, validators=1, proofs=0, needs_triage=True
+- `operations_live_like` - root `operations/live_like`, files=5, scripts=5, validators=3, proofs=0, needs_triage=True
 - `operations_live_readiness` - root `operations/live_readiness`, files=11, scripts=11, validators=5, proofs=2, needs_triage=True
 - `operations_live_start` - root `operations/live_start`, files=5, scripts=5, validators=2, proofs=0, needs_triage=True
 - `operations_memory` - root `operations/memory`, files=4, scripts=4, validators=2, proofs=0, needs_triage=True

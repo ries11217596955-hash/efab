@@ -1253,3 +1253,67 @@ Boundary:
 - Not autonomous runtime.
 - Not PASSPORT_ACTIVE.
 - Not live readiness.
+
+## 2026-07-11 — Fourth passport lifecycle pass: operations_live_like V1
+
+STATUS: PASS / FOURTH_LIFECYCLE_PASS / VALIDATED_LAB_NON_ACTIVE
+
+Context:
+- Continued repeated passport lifecycle passes before extracting Living Loop Contract V1.
+- Selected a candidate with live-boundary risk to prevent overclaiming lab observation as live readiness.
+
+Candidate selected:
+- operations_live_like
+
+Why this candidate:
+- It was a real organ draft in REVIEW_LANE, not material/pack/fixture.
+- It had one lab proof and one base validator.
+- It tests the boundary: live-like observation is not live readiness, not runtime_ready, and not continuous autonomous runtime.
+
+Base proof:
+- tests/live_like/SCHOOL_AIMO_LIVE_LIKE_OBSERVATION_GATE_V1_PROOF.json
+- Base validator PASS.
+- Boundary: live-like lab observation gate only; heartbeat/watchdog/duration around repeatable School+AIMO parallel harness; not live readiness; not continuous autonomous runtime.
+
+New validation surface:
+- Added operations/live_like/validate_school_aimo_live_like_signal_contract_v1.ps1.
+- It verifies the proof as normalized signal:
+  LIVE_LIKE_OBSERVATION_LAB_ONLY.
+- It enforces: runtime_ready=false, live_ready=false, autonomous_runtime=false, parallel harness PASS, controlled stop true, AIMO cycles positive, packet/intake/merge statuses PASS, and boundary denies live readiness.
+
+Lifecycle proof:
+- Added operations/live_like/build_live_like_lifecycle_pass_v1.ps1.
+- Added operations/live_like/validate_live_like_lifecycle_pass_v1.ps1.
+- Added reports/self_development/LIVE_LIKE_LIFECYCLE_PASS_V1.json.
+- Added tests/self_development/LIVE_LIKE_LIFECYCLE_PASS_V1_PROOF.json.
+
+Lifecycle decision:
+- operations_live_like promoted from DRAFT / NOT_PROVEN to VALIDATED_LAB / PROVEN_LAB.
+- Passport now has 2 validators and 3 proof refs.
+- No PASSPORT_ACTIVE created.
+- No live runtime touched.
+- runtime_ready remains false.
+- live_ready claim remains false.
+- continuous autonomous runtime remains false.
+- live readiness remains owned by operations_live_readiness/live_start.
+
+State-change verification:
+- Passport updated.
+- Passport index updated.
+- Body map refreshed.
+- Agent body composition map current validator PASS.
+- Base live-like observation validator PASS.
+- Signal contract validator PASS.
+- Lifecycle pass validator PASS.
+
+Architectural lesson:
+- Living organisms need signal boundaries, not just PASS/FAIL.
+- A signal can be useful and still be explicitly non-live, non-active, non-autonomous.
+- Living Loop Contract V1 must preserve this: observation signal, readiness signal, action authority, runtime state, and activation are separate layers.
+
+Boundary:
+- Not live.
+- Not runtime_ready.
+- Not autonomous runtime.
+- Not PASSPORT_ACTIVE.
+- Not live readiness.
