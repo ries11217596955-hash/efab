@@ -1736,3 +1736,70 @@ Architectural chain now:
 
 Next safe direction:
 - Decision Gate / Brain Input Gate V1: consume Reasoner output and decide whether the next legal route is repair source proof, keep blocked, ask Owner, or stop. It must still not execute mutation without separate authority.
+
+## 2026-07-12 — Decision Gate / Brain Input Gate V1
+
+STATUS: PASS / LAB_ONLY_DECISION_GATE / NON_EXECUTING / NOT_BRAIN
+
+Context:
+- Owner approved continuing from Reasoner V1.
+- Reasoner V1 identified dominant root cause: MISSING_SOURCE_PROOF.
+- Reasoner recommended legal action class: REPAIR_SOURCE_PROOF_OR_KEEP_BLOCKED.
+
+Created:
+- contracts/living_loop/DECISION_GATE_V1_REQUIREMENT.md
+- operations/living_loop/build_decision_gate_v1.ps1
+- operations/living_loop/validate_decision_gate_v1.ps1
+- reports/self_development/DECISION_GATE_V1_DECISION_PACKET.json
+- reports/self_development/DECISION_GATE_V1_REPORT.json
+- tests/self_development/DECISION_GATE_V1_PROOF.json
+
+Purpose:
+- Read Reasoner V1 output.
+- Select lawful route class.
+- Emit Brain-safe decision packet.
+- Prevent Reasoner output from jumping directly to execution.
+
+Decision packet:
+- route_class: REPAIR_SOURCE_PROOF_OR_KEEP_BLOCKED
+- target_organ_id: operations_active_behavior
+- dominant_root_cause: MISSING_SOURCE_PROOF
+- legal_action_class: REPAIR_SOURCE_PROOF_OR_KEEP_BLOCKED
+- owner_decision_required: true
+- execution_allowed: false
+- mutation_authorized: false
+- runtime_ready: false
+- live_ready: false
+- autonomous_runtime: false
+- brain_decision: false
+
+Meaning:
+- The next legal route is not immediate repair.
+- The next legal route is an owner-authorized repair/preflight task to locate or rebuild missing source proof, or keep operations_active_behavior blocked.
+- Decision Gate gives route class only; it is not authority to mutate.
+
+Forbidden actions preserved:
+- promote without proof
+- create fake proof
+- create PASSPORT_ACTIVE
+- claim runtime_ready
+- touch live runtime
+- execute without authority
+
+Validator:
+- PASS_DECISION_GATE_V1
+
+Architectural chain now:
+- Evidence -> Signal -> Body State -> Reasoner -> Decision Gate
+
+Boundary:
+- Not Brain.
+- Not executor.
+- Not scheduler.
+- Not autonomous loop.
+- Not mutation authority.
+- Not live/runtime authority.
+- Not PASSPORT_ACTIVE.
+
+Next safe direction:
+- Either build Brain Input Consumer V1 that can read the decision packet without executing, or create a separate owner-authorized PREFLIGHT repair task for operations_active_behavior source proof.

@@ -1,0 +1,35 @@
+﻿{
+    "schema":  "decision_gate_v1_decision_packet",
+    "status":  "PASS_DECISION_GATE_V1_DECISION_PACKET",
+    "source_reasoner_ref":  "reports/self_development/REASONER_V1_CAUSAL_EXPLANATION.json",
+    "source_reasoner_proof_ref":  "tests/self_development/REASONER_V1_PROOF.json",
+    "contract_ref":  "contracts/living_loop/LIVING_LOOP_CONTRACT_V1.json",
+    "route_class":  "REPAIR_SOURCE_PROOF_OR_KEEP_BLOCKED",
+    "target_organ_id":  "operations_active_behavior",
+    "dominant_root_cause":  "MISSING_SOURCE_PROOF",
+    "legal_action_class":  "REPAIR_SOURCE_PROOF_OR_KEEP_BLOCKED",
+    "owner_decision_required":  true,
+    "execution_allowed":  false,
+    "mutation_authorized":  false,
+    "runtime_ready":  false,
+    "live_ready":  false,
+    "autonomous_runtime":  false,
+    "brain_decision":  false,
+    "evidence_refs":  [
+                          "tests/self_development/ACTIVE_BEHAVIOR_BLOCKED_LIFECYCLE_PASS_V1_PROOF.json"
+                      ],
+    "forbidden_actions":  [
+                              "CLAIM_RUNTIME_READY",
+                              "CREATE_FAKE_PROOF",
+                              "CREATE_PASSPORT_ACTIVE",
+                              "PROMOTE_TO_VALIDATED_LAB",
+                              "TOUCH_LIVE_RUNTIME"
+                          ],
+    "allowed_next_step_description":  "Prepare a separate owner-authorized repair/preflight task to locate or rebuild the missing source proof; otherwise keep organ BLOCKED.",
+    "return_to_parent_summary":  {
+                                     "current_chain":  "Evidence -\u003e Signal -\u003e Body State -\u003e Reasoner -\u003e Decision Gate",
+                                     "decision":  "Brain-safe route packet emitted; no execution authority granted.",
+                                     "next_safe_step":  "Owner-authorized repair preflight for source proof OR keep blocked; alternatively build Brain Input Consumer without execution."
+                                 },
+    "created_at":  "2026-07-12T00:05:06.3257562+04:00"
+}

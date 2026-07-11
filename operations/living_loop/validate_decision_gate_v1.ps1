@@ -1,0 +1,42 @@
+﻿$ErrorActionPreference='Stop'
+$repoRoot=(git rev-parse --show-toplevel).Trim(); Set-Location $repoRoot
+function Assert($Cond,[string]$Msg){ if(-not $Cond){ throw $Msg } }
+$req='contracts/living_loop/DECISION_GATE_V1_REQUIREMENT.md'
+$packetPath='reports/self_development/DECISION_GATE_V1_DECISION_PACKET.json'
+$reportPath='reports/self_development/DECISION_GATE_V1_REPORT.json'
+$proofPath='tests/self_development/DECISION_GATE_V1_PROOF.json'
+foreach($p in @($req,$packetPath,$reportPath,$proofPath)){Assert (Test-Path $p) "MISSING:$p"}
+powershell -ExecutionPolicy Bypass -File operations/living_loop/validate_reasoner_v1.ps1 | Out-Host
+Assert ($LASTEXITCODE -eq 0) 'REASONER_VALIDATION_FAILED'
+$packet=Get-Content $packetPath -Raw|ConvertFrom-Json
+$r=Get-Content $reportPath -Raw|ConvertFrom-Json
+$p=Get-Content $proofPath -Raw|ConvertFrom-Json
+Assert ($packet.status -eq 'PASS_DECISION_GATE_V1_DECISION_PACKET') 'PACKET_STATUS_BAD'
+Assert ($r.status -eq 'PASS_DECISION_GATE_V1') 'REPORT_STATUS_BAD'
+Assert ($p.status -eq 'PASS_DECISION_GATE_V1') 'PROOF_STATUS_BAD'
+Assert ($packet.route_class -eq 'REPAIR_SOURCE_PROOF_OR_KEEP_BLOCKED') 'ROUTE_CLASS_BAD'
+Assert ($packet.target_organ_id -eq 'operations_active_behavior') 'TARGET_BAD'
+Assert ($packet.dominant_root_cause -eq 'MISSING_SOURCE_PROOF') 'DOMINANT_ROOT_CAUSE_BAD'
+Assert ($packet.legal_action_class -eq 'REPAIR_SOURCE_PROOF_OR_KEEP_BLOCKED') 'LEGAL_ACTION_CLASS_BAD'
+Assert ($packet.owner_decision_required -eq $true) 'OWNER_DECISION_REQUIRED_BAD'
+Assert ($packet.execution_allowed -eq $false) 'EXECUTION_ALLOWED_OVERCLAIM'
+Assert ($packet.mutation_authorized -eq $false) 'MUTATION_AUTHORIZED_OVERCLAIM'
+Assert ($packet.runtime_ready -eq $false) 'RUNTIME_READY_OVERCLAIM'
+Assert ($packet.live_ready -eq $false) 'LIVE_READY_OVERCLAIM'
+Assert ($packet.autonomous_runtime -eq $false) 'AUTONOMOUS_OVERCLAIM'
+Assert ($packet.brain_decision -eq $false) 'BRAIN_DECISION_OVERCLAIM'
+Assert (@($packet.evidence_refs).Count -gt 0) 'EVIDENCE_REFS_MISSING'
+Assert (@($packet.forbidden_actions).Count -gt 0) 'FORBIDDEN_ACTIONS_MISSING'
+Assert ($packet.return_to_parent_summary.PSObject.Properties.Name -contains 'decision') 'RETURN_SUMMARY_MISSING'
+Assert ($p.route_matches_dominant_root_cause -eq $true) 'ROUTE_ROOT_CAUSE_MATCH_BAD'
+Assert ($p.reasoner_validated -eq $true) 'REASONER_VALIDATED_BAD'
+Assert ($p.execution_allowed -eq $false) 'PROOF_EXECUTION_OVERCLAIM'
+Assert ($p.mutation_authorized -eq $false) 'PROOF_MUTATION_OVERCLAIM'
+Assert ($p.brain_decision -eq $false) 'PROOF_BRAIN_OVERCLAIM'
+Write-Host 'VALIDATION_PASS=PASS_DECISION_GATE_V1'
+Write-Host 'ROUTE_CLASS=REPAIR_SOURCE_PROOF_OR_KEEP_BLOCKED'
+Write-Host 'TARGET=operations_active_behavior'
+Write-Host 'OWNER_DECISION_REQUIRED=true'
+Write-Host 'EXECUTION_ALLOWED=false'
+Write-Host 'MUTATION_AUTHORIZED=false'
+Write-Host 'BRAIN_DECISION=false'
