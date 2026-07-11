@@ -1,0 +1,48 @@
+﻿{
+    "schema":  "brain_selector_stub_v1_intent",
+    "status":  "PASS_BRAIN_SELECTOR_STUB_V1_INTENT",
+    "source_envelope_ref":  "reports/self_development/BRAIN_INPUT_CONSUMER_V1_ENVELOPE.json",
+    "source_consumer_proof_ref":  "tests/self_development/BRAIN_INPUT_CONSUMER_V1_PROOF.json",
+    "contract_ref":  "contracts/living_loop/LIVING_LOOP_CONTRACT_V1.json",
+    "intent_class":  "REQUEST_OWNER_AUTHORIZED_PREFLIGHT_REPAIR_OR_KEEP_BLOCKED",
+    "target_organ_id":  "operations_active_behavior",
+    "source_route_class":  "REPAIR_SOURCE_PROOF_OR_KEEP_BLOCKED",
+    "dominant_root_cause":  "MISSING_SOURCE_PROOF",
+    "owner_decision_required":  true,
+    "selected_by_brain_stub":  true,
+    "full_brain":  false,
+    "execution_allowed":  false,
+    "mutation_authorized":  false,
+    "brain_can_execute":  false,
+    "brain_can_mutate":  false,
+    "runtime_ready":  false,
+    "live_ready":  false,
+    "autonomous_runtime":  false,
+    "passport_active_allowed":  false,
+    "requires_preflight":  true,
+    "requires_owner_authority":  true,
+    "evidence_refs":  [
+                          "tests/self_development/ACTIVE_BEHAVIOR_BLOCKED_LIFECYCLE_PASS_V1_PROOF.json"
+                      ],
+    "forbidden_actions":  [
+                              "CLAIM_RUNTIME_READY",
+                              "CREATE_FAKE_PROOF",
+                              "CREATE_PASSPORT_ACTIVE",
+                              "PROMOTE_TO_VALIDATED_LAB",
+                              "TOUCH_LIVE_RUNTIME"
+                          ],
+    "allowed_next_step_description":  "Ask Owner to choose: authorize a separate PREFLIGHT repair task for operations_active_behavior source proof, or keep the organ BLOCKED. Do not repair yet.",
+    "stop_conditions":  [
+                            "Missing source proof remains absent",
+                            "Owner authority not granted",
+                            "PREFLIGHT not passed",
+                            "Any mutation would be required",
+                            "Any live/runtime claim appears"
+                        ],
+    "return_to_parent_summary":  {
+                                     "current_chain":  "Evidence -\u003e Signal -\u003e Body State -\u003e Reasoner -\u003e Decision Gate -\u003e Brain Input Consumer -\u003e Brain Selector Stub",
+                                     "result":  "Candidate intent selected without execution authority.",
+                                     "next_safe_step":  "Return to Owner for authority decision or build an authority/passport gate; do not mutate."
+                                 },
+    "created_at":  "2026-07-12T00:38:32.6560804+04:00"
+}

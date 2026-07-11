@@ -1861,3 +1861,64 @@ Boundary:
 
 Next safe direction:
 - Either build a non-executing Brain/Selector stub that can read the envelope and select a candidate intent without execution, or ask Owner to authorize a separate PREFLIGHT repair task for operations_active_behavior source proof.
+
+## 2026-07-12 — Brain Selector Stub V1
+
+STATUS: PASS / LAB_ONLY_BRAIN_SELECTOR_STUB / NOT_FULL_BRAIN / NON_EXECUTING
+
+Context:
+- Owner asked to continue and asked who Brain is.
+- Brain was clarified as a future governing organ, not an LLM/chat and not immediate executor.
+- This step builds a safe Brain-facing selector stub, not full Brain.
+
+Brain definition used:
+- Brain is the future governing organ of Builder that reads proven Body State / Reasoner / Gate outputs, selects lawful intent or route, and passes constrained commands through authority gates and validators.
+- Brain is not GPT, not chat, not Codex, not a raw tool runner, and not autonomous execution by itself.
+
+Created:
+- contracts/living_loop/BRAIN_SELECTOR_STUB_V1_REQUIREMENT.md
+- operations/living_loop/build_brain_selector_stub_v1.ps1
+- operations/living_loop/validate_brain_selector_stub_v1.ps1
+- reports/self_development/BRAIN_SELECTOR_STUB_V1_INTENT.json
+- reports/self_development/BRAIN_SELECTOR_STUB_V1_REPORT.json
+- tests/self_development/BRAIN_SELECTOR_STUB_V1_PROOF.json
+
+Input:
+- Brain Input Consumer V1 envelope.
+- Input class: OWNER_DECISION_REQUIRED_REPAIR_OR_KEEP_BLOCKED.
+- Route class: REPAIR_SOURCE_PROOF_OR_KEEP_BLOCKED.
+- Target: operations_active_behavior.
+
+Selected candidate intent:
+- REQUEST_OWNER_AUTHORIZED_PREFLIGHT_REPAIR_OR_KEEP_BLOCKED
+
+Meaning:
+- Selector stub can choose an intent candidate from a Brain-safe envelope.
+- It cannot execute repair.
+- It cannot mutate.
+- It cannot bypass Owner decision.
+- It cannot become full Brain.
+
+Proof boundary:
+- selected_by_brain_stub=true
+- full_brain=false
+- execution_allowed=false
+- mutation_authorized=false
+- brain_can_execute=false
+- brain_can_mutate=false
+- requires_preflight=true
+- requires_owner_authority=true
+- runtime_ready=false
+- live_ready=false
+- autonomous_runtime=false
+- no PASSPORT_ACTIVE
+- no live runtime touched
+
+Validator:
+- PASS_BRAIN_SELECTOR_STUB_V1
+
+Architectural chain now:
+- Evidence -> Signal -> Body State -> Reasoner -> Decision Gate -> Brain Input Consumer -> Brain Selector Stub
+
+Next safe direction:
+- Build Authority / PREFLIGHT Gate V1 for this selected intent, or ask Owner to authorize the repair preflight. No repair may happen before authority and PREFLIGHT_PASS.
