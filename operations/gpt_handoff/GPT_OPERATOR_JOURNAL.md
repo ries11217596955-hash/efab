@@ -1803,3 +1803,61 @@ Boundary:
 
 Next safe direction:
 - Either build Brain Input Consumer V1 that can read the decision packet without executing, or create a separate owner-authorized PREFLIGHT repair task for operations_active_behavior source proof.
+
+## 2026-07-12 — Brain Input Consumer V1
+
+STATUS: PASS / LAB_ONLY_BRAIN_INPUT_CONSUMER / NOT_BRAIN / NON_EXECUTING
+
+Context:
+- Continued after Decision Gate / Brain Input Gate V1.
+- Decision Gate emitted route class: REPAIR_SOURCE_PROOF_OR_KEEP_BLOCKED.
+- Target: operations_active_behavior.
+- Owner decision required: true.
+- Execution/mutation remained forbidden.
+
+Created:
+- contracts/living_loop/BRAIN_INPUT_CONSUMER_V1_REQUIREMENT.md
+- operations/living_loop/build_brain_input_consumer_v1.ps1
+- operations/living_loop/validate_brain_input_consumer_v1.ps1
+- reports/self_development/BRAIN_INPUT_CONSUMER_V1_ENVELOPE.json
+- reports/self_development/BRAIN_INPUT_CONSUMER_V1_REPORT.json
+- tests/self_development/BRAIN_INPUT_CONSUMER_V1_PROOF.json
+
+Purpose:
+- Read Decision Gate packet.
+- Convert it into Brain-safe input envelope.
+- Preserve route class, evidence refs, forbidden actions, and owner-decision requirement.
+- Prove that Brain may read the envelope but cannot execute or mutate from it.
+
+Envelope:
+- input_class: OWNER_DECISION_REQUIRED_REPAIR_OR_KEEP_BLOCKED
+- route_class: REPAIR_SOURCE_PROOF_OR_KEEP_BLOCKED
+- target_organ_id: operations_active_behavior
+- dominant_root_cause: MISSING_SOURCE_PROOF
+- owner_decision_required: true
+- brain_can_read: true
+- brain_can_execute: false
+- brain_can_mutate: false
+- execution_allowed: false
+- mutation_authorized: false
+- brain_decision: false
+
+Required Owner question:
+- Authorize a separate PREFLIGHT repair task to locate/rebuild the missing source proof for operations_active_behavior, or keep the organ BLOCKED?
+
+Validation:
+- PASS_BRAIN_INPUT_CONSUMER_V1
+
+Architectural chain now:
+- Evidence -> Signal -> Body State -> Reasoner -> Decision Gate -> Brain Input Consumer
+
+Boundary:
+- Not Brain.
+- Not final action selector.
+- Not executor.
+- Not mutation authority.
+- Not runtime/live authority.
+- Not PASSPORT_ACTIVE.
+
+Next safe direction:
+- Either build a non-executing Brain/Selector stub that can read the envelope and select a candidate intent without execution, or ask Owner to authorize a separate PREFLIGHT repair task for operations_active_behavior source proof.

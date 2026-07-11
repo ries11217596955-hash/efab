@@ -1,0 +1,42 @@
+﻿{
+    "schema":  "brain_input_consumer_v1_envelope",
+    "status":  "PASS_BRAIN_INPUT_CONSUMER_V1_ENVELOPE",
+    "source_decision_packet_ref":  "reports/self_development/DECISION_GATE_V1_DECISION_PACKET.json",
+    "source_decision_proof_ref":  "tests/self_development/DECISION_GATE_V1_PROOF.json",
+    "contract_ref":  "contracts/living_loop/LIVING_LOOP_CONTRACT_V1.json",
+    "input_class":  "OWNER_DECISION_REQUIRED_REPAIR_OR_KEEP_BLOCKED",
+    "route_class":  "REPAIR_SOURCE_PROOF_OR_KEEP_BLOCKED",
+    "target_organ_id":  "operations_active_behavior",
+    "dominant_root_cause":  "MISSING_SOURCE_PROOF",
+    "legal_action_class":  "REPAIR_SOURCE_PROOF_OR_KEEP_BLOCKED",
+    "owner_decision_required":  true,
+    "execution_allowed":  false,
+    "mutation_authorized":  false,
+    "runtime_ready":  false,
+    "live_ready":  false,
+    "autonomous_runtime":  false,
+    "passport_active_allowed":  false,
+    "brain_can_read":  true,
+    "brain_can_execute":  false,
+    "brain_can_mutate":  false,
+    "brain_decision":  false,
+    "brain_must_preserve_forbidden_actions":  true,
+    "evidence_refs":  [
+                          "tests/self_development/ACTIVE_BEHAVIOR_BLOCKED_LIFECYCLE_PASS_V1_PROOF.json"
+                      ],
+    "forbidden_actions":  [
+                              "CLAIM_RUNTIME_READY",
+                              "CREATE_FAKE_PROOF",
+                              "CREATE_PASSPORT_ACTIVE",
+                              "PROMOTE_TO_VALIDATED_LAB",
+                              "TOUCH_LIVE_RUNTIME"
+                          ],
+    "required_owner_question":  "Owner decision required: authorize a separate PREFLIGHT repair task to locate/rebuild the missing source proof for operations_active_behavior, or keep the organ BLOCKED?",
+    "safe_next_prompt_for_brain":  "Read this envelope only as a route constraint. Do not execute repair, mutate files, create proof, or claim runtime/live readiness. Ask/require Owner authority before any repair preflight.",
+    "return_to_parent_summary":  {
+                                     "current_chain":  "Evidence -\u003e Signal -\u003e Body State -\u003e Reasoner -\u003e Decision Gate -\u003e Brain Input Consumer",
+                                     "result":  "Brain-safe input envelope emitted; execution and mutation still forbidden.",
+                                     "next_safe_step":  "Owner can authorize PREFLIGHT repair task, keep blocked, or allow building a non-executing Brain/Selector stub."
+                                 },
+    "created_at":  "2026-07-12T00:11:46.5285427+04:00"
+}

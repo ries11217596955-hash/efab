@@ -1,0 +1,32 @@
+﻿{
+    "schema":  "brain_input_consumer_v1_report",
+    "status":  "PASS_BRAIN_INPUT_CONSUMER_V1",
+    "requirement":  "contracts/living_loop/BRAIN_INPUT_CONSUMER_V1_REQUIREMENT.md",
+    "envelope_ref":  "reports/self_development/BRAIN_INPUT_CONSUMER_V1_ENVELOPE.json",
+    "source_decision_packet_ref":  "reports/self_development/DECISION_GATE_V1_DECISION_PACKET.json",
+    "input_class":  "OWNER_DECISION_REQUIRED_REPAIR_OR_KEEP_BLOCKED",
+    "route_class":  "REPAIR_SOURCE_PROOF_OR_KEEP_BLOCKED",
+    "target_organ_id":  "operations_active_behavior",
+    "owner_decision_required":  true,
+    "laws_enforced":  [
+                          "Brain-readable is not Brain-executable",
+                          "Evidence refs preserved",
+                          "Forbidden actions preserved",
+                          "Owner decision requirement preserved",
+                          "Missing source proof cannot be bypassed",
+                          "Consumer is not Brain",
+                          "Consumer cannot authorize mutation"
+                      ],
+    "negative_guards":  {
+                            "execution_allowed":  false,
+                            "mutation_authorized":  false,
+                            "brain_can_execute":  false,
+                            "brain_can_mutate":  false,
+                            "brain_decision":  false,
+                            "runtime_ready":  false,
+                            "live_ready":  false,
+                            "autonomous_runtime":  false,
+                            "passport_active_allowed":  false
+                        },
+    "created_at":  "2026-07-12T00:11:46.5542622+04:00"
+}
