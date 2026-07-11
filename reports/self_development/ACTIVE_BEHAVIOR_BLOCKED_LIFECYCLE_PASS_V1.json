@@ -1,0 +1,55 @@
+﻿{
+    "schema":  "active_behavior_blocked_lifecycle_pass_v1",
+    "status":  "PASS_ACTIVE_BEHAVIOR_BLOCKED_LIFECYCLE_PASS_V1",
+    "organ_id":  "operations_active_behavior",
+    "candidate":  "operations_active_behavior",
+    "identity":  "operations_active_behavior",
+    "passport_path":  "self_model/organ_passports/operations_active_behavior/ORGAN_PASSPORT_V1.json",
+    "lifecycle_decision":  "BLOCKED_BY_MISSING_SOURCE_PROOF",
+    "before":  {
+                   "maturity":  "DRAFT",
+                   "live_or_lab_status":  "NOT_PROVEN",
+                   "validator_count":  2,
+                   "proof_count":  0,
+                   "gaps":  [
+                                "organ-specific calibration missing",
+                                "runtime proof missing",
+                                "ACTIVE status forbidden",
+                                "PROVEN_LIVE forbidden"
+                            ]
+               },
+    "after":  {
+                  "maturity":  "DRAFT",
+                  "live_or_lab_status":  "BLOCKED",
+                  "validator_count":  2,
+                  "proof_count":  2
+              },
+    "required_source_proof":  {
+                                  "path":  "operations/reports/FRESH_1000_CANDIDATE_BEHAVIOR_ABSORPTION_V1.json",
+                                  "exists":  false
+                              },
+    "downstream_reports":  [
+                               {
+                                   "path":  "operations/reports/ACTIVE_BEHAVIOR_ABSORPTION_PROMOTION_V1.json",
+                                   "exists":  false
+                               },
+                               {
+                                   "path":  "operations/reports/ACTIVE_BEHAVIOR_TASK_DECISION_FLOW_V1.json",
+                                   "exists":  false
+                               }
+                           ],
+    "state_change_verified":  true,
+    "boundaries":  {
+                       "promotion_attempted":  false,
+                       "files_mutated_by_promotion":  false,
+                       "passport_active_created":  false,
+                       "live_runtime_touched":  false,
+                       "runtime_ready":  false,
+                       "proof_synthesized":  false
+                   },
+    "created_at":  "2026-07-11T15:09:30.1542885+04:00",
+    "passport_index_update_verified":  true,
+    "final_validators_pass":  true,
+    "map_current_pass":  true,
+    "index_entry_verified":  true
+}

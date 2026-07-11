@@ -64,7 +64,8 @@
                        "operations/active_behavior/validate_active_behavior_task_decision_flow_v1.ps1"
                    ],
     "proof_refs":  [
-
+                       "reports/self_development/ACTIVE_BEHAVIOR_BLOCKED_LIFECYCLE_PASS_V1.json",
+                       "tests/self_development/ACTIVE_BEHAVIOR_BLOCKED_LIFECYCLE_PASS_V1_PROOF.json"
                    ],
     "runtime_refs":  [
 
@@ -93,11 +94,13 @@
                                    "rerun map refresh/currentness validator"
                                ],
     "maturity":  "DRAFT",
-    "live_or_lab_status":  "NOT_PROVEN",
+    "live_or_lab_status":  "BLOCKED",
     "gaps":  [
-                 "organ-specific calibration missing",
-                 "runtime proof missing",
-                 "ACTIVE status forbidden",
+                 "BLOCKED_BY_MISSING_SOURCE_PROOF: operations/reports/FRESH_1000_CANDIDATE_BEHAVIOR_ABSORPTION_V1.json missing",
+                 "promotion forbidden until source proof exists",
+                 "do not synthesize or backfill proof",
+                 "runtime_ready false",
+                 "PASSPORT_ACTIVE forbidden",
                  "PROVEN_LIVE forbidden"
              ],
     "source_evidence":  [
@@ -105,5 +108,11 @@
                             "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                             "reports/self_development/ORGAN_PASSPORT_REVIEW_LANE_BATCH_GENERATOR_V1.json"
                         ],
-    "last_validated_at":  "2026-07-10T20:15:49.4451939+04:00"
+    "last_validated_at":  "2026-07-10T20:15:49.4451939+04:00",
+    "lifecycle_decision":  {
+                               "decision":  "BLOCKED_BY_MISSING_SOURCE_PROOF",
+                               "reason":  "active behavior promotion requires source proof and downstream reports; current state lacks source proof, so lifecycle must stop as BLOCKED instead of promoting",
+                               "state_change":  "DRAFT_NOT_PROVEN_TO_DRAFT_BLOCKED",
+                               "created_at":  "2026-07-11T15:09:30.1208090+04:00"
+                           }
 }

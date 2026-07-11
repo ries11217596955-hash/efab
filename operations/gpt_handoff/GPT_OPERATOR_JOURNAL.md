@@ -1317,3 +1317,71 @@ Boundary:
 - Not autonomous runtime.
 - Not PASSPORT_ACTIVE.
 - Not live readiness.
+
+## 2026-07-11 — Blocker passport lifecycle pass: operations_active_behavior V1
+
+STATUS: PASS / BLOCKER_LIFECYCLE_PASS / DRAFT_BLOCKED_NON_ACTIVE
+
+Context:
+- Owner accepted the need for one more lifecycle pass if useful.
+- We selected a negative/blocker cycle to avoid extracting Living Loop Contract V1 only from successful promotions.
+
+Candidate selected:
+- operations_active_behavior
+
+Why this candidate:
+- It was a real organ draft in REVIEW_LANE with validators but no proof refs.
+- Earlier attempts showed it could not be safely promoted because source proof was missing.
+- It provides the missing Living Loop case: correct action can be STOP/BLOCK, not promotion.
+
+Observed blocker:
+- Required source proof missing:
+  operations/reports/FRESH_1000_CANDIDATE_BEHAVIOR_ABSORPTION_V1.json
+- Downstream active behavior reports were also absent:
+  operations/reports/ACTIVE_BEHAVIOR_ABSORPTION_PROMOTION_V1.json
+  operations/reports/ACTIVE_BEHAVIOR_TASK_DECISION_FLOW_V1.json
+
+Decision:
+- BLOCKED_BY_MISSING_SOURCE_PROOF
+
+What was not done:
+- No promotion attempted.
+- No source proof synthesized.
+- No downstream report backfilled.
+- No PASSPORT_ACTIVE created.
+- No live runtime touched.
+- No runtime_ready claim.
+
+Lifecycle proof:
+- Added operations/active_behavior/build_active_behavior_blocked_lifecycle_pass_v1.ps1.
+- Added operations/active_behavior/validate_active_behavior_blocked_lifecycle_pass_v1.ps1.
+- Added reports/self_development/ACTIVE_BEHAVIOR_BLOCKED_LIFECYCLE_PASS_V1.json.
+- Added tests/self_development/ACTIVE_BEHAVIOR_BLOCKED_LIFECYCLE_PASS_V1_PROOF.json.
+
+Lifecycle state:
+- operations_active_behavior remains DRAFT.
+- live_or_lab_status changed from NOT_PROVEN to BLOCKED.
+- Passport now points to blocker proof refs.
+- Passport index shows DRAFT / BLOCKED.
+
+State-change verification:
+- Passport updated.
+- Passport index updated.
+- Body map refreshed.
+- Agent body composition map current validator PASS.
+- Blocker lifecycle validator PASS.
+
+Architectural lesson:
+- Living Loop completion is not always success/promotion.
+- A correct loop may end as BLOCKED_BY_MISSING_SOURCE_PROOF.
+- This is not failure; it is immune/lifecycle discipline.
+- Missing proof must become normalized Body State, not pressure to generate fake proof.
+- Living Loop Contract V1 must include STOP/BLOCK as valid return-to-parent outcomes.
+
+Boundary:
+- Not VALIDATED_LAB.
+- Not PROVEN_LAB.
+- Not active.
+- Not live.
+- Not runtime_ready.
+- Not autonomous runtime.

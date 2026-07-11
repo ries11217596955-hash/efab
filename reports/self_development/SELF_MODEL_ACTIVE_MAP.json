@@ -6,19 +6,19 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "d876246add262043dae7789de353d345e52dee91",
-    "subject_head":  "d876246add262043dae7789de353d345e52dee91",
-    "generated_at":  "2026-07-11T15:01:26.4515216+04:00",
+    "observed_head_at_generation":  "9ceafec8475acdd70a16057c06ebbe35827613cb",
+    "subject_head":  "9ceafec8475acdd70a16057c06ebbe35827613cb",
+    "generated_at":  "2026-07-11T15:11:57.7154465+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  1989,
+    "structural_path_count":  1993,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1989,
-                                    "sha256":  "736447de2a79b48f398aaaf8c2ab8df28bf040c47ad79d60ecc4b9a3fa1b4141"
+                                    "structural_file_count":  1993,
+                                    "sha256":  "3ab95967f152ee1b234672a497ecea7d9aa94e2d12b111137c596ff27754805a"
                                 },
     "module_count":  203,
     "validator_count":  174,
@@ -764,9 +764,9 @@
 
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "d876246add262043dae7789de353d345e52dee91",
-                                                               "committed_at":  "2026-07-11T14:04:42+04:00",
-                                                               "subject":  "passport: prove parallel life lifecycle pass"
+                                                               "head":  "9ceafec8475acdd70a16057c06ebbe35827613cb",
+                                                               "committed_at":  "2026-07-11T15:00:53+04:00",
+                                                               "subject":  "passport: prove live-like lifecycle pass"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -2066,21 +2066,22 @@
                                             "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                                             "discovery_method":  "bounded_git_ls_files_path_discovery",
                                             "evidence_counts":  {
-                                                                    "files":  10,
-                                                                    "scripts":  6,
-                                                                    "validators":  2,
+                                                                    "files":  12,
+                                                                    "scripts":  8,
+                                                                    "validators":  3,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  0,
                                                                     "docs":  0
                                                                 },
-                                            "file_count":  10,
-                                            "script_count":  6,
-                                            "validator_count":  2,
+                                            "file_count":  12,
+                                            "script_count":  8,
+                                            "validator_count":  3,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  0,
                                             "doc_count":  0,
                                             "validator_refs":  [
                                                                    "operations/active_behavior/validate_active_behavior_absorption_promotion_v1.ps1",
+                                                                   "operations/active_behavior/validate_active_behavior_blocked_lifecycle_pass_v1.ps1",
                                                                    "operations/active_behavior/validate_active_behavior_task_decision_flow_v1.ps1"
                                                                ],
                                             "proof_refs":  [
@@ -2090,6 +2091,7 @@
 
                                                                         ],
                                             "notable_files":  [
+                                                                  "operations/active_behavior/build_active_behavior_blocked_lifecycle_pass_v1.ps1",
                                                                   "operations/active_behavior/invoke_active_behavior_retrieval_v1.ps1",
                                                                   "operations/active_behavior/invoke_active_behavior_task_decision_v1.ps1",
                                                                   "operations/active_behavior/promote_fresh_1000_behavior_absorption_v1.ps1",
@@ -2099,14 +2101,17 @@
                                                                   "operations/active_behavior/rollback/active_behavior_absorption_fresh_1000_v1/rollback_manifest.json",
                                                                   "operations/active_behavior/rollback_active_behavior_absorption_promotion_v1.ps1",
                                                                   "operations/active_behavior/validate_active_behavior_absorption_promotion_v1.ps1",
+                                                                  "operations/active_behavior/validate_active_behavior_blocked_lifecycle_pass_v1.ps1",
                                                                   "operations/active_behavior/validate_active_behavior_task_decision_flow_v1.ps1"
                                                               ],
                                             "primary_evidence_refs":  [
+                                                                          "operations/active_behavior/build_active_behavior_blocked_lifecycle_pass_v1.ps1",
                                                                           "operations/active_behavior/invoke_active_behavior_retrieval_v1.ps1",
                                                                           "operations/active_behavior/invoke_active_behavior_task_decision_v1.ps1",
                                                                           "operations/active_behavior/promote_fresh_1000_behavior_absorption_v1.ps1",
                                                                           "operations/active_behavior/rollback_active_behavior_absorption_promotion_v1.ps1",
                                                                           "operations/active_behavior/validate_active_behavior_absorption_promotion_v1.ps1",
+                                                                          "operations/active_behavior/validate_active_behavior_blocked_lifecycle_pass_v1.ps1",
                                                                           "operations/active_behavior/validate_active_behavior_task_decision_flow_v1.ps1"
                                                                       ],
                                             "needs_triage":  true,
@@ -9027,9 +9032,9 @@
 
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "d876246add262043dae7789de353d345e52dee91",
-                                                     "committed_at":  "2026-07-11T14:04:42+04:00",
-                                                     "subject":  "passport: prove parallel life lifecycle pass"
+                                                     "head":  "9ceafec8475acdd70a16057c06ebbe35827613cb",
+                                                     "committed_at":  "2026-07-11T15:00:53+04:00",
+                                                     "subject":  "passport: prove live-like lifecycle pass"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -10327,21 +10332,22 @@
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                            "discovery_method":  "bounded_git_ls_files_path_discovery",
                            "evidence_counts":  {
-                                                   "files":  10,
-                                                   "scripts":  6,
-                                                   "validators":  2,
+                                                   "files":  12,
+                                                   "scripts":  8,
+                                                   "validators":  3,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  0,
                                                    "docs":  0
                                                },
-                           "file_count":  10,
-                           "script_count":  6,
-                           "validator_count":  2,
+                           "file_count":  12,
+                           "script_count":  8,
+                           "validator_count":  3,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  0,
                            "doc_count":  0,
                            "validator_refs":  [
                                                   "operations/active_behavior/validate_active_behavior_absorption_promotion_v1.ps1",
+                                                  "operations/active_behavior/validate_active_behavior_blocked_lifecycle_pass_v1.ps1",
                                                   "operations/active_behavior/validate_active_behavior_task_decision_flow_v1.ps1"
                                               ],
                            "proof_refs":  [
@@ -10351,6 +10357,7 @@
 
                                                        ],
                            "notable_files":  [
+                                                 "operations/active_behavior/build_active_behavior_blocked_lifecycle_pass_v1.ps1",
                                                  "operations/active_behavior/invoke_active_behavior_retrieval_v1.ps1",
                                                  "operations/active_behavior/invoke_active_behavior_task_decision_v1.ps1",
                                                  "operations/active_behavior/promote_fresh_1000_behavior_absorption_v1.ps1",
@@ -10360,14 +10367,17 @@
                                                  "operations/active_behavior/rollback/active_behavior_absorption_fresh_1000_v1/rollback_manifest.json",
                                                  "operations/active_behavior/rollback_active_behavior_absorption_promotion_v1.ps1",
                                                  "operations/active_behavior/validate_active_behavior_absorption_promotion_v1.ps1",
+                                                 "operations/active_behavior/validate_active_behavior_blocked_lifecycle_pass_v1.ps1",
                                                  "operations/active_behavior/validate_active_behavior_task_decision_flow_v1.ps1"
                                              ],
                            "primary_evidence_refs":  [
+                                                         "operations/active_behavior/build_active_behavior_blocked_lifecycle_pass_v1.ps1",
                                                          "operations/active_behavior/invoke_active_behavior_retrieval_v1.ps1",
                                                          "operations/active_behavior/invoke_active_behavior_task_decision_v1.ps1",
                                                          "operations/active_behavior/promote_fresh_1000_behavior_absorption_v1.ps1",
                                                          "operations/active_behavior/rollback_active_behavior_absorption_promotion_v1.ps1",
                                                          "operations/active_behavior/validate_active_behavior_absorption_promotion_v1.ps1",
+                                                         "operations/active_behavior/validate_active_behavior_blocked_lifecycle_pass_v1.ps1",
                                                          "operations/active_behavior/validate_active_behavior_task_decision_flow_v1.ps1"
                                                      ],
                            "needs_triage":  true,
