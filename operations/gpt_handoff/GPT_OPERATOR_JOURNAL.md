@@ -1543,3 +1543,65 @@ Boundary:
 
 Next safe direction:
 - Build Body State Aggregator V1 that reads evaluator signals and groups organism state into actionable categories: validated_lab_non_active, blocked, boundary_guarded, owner_decision_required, repair_required, no_action_needed.
+
+## 2026-07-11 — Body State Aggregator V1 from Living Loop signals
+
+STATUS: PASS / LAB_ONLY_BODY_STATE_AGGREGATOR / NON_MUTATING / NOT_BRAIN
+
+Context:
+- Continued after Living Loop Evaluator V1.
+- Goal: turn normalized lifecycle signals into explicit Body State buckets.
+- This is not Brain and not execution authority.
+
+Created:
+- contracts/living_loop/BODY_STATE_AGGREGATOR_V1_REQUIREMENT.md
+- operations/living_loop/build_body_state_aggregator_v1.ps1
+- operations/living_loop/validate_body_state_aggregator_v1.ps1
+- reports/self_development/BODY_STATE_AGGREGATOR_V1_STATE.json
+- reports/self_development/BODY_STATE_AGGREGATOR_V1_REPORT.json
+- tests/self_development/BODY_STATE_AGGREGATOR_V1_PROOF.json
+
+Input:
+- reports/self_development/LIVING_LOOP_EVALUATOR_V1_SIGNALS.json
+- tests/self_development/LIVING_LOOP_EVALUATOR_V1_PROOF.json
+- contracts/living_loop/LIVING_LOOP_CONTRACT_V1.json
+- self_model/organ_passports/_index/ORGAN_PASSPORT_DRAFT_INDEX_V1.json
+
+Body State buckets produced:
+- validated_lab_non_active: 3
+- blocked: 1
+- boundary_guarded: 2
+- return_to_parent: 1
+- owner_decision_required: 0
+- repair_required: 1
+- no_action_needed: 3
+
+Summary:
+- total_signals: 7
+- highest_severity: high
+- brain_input_ready: true
+- mutation_authorized: false
+- runtime_ready: false
+- live_ready: false
+- autonomous_runtime: false
+- recommended_next_route: REPAIR_BLOCKED_SOURCE_PROOF_OR_KEEP_BLOCKED
+
+Validator:
+- PASS_BODY_STATE_AGGREGATOR_V1
+
+Architectural result:
+- We now have Evidence -> Signal -> Body State.
+- Body State Aggregator preserves blocked and boundary signals instead of smoothing them into success.
+- Brain can consume this Body State, but Aggregator itself cannot choose or execute tasks.
+- Mutation remains unauthorized.
+
+Boundary:
+- Not Brain.
+- Not scheduler.
+- Not autonomous loop.
+- Not runtime authority.
+- Not mutation authority.
+- Not PASSPORT_ACTIVE.
+
+Next safe direction:
+- Build Reasoner V1 that reads Body State and explains causes: why blocked, what is symptom/root cause, what action class is legal. It still must not execute.

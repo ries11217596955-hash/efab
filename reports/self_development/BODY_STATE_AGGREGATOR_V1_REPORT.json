@@ -1,0 +1,43 @@
+﻿{
+    "schema":  "body_state_aggregator_v1_report",
+    "status":  "PASS_BODY_STATE_AGGREGATOR_V1",
+    "requirement":  "contracts/living_loop/BODY_STATE_AGGREGATOR_V1_REQUIREMENT.md",
+    "state_ref":  "reports/self_development/BODY_STATE_AGGREGATOR_V1_STATE.json",
+    "source_signals_ref":  "reports/self_development/LIVING_LOOP_EVALUATOR_V1_SIGNALS.json",
+    "summary":  {
+                    "total_signals":  7,
+                    "validated_lab_non_active_count":  3,
+                    "blocked_count":  1,
+                    "boundary_guarded_count":  2,
+                    "return_to_parent_count":  1,
+                    "owner_decision_required_count":  0,
+                    "repair_required_count":  1,
+                    "no_action_needed_count":  3,
+                    "highest_severity":  "high",
+                    "recommended_next_route":  "REPAIR_BLOCKED_SOURCE_PROOF_OR_KEEP_BLOCKED",
+                    "brain_input_ready":  true,
+                    "mutation_authorized":  false,
+                    "runtime_ready":  false,
+                    "live_ready":  false,
+                    "autonomous_runtime":  false
+                },
+    "laws_enforced":  [
+                          "No signal -\u003e no Body State",
+                          "No evidence_ref -\u003e invalid signal",
+                          "No passport_ref -\u003e invalid signal",
+                          "Blocked signal remains blocked",
+                          "Boundary guard signal does not become live readiness",
+                          "Aggregator is lab-only and non-mutating"
+                      ],
+    "negative_guards":  {
+                            "no_passport_active_created":  true,
+                            "no_live_runtime_touched":  true,
+                            "runtime_ready_overclaim":  false,
+                            "live_ready_overclaim":  false,
+                            "autonomous_runtime_overclaim":  false,
+                            "non_mutating":  true,
+                            "not_brain":  true,
+                            "not_execution_authority":  true
+                        },
+    "created_at":  "2026-07-11T23:07:03.1850258+04:00"
+}

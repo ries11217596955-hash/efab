@@ -1,32 +1,34 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-11T23:00:40.1484771+04:00",
+    "checked_at":  "2026-07-11T23:08:14.7013431+04:00",
     "branch":  "main",
-    "observed_head":  "bfce8a2f98cab0130d194e741cd9e7721322a1c8",
-    "subject_head":  "bfce8a2f98cab0130d194e741cd9e7721322a1c8",
+    "observed_head":  "66614cadb8c080535b4c40397fb00d80987fd56e",
+    "subject_head":  "66614cadb8c080535b4c40397fb00d80987fd56e",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "contracts/living_loop/LIVING_LOOP_CONTRACT_V1.json",
-                          "contracts/living_loop/LIVING_LOOP_CONTRACT_V1.md",
+                          "contracts/living_loop/LIVING_LOOP_EVALUATOR_V1_REQUIREMENT.md",
                           "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                          "operations/living_loop/validate_living_loop_contract_v1.ps1",
-                          "reports/self_development/LIVING_LOOP_CONTRACT_V1_REPORT.json",
+                          "operations/living_loop/build_living_loop_evaluator_v1.ps1",
+                          "operations/living_loop/validate_living_loop_evaluator_v1.ps1",
+                          "reports/self_development/LIVING_LOOP_EVALUATOR_V1_REPORT.json",
+                          "reports/self_development/LIVING_LOOP_EVALUATOR_V1_SIGNALS.json",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "tests/self_development/LIVING_LOOP_CONTRACT_V1_PROOF.json"
+                          "tests/self_development/LIVING_LOOP_EVALUATOR_V1_PROOF.json"
                       ],
     "structural_paths":  [
-                             "contracts/living_loop/LIVING_LOOP_CONTRACT_V1.json",
-                             "contracts/living_loop/LIVING_LOOP_CONTRACT_V1.md",
+                             "contracts/living_loop/LIVING_LOOP_EVALUATOR_V1_REQUIREMENT.md",
                              "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                             "operations/living_loop/validate_living_loop_contract_v1.ps1",
-                             "reports/self_development/LIVING_LOOP_CONTRACT_V1_REPORT.json",
-                             "tests/self_development/LIVING_LOOP_CONTRACT_V1_PROOF.json"
+                             "operations/living_loop/build_living_loop_evaluator_v1.ps1",
+                             "operations/living_loop/validate_living_loop_evaluator_v1.ps1",
+                             "reports/self_development/LIVING_LOOP_EVALUATOR_V1_REPORT.json",
+                             "reports/self_development/LIVING_LOOP_EVALUATOR_V1_SIGNALS.json",
+                             "tests/self_development/LIVING_LOOP_EVALUATOR_V1_PROOF.json"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -38,8 +40,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2004,
-                                    "sha256":  "f03ebf686c932ca85e69c03bd9a3ecf99398b26d8a52aaf7a5ac31c152a773df"
+                                    "structural_file_count":  2010,
+                                    "sha256":  "35970a74d1ed08567caca2307d2f42b6133bf60757fa190f928e9252d02918e6"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -66,12 +68,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  161,
-                         "structural_path_count":  2004,
+                         "structural_path_count":  2010,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-11T23:01:09.7326608+04:00"
+    "refreshed_at":  "2026-07-11T23:08:45.0275207+04:00"
 }

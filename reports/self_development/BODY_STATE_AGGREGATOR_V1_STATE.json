@@ -1,0 +1,175 @@
+﻿{
+    "schema":  "body_state_aggregator_v1_state",
+    "status":  "PASS_BODY_STATE_AGGREGATOR_V1_STATE",
+    "source_signals_ref":  "reports/self_development/LIVING_LOOP_EVALUATOR_V1_SIGNALS.json",
+    "evaluator_proof_ref":  "tests/self_development/LIVING_LOOP_EVALUATOR_V1_PROOF.json",
+    "contract_ref":  "contracts/living_loop/LIVING_LOOP_CONTRACT_V1.json",
+    "passport_index_ref":  "self_model/organ_passports/_index/ORGAN_PASSPORT_DRAFT_INDEX_V1.json",
+    "categories":  {
+                       "validated_lab_non_active":  [
+                                                        {
+                                                            "signal_id":  "OPERATIONS_ORGAN_PROMOTION_LANES__VALIDATED_LAB_NON_ACTIVE_SIGNAL",
+                                                            "organ_id":  "operations_organ_promotion_lanes",
+                                                            "signal_type":  "VALIDATED_LAB_NON_ACTIVE_SIGNAL",
+                                                            "severity":  "info",
+                                                            "lifecycle_decision":  "PROMOTE_TO_VALIDATED_LAB_KEEP_NON_ACTIVE",
+                                                            "body_state":  "VALIDATED_LAB_NON_ACTIVE",
+                                                            "evidence_ref":  "tests/self_development/ORGAN_PROMOTION_LANES_LIFECYCLE_PASS_V1_PROOF.json",
+                                                            "passport_ref":  "self_model/organ_passports/operations_organ_promotion_lanes/ORGAN_PASSPORT_V1.json",
+                                                            "recommended_outcome":  "ALLOW_AS_LAB_SIGNAL_NO_ACTIVE_AUTHORITY",
+                                                            "reason":  "Lifecycle proof validates lab/non-active state change with no live or active authority."
+                                                        },
+                                                        {
+                                                            "signal_id":  "OPERATIONS_PARALLEL_LIFE__VALIDATED_LAB_NON_ACTIVE_SIGNAL",
+                                                            "organ_id":  "operations_parallel_life",
+                                                            "signal_type":  "VALIDATED_LAB_NON_ACTIVE_SIGNAL",
+                                                            "severity":  "info",
+                                                            "lifecycle_decision":  "PROMOTE_TO_VALIDATED_LAB_KEEP_NON_ACTIVE",
+                                                            "body_state":  "VALIDATED_LAB_NON_ACTIVE",
+                                                            "evidence_ref":  "tests/self_development/PARALLEL_LIFE_LIFECYCLE_PASS_V1_PROOF.json",
+                                                            "passport_ref":  "self_model/organ_passports/operations_parallel_life/ORGAN_PASSPORT_V1.json",
+                                                            "recommended_outcome":  "ALLOW_AS_LAB_SIGNAL_NO_ACTIVE_AUTHORITY",
+                                                            "reason":  "Lifecycle proof validates lab/non-active state change with no live or active authority."
+                                                        },
+                                                        {
+                                                            "signal_id":  "OPERATIONS_LIVE_LIKE__VALIDATED_LAB_NON_ACTIVE_SIGNAL",
+                                                            "organ_id":  "operations_live_like",
+                                                            "signal_type":  "VALIDATED_LAB_NON_ACTIVE_SIGNAL",
+                                                            "severity":  "info",
+                                                            "lifecycle_decision":  "PROMOTE_TO_VALIDATED_LAB_KEEP_NON_ACTIVE",
+                                                            "body_state":  "VALIDATED_LAB_NON_ACTIVE",
+                                                            "evidence_ref":  "tests/self_development/LIVE_LIKE_LIFECYCLE_PASS_V1_PROOF.json",
+                                                            "passport_ref":  "self_model/organ_passports/operations_live_like/ORGAN_PASSPORT_V1.json",
+                                                            "recommended_outcome":  "ALLOW_AS_LAB_SIGNAL_NO_ACTIVE_AUTHORITY",
+                                                            "reason":  "Lifecycle proof validates lab/non-active state change with no live or active authority."
+                                                        }
+                                                    ],
+                       "blocked":  [
+                                       {
+                                           "signal_id":  "OPERATIONS_ACTIVE_BEHAVIOR__BLOCKED_MISSING_SOURCE_PROOF_SIGNAL",
+                                           "organ_id":  "operations_active_behavior",
+                                           "signal_type":  "BLOCKED_MISSING_SOURCE_PROOF_SIGNAL",
+                                           "severity":  "high",
+                                           "lifecycle_decision":  "BLOCKED_BY_MISSING_SOURCE_PROOF",
+                                           "body_state":  "DRAFT_BLOCKED",
+                                           "evidence_ref":  "tests/self_development/ACTIVE_BEHAVIOR_BLOCKED_LIFECYCLE_PASS_V1_PROOF.json",
+                                           "passport_ref":  "self_model/organ_passports/operations_active_behavior/ORGAN_PASSPORT_V1.json",
+                                           "recommended_outcome":  "BLOCK_AND_RETURN_TO_PARENT",
+                                           "reason":  "Missing source proof is a Body State blocker; promotion forbidden and fake proof forbidden."
+                                       }
+                                   ],
+                       "boundary_guarded":  [
+                                                {
+                                                    "signal_id":  "OPERATIONS_PARALLEL_LIFE__BOUNDARY_GUARD_SIGNAL",
+                                                    "organ_id":  "operations_parallel_life",
+                                                    "signal_type":  "BOUNDARY_GUARD_SIGNAL",
+                                                    "severity":  "high",
+                                                    "lifecycle_decision":  "PROMOTE_TO_VALIDATED_LAB_KEEP_NON_ACTIVE",
+                                                    "body_state":  "BOUNDARY_GUARDED_LAB_ONLY",
+                                                    "evidence_ref":  "tests/self_development/PARALLEL_LIFE_LIFECYCLE_PASS_V1_PROOF.json",
+                                                    "passport_ref":  "self_model/organ_passports/operations_parallel_life/ORGAN_PASSPORT_V1.json",
+                                                    "recommended_outcome":  "PRESERVE_LAB_ONLY_BOUNDARY",
+                                                    "reason":  "Lab/live/runtime boundaries must remain explicit; observation or coordination signal is not live readiness."
+                                                },
+                                                {
+                                                    "signal_id":  "OPERATIONS_LIVE_LIKE__BOUNDARY_GUARD_SIGNAL",
+                                                    "organ_id":  "operations_live_like",
+                                                    "signal_type":  "BOUNDARY_GUARD_SIGNAL",
+                                                    "severity":  "high",
+                                                    "lifecycle_decision":  "PROMOTE_TO_VALIDATED_LAB_KEEP_NON_ACTIVE",
+                                                    "body_state":  "BOUNDARY_GUARDED_LAB_ONLY",
+                                                    "evidence_ref":  "tests/self_development/LIVE_LIKE_LIFECYCLE_PASS_V1_PROOF.json",
+                                                    "passport_ref":  "self_model/organ_passports/operations_live_like/ORGAN_PASSPORT_V1.json",
+                                                    "recommended_outcome":  "PRESERVE_LAB_ONLY_BOUNDARY",
+                                                    "reason":  "Lab/live/runtime boundaries must remain explicit; observation or coordination signal is not live readiness."
+                                                }
+                                            ],
+                       "return_to_parent":  [
+                                                {
+                                                    "signal_id":  "LIVING_LOOP__RETURN_TO_PARENT_SIGNAL",
+                                                    "organ_id":  "living_loop_evaluator_v1",
+                                                    "signal_type":  "RETURN_TO_PARENT_SIGNAL",
+                                                    "severity":  "info",
+                                                    "lifecycle_decision":  "CONTINUE_PARENT_TASK",
+                                                    "body_state":  "EVALUATOR_EMITTED_SIGNALS_FROM_PROOF_BASE",
+                                                    "evidence_ref":  "contracts/living_loop/LIVING_LOOP_CONTRACT_V1.json",
+                                                    "passport_ref":  "NOT_A_PASSPORTED_ORGAN_YET",
+                                                    "recommended_outcome":  "NEXT_LAB_ONLY_SIGNAL_CONSUMER_OR_BODY_STATE_AGGREGATOR",
+                                                    "reason":  "Evaluator completed proof-to-signal pass and returns normalized state to parent route."
+                                                }
+                                            ],
+                       "owner_decision_required":  [
+
+                                                   ],
+                       "repair_required":  [
+                                               {
+                                                   "signal_id":  "OPERATIONS_ACTIVE_BEHAVIOR__BLOCKED_MISSING_SOURCE_PROOF_SIGNAL",
+                                                   "organ_id":  "operations_active_behavior",
+                                                   "signal_type":  "BLOCKED_MISSING_SOURCE_PROOF_SIGNAL",
+                                                   "severity":  "high",
+                                                   "lifecycle_decision":  "BLOCKED_BY_MISSING_SOURCE_PROOF",
+                                                   "body_state":  "DRAFT_BLOCKED",
+                                                   "evidence_ref":  "tests/self_development/ACTIVE_BEHAVIOR_BLOCKED_LIFECYCLE_PASS_V1_PROOF.json",
+                                                   "passport_ref":  "self_model/organ_passports/operations_active_behavior/ORGAN_PASSPORT_V1.json",
+                                                   "recommended_outcome":  "BLOCK_AND_RETURN_TO_PARENT",
+                                                   "reason":  "Missing source proof is a Body State blocker; promotion forbidden and fake proof forbidden."
+                                               }
+                                           ],
+                       "no_action_needed":  [
+                                                {
+                                                    "signal_id":  "OPERATIONS_ORGAN_PROMOTION_LANES__VALIDATED_LAB_NON_ACTIVE_SIGNAL",
+                                                    "organ_id":  "operations_organ_promotion_lanes",
+                                                    "signal_type":  "VALIDATED_LAB_NON_ACTIVE_SIGNAL",
+                                                    "severity":  "info",
+                                                    "lifecycle_decision":  "PROMOTE_TO_VALIDATED_LAB_KEEP_NON_ACTIVE",
+                                                    "body_state":  "VALIDATED_LAB_NON_ACTIVE",
+                                                    "evidence_ref":  "tests/self_development/ORGAN_PROMOTION_LANES_LIFECYCLE_PASS_V1_PROOF.json",
+                                                    "passport_ref":  "self_model/organ_passports/operations_organ_promotion_lanes/ORGAN_PASSPORT_V1.json",
+                                                    "recommended_outcome":  "ALLOW_AS_LAB_SIGNAL_NO_ACTIVE_AUTHORITY",
+                                                    "reason":  "Lifecycle proof validates lab/non-active state change with no live or active authority."
+                                                },
+                                                {
+                                                    "signal_id":  "OPERATIONS_PARALLEL_LIFE__VALIDATED_LAB_NON_ACTIVE_SIGNAL",
+                                                    "organ_id":  "operations_parallel_life",
+                                                    "signal_type":  "VALIDATED_LAB_NON_ACTIVE_SIGNAL",
+                                                    "severity":  "info",
+                                                    "lifecycle_decision":  "PROMOTE_TO_VALIDATED_LAB_KEEP_NON_ACTIVE",
+                                                    "body_state":  "VALIDATED_LAB_NON_ACTIVE",
+                                                    "evidence_ref":  "tests/self_development/PARALLEL_LIFE_LIFECYCLE_PASS_V1_PROOF.json",
+                                                    "passport_ref":  "self_model/organ_passports/operations_parallel_life/ORGAN_PASSPORT_V1.json",
+                                                    "recommended_outcome":  "ALLOW_AS_LAB_SIGNAL_NO_ACTIVE_AUTHORITY",
+                                                    "reason":  "Lifecycle proof validates lab/non-active state change with no live or active authority."
+                                                },
+                                                {
+                                                    "signal_id":  "OPERATIONS_LIVE_LIKE__VALIDATED_LAB_NON_ACTIVE_SIGNAL",
+                                                    "organ_id":  "operations_live_like",
+                                                    "signal_type":  "VALIDATED_LAB_NON_ACTIVE_SIGNAL",
+                                                    "severity":  "info",
+                                                    "lifecycle_decision":  "PROMOTE_TO_VALIDATED_LAB_KEEP_NON_ACTIVE",
+                                                    "body_state":  "VALIDATED_LAB_NON_ACTIVE",
+                                                    "evidence_ref":  "tests/self_development/LIVE_LIKE_LIFECYCLE_PASS_V1_PROOF.json",
+                                                    "passport_ref":  "self_model/organ_passports/operations_live_like/ORGAN_PASSPORT_V1.json",
+                                                    "recommended_outcome":  "ALLOW_AS_LAB_SIGNAL_NO_ACTIVE_AUTHORITY",
+                                                    "reason":  "Lifecycle proof validates lab/non-active state change with no live or active authority."
+                                                }
+                                            ]
+                   },
+    "summary":  {
+                    "total_signals":  7,
+                    "validated_lab_non_active_count":  3,
+                    "blocked_count":  1,
+                    "boundary_guarded_count":  2,
+                    "return_to_parent_count":  1,
+                    "owner_decision_required_count":  0,
+                    "repair_required_count":  1,
+                    "no_action_needed_count":  3,
+                    "highest_severity":  "high",
+                    "recommended_next_route":  "REPAIR_BLOCKED_SOURCE_PROOF_OR_KEEP_BLOCKED",
+                    "brain_input_ready":  true,
+                    "mutation_authorized":  false,
+                    "runtime_ready":  false,
+                    "live_ready":  false,
+                    "autonomous_runtime":  false
+                },
+    "created_at":  "2026-07-11T23:07:03.1850258+04:00"
+}
