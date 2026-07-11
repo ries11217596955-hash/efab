@@ -6,19 +6,19 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "9ceafec8475acdd70a16057c06ebbe35827613cb",
-    "subject_head":  "9ceafec8475acdd70a16057c06ebbe35827613cb",
-    "generated_at":  "2026-07-11T15:11:57.7154465+04:00",
+    "observed_head_at_generation":  "94561d4bd3c45828f6770adb9b98a0cad4308798",
+    "subject_head":  "94561d4bd3c45828f6770adb9b98a0cad4308798",
+    "generated_at":  "2026-07-11T15:52:35.2047653+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  1993,
+    "structural_path_count":  1998,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1993,
-                                    "sha256":  "3ab95967f152ee1b234672a497ecea7d9aa94e2d12b111137c596ff27754805a"
+                                    "structural_file_count":  1998,
+                                    "sha256":  "e46903968a420605a1aa11a4c73f0114eb3d1bf2aa6596df7ff1734d4f3e256a"
                                 },
     "module_count":  203,
     "validator_count":  174,
@@ -764,9 +764,9 @@
 
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "9ceafec8475acdd70a16057c06ebbe35827613cb",
-                                                               "committed_at":  "2026-07-11T15:00:53+04:00",
-                                                               "subject":  "passport: prove live-like lifecycle pass"
+                                                               "head":  "94561d4bd3c45828f6770adb9b98a0cad4308798",
+                                                               "committed_at":  "2026-07-11T15:11:24+04:00",
+                                                               "subject":  "passport: prove active behavior blocked lifecycle pass"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -911,6 +911,49 @@
                                                                           "contracts/controlled_runtime/CONTROLLED_RUNTIME_WIRING_REVIEW_V1.md",
                                                                           "contracts/controlled_runtime/PROMOTION_REVIEW_CONTROLLED_RUNTIME_V1.json",
                                                                           "contracts/controlled_runtime/PROMOTION_REVIEW_CONTROLLED_RUNTIME_V1.md"
+                                                                      ],
+                                            "needs_triage":  true,
+                                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
+                                            "source_ref":  "bounded_tracked_file_discovery_v1",
+                                            "is_required_component":  false
+                                        },
+                                        {
+                                            "id":  "contracts_living_loop",
+                                            "path":  "contracts/living_loop",
+                                            "root":  "contracts/living_loop",
+                                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
+                                            "discovery_method":  "bounded_git_ls_files_path_discovery",
+                                            "evidence_counts":  {
+                                                                    "files":  2,
+                                                                    "scripts":  0,
+                                                                    "validators":  0,
+                                                                    "proofs":  0,
+                                                                    "contracts_or_policies":  2,
+                                                                    "docs":  1
+                                                                },
+                                            "file_count":  2,
+                                            "script_count":  0,
+                                            "validator_count":  0,
+                                            "proof_file_count":  0,
+                                            "contract_or_policy_count":  2,
+                                            "doc_count":  1,
+                                            "validator_refs":  [
+
+                                                               ],
+                                            "proof_refs":  [
+
+                                                           ],
+                                            "contract_or_policy_refs":  [
+                                                                            "contracts/living_loop/LIVING_LOOP_CONTRACT_V1.json",
+                                                                            "contracts/living_loop/LIVING_LOOP_CONTRACT_V1.md"
+                                                                        ],
+                                            "notable_files":  [
+                                                                  "contracts/living_loop/LIVING_LOOP_CONTRACT_V1.json",
+                                                                  "contracts/living_loop/LIVING_LOOP_CONTRACT_V1.md"
+                                                              ],
+                                            "primary_evidence_refs":  [
+                                                                          "contracts/living_loop/LIVING_LOOP_CONTRACT_V1.json",
+                                                                          "contracts/living_loop/LIVING_LOOP_CONTRACT_V1.md"
                                                                       ],
                                             "needs_triage":  true,
                                             "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
@@ -2390,6 +2433,46 @@
                                                                           "operations/live_start/stop_school_aimo_controlled_live_v1.ps1",
                                                                           "operations/live_start/validate_aimo_agent_only_restart_v1.ps1",
                                                                           "operations/live_start/validate_school_aimo_controlled_live_start_v1.ps1"
+                                                                      ],
+                                            "needs_triage":  true,
+                                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
+                                            "source_ref":  "bounded_tracked_file_discovery_v1",
+                                            "is_required_component":  false
+                                        },
+                                        {
+                                            "id":  "operations_living_loop",
+                                            "path":  "operations/living_loop",
+                                            "root":  "operations/living_loop",
+                                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
+                                            "discovery_method":  "bounded_git_ls_files_path_discovery",
+                                            "evidence_counts":  {
+                                                                    "files":  1,
+                                                                    "scripts":  1,
+                                                                    "validators":  1,
+                                                                    "proofs":  0,
+                                                                    "contracts_or_policies":  1,
+                                                                    "docs":  0
+                                                                },
+                                            "file_count":  1,
+                                            "script_count":  1,
+                                            "validator_count":  1,
+                                            "proof_file_count":  0,
+                                            "contract_or_policy_count":  1,
+                                            "doc_count":  0,
+                                            "validator_refs":  [
+                                                                   "operations/living_loop/validate_living_loop_contract_v1.ps1"
+                                                               ],
+                                            "proof_refs":  [
+
+                                                           ],
+                                            "contract_or_policy_refs":  [
+                                                                            "operations/living_loop/validate_living_loop_contract_v1.ps1"
+                                                                        ],
+                                            "notable_files":  [
+                                                                  "operations/living_loop/validate_living_loop_contract_v1.ps1"
+                                                              ],
+                                            "primary_evidence_refs":  [
+                                                                          "operations/living_loop/validate_living_loop_contract_v1.ps1"
                                                                       ],
                                             "needs_triage":  true,
                                             "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
@@ -8262,11 +8345,11 @@
                                 ],
     "component_authority_summary":  {
                                         "confirmed_components":  8,
-                                        "primary_evidence_candidates":  151,
+                                        "primary_evidence_candidates":  153,
                                         "legacy_unverified_hints":  4,
                                         "rejected_or_stale_hints":  3,
                                         "required_components":  8,
-                                        "total_components_in_compatibility_view":  159,
+                                        "total_components_in_compatibility_view":  161,
                                         "bounded_discovery_pathspecs":  [
                                                                             "operations",
                                                                             "modules",
@@ -9032,9 +9115,9 @@
 
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "9ceafec8475acdd70a16057c06ebbe35827613cb",
-                                                     "committed_at":  "2026-07-11T15:00:53+04:00",
-                                                     "subject":  "passport: prove live-like lifecycle pass"
+                                                     "head":  "94561d4bd3c45828f6770adb9b98a0cad4308798",
+                                                     "committed_at":  "2026-07-11T15:11:24+04:00",
+                                                     "subject":  "passport: prove active behavior blocked lifecycle pass"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -9177,6 +9260,49 @@
                                                          "contracts/controlled_runtime/CONTROLLED_RUNTIME_WIRING_REVIEW_V1.md",
                                                          "contracts/controlled_runtime/PROMOTION_REVIEW_CONTROLLED_RUNTIME_V1.json",
                                                          "contracts/controlled_runtime/PROMOTION_REVIEW_CONTROLLED_RUNTIME_V1.md"
+                                                     ],
+                           "needs_triage":  true,
+                           "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
+                           "source_ref":  "bounded_tracked_file_discovery_v1",
+                           "is_required_component":  false
+                       },
+                       {
+                           "id":  "contracts_living_loop",
+                           "path":  "contracts/living_loop",
+                           "root":  "contracts/living_loop",
+                           "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
+                           "discovery_method":  "bounded_git_ls_files_path_discovery",
+                           "evidence_counts":  {
+                                                   "files":  2,
+                                                   "scripts":  0,
+                                                   "validators":  0,
+                                                   "proofs":  0,
+                                                   "contracts_or_policies":  2,
+                                                   "docs":  1
+                                               },
+                           "file_count":  2,
+                           "script_count":  0,
+                           "validator_count":  0,
+                           "proof_file_count":  0,
+                           "contract_or_policy_count":  2,
+                           "doc_count":  1,
+                           "validator_refs":  [
+
+                                              ],
+                           "proof_refs":  [
+
+                                          ],
+                           "contract_or_policy_refs":  [
+                                                           "contracts/living_loop/LIVING_LOOP_CONTRACT_V1.json",
+                                                           "contracts/living_loop/LIVING_LOOP_CONTRACT_V1.md"
+                                                       ],
+                           "notable_files":  [
+                                                 "contracts/living_loop/LIVING_LOOP_CONTRACT_V1.json",
+                                                 "contracts/living_loop/LIVING_LOOP_CONTRACT_V1.md"
+                                             ],
+                           "primary_evidence_refs":  [
+                                                         "contracts/living_loop/LIVING_LOOP_CONTRACT_V1.json",
+                                                         "contracts/living_loop/LIVING_LOOP_CONTRACT_V1.md"
                                                      ],
                            "needs_triage":  true,
                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
@@ -10656,6 +10782,46 @@
                                                          "operations/live_start/stop_school_aimo_controlled_live_v1.ps1",
                                                          "operations/live_start/validate_aimo_agent_only_restart_v1.ps1",
                                                          "operations/live_start/validate_school_aimo_controlled_live_start_v1.ps1"
+                                                     ],
+                           "needs_triage":  true,
+                           "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
+                           "source_ref":  "bounded_tracked_file_discovery_v1",
+                           "is_required_component":  false
+                       },
+                       {
+                           "id":  "operations_living_loop",
+                           "path":  "operations/living_loop",
+                           "root":  "operations/living_loop",
+                           "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
+                           "discovery_method":  "bounded_git_ls_files_path_discovery",
+                           "evidence_counts":  {
+                                                   "files":  1,
+                                                   "scripts":  1,
+                                                   "validators":  1,
+                                                   "proofs":  0,
+                                                   "contracts_or_policies":  1,
+                                                   "docs":  0
+                                               },
+                           "file_count":  1,
+                           "script_count":  1,
+                           "validator_count":  1,
+                           "proof_file_count":  0,
+                           "contract_or_policy_count":  1,
+                           "doc_count":  0,
+                           "validator_refs":  [
+                                                  "operations/living_loop/validate_living_loop_contract_v1.ps1"
+                                              ],
+                           "proof_refs":  [
+
+                                          ],
+                           "contract_or_policy_refs":  [
+                                                           "operations/living_loop/validate_living_loop_contract_v1.ps1"
+                                                       ],
+                           "notable_files":  [
+                                                 "operations/living_loop/validate_living_loop_contract_v1.ps1"
+                                             ],
+                           "primary_evidence_refs":  [
+                                                         "operations/living_loop/validate_living_loop_contract_v1.ps1"
                                                      ],
                            "needs_triage":  true,
                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",

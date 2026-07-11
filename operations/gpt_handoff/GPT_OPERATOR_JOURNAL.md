@@ -1385,3 +1385,79 @@ Boundary:
 - Not live.
 - Not runtime_ready.
 - Not autonomous runtime.
+
+## 2026-07-11 — Living Loop Contract V1 extracted from proven lifecycle passes
+
+STATUS: PASS / CONTRACT_DRAFT_DERIVED_FROM_PROOF / NOT_ACTIVE_RUNTIME
+
+Context:
+- After repeated passport lifecycle passes, Owner said to continue.
+- The correct next step was to extract Living Loop Contract V1 from proof, not to create a runtime.
+
+Proof base used:
+1. operations_organ_promotion_lanes
+   - Proof: tests/self_development/ORGAN_PROMOTION_LANES_LIFECYCLE_PASS_V1_PROOF.json
+   - Pattern: governance/signal promotion
+   - Decision: PROMOTE_TO_VALIDATED_LAB_KEEP_NON_ACTIVE
+2. operations_parallel_life
+   - Proof: tests/self_development/PARALLEL_LIFE_LIFECYCLE_PASS_V1_PROOF.json
+   - Pattern: lab coordination promotion
+   - Decision: PROMOTE_TO_VALIDATED_LAB_KEEP_NON_ACTIVE
+3. operations_live_like
+   - Proof: tests/self_development/LIVE_LIKE_LIFECYCLE_PASS_V1_PROOF.json
+   - Pattern: live-boundary observation promotion
+   - Decision: PROMOTE_TO_VALIDATED_LAB_KEEP_NON_ACTIVE
+4. operations_active_behavior
+   - Proof: tests/self_development/ACTIVE_BEHAVIOR_BLOCKED_LIFECYCLE_PASS_V1_PROOF.json
+   - Pattern: blocked missing source proof
+   - Decision: BLOCKED_BY_MISSING_SOURCE_PROOF
+
+Created:
+- contracts/living_loop/LIVING_LOOP_CONTRACT_V1.md
+- contracts/living_loop/LIVING_LOOP_CONTRACT_V1.json
+- operations/living_loop/validate_living_loop_contract_v1.ps1
+- reports/self_development/LIVING_LOOP_CONTRACT_V1_REPORT.json
+- tests/self_development/LIVING_LOOP_CONTRACT_V1_PROOF.json
+
+Contract cycle:
+- wake
+- observe
+- restore_body_model
+- build_body_state
+- emit_signals
+- reason_about_cause
+- select_lawful_outcome
+- act_or_block_inside_authority
+- verify_state_change
+- record_memory_reuse
+- return_to_parent
+
+Core extracted laws:
+- No proof -> no claim.
+- No validator -> no maturity.
+- No signal -> no Brain input.
+- No lifecycle role -> not organ.
+- No requirement -> no organ.
+- No authority -> no mutation.
+- No state-change verification -> action unfinished.
+- No return-to-parent -> unfinished growth.
+- Lab proof != live proof.
+- Live-like observation != live readiness.
+- PASS can mean correctly blocked, not promoted.
+
+Key architectural result:
+- Living Loop completion is not synonymous with promotion.
+- Lawful outcomes include PROMOTE, BLOCK, OWNER_DECISION_REQUIRED, NO_ACTION_NEEDED, QUARANTINE_REQUIRED, REPAIR_REQUIRED, CONTINUE_PARENT_TASK.
+- Missing proof must become Body State, not fake proof generation.
+- Brain/wake must consume normalized signals with evidence refs, not raw repo/archive.
+
+Boundary:
+- This is not active Brain.
+- This is not wake/action runtime.
+- This is not autonomous loop.
+- This is not live process.
+- This is not PASSPORT_ACTIVE.
+- This is a validated behavioral contract derived from proof.
+
+Next safe direction:
+- Build a lab-only Living Loop evaluator that reads proof/passport/index state and emits normalized lifecycle signals without mutation unless a separate authority gate approves mutation.

@@ -1,36 +1,34 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-11T15:11:28.5552000+04:00",
+    "checked_at":  "2026-07-11T15:52:06.2046939+04:00",
     "branch":  "main",
-    "observed_head":  "9ceafec8475acdd70a16057c06ebbe35827613cb",
-    "subject_head":  "9ceafec8475acdd70a16057c06ebbe35827613cb",
+    "observed_head":  "94561d4bd3c45828f6770adb9b98a0cad4308798",
+    "subject_head":  "94561d4bd3c45828f6770adb9b98a0cad4308798",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
+                          "operations/active_behavior/build_active_behavior_blocked_lifecycle_pass_v1.ps1",
+                          "operations/active_behavior/validate_active_behavior_blocked_lifecycle_pass_v1.ps1",
                           "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                          "operations/live_like/build_live_like_lifecycle_pass_v1.ps1",
-                          "operations/live_like/validate_live_like_lifecycle_pass_v1.ps1",
-                          "operations/live_like/validate_school_aimo_live_like_signal_contract_v1.ps1",
-                          "reports/self_development/LIVE_LIKE_LIFECYCLE_PASS_V1.json",
+                          "reports/self_development/ACTIVE_BEHAVIOR_BLOCKED_LIFECYCLE_PASS_V1.json",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
                           "self_model/organ_passports/_index/ORGAN_PASSPORT_DRAFT_INDEX_V1.json",
-                          "self_model/organ_passports/operations_live_like/ORGAN_PASSPORT_V1.json",
-                          "tests/self_development/LIVE_LIKE_LIFECYCLE_PASS_V1_PROOF.json"
+                          "self_model/organ_passports/operations_active_behavior/ORGAN_PASSPORT_V1.json",
+                          "tests/self_development/ACTIVE_BEHAVIOR_BLOCKED_LIFECYCLE_PASS_V1_PROOF.json"
                       ],
     "structural_paths":  [
+                             "operations/active_behavior/build_active_behavior_blocked_lifecycle_pass_v1.ps1",
+                             "operations/active_behavior/validate_active_behavior_blocked_lifecycle_pass_v1.ps1",
                              "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                             "operations/live_like/build_live_like_lifecycle_pass_v1.ps1",
-                             "operations/live_like/validate_live_like_lifecycle_pass_v1.ps1",
-                             "operations/live_like/validate_school_aimo_live_like_signal_contract_v1.ps1",
-                             "reports/self_development/LIVE_LIKE_LIFECYCLE_PASS_V1.json",
+                             "reports/self_development/ACTIVE_BEHAVIOR_BLOCKED_LIFECYCLE_PASS_V1.json",
                              "self_model/organ_passports/_index/ORGAN_PASSPORT_DRAFT_INDEX_V1.json",
-                             "self_model/organ_passports/operations_live_like/ORGAN_PASSPORT_V1.json",
-                             "tests/self_development/LIVE_LIKE_LIFECYCLE_PASS_V1_PROOF.json"
+                             "self_model/organ_passports/operations_active_behavior/ORGAN_PASSPORT_V1.json",
+                             "tests/self_development/ACTIVE_BEHAVIOR_BLOCKED_LIFECYCLE_PASS_V1_PROOF.json"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -42,8 +40,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1993,
-                                    "sha256":  "3ab95967f152ee1b234672a497ecea7d9aa94e2d12b111137c596ff27754805a"
+                                    "structural_file_count":  1998,
+                                    "sha256":  "e46903968a420605a1aa11a4c73f0114eb3d1bf2aa6596df7ff1734d4f3e256a"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -66,16 +64,16 @@
                          "builder":  "AGENT_BODY_COMPOSITION_MAP_PRIMARY_EVIDENCE_V1",
                          "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                          "confirmed_component_count":  8,
-                         "primary_evidence_candidate_count":  151,
+                         "primary_evidence_candidate_count":  153,
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
-                         "total_component_count":  159,
-                         "structural_path_count":  1993,
+                         "total_component_count":  161,
+                         "structural_path_count":  1998,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-11T15:11:57.8651472+04:00"
+    "refreshed_at":  "2026-07-11T15:52:35.3551884+04:00"
 }

@@ -1,0 +1,66 @@
+﻿{
+    "schema":  "living_loop_contract_v1_report",
+    "status":  "PASS_LIVING_LOOP_CONTRACT_V1",
+    "contract_json":  "contracts/living_loop/LIVING_LOOP_CONTRACT_V1.json",
+    "contract_md":  "contracts/living_loop/LIVING_LOOP_CONTRACT_V1.md",
+    "validator":  "operations/living_loop/validate_living_loop_contract_v1.ps1",
+    "proof_base":  [
+                       {
+                           "organ_id":  "operations_organ_promotion_lanes",
+                           "proof":  "tests/self_development/ORGAN_PROMOTION_LANES_LIFECYCLE_PASS_V1_PROOF.json",
+                           "pattern":  "governance_signal_promotion",
+                           "expected_decision":  "PROMOTE_TO_VALIDATED_LAB_KEEP_NON_ACTIVE"
+                       },
+                       {
+                           "organ_id":  "operations_parallel_life",
+                           "proof":  "tests/self_development/PARALLEL_LIFE_LIFECYCLE_PASS_V1_PROOF.json",
+                           "pattern":  "lab_coordination_promotion",
+                           "expected_decision":  "PROMOTE_TO_VALIDATED_LAB_KEEP_NON_ACTIVE"
+                       },
+                       {
+                           "organ_id":  "operations_live_like",
+                           "proof":  "tests/self_development/LIVE_LIKE_LIFECYCLE_PASS_V1_PROOF.json",
+                           "pattern":  "live_boundary_observation_promotion",
+                           "expected_decision":  "PROMOTE_TO_VALIDATED_LAB_KEEP_NON_ACTIVE"
+                       },
+                       {
+                           "organ_id":  "operations_active_behavior",
+                           "proof":  "tests/self_development/ACTIVE_BEHAVIOR_BLOCKED_LIFECYCLE_PASS_V1_PROOF.json",
+                           "pattern":  "blocked_missing_source_proof",
+                           "expected_decision":  "BLOCKED_BY_MISSING_SOURCE_PROOF"
+                       }
+                   ],
+    "laws":  [
+                 "No proof -\u003e no claim",
+                 "No validator -\u003e no maturity",
+                 "No signal -\u003e no Brain input",
+                 "No lifecycle role -\u003e not organ",
+                 "No requirement -\u003e no organ",
+                 "No authority -\u003e no mutation",
+                 "No state-change verification -\u003e action unfinished",
+                 "No memory/use proof -\u003e no learning",
+                 "No return-to-parent -\u003e unfinished growth",
+                 "Lab proof != live proof",
+                 "Live-like observation != live readiness",
+                 "PASS can mean correctly blocked, not promoted"
+             ],
+    "cycle":  [
+                  "wake",
+                  "observe",
+                  "restore_body_model",
+                  "build_body_state",
+                  "emit_signals",
+                  "reason_about_cause",
+                  "select_lawful_outcome",
+                  "act_or_block_inside_authority",
+                  "verify_state_change",
+                  "record_memory_reuse",
+                  "return_to_parent"
+              ],
+    "derived_from_proof":  true,
+    "not_active_runtime":  true,
+    "not_autonomous_loop":  true,
+    "no_live_runtime_touched":  true,
+    "no_passport_active_created":  true,
+    "created_at":  "2026-07-11T15:50:59.6702613+04:00"
+}
