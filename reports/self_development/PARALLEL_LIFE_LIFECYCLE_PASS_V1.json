@@ -1,0 +1,49 @@
+﻿{
+    "schema":  "parallel_life_lifecycle_pass_v1",
+    "status":  "PASS_PARALLEL_LIFE_LIFECYCLE_PASS_V1",
+    "organ_id":  "operations_parallel_life",
+    "candidate":  "operations_parallel_life",
+    "identity":  "operations_parallel_life",
+    "passport_path":  "self_model/organ_passports/operations_parallel_life/ORGAN_PASSPORT_V1.json",
+    "validators":  [
+                       "operations/parallel_life/validate_school_aimo_parallel_lab_v1.ps1",
+                       "operations/parallel_life/validate_school_aimo_parallel_lab_signal_contract_v1.ps1"
+                   ],
+    "proof_refs":  [
+                       "reports/self_development/PARALLEL_LIFE_LIFECYCLE_PASS_V1.json",
+                       "tests/parallel_life/SCHOOL_AIMO_PARALLEL_LAB_V1_PROOF.json",
+                       "tests/self_development/PARALLEL_LIFE_LIFECYCLE_PASS_V1_PROOF.json"
+                   ],
+    "lifecycle_decision":  "PROMOTE_TO_VALIDATED_LAB_KEEP_NON_ACTIVE",
+    "before":  {
+                   "maturity":  "DRAFT",
+                   "live_or_lab_status":  "NOT_PROVEN",
+                   "validator_count":  1,
+                   "validators":  [
+                                      "operations/parallel_life/validate_school_aimo_parallel_lab_v1.ps1operations/parallel_life/validate_school_aimo_parallel_lab_v1.ps1"
+                                  ],
+                   "proof_count":  1
+               },
+    "after":  {
+                  "maturity":  "VALIDATED_LAB",
+                  "live_or_lab_status":  "PROVEN_LAB",
+                  "validator_count":  2,
+                  "proof_count":  3
+              },
+    "state_change_verified":  true,
+    "fixed_defects":  [
+                          "removed concatenated duplicate validator path in passport"
+                      ],
+    "boundaries":  {
+                       "passport_active_created":  false,
+                       "live_runtime_touched":  false,
+                       "runtime_ready":  false,
+                       "live_ready_claim":  false,
+                       "lab_only":  true
+                   },
+    "created_at":  "2026-07-11T14:02:25.3291725+04:00",
+    "passport_index_update_verified":  true,
+    "final_validators_pass":  true,
+    "map_current_pass":  true,
+    "index_entry_verified":  true
+}

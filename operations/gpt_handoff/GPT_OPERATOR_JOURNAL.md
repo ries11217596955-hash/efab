@@ -1185,3 +1185,71 @@ Boundary:
 - Not Brain implementation.
 - Not Wake/Act implementation.
 - This is passport lifecycle hardening and state-change proof.
+
+## 2026-07-11 — Third passport lifecycle pass: operations_parallel_life V1
+
+STATUS: PASS / THIRD_LIFECYCLE_PASS / VALIDATED_LAB_NON_ACTIVE
+
+Context:
+- Continued passport lifecycle hardening after operations_organ_promotion_lanes lifecycle pass.
+- The goal remains repeated proven lifecycle passes before extracting Living Loop Contract V1.
+
+Candidate selected:
+- operations_parallel_life
+
+Why this candidate:
+- It was a real organ draft in REVIEW_LANE, not material/pack/fixture.
+- It already had a lab proof and base validator.
+- It represents parallel School + AIMO coordination mechanics, which is relevant to living organism behavior but must not be confused with live readiness.
+
+Observed defect:
+- Passport validator reference was malformed by concatenation:
+  operations/parallel_life/validate_school_aimo_parallel_lab_v1.ps1operations/parallel_life/validate_school_aimo_parallel_lab_v1.ps1
+- This was an identity/surface defect, not a runtime failure.
+
+Base proof:
+- tests/parallel_life/SCHOOL_AIMO_PARALLEL_LAB_V1_PROOF.json
+- Base validator PASS.
+- Proof boundary: repeatable lab proof only; runtime_ready=false; not live readiness.
+
+New validation surface:
+- Added operations/parallel_life/validate_school_aimo_parallel_lab_signal_contract_v1.ps1.
+- It verifies the proof as a normalized signal:
+  PARALLEL_LAB_COORDINATION_PROVEN.
+- It enforces: School seen before AIMO, School observed during AIMO, AIMO detected active School, coordination hint present, no merge during School, merge after School succeeded, runtime_ready=false, live_ready=false.
+
+Lifecycle proof:
+- Added operations/parallel_life/build_parallel_life_lifecycle_pass_v1.ps1.
+- Added operations/parallel_life/validate_parallel_life_lifecycle_pass_v1.ps1.
+- Added reports/self_development/PARALLEL_LIFE_LIFECYCLE_PASS_V1.json.
+- Added tests/self_development/PARALLEL_LIFE_LIFECYCLE_PASS_V1_PROOF.json.
+
+Lifecycle decision:
+- operations_parallel_life promoted from DRAFT / NOT_PROVEN to VALIDATED_LAB / PROVEN_LAB.
+- Passport now has 2 validators and 3 proof refs.
+- Malformed concatenated validator path removed.
+- No PASSPORT_ACTIVE created.
+- No live runtime touched.
+- runtime_ready remains false.
+- live readiness remains owned by operations_live_readiness/live_start.
+
+State-change verification:
+- Passport updated.
+- Passport index updated.
+- Body map refreshed.
+- Agent body composition map current validator PASS.
+- Base parallel lab validator PASS.
+- Signal contract validator PASS.
+- Lifecycle pass validator PASS.
+
+Architectural lesson:
+- A lifecycle pass may include identity repair before maturity change.
+- Parallel coordination is a useful lab signal, but must not become a live/readiness claim.
+- Living Loop extraction should remember this distinction: signal strength, authority boundary, and runtime/live boundary are separate dimensions.
+
+Boundary:
+- Not live.
+- Not runtime_ready.
+- Not autonomous runtime.
+- Not PASSPORT_ACTIVE.
+- Not live readiness.

@@ -40,10 +40,13 @@
                          "passport review/index gate"
                      ],
     "validators":  [
-                       "operations/parallel_life/validate_school_aimo_parallel_lab_v1.ps1operations/parallel_life/validate_school_aimo_parallel_lab_v1.ps1"
+                       "operations/parallel_life/validate_school_aimo_parallel_lab_v1.ps1",
+                       "operations/parallel_life/validate_school_aimo_parallel_lab_signal_contract_v1.ps1"
                    ],
     "proof_refs":  [
-                       "tests/parallel_life/SCHOOL_AIMO_PARALLEL_LAB_V1_PROOF.json"
+                       "reports/self_development/PARALLEL_LIFE_LIFECYCLE_PASS_V1.json",
+                       "tests/parallel_life/SCHOOL_AIMO_PARALLEL_LAB_V1_PROOF.json",
+                       "tests/self_development/PARALLEL_LIFE_LIFECYCLE_PASS_V1_PROOF.json"
                    ],
     "runtime_refs":  [
 
@@ -71,18 +74,23 @@
                                    "rerun review/index gate",
                                    "rerun map refresh/currentness validator"
                                ],
-    "maturity":  "DRAFT",
-    "live_or_lab_status":  "NOT_PROVEN",
+    "maturity":  "VALIDATED_LAB",
+    "live_or_lab_status":  "PROVEN_LAB",
     "gaps":  [
-                 "organ-specific calibration missing",
-                 "runtime proof missing",
-                 "ACTIVE status forbidden",
-                 "PROVEN_LIVE forbidden"
+                 "PASSPORT_ACTIVE forbidden until active wiring and owner acceptance",
+                 "PROVEN_LIVE forbidden; this is repeatable lab coordination proof only",
+                 "live readiness must remain owned by operations_live_readiness/live_start"
              ],
     "source_evidence":  [
                             "self_model/organ_promotion_lanes/ORGAN_PROMOTION_LANES_V1.json",
                             "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                             "reports/self_development/ORGAN_PASSPORT_REVIEW_LANE_BATCH_GENERATOR_V1.json"
                         ],
-    "last_validated_at":  "2026-07-10T20:15:53.8711571+04:00"
+    "last_validated_at":  "2026-07-10T20:15:53.8711571+04:00",
+    "lifecycle_decision":  {
+                               "decision":  "PROMOTE_TO_VALIDATED_LAB_KEEP_NON_ACTIVE",
+                               "reason":  "base validator and signal-contract validator pass; proof establishes lab parallel coordination, not live readiness",
+                               "state_change":  "DRAFT_NOT_PROVEN_TO_VALIDATED_LAB_PROVEN_LAB",
+                               "created_at":  "2026-07-11T14:02:25.2628392+04:00"
+                           }
 }
