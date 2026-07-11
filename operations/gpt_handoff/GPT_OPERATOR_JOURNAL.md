@@ -1605,3 +1605,134 @@ Boundary:
 
 Next safe direction:
 - Build Reasoner V1 that reads Body State and explains causes: why blocked, what is symptom/root cause, what action class is legal. It still must not execute.
+
+## 2026-07-11 — Catch-up summary: Living Loop proof chain before Reasoner V1
+
+STATUS: CATCH_UP_SUMMARY / OWNER_REQUESTED_JOURNAL_UPDATE / PROOF_CHAIN_CURRENT
+
+Repo state at catch-up start:
+- HEAD before next work: 30107b2 living-loop: aggregate body state signals
+- Branch: main
+- Ahead/behind: 0/0
+- Working tree: clean
+
+What was already recorded as individual journal entries:
+1. Second passport lifecycle pass: operations_organ_promotion_lanes V1
+   - Result: VALIDATED_LAB / PROVEN_LAB
+   - Pattern: governance/lane signal promotion
+   - Boundary: non-active, no live runtime.
+2. Third passport lifecycle pass: operations_parallel_life V1
+   - Result: VALIDATED_LAB / PROVEN_LAB
+   - Pattern: lab coordination signal
+   - Boundary: runtime_ready=false, not live readiness.
+3. Fourth passport lifecycle pass: operations_live_like V1
+   - Result: VALIDATED_LAB / PROVEN_LAB
+   - Pattern: live-like observation with strict live-boundary guard
+   - Boundary: not live, not runtime_ready, not autonomous runtime.
+4. Blocker passport lifecycle pass: operations_active_behavior V1
+   - Result: DRAFT / BLOCKED
+   - Pattern: BLOCKED_BY_MISSING_SOURCE_PROOF
+   - Boundary: no fake proof, no promotion, no PASSPORT_ACTIVE.
+5. Living Loop Contract V1
+   - Result: PASS_LIVING_LOOP_CONTRACT_V1
+   - Derived from four lifecycle proofs.
+   - Defines cycle: wake -> observe -> restore_body_model -> build_body_state -> emit_signals -> reason_about_cause -> select_lawful_outcome -> act_or_block_inside_authority -> verify_state_change -> record_memory_reuse -> return_to_parent.
+6. Living Loop Evaluator V1
+   - Result: PASS_LIVING_LOOP_EVALUATOR_V1
+   - Converts lifecycle proofs into normalized signals.
+   - Emitted: 7 signals total; 3 validated lab non-active, 1 blocked missing source proof, 2 boundary guard, 1 return-to-parent.
+7. Body State Aggregator V1
+   - Result: PASS_BODY_STATE_AGGREGATOR_V1
+   - Converts signals into Body State buckets.
+   - Buckets: validated_lab_non_active=3, blocked=1, boundary_guarded=2, return_to_parent=1, repair_required=1, no_action_needed=3.
+   - brain_input_ready=true, mutation_authorized=false, runtime_ready=false, live_ready=false, autonomous_runtime=false.
+
+Current architectural chain:
+- Evidence -> Signal -> Body State
+
+Current boundary:
+- No Brain yet.
+- No action execution yet.
+- No scheduler/autonomous loop yet.
+- No mutation authority yet.
+- No live runtime touched.
+- No PASSPORT_ACTIVE created.
+
+Next step selected:
+- Reasoner V1.
+- Purpose: read Body State and explain causes without executing actions.
+- It must separate symptom from root cause and propose legal action class only.
+- It must not mutate, not decide as Brain, not execute, not claim live/runtime readiness.
+
+## 2026-07-11 — Reasoner V1 from Body State
+
+STATUS: PASS / LAB_ONLY_REASONER / NON_EXECUTING / NOT_BRAIN
+
+Context:
+- Owner requested journal catch-up first, then immediate continuation.
+- A catch-up summary was added before this step.
+- Next layer after Body State Aggregator V1 is Reasoner V1.
+
+Created:
+- contracts/living_loop/REASONER_V1_REQUIREMENT.md
+- operations/living_loop/build_reasoner_v1.ps1
+- operations/living_loop/validate_reasoner_v1.ps1
+- reports/self_development/REASONER_V1_CAUSAL_EXPLANATION.json
+- reports/self_development/REASONER_V1_REPORT.json
+- tests/self_development/REASONER_V1_PROOF.json
+
+Purpose:
+- Read Body State.
+- Explain causes.
+- Separate symptom from root cause.
+- Emit legal action classes.
+- Not execute.
+- Not mutate.
+- Not become Brain.
+
+Input chain validated:
+- Living Loop Contract V1 PASS.
+- Living Loop Evaluator V1 PASS.
+- Body State Aggregator V1 PASS.
+
+Findings:
+- total findings: 7
+- finding classes present:
+  - BLOCKED_SOURCE_PROOF_ROOT_CAUSE
+  - BOUNDARY_GUARD_ROOT_CAUSE
+  - VALIDATED_LAB_NON_ACTIVE_CAUSE
+  - RETURN_TO_PARENT_CAUSE
+
+Dominant root cause:
+- MISSING_SOURCE_PROOF
+
+Recommended next action class:
+- REPAIR_SOURCE_PROOF_OR_KEEP_BLOCKED
+
+Key reasoning:
+- Symptom: operations_active_behavior is DRAFT/BLOCKED and cannot be promoted.
+- Root cause: required source proof is missing; active behavior promotion proof cannot be trusted or synthesized.
+- Legal action class: repair source proof through proper upstream generator or keep blocked.
+- Forbidden actions: promote, create fake proof, create PASSPORT_ACTIVE, claim runtime_ready, touch live runtime.
+
+Boundary reasoning:
+- parallel_life and live_like remain lab/boundary signals only.
+- live-like observation does not become live readiness.
+- lab coordination proof does not become runtime authority.
+- validated lab non-active findings remain non-active.
+
+Proof boundary:
+- mutation_authorized=false
+- runtime_ready=false
+- live_ready=false
+- autonomous_runtime=false
+- brain_decision=false
+- execution_performed=false
+- no PASSPORT_ACTIVE
+- no live runtime touched
+
+Architectural chain now:
+- Evidence -> Signal -> Body State -> Reasoner
+
+Next safe direction:
+- Decision Gate / Brain Input Gate V1: consume Reasoner output and decide whether the next legal route is repair source proof, keep blocked, ask Owner, or stop. It must still not execute mutation without separate authority.

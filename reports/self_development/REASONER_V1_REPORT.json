@@ -1,0 +1,52 @@
+﻿{
+    "schema":  "reasoner_v1_report",
+    "status":  "PASS_REASONER_V1",
+    "requirement":  "contracts/living_loop/REASONER_V1_REQUIREMENT.md",
+    "explanation_ref":  "reports/self_development/REASONER_V1_CAUSAL_EXPLANATION.json",
+    "body_state_ref":  "reports/self_development/BODY_STATE_AGGREGATOR_V1_STATE.json",
+    "summary":  {
+                    "finding_count":  7,
+                    "finding_classes":  [
+                                            "BLOCKED_SOURCE_PROOF_ROOT_CAUSE",
+                                            "BOUNDARY_GUARD_ROOT_CAUSE",
+                                            "RETURN_TO_PARENT_CAUSE",
+                                            "VALIDATED_LAB_NON_ACTIVE_CAUSE"
+                                        ],
+                    "dominant_root_cause":  "MISSING_SOURCE_PROOF",
+                    "highest_severity":  "high",
+                    "legal_action_classes":  [
+                                                 "ALLOW_AS_LAB_SIGNAL_NO_ACTIVE_AUTHORITY",
+                                                 "PRESERVE_BOUNDARY_OR_REQUEST_SEPARATE_LIVE_GATE",
+                                                 "REPAIR_SOURCE_PROOF_OR_KEEP_BLOCKED",
+                                                 "RETURN_EXPLANATION_TO_PARENT_OR_NEXT_NON_EXECUTING_LAYER"
+                                             ],
+                    "recommended_next_action_class":  "REPAIR_SOURCE_PROOF_OR_KEEP_BLOCKED",
+                    "brain_input_ready":  true,
+                    "mutation_authorized":  false,
+                    "runtime_ready":  false,
+                    "live_ready":  false,
+                    "autonomous_runtime":  false,
+                    "brain_decision":  false,
+                    "execution_performed":  false
+                },
+    "laws_enforced":  [
+                          "Body State first; no raw proof-only reasoning",
+                          "Symptom is separated from root cause",
+                          "Reasoning is not execution",
+                          "Legal action class is not mutation authority",
+                          "Blocked state remains blocked until source proof exists",
+                          "Live-like boundary remains non-live",
+                          "Reasoner is not Brain"
+                      ],
+    "negative_guards":  {
+                            "mutation_authorized":  false,
+                            "runtime_ready":  false,
+                            "live_ready":  false,
+                            "autonomous_runtime":  false,
+                            "brain_decision":  false,
+                            "execution_performed":  false,
+                            "passport_active_created":  false,
+                            "live_runtime_touched":  false
+                        },
+    "created_at":  "2026-07-11T23:11:08.9033952+04:00"
+}
