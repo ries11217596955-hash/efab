@@ -1,0 +1,25 @@
+﻿{
+    "schema":  "living_loop_current_state_refresh_v1_report",
+    "status":  "PASS_LIVING_LOOP_CURRENT_STATE_REFRESH_V1",
+    "signals_ref":  "reports/self_development/LIVING_LOOP_CURRENT_STATE_REFRESH_V1_SIGNALS.json",
+    "body_state_ref":  "reports/self_development/LIVING_LOOP_CURRENT_STATE_REFRESH_V1_BODY_STATE.json",
+    "reasoner_ref":  "reports/self_development/LIVING_LOOP_CURRENT_STATE_REFRESH_V1_REASONER.json",
+    "decision_ref":  "reports/self_development/LIVING_LOOP_CURRENT_STATE_REFRESH_V1_DECISION.json",
+    "summary":  {
+                    "validated_lab_non_active":  4,
+                    "blocked":  0,
+                    "repair_required":  0,
+                    "boundary_guarded":  2,
+                    "stale_blocked_route_removed":  true
+                },
+    "boundary":  {
+                     "execution_allowed":  false,
+                     "mutation_authorized":  false,
+                     "runtime_ready":  false,
+                     "live_ready":  false,
+                     "autonomous_runtime":  false,
+                     "no_passport_active_created":  true,
+                     "no_live_runtime_touched":  true
+                 },
+    "created_at":  "2026-07-12T10:35:55.4855405+04:00"
+}

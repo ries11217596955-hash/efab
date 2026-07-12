@@ -2,9 +2,9 @@
 
 Status: ACTIVE_DERIVED_VIEW
 Branch: main
-Observed head at generation: 2cbae0fb8b24fbbad5b30e913f3a52aa8457c7c7
-Generated: 2026-07-12T10:28:54.0985369+04:00
-Body source fingerprint: 4e96ad4bf4952f36d4713807f3ca4a2c7a4ab514725c7a74b6eb4db52e10c169
+Observed head at generation: 52502ec0c5528f224a1e397764295297920984c0
+Generated: 2026-07-12T10:37:29.6458227+04:00
+Body source fingerprint: 101e58ea063469b1ac5ae6b8cbf8a0b11cc5a3ebf2b3a956574143c61160cdc2
 
 Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
@@ -65,7 +65,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `operations_live_like` - root `operations/live_like`, files=5, scripts=5, validators=3, proofs=0, needs_triage=True
 - `operations_live_readiness` - root `operations/live_readiness`, files=11, scripts=11, validators=5, proofs=2, needs_triage=True
 - `operations_live_start` - root `operations/live_start`, files=5, scripts=5, validators=2, proofs=0, needs_triage=True
-- `operations_living_loop` - root `operations/living_loop`, files=15, scripts=15, validators=8, proofs=0, needs_triage=True
+- `operations_living_loop` - root `operations/living_loop`, files=17, scripts=17, validators=9, proofs=0, needs_triage=True
 - `operations_memory` - root `operations/memory`, files=4, scripts=4, validators=2, proofs=0, needs_triage=True
 - `operations_organ_promotion_lanes` - root `operations/organ_promotion_lanes`, files=5, scripts=5, validators=3, proofs=0, needs_triage=True
 - `operations_overnight_school` - root `operations/overnight_school`, files=3, scripts=3, validators=1, proofs=0, needs_triage=True

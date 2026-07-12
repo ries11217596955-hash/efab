@@ -1,0 +1,29 @@
+﻿{
+    "schema":  "living_loop_current_state_refresh_v1_decision",
+    "status":  "PASS_LIVING_LOOP_CURRENT_STATE_REFRESH_V1_DECISION",
+    "route_class":  "CONTINUE_NON_EXECUTING_BRAIN_BUILD_OR_SEPARATE_AUTHORITY_GATE",
+    "dominant_root_cause":  "NO_BLOCKING_ROOT_CAUSE",
+    "execution_allowed":  false,
+    "mutation_authorized":  false,
+    "runtime_ready":  false,
+    "live_ready":  false,
+    "autonomous_runtime":  false,
+    "brain_decision":  false,
+    "owner_decision_required":  false,
+    "evidence_refs":  [
+                          "self_model/organ_passports/_index/ORGAN_PASSPORT_DRAFT_INDEX_V1.json",
+                          "reports/self_development/LIVING_LOOP_CURRENT_STATE_REFRESH_V1_BODY_STATE.json",
+                          "reports/self_development/LIVING_LOOP_CURRENT_STATE_REFRESH_V1_REASONER.json"
+                      ],
+    "forbidden_actions":  [
+                              "USE_STALE_BLOCKED_ROUTE",
+                              "CLAIM_LIVE_READY",
+                              "MUTATE_WITHOUT_AUTHORITY",
+                              "CREATE_PASSPORT_ACTIVE"
+                          ],
+    "return_to_parent_summary":  {
+                                     "result":  "Current state refresh removed stale active_behavior blocked route.",
+                                     "next_safe_step":  "Continue non-executing Brain build or create separate authority gate for activation/live only by Owner decision."
+                                 },
+    "created_at":  "2026-07-12T10:35:55.4855405+04:00"
+}

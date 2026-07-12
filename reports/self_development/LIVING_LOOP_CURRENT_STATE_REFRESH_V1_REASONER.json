@@ -1,0 +1,201 @@
+﻿{
+    "schema":  "living_loop_current_state_refresh_v1_reasoner",
+    "status":  "PASS_LIVING_LOOP_CURRENT_STATE_REFRESH_V1_REASONER",
+    "body_state_ref":  "reports/self_development/LIVING_LOOP_CURRENT_STATE_REFRESH_V1_BODY_STATE.json",
+    "findings":  [
+                     {
+                         "finding_id":  "VALIDATED_LAB_NON_ACTIVE_CAUSE__operations_organ_promotion_lanes",
+                         "finding_class":  "VALIDATED_LAB_NON_ACTIVE_CAUSE",
+                         "source_bucket":  "validated_lab_non_active",
+                         "organ_id":  "operations_organ_promotion_lanes",
+                         "symptom":  "Organ has current validated lab signal.",
+                         "root_cause":  "Fresh/current passport evidence verifies lab state without active/live authority.",
+                         "confidence":  1,
+                         "evidence_refs":  [
+                                               "self_model/organ_passports/operations_organ_promotion_lanes/ORGAN_PASSPORT_V1.json"
+                                           ],
+                         "legal_action_class":  "ALLOW_AS_LAB_SIGNAL_NO_ACTIVE_AUTHORITY",
+                         "forbidden_actions":  [
+                                                   "CREATE_PASSPORT_ACTIVE",
+                                                   "CLAIM_PROVEN_LIVE",
+                                                   "CLAIM_RUNTIME_READY",
+                                                   "MUTATE_WITHOUT_AUTHORITY"
+                                               ],
+                         "recommended_next_question_or_action_class":  "Continue non-executing Brain build or require separate authority for activation.",
+                         "mutation_authorized":  false,
+                         "runtime_ready":  false,
+                         "live_ready":  false,
+                         "autonomous_runtime":  false,
+                         "brain_decision":  false,
+                         "execution_performed":  false
+                     },
+                     {
+                         "finding_id":  "VALIDATED_LAB_NON_ACTIVE_CAUSE__operations_parallel_life",
+                         "finding_class":  "VALIDATED_LAB_NON_ACTIVE_CAUSE",
+                         "source_bucket":  "validated_lab_non_active",
+                         "organ_id":  "operations_parallel_life",
+                         "symptom":  "Organ has current validated lab signal.",
+                         "root_cause":  "Fresh/current passport evidence verifies lab state without active/live authority.",
+                         "confidence":  1,
+                         "evidence_refs":  [
+                                               "self_model/organ_passports/operations_parallel_life/ORGAN_PASSPORT_V1.json"
+                                           ],
+                         "legal_action_class":  "ALLOW_AS_LAB_SIGNAL_NO_ACTIVE_AUTHORITY",
+                         "forbidden_actions":  [
+                                                   "CREATE_PASSPORT_ACTIVE",
+                                                   "CLAIM_PROVEN_LIVE",
+                                                   "CLAIM_RUNTIME_READY",
+                                                   "MUTATE_WITHOUT_AUTHORITY"
+                                               ],
+                         "recommended_next_question_or_action_class":  "Continue non-executing Brain build or require separate authority for activation.",
+                         "mutation_authorized":  false,
+                         "runtime_ready":  false,
+                         "live_ready":  false,
+                         "autonomous_runtime":  false,
+                         "brain_decision":  false,
+                         "execution_performed":  false
+                     },
+                     {
+                         "finding_id":  "VALIDATED_LAB_NON_ACTIVE_CAUSE__operations_live_like",
+                         "finding_class":  "VALIDATED_LAB_NON_ACTIVE_CAUSE",
+                         "source_bucket":  "validated_lab_non_active",
+                         "organ_id":  "operations_live_like",
+                         "symptom":  "Organ has current validated lab signal.",
+                         "root_cause":  "Fresh/current passport evidence verifies lab state without active/live authority.",
+                         "confidence":  1,
+                         "evidence_refs":  [
+                                               "self_model/organ_passports/operations_live_like/ORGAN_PASSPORT_V1.json"
+                                           ],
+                         "legal_action_class":  "ALLOW_AS_LAB_SIGNAL_NO_ACTIVE_AUTHORITY",
+                         "forbidden_actions":  [
+                                                   "CREATE_PASSPORT_ACTIVE",
+                                                   "CLAIM_PROVEN_LIVE",
+                                                   "CLAIM_RUNTIME_READY",
+                                                   "MUTATE_WITHOUT_AUTHORITY"
+                                               ],
+                         "recommended_next_question_or_action_class":  "Continue non-executing Brain build or require separate authority for activation.",
+                         "mutation_authorized":  false,
+                         "runtime_ready":  false,
+                         "live_ready":  false,
+                         "autonomous_runtime":  false,
+                         "brain_decision":  false,
+                         "execution_performed":  false
+                     },
+                     {
+                         "finding_id":  "VALIDATED_LAB_NON_ACTIVE_CAUSE__operations_active_behavior",
+                         "finding_class":  "VALIDATED_LAB_NON_ACTIVE_CAUSE",
+                         "source_bucket":  "validated_lab_non_active",
+                         "organ_id":  "operations_active_behavior",
+                         "symptom":  "Organ has current validated lab signal.",
+                         "root_cause":  "Fresh/current passport evidence verifies lab state without active/live authority.",
+                         "confidence":  1,
+                         "evidence_refs":  [
+                                               "self_model/organ_passports/operations_active_behavior/ORGAN_PASSPORT_V1.json"
+                                           ],
+                         "legal_action_class":  "ALLOW_AS_LAB_SIGNAL_NO_ACTIVE_AUTHORITY",
+                         "forbidden_actions":  [
+                                                   "CREATE_PASSPORT_ACTIVE",
+                                                   "CLAIM_PROVEN_LIVE",
+                                                   "CLAIM_RUNTIME_READY",
+                                                   "MUTATE_WITHOUT_AUTHORITY"
+                                               ],
+                         "recommended_next_question_or_action_class":  "Continue non-executing Brain build or require separate authority for activation.",
+                         "mutation_authorized":  false,
+                         "runtime_ready":  false,
+                         "live_ready":  false,
+                         "autonomous_runtime":  false,
+                         "brain_decision":  false,
+                         "execution_performed":  false
+                     },
+                     {
+                         "finding_id":  "BOUNDARY_GUARD_ROOT_CAUSE__operations_parallel_life",
+                         "finding_class":  "BOUNDARY_GUARD_ROOT_CAUSE",
+                         "source_bucket":  "boundary_guarded",
+                         "organ_id":  "operations_parallel_life",
+                         "symptom":  "Signal is boundary-sensitive.",
+                         "root_cause":  "Lab/observation evidence exists but does not grant live/runtime/autonomous authority.",
+                         "confidence":  1,
+                         "evidence_refs":  [
+                                               "self_model/organ_passports/operations_parallel_life/ORGAN_PASSPORT_V1.json"
+                                           ],
+                         "legal_action_class":  "PRESERVE_BOUNDARY_OR_REQUEST_SEPARATE_LIVE_GATE",
+                         "forbidden_actions":  [
+                                                   "CLAIM_LIVE_READY",
+                                                   "CLAIM_RUNTIME_READY",
+                                                   "START_AUTONOMOUS_RUNTIME",
+                                                   "CREATE_PASSPORT_ACTIVE"
+                                               ],
+                         "recommended_next_question_or_action_class":  "Preserve lab boundary; separate live gate required for live claims.",
+                         "mutation_authorized":  false,
+                         "runtime_ready":  false,
+                         "live_ready":  false,
+                         "autonomous_runtime":  false,
+                         "brain_decision":  false,
+                         "execution_performed":  false
+                     },
+                     {
+                         "finding_id":  "BOUNDARY_GUARD_ROOT_CAUSE__operations_live_like",
+                         "finding_class":  "BOUNDARY_GUARD_ROOT_CAUSE",
+                         "source_bucket":  "boundary_guarded",
+                         "organ_id":  "operations_live_like",
+                         "symptom":  "Signal is boundary-sensitive.",
+                         "root_cause":  "Lab/observation evidence exists but does not grant live/runtime/autonomous authority.",
+                         "confidence":  1,
+                         "evidence_refs":  [
+                                               "self_model/organ_passports/operations_live_like/ORGAN_PASSPORT_V1.json"
+                                           ],
+                         "legal_action_class":  "PRESERVE_BOUNDARY_OR_REQUEST_SEPARATE_LIVE_GATE",
+                         "forbidden_actions":  [
+                                                   "CLAIM_LIVE_READY",
+                                                   "CLAIM_RUNTIME_READY",
+                                                   "START_AUTONOMOUS_RUNTIME",
+                                                   "CREATE_PASSPORT_ACTIVE"
+                                               ],
+                         "recommended_next_question_or_action_class":  "Preserve lab boundary; separate live gate required for live claims.",
+                         "mutation_authorized":  false,
+                         "runtime_ready":  false,
+                         "live_ready":  false,
+                         "autonomous_runtime":  false,
+                         "brain_decision":  false,
+                         "execution_performed":  false
+                     },
+                     {
+                         "finding_id":  "RETURN_TO_PARENT_CAUSE__living_loop_current_state_refresh_v1",
+                         "finding_class":  "RETURN_TO_PARENT_CAUSE",
+                         "source_bucket":  "return_to_parent",
+                         "organ_id":  "living_loop_current_state_refresh_v1",
+                         "symptom":  "Old chain had stale blocked state.",
+                         "root_cause":  "Active behavior fresh 1000 lifecycle pass changed body state; current chain needed refresh.",
+                         "confidence":  1,
+                         "evidence_refs":  [
+                                               "self_model/organ_passports/_index/ORGAN_PASSPORT_DRAFT_INDEX_V1.json"
+                                           ],
+                         "legal_action_class":  "RETURN_CURRENT_STATE_TO_PARENT",
+                         "forbidden_actions":  [
+                                                   "USE_STALE_BLOCKED_ROUTE",
+                                                   "EXECUTE_WITHOUT_AUTHORITY"
+                                               ],
+                         "recommended_next_question_or_action_class":  "Return updated current state; continue non-executing Brain build.",
+                         "mutation_authorized":  false,
+                         "runtime_ready":  false,
+                         "live_ready":  false,
+                         "autonomous_runtime":  false,
+                         "brain_decision":  false,
+                         "execution_performed":  false
+                     }
+                 ],
+    "summary":  {
+                    "finding_count":  7,
+                    "dominant_root_cause":  "NO_BLOCKING_ROOT_CAUSE",
+                    "blocked_root_cause_present":  false,
+                    "recommended_next_action_class":  "CONTINUE_NON_EXECUTING_BRAIN_BUILD_OR_SEPARATE_AUTHORITY_GATE",
+                    "brain_input_ready":  true,
+                    "mutation_authorized":  false,
+                    "runtime_ready":  false,
+                    "live_ready":  false,
+                    "autonomous_runtime":  false,
+                    "brain_decision":  false,
+                    "execution_performed":  false
+                },
+    "created_at":  "2026-07-12T10:35:55.4855405+04:00"
+}
