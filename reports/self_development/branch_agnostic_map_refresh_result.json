@@ -1,24 +1,22 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-12T13:55:33.3416390+04:00",
+    "checked_at":  "2026-07-12T22:37:38.1739965+04:00",
     "branch":  "main",
-    "observed_head":  "f84d9bc158dd70b1b6ada43c9305adfaaa954a46",
-    "subject_head":  "f84d9bc158dd70b1b6ada43c9305adfaaa954a46",
+    "observed_head":  "bf0a7487f1b0fa47d85827a3f5b092896bfc4789",
+    "subject_head":  "bf0a7487f1b0fa47d85827a3f5b092896bfc4789",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                          "operations/school/run_agent_school.ps1",
+                          "docs/operations/SCHOOL_RUN_RESULT_20260712_135529_Live_10_school_factory_digest_use_real_10_20260712_135320.md",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json"
                       ],
     "structural_paths":  [
-                             "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                             "operations/school/run_agent_school.ps1"
+                             "docs/operations/SCHOOL_RUN_RESULT_20260712_135529_Live_10_school_factory_digest_use_real_10_20260712_135320.md"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -31,7 +29,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  2105,
-                                    "sha256":  "c008e32ed16bb3ba4af43d5f8f1213f3b75e7f4225403cb55fc3ecef6a1c85c6"
+                                    "sha256":  "b613fcdb56df69911808880bb1bb5e06d1b13a71b4e22e66207d105b502d4c57"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -65,5 +63,5 @@
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-12T13:56:04.6105632+04:00"
+    "refreshed_at":  "2026-07-12T22:38:13.7400194+04:00"
 }

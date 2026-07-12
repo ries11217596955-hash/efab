@@ -1,4 +1,4 @@
-param(
+﻿param(
   [Parameter(Mandatory=$true)][string]$RunDir,
   [int]$MaxReadyBatches=0
 )
@@ -21,7 +21,7 @@ $outDir="operations/reports/streaming_absorption/$runName"
 New-Item -ItemType Directory -Force -Path $outDir | Out-Null
 $candidateFiles=@(Get-ChildItem $RunDir -Recurse -File -Filter candidates.jsonl | Sort-Object FullName)
 if($MaxReadyBatches -gt 0){ $candidateFiles=@($candidateFiles | Select-Object -First $MaxReadyBatches) }
-$seenTopics=@{}
+$seenStreamKeys=@{}
 $batchReports=@(); $readyAtoms=@(); $quarantineAtoms=@(); $contractRejected=@()
 $processedTotal=0; $contractAcceptedTotal=0; $contractRejectedTotal=0
 $batchIndex=0
@@ -50,8 +50,9 @@ foreach($file in $candidateFiles){
     }
     if(-not $acceptedLines.ContainsKey($line)){ continue }
     $topic=[string]$obj.topic
+    $streamKey=if($obj.duplicate_key){[string]$obj.duplicate_key}elseif($obj.learning_key){[string]$obj.learning_key}else{[string]$obj.candidate_id}
     $reason=$null
-    if($seenTopics.ContainsKey($topic)){ $reason='duplicate_topic_stream' }
+    if($seenStreamKeys.ContainsKey($streamKey)){ $reason='duplicate_learning_key_stream' }
     elseif(IsGenericOrPlaceholder $obj){ $reason='generic_or_placeholder_stream' }
     $atom=[pscustomObject]@{
       atom_id=("codex.curriculum.stream.atom.{0:D4}.{1}.v1" -f ($readyAtoms.Count + $quarantineAtoms.Count + 1), (($topic -replace '[^A-Za-z0-9_\-]','_').ToLowerInvariant()))
@@ -83,7 +84,7 @@ foreach($file in $candidateFiles){
     } else {
       $batchReady += $atom
       $readyAtoms += $atom
-      $seenTopics[$topic]=$true
+      $seenStreamKeys[$streamKey]=$true
     }
   }
   $processedTotal += [int]$validation.processed_count

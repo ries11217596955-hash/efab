@@ -2926,3 +2926,33 @@ Fix:
 Next:
 - Commit fix.
 - Rerun Count=10 Mode=Live on clean repo.
+
+## 2026-07-12 — School streaming gate fixed for large curriculum run
+
+STATUS: STREAM_GATE_5000_PASS / READY_FOR_MAX_SCHOOL_RESTART
+
+Owner correction:
+- Owner asked to stop overexplaining and launch the school.
+- The blocker was not Test/Live. The blocker was an old streaming duplicate gate.
+
+Root cause:
+- process_codex_curriculum_streaming_absorption_v1.ps1 used duplicate-by-topic:
+  seenTopics[topic] -> duplicate_topic_stream.
+- With maximal self-knowledge curriculum, one topic/root legitimately has many levels/verbs/modes/learning_keys.
+- For large runs, duplicate-by-topic allowed only one ready atom per topic and quarantined the rest.
+
+Fix:
+- Streaming gate now uses duplicate_key / learning_key / candidate_id fallback as stream uniqueness key.
+- Duplicate reason changed to duplicate_learning_key_stream.
+
+Validation:
+- Generated 5000 candidates using active school candidate factory.
+- Contract accepted: 5000.
+- Contract rejected: 0.
+- Streaming ready atoms: 5000.
+- Streaming quarantined: 0.
+- Active memory mutated: false during direct streaming validation.
+
+Next:
+- Commit/push gate fix.
+- Restart active school max Live run detached.
