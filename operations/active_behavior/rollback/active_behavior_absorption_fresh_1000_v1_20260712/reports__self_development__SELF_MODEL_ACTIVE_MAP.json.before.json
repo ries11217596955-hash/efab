@@ -6,19 +6,19 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "2cbae0fb8b24fbbad5b30e913f3a52aa8457c7c7",
-    "subject_head":  "2cbae0fb8b24fbbad5b30e913f3a52aa8457c7c7",
-    "generated_at":  "2026-07-12T10:28:54.0985369+04:00",
+    "observed_head_at_generation":  "c0328ebcd5b0cca8a150eb737359787b96359219",
+    "subject_head":  "c0328ebcd5b0cca8a150eb737359787b96359219",
+    "generated_at":  "2026-07-12T10:15:13.0869119+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  2059,
+    "structural_path_count":  2040,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2059,
-                                    "sha256":  "4e96ad4bf4952f36d4713807f3ca4a2c7a4ab514725c7a74b6eb4db52e10c169"
+                                    "structural_file_count":  2040,
+                                    "sha256":  "db0785c6b80128c2346ff6ce959eb9d932639fa4e8ee45ab2c05860188d0ce17"
                                 },
     "module_count":  203,
     "validator_count":  174,
@@ -764,9 +764,9 @@
 
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "2cbae0fb8b24fbbad5b30e913f3a52aa8457c7c7",
-                                                               "committed_at":  "2026-07-12T10:14:39+04:00",
-                                                               "subject":  "living-loop: block repair at authority preflight"
+                                                               "head":  "c0328ebcd5b0cca8a150eb737359787b96359219",
+                                                               "committed_at":  "2026-07-12T00:39:40+04:00",
+                                                               "subject":  "living-loop: select non-executing brain intent"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -2130,25 +2130,23 @@
                                             "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                                             "discovery_method":  "bounded_git_ls_files_path_discovery",
                                             "evidence_counts":  {
-                                                                    "files":  22,
-                                                                    "scripts":  12,
-                                                                    "validators":  5,
+                                                                    "files":  12,
+                                                                    "scripts":  8,
+                                                                    "validators":  3,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  0,
                                                                     "docs":  0
                                                                 },
-                                            "file_count":  22,
-                                            "script_count":  12,
-                                            "validator_count":  5,
+                                            "file_count":  12,
+                                            "script_count":  8,
+                                            "validator_count":  3,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  0,
                                             "doc_count":  0,
                                             "validator_refs":  [
                                                                    "operations/active_behavior/validate_active_behavior_absorption_promotion_v1.ps1",
                                                                    "operations/active_behavior/validate_active_behavior_blocked_lifecycle_pass_v1.ps1",
-                                                                   "operations/active_behavior/validate_active_behavior_fresh_1000_lifecycle_pass_v1.ps1",
-                                                                   "operations/active_behavior/validate_active_behavior_task_decision_flow_v1.ps1",
-                                                                   "operations/active_behavior/validate_fresh_1000_candidate_behavior_absorption_v1.ps1"
+                                                                   "operations/active_behavior/validate_active_behavior_task_decision_flow_v1.ps1"
                                                                ],
                                             "proof_refs":  [
 
@@ -2158,8 +2156,6 @@
                                                                         ],
                                             "notable_files":  [
                                                                   "operations/active_behavior/build_active_behavior_blocked_lifecycle_pass_v1.ps1",
-                                                                  "operations/active_behavior/build_active_behavior_fresh_1000_lifecycle_pass_v1.ps1",
-                                                                  "operations/active_behavior/build_fresh_1000_candidate_behavior_absorption_v1.ps1",
                                                                   "operations/active_behavior/invoke_active_behavior_retrieval_v1.ps1",
                                                                   "operations/active_behavior/invoke_active_behavior_task_decision_v1.ps1",
                                                                   "operations/active_behavior/promote_fresh_1000_behavior_absorption_v1.ps1",
@@ -2167,32 +2163,20 @@
                                                                   "operations/active_behavior/rollback/active_behavior_absorption_fresh_1000_v1/reports__self_development__SELF_MODEL_ACTIVE_MAP.json.before.json",
                                                                   "operations/active_behavior/rollback/active_behavior_absorption_fresh_1000_v1/reports__self_development__accepted_change_memory_snapshot.json.before.json",
                                                                   "operations/active_behavior/rollback/active_behavior_absorption_fresh_1000_v1/rollback_manifest.json",
-                                                                  "operations/active_behavior/rollback/active_behavior_absorption_fresh_1000_v1_20260712/packs__registry.json.before.json",
-                                                                  "operations/active_behavior/rollback/active_behavior_absorption_fresh_1000_v1_20260712/reports__self_development__SELF_MODEL_ACTIVE_MAP.json.before.json",
-                                                                  "operations/active_behavior/rollback/active_behavior_absorption_fresh_1000_v1_20260712/reports__self_development__accepted_change_memory_snapshot.json.before.json",
-                                                                  "operations/active_behavior/rollback/active_behavior_absorption_fresh_1000_v1_20260712/rollback_manifest.json",
                                                                   "operations/active_behavior/rollback_active_behavior_absorption_promotion_v1.ps1",
-                                                                  "operations/active_behavior/store/active_behavior_absorption_fresh_1000_v1_20260712/active_compact_atom_index.json",
-                                                                  "operations/active_behavior/store/active_behavior_absorption_fresh_1000_v1_20260712/manifest.json",
                                                                   "operations/active_behavior/validate_active_behavior_absorption_promotion_v1.ps1",
                                                                   "operations/active_behavior/validate_active_behavior_blocked_lifecycle_pass_v1.ps1",
-                                                                  "operations/active_behavior/validate_active_behavior_fresh_1000_lifecycle_pass_v1.ps1",
-                                                                  "operations/active_behavior/validate_active_behavior_task_decision_flow_v1.ps1",
-                                                                  "operations/active_behavior/validate_fresh_1000_candidate_behavior_absorption_v1.ps1"
+                                                                  "operations/active_behavior/validate_active_behavior_task_decision_flow_v1.ps1"
                                                               ],
                                             "primary_evidence_refs":  [
                                                                           "operations/active_behavior/build_active_behavior_blocked_lifecycle_pass_v1.ps1",
-                                                                          "operations/active_behavior/build_active_behavior_fresh_1000_lifecycle_pass_v1.ps1",
-                                                                          "operations/active_behavior/build_fresh_1000_candidate_behavior_absorption_v1.ps1",
                                                                           "operations/active_behavior/invoke_active_behavior_retrieval_v1.ps1",
                                                                           "operations/active_behavior/invoke_active_behavior_task_decision_v1.ps1",
                                                                           "operations/active_behavior/promote_fresh_1000_behavior_absorption_v1.ps1",
                                                                           "operations/active_behavior/rollback_active_behavior_absorption_promotion_v1.ps1",
                                                                           "operations/active_behavior/validate_active_behavior_absorption_promotion_v1.ps1",
                                                                           "operations/active_behavior/validate_active_behavior_blocked_lifecycle_pass_v1.ps1",
-                                                                          "operations/active_behavior/validate_active_behavior_fresh_1000_lifecycle_pass_v1.ps1",
-                                                                          "operations/active_behavior/validate_active_behavior_task_decision_flow_v1.ps1",
-                                                                          "operations/active_behavior/validate_fresh_1000_candidate_behavior_absorption_v1.ps1"
+                                                                          "operations/active_behavior/validate_active_behavior_task_decision_flow_v1.ps1"
                                                                       ],
                                             "needs_triage":  true,
                                             "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
@@ -2869,51 +2853,6 @@
                                                               ],
                                             "primary_evidence_refs":  [
                                                                           "operations/reflex_library/invoke_reflex.ps1"
-                                                                      ],
-                                            "needs_triage":  true,
-                                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                                            "source_ref":  "bounded_tracked_file_discovery_v1",
-                                            "is_required_component":  false
-                                        },
-                                        {
-                                            "id":  "operations_reports",
-                                            "path":  "operations/reports",
-                                            "root":  "operations/reports",
-                                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                                            "discovery_method":  "bounded_git_ls_files_path_discovery",
-                                            "evidence_counts":  {
-                                                                    "files":  6,
-                                                                    "scripts":  0,
-                                                                    "validators":  0,
-                                                                    "proofs":  0,
-                                                                    "contracts_or_policies":  0,
-                                                                    "docs":  3
-                                                                },
-                                            "file_count":  6,
-                                            "script_count":  0,
-                                            "validator_count":  0,
-                                            "proof_file_count":  0,
-                                            "contract_or_policy_count":  0,
-                                            "doc_count":  3,
-                                            "validator_refs":  [
-
-                                                               ],
-                                            "proof_refs":  [
-
-                                                           ],
-                                            "contract_or_policy_refs":  [
-
-                                                                        ],
-                                            "notable_files":  [
-                                                                  "operations/reports/ACTIVE_BEHAVIOR_ABSORPTION_PROMOTION_V1.json",
-                                                                  "operations/reports/ACTIVE_BEHAVIOR_ABSORPTION_PROMOTION_V1.md",
-                                                                  "operations/reports/ACTIVE_BEHAVIOR_TASK_DECISION_FLOW_V1.json",
-                                                                  "operations/reports/ACTIVE_BEHAVIOR_TASK_DECISION_FLOW_V1.md",
-                                                                  "operations/reports/FRESH_1000_CANDIDATE_BEHAVIOR_ABSORPTION_V1.json",
-                                                                  "operations/reports/FRESH_1000_CANDIDATE_BEHAVIOR_ABSORPTION_V1.md"
-                                                              ],
-                                            "primary_evidence_refs":  [
-
                                                                       ],
                                             "needs_triage":  true,
                                             "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
@@ -8462,11 +8401,11 @@
                                 ],
     "component_authority_summary":  {
                                         "confirmed_components":  8,
-                                        "primary_evidence_candidates":  154,
+                                        "primary_evidence_candidates":  153,
                                         "legacy_unverified_hints":  4,
                                         "rejected_or_stale_hints":  3,
                                         "required_components":  8,
-                                        "total_components_in_compatibility_view":  162,
+                                        "total_components_in_compatibility_view":  161,
                                         "bounded_discovery_pathspecs":  [
                                                                             "operations",
                                                                             "modules",
@@ -9232,9 +9171,9 @@
 
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "2cbae0fb8b24fbbad5b30e913f3a52aa8457c7c7",
-                                                     "committed_at":  "2026-07-12T10:14:39+04:00",
-                                                     "subject":  "living-loop: block repair at authority preflight"
+                                                     "head":  "c0328ebcd5b0cca8a150eb737359787b96359219",
+                                                     "committed_at":  "2026-07-12T00:39:40+04:00",
+                                                     "subject":  "living-loop: select non-executing brain intent"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -10596,25 +10535,23 @@
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                            "discovery_method":  "bounded_git_ls_files_path_discovery",
                            "evidence_counts":  {
-                                                   "files":  22,
-                                                   "scripts":  12,
-                                                   "validators":  5,
+                                                   "files":  12,
+                                                   "scripts":  8,
+                                                   "validators":  3,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  0,
                                                    "docs":  0
                                                },
-                           "file_count":  22,
-                           "script_count":  12,
-                           "validator_count":  5,
+                           "file_count":  12,
+                           "script_count":  8,
+                           "validator_count":  3,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  0,
                            "doc_count":  0,
                            "validator_refs":  [
                                                   "operations/active_behavior/validate_active_behavior_absorption_promotion_v1.ps1",
                                                   "operations/active_behavior/validate_active_behavior_blocked_lifecycle_pass_v1.ps1",
-                                                  "operations/active_behavior/validate_active_behavior_fresh_1000_lifecycle_pass_v1.ps1",
-                                                  "operations/active_behavior/validate_active_behavior_task_decision_flow_v1.ps1",
-                                                  "operations/active_behavior/validate_fresh_1000_candidate_behavior_absorption_v1.ps1"
+                                                  "operations/active_behavior/validate_active_behavior_task_decision_flow_v1.ps1"
                                               ],
                            "proof_refs":  [
 
@@ -10624,8 +10561,6 @@
                                                        ],
                            "notable_files":  [
                                                  "operations/active_behavior/build_active_behavior_blocked_lifecycle_pass_v1.ps1",
-                                                 "operations/active_behavior/build_active_behavior_fresh_1000_lifecycle_pass_v1.ps1",
-                                                 "operations/active_behavior/build_fresh_1000_candidate_behavior_absorption_v1.ps1",
                                                  "operations/active_behavior/invoke_active_behavior_retrieval_v1.ps1",
                                                  "operations/active_behavior/invoke_active_behavior_task_decision_v1.ps1",
                                                  "operations/active_behavior/promote_fresh_1000_behavior_absorption_v1.ps1",
@@ -10633,32 +10568,20 @@
                                                  "operations/active_behavior/rollback/active_behavior_absorption_fresh_1000_v1/reports__self_development__SELF_MODEL_ACTIVE_MAP.json.before.json",
                                                  "operations/active_behavior/rollback/active_behavior_absorption_fresh_1000_v1/reports__self_development__accepted_change_memory_snapshot.json.before.json",
                                                  "operations/active_behavior/rollback/active_behavior_absorption_fresh_1000_v1/rollback_manifest.json",
-                                                 "operations/active_behavior/rollback/active_behavior_absorption_fresh_1000_v1_20260712/packs__registry.json.before.json",
-                                                 "operations/active_behavior/rollback/active_behavior_absorption_fresh_1000_v1_20260712/reports__self_development__SELF_MODEL_ACTIVE_MAP.json.before.json",
-                                                 "operations/active_behavior/rollback/active_behavior_absorption_fresh_1000_v1_20260712/reports__self_development__accepted_change_memory_snapshot.json.before.json",
-                                                 "operations/active_behavior/rollback/active_behavior_absorption_fresh_1000_v1_20260712/rollback_manifest.json",
                                                  "operations/active_behavior/rollback_active_behavior_absorption_promotion_v1.ps1",
-                                                 "operations/active_behavior/store/active_behavior_absorption_fresh_1000_v1_20260712/active_compact_atom_index.json",
-                                                 "operations/active_behavior/store/active_behavior_absorption_fresh_1000_v1_20260712/manifest.json",
                                                  "operations/active_behavior/validate_active_behavior_absorption_promotion_v1.ps1",
                                                  "operations/active_behavior/validate_active_behavior_blocked_lifecycle_pass_v1.ps1",
-                                                 "operations/active_behavior/validate_active_behavior_fresh_1000_lifecycle_pass_v1.ps1",
-                                                 "operations/active_behavior/validate_active_behavior_task_decision_flow_v1.ps1",
-                                                 "operations/active_behavior/validate_fresh_1000_candidate_behavior_absorption_v1.ps1"
+                                                 "operations/active_behavior/validate_active_behavior_task_decision_flow_v1.ps1"
                                              ],
                            "primary_evidence_refs":  [
                                                          "operations/active_behavior/build_active_behavior_blocked_lifecycle_pass_v1.ps1",
-                                                         "operations/active_behavior/build_active_behavior_fresh_1000_lifecycle_pass_v1.ps1",
-                                                         "operations/active_behavior/build_fresh_1000_candidate_behavior_absorption_v1.ps1",
                                                          "operations/active_behavior/invoke_active_behavior_retrieval_v1.ps1",
                                                          "operations/active_behavior/invoke_active_behavior_task_decision_v1.ps1",
                                                          "operations/active_behavior/promote_fresh_1000_behavior_absorption_v1.ps1",
                                                          "operations/active_behavior/rollback_active_behavior_absorption_promotion_v1.ps1",
                                                          "operations/active_behavior/validate_active_behavior_absorption_promotion_v1.ps1",
                                                          "operations/active_behavior/validate_active_behavior_blocked_lifecycle_pass_v1.ps1",
-                                                         "operations/active_behavior/validate_active_behavior_fresh_1000_lifecycle_pass_v1.ps1",
-                                                         "operations/active_behavior/validate_active_behavior_task_decision_flow_v1.ps1",
-                                                         "operations/active_behavior/validate_fresh_1000_candidate_behavior_absorption_v1.ps1"
+                                                         "operations/active_behavior/validate_active_behavior_task_decision_flow_v1.ps1"
                                                      ],
                            "needs_triage":  true,
                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
@@ -11335,51 +11258,6 @@
                                              ],
                            "primary_evidence_refs":  [
                                                          "operations/reflex_library/invoke_reflex.ps1"
-                                                     ],
-                           "needs_triage":  true,
-                           "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                           "source_ref":  "bounded_tracked_file_discovery_v1",
-                           "is_required_component":  false
-                       },
-                       {
-                           "id":  "operations_reports",
-                           "path":  "operations/reports",
-                           "root":  "operations/reports",
-                           "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                           "discovery_method":  "bounded_git_ls_files_path_discovery",
-                           "evidence_counts":  {
-                                                   "files":  6,
-                                                   "scripts":  0,
-                                                   "validators":  0,
-                                                   "proofs":  0,
-                                                   "contracts_or_policies":  0,
-                                                   "docs":  3
-                                               },
-                           "file_count":  6,
-                           "script_count":  0,
-                           "validator_count":  0,
-                           "proof_file_count":  0,
-                           "contract_or_policy_count":  0,
-                           "doc_count":  3,
-                           "validator_refs":  [
-
-                                              ],
-                           "proof_refs":  [
-
-                                          ],
-                           "contract_or_policy_refs":  [
-
-                                                       ],
-                           "notable_files":  [
-                                                 "operations/reports/ACTIVE_BEHAVIOR_ABSORPTION_PROMOTION_V1.json",
-                                                 "operations/reports/ACTIVE_BEHAVIOR_ABSORPTION_PROMOTION_V1.md",
-                                                 "operations/reports/ACTIVE_BEHAVIOR_TASK_DECISION_FLOW_V1.json",
-                                                 "operations/reports/ACTIVE_BEHAVIOR_TASK_DECISION_FLOW_V1.md",
-                                                 "operations/reports/FRESH_1000_CANDIDATE_BEHAVIOR_ABSORPTION_V1.json",
-                                                 "operations/reports/FRESH_1000_CANDIDATE_BEHAVIOR_ABSORPTION_V1.md"
-                                             ],
-                           "primary_evidence_refs":  [
-
                                                      ],
                            "needs_triage":  true,
                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",

@@ -1,34 +1,34 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-12T10:14:43.3078436+04:00",
+    "checked_at":  "2026-07-12T10:28:23.6666848+04:00",
     "branch":  "main",
-    "observed_head":  "c0328ebcd5b0cca8a150eb737359787b96359219",
-    "subject_head":  "c0328ebcd5b0cca8a150eb737359787b96359219",
+    "observed_head":  "2cbae0fb8b24fbbad5b30e913f3a52aa8457c7c7",
+    "subject_head":  "2cbae0fb8b24fbbad5b30e913f3a52aa8457c7c7",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "contracts/living_loop/BRAIN_SELECTOR_STUB_V1_REQUIREMENT.md",
+                          "contracts/living_loop/AUTHORITY_PREFLIGHT_GATE_V1_REQUIREMENT.md",
                           "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                          "operations/living_loop/build_brain_selector_stub_v1.ps1",
-                          "operations/living_loop/validate_brain_selector_stub_v1.ps1",
-                          "reports/self_development/BRAIN_SELECTOR_STUB_V1_INTENT.json",
-                          "reports/self_development/BRAIN_SELECTOR_STUB_V1_REPORT.json",
+                          "operations/living_loop/build_authority_preflight_gate_v1.ps1",
+                          "operations/living_loop/validate_authority_preflight_gate_v1.ps1",
+                          "reports/self_development/AUTHORITY_PREFLIGHT_GATE_V1_DECISION.json",
+                          "reports/self_development/AUTHORITY_PREFLIGHT_GATE_V1_REPORT.json",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "tests/self_development/BRAIN_SELECTOR_STUB_V1_PROOF.json"
+                          "tests/self_development/AUTHORITY_PREFLIGHT_GATE_V1_PROOF.json"
                       ],
     "structural_paths":  [
-                             "contracts/living_loop/BRAIN_SELECTOR_STUB_V1_REQUIREMENT.md",
+                             "contracts/living_loop/AUTHORITY_PREFLIGHT_GATE_V1_REQUIREMENT.md",
                              "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                             "operations/living_loop/build_brain_selector_stub_v1.ps1",
-                             "operations/living_loop/validate_brain_selector_stub_v1.ps1",
-                             "reports/self_development/BRAIN_SELECTOR_STUB_V1_INTENT.json",
-                             "reports/self_development/BRAIN_SELECTOR_STUB_V1_REPORT.json",
-                             "tests/self_development/BRAIN_SELECTOR_STUB_V1_PROOF.json"
+                             "operations/living_loop/build_authority_preflight_gate_v1.ps1",
+                             "operations/living_loop/validate_authority_preflight_gate_v1.ps1",
+                             "reports/self_development/AUTHORITY_PREFLIGHT_GATE_V1_DECISION.json",
+                             "reports/self_development/AUTHORITY_PREFLIGHT_GATE_V1_REPORT.json",
+                             "tests/self_development/AUTHORITY_PREFLIGHT_GATE_V1_PROOF.json"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -40,8 +40,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2040,
-                                    "sha256":  "db0785c6b80128c2346ff6ce959eb9d932639fa4e8ee45ab2c05860188d0ce17"
+                                    "structural_file_count":  2059,
+                                    "sha256":  "4e96ad4bf4952f36d4713807f3ca4a2c7a4ab514725c7a74b6eb4db52e10c169"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -64,16 +64,16 @@
                          "builder":  "AGENT_BODY_COMPOSITION_MAP_PRIMARY_EVIDENCE_V1",
                          "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                          "confirmed_component_count":  8,
-                         "primary_evidence_candidate_count":  153,
+                         "primary_evidence_candidate_count":  154,
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
-                         "total_component_count":  161,
-                         "structural_path_count":  2040,
+                         "total_component_count":  162,
+                         "structural_path_count":  2059,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-12T10:15:13.2369405+04:00"
+    "refreshed_at":  "2026-07-12T10:28:54.2489484+04:00"
 }

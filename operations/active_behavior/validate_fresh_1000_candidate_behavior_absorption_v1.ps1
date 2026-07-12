@@ -1,0 +1,33 @@
+﻿$ErrorActionPreference='Stop'
+$repoRoot=(git rev-parse --show-toplevel).Trim(); Set-Location $repoRoot
+function Assert($Cond,[string]$Msg){if(-not $Cond){throw $Msg}}
+$path='operations/reports/FRESH_1000_CANDIDATE_BEHAVIOR_ABSORPTION_V1.json'
+Assert (Test-Path $path) 'FRESH_1000_PROOF_MISSING'
+$p=Get-Content $path -Raw|ConvertFrom-Json
+Assert ($p.schema -eq 'fresh_1000_candidate_behavior_absorption_v1') 'SCHEMA_BAD'
+Assert ($p.status -eq 'PASS_FRESH_1000_BEHAVIOR_ABSORPTION_LAB') 'STATUS_NOT_PASS'
+Assert ([int]$p.candidate_count -eq 1000) 'CANDIDATE_COUNT_BAD'
+Assert ([int]$p.accepted_count -eq 1000) 'ACCEPTED_COUNT_BAD'
+Assert ([int]$p.rejected_count -eq 0) 'REJECTED_COUNT_BAD'
+Assert ($p.generation_mode -eq 'NEW_BOUNDED_LAB_CYCLE_NOT_RECOVERED_OLD_PROOF') 'GENERATION_MODE_BAD'
+Assert ($p.runtime_ready -eq $false) 'TOP_LEVEL_RUNTIME_READY_OVERCLAIM'
+Assert ($p.live_ready -eq $false) 'TOP_LEVEL_LIVE_READY_OVERCLAIM'
+Assert ($p.mutation_authorized -eq $false) 'TOP_LEVEL_MUTATION_OVERCLAIM'
+Assert ($p.boundary.lab_only -eq $true) 'LAB_ONLY_BAD'
+Assert ($p.boundary.runtime_ready -eq $false) 'RUNTIME_READY_OVERCLAIM'
+Assert ($p.boundary.live_ready -eq $false) 'LIVE_READY_OVERCLAIM'
+Assert ($p.boundary.mutation_authorized -eq $false) 'MUTATION_OVERCLAIM'
+Assert ($p.boundary.no_passport_active_created -eq $true) 'PASSPORT_ACTIVE_OVERCLAIM'
+Assert ($p.boundary.no_live_runtime_touched -eq $true) 'LIVE_TOUCHED_OVERCLAIM'
+Assert ($p.acceptance_summary.all_have_evidence_refs -eq $true) 'EVIDENCE_REFS_BAD'
+Assert ($p.acceptance_summary.all_runtime_ready_false -eq $true) 'RUNTIME_FLAGS_BAD'
+Assert ($p.acceptance_summary.all_mutation_authorized_false -eq $true) 'MUTATION_FLAGS_BAD'
+Assert ($p.acceptance_summary.all_domains_balanced -eq $true) 'DOMAIN_BALANCE_BAD'
+foreach($d in @($p.domains)){Assert ([int]$p.domain_counts.$d -eq 100) "DOMAIN_COUNT_BAD:$d"}
+Write-Host 'VALIDATION_PASS=PASS_FRESH_1000_BEHAVIOR_ABSORPTION_LAB'
+Write-Host 'CANDIDATES=1000'
+Write-Host 'ACCEPTED=1000'
+Write-Host 'LAB_ONLY=true'
+Write-Host 'RUNTIME_READY=false'
+Write-Host 'MUTATION_AUTHORIZED=false'
+

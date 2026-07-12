@@ -1,0 +1,79 @@
+{
+    "schema":  "active_behavior_absorption_promotion_v1",
+    "status":  "PROMOTION_ACTIVE_BODY_VERIFIED",
+    "runtime_ready":  false,
+    "proof_label":  "PROVEN_ACTIVE_REPO_BODY_NOT_LIVE_AUTONOMY",
+    "promotion_id":  "active_behavior_absorption_fresh_1000_v1_20260712",
+    "source_proof_path":  "operations/reports/FRESH_1000_CANDIDATE_BEHAVIOR_ABSORPTION_V1.json",
+    "active_manifest_path":  "operations/active_behavior/store/active_behavior_absorption_fresh_1000_v1_20260712/manifest.json",
+    "active_index_path":  "operations/active_behavior/store/active_behavior_absorption_fresh_1000_v1_20260712/active_compact_atom_index.json",
+    "active_atom_count":  1000,
+    "active_store_bytes":  1247238,
+    "active_index_sha256":  "a3a48e883af5b6a1ead7440822169cdb699036fd1888662d7fb9d42519fb0fc7",
+    "active_manifest_sha256":  "ec568aa10a0babff2e7f68aaa2ec6917c6abaad0c1eea2990a0116e9e6742637",
+    "checkpoint_results":  [
+                               {
+                                   "checkpoint":  10,
+                                   "status":  "PASS",
+                                   "retrieval_count":  10,
+                                   "behavior_delta_count":  10,
+                                   "guarded_decision_count":  10,
+                                   "unique_atom_id_used_count":  10
+                               },
+                               {
+                                   "checkpoint":  100,
+                                   "status":  "PASS",
+                                   "retrieval_count":  100,
+                                   "behavior_delta_count":  100,
+                                   "guarded_decision_count":  100,
+                                   "unique_atom_id_used_count":  100
+                               },
+                               {
+                                   "checkpoint":  500,
+                                   "status":  "PASS",
+                                   "retrieval_count":  500,
+                                   "behavior_delta_count":  500,
+                                   "guarded_decision_count":  500,
+                                   "unique_atom_id_used_count":  500
+                               },
+                               {
+                                   "checkpoint":  700,
+                                   "status":  "PASS",
+                                   "retrieval_count":  700,
+                                   "behavior_delta_count":  700,
+                                   "guarded_decision_count":  700,
+                                   "unique_atom_id_used_count":  700
+                               },
+                               {
+                                   "checkpoint":  1000,
+                                   "status":  "PASS",
+                                   "retrieval_count":  1000,
+                                   "behavior_delta_count":  1000,
+                                   "guarded_decision_count":  1000,
+                                   "unique_atom_id_used_count":  1000
+                               }
+                           ],
+    "protected_surface_changes":  {
+                                      "before":  [
+                                                     {
+                                                         "path":  "reports/self_development/accepted_change_memory_snapshot.json",
+                                                         "before_sha256":  "0995efa876c15592d1a2ec27bf6bf1dc7cd081916c94a97c7810aec9e60bc339",
+                                                         "backup_path":  "operations\\active_behavior\\rollback\\active_behavior_absorption_fresh_1000_v1_20260712\\reports__self_development__accepted_change_memory_snapshot.json.before.json"
+                                                     },
+                                                     {
+                                                         "path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+                                                         "before_sha256":  "d31b6185c16c96f75b013bf6ec1b606cf5daf72ba2dd3a326417298d881b6f8d",
+                                                         "backup_path":  "operations\\active_behavior\\rollback\\active_behavior_absorption_fresh_1000_v1_20260712\\reports__self_development__SELF_MODEL_ACTIVE_MAP.json.before.json"
+                                                     },
+                                                     {
+                                                         "path":  "packs/registry.json",
+                                                         "before_sha256":  "9042f4ca76828ad5525040af5e4ecb46e8752e4a3360a3073b0a435ee8f70d76",
+                                                         "backup_path":  "operations\\active_behavior\\rollback\\active_behavior_absorption_fresh_1000_v1_20260712\\packs__registry.json.before.json"
+                                                     }
+                                                 ],
+                                      "after":  "ACTIVE_GUARDED_BY_PROMOTED_ATOM"
+                                  },
+    "rollback_manifest_path":  "operations/active_behavior/rollback/active_behavior_absorption_fresh_1000_v1_20260712/rollback_manifest.json",
+    "rollback_ready":  true,
+    "boundary":  "This is active repo-body promotion: compact active pointers and active compact store are installed. It is not live autonomous runtime and does not set runtime_ready true."
+}

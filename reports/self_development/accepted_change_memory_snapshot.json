@@ -1,0 +1,23 @@
+{
+    "schema":  "efab_active_memory_pointer_v1",
+    "status":  "ACTIVE_POINTER_TO_COMPACT_ACCEPTED_BEHAVIOR_STORE",
+    "runtime_ready":  false,
+    "promotion_id":  "active_behavior_absorption_fresh_1000_v1_20260712",
+    "active_index_path":  "operations/active_behavior/store/active_behavior_absorption_fresh_1000_v1_20260712/active_compact_atom_index.json",
+    "active_manifest_path":  "operations/active_behavior/store/active_behavior_absorption_fresh_1000_v1_20260712/manifest.json",
+    "active_atom_count":  1000,
+    "active_domains":  [
+                           "evidence_and_acceptance",
+                           "codex_boundary",
+                           "live_lab_boundary",
+                           "retention_and_memory",
+                           "input_x_restore",
+                           "bloat_control",
+                           "behavior_injection",
+                           "rollback_checkpoint",
+                           "owner_authority",
+                           "validator_order"
+                       ],
+    "policy":  "Repo stores compact pointer/control surface; active behavior atoms live in compact store, not in monolithic accepted memory snapshot.",
+    "rollback_manifest_path":  "operations/active_behavior/rollback/active_behavior_absorption_fresh_1000_v1_20260712/rollback_manifest.json"
+}

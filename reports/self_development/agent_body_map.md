@@ -2,9 +2,9 @@
 
 Status: ACTIVE_DERIVED_VIEW
 Branch: main
-Observed head at generation: c0328ebcd5b0cca8a150eb737359787b96359219
-Generated: 2026-07-12T10:15:13.0869119+04:00
-Body source fingerprint: db0785c6b80128c2346ff6ce959eb9d932639fa4e8ee45ab2c05860188d0ce17
+Observed head at generation: 2cbae0fb8b24fbbad5b30e913f3a52aa8457c7c7
+Generated: 2026-07-12T10:28:54.0985369+04:00
+Body source fingerprint: 4e96ad4bf4952f36d4713807f3ca4a2c7a4ab514725c7a74b6eb4db52e10c169
 
 Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
@@ -18,7 +18,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 ## Counts
 
 - Confirmed components: 8
-- Primary evidence candidates: 153
+- Primary evidence candidates: 154
 - Legacy unverified hints: 4
 - Rejected or stale hints: 3
 
@@ -59,7 +59,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `modules_route_locks` - root `modules/route_locks`, files=1, scripts=1, validators=0, proofs=0, needs_triage=True
 - `modules_self_development` - root `modules/self_development`, files=20, scripts=20, validators=0, proofs=1, needs_triage=True
 - `operations_accepted_atom_retention_calibration` - root `operations/accepted_atom_retention_calibration`, files=2, scripts=2, validators=1, proofs=0, needs_triage=True
-- `operations_active_behavior` - root `operations/active_behavior`, files=12, scripts=8, validators=3, proofs=0, needs_triage=True
+- `operations_active_behavior` - root `operations/active_behavior`, files=22, scripts=12, validators=5, proofs=0, needs_triage=True
 - `operations_autonomy_diagnostics` - root `operations/autonomy_diagnostics`, files=29, scripts=0, validators=0, proofs=0, needs_triage=True
 - `operations_bridge_diagnostics` - root `operations/bridge_diagnostics`, files=2, scripts=0, validators=0, proofs=2, needs_triage=True
 - `operations_live_like` - root `operations/live_like`, files=5, scripts=5, validators=3, proofs=0, needs_triage=True
@@ -73,6 +73,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `operations_readme_md` - root `operations/README.md`, files=1, scripts=0, validators=0, proofs=0, needs_triage=True
 - `operations_reasoning` - root `operations/reasoning`, files=6, scripts=6, validators=3, proofs=0, needs_triage=True
 - `operations_reflex_library` - root `operations/reflex_library`, files=2, scripts=1, validators=0, proofs=0, needs_triage=True
+- `operations_reports` - root `operations/reports`, files=6, scripts=0, validators=0, proofs=0, needs_triage=True
 - `packs_phase10_generated_agent_validation_harness_v1` - root `packs/PHASE10_GENERATED_AGENT_VALIDATION_HARNESS_V1`, files=6, scripts=3, validators=2, proofs=0, needs_triage=True
 - `packs_phase100_quarantine_and_blocker_registry_v1` - root `packs/PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1`, files=3, scripts=2, validators=0, proofs=0, needs_triage=True
 - `packs_phase101_batch_proof_aggregator_v1` - root `packs/PHASE101_BATCH_PROOF_AGGREGATOR_V1`, files=3, scripts=2, validators=0, proofs=3, needs_triage=True
@@ -114,7 +115,6 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `packs_phase39_monitoring_gap_reachability_v1` - root `packs/PHASE39_MONITORING_GAP_REACHABILITY_V1`, files=6, scripts=3, validators=1, proofs=1, needs_triage=True
 - `packs_phase4_self_validation_release_gates` - root `packs/PHASE4_SELF_VALIDATION_RELEASE_GATES`, files=7, scripts=4, validators=2, proofs=0, needs_triage=True
 - `packs_phase40_specialized_gap_auto_intake_runtime_v1` - root `packs/PHASE40_SPECIALIZED_GAP_AUTO_INTAKE_RUNTIME_V1`, files=5, scripts=3, validators=1, proofs=1, needs_triage=True
-- `packs_phase41_one_run_gap_remediation_packet_proof_v1` - root `packs/PHASE41_ONE_RUN_GAP_REMEDIATION_PACKET_PROOF_V1`, files=3, scripts=2, validators=1, proofs=3, needs_triage=True
 
 ## Freshness
 

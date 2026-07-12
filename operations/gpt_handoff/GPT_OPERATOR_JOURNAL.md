@@ -1978,3 +1978,70 @@ Architectural chain now:
 
 Next safe direction:
 - Build a formal repair PREFLIGHT task package for operations_active_behavior source proof, but keep it BLOCKED_PREFLIGHT unless Owner explicitly authorizes the repair scope and validators.
+
+## 2026-07-12 — Active behavior fresh 1000 new cycle and lifecycle promotion
+
+STATUS: PASS / NEW_BOUNDED_LAB_CYCLE / VALIDATED_LAB_NON_LIVE
+
+Context:
+- Owner clarified that chasing old missing proof is wasteful if it was deleted or never existed.
+- Correct move: run a new bounded cycle and create fresh proof.
+- Target: operations_active_behavior.
+- Previous state: DRAFT / BLOCKED because operations/reports/FRESH_1000_CANDIDATE_BEHAVIOR_ABSORPTION_V1.json was missing.
+
+What was done:
+1. Created new source proof generator:
+   - operations/active_behavior/build_fresh_1000_candidate_behavior_absorption_v1.ps1
+2. Created source proof validator:
+   - operations/active_behavior/validate_fresh_1000_candidate_behavior_absorption_v1.ps1
+3. Ran new bounded lab cycle:
+   - operations/reports/FRESH_1000_CANDIDATE_BEHAVIOR_ABSORPTION_V1.json
+   - operations/reports/FRESH_1000_CANDIDATE_BEHAVIOR_ABSORPTION_V1.md
+   - candidates=1000
+   - accepted=1000
+   - status=PASS_FRESH_1000_BEHAVIOR_ABSORPTION_LAB
+   - generation_mode=NEW_BOUNDED_LAB_CYCLE_NOT_RECOVERED_OLD_PROOF
+4. Promotion initially stopped twice correctly:
+   - first stop: missing top-level runtime_ready=false required by promoter schema.
+   - second stop: missing protected surface reports/self_development/accepted_change_memory_snapshot.json.
+5. Fixed schema compatibility by adding top-level runtime_ready=false/live_ready=false/mutation_authorized=false.
+6. Initialized missing protected surface explicitly for the fresh cycle.
+7. Ran promotion:
+   - operations/active_behavior/promote_fresh_1000_behavior_absorption_v1.ps1
+   - promotion_id=active_behavior_absorption_fresh_1000_v1_20260712
+   - status=PROMOTION_ACTIVE_BODY_VERIFIED
+   - active atoms=1000
+   - rollback ready=true
+   - runtime_ready=false
+8. Ran validators:
+   - PASS_FRESH_1000_BEHAVIOR_ABSORPTION_LAB
+   - ACTIVE_BEHAVIOR_ABSORPTION_PROMOTION_V1
+   - ACTIVE_BEHAVIOR_TASK_DECISION_FLOW_V1
+9. Created lifecycle pass:
+   - operations/active_behavior/build_active_behavior_fresh_1000_lifecycle_pass_v1.ps1
+   - operations/active_behavior/validate_active_behavior_fresh_1000_lifecycle_pass_v1.ps1
+   - reports/self_development/ACTIVE_BEHAVIOR_FRESH_1000_LIFECYCLE_PASS_V1.json
+   - tests/self_development/ACTIVE_BEHAVIOR_FRESH_1000_LIFECYCLE_PASS_V1_PROOF.json
+
+Result:
+- operations_active_behavior changed from DRAFT/BLOCKED to VALIDATED_LAB/PROVEN_LAB.
+- Passport index updated.
+- Body map refreshed.
+- Agent body composition map current validator PASS.
+
+Proof boundary:
+- lab/non-live proof only.
+- runtime_ready=false.
+- live_ready=false.
+- autonomous_runtime=false.
+- no PASSPORT_ACTIVE created.
+- no live runtime touched.
+- rollback ready for promotion changes.
+
+Architectural lesson:
+- If historical proof is missing or stale, the organism should not waste time worshipping history.
+- It should create a new bounded proof cycle with validators and clear boundaries.
+- Missing proof can be repaired by fresh proof, not by fake reconstruction.
+
+Next safe direction:
+- Refresh Living Loop signals/body state/reasoner/gates against the new state, because the old chain still says operations_active_behavior is blocked. The correct next chain should remove the blocked route and produce validated_lab_non_active signal for active behavior.

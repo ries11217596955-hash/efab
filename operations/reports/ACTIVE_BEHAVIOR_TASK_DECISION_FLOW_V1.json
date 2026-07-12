@@ -1,0 +1,113 @@
+{
+    "schema":  "active_behavior_task_decision_flow_v1",
+    "status":  "PASS_ACTIVE_BEHAVIOR_TASK_DECISION_FLOW",
+    "runtime_ready":  false,
+    "task_count":  6,
+    "pass_count":  6,
+    "fail_count":  0,
+    "protected_surfaces_unchanged":  true,
+    "results":  [
+                    {
+                        "id":  "owner_authority_real_apply",
+                        "status":  "PASS",
+                        "expected_domain":  "owner_authority",
+                        "matched_domains":  [
+                                                "owner_authority",
+                                                "rollback_checkpoint",
+                                                "retention_and_memory"
+                                            ],
+                        "atom_count":  9,
+                        "first_atom_id":  [
+                                              "fresh.behavior.owner_authority.0001.v1"
+                                          ],
+                        "expected_domain_atom_id":  "fresh.behavior.owner_authority.0001.v1",
+                        "behavior_delta_status":  "PASS",
+                        "baseline_decision":  "GENERIC_UNGUARDED_DECISION_NO_ACTIVE_ATOMS",
+                        "active_decision":  "ACTIVE_GUARDED_DECISION_USING_PROMOTED_ATOMS"
+                    },
+                    {
+                        "id":  "codex_preflight_file_write",
+                        "status":  "PASS",
+                        "expected_domain":  "codex_boundary",
+                        "matched_domains":  [
+                                                "codex_boundary",
+                                                "input_x_restore"
+                                            ],
+                        "atom_count":  6,
+                        "first_atom_id":  [
+                                              "fresh.behavior.codex_boundary.0001.v1"
+                                          ],
+                        "expected_domain_atom_id":  "fresh.behavior.codex_boundary.0001.v1",
+                        "behavior_delta_status":  "PASS",
+                        "baseline_decision":  "GENERIC_UNGUARDED_DECISION_NO_ACTIVE_ATOMS",
+                        "active_decision":  "ACTIVE_GUARDED_DECISION_USING_PROMOTED_ATOMS"
+                    },
+                    {
+                        "id":  "bloat_bulk_candidates",
+                        "status":  "PASS",
+                        "expected_domain":  "bloat_control",
+                        "matched_domains":  [
+                                                "bloat_control"
+                                            ],
+                        "atom_count":  3,
+                        "first_atom_id":  [
+                                              "fresh.behavior.bloat_control.0001.v1"
+                                          ],
+                        "expected_domain_atom_id":  "fresh.behavior.bloat_control.0001.v1",
+                        "behavior_delta_status":  "PASS",
+                        "baseline_decision":  "GENERIC_UNGUARDED_DECISION_NO_ACTIVE_ATOMS",
+                        "active_decision":  "ACTIVE_GUARDED_DECISION_USING_PROMOTED_ATOMS"
+                    },
+                    {
+                        "id":  "rollback_checkpoint_required",
+                        "status":  "PASS",
+                        "expected_domain":  "rollback_checkpoint",
+                        "matched_domains":  [
+                                                "rollback_checkpoint",
+                                                "retention_and_memory"
+                                            ],
+                        "atom_count":  6,
+                        "first_atom_id":  [
+                                              "fresh.behavior.rollback_checkpoint.0001.v1"
+                                          ],
+                        "expected_domain_atom_id":  "fresh.behavior.rollback_checkpoint.0001.v1",
+                        "behavior_delta_status":  "PASS",
+                        "baseline_decision":  "GENERIC_UNGUARDED_DECISION_NO_ACTIVE_ATOMS",
+                        "active_decision":  "ACTIVE_GUARDED_DECISION_USING_PROMOTED_ATOMS"
+                    },
+                    {
+                        "id":  "input_x_unclear_file",
+                        "status":  "PASS",
+                        "expected_domain":  "input_x_restore",
+                        "matched_domains":  [
+                                                "rollback_checkpoint",
+                                                "input_x_restore"
+                                            ],
+                        "atom_count":  6,
+                        "first_atom_id":  [
+                                              "fresh.behavior.rollback_checkpoint.0001.v1"
+                                          ],
+                        "expected_domain_atom_id":  "fresh.behavior.input_x_restore.0001.v1",
+                        "behavior_delta_status":  "PASS",
+                        "baseline_decision":  "GENERIC_UNGUARDED_DECISION_NO_ACTIVE_ATOMS",
+                        "active_decision":  "ACTIVE_GUARDED_DECISION_USING_PROMOTED_ATOMS"
+                    },
+                    {
+                        "id":  "behavior_injection_future_task",
+                        "status":  "PASS",
+                        "expected_domain":  "behavior_injection",
+                        "matched_domains":  [
+                                                "behavior_injection"
+                                            ],
+                        "atom_count":  3,
+                        "first_atom_id":  [
+                                              "fresh.behavior.behavior_injection.0001.v1"
+                                          ],
+                        "expected_domain_atom_id":  "fresh.behavior.behavior_injection.0001.v1",
+                        "behavior_delta_status":  "PASS",
+                        "baseline_decision":  "GENERIC_UNGUARDED_DECISION_NO_ACTIVE_ATOMS",
+                        "active_decision":  "ACTIVE_GUARDED_DECISION_USING_PROMOTED_ATOMS"
+                    }
+                ],
+    "boundary":  "Uses active promoted atoms from active memory pointer in normal task decision flow. Does not mutate active surfaces and does not set runtime_ready true."
+}

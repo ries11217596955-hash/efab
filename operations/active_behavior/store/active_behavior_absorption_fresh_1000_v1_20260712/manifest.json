@@ -1,0 +1,24 @@
+{
+    "schema":  "active_behavior_absorption_promotion_manifest_v1",
+    "status":  "PROMOTED_TO_ACTIVE_BODY",
+    "runtime_ready":  false,
+    "promotion_id":  "active_behavior_absorption_fresh_1000_v1_20260712",
+    "source_proof_path":  "operations/reports/FRESH_1000_CANDIDATE_BEHAVIOR_ABSORPTION_V1.json",
+    "source_proof_sha256":  "46e50951f7fb89162bc3267575da79577cdac6e8d1b679faf5014e51c95f141a",
+    "active_index_path":  "operations/active_behavior/store/active_behavior_absorption_fresh_1000_v1_20260712/active_compact_atom_index.json",
+    "active_atom_count":  1000,
+    "domain_counts":  {
+                          "codex_boundary":  100,
+                          "validator_order":  100,
+                          "input_x_restore":  100,
+                          "live_lab_boundary":  100,
+                          "evidence_and_acceptance":  100,
+                          "rollback_checkpoint":  100,
+                          "retention_and_memory":  100,
+                          "behavior_injection":  100,
+                          "owner_authority":  100,
+                          "bloat_control":  100
+                      },
+    "rollback_manifest_path":  "operations/active_behavior/rollback/active_behavior_absorption_fresh_1000_v1_20260712/rollback_manifest.json",
+    "boundary":  "Promotion writes compact active store plus pointers only. It does not bulk-write candidates into legacy active surfaces and does not set runtime_ready true."
+}
