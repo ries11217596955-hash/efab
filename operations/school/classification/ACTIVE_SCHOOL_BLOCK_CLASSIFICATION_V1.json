@@ -60,11 +60,20 @@
     "cursor_status":  {
                           "ledger":  "operations/school/curriculum/candidate_factory/memory/theme_cursor_ledger.json",
                           "status":  "PASS_THEME_CURSOR_LEDGER_REBUILD_V1",
-                          "theme_count":  76,
+                          "theme_count":  17922,
                           "harvested_records":  0,
-                          "warning":  "seeded from topics plan; historic topic depth not restored because no active historical cursor records were found"
+                          "warning":  "seeded from maximal self-knowledge topics plan; historic topic depth not restored because no active historical cursor records were found"
                       },
     "deletion_now_allowed":  false,
     "reason":  "Classification only; deletion/archive move requires dependency rewrite gate.",
-    "created_at":  "2026-07-12T12:50:21.3081701+04:00"
+    "created_at":  "2026-07-12T12:50:21.3081701+04:00",
+    "self_knowledge_curriculum":  {
+                                      "status":  "ACTIVE_AGENT_SELF_KNOWLEDGE_MAXIMAL_CURRICULUM_V1",
+                                      "topic_roots":  87,
+                                      "unique_roots":  87,
+                                      "unique_verbs":  103,
+                                      "modes":  2,
+                                      "cursor_themes":  17922,
+                                      "purpose":  "Maximal self-knowledge curriculum so Builder learns who it is, what repo/body/organs/memory/school are, how to use them, and how to avoid false autonomy or repo sprawl."
+                                  }
 }

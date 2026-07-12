@@ -2,9 +2,9 @@
 
 Status: ACTIVE_DERIVED_VIEW
 Branch: main
-Observed head at generation: ce0546a3c074b4813548eb0f2ade1b593acc8e15
-Generated: 2026-07-12T12:52:25.9596295+04:00
-Body source fingerprint: 7bd8a63d95344c3eb5d005ca1992d37a5dfd322710607d54cd03f6764cc4550a
+Observed head at generation: 099a9181ce9430d288591672dc37fccc50b62f44
+Generated: 2026-07-12T13:11:56.6676826+04:00
+Body source fingerprint: f99469633a50884593169c9987715ce137be4656d38e8ebc5c7d0ce8dcb57abc
 
 Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 

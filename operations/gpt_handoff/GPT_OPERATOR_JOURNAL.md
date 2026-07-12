@@ -2717,3 +2717,86 @@ Decision:
 - Do not let old motor direct the new agent path.
 - Use it as reference material only.
 - After extracting useful concepts, run explicit dependency/deletion gate and archive/delete it so it cannot compete with the new organ path.
+
+## 2026-07-12 — Maximal self-knowledge school curriculum prepared
+
+STATUS: ACTIVE_SCHOOL_CURRICULUM_UPDATED / CURSOR_REBUILT / NOT_RUN_YET
+
+Owner instruction:
+- Do not continue repo cleanup now.
+- Prepare the active school for a large, serious self-knowledge learning run.
+- The Builder must learn who it is, what it is made of, what repo/folder/file/body/organ/memory/compact memory/skill/reflex/signal/proof/validator are, and how to use its own organs.
+- The curriculum must not be minimal. It should be broad enough that these foundational topics do not need to be revisited except when new world/software/process changes appear.
+- No new sandbox/runtime folders as a work style; active school only.
+
+Active school used:
+- operations/school/
+- entrypoint: operations/school/run_agent_school.ps1
+- cycle controller: operations/school/run_autonomous_school_cycle_v1.ps1
+- topics plan: operations/school/curriculum/topics/builder_night_school_topics_v1.json
+- cursor ledger: operations/school/curriculum/candidate_factory/memory/theme_cursor_ledger.json
+
+Curriculum change:
+- Replaced the narrow 18-root proof/school-mechanics curriculum with a broad self-knowledge curriculum.
+- New topics plan status: ACTIVE_AGENT_SELF_KNOWLEDGE_MAXIMAL_CURRICULUM_V1.
+- Topic roots: 87.
+- Unique roots: 87.
+- Unique verbs: 103.
+- Modes: 2.
+- Cursor themes after rebuild: 17,922.
+
+Main coverage areas:
+- agent identity and Builder purpose;
+- Owner goal alignment;
+- agent body model and body state;
+- organ definition, lifecycle, passport, organ-vs-skill;
+- skill claim discipline and reflex definition;
+- signal meaning, weak-signal response, priority policy, no forced next step;
+- thinking before action, reasoning chains, concept formation, useful philosopher/thinker role;
+- knowledge candidates, atoms, atom acceptance, compact memory, working/semantic/episodic memory;
+- journal usage;
+- repo/folder/file/git/GitHub/diff/cleanup/dependency scan;
+- active core vs scaffold;
+- active school, source router, Codex source port, external source port, template batching;
+- topic cursor continuation and candidate factory memory;
+- streaming absorption, ready lane, digest pipeline, recall/use behavior delta;
+- proof boundary, validator consistency, acceptance law, lab/live/runtime/authority boundaries;
+- Codex PREFLIGHT, no external brain, tool-vs-brain;
+- task understanding, Input X restore, goal model, gap detection;
+- weakness-based focus, residue-to-focus, idle backoff;
+- self-growth without task;
+- constructive disagreement and owner correction handling;
+- rollback, quarantine, error handling, noise budget, JSON/report sprawl;
+- active local mode and no-new-sandbox-runtime discipline;
+- execution boundary and post-action validation;
+- agent-school parallel life and old motor lessons;
+- child-agent delay and future update trigger.
+
+Cursor result:
+- rebuild script: operations/school/curriculum/candidate_factory/rebuild_theme_cursor_ledger_v1.ps1
+- validator: operations/school/curriculum/candidate_factory/validate_theme_cursor_ledger_v1.ps1
+- validation: PASS_THEME_CURSOR_LEDGER_V1
+- cursor themes: 17,922
+- policy: known theme continues from last_level+1; new/missing theme starts at level 1.
+- harvested_records=0: historical depth was not invented because no active historical cursor records were available.
+
+Important correction during work:
+- The candidate factory uses global verb/mode sets with weighted roots, not per-topic verb/mode only.
+- The cursor rebuild was corrected to match the actual generator semantics:
+  unique roots x global unique verbs x global modes = 87 x 103 x 2 = 17,922 theme cursors.
+
+Blocked/stale validators found:
+- operations/school/curriculum/validate_curriculum_school_v1.ps1 is stale: it calls missing operations/school/curriculum/run_curriculum_school_v1.ps1.
+- operations/school/validate_agent_school_canonical_entrypoint_v1.ps1 currently fails because it treats source-port scripts as unexpected launch surfaces and expects old required text.
+- These validator failures do not invalidate the topics/cursor update, but they block claiming canonical school readiness until school validator policy is refreshed to match the current active school architecture.
+
+Run decision:
+- School was NOT launched yet.
+- Reason: first prepare curriculum and cursor; then repair/refresh canonical school validator or run with explicit Owner authority knowing validator mismatch.
+- No compact memory update performed in this step.
+- No live/runtime/autonomous claim.
+
+Next correct step:
+- Refresh active school validator policy to match the current architecture without creating a new school or sandbox.
+- Then run a small active-school local proof with the new curriculum.
+- If small proof passes, start the long school run in active local mode and commit/push accepted clean state.

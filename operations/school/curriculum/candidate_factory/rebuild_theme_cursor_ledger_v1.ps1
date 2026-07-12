@@ -15,31 +15,39 @@ $checkpoint=Get-Content $checkpointPath -Raw|ConvertFrom-Json
 Assert ($topics.constraints.levels_continue_by_theme_cursor -eq $true) 'TOPICS_PLAN_CURSOR_FLAG_NOT_TRUE'
 $cursors=@{}
 $seeded=0
+# Match generate_codex_curriculum_candidate_factory_run_v1.ps1 semantics:
+# roots are weighted for schedule distribution, while verbs and modes are global sets.
+$rootSet=New-Object System.Collections.Generic.SortedSet[string]
+$verbSet=New-Object System.Collections.Generic.SortedSet[string]
+$modeSet=New-Object System.Collections.Generic.SortedSet[string]
 foreach($topic in @($topics.topics)){
   $root=[string]$topic.root
-  foreach($verb in @($topic.verbs)){
-    foreach($mode in @($topic.modes)){
+  if([string]::IsNullOrWhiteSpace($root)){continue}
+  [void]$rootSet.Add($root)
+  foreach($verb in @($topic.verbs)){ if(-not [string]::IsNullOrWhiteSpace([string]$verb)){[void]$verbSet.Add([string]$verb)} }
+  foreach($mode in @($topic.modes)){ if(-not [string]::IsNullOrWhiteSpace([string]$mode)){[void]$modeSet.Add([string]$mode)} }
+}
+foreach($verb in @($verbSet)){
+  foreach($root in @($rootSet)){
+    foreach($mode in @($modeSet)){
       $themeKey="$verb|$root|$mode"
-      if(-not $cursors.ContainsKey($themeKey)){
-        $cursors[$themeKey]=[ordered]@{
-          theme_key=$themeKey
-          verb=[string]$verb
-          root=$root
-          source_mode=[string]$mode
-          topic=$root
-          last_level=0
-          next_level=1
-          atom_count=0
-          source='topics_plan_seed_no_historic_cursor'
-          confidence='LOW_NO_EXISTING_CURSOR_LEDGER'
-          updated_at=(Get-Date).ToString('o')
-        }
-        $seeded++
+      $cursors[$themeKey]=[ordered]@{
+        theme_key=$themeKey
+        verb=[string]$verb
+        root=[string]$root
+        source_mode=[string]$mode
+        topic=[string]$root
+        last_level=0
+        next_level=1
+        atom_count=0
+        source='topics_plan_seed_no_historic_cursor_generator_semantics'
+        confidence='LOW_NO_EXISTING_CURSOR_LEDGER'
+        updated_at=(Get-Date).ToString('o')
       }
+      $seeded++
     }
   }
-}
-$harvested=0; $maxed=0
+}$harvested=0; $maxed=0
 $containers=@()
 foreach($name in @('atoms','accepted_atoms','items','records')){ if($checkpoint.PSObject.Properties.Name -contains $name){ $containers += @($checkpoint.$name) } }
 foreach($a in @($containers)){
@@ -87,3 +95,4 @@ Write-Host 'REBUILD_PASS=PASS_THEME_CURSOR_LEDGER_REBUILD_V1'
 Write-Host "THEMES=$($cursorEntries.Count)"
 Write-Host "HARVESTED_RECORDS=$harvested"
 Write-Host "LEDGER=$ledgerPath"
+
