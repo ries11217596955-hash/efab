@@ -1,0 +1,51 @@
+﻿{
+    "schema":  "authority_preflight_gate_v1_decision",
+    "status":  "PASS_AUTHORITY_PREFLIGHT_GATE_V1_DECISION",
+    "gate_decision":  "BLOCKED_PREFLIGHT",
+    "preflight_pass":  false,
+    "source_intent_ref":  "reports/self_development/BRAIN_SELECTOR_STUB_V1_INTENT.json",
+    "source_selector_proof_ref":  "tests/self_development/BRAIN_SELECTOR_STUB_V1_PROOF.json",
+    "target_organ_id":  "operations_active_behavior",
+    "selected_intent_class":  "REQUEST_OWNER_AUTHORIZED_PREFLIGHT_REPAIR_OR_KEEP_BLOCKED",
+    "owner_authority_required":  true,
+    "owner_authority_proof_ref":  "tests/owner_authority/OPERATIONS_ACTIVE_BEHAVIOR_SOURCE_PROOF_REPAIR_AUTHORITY_V1.json",
+    "owner_authority_proof_exists":  false,
+    "blockers":  [
+                     "OWNER_REPAIR_AUTHORITY_MISSING",
+                     "REPAIR_SCOPE_NOT_FORMALIZED_AS_TASK",
+                     "REPAIR_VALIDATORS_NOT_DECLARED",
+                     "ROLLBACK_OR_QUARANTINE_BOUNDARY_NOT_DECLARED",
+                     "NO_FILE_WRITES_ALLOWED_BEFORE_PREFLIGHT_PASS"
+                 ],
+    "evidence_refs":  [
+                          "tests/self_development/ACTIVE_BEHAVIOR_BLOCKED_LIFECYCLE_PASS_V1_PROOF.json"
+                      ],
+    "forbidden_actions":  [
+                              "CLAIM_RUNTIME_READY",
+                              "CREATE_FAKE_PROOF",
+                              "CREATE_PASSPORT_ACTIVE",
+                              "PROMOTE_TO_VALIDATED_LAB",
+                              "TOUCH_LIVE_RUNTIME"
+                          ],
+    "required_next_artifacts_before_pass":  [
+                                                "owner repair authority proof",
+                                                "formal repair task requirement",
+                                                "declared validators",
+                                                "rollback/quarantine boundary",
+                                                "report/proof expectations"
+                                            ],
+    "execution_allowed":  false,
+    "mutation_authorized":  false,
+    "file_writes_allowed":  false,
+    "runtime_ready":  false,
+    "live_ready":  false,
+    "autonomous_runtime":  false,
+    "passport_active_allowed":  false,
+    "allowed_next_step_description":  "Prepare a separate owner-authorized repair PREFLIGHT task package, or keep operations_active_behavior BLOCKED. No repair writes allowed.",
+    "return_to_parent_summary":  {
+                                     "current_chain":  "Evidence -\u003e Signal -\u003e Body State -\u003e Reasoner -\u003e Decision Gate -\u003e Brain Input Consumer -\u003e Brain Selector Stub -\u003e Authority/PREFLIGHT Gate",
+                                     "result":  "Selected intent is blocked at PREFLIGHT because repair authority/scope/validators/rollback are not declared.",
+                                     "next_safe_step":  "Owner may authorize a separate repair preflight package; otherwise keep BLOCKED."
+                                 },
+    "created_at":  "2026-07-12T10:13:30.5101619+04:00"
+}

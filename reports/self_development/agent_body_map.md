@@ -2,9 +2,9 @@
 
 Status: ACTIVE_DERIVED_VIEW
 Branch: main
-Observed head at generation: 555021b90a44aa83e380d956df07bb1fdb3764d9
-Generated: 2026-07-12T00:40:13.4411599+04:00
-Body source fingerprint: eda5d7d51f2ec5162e2e04323df3ef08898de7ad388cdc96749d7a34eed1cc4c
+Observed head at generation: c0328ebcd5b0cca8a150eb737359787b96359219
+Generated: 2026-07-12T10:15:13.0869119+04:00
+Body source fingerprint: db0785c6b80128c2346ff6ce959eb9d932639fa4e8ee45ab2c05860188d0ce17
 
 Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
@@ -37,7 +37,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
 - `contracts_accepted_atom_retention_organ` - root `contracts/accepted_atom_retention_organ`, files=10, scripts=0, validators=0, proofs=1, needs_triage=True
 - `contracts_controlled_runtime` - root `contracts/controlled_runtime`, files=12, scripts=0, validators=0, proofs=0, needs_triage=True
-- `contracts_living_loop` - root `contracts/living_loop`, files=8, scripts=0, validators=0, proofs=0, needs_triage=True
+- `contracts_living_loop` - root `contracts/living_loop`, files=9, scripts=0, validators=0, proofs=0, needs_triage=True
 - `contracts_materials` - root `contracts/materials`, files=6, scripts=0, validators=0, proofs=0, needs_triage=True
 - `contracts_operations` - root `contracts/operations`, files=6, scripts=0, validators=0, proofs=0, needs_triage=True
 - `contracts_self_development` - root `contracts/self_development`, files=22, scripts=0, validators=0, proofs=2, needs_triage=True
@@ -65,7 +65,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `operations_live_like` - root `operations/live_like`, files=5, scripts=5, validators=3, proofs=0, needs_triage=True
 - `operations_live_readiness` - root `operations/live_readiness`, files=11, scripts=11, validators=5, proofs=2, needs_triage=True
 - `operations_live_start` - root `operations/live_start`, files=5, scripts=5, validators=2, proofs=0, needs_triage=True
-- `operations_living_loop` - root `operations/living_loop`, files=13, scripts=13, validators=7, proofs=0, needs_triage=True
+- `operations_living_loop` - root `operations/living_loop`, files=15, scripts=15, validators=8, proofs=0, needs_triage=True
 - `operations_memory` - root `operations/memory`, files=4, scripts=4, validators=2, proofs=0, needs_triage=True
 - `operations_organ_promotion_lanes` - root `operations/organ_promotion_lanes`, files=5, scripts=5, validators=3, proofs=0, needs_triage=True
 - `operations_overnight_school` - root `operations/overnight_school`, files=3, scripts=3, validators=1, proofs=0, needs_triage=True

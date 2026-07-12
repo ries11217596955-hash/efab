@@ -1922,3 +1922,59 @@ Architectural chain now:
 
 Next safe direction:
 - Build Authority / PREFLIGHT Gate V1 for this selected intent, or ask Owner to authorize the repair preflight. No repair may happen before authority and PREFLIGHT_PASS.
+
+## 2026-07-12 — Authority / PREFLIGHT Gate V1
+
+STATUS: PASS / BLOCKED_PREFLIGHT / LAB_ONLY_BLOCKING_GATE / NON_MUTATING
+
+Context:
+- Continued from Brain Selector Stub V1.
+- Selector chose candidate intent: REQUEST_OWNER_AUTHORIZED_PREFLIGHT_REPAIR_OR_KEEP_BLOCKED.
+- Target: operations_active_behavior.
+- Intent requires owner authority and preflight.
+
+Created:
+- contracts/living_loop/AUTHORITY_PREFLIGHT_GATE_V1_REQUIREMENT.md
+- operations/living_loop/build_authority_preflight_gate_v1.ps1
+- operations/living_loop/validate_authority_preflight_gate_v1.ps1
+- reports/self_development/AUTHORITY_PREFLIGHT_GATE_V1_DECISION.json
+- reports/self_development/AUTHORITY_PREFLIGHT_GATE_V1_REPORT.json
+- tests/self_development/AUTHORITY_PREFLIGHT_GATE_V1_PROOF.json
+
+Gate decision:
+- BLOCKED_PREFLIGHT
+
+Required blockers present:
+- OWNER_REPAIR_AUTHORITY_MISSING
+- REPAIR_SCOPE_NOT_FORMALIZED_AS_TASK
+- REPAIR_VALIDATORS_NOT_DECLARED
+- ROLLBACK_OR_QUARANTINE_BOUNDARY_NOT_DECLARED
+- NO_FILE_WRITES_ALLOWED_BEFORE_PREFLIGHT_PASS
+
+Meaning:
+- The Brain Selector Stub selected a lawful intent, but selected intent is not authority.
+- No repair task may start.
+- No source proof may be created or modified.
+- No file writes are allowed by repair before PREFLIGHT_PASS.
+- Owner authority must be explicit and separate.
+
+Proof boundary:
+- preflight_pass=false
+- execution_allowed=false
+- mutation_authorized=false
+- file_writes_allowed=false
+- runtime_ready=false
+- live_ready=false
+- autonomous_runtime=false
+- no PASSPORT_ACTIVE
+- no live runtime touched
+- no repair performed
+
+Validator:
+- PASS_AUTHORITY_PREFLIGHT_GATE_V1
+
+Architectural chain now:
+- Evidence -> Signal -> Body State -> Reasoner -> Decision Gate -> Brain Input Consumer -> Brain Selector Stub -> Authority/PREFLIGHT Gate
+
+Next safe direction:
+- Build a formal repair PREFLIGHT task package for operations_active_behavior source proof, but keep it BLOCKED_PREFLIGHT unless Owner explicitly authorizes the repair scope and validators.

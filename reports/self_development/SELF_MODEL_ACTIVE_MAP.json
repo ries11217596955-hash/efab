@@ -6,19 +6,19 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "555021b90a44aa83e380d956df07bb1fdb3764d9",
-    "subject_head":  "555021b90a44aa83e380d956df07bb1fdb3764d9",
-    "generated_at":  "2026-07-12T00:40:13.4411599+04:00",
+    "observed_head_at_generation":  "c0328ebcd5b0cca8a150eb737359787b96359219",
+    "subject_head":  "c0328ebcd5b0cca8a150eb737359787b96359219",
+    "generated_at":  "2026-07-12T10:15:13.0869119+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  2034,
+    "structural_path_count":  2040,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2034,
-                                    "sha256":  "eda5d7d51f2ec5162e2e04323df3ef08898de7ad388cdc96749d7a34eed1cc4c"
+                                    "structural_file_count":  2040,
+                                    "sha256":  "db0785c6b80128c2346ff6ce959eb9d932639fa4e8ee45ab2c05860188d0ce17"
                                 },
     "module_count":  203,
     "validator_count":  174,
@@ -764,9 +764,9 @@
 
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "555021b90a44aa83e380d956df07bb1fdb3764d9",
-                                                               "committed_at":  "2026-07-12T00:12:51+04:00",
-                                                               "subject":  "living-loop: prepare brain input envelope"
+                                                               "head":  "c0328ebcd5b0cca8a150eb737359787b96359219",
+                                                               "committed_at":  "2026-07-12T00:39:40+04:00",
+                                                               "subject":  "living-loop: select non-executing brain intent"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -924,19 +924,19 @@
                                             "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                                             "discovery_method":  "bounded_git_ls_files_path_discovery",
                                             "evidence_counts":  {
-                                                                    "files":  8,
+                                                                    "files":  9,
                                                                     "scripts":  0,
                                                                     "validators":  0,
                                                                     "proofs":  0,
-                                                                    "contracts_or_policies":  8,
-                                                                    "docs":  7
+                                                                    "contracts_or_policies":  9,
+                                                                    "docs":  8
                                                                 },
-                                            "file_count":  8,
+                                            "file_count":  9,
                                             "script_count":  0,
                                             "validator_count":  0,
                                             "proof_file_count":  0,
-                                            "contract_or_policy_count":  8,
-                                            "doc_count":  7,
+                                            "contract_or_policy_count":  9,
+                                            "doc_count":  8,
                                             "validator_refs":  [
 
                                                                ],
@@ -944,6 +944,7 @@
 
                                                            ],
                                             "contract_or_policy_refs":  [
+                                                                            "contracts/living_loop/AUTHORITY_PREFLIGHT_GATE_V1_REQUIREMENT.md",
                                                                             "contracts/living_loop/BODY_STATE_AGGREGATOR_V1_REQUIREMENT.md",
                                                                             "contracts/living_loop/BRAIN_INPUT_CONSUMER_V1_REQUIREMENT.md",
                                                                             "contracts/living_loop/BRAIN_SELECTOR_STUB_V1_REQUIREMENT.md",
@@ -954,6 +955,7 @@
                                                                             "contracts/living_loop/REASONER_V1_REQUIREMENT.md"
                                                                         ],
                                             "notable_files":  [
+                                                                  "contracts/living_loop/AUTHORITY_PREFLIGHT_GATE_V1_REQUIREMENT.md",
                                                                   "contracts/living_loop/BODY_STATE_AGGREGATOR_V1_REQUIREMENT.md",
                                                                   "contracts/living_loop/BRAIN_INPUT_CONSUMER_V1_REQUIREMENT.md",
                                                                   "contracts/living_loop/BRAIN_SELECTOR_STUB_V1_REQUIREMENT.md",
@@ -964,6 +966,7 @@
                                                                   "contracts/living_loop/REASONER_V1_REQUIREMENT.md"
                                                               ],
                                             "primary_evidence_refs":  [
+                                                                          "contracts/living_loop/AUTHORITY_PREFLIGHT_GATE_V1_REQUIREMENT.md",
                                                                           "contracts/living_loop/BODY_STATE_AGGREGATOR_V1_REQUIREMENT.md",
                                                                           "contracts/living_loop/BRAIN_INPUT_CONSUMER_V1_REQUIREMENT.md",
                                                                           "contracts/living_loop/BRAIN_SELECTOR_STUB_V1_REQUIREMENT.md",
@@ -2464,20 +2467,21 @@
                                             "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                                             "discovery_method":  "bounded_git_ls_files_path_discovery",
                                             "evidence_counts":  {
-                                                                    "files":  13,
-                                                                    "scripts":  13,
-                                                                    "validators":  7,
+                                                                    "files":  15,
+                                                                    "scripts":  15,
+                                                                    "validators":  8,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  1,
                                                                     "docs":  0
                                                                 },
-                                            "file_count":  13,
-                                            "script_count":  13,
-                                            "validator_count":  7,
+                                            "file_count":  15,
+                                            "script_count":  15,
+                                            "validator_count":  8,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  1,
                                             "doc_count":  0,
                                             "validator_refs":  [
+                                                                   "operations/living_loop/validate_authority_preflight_gate_v1.ps1",
                                                                    "operations/living_loop/validate_body_state_aggregator_v1.ps1",
                                                                    "operations/living_loop/validate_brain_input_consumer_v1.ps1",
                                                                    "operations/living_loop/validate_brain_selector_stub_v1.ps1",
@@ -2493,12 +2497,14 @@
                                                                             "operations/living_loop/validate_living_loop_contract_v1.ps1"
                                                                         ],
                                             "notable_files":  [
+                                                                  "operations/living_loop/build_authority_preflight_gate_v1.ps1",
                                                                   "operations/living_loop/build_body_state_aggregator_v1.ps1",
                                                                   "operations/living_loop/build_brain_input_consumer_v1.ps1",
                                                                   "operations/living_loop/build_brain_selector_stub_v1.ps1",
                                                                   "operations/living_loop/build_decision_gate_v1.ps1",
                                                                   "operations/living_loop/build_living_loop_evaluator_v1.ps1",
                                                                   "operations/living_loop/build_reasoner_v1.ps1",
+                                                                  "operations/living_loop/validate_authority_preflight_gate_v1.ps1",
                                                                   "operations/living_loop/validate_body_state_aggregator_v1.ps1",
                                                                   "operations/living_loop/validate_brain_input_consumer_v1.ps1",
                                                                   "operations/living_loop/validate_brain_selector_stub_v1.ps1",
@@ -2508,12 +2514,14 @@
                                                                   "operations/living_loop/validate_reasoner_v1.ps1"
                                                               ],
                                             "primary_evidence_refs":  [
+                                                                          "operations/living_loop/build_authority_preflight_gate_v1.ps1",
                                                                           "operations/living_loop/build_body_state_aggregator_v1.ps1",
                                                                           "operations/living_loop/build_brain_input_consumer_v1.ps1",
                                                                           "operations/living_loop/build_brain_selector_stub_v1.ps1",
                                                                           "operations/living_loop/build_decision_gate_v1.ps1",
                                                                           "operations/living_loop/build_living_loop_evaluator_v1.ps1",
                                                                           "operations/living_loop/build_reasoner_v1.ps1",
+                                                                          "operations/living_loop/validate_authority_preflight_gate_v1.ps1",
                                                                           "operations/living_loop/validate_body_state_aggregator_v1.ps1",
                                                                           "operations/living_loop/validate_brain_input_consumer_v1.ps1",
                                                                           "operations/living_loop/validate_brain_selector_stub_v1.ps1",
@@ -9163,9 +9171,9 @@
 
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "555021b90a44aa83e380d956df07bb1fdb3764d9",
-                                                     "committed_at":  "2026-07-12T00:12:51+04:00",
-                                                     "subject":  "living-loop: prepare brain input envelope"
+                                                     "head":  "c0328ebcd5b0cca8a150eb737359787b96359219",
+                                                     "committed_at":  "2026-07-12T00:39:40+04:00",
+                                                     "subject":  "living-loop: select non-executing brain intent"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -9321,19 +9329,19 @@
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                            "discovery_method":  "bounded_git_ls_files_path_discovery",
                            "evidence_counts":  {
-                                                   "files":  8,
+                                                   "files":  9,
                                                    "scripts":  0,
                                                    "validators":  0,
                                                    "proofs":  0,
-                                                   "contracts_or_policies":  8,
-                                                   "docs":  7
+                                                   "contracts_or_policies":  9,
+                                                   "docs":  8
                                                },
-                           "file_count":  8,
+                           "file_count":  9,
                            "script_count":  0,
                            "validator_count":  0,
                            "proof_file_count":  0,
-                           "contract_or_policy_count":  8,
-                           "doc_count":  7,
+                           "contract_or_policy_count":  9,
+                           "doc_count":  8,
                            "validator_refs":  [
 
                                               ],
@@ -9341,6 +9349,7 @@
 
                                           ],
                            "contract_or_policy_refs":  [
+                                                           "contracts/living_loop/AUTHORITY_PREFLIGHT_GATE_V1_REQUIREMENT.md",
                                                            "contracts/living_loop/BODY_STATE_AGGREGATOR_V1_REQUIREMENT.md",
                                                            "contracts/living_loop/BRAIN_INPUT_CONSUMER_V1_REQUIREMENT.md",
                                                            "contracts/living_loop/BRAIN_SELECTOR_STUB_V1_REQUIREMENT.md",
@@ -9351,6 +9360,7 @@
                                                            "contracts/living_loop/REASONER_V1_REQUIREMENT.md"
                                                        ],
                            "notable_files":  [
+                                                 "contracts/living_loop/AUTHORITY_PREFLIGHT_GATE_V1_REQUIREMENT.md",
                                                  "contracts/living_loop/BODY_STATE_AGGREGATOR_V1_REQUIREMENT.md",
                                                  "contracts/living_loop/BRAIN_INPUT_CONSUMER_V1_REQUIREMENT.md",
                                                  "contracts/living_loop/BRAIN_SELECTOR_STUB_V1_REQUIREMENT.md",
@@ -9361,6 +9371,7 @@
                                                  "contracts/living_loop/REASONER_V1_REQUIREMENT.md"
                                              ],
                            "primary_evidence_refs":  [
+                                                         "contracts/living_loop/AUTHORITY_PREFLIGHT_GATE_V1_REQUIREMENT.md",
                                                          "contracts/living_loop/BODY_STATE_AGGREGATOR_V1_REQUIREMENT.md",
                                                          "contracts/living_loop/BRAIN_INPUT_CONSUMER_V1_REQUIREMENT.md",
                                                          "contracts/living_loop/BRAIN_SELECTOR_STUB_V1_REQUIREMENT.md",
@@ -10861,20 +10872,21 @@
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                            "discovery_method":  "bounded_git_ls_files_path_discovery",
                            "evidence_counts":  {
-                                                   "files":  13,
-                                                   "scripts":  13,
-                                                   "validators":  7,
+                                                   "files":  15,
+                                                   "scripts":  15,
+                                                   "validators":  8,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  1,
                                                    "docs":  0
                                                },
-                           "file_count":  13,
-                           "script_count":  13,
-                           "validator_count":  7,
+                           "file_count":  15,
+                           "script_count":  15,
+                           "validator_count":  8,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  1,
                            "doc_count":  0,
                            "validator_refs":  [
+                                                  "operations/living_loop/validate_authority_preflight_gate_v1.ps1",
                                                   "operations/living_loop/validate_body_state_aggregator_v1.ps1",
                                                   "operations/living_loop/validate_brain_input_consumer_v1.ps1",
                                                   "operations/living_loop/validate_brain_selector_stub_v1.ps1",
@@ -10890,12 +10902,14 @@
                                                            "operations/living_loop/validate_living_loop_contract_v1.ps1"
                                                        ],
                            "notable_files":  [
+                                                 "operations/living_loop/build_authority_preflight_gate_v1.ps1",
                                                  "operations/living_loop/build_body_state_aggregator_v1.ps1",
                                                  "operations/living_loop/build_brain_input_consumer_v1.ps1",
                                                  "operations/living_loop/build_brain_selector_stub_v1.ps1",
                                                  "operations/living_loop/build_decision_gate_v1.ps1",
                                                  "operations/living_loop/build_living_loop_evaluator_v1.ps1",
                                                  "operations/living_loop/build_reasoner_v1.ps1",
+                                                 "operations/living_loop/validate_authority_preflight_gate_v1.ps1",
                                                  "operations/living_loop/validate_body_state_aggregator_v1.ps1",
                                                  "operations/living_loop/validate_brain_input_consumer_v1.ps1",
                                                  "operations/living_loop/validate_brain_selector_stub_v1.ps1",
@@ -10905,12 +10919,14 @@
                                                  "operations/living_loop/validate_reasoner_v1.ps1"
                                              ],
                            "primary_evidence_refs":  [
+                                                         "operations/living_loop/build_authority_preflight_gate_v1.ps1",
                                                          "operations/living_loop/build_body_state_aggregator_v1.ps1",
                                                          "operations/living_loop/build_brain_input_consumer_v1.ps1",
                                                          "operations/living_loop/build_brain_selector_stub_v1.ps1",
                                                          "operations/living_loop/build_decision_gate_v1.ps1",
                                                          "operations/living_loop/build_living_loop_evaluator_v1.ps1",
                                                          "operations/living_loop/build_reasoner_v1.ps1",
+                                                         "operations/living_loop/validate_authority_preflight_gate_v1.ps1",
                                                          "operations/living_loop/validate_body_state_aggregator_v1.ps1",
                                                          "operations/living_loop/validate_brain_input_consumer_v1.ps1",
                                                          "operations/living_loop/validate_brain_selector_stub_v1.ps1",

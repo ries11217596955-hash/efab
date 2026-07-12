@@ -1,34 +1,34 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-12T00:39:44.0068671+04:00",
+    "checked_at":  "2026-07-12T10:14:43.3078436+04:00",
     "branch":  "main",
-    "observed_head":  "555021b90a44aa83e380d956df07bb1fdb3764d9",
-    "subject_head":  "555021b90a44aa83e380d956df07bb1fdb3764d9",
+    "observed_head":  "c0328ebcd5b0cca8a150eb737359787b96359219",
+    "subject_head":  "c0328ebcd5b0cca8a150eb737359787b96359219",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "contracts/living_loop/BRAIN_INPUT_CONSUMER_V1_REQUIREMENT.md",
+                          "contracts/living_loop/BRAIN_SELECTOR_STUB_V1_REQUIREMENT.md",
                           "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                          "operations/living_loop/build_brain_input_consumer_v1.ps1",
-                          "operations/living_loop/validate_brain_input_consumer_v1.ps1",
-                          "reports/self_development/BRAIN_INPUT_CONSUMER_V1_ENVELOPE.json",
-                          "reports/self_development/BRAIN_INPUT_CONSUMER_V1_REPORT.json",
+                          "operations/living_loop/build_brain_selector_stub_v1.ps1",
+                          "operations/living_loop/validate_brain_selector_stub_v1.ps1",
+                          "reports/self_development/BRAIN_SELECTOR_STUB_V1_INTENT.json",
+                          "reports/self_development/BRAIN_SELECTOR_STUB_V1_REPORT.json",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "tests/self_development/BRAIN_INPUT_CONSUMER_V1_PROOF.json"
+                          "tests/self_development/BRAIN_SELECTOR_STUB_V1_PROOF.json"
                       ],
     "structural_paths":  [
-                             "contracts/living_loop/BRAIN_INPUT_CONSUMER_V1_REQUIREMENT.md",
+                             "contracts/living_loop/BRAIN_SELECTOR_STUB_V1_REQUIREMENT.md",
                              "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                             "operations/living_loop/build_brain_input_consumer_v1.ps1",
-                             "operations/living_loop/validate_brain_input_consumer_v1.ps1",
-                             "reports/self_development/BRAIN_INPUT_CONSUMER_V1_ENVELOPE.json",
-                             "reports/self_development/BRAIN_INPUT_CONSUMER_V1_REPORT.json",
-                             "tests/self_development/BRAIN_INPUT_CONSUMER_V1_PROOF.json"
+                             "operations/living_loop/build_brain_selector_stub_v1.ps1",
+                             "operations/living_loop/validate_brain_selector_stub_v1.ps1",
+                             "reports/self_development/BRAIN_SELECTOR_STUB_V1_INTENT.json",
+                             "reports/self_development/BRAIN_SELECTOR_STUB_V1_REPORT.json",
+                             "tests/self_development/BRAIN_SELECTOR_STUB_V1_PROOF.json"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -40,8 +40,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2034,
-                                    "sha256":  "eda5d7d51f2ec5162e2e04323df3ef08898de7ad388cdc96749d7a34eed1cc4c"
+                                    "structural_file_count":  2040,
+                                    "sha256":  "db0785c6b80128c2346ff6ce959eb9d932639fa4e8ee45ab2c05860188d0ce17"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -68,12 +68,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  161,
-                         "structural_path_count":  2034,
+                         "structural_path_count":  2040,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-12T00:40:13.5909481+04:00"
+    "refreshed_at":  "2026-07-12T10:15:13.2369405+04:00"
 }
