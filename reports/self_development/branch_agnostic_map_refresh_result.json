@@ -1,29 +1,26 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-12T13:11:25.3181508+04:00",
+    "checked_at":  "2026-07-12T13:30:12.1942392+04:00",
     "branch":  "main",
-    "observed_head":  "099a9181ce9430d288591672dc37fccc50b62f44",
-    "subject_head":  "099a9181ce9430d288591672dc37fccc50b62f44",
+    "observed_head":  "8a4563758c8cc948deabfa9be494b35140b0efc2",
+    "subject_head":  "8a4563758c8cc948deabfa9be494b35140b0efc2",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
                           "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
                           "operations/school/classification/ACTIVE_SCHOOL_BLOCK_CLASSIFICATION_V1.json",
-                          "operations/school/curriculum/candidate_factory/memory/factory_ledger.jsonl",
                           "operations/school/curriculum/candidate_factory/memory/theme_cursor_ledger.json",
                           "operations/school/curriculum/candidate_factory/rebuild_theme_cursor_ledger_v1.ps1",
                           "operations/school/curriculum/candidate_factory/reports/THEME_CURSOR_LEDGER_REBUILD_V1_REPORT.json",
-                          "operations/school/curriculum/candidate_factory/validate_theme_cursor_ledger_v1.ps1",
-                          "reports/self_development/AUTONOMOUS_INNER_MOTOR_DIAGNOSTIC_FOR_REUSE_AND_RETIREMENT_V1.json",
+                          "operations/school/curriculum/topics/builder_night_school_topics_v1.json",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
                           "tests/school/candidate_factory/THEME_CURSOR_LEDGER_REBUILD_V1_PROOF.json",
-                          "tests/self_development/ACTIVE_SCHOOL_BLOCK_CLASSIFICATION_V1_PROOF.json",
-                          "tests/self_development/AUTONOMOUS_INNER_MOTOR_DIAGNOSTIC_FOR_REUSE_AND_RETIREMENT_V1_PROOF.json"
+                          "tests/self_development/ACTIVE_SCHOOL_BLOCK_CLASSIFICATION_V1_PROOF.json"
                       ],
     "structural_paths":  [
                              "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
@@ -31,10 +28,8 @@
                              "operations/school/curriculum/candidate_factory/memory/theme_cursor_ledger.json",
                              "operations/school/curriculum/candidate_factory/rebuild_theme_cursor_ledger_v1.ps1",
                              "operations/school/curriculum/candidate_factory/reports/THEME_CURSOR_LEDGER_REBUILD_V1_REPORT.json",
-                             "operations/school/curriculum/candidate_factory/validate_theme_cursor_ledger_v1.ps1",
-                             "reports/self_development/AUTONOMOUS_INNER_MOTOR_DIAGNOSTIC_FOR_REUSE_AND_RETIREMENT_V1.json",
-                             "tests/self_development/ACTIVE_SCHOOL_BLOCK_CLASSIFICATION_V1_PROOF.json",
-                             "tests/self_development/AUTONOMOUS_INNER_MOTOR_DIAGNOSTIC_FOR_REUSE_AND_RETIREMENT_V1_PROOF.json"
+                             "operations/school/curriculum/topics/builder_night_school_topics_v1.json",
+                             "tests/self_development/ACTIVE_SCHOOL_BLOCK_CLASSIFICATION_V1_PROOF.json"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -47,7 +42,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  2104,
-                                    "sha256":  "f99469633a50884593169c9987715ce137be4656d38e8ebc5c7d0ce8dcb57abc"
+                                    "sha256":  "2a4e7662e7ed3ae6e3ca2f36e538cd14c6c8a751428698a96088d35f3eacf81a"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -81,5 +76,5 @@
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-12T13:11:56.8175467+04:00"
+    "refreshed_at":  "2026-07-12T13:30:43.3943292+04:00"
 }

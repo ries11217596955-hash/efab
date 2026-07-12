@@ -1,4 +1,4 @@
-# School Canonical Run Contract V1
+﻿# School Canonical Run Contract V1
 
 Status: ACTIVE_SINGLE_ENTRYPOINT_THREE_FIELD_LAUNCH
 
@@ -66,3 +66,13 @@ Finalizer duties:
 - report `FINALIZER_STATUS` in stdout.
 
 Finalizer failure must not convert a valid school PASS into a fake failure, but it must be visible in stdout and runtime finalizer record.
+
+## Internal helper surfaces
+
+Owner-facing launch surface remains exactly one: `operations/school/run_agent_school.ps1`.
+
+Internal school launch/helper surfaces are allowed when they are called by the canonical entrypoint/controller and are not presented as separate owner-facing schools. This includes source router ports, candidate factory, streaming absorption, ready lane, digest/memory helpers, finalizer, and the autonomous school cycle controller.
+
+`Mode=Live` is school-live / memory-digestion mode. It may update compact semantic memory through the school digest/merge gates, but it is not agent runtime, not OS/live process authority, and not autonomous AgentLife.
+
+No extra owner prompt/request is required when the canonical policy validator passes and the Owner has authorized school `Mode=Live` for the active school entrypoint.

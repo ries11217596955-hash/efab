@@ -2800,3 +2800,39 @@ Next correct step:
 - Refresh active school validator policy to match the current architecture without creating a new school or sandbox.
 - Then run a small active-school local proof with the new curriculum.
 - If small proof passes, start the long school run in active local mode and commit/push accepted clean state.
+
+## 2026-07-12 — Active school canonical policy refreshed for Live school mode
+
+STATUS: PASS_AGENT_SCHOOL_CANONICAL_POLICY_V2 / LIVE_IS_SCHOOL_MEMORY_DIGEST_MODE / NOT_AGENT_RUNTIME
+
+Owner instruction:
+- Update the school policy so it does not keep asking for extra requests/permission on the same known active school path.
+- The school should be run in Live mode, but in a way that allows continuing work on agent logic.
+
+Policy update:
+- Refreshed operations/school/validate_agent_school_canonical_entrypoint_v1.ps1.
+- Updated operations/school/SCHOOL_CANONICAL_RUN_CONTRACT_V1.md.
+- Owner-facing launch remains exactly one:
+  operations/school/run_agent_school.ps1 -Count <N> -Mode <Test|Live> -TopicsPlan <path-to-json>
+- Internal helper surfaces are now explicitly allowed when called by the canonical entrypoint/controller:
+  source router ports, candidate factory, streaming absorption, ready lane, digest/memory helpers, finalizer, autonomous school cycle controller.
+
+Important distinction:
+- Mode=Live means school-live / compact-memory digestion mode.
+- It may update compact semantic memory through the school digest/merge gates.
+- It is not agent runtime, not OS live process authority, and not autonomous AgentLife.
+
+Validation:
+- PASS_AGENT_SCHOOL_CANONICAL_POLICY_V2
+- OWNER_FACING_ENTRYPOINT_COUNT=1
+- OWNER_ENTRYPOINT=operations/school/run_agent_school.ps1
+- OWNER_FIELDS=Count,Mode,TopicsPlan
+- MODE_VALUES=Test,Live
+- INTERNAL_HELPER_SURFACES_ALLOWED=14
+- SCHOOL_LIVE_MODE_IS_MEMORY_DIGEST_MODE_NOT_AGENT_RUNTIME=true
+- RUNTIME_READY=false
+
+Next:
+- Commit policy refresh.
+- Run a small active-school Live smoke before any long school run.
+- If small Live proof passes, use the same active school path for longer runs while continuing logic work separately.
