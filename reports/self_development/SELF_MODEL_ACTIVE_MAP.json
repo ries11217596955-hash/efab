@@ -6,19 +6,19 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "52502ec0c5528f224a1e397764295297920984c0",
-    "subject_head":  "52502ec0c5528f224a1e397764295297920984c0",
-    "generated_at":  "2026-07-12T10:37:29.6458227+04:00",
+    "observed_head_at_generation":  "dbfa33c7dbd7aed4af82b4e29c81bcf5c82ddbd7",
+    "subject_head":  "dbfa33c7dbd7aed4af82b4e29c81bcf5c82ddbd7",
+    "generated_at":  "2026-07-12T10:47:17.9248432+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  2067,
+    "structural_path_count":  2073,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2067,
-                                    "sha256":  "101e58ea063469b1ac5ae6b8cbf8a0b11cc5a3ebf2b3a956574143c61160cdc2"
+                                    "structural_file_count":  2073,
+                                    "sha256":  "a8a7eff9cbe6c31a005363629de5439235f35bb2f97e1e4d630d3bc98195c2d7"
                                 },
     "module_count":  203,
     "validator_count":  174,
@@ -764,9 +764,9 @@
 
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "52502ec0c5528f224a1e397764295297920984c0",
-                                                               "committed_at":  "2026-07-12T10:28:19+04:00",
-                                                               "subject":  "active-behavior: run fresh 1000 lifecycle cycle"
+                                                               "head":  "dbfa33c7dbd7aed4af82b4e29c81bcf5c82ddbd7",
+                                                               "committed_at":  "2026-07-12T10:36:55+04:00",
+                                                               "subject":  "living-loop: refresh current state after active behavior validation"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -924,19 +924,19 @@
                                             "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                                             "discovery_method":  "bounded_git_ls_files_path_discovery",
                                             "evidence_counts":  {
-                                                                    "files":  9,
+                                                                    "files":  10,
                                                                     "scripts":  0,
                                                                     "validators":  0,
                                                                     "proofs":  0,
-                                                                    "contracts_or_policies":  9,
-                                                                    "docs":  8
+                                                                    "contracts_or_policies":  10,
+                                                                    "docs":  9
                                                                 },
-                                            "file_count":  9,
+                                            "file_count":  10,
                                             "script_count":  0,
                                             "validator_count":  0,
                                             "proof_file_count":  0,
-                                            "contract_or_policy_count":  9,
-                                            "doc_count":  8,
+                                            "contract_or_policy_count":  10,
+                                            "doc_count":  9,
                                             "validator_refs":  [
 
                                                                ],
@@ -952,6 +952,7 @@
                                                                             "contracts/living_loop/LIVING_LOOP_CONTRACT_V1.json",
                                                                             "contracts/living_loop/LIVING_LOOP_CONTRACT_V1.md",
                                                                             "contracts/living_loop/LIVING_LOOP_EVALUATOR_V1_REQUIREMENT.md",
+                                                                            "contracts/living_loop/PRIORITY_INTENT_SELECTION_MODEL_V1_REQUIREMENT.md",
                                                                             "contracts/living_loop/REASONER_V1_REQUIREMENT.md"
                                                                         ],
                                             "notable_files":  [
@@ -963,6 +964,7 @@
                                                                   "contracts/living_loop/LIVING_LOOP_CONTRACT_V1.json",
                                                                   "contracts/living_loop/LIVING_LOOP_CONTRACT_V1.md",
                                                                   "contracts/living_loop/LIVING_LOOP_EVALUATOR_V1_REQUIREMENT.md",
+                                                                  "contracts/living_loop/PRIORITY_INTENT_SELECTION_MODEL_V1_REQUIREMENT.md",
                                                                   "contracts/living_loop/REASONER_V1_REQUIREMENT.md"
                                                               ],
                                             "primary_evidence_refs":  [
@@ -974,6 +976,7 @@
                                                                           "contracts/living_loop/LIVING_LOOP_CONTRACT_V1.json",
                                                                           "contracts/living_loop/LIVING_LOOP_CONTRACT_V1.md",
                                                                           "contracts/living_loop/LIVING_LOOP_EVALUATOR_V1_REQUIREMENT.md",
+                                                                          "contracts/living_loop/PRIORITY_INTENT_SELECTION_MODEL_V1_REQUIREMENT.md",
                                                                           "contracts/living_loop/REASONER_V1_REQUIREMENT.md"
                                                                       ],
                                             "needs_triage":  true,
@@ -2483,16 +2486,16 @@
                                             "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                                             "discovery_method":  "bounded_git_ls_files_path_discovery",
                                             "evidence_counts":  {
-                                                                    "files":  17,
-                                                                    "scripts":  17,
-                                                                    "validators":  9,
+                                                                    "files":  19,
+                                                                    "scripts":  19,
+                                                                    "validators":  10,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  1,
                                                                     "docs":  0
                                                                 },
-                                            "file_count":  17,
-                                            "script_count":  17,
-                                            "validator_count":  9,
+                                            "file_count":  19,
+                                            "script_count":  19,
+                                            "validator_count":  10,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  1,
                                             "doc_count":  0,
@@ -2505,6 +2508,7 @@
                                                                    "operations/living_loop/validate_living_loop_contract_v1.ps1",
                                                                    "operations/living_loop/validate_living_loop_current_state_refresh_v1.ps1",
                                                                    "operations/living_loop/validate_living_loop_evaluator_v1.ps1",
+                                                                   "operations/living_loop/validate_priority_intent_selection_model_v1.ps1",
                                                                    "operations/living_loop/validate_reasoner_v1.ps1"
                                                                ],
                                             "proof_refs":  [
@@ -2521,6 +2525,7 @@
                                                                   "operations/living_loop/build_decision_gate_v1.ps1",
                                                                   "operations/living_loop/build_living_loop_current_state_refresh_v1.ps1",
                                                                   "operations/living_loop/build_living_loop_evaluator_v1.ps1",
+                                                                  "operations/living_loop/build_priority_intent_selection_model_v1.ps1",
                                                                   "operations/living_loop/build_reasoner_v1.ps1",
                                                                   "operations/living_loop/validate_authority_preflight_gate_v1.ps1",
                                                                   "operations/living_loop/validate_body_state_aggregator_v1.ps1",
@@ -2530,6 +2535,7 @@
                                                                   "operations/living_loop/validate_living_loop_contract_v1.ps1",
                                                                   "operations/living_loop/validate_living_loop_current_state_refresh_v1.ps1",
                                                                   "operations/living_loop/validate_living_loop_evaluator_v1.ps1",
+                                                                  "operations/living_loop/validate_priority_intent_selection_model_v1.ps1",
                                                                   "operations/living_loop/validate_reasoner_v1.ps1"
                                                               ],
                                             "primary_evidence_refs":  [
@@ -2540,6 +2546,7 @@
                                                                           "operations/living_loop/build_decision_gate_v1.ps1",
                                                                           "operations/living_loop/build_living_loop_current_state_refresh_v1.ps1",
                                                                           "operations/living_loop/build_living_loop_evaluator_v1.ps1",
+                                                                          "operations/living_loop/build_priority_intent_selection_model_v1.ps1",
                                                                           "operations/living_loop/build_reasoner_v1.ps1",
                                                                           "operations/living_loop/validate_authority_preflight_gate_v1.ps1",
                                                                           "operations/living_loop/validate_body_state_aggregator_v1.ps1",
@@ -2549,6 +2556,7 @@
                                                                           "operations/living_loop/validate_living_loop_contract_v1.ps1",
                                                                           "operations/living_loop/validate_living_loop_current_state_refresh_v1.ps1",
                                                                           "operations/living_loop/validate_living_loop_evaluator_v1.ps1",
+                                                                          "operations/living_loop/validate_priority_intent_selection_model_v1.ps1",
                                                                           "operations/living_loop/validate_reasoner_v1.ps1"
                                                                       ],
                                             "needs_triage":  true,
@@ -9237,9 +9245,9 @@
 
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "52502ec0c5528f224a1e397764295297920984c0",
-                                                     "committed_at":  "2026-07-12T10:28:19+04:00",
-                                                     "subject":  "active-behavior: run fresh 1000 lifecycle cycle"
+                                                     "head":  "dbfa33c7dbd7aed4af82b4e29c81bcf5c82ddbd7",
+                                                     "committed_at":  "2026-07-12T10:36:55+04:00",
+                                                     "subject":  "living-loop: refresh current state after active behavior validation"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -9395,19 +9403,19 @@
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                            "discovery_method":  "bounded_git_ls_files_path_discovery",
                            "evidence_counts":  {
-                                                   "files":  9,
+                                                   "files":  10,
                                                    "scripts":  0,
                                                    "validators":  0,
                                                    "proofs":  0,
-                                                   "contracts_or_policies":  9,
-                                                   "docs":  8
+                                                   "contracts_or_policies":  10,
+                                                   "docs":  9
                                                },
-                           "file_count":  9,
+                           "file_count":  10,
                            "script_count":  0,
                            "validator_count":  0,
                            "proof_file_count":  0,
-                           "contract_or_policy_count":  9,
-                           "doc_count":  8,
+                           "contract_or_policy_count":  10,
+                           "doc_count":  9,
                            "validator_refs":  [
 
                                               ],
@@ -9423,6 +9431,7 @@
                                                            "contracts/living_loop/LIVING_LOOP_CONTRACT_V1.json",
                                                            "contracts/living_loop/LIVING_LOOP_CONTRACT_V1.md",
                                                            "contracts/living_loop/LIVING_LOOP_EVALUATOR_V1_REQUIREMENT.md",
+                                                           "contracts/living_loop/PRIORITY_INTENT_SELECTION_MODEL_V1_REQUIREMENT.md",
                                                            "contracts/living_loop/REASONER_V1_REQUIREMENT.md"
                                                        ],
                            "notable_files":  [
@@ -9434,6 +9443,7 @@
                                                  "contracts/living_loop/LIVING_LOOP_CONTRACT_V1.json",
                                                  "contracts/living_loop/LIVING_LOOP_CONTRACT_V1.md",
                                                  "contracts/living_loop/LIVING_LOOP_EVALUATOR_V1_REQUIREMENT.md",
+                                                 "contracts/living_loop/PRIORITY_INTENT_SELECTION_MODEL_V1_REQUIREMENT.md",
                                                  "contracts/living_loop/REASONER_V1_REQUIREMENT.md"
                                              ],
                            "primary_evidence_refs":  [
@@ -9445,6 +9455,7 @@
                                                          "contracts/living_loop/LIVING_LOOP_CONTRACT_V1.json",
                                                          "contracts/living_loop/LIVING_LOOP_CONTRACT_V1.md",
                                                          "contracts/living_loop/LIVING_LOOP_EVALUATOR_V1_REQUIREMENT.md",
+                                                         "contracts/living_loop/PRIORITY_INTENT_SELECTION_MODEL_V1_REQUIREMENT.md",
                                                          "contracts/living_loop/REASONER_V1_REQUIREMENT.md"
                                                      ],
                            "needs_triage":  true,
@@ -10954,16 +10965,16 @@
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                            "discovery_method":  "bounded_git_ls_files_path_discovery",
                            "evidence_counts":  {
-                                                   "files":  17,
-                                                   "scripts":  17,
-                                                   "validators":  9,
+                                                   "files":  19,
+                                                   "scripts":  19,
+                                                   "validators":  10,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  1,
                                                    "docs":  0
                                                },
-                           "file_count":  17,
-                           "script_count":  17,
-                           "validator_count":  9,
+                           "file_count":  19,
+                           "script_count":  19,
+                           "validator_count":  10,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  1,
                            "doc_count":  0,
@@ -10976,6 +10987,7 @@
                                                   "operations/living_loop/validate_living_loop_contract_v1.ps1",
                                                   "operations/living_loop/validate_living_loop_current_state_refresh_v1.ps1",
                                                   "operations/living_loop/validate_living_loop_evaluator_v1.ps1",
+                                                  "operations/living_loop/validate_priority_intent_selection_model_v1.ps1",
                                                   "operations/living_loop/validate_reasoner_v1.ps1"
                                               ],
                            "proof_refs":  [
@@ -10992,6 +11004,7 @@
                                                  "operations/living_loop/build_decision_gate_v1.ps1",
                                                  "operations/living_loop/build_living_loop_current_state_refresh_v1.ps1",
                                                  "operations/living_loop/build_living_loop_evaluator_v1.ps1",
+                                                 "operations/living_loop/build_priority_intent_selection_model_v1.ps1",
                                                  "operations/living_loop/build_reasoner_v1.ps1",
                                                  "operations/living_loop/validate_authority_preflight_gate_v1.ps1",
                                                  "operations/living_loop/validate_body_state_aggregator_v1.ps1",
@@ -11001,6 +11014,7 @@
                                                  "operations/living_loop/validate_living_loop_contract_v1.ps1",
                                                  "operations/living_loop/validate_living_loop_current_state_refresh_v1.ps1",
                                                  "operations/living_loop/validate_living_loop_evaluator_v1.ps1",
+                                                 "operations/living_loop/validate_priority_intent_selection_model_v1.ps1",
                                                  "operations/living_loop/validate_reasoner_v1.ps1"
                                              ],
                            "primary_evidence_refs":  [
@@ -11011,6 +11025,7 @@
                                                          "operations/living_loop/build_decision_gate_v1.ps1",
                                                          "operations/living_loop/build_living_loop_current_state_refresh_v1.ps1",
                                                          "operations/living_loop/build_living_loop_evaluator_v1.ps1",
+                                                         "operations/living_loop/build_priority_intent_selection_model_v1.ps1",
                                                          "operations/living_loop/build_reasoner_v1.ps1",
                                                          "operations/living_loop/validate_authority_preflight_gate_v1.ps1",
                                                          "operations/living_loop/validate_body_state_aggregator_v1.ps1",
@@ -11020,6 +11035,7 @@
                                                          "operations/living_loop/validate_living_loop_contract_v1.ps1",
                                                          "operations/living_loop/validate_living_loop_current_state_refresh_v1.ps1",
                                                          "operations/living_loop/validate_living_loop_evaluator_v1.ps1",
+                                                         "operations/living_loop/validate_priority_intent_selection_model_v1.ps1",
                                                          "operations/living_loop/validate_reasoner_v1.ps1"
                                                      ],
                            "needs_triage":  true,

@@ -2092,3 +2092,92 @@ Meaning:
 - Evidence -> Signal -> Body State -> Reasoner -> Decision route has been refreshed against current passport state.
 - The system should no longer route toward repairing active behavior source proof.
 - The next safe route is continuing non-executing Brain build or creating a separate authority gate for activation/live only by Owner decision.
+
+## 2026-07-12 — Architecture correction: no forced pipeline after current state refresh
+
+STATUS: OWNER_CORRECTION / ACTIVE_ARCHITECTURAL_GUARD / NOT_AN_EXECUTION_LAYER
+
+Context:
+- Last recorded state: Living Loop current state refresh after active behavior validation.
+- Current proof: validated_lab_non_active=4, blocked=0, repair_required=0, dominant_root_cause=NO_BLOCKING_ROOT_CAUSE.
+- Assistant proposed Action Planner V1 as a next layer.
+- Owner objected: the bridge must not force the agent into choosing steps just because a pipeline has a next slot.
+
+Correction:
+- Do not build a forced pipeline where Signal -> Reasoner -> Gate -> Action Planner automatically pushes action.
+- The Builder must become smart enough to compare possible priorities and choose from what exists.
+- Action Planner must not be the automatic next step.
+
+New active guard:
+- NO_FORCED_NEXT_STEP.
+- Priority selection is not execution.
+- Ranked options must exist before action planning.
+- Every option needs why, risk, proof_gap, authority, expected value, and rejection reason if not selected.
+- The system must be allowed to choose STOP/NO_ACTION/ASK_OWNER/BUILD_MEMORY/BUILD_GOVERNANCE instead of action planning.
+
+Next selected construction:
+- Priority / Intent Selection Model V1.
+- It reads current state and available directions, then emits ranked non-executing options.
+- It must not execute, mutate, or force Action Planner.
+
+## 2026-07-12 — Priority / Intent Selection Model V1
+
+STATUS: PASS / NO_FORCED_NEXT_STEP / RANKED_NON_EXECUTING_OPTIONS / NOT_ACTION_PLANNER
+
+Context:
+- Built after Owner correction against forced pipeline.
+- Current state refresh showed: validated_lab_non_active=4, blocked=0, repair_required=0, dominant_root_cause=NO_BLOCKING_ROOT_CAUSE.
+- Owner clarified that the agent should not be forced to choose a pipeline next step; it should rank priorities and understand what is best to choose from what exists.
+
+Created:
+- contracts/living_loop/PRIORITY_INTENT_SELECTION_MODEL_V1_REQUIREMENT.md
+- operations/living_loop/build_priority_intent_selection_model_v1.ps1
+- operations/living_loop/validate_priority_intent_selection_model_v1.ps1
+- reports/self_development/PRIORITY_INTENT_SELECTION_MODEL_V1_OPTIONS.json
+- reports/self_development/PRIORITY_INTENT_SELECTION_MODEL_V1_REPORT.json
+- tests/self_development/PRIORITY_INTENT_SELECTION_MODEL_V1_PROOF.json
+
+Important validator catch:
+- First build exposed a ranking defect: options were not sorted numerically by priority_score.
+- Validator stopped with OPTIONS_NOT_SORTED_DESC.
+- Sorting was corrected to use explicit numeric ordering.
+- This proves ranking is validated, not assumed.
+
+Options considered:
+1. continue_non_executing_brain_build — score 0.91 — selected
+2. strengthen_memory_layer — score 0.74
+3. mature_passport_pool — score 0.70
+4. build_action_planner_later — score 0.52 — considered but not selected
+5. stop_no_action — score 0.40
+6. activation_or_live_gate_later — score 0.38
+7. child_agent_production_later — score 0.22
+
+Selected option:
+- continue_non_executing_brain_build
+
+Why selected:
+- Current state has no blockers.
+- Biggest architectural risk is forced pipeline.
+- Priority intelligence is needed before action planning.
+- It directly addresses Owner correction.
+
+Proof boundary:
+- no_forced_next_step_enforced=true
+- action_planner_considered=true
+- action_planner_selected=false
+- all_options_non_executing=true
+- execution_allowed=false
+- mutation_authorized=false
+- runtime_ready=false
+- live_ready=false
+- autonomous_runtime=false
+- no PASSPORT_ACTIVE
+- no live runtime touched
+
+Meaning:
+- The system no longer treats Action Planner as automatic next step.
+- It can compare options and select a priority without execution.
+- This is closer to a smart Brain path: choosing what matters, not being pushed by a bridge.
+
+Next safe direction:
+- Continue non-executing Brain build by formalizing a Brain Priority Policy / Selection Contract, or build the next priority-aware layer that uses these ranked options without execution.
