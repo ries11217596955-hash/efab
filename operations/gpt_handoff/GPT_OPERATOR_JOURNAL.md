@@ -2425,3 +2425,81 @@ Architectural lesson:
 
 Next safe direction:
 - Build Atom/Memory Candidate Validator V1 to validate selected proposals before any compact-memory update or atom installation.
+
+## 2026-07-12 — Correction: sandbox logic diagnostic, not atom-queue branch
+
+STATUS: OWNER_CORRECTION / WRONG_BRANCH_RETIRED / DIAGNOSTIC_REQUIRED
+
+Owner correction:
+- The 10-cycle Thinking Sandbox was meant to evaluate logic impact, not create a queue of 20/30 atom-memory proposals.
+- The important question: do signals affect agent logic, where does reasoning lag, what should be strengthened?
+- Owner also pointed out a duplication risk: existing organs may already cover step logic, atom routing, atom acceptance, and learning residue.
+
+Correction applied:
+- Retired Thinking Acceptance Gate V1 as wrong branch.
+- Do not build Atom/Memory Candidate Validator V1.
+- Created Thinking Sandbox Logic Diagnostic V1.
+
+Diagnostic result:
+- Signals did affect logic, but only in a limited/static way: signal -> question -> reasoning chain.
+- The sandbox did not prove dynamic self-diagnosis or intelligent tuning.
+- Main gap: no post-run evaluator/reconstructor that asks how the agent currently makes a step, how it creates/routes atoms, how learning residue is accepted, what existing mechanisms already exist, and what must not be duplicated.
+
+Existing surfaces found before any new validator:
+- ATOM_CANDIDATE_ROUTE_PROOF_V1
+- LEARNING_EPISODE_ACCEPTANCE_GATE_VALIDATION
+- LEARNING_OUTPUT_CLASSIFIER_PROOF_V1
+- STUDY_EPISODE_MANAGER_PROOF_V1
+- SANDBOX_STUDY_LIFE_10MIN_OBSERVATION_20260705_01
+- validate_growth_directed_task_selection_v1.ps1
+- validate_agentlife_specific_growth_topic_v1.ps1
+
+Next correct direction:
+- Reconstruct existing agent step logic before building new organs.
+- Produce a step-flow map and do-not-duplicate list.
+- Only after that decide what logic to tune.
+
+Boundary:
+- no active memory update
+- no installed atom
+- no live runtime touched
+- no pack execution
+- no new atom validator
+
+## 2026-07-12 — Agent step logic reconstruction before new organs
+
+STATUS: PASS / DUPLICATE_RISK_CONFIRMED / POST_RUN_LOGIC_EVALUATOR_NEEDED
+
+Purpose:
+- Reconstruct what is already known about how the agent takes a step, routes atom candidates, and accepts learning residue before building new organs.
+
+Found existing mechanisms:
+- atom candidate route proof
+- learning episode acceptance gate validation
+- learning output classifier proof
+- study episode manager proof
+- growth-directed task selection validator
+- agentlife specific growth topic validator
+
+Thinking Sandbox limitation:
+- It proved safe signal-to-question behavior.
+- It did not prove dynamic self-diagnosis.
+- It did not prove the agent can evaluate where its own logic lagged.
+- It did not compare against existing step/atom/learning mechanisms before suggesting new gates.
+
+Root correction:
+- The correct object of analysis is the agent step, not the generated candidate artifacts.
+
+Current recommended next:
+- Post-Run Logic Evaluator.
+- It should read a trial trace and existing route surfaces, then output:
+  - did signals affect logic?
+  - where did reasoning lag?
+  - what existing mechanism already handles this?
+  - what must not be duplicated?
+  - what one tuning target is next?
+
+Cut:
+- No Atom/Memory Candidate Validator V1 now.
+- No processing 20/30 sandbox proposals now.
+- No live/autonomous launch now.

@@ -1,38 +1,34 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-12T11:25:05.0069961+04:00",
+    "checked_at":  "2026-07-12T11:35:41.1110216+04:00",
     "branch":  "main",
-    "observed_head":  "1e9a90d38ce74423bb17468e4edab7d620fcc28a",
-    "subject_head":  "1e9a90d38ce74423bb17468e4edab7d620fcc28a",
+    "observed_head":  "ba6c4555fb7287797db5c5fe136331a5a5bdc01f",
+    "subject_head":  "ba6c4555fb7287797db5c5fe136331a5a5bdc01f",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "contracts/thinking_sandbox/THINKING_SANDBOX_V1_REQUIREMENT.md",
+                          "contracts/thinking_sandbox/THINKING_ACCEPTANCE_GATE_V1_REQUIREMENT.md",
                           "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                          "operations/thinking_sandbox/run_thinking_sandbox_v1.ps1",
-                          "operations/thinking_sandbox/validate_thinking_sandbox_v1.ps1",
+                          "operations/thinking_sandbox/build_thinking_acceptance_gate_v1.ps1",
+                          "operations/thinking_sandbox/validate_thinking_acceptance_gate_v1.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-                          "reports/self_development/THINKING_SANDBOX_V1_COMPACT_MEMORY_PROPOSALS.json",
-                          "reports/self_development/THINKING_SANDBOX_V1_KNOWLEDGE_ATOM_CANDIDATES.json",
-                          "reports/self_development/THINKING_SANDBOX_V1_REPORT.json",
-                          "reports/self_development/THINKING_SANDBOX_V1_TRACE.json",
+                          "reports/self_development/THINKING_ACCEPTANCE_GATE_V1_DECISIONS.json",
+                          "reports/self_development/THINKING_ACCEPTANCE_GATE_V1_REPORT.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "tests/self_development/THINKING_SANDBOX_V1_PROOF.json"
+                          "tests/self_development/THINKING_ACCEPTANCE_GATE_V1_PROOF.json"
                       ],
     "structural_paths":  [
-                             "contracts/thinking_sandbox/THINKING_SANDBOX_V1_REQUIREMENT.md",
+                             "contracts/thinking_sandbox/THINKING_ACCEPTANCE_GATE_V1_REQUIREMENT.md",
                              "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                             "operations/thinking_sandbox/run_thinking_sandbox_v1.ps1",
-                             "operations/thinking_sandbox/validate_thinking_sandbox_v1.ps1",
-                             "reports/self_development/THINKING_SANDBOX_V1_COMPACT_MEMORY_PROPOSALS.json",
-                             "reports/self_development/THINKING_SANDBOX_V1_KNOWLEDGE_ATOM_CANDIDATES.json",
-                             "reports/self_development/THINKING_SANDBOX_V1_REPORT.json",
-                             "reports/self_development/THINKING_SANDBOX_V1_TRACE.json",
-                             "tests/self_development/THINKING_SANDBOX_V1_PROOF.json"
+                             "operations/thinking_sandbox/build_thinking_acceptance_gate_v1.ps1",
+                             "operations/thinking_sandbox/validate_thinking_acceptance_gate_v1.ps1",
+                             "reports/self_development/THINKING_ACCEPTANCE_GATE_V1_DECISIONS.json",
+                             "reports/self_development/THINKING_ACCEPTANCE_GATE_V1_REPORT.json",
+                             "tests/self_development/THINKING_ACCEPTANCE_GATE_V1_PROOF.json"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -44,8 +40,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2097,
-                                    "sha256":  "9e3bc0fa7fd043e4b3bb41c663b162e4ae0c26d7010c8be29e0a8b2467ca001c"
+                                    "structural_file_count":  2095,
+                                    "sha256":  "c404f436679ed0ea84d16065d62298e974e7439591ea27982a2ebf2e86842a08"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -72,12 +68,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  164,
-                         "structural_path_count":  2097,
+                         "structural_path_count":  2095,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-12T11:25:36.4412237+04:00"
+    "refreshed_at":  "2026-07-12T11:36:12.2712620+04:00"
 }

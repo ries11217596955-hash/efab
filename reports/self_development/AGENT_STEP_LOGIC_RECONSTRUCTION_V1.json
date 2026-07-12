@@ -1,0 +1,87 @@
+﻿{
+    "schema":  "agent_step_logic_reconstruction_v1",
+    "status":  "PASS_AGENT_STEP_LOGIC_RECONSTRUCTION_V1",
+    "purpose":  "Restore current known step/atom/learning route before building new organs.",
+    "source_evidence":  [
+                            "operations/autonomous_inner_motor/validation/AUTONOMOUS_INNER_MOTOR_ORGAN_CONTRACT_VALIDATION.json",
+                            "operations/autonomous_inner_motor/validation/ATOM_CANDIDATE_ROUTE_PROOF_V1.json",
+                            "operations/autonomous_inner_motor/validation/LEARNING_EPISODE_ACCEPTANCE_GATE_VALIDATION.json",
+                            "operations/autonomous_inner_motor/validation/LEARNING_OUTPUT_CLASSIFIER_PROOF_V1.json",
+                            "operations/autonomous_inner_motor/validation/STUDY_EPISODE_MANAGER_PROOF_V1.json",
+                            "operations/autonomous_inner_motor/validation/SANDBOX_STUDY_LIFE_10MIN_OBSERVATION_20260705_01.json",
+                            "operations/autonomous_inner_motor/validate_growth_directed_task_selection_v1.ps1",
+                            "operations/autonomous_inner_motor/validate_agentlife_specific_growth_topic_v1.ps1"
+                        ],
+    "current_step_flow_observed_from_sandbox":  [
+                                                    "body_or_priority_signal_observed",
+                                                    "question_generated",
+                                                    "reasoning_chain_written",
+                                                    "knowledge_candidate_written",
+                                                    "atom_candidate_written",
+                                                    "compact_memory_proposal_written",
+                                                    "return_to_parent_without_execution"
+                                                ],
+    "current_step_flow_limitation":  [
+                                         "signal_to_question was scripted/static in Thinking Sandbox V1",
+                                         "no dynamic evaluation of whether signal changed reasoning quality",
+                                         "no comparison against existing autonomous_inner_motor learning/atom routes before proposing new gates",
+                                         "no explicit tuning target selection after trial",
+                                         "no diagnosis of weak logic per cycle beyond generic candidate creation"
+                                     ],
+    "existing_mechanisms_not_to_duplicate":  {
+                                                 "atom_candidate_route":  "operations/autonomous_inner_motor/validation/ATOM_CANDIDATE_ROUTE_PROOF_V1.json",
+                                                 "learning_episode_acceptance":  "operations/autonomous_inner_motor/validation/LEARNING_EPISODE_ACCEPTANCE_GATE_VALIDATION.json",
+                                                 "learning_output_classifier":  "operations/autonomous_inner_motor/validation/LEARNING_OUTPUT_CLASSIFIER_PROOF_V1.json",
+                                                 "study_episode_manager":  "operations/autonomous_inner_motor/validation/STUDY_EPISODE_MANAGER_PROOF_V1.json",
+                                                 "growth_directed_task_selection":  "operations/autonomous_inner_motor/validate_growth_directed_task_selection_v1.ps1",
+                                                 "specific_growth_topic":  "operations/autonomous_inner_motor/validate_agentlife_specific_growth_topic_v1.ps1"
+                                             },
+    "diagnosis":  {
+                      "did_signals_touch_logic":  true,
+                      "signal_effect":  "They changed the sandbox path from action to question/reasoning/proposal.",
+                      "not_proven":  "They did not prove self-adjusting reasoning, autonomous diagnosis, or skillful step selection.",
+                      "main_logic_lag":  "Agent lacks a post-run logic evaluator that can say: what did I notice, what got better, what stayed weak, which existing route handles this, and what one tuning target should be selected.",
+                      "root_cause":  "We evaluated artifacts instead of evaluating the agent step. The sandbox output was treated as atom queue rather than behavior evidence."
+                  },
+    "correct_tuning_targets_ranked":  [
+                                          {
+                                              "rank":  1,
+                                              "target":  "post_run_logic_evaluator",
+                                              "why":  "Needed to evaluate a trial and extract logic weaknesses before any new organ/validator.",
+                                              "build_now":  true
+                                          },
+                                          {
+                                              "rank":  2,
+                                              "target":  "existing_step_route_inventory",
+                                              "why":  "Needed to prevent duplicate organs and restore how current agent step/atom/learning routes already work.",
+                                              "build_now":  false
+                                          },
+                                          {
+                                              "rank":  3,
+                                              "target":  "signal_response_policy",
+                                              "why":  "Needed to define how a body signal becomes inquiry, repair, proof search, or no-action.",
+                                              "build_now":  false
+                                          },
+                                          {
+                                              "rank":  4,
+                                              "target":  "thinking_quality_metrics",
+                                              "why":  "Needed to measure whether reasoning improved, not just count cycles/proposals.",
+                                              "build_now":  false
+                                          }
+                                      ],
+    "immediate_cut":  [
+                          "Do not process 20/30 sandbox proposals now.",
+                          "Do not build Atom/Memory Candidate Validator V1 now.",
+                          "Do not claim Thinking Sandbox proved intelligence.",
+                          "Do not launch live/autonomous run until step logic is reconstructed."
+                      ],
+    "next_action":  "Build or run a Post-Run Logic Evaluator using existing traces and existing autonomous_inner_motor surfaces; it should output weakness/tuning target, not atom proposals.",
+    "boundary":  {
+                     "active_memory_updated":  false,
+                     "active_atoms_installed":  false,
+                     "live_runtime_touched":  false,
+                     "pack_execution_performed":  false,
+                     "mutation_authorized":  false
+                 },
+    "created_at":  "2026-07-12T11:34:35.3765648+04:00"
+}
