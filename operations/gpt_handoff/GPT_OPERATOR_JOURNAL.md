@@ -2836,3 +2836,52 @@ Next:
 - Commit policy refresh.
 - Run a small active-school Live smoke before any long school run.
 - If small Live proof passes, use the same active school path for longer runs while continuing logic work separately.
+
+## 2026-07-12 — School Live smoke repair: candidate factory performance and diversity
+
+STATUS: SCHOOL_CORE_LIVE_SMOKE_PASS_ON_DIRTY_REPO / GENERATOR_FIX_READY / CLEAN_REPO_RERUN_REQUIRED
+
+Context:
+- Owner approved school Mode=Live for active school, while continuing agent logic work separately.
+- School policy was refreshed so the canonical validator no longer blocks legitimate internal helper/source-port scripts.
+- First Live smoke attempts exposed real school issues, not permission issues.
+
+Findings:
+1. Candidate factory performance issue:
+   - The maximal self-knowledge curriculum expanded the schedule heavily.
+   - Old generator built taskSchedule with array += and weighted root expansion, causing Count=10/100 Live attempts to stall before candidates.
+   - Fixed generator to use unique roots, root weights, and List-based task construction.
+2. Candidate contract issue:
+   - Old generator emitted a thin candidate schema.
+   - Existing codex curriculum validator requires full fields: topic, new_knowledge, exercise, expected_behavior, negative_trap, validator_hint, behavior_use_proof_target, return_to_parent, source_anchor, self_generated_easy_candidate=false.
+   - Fixed generator to emit the full contract schema without weakening validator.
+3. Streaming diversity issue:
+   - Streaming permits one ready atom per topic; duplicate topics are quarantined.
+   - Old schedule emitted first candidates under the same topic, causing READY_ATOMS=1 and quarantine=9.
+   - Fixed generator schedule ordering to diversify topics first.
+
+Direct checks:
+- Candidate factory TargetAccepted=10: PASS_CODEX_CANDIDATE_FACTORY_GENERATION_V1.
+- Contract validator: ACCEPTED=10, REJECTED=0.
+- Streaming direct check: READY_ATOMS=10, STREAM_QUARANTINED=0.
+
+School Live smoke result on dirty repo:
+- operations/school/run_agent_school.ps1 -Count 10 -Mode Live -TopicsPlan operations/school/curriculum/topics/builder_night_school_topics_v1.json
+- SCHOOL_RUN_STATUS=PASS_REAL_FACTORY_DIGEST_RECALL_USE_V1
+- FACTORY_CANDIDATES=10
+- READY_ATOMS=10
+- DIGESTED_CELLS=388
+- RECALL_USE_STATUS=VALIDATION_PASS=COMPACT_MEMORY_RECALL_USE_PROBE_V1_VALID
+- BEHAVIOR_DELTA=True
+
+Boundary:
+- This was school-live / compact-memory digestion mode, not AgentLife runtime.
+- Runtime ready remains false.
+- The run occurred while repo was dirty, so finalizer skipped merge queue:
+  FINALIZER_MERGE_QUEUE_STATUS=SKIPPED_MERGE_QUEUE_REPO_DIRTY.
+- Therefore, this proves the school core path but does not prove clean finalizer/merge behavior.
+
+Next:
+- Restore tracked reports deleted by school cleanup.
+- Commit generator fix.
+- Rerun Count=10 Mode=Live on clean repo.

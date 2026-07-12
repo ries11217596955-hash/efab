@@ -1,35 +1,26 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-12T13:30:12.1942392+04:00",
+    "checked_at":  "2026-07-12T13:46:48.9269052+04:00",
     "branch":  "main",
-    "observed_head":  "8a4563758c8cc948deabfa9be494b35140b0efc2",
-    "subject_head":  "8a4563758c8cc948deabfa9be494b35140b0efc2",
+    "observed_head":  "150bc4737d7c30a9d7b1b7875e26d20819a1db43",
+    "subject_head":  "150bc4737d7c30a9d7b1b7875e26d20819a1db43",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
                           "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                          "operations/school/classification/ACTIVE_SCHOOL_BLOCK_CLASSIFICATION_V1.json",
-                          "operations/school/curriculum/candidate_factory/memory/theme_cursor_ledger.json",
-                          "operations/school/curriculum/candidate_factory/rebuild_theme_cursor_ledger_v1.ps1",
-                          "operations/school/curriculum/candidate_factory/reports/THEME_CURSOR_LEDGER_REBUILD_V1_REPORT.json",
-                          "operations/school/curriculum/topics/builder_night_school_topics_v1.json",
+                          "operations/school/SCHOOL_CANONICAL_RUN_CONTRACT_V1.md",
+                          "operations/school/validate_agent_school_canonical_entrypoint_v1.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
-                          "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "tests/school/candidate_factory/THEME_CURSOR_LEDGER_REBUILD_V1_PROOF.json",
-                          "tests/self_development/ACTIVE_SCHOOL_BLOCK_CLASSIFICATION_V1_PROOF.json"
+                          "reports/self_development/branch_agnostic_map_refresh_result.json"
                       ],
     "structural_paths":  [
                              "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                             "operations/school/classification/ACTIVE_SCHOOL_BLOCK_CLASSIFICATION_V1.json",
-                             "operations/school/curriculum/candidate_factory/memory/theme_cursor_ledger.json",
-                             "operations/school/curriculum/candidate_factory/rebuild_theme_cursor_ledger_v1.ps1",
-                             "operations/school/curriculum/candidate_factory/reports/THEME_CURSOR_LEDGER_REBUILD_V1_REPORT.json",
-                             "operations/school/curriculum/topics/builder_night_school_topics_v1.json",
-                             "tests/self_development/ACTIVE_SCHOOL_BLOCK_CLASSIFICATION_V1_PROOF.json"
+                             "operations/school/SCHOOL_CANONICAL_RUN_CONTRACT_V1.md",
+                             "operations/school/validate_agent_school_canonical_entrypoint_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -42,7 +33,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  2104,
-                                    "sha256":  "2a4e7662e7ed3ae6e3ca2f36e538cd14c6c8a751428698a96088d35f3eacf81a"
+                                    "sha256":  "7085e53f4f09e83462c7d28cde92126934c17c555abe8f0503b0afe8cd2b32db"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -76,5 +67,5 @@
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-12T13:30:43.3943292+04:00"
+    "refreshed_at":  "2026-07-12T13:47:20.2172710+04:00"
 }
