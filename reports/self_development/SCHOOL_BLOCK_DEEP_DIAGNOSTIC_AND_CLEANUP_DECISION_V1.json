@@ -1,0 +1,93 @@
+﻿{
+    "schema":  "school_block_deep_diagnostic_and_cleanup_decision_v1",
+    "status":  "PASS_SCHOOL_BLOCK_DEEP_DIAGNOSTIC_CLEANUP_DECISION_V1",
+    "current_canonical_school":  {
+                                     "organ":  "operations/school",
+                                     "entrypoint":  "operations/school/run_agent_school.ps1",
+                                     "cycle_controller":  "operations/school/run_autonomous_school_cycle_v1.ps1",
+                                     "contract":  "operations/school/SCHOOL_CANONICAL_RUN_CONTRACT_V1.md",
+                                     "mode":  "ACTIVE_CANONICAL_SCHOOL_ORGAN"
+                                 },
+    "source_and_candidate_pipeline":  {
+                                          "topics_plan":  "operations/school/curriculum/topics/builder_night_school_topics_v1.json",
+                                          "source_router":  "operations/school/curriculum/source_router/run_school_source_router_v1.ps1",
+                                          "codex_source_port":  "operations/school/curriculum/source_router/run_school_codex_source_port_v1.ps1",
+                                          "external_world_source_port":  "operations/school/curriculum/source_router/run_school_external_world_source_port_v1.ps1",
+                                          "template_filter":  "operations/school/curriculum/source_router/template_filter/run_school_source_template_filter_v1.ps1",
+                                          "local_candidate_factory":  "operations/school/curriculum/candidate_factory/generate_codex_curriculum_candidate_factory_run_v1.ps1",
+                                          "contract_validator":  "operations/school/curriculum/codex_contract/validate_codex_curriculum_batch_v1.ps1",
+                                          "streaming_absorption":  "operations/school/curriculum/streaming_absorption/process_codex_curriculum_streaming_absorption_v1.ps1",
+                                          "ready_lane":  "operations/school/curriculum/ready_lane/absorb_ready_lane_via_active_route_v1.ps1",
+                                          "incremental_store":  "operations/school/curriculum/incremental_active_store/apply_ready_lane_incremental_active_delta_v1.ps1"
+                                      },
+    "compact_memory_pipeline":  {
+                                    "digestion":  "operations/school/digestion/invoke_compact_semantic_digestion_organ_v1.ps1",
+                                    "query":  "operations/school/memory/query_compact_semantic_memory_v1.ps1",
+                                    "recall_use":  "operations/school/memory/validate_compact_memory_recall_use_probe_v1.ps1",
+                                    "intake":  "operations/compact_memory_intake/submit_multi_source_compact_memory_intake_v1.ps1",
+                                    "merge":  "operations/compact_memory_intake/merge_multi_source_compact_memory_queue_v1.ps1"
+                                },
+    "topic_level_continuation":  {
+                                     "expected_by_owner":  "known topic at level N should continue at N+1; new topic starts from 1/zero-base memory",
+                                     "topic_plan_flag":  "levels_continue_by_theme_cursor=true in builder_night_school_topics_v1.json",
+                                     "generator_flags":  "UseFactoryMemory=true; UseTopicCursor=true",
+                                     "generator_memory_dir":  "operations/school/curriculum/candidate_factory/memory",
+                                     "implemented_logic":  "theme_cursor_ledger.json maps theme_key to last_level,next_level,atom_count; new missing theme gets last=0,next=1; generated candidate includes level, ladder_step, cursor_previous_level, cursor_reserved_level",
+                                     "current_ledger_state":  "theme_cursor_ledger.json and factory_ledger.jsonl are currently missing, so current generator would start missing themes at level 1 until memory ledger is restored/synced",
+                                     "risk":  "Level-continuation mechanism exists, but active cursor memory is not currently populated; before school run, sync/update cursor ledger must be run or curriculum will restart levels for absent themes."
+                                 },
+    "current_active_route_state":  {
+                                       "active_route_pointer":  "operations/school/curriculum/incremental_active_store/ACTIVE_REPO_BODY_ROUTE_POINTER_V1.json",
+                                       "status":  "SKELETON_NO_ACTIVE_ROUTE_V1",
+                                       "active_source":  "skeleton_reset_no_active_memory",
+                                       "previous_active_count":  14338,
+                                       "meaning":  "Owner had reset/discarded raw proof/staging route entries; future growth must use compact semantic digestion before raw-source deletion."
+                                   },
+    "school_like_cleanup_classification":  {
+                                               "keep_active":  [
+                                                                   "operations/school",
+                                                                   "operations/school/curriculum",
+                                                                   "operations/school/digestion",
+                                                                   "operations/school/memory",
+                                                                   "operations/compact_memory_intake"
+                                                               ],
+                                               "archive_old_learning_mechanics":  [
+                                                                                      "operations/autonomous_inner_motor study/learning/atom/growth surfaces"
+                                                                                  ],
+                                               "archive_runtime_proofs":  [
+                                                                              "SCHOOL_AIMO",
+                                                                              "school_aimo",
+                                                                              "parallel_life",
+                                                                              "live_like",
+                                                                              "live_start"
+                                                                          ],
+                                               "archive_old_curriculum_factory_lineage":  [
+                                                                                              "phase165",
+                                                                                              "big_curriculum",
+                                                                                              "lesson_to_atom"
+                                                                                          ],
+                                               "delete_candidate_after_dependency_scan":  [
+                                                                                              "living_learning_environment_* passports/scaffold"
+                                                                                          ],
+                                               "archive_long_run_school_surface":  [
+                                                                                       "operations_overnight_school",
+                                                                                       "operations/overnight_school"
+                                                                                   ]
+                                           },
+    "cleanup_decision":  {
+                             "deletion_now_allowed":  false,
+                             "reason":  "Dependency scan shows school-like surfaces are still referenced in docs/maps/rollback/proofs; blind deletion would break traceability.",
+                             "next_cleanup_step":  "Create/run explicit deletion gate for non-active school-like surfaces, or move to an archive path only after refs are rewritten.",
+                             "no_new_school_organs":  true
+                         },
+    "counts":  {
+                   "operations_school":  97,
+                   "compact_memory_intake":  10,
+                   "autonomous_inner_motor_learning":  43,
+                   "school_aimo_runtime":  61,
+                   "phase165_curriculum_lineage":  127,
+                   "living_learning_environment_passports":  13,
+                   "overnight_school":  5
+               },
+    "created_at":  "2026-07-12T12:36:13.4951115+04:00"
+}
