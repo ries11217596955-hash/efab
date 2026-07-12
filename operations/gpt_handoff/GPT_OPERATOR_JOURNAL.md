@@ -2905,3 +2905,24 @@ Fix:
 Boundary:
 - No school long-run yet.
 - Patch must be committed before rerun so the finalizer starts from a clean repo.
+
+## 2026-07-12 — School cleanup guard repair: untracked runtime path handling
+
+STATUS: CLEANUP_GUARD_REPAIRED / FAILED_RUN_ROLLED_BACK_MEMORY / CLEAN_RERUN_REQUIRED
+
+Context:
+- After the cleanup guard patch, clean Live Count=10 failed during RemoveTrash because IsTrackedPath used git ls-files --error-unmatch on an untracked runtime file.
+- The failure occurred after digest started, but the school failure path restored active compact memory to the previous successful manifest.
+
+Observed memory state after failure:
+- Active compact memory manifest remained at file_atom_absorption_20260712_134751.
+- merged_count=10.
+- Failed 135131 digest did not become active memory.
+
+Fix:
+- IsTrackedPath now uses git ls-files -- <path> and checks returned line count.
+- This avoids stderr/native command failure on untracked runtime files.
+
+Next:
+- Commit fix.
+- Rerun Count=10 Mode=Live on clean repo.

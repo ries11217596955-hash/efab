@@ -28,12 +28,8 @@ function ReadJsonRequired($Path,$ExpectedStatus,$Label){
 function IsTrackedPath($Path){
   if([string]::IsNullOrWhiteSpace([string]$Path)){ return $false }
   $rel=([string]$Path).Replace('\\','/').Replace('\','/')
-  if(Test-Path $Path -PathType Container){
-    $tracked=@(git ls-files -- $rel 2>$null)
-    return ($tracked.Count -gt 0)
-  }
-  $null = git ls-files --error-unmatch -- $rel 2>$null
-  return ($LASTEXITCODE -eq 0)
+  $tracked=@(git ls-files -- $rel 2>$null)
+  return ($tracked.Count -gt 0)
 }
 function RemoveTrash($Items){
   $removed=@()
@@ -327,5 +323,6 @@ Write-Host "BEHAVIOR_DELTA=$($base.behavior_delta)"
 Write-Host "ROUTE_AFTER=$($base.route_after)"
 Write-Host "LEDGER_AFTER=$($base.ledger_after)"
 Write-Host 'RUNTIME_READY=false'
+
 
 
