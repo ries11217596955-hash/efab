@@ -2181,3 +2181,92 @@ Meaning:
 
 Next safe direction:
 - Continue non-executing Brain build by formalizing a Brain Priority Policy / Selection Contract, or build the next priority-aware layer that uses these ranked options without execution.
+
+## 2026-07-12 — Priority Policy Contract V1
+
+STATUS: PASS / CENTRAL_SELECTION_POLICY / FORMULA_VALIDATED / RECOMMENDATION_NOT_COMMAND
+
+Context:
+- Owner agreed that priority logic is one of the main factors.
+- Owner explicitly requested not a minimal stub but a strong policy layer.
+- Previous Priority / Intent Selection Model V1 proved ranked options and NO_FORCED_NEXT_STEP, but scores were still heuristic/manual.
+
+Created:
+- contracts/living_loop/PRIORITY_POLICY_CONTRACT_V1.md
+- contracts/living_loop/PRIORITY_POLICY_CONTRACT_V1.json
+- operations/living_loop/build_priority_policy_contract_v1.ps1
+- operations/living_loop/validate_priority_policy_contract_v1.ps1
+- reports/self_development/PRIORITY_POLICY_CONTRACT_V1_SCORED_OPTIONS.json
+- reports/self_development/PRIORITY_POLICY_CONTRACT_V1_REPORT.json
+- tests/self_development/PRIORITY_POLICY_CONTRACT_V1_PROOF.json
+- tests/self_development/negative_fixtures/PRIORITY_POLICY_MISSING_COMPONENT_NEGATIVE.json
+- tests/self_development/negative_fixtures/PRIORITY_POLICY_FORCED_ACTION_PLANNER_NEGATIVE.json
+- tests/self_development/negative_fixtures/PRIORITY_POLICY_LIVE_WITHOUT_AUTHORITY_NEGATIVE.json
+
+Policy formula:
+- positive components:
+  - owner_goal_fit
+  - strategic_value
+  - proof_readiness
+  - safety_score
+  - reuse_value
+  - blocker_relief
+  - learning_value
+- penalties:
+  - risk_penalty
+  - authority_cost
+  - prematurity_penalty
+  - forced_pipeline_penalty
+  - live_runtime_penalty
+  - child_agent_prematurity_penalty
+
+Formula:
+- final_score = clamp01(positive_score - (0.72 * penalty_score) + 0.28)
+
+Selection constraints:
+- execution_allowed=false
+- mutation_authorized=false
+- runtime_ready=false
+- live_ready=false
+- autonomous_runtime=false
+- passport_active_allowed=false
+- owner_goal_fit >= 0.70
+- forced_pipeline_penalty <= 0.35
+- prematurity_penalty <= 0.45
+- safety_score >= 0.70
+
+Ranked output:
+1. continue_non_executing_brain_build — selected
+2. strengthen_memory_layer
+3. mature_passport_pool
+4. stop_no_action
+5. build_action_planner_later — scored but guarded out
+6. activation_or_live_gate_later — scored but guarded out
+7. child_agent_production_later — scored but guarded out
+
+Validator:
+- PASS_PRIORITY_POLICY_CONTRACT_V1
+- formula weights present
+- all mandatory components present
+- all options use same formula
+- manual scores forbidden
+- Action Planner scored but not selected
+- negative fixtures validated
+- recommendation_not_command=true
+
+Important meaning:
+- Priority model no longer uses hidden intuition scores.
+- The policy is explicit, explainable, component-based, and validated.
+- It can recommend a direction but cannot command execution.
+- It is a central Brain support organ, not full Brain.
+
+Boundary:
+- not executor
+- not mutation authority
+- not live/runtime authority
+- not full Brain
+- no PASSPORT_ACTIVE
+- no live runtime touched
+
+Next safe direction:
+- Build a Priority Policy Consumer / Brain Selection Contract that consumes scored recommendations as advice, not command, and combines them with Owner route lock and current body state.

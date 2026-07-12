@@ -1,0 +1,15 @@
+﻿{
+    "schema":  "priority_policy_contract_v1_report",
+    "status":  "PASS_PRIORITY_POLICY_CONTRACT_V1",
+    "contract_md":  "contracts/living_loop/PRIORITY_POLICY_CONTRACT_V1.md",
+    "contract_json":  "contracts/living_loop/PRIORITY_POLICY_CONTRACT_V1.json",
+    "scored_options_ref":  "reports/self_development/PRIORITY_POLICY_CONTRACT_V1_SCORED_OPTIONS.json",
+    "selected_option_id":  "continue_non_executing_brain_build",
+    "policy_formula":  "final_score = clamp01(positive_score - (0.72 * penalty_score) + 0.28)",
+    "negative_fixtures":  [
+                              "tests/self_development/negative_fixtures/PRIORITY_POLICY_MISSING_COMPONENT_NEGATIVE.json",
+                              "tests/self_development/negative_fixtures/PRIORITY_POLICY_FORCED_ACTION_PLANNER_NEGATIVE.json",
+                              "tests/self_development/negative_fixtures/PRIORITY_POLICY_LIVE_WITHOUT_AUTHORITY_NEGATIVE.json"
+                          ],
+    "created_at":  "2026-07-12T10:54:08.6593327+04:00"
+}

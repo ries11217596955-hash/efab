@@ -1,0 +1,15 @@
+﻿{
+    "schema":  "priority_policy_negative_forced_planner_v1",
+    "status":  "NEGATIVE_FIXTURE_SHOULD_FAIL",
+    "selected_option":  {
+                            "option_id":  "build_action_planner_later",
+                            "final_score":  0.99,
+                            "score_components":  {
+                                                     "forced_pipeline_penalty":  0.95,
+                                                     "prematurity_penalty":  0.95,
+                                                     "safety_score":  0.2
+                                                 },
+                            "execution_allowed":  false,
+                            "mutation_authorized":  false
+                        }
+}

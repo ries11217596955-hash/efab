@@ -1,0 +1,71 @@
+﻿{
+    "schema":  "priority_policy_contract_v1",
+    "status":  "PASS_PRIORITY_POLICY_CONTRACT_V1_DRAFT",
+    "law":  "NO_FORCED_NEXT_STEP",
+    "positive_weights":  {
+                             "owner_goal_fit":  0.22,
+                             "strategic_value":  0.18,
+                             "proof_readiness":  0.12,
+                             "safety_score":  0.15,
+                             "reuse_value":  0.08,
+                             "blocker_relief":  0.1,
+                             "learning_value":  0.15
+                         },
+    "penalty_weights":  {
+                            "risk_penalty":  0.18,
+                            "authority_cost":  0.14,
+                            "prematurity_penalty":  0.2,
+                            "forced_pipeline_penalty":  0.22,
+                            "live_runtime_penalty":  0.16,
+                            "child_agent_prematurity_penalty":  0.1
+                        },
+    "penalty_multiplier":  0.72,
+    "baseline":  0.28,
+    "selected_constraints":  {
+                                 "owner_goal_fit_min":  0.7,
+                                 "forced_pipeline_penalty_max":  0.35,
+                                 "prematurity_penalty_max":  0.45,
+                                 "safety_score_min":  0.7,
+                                 "execution_allowed":  false,
+                                 "mutation_authorized":  false,
+                                 "runtime_ready":  false,
+                                 "live_ready":  false,
+                                 "autonomous_runtime":  false,
+                                 "passport_active_allowed":  false
+                             },
+    "mandatory_options":  [
+                              "continue_non_executing_brain_build",
+                              "strengthen_memory_layer",
+                              "mature_passport_pool",
+                              "build_action_planner_later",
+                              "activation_or_live_gate_later",
+                              "child_agent_production_later",
+                              "stop_no_action"
+                          ],
+    "mandatory_positive_components":  [
+                                          "owner_goal_fit",
+                                          "strategic_value",
+                                          "proof_readiness",
+                                          "safety_score",
+                                          "reuse_value",
+                                          "blocker_relief",
+                                          "learning_value"
+                                      ],
+    "mandatory_penalty_components":  [
+                                         "risk_penalty",
+                                         "authority_cost",
+                                         "prematurity_penalty",
+                                         "forced_pipeline_penalty",
+                                         "live_runtime_penalty",
+                                         "child_agent_prematurity_penalty"
+                                     ],
+    "hard_guards":  [
+                        "Action Planner cannot win when forced_pipeline_penalty is high",
+                        "Live/activation cannot win without explicit live authority",
+                        "Child-agent production cannot win before parent Brain/immune system maturity",
+                        "STOP/NO_ACTION must remain valid",
+                        "Manual final_score without components is invalid",
+                        "Priority result is recommendation not command"
+                    ],
+    "created_at":  "2026-07-12T10:53:57.9092820+04:00"
+}
