@@ -2,9 +2,9 @@
 
 Status: ACTIVE_DERIVED_VIEW
 Branch: main
-Observed head at generation: 19a47c5d51f2c66a64c7133216530c5376be0ec0
-Generated: 2026-07-12T12:36:58.6128541+04:00
-Body source fingerprint: b572244daf3ca5739d6447a3b344b5149f57b5ca0d801073f95f1b952fddba66
+Observed head at generation: ce0546a3c074b4813548eb0f2ade1b593acc8e15
+Generated: 2026-07-12T12:52:25.9596295+04:00
+Body source fingerprint: 7bd8a63d95344c3eb5d005ca1992d37a5dfd322710607d54cd03f6764cc4550a
 
 Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
@@ -24,7 +24,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
 ## Confirmed Components
 
-- `school` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/school`, files=97, scripts=59, required_present=True
+- `school` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/school`, files=103, scripts=61, required_present=True
 - `school_source_router` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/school/curriculum/source_router`, files=8, scripts=6, required_present=True
 - `compact_memory_intake` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/compact_memory_intake`, files=10, scripts=6, required_present=True
 - `autonomous_inner_motor` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/autonomous_inner_motor`, files=76, scripts=15, required_present=True

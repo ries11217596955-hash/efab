@@ -2641,3 +2641,79 @@ Next correct work:
 3. Add Agent Self-Knowledge Curriculum only into operations/school/curriculum/topics and source/candidate pipeline.
 4. Keep AgentLife/AIMO/phase165/living_learning_environment out of the school patch unless a dependency scan explicitly requires them.
 5. Run cleanup gate for non-active school-like surfaces before deletion/archive move.
+
+## 2026-07-12 — School cursor fixed, active school marked, old motor diagnosed
+
+STATUS: SCHOOL_CURSOR_VALIDATED / ACTIVE_SCHOOL_MARKER_WRITTEN / OLD_MOTOR_DIAGNOSTIC_DONE / NO_DELETE_YET
+
+Owner instruction:
+- Fix the school cursor first.
+- Write a clear pointer for what is the active school and what is not.
+- Diagnose the old “motor” because it may contain useful logic for the agent, then later archive/delete it so it does not duplicate the new organ path.
+
+School cursor work:
+- Created/rebuilt:
+  operations/school/curriculum/candidate_factory/memory/theme_cursor_ledger.json
+  operations/school/curriculum/candidate_factory/memory/factory_ledger.jsonl
+  operations/school/curriculum/candidate_factory/rebuild_theme_cursor_ledger_v1.ps1
+  operations/school/curriculum/candidate_factory/validate_theme_cursor_ledger_v1.ps1
+  operations/school/curriculum/candidate_factory/reports/THEME_CURSOR_LEDGER_REBUILD_V1_REPORT.json
+  tests/school/candidate_factory/THEME_CURSOR_LEDGER_REBUILD_V1_PROOF.json
+
+Cursor result:
+- PASS_THEME_CURSOR_LEDGER_REBUILD_V1
+- PASS_THEME_CURSOR_LEDGER_V1
+- themes=76
+- harvested_records=0
+- policy verified: known theme continues from last_level+1; new/missing theme starts at level 1.
+- Important boundary: historic topic depth was not invented. The ledger is seeded from the current topics plan because no active historical cursor records were found.
+
+Active school marker:
+- Created:
+  operations/school/classification/ACTIVE_SCHOOL_BLOCK_CLASSIFICATION_V1.json
+  tests/self_development/ACTIVE_SCHOOL_BLOCK_CLASSIFICATION_V1_PROOF.json
+- ACTIVE_CANONICAL_SCHOOL_ORGAN = operations/school
+- ACTIVE_SCHOOL_ENTRYPOINT = operations/school/run_agent_school.ps1
+- ACTIVE_SCHOOL_CYCLE_CONTROLLER = operations/school/run_autonomous_school_cycle_v1.ps1
+- ACTIVE_SCHOOL_CONTRACT = operations/school/SCHOOL_CANONICAL_RUN_CONTRACT_V1.md
+- Active subsystems: curriculum, candidate_factory, source_router, streaming_absorption/ready_lane/incremental_active_store, digestion/memory/compact_memory_intake.
+
+Not active schools:
+- operations/autonomous_inner_motor = ARCHIVE_OLD_AGENTLIFE_LEARNING_MECHANICS / diagnose for reuse, then archive/delete gate.
+- SCHOOL_AIMO / school_aimo / parallel_life / live_like / live_start = ARCHIVE_SCHOOL_AGENT_PARALLEL_RUNTIME_PROOFS.
+- phase165 / big_curriculum / lesson_to_atom = ARCHIVE_OLD_CURRICULUM_FACTORY_LINEAGE.
+- living_learning_environment_* = DELETE_CANDIDATE_LEARNING_ENVIRONMENT_BODY_SCAFFOLD_AFTER_DEP_SCAN.
+- operations_overnight_school / operations/overnight_school = ARCHIVE_LONG_RUN_SCHOOL_SURFACE.
+
+Old motor diagnostic:
+- Created:
+  reports/self_development/AUTONOMOUS_INNER_MOTOR_DIAGNOSTIC_FOR_REUSE_AND_RETIREMENT_V1.json
+  tests/self_development/AUTONOMOUS_INNER_MOTOR_DIAGNOSTIC_FOR_REUSE_AND_RETIREMENT_V1_PROOF.json
+- Classification: operations/autonomous_inner_motor is old AgentLife learning/motor machinery, not active school and not current Brain.
+- Useful things to extract:
+  1. residue_to_focus_expander
+  2. weakness_based_focus_selector
+  3. idle_backoff_signal
+  4. atom_candidate_route_concepts
+  5. learning_output_classifier_concepts
+  6. study_episode_manager_concepts
+- Do not carry forward:
+  old autonomous runtime loop as active motor;
+  seed-only focus selection;
+  atom classification driven only by seed atom_likelihood;
+  one-shot learning acceptance at stop if per-episode receipts are needed;
+  parallel runtime proof folders as active school organs;
+  duplicate atom/memory validators before route mapping.
+
+Important old-motor finding:
+- Old 10-minute study proof core conclusion:
+  Gap spam was repaired, but autonomous intellectual life collapsed to idle because there was no weakness/residue-driven focus generator.
+- Main high issues:
+  life_collapses_to_idle_after_seed_focus_set_exhausted;
+  learning_residue_is_recorded_but_not_reused_to_generate_next_focus.
+
+Decision:
+- Do not delete old motor yet.
+- Do not let old motor direct the new agent path.
+- Use it as reference material only.
+- After extracting useful concepts, run explicit dependency/deletion gate and archive/delete it so it cannot compete with the new organ path.

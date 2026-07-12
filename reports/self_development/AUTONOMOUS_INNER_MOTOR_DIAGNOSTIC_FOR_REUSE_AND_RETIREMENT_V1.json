@@ -1,0 +1,116 @@
+﻿{
+    "schema":  "autonomous_inner_motor_diagnostic_for_reuse_and_retirement_v1",
+    "status":  "PASS_AUTONOMOUS_INNER_MOTOR_DIAGNOSTIC_FOR_REUSE_AND_RETIREMENT_V1",
+    "classification":  "ARCHIVE_OLD_AGENTLIFE_LEARNING_MECHANICS_NOT_ACTIVE_SCHOOL",
+    "active_school":  "operations/school",
+    "motor_root":  "operations/autonomous_inner_motor",
+    "evidence_refs":  [
+                          "operations/autonomous_inner_motor/validation/AUTONOMOUS_INNER_MOTOR_ORGAN_CONTRACT_VALIDATION.json",
+                          "operations/autonomous_inner_motor/validation/ATOM_CANDIDATE_ROUTE_PROOF_V1.json",
+                          "operations/autonomous_inner_motor/validation/LEARNING_EPISODE_ACCEPTANCE_GATE_VALIDATION.json",
+                          "operations/autonomous_inner_motor/validation/LEARNING_OUTPUT_CLASSIFIER_PROOF_V1.json",
+                          "operations/autonomous_inner_motor/validation/STUDY_EPISODE_MANAGER_PROOF_V1.json",
+                          "operations/autonomous_inner_motor/validation/SANDBOX_STUDY_LIFE_10MIN_OBSERVATION_20260705_01.json"
+                      ],
+    "what_it_was":  {
+                        "role":  "old autonomous inner motor / AgentLife logic organ",
+                        "purpose":  "ran study/life cycles, selected focus from seed topics, routed learning outputs, created atom candidates, emitted AgentLife packets, and tested parallel School+AIMO compatibility",
+                        "not_current_school":  true,
+                        "not_current_brain":  true
+                    },
+    "useful_things_to_extract":  [
+                                     {
+                                         "item":  "residue_to_focus_expander",
+                                         "why":  "Old 10-min study proof found learning residue was recorded but not reused to generate next focus.",
+                                         "source":  "SANDBOX_STUDY_LIFE_10MIN_OBSERVATION_20260705_01",
+                                         "reuse_target":  "new thinking/school logic, not old motor runtime"
+                                     },
+                                     {
+                                         "item":  "weakness_based_focus_selector",
+                                         "why":  "Old motor diagnosed idle collapse after seed focus exhausted.",
+                                         "source":  "SANDBOX_STUDY_LIFE_10MIN_OBSERVATION_20260705_01",
+                                         "reuse_target":  "future priority/thinking growth route"
+                                     },
+                                     {
+                                         "item":  "idle_backoff_signal",
+                                         "why":  "Old motor had 396 idle cycles out of 401; needs idle stop/backoff signal.",
+                                         "source":  "SANDBOX_STUDY_LIFE_10MIN_OBSERVATION_20260705_01",
+                                         "reuse_target":  "future bounded life/trial loop"
+                                     },
+                                     {
+                                         "item":  "atom_candidate_route_concepts",
+                                         "why":  "Existing atom route proof may contain reusable route semantics; do not duplicate blindly.",
+                                         "source":  "ATOM_CANDIDATE_ROUTE_PROOF_V1",
+                                         "reuse_target":  "school/compact-memory route only after mapping"
+                                     },
+                                     {
+                                         "item":  "learning_output_classifier_concepts",
+                                         "why":  "Existing classifier proof may help distinguish residue, atom candidate, memory material, and no-action.",
+                                         "source":  "LEARNING_OUTPUT_CLASSIFIER_PROOF_V1",
+                                         "reuse_target":  "thinking/school output classification"
+                                     },
+                                     {
+                                         "item":  "study_episode_manager_concepts",
+                                         "why":  "May contain episode boundaries useful for future bounded thinking trials.",
+                                         "source":  "STUDY_EPISODE_MANAGER_PROOF_V1",
+                                         "reuse_target":  "trial lifecycle, not active motor runtime"
+                                     }
+                                 ],
+    "do_not_carry_forward":  [
+                                 "old autonomous runtime loop as active motor",
+                                 "seed-only focus selection that collapses to idle",
+                                 "atom classification driven only by seed flags/atom_likelihood",
+                                 "learning acceptance only once at stop if per-episode receipts are needed",
+                                 "parallel runtime proof folders as active school organs",
+                                 "duplicate atom/memory validators before mapping existing routes"
+                             ],
+    "key_old_diagnosis":  {
+                              "core_conclusion":  "Gap spam is repaired, but autonomous intellectual life collapses to idle because there is no weakness/residue-driven focus generator.",
+                              "recommended_next_patch":  "WEAKNESS_BASED_FOCUS_SELECTOR_V1 + RESIDUE_TO_FOCUS_EXPANDER_V1 + IDLE_BACKOFF_SIGNAL_V1",
+                              "high_issues":  [
+                                                  {
+                                                      "issue":  "life_collapses_to_idle_after_seed_focus_set_exhausted",
+                                                      "evidence":  "idle_cycles=396; episodes_closed=5; total_cycles=401",
+                                                      "repair":  "weakness_based_focus_selector_from_residue_map"
+                                                  },
+                                                  {
+                                                      "issue":  "learning_residue_is_recorded_but_not_reused_to_generate_next_focus",
+                                                      "evidence":  "residue_count=5; idle_cycles=396",
+                                                      "repair":  "residue_to_focus_expander_and_revisit_scheduler"
+                                                  }
+                                              ],
+                              "medium_issues":  [
+                                                    {
+                                                        "issue":  "source_budget_exhaustion_handled_safely_but_only_as_one_static_no_source_reflection",
+                                                        "evidence":  "source_attempts_used=3; no_source_reflections=1",
+                                                        "repair":  "multi_step_no_source_reflection_mode_using_existing_residues"
+                                                    },
+                                                    {
+                                                        "issue":  "atom_candidate_classification_still_seed_flag_driven",
+                                                        "evidence":  "topic.atom_likelihood drives atom route; no semantic atom-shape validator yet",
+                                                        "repair":  "semantic_atom_candidate_filter_before_atom_route"
+                                                    },
+                                                    {
+                                                        "issue":  "learning_acceptance_gate_still_runs_once_at_stop_not_per_episode",
+                                                        "evidence":  "episodes_closed=5; gate_report_count=1",
+                                                        "repair":  "per_episode_acceptance_gate_or_episode_receipts"
+                                                    },
+                                                    {
+                                                        "issue":  "idle_loop_has_no_backoff_or_stop_condition",
+                                                        "evidence":  "idle_cycles=396; total_cycles=401; step_sleep_seconds=1",
+                                                        "repair":  "idle_backoff_and_idle_reason_counter_limit"
+                                                    }
+                                                ]
+                          },
+    "retirement_decision":  {
+                                "delete_now_allowed":  false,
+                                "reason":  "Extract reusable logic first and run dependency/deletion gate; operations/autonomous_inner_motor still has proofs/refs and can guide new logic.",
+                                "after_extraction":  "archive or delete via explicit gate; not allowed to remain as competing active motor"
+                            },
+    "new_organ_boundary":  {
+                               "current_new_direction":  "new thinking/school/priority logic, not old AIMO motor",
+                               "old_motor_must_not_direct_agent":  true,
+                               "old_motor_can_be_used_as_reference_material":  true
+                           },
+    "created_at":  "2026-07-12T12:50:49.3089348+04:00"
+}

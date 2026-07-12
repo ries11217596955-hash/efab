@@ -1,0 +1,70 @@
+﻿{
+    "schema":  "active_school_block_classification_v1",
+    "status":  "PASS_ACTIVE_SCHOOL_BLOCK_CLASSIFICATION_V1",
+    "active_canonical_school":  {
+                                    "role":  "ACTIVE_CANONICAL_SCHOOL_ORGAN",
+                                    "path":  "operations/school",
+                                    "entrypoint":  "operations/school/run_agent_school.ps1",
+                                    "cycle_controller":  "operations/school/run_autonomous_school_cycle_v1.ps1",
+                                    "contract":  "operations/school/SCHOOL_CANONICAL_RUN_CONTRACT_V1.md"
+                                },
+    "active_subsystems":  [
+                              {
+                                  "role":  "ACTIVE_SCHOOL_CURRICULUM_SOURCE_PIPELINE",
+                                  "path":  "operations/school/curriculum"
+                              },
+                              {
+                                  "role":  "ACTIVE_SCHOOL_CANDIDATE_FACTORY",
+                                  "path":  "operations/school/curriculum/candidate_factory"
+                              },
+                              {
+                                  "role":  "ACTIVE_SCHOOL_SOURCE_ROUTER",
+                                  "path":  "operations/school/curriculum/source_router"
+                              },
+                              {
+                                  "role":  "ACTIVE_SCHOOL_ABSORPTION_READY_STORE",
+                                  "path":  "operations/school/curriculum/streaming_absorption + ready_lane + incremental_active_store"
+                              },
+                              {
+                                  "role":  "ACTIVE_SCHOOL_DIGESTION_MEMORY_PIPELINE",
+                                  "path":  "operations/school/digestion + operations/school/memory + operations/compact_memory_intake"
+                              }
+                          ],
+    "not_active_schools":  [
+                               {
+                                   "role":  "ARCHIVE_OLD_AGENTLIFE_LEARNING_MECHANICS",
+                                   "path":  "operations/autonomous_inner_motor",
+                                   "action":  "diagnose_for_reuse_then_archive_or_delete_gate"
+                               },
+                               {
+                                   "role":  "ARCHIVE_SCHOOL_AGENT_PARALLEL_RUNTIME_PROOFS",
+                                   "path":  "SCHOOL_AIMO / school_aimo / parallel_life / live_like / live_start",
+                                   "action":  "proof_history_not_school"
+                               },
+                               {
+                                   "role":  "ARCHIVE_OLD_CURRICULUM_FACTORY_LINEAGE",
+                                   "path":  "phase165 / big_curriculum / lesson_to_atom",
+                                   "action":  "archive_reference_or_delete_gate_after_dependency_scan"
+                               },
+                               {
+                                   "role":  "DELETE_CANDIDATE_LEARNING_ENVIRONMENT_BODY_SCAFFOLD_AFTER_DEP_SCAN",
+                                   "path":  "living_learning_environment_*",
+                                   "action":  "not_active_school"
+                               },
+                               {
+                                   "role":  "ARCHIVE_LONG_RUN_SCHOOL_SURFACE",
+                                   "path":  "operations_overnight_school / operations/overnight_school",
+                                   "action":  "long_run_proof_surface_not_school"
+                               }
+                           ],
+    "cursor_status":  {
+                          "ledger":  "operations/school/curriculum/candidate_factory/memory/theme_cursor_ledger.json",
+                          "status":  "PASS_THEME_CURSOR_LEDGER_REBUILD_V1",
+                          "theme_count":  76,
+                          "harvested_records":  0,
+                          "warning":  "seeded from topics plan; historic topic depth not restored because no active historical cursor records were found"
+                      },
+    "deletion_now_allowed":  false,
+    "reason":  "Classification only; deletion/archive move requires dependency rewrite gate.",
+    "created_at":  "2026-07-12T12:50:21.3081701+04:00"
+}
