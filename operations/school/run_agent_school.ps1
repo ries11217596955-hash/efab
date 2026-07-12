@@ -1,4 +1,4 @@
-param(
+﻿param(
   [Parameter(Mandatory=$true)][ValidateRange(1,1000000)][int]$Count,
   [Parameter(Mandatory=$true)][ValidateSet('Test','Live')][string]$Mode,
   [Parameter(Mandatory=$true)][string]$TopicsPlan
@@ -25,16 +25,32 @@ function ReadJsonRequired($Path,$ExpectedStatus,$Label){
   if($ExpectedStatus -and [string]$obj.status -ne $ExpectedStatus){ throw ("RECOVERY_CONTRACT_STATUS_BAD:{0}:{1}" -f $Label,$obj.status) }
   return $obj
 }
+function IsTrackedPath($Path){
+  if([string]::IsNullOrWhiteSpace([string]$Path)){ return $false }
+  $rel=([string]$Path).Replace('\\','/').Replace('\','/')
+  if(Test-Path $Path -PathType Container){
+    $tracked=@(git ls-files -- $rel 2>$null)
+    return ($tracked.Count -gt 0)
+  }
+  $null = git ls-files --error-unmatch -- $rel 2>$null
+  return ($LASTEXITCODE -eq 0)
+}
 function RemoveTrash($Items){
   $removed=@()
-  foreach($target in @($Items)){
+  $safeRuntimeTrash=@('.runtime/codex_curriculum_candidate_factory_runs','.runtime/file_atom_absorption','.runtime/memory_use_probes','.runtime/digestion_policy','.runtime/digestion_reports')
+  foreach($target in @($Items + $safeRuntimeTrash)){
     if([string]::IsNullOrWhiteSpace([string]$target)){ continue }
     $removeTarget=[string]$target
-    if((Test-Path $removeTarget) -and -not (Get-Item $removeTarget).PSIsContainer){ $removeTarget=Split-Path $removeTarget -Parent }
-    if($removeTarget -and (Test-Path $removeTarget)){ Remove-Item $removeTarget -Recurse -Force; $removed += $removeTarget }
-  }
-  foreach($trashPath in @('.runtime/codex_curriculum_candidate_factory_runs','.runtime/file_atom_absorption','.runtime/memory_use_probes','.runtime/digestion_policy','.runtime/digestion_reports','operations/reports')){
-    if(Test-Path $trashPath){ Remove-Item $trashPath -Recurse -Force; $removed += $trashPath }
+    if($removeTarget -eq 'operations/reports'){ continue }
+    if((Test-Path $removeTarget) -and -not (Get-Item $removeTarget).PSIsContainer){
+      if(IsTrackedPath $removeTarget){ continue }
+      $removeTarget=Split-Path $removeTarget -Parent
+    }
+    if($removeTarget -and (Test-Path $removeTarget)){
+      if(IsTrackedPath $removeTarget){ continue }
+      Remove-Item $removeTarget -Recurse -Force
+      $removed += $removeTarget
+    }
   }
   return @($removed | Select-Object -Unique)
 }
@@ -256,7 +272,7 @@ try {
 } catch {
   $memoryRollbackResult=RestoreMemoryCheckpoint $lastChunkMemoryCheckpoint $activeMemoryRoot
   $memoryRollbackEvents += $memoryRollbackResult
-  $cleanupRemoved += RemoveTrash @('.runtime/codex_curriculum_candidate_factory_runs','.runtime/file_atom_absorption','.runtime/memory_use_probes','.runtime/digestion_policy','.runtime/digestion_reports','operations/reports')
+  $cleanupRemoved += RemoveTrash @('.runtime/codex_curriculum_candidate_factory_runs','.runtime/file_atom_absorption','.runtime/memory_use_probes','.runtime/digestion_policy','.runtime/digestion_reports')
   $routeFailure=Get-Content $routePath -Raw|ConvertFrom-Json
   $ledgerFailure=Get-Content $ledgerPath -Raw|ConvertFrom-Json
   $failedChunkIndex=[Math]::Max(1,$chunkIndex)
@@ -311,4 +327,5 @@ Write-Host "BEHAVIOR_DELTA=$($base.behavior_delta)"
 Write-Host "ROUTE_AFTER=$($base.route_after)"
 Write-Host "LEDGER_AFTER=$($base.ledger_after)"
 Write-Host 'RUNTIME_READY=false'
+
 

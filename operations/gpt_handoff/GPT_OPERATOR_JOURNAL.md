@@ -2885,3 +2885,23 @@ Next:
 - Restore tracked reports deleted by school cleanup.
 - Commit generator fix.
 - Rerun Count=10 Mode=Live on clean repo.
+
+## 2026-07-12 — School cleanup guard before clean Live rerun
+
+STATUS: CLEANUP_GUARD_PATCHED / TRACKED_REPORT_DELETE_BLOCKED / CLEAN_RERUN_REQUIRED
+
+Context:
+- Clean-repo school Live Count=10 core passed after candidate factory fixes:
+  contract accepted 10/10, streaming ready_atoms=10, digest/recall/use passed, behavior_delta=true.
+- But run_agent_school cleanup deleted tracked operations/reports active-behavior proof files.
+- This made finalizer see REPO_DIRTY_BEFORE_FINALIZER and skip merge queue maintenance.
+
+Fix:
+- Patched operations/school/run_agent_school.ps1 RemoveTrash.
+- RemoveTrash now skips operations/reports.
+- RemoveTrash now checks git-tracked paths and refuses to delete tracked files/directories.
+- Runtime trash cleanup remains limited to explicit .runtime school transient dirs.
+
+Boundary:
+- No school long-run yet.
+- Patch must be committed before rerun so the finalizer starts from a clean repo.
