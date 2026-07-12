@@ -2,9 +2,9 @@
 
 Status: ACTIVE_DERIVED_VIEW
 Branch: main
-Observed head at generation: 8b173aa51f1894b10557a0e3d00417ae4b0f1a8c
-Generated: 2026-07-12T10:55:50.1599452+04:00
-Body source fingerprint: 8badebd2072cf046f1d82876ef0d192ff76abd82fc01f0f08e1b41df93cb9eb6
+Observed head at generation: d6c6d1738dae0fd12334967a5406fee84d0cae44
+Generated: 2026-07-12T11:20:23.3713775+04:00
+Body source fingerprint: e7867d2daee699582700b7793e8b987719fb54c9e68b06a600bfa503d3b8fd00
 
 Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
@@ -18,7 +18,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 ## Counts
 
 - Confirmed components: 8
-- Primary evidence candidates: 154
+- Primary evidence candidates: 156
 - Legacy unverified hints: 4
 - Rejected or stale hints: 3
 
@@ -42,6 +42,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `contracts_operations` - root `contracts/operations`, files=6, scripts=0, validators=0, proofs=0, needs_triage=True
 - `contracts_self_development` - root `contracts/self_development`, files=22, scripts=0, validators=0, proofs=2, needs_triage=True
 - `contracts_self_knowledge` - root `contracts/self_knowledge`, files=6, scripts=0, validators=0, proofs=0, needs_triage=True
+- `contracts_thinking_sandbox` - root `contracts/thinking_sandbox`, files=1, scripts=0, validators=0, proofs=0, needs_triage=True
 - `living_learning_environment_admission_reviews` - root `living_learning_environment/admission_reviews`, files=13, scripts=0, validators=0, proofs=0, needs_triage=True
 - `living_learning_environment_body` - root `living_learning_environment/body`, files=36, scripts=0, validators=0, proofs=1, needs_triage=True
 - `living_learning_environment_module_requests` - root `living_learning_environment/module_requests`, files=2, scripts=0, validators=0, proofs=0, needs_triage=True
@@ -74,6 +75,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `operations_reasoning` - root `operations/reasoning`, files=6, scripts=6, validators=3, proofs=0, needs_triage=True
 - `operations_reflex_library` - root `operations/reflex_library`, files=2, scripts=1, validators=0, proofs=0, needs_triage=True
 - `operations_reports` - root `operations/reports`, files=6, scripts=0, validators=0, proofs=0, needs_triage=True
+- `operations_thinking_sandbox` - root `operations/thinking_sandbox`, files=2, scripts=2, validators=1, proofs=0, needs_triage=True
 - `packs_phase10_generated_agent_validation_harness_v1` - root `packs/PHASE10_GENERATED_AGENT_VALIDATION_HARNESS_V1`, files=6, scripts=3, validators=2, proofs=0, needs_triage=True
 - `packs_phase100_quarantine_and_blocker_registry_v1` - root `packs/PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1`, files=3, scripts=2, validators=0, proofs=0, needs_triage=True
 - `packs_phase101_batch_proof_aggregator_v1` - root `packs/PHASE101_BATCH_PROOF_AGGREGATOR_V1`, files=3, scripts=2, validators=0, proofs=3, needs_triage=True
@@ -113,8 +115,6 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `packs_phase37_intake_driven_workflow_execution_profile_v1` - root `packs/PHASE37_INTAKE_DRIVEN_WORKFLOW_EXECUTION_PROFILE_V1`, files=8, scripts=3, validators=1, proofs=2, needs_triage=True
 - `packs_phase38_runtime_gap_remediation_closure_proof_v1` - root `packs/PHASE38_RUNTIME_GAP_REMEDIATION_CLOSURE_PROOF_V1`, files=3, scripts=2, validators=1, proofs=3, needs_triage=True
 - `packs_phase39_monitoring_gap_reachability_v1` - root `packs/PHASE39_MONITORING_GAP_REACHABILITY_V1`, files=6, scripts=3, validators=1, proofs=1, needs_triage=True
-- `packs_phase4_self_validation_release_gates` - root `packs/PHASE4_SELF_VALIDATION_RELEASE_GATES`, files=7, scripts=4, validators=2, proofs=0, needs_triage=True
-- `packs_phase40_specialized_gap_auto_intake_runtime_v1` - root `packs/PHASE40_SPECIALIZED_GAP_AUTO_INTAKE_RUNTIME_V1`, files=5, scripts=3, validators=1, proofs=1, needs_triage=True
 
 ## Freshness
 

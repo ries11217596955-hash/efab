@@ -2,16 +2,16 @@
     "schema":  "AGENT_BODY_MAP_COMPATIBILITY_VIEW_V2",
     "source":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
     "branch":  "main",
-    "observed_head_at_generation":  "8b173aa51f1894b10557a0e3d00417ae4b0f1a8c",
-    "generated_at":  "2026-07-12T10:55:50.1599452+04:00",
+    "observed_head_at_generation":  "d6c6d1738dae0fd12334967a5406fee84d0cae44",
+    "generated_at":  "2026-07-12T11:20:23.3713775+04:00",
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2083,
-                                    "sha256":  "8badebd2072cf046f1d82876ef0d192ff76abd82fc01f0f08e1b41df93cb9eb6"
+                                    "structural_file_count":  2091,
+                                    "sha256":  "e7867d2daee699582700b7793e8b987719fb54c9e68b06a600bfa503d3b8fd00"
                                 },
     "map_kind":  "DERIVED_HUMAN_COMPATIBILITY_VIEW",
     "confirmed_component_count":  8,
-    "primary_evidence_candidate_count":  154,
+    "primary_evidence_candidate_count":  156,
     "components":  [
                        {
                            "id":  "school",
@@ -186,6 +186,18 @@
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                            "root":  "contracts/self_knowledge",
                            "file_count":  6,
+                           "script_count":  0,
+                           "required_files_present":  null,
+                           "is_required_component":  false,
+                           "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
+                           "source_ref":  "bounded_tracked_file_discovery_v1",
+                           "needs_triage":  true
+                       },
+                       {
+                           "id":  "contracts_thinking_sandbox",
+                           "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
+                           "root":  "contracts/thinking_sandbox",
+                           "file_count":  1,
                            "script_count":  0,
                            "required_files_present":  null,
                            "is_required_component":  false,
@@ -571,6 +583,18 @@
                            "root":  "operations/reports",
                            "file_count":  6,
                            "script_count":  0,
+                           "required_files_present":  null,
+                           "is_required_component":  false,
+                           "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
+                           "source_ref":  "bounded_tracked_file_discovery_v1",
+                           "needs_triage":  true
+                       },
+                       {
+                           "id":  "operations_thinking_sandbox",
+                           "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
+                           "root":  "operations/thinking_sandbox",
+                           "file_count":  2,
+                           "script_count":  2,
                            "required_files_present":  null,
                            "is_required_component":  false,
                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",

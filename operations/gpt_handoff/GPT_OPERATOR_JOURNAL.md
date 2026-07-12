@@ -2270,3 +2270,101 @@ Boundary:
 
 Next safe direction:
 - Build a Priority Policy Consumer / Brain Selection Contract that consumes scored recommendations as advice, not command, and combines them with Owner route lock and current body state.
+
+## 2026-07-12 — Direction review: thinking sandbox before autonomous life launch
+
+STATUS: STRATEGY_CORRECTION / OWNER_DIRECTION / NO_LIVE_LAUNCH_YET
+
+Context:
+- Owner proposed testing the agent in a short independent-life window, approximately 10 minutes, to see how new body-signal and priority organs affect logic.
+- Owner also reminded the earlier direction: first useful thinker/philosopher, then action/execution.
+- Owner wants the agent to learn to think, build chains, create new knowledge, create atoms, and update compact memory.
+
+Checked launch surfaces:
+- tools/start_builder_life_loop.ps1 exists.
+- It calls orchestrator/run.ps1 with Mode SELF_BUILD and MaxPacks 1.
+- This is not the safest first choice for a pure thinking trial because it may route into pack/action mechanics rather than a non-mutating thinking trace.
+- Old .runtime autonomous inner motor/test life proofs exist, but they are prior run evidence, not current authority for a new live/autonomous launch.
+
+Decision:
+- Do not start blind live/autonomous 10-minute loop.
+- Build/choose a bounded non-mutating Thinking Sandbox first.
+- The trial should read current body state, priority policy, journal, and compact memory surfaces.
+- It should produce thought trace, reasoning chains, candidate knowledge atoms, compact memory proposals, and return-to-parent report.
+- It must not mutate active memory, passports, live runtime, or repo structures without a later authority gate.
+
+Purpose:
+- Test useful thinker/philosopher behavior before motor/action behavior.
+- Observe whether new organs guide logic without forcing action.
+
+Boundary:
+- no live runtime launch yet
+- no active mutation
+- no pack execution
+- no PASSPORT_ACTIVE
+- no claim of autonomous life
+
+## 2026-07-12 — Thinking Sandbox V1 first bounded trial
+
+STATUS: PASS / LAB_ONLY_THINKING_TRIAL / NON_MUTATING / NOT_LIVE
+
+Context:
+- Owner agreed to run a bounded thinking sandbox before any autonomous/live launch.
+- Direction: useful thinker/philosopher first, not motor/action behavior.
+- Prior direction review was recorded: do not use blind live/autonomous 10-minute run; use non-mutating thought trace first.
+
+Created:
+- contracts/thinking_sandbox/THINKING_SANDBOX_V1_REQUIREMENT.md
+- operations/thinking_sandbox/run_thinking_sandbox_v1.ps1
+- operations/thinking_sandbox/validate_thinking_sandbox_v1.ps1
+- reports/self_development/THINKING_SANDBOX_V1_TRACE.json
+- reports/self_development/THINKING_SANDBOX_V1_KNOWLEDGE_ATOM_CANDIDATES.json
+- reports/self_development/THINKING_SANDBOX_V1_COMPACT_MEMORY_PROPOSALS.json
+- reports/self_development/THINKING_SANDBOX_V1_REPORT.json
+- tests/self_development/THINKING_SANDBOX_V1_PROOF.json
+
+Inputs validated:
+- Living Loop current state refresh PASS.
+- Priority Policy Contract V1 PASS.
+
+Trial:
+- trial_id: thinking_sandbox_v1_20260712_first_trial
+- cycles: 10
+- mode: LAB_ONLY_NON_MUTATING_THINKING_TRIAL
+
+Outputs:
+- knowledge_candidates: 10
+- atom_candidates: 10
+- compact_memory_proposals: 10
+
+Observed thinking pattern:
+- signal -> question -> reasoning_chain -> knowledge_candidate -> atom_candidate -> memory_proposal -> return_to_parent
+
+Important boundary:
+- Not autonomous life.
+- Not live runtime.
+- Not pack execution.
+- Not action execution.
+- Not active compact memory update.
+- Not installed atom.
+- Not PASSPORT_ACTIVE.
+
+Proof:
+- PASS_THINKING_SANDBOX_V1
+- active_memory_updated=false
+- active_atoms_installed=false
+- pack_execution_performed=false
+- live_runtime_touched=false
+- mutation_authorized=false
+- runtime_ready=false
+- live_ready=false
+- autonomous_runtime=false
+
+Meaning:
+- The Builder now has a bounded way to test useful thinking without action pressure.
+- It can turn body/priority signals into candidate knowledge and atom/memory proposals.
+- But proposals are not accepted knowledge yet.
+
+Next safe direction:
+- Build Thinking Acceptance Gate V1.
+- It should decide which knowledge/atom/memory proposals may become accepted, which require validators, and which must be rejected or rewritten.
