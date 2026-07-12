@@ -6,19 +6,19 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "d6c6d1738dae0fd12334967a5406fee84d0cae44",
-    "subject_head":  "d6c6d1738dae0fd12334967a5406fee84d0cae44",
-    "generated_at":  "2026-07-12T11:20:23.3713775+04:00",
+    "observed_head_at_generation":  "1e9a90d38ce74423bb17468e4edab7d620fcc28a",
+    "subject_head":  "1e9a90d38ce74423bb17468e4edab7d620fcc28a",
+    "generated_at":  "2026-07-12T11:25:36.2885905+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  2091,
+    "structural_path_count":  2097,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2091,
-                                    "sha256":  "e7867d2daee699582700b7793e8b987719fb54c9e68b06a600bfa503d3b8fd00"
+                                    "structural_file_count":  2097,
+                                    "sha256":  "9e3bc0fa7fd043e4b3bb41c663b162e4ae0c26d7010c8be29e0a8b2467ca001c"
                                 },
     "module_count":  203,
     "validator_count":  174,
@@ -764,9 +764,9 @@
 
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "d6c6d1738dae0fd12334967a5406fee84d0cae44",
-                                                               "committed_at":  "2026-07-12T10:55:15+04:00",
-                                                               "subject":  "living-loop: formalize priority policy scoring"
+                                                               "head":  "1e9a90d38ce74423bb17468e4edab7d620fcc28a",
+                                                               "committed_at":  "2026-07-12T11:19:48+04:00",
+                                                               "subject":  "thinking: run non-mutating sandbox trial"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -1262,19 +1262,19 @@
                                             "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                                             "discovery_method":  "bounded_git_ls_files_path_discovery",
                                             "evidence_counts":  {
-                                                                    "files":  1,
+                                                                    "files":  2,
                                                                     "scripts":  0,
                                                                     "validators":  0,
                                                                     "proofs":  0,
-                                                                    "contracts_or_policies":  1,
-                                                                    "docs":  1
+                                                                    "contracts_or_policies":  2,
+                                                                    "docs":  2
                                                                 },
-                                            "file_count":  1,
+                                            "file_count":  2,
                                             "script_count":  0,
                                             "validator_count":  0,
                                             "proof_file_count":  0,
-                                            "contract_or_policy_count":  1,
-                                            "doc_count":  1,
+                                            "contract_or_policy_count":  2,
+                                            "doc_count":  2,
                                             "validator_refs":  [
 
                                                                ],
@@ -1282,12 +1282,15 @@
 
                                                            ],
                                             "contract_or_policy_refs":  [
+                                                                            "contracts/thinking_sandbox/THINKING_ACCEPTANCE_GATE_V1_REQUIREMENT.md",
                                                                             "contracts/thinking_sandbox/THINKING_SANDBOX_V1_REQUIREMENT.md"
                                                                         ],
                                             "notable_files":  [
+                                                                  "contracts/thinking_sandbox/THINKING_ACCEPTANCE_GATE_V1_REQUIREMENT.md",
                                                                   "contracts/thinking_sandbox/THINKING_SANDBOX_V1_REQUIREMENT.md"
                                                               ],
                                             "primary_evidence_refs":  [
+                                                                          "contracts/thinking_sandbox/THINKING_ACCEPTANCE_GATE_V1_REQUIREMENT.md",
                                                                           "contracts/thinking_sandbox/THINKING_SANDBOX_V1_REQUIREMENT.md"
                                                                       ],
                                             "needs_triage":  true,
@@ -2993,20 +2996,21 @@
                                             "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                                             "discovery_method":  "bounded_git_ls_files_path_discovery",
                                             "evidence_counts":  {
-                                                                    "files":  2,
-                                                                    "scripts":  2,
-                                                                    "validators":  1,
+                                                                    "files":  4,
+                                                                    "scripts":  4,
+                                                                    "validators":  2,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  0,
                                                                     "docs":  0
                                                                 },
-                                            "file_count":  2,
-                                            "script_count":  2,
-                                            "validator_count":  1,
+                                            "file_count":  4,
+                                            "script_count":  4,
+                                            "validator_count":  2,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  0,
                                             "doc_count":  0,
                                             "validator_refs":  [
+                                                                   "operations/thinking_sandbox/validate_thinking_acceptance_gate_v1.ps1",
                                                                    "operations/thinking_sandbox/validate_thinking_sandbox_v1.ps1"
                                                                ],
                                             "proof_refs":  [
@@ -3016,11 +3020,15 @@
 
                                                                         ],
                                             "notable_files":  [
+                                                                  "operations/thinking_sandbox/build_thinking_acceptance_gate_v1.ps1",
                                                                   "operations/thinking_sandbox/run_thinking_sandbox_v1.ps1",
+                                                                  "operations/thinking_sandbox/validate_thinking_acceptance_gate_v1.ps1",
                                                                   "operations/thinking_sandbox/validate_thinking_sandbox_v1.ps1"
                                                               ],
                                             "primary_evidence_refs":  [
+                                                                          "operations/thinking_sandbox/build_thinking_acceptance_gate_v1.ps1",
                                                                           "operations/thinking_sandbox/run_thinking_sandbox_v1.ps1",
+                                                                          "operations/thinking_sandbox/validate_thinking_acceptance_gate_v1.ps1",
                                                                           "operations/thinking_sandbox/validate_thinking_sandbox_v1.ps1"
                                                                       ],
                                             "needs_triage":  true,
@@ -9340,9 +9348,9 @@
 
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "d6c6d1738dae0fd12334967a5406fee84d0cae44",
-                                                     "committed_at":  "2026-07-12T10:55:15+04:00",
-                                                     "subject":  "living-loop: formalize priority policy scoring"
+                                                     "head":  "1e9a90d38ce74423bb17468e4edab7d620fcc28a",
+                                                     "committed_at":  "2026-07-12T11:19:48+04:00",
+                                                     "subject":  "thinking: run non-mutating sandbox trial"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -9836,19 +9844,19 @@
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                            "discovery_method":  "bounded_git_ls_files_path_discovery",
                            "evidence_counts":  {
-                                                   "files":  1,
+                                                   "files":  2,
                                                    "scripts":  0,
                                                    "validators":  0,
                                                    "proofs":  0,
-                                                   "contracts_or_policies":  1,
-                                                   "docs":  1
+                                                   "contracts_or_policies":  2,
+                                                   "docs":  2
                                                },
-                           "file_count":  1,
+                           "file_count":  2,
                            "script_count":  0,
                            "validator_count":  0,
                            "proof_file_count":  0,
-                           "contract_or_policy_count":  1,
-                           "doc_count":  1,
+                           "contract_or_policy_count":  2,
+                           "doc_count":  2,
                            "validator_refs":  [
 
                                               ],
@@ -9856,12 +9864,15 @@
 
                                           ],
                            "contract_or_policy_refs":  [
+                                                           "contracts/thinking_sandbox/THINKING_ACCEPTANCE_GATE_V1_REQUIREMENT.md",
                                                            "contracts/thinking_sandbox/THINKING_SANDBOX_V1_REQUIREMENT.md"
                                                        ],
                            "notable_files":  [
+                                                 "contracts/thinking_sandbox/THINKING_ACCEPTANCE_GATE_V1_REQUIREMENT.md",
                                                  "contracts/thinking_sandbox/THINKING_SANDBOX_V1_REQUIREMENT.md"
                                              ],
                            "primary_evidence_refs":  [
+                                                         "contracts/thinking_sandbox/THINKING_ACCEPTANCE_GATE_V1_REQUIREMENT.md",
                                                          "contracts/thinking_sandbox/THINKING_SANDBOX_V1_REQUIREMENT.md"
                                                      ],
                            "needs_triage":  true,
@@ -11567,20 +11578,21 @@
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                            "discovery_method":  "bounded_git_ls_files_path_discovery",
                            "evidence_counts":  {
-                                                   "files":  2,
-                                                   "scripts":  2,
-                                                   "validators":  1,
+                                                   "files":  4,
+                                                   "scripts":  4,
+                                                   "validators":  2,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  0,
                                                    "docs":  0
                                                },
-                           "file_count":  2,
-                           "script_count":  2,
-                           "validator_count":  1,
+                           "file_count":  4,
+                           "script_count":  4,
+                           "validator_count":  2,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  0,
                            "doc_count":  0,
                            "validator_refs":  [
+                                                  "operations/thinking_sandbox/validate_thinking_acceptance_gate_v1.ps1",
                                                   "operations/thinking_sandbox/validate_thinking_sandbox_v1.ps1"
                                               ],
                            "proof_refs":  [
@@ -11590,11 +11602,15 @@
 
                                                        ],
                            "notable_files":  [
+                                                 "operations/thinking_sandbox/build_thinking_acceptance_gate_v1.ps1",
                                                  "operations/thinking_sandbox/run_thinking_sandbox_v1.ps1",
+                                                 "operations/thinking_sandbox/validate_thinking_acceptance_gate_v1.ps1",
                                                  "operations/thinking_sandbox/validate_thinking_sandbox_v1.ps1"
                                              ],
                            "primary_evidence_refs":  [
+                                                         "operations/thinking_sandbox/build_thinking_acceptance_gate_v1.ps1",
                                                          "operations/thinking_sandbox/run_thinking_sandbox_v1.ps1",
+                                                         "operations/thinking_sandbox/validate_thinking_acceptance_gate_v1.ps1",
                                                          "operations/thinking_sandbox/validate_thinking_sandbox_v1.ps1"
                                                      ],
                            "needs_triage":  true,

@@ -1,42 +1,38 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-12T11:19:52.2301099+04:00",
+    "checked_at":  "2026-07-12T11:25:05.0069961+04:00",
     "branch":  "main",
-    "observed_head":  "d6c6d1738dae0fd12334967a5406fee84d0cae44",
-    "subject_head":  "d6c6d1738dae0fd12334967a5406fee84d0cae44",
+    "observed_head":  "1e9a90d38ce74423bb17468e4edab7d620fcc28a",
+    "subject_head":  "1e9a90d38ce74423bb17468e4edab7d620fcc28a",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "contracts/living_loop/PRIORITY_POLICY_CONTRACT_V1.json",
-                          "contracts/living_loop/PRIORITY_POLICY_CONTRACT_V1.md",
+                          "contracts/thinking_sandbox/THINKING_SANDBOX_V1_REQUIREMENT.md",
                           "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                          "operations/living_loop/build_priority_policy_contract_v1.ps1",
-                          "operations/living_loop/validate_priority_policy_contract_v1.ps1",
-                          "reports/self_development/PRIORITY_POLICY_CONTRACT_V1_REPORT.json",
-                          "reports/self_development/PRIORITY_POLICY_CONTRACT_V1_SCORED_OPTIONS.json",
+                          "operations/thinking_sandbox/run_thinking_sandbox_v1.ps1",
+                          "operations/thinking_sandbox/validate_thinking_sandbox_v1.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+                          "reports/self_development/THINKING_SANDBOX_V1_COMPACT_MEMORY_PROPOSALS.json",
+                          "reports/self_development/THINKING_SANDBOX_V1_KNOWLEDGE_ATOM_CANDIDATES.json",
+                          "reports/self_development/THINKING_SANDBOX_V1_REPORT.json",
+                          "reports/self_development/THINKING_SANDBOX_V1_TRACE.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "tests/self_development/PRIORITY_POLICY_CONTRACT_V1_PROOF.json",
-                          "tests/self_development/negative_fixtures/PRIORITY_POLICY_FORCED_ACTION_PLANNER_NEGATIVE.json",
-                          "tests/self_development/negative_fixtures/PRIORITY_POLICY_LIVE_WITHOUT_AUTHORITY_NEGATIVE.json",
-                          "tests/self_development/negative_fixtures/PRIORITY_POLICY_MISSING_COMPONENT_NEGATIVE.json"
+                          "tests/self_development/THINKING_SANDBOX_V1_PROOF.json"
                       ],
     "structural_paths":  [
-                             "contracts/living_loop/PRIORITY_POLICY_CONTRACT_V1.json",
-                             "contracts/living_loop/PRIORITY_POLICY_CONTRACT_V1.md",
+                             "contracts/thinking_sandbox/THINKING_SANDBOX_V1_REQUIREMENT.md",
                              "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                             "operations/living_loop/build_priority_policy_contract_v1.ps1",
-                             "operations/living_loop/validate_priority_policy_contract_v1.ps1",
-                             "reports/self_development/PRIORITY_POLICY_CONTRACT_V1_REPORT.json",
-                             "reports/self_development/PRIORITY_POLICY_CONTRACT_V1_SCORED_OPTIONS.json",
-                             "tests/self_development/PRIORITY_POLICY_CONTRACT_V1_PROOF.json",
-                             "tests/self_development/negative_fixtures/PRIORITY_POLICY_FORCED_ACTION_PLANNER_NEGATIVE.json",
-                             "tests/self_development/negative_fixtures/PRIORITY_POLICY_LIVE_WITHOUT_AUTHORITY_NEGATIVE.json",
-                             "tests/self_development/negative_fixtures/PRIORITY_POLICY_MISSING_COMPONENT_NEGATIVE.json"
+                             "operations/thinking_sandbox/run_thinking_sandbox_v1.ps1",
+                             "operations/thinking_sandbox/validate_thinking_sandbox_v1.ps1",
+                             "reports/self_development/THINKING_SANDBOX_V1_COMPACT_MEMORY_PROPOSALS.json",
+                             "reports/self_development/THINKING_SANDBOX_V1_KNOWLEDGE_ATOM_CANDIDATES.json",
+                             "reports/self_development/THINKING_SANDBOX_V1_REPORT.json",
+                             "reports/self_development/THINKING_SANDBOX_V1_TRACE.json",
+                             "tests/self_development/THINKING_SANDBOX_V1_PROOF.json"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -48,8 +44,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2091,
-                                    "sha256":  "e7867d2daee699582700b7793e8b987719fb54c9e68b06a600bfa503d3b8fd00"
+                                    "structural_file_count":  2097,
+                                    "sha256":  "9e3bc0fa7fd043e4b3bb41c663b162e4ae0c26d7010c8be29e0a8b2467ca001c"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -76,12 +72,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  164,
-                         "structural_path_count":  2091,
+                         "structural_path_count":  2097,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-12T11:20:23.5147973+04:00"
+    "refreshed_at":  "2026-07-12T11:25:36.4412237+04:00"
 }

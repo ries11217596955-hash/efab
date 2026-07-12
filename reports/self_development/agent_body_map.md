@@ -2,9 +2,9 @@
 
 Status: ACTIVE_DERIVED_VIEW
 Branch: main
-Observed head at generation: d6c6d1738dae0fd12334967a5406fee84d0cae44
-Generated: 2026-07-12T11:20:23.3713775+04:00
-Body source fingerprint: e7867d2daee699582700b7793e8b987719fb54c9e68b06a600bfa503d3b8fd00
+Observed head at generation: 1e9a90d38ce74423bb17468e4edab7d620fcc28a
+Generated: 2026-07-12T11:25:36.2885905+04:00
+Body source fingerprint: 9e3bc0fa7fd043e4b3bb41c663b162e4ae0c26d7010c8be29e0a8b2467ca001c
 
 Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
@@ -42,7 +42,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `contracts_operations` - root `contracts/operations`, files=6, scripts=0, validators=0, proofs=0, needs_triage=True
 - `contracts_self_development` - root `contracts/self_development`, files=22, scripts=0, validators=0, proofs=2, needs_triage=True
 - `contracts_self_knowledge` - root `contracts/self_knowledge`, files=6, scripts=0, validators=0, proofs=0, needs_triage=True
-- `contracts_thinking_sandbox` - root `contracts/thinking_sandbox`, files=1, scripts=0, validators=0, proofs=0, needs_triage=True
+- `contracts_thinking_sandbox` - root `contracts/thinking_sandbox`, files=2, scripts=0, validators=0, proofs=0, needs_triage=True
 - `living_learning_environment_admission_reviews` - root `living_learning_environment/admission_reviews`, files=13, scripts=0, validators=0, proofs=0, needs_triage=True
 - `living_learning_environment_body` - root `living_learning_environment/body`, files=36, scripts=0, validators=0, proofs=1, needs_triage=True
 - `living_learning_environment_module_requests` - root `living_learning_environment/module_requests`, files=2, scripts=0, validators=0, proofs=0, needs_triage=True
@@ -75,7 +75,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `operations_reasoning` - root `operations/reasoning`, files=6, scripts=6, validators=3, proofs=0, needs_triage=True
 - `operations_reflex_library` - root `operations/reflex_library`, files=2, scripts=1, validators=0, proofs=0, needs_triage=True
 - `operations_reports` - root `operations/reports`, files=6, scripts=0, validators=0, proofs=0, needs_triage=True
-- `operations_thinking_sandbox` - root `operations/thinking_sandbox`, files=2, scripts=2, validators=1, proofs=0, needs_triage=True
+- `operations_thinking_sandbox` - root `operations/thinking_sandbox`, files=4, scripts=4, validators=2, proofs=0, needs_triage=True
 - `packs_phase10_generated_agent_validation_harness_v1` - root `packs/PHASE10_GENERATED_AGENT_VALIDATION_HARNESS_V1`, files=6, scripts=3, validators=2, proofs=0, needs_triage=True
 - `packs_phase100_quarantine_and_blocker_registry_v1` - root `packs/PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1`, files=3, scripts=2, validators=0, proofs=0, needs_triage=True
 - `packs_phase101_batch_proof_aggregator_v1` - root `packs/PHASE101_BATCH_PROOF_AGGREGATOR_V1`, files=3, scripts=2, validators=0, proofs=3, needs_triage=True

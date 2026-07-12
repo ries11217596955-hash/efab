@@ -2368,3 +2368,60 @@ Meaning:
 Next safe direction:
 - Build Thinking Acceptance Gate V1.
 - It should decide which knowledge/atom/memory proposals may become accepted, which require validators, and which must be rejected or rewritten.
+
+## 2026-07-12 — Thinking Acceptance Gate V1
+
+STATUS: PASS / ACCEPTANCE_GATE / NON_MUTATING / NOT_MEMORY_UPDATE
+
+Context:
+- Continued after Thinking Sandbox V1 first bounded trial.
+- Sandbox produced 10 thought cycles, 10 knowledge candidates, 10 atom candidates, and 10 compact memory proposals.
+- Need: avoid treating proposals as accepted knowledge or active memory.
+
+Created:
+- contracts/thinking_sandbox/THINKING_ACCEPTANCE_GATE_V1_REQUIREMENT.md
+- operations/thinking_sandbox/build_thinking_acceptance_gate_v1.ps1
+- operations/thinking_sandbox/validate_thinking_acceptance_gate_v1.ps1
+- reports/self_development/THINKING_ACCEPTANCE_GATE_V1_DECISIONS.json
+- reports/self_development/THINKING_ACCEPTANCE_GATE_V1_REPORT.json
+- tests/self_development/THINKING_ACCEPTANCE_GATE_V1_PROOF.json
+
+Input validated:
+- PASS_THINKING_SANDBOX_V1
+
+Decisions:
+- total decisions: 30
+- knowledge candidate decisions: 10
+- atom candidate decisions: 10
+- compact memory proposal decisions: 10
+- ACCEPT_AS_CANDIDATE_FOR_FUTURE_VALIDATION: 10
+- NEEDS_VALIDATOR_BEFORE_ACCEPTANCE: 20
+- accepted_now: 0
+- install_allowed: 0
+- active_memory_update_allowed: 0
+
+Meaning:
+- Knowledge candidates can remain candidates for future validation.
+- Atom candidates require validator before acceptance.
+- Compact memory proposals require a compact-memory acceptance gate before any active memory update.
+
+Proof boundary:
+- no active memory updated
+- no active atom installed
+- no pack execution
+- no live runtime touched
+- mutation_authorized=false
+- runtime_ready=false
+- live_ready=false
+- autonomous_runtime=false
+- no PASSPORT_ACTIVE
+
+Validator:
+- PASS_THINKING_ACCEPTANCE_GATE_V1
+
+Architectural lesson:
+- Thinking can produce proposals, but proposal is not learning until accepted by a gate.
+- This prevents the useful-thinker route from becoming uncontrolled self-programming.
+
+Next safe direction:
+- Build Atom/Memory Candidate Validator V1 to validate selected proposals before any compact-memory update or atom installation.
