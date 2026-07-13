@@ -6,19 +6,19 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "4392e01870360d4e399819809217d1d27bdcbc38",
-    "subject_head":  "4392e01870360d4e399819809217d1d27bdcbc38",
-    "generated_at":  "2026-07-13T22:13:44.9194777+04:00",
+    "observed_head_at_generation":  "8ff7567eef454787fad839a7e67b15190a433eaa",
+    "subject_head":  "8ff7567eef454787fad839a7e67b15190a433eaa",
+    "generated_at":  "2026-07-13T22:33:03.6590080+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  1836,
+    "structural_path_count":  1840,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1836,
-                                    "sha256":  "878c39c26f3bf4184ce0d51882f7c514554f8b81ca95eb9785e161b575ffe4c5"
+                                    "structural_file_count":  1840,
+                                    "sha256":  "693af27a693a086b8d1a3433bfcded494a3ce3a91912189c5d6702619b7f6d89"
                                 },
     "module_count":  203,
     "validator_count":  174,
@@ -29,12 +29,12 @@
                                      "root":  "operations/school",
                                      "status":  "CONFIRMED_PRIMARY_EVIDENCE_PRESENT",
                                      "confirmation_basis":  "explicit_required_component_with_primary_repo_evidence",
-                                     "file_count":  110,
-                                     "script_count":  61,
-                                     "validator_count":  29,
+                                     "file_count":  115,
+                                     "script_count":  62,
+                                     "validator_count":  30,
                                      "proof_file_count":  12,
                                      "contract_or_policy_count":  14,
-                                     "doc_count":  16,
+                                     "doc_count":  17,
                                      "required_files":  [
                                                             "operations/school/run_agent_school.ps1",
                                                             "operations/school/finalize_agent_school_run_v1.ps1",
@@ -45,6 +45,7 @@
                                                                 ],
                                      "required_files_present":  true,
                                      "validator_refs":  [
+                                                            "operations/school/curriculum/candidate_factory/validate_campaign_pack_candidate_factory_v1.ps1",
                                                             "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_batch_delta_v1.ps1",
                                                             "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_hot_path_invariants_v1.ps1",
                                                             "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_memory_ladder_v1.ps1",
@@ -107,6 +108,7 @@
                                                                  ],
                                      "primary_evidence_refs":  [
                                                                    "operations/school/autonomous_school_cycle_policy.json",
+                                                                   "operations/school/curriculum/candidate_factory/validate_campaign_pack_candidate_factory_v1.ps1",
                                                                    "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_batch_delta_v1.ps1",
                                                                    "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_hot_path_invariants_v1.ps1",
                                                                    "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_memory_ladder_v1.ps1",
@@ -119,7 +121,6 @@
                                                                    "operations/school/curriculum/codex_contract/samples/mixed_codex_curriculum_batch_canary_v1.jsonl",
                                                                    "operations/school/curriculum/codex_contract/validate_codex_curriculum_batch_v1.ps1",
                                                                    "operations/school/curriculum/codex_contract/validate_codex_curriculum_contract_consistency_v1.ps1",
-                                                                   "operations/school/curriculum/codex_digest/validate_codex_curriculum_digestion_v1.ps1",
                                                                    "operations/school/curriculum/incremental_active_store/select_replay_audit_policy_v1.ps1",
                                                                    "operations/school/curriculum/incremental_active_store/validate_replay_audit_policy_entrypoint_wiring_v1.ps1",
                                                                    "operations/school/curriculum/incremental_active_store/validate_replay_audit_policy_v1.ps1",
@@ -141,6 +142,7 @@
                                      "entrypoint_scripts":  [
                                                                 "operations/school/control_autonomous_school_cycle_v1.ps1",
                                                                 "operations/school/curriculum/candidate_factory/generate_codex_curriculum_candidate_factory_run_v1.ps1",
+                                                                "operations/school/curriculum/candidate_factory/validate_campaign_pack_candidate_factory_v1.ps1",
                                                                 "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_batch_delta_v1.ps1",
                                                                 "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_hot_path_invariants_v1.ps1",
                                                                 "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_memory_ladder_v1.ps1",
@@ -178,9 +180,9 @@
                                                                 "operations/school/value_grounded/validate_value_grounded_curriculum_prep_v1.ps1"
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "cc47883e4b4a506e190a93ecd1749e682b84085c",
-                                                               "committed_at":  "2026-07-13T20:38:35+04:00",
-                                                               "subject":  "school: add campaign coverage pointer for codex"
+                                                               "head":  "8ff7567eef454787fad839a7e67b15190a433eaa",
+                                                               "committed_at":  "2026-07-13T22:13:16+04:00",
+                                                               "subject":  "school: record codex draft campaign coverage plan"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -623,9 +625,9 @@
 
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "4392e01870360d4e399819809217d1d27bdcbc38",
-                                                               "committed_at":  "2026-07-13T20:53:30+04:00",
-                                                               "subject":  "school: set 15k post-codex validation boundary"
+                                                               "head":  "8ff7567eef454787fad839a7e67b15190a433eaa",
+                                                               "committed_at":  "2026-07-13T22:13:16+04:00",
+                                                               "subject":  "school: record codex draft campaign coverage plan"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -7721,12 +7723,12 @@
                            "root":  "operations/school",
                            "status":  "CONFIRMED_PRIMARY_EVIDENCE_PRESENT",
                            "confirmation_basis":  "explicit_required_component_with_primary_repo_evidence",
-                           "file_count":  110,
-                           "script_count":  61,
-                           "validator_count":  29,
+                           "file_count":  115,
+                           "script_count":  62,
+                           "validator_count":  30,
                            "proof_file_count":  12,
                            "contract_or_policy_count":  14,
-                           "doc_count":  16,
+                           "doc_count":  17,
                            "required_files":  [
                                                   "operations/school/run_agent_school.ps1",
                                                   "operations/school/finalize_agent_school_run_v1.ps1",
@@ -7737,6 +7739,7 @@
                                                       ],
                            "required_files_present":  true,
                            "validator_refs":  [
+                                                  "operations/school/curriculum/candidate_factory/validate_campaign_pack_candidate_factory_v1.ps1",
                                                   "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_batch_delta_v1.ps1",
                                                   "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_hot_path_invariants_v1.ps1",
                                                   "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_memory_ladder_v1.ps1",
@@ -7799,6 +7802,7 @@
                                                        ],
                            "primary_evidence_refs":  [
                                                          "operations/school/autonomous_school_cycle_policy.json",
+                                                         "operations/school/curriculum/candidate_factory/validate_campaign_pack_candidate_factory_v1.ps1",
                                                          "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_batch_delta_v1.ps1",
                                                          "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_hot_path_invariants_v1.ps1",
                                                          "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_memory_ladder_v1.ps1",
@@ -7811,7 +7815,6 @@
                                                          "operations/school/curriculum/codex_contract/samples/mixed_codex_curriculum_batch_canary_v1.jsonl",
                                                          "operations/school/curriculum/codex_contract/validate_codex_curriculum_batch_v1.ps1",
                                                          "operations/school/curriculum/codex_contract/validate_codex_curriculum_contract_consistency_v1.ps1",
-                                                         "operations/school/curriculum/codex_digest/validate_codex_curriculum_digestion_v1.ps1",
                                                          "operations/school/curriculum/incremental_active_store/select_replay_audit_policy_v1.ps1",
                                                          "operations/school/curriculum/incremental_active_store/validate_replay_audit_policy_entrypoint_wiring_v1.ps1",
                                                          "operations/school/curriculum/incremental_active_store/validate_replay_audit_policy_v1.ps1",
@@ -7833,6 +7836,7 @@
                            "entrypoint_scripts":  [
                                                       "operations/school/control_autonomous_school_cycle_v1.ps1",
                                                       "operations/school/curriculum/candidate_factory/generate_codex_curriculum_candidate_factory_run_v1.ps1",
+                                                      "operations/school/curriculum/candidate_factory/validate_campaign_pack_candidate_factory_v1.ps1",
                                                       "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_batch_delta_v1.ps1",
                                                       "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_hot_path_invariants_v1.ps1",
                                                       "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_memory_ladder_v1.ps1",
@@ -7870,9 +7874,9 @@
                                                       "operations/school/value_grounded/validate_value_grounded_curriculum_prep_v1.ps1"
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "cc47883e4b4a506e190a93ecd1749e682b84085c",
-                                                     "committed_at":  "2026-07-13T20:38:35+04:00",
-                                                     "subject":  "school: add campaign coverage pointer for codex"
+                                                     "head":  "8ff7567eef454787fad839a7e67b15190a433eaa",
+                                                     "committed_at":  "2026-07-13T22:13:16+04:00",
+                                                     "subject":  "school: record codex draft campaign coverage plan"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -8315,9 +8319,9 @@
 
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "4392e01870360d4e399819809217d1d27bdcbc38",
-                                                     "committed_at":  "2026-07-13T20:53:30+04:00",
-                                                     "subject":  "school: set 15k post-codex validation boundary"
+                                                     "head":  "8ff7567eef454787fad839a7e67b15190a433eaa",
+                                                     "committed_at":  "2026-07-13T22:13:16+04:00",
+                                                     "subject":  "school: record codex draft campaign coverage plan"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,

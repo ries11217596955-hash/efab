@@ -3534,3 +3534,46 @@ Boundary:
 - This is not full Codex task PASS.
 - Campaign pack and generator support still need a second bounded Codex slice.
 - The draft audit/level plan is tracked as input for the next slice.
+
+## 2026-07-13 — Codex slice 2 campaign pack validated and accepted for next 15k prep
+
+STATUS: CAMPAIGN_PACK_GENERATOR_SUPPORT_VALIDATED_LOCAL / READY_FOR_15K_PREP
+
+Action:
+- Codex slice 2 completed after earlier long-call bridge interruption.
+- It updated the existing candidate factory, not a duplicate organ.
+- It created a compact campaign pack and validator under existing candidate_factory.
+
+Files created/changed:
+- operations/school/curriculum/candidate_factory/generate_codex_curriculum_candidate_factory_run_v1.ps1
+- operations/school/curriculum/candidate_factory/campaign_packs/builder_self_knowledge_deep_v1.jsonl
+- operations/school/curriculum/candidate_factory/campaign_packs/builder_self_knowledge_deep_v1.manifest.json
+- operations/school/curriculum/candidate_factory/validate_campaign_pack_candidate_factory_v1.ps1
+- operations/school/curriculum/candidate_factory/reports/CAMPAIGN_PACK_CANDIDATE_FACTORY_VALIDATION_V1.json
+- operations/school/curriculum/candidate_factory/reports/CAMPAIGN_PACK_CANDIDATE_FACTORY_VALIDATION_V1.md
+
+Validation performed by GPT/operator after Codex:
+- PowerShell parse passed for changed generator and new validator.
+- Campaign pack JSONL parse passed.
+- Campaign seeds: 30.
+- Campaign validator TargetAccepted=25 PASS.
+- Campaign validator TargetAccepted=100 PASS.
+- Candidate result for 100 test: 100 candidates, 100 seed-backed, 0 fallback.
+- Missing campaign fields: 0.
+- Missing source paths: 0.
+- Duplicate learning keys: 0.
+- Contract consistency: PASS, accepted=100, rejected=0.
+- Streaming absorption on 100: PASS_STREAMING_SCHOOL_TO_ABSORPTION_PIPELINE_V1.
+- Streaming result: processed=100, contract_accepted=100, contract_rejected=0, ready_atoms=100, stream_quarantined=0.
+- Active memory mutated: false.
+- Canonical school validator: PASS_AGENT_SCHOOL_CANONICAL_POLICY_V2.
+
+Boundary:
+- No 15k Live run was launched yet.
+- No 50k/1M run was launched.
+- No direct active compact memory mutation occurred.
+- Codex output is locally validated for campaign-pack candidate generation/streaming, but 15k Live remains the next runtime proof step.
+
+Next:
+- Commit/push validated campaign pack/generator support.
+- Prepare 15,000 Live detached launch only after final clean/sync/process preflight.
