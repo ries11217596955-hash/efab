@@ -2956,3 +2956,56 @@ Validation:
 Next:
 - Commit/push gate fix.
 - Restart active school max Live run detached.
+
+## 2026-07-13 — Step Logic clarification: Codex dual role, batching, and fallback
+
+STATUS: ACTIVE_LOGIC_DECISION / STEP_LOGIC_KERNEL_V1_INPUT
+
+Owner clarification:
+- Codex must be modeled in two roles, not one.
+- Codex can be an information base / source-material provider.
+- Codex can also be hands / builder that creates or edits artifacts.
+- Codex unavailability must not stop Builder by default.
+- Agent must not run to Codex or external world for every atom/request.
+- Requests should be batched when possible, for example 5-10 items per source/handoff cycle.
+
+Decision:
+- Step Logic Kernel V1 must include CODEX_SOURCE_QUERY and CODEX_HANDS_BUILD as separate action surfaces.
+- Both remain governed components, not Builder brain.
+- Codex source output is CODEX_SOURCE_MATERIAL_CANDIDATE until checked/used/proven.
+- Codex build output is CODEX_DRAFT until validated by repo/runtime/proof/Owner route.
+
+Fallback rule:
+- If Codex is unavailable, Step Logic Kernel must continue with internal memory, repo scan, existing scripts/reflexes, external scout if allowed, or smaller local task.
+- Codex unavailable may downgrade capability/speed, but does not equal STOP unless the selected task explicitly requires Codex and no alternate lawful route exists.
+
+Batch request rule:
+- Do not query Codex/external world per atom when the gap can be batched.
+- Accumulate bounded request packs:
+  - source questions batch: 5-10 questions/items
+  - code/build handoff batch: scoped file/task group with validators
+  - external scout batch: related source questions with shared authority/provenance rules
+- Batch must stay bounded and coherent; no vague “fix everything” or “research everything.”
+
+Kernel insertion points:
+- available_action_surfaces must include:
+  - CODEX_SOURCE_QUERY
+  - CODEX_HANDS_BUILD
+  - EXTERNAL_SCOUT_BATCH
+  - BUILT_IN_REFLEX
+  - MEMORY_RECALL
+  - INTERNAL_THINKING
+  - BLOCK
+  - RETURN_TO_PARENT
+- candidate_step must include:
+  - source_or_hands_role
+  - batchable: true/false
+  - batch_group_id
+  - fallback_if_unavailable
+  - proof_status_after_result
+  - validation_required
+
+Do not forget:
+- Codex is material/hands, not identity or final authority.
+- External/Codex results do not become accepted memory without use/proof/acceptance path.
+- Batch query saves time and prevents ping-pong loops.
