@@ -6,19 +6,19 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "24e7f6628e7dcfc5f41409b81ba926227862dacf",
-    "subject_head":  "24e7f6628e7dcfc5f41409b81ba926227862dacf",
-    "generated_at":  "2026-07-13T08:06:39.4212128+04:00",
+    "observed_head_at_generation":  "b989664b9f2535bce480155970120c6802cb3d9f",
+    "subject_head":  "b989664b9f2535bce480155970120c6802cb3d9f",
+    "generated_at":  "2026-07-13T08:19:56.0989176+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  1858,
+    "structural_path_count":  1828,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1858,
-                                    "sha256":  "8eeb9f3a68f8aa65d8069529ae12145775ccbbe94d97a3805e8a1f960ff9d792"
+                                    "structural_file_count":  1828,
+                                    "sha256":  "81ad14917766f2e082341659504ab19faaed7377d34dfc2f209872a90de727f9"
                                 },
     "module_count":  203,
     "validator_count":  174,
@@ -307,9 +307,9 @@
                                                                 "operations/compact_memory_intake/validate_growth_signal_quality_v1.ps1"
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "b67cee23347749e864c10658c009655373c9d22f",
-                                                               "committed_at":  "2026-07-07T20:57:20+04:00",
-                                                               "subject":  "fix: treat generated inspect residue as derivation trigger"
+                                                               "head":  "b989664b9f2535bce480155970120c6802cb3d9f",
+                                                               "committed_at":  "2026-07-13T08:06:08+04:00",
+                                                               "subject":  "cleanup: remove old autonomous inner motor"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -1422,70 +1422,6 @@
                                                                           "operations/active_behavior/validate_active_behavior_fresh_1000_lifecycle_pass_v1.ps1",
                                                                           "operations/active_behavior/validate_active_behavior_task_decision_flow_v1.ps1",
                                                                           "operations/active_behavior/validate_fresh_1000_candidate_behavior_absorption_v1.ps1"
-                                                                      ],
-                                            "needs_triage":  true,
-                                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                                            "source_ref":  "bounded_tracked_file_discovery_v1",
-                                            "is_required_component":  false
-                                        },
-                                        {
-                                            "id":  "operations_autonomy_diagnostics",
-                                            "path":  "operations/autonomy_diagnostics",
-                                            "root":  "operations/autonomy_diagnostics",
-                                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                                            "discovery_method":  "bounded_git_ls_files_path_discovery",
-                                            "evidence_counts":  {
-                                                                    "files":  29,
-                                                                    "scripts":  0,
-                                                                    "validators":  0,
-                                                                    "proofs":  0,
-                                                                    "contracts_or_policies":  0,
-                                                                    "docs":  16
-                                                                },
-                                            "file_count":  29,
-                                            "script_count":  0,
-                                            "validator_count":  0,
-                                            "proof_file_count":  0,
-                                            "contract_or_policy_count":  0,
-                                            "doc_count":  16,
-                                            "validator_refs":  [
-
-                                                               ],
-                                            "proof_refs":  [
-
-                                                           ],
-                                            "contract_or_policy_refs":  [
-
-                                                                        ],
-                                            "notable_files":  [
-                                                                  "operations/autonomy_diagnostics/AUTONOMOUS_INNER_MOTOR_CLEANUP_DIAGNOSTIC_V1.json",
-                                                                  "operations/autonomy_diagnostics/AUTONOMOUS_INNER_MOTOR_CLEANUP_DIAGNOSTIC_V1.md",
-                                                                  "operations/autonomy_diagnostics/KNOWLEDGE_GAP_DECOMPOSITION_AND_EXTERNAL_SOURCE_DIRECTION_V1.md",
-                                                                  "operations/autonomy_diagnostics/LEGACY_LIFE_LOOP_CODE_SURFACE_REMOVAL_SUMMARY_V1.json",
-                                                                  "operations/autonomy_diagnostics/LEGACY_LIFE_LOOP_CODE_SURFACE_REMOVAL_SUMMARY_V1.md",
-                                                                  "operations/autonomy_diagnostics/MAP_AUTO_REFRESH_DUPLICATE_SURFACE_DIAGNOSTIC_V1.json",
-                                                                  "operations/autonomy_diagnostics/MAP_AUTO_REFRESH_DUPLICATE_SURFACE_DIAGNOSTIC_V1.md",
-                                                                  "operations/autonomy_diagnostics/MAP_DUPLICATE_CLEANUP_DECISION_V1.json",
-                                                                  "operations/autonomy_diagnostics/PHASE110_141_LEGACY_AUTONOMY_REF_SURFACE_REMOVAL_SUMMARY_V1.json",
-                                                                  "operations/autonomy_diagnostics/PHASE110_141_LEGACY_AUTONOMY_REF_SURFACE_REMOVAL_SUMMARY_V1.md",
-                                                                  "operations/autonomy_diagnostics/PHASE154_159_SELF_GROWTH_PRECURSOR_CLEANUP_DECISION_V1.json",
-                                                                  "operations/autonomy_diagnostics/PHASE159_162_LIVE_GROWTH_FAMILY_ARGUMENT_V1.json",
-                                                                  "operations/autonomy_diagnostics/PHASE159_162_LIVE_GROWTH_FAMILY_ARGUMENT_V1.md",
-                                                                  "operations/autonomy_diagnostics/PHASE160_LIVE_GROWTH_CLEANUP_DECISION_V1.json",
-                                                                  "operations/autonomy_diagnostics/PROMOTION_DECISION_GOVERNANCE_V1.md",
-                                                                  "operations/autonomy_diagnostics/REFLEX_LIBRARY_IDEA_AND_MAP_SYNC_GAP_NOTE_V1.md",
-                                                                  "operations/autonomy_diagnostics/REFLEX_ORGAN_PROMOTION_AND_REPO_BLOAT_CLARIFICATION_V1.md",
-                                                                  "operations/autonomy_diagnostics/REGISTRY_SAFE_LIFE_LOOP_PATH_RETIREMENT_SUMMARY_V1.json",
-                                                                  "operations/autonomy_diagnostics/REGISTRY_SAFE_LIFE_LOOP_PATH_RETIREMENT_SUMMARY_V1.md",
-                                                                  "operations/autonomy_diagnostics/RUNTIME_SAFE_CLEANUP_20260705_V1.json",
-                                                                  "operations/autonomy_diagnostics/RUNTIME_SAFE_CLEANUP_20260705_V1.md",
-                                                                  "operations/autonomy_diagnostics/RUNTIME_SESSIONS_BUILDER_LIFE_LOOP_ARCHIVE_SUMMARY_V1.json",
-                                                                  "operations/autonomy_diagnostics/RUNTIME_SESSIONS_BUILDER_LIFE_LOOP_ARCHIVE_SUMMARY_V1.md",
-                                                                  "operations/autonomy_diagnostics/SELF_BUILD_AUTONOMY_TRIALS_BULK_REMOVAL_SUMMARY_V1.json",
-                                                                  "operations/autonomy_diagnostics/SELF_BUILD_AUTONOMY_TRIALS_BULK_REMOVAL_SUMMARY_V1.md"
-                                                              ],
-                                            "primary_evidence_refs":  [
-
                                                                       ],
                                             "needs_triage":  true,
                                             "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
@@ -7561,14 +7497,14 @@
                                             "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                                             "discovery_method":  "bounded_git_ls_files_path_discovery",
                                             "evidence_counts":  {
-                                                                    "files":  141,
+                                                                    "files":  140,
                                                                     "scripts":  0,
                                                                     "validators":  3,
                                                                     "proofs":  18,
                                                                     "contracts_or_policies":  20,
                                                                     "docs":  0
                                                                 },
-                                            "file_count":  141,
+                                            "file_count":  140,
                                             "script_count":  0,
                                             "validator_count":  3,
                                             "proof_file_count":  18,
@@ -7635,7 +7571,6 @@
                                                                   "self_model/organ_passports/modules_self_development/ORGAN_PASSPORT_V1.json",
                                                                   "self_model/organ_passports/operations_accepted_atom_retention_calibration/ORGAN_PASSPORT_V1.json",
                                                                   "self_model/organ_passports/operations_active_behavior/ORGAN_PASSPORT_V1.json",
-                                                                  "self_model/organ_passports/operations_autonomy_diagnostics/ORGAN_PASSPORT_V1.json",
                                                                   "self_model/organ_passports/operations_bridge_diagnostics/ORGAN_PASSPORT_V1.json",
                                                                   "self_model/organ_passports/operations_live_like/ORGAN_PASSPORT_V1.json",
                                                                   "self_model/organ_passports/operations_live_readiness/ORGAN_PASSPORT_V1.json",
@@ -7646,7 +7581,8 @@
                                                                   "self_model/organ_passports/operations_parallel_life/ORGAN_PASSPORT_V1.json",
                                                                   "self_model/organ_passports/operations_readme_md/ORGAN_PASSPORT_V1.json",
                                                                   "self_model/organ_passports/operations_reasoning/ORGAN_PASSPORT_V1.json",
-                                                                  "self_model/organ_passports/operations_reflex_library/ORGAN_PASSPORT_V1.json"
+                                                                  "self_model/organ_passports/operations_reflex_library/ORGAN_PASSPORT_V1.json",
+                                                                  "self_model/organ_passports/operations_self_model/ORGAN_PASSPORT_V1.json"
                                                               ],
                                             "primary_evidence_refs":  [
                                                                           "self_model/organ_passports/contracts_accepted_atom_retention_organ/ORGAN_PASSPORT_V1.json",
@@ -7750,11 +7686,11 @@
                                 ],
     "component_authority_summary":  {
                                         "confirmed_components":  7,
-                                        "primary_evidence_candidates":  143,
+                                        "primary_evidence_candidates":  142,
                                         "legacy_unverified_hints":  4,
                                         "rejected_or_stale_hints":  3,
                                         "required_components":  7,
-                                        "total_components_in_compatibility_view":  150,
+                                        "total_components_in_compatibility_view":  149,
                                         "bounded_discovery_pathspecs":  [
                                                                             "operations",
                                                                             "modules",
@@ -8063,9 +7999,9 @@
                                                       "operations/compact_memory_intake/validate_growth_signal_quality_v1.ps1"
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "b67cee23347749e864c10658c009655373c9d22f",
-                                                     "committed_at":  "2026-07-07T20:57:20+04:00",
-                                                     "subject":  "fix: treat generated inspect residue as derivation trigger"
+                                                     "head":  "b989664b9f2535bce480155970120c6802cb3d9f",
+                                                     "committed_at":  "2026-07-13T08:06:08+04:00",
+                                                     "subject":  "cleanup: remove old autonomous inner motor"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -9176,70 +9112,6 @@
                                                          "operations/active_behavior/validate_active_behavior_fresh_1000_lifecycle_pass_v1.ps1",
                                                          "operations/active_behavior/validate_active_behavior_task_decision_flow_v1.ps1",
                                                          "operations/active_behavior/validate_fresh_1000_candidate_behavior_absorption_v1.ps1"
-                                                     ],
-                           "needs_triage":  true,
-                           "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                           "source_ref":  "bounded_tracked_file_discovery_v1",
-                           "is_required_component":  false
-                       },
-                       {
-                           "id":  "operations_autonomy_diagnostics",
-                           "path":  "operations/autonomy_diagnostics",
-                           "root":  "operations/autonomy_diagnostics",
-                           "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                           "discovery_method":  "bounded_git_ls_files_path_discovery",
-                           "evidence_counts":  {
-                                                   "files":  29,
-                                                   "scripts":  0,
-                                                   "validators":  0,
-                                                   "proofs":  0,
-                                                   "contracts_or_policies":  0,
-                                                   "docs":  16
-                                               },
-                           "file_count":  29,
-                           "script_count":  0,
-                           "validator_count":  0,
-                           "proof_file_count":  0,
-                           "contract_or_policy_count":  0,
-                           "doc_count":  16,
-                           "validator_refs":  [
-
-                                              ],
-                           "proof_refs":  [
-
-                                          ],
-                           "contract_or_policy_refs":  [
-
-                                                       ],
-                           "notable_files":  [
-                                                 "operations/autonomy_diagnostics/AUTONOMOUS_INNER_MOTOR_CLEANUP_DIAGNOSTIC_V1.json",
-                                                 "operations/autonomy_diagnostics/AUTONOMOUS_INNER_MOTOR_CLEANUP_DIAGNOSTIC_V1.md",
-                                                 "operations/autonomy_diagnostics/KNOWLEDGE_GAP_DECOMPOSITION_AND_EXTERNAL_SOURCE_DIRECTION_V1.md",
-                                                 "operations/autonomy_diagnostics/LEGACY_LIFE_LOOP_CODE_SURFACE_REMOVAL_SUMMARY_V1.json",
-                                                 "operations/autonomy_diagnostics/LEGACY_LIFE_LOOP_CODE_SURFACE_REMOVAL_SUMMARY_V1.md",
-                                                 "operations/autonomy_diagnostics/MAP_AUTO_REFRESH_DUPLICATE_SURFACE_DIAGNOSTIC_V1.json",
-                                                 "operations/autonomy_diagnostics/MAP_AUTO_REFRESH_DUPLICATE_SURFACE_DIAGNOSTIC_V1.md",
-                                                 "operations/autonomy_diagnostics/MAP_DUPLICATE_CLEANUP_DECISION_V1.json",
-                                                 "operations/autonomy_diagnostics/PHASE110_141_LEGACY_AUTONOMY_REF_SURFACE_REMOVAL_SUMMARY_V1.json",
-                                                 "operations/autonomy_diagnostics/PHASE110_141_LEGACY_AUTONOMY_REF_SURFACE_REMOVAL_SUMMARY_V1.md",
-                                                 "operations/autonomy_diagnostics/PHASE154_159_SELF_GROWTH_PRECURSOR_CLEANUP_DECISION_V1.json",
-                                                 "operations/autonomy_diagnostics/PHASE159_162_LIVE_GROWTH_FAMILY_ARGUMENT_V1.json",
-                                                 "operations/autonomy_diagnostics/PHASE159_162_LIVE_GROWTH_FAMILY_ARGUMENT_V1.md",
-                                                 "operations/autonomy_diagnostics/PHASE160_LIVE_GROWTH_CLEANUP_DECISION_V1.json",
-                                                 "operations/autonomy_diagnostics/PROMOTION_DECISION_GOVERNANCE_V1.md",
-                                                 "operations/autonomy_diagnostics/REFLEX_LIBRARY_IDEA_AND_MAP_SYNC_GAP_NOTE_V1.md",
-                                                 "operations/autonomy_diagnostics/REFLEX_ORGAN_PROMOTION_AND_REPO_BLOAT_CLARIFICATION_V1.md",
-                                                 "operations/autonomy_diagnostics/REGISTRY_SAFE_LIFE_LOOP_PATH_RETIREMENT_SUMMARY_V1.json",
-                                                 "operations/autonomy_diagnostics/REGISTRY_SAFE_LIFE_LOOP_PATH_RETIREMENT_SUMMARY_V1.md",
-                                                 "operations/autonomy_diagnostics/RUNTIME_SAFE_CLEANUP_20260705_V1.json",
-                                                 "operations/autonomy_diagnostics/RUNTIME_SAFE_CLEANUP_20260705_V1.md",
-                                                 "operations/autonomy_diagnostics/RUNTIME_SESSIONS_BUILDER_LIFE_LOOP_ARCHIVE_SUMMARY_V1.json",
-                                                 "operations/autonomy_diagnostics/RUNTIME_SESSIONS_BUILDER_LIFE_LOOP_ARCHIVE_SUMMARY_V1.md",
-                                                 "operations/autonomy_diagnostics/SELF_BUILD_AUTONOMY_TRIALS_BULK_REMOVAL_SUMMARY_V1.json",
-                                                 "operations/autonomy_diagnostics/SELF_BUILD_AUTONOMY_TRIALS_BULK_REMOVAL_SUMMARY_V1.md"
-                                             ],
-                           "primary_evidence_refs":  [
-
                                                      ],
                            "needs_triage":  true,
                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
@@ -15315,14 +15187,14 @@
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                            "discovery_method":  "bounded_git_ls_files_path_discovery",
                            "evidence_counts":  {
-                                                   "files":  141,
+                                                   "files":  140,
                                                    "scripts":  0,
                                                    "validators":  3,
                                                    "proofs":  18,
                                                    "contracts_or_policies":  20,
                                                    "docs":  0
                                                },
-                           "file_count":  141,
+                           "file_count":  140,
                            "script_count":  0,
                            "validator_count":  3,
                            "proof_file_count":  18,
@@ -15389,7 +15261,6 @@
                                                  "self_model/organ_passports/modules_self_development/ORGAN_PASSPORT_V1.json",
                                                  "self_model/organ_passports/operations_accepted_atom_retention_calibration/ORGAN_PASSPORT_V1.json",
                                                  "self_model/organ_passports/operations_active_behavior/ORGAN_PASSPORT_V1.json",
-                                                 "self_model/organ_passports/operations_autonomy_diagnostics/ORGAN_PASSPORT_V1.json",
                                                  "self_model/organ_passports/operations_bridge_diagnostics/ORGAN_PASSPORT_V1.json",
                                                  "self_model/organ_passports/operations_live_like/ORGAN_PASSPORT_V1.json",
                                                  "self_model/organ_passports/operations_live_readiness/ORGAN_PASSPORT_V1.json",
@@ -15400,7 +15271,8 @@
                                                  "self_model/organ_passports/operations_parallel_life/ORGAN_PASSPORT_V1.json",
                                                  "self_model/organ_passports/operations_readme_md/ORGAN_PASSPORT_V1.json",
                                                  "self_model/organ_passports/operations_reasoning/ORGAN_PASSPORT_V1.json",
-                                                 "self_model/organ_passports/operations_reflex_library/ORGAN_PASSPORT_V1.json"
+                                                 "self_model/organ_passports/operations_reflex_library/ORGAN_PASSPORT_V1.json",
+                                                 "self_model/organ_passports/operations_self_model/ORGAN_PASSPORT_V1.json"
                                              ],
                            "primary_evidence_refs":  [
                                                          "self_model/organ_passports/contracts_accepted_atom_retention_organ/ORGAN_PASSPORT_V1.json",

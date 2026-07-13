@@ -743,30 +743,6 @@
                                               ]
                            },
                            {
-                               "candidate_id":  "operations_autonomy_diagnostics",
-                               "path":  "operations/autonomy_diagnostics",
-                               "triage_class":  "REAL_ORGAN_CANDIDATE",
-                               "passport_readiness":  "NEEDS_REVIEW",
-                               "lane":  "REVIEW_LANE",
-                               "decision":  "REVIEW_BEFORE_PROMOTION",
-                               "promotion_allowed":  false,
-                               "passport_draft_allowed":  false,
-                               "active_allowed":  false,
-                               "required_gates":  [
-                                                      "evidence_review",
-                                                      "organ_requirement_statement",
-                                                      "validator_or_reject_reason",
-                                                      "lane_reclassification"
-                                                  ],
-                               "reason":  "top-level operations surface with scripts/evidence; may be independent organ or component",
-                               "validator_refs":  [
-
-                                                  ],
-                               "proof_refs":  [
-
-                                              ]
-                           },
-                           {
                                "candidate_id":  "operations_bridge_diagnostics",
                                "path":  "operations/bridge_diagnostics",
                                "triage_class":  "REAL_ORGAN_CANDIDATE",
