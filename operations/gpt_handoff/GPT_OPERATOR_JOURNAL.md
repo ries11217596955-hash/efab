@@ -3498,3 +3498,39 @@ Boundary:
 - Codex must not launch the 15k run.
 - Codex only prepares campaign coverage audit, level plan, campaign pack, generator support, and bounded validations.
 - GPT/operator launches 15k only after accepting Codex output.
+
+## 2026-07-13 — Codex slice 1 produced draft coverage audit / level plan, then hung
+
+STATUS: CODEX_DRAFT_SLICE_1_PARTIAL_ACCEPT_FOR_NEXT_SLICE / NOT_FULL_TASK_PASS
+
+Action:
+- Launched Codex on CODEX_TASK_EVIDENCE_GROUNDED_SCHOOL_GENERATOR_V1.md.
+- First CLI attempt failed before start because `codex exec` did not accept `-a never` in this version.
+- Relaunched with supported `codex exec -C H:/efab -s workspace-write --json`.
+
+Result:
+- Codex generated:
+  operations/school/curriculum/candidate_factory/reports/CAMPAIGN_COVERAGE_AUDIT_V1.json
+  operations/school/curriculum/candidate_factory/reports/CAMPAIGN_LEVEL_PLAN_V1.json
+- Codex then stopped producing stdout/last_message and made no tracked changes for a long interval.
+- CPU/output checks indicated hung/inactive run; operator stopped Codex process tree.
+- No school run was launched.
+- No active compact memory mutation was observed.
+
+Draft validation:
+- coverage audit schema: campaign_coverage_audit_v1
+- coverage audit status: CODEX_DRAFT_COVERAGE_AUDIT_FROM_LOCAL_EVIDENCE
+- roots: 87
+- coverage: 82 medium, 5 saturated
+- missing source_refs: 0
+- blind level=1 roots: 0
+- level plan schema: campaign_level_plan_v1
+- level plan status: CODEX_DRAFT_LEVEL_PLAN_FROM_COVERAGE_AUDIT
+- level plan roots: 87
+- missing source_refs: 0
+- start_level=1 roots: 0
+
+Boundary:
+- This is not full Codex task PASS.
+- Campaign pack and generator support still need a second bounded Codex slice.
+- The draft audit/level plan is tracked as input for the next slice.
