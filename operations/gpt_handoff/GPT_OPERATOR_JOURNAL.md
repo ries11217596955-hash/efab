@@ -3426,3 +3426,31 @@ Plain-language launch rule:
 - Codex is needed when we are changing code/logic, such as the generator itself.
 - Normal school runs use the existing script with parameters like -Count and -Mode.
 - After Codex repairs the generator, future school runs should not ask Codex to rewrite scripts each time; they should use the repaired canonical entrypoint.
+
+## 2026-07-13 — Owner correction: Codex authors campaign content for school, not a replacement mechanism
+
+STATUS: ROUTE_CORRECTED_TO_CODEX_AUTHORED_SCHOOL_CAMPAIGN_PACK
+
+Owner correction:
+- School is the instrument/accelerator for influencing Builder mind/memory.
+- For a new serious run such as a million-atom campaign, Owner expects Codex to first author/update the deep campaign content inside the existing school/generator route.
+- The problem was not that school should be bypassed; the problem was that the old generator had no deep run-specific content and produced shallow permutations.
+
+Corrected architecture:
+- Codex before a serious campaign = content/campaign authoring and generator update.
+- School run after Codex = accelerates that authored campaign into candidates/atoms/memory.
+- Normal Count changes are launch parameters, but new themes/levels/knowledge campaigns require Codex-authored campaign content.
+- Do not create a new direct-answer organ for this task.
+- Do not create a duplicate school/generator organ.
+
+Correct route:
+Owner chooses campaign goal/theme/count -> Codex prepares campaign pack for existing school -> school consumes pack -> validators/streaming/digest gates -> compact memory.
+
+Task update:
+- Updated CODEX_TASK_EVIDENCE_GROUNDED_SCHOOL_GENERATOR_V1.md to require a Codex-authored campaign pack consumed by the existing candidate_factory.
+- Updated AGENTS.md section 16 with campaign-pack route and source law.
+
+Source law:
+- Generator does not create knowledge from nothing.
+- Codex may author self-build campaign content from local repo/journal/contracts/proofs.
+- For external knowledge, trusted sources must be supplied before Codex writes campaign content.

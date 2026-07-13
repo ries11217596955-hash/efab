@@ -1,43 +1,260 @@
-﻿# CODEX TASK — Evidence-grounded school candidate generator V1
+﻿# CODEX TASK — Codex-authored knowledge campaign pack for existing school V1
 
-STATUS: CODEX_DRAFT_TASK_FOR_EXISTING_ORGAN_UPDATE
-TARGET: update existing school candidate factory; do not create duplicate organ
-OWNER GOAL: stop producing shallow template permutations; generate candidates from real Builder evidence and lessons
+STATUS: CODEX_DRAFT_TASK_FOR_EXISTING_SCHOOL_UPDATE
+TARGET: existing school candidate factory / generator; do not create duplicate organ
+OWNER GOAL: each new serious school campaign gets a fresh Codex-authored knowledge/candidate pack, then the school accelerates it into atoms and memory
 
-## 0. Hard boundary
+## 0. Correct architecture
 
-This is a bounded repair/evolution task for the existing school candidate factory.
+The school remains the main learning accelerator.
+Codex is not the brain and not the runtime teacher.
+Codex is used before a new serious knowledge campaign to author/update the campaign content that the existing school will consume.
 
-Do NOT create a new school organ.
-Do NOT create a parallel generator directory.
-Do NOT create a new runtime system.
-Do NOT start a long school run.
-Do NOT run Count=50000 or Count=1000000.
-Do NOT rewrite unrelated school/digest/finalizer code.
-Do NOT modify active compact memory directly.
-Do NOT delete runtime/proof data.
-
-Codex output is CODEX_DRAFT until validated by terminal proof.
-
-## 1. Required PREFLIGHT
-
-Before any file write, Codex must inspect and report:
+Correct route:
 
 ```text
-repo root
-branch
-HEAD
+Owner chooses campaign goal/count/theme
+→ Codex prepares/updates deep knowledge campaign pack for the existing school
+→ existing school generator consumes that pack
+→ school emits candidates/atoms
+→ validators/streaming/digest gates accept or reject
+→ compact memory stores only compressed accepted lessons
+```
+
+Do NOT build a separate direct-answer organ.
+Do NOT replace the school with a new mechanism.
+Do NOT make Codex run the school.
+Do NOT start Count=50000 or Count=1000000 in this task.
+
+## 1. Important clarification
+
+A generator cannot create knowledge from nothing.
+For external/domain knowledge, Codex must rely on provided sources or explicitly marked source requirements.
+For current self-build work, this first campaign pack should use local Builder sources only:
+
+```text
+repo contracts
+school scripts
+validators
+journal lessons
+tracked proof summaries
+preserved compact memory evidence snapshot
+body-map reports
+Owner instructions captured in journal/task files
+```
+
+For future campaigns about medicine, law, finance, biology, etc., Codex must require trusted source material before authoring candidate content.
+No source → no knowledge.
+No proof/source anchor → no memory candidate.
+
+## 2. Existing organ to update, not duplicate
+
+Existing school/candidate surfaces:
+
+```text
+operations/school/curriculum/candidate_factory/generate_codex_curriculum_candidate_factory_run_v1.ps1
+operations/school/curriculum/candidate_factory/CODEX_CANDIDATE_FACTORY_V1.md
+operations/school/curriculum/candidate_factory/FACTORY_MEMORY_AND_LADDER_LEDGER_V1.md
+operations/school/curriculum/candidate_factory/FACTORY_TOPIC_CURSOR_LEDGER_V1.md
+operations/school/curriculum/candidate_factory/validate_codex_curriculum_candidate_factory_v1.ps1
+operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_topic_cursor_ledger_v1.ps1
+operations/school/curriculum/candidate_factory/validate_theme_cursor_ledger_v1.ps1
+```
+
+Do not create a new school organ or parallel generator directory.
+Small helper file inside candidate_factory is allowed only if it is clearly part of the existing organ.
+
+## 3. Campaign pack concept
+
+Codex should make the existing generator able to consume a Codex-authored campaign pack.
+The pack is content, not a second organ.
+
+Preferred location:
+
+```text
+operations/school/curriculum/candidate_factory/campaign_packs/
+```
+
+Create only one current pack for this task, for example:
+
+```text
+operations/school/curriculum/candidate_factory/campaign_packs/builder_self_knowledge_deep_v1.jsonl
+operations/school/curriculum/candidate_factory/campaign_packs/builder_self_knowledge_deep_v1.manifest.json
+```
+
+The pack must be compact enough for Git. Do not write millions of candidate rows into Git.
+For a million-atom campaign, store deep source lessons/templates/lesson seeds and let the generator expand them deterministically during runtime.
+
+## 4. What Codex must author
+
+Codex must author deep, varied lesson seeds from real local sources.
+Each seed must include:
+
+```text
+seed_id
+campaign_id
+theme/root
+depth_level_band
+source_kind
+source_path
+source_anchor_or_hint
+source_summary
+lesson
+negative_trap
+proof_target
+behavior_delta
+return_to_parent
+allowed_verbs/modes
+expansion_budget
+```
+
+Good seed example:
+
+```text
+source_path: operations/school/SCHOOL_CANONICAL_RUN_CONTRACT_V1.md
+lesson: Count is a launch-time parameter of the canonical school entrypoint, not a reason to rewrite run_agent_school.ps1.
+negative_trap: asking Codex to edit school code just to change Count.
+proof_target: launch.json or command line shows -Count and -Mode.
+behavior_delta: when Owner asks for 50k vs 1M, Builder changes launch parameter, not code.
+```
+
+Bad seed example:
+
+```text
+lesson: Builder must learn repo_structure through define.
+```
+
+## 5. Generator behavior after update
+
+The existing generator should support campaign pack input.
+Do not remove current fallback mode unless tests depend on it.
+Preferred behavior:
+
+```text
+1. load topics plan
+2. load cursor ledger
+3. load campaign pack if provided or default current pack exists
+4. select seed by campaign/root/least-used/cursor
+5. expand seed into candidate using verb/mode/level
+6. candidate includes source evidence and campaign seed identity
+7. learning_key includes seed_id + root + verb + mode + level
+8. generic template fallback allowed only when no seed exists, and must be marked fallback_template
+```
+
+Existing required candidate schema must remain compatible:
+
+```text
+candidate_id
+topic
+new_knowledge
+exercise
+expected_behavior
+negative_trap
+validator_hint
+behavior_use_proof_target
+return_to_parent
+source_anchor
+self_generated_easy_candidate=false
+```
+
+Additional fields are allowed if downstream validators tolerate them:
+
+```text
+campaign_id
+seed_id
+evidence_kind
+evidence_path
+evidence_summary
+candidate_depth_score
+```
+
+## 6. Required source ladder for this first campaign
+
+Use these local source surfaces:
+
+```text
+1. AGENTS.md current task/rules
+2. operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md recent school/finalizer/generator lessons
+3. operations/gpt_handoff/CODEX_TASK_EVIDENCE_GROUNDED_SCHOOL_GENERATOR_V1.md this task
+4. operations/school/SCHOOL_CANONICAL_RUN_CONTRACT_V1.md
+5. operations/school/run_agent_school.ps1
+6. operations/school/school_lifecycle_policy.json
+7. operations/school/curriculum/topics/builder_night_school_topics_v1.json
+8. operations/school/curriculum/candidate_factory/current files
+9. operations/school/curriculum/candidate_factory/memory/active_compact_memory_snapshot_for_evidence_v1/manifest.json
+10. operations/school/curriculum/candidate_factory/memory/active_compact_memory_snapshot_for_evidence_v1/index.json
+11. operations/school/curriculum/candidate_factory/memory/active_compact_memory_snapshot_for_evidence_v1/cells_tail_sample_200.jsonl
+12. tracked compact reports under reports/self_development when relevant
+```
+
+Runtime was cleaned before this task. Do not assume .runtime exists.
+
+## 7. Required validation
+
+Codex must add/update validation so a bounded batch proves that candidates are campaign-seed grounded.
+
+Required checks:
+
+```text
+TargetAccepted=25 generation PASS
+TargetAccepted=100 generation PASS
+>= 90% generated candidates come from campaign seeds, not fallback_template
+100% campaign candidates have seed_id/campaign_id/source_path/source_summary
+100% source_path exists for local source seeds
+learning_key uniqueness PASS
+candidate schema compatibility PASS
+streaming absorption on 100 candidates PASS or explain rejects
+canonical school validator PASS
+no long Live run started
+no active compact memory mutation
+no runtime/report bloat
+```
+
+If adding a validator, keep it under existing candidate_factory:
+
+```text
+operations/school/curriculum/candidate_factory/validate_campaign_pack_candidate_factory_v1.ps1
+```
+
+## 8. Bounded tests only
+
+Allowed tests:
+
+```text
+candidate factory TargetAccepted=25 Test
+candidate factory TargetAccepted=100 Test
+streaming absorption on 100 candidates
+canonical school validator
+optional Count=10 Mode=Test if safe and non-live
+```
+
+Forbidden:
+
+```text
+Count=50000
+Count=1000000
+Mode=Live long run
+attached long polling
+direct active memory writes
+```
+
+## 9. PREFLIGHT requirement
+
+Before file writes, Codex must inspect and report:
+
+```text
+repo root / branch / HEAD
 git status --short --untracked-files=all
-whether school/digest/finalizer/queue-maintenance processes are running
+school-related process count
 existing candidate_factory files
 current topics plan path
 current cursor ledger path
-current active compact memory manifest presence
-current generator candidate schema
-current validators relevant to candidate factory/school
+campaign_pack existing/missing status
+validator surfaces
+preserved compact snapshot status
 ```
 
-If any blocker exists, stop with:
+If blocker exists:
 
 ```text
 BLOCKED_PREFLIGHT
@@ -56,277 +273,38 @@ Files changed before PREFLIGHT_PASS: YES/NO
 expected: NO
 ```
 
-## 2. Existing organ to update
-
-Existing school candidate factory surface:
-
-```text
-operations/school/curriculum/candidate_factory/generate_codex_curriculum_candidate_factory_run_v1.ps1
-operations/school/curriculum/candidate_factory/CODEX_CANDIDATE_FACTORY_V1.md
-operations/school/curriculum/candidate_factory/FACTORY_MEMORY_AND_LADDER_LEDGER_V1.md
-operations/school/curriculum/candidate_factory/FACTORY_TOPIC_CURSOR_LEDGER_V1.md
-operations/school/curriculum/candidate_factory/validate_codex_curriculum_candidate_factory_v1.ps1
-operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_topic_cursor_ledger_v1.ps1
-operations/school/curriculum/candidate_factory/validate_theme_cursor_ledger_v1.ps1
-```
-
-Likely input data:
-
-```text
-operations/school/curriculum/topics/builder_night_school_topics_v1.json
-operations/school/curriculum/candidate_factory/memory/theme_cursor_ledger.json
-operations/school/curriculum/candidate_factory/memory/active_compact_memory_snapshot_for_evidence_v1/manifest.json
-operations/school/curriculum/candidate_factory/memory/active_compact_memory_snapshot_for_evidence_v1/index.json
-operations/school/curriculum/candidate_factory/memory/active_compact_memory_snapshot_for_evidence_v1/cells_tail_sample_200.jsonl
-operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md
-operations/school/SCHOOL_CANONICAL_RUN_CONTRACT_V1.md
-operations/school/school_lifecycle_policy.json
-operations/reports/* selected compact reports only
-```
-
-## 3. Problem to fix
-
-Current generator mostly does:
-
-```text
-topic root + verb + mode + level + generic template
-```
-
-This produces many formally valid but shallow variations.
-It trains discipline and pipeline shape, but not enough real Builder knowledge.
-
-Required change:
-
-```text
-candidate = topic/root + evidence source + extracted fact/lesson + negative trap + proof target + behavior delta
-```
-
-The generator must become evidence-grounded while preserving the existing school contract.
-
-## 4. Source ladder for candidate evidence
-
-Candidate evidence must come from real local Builder surfaces, in this priority order:
-
-```text
-1. canonical school contracts and policies
-2. current generator/candidate_factory files
-3. preserved compact memory evidence snapshot manifest/index/cells_tail_sample_200 sampled safely
-4. GPT operator journal lessons/failures
-5. tracked school/runtime proof summaries and journal lessons; .runtime was cleaned and must not be assumed present
-6. validators and their PASS/FAIL rules
-7. body-map/self-model reports when compact and tracked
-8. topics plan only as routing/curriculum frame, not as full knowledge source
-```
-
-Do not ingest huge raw runtime logs.
-Do not embed full source files in candidates.
-Do not copy raw cells.jsonl into candidates.
-Do not use web/external sources.
-
-## 5. Required generated candidate fields
-
-Keep the existing schema required by current school contract. Each candidate must still include the current required fields, including but not limited to:
-
-```text
-candidate_id
-topic
-new_knowledge
-exercise
-expected_behavior
-negative_trap
-validator_hint
-behavior_use_proof_target
-return_to_parent
-source_anchor
-self_generated_easy_candidate=false
-```
-
-Add fields only if downstream validators tolerate them or update validators safely:
-
-```text
-evidence_kind
-evidence_path
-evidence_summary
-evidence_hash_or_line_hint
-lesson_type
-candidate_depth_score
-```
-
-Do not break existing streaming/digest contract.
-
-## 6. Evidence-grounded candidate rules
-
-Each candidate must satisfy:
-
-```text
-has concrete evidence_path
-has evidence_summary derived from that path/report/memory sample
-new_knowledge contains a specific lesson, not generic template filler
-negative_trap names a real mistake or likely false proof pattern
-validator_hint names a concrete proof/check, not vague 'validate it'
-behavior_use_proof_target says how future Builder behavior should change
-return_to_parent says what parent task becomes stronger
-source_anchor points to a real local file/report/memory surface
-```
-
-Bad candidate examples:
-
-```text
-Builder must learn the practical meaning of repo_structure through define.
-Do not treat count as proof.
-```
-
-Better candidate example:
-
-```text
-Evidence: operations/school/SCHOOL_CANONICAL_RUN_CONTRACT_V1.md
-Lesson: Count is a launch-time parameter of the canonical school entrypoint, not a hardcoded curriculum rewrite.
-Negative trap: editing run_agent_school.ps1 to change Count instead of passing -Count.
-Validator hint: prove command line / launch.json includes Count and Mode.
-Behavior target: when Owner asks for 50k vs 1M, Builder must choose launch parameter, not ask Codex to rewrite script.
-```
-
-## 7. Candidate source sampler requirement
-
-Implement inside the existing candidate factory a small source/evidence sampler, not a new organ.
-
-Acceptable implementation options:
-
-```text
-internal functions in generate_codex_curriculum_candidate_factory_run_v1.ps1
-small helper file inside operations/school/curriculum/candidate_factory/ only if necessary
-small tracked evidence catalogue JSON only if generated deterministically and not huge
-```
-
-Sampler should collect compact evidence cards such as:
-
-```text
-kind: contract | validator | journal_lesson | memory_manifest | memory_index_term | proof_summary | repo_file_rule
-path: local path
-summary: one compact fact/lesson
-hash_or_hint: optional SHA256 / line hint / field hint
-usable_topics: topic roots this evidence can support
-trap: optional real trap
-proof_hint: optional validator/proof check
-```
-
-Keep evidence cards compact.
-Do not produce report spam.
-Do not create large archives.
-
-## 8. Selection logic requirement
-
-Replace pure template scheduling with evidence-aware scheduling:
-
-```text
-1. choose next topic/root by cursor/weight as today
-2. find evidence cards relevant to that root or adjacent roots
-3. choose least recently used evidence card / rotate across evidence kinds
-4. build candidate from evidence card + topic/root + verb/mode/level
-5. produce learning_key including evidence identity to avoid shallow duplicates
-```
-
-If no evidence card exists for a root:
-
-```text
-fallback allowed = one generic candidate only
-mark evidence_kind='fallback_template'
-low candidate_depth_score
-```
-
-For large runs, generic fallback must not dominate.
-
-## 9. Validators / proof requirements
-
-Codex must add or update validation so that a small generated batch proves depth.
-
-Required validation checks:
-
-```text
-candidate count matches TargetAccepted
-100% candidates have required schema fields
->= 80% candidates in TargetAccepted=100 test have evidence_kind != fallback_template
->= 80% candidates have real evidence_path that exists or is a recognized active memory virtual path
->= 80% candidates have non-generic new_knowledge length and include evidence-derived content
-learning_key uniqueness remains PASS
-streaming still produces ready atoms without duplicate flood
-no operations/reports heavy output bloat
-```
-
-Existing validators must continue to pass:
-
-```text
-operations/school/validate_agent_school_canonical_entrypoint_v1.ps1
-operations/school/curriculum/candidate_factory/validate_codex_curriculum_candidate_factory_v1.ps1
-operations/school/curriculum/candidate_factory/validate_theme_cursor_ledger_v1.ps1
-```
-
-If existing validators are insufficient, add one focused validator under existing candidate_factory directory:
-
-```text
-operations/school/curriculum/candidate_factory/validate_evidence_grounded_candidate_factory_v1.ps1
-```
-
-Do not add a new organ.
-
-## 10. Test plan
-
-Run only bounded tests:
-
-```text
-TargetAccepted=25 Test
-TargetAccepted=100 Test
-streaming absorption on 100 candidates
-optional Count=10 Mode=Test through canonical school entrypoint
-```
-
-Do NOT run Live large school.
-Do NOT mutate active compact memory in validation unless explicitly using a tiny Test mode that does not merge active memory.
-
-Expected proof snippets:
-
-```text
-PREFLIGHT_PASS
-EVIDENCE_CARDS_COUNT=<n>
-GENERIC_FALLBACK_RATE=<percent>
-CANDIDATE_DEPTH_PASS=true
-VALIDATION_STATUS=PASS_EVIDENCE_GROUNDED_CANDIDATE_FACTORY_V1
-STREAM_READY_ATOMS=100
-STREAM_QUARANTINED=0 or justified low number
-CANONICAL_VALIDATOR_PASS
-```
-
-## 11. Report format
+## 10. Delivery report
 
 Final Codex report must include:
 
 ```text
 STATUS: PASS | BLOCKED_PREFLIGHT | FAIL_VALIDATION
 Files changed before PREFLIGHT_PASS: YES/NO
-Files changed
-Files intentionally not changed
 Existing organ updated: YES/NO
 New organ created: YES/NO
 Expected New organ created: NO
-Evidence sources used
-Evidence cards count
-Fallback rate in 100-candidate test
+Campaign pack path
+Campaign seeds count
+Source paths used
+Generated candidates tested
+Seed-backed candidate percent
+Fallback percent
 Validators run and exact outputs
 Runtime/report size impact
-Remaining risks
-Suggested next run size
+Files changed
+Files intentionally not changed
+Recommended next school run size after validation
 ```
 
-## 12. Acceptance boundary
+## 11. Acceptance boundary
 
 Accept only if:
 
 ```text
-no duplicate organ created
-existing factory still works
+Codex authored a real campaign pack or pack support for existing generator
+generator can consume campaign seeds
 bounded tests pass
-candidates are evidence-grounded, not mostly template permutations
-repo remains clean except intended tracked changes
-no long live school run started
+no duplicate organ exists
+no long school run was started
+repo is clean except intended tracked changes
 ```
-

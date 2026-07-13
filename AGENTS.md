@@ -573,7 +573,7 @@ Do not turn AGENTS.md into a ledger, report, or archive.
 
 ## 16. Current school-generator repair task
 
-Current Owner route: update the existing school candidate factory into an evidence-grounded generator.
+Current Owner route: school remains the learning accelerator. Codex is used before a new serious knowledge campaign to author/update the campaign content that the existing school generator consumes.
 
 Use this task package:
 
@@ -585,8 +585,9 @@ Hard rules:
 
 ```text
 update existing candidate_factory; do not create duplicate school/generator organ
+Codex authors campaign content/pack; school runs it later
 no file writes before PREFLIGHT_PASS
-no Count=50000 or Count=1000000 run
+no Count=50000 or Count=1000000 run inside Codex task
 no long Live school run
 no direct active compact memory mutation
 no report/runtime bloat
@@ -603,8 +604,16 @@ preserved evidence snapshot exists at operations/school/curriculum/candidate_fac
 Candidate depth target:
 
 ```text
-candidate = topic/root + real local evidence + extracted lesson + negative trap + proof target + behavior delta
+candidate = campaign seed + topic/root + real source + extracted lesson + negative trap + proof target + behavior delta
 not root + verb + mode + generic template
 ```
 
-If evidence is missing, stop or use a clearly marked low-depth fallback. Do not manufacture knowledge.
+Source law:
+
+```text
+No source -> no knowledge.
+No source/proof anchor -> no memory candidate.
+For external/domain campaigns, Owner/trusted sources must be provided before Codex authors knowledge content.
+```
+
+If evidence/source is missing, stop or use a clearly marked low-depth fallback. Do not manufacture knowledge.
