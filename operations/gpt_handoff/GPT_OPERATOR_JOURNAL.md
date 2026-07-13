@@ -3085,3 +3085,64 @@ Boundary:
 - The 1,000,000 run is not a full PASS; it is stopped after 995,000 ready atoms due to final digest stall.
 - The retained active memory is the last proven compact semantic digestion state.
 - Future max school runs should not accumulate hundreds of full memory snapshots.
+
+## 2026-07-13 — School digest stall root cause, report bloat cleanup, digest fast-path repair
+
+STATUS: ROOT_CAUSE_FOUND / REPORT_BLOAT_CLEANED / DIGEST_5000_COPY_PASS / PATCH_READY
+
+Owner question:
+- Why did final digest stall, and is the repo now over 1GB?
+
+Fresh size findings:
+- Git/tracked repo is not over 1GB:
+  - tracked files: ~31 MB
+  - .git: ~24 MB
+- Worktree was over 4GB because runtime/report artifacts lived inside the repo folder:
+  - .runtime: ~1.68 GB after checkpoint cleanup
+  - operations/reports: ~2.44 GB before cleanup
+- operations/reports bloat was caused by operations/reports/streaming_absorption/<chunk> per-chunk folders from the 1,000,000 school run.
+  - 20,613 files
+  - ~2,436 MB
+  - transient untracked school streaming reports, not Git history.
+
+Cleanup:
+- Removed operations/reports/streaming_absorption transient chunk reports.
+- operations/reports reduced to ~1.92 MB / 22 files.
+- Active compact memory was not touched.
+
+Root cause of final digest stall:
+- The school reached 995,000 ready atoms and stalled on chunk 200 digest.
+- Digest path had scale bottlenecks:
+  1. streaming reports wrote heavy per-chunk outputs under operations/reports instead of .runtime;
+  2. absorb_atom_file_via_digest_pipeline_v1 re-read and ConvertFrom-Json parsed the whole compact memory cells file after each digest just to validate raw field absence;
+  3. invoke_compact_semantic_digestion_organ_v1 used array += while reading input and collecting fingerprints;
+  4. MergeUnique used Sort-Object -Unique per merge, costly as source_fingerprints/properties grow;
+  5. digest organ also serialized each cell individually for raw-field guard before serializing all cells again.
+
+Fixes:
+- Streaming absorption heavy outputs now go to .runtime/streaming_absorption/<run>, not operations/reports/streaming_absorption.
+- Canonical operations/reports streaming summary no longer embeds all batch_reports; it stores batch_report_count and batch_reports_path.
+- absorb pipeline now scans cells.jsonl text for forbidden raw fields instead of parsing every compact memory cell into objects.
+- digest organ uses List for ReadJsonl and input fingerprints.
+- digest MergeUnique now uses SortedSet instead of Sort-Object -Unique over arrays.
+- digest raw-field guard now scans serialized memory once instead of serializing every cell separately.
+
+Proof:
+- Syntax parse passed for patched streaming, absorb, and digest scripts.
+- Controlled copy-memory test was run; active memory was not mutated.
+- Test path: 5000 candidate factory -> streaming -> absorb/digest into .runtime/school_digest_perf_copy_5000_20260713_1415/memory_root.
+- Factory: 5000 candidates.
+- Streaming: 5000 processed, 5000 accepted, 5000 ready, 0 quarantine.
+- Absorb/digest: PASS_FILE_ATOM_ABSORPTION_PIPELINE_V1.
+- Validation tier: Fast.
+- Digest result: 18,020 cells, merged_count=5000, total_memory_bytes=273,426,576.
+- Elapsed: 187.73 seconds.
+
+Boundary:
+- This proves the digest path no longer stalls on a 5000-atom chunk against a copy of the current active memory.
+- It does not prove a new full 1,000,000 school run completed.
+- It does not prove active memory was improved by the copy test.
+
+Next:
+- Commit and push patches.
+- Future school max run should use the repaired report path and faster digest/validation path.

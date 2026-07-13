@@ -34,7 +34,14 @@ function GetProp($Obj,[string]$Name){
   if($p){ return $p.Value }
   return $null
 }
-function MergeUnique($A,$B){ @(@($A)+@($B) | ForEach-Object { [string]$_ } | Where-Object { -not [string]::IsNullOrWhiteSpace($_) } | Sort-Object -Unique) }
+function MergeUnique($A,$B){
+  $set=New-Object System.Collections.Generic.SortedSet[string]
+  foreach($x in @($A)+@($B)){
+    $s=[string]$x
+    if(-not [string]::IsNullOrWhiteSpace($s)){ [void]$set.Add($s) }
+  }
+  return @($set)
+}
 function CompactSummary([string]$Text){
   $s=(([string]$Text) -replace '\s+',' ').Trim()
   if($s.Length -gt 360){ $s=$s.Substring(0,360).Trim() }
@@ -42,15 +49,15 @@ function CompactSummary([string]$Text){
 }
 function ReadJsonl($Path){
   if(-not (Test-Path $Path)){ throw "INPUT_MISSING:$Path" }
-  $rows=@()
+  $rows=New-Object System.Collections.Generic.List[object]
   $n=0
   foreach($rawLine in (Get-Content $Path)){
     $line=[string]$rawLine
     if([string]::IsNullOrWhiteSpace($line)){ continue }
     $n++
-    try { $rows += ($line | ConvertFrom-Json) } catch { throw "BAD_JSONL_LINE:${n}:$($_.Exception.Message)" }
+    try { $rows.Add(($line | ConvertFrom-Json)) | Out-Null } catch { throw "BAD_JSONL_LINE:${n}:$($_.Exception.Message)" }
   }
-  return @($rows)
+  return @($rows.ToArray())
 }
 function LoadExistingCells($Root){
   $map=@{}
@@ -91,7 +98,7 @@ $cells=LoadExistingCells $MemoryRoot
 $existingCellCountBefore=$cells.Keys.Count
 $createdCellCount=0
 $mergedObservationCount=0
-$inputFingerprints=@()
+$inputFingerprints=New-Object System.Collections.Generic.List[string]
 foreach($r in $rows){
   $concept=[string](GetProp $r 'concept_key')
   if([string]::IsNullOrWhiteSpace($concept)){ $concept=[string](GetProp $r 'concept') }
@@ -114,7 +121,7 @@ foreach($r in $rows){
   $uses=ArrayFrom (GetProp $r 'uses')
   $rawCanonical=($r|ConvertTo-Json -Depth 80 -Compress)
   $fp=Sha256Text $rawCanonical
-  $inputFingerprints += $fp
+  $inputFingerprints.Add($fp) | Out-Null
   if($cells.ContainsKey($conceptKey)){
     $old=$cells[$conceptKey]
     $old.aliases=MergeUnique $old.aliases $aliases
@@ -151,17 +158,14 @@ foreach($r in $rows){
   }
 }
 $orderedCells=@($cells.Keys | Sort-Object | ForEach-Object { CellToOrdered $cells[$_] })
-# Guard: raw text/source bodies must not survive in cells.
-foreach($c in $orderedCells){
-  $cellJson=($c|ConvertTo-Json -Depth 80 -Compress)
-  foreach($forbidden in @('raw_text','source_text','ready_atoms','batch_trace','prompt_trace')){
-    if($cellJson -match $forbidden){ throw "RAW_FIELD_SURVIVED_IN_CELL:$forbidden" }
-  }
-}
 $cellsPath=Join-Path $MemoryRoot 'cells.jsonl'
 $indexPath=Join-Path $MemoryRoot 'index.json'
 $manifestPath=Join-Path $MemoryRoot 'manifest.json'
 $cellsJsonl=($orderedCells | ForEach-Object { $_|ConvertTo-Json -Depth 80 -Compress }) -join "`n"
+# Guard: raw text/source bodies must not survive in cells. Scan serialized memory once, not per cell.
+foreach($forbidden in @('raw_text','source_text','ready_atoms','batch_trace','prompt_trace')){
+  if($cellsJsonl -match $forbidden){ throw "RAW_FIELD_SURVIVED_IN_CELL:$forbidden" }
+}
 WriteText $cellsPath ($cellsJsonl + "`n")
 $index=@{}
 foreach($c in $orderedCells){

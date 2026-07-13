@@ -152,16 +152,13 @@ if(Test-Path $stagedInput){ Remove-Item $stagedInput -Force }
 $manifest=Get-Content (Join-Path $candidateMemoryRoot 'manifest.json') -Raw|ConvertFrom-Json
 $index=Get-Content (Join-Path $candidateMemoryRoot 'index.json') -Raw|ConvertFrom-Json
 $cellsPath=Join-Path $candidateMemoryRoot 'cells.jsonl'
-$cells=@(Get-Content $cellsPath | Where-Object { -not [string]::IsNullOrWhiteSpace($_) } | ForEach-Object { $_|ConvertFrom-Json })
 if(Test-Path $stagedInput){ throw 'STAGED_RAW_SOURCE_NOT_DELETED' }
 if($manifest.raw_source_dependency_removed -ne $true){ throw 'RAW_SOURCE_DEPENDENCY_NOT_REMOVED' }
 if([int]$manifest.total_memory_bytes -gt $SizeBudgetBytes){ throw 'SIZE_BUDGET_EXCEEDED_AFTER_DIGEST' }
 if([int]$index.term_count -lt 1){ throw 'LOOKUP_INDEX_EMPTY' }
 if($selectedTier -ne 'Fast'){
-  foreach($c in $cells){
-    $j=$c|ConvertTo-Json -Depth 50 -Compress
-    foreach($bad in @('raw_text','source_text','ready_atoms','batch_trace','prompt_trace')){ if($j -match $bad){ throw "RAW_FIELD_SURVIVED:$bad" } }
-  }
+  $cellsText=Get-Content $cellsPath -Raw
+  foreach($bad in @('raw_text','source_text','ready_atoms','batch_trace','prompt_trace')){ if($cellsText -match $bad){ throw "RAW_FIELD_SURVIVED:$bad" } }
 }
 $originalDeleted=$false
 if($DeleteOriginalRaw){

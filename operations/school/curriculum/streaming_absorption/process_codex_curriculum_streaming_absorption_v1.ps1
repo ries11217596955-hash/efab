@@ -17,7 +17,7 @@ function IsGenericOrPlaceholder($obj){
 }
 if(-not (Test-Path $RunDir)){ throw "RUN_DIR_MISSING: $RunDir" }
 $runName=(Split-Path $RunDir -Leaf)
-$outDir="operations/reports/streaming_absorption/$runName"
+$outDir=".runtime/streaming_absorption/$runName"
 New-Item -ItemType Directory -Force -Path $outDir | Out-Null
 $candidateFiles=@(Get-ChildItem $RunDir -Recurse -File -Filter candidates.jsonl | Sort-Object FullName)
 if($MaxReadyBatches -gt 0){ $candidateFiles=@($candidateFiles | Select-Object -First $MaxReadyBatches) }
@@ -126,7 +126,8 @@ $report=[pscustomObject]@{
   ready_lane_path="$outDir/ready_atoms.jsonl"
   quarantine_path="$outDir/quarantined_atoms.jsonl"
   contract_rejected_path="$outDir/contract_rejected.jsonl"
-  batch_reports=@($batchReports)
+  batch_report_count=$batchReports.Count
+  batch_reports_path=$outDir
   boundary='Streaming school-to-absorption lane. Processes each ready batch independently; does not wait for full N; does not promote active memory.'
 }
 WriteJson 'operations/reports/STREAMING_SCHOOL_TO_ABSORPTION_PIPELINE_V1.json' $report 100

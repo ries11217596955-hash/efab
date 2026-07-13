@@ -1,22 +1,24 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-13T17:54:21.6001942+04:00",
+    "checked_at":  "2026-07-13T18:19:20.3641699+04:00",
     "branch":  "main",
-    "observed_head":  "6f4265162451e719e0a742977b04fe471a796c36",
-    "subject_head":  "6f4265162451e719e0a742977b04fe471a796c36",
+    "observed_head":  "ecec75a4f9f8a882321fa3f5ef42ed5a2c1665a8",
+    "subject_head":  "ecec75a4f9f8a882321fa3f5ef42ed5a2c1665a8",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
                           "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
+                          "operations/school/run_agent_school.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json"
                       ],
     "structural_paths":  [
-                             "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
+                             "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
+                             "operations/school/run_agent_school.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -29,7 +31,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  1828,
-                                    "sha256":  "aaf9b6fce4bdaffd5715a607318517665dc0b9f47fbe6d20baedcf363cf9f41e"
+                                    "sha256":  "396b7a105f90386a6712d0c8d2a7194d8fec06c8bc0a886fc1469d154158dee8"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -62,5 +64,5 @@
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-13T17:54:49.6501999+04:00"
+    "refreshed_at":  "2026-07-13T18:19:44.7992886+04:00"
 }
