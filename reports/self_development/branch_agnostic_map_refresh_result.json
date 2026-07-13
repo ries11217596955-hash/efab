@@ -1,18 +1,16 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-13T19:04:25.8010523+04:00",
+    "checked_at":  "2026-07-13T19:11:45.7652677+04:00",
     "branch":  "main",
-    "observed_head":  "2805523410912a3b37de925ff8d6402f12a9f624",
-    "subject_head":  "2805523410912a3b37de925ff8d6402f12a9f624",
+    "observed_head":  "2d5a0cc53f478435fca39b4394546094d31d1391",
+    "subject_head":  "2d5a0cc53f478435fca39b4394546094d31d1391",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
                           "operations/compact_memory_intake/run_compact_memory_queue_maintenance_v1.ps1",
                           "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                          "operations/school/finalize_agent_school_run_v1.ps1",
-                          "operations/school/school_lifecycle_policy.json",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
@@ -20,9 +18,7 @@
                       ],
     "structural_paths":  [
                              "operations/compact_memory_intake/run_compact_memory_queue_maintenance_v1.ps1",
-                             "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                             "operations/school/finalize_agent_school_run_v1.ps1",
-                             "operations/school/school_lifecycle_policy.json"
+                             "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -34,8 +30,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1828,
-                                    "sha256":  "4319fe5cccf8e99ab4590469322a07535bacc4b7d5e10ed7ab17ff64e1181478"
+                                    "structural_file_count":  1829,
+                                    "sha256":  "88cc04f9a7be75b839db1f5ddd1fba374d4ff74ff29cc913425a23a19754d583"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -61,12 +57,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  149,
-                         "structural_path_count":  1828,
+                         "structural_path_count":  1829,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-13T19:04:50.2012157+04:00"
+    "refreshed_at":  "2026-07-13T19:12:10.2054148+04:00"
 }
