@@ -6,19 +6,19 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "bf0a7487f1b0fa47d85827a3f5b092896bfc4789",
-    "subject_head":  "bf0a7487f1b0fa47d85827a3f5b092896bfc4789",
-    "generated_at":  "2026-07-12T22:38:13.5895714+04:00",
+    "observed_head_at_generation":  "c4d7422c42d25c58fb8a92396aeb5e39fd848516",
+    "subject_head":  "c4d7422c42d25c58fb8a92396aeb5e39fd848516",
+    "generated_at":  "2026-07-13T08:00:29.2070411+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  2105,
+    "structural_path_count":  1909,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2105,
-                                    "sha256":  "b613fcdb56df69911808880bb1bb5e06d1b13a71b4e22e66207d105b502d4c57"
+                                    "structural_file_count":  1909,
+                                    "sha256":  "fe38415fddad79ef01570f2a01606eb433dde5bd98998fccaa4f0dc041dfa082"
                                 },
     "module_count":  203,
     "validator_count":  174,
@@ -178,9 +178,9 @@
                                                                 "operations/school/value_grounded/validate_value_grounded_curriculum_prep_v1.ps1"
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "f84d9bc158dd70b1b6ada43c9305adfaaa954a46",
-                                                               "committed_at":  "2026-07-12T13:52:22+04:00",
-                                                               "subject":  "school: fix cleanup tracked-path guard"
+                                                               "head":  "c4d7422c42d25c58fb8a92396aeb5e39fd848516",
+                                                               "committed_at":  "2026-07-12T22:37:25+04:00",
+                                                               "subject":  "school: stream unique learning keys at scale"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -766,9 +766,9 @@
 
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "f84d9bc158dd70b1b6ada43c9305adfaaa954a46",
-                                                               "committed_at":  "2026-07-12T13:52:22+04:00",
-                                                               "subject":  "school: fix cleanup tracked-path guard"
+                                                               "head":  "c4d7422c42d25c58fb8a92396aeb5e39fd848516",
+                                                               "committed_at":  "2026-07-12T22:37:25+04:00",
+                                                               "subject":  "school: stream unique learning keys at scale"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -1291,685 +1291,6 @@
                                                               ],
                                             "primary_evidence_refs":  [
                                                                           "contracts/thinking_sandbox/THINKING_SANDBOX_V1_REQUIREMENT.md"
-                                                                      ],
-                                            "needs_triage":  true,
-                                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                                            "source_ref":  "bounded_tracked_file_discovery_v1",
-                                            "is_required_component":  false
-                                        },
-                                        {
-                                            "id":  "living_learning_environment_admission_reviews",
-                                            "path":  "living_learning_environment/admission_reviews",
-                                            "root":  "living_learning_environment/admission_reviews",
-                                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                                            "discovery_method":  "bounded_git_ls_files_path_discovery",
-                                            "evidence_counts":  {
-                                                                    "files":  13,
-                                                                    "scripts":  0,
-                                                                    "validators":  0,
-                                                                    "proofs":  0,
-                                                                    "contracts_or_policies":  1,
-                                                                    "docs":  0
-                                                                },
-                                            "file_count":  13,
-                                            "script_count":  0,
-                                            "validator_count":  0,
-                                            "proof_file_count":  0,
-                                            "contract_or_policy_count":  1,
-                                            "doc_count":  0,
-                                            "validator_refs":  [
-
-                                                               ],
-                                            "proof_refs":  [
-
-                                                           ],
-                                            "contract_or_policy_refs":  [
-                                                                            "living_learning_environment/admission_reviews/PHASE155_SELF_GROWTH_RUNTIME_ADMISSION_REVIEW_001/bounded_reuse_policy.json"
-                                                                        ],
-                                            "notable_files":  [
-                                                                  "living_learning_environment/admission_reviews/PHASE155_SELF_GROWTH_RUNTIME_ADMISSION_REVIEW_001/admission_review_trace.json",
-                                                                  "living_learning_environment/admission_reviews/PHASE155_SELF_GROWTH_RUNTIME_ADMISSION_REVIEW_001/bounded_reuse_policy.json",
-                                                                  "living_learning_environment/admission_reviews/PHASE155_SELF_GROWTH_RUNTIME_ADMISSION_REVIEW_001/evidence_chain_review.json",
-                                                                  "living_learning_environment/admission_reviews/PHASE155_SELF_GROWTH_RUNTIME_ADMISSION_REVIEW_001/next_cycle_decision.json",
-                                                                  "living_learning_environment/admission_reviews/PHASE155_SELF_GROWTH_RUNTIME_ADMISSION_REVIEW_001/next_trial_ticket.json",
-                                                                  "living_learning_environment/admission_reviews/PHASE155_SELF_GROWTH_RUNTIME_ADMISSION_REVIEW_001/non_promotion_decision.json",
-                                                                  "living_learning_environment/admission_reviews/PHASE155_SELF_GROWTH_RUNTIME_ADMISSION_REVIEW_001/phase153_review.json",
-                                                                  "living_learning_environment/admission_reviews/PHASE155_SELF_GROWTH_RUNTIME_ADMISSION_REVIEW_001/phase154_review.json",
-                                                                  "living_learning_environment/admission_reviews/PHASE155_SELF_GROWTH_RUNTIME_ADMISSION_REVIEW_001/review_boot.json",
-                                                                  "living_learning_environment/admission_reviews/PHASE155_SELF_GROWTH_RUNTIME_ADMISSION_REVIEW_001/runtime_admission_decision.json",
-                                                                  "living_learning_environment/admission_reviews/PHASE155_SELF_GROWTH_RUNTIME_ADMISSION_REVIEW_001/runtime_reuse_decision.json",
-                                                                  "living_learning_environment/admission_reviews/PHASE155_SELF_GROWTH_RUNTIME_ADMISSION_REVIEW_001/runtime_safety_review.json",
-                                                                  "living_learning_environment/admission_reviews/PHASE155_SELF_GROWTH_RUNTIME_ADMISSION_REVIEW_001/self_model_update_candidate.json"
-                                                              ],
-                                            "primary_evidence_refs":  [
-                                                                          "living_learning_environment/admission_reviews/PHASE155_SELF_GROWTH_RUNTIME_ADMISSION_REVIEW_001/bounded_reuse_policy.json"
-                                                                      ],
-                                            "needs_triage":  true,
-                                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                                            "source_ref":  "bounded_tracked_file_discovery_v1",
-                                            "is_required_component":  false
-                                        },
-                                        {
-                                            "id":  "living_learning_environment_body",
-                                            "path":  "living_learning_environment/body",
-                                            "root":  "living_learning_environment/body",
-                                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                                            "discovery_method":  "bounded_git_ls_files_path_discovery",
-                                            "evidence_counts":  {
-                                                                    "files":  36,
-                                                                    "scripts":  0,
-                                                                    "validators":  0,
-                                                                    "proofs":  1,
-                                                                    "contracts_or_policies":  8,
-                                                                    "docs":  0
-                                                                },
-                                            "file_count":  36,
-                                            "script_count":  0,
-                                            "validator_count":  0,
-                                            "proof_file_count":  1,
-                                            "contract_or_policy_count":  8,
-                                            "doc_count":  0,
-                                            "validator_refs":  [
-
-                                                               ],
-                                            "proof_refs":  [
-                                                               "living_learning_environment/body/organs/PROOF_MEMORY_SENSOR_V1.json"
-                                                           ],
-                                            "contract_or_policy_refs":  [
-                                                                            "living_learning_environment/body/body_policy.json",
-                                                                            "living_learning_environment/body/body_runtime_contract.json",
-                                                                            "living_learning_environment/body/contracts/BODY_ORGAN_CONTRACT_V1.json",
-                                                                            "living_learning_environment/body/contracts/DUTY_LOOP_CONTROLLER_CONTRACT_V1.json",
-                                                                            "living_learning_environment/body/contracts/FAILURE_RECOVERY_CONTRACT_V1.json",
-                                                                            "living_learning_environment/body/contracts/MEMORY_ABSORPTION_CONTRACT_V1.json",
-                                                                            "living_learning_environment/body/contracts/PORTABILITY_CONTRACT_V1.json",
-                                                                            "living_learning_environment/body/contracts/SELF_BUILD_SANDBOX_EXECUTOR_CONTRACT_V1.json"
-                                                                        ],
-                                            "notable_files":  [
-                                                                  "living_learning_environment/body/BUILDER_BODY_ORGAN_PACK_V1.json",
-                                                                  "living_learning_environment/body/body_policy.json",
-                                                                  "living_learning_environment/body/body_portability_manifest.json",
-                                                                  "living_learning_environment/body/body_registry.json",
-                                                                  "living_learning_environment/body/body_runtime_contract.json",
-                                                                  "living_learning_environment/body/body_safety_boundaries.json",
-                                                                  "living_learning_environment/body/contracts/BODY_ORGAN_CONTRACT_V1.json",
-                                                                  "living_learning_environment/body/contracts/DUTY_LOOP_CONTROLLER_CONTRACT_V1.json",
-                                                                  "living_learning_environment/body/contracts/FAILURE_RECOVERY_CONTRACT_V1.json",
-                                                                  "living_learning_environment/body/contracts/MEMORY_ABSORPTION_CONTRACT_V1.json",
-                                                                  "living_learning_environment/body/contracts/PORTABILITY_CONTRACT_V1.json",
-                                                                  "living_learning_environment/body/contracts/SELF_BUILD_SANDBOX_EXECUTOR_CONTRACT_V1.json",
-                                                                  "living_learning_environment/body/organs/CAPABILITY_GAP_DETECTOR_V1.json",
-                                                                  "living_learning_environment/body/organs/CAPABILITY_SHELF_READER_V1.json",
-                                                                  "living_learning_environment/body/organs/DUTY_LOOP_CONTROLLER_V1.json",
-                                                                  "living_learning_environment/body/organs/FAILURE_CLASSIFIER_V1.json",
-                                                                  "living_learning_environment/body/organs/GOAL_STATE_MANAGER_V1.json",
-                                                                  "living_learning_environment/body/organs/INTERNAL_ANSWER_SEARCHER_V1.json",
-                                                                  "living_learning_environment/body/organs/INTERNAL_QUESTION_ENGINE_V1.json",
-                                                                  "living_learning_environment/body/organs/KNOWLEDGE_MEMORY_READER_V1.json",
-                                                                  "living_learning_environment/body/organs/MEMORY_ABSORBER_V1.json",
-                                                                  "living_learning_environment/body/organs/MIGRATION_PORTABILITY_PREPARER_V1.json",
-                                                                  "living_learning_environment/body/organs/NEXT_CYCLE_DECIDER_V1.json",
-                                                                  "living_learning_environment/body/organs/ORGAN_COMPOSER_V1.json",
-                                                                  "living_learning_environment/body/organs/OWNER_ESCALATION_GATE_V1.json"
-                                                              ],
-                                            "primary_evidence_refs":  [
-                                                                          "living_learning_environment/body/body_policy.json",
-                                                                          "living_learning_environment/body/body_runtime_contract.json",
-                                                                          "living_learning_environment/body/contracts/BODY_ORGAN_CONTRACT_V1.json",
-                                                                          "living_learning_environment/body/contracts/DUTY_LOOP_CONTROLLER_CONTRACT_V1.json",
-                                                                          "living_learning_environment/body/contracts/FAILURE_RECOVERY_CONTRACT_V1.json",
-                                                                          "living_learning_environment/body/contracts/MEMORY_ABSORPTION_CONTRACT_V1.json",
-                                                                          "living_learning_environment/body/contracts/PORTABILITY_CONTRACT_V1.json",
-                                                                          "living_learning_environment/body/contracts/SELF_BUILD_SANDBOX_EXECUTOR_CONTRACT_V1.json",
-                                                                          "living_learning_environment/body/organs/PROOF_MEMORY_SENSOR_V1.json"
-                                                                      ],
-                                            "needs_triage":  true,
-                                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                                            "source_ref":  "bounded_tracked_file_discovery_v1",
-                                            "is_required_component":  false
-                                        },
-                                        {
-                                            "id":  "living_learning_environment_module_requests",
-                                            "path":  "living_learning_environment/module_requests",
-                                            "root":  "living_learning_environment/module_requests",
-                                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                                            "discovery_method":  "bounded_git_ls_files_path_discovery",
-                                            "evidence_counts":  {
-                                                                    "files":  2,
-                                                                    "scripts":  0,
-                                                                    "validators":  0,
-                                                                    "proofs":  0,
-                                                                    "contracts_or_policies":  0,
-                                                                    "docs":  1
-                                                                },
-                                            "file_count":  2,
-                                            "script_count":  0,
-                                            "validator_count":  0,
-                                            "proof_file_count":  0,
-                                            "contract_or_policy_count":  0,
-                                            "doc_count":  1,
-                                            "validator_refs":  [
-
-                                                               ],
-                                            "proof_refs":  [
-
-                                                           ],
-                                            "contract_or_policy_refs":  [
-
-                                                                        ],
-                                            "notable_files":  [
-                                                                  "living_learning_environment/module_requests/PHASE150_SELF_BUILD_PROGRAM_GENERATOR_REQUEST.json",
-                                                                  "living_learning_environment/module_requests/README.md"
-                                                              ],
-                                            "primary_evidence_refs":  [
-
-                                                                      ],
-                                            "needs_triage":  true,
-                                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                                            "source_ref":  "bounded_tracked_file_discovery_v1",
-                                            "is_required_component":  false
-                                        },
-                                        {
-                                            "id":  "living_learning_environment_observations",
-                                            "path":  "living_learning_environment/observations",
-                                            "root":  "living_learning_environment/observations",
-                                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                                            "discovery_method":  "bounded_git_ls_files_path_discovery",
-                                            "evidence_counts":  {
-                                                                    "files":  1,
-                                                                    "scripts":  0,
-                                                                    "validators":  0,
-                                                                    "proofs":  0,
-                                                                    "contracts_or_policies":  0,
-                                                                    "docs":  1
-                                                                },
-                                            "file_count":  1,
-                                            "script_count":  0,
-                                            "validator_count":  0,
-                                            "proof_file_count":  0,
-                                            "contract_or_policy_count":  0,
-                                            "doc_count":  1,
-                                            "validator_refs":  [
-
-                                                               ],
-                                            "proof_refs":  [
-
-                                                           ],
-                                            "contract_or_policy_refs":  [
-
-                                                                        ],
-                                            "notable_files":  [
-                                                                  "living_learning_environment/observations/README.md"
-                                                              ],
-                                            "primary_evidence_refs":  [
-
-                                                                      ],
-                                            "needs_triage":  true,
-                                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                                            "source_ref":  "bounded_tracked_file_discovery_v1",
-                                            "is_required_component":  false
-                                        },
-                                        {
-                                            "id":  "living_learning_environment_promotion_candidates",
-                                            "path":  "living_learning_environment/promotion_candidates",
-                                            "root":  "living_learning_environment/promotion_candidates",
-                                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                                            "discovery_method":  "bounded_git_ls_files_path_discovery",
-                                            "evidence_counts":  {
-                                                                    "files":  2,
-                                                                    "scripts":  0,
-                                                                    "validators":  0,
-                                                                    "proofs":  0,
-                                                                    "contracts_or_policies":  0,
-                                                                    "docs":  1
-                                                                },
-                                            "file_count":  2,
-                                            "script_count":  0,
-                                            "validator_count":  0,
-                                            "proof_file_count":  0,
-                                            "contract_or_policy_count":  0,
-                                            "doc_count":  1,
-                                            "validator_refs":  [
-
-                                                               ],
-                                            "proof_refs":  [
-
-                                                           ],
-                                            "contract_or_policy_refs":  [
-
-                                                                        ],
-                                            "notable_files":  [
-                                                                  "living_learning_environment/promotion_candidates/PHASE150_SELF_BUILD_PROGRAM_CANDIDATE_PROMOTION_CANDIDATE.json",
-                                                                  "living_learning_environment/promotion_candidates/README.md"
-                                                              ],
-                                            "primary_evidence_refs":  [
-
-                                                                      ],
-                                            "needs_triage":  true,
-                                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                                            "source_ref":  "bounded_tracked_file_discovery_v1",
-                                            "is_required_component":  false
-                                        },
-                                        {
-                                            "id":  "living_learning_environment_promotion_gates",
-                                            "path":  "living_learning_environment/promotion_gates",
-                                            "root":  "living_learning_environment/promotion_gates",
-                                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                                            "discovery_method":  "bounded_git_ls_files_path_discovery",
-                                            "evidence_counts":  {
-                                                                    "files":  1,
-                                                                    "scripts":  0,
-                                                                    "validators":  0,
-                                                                    "proofs":  0,
-                                                                    "contracts_or_policies":  0,
-                                                                    "docs":  1
-                                                                },
-                                            "file_count":  1,
-                                            "script_count":  0,
-                                            "validator_count":  0,
-                                            "proof_file_count":  0,
-                                            "contract_or_policy_count":  0,
-                                            "doc_count":  1,
-                                            "validator_refs":  [
-
-                                                               ],
-                                            "proof_refs":  [
-
-                                                           ],
-                                            "contract_or_policy_refs":  [
-
-                                                                        ],
-                                            "notable_files":  [
-                                                                  "living_learning_environment/promotion_gates/README.md"
-                                                              ],
-                                            "primary_evidence_refs":  [
-
-                                                                      ],
-                                            "needs_triage":  true,
-                                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                                            "source_ref":  "bounded_tracked_file_discovery_v1",
-                                            "is_required_component":  false
-                                        },
-                                        {
-                                            "id":  "living_learning_environment_proposals",
-                                            "path":  "living_learning_environment/proposals",
-                                            "root":  "living_learning_environment/proposals",
-                                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                                            "discovery_method":  "bounded_git_ls_files_path_discovery",
-                                            "evidence_counts":  {
-                                                                    "files":  2,
-                                                                    "scripts":  0,
-                                                                    "validators":  0,
-                                                                    "proofs":  0,
-                                                                    "contracts_or_policies":  0,
-                                                                    "docs":  1
-                                                                },
-                                            "file_count":  2,
-                                            "script_count":  0,
-                                            "validator_count":  0,
-                                            "proof_file_count":  0,
-                                            "contract_or_policy_count":  0,
-                                            "doc_count":  1,
-                                            "validator_refs":  [
-
-                                                               ],
-                                            "proof_refs":  [
-
-                                                           ],
-                                            "contract_or_policy_refs":  [
-
-                                                                        ],
-                                            "notable_files":  [
-                                                                  "living_learning_environment/proposals/PHASE149_REUSE_PROPOSAL.json",
-                                                                  "living_learning_environment/proposals/README.md"
-                                                              ],
-                                            "primary_evidence_refs":  [
-
-                                                                      ],
-                                            "needs_triage":  true,
-                                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                                            "source_ref":  "bounded_tracked_file_discovery_v1",
-                                            "is_required_component":  false
-                                        },
-                                        {
-                                            "id":  "living_learning_environment_reading_sessions",
-                                            "path":  "living_learning_environment/reading_sessions",
-                                            "root":  "living_learning_environment/reading_sessions",
-                                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                                            "discovery_method":  "bounded_git_ls_files_path_discovery",
-                                            "evidence_counts":  {
-                                                                    "files":  4,
-                                                                    "scripts":  0,
-                                                                    "validators":  0,
-                                                                    "proofs":  0,
-                                                                    "contracts_or_policies":  1,
-                                                                    "docs":  1
-                                                                },
-                                            "file_count":  4,
-                                            "script_count":  0,
-                                            "validator_count":  0,
-                                            "proof_file_count":  0,
-                                            "contract_or_policy_count":  1,
-                                            "doc_count":  1,
-                                            "validator_refs":  [
-
-                                                               ],
-                                            "proof_refs":  [
-
-                                                           ],
-                                            "contract_or_policy_refs":  [
-                                                                            "living_learning_environment/reading_sessions/PHASE149_READING_REUSE_SESSION_001/source_policy_read_summary.json"
-                                                                        ],
-                                            "notable_files":  [
-                                                                  "living_learning_environment/reading_sessions/PHASE149_READING_REUSE_SESSION_001/capability_reuse_summary.json",
-                                                                  "living_learning_environment/reading_sessions/PHASE149_READING_REUSE_SESSION_001/session_trace.json",
-                                                                  "living_learning_environment/reading_sessions/PHASE149_READING_REUSE_SESSION_001/source_policy_read_summary.json",
-                                                                  "living_learning_environment/reading_sessions/README.md"
-                                                              ],
-                                            "primary_evidence_refs":  [
-                                                                          "living_learning_environment/reading_sessions/PHASE149_READING_REUSE_SESSION_001/source_policy_read_summary.json"
-                                                                      ],
-                                            "needs_triage":  true,
-                                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                                            "source_ref":  "bounded_tracked_file_discovery_v1",
-                                            "is_required_component":  false
-                                        },
-                                        {
-                                            "id":  "living_learning_environment_reuse_trials",
-                                            "path":  "living_learning_environment/reuse_trials",
-                                            "root":  "living_learning_environment/reuse_trials",
-                                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                                            "discovery_method":  "bounded_git_ls_files_path_discovery",
-                                            "evidence_counts":  {
-                                                                    "files":  19,
-                                                                    "scripts":  0,
-                                                                    "validators":  2,
-                                                                    "proofs":  1,
-                                                                    "contracts_or_policies":  2,
-                                                                    "docs":  0
-                                                                },
-                                            "file_count":  19,
-                                            "script_count":  0,
-                                            "validator_count":  2,
-                                            "proof_file_count":  1,
-                                            "contract_or_policy_count":  2,
-                                            "doc_count":  0,
-                                            "validator_refs":  [
-                                                                   "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/generic_spec_execution_validation_result.json",
-                                                                   "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/self_written_build_spec_validation_result.json"
-                                                               ],
-                                            "proof_refs":  [
-                                                               "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/cycle_011_proof_summary_reuse.json"
-                                                           ],
-                                            "contract_or_policy_refs":  [
-                                                                            "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/self_written_build_spec_contract.json",
-                                                                            "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/skill_reuse_policy.json"
-                                                                        ],
-                                            "notable_files":  [
-                                                                  "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/cycle_009_gap_inventory_reuse.json",
-                                                                  "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/cycle_010_repair_task_spec_reuse.json",
-                                                                  "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/cycle_011_proof_summary_reuse.json",
-                                                                  "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/generic_spec_execution_admission.json",
-                                                                  "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/generic_spec_execution_request.json",
-                                                                  "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/generic_spec_execution_validation_result.json",
-                                                                  "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/generic_spec_sandbox_execution_result.json",
-                                                                  "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/next_execution_ticket.json",
-                                                                  "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/phase157_ticket_read.json",
-                                                                  "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/reuse_trial_result.json",
-                                                                  "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/reuse_trial_trace.json",
-                                                                  "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/reviewed_candidate_skill_load.json",
-                                                                  "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/runtime_stop_decision.json",
-                                                                  "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/self_model_update_candidate.json",
-                                                                  "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/self_written_build_spec_candidate.json",
-                                                                  "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/self_written_build_spec_contract.json",
-                                                                  "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/self_written_build_spec_validation_result.json",
-                                                                  "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/skill_reuse_policy.json",
-                                                                  "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/trial_boot.json"
-                                                              ],
-                                            "primary_evidence_refs":  [
-                                                                          "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/cycle_011_proof_summary_reuse.json",
-                                                                          "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/generic_spec_execution_validation_result.json",
-                                                                          "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/self_written_build_spec_contract.json",
-                                                                          "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/self_written_build_spec_validation_result.json",
-                                                                          "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/skill_reuse_policy.json"
-                                                                      ],
-                                            "needs_triage":  true,
-                                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                                            "source_ref":  "bounded_tracked_file_discovery_v1",
-                                            "is_required_component":  false
-                                        },
-                                        {
-                                            "id":  "living_learning_environment_sandbox",
-                                            "path":  "living_learning_environment/sandbox",
-                                            "root":  "living_learning_environment/sandbox",
-                                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                                            "discovery_method":  "bounded_git_ls_files_path_discovery",
-                                            "evidence_counts":  {
-                                                                    "files":  35,
-                                                                    "scripts":  0,
-                                                                    "validators":  1,
-                                                                    "proofs":  1,
-                                                                    "contracts_or_policies":  3,
-                                                                    "docs":  1
-                                                                },
-                                            "file_count":  35,
-                                            "script_count":  0,
-                                            "validator_count":  1,
-                                            "proof_file_count":  1,
-                                            "contract_or_policy_count":  3,
-                                            "doc_count":  1,
-                                            "validator_refs":  [
-                                                                   "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/sandbox_validation_result.json"
-                                                               ],
-                                            "proof_refs":  [
-                                                               "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/proof_memory_observation.json"
-                                                           ],
-                                            "contract_or_policy_refs":  [
-                                                                            "living_learning_environment/sandbox/PHASE150_SELF_BUILD_IGNITION_BRIDGE_001/self_build_program_contract.json",
-                                                                            "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/micro_organ_contract.json",
-                                                                            "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/source_policy_guard_result.json"
-                                                                        ],
-                                            "notable_files":  [
-                                                                  "living_learning_environment/sandbox/PHASE150_SELF_BUILD_IGNITION_BRIDGE_001/admission_checklist.json",
-                                                                  "living_learning_environment/sandbox/PHASE150_SELF_BUILD_IGNITION_BRIDGE_001/future_execution_plan.json",
-                                                                  "living_learning_environment/sandbox/PHASE150_SELF_BUILD_IGNITION_BRIDGE_001/self_build_intent.json",
-                                                                  "living_learning_environment/sandbox/PHASE150_SELF_BUILD_IGNITION_BRIDGE_001/self_build_program_candidate.json",
-                                                                  "living_learning_environment/sandbox/PHASE150_SELF_BUILD_IGNITION_BRIDGE_001/self_build_program_contract.json",
-                                                                  "living_learning_environment/sandbox/PHASE150_SELF_BUILD_IGNITION_BRIDGE_001/trial_trace.json",
-                                                                  "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/body_activation_trace.json",
-                                                                  "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/capability_shelf_read_result.json",
-                                                                  "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/duty_loop_readiness.json",
-                                                                  "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/execution_trace.json",
-                                                                  "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/failure_classification.json",
-                                                                  "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/gap_detection.json",
-                                                                  "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/goal_state_snapshot.json",
-                                                                  "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/input_example.json",
-                                                                  "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/internal_answer.json",
-                                                                  "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/internal_answer_search.json",
-                                                                  "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/internal_question.json",
-                                                                  "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/memory_absorption_candidate.json",
-                                                                  "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/micro_organ_candidate.json",
-                                                                  "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/micro_organ_contract.json",
-                                                                  "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/next_cycle_decision.json",
-                                                                  "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/output_example.json",
-                                                                  "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/portability_readiness_note.json",
-                                                                  "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/proof_memory_observation.json",
-                                                                  "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/quarantine_plan.json"
-                                                              ],
-                                            "primary_evidence_refs":  [
-                                                                          "living_learning_environment/sandbox/PHASE150_SELF_BUILD_IGNITION_BRIDGE_001/self_build_program_contract.json",
-                                                                          "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/micro_organ_contract.json",
-                                                                          "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/proof_memory_observation.json",
-                                                                          "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/sandbox_validation_result.json",
-                                                                          "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/source_policy_guard_result.json"
-                                                                      ],
-                                            "needs_triage":  true,
-                                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                                            "source_ref":  "bounded_tracked_file_discovery_v1",
-                                            "is_required_component":  false
-                                        },
-                                        {
-                                            "id":  "living_learning_environment_self_growth_cycles",
-                                            "path":  "living_learning_environment/self_growth_cycles",
-                                            "root":  "living_learning_environment/self_growth_cycles",
-                                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                                            "discovery_method":  "bounded_git_ls_files_path_discovery",
-                                            "evidence_counts":  {
-                                                                    "files":  35,
-                                                                    "scripts":  0,
-                                                                    "validators":  2,
-                                                                    "proofs":  0,
-                                                                    "contracts_or_policies":  2,
-                                                                    "docs":  0
-                                                                },
-                                            "file_count":  35,
-                                            "script_count":  0,
-                                            "validator_count":  2,
-                                            "proof_file_count":  0,
-                                            "contract_or_policy_count":  2,
-                                            "doc_count":  0,
-                                            "validator_refs":  [
-                                                                   "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_001/skill_validation_result.json",
-                                                                   "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_002/skill_validation_result.json"
-                                                               ],
-                                            "proof_refs":  [
-
-                                                           ],
-                                            "contract_or_policy_refs":  [
-                                                                            "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_001/skill_contract.json",
-                                                                            "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_002/skill_contract.json"
-                                                                        ],
-                                            "notable_files":  [
-                                                                  "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/body_pack_usage_trace.json",
-                                                                  "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/bounded_duty_loop_readiness.json",
-                                                                  "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_001/cycle_trace.json",
-                                                                  "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_001/growth_goal_selection.json",
-                                                                  "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_001/internal_answer.json",
-                                                                  "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_001/internal_question.json",
-                                                                  "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_001/learning_absorption_candidate.json",
-                                                                  "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_001/next_growth_goal.json",
-                                                                  "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_001/sandbox_execution_trace.json",
-                                                                  "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_001/self_build_program_candidate.json",
-                                                                  "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_001/self_diagnosis.json",
-                                                                  "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_001/skill_candidate.json",
-                                                                  "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_001/skill_contract.json",
-                                                                  "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_001/skill_validation_result.json",
-                                                                  "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_001/test_cases.json",
-                                                                  "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_002/cycle_trace.json",
-                                                                  "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_002/growth_goal_selection.json",
-                                                                  "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_002/internal_answer.json",
-                                                                  "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_002/internal_question.json",
-                                                                  "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_002/learning_absorption_candidate.json",
-                                                                  "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_002/next_growth_goal.json",
-                                                                  "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_002/sandbox_execution_trace.json",
-                                                                  "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_002/self_build_program_candidate.json",
-                                                                  "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_002/self_diagnosis.json",
-                                                                  "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_002/skill_candidate.json"
-                                                              ],
-                                            "primary_evidence_refs":  [
-                                                                          "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_001/skill_contract.json",
-                                                                          "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_001/skill_validation_result.json",
-                                                                          "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_002/skill_contract.json",
-                                                                          "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_002/skill_validation_result.json"
-                                                                      ],
-                                            "needs_triage":  true,
-                                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                                            "source_ref":  "bounded_tracked_file_discovery_v1",
-                                            "is_required_component":  false
-                                        },
-                                        {
-                                            "id":  "living_learning_environment_self_growth_runtime",
-                                            "path":  "living_learning_environment/self_growth_runtime",
-                                            "root":  "living_learning_environment/self_growth_runtime",
-                                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                                            "discovery_method":  "bounded_git_ls_files_path_discovery",
-                                            "evidence_counts":  {
-                                                                    "files":  6,
-                                                                    "scripts":  0,
-                                                                    "validators":  0,
-                                                                    "proofs":  0,
-                                                                    "contracts_or_policies":  1,
-                                                                    "docs":  0
-                                                                },
-                                            "file_count":  6,
-                                            "script_count":  0,
-                                            "validator_count":  0,
-                                            "proof_file_count":  0,
-                                            "contract_or_policy_count":  1,
-                                            "doc_count":  0,
-                                            "validator_refs":  [
-
-                                                               ],
-                                            "proof_refs":  [
-
-                                                           ],
-                                            "contract_or_policy_refs":  [
-                                                                            "living_learning_environment/self_growth_runtime/SELF_GROWTH_DUTY_RUNTIME_CONTRACT_V1.json"
-                                                                        ],
-                                            "notable_files":  [
-                                                                  "living_learning_environment/self_growth_runtime/BODY_PACK_ADAPTER_V1.json",
-                                                                  "living_learning_environment/self_growth_runtime/DECLARATIVE_SKILL_FACTORY_V1.json",
-                                                                  "living_learning_environment/self_growth_runtime/SELF_GROWTH_CURRICULUM_V1.json",
-                                                                  "living_learning_environment/self_growth_runtime/SELF_GROWTH_DUTY_RUNTIME_CONTRACT_V1.json",
-                                                                  "living_learning_environment/self_growth_runtime/SELF_GROWTH_DUTY_RUNTIME_V1.json",
-                                                                  "living_learning_environment/self_growth_runtime/SELF_GROWTH_SAFETY_POLICY_V1.json"
-                                                              ],
-                                            "primary_evidence_refs":  [
-                                                                          "living_learning_environment/self_growth_runtime/SELF_GROWTH_DUTY_RUNTIME_CONTRACT_V1.json"
-                                                                      ],
-                                            "needs_triage":  true,
-                                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                                            "source_ref":  "bounded_tracked_file_discovery_v1",
-                                            "is_required_component":  false
-                                        },
-                                        {
-                                            "id":  "living_learning_environment_trial_reviews",
-                                            "path":  "living_learning_environment/trial_reviews",
-                                            "root":  "living_learning_environment/trial_reviews",
-                                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                                            "discovery_method":  "bounded_git_ls_files_path_discovery",
-                                            "evidence_counts":  {
-                                                                    "files":  15,
-                                                                    "scripts":  0,
-                                                                    "validators":  1,
-                                                                    "proofs":  0,
-                                                                    "contracts_or_policies":  0,
-                                                                    "docs":  0
-                                                                },
-                                            "file_count":  15,
-                                            "script_count":  0,
-                                            "validator_count":  1,
-                                            "proof_file_count":  0,
-                                            "contract_or_policy_count":  0,
-                                            "doc_count":  0,
-                                            "validator_refs":  [
-                                                                   "living_learning_environment/trial_reviews/PHASE157_SELF_SELECTED_GAP_TRIAL_REVIEW_001/skill_validation_review.json"
-                                                               ],
-                                            "proof_refs":  [
-
-                                                           ],
-                                            "contract_or_policy_refs":  [
-
-                                                                        ],
-                                            "notable_files":  [
-                                                                  "living_learning_environment/trial_reviews/PHASE157_SELF_SELECTED_GAP_TRIAL_REVIEW_001/bounded_reuse_decision.json",
-                                                                  "living_learning_environment/trial_reviews/PHASE157_SELF_SELECTED_GAP_TRIAL_REVIEW_001/cycle_006_review.json",
-                                                                  "living_learning_environment/trial_reviews/PHASE157_SELF_SELECTED_GAP_TRIAL_REVIEW_001/cycle_007_review.json",
-                                                                  "living_learning_environment/trial_reviews/PHASE157_SELF_SELECTED_GAP_TRIAL_REVIEW_001/cycle_008_review.json",
-                                                                  "living_learning_environment/trial_reviews/PHASE157_SELF_SELECTED_GAP_TRIAL_REVIEW_001/gap_chain_review.json",
-                                                                  "living_learning_environment/trial_reviews/PHASE157_SELF_SELECTED_GAP_TRIAL_REVIEW_001/next_cycle_decision.json",
-                                                                  "living_learning_environment/trial_reviews/PHASE157_SELF_SELECTED_GAP_TRIAL_REVIEW_001/next_reuse_ticket.json",
-                                                                  "living_learning_environment/trial_reviews/PHASE157_SELF_SELECTED_GAP_TRIAL_REVIEW_001/non_promotion_decision.json",
-                                                                  "living_learning_environment/trial_reviews/PHASE157_SELF_SELECTED_GAP_TRIAL_REVIEW_001/phase156_evidence_read.json",
-                                                                  "living_learning_environment/trial_reviews/PHASE157_SELF_SELECTED_GAP_TRIAL_REVIEW_001/review_boot.json",
-                                                                  "living_learning_environment/trial_reviews/PHASE157_SELF_SELECTED_GAP_TRIAL_REVIEW_001/sandbox_candidate_decision.json",
-                                                                  "living_learning_environment/trial_reviews/PHASE157_SELF_SELECTED_GAP_TRIAL_REVIEW_001/self_model_update_candidate.json",
-                                                                  "living_learning_environment/trial_reviews/PHASE157_SELF_SELECTED_GAP_TRIAL_REVIEW_001/skill_candidate_quality_review.json",
-                                                                  "living_learning_environment/trial_reviews/PHASE157_SELF_SELECTED_GAP_TRIAL_REVIEW_001/skill_validation_review.json",
-                                                                  "living_learning_environment/trial_reviews/PHASE157_SELF_SELECTED_GAP_TRIAL_REVIEW_001/trial_review_trace.json"
-                                                              ],
-                                            "primary_evidence_refs":  [
-                                                                          "living_learning_environment/trial_reviews/PHASE157_SELF_SELECTED_GAP_TRIAL_REVIEW_001/skill_validation_review.json"
                                                                       ],
                                             "needs_triage":  true,
                                             "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
@@ -8383,14 +7704,14 @@
                                             "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                                             "discovery_method":  "bounded_git_ls_files_path_discovery",
                                             "evidence_counts":  {
-                                                                    "files":  154,
+                                                                    "files":  141,
                                                                     "scripts":  0,
                                                                     "validators":  3,
                                                                     "proofs":  18,
                                                                     "contracts_or_policies":  20,
                                                                     "docs":  0
                                                                 },
-                                            "file_count":  154,
+                                            "file_count":  141,
                                             "script_count":  0,
                                             "validator_count":  3,
                                             "proof_file_count":  18,
@@ -8451,24 +7772,24 @@
                                                                   "self_model/organ_passports/contracts_operations/ORGAN_PASSPORT_V1.json",
                                                                   "self_model/organ_passports/contracts_self_development/ORGAN_PASSPORT_V1.json",
                                                                   "self_model/organ_passports/contracts_self_knowledge/ORGAN_PASSPORT_V1.json",
-                                                                  "self_model/organ_passports/living_learning_environment_admission_reviews/ORGAN_PASSPORT_V1.json",
-                                                                  "self_model/organ_passports/living_learning_environment_body/ORGAN_PASSPORT_V1.json",
-                                                                  "self_model/organ_passports/living_learning_environment_module_requests/ORGAN_PASSPORT_V1.json",
-                                                                  "self_model/organ_passports/living_learning_environment_observations/ORGAN_PASSPORT_V1.json",
-                                                                  "self_model/organ_passports/living_learning_environment_promotion_candidates/ORGAN_PASSPORT_V1.json",
-                                                                  "self_model/organ_passports/living_learning_environment_promotion_gates/ORGAN_PASSPORT_V1.json",
-                                                                  "self_model/organ_passports/living_learning_environment_proposals/ORGAN_PASSPORT_V1.json",
-                                                                  "self_model/organ_passports/living_learning_environment_reading_sessions/ORGAN_PASSPORT_V1.json",
-                                                                  "self_model/organ_passports/living_learning_environment_reuse_trials/ORGAN_PASSPORT_V1.json",
-                                                                  "self_model/organ_passports/living_learning_environment_sandbox/ORGAN_PASSPORT_V1.json",
-                                                                  "self_model/organ_passports/living_learning_environment_self_growth_cycles/ORGAN_PASSPORT_V1.json",
-                                                                  "self_model/organ_passports/living_learning_environment_self_growth_runtime/ORGAN_PASSPORT_V1.json",
-                                                                  "self_model/organ_passports/living_learning_environment_trial_reviews/ORGAN_PASSPORT_V1.json",
                                                                   "self_model/organ_passports/modules_materials/ORGAN_PASSPORT_V1.json",
                                                                   "self_model/organ_passports/modules_operations/ORGAN_PASSPORT_V1.json",
                                                                   "self_model/organ_passports/modules_route_locks/ORGAN_PASSPORT_V1.json",
                                                                   "self_model/organ_passports/modules_self_development/ORGAN_PASSPORT_V1.json",
-                                                                  "self_model/organ_passports/operations_accepted_atom_retention_calibration/ORGAN_PASSPORT_V1.json"
+                                                                  "self_model/organ_passports/operations_accepted_atom_retention_calibration/ORGAN_PASSPORT_V1.json",
+                                                                  "self_model/organ_passports/operations_active_behavior/ORGAN_PASSPORT_V1.json",
+                                                                  "self_model/organ_passports/operations_autonomy_diagnostics/ORGAN_PASSPORT_V1.json",
+                                                                  "self_model/organ_passports/operations_bridge_diagnostics/ORGAN_PASSPORT_V1.json",
+                                                                  "self_model/organ_passports/operations_live_like/ORGAN_PASSPORT_V1.json",
+                                                                  "self_model/organ_passports/operations_live_readiness/ORGAN_PASSPORT_V1.json",
+                                                                  "self_model/organ_passports/operations_live_start/ORGAN_PASSPORT_V1.json",
+                                                                  "self_model/organ_passports/operations_memory/ORGAN_PASSPORT_V1.json",
+                                                                  "self_model/organ_passports/operations_organ_promotion_lanes/ORGAN_PASSPORT_V1.json",
+                                                                  "self_model/organ_passports/operations_overnight_school/ORGAN_PASSPORT_V1.json",
+                                                                  "self_model/organ_passports/operations_parallel_life/ORGAN_PASSPORT_V1.json",
+                                                                  "self_model/organ_passports/operations_readme_md/ORGAN_PASSPORT_V1.json",
+                                                                  "self_model/organ_passports/operations_reasoning/ORGAN_PASSPORT_V1.json",
+                                                                  "self_model/organ_passports/operations_reflex_library/ORGAN_PASSPORT_V1.json"
                                                               ],
                                             "primary_evidence_refs":  [
                                                                           "self_model/organ_passports/contracts_accepted_atom_retention_organ/ORGAN_PASSPORT_V1.json",
@@ -8572,11 +7893,11 @@
                                 ],
     "component_authority_summary":  {
                                         "confirmed_components":  8,
-                                        "primary_evidence_candidates":  156,
+                                        "primary_evidence_candidates":  143,
                                         "legacy_unverified_hints":  4,
                                         "rejected_or_stale_hints":  3,
                                         "required_components":  8,
-                                        "total_components_in_compatibility_view":  164,
+                                        "total_components_in_compatibility_view":  151,
                                         "bounded_discovery_pathspecs":  [
                                                                             "operations",
                                                                             "modules",
@@ -8756,9 +8077,9 @@
                                                       "operations/school/value_grounded/validate_value_grounded_curriculum_prep_v1.ps1"
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "f84d9bc158dd70b1b6ada43c9305adfaaa954a46",
-                                                     "committed_at":  "2026-07-12T13:52:22+04:00",
-                                                     "subject":  "school: fix cleanup tracked-path guard"
+                                                     "head":  "c4d7422c42d25c58fb8a92396aeb5e39fd848516",
+                                                     "committed_at":  "2026-07-12T22:37:25+04:00",
+                                                     "subject":  "school: stream unique learning keys at scale"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -9344,9 +8665,9 @@
 
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "f84d9bc158dd70b1b6ada43c9305adfaaa954a46",
-                                                     "committed_at":  "2026-07-12T13:52:22+04:00",
-                                                     "subject":  "school: fix cleanup tracked-path guard"
+                                                     "head":  "c4d7422c42d25c58fb8a92396aeb5e39fd848516",
+                                                     "committed_at":  "2026-07-12T22:37:25+04:00",
+                                                     "subject":  "school: stream unique learning keys at scale"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -9867,685 +9188,6 @@
                                              ],
                            "primary_evidence_refs":  [
                                                          "contracts/thinking_sandbox/THINKING_SANDBOX_V1_REQUIREMENT.md"
-                                                     ],
-                           "needs_triage":  true,
-                           "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                           "source_ref":  "bounded_tracked_file_discovery_v1",
-                           "is_required_component":  false
-                       },
-                       {
-                           "id":  "living_learning_environment_admission_reviews",
-                           "path":  "living_learning_environment/admission_reviews",
-                           "root":  "living_learning_environment/admission_reviews",
-                           "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                           "discovery_method":  "bounded_git_ls_files_path_discovery",
-                           "evidence_counts":  {
-                                                   "files":  13,
-                                                   "scripts":  0,
-                                                   "validators":  0,
-                                                   "proofs":  0,
-                                                   "contracts_or_policies":  1,
-                                                   "docs":  0
-                                               },
-                           "file_count":  13,
-                           "script_count":  0,
-                           "validator_count":  0,
-                           "proof_file_count":  0,
-                           "contract_or_policy_count":  1,
-                           "doc_count":  0,
-                           "validator_refs":  [
-
-                                              ],
-                           "proof_refs":  [
-
-                                          ],
-                           "contract_or_policy_refs":  [
-                                                           "living_learning_environment/admission_reviews/PHASE155_SELF_GROWTH_RUNTIME_ADMISSION_REVIEW_001/bounded_reuse_policy.json"
-                                                       ],
-                           "notable_files":  [
-                                                 "living_learning_environment/admission_reviews/PHASE155_SELF_GROWTH_RUNTIME_ADMISSION_REVIEW_001/admission_review_trace.json",
-                                                 "living_learning_environment/admission_reviews/PHASE155_SELF_GROWTH_RUNTIME_ADMISSION_REVIEW_001/bounded_reuse_policy.json",
-                                                 "living_learning_environment/admission_reviews/PHASE155_SELF_GROWTH_RUNTIME_ADMISSION_REVIEW_001/evidence_chain_review.json",
-                                                 "living_learning_environment/admission_reviews/PHASE155_SELF_GROWTH_RUNTIME_ADMISSION_REVIEW_001/next_cycle_decision.json",
-                                                 "living_learning_environment/admission_reviews/PHASE155_SELF_GROWTH_RUNTIME_ADMISSION_REVIEW_001/next_trial_ticket.json",
-                                                 "living_learning_environment/admission_reviews/PHASE155_SELF_GROWTH_RUNTIME_ADMISSION_REVIEW_001/non_promotion_decision.json",
-                                                 "living_learning_environment/admission_reviews/PHASE155_SELF_GROWTH_RUNTIME_ADMISSION_REVIEW_001/phase153_review.json",
-                                                 "living_learning_environment/admission_reviews/PHASE155_SELF_GROWTH_RUNTIME_ADMISSION_REVIEW_001/phase154_review.json",
-                                                 "living_learning_environment/admission_reviews/PHASE155_SELF_GROWTH_RUNTIME_ADMISSION_REVIEW_001/review_boot.json",
-                                                 "living_learning_environment/admission_reviews/PHASE155_SELF_GROWTH_RUNTIME_ADMISSION_REVIEW_001/runtime_admission_decision.json",
-                                                 "living_learning_environment/admission_reviews/PHASE155_SELF_GROWTH_RUNTIME_ADMISSION_REVIEW_001/runtime_reuse_decision.json",
-                                                 "living_learning_environment/admission_reviews/PHASE155_SELF_GROWTH_RUNTIME_ADMISSION_REVIEW_001/runtime_safety_review.json",
-                                                 "living_learning_environment/admission_reviews/PHASE155_SELF_GROWTH_RUNTIME_ADMISSION_REVIEW_001/self_model_update_candidate.json"
-                                             ],
-                           "primary_evidence_refs":  [
-                                                         "living_learning_environment/admission_reviews/PHASE155_SELF_GROWTH_RUNTIME_ADMISSION_REVIEW_001/bounded_reuse_policy.json"
-                                                     ],
-                           "needs_triage":  true,
-                           "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                           "source_ref":  "bounded_tracked_file_discovery_v1",
-                           "is_required_component":  false
-                       },
-                       {
-                           "id":  "living_learning_environment_body",
-                           "path":  "living_learning_environment/body",
-                           "root":  "living_learning_environment/body",
-                           "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                           "discovery_method":  "bounded_git_ls_files_path_discovery",
-                           "evidence_counts":  {
-                                                   "files":  36,
-                                                   "scripts":  0,
-                                                   "validators":  0,
-                                                   "proofs":  1,
-                                                   "contracts_or_policies":  8,
-                                                   "docs":  0
-                                               },
-                           "file_count":  36,
-                           "script_count":  0,
-                           "validator_count":  0,
-                           "proof_file_count":  1,
-                           "contract_or_policy_count":  8,
-                           "doc_count":  0,
-                           "validator_refs":  [
-
-                                              ],
-                           "proof_refs":  [
-                                              "living_learning_environment/body/organs/PROOF_MEMORY_SENSOR_V1.json"
-                                          ],
-                           "contract_or_policy_refs":  [
-                                                           "living_learning_environment/body/body_policy.json",
-                                                           "living_learning_environment/body/body_runtime_contract.json",
-                                                           "living_learning_environment/body/contracts/BODY_ORGAN_CONTRACT_V1.json",
-                                                           "living_learning_environment/body/contracts/DUTY_LOOP_CONTROLLER_CONTRACT_V1.json",
-                                                           "living_learning_environment/body/contracts/FAILURE_RECOVERY_CONTRACT_V1.json",
-                                                           "living_learning_environment/body/contracts/MEMORY_ABSORPTION_CONTRACT_V1.json",
-                                                           "living_learning_environment/body/contracts/PORTABILITY_CONTRACT_V1.json",
-                                                           "living_learning_environment/body/contracts/SELF_BUILD_SANDBOX_EXECUTOR_CONTRACT_V1.json"
-                                                       ],
-                           "notable_files":  [
-                                                 "living_learning_environment/body/BUILDER_BODY_ORGAN_PACK_V1.json",
-                                                 "living_learning_environment/body/body_policy.json",
-                                                 "living_learning_environment/body/body_portability_manifest.json",
-                                                 "living_learning_environment/body/body_registry.json",
-                                                 "living_learning_environment/body/body_runtime_contract.json",
-                                                 "living_learning_environment/body/body_safety_boundaries.json",
-                                                 "living_learning_environment/body/contracts/BODY_ORGAN_CONTRACT_V1.json",
-                                                 "living_learning_environment/body/contracts/DUTY_LOOP_CONTROLLER_CONTRACT_V1.json",
-                                                 "living_learning_environment/body/contracts/FAILURE_RECOVERY_CONTRACT_V1.json",
-                                                 "living_learning_environment/body/contracts/MEMORY_ABSORPTION_CONTRACT_V1.json",
-                                                 "living_learning_environment/body/contracts/PORTABILITY_CONTRACT_V1.json",
-                                                 "living_learning_environment/body/contracts/SELF_BUILD_SANDBOX_EXECUTOR_CONTRACT_V1.json",
-                                                 "living_learning_environment/body/organs/CAPABILITY_GAP_DETECTOR_V1.json",
-                                                 "living_learning_environment/body/organs/CAPABILITY_SHELF_READER_V1.json",
-                                                 "living_learning_environment/body/organs/DUTY_LOOP_CONTROLLER_V1.json",
-                                                 "living_learning_environment/body/organs/FAILURE_CLASSIFIER_V1.json",
-                                                 "living_learning_environment/body/organs/GOAL_STATE_MANAGER_V1.json",
-                                                 "living_learning_environment/body/organs/INTERNAL_ANSWER_SEARCHER_V1.json",
-                                                 "living_learning_environment/body/organs/INTERNAL_QUESTION_ENGINE_V1.json",
-                                                 "living_learning_environment/body/organs/KNOWLEDGE_MEMORY_READER_V1.json",
-                                                 "living_learning_environment/body/organs/MEMORY_ABSORBER_V1.json",
-                                                 "living_learning_environment/body/organs/MIGRATION_PORTABILITY_PREPARER_V1.json",
-                                                 "living_learning_environment/body/organs/NEXT_CYCLE_DECIDER_V1.json",
-                                                 "living_learning_environment/body/organs/ORGAN_COMPOSER_V1.json",
-                                                 "living_learning_environment/body/organs/OWNER_ESCALATION_GATE_V1.json"
-                                             ],
-                           "primary_evidence_refs":  [
-                                                         "living_learning_environment/body/body_policy.json",
-                                                         "living_learning_environment/body/body_runtime_contract.json",
-                                                         "living_learning_environment/body/contracts/BODY_ORGAN_CONTRACT_V1.json",
-                                                         "living_learning_environment/body/contracts/DUTY_LOOP_CONTROLLER_CONTRACT_V1.json",
-                                                         "living_learning_environment/body/contracts/FAILURE_RECOVERY_CONTRACT_V1.json",
-                                                         "living_learning_environment/body/contracts/MEMORY_ABSORPTION_CONTRACT_V1.json",
-                                                         "living_learning_environment/body/contracts/PORTABILITY_CONTRACT_V1.json",
-                                                         "living_learning_environment/body/contracts/SELF_BUILD_SANDBOX_EXECUTOR_CONTRACT_V1.json",
-                                                         "living_learning_environment/body/organs/PROOF_MEMORY_SENSOR_V1.json"
-                                                     ],
-                           "needs_triage":  true,
-                           "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                           "source_ref":  "bounded_tracked_file_discovery_v1",
-                           "is_required_component":  false
-                       },
-                       {
-                           "id":  "living_learning_environment_module_requests",
-                           "path":  "living_learning_environment/module_requests",
-                           "root":  "living_learning_environment/module_requests",
-                           "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                           "discovery_method":  "bounded_git_ls_files_path_discovery",
-                           "evidence_counts":  {
-                                                   "files":  2,
-                                                   "scripts":  0,
-                                                   "validators":  0,
-                                                   "proofs":  0,
-                                                   "contracts_or_policies":  0,
-                                                   "docs":  1
-                                               },
-                           "file_count":  2,
-                           "script_count":  0,
-                           "validator_count":  0,
-                           "proof_file_count":  0,
-                           "contract_or_policy_count":  0,
-                           "doc_count":  1,
-                           "validator_refs":  [
-
-                                              ],
-                           "proof_refs":  [
-
-                                          ],
-                           "contract_or_policy_refs":  [
-
-                                                       ],
-                           "notable_files":  [
-                                                 "living_learning_environment/module_requests/PHASE150_SELF_BUILD_PROGRAM_GENERATOR_REQUEST.json",
-                                                 "living_learning_environment/module_requests/README.md"
-                                             ],
-                           "primary_evidence_refs":  [
-
-                                                     ],
-                           "needs_triage":  true,
-                           "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                           "source_ref":  "bounded_tracked_file_discovery_v1",
-                           "is_required_component":  false
-                       },
-                       {
-                           "id":  "living_learning_environment_observations",
-                           "path":  "living_learning_environment/observations",
-                           "root":  "living_learning_environment/observations",
-                           "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                           "discovery_method":  "bounded_git_ls_files_path_discovery",
-                           "evidence_counts":  {
-                                                   "files":  1,
-                                                   "scripts":  0,
-                                                   "validators":  0,
-                                                   "proofs":  0,
-                                                   "contracts_or_policies":  0,
-                                                   "docs":  1
-                                               },
-                           "file_count":  1,
-                           "script_count":  0,
-                           "validator_count":  0,
-                           "proof_file_count":  0,
-                           "contract_or_policy_count":  0,
-                           "doc_count":  1,
-                           "validator_refs":  [
-
-                                              ],
-                           "proof_refs":  [
-
-                                          ],
-                           "contract_or_policy_refs":  [
-
-                                                       ],
-                           "notable_files":  [
-                                                 "living_learning_environment/observations/README.md"
-                                             ],
-                           "primary_evidence_refs":  [
-
-                                                     ],
-                           "needs_triage":  true,
-                           "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                           "source_ref":  "bounded_tracked_file_discovery_v1",
-                           "is_required_component":  false
-                       },
-                       {
-                           "id":  "living_learning_environment_promotion_candidates",
-                           "path":  "living_learning_environment/promotion_candidates",
-                           "root":  "living_learning_environment/promotion_candidates",
-                           "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                           "discovery_method":  "bounded_git_ls_files_path_discovery",
-                           "evidence_counts":  {
-                                                   "files":  2,
-                                                   "scripts":  0,
-                                                   "validators":  0,
-                                                   "proofs":  0,
-                                                   "contracts_or_policies":  0,
-                                                   "docs":  1
-                                               },
-                           "file_count":  2,
-                           "script_count":  0,
-                           "validator_count":  0,
-                           "proof_file_count":  0,
-                           "contract_or_policy_count":  0,
-                           "doc_count":  1,
-                           "validator_refs":  [
-
-                                              ],
-                           "proof_refs":  [
-
-                                          ],
-                           "contract_or_policy_refs":  [
-
-                                                       ],
-                           "notable_files":  [
-                                                 "living_learning_environment/promotion_candidates/PHASE150_SELF_BUILD_PROGRAM_CANDIDATE_PROMOTION_CANDIDATE.json",
-                                                 "living_learning_environment/promotion_candidates/README.md"
-                                             ],
-                           "primary_evidence_refs":  [
-
-                                                     ],
-                           "needs_triage":  true,
-                           "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                           "source_ref":  "bounded_tracked_file_discovery_v1",
-                           "is_required_component":  false
-                       },
-                       {
-                           "id":  "living_learning_environment_promotion_gates",
-                           "path":  "living_learning_environment/promotion_gates",
-                           "root":  "living_learning_environment/promotion_gates",
-                           "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                           "discovery_method":  "bounded_git_ls_files_path_discovery",
-                           "evidence_counts":  {
-                                                   "files":  1,
-                                                   "scripts":  0,
-                                                   "validators":  0,
-                                                   "proofs":  0,
-                                                   "contracts_or_policies":  0,
-                                                   "docs":  1
-                                               },
-                           "file_count":  1,
-                           "script_count":  0,
-                           "validator_count":  0,
-                           "proof_file_count":  0,
-                           "contract_or_policy_count":  0,
-                           "doc_count":  1,
-                           "validator_refs":  [
-
-                                              ],
-                           "proof_refs":  [
-
-                                          ],
-                           "contract_or_policy_refs":  [
-
-                                                       ],
-                           "notable_files":  [
-                                                 "living_learning_environment/promotion_gates/README.md"
-                                             ],
-                           "primary_evidence_refs":  [
-
-                                                     ],
-                           "needs_triage":  true,
-                           "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                           "source_ref":  "bounded_tracked_file_discovery_v1",
-                           "is_required_component":  false
-                       },
-                       {
-                           "id":  "living_learning_environment_proposals",
-                           "path":  "living_learning_environment/proposals",
-                           "root":  "living_learning_environment/proposals",
-                           "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                           "discovery_method":  "bounded_git_ls_files_path_discovery",
-                           "evidence_counts":  {
-                                                   "files":  2,
-                                                   "scripts":  0,
-                                                   "validators":  0,
-                                                   "proofs":  0,
-                                                   "contracts_or_policies":  0,
-                                                   "docs":  1
-                                               },
-                           "file_count":  2,
-                           "script_count":  0,
-                           "validator_count":  0,
-                           "proof_file_count":  0,
-                           "contract_or_policy_count":  0,
-                           "doc_count":  1,
-                           "validator_refs":  [
-
-                                              ],
-                           "proof_refs":  [
-
-                                          ],
-                           "contract_or_policy_refs":  [
-
-                                                       ],
-                           "notable_files":  [
-                                                 "living_learning_environment/proposals/PHASE149_REUSE_PROPOSAL.json",
-                                                 "living_learning_environment/proposals/README.md"
-                                             ],
-                           "primary_evidence_refs":  [
-
-                                                     ],
-                           "needs_triage":  true,
-                           "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                           "source_ref":  "bounded_tracked_file_discovery_v1",
-                           "is_required_component":  false
-                       },
-                       {
-                           "id":  "living_learning_environment_reading_sessions",
-                           "path":  "living_learning_environment/reading_sessions",
-                           "root":  "living_learning_environment/reading_sessions",
-                           "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                           "discovery_method":  "bounded_git_ls_files_path_discovery",
-                           "evidence_counts":  {
-                                                   "files":  4,
-                                                   "scripts":  0,
-                                                   "validators":  0,
-                                                   "proofs":  0,
-                                                   "contracts_or_policies":  1,
-                                                   "docs":  1
-                                               },
-                           "file_count":  4,
-                           "script_count":  0,
-                           "validator_count":  0,
-                           "proof_file_count":  0,
-                           "contract_or_policy_count":  1,
-                           "doc_count":  1,
-                           "validator_refs":  [
-
-                                              ],
-                           "proof_refs":  [
-
-                                          ],
-                           "contract_or_policy_refs":  [
-                                                           "living_learning_environment/reading_sessions/PHASE149_READING_REUSE_SESSION_001/source_policy_read_summary.json"
-                                                       ],
-                           "notable_files":  [
-                                                 "living_learning_environment/reading_sessions/PHASE149_READING_REUSE_SESSION_001/capability_reuse_summary.json",
-                                                 "living_learning_environment/reading_sessions/PHASE149_READING_REUSE_SESSION_001/session_trace.json",
-                                                 "living_learning_environment/reading_sessions/PHASE149_READING_REUSE_SESSION_001/source_policy_read_summary.json",
-                                                 "living_learning_environment/reading_sessions/README.md"
-                                             ],
-                           "primary_evidence_refs":  [
-                                                         "living_learning_environment/reading_sessions/PHASE149_READING_REUSE_SESSION_001/source_policy_read_summary.json"
-                                                     ],
-                           "needs_triage":  true,
-                           "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                           "source_ref":  "bounded_tracked_file_discovery_v1",
-                           "is_required_component":  false
-                       },
-                       {
-                           "id":  "living_learning_environment_reuse_trials",
-                           "path":  "living_learning_environment/reuse_trials",
-                           "root":  "living_learning_environment/reuse_trials",
-                           "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                           "discovery_method":  "bounded_git_ls_files_path_discovery",
-                           "evidence_counts":  {
-                                                   "files":  19,
-                                                   "scripts":  0,
-                                                   "validators":  2,
-                                                   "proofs":  1,
-                                                   "contracts_or_policies":  2,
-                                                   "docs":  0
-                                               },
-                           "file_count":  19,
-                           "script_count":  0,
-                           "validator_count":  2,
-                           "proof_file_count":  1,
-                           "contract_or_policy_count":  2,
-                           "doc_count":  0,
-                           "validator_refs":  [
-                                                  "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/generic_spec_execution_validation_result.json",
-                                                  "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/self_written_build_spec_validation_result.json"
-                                              ],
-                           "proof_refs":  [
-                                              "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/cycle_011_proof_summary_reuse.json"
-                                          ],
-                           "contract_or_policy_refs":  [
-                                                           "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/self_written_build_spec_contract.json",
-                                                           "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/skill_reuse_policy.json"
-                                                       ],
-                           "notable_files":  [
-                                                 "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/cycle_009_gap_inventory_reuse.json",
-                                                 "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/cycle_010_repair_task_spec_reuse.json",
-                                                 "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/cycle_011_proof_summary_reuse.json",
-                                                 "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/generic_spec_execution_admission.json",
-                                                 "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/generic_spec_execution_request.json",
-                                                 "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/generic_spec_execution_validation_result.json",
-                                                 "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/generic_spec_sandbox_execution_result.json",
-                                                 "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/next_execution_ticket.json",
-                                                 "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/phase157_ticket_read.json",
-                                                 "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/reuse_trial_result.json",
-                                                 "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/reuse_trial_trace.json",
-                                                 "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/reviewed_candidate_skill_load.json",
-                                                 "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/runtime_stop_decision.json",
-                                                 "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/self_model_update_candidate.json",
-                                                 "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/self_written_build_spec_candidate.json",
-                                                 "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/self_written_build_spec_contract.json",
-                                                 "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/self_written_build_spec_validation_result.json",
-                                                 "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/skill_reuse_policy.json",
-                                                 "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/trial_boot.json"
-                                             ],
-                           "primary_evidence_refs":  [
-                                                         "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/cycle_011_proof_summary_reuse.json",
-                                                         "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/generic_spec_execution_validation_result.json",
-                                                         "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/self_written_build_spec_contract.json",
-                                                         "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/self_written_build_spec_validation_result.json",
-                                                         "living_learning_environment/reuse_trials/PHASE158_REVIEWED_SELF_GAP_SKILL_REUSE_TRIAL_001/skill_reuse_policy.json"
-                                                     ],
-                           "needs_triage":  true,
-                           "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                           "source_ref":  "bounded_tracked_file_discovery_v1",
-                           "is_required_component":  false
-                       },
-                       {
-                           "id":  "living_learning_environment_sandbox",
-                           "path":  "living_learning_environment/sandbox",
-                           "root":  "living_learning_environment/sandbox",
-                           "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                           "discovery_method":  "bounded_git_ls_files_path_discovery",
-                           "evidence_counts":  {
-                                                   "files":  35,
-                                                   "scripts":  0,
-                                                   "validators":  1,
-                                                   "proofs":  1,
-                                                   "contracts_or_policies":  3,
-                                                   "docs":  1
-                                               },
-                           "file_count":  35,
-                           "script_count":  0,
-                           "validator_count":  1,
-                           "proof_file_count":  1,
-                           "contract_or_policy_count":  3,
-                           "doc_count":  1,
-                           "validator_refs":  [
-                                                  "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/sandbox_validation_result.json"
-                                              ],
-                           "proof_refs":  [
-                                              "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/proof_memory_observation.json"
-                                          ],
-                           "contract_or_policy_refs":  [
-                                                           "living_learning_environment/sandbox/PHASE150_SELF_BUILD_IGNITION_BRIDGE_001/self_build_program_contract.json",
-                                                           "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/micro_organ_contract.json",
-                                                           "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/source_policy_guard_result.json"
-                                                       ],
-                           "notable_files":  [
-                                                 "living_learning_environment/sandbox/PHASE150_SELF_BUILD_IGNITION_BRIDGE_001/admission_checklist.json",
-                                                 "living_learning_environment/sandbox/PHASE150_SELF_BUILD_IGNITION_BRIDGE_001/future_execution_plan.json",
-                                                 "living_learning_environment/sandbox/PHASE150_SELF_BUILD_IGNITION_BRIDGE_001/self_build_intent.json",
-                                                 "living_learning_environment/sandbox/PHASE150_SELF_BUILD_IGNITION_BRIDGE_001/self_build_program_candidate.json",
-                                                 "living_learning_environment/sandbox/PHASE150_SELF_BUILD_IGNITION_BRIDGE_001/self_build_program_contract.json",
-                                                 "living_learning_environment/sandbox/PHASE150_SELF_BUILD_IGNITION_BRIDGE_001/trial_trace.json",
-                                                 "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/body_activation_trace.json",
-                                                 "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/capability_shelf_read_result.json",
-                                                 "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/duty_loop_readiness.json",
-                                                 "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/execution_trace.json",
-                                                 "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/failure_classification.json",
-                                                 "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/gap_detection.json",
-                                                 "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/goal_state_snapshot.json",
-                                                 "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/input_example.json",
-                                                 "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/internal_answer.json",
-                                                 "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/internal_answer_search.json",
-                                                 "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/internal_question.json",
-                                                 "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/memory_absorption_candidate.json",
-                                                 "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/micro_organ_candidate.json",
-                                                 "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/micro_organ_contract.json",
-                                                 "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/next_cycle_decision.json",
-                                                 "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/output_example.json",
-                                                 "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/portability_readiness_note.json",
-                                                 "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/proof_memory_observation.json",
-                                                 "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/quarantine_plan.json"
-                                             ],
-                           "primary_evidence_refs":  [
-                                                         "living_learning_environment/sandbox/PHASE150_SELF_BUILD_IGNITION_BRIDGE_001/self_build_program_contract.json",
-                                                         "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/micro_organ_contract.json",
-                                                         "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/proof_memory_observation.json",
-                                                         "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/sandbox_validation_result.json",
-                                                         "living_learning_environment/sandbox/PHASE152_MAXIMAL_BODY_ORGAN_PACK_AND_SANDBOX_EXECUTION_001/source_policy_guard_result.json"
-                                                     ],
-                           "needs_triage":  true,
-                           "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                           "source_ref":  "bounded_tracked_file_discovery_v1",
-                           "is_required_component":  false
-                       },
-                       {
-                           "id":  "living_learning_environment_self_growth_cycles",
-                           "path":  "living_learning_environment/self_growth_cycles",
-                           "root":  "living_learning_environment/self_growth_cycles",
-                           "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                           "discovery_method":  "bounded_git_ls_files_path_discovery",
-                           "evidence_counts":  {
-                                                   "files":  35,
-                                                   "scripts":  0,
-                                                   "validators":  2,
-                                                   "proofs":  0,
-                                                   "contracts_or_policies":  2,
-                                                   "docs":  0
-                                               },
-                           "file_count":  35,
-                           "script_count":  0,
-                           "validator_count":  2,
-                           "proof_file_count":  0,
-                           "contract_or_policy_count":  2,
-                           "doc_count":  0,
-                           "validator_refs":  [
-                                                  "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_001/skill_validation_result.json",
-                                                  "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_002/skill_validation_result.json"
-                                              ],
-                           "proof_refs":  [
-
-                                          ],
-                           "contract_or_policy_refs":  [
-                                                           "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_001/skill_contract.json",
-                                                           "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_002/skill_contract.json"
-                                                       ],
-                           "notable_files":  [
-                                                 "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/body_pack_usage_trace.json",
-                                                 "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/bounded_duty_loop_readiness.json",
-                                                 "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_001/cycle_trace.json",
-                                                 "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_001/growth_goal_selection.json",
-                                                 "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_001/internal_answer.json",
-                                                 "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_001/internal_question.json",
-                                                 "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_001/learning_absorption_candidate.json",
-                                                 "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_001/next_growth_goal.json",
-                                                 "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_001/sandbox_execution_trace.json",
-                                                 "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_001/self_build_program_candidate.json",
-                                                 "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_001/self_diagnosis.json",
-                                                 "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_001/skill_candidate.json",
-                                                 "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_001/skill_contract.json",
-                                                 "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_001/skill_validation_result.json",
-                                                 "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_001/test_cases.json",
-                                                 "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_002/cycle_trace.json",
-                                                 "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_002/growth_goal_selection.json",
-                                                 "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_002/internal_answer.json",
-                                                 "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_002/internal_question.json",
-                                                 "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_002/learning_absorption_candidate.json",
-                                                 "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_002/next_growth_goal.json",
-                                                 "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_002/sandbox_execution_trace.json",
-                                                 "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_002/self_build_program_candidate.json",
-                                                 "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_002/self_diagnosis.json",
-                                                 "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_002/skill_candidate.json"
-                                             ],
-                           "primary_evidence_refs":  [
-                                                         "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_001/skill_contract.json",
-                                                         "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_001/skill_validation_result.json",
-                                                         "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_002/skill_contract.json",
-                                                         "living_learning_environment/self_growth_cycles/PHASE153_SELF_GROWTH_DUTY_RUNTIME_IGNITION_001/cycle_002/skill_validation_result.json"
-                                                     ],
-                           "needs_triage":  true,
-                           "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                           "source_ref":  "bounded_tracked_file_discovery_v1",
-                           "is_required_component":  false
-                       },
-                       {
-                           "id":  "living_learning_environment_self_growth_runtime",
-                           "path":  "living_learning_environment/self_growth_runtime",
-                           "root":  "living_learning_environment/self_growth_runtime",
-                           "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                           "discovery_method":  "bounded_git_ls_files_path_discovery",
-                           "evidence_counts":  {
-                                                   "files":  6,
-                                                   "scripts":  0,
-                                                   "validators":  0,
-                                                   "proofs":  0,
-                                                   "contracts_or_policies":  1,
-                                                   "docs":  0
-                                               },
-                           "file_count":  6,
-                           "script_count":  0,
-                           "validator_count":  0,
-                           "proof_file_count":  0,
-                           "contract_or_policy_count":  1,
-                           "doc_count":  0,
-                           "validator_refs":  [
-
-                                              ],
-                           "proof_refs":  [
-
-                                          ],
-                           "contract_or_policy_refs":  [
-                                                           "living_learning_environment/self_growth_runtime/SELF_GROWTH_DUTY_RUNTIME_CONTRACT_V1.json"
-                                                       ],
-                           "notable_files":  [
-                                                 "living_learning_environment/self_growth_runtime/BODY_PACK_ADAPTER_V1.json",
-                                                 "living_learning_environment/self_growth_runtime/DECLARATIVE_SKILL_FACTORY_V1.json",
-                                                 "living_learning_environment/self_growth_runtime/SELF_GROWTH_CURRICULUM_V1.json",
-                                                 "living_learning_environment/self_growth_runtime/SELF_GROWTH_DUTY_RUNTIME_CONTRACT_V1.json",
-                                                 "living_learning_environment/self_growth_runtime/SELF_GROWTH_DUTY_RUNTIME_V1.json",
-                                                 "living_learning_environment/self_growth_runtime/SELF_GROWTH_SAFETY_POLICY_V1.json"
-                                             ],
-                           "primary_evidence_refs":  [
-                                                         "living_learning_environment/self_growth_runtime/SELF_GROWTH_DUTY_RUNTIME_CONTRACT_V1.json"
-                                                     ],
-                           "needs_triage":  true,
-                           "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                           "source_ref":  "bounded_tracked_file_discovery_v1",
-                           "is_required_component":  false
-                       },
-                       {
-                           "id":  "living_learning_environment_trial_reviews",
-                           "path":  "living_learning_environment/trial_reviews",
-                           "root":  "living_learning_environment/trial_reviews",
-                           "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                           "discovery_method":  "bounded_git_ls_files_path_discovery",
-                           "evidence_counts":  {
-                                                   "files":  15,
-                                                   "scripts":  0,
-                                                   "validators":  1,
-                                                   "proofs":  0,
-                                                   "contracts_or_policies":  0,
-                                                   "docs":  0
-                                               },
-                           "file_count":  15,
-                           "script_count":  0,
-                           "validator_count":  1,
-                           "proof_file_count":  0,
-                           "contract_or_policy_count":  0,
-                           "doc_count":  0,
-                           "validator_refs":  [
-                                                  "living_learning_environment/trial_reviews/PHASE157_SELF_SELECTED_GAP_TRIAL_REVIEW_001/skill_validation_review.json"
-                                              ],
-                           "proof_refs":  [
-
-                                          ],
-                           "contract_or_policy_refs":  [
-
-                                                       ],
-                           "notable_files":  [
-                                                 "living_learning_environment/trial_reviews/PHASE157_SELF_SELECTED_GAP_TRIAL_REVIEW_001/bounded_reuse_decision.json",
-                                                 "living_learning_environment/trial_reviews/PHASE157_SELF_SELECTED_GAP_TRIAL_REVIEW_001/cycle_006_review.json",
-                                                 "living_learning_environment/trial_reviews/PHASE157_SELF_SELECTED_GAP_TRIAL_REVIEW_001/cycle_007_review.json",
-                                                 "living_learning_environment/trial_reviews/PHASE157_SELF_SELECTED_GAP_TRIAL_REVIEW_001/cycle_008_review.json",
-                                                 "living_learning_environment/trial_reviews/PHASE157_SELF_SELECTED_GAP_TRIAL_REVIEW_001/gap_chain_review.json",
-                                                 "living_learning_environment/trial_reviews/PHASE157_SELF_SELECTED_GAP_TRIAL_REVIEW_001/next_cycle_decision.json",
-                                                 "living_learning_environment/trial_reviews/PHASE157_SELF_SELECTED_GAP_TRIAL_REVIEW_001/next_reuse_ticket.json",
-                                                 "living_learning_environment/trial_reviews/PHASE157_SELF_SELECTED_GAP_TRIAL_REVIEW_001/non_promotion_decision.json",
-                                                 "living_learning_environment/trial_reviews/PHASE157_SELF_SELECTED_GAP_TRIAL_REVIEW_001/phase156_evidence_read.json",
-                                                 "living_learning_environment/trial_reviews/PHASE157_SELF_SELECTED_GAP_TRIAL_REVIEW_001/review_boot.json",
-                                                 "living_learning_environment/trial_reviews/PHASE157_SELF_SELECTED_GAP_TRIAL_REVIEW_001/sandbox_candidate_decision.json",
-                                                 "living_learning_environment/trial_reviews/PHASE157_SELF_SELECTED_GAP_TRIAL_REVIEW_001/self_model_update_candidate.json",
-                                                 "living_learning_environment/trial_reviews/PHASE157_SELF_SELECTED_GAP_TRIAL_REVIEW_001/skill_candidate_quality_review.json",
-                                                 "living_learning_environment/trial_reviews/PHASE157_SELF_SELECTED_GAP_TRIAL_REVIEW_001/skill_validation_review.json",
-                                                 "living_learning_environment/trial_reviews/PHASE157_SELF_SELECTED_GAP_TRIAL_REVIEW_001/trial_review_trace.json"
-                                             ],
-                           "primary_evidence_refs":  [
-                                                         "living_learning_environment/trial_reviews/PHASE157_SELF_SELECTED_GAP_TRIAL_REVIEW_001/skill_validation_review.json"
                                                      ],
                            "needs_triage":  true,
                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
@@ -16959,14 +15601,14 @@
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                            "discovery_method":  "bounded_git_ls_files_path_discovery",
                            "evidence_counts":  {
-                                                   "files":  154,
+                                                   "files":  141,
                                                    "scripts":  0,
                                                    "validators":  3,
                                                    "proofs":  18,
                                                    "contracts_or_policies":  20,
                                                    "docs":  0
                                                },
-                           "file_count":  154,
+                           "file_count":  141,
                            "script_count":  0,
                            "validator_count":  3,
                            "proof_file_count":  18,
@@ -17027,24 +15669,24 @@
                                                  "self_model/organ_passports/contracts_operations/ORGAN_PASSPORT_V1.json",
                                                  "self_model/organ_passports/contracts_self_development/ORGAN_PASSPORT_V1.json",
                                                  "self_model/organ_passports/contracts_self_knowledge/ORGAN_PASSPORT_V1.json",
-                                                 "self_model/organ_passports/living_learning_environment_admission_reviews/ORGAN_PASSPORT_V1.json",
-                                                 "self_model/organ_passports/living_learning_environment_body/ORGAN_PASSPORT_V1.json",
-                                                 "self_model/organ_passports/living_learning_environment_module_requests/ORGAN_PASSPORT_V1.json",
-                                                 "self_model/organ_passports/living_learning_environment_observations/ORGAN_PASSPORT_V1.json",
-                                                 "self_model/organ_passports/living_learning_environment_promotion_candidates/ORGAN_PASSPORT_V1.json",
-                                                 "self_model/organ_passports/living_learning_environment_promotion_gates/ORGAN_PASSPORT_V1.json",
-                                                 "self_model/organ_passports/living_learning_environment_proposals/ORGAN_PASSPORT_V1.json",
-                                                 "self_model/organ_passports/living_learning_environment_reading_sessions/ORGAN_PASSPORT_V1.json",
-                                                 "self_model/organ_passports/living_learning_environment_reuse_trials/ORGAN_PASSPORT_V1.json",
-                                                 "self_model/organ_passports/living_learning_environment_sandbox/ORGAN_PASSPORT_V1.json",
-                                                 "self_model/organ_passports/living_learning_environment_self_growth_cycles/ORGAN_PASSPORT_V1.json",
-                                                 "self_model/organ_passports/living_learning_environment_self_growth_runtime/ORGAN_PASSPORT_V1.json",
-                                                 "self_model/organ_passports/living_learning_environment_trial_reviews/ORGAN_PASSPORT_V1.json",
                                                  "self_model/organ_passports/modules_materials/ORGAN_PASSPORT_V1.json",
                                                  "self_model/organ_passports/modules_operations/ORGAN_PASSPORT_V1.json",
                                                  "self_model/organ_passports/modules_route_locks/ORGAN_PASSPORT_V1.json",
                                                  "self_model/organ_passports/modules_self_development/ORGAN_PASSPORT_V1.json",
-                                                 "self_model/organ_passports/operations_accepted_atom_retention_calibration/ORGAN_PASSPORT_V1.json"
+                                                 "self_model/organ_passports/operations_accepted_atom_retention_calibration/ORGAN_PASSPORT_V1.json",
+                                                 "self_model/organ_passports/operations_active_behavior/ORGAN_PASSPORT_V1.json",
+                                                 "self_model/organ_passports/operations_autonomy_diagnostics/ORGAN_PASSPORT_V1.json",
+                                                 "self_model/organ_passports/operations_bridge_diagnostics/ORGAN_PASSPORT_V1.json",
+                                                 "self_model/organ_passports/operations_live_like/ORGAN_PASSPORT_V1.json",
+                                                 "self_model/organ_passports/operations_live_readiness/ORGAN_PASSPORT_V1.json",
+                                                 "self_model/organ_passports/operations_live_start/ORGAN_PASSPORT_V1.json",
+                                                 "self_model/organ_passports/operations_memory/ORGAN_PASSPORT_V1.json",
+                                                 "self_model/organ_passports/operations_organ_promotion_lanes/ORGAN_PASSPORT_V1.json",
+                                                 "self_model/organ_passports/operations_overnight_school/ORGAN_PASSPORT_V1.json",
+                                                 "self_model/organ_passports/operations_parallel_life/ORGAN_PASSPORT_V1.json",
+                                                 "self_model/organ_passports/operations_readme_md/ORGAN_PASSPORT_V1.json",
+                                                 "self_model/organ_passports/operations_reasoning/ORGAN_PASSPORT_V1.json",
+                                                 "self_model/organ_passports/operations_reflex_library/ORGAN_PASSPORT_V1.json"
                                              ],
                            "primary_evidence_refs":  [
                                                          "self_model/organ_passports/contracts_accepted_atom_retention_organ/ORGAN_PASSPORT_V1.json",

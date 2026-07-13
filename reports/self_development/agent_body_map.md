@@ -2,9 +2,9 @@
 
 Status: ACTIVE_DERIVED_VIEW
 Branch: main
-Observed head at generation: bf0a7487f1b0fa47d85827a3f5b092896bfc4789
-Generated: 2026-07-12T22:38:13.5895714+04:00
-Body source fingerprint: b613fcdb56df69911808880bb1bb5e06d1b13a71b4e22e66207d105b502d4c57
+Observed head at generation: c4d7422c42d25c58fb8a92396aeb5e39fd848516
+Generated: 2026-07-13T08:00:29.2070411+04:00
+Body source fingerprint: fe38415fddad79ef01570f2a01606eb433dde5bd98998fccaa4f0dc041dfa082
 
 Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
@@ -18,7 +18,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 ## Counts
 
 - Confirmed components: 8
-- Primary evidence candidates: 156
+- Primary evidence candidates: 143
 - Legacy unverified hints: 4
 - Rejected or stale hints: 3
 
@@ -43,19 +43,6 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `contracts_self_development` - root `contracts/self_development`, files=22, scripts=0, validators=0, proofs=2, needs_triage=True
 - `contracts_self_knowledge` - root `contracts/self_knowledge`, files=6, scripts=0, validators=0, proofs=0, needs_triage=True
 - `contracts_thinking_sandbox` - root `contracts/thinking_sandbox`, files=1, scripts=0, validators=0, proofs=0, needs_triage=True
-- `living_learning_environment_admission_reviews` - root `living_learning_environment/admission_reviews`, files=13, scripts=0, validators=0, proofs=0, needs_triage=True
-- `living_learning_environment_body` - root `living_learning_environment/body`, files=36, scripts=0, validators=0, proofs=1, needs_triage=True
-- `living_learning_environment_module_requests` - root `living_learning_environment/module_requests`, files=2, scripts=0, validators=0, proofs=0, needs_triage=True
-- `living_learning_environment_observations` - root `living_learning_environment/observations`, files=1, scripts=0, validators=0, proofs=0, needs_triage=True
-- `living_learning_environment_promotion_candidates` - root `living_learning_environment/promotion_candidates`, files=2, scripts=0, validators=0, proofs=0, needs_triage=True
-- `living_learning_environment_promotion_gates` - root `living_learning_environment/promotion_gates`, files=1, scripts=0, validators=0, proofs=0, needs_triage=True
-- `living_learning_environment_proposals` - root `living_learning_environment/proposals`, files=2, scripts=0, validators=0, proofs=0, needs_triage=True
-- `living_learning_environment_reading_sessions` - root `living_learning_environment/reading_sessions`, files=4, scripts=0, validators=0, proofs=0, needs_triage=True
-- `living_learning_environment_reuse_trials` - root `living_learning_environment/reuse_trials`, files=19, scripts=0, validators=2, proofs=1, needs_triage=True
-- `living_learning_environment_sandbox` - root `living_learning_environment/sandbox`, files=35, scripts=0, validators=1, proofs=1, needs_triage=True
-- `living_learning_environment_self_growth_cycles` - root `living_learning_environment/self_growth_cycles`, files=35, scripts=0, validators=2, proofs=0, needs_triage=True
-- `living_learning_environment_self_growth_runtime` - root `living_learning_environment/self_growth_runtime`, files=6, scripts=0, validators=0, proofs=0, needs_triage=True
-- `living_learning_environment_trial_reviews` - root `living_learning_environment/trial_reviews`, files=15, scripts=0, validators=1, proofs=0, needs_triage=True
 - `modules_materials` - root `modules/materials`, files=4, scripts=4, validators=0, proofs=0, needs_triage=True
 - `modules_route_locks` - root `modules/route_locks`, files=1, scripts=1, validators=0, proofs=0, needs_triage=True
 - `modules_self_development` - root `modules/self_development`, files=20, scripts=20, validators=0, proofs=1, needs_triage=True
@@ -115,6 +102,19 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `packs_phase37_intake_driven_workflow_execution_profile_v1` - root `packs/PHASE37_INTAKE_DRIVEN_WORKFLOW_EXECUTION_PROFILE_V1`, files=8, scripts=3, validators=1, proofs=2, needs_triage=True
 - `packs_phase38_runtime_gap_remediation_closure_proof_v1` - root `packs/PHASE38_RUNTIME_GAP_REMEDIATION_CLOSURE_PROOF_V1`, files=3, scripts=2, validators=1, proofs=3, needs_triage=True
 - `packs_phase39_monitoring_gap_reachability_v1` - root `packs/PHASE39_MONITORING_GAP_REACHABILITY_V1`, files=6, scripts=3, validators=1, proofs=1, needs_triage=True
+- `packs_phase4_self_validation_release_gates` - root `packs/PHASE4_SELF_VALIDATION_RELEASE_GATES`, files=7, scripts=4, validators=2, proofs=0, needs_triage=True
+- `packs_phase40_specialized_gap_auto_intake_runtime_v1` - root `packs/PHASE40_SPECIALIZED_GAP_AUTO_INTAKE_RUNTIME_V1`, files=5, scripts=3, validators=1, proofs=1, needs_triage=True
+- `packs_phase41_one_run_gap_remediation_packet_proof_v1` - root `packs/PHASE41_ONE_RUN_GAP_REMEDIATION_PACKET_PROOF_V1`, files=3, scripts=2, validators=1, proofs=3, needs_triage=True
+- `packs_phase42_remediation_program_seed_contract_v1` - root `packs/PHASE42_REMEDIATION_PROGRAM_SEED_CONTRACT_V1`, files=6, scripts=3, validators=1, proofs=0, needs_triage=True
+- `packs_phase43_specialized_gap_auto_program_seed_runtime_v1` - root `packs/PHASE43_SPECIALIZED_GAP_AUTO_PROGRAM_SEED_RUNTIME_V1`, files=5, scripts=3, validators=1, proofs=1, needs_triage=True
+- `packs_phase44_one_run_remediation_program_seed_proof_v1` - root `packs/PHASE44_ONE_RUN_REMEDIATION_PROGRAM_SEED_PROOF_V1`, files=3, scripts=2, validators=1, proofs=3, needs_triage=True
+- `packs_phase45_seed_driven_monitoring_profile_v1` - root `packs/PHASE45_SEED_DRIVEN_MONITORING_PROFILE_V1`, files=8, scripts=3, validators=1, proofs=2, needs_triage=True
+- `packs_phase46_monitoring_gap_closure_specialized_proof_v1` - root `packs/PHASE46_MONITORING_GAP_CLOSURE_SPECIALIZED_PROOF_V1`, files=4, scripts=2, validators=1, proofs=4, needs_triage=True
+- `packs_phase47_remediation_program_seed_consumption_closure_proof_v1` - root `packs/PHASE47_REMEDIATION_PROGRAM_SEED_CONSUMPTION_CLOSURE_PROOF_V1`, files=3, scripts=2, validators=1, proofs=3, needs_triage=True
+- `packs_phase48_remediation_seed_program_blueprint_contract_v1` - root `packs/PHASE48_REMEDIATION_SEED_PROGRAM_BLUEPRINT_CONTRACT_V1`, files=6, scripts=3, validators=1, proofs=0, needs_triage=True
+- `packs_phase49_remediation_seed_program_materialization_v1` - root `packs/PHASE49_REMEDIATION_SEED_PROGRAM_MATERIALIZATION_V1`, files=5, scripts=3, validators=1, proofs=1, needs_triage=True
+- `packs_phase5_external_agent_spec_intake` - root `packs/PHASE5_EXTERNAL_AGENT_SPEC_INTAKE`, files=7, scripts=3, validators=2, proofs=0, needs_triage=True
+- `packs_phase50_one_run_remediation_seed_program_synthesis_proof_v1` - root `packs/PHASE50_ONE_RUN_REMEDIATION_SEED_PROGRAM_SYNTHESIS_PROOF_V1`, files=3, scripts=2, validators=1, proofs=3, needs_triage=True
 
 ## Freshness
 

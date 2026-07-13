@@ -35,7 +35,6 @@ function Test-StructuralPath([string]$Path) {
     'validators/',
     'self_model/',
     'contracts/',
-    'living_learning_environment/',
     'self_build_programs/',
     'packs/',
     'docs/operations/',
@@ -504,3 +503,4 @@ $result.build_result = [ordered]@{
 $result.refreshed_at = (Get-Date).ToString('o')
 $result | ConvertTo-Json -Depth 32 | Set-Content -Path $resultPath -Encoding UTF8
 [pscustomobject]$result
+
