@@ -165,7 +165,7 @@ $result = [ordered]@{
   deletion_performed = $false
   body_source_fingerprint = $sourceFingerprint
   map_contains_required_components = $false
-  required_components = @('school','school_source_router','compact_memory_intake','autonomous_inner_motor','knowledge_acquisition_port','map_control','gpt_handoff')
+  required_components = @('school','school_source_router','compact_memory_intake','knowledge_acquisition_port','map_control','gpt_handoff')
   skip_reason = $null
   freshness_rule = 'Currentness is body_source_fingerprint, not self-referential commit HEAD.'
 }
@@ -331,9 +331,7 @@ function New-PrimaryEvidenceCandidate([string]$RootPath) {
 $requiredComponentSpecs = @(
   [ordered]@{ id='school'; root='operations/school'; required=@('operations/school/run_agent_school.ps1','operations/school/finalize_agent_school_run_v1.ps1','operations/school/SCHOOL_CANONICAL_RUN_CONTRACT_V1.md'); role='candidate learning factory and school lifecycle' },
   [ordered]@{ id='school_source_router'; root='operations/school/curriculum/source_router'; required=@('operations/school/curriculum/source_router/run_school_source_router_v1.ps1','operations/school/curriculum/source_router/run_school_codex_source_port_v1.ps1','operations/school/curriculum/source_router/run_school_external_world_source_port_v1.ps1','operations/school/curriculum/source_router/template_filter/run_school_source_template_filter_v1.ps1','operations/school/curriculum/source_router/template_filter/school_source_template_filter_policy.json'); role='governed source selection before school material intake' },
-  [ordered]@{ id='compact_memory_intake'; root='operations/compact_memory_intake'; required=@('operations/compact_memory_intake/submit_compact_memory_packet_v1.ps1','operations/compact_memory_intake/merge_compact_memory_intake_queue_v1.ps1','operations/compact_memory_intake/run_compact_memory_queue_maintenance_v1.ps1'); role='only governed packet/intake/merge path into compact memory' },
-  [ordered]@{ id='autonomous_inner_motor'; root='operations/autonomous_inner_motor'; required=@('operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1'); role='bounded inner motor / test life runtime surface' },
-  [ordered]@{ id='knowledge_acquisition_port'; root='operations/knowledge_acquisition_port'; required=@('operations/knowledge_acquisition_port/ask_codex_knowledge_source.ps1','operations/knowledge_acquisition_port/ask_codex_batch_knowledge_source.ps1'); role='bounded knowledge acquisition material port' },
+  [ordered]@{ id='compact_memory_intake'; root='operations/compact_memory_intake'; required=@('operations/compact_memory_intake/submit_compact_memory_packet_v1.ps1','operations/compact_memory_intake/merge_compact_memory_intake_queue_v1.ps1','operations/compact_memory_intake/run_compact_memory_queue_maintenance_v1.ps1'); role='only governed packet/intake/merge path into compact memory' },  [ordered]@{ id='knowledge_acquisition_port'; root='operations/knowledge_acquisition_port'; required=@('operations/knowledge_acquisition_port/ask_codex_knowledge_source.ps1','operations/knowledge_acquisition_port/ask_codex_batch_knowledge_source.ps1'); role='bounded knowledge acquisition material port' },
   [ordered]@{ id='map_control'; root='operations/map_control'; required=@('operations/map_control/BRANCH_AGNOSTIC_MAP_REFRESH_CONTRACT.md','operations/map_control/branch_agnostic_map_refresh_policy.json'); role='map governance / freshness contract' },
   [ordered]@{ id='operations_self_model'; root='operations/self_model'; required=@('operations/self_model/validate_operations_self_model_organ_lab_validation_v1.ps1','reports/self_development/OPERATIONS_SELF_MODEL_ORGAN_LAB_VALIDATION_V1.json','tests/self_development/OPERATIONS_SELF_MODEL_ORGAN_LAB_VALIDATION_V1_PROOF.json','self_model/organ_passports/operations_self_model/ORGAN_PASSPORT_V1.json'); role='validated lab self-model/map/passport governance organ' },
   [ordered]@{ id='gpt_handoff'; root='operations/gpt_handoff'; required=@('operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md'); role='GPT/operator compact handoff surface' }
@@ -503,4 +501,5 @@ $result.build_result = [ordered]@{
 $result.refreshed_at = (Get-Date).ToString('o')
 $result | ConvertTo-Json -Depth 32 | Set-Content -Path $resultPath -Encoding UTF8
 [pscustomobject]$result
+
 

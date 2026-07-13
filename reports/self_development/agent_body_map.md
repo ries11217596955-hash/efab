@@ -2,9 +2,9 @@
 
 Status: ACTIVE_DERIVED_VIEW
 Branch: main
-Observed head at generation: c4d7422c42d25c58fb8a92396aeb5e39fd848516
-Generated: 2026-07-13T08:00:29.2070411+04:00
-Body source fingerprint: fe38415fddad79ef01570f2a01606eb433dde5bd98998fccaa4f0dc041dfa082
+Observed head at generation: 24e7f6628e7dcfc5f41409b81ba926227862dacf
+Generated: 2026-07-13T08:06:39.4212128+04:00
+Body source fingerprint: 8eeb9f3a68f8aa65d8069529ae12145775ccbbe94d97a3805e8a1f960ff9d792
 
 Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
@@ -17,7 +17,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
 ## Counts
 
-- Confirmed components: 8
+- Confirmed components: 7
 - Primary evidence candidates: 143
 - Legacy unverified hints: 4
 - Rejected or stale hints: 3
@@ -27,7 +27,6 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `school` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/school`, files=103, scripts=61, required_present=True
 - `school_source_router` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/school/curriculum/source_router`, files=8, scripts=6, required_present=True
 - `compact_memory_intake` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/compact_memory_intake`, files=10, scripts=6, required_present=True
-- `autonomous_inner_motor` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/autonomous_inner_motor`, files=76, scripts=15, required_present=True
 - `knowledge_acquisition_port` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/knowledge_acquisition_port`, files=50, scripts=2, required_present=True
 - `map_control` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/map_control`, files=2, scripts=0, required_present=True
 - `operations_self_model` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/self_model`, files=62, scripts=62, required_present=True

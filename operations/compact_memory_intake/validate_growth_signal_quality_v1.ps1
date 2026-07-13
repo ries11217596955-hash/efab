@@ -93,12 +93,11 @@ Assert ($signal.next_action_candidate -eq 'add_ordered_payload_negative_case_to_
 Assert (@($signal.proof_needed).Count -eq 2) 'ACTION_SIGNAL_PROOF_NEEDED_BAD'
 Assert ($signal.signal_quality -eq 'ACTIONABLE') 'ACTION_SIGNAL_QUALITY_BAD'
 Assert (@($signal.focus_boosts) -contains 'add_ordered_payload_negative_case_to_selector_validator') 'ACTION_SIGNAL_FOCUS_BOOST_NEXT_ACTION_MISSING'
-$aimoText=Get-Content operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1 -Raw
-Assert ($aimoText -match 'next_action_candidate') 'AIMO_SELECTOR_NEXT_ACTION_WIRING_MISSING'
+# retired: operations/autonomous_inner_motor removed from active repo body; growth signal quality no longer depends on AIMO selector wiring
 $proof=[ordered]@{
   schema='growth_signal_quality_validation_v1'
   status='PASS_GROWTH_SIGNAL_QUALITY_V1'
-  tests=@([ordered]@{name='generic_topic_becomes_specificity_gap_contract';status='PASS'},[ordered]@{name='generic_topic_derives_from_recent_school_packet';status='PASS'},[ordered]@{name='actionable_packet_preserves_specific_contract';status='PASS'},[ordered]@{name='aimo_selector_next_action_static_check';status='PASS'})
+  tests=@([ordered]@{name='generic_topic_becomes_specificity_gap_contract';status='PASS'},[ordered]@{name='generic_topic_derives_from_recent_school_packet';status='PASS'},[ordered]@{name='actionable_packet_preserves_specific_contract';status='PASS'},[ordered]@{name='retired_motor_not_required_for_growth_signal_quality';status='PASS'})
   live_process_touched=$false
   active_memory_mutated=$false
   created_at=(Get-Date).ToString('o')
@@ -109,5 +108,7 @@ $proof|ConvertTo-Json -Depth 50|Set-Content $proofPath -Encoding UTF8
 Write-Host 'VALIDATION_PASS=PASS_GROWTH_SIGNAL_QUALITY_V1'
 Write-Host ('PROOF_PATH='+$proofPath)
 Write-Host 'LIVE_PROCESS_TOUCHED=false'
+
+
 
 
