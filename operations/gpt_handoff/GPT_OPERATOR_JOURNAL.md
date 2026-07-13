@@ -3054,3 +3054,34 @@ Step Logic Kernel insertion:
   OFFLINE_LOCAL_ONLY
   OWNER_DECISION_REQUIRED
   BLOCKED_SAFETY
+
+## 2026-07-13 — School stopped at final digest, checkpoint retention fixed, runtime bloat cleaned
+
+STATUS: SCHOOL_CONTROLLED_STOP_AFTER_STALL / RETENTION_PATCHED / RUNTIME_SNAPSHOTS_CLEANED
+
+Observed state:
+- Max Live school run reached 995,000 ready atoms out of 1,000,000.
+- It stalled on chunk 200 digest with no CPU progress, no stdout progress, and no active memory manifest change.
+- Controlled stop performed for parent school process and child digest process.
+- Active compact memory stayed at the last proven digestion manifest.
+
+Root cause of disk bloat:
+- run_agent_school.ps1 created a full active_compact_semantic_memory_v1 checkpoint before every real chunk.
+- Long run produced hundreds of full memory snapshots in .runtime/school_runs/.../memory_checkpoints.
+- This was runtime bloat, not tracked Git repo bloat.
+
+Fix:
+- Added PruneMemoryCheckpoints to operations/school/run_agent_school.ps1.
+- After each new real chunk checkpoint, the runner keeps only the latest 3 memory checkpoints.
+- Retention policy updated to KEEP_ACTIVE_COMPACT_MEMORY_AND_LATEST_3_MEMORY_CHECKPOINTS_V2.
+
+Cleanup performed:
+- Removed older memory checkpoint snapshot directories from the stopped max school run, keeping the latest 3.
+- Removed transient .runtime/codex_curriculum_candidate_factory_runs.
+- Did not delete active compact memory.
+- Did not delete tracked repo files.
+
+Boundary:
+- The 1,000,000 run is not a full PASS; it is stopped after 995,000 ready atoms due to final digest stall.
+- The retained active memory is the last proven compact semantic digestion state.
+- Future max school runs should not accumulate hundreds of full memory snapshots.

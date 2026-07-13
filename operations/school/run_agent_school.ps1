@@ -112,6 +112,20 @@ function NewMemoryCheckpoint($Root,$RunId,$ChunkIndex,$OrdinalOffset){
     snapshot_state=$snapshot
   }
 }
+function PruneMemoryCheckpoints($RunId,[int]$KeepLatest=3){
+  $removed=@()
+  if([string]::IsNullOrWhiteSpace([string]$RunId)){ return @() }
+  if($KeepLatest -lt 1){ $KeepLatest=1 }
+  $root=".runtime/school_runs/$RunId/memory_checkpoints"
+  if(-not(Test-Path $root)){ return @() }
+  $dirs=@(Get-ChildItem $root -Directory -ErrorAction SilentlyContinue | Sort-Object LastWriteTime -Descending)
+  if($dirs.Count -le $KeepLatest){ return @() }
+  foreach($d in @($dirs | Select-Object -Skip $KeepLatest)){
+    Remove-Item $d.FullName -Recurse -Force
+    $removed += $d.FullName
+  }
+  return @($removed)
+}
 function RestoreMemoryCheckpoint($Checkpoint,$Root){
   if($null -eq $Checkpoint){ return [ordered]@{status='NO_CHECKPOINT_AVAILABLE'; restored=$false; reason='checkpoint_missing'} }
   $snapshotPath=[string]$Checkpoint.snapshot_path
@@ -234,6 +248,8 @@ try {
       continue
     }
     $lastChunkMemoryCheckpoint=NewMemoryCheckpoint $activeMemoryRoot $runId $chunkIndex $ordinalOffset
+    $checkpointPruneRemoved=PruneMemoryCheckpoints $runId 3
+    if($checkpointPruneRemoved){ $cleanupRemoved += $checkpointPruneRemoved }
     $activeMemoryBytes=0
     if(Test-Path $activeMemoryRoot){ $activeMemoryBytes=[int64]((Get-ChildItem $activeMemoryRoot -Recurse -File -ErrorAction SilentlyContinue | Measure-Object Length -Sum).Sum) }
     $budget=[int64][Math]::Max([double]1600000,[Math]::Max(([double]([Math]::Max($plannedTotalAccepted,1000) * 1600)),([double]($activeMemoryBytes + ($chunkTarget * 2000) + 2000000))))
@@ -284,7 +300,7 @@ $routeAfter=Get-Content $routePath -Raw|ConvertFrom-Json
 $ledgerAfter=Get-Content $ledgerPath -Raw|ConvertFrom-Json
 if([int]$routeAfter.routed_active_count -ne [int]$routeBefore.routed_active_count){ throw 'ROUTE_MUTATED_BY_RUN' }
 if([int]$ledgerAfter.replayed_active_count -ne [int]$ledgerBefore.replayed_active_count){ throw 'LEDGER_MUTATED_BY_RUN' }
-$base=[ordered]@{schema='agent_school_canonical_run_v7_chunked_cumulative_recovery_wired'; run_id=$runId; run_kind=$RunKind; public_mode=$Mode; target_accepted=$TargetAccepted; topics_plan=$TopicsPlan; resume_execution=[ordered]@{mode=[bool]$resumeMode; resume_ordinal_offset=[int]$ResumeOrdinalOffset; resume_completed_chunks=[int]$ResumeCompletedChunks; resume_remaining_target=[int]$TargetAccepted; planned_total_accepted=[int]$plannedTotalAccepted}; outer_chunk_size=$outerChunkSize; inner_batch_size_max=$innerBatchSizeMax; chunk_count=@($chunks).Count; chunks=@($chunks); recovery_contracts=$recoveryContracts; school_recovery_wiring_status='PASS_SCHOOL_CHUNK_RECOVERY_CONTRACTS_WIRED_V1'; resume_state=(BuildResumeState 'COMPLETE' 'NONE' (@($chunks).Count + $ResumeCompletedChunks) ($chunkIndex+1) ($ResumeOrdinalOffset + $TargetAccepted) ($chunkIndex+1) ($ResumeOrdinalOffset + $TargetAccepted) $null); aggregation_summary=(BuildAggregationSummary 'PASS_AGGREGATED' $chunks 0 0 0 0); memory_rollback_capability='SCHOOL_REAL_CHUNK_MEMORY_CHECKPOINT_ROLLBACK_V1'; memory_rollback_events=@($memoryRollbackEvents); runtime_ready=$false; raw_route_absorption_allowed=$false; factory_candidates_created=$totalFactoryCandidates; ready_atoms=$totalReadyAtoms; stream_quarantined=$totalStreamQuarantined; codex_cli_invoked=$false; api_invoked=$false; school_source_router_status=if($lastSourceRouterReport){$lastSourceRouterReport.status}else{'UNKNOWN'}; school_source_selected=if($lastSourceRouterReport){$lastSourceRouterReport.selected_source}else{'UNKNOWN'}; route_before=[int]$routeBefore.routed_active_count; ledger_before=[int]$ledgerBefore.replayed_active_count; route_after=[int]$routeAfter.routed_active_count; ledger_after=[int]$ledgerAfter.replayed_active_count; retention_policy='KEEP_ACTIVE_COMPACT_MEMORY_AND_CANONICAL_PROOF_ONLY_V1'; cleanup_removed=@($cleanupRemoved|Select-Object -Unique); cleanup_after_each_chunk=$true; no_fake_pass=$true; no_hidden_failures=$true; failure_resume_boundary='Recovery contracts are wired into canonical proof. Controlled chunk failure/resume remains NOT_PROVEN until negative test.'; law='Count + Mode + TopicsPlan uses outer chunks of 5000 and inner factory batches of 100. Real uses cumulative compact semantic memory and cannot continue past a chunk without recall/use behavior_delta proof; failure records must expose resume_state and quarantine_record before any continuation.'}
+$base=[ordered]@{schema='agent_school_canonical_run_v7_chunked_cumulative_recovery_wired'; run_id=$runId; run_kind=$RunKind; public_mode=$Mode; target_accepted=$TargetAccepted; topics_plan=$TopicsPlan; resume_execution=[ordered]@{mode=[bool]$resumeMode; resume_ordinal_offset=[int]$ResumeOrdinalOffset; resume_completed_chunks=[int]$ResumeCompletedChunks; resume_remaining_target=[int]$TargetAccepted; planned_total_accepted=[int]$plannedTotalAccepted}; outer_chunk_size=$outerChunkSize; inner_batch_size_max=$innerBatchSizeMax; chunk_count=@($chunks).Count; chunks=@($chunks); recovery_contracts=$recoveryContracts; school_recovery_wiring_status='PASS_SCHOOL_CHUNK_RECOVERY_CONTRACTS_WIRED_V1'; resume_state=(BuildResumeState 'COMPLETE' 'NONE' (@($chunks).Count + $ResumeCompletedChunks) ($chunkIndex+1) ($ResumeOrdinalOffset + $TargetAccepted) ($chunkIndex+1) ($ResumeOrdinalOffset + $TargetAccepted) $null); aggregation_summary=(BuildAggregationSummary 'PASS_AGGREGATED' $chunks 0 0 0 0); memory_rollback_capability='SCHOOL_REAL_CHUNK_MEMORY_CHECKPOINT_ROLLBACK_V1'; memory_rollback_events=@($memoryRollbackEvents); runtime_ready=$false; raw_route_absorption_allowed=$false; factory_candidates_created=$totalFactoryCandidates; ready_atoms=$totalReadyAtoms; stream_quarantined=$totalStreamQuarantined; codex_cli_invoked=$false; api_invoked=$false; school_source_router_status=if($lastSourceRouterReport){$lastSourceRouterReport.status}else{'UNKNOWN'}; school_source_selected=if($lastSourceRouterReport){$lastSourceRouterReport.selected_source}else{'UNKNOWN'}; route_before=[int]$routeBefore.routed_active_count; ledger_before=[int]$ledgerBefore.replayed_active_count; route_after=[int]$routeAfter.routed_active_count; ledger_after=[int]$ledgerAfter.replayed_active_count; retention_policy='KEEP_ACTIVE_COMPACT_MEMORY_AND_LATEST_3_MEMORY_CHECKPOINTS_V2'; cleanup_removed=@($cleanupRemoved|Select-Object -Unique); cleanup_after_each_chunk=$true; no_fake_pass=$true; no_hidden_failures=$true; failure_resume_boundary='Recovery contracts are wired into canonical proof. Controlled chunk failure/resume remains NOT_PROVEN until negative test.'; law='Count + Mode + TopicsPlan uses outer chunks of 5000 and inner factory batches of 100. Real uses cumulative compact semantic memory and cannot continue past a chunk without recall/use behavior_delta proof; failure records must expose resume_state and quarantine_record before any continuation.'}
 $base.aggregation_summary.planned_chunk_count=$totalChunks
 $base.resume_execution.processed_in_this_run=[int]$processedInThisRun
 if($RunKind -eq 'Test'){
@@ -323,6 +339,7 @@ Write-Host "BEHAVIOR_DELTA=$($base.behavior_delta)"
 Write-Host "ROUTE_AFTER=$($base.route_after)"
 Write-Host "LEDGER_AFTER=$($base.ledger_after)"
 Write-Host 'RUNTIME_READY=false'
+
 
 
 
