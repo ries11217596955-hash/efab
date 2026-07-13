@@ -3343,3 +3343,41 @@ Get-Content $launch.stdout -Tail 80 -ErrorAction SilentlyContinue
 Get-Content $launch.stderr -Tail 80 -ErrorAction SilentlyContinue
 Get-ChildItem .runtime/school_runs -Directory | Sort-Object LastWriteTime -Descending | Select-Object -First 3
 ```
+
+## 2026-07-13 — Stopped shallow 50k school and prepared Codex task for evidence-grounded generator
+
+STATUS: SHALLOW_50K_STOPPED / CODEX_TASK_PREPARED / NO_DUPLICATE_ORGAN
+
+Owner correction:
+- The 1M/50k school stream was mostly template variation, not deep evidence-grounded learning.
+- Owner asked to stop the current 50k if still running, then create a mechanism that truly teaches varied/deep Builder knowledge.
+- Owner explicitly said: update or replace the existing organ, do not produce duplicates.
+
+Runtime action:
+- The current 50k Live school was still running.
+- It had reached partial proof: ready=10000 and was processing chunk 3/10 digest.
+- Controlled stop was performed for parent school process and child digest process.
+- After stop: SCHOOL_RELATED_PROCESS_COUNT_AFTER=0.
+- Active compact memory remained at last proven absorption manifest: file_atom_absorption_20260713_194328, input=5000, merged=5000, cells=18021, size≈260.76MB.
+
+Decision:
+- Do not continue 50k or 1M with shallow template generator.
+- Do not create a second school/generator organ.
+- Use Codex only as bounded repair tool for the existing candidate_factory.
+
+Prepared task:
+- operations/gpt_handoff/CODEX_TASK_EVIDENCE_GROUNDED_SCHOOL_GENERATOR_V1.md
+
+Codex task goal:
+- Evolve existing operations/school/curriculum/candidate_factory/generate_codex_curriculum_candidate_factory_run_v1.ps1.
+- Change candidate generation from root+verb+mode+template permutations to evidence-grounded lesson candidates.
+- Candidate must be based on real local evidence: contracts, validators, journal lessons, proof reports, active memory manifest/index/cells sampled compactly, body-map reports.
+- Preserve current school schema and streaming/digest compatibility.
+- Add validation for evidence coverage and depth.
+- No long Live run.
+- No direct active memory mutation.
+- No duplicate organ.
+
+Boundary:
+- Codex task is prepared, not executed by this journal entry.
+- Codex output will be CODEX_DRAFT until terminal validation.
