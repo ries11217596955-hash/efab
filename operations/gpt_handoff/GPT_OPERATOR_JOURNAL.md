@@ -3191,3 +3191,155 @@ Validation:
 
 Boundary:
 - Need one more tiny Live proof to validate full finalizer tail with real queue maintenance after this helper fix.
+
+## 2026-07-13 — Prepared next max school launch, not started
+
+STATUS: READY_TO_LAUNCH_NEXT_MAX_SCHOOL / NOT_STARTED_BY_OWNER_REQUEST
+
+Owner instruction:
+- Update the journal with what broke, what was fixed, where we stopped, and how to launch correctly.
+- Prepare the next launch.
+- Do not start the school yet.
+
+Current proven state before next launch:
+- Repo root: H:\efab.
+- Branch: main.
+- Latest synced head before this journal entry: 28a7276.
+- No school/finalizer/digest/queue-maintenance process was running during preflight.
+- Active compact memory exists and was not deleted.
+- School canonical entrypoint remains operations/school/run_agent_school.ps1.
+
+What happened in the last max run:
+- The max school Live run reached 995,000 ready atoms out of 1,000,000.
+- It stalled on the final 5,000 digest chunk.
+- The old million-run proof remains partial; it is not a full PASS.
+- A separate repair Live run of 5,000 later passed through the school path: ready=5000, merged=5000, behavior_delta=true.
+- Practical learning gap was filled by the separate 5,000 PASS repair run, but old million-run proof was not rewritten as if it had completed.
+
+Problems found:
+1. Streaming duplicate gate used topic-level uniqueness.
+   - Maximal self-knowledge curriculum legitimately produces many learning atoms per topic/root across verbs/modes/levels.
+   - Fix: stream uniqueness moved to duplicate_key / learning_key / candidate_id fallback.
+
+2. Memory checkpoints caused runtime bloat.
+   - The runner saved full active compact memory snapshots per chunk.
+   - This created ~30GB of .runtime checkpoint snapshots.
+   - Fix: PruneMemoryCheckpoints keeps latest 3 checkpoints.
+   - Cleanup: old snapshots were removed; active compact memory was not touched.
+
+3. Streaming absorption reports caused worktree bloat.
+   - Per-chunk heavy reports were written into operations/reports/streaming_absorption.
+   - This created ~2.4GB and ~20k files in the working repo tree, though not tracked by Git.
+   - Fix: heavy streaming outputs now go to .runtime/streaming_absorption, while operations/reports keeps only compact canonical summaries.
+   - Cleanup: old untracked streaming reports were removed.
+
+4. Digest/absorb path became too heavy at large memory size.
+   - absorb pipeline reparsed the whole cells.jsonl after each digest for raw-field validation.
+   - digest used array += and Sort-Object -Unique in hot paths.
+   - digest raw-field guard serialized every cell separately.
+   - Fixes: List-based reads/fingerprints, SortedSet merge uniqueness, text-scan raw-field guard, no full-memory reparsing in absorb validation.
+   - Proof: 5000 candidates -> 5000 ready -> digest/absorb against a copy of active memory passed in 187.73 seconds.
+
+5. Finalizer/queue-maintenance tail could hang after school PASS.
+   - Finalizer launched queue maintenance over old AgentLife backlog without bounded child timeout.
+   - Queue maintenance helper also missed local Slug function after timeout wrapper was added.
+   - Fixes: MergeTimeoutSeconds, Start-Process child merge with stdout/stderr files, recursive child kill on timeout, compact output_tail, local Slug helper, finalizer policy process_limit=1 and timeout=180s.
+   - Proof: tiny Live school run after fixes returned PASS and queue maintenance PASS with process leak count 0.
+
+Where we stopped:
+- No school process is running.
+- No finalizer/digest/queue-maintenance process is running.
+- Repo is synced to origin/main at the latest pushed head after finalizer tail proof.
+- New max school run is prepared but intentionally NOT_STARTED.
+
+Correct way to launch the next max school run:
+1. Preflight before launch:
+   - Verify cwd/root is H:\efab.
+   - Verify git status is clean or consciously accept that finalizer auto-commit may be skipped.
+   - Verify HEAD and origin/main are synced.
+   - Verify no existing school/finalizer/digest/queue-maintenance/merge process is running.
+   - Verify active compact memory manifest exists.
+   - Verify canonical validator passes.
+
+2. Use exactly the canonical owner-facing entrypoint:
+   operations/school/run_agent_school.ps1 -Count 1000000 -Mode Live -TopicsPlan operations/school/curriculum/topics/builder_night_school_topics_v1.json
+
+3. For a long max run, launch detached through a wrapper that writes:
+   - .runtime/school_long_runs/<run_id>/launch.json
+   - .runtime/school_long_runs/<run_id>/stdout.txt
+   - .runtime/school_long_runs/<run_id>/stderr.txt
+
+4. Required launch metadata:
+   - run_id
+   - pid
+   - count=1000000
+   - mode=Live
+   - entrypoint=operations/school/run_agent_school.ps1
+   - topics_plan=operations/school/curriculum/topics/builder_night_school_topics_v1.json
+   - git head
+   - stdout/stderr paths
+   - boundary: school-live compact-memory digestion mode; not AgentLife runtime; not Codex.
+
+5. Required early proof after launch:
+   - PID alive after 5-10 seconds.
+   - stdout/stderr paths exist.
+   - stderr has no immediate error.
+   - runtime shows candidate/streaming progress.
+   - no duplicate school process.
+
+6. Required periodic status check:
+   - Check PID alive.
+   - Tail stdout/stderr.
+   - Read latest AGENT_SCHOOL_CANONICAL_ENTRYPOINT_V1.json proof.
+   - Check active compact memory manifest timestamp/cell count/size.
+   - Check .runtime size and checkpoint count.
+   - Check git status only as observation; do not mutate repo while school is active unless explicitly planned.
+
+7. Stop command if needed:
+   Stop-Process -Id <PID> -Force
+   Then verify no child school/finalizer/digest/queue-maintenance/merge processes remain.
+
+Do not do during the max run:
+- Do not start a second school run.
+- Do not clean .runtime surfaces the active school may use.
+- Do not edit school code in the same worktree while the run is active.
+- Do not claim full PASS until final canonical proof says PASS and the process exits cleanly.
+- Do not treat finalizer failure as fake school failure, but do record it and repair if it prevents process return.
+
+Prepared launch command block, not executed:
+```powershell
+$ErrorActionPreference='Stop'
+$runStamp=Get-Date -Format 'yyyyMMdd_HHmmss'
+$runId="school_max_live_1000000_$runStamp"
+$logDir=".runtime/school_long_runs/$runId"
+New-Item -ItemType Directory -Force -Path $logDir | Out-Null
+$out=(Resolve-Path $logDir).Path + '\stdout.txt'
+$err=(Resolve-Path $logDir).Path + '\stderr.txt'
+$cmd="-NoProfile -ExecutionPolicy Bypass -File operations/school/run_agent_school.ps1 -Count 1000000 -Mode Live -TopicsPlan operations/school/curriculum/topics/builder_night_school_topics_v1.json"
+$p=Start-Process -FilePath powershell.exe -ArgumentList $cmd -WorkingDirectory (Get-Location).Path -RedirectStandardOutput $out -RedirectStandardError $err -PassThru -WindowStyle Hidden
+[ordered]@{
+  schema='active_school_max_live_launch_v3'
+  status='STARTED_ACTIVE_SCHOOL_MAX_LIVE_1000000'
+  run_id=$runId
+  pid=$p.Id
+  count=1000000
+  mode='Live'
+  entrypoint='operations/school/run_agent_school.ps1'
+  topics_plan='operations/school/curriculum/topics/builder_night_school_topics_v1.json'
+  head=(git rev-parse --short HEAD)
+  stdout=$out
+  stderr=$err
+  launched_at=(Get-Date).ToString('o')
+  boundary='school-live compact-memory digestion mode; not AgentLife runtime; not Codex'
+}|ConvertTo-Json -Depth 10|Set-Content "$logDir/launch.json" -Encoding UTF8
+```
+
+Prepared status check block, not executed as launch:
+```powershell
+$launch=Get-Content '.runtime/school_long_runs/<run_id>/launch.json' -Raw|ConvertFrom-Json
+$proc=Get-Process -Id $launch.pid -ErrorAction SilentlyContinue
+Write-Host "ALIVE=$($null -ne $proc) PID=$($launch.pid)"
+Get-Content $launch.stdout -Tail 80 -ErrorAction SilentlyContinue
+Get-Content $launch.stderr -Tail 80 -ErrorAction SilentlyContinue
+Get-ChildItem .runtime/school_runs -Directory | Sort-Object LastWriteTime -Descending | Select-Object -First 3
+```

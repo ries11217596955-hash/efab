@@ -76,3 +76,58 @@ Internal school launch/helper surfaces are allowed when they are called by the c
 `Mode=Live` is school-live / memory-digestion mode. It may update compact semantic memory through the school digest/merge gates, but it is not agent runtime, not OS/live process authority, and not autonomous AgentLife.
 
 No extra owner prompt/request is required when the canonical policy validator passes and the Owner has authorized school `Mode=Live` for the active school entrypoint.
+
+## Long max run detached launch protocol
+
+For `Count=1000000` / long `Mode=Live` runs, use the canonical entrypoint through a detached wrapper that records runtime control metadata. This does not create a second school surface; it is only process control around the canonical entrypoint.
+
+Required preflight:
+
+```text
+cwd/root = H:\efab
+git status clean or explicitly accepted
+HEAD synced with origin/main
+no existing school/finalizer/digest/queue-maintenance/merge process
+active compact memory manifest exists
+canonical validator PASS
+```
+
+Required detached runtime outputs:
+
+```text
+.runtime/school_long_runs/<run_id>/launch.json
+.runtime/school_long_runs/<run_id>/stdout.txt
+.runtime/school_long_runs/<run_id>/stderr.txt
+```
+
+Launch metadata must include:
+
+```text
+run_id
+pid
+count
+mode
+entrypoint
+topics_plan
+git head
+stdout/stderr paths
+boundary = school-live compact-memory digestion mode; not AgentLife runtime; not Codex
+```
+
+Correct max launch target:
+
+```text
+operations/school/run_agent_school.ps1 -Count 1000000 -Mode Live -TopicsPlan operations/school/curriculum/topics/builder_night_school_topics_v1.json
+```
+
+Do not claim full completion until:
+
+```text
+process exited cleanly
+canonical proof status is PASS_REAL_FACTORY_DIGEST_RECALL_USE_V1
+ready/merged/behavior_delta fields are checked
+finalizer status is checked separately
+no school-related process remains
+```
+
+Do not clean active `.runtime` surfaces while the process is alive.
