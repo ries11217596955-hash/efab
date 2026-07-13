@@ -69,12 +69,13 @@ function InvokeQueueMaintenanceAfterSchoolMerge($FinalizerPolicy,$SchoolMergeRes
   if(-not (Test-Path $runner)){ return [ordered]@{ status='SKIPPED_QUEUE_MAINTENANCE_RUNNER_MISSING'; runner=$runner } }
   $sources=@($cfg.allowed_source_kinds)
   if($sources.Count -lt 1){ $sources=@('AgentLife') }
-  $limit=if($cfg.process_limit){ [int]$cfg.process_limit } else { 5 }
-  $out=@(& powershell -NoProfile -ExecutionPolicy Bypass -File $runner -AllowedSourceKinds $sources -ProcessLimit $limit *>&1 | ForEach-Object{[string]$_})
+  $limit=if($cfg.process_limit){ [int]$cfg.process_limit } else { 1 }
+  $timeout=if($cfg.merge_timeout_seconds){ [int]$cfg.merge_timeout_seconds } else { 180 }
+  $out=@(& powershell -NoProfile -ExecutionPolicy Bypass -File $runner -AllowedSourceKinds $sources -ProcessLimit $limit -MergeTimeoutSeconds $timeout *>&1 | ForEach-Object{[string]$_})
   $status=($out|Where-Object{$_ -match '^QUEUE_MAINTENANCE_STATUS='}|Select-Object -Last 1) -replace '^QUEUE_MAINTENANCE_STATUS=',''
   $proof=($out|Where-Object{$_ -match '^QUEUE_MAINTENANCE_PROOF='}|Select-Object -Last 1) -replace '^QUEUE_MAINTENANCE_PROOF=',''
   $processed=($out|Where-Object{$_ -match '^QUEUE_MAINTENANCE_PROCESSED='}|Select-Object -Last 1) -replace '^QUEUE_MAINTENANCE_PROCESSED=',''
-  return [ordered]@{ status=$status; proof=$proof; processed_count=if($processed -match '^\d+$'){[int]$processed}else{0}; allowed_source_kinds=@($sources); output=@($out) }
+  return [ordered]@{ status=$status; proof=$proof; processed_count=if($processed -match '^\d+$'){[int]$processed}else{0}; allowed_source_kinds=@($sources); process_limit=$limit; merge_timeout_seconds=$timeout; output=@($out|Select-Object -Last 80) }
 }
 if(-not (Test-Path $ProofPath)){ throw "PROOF_PATH_MISSING:$ProofPath" }
 if(-not (Test-Path $PolicyPath)){ throw "POLICY_PATH_MISSING:$PolicyPath" }

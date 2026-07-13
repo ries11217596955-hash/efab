@@ -1,33 +1,34 @@
-﻿{
-    "schema":  "school_lifecycle_policy_v1",
-    "status":  "ACTIVE",
-    "finalizer":  {
-                      "enabled":  true,
-                      "runtime_record_enabled":  true,
-                      "tracked_summary_enabled":  true,
-                      "auto_commit_tracked_summary":  true,
-                      "tracked_summary_root":  "docs/operations",
-                      "runtime_report_root":  "operations/reports",
-                      "commit_modes":  [
-                                           "Live"
-                                       ],
-                      "require_repo_clean_before_commit":  true,
-                      "commit_message_prefix":  "docs: record school result",
-                      "boundary":  "Finalizer may compactly record proven school PASS results. It must not commit raw .runtime files and must not change owner-facing school launch fields.",
-                      "merge_queue_after_intake":  {
-                                                       "enabled":  true,
-                                                       "require_repo_clean_before_merge":  true,
-                                                       "process_limit":  1,
-                                                       "boundary":  "After PASS school proof and intake submit, finalizer may merge its own queued School packet through merge queue only when repo is clean and no merge lock exists."
-                                                   },
-                      "queue_maintenance_after_school_merge":  {
-                                                                   "enabled":  true,
-                                                                   "require_school_merge_pass":  true,
-                                                                   "allowed_source_kinds":  [
-                                                                                                "AgentLife"
-                                                                                            ],
-                                                                   "process_limit":  5,
-                                                                   "boundary":  "After school packet merge succeeds, finalizer may synchronously maintain queued AgentLife packets through merge queue. No daemon and no direct memory writes."
-                                                               }
-                  }
+{
+  "schema": "school_lifecycle_policy_v1",
+  "status": "ACTIVE",
+  "finalizer": {
+    "enabled": true,
+    "runtime_record_enabled": true,
+    "tracked_summary_enabled": true,
+    "auto_commit_tracked_summary": true,
+    "tracked_summary_root": "docs/operations",
+    "runtime_report_root": "operations/reports",
+    "commit_modes": [
+      "Live"
+    ],
+    "require_repo_clean_before_commit": true,
+    "commit_message_prefix": "docs: record school result",
+    "boundary": "Finalizer may compactly record proven school PASS results. It must not commit raw .runtime files and must not change owner-facing school launch fields.",
+    "merge_queue_after_intake": {
+      "enabled": true,
+      "require_repo_clean_before_merge": true,
+      "process_limit": 1,
+      "boundary": "After PASS school proof and intake submit, finalizer may merge its own queued School packet through merge queue only when repo is clean and no merge lock exists."
+    },
+    "queue_maintenance_after_school_merge": {
+      "enabled": true,
+      "require_school_merge_pass": true,
+      "allowed_source_kinds": [
+        "AgentLife"
+      ],
+      "process_limit": 1,
+      "boundary": "After school packet merge succeeds, finalizer may synchronously maintain at most one queued AgentLife packet through merge queue with bounded timeout. No daemon and no direct memory writes.",
+      "merge_timeout_seconds": 180
+    }
+  }
 }

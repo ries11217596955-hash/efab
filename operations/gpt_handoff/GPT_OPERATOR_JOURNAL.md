@@ -3146,3 +3146,28 @@ Boundary:
 Next:
 - Commit and push patches.
 - Future school max run should use the repaired report path and faster digest/validation path.
+
+## 2026-07-13 — School finalizer tail bounded before next run
+
+STATUS: FINALIZER_TAIL_TIMEOUT_GUARD_PATCHED / SAFE_NO_MATCH_VALIDATED
+
+Problem:
+- The repair 5000 school run passed ready/merge/behavior_delta, but finalizer tail spawned queue maintenance that could hang after PASS.
+- The school result was valid, but the parent process did not return cleanly because queue maintenance had no bounded child timeout and attempted to maintain old AgentLife backlog.
+
+Fix:
+- operations/compact_memory_intake/run_compact_memory_queue_maintenance_v1.ps1 now has MergeTimeoutSeconds.
+- Queue maintenance now runs merge child processes through Start-Process with stdout/stderr files, bounded WaitForExit, recursive child kill on timeout, and compact output_tail in proof.
+- operations/school/finalize_agent_school_run_v1.ps1 passes merge_timeout_seconds to queue maintenance and stores only output tail.
+- operations/school/school_lifecycle_policy.json now limits post-school AgentLife maintenance to 1 packet with 180s timeout.
+
+Validation:
+- PowerShell parse passed for queue maintenance and finalizer scripts.
+- Canonical school entrypoint validator passed.
+- Safe no-match queue maintenance test returned SKIPPED_QUEUE_MAINTENANCE_NO_MATCHING_PACKETS.
+- Active compact memory manifest timestamp did not change.
+- No school/maintenance/merge process leaked after test.
+
+Boundary:
+- This validates bounded no-match path and guards future hangs.
+- Full post-school finalizer path still needs a tiny Live school run proof after commit.
