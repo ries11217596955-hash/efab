@@ -1,10 +1,10 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-13T20:38:38.8734730+04:00",
+    "checked_at":  "2026-07-13T20:53:34.5383546+04:00",
     "branch":  "main",
-    "observed_head":  "812587c04dfe52c2ed5c42c551abfef9c9075e30",
-    "subject_head":  "812587c04dfe52c2ed5c42c551abfef9c9075e30",
+    "observed_head":  "cc47883e4b4a506e190a93ecd1749e682b84085c",
+    "subject_head":  "cc47883e4b4a506e190a93ecd1749e682b84085c",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
@@ -12,6 +12,7 @@
                           "AGENTS.md",
                           "operations/gpt_handoff/CODEX_TASK_EVIDENCE_GROUNDED_SCHOOL_GENERATOR_V1.md",
                           "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
+                          "operations/school/curriculum/candidate_factory/CAMPAIGN_COVERAGE_STATUS_POINTER_V1.md",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
@@ -19,7 +20,8 @@
                       ],
     "structural_paths":  [
                              "operations/gpt_handoff/CODEX_TASK_EVIDENCE_GROUNDED_SCHOOL_GENERATOR_V1.md",
-                             "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
+                             "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
+                             "operations/school/curriculum/candidate_factory/CAMPAIGN_COVERAGE_STATUS_POINTER_V1.md"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -32,7 +34,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  1834,
-                                    "sha256":  "96bbd8b0c31375224d1d3ef5c60bd3041f9d624032078d5a6665ad5c36f023ef"
+                                    "sha256":  "07d16cd43cd0b1b51bb15588a53f0805a0382eb9291a0af59755e193c68eba7c"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -65,5 +67,5 @@
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-13T20:39:02.9985102+04:00"
+    "refreshed_at":  "2026-07-13T20:53:58.8641255+04:00"
 }

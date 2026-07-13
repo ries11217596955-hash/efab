@@ -3480,3 +3480,21 @@ Acceptance rule:
 - No level plan -> reject Codex output.
 - Blind level=1 for all roots -> reject.
 - No source refs -> reject.
+
+## 2026-07-13 — Owner selected 15k as first Live validation run after Codex
+
+STATUS: FIRST_LIVE_VALIDATION_RUN_BOUNDARY_SET_TO_15000
+
+Owner decision:
+- After Codex prepares/validates the campaign pack and existing generator support, the first real Live school run should be 15,000 atoms.
+- Do not jump straight to 50k or 1M.
+
+Reason:
+- 15,000 = 3 chunks of 5,000.
+- It is large enough to test campaign-pack expansion, streaming, digest, checkpoint pruning, and finalizer tail.
+- It is small enough to stop/inspect before burning another large run.
+
+Boundary:
+- Codex must not launch the 15k run.
+- Codex only prepares campaign coverage audit, level plan, campaign pack, generator support, and bounded validations.
+- GPT/operator launches 15k only after accepting Codex output.

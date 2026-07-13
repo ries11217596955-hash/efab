@@ -627,3 +627,12 @@ For external/domain campaigns, Owner/trusted sources must be provided before Cod
 ```
 
 If evidence/source is missing, stop or use a clearly marked low-depth fallback. Do not manufacture knowledge.
+
+First Live validation run after Codex:
+
+```text
+Count = 15000
+Mode = Live
+```
+
+This is Owner-selected. Do not jump from Codex output directly to 50k or 1M. The 15k run validates the campaign-pack generator over 3 chunks of 5000 before larger scaling.
