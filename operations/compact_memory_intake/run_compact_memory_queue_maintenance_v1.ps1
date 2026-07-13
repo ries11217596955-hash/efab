@@ -9,6 +9,7 @@ $repoRoot=(git rev-parse --show-toplevel).Trim(); Set-Location $repoRoot
 function EnsureDir($Path){ if(-not (Test-Path $Path)){ New-Item -ItemType Directory -Force -Path $Path | Out-Null } }
 function WriteJson($Path,$Obj,$Depth=80){ $d=Split-Path $Path -Parent; if($d){ EnsureDir $d }; $Obj|ConvertTo-Json -Depth $Depth|Set-Content -LiteralPath $Path -Encoding UTF8 }
 function ReadPacketKind($Path){ try { $p=Get-Content $Path -Raw|ConvertFrom-Json; return [string]$p.source_kind } catch { return $null } }
+function Slug($s){ (([string]$s) -replace '[^A-Za-z0-9_.-]','_') }
 function StopProcessTree([int]$ProcessId){
   foreach($child in @(Get-CimInstance Win32_Process -ErrorAction SilentlyContinue | Where-Object { $_.ParentProcessId -eq $ProcessId })){
     StopProcessTree ([int]$child.ProcessId)
@@ -106,3 +107,4 @@ Write-Host "QUEUE_MAINTENANCE_PROCESSED=$($result.processed_count)"
 Write-Host "QUEUE_MAINTENANCE_ALLOWED_SOURCES=$($AllowedSourceKinds -join ',')"
 if($result.blockers.Count -gt 0){ Write-Host "QUEUE_MAINTENANCE_BLOCKERS=$($result.blockers -join ',')" }
 if($status -like 'FAIL_*'){ exit 1 }
+

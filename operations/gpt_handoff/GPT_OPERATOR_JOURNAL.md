@@ -3171,3 +3171,23 @@ Validation:
 Boundary:
 - This validates bounded no-match path and guards future hangs.
 - Full post-school finalizer path still needs a tiny Live school run proof after commit.
+
+## 2026-07-13 — Queue maintenance Slug helper repair
+
+STATUS: QUEUE_MAINTENANCE_SLUG_HELPER_FIXED
+
+Finding:
+- Tiny Live school run proved school/digest path PASS, but finalizer maintenance stderr showed `Slug` was not recognized inside run_compact_memory_queue_maintenance_v1.ps1.
+- The timeout helper called Slug before/without a local Slug function.
+
+Fix:
+- Added local Slug helper to run_compact_memory_queue_maintenance_v1.ps1.
+
+Validation:
+- Script parse passed.
+- Safe no-match maintenance test passed with SKIPPED_QUEUE_MAINTENANCE_NO_MATCHING_PACKETS.
+- Active compact memory manifest timestamp did not change.
+- No queue maintenance / merge process leaked.
+
+Boundary:
+- Need one more tiny Live proof to validate full finalizer tail with real queue maintenance after this helper fix.

@@ -1,28 +1,28 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-13T18:58:08.3066190+04:00",
+    "checked_at":  "2026-07-13T19:04:25.8010523+04:00",
     "branch":  "main",
-    "observed_head":  "397298f897384aba4571a42a7f6cb05e965b2e79",
-    "subject_head":  "397298f897384aba4571a42a7f6cb05e965b2e79",
+    "observed_head":  "2805523410912a3b37de925ff8d6402f12a9f624",
+    "subject_head":  "2805523410912a3b37de925ff8d6402f12a9f624",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
+                          "operations/compact_memory_intake/run_compact_memory_queue_maintenance_v1.ps1",
                           "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                          "operations/school/curriculum/streaming_absorption/process_codex_curriculum_streaming_absorption_v1.ps1",
-                          "operations/school/digestion/absorb_atom_file_via_digest_pipeline_v1.ps1",
-                          "operations/school/digestion/invoke_compact_semantic_digestion_organ_v1.ps1",
+                          "operations/school/finalize_agent_school_run_v1.ps1",
+                          "operations/school/school_lifecycle_policy.json",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json"
                       ],
     "structural_paths":  [
+                             "operations/compact_memory_intake/run_compact_memory_queue_maintenance_v1.ps1",
                              "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                             "operations/school/curriculum/streaming_absorption/process_codex_curriculum_streaming_absorption_v1.ps1",
-                             "operations/school/digestion/absorb_atom_file_via_digest_pipeline_v1.ps1",
-                             "operations/school/digestion/invoke_compact_semantic_digestion_organ_v1.ps1"
+                             "operations/school/finalize_agent_school_run_v1.ps1",
+                             "operations/school/school_lifecycle_policy.json"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -35,7 +35,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  1828,
-                                    "sha256":  "1dd95d6f9cf47303bc428944657a56b89503db1d6c2478a5b44848ece160472d"
+                                    "sha256":  "4319fe5cccf8e99ab4590469322a07535bacc4b7d5e10ed7ab17ff64e1181478"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -68,5 +68,5 @@
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-13T18:58:32.7126937+04:00"
+    "refreshed_at":  "2026-07-13T19:04:50.2012157+04:00"
 }
