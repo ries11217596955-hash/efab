@@ -3009,3 +3009,48 @@ Do not forget:
 - Codex is material/hands, not identity or final authority.
 - External/Codex results do not become accepted memory without use/proof/acceptance path.
 - Batch query saves time and prevents ping-pong loops.
+
+## 2026-07-13 — Step Logic clarification: offline fallback when Codex and external world are unavailable
+
+STATUS: ACTIVE_LOGIC_DECISION / STEP_LOGIC_KERNEL_V1_INPUT
+
+Owner clarification:
+- If Codex is unavailable, the agent may still use the external world when allowed.
+- If both Codex and external world are unavailable, the agent must not self-stop by default.
+- The agent must degrade into offline/local mode and continue with bounded lawful work.
+
+Fallback ladder:
+1. MEMORY_RECALL — use compact memory, journal, proof reports, existing maps.
+2. REPO_READ_REFLEX — inspect local files, scripts, validators, reports, git state.
+3. BUILT_IN_REFLEX — use safe local reflexes: read file, search repo, run validator, create scoped draft, compare diff, check process.
+4. INTERNAL_THINKING — reason from known facts, classify gaps, produce requirement/decision/spec.
+5. LOCAL_MICRO_TRIAL — run a bounded local proof if authority and validator exist.
+6. DEFER_EXTERNAL_BATCH — create a queued Codex/external request pack for later instead of blocking current work.
+7. OWNER_DECISION_REQUIRED — only when the task truly cannot progress without missing external/Codex data or authority.
+8. BLOCK — only for safety/protected-state/live-risk, not merely because external systems are unavailable.
+
+Offline mode outputs:
+- best_effort_answer_from_known_sources
+- local proof / validator if possible
+- explicit unknowns
+- queued source request pack if needed
+- next local step that still improves parent task
+
+Hard rule:
+- No Codex + no web/external world does not mean STOP.
+- It means lower confidence, narrower scope, and stronger proof honesty.
+- The agent continues on internal memory/repo/reflexes unless the selected task has an unavoidable external dependency.
+
+Step Logic Kernel insertion:
+- Add availability vector:
+  codex_available: true/false/unknown
+  external_world_available: true/false/unknown
+  local_repo_available: true/false/unknown
+  memory_available: true/false/unknown
+  reflexes_available: true/false/unknown
+- Add selected fallback mode:
+  NORMAL
+  CODEX_UNAVAILABLE_EXTERNAL_OK
+  OFFLINE_LOCAL_ONLY
+  OWNER_DECISION_REQUIRED
+  BLOCKED_SAFETY
