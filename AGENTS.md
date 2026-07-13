@@ -575,6 +575,16 @@ Do not turn AGENTS.md into a ledger, report, or archive.
 
 Current Owner route: school remains the learning accelerator. Codex is used before a new serious knowledge campaign to author/update the campaign content that the existing school generator consumes.
 
+
+
+Coverage / level pointer before Codex spends tokens:
+
+```text
+operations/school/curriculum/candidate_factory/CAMPAIGN_COVERAGE_STATUS_POINTER_V1.md
+```
+
+Codex must read the pointer and produce coverage audit + level plan before writing a campaign pack. Do not blindly start all themes at level 1; reconcile cursor ledger with compact memory snapshot and journal/proofs.
+
 Use this task package:
 
 ```text

@@ -1,10 +1,10 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-13T20:12:13.3705298+04:00",
+    "checked_at":  "2026-07-13T20:38:38.8734730+04:00",
     "branch":  "main",
-    "observed_head":  "5b5e761e5bc30fbc2ff5b6603f1fa6ad05a2fba1",
-    "subject_head":  "5b5e761e5bc30fbc2ff5b6603f1fa6ad05a2fba1",
+    "observed_head":  "812587c04dfe52c2ed5c42c551abfef9c9075e30",
+    "subject_head":  "812587c04dfe52c2ed5c42c551abfef9c9075e30",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
@@ -12,10 +12,6 @@
                           "AGENTS.md",
                           "operations/gpt_handoff/CODEX_TASK_EVIDENCE_GROUNDED_SCHOOL_GENERATOR_V1.md",
                           "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                          "operations/school/curriculum/candidate_factory/memory/active_compact_memory_snapshot_for_evidence_v1/SNAPSHOT_MANIFEST.json",
-                          "operations/school/curriculum/candidate_factory/memory/active_compact_memory_snapshot_for_evidence_v1/cells_tail_sample_200.jsonl",
-                          "operations/school/curriculum/candidate_factory/memory/active_compact_memory_snapshot_for_evidence_v1/index.json",
-                          "operations/school/curriculum/candidate_factory/memory/active_compact_memory_snapshot_for_evidence_v1/manifest.json",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
@@ -23,10 +19,7 @@
                       ],
     "structural_paths":  [
                              "operations/gpt_handoff/CODEX_TASK_EVIDENCE_GROUNDED_SCHOOL_GENERATOR_V1.md",
-                             "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                             "operations/school/curriculum/candidate_factory/memory/active_compact_memory_snapshot_for_evidence_v1/SNAPSHOT_MANIFEST.json",
-                             "operations/school/curriculum/candidate_factory/memory/active_compact_memory_snapshot_for_evidence_v1/index.json",
-                             "operations/school/curriculum/candidate_factory/memory/active_compact_memory_snapshot_for_evidence_v1/manifest.json"
+                             "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -38,8 +31,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1833,
-                                    "sha256":  "4d000068df3650717bf83def71269b08cc899c16e9c52d4dfa1901b1d5943cf6"
+                                    "structural_file_count":  1834,
+                                    "sha256":  "96bbd8b0c31375224d1d3ef5c60bd3041f9d624032078d5a6665ad5c36f023ef"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -65,12 +58,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  149,
-                         "structural_path_count":  1833,
+                         "structural_path_count":  1834,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-13T20:12:37.8620474+04:00"
+    "refreshed_at":  "2026-07-13T20:39:02.9985102+04:00"
 }

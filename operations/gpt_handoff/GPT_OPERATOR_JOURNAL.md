@@ -3454,3 +3454,29 @@ Source law:
 - Generator does not create knowledge from nothing.
 - Codex may author self-build campaign content from local repo/journal/contracts/proofs.
 - For external knowledge, trusted sources must be supplied before Codex writes campaign content.
+
+
+## 2026-07-13 — Added coverage/level pointer for Codex campaign planning
+
+STATUS: COVERAGE_POINTER_ADDED / CODEX_LIMIT_BURN_GUARD
+
+Owner reminder:
+- Before asking Codex to author a new campaign, Codex must know what themes/levels already exist and what gaps remain.
+- AGENTS.md should point Codex to the current coverage/level state so limits are not wasted.
+
+Implementation:
+- Added operations/school/curriculum/candidate_factory/CAMPAIGN_COVERAGE_STATUS_POINTER_V1.md.
+- Updated AGENTS.md to require reading this pointer before campaign authoring.
+- Updated CODEX_TASK_EVIDENCE_GROUNDED_SCHOOL_GENERATOR_V1.md to require CAMPAIGN_COVERAGE_AUDIT_V1.json and CAMPAIGN_LEVEL_PLAN_V1.json before campaign pack creation.
+
+Important finding:
+- Preserved compact memory snapshot reports cell_count=18021 and index_terms=18468.
+- theme_cursor_ledger.json contains 17922 theme keys across 87 roots, 103 verbs, 2 modes.
+- But theme_cursor_ledger currently reports last_level=0 / next_level=1 for all keys.
+- Therefore the ledger alone is not a trusted completed-coverage signal; Codex must reconcile it with compact memory snapshot and journal/proofs.
+
+Acceptance rule:
+- No coverage audit -> reject Codex output.
+- No level plan -> reject Codex output.
+- Blind level=1 for all roots -> reject.
+- No source refs -> reject.

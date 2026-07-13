@@ -64,7 +64,48 @@ operations/school/curriculum/candidate_factory/validate_theme_cursor_ledger_v1.p
 Do not create a new school organ or parallel generator directory.
 Small helper file inside candidate_factory is allowed only if it is clearly part of the existing organ.
 
-## 3. Campaign pack concept
+## 3. Mandatory coverage / level audit before campaign pack
+
+Before authoring campaign seeds, Codex must read:
+
+```text
+operations/school/curriculum/candidate_factory/CAMPAIGN_COVERAGE_STATUS_POINTER_V1.md
+```
+
+Codex must produce compact tracked reports:
+
+```text
+operations/school/curriculum/candidate_factory/reports/CAMPAIGN_COVERAGE_AUDIT_V1.json
+operations/school/curriculum/candidate_factory/reports/CAMPAIGN_LEVEL_PLAN_V1.json
+```
+
+Codex must reconcile the cursor ledger with compact memory snapshot and journal/proof history. Current known risk: theme_cursor_ledger reports all last_level=0 / next_level=1, while compact snapshot has 18021 cells. Blindly starting every root at level 1 is rejected.
+
+Required audit fields per root/topic:
+
+```text
+root
+memory_signal
+cursor_signal
+journal_signal
+coverage_status = missing | weak | medium | saturated | unknown_conflict
+recommended_start_level
+recommended_seed_count
+priority
+reason
+source_refs
+```
+
+Acceptance rule:
+
+```text
+No CAMPAIGN_COVERAGE_AUDIT_V1.json -> FAIL_VALIDATION
+No CAMPAIGN_LEVEL_PLAN_V1.json -> FAIL_VALIDATION
+Blind level=1 for all roots -> FAIL_VALIDATION
+No source_refs -> FAIL_VALIDATION
+```
+
+## 4. Campaign pack concept
 
 Codex should make the existing generator able to consume a Codex-authored campaign pack.
 The pack is content, not a second organ.
@@ -85,7 +126,7 @@ operations/school/curriculum/candidate_factory/campaign_packs/builder_self_knowl
 The pack must be compact enough for Git. Do not write millions of candidate rows into Git.
 For a million-atom campaign, store deep source lessons/templates/lesson seeds and let the generator expand them deterministically during runtime.
 
-## 4. What Codex must author
+## 5. What Codex must author
 
 Codex must author deep, varied lesson seeds from real local sources.
 Each seed must include:
@@ -124,7 +165,7 @@ Bad seed example:
 lesson: Builder must learn repo_structure through define.
 ```
 
-## 5. Generator behavior after update
+## 6. Generator behavior after update
 
 The existing generator should support campaign pack input.
 Do not remove current fallback mode unless tests depend on it.
@@ -168,7 +209,7 @@ evidence_summary
 candidate_depth_score
 ```
 
-## 6. Required source ladder for this first campaign
+## 7. Required source ladder for this first campaign
 
 Use these local source surfaces:
 
@@ -189,7 +230,7 @@ Use these local source surfaces:
 
 Runtime was cleaned before this task. Do not assume .runtime exists.
 
-## 7. Required validation
+## 8. Required validation
 
 Codex must add/update validation so a bounded batch proves that candidates are campaign-seed grounded.
 
@@ -216,7 +257,7 @@ If adding a validator, keep it under existing candidate_factory:
 operations/school/curriculum/candidate_factory/validate_campaign_pack_candidate_factory_v1.ps1
 ```
 
-## 8. Bounded tests only
+## 9. Bounded tests only
 
 Allowed tests:
 
@@ -238,7 +279,7 @@ attached long polling
 direct active memory writes
 ```
 
-## 9. PREFLIGHT requirement
+## 10. PREFLIGHT requirement
 
 Before file writes, Codex must inspect and report:
 
@@ -250,6 +291,7 @@ existing candidate_factory files
 current topics plan path
 current cursor ledger path
 campaign_pack existing/missing status
+coverage status pointer path and whether CAMPAIGN_COVERAGE_AUDIT / CAMPAIGN_LEVEL_PLAN exist
 validator surfaces
 preserved compact snapshot status
 ```
@@ -273,7 +315,7 @@ Files changed before PREFLIGHT_PASS: YES/NO
 expected: NO
 ```
 
-## 10. Delivery report
+## 11. Delivery report
 
 Final Codex report must include:
 
@@ -283,6 +325,8 @@ Files changed before PREFLIGHT_PASS: YES/NO
 Existing organ updated: YES/NO
 New organ created: YES/NO
 Expected New organ created: NO
+Coverage audit path
+Level plan path
 Campaign pack path
 Campaign seeds count
 Source paths used
@@ -296,7 +340,7 @@ Files intentionally not changed
 Recommended next school run size after validation
 ```
 
-## 11. Acceptance boundary
+## 12. Acceptance boundary
 
 Accept only if:
 
