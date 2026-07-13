@@ -75,9 +75,9 @@ Likely input data:
 ```text
 operations/school/curriculum/topics/builder_night_school_topics_v1.json
 operations/school/curriculum/candidate_factory/memory/theme_cursor_ledger.json
-.runtime/active_compact_semantic_memory_v1/manifest.json
-.runtime/active_compact_semantic_memory_v1/index.json
-.runtime/active_compact_semantic_memory_v1/cells.jsonl
+operations/school/curriculum/candidate_factory/memory/active_compact_memory_snapshot_for_evidence_v1/manifest.json
+operations/school/curriculum/candidate_factory/memory/active_compact_memory_snapshot_for_evidence_v1/index.json
+operations/school/curriculum/candidate_factory/memory/active_compact_memory_snapshot_for_evidence_v1/cells_tail_sample_200.jsonl
 operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md
 operations/school/SCHOOL_CANONICAL_RUN_CONTRACT_V1.md
 operations/school/school_lifecycle_policy.json
@@ -110,9 +110,9 @@ Candidate evidence must come from real local Builder surfaces, in this priority 
 ```text
 1. canonical school contracts and policies
 2. current generator/candidate_factory files
-3. active compact memory manifest/index/cells sampled safely
+3. preserved compact memory evidence snapshot manifest/index/cells_tail_sample_200 sampled safely
 4. GPT operator journal lessons/failures
-5. school runtime proof JSON summaries
+5. tracked school/runtime proof summaries and journal lessons; .runtime was cleaned and must not be assumed present
 6. validators and their PASS/FAIL rules
 7. body-map/self-model reports when compact and tracked
 8. topics plan only as routing/curriculum frame, not as full knowledge source
@@ -329,3 +329,4 @@ candidates are evidence-grounded, not mostly template permutations
 repo remains clean except intended tracked changes
 no long live school run started
 ```
+

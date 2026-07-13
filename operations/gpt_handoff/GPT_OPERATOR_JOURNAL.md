@@ -3381,3 +3381,48 @@ Codex task goal:
 Boundary:
 - Codex task is prepared, not executed by this journal entry.
 - Codex output will be CODEX_DRAFT until terminal validation.
+
+## 2026-07-13 — Repo cleaned before Codex evidence-generator task
+
+STATUS: RUNTIME_BLOAT_REMOVED / CODEX_CONTEXT_UPDATED / ACTIVE_MEMORY_SNAPSHOT_PRESERVED
+
+Owner instruction:
+- Before running Codex, clean heavy runtime/reports created by shallow school runs.
+- Update project markdown and AGENTS.md for Codex.
+- Then Codex can be run for the evidence-grounded generator task.
+
+Cleanup performed:
+- Verified no school/finalizer/digest/queue-maintenance process was running.
+- Preserved compact evidence snapshot from active compact memory before runtime cleanup:
+  operations/school/curriculum/candidate_factory/memory/active_compact_memory_snapshot_for_evidence_v1/
+- Preserved files:
+  manifest.json
+  index.json
+  cells_tail_sample_200.jsonl
+  SNAPSHOT_MANIFEST.json
+- Removed .runtime transient data.
+- Removed known transient heavy streaming report surface if present.
+
+Size result:
+- Removed .runtime: approximately 4,879.32 MB.
+- operations/reports after cleanup: approximately 1.94 MB.
+- reports/self_development: approximately 3.68 MB.
+- preserved compact memory evidence snapshot: approximately 5.22 MB.
+
+Boundary:
+- Full active runtime memory in .runtime was intentionally removed as transient.
+- A compact evidence snapshot was preserved for Codex and future generator design.
+- Codex task was updated to reference the preserved snapshot, not deleted .runtime paths.
+- This cleanup does not claim the old 1M or stopped 50k run completed.
+
+AGENTS.md update:
+- Added current school-generator repair task section.
+- Codex must update existing candidate_factory, not create duplicate organ.
+- Codex must not run long school, mutate active memory directly, or create runtime/report bloat.
+- Evidence-grounded candidates must use real local evidence and not generic root/verb/mode templates.
+
+Plain-language launch rule:
+- No, not every run requires Codex.
+- Codex is needed when we are changing code/logic, such as the generator itself.
+- Normal school runs use the existing script with parameters like -Count and -Mode.
+- After Codex repairs the generator, future school runs should not ask Codex to rewrite scripts each time; they should use the repaired canonical entrypoint.

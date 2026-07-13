@@ -568,3 +568,43 @@ Do not turn AGENTS.md into a ledger, report, or archive.
 
 
 
+
+---
+
+## 16. Current school-generator repair task
+
+Current Owner route: update the existing school candidate factory into an evidence-grounded generator.
+
+Use this task package:
+
+```text
+operations/gpt_handoff/CODEX_TASK_EVIDENCE_GROUNDED_SCHOOL_GENERATOR_V1.md
+```
+
+Hard rules:
+
+```text
+update existing candidate_factory; do not create duplicate school/generator organ
+no file writes before PREFLIGHT_PASS
+no Count=50000 or Count=1000000 run
+no long Live school run
+no direct active compact memory mutation
+no report/runtime bloat
+```
+
+Runtime cleanup status:
+
+```text
+.runtime was intentionally removed before this Codex task
+heavy streaming/runtime reports were intentionally removed
+preserved evidence snapshot exists at operations/school/curriculum/candidate_factory/memory/active_compact_memory_snapshot_for_evidence_v1/
+```
+
+Candidate depth target:
+
+```text
+candidate = topic/root + real local evidence + extracted lesson + negative trap + proof target + behavior delta
+not root + verb + mode + generic template
+```
+
+If evidence is missing, stop or use a clearly marked low-depth fallback. Do not manufacture knowledge.
