@@ -3921,3 +3921,40 @@ Boundary:
 
 Next action:
 - Run usefulness/quality gate over the 100k ready atoms before any digest or active memory absorption.
+## 2026-07-14 - 100k usefulness quality gate
+
+STATUS: PASS_CONTRACT_SOURCE_COVERAGE_BUT_LOW_NOVELTY_COMPACT_DIGEST_ONLY
+
+Quality gate boundary:
+- No digest started.
+- No absorption started.
+- Active memory not mutated.
+- Candidate metadata checked from all_candidates.jsonl; ready lane checked from ready_atoms.jsonl because ready atoms strip campaign/source fields.
+
+Results:
+- candidates=100000
+- ready_atoms=100000
+- roots=12/12
+- seeds=48/48
+- fallback_template_count=0
+- source_missing_count=0
+- proof_missing_count=0
+- hard_failures=0
+- unique_exercise_ratio=0.00144
+- unique_expected_behavior_ratio=0.00048
+- exercise_duplicate_max_cluster=696
+- expected_behavior_duplicate_max_cluster=2088
+
+Interpretation:
+- Source/contract coverage is clean: 12/12 roots, 48/48 seeds, fallback=0, source missing=0, proof missing=0.
+- Novelty is low by design: 100k is expansion of 48 seed lessons into repeated drills.
+- root/seed budget mismatch was reclassified as scheduler weighting drift, not hard failure; observed root counts are near-even range 8328..8352.
+
+Decision:
+- raw_100k_promotion=false
+- compact_digest_candidate=true
+- recommended policy: REJECT_RAW_100K_PROMOTION; USE_COMPACT_SEED_ROOT_DIGEST_ONLY
+
+Proof pointers:
+- operations/reports/SCHOOL_100K_USEFULNESS_QUALITY_GATE_20260714.json
+- operations/reports/SCHOOL_100K_USEFULNESS_QUALITY_GATE_20260714.md

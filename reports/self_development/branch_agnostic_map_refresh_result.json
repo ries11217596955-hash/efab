@@ -1,23 +1,25 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-14T19:19:46.5432249+04:00",
+    "checked_at":  "2026-07-14T19:26:49.5880229+04:00",
     "branch":  "main",
-    "observed_head":  "5772c901d549747e1014db787f6ea3919563eff3",
-    "subject_head":  "5772c901d549747e1014db787f6ea3919563eff3",
+    "observed_head":  "1269d4d0c2081bb6fabf9d9747120985705cacfc",
+    "subject_head":  "1269d4d0c2081bb6fabf9d9747120985705cacfc",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "codex_tasks/CODEX_TASK_SCHOOL_100K_SEED_PLAN_ONLY_EMBEDDED_20260714.md",
-                          "codex_tasks/CODEX_TASK_SCHOOL_100K_SEED_PLAN_ONLY_READONLY_20260714.md",
-                          "codex_tasks/CODEX_TASK_SCHOOL_100K_USEFUL_CAMPAIGN_PACK_20260714.md",
-                          "codex_tasks/CODEX_TASK_SCHOOL_100K_USEFUL_CAMPAIGN_PACK_LEAN_20260714.md",
                           "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                          "operations/reports/SCHOOL_CANONICAL_LAUNCH_POINTER_20260714.json",
-                          "operations/reports/SCHOOL_CANONICAL_LAUNCH_POINTER_20260714.md",
-                          "operations/reports/SCHOOL_LAUNCH_ROUTE_CLEANUP_20260714.json",
-                          "operations/reports/SCHOOL_LAUNCH_ROUTE_CLEANUP_20260714.md",
+                          "operations/reports/CODEX_100K_CAMPAIGN_PACK_INDEPENDENT_VALIDATION_20260714.json",
+                          "operations/reports/SCHOOL_100K_USEFUL_STAGING_RUN_20260714.json",
+                          "operations/reports/SCHOOL_100K_USEFUL_STAGING_RUN_20260714.md",
+                          "operations/school/curriculum/candidate_factory/campaign_packs/builder_useful_100k_v1.jsonl",
+                          "operations/school/curriculum/candidate_factory/campaign_packs/builder_useful_100k_v1.manifest.json",
+                          "operations/school/curriculum/candidate_factory/reports/BUILDER_USEFUL_100K_CAMPAIGN_AUTHOR_REPORT_V1.json",
+                          "operations/school/curriculum/candidate_factory/reports/BUILDER_USEFUL_100K_CAMPAIGN_COVERAGE_AUDIT_V1.json",
+                          "operations/school/curriculum/candidate_factory/reports/BUILDER_USEFUL_100K_CAMPAIGN_LEVEL_PLAN_V1.json",
+                          "operations/school/curriculum/candidate_factory/reports/CAMPAIGN_PACK_CANDIDATE_FACTORY_VALIDATION_V1.json",
+                          "operations/school/curriculum/candidate_factory/reports/CAMPAIGN_PACK_CANDIDATE_FACTORY_VALIDATION_V1.md",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
@@ -25,10 +27,15 @@
                       ],
     "structural_paths":  [
                              "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                             "operations/reports/SCHOOL_CANONICAL_LAUNCH_POINTER_20260714.json",
-                             "operations/reports/SCHOOL_CANONICAL_LAUNCH_POINTER_20260714.md",
-                             "operations/reports/SCHOOL_LAUNCH_ROUTE_CLEANUP_20260714.json",
-                             "operations/reports/SCHOOL_LAUNCH_ROUTE_CLEANUP_20260714.md"
+                             "operations/reports/CODEX_100K_CAMPAIGN_PACK_INDEPENDENT_VALIDATION_20260714.json",
+                             "operations/reports/SCHOOL_100K_USEFUL_STAGING_RUN_20260714.json",
+                             "operations/reports/SCHOOL_100K_USEFUL_STAGING_RUN_20260714.md",
+                             "operations/school/curriculum/candidate_factory/campaign_packs/builder_useful_100k_v1.manifest.json",
+                             "operations/school/curriculum/candidate_factory/reports/BUILDER_USEFUL_100K_CAMPAIGN_AUTHOR_REPORT_V1.json",
+                             "operations/school/curriculum/candidate_factory/reports/BUILDER_USEFUL_100K_CAMPAIGN_COVERAGE_AUDIT_V1.json",
+                             "operations/school/curriculum/candidate_factory/reports/BUILDER_USEFUL_100K_CAMPAIGN_LEVEL_PLAN_V1.json",
+                             "operations/school/curriculum/candidate_factory/reports/CAMPAIGN_PACK_CANDIDATE_FACTORY_VALIDATION_V1.json",
+                             "operations/school/curriculum/candidate_factory/reports/CAMPAIGN_PACK_CANDIDATE_FACTORY_VALIDATION_V1.md"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -40,8 +47,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1887,
-                                    "sha256":  "d8ad62654c77031fff2168868c374c8b4a10d6759ae522bdb2f875ddfc5883bd"
+                                    "structural_file_count":  1889,
+                                    "sha256":  "da32a5b6a9a46bb827f710aa15a81a7d01b9310bde1a08f6dcb2a9b2af64d646"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -67,12 +74,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  149,
-                         "structural_path_count":  1887,
+                         "structural_path_count":  1889,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-14T19:20:11.8753503+04:00"
+    "refreshed_at":  "2026-07-14T19:27:15.0963120+04:00"
 }

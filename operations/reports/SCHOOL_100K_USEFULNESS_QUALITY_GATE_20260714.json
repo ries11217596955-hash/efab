@@ -1,0 +1,713 @@
+{
+  "schema": "school_100k_usefulness_quality_gate_v3",
+  "status": "PASS_CONTRACT_SOURCE_COVERAGE_BUT_LOW_NOVELTY_COMPACT_DIGEST_ONLY",
+  "created_at": "2026-07-14T15:25:53.779866+00:00",
+  "run_id": "builder_useful_100k_20260714_185930",
+  "candidate_source_path": ".runtime/codex_curriculum_candidate_factory_runs/builder_useful_100k_20260714_185930/all_candidates.jsonl",
+  "ready_atoms_path": ".runtime/streaming_absorption/builder_useful_100k_20260714_185930/ready_atoms.jsonl",
+  "candidate_count": 100000,
+  "ready_count": 100000,
+  "candidate_bad_json": 0,
+  "ready_bad_json": 0,
+  "campaign_ids": {
+    "builder_useful_100k_v1": 100000
+  },
+  "root_count_observed": 12,
+  "expected_root_count": 12,
+  "seed_count_observed": 48,
+  "expected_seed_count": 48,
+  "fallback_template_count": 0,
+  "source_missing_count": 0,
+  "proof_missing_count": 0,
+  "candidate_missing_required_fields": {},
+  "ready_missing_required_fields": {},
+  "root_counts": {
+    "memory_weight_guard": 8352,
+    "active_memory_compaction_and_rollback": 8352,
+    "school_generation_absorption_separation": 8344,
+    "hundred_k_scale_ladder": 8328,
+    "codex_campaign_pack_governance": 8328,
+    "theme_cursor_level_continuation": 8328,
+    "speed_baseline_and_bottleneck_routing": 8328,
+    "runtime_retention_cleanup_after_proof": 8328,
+    "backup_retention_release_gate": 8328,
+    "child_agent_production_boundary": 8328,
+    "autonomous_next_action_selection": 8328,
+    "live_lab_boundary_for_big_runs": 8328
+  },
+  "root_budget_expected": {
+    "memory_weight_guard": 12000,
+    "active_memory_compaction_and_rollback": 10000,
+    "school_generation_absorption_separation": 10000,
+    "hundred_k_scale_ladder": 10000,
+    "codex_campaign_pack_governance": 9000,
+    "theme_cursor_level_continuation": 8000,
+    "speed_baseline_and_bottleneck_routing": 8000,
+    "runtime_retention_cleanup_after_proof": 7000,
+    "backup_retention_release_gate": 6000,
+    "child_agent_production_boundary": 6000,
+    "autonomous_next_action_selection": 7000,
+    "live_lab_boundary_for_big_runs": 7000
+  },
+  "root_budget_mismatch": [
+    {
+      "root": "memory_weight_guard",
+      "actual": 8352,
+      "expected": 12000
+    },
+    {
+      "root": "active_memory_compaction_and_rollback",
+      "actual": 8352,
+      "expected": 10000
+    },
+    {
+      "root": "school_generation_absorption_separation",
+      "actual": 8344,
+      "expected": 10000
+    },
+    {
+      "root": "hundred_k_scale_ladder",
+      "actual": 8328,
+      "expected": 10000
+    },
+    {
+      "root": "codex_campaign_pack_governance",
+      "actual": 8328,
+      "expected": 9000
+    },
+    {
+      "root": "theme_cursor_level_continuation",
+      "actual": 8328,
+      "expected": 8000
+    },
+    {
+      "root": "speed_baseline_and_bottleneck_routing",
+      "actual": 8328,
+      "expected": 8000
+    },
+    {
+      "root": "runtime_retention_cleanup_after_proof",
+      "actual": 8328,
+      "expected": 7000
+    },
+    {
+      "root": "backup_retention_release_gate",
+      "actual": 8328,
+      "expected": 6000
+    },
+    {
+      "root": "child_agent_production_boundary",
+      "actual": 8328,
+      "expected": 6000
+    },
+    {
+      "root": "autonomous_next_action_selection",
+      "actual": 8328,
+      "expected": 7000
+    },
+    {
+      "root": "live_lab_boundary_for_big_runs",
+      "actual": 8328,
+      "expected": 7000
+    }
+  ],
+  "seed_budget_mismatch_count": 48,
+  "seed_budget_mismatch_sample": [
+    {
+      "seed_id": "bu100k_001_memory_weight_guard_installation_boundary",
+      "actual": 2088,
+      "expected": 3000
+    },
+    {
+      "seed_id": "bu100k_002_memory_weight_guard_field_policy",
+      "actual": 2088,
+      "expected": 3000
+    },
+    {
+      "seed_id": "bu100k_003_memory_weight_guard_absorption_integration",
+      "actual": 2088,
+      "expected": 3000
+    },
+    {
+      "seed_id": "bu100k_004_memory_weight_guard_proof_reading",
+      "actual": 2088,
+      "expected": 3000
+    },
+    {
+      "seed_id": "bu100k_005_active_memory_compaction_conservative_only",
+      "actual": 2088,
+      "expected": 2500
+    },
+    {
+      "seed_id": "bu100k_006_active_memory_compaction_backup_first",
+      "actual": 2088,
+      "expected": 2500
+    },
+    {
+      "seed_id": "bu100k_007_active_memory_compaction_hash_parity",
+      "actual": 2088,
+      "expected": 2500
+    },
+    {
+      "seed_id": "bu100k_008_active_memory_compaction_rollback_release_gate",
+      "actual": 2088,
+      "expected": 2500
+    },
+    {
+      "seed_id": "bu100k_009_school_generation_pack_input",
+      "actual": 2088,
+      "expected": 2500
+    },
+    {
+      "seed_id": "bu100k_010_school_absorption_later_pipeline",
+      "actual": 2088,
+      "expected": 2500
+    },
+    {
+      "seed_id": "bu100k_011_school_generation_owner_boundary",
+      "actual": 2086,
+      "expected": 2500
+    },
+    {
+      "seed_id": "bu100k_012_school_generation_test_not_live",
+      "actual": 2082,
+      "expected": 2500
+    },
+    {
+      "seed_id": "bu100k_013_hundred_k_ladder_15k_evidence",
+      "actual": 2082,
+      "expected": 2500
+    },
+    {
+      "seed_id": "bu100k_014_hundred_k_ladder_chunk_limitation",
+      "actual": 2082,
+      "expected": 2500
+    },
+    {
+      "seed_id": "bu100k_015_hundred_k_ladder_not_started",
+      "actual": 2082,
+      "expected": 2500
+    },
+    {
+      "seed_id": "bu100k_016_hundred_k_ladder_layer_metrics",
+      "actual": 2082,
+      "expected": 2500
+    },
+    {
+      "seed_id": "bu100k_017_codex_campaign_exact_output_scope",
+      "actual": 2082,
+      "expected": 2250
+    },
+    {
+      "seed_id": "bu100k_018_codex_campaign_source_law",
+      "actual": 2082,
+      "expected": 2250
+    },
+    {
+      "seed_id": "bu100k_019_codex_campaign_manifest_boundary",
+      "actual": 2082,
+      "expected": 2250
+    },
+    {
+      "seed_id": "bu100k_020_codex_campaign_two_slice_route",
+      "actual": 2082,
+      "expected": 2250
+    }
+  ],
+  "source_path_count": 18,
+  "top_sources": [
+    [
+      "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
+      18748
+    ],
+    [
+      "operations/reports/SCHOOL_15K_STREAMING_COMPLETION_20260714.json",
+      12492
+    ],
+    [
+      "operations/reports/MEMORY_WEIGHT_GUARD_INSTALLATION_20260714.json",
+      8340
+    ],
+    [
+      "operations/reports/SCHOOL_CODEX_LAUNCH_RUNBOOK_20260714.json",
+      8328
+    ],
+    [
+      "operations/reports/COMPACT_MEMORY_COMPACTION_CANDIDATE_VALIDATION_20260714.json",
+      6258
+    ],
+    [
+      "operations/gpt_handoff/CODEX_TASK_SCHOOL_100K_USEFUL_CAMPAIGN_GENERATOR_V1.md",
+      6246
+    ],
+    [
+      "operations/gpt_handoff/CODEX_TASK_EVIDENCE_GROUNDED_SCHOOL_GENERATOR_V1.md",
+      6246
+    ],
+    [
+      "AGENTS.md",
+      6246
+    ],
+    [
+      "operations/school/digestion/absorb_atom_file_via_digest_pipeline_v1.ps1",
+      4176
+    ],
+    [
+      "operations/reports/ACTIVE_COMPACT_MEMORY_CONSERVATIVE_COMPACTION_REPLACEMENT_20260714.json",
+      4170
+    ],
+    [
+      "operations/reports/RUNTIME_CLEANUP_REPORT_20260714.json",
+      4164
+    ],
+    [
+      "operations/school/digestion/apply_compact_memory_weight_guard_v1.ps1",
+      2088
+    ],
+    [
+      "operations/school/curriculum/candidate_factory/generate_codex_curriculum_candidate_factory_run_v1.ps1",
+      2088
+    ],
+    [
+      "operations/school/curriculum/candidate_factory/campaign_packs/builder_self_knowledge_deep_v1.manifest.json",
+      2082
+    ],
+    [
+      "operations/school/curriculum/candidate_factory/memory/theme_cursor_ledger.json",
+      2082
+    ],
+    [
+      "operations/school/curriculum/candidate_factory/validate_theme_cursor_ledger_v1.ps1",
+      2082
+    ],
+    [
+      "operations/school/curriculum/candidate_factory/reports/THEME_CURSOR_LEDGER_REBUILD_V1_REPORT.json",
+      2082
+    ],
+    [
+      "operations/school/curriculum/candidate_factory/CAMPAIGN_COVERAGE_STATUS_POINTER_V1.md",
+      2082
+    ]
+  ],
+  "topics_count": 12,
+  "verbs_count": 59,
+  "ladder_steps": {
+    "new_theme_base": 192,
+    "cursor_next_level": 99808
+  },
+  "duplicate_stats": {
+    "candidate_exact_line": {
+      "unique": 100000,
+      "duplicate_keys": 0,
+      "max_count": 1,
+      "duplicate_items_total": 0
+    },
+    "ready_exact_line": {
+      "unique": 100000,
+      "duplicate_keys": 0,
+      "max_count": 1,
+      "duplicate_items_total": 0
+    },
+    "candidate_id": {
+      "unique": 100000,
+      "duplicate_keys": 0,
+      "max_count": 1,
+      "duplicate_items_total": 0
+    },
+    "source_candidate_id_ready": {
+      "unique": 100000,
+      "duplicate_keys": 0,
+      "max_count": 1,
+      "duplicate_items_total": 0
+    },
+    "learning_key_candidate": {
+      "unique": 100000,
+      "duplicate_keys": 0,
+      "max_count": 1,
+      "duplicate_items_total": 0
+    },
+    "learning_key_ready": {
+      "unique": 100000,
+      "duplicate_keys": 0,
+      "max_count": 1,
+      "duplicate_items_total": 0
+    },
+    "duplicate_key_candidate": {
+      "unique": 100000,
+      "duplicate_keys": 0,
+      "max_count": 1,
+      "duplicate_items_total": 0
+    },
+    "exercise": {
+      "unique": 144,
+      "duplicate_keys": 144,
+      "max_count": 696,
+      "duplicate_items_total": 99856
+    },
+    "expected_behavior": {
+      "unique": 48,
+      "duplicate_keys": 48,
+      "max_count": 2088,
+      "duplicate_items_total": 99952
+    }
+  },
+  "uniqueness": {
+    "unique_exercise_ratio": 0.00144,
+    "unique_expected_behavior_ratio": 0.00048
+  },
+  "length_stats": {
+    "exercise": {
+      "min": 203,
+      "p50": 218.0,
+      "avg": 218.4,
+      "max": 237
+    },
+    "expected_behavior": {
+      "min": 209,
+      "p50": 255.0,
+      "avg": 254.03,
+      "max": 294
+    },
+    "negative_trap": {
+      "min": 65,
+      "p50": 93.0,
+      "avg": 95.32,
+      "max": 143
+    },
+    "validator_hint": {
+      "min": 276,
+      "p50": 356.0,
+      "avg": 356.5,
+      "max": 438
+    },
+    "campaign_lesson": {
+      "min": 98,
+      "p50": 139.0,
+      "avg": 139.74,
+      "max": 193
+    },
+    "campaign_behavior_delta": {
+      "min": 55,
+      "p50": 101.0,
+      "avg": 100.03,
+      "max": 140
+    },
+    "return_to_parent": {
+      "min": 52,
+      "p50": 84.0,
+      "avg": 85.84,
+      "max": 125
+    },
+    "source_summary": {
+      "min": 115,
+      "p50": 150.0,
+      "avg": 153.32,
+      "max": 212
+    }
+  },
+  "weak_field_counts": {},
+  "generic_hits": {
+    "empty_evidence": 2082
+  },
+  "depth_score_stats": {
+    "count": 100000,
+    "min": 5.0,
+    "avg": 5.0,
+    "max": 5.0
+  },
+  "reserved_level_stats": {
+    "count": 100000,
+    "min": 1,
+    "median": 200.0,
+    "max": 771
+  },
+  "cursor_previous_level_stats": {
+    "count": 100000,
+    "min": 0,
+    "median": 0.0,
+    "max": 424
+  },
+  "hard_failures": [],
+  "warnings": [
+    "generic_pattern_hits",
+    "large_exercise_template_clusters",
+    "large_expected_behavior_template_clusters",
+    "root_budget_mismatch_due_scheduler_distribution_not_quality_failure",
+    "seed_budget_mismatch_due_scheduler_distribution_not_quality_failure"
+  ],
+  "weak_samples": [],
+  "generic_samples": [
+    {
+      "line": 229,
+      "pattern": "empty_evidence",
+      "field": "source_summary",
+      "seed_id": "bu100k_039_child_agent_source_and_validator_requirements",
+      "value": "The evidence-grounded task states that external domains require trusted sources and that no source means no knowledge candidate."
+    },
+    {
+      "line": 230,
+      "pattern": "empty_evidence",
+      "field": "source_summary",
+      "seed_id": "bu100k_039_child_agent_source_and_validator_requirements",
+      "value": "The evidence-grounded task states that external domains require trusted sources and that no source means no knowledge candidate."
+    },
+    {
+      "line": 231,
+      "pattern": "empty_evidence",
+      "field": "source_summary",
+      "seed_id": "bu100k_039_child_agent_source_and_validator_requirements",
+      "value": "The evidence-grounded task states that external domains require trusted sources and that no source means no knowledge candidate."
+    },
+    {
+      "line": 232,
+      "pattern": "empty_evidence",
+      "field": "source_summary",
+      "seed_id": "bu100k_039_child_agent_source_and_validator_requirements",
+      "value": "The evidence-grounded task states that external domains require trusted sources and that no source means no knowledge candidate."
+    },
+    {
+      "line": 233,
+      "pattern": "empty_evidence",
+      "field": "source_summary",
+      "seed_id": "bu100k_039_child_agent_source_and_validator_requirements",
+      "value": "The evidence-grounded task states that external domains require trusted sources and that no source means no knowledge candidate."
+    },
+    {
+      "line": 234,
+      "pattern": "empty_evidence",
+      "field": "source_summary",
+      "seed_id": "bu100k_039_child_agent_source_and_validator_requirements",
+      "value": "The evidence-grounded task states that external domains require trusted sources and that no source means no knowledge candidate."
+    },
+    {
+      "line": 517,
+      "pattern": "empty_evidence",
+      "field": "source_summary",
+      "seed_id": "bu100k_039_child_agent_source_and_validator_requirements",
+      "value": "The evidence-grounded task states that external domains require trusted sources and that no source means no knowledge candidate."
+    },
+    {
+      "line": 518,
+      "pattern": "empty_evidence",
+      "field": "source_summary",
+      "seed_id": "bu100k_039_child_agent_source_and_validator_requirements",
+      "value": "The evidence-grounded task states that external domains require trusted sources and that no source means no knowledge candidate."
+    },
+    {
+      "line": 519,
+      "pattern": "empty_evidence",
+      "field": "source_summary",
+      "seed_id": "bu100k_039_child_agent_source_and_validator_requirements",
+      "value": "The evidence-grounded task states that external domains require trusted sources and that no source means no knowledge candidate."
+    },
+    {
+      "line": 520,
+      "pattern": "empty_evidence",
+      "field": "source_summary",
+      "seed_id": "bu100k_039_child_agent_source_and_validator_requirements",
+      "value": "The evidence-grounded task states that external domains require trusted sources and that no source means no knowledge candidate."
+    },
+    {
+      "line": 521,
+      "pattern": "empty_evidence",
+      "field": "source_summary",
+      "seed_id": "bu100k_039_child_agent_source_and_validator_requirements",
+      "value": "The evidence-grounded task states that external domains require trusted sources and that no source means no knowledge candidate."
+    },
+    {
+      "line": 522,
+      "pattern": "empty_evidence",
+      "field": "source_summary",
+      "seed_id": "bu100k_039_child_agent_source_and_validator_requirements",
+      "value": "The evidence-grounded task states that external domains require trusted sources and that no source means no knowledge candidate."
+    },
+    {
+      "line": 805,
+      "pattern": "empty_evidence",
+      "field": "source_summary",
+      "seed_id": "bu100k_039_child_agent_source_and_validator_requirements",
+      "value": "The evidence-grounded task states that external domains require trusted sources and that no source means no knowledge candidate."
+    },
+    {
+      "line": 806,
+      "pattern": "empty_evidence",
+      "field": "source_summary",
+      "seed_id": "bu100k_039_child_agent_source_and_validator_requirements",
+      "value": "The evidence-grounded task states that external domains require trusted sources and that no source means no knowledge candidate."
+    },
+    {
+      "line": 807,
+      "pattern": "empty_evidence",
+      "field": "source_summary",
+      "seed_id": "bu100k_039_child_agent_source_and_validator_requirements",
+      "value": "The evidence-grounded task states that external domains require trusted sources and that no source means no knowledge candidate."
+    },
+    {
+      "line": 808,
+      "pattern": "empty_evidence",
+      "field": "source_summary",
+      "seed_id": "bu100k_039_child_agent_source_and_validator_requirements",
+      "value": "The evidence-grounded task states that external domains require trusted sources and that no source means no knowledge candidate."
+    },
+    {
+      "line": 809,
+      "pattern": "empty_evidence",
+      "field": "source_summary",
+      "seed_id": "bu100k_039_child_agent_source_and_validator_requirements",
+      "value": "The evidence-grounded task states that external domains require trusted sources and that no source means no knowledge candidate."
+    },
+    {
+      "line": 810,
+      "pattern": "empty_evidence",
+      "field": "source_summary",
+      "seed_id": "bu100k_039_child_agent_source_and_validator_requirements",
+      "value": "The evidence-grounded task states that external domains require trusted sources and that no source means no knowledge candidate."
+    },
+    {
+      "line": 1093,
+      "pattern": "empty_evidence",
+      "field": "source_summary",
+      "seed_id": "bu100k_039_child_agent_source_and_validator_requirements",
+      "value": "The evidence-grounded task states that external domains require trusted sources and that no source means no knowledge candidate."
+    },
+    {
+      "line": 1094,
+      "pattern": "empty_evidence",
+      "field": "source_summary",
+      "seed_id": "bu100k_039_child_agent_source_and_validator_requirements",
+      "value": "The evidence-grounded task states that external domains require trusted sources and that no source means no knowledge candidate."
+    }
+  ],
+  "source_missing_samples": [],
+  "root_examples": {
+    "memory_weight_guard": {
+      "seed_id": "bu100k_001_memory_weight_guard_installation_boundary",
+      "source_path": "operations/reports/MEMORY_WEIGHT_GUARD_INSTALLATION_20260714.json",
+      "exercise": "Given a Builder situation involving memory_weight_guard, apply guard using seed bu100k_001_memory_weight_guard_installation_boundary, cite the source boundary, name the proof target, and state the behavior change.",
+      "expected_behavior": "When a large run prepares memory material, Builder checks the guard status and refuses unguarded active memory publish paths. The Builder should use this sourced lesson only after matching the local evidence boundary and should keep Count, runtime, and memory authority separate.",
+      "negative_trap": "Do not treat a large relations or source_fingerprints list as harmless just because the digest passed earlier.",
+      "campaign_lesson": "Future memory publication must pass through the weight guard before active memory publish; the guard reduces heavy proof-tail lists while preserving semantic properties and index compatibility.",
+      "campaign_proof_target": "MEMORY_WEIGHT_GUARD_INSTALLATION_20260714.json has status PASS_MEMORY_WEIGHT_GUARD_INSTALLED_AND_VALIDATED and active_memory_mutated_by_guard_install=false."
+    },
+    "active_memory_compaction_and_rollback": {
+      "seed_id": "bu100k_005_active_memory_compaction_conservative_only",
+      "source_path": "operations/reports/COMPACT_MEMORY_COMPACTION_CANDIDATE_VALIDATION_20260714.json",
+      "exercise": "Given a Builder situation involving active_memory_compaction_and_rollback, apply choose using seed bu100k_005_active_memory_compaction_conservative_only, cite the source boundary, name the proof target, and state the behavior change.",
+      "expected_behavior": "Builder reads the decision field and mode-specific replacement_allowed before mutating protected memory. The Builder should use this sourced lesson only after matching the local evidence boundary and should keep Count, runtime, and memory authority separate.",
+      "negative_trap": "Do not promote aggressive compaction because its validator status says PASS if the decision field forbids live use.",
+      "campaign_lesson": "Compaction decisions require mode selection, not just pass/fail; conservative can be live-eligible while aggressive remains lab-only because it changes property preservation semantics.",
+      "campaign_proof_target": "COMPACT_MEMORY_COMPACTION_CANDIDATE_VALIDATION_20260714.json decision allows conservative replacement and says DO_NOT_USE_AGGRESSIVE_FOR_LIVE_YET."
+    },
+    "school_generation_absorption_separation": {
+      "seed_id": "bu100k_009_school_generation_pack_input",
+      "source_path": "operations/school/curriculum/candidate_factory/generate_codex_curriculum_candidate_factory_run_v1.ps1",
+      "exercise": "Given a Builder situation involving school_generation_absorption_separation, apply generate using seed bu100k_009_school_generation_pack_input, cite the source boundary, name the proof target, and state the behavior change.",
+      "expected_behavior": "Builder treats candidate generation as a material-preparation step and waits for later streaming/digest/recall gates before memory claims. The Builder should use this sourced lesson only after matching the local evidence boundary and should keep Count, runtime, and memory authority separate.",
+      "negative_trap": "Do not call a seed-backed candidate learned memory just because the generator emitted it.",
+      "campaign_lesson": "Campaign packs are generation inputs for the existing factory; they are not absorbed memory and they do not create accepted atoms by themselves.",
+      "campaign_proof_target": "Factory report shows campaign_pack_status=CAMPAIGN_PACK_APPLIED, campaign_seeded_candidates, fallback_template_candidates, and active_memory_mutated=false."
+    },
+    "hundred_k_scale_ladder": {
+      "seed_id": "bu100k_013_hundred_k_ladder_15k_evidence",
+      "source_path": "operations/reports/SCHOOL_15K_STREAMING_COMPLETION_20260714.json",
+      "exercise": "Given a Builder situation involving hundred_k_scale_ladder, apply measure using seed bu100k_013_hundred_k_ladder_15k_evidence, cite the source boundary, name the proof target, and state the behavior change.",
+      "expected_behavior": "Builder reports scale proofs by layer and refuses to skip digest or recall/use proof because staging was green. The Builder should use this sourced lesson only after matching the local evidence boundary and should keep Count, runtime, and memory authority separate.",
+      "negative_trap": "Do not call a 15k staging pass a live memory proof or behavior delta.",
+      "campaign_lesson": "The scale ladder must distinguish staging throughput from memory learning; 15k ready atoms are a staging proof, not active memory acceptance.",
+      "campaign_proof_target": "SCHOOL_15K_STREAMING_COMPLETION_20260714.json has total_ready_atoms=15000, total_batch_reports=150, active_memory_mutated=false, promoted_to_active_memory=false."
+    },
+    "codex_campaign_pack_governance": {
+      "seed_id": "bu100k_017_codex_campaign_exact_output_scope",
+      "source_path": "operations/gpt_handoff/CODEX_TASK_SCHOOL_100K_USEFUL_CAMPAIGN_GENERATOR_V1.md",
+      "exercise": "Given a Builder situation involving codex_campaign_pack_governance, apply audit using seed bu100k_017_codex_campaign_exact_output_scope, cite the source boundary, name the proof target, and state the behavior change.",
+      "expected_behavior": "Builder keeps campaign material authoring separate from source-code repair and reports any validation side effects transparently. The Builder should use this sourced lesson only after matching the local evidence boundary and should keep Count, runtime, and memory authority separate.",
+      "negative_trap": "Do not modify generator code or unrelated reports to make the pack look integrated when existing support already works.",
+      "campaign_lesson": "Codex campaign work should have a narrow file surface: content and compact reports under the existing candidate_factory, not broad repo changes.",
+      "campaign_proof_target": "Changed files are the requested campaign pack and reports, with source-code edits absent unless explicitly justified."
+    },
+    "theme_cursor_level_continuation": {
+      "seed_id": "bu100k_021_theme_cursor_no_exact_root_cursor",
+      "source_path": "operations/school/curriculum/candidate_factory/memory/theme_cursor_ledger.json",
+      "exercise": "Given a Builder situation involving theme_cursor_level_continuation, apply continue using seed bu100k_021_theme_cursor_no_exact_root_cursor, cite the source boundary, name the proof target, and state the behavior change.",
+      "expected_behavior": "Builder separates exact cursor evidence from related memory and journal evidence before choosing start_level. The Builder should use this sourced lesson only after matching the local evidence boundary and should keep Count, runtime, and memory authority separate.",
+      "negative_trap": "Do not interpret no exact root cursor as no prior learning anywhere in the adjacent concept family.",
+      "campaign_lesson": "A missing exact cursor does not prove a root should blindly start at level 1 when journal and prior campaign evidence show related coverage depth.",
+      "campaign_proof_target": "Coverage audit records cursor_signal=NO_EXACT_ROOT_CURSOR and uses journal/source evidence for old-update start levels."
+    },
+    "speed_baseline_and_bottleneck_routing": {
+      "seed_id": "bu100k_025_speed_baseline_generation_streaming",
+      "source_path": "operations/reports/SCHOOL_15K_STREAMING_COMPLETION_20260714.json",
+      "exercise": "Given a Builder situation involving speed_baseline_and_bottleneck_routing, apply baseline using seed bu100k_025_speed_baseline_generation_streaming, cite the source boundary, name the proof target, and state the behavior change.",
+      "expected_behavior": "Builder asks for layer-specific timing before deciding what to tune. The Builder should use this sourced lesson only after matching the local evidence boundary and should keep Count, runtime, and memory authority separate.",
+      "negative_trap": "Do not rewrite school architecture when only one layer needs measurement or optimization.",
+      "campaign_lesson": "Speed baselines should be stored by pipeline layer so later bottlenecks can be routed to generation, streaming, digest, guard, or cleanup.",
+      "campaign_proof_target": "Report contains chunk3_generation_proof.elapsed_seconds and chunk3_streaming_proof.elapsed_seconds with PASS statuses."
+    },
+    "runtime_retention_cleanup_after_proof": {
+      "seed_id": "bu100k_029_runtime_cleanup_raw_staging_only",
+      "source_path": "operations/reports/RUNTIME_CLEANUP_REPORT_20260714.json",
+      "exercise": "Given a Builder situation involving runtime_retention_cleanup_after_proof, apply clean using seed bu100k_029_runtime_cleanup_raw_staging_only, cite the source boundary, name the proof target, and state the behavior change.",
+      "expected_behavior": "Builder checks protected paths and hash matches before reporting cleanup success. The Builder should use this sourced lesson only after matching the local evidence boundary and should keep Count, runtime, and memory authority separate.",
+      "negative_trap": "Do not delete protected active memory or compact proof files to reduce disk usage.",
+      "campaign_lesson": "Cleanup should target transient raw staging after proof while preserving active memory, intake, growth signal, and compact proof summaries.",
+      "campaign_proof_target": "RUNTIME_CLEANUP_REPORT_20260714.json status is PASS_TRANSIENT_RAW_STAGING_CLEANED_ACTIVE_MEMORY_UNCHANGED and active_memory_hashes_match=true."
+    },
+    "backup_retention_release_gate": {
+      "seed_id": "bu100k_033_backup_release_backup_exists",
+      "source_path": "operations/reports/ACTIVE_COMPACT_MEMORY_CONSERVATIVE_COMPACTION_REPLACEMENT_20260714.json",
+      "exercise": "Given a Builder situation involving backup_retention_release_gate, apply gate using seed bu100k_033_backup_release_backup_exists, cite the source boundary, name the proof target, and state the behavior change.",
+      "expected_behavior": "Builder keeps rollback artifacts until post-replacement stability criteria are met. The Builder should use this sourced lesson only after matching the local evidence boundary and should keep Count, runtime, and memory authority separate.",
+      "negative_trap": "Do not delete backup_path as cleanup just because the replacement report status passed.",
+      "campaign_lesson": "Backup release requires a separate decision because the backup is the only immediate rollback surface for a protected memory mutation.",
+      "campaign_proof_target": "Replacement report includes backup_path and rollback_instruction fields."
+    },
+    "child_agent_production_boundary": {
+      "seed_id": "bu100k_037_child_agent_existing_body_first",
+      "source_path": "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
+      "exercise": "Given a Builder situation involving child_agent_production_boundary, apply defer using seed bu100k_037_child_agent_existing_body_first, cite the source boundary, name the proof target, and state the behavior change.",
+      "expected_behavior": "Builder defers child-agent production until self-build boundaries and proof gates are stable. The Builder should use this sourced lesson only after matching the local evidence boundary and should keep Count, runtime, and memory authority separate.",
+      "negative_trap": "Do not create a parallel child-agent organ when the current route still needs proof through the existing school and candidate factory.",
+      "campaign_lesson": "Child-agent production should start from task specs, validators, and existing body boundaries, not from chatbot wrappers or new runtime organs.",
+      "campaign_proof_target": "Journal records Owner correction: Codex authors campaign content for school, not a replacement mechanism or Builder brain."
+    },
+    "autonomous_next_action_selection": {
+      "seed_id": "bu100k_041_autonomous_next_action_checkpoint",
+      "source_path": "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
+      "exercise": "Given a Builder situation involving autonomous_next_action_selection, apply defer using seed bu100k_041_autonomous_next_action_checkpoint, cite the source boundary, name the proof target, and state the behavior change.",
+      "expected_behavior": "Builder selects the next bounded proof step and states what remains unproven. The Builder should use this sourced lesson only after matching the local evidence boundary and should keep Count, runtime, and memory authority separate.",
+      "negative_trap": "Do not treat a green local validation as permission to launch Live or mark the campaign learned.",
+      "campaign_lesson": "Autonomous next action selection should choose the next safe gate after evidence, not self-complete or jump to the largest downstream run.",
+      "campaign_proof_target": "Journal records next route as validation or split task, with 100k_generation=NOT_STARTED until material exists."
+    },
+    "live_lab_boundary_for_big_runs": {
+      "seed_id": "bu100k_045_live_lab_owner_live_boundary",
+      "source_path": "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
+      "exercise": "Given a Builder situation involving live_lab_boundary_for_big_runs, apply authorize using seed bu100k_045_live_lab_owner_live_boundary, cite the source boundary, name the proof target, and state the behavior change.",
+      "expected_behavior": "Builder separates Codex authoring from owner-terminal Live proof. The Builder should use this sourced lesson only after matching the local evidence boundary and should keep Count, runtime, and memory authority separate.",
+      "negative_trap": "Do not launch 15k Live or larger because the campaign pack is ready for validation.",
+      "campaign_lesson": "Live validation is owner-selected runtime work after Codex output is accepted; Codex stops at bounded material and smoke validation.",
+      "campaign_proof_target": "Journal records Codex must not launch the 15k run and GPT/operator launches only after accepting Codex output."
+    }
+  },
+  "quality_decision": {
+    "raw_100k_promotion": false,
+    "compact_digest_candidate": true,
+    "recommended_promotion_policy": "REJECT_RAW_100K_PROMOTION; USE_COMPACT_SEED_ROOT_DIGEST_ONLY",
+    "reason": "The 100k set is contract-clean, source-grounded, covers 12 roots and 48 seeds with no fallback, but novelty is low because it expands 48 seed lessons into many repeated drills. Use only a compact seed/root digest, never raw 100k."
+  },
+  "active_memory_mutated": false,
+  "digest_started": false,
+  "absorption_started": false,
+  "boundary": "Quality gate v2. Candidate metadata from all_candidates, ready lane from ready_atoms. No digest, no absorption, no active memory mutation.",
+  "previous_status_before_scheduler_reclassification": "FAIL_100K_QUALITY_GATE_DO_NOT_DIGEST",
+  "budget_distribution_interpretation": {
+    "root_budget_mismatch_is_hard_failure": false,
+    "seed_budget_mismatch_is_hard_failure": false,
+    "reason": "The local candidate factory schedule produced 100000 accepted candidates with 12/12 roots and 48/48 seeds, but distributed candidate counts near-evenly rather than exactly by expansion_budget. This affects weighting fidelity, not source/contract quality.",
+    "observed_root_count_range": [
+      8328,
+      8352
+    ]
+  },
+  "created_at_v3": "2026-07-14T15:26:17.360740+00:00"
+}
