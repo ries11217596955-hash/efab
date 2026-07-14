@@ -1,19 +1,19 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-14T17:03:51.6380530+04:00",
+    "checked_at":  "2026-07-14T18:01:59.3530095+04:00",
     "branch":  "main",
-    "observed_head":  "6d343bc4b2741ab96ce0dbfc5b7b4296f960b430",
-    "subject_head":  "6d343bc4b2741ab96ce0dbfc5b7b4296f960b430",
+    "observed_head":  "98430f919d86872b398d892761fc484df3c7e453",
+    "subject_head":  "98430f919d86872b398d892761fc484df3c7e453",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
                           "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                          "operations/reports/ACTIVE_COMPACT_MEMORY_CONSERVATIVE_COMPACTION_REPLACEMENT_20260714.json",
-                          "operations/reports/ACTIVE_COMPACT_MEMORY_CONSERVATIVE_COMPACTION_REPLACEMENT_20260714.md",
-                          "operations/reports/COMPACT_MEMORY_COMPACTION_CANDIDATES_20260714.json",
-                          "operations/reports/COMPACT_MEMORY_COMPACTION_CANDIDATE_VALIDATION_20260714.json",
+                          "operations/reports/MEMORY_WEIGHT_GUARD_INSTALLATION_20260714.json",
+                          "operations/reports/MEMORY_WEIGHT_GUARD_INSTALLATION_20260714.md",
+                          "operations/school/digestion/absorb_atom_file_via_digest_pipeline_v1.ps1",
+                          "operations/school/digestion/apply_compact_memory_weight_guard_v1.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
@@ -21,10 +21,10 @@
                       ],
     "structural_paths":  [
                              "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                             "operations/reports/ACTIVE_COMPACT_MEMORY_CONSERVATIVE_COMPACTION_REPLACEMENT_20260714.json",
-                             "operations/reports/ACTIVE_COMPACT_MEMORY_CONSERVATIVE_COMPACTION_REPLACEMENT_20260714.md",
-                             "operations/reports/COMPACT_MEMORY_COMPACTION_CANDIDATES_20260714.json",
-                             "operations/reports/COMPACT_MEMORY_COMPACTION_CANDIDATE_VALIDATION_20260714.json"
+                             "operations/reports/MEMORY_WEIGHT_GUARD_INSTALLATION_20260714.json",
+                             "operations/reports/MEMORY_WEIGHT_GUARD_INSTALLATION_20260714.md",
+                             "operations/school/digestion/absorb_atom_file_via_digest_pipeline_v1.ps1",
+                             "operations/school/digestion/apply_compact_memory_weight_guard_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -36,8 +36,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1864,
-                                    "sha256":  "9a36a9fd72de900f6a2ef28b55e4ea2acb67916c119efcbfad7318369f7a6e71"
+                                    "structural_file_count":  1869,
+                                    "sha256":  "737c235c53d009c8057adb4514ab32ae9c226df9159dab2cfe81b521a67e75cb"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -63,12 +63,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  149,
-                         "structural_path_count":  1864,
+                         "structural_path_count":  1869,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-14T17:04:16.2138270+04:00"
+    "refreshed_at":  "2026-07-14T18:02:24.3780335+04:00"
 }

@@ -3777,3 +3777,35 @@ Boundary:
 Proof pointers:
 - operations/reports/MEMORY_WEIGHT_GUARD_INSTALLATION_20260714.json
 - operations/reports/MEMORY_WEIGHT_GUARD_INSTALLATION_20260714.md
+## 2026-07-14 - 100k school campaign Codex task prepared; Codex output not produced
+
+STATUS: CODEX_MATERIAL_NOT_PRODUCED_TWO_ATTEMPTS_STOPPED
+
+Owner goal:
+- Codex should author useful campaign material for later 100k local candidate generation.
+- Candidate generation and atom absorption remain separate processes.
+
+Prepared operator material:
+- operations/reports/SCHOOL_100K_USEFUL_CAMPAIGN_TOPIC_PLAN_20260714.json
+- operations/reports/SCHOOL_100K_USEFUL_CAMPAIGN_TOPIC_PLAN_20260714.md
+- codex_tasks/CODEX_TASK_SCHOOL_100K_USEFUL_CAMPAIGN_PACK_20260714.md
+- operations/reports/CODEX_100K_CAMPAIGN_COMPACT_CONTEXT_20260714.json
+- codex_tasks/CODEX_TASK_SCHOOL_100K_USEFUL_CAMPAIGN_PACK_LEAN_20260714.md
+
+Selected roots/budget:
+- 12 roots, total_expansion_budget=100000.
+- Focus: memory_weight_guard, active_memory_compaction_and_rollback, school_generation_absorption_separation, hundred_k_scale_ladder, codex_campaign_pack_governance, theme_cursor_level_continuation, speed_baseline, retention cleanup, backup release, child-agent boundary, autonomous next action, live/lab boundary.
+
+Codex attempts:
+- Full context task: stopped after broad scan/no final output/no campaign files.
+- Lean compact-context task: stopped after Codex-generated PowerShell parser errors/no final output/no campaign files.
+
+Proof boundary:
+- campaign_pack=NOT_PRODUCED
+- 100k_generation=NOT_STARTED
+- absorption_or_digest=NOT_STARTED
+- active_memory_mutated=false
+
+Next recommended step:
+- Retry Codex with an even smaller no-shell authoring task, or split into seed-plan-only first.
+- Do not fabricate Codex-authored pack by GPT/operator hand unless Owner explicitly changes the route.

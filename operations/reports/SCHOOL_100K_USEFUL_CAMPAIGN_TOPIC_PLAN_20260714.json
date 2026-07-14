@@ -1,0 +1,160 @@
+{
+    "schema":  "school_100k_useful_campaign_topic_plan_v1",
+    "status":  "READY_FOR_CODEX_CAMPAIGN_PACK_AUTHORING",
+    "created_at":  "2026-07-14T17:48:47.9226985+04:00",
+    "repo_head":  "98430f9",
+    "target_candidate_count":  100000,
+    "boundary":  "This plan is for Codex-authored campaign material only. Candidate generation and absorption are separate later steps.",
+    "current_memory_summary":  {
+                                   "active_cells":  121,
+                                   "old_school_roots":  30,
+                                   "current_cells_jsonl_mb":  12.05,
+                                   "old_15k_raw_promotion":  "rejected; compacted to 30-topic digest",
+                                   "memory_weight_guard":  "installed in absorption pipeline before publish"
+                               },
+    "topic_policy":  {
+                         "old_topic_rule":  "Continue old roots only if they directly support 100k run safety, proof, or autonomous school operation; do not repeat 30 old proof drills.",
+                         "new_topic_rule":  "New roots start at level 1 unless theme_cursor_ledger or active memory evidence shows existing continuation.",
+                         "source_rule":  "No source -\u003e no seed. Every seed must cite tracked local source_path and source_anchor_or_hint.",
+                         "generation_absorption_boundary":  "Codex authors campaign pack; local candidate factory expands to 100k; absorption/digest happens later only after factory proof."
+                     },
+    "proposed_campaign_roots":  [
+                                    {
+                                        "root":  "memory_weight_guard",
+                                        "type":  "new",
+                                        "priority":  "P0",
+                                        "budget":  12000,
+                                        "reason":  "New guard organ protects future active memory from heavy relations/source_fingerprints.",
+                                        "required_sources":  [
+                                                                 "operations/school/digestion/apply_compact_memory_weight_guard_v1.ps1",
+                                                                 "operations/reports/MEMORY_WEIGHT_GUARD_INSTALLATION_20260714.json"
+                                                             ]
+                                    },
+                                    {
+                                        "root":  "active_memory_compaction_and_rollback",
+                                        "type":  "new",
+                                        "priority":  "P0",
+                                        "budget":  10000,
+                                        "reason":  "Recent protected memory mutation needs durable rollback/validator discipline.",
+                                        "required_sources":  [
+                                                                 "operations/reports/ACTIVE_COMPACT_MEMORY_CONSERVATIVE_COMPACTION_REPLACEMENT_20260714.json",
+                                                                 "operations/reports/COMPACT_MEMORY_COMPACTION_CANDIDATE_VALIDATION_20260714.json"
+                                                             ]
+                                    },
+                                    {
+                                        "root":  "school_generation_absorption_separation",
+                                        "type":  "new",
+                                        "priority":  "P0",
+                                        "budget":  10000,
+                                        "reason":  "Owner explicitly corrected boundary: candidate generation and atom absorption are separate processes.",
+                                        "required_sources":  [
+                                                                 "operations/school/curriculum/candidate_factory/generate_codex_curriculum_candidate_factory_run_v1.ps1",
+                                                                 "operations/school/digestion/absorb_atom_file_via_digest_pipeline_v1.ps1",
+                                                                 "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
+                                                             ]
+                                    },
+                                    {
+                                        "root":  "hundred_k_scale_ladder",
+                                        "type":  "new",
+                                        "priority":  "P0",
+                                        "budget":  10000,
+                                        "reason":  "Need speed-proof path 1k/5k/15k/100k instead of blind 500k.",
+                                        "required_sources":  [
+                                                                 "operations/reports/SCHOOL_15K_STREAMING_COMPLETION_20260714.json",
+                                                                 "operations/reports/MEMORY_WEIGHT_GUARD_INSTALLATION_20260714.json",
+                                                                 "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
+                                                             ]
+                                    },
+                                    {
+                                        "root":  "codex_campaign_pack_governance",
+                                        "type":  "new",
+                                        "priority":  "P0",
+                                        "budget":  9000,
+                                        "reason":  "Codex should author bounded campaign material, not become Builder brain or write raw 100k by hand.",
+                                        "required_sources":  [
+                                                                 "operations/gpt_handoff/CODEX_TASK_EVIDENCE_GROUNDED_SCHOOL_GENERATOR_V1.md",
+                                                                 "operations/school/curriculum/candidate_factory/campaign_packs/builder_self_knowledge_deep_v1.manifest.json"
+                                                             ]
+                                    },
+                                    {
+                                        "root":  "theme_cursor_level_continuation",
+                                        "type":  "old-update",
+                                        "priority":  "P1",
+                                        "budget":  8000,
+                                        "reason":  "Old cursor reset risk remains important; continue levels from cursor/evidence, not level=1 for all roots.",
+                                        "required_sources":  [
+                                                                 "operations/school/curriculum/candidate_factory/memory/theme_cursor_ledger.json",
+                                                                 "operations/school/curriculum/candidate_factory/validate_theme_cursor_ledger_v1.ps1"
+                                                             ]
+                                    },
+                                    {
+                                        "root":  "speed_baseline_and_bottleneck_routing",
+                                        "type":  "new",
+                                        "priority":  "P1",
+                                        "budget":  8000,
+                                        "reason":  "Next run must prove speed per layer: generation/contract/streaming/digest/guard.",
+                                        "required_sources":  [
+                                                                 "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
+                                                                 "operations/reports/MEMORY_WEIGHT_GUARD_INSTALLATION_20260714.json"
+                                                             ]
+                                    },
+                                    {
+                                        "root":  "runtime_retention_cleanup_after_proof",
+                                        "type":  "old-update",
+                                        "priority":  "P1",
+                                        "budget":  7000,
+                                        "reason":  "Cleanup should keep proof and protected memory but remove raw staging only after digest proof.",
+                                        "required_sources":  [
+                                                                 "operations/reports/RUNTIME_CLEANUP_REPORT_20260714.json",
+                                                                 "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
+                                                             ]
+                                    },
+                                    {
+                                        "root":  "backup_retention_release_gate",
+                                        "type":  "new",
+                                        "priority":  "P1",
+                                        "budget":  6000,
+                                        "reason":  "Rollback backup currently retained; removal needs post-compaction cycles and proof.",
+                                        "required_sources":  [
+                                                                 "operations/reports/ACTIVE_COMPACT_MEMORY_CONSERVATIVE_COMPACTION_REPLACEMENT_20260714.json",
+                                                                 "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
+                                                             ]
+                                    },
+                                    {
+                                        "root":  "child_agent_production_boundary",
+                                        "type":  "new",
+                                        "priority":  "P2",
+                                        "budget":  6000,
+                                        "reason":  "After self-build, child agents need production boundary: task spec, validators, proof, no chatbot wrappers.",
+                                        "required_sources":  [
+                                                                 "EF_TASK_TO_CHILD_AGENT_PRODUCTION_PROTOCOL.md",
+                                                                 "AGENT_STRATEGY.md",
+                                                                 "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
+                                                             ]
+                                    },
+                                    {
+                                        "root":  "autonomous_next_action_selection",
+                                        "type":  "old-update",
+                                        "priority":  "P2",
+                                        "budget":  7000,
+                                        "reason":  "Continuous autonomy law requires next safe step after checkpoint, not self-completion.",
+                                        "required_sources":  [
+                                                                 "EF_CONTINUOUS_AUTONOMY_NO_SELF_COMPLETION_LAW.md",
+                                                                 "EF_UNIFIED_INNER_MOTOR_CYCLE.md",
+                                                                 "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
+                                                             ]
+                                    },
+                                    {
+                                        "root":  "live_lab_boundary_for_big_runs",
+                                        "type":  "old-update",
+                                        "priority":  "P1",
+                                        "budget":  7000,
+                                        "reason":  "Large runs must distinguish LAB proof from LIVE proof and avoid duplicate runtime.",
+                                        "required_sources":  [
+                                                                 "EF_LIVE_LAB_RUNTIME_BOUNDARY.md",
+                                                                 "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
+                                                             ]
+                                    }
+                                ],
+    "distribution_note":  "Budgets sum to 100000 expansion budget. Codex may adjust seed count but must preserve total_expansion_budget=100000."
+}

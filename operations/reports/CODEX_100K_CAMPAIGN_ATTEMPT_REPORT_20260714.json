@@ -1,0 +1,51 @@
+{
+    "schema":  "codex_100k_campaign_attempt_report_v1",
+    "status":  "CODEX_MATERIAL_NOT_PRODUCED_TWO_ATTEMPTS_STOPPED",
+    "created_at":  "2026-07-14T18:01:43.3930405+04:00",
+    "repo_head":  "98430f9",
+    "owner_goal":  "Codex-authored useful campaign material for later 100k local candidate generation; generation and absorption kept separate.",
+    "prepared_inputs":  [
+                            "operations/reports/SCHOOL_100K_USEFUL_CAMPAIGN_TOPIC_PLAN_20260714.json",
+                            "operations/reports/SCHOOL_100K_USEFUL_CAMPAIGN_TOPIC_PLAN_20260714.md",
+                            "codex_tasks/CODEX_TASK_SCHOOL_100K_USEFUL_CAMPAIGN_PACK_20260714.md",
+                            "operations/reports/CODEX_100K_CAMPAIGN_COMPACT_CONTEXT_20260714.json",
+                            "codex_tasks/CODEX_TASK_SCHOOL_100K_USEFUL_CAMPAIGN_PACK_LEAN_20260714.md"
+                        ],
+    "proposed_roots_count":  12,
+    "target_expansion_budget":  100000,
+    "attempts":  [
+                     {
+                         "attempt":  "full_context_task",
+                         "command":  "codex exec --cd H:\\efab --sandbox workspace-write --output-last-message .runtime/codex_runs/CODEX_100K_CAMPAIGN_PACK_LAST_MESSAGE_20260714.md --json -",
+                         "status":  "STOPPED_NO_OUTPUT_AFTER_BROAD_CONTEXT_SCAN",
+                         "last_message_exists":  false,
+                         "events_path":  ".runtime/codex_runs/CODEX_100K_CAMPAIGN_PACK_EVENTS_20260714.jsonl",
+                         "events_bytes":  4520278,
+                         "reason":  "Broad context scan did not produce PREFLIGHT final output or campaign files within bounded observation window."
+                     },
+                     {
+                         "attempt":  "lean_compact_context_task",
+                         "command":  "codex exec --cd H:\\efab --sandbox workspace-write --output-last-message .runtime/codex_runs/CODEX_100K_CAMPAIGN_PACK_LEAN_LAST_MESSAGE_20260714.md --json -",
+                         "status":  "STOPPED_NO_OUTPUT_AFTER_CODEX_POWERSHELL_PARSER_ERRORS",
+                         "last_message_exists":  false,
+                         "events_path":  ".runtime/codex_runs/CODEX_100K_CAMPAIGN_PACK_LEAN_EVENTS_20260714.jsonl",
+                         "events_bytes":  220666,
+                         "observed_error":  "Codex-generated PowerShell commands failed with ParserError: An empty pipe element is not allowed.",
+                         "reason":  "No campaign files created; no final message; stopped to avoid unbounded/no-output run."
+                     }
+                 ],
+    "output_files_expected":  [
+                                  "operations/school/curriculum/candidate_factory/campaign_packs/builder_useful_100k_v1.jsonl",
+                                  "operations/school/curriculum/candidate_factory/campaign_packs/builder_useful_100k_v1.manifest.json",
+                                  "operations/school/curriculum/candidate_factory/reports/BUILDER_USEFUL_100K_CAMPAIGN_AUTHOR_REPORT_V1.json",
+                                  "operations/school/curriculum/candidate_factory/reports/BUILDER_USEFUL_100K_CAMPAIGN_COVERAGE_AUDIT_V1.json",
+                                  "operations/school/curriculum/candidate_factory/reports/BUILDER_USEFUL_100K_CAMPAIGN_LEVEL_PLAN_V1.json"
+                              ],
+    "output_files_created":  false,
+    "generation_100k_run_started":  false,
+    "absorption_or_digest_started":  false,
+    "active_memory_mutated":  false,
+    "codex_output_status":  "NOT_PRODUCED",
+    "next_recommended_step":  "Retry Codex with an even smaller no-shell authoring task or split into seed-plan-only first; require no PowerShell pipelines in Codex tool calls.",
+    "boundary":  "Prepared task/context are valid operator material; Codex campaign pack itself was not produced and must not be claimed."
+}
