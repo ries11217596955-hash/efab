@@ -1,0 +1,116 @@
+{
+    "schema":  "school_15k_streaming_completion_report_v1",
+    "status":  "PASS_15K_STAGING_COMPLETE_WITH_CHUNK1_SOURCE_LIMITATION",
+    "created_at":  "2026-07-14T13:39:31.4546499+04:00",
+    "repo_head":  "faedb6e",
+    "active_memory_mutated":  false,
+    "promoted_to_active_memory":  false,
+    "total_ready_atoms":  15000,
+    "total_batch_reports":  150,
+    "total_ready_atoms_jsonl_bytes":  36537903,
+    "chunks":  [
+                   {
+                       "chunk":  1,
+                       "factory_exists":  false,
+                       "factory_dir":  ".runtime\\codex_curriculum_candidate_factory_runs\\school_factory_digest_use_real_15000_20260714_122826_chunk_1_of_3",
+                       "streaming_dir":  ".runtime\\streaming_absorption\\school_factory_digest_use_real_15000_20260714_122826_chunk_1_of_3",
+                       "checkpoint_status":  "RUNNING",
+                       "batches_processed":  50,
+                       "processed_total":  5000,
+                       "contract_accepted_total":  5000,
+                       "contract_rejected_total":  0,
+                       "ready_atoms_total":  5000,
+                       "stream_quarantined_total":  0,
+                       "active_memory_mutated":  false,
+                       "streaming_memory_mode":  null,
+                       "batch_report_count":  50,
+                       "ready_atoms_jsonl_bytes":  12149733,
+                       "proof_boundary":  "EXISTING_STAGING_PROOF_SOURCE_FACTORY_MISSING"
+                   },
+                   {
+                       "chunk":  2,
+                       "factory_exists":  true,
+                       "factory_dir":  ".runtime\\codex_curriculum_candidate_factory_runs\\school_factory_digest_use_real_15000_20260714_122826_chunk_2_of_3",
+                       "streaming_dir":  ".runtime\\streaming_absorption\\school_factory_digest_use_real_15000_20260714_122826_chunk_2_of_3",
+                       "checkpoint_status":  "PASS_STREAMING_SCHOOL_TO_ABSORPTION_PIPELINE_V1",
+                       "batches_processed":  50,
+                       "processed_total":  5000,
+                       "contract_accepted_total":  5000,
+                       "contract_rejected_total":  0,
+                       "ready_atoms_total":  5000,
+                       "stream_quarantined_total":  0,
+                       "active_memory_mutated":  false,
+                       "streaming_memory_mode":  "bounded_counters_and_jsonl_writers_v2",
+                       "batch_report_count":  50,
+                       "ready_atoms_jsonl_bytes":  12196454,
+                       "proof_boundary":  "FRESH_FACTORY_AND_STREAMING_PASS"
+                   },
+                   {
+                       "chunk":  3,
+                       "factory_exists":  true,
+                       "factory_dir":  ".runtime\\codex_curriculum_candidate_factory_runs\\school_factory_digest_use_real_15000_20260714_122826_chunk_3_of_3",
+                       "streaming_dir":  ".runtime\\streaming_absorption\\school_factory_digest_use_real_15000_20260714_122826_chunk_3_of_3",
+                       "checkpoint_status":  "PASS_STREAMING_SCHOOL_TO_ABSORPTION_PIPELINE_V1",
+                       "batches_processed":  50,
+                       "processed_total":  5000,
+                       "contract_accepted_total":  5000,
+                       "contract_rejected_total":  0,
+                       "ready_atoms_total":  5000,
+                       "stream_quarantined_total":  0,
+                       "active_memory_mutated":  false,
+                       "streaming_memory_mode":  "bounded_counters_and_jsonl_writers_v2",
+                       "batch_report_count":  50,
+                       "ready_atoms_jsonl_bytes":  12191716,
+                       "proof_boundary":  "FRESH_FACTORY_AND_STREAMING_PASS"
+                   }
+               ],
+    "chunk3_generation_proof":  {
+                                    "status":  "PASS_CODEX_CANDIDATE_FACTORY_GENERATION_V1",
+                                    "candidates":  5000,
+                                    "batches":  50,
+                                    "ordinal_offset":  10000,
+                                    "elapsed_seconds":  19.764,
+                                    "codex_cli_invoked":  false,
+                                    "api_invoked":  false,
+                                    "active_memory_mutated":  false
+                                },
+    "chunk3_streaming_proof":  {
+                                   "status":  "PASS_STREAMING_SCHOOL_TO_ABSORPTION_PIPELINE_V1",
+                                   "ready":  5000,
+                                   "batches":  50,
+                                   "elapsed_seconds":  33.066,
+                                   "active_memory_mutated":  false,
+                                   "streaming_memory_mode":  "bounded_counters_and_jsonl_writers_v2"
+                               },
+    "cleanup_assessment":  {
+                               "deletion_performed":  false,
+                               "cleanup_needed":  "YES_AFTER_DIGEST_PROOF_NOT_NOW",
+                               "protected_do_not_delete":  [
+                                                               ".runtime/active_compact_semantic_memory_v1",
+                                                               "current compact reports",
+                                                               "latest 3-5 useful chunk dirs until digest proof"
+                                                           ],
+                               "largest_runtime_roots":  [
+                                                             {
+                                                                 "path":  ".runtime/streaming_absorption",
+                                                                 "bytes":  1350037214,
+                                                                 "files":  9504,
+                                                                 "classification":  "TRANSIENT_RAW_STAGING_CANDIDATE_AFTER_DIGEST_PROOF"
+                                                             },
+                                                             {
+                                                                 "path":  ".runtime/codex_curriculum_candidate_factory_runs",
+                                                                 "bytes":  86280016,
+                                                                 "files":  104,
+                                                                 "classification":  "TRANSIENT_FACTORY_STAGING_KEEP_CURRENT_15K_UNTIL_DIGEST_PROOF"
+                                                             },
+                                                             {
+                                                                 "path":  ".runtime/active_compact_semantic_memory_v1",
+                                                                 "bytes":  113652074,
+                                                                 "files":  3,
+                                                                 "classification":  "PROTECTED_ACTIVE_MEMORY"
+                                                             }
+                                                         ]
+                           },
+    "next_action":  "Run digest/promotion gate on bounded 15k staging, then apply retention cleanup: keep compact summary plus latest 3-5 chunk dirs; do not clean active memory.",
+    "boundary":  "This report proves staging completion, not accepted memory promotion and not live long-run readiness."
+}

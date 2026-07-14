@@ -3606,3 +3606,24 @@ Key deltas over V10.1:
 Install note:
 - This file is prepared for GPT Instructions field.
 - It is not installed until Owner copies it into the GPT UI and saves/updates the GPT.
+
+## 2026-07-14 - 15k school streaming completion and cleanup assessment
+
+STATUS: PASS_15K_STAGING_COMPLETE_WITH_CHUNK1_SOURCE_LIMITATION / ACTIVE_MEMORY_UNTOUCHED
+
+Proof pointers:
+- operations/reports/SCHOOL_15K_STREAMING_COMPLETION_20260714.json
+- operations/reports/SCHOOL_15K_STREAMING_COMPLETION_20260714.md
+- chunk3 generation: PASS_CODEX_CANDIDATE_FACTORY_GENERATION_V1, candidates=5000, batches=50, OrdinalOffset=10000, Codex/API invoked=false.
+- chunk3 streaming: PASS_STREAMING_SCHOOL_TO_ABSORPTION_PIPELINE_V1, ready=5000, batches=50, active_memory_mutated=false.
+- 15k staging totals: ready_atoms=15000, batch_reports=150, active_memory_mutated=false.
+
+Boundary:
+- chunk1 factory source directory is missing; chunk1 is retained as existing staging proof only: ready=5000, batch_reports=50, legacy checkpoint RUNNING.
+- No active compact memory promotion occurred.
+- No runtime cleanup/deletion performed.
+- Cleanup is needed after digest proof, not before: keep protected active memory and compact reports; delete/compress old raw staging only after retention gate.
+
+Next:
+- Run bounded digest/promotion gate on 15k staging.
+- Then apply retention cleanup: compact summaries + latest 3-5 useful chunk dirs; never delete .runtime/active_compact_semantic_memory_v1.
