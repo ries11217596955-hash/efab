@@ -1,0 +1,235 @@
+{
+  "schema": "builder_useful_100k_campaign_coverage_audit_v1",
+  "status": "CODEX_DRAFT_COVERAGE_AUDIT_FROM_LOCAL_EVIDENCE",
+  "campaign_id": "builder_useful_100k_v1",
+  "created_at": "2026-07-14T00:00:00+04:00",
+  "topic_plan_path": "operations/reports/SCHOOL_100K_USEFUL_CAMPAIGN_TOPIC_PLAN_20260714.json",
+  "coverage_pointer_path": "operations/school/curriculum/candidate_factory/CAMPAIGN_COVERAGE_STATUS_POINTER_V1.md",
+  "compact_snapshot_manifest": "operations/school/curriculum/candidate_factory/memory/active_compact_memory_snapshot_for_evidence_v1/manifest.json",
+  "cursor_ledger_path": "operations/school/curriculum/candidate_factory/memory/theme_cursor_ledger.json",
+  "cursor_ledger_rebuild_report": "operations/school/curriculum/candidate_factory/reports/THEME_CURSOR_LEDGER_REBUILD_V1_REPORT.json",
+  "compact_snapshot_signal": {
+    "cell_count": 18021,
+    "boundary": "Compact snapshot proves non-empty prior memory, but exact 100k root-name hits were mostly absent in index/tail checks; source reports and journal entries are stronger evidence for this campaign.",
+    "tail_sample_note": "child_agent related text appeared in the tail sample; other 100k root names were not exact hits in the bounded checks."
+  },
+  "cursor_global_signal": {
+    "status": "PASS_THEME_CURSOR_LEDGER_REBUILD_V1",
+    "limitation": "Ledger is seeded from topics plan with level 1 starts and no harvested historical level updates.",
+    "exact_campaign_root_cursor_count": 0,
+    "use_policy": "Do not corrupt cursor levels. Use separate level plan for old-update continuation."
+  },
+  "blind_level_1_for_all_roots": false,
+  "roots": [
+    {
+      "root": "memory_weight_guard",
+      "memory_signal": "No exact compact snapshot root hit in bounded check; strong tracked report evidence exists for guard installation and absorption integration.",
+      "cursor_signal": "NO_EXACT_ROOT_CURSOR",
+      "journal_signal": "GPT_OPERATOR_JOURNAL lines 3750 onward record Memory Weight Guard installed in absorption pipeline.",
+      "coverage_status": "weak",
+      "recommended_start_level": 1,
+      "recommended_seed_count": 4,
+      "priority": "P0",
+      "reason": "New guard organ protects future compact memory from heavy relations and source_fingerprints before publish.",
+      "source_refs": [
+        "operations/reports/MEMORY_WEIGHT_GUARD_INSTALLATION_20260714.json",
+        "operations/school/digestion/apply_compact_memory_weight_guard_v1.ps1",
+        "operations/school/digestion/absorb_atom_file_via_digest_pipeline_v1.ps1"
+      ]
+    },
+    {
+      "root": "active_memory_compaction_and_rollback",
+      "memory_signal": "No exact compact snapshot root hit in bounded check; strong tracked compaction replacement and validation reports exist.",
+      "cursor_signal": "NO_EXACT_ROOT_CURSOR",
+      "journal_signal": "GPT_OPERATOR_JOURNAL lines 3717-3743 record backup, recall probe PASS, structural validation PASS, and PROVEN_LAB boundary.",
+      "coverage_status": "weak",
+      "recommended_start_level": 1,
+      "recommended_seed_count": 4,
+      "priority": "P0",
+      "reason": "Recent active memory mutation needs durable backup, validator, and rollback behavior in future decisions.",
+      "source_refs": [
+        "operations/reports/ACTIVE_COMPACT_MEMORY_CONSERVATIVE_COMPACTION_REPLACEMENT_20260714.json",
+        "operations/reports/COMPACT_MEMORY_COMPACTION_CANDIDATE_VALIDATION_20260714.json",
+        "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
+      ]
+    },
+    {
+      "root": "school_generation_absorption_separation",
+      "memory_signal": "No exact compact snapshot root hit in bounded check; generator and digest scripts provide direct route evidence.",
+      "cursor_signal": "NO_EXACT_ROOT_CURSOR",
+      "journal_signal": "GPT_OPERATOR_JOURNAL lines 3599-3601 clarify Codex authors campaign material and school remains accelerator.",
+      "coverage_status": "weak",
+      "recommended_start_level": 1,
+      "recommended_seed_count": 4,
+      "priority": "P0",
+      "reason": "Owner-corrected boundary requires candidate generation and atom absorption to remain separate.",
+      "source_refs": [
+        "operations/school/curriculum/candidate_factory/generate_codex_curriculum_candidate_factory_run_v1.ps1",
+        "operations/school/digestion/absorb_atom_file_via_digest_pipeline_v1.ps1",
+        "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
+        "operations/gpt_handoff/CODEX_TASK_SCHOOL_100K_USEFUL_CAMPAIGN_GENERATOR_V1.md"
+      ]
+    },
+    {
+      "root": "hundred_k_scale_ladder",
+      "memory_signal": "No exact compact snapshot root hit in bounded check; 15k staging report provides recent scale proof and limitations.",
+      "cursor_signal": "NO_EXACT_ROOT_CURSOR",
+      "journal_signal": "GPT_OPERATOR_JOURNAL lines 3780-3811 record 100k not started and campaign material not produced in earlier attempts.",
+      "coverage_status": "weak",
+      "recommended_start_level": 1,
+      "recommended_seed_count": 4,
+      "priority": "P0",
+      "reason": "100k planning must use a staged proof ladder instead of blind larger runs.",
+      "source_refs": [
+        "operations/reports/SCHOOL_15K_STREAMING_COMPLETION_20260714.json",
+        "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
+      ]
+    },
+    {
+      "root": "codex_campaign_pack_governance",
+      "memory_signal": "No exact compact snapshot root hit in bounded check; prior campaign manifest and task/runbook files provide direct governance precedent.",
+      "cursor_signal": "NO_EXACT_ROOT_CURSOR",
+      "journal_signal": "GPT_OPERATOR_JOURNAL lines 3502-3557 record slice 1 and slice 2 campaign pack route with 25/100 validation.",
+      "coverage_status": "weak",
+      "recommended_start_level": 1,
+      "recommended_seed_count": 4,
+      "priority": "P0",
+      "reason": "Codex must remain bounded campaign material author, not Builder brain or runtime supervisor.",
+      "source_refs": [
+        "operations/gpt_handoff/CODEX_TASK_SCHOOL_100K_USEFUL_CAMPAIGN_GENERATOR_V1.md",
+        "operations/gpt_handoff/CODEX_TASK_EVIDENCE_GROUNDED_SCHOOL_GENERATOR_V1.md",
+        "operations/school/curriculum/candidate_factory/campaign_packs/builder_self_knowledge_deep_v1.manifest.json",
+        "operations/reports/SCHOOL_CODEX_LAUNCH_RUNBOOK_20260714.json"
+      ]
+    },
+    {
+      "root": "theme_cursor_level_continuation",
+      "memory_signal": "Compact snapshot has 18021 cells, while bounded exact root checks do not prove this root; previous related campaign seed topic_cursor_continuation used high continuation levels.",
+      "cursor_signal": "NO_EXACT_ROOT_CURSOR; global cursor limitation says seeded starts only and harvested_level_updates=0.",
+      "journal_signal": "GPT_OPERATOR_JOURNAL lines 3479-3480 reject missing audit/level plan; lines 3522-3528 record prior audit/level plan status.",
+      "coverage_status": "medium",
+      "recommended_start_level": 425,
+      "recommended_seed_count": 4,
+      "priority": "P1",
+      "reason": "Old-update concept must not blindly reset to level 1 when prior related campaign and pointer evidence already reject that behavior.",
+      "source_refs": [
+        "operations/school/curriculum/candidate_factory/memory/theme_cursor_ledger.json",
+        "operations/school/curriculum/candidate_factory/validate_theme_cursor_ledger_v1.ps1",
+        "operations/school/curriculum/candidate_factory/reports/THEME_CURSOR_LEDGER_REBUILD_V1_REPORT.json",
+        "operations/school/curriculum/candidate_factory/CAMPAIGN_COVERAGE_STATUS_POINTER_V1.md"
+      ]
+    },
+    {
+      "root": "speed_baseline_and_bottleneck_routing",
+      "memory_signal": "No exact compact snapshot root hit in bounded check; timing and size reports provide operational baseline evidence.",
+      "cursor_signal": "NO_EXACT_ROOT_CURSOR",
+      "journal_signal": "GPT_OPERATOR_JOURNAL lines 3780-3837 classify previous failures as material authoring failures, not factory throughput failures.",
+      "coverage_status": "weak",
+      "recommended_start_level": 1,
+      "recommended_seed_count": 4,
+      "priority": "P1",
+      "reason": "100k routing needs layer timing and storage baselines before changing architecture.",
+      "source_refs": [
+        "operations/reports/SCHOOL_15K_STREAMING_COMPLETION_20260714.json",
+        "operations/reports/MEMORY_WEIGHT_GUARD_INSTALLATION_20260714.json",
+        "operations/reports/SCHOOL_CODEX_LAUNCH_RUNBOOK_20260714.json",
+        "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
+      ]
+    },
+    {
+      "root": "runtime_retention_cleanup_after_proof",
+      "memory_signal": "Related cleanup_discipline root existed in prior campaign at continuation depth; cleanup report provides direct proof evidence.",
+      "cursor_signal": "NO_EXACT_ROOT_CURSOR",
+      "journal_signal": "GPT_OPERATOR_JOURNAL lines 3662-3688 record runtime raw staging cleanup after compact digest submit-only proof.",
+      "coverage_status": "medium",
+      "recommended_start_level": 57,
+      "recommended_seed_count": 4,
+      "priority": "P1",
+      "reason": "Old-update cleanup behavior must preserve proof and protected memory after large runs.",
+      "source_refs": [
+        "operations/reports/RUNTIME_CLEANUP_REPORT_20260714.json",
+        "operations/reports/SCHOOL_15K_STREAMING_COMPLETION_20260714.json",
+        "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
+      ]
+    },
+    {
+      "root": "backup_retention_release_gate",
+      "memory_signal": "No exact compact snapshot root hit in bounded check; active compaction reports provide direct backup evidence.",
+      "cursor_signal": "NO_EXACT_ROOT_CURSOR",
+      "journal_signal": "GPT_OPERATOR_JOURNAL lines 3736-3743 record rollback backup and PROVEN_LAB boundary.",
+      "coverage_status": "weak",
+      "recommended_start_level": 1,
+      "recommended_seed_count": 4,
+      "priority": "P1",
+      "reason": "Rollback backup release needs its own proof gate after active memory compaction.",
+      "source_refs": [
+        "operations/reports/ACTIVE_COMPACT_MEMORY_CONSERVATIVE_COMPACTION_REPLACEMENT_20260714.json",
+        "operations/reports/COMPACT_MEMORY_COMPACTION_CANDIDATE_VALIDATION_20260714.json",
+        "operations/reports/MEMORY_WEIGHT_GUARD_INSTALLATION_20260714.json",
+        "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
+      ]
+    },
+    {
+      "root": "child_agent_production_boundary",
+      "memory_signal": "Bounded tail sample had child_agent related hits; exact source docs named in topic plan are not tracked in this repo snapshot, so tracked journal/task/AGENTS evidence is used.",
+      "cursor_signal": "NO_EXACT_ROOT_CURSOR",
+      "journal_signal": "GPT_OPERATOR_JOURNAL lines 3817-3819 preserve Owner correction and replacement-mechanism boundary.",
+      "coverage_status": "weak",
+      "recommended_start_level": 1,
+      "recommended_seed_count": 4,
+      "priority": "P2",
+      "reason": "Child-agent production must stay gated behind task specs, validators, and existing school proof.",
+      "source_refs": [
+        "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
+        "AGENTS.md",
+        "operations/gpt_handoff/CODEX_TASK_EVIDENCE_GROUNDED_SCHOOL_GENERATOR_V1.md",
+        "operations/reports/SCHOOL_CODEX_LAUNCH_RUNBOOK_20260714.json"
+      ],
+      "missing_topic_plan_sources_not_used": [
+        "EF_TASK_TO_CHILD_AGENT_PRODUCTION_PROTOCOL.md",
+        "AGENT_STRATEGY.md"
+      ]
+    },
+    {
+      "root": "autonomous_next_action_selection",
+      "memory_signal": "No exact compact snapshot root hit in bounded check; journal and runbook contain repeated next-gate decisions.",
+      "cursor_signal": "NO_EXACT_ROOT_CURSOR",
+      "journal_signal": "GPT_OPERATOR_JOURNAL lines 3578-3579 and 3810-3811 route next actions without self-completion.",
+      "coverage_status": "medium",
+      "recommended_start_level": 2,
+      "recommended_seed_count": 4,
+      "priority": "P2",
+      "reason": "Old-update autonomy behavior should continue from existing route discipline instead of restarting as generic level 1.",
+      "source_refs": [
+        "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
+        "AGENTS.md",
+        "operations/reports/SCHOOL_CODEX_LAUNCH_RUNBOOK_20260714.json",
+        "operations/gpt_handoff/CODEX_TASK_SCHOOL_100K_USEFUL_CAMPAIGN_GENERATOR_V1.md"
+      ],
+      "missing_topic_plan_sources_not_used": [
+        "EF_CONTINUOUS_AUTONOMY_NO_SELF_COMPLETION_LAW.md",
+        "EF_UNIFIED_INNER_MOTOR_CYCLE.md"
+      ]
+    },
+    {
+      "root": "live_lab_boundary_for_big_runs",
+      "memory_signal": "Related lab_live_boundary root existed in prior campaign at continuation depth; 15k report and journal provide direct lab/live boundary evidence.",
+      "cursor_signal": "NO_EXACT_ROOT_CURSOR",
+      "journal_signal": "GPT_OPERATOR_JOURNAL lines 3484-3500 say Owner selected 15k first Live validation and Codex must not launch it.",
+      "coverage_status": "medium",
+      "recommended_start_level": 57,
+      "recommended_seed_count": 4,
+      "priority": "P1",
+      "reason": "Old-update large-run discipline must distinguish staging/lab proof from Live proof.",
+      "source_refs": [
+        "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
+        "operations/reports/SCHOOL_15K_STREAMING_COMPLETION_20260714.json",
+        "operations/gpt_handoff/CODEX_TASK_EVIDENCE_GROUNDED_SCHOOL_GENERATOR_V1.md",
+        "AGENTS.md"
+      ],
+      "missing_topic_plan_sources_not_used": [
+        "EF_LIVE_LAB_RUNTIME_BOUNDARY.md"
+      ]
+    }
+  ]
+}

@@ -1,28 +1,34 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-14T18:50:43.1812824+04:00",
+    "checked_at":  "2026-07-14T19:19:46.5432249+04:00",
     "branch":  "main",
-    "observed_head":  "248a2e0da8747a4f57830399f88a0536aece899a",
-    "subject_head":  "248a2e0da8747a4f57830399f88a0536aece899a",
+    "observed_head":  "5772c901d549747e1014db787f6ea3919563eff3",
+    "subject_head":  "5772c901d549747e1014db787f6ea3919563eff3",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "operations/gpt_handoff/CODEX_TASK_SCHOOL_100K_USEFUL_CAMPAIGN_GENERATOR_V1.md",
+                          "codex_tasks/CODEX_TASK_SCHOOL_100K_SEED_PLAN_ONLY_EMBEDDED_20260714.md",
+                          "codex_tasks/CODEX_TASK_SCHOOL_100K_SEED_PLAN_ONLY_READONLY_20260714.md",
+                          "codex_tasks/CODEX_TASK_SCHOOL_100K_USEFUL_CAMPAIGN_PACK_20260714.md",
+                          "codex_tasks/CODEX_TASK_SCHOOL_100K_USEFUL_CAMPAIGN_PACK_LEAN_20260714.md",
                           "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                          "operations/reports/SCHOOL_CODEX_LAUNCH_CORRECTION_20260714.json",
-                          "operations/reports/SCHOOL_CODEX_LAUNCH_CORRECTION_20260714.md",
+                          "operations/reports/SCHOOL_CANONICAL_LAUNCH_POINTER_20260714.json",
+                          "operations/reports/SCHOOL_CANONICAL_LAUNCH_POINTER_20260714.md",
+                          "operations/reports/SCHOOL_LAUNCH_ROUTE_CLEANUP_20260714.json",
+                          "operations/reports/SCHOOL_LAUNCH_ROUTE_CLEANUP_20260714.md",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json"
                       ],
     "structural_paths":  [
-                             "operations/gpt_handoff/CODEX_TASK_SCHOOL_100K_USEFUL_CAMPAIGN_GENERATOR_V1.md",
                              "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                             "operations/reports/SCHOOL_CODEX_LAUNCH_CORRECTION_20260714.json",
-                             "operations/reports/SCHOOL_CODEX_LAUNCH_CORRECTION_20260714.md"
+                             "operations/reports/SCHOOL_CANONICAL_LAUNCH_POINTER_20260714.json",
+                             "operations/reports/SCHOOL_CANONICAL_LAUNCH_POINTER_20260714.md",
+                             "operations/reports/SCHOOL_LAUNCH_ROUTE_CLEANUP_20260714.json",
+                             "operations/reports/SCHOOL_LAUNCH_ROUTE_CLEANUP_20260714.md"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -34,8 +40,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1880,
-                                    "sha256":  "2a9ea3a4cc5b4879a1174b61d08ebe480e440d8b86a2ea75fe7796acd19ee0ab"
+                                    "structural_file_count":  1887,
+                                    "sha256":  "d8ad62654c77031fff2168868c374c8b4a10d6759ae522bdb2f875ddfc5883bd"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -61,12 +67,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  149,
-                         "structural_path_count":  1880,
+                         "structural_path_count":  1887,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-14T18:51:08.4575517+04:00"
+    "refreshed_at":  "2026-07-14T19:20:11.8753503+04:00"
 }

@@ -1,0 +1,89 @@
+{
+    "schema":  "school_100k_useful_staging_run_report_v1",
+    "status":  "PASS_100K_USEFUL_SCHOOL_STAGING_COMPLETE",
+    "created_at":  "2026-07-14T19:19:11.3433098+04:00",
+    "repo_head":  "5772c90",
+    "campaign":  {
+                     "pack_path":  "operations/school/curriculum/candidate_factory/campaign_packs/builder_useful_100k_v1.jsonl",
+                     "manifest_path":  "operations/school/curriculum/candidate_factory/campaign_packs/builder_useful_100k_v1.manifest.json",
+                     "independent_validation_status":  "PASS_CODEX_100K_CAMPAIGN_PACK_INDEPENDENT_VALIDATION",
+                     "seed_count":  48,
+                     "total_expansion_budget":  100000,
+                     "root_count":  12,
+                     "pack_sha256":  "6AD00F2963F382F48F2CFF16D896B0EFFB8EDCE99A23313A21E7A568BF661235",
+                     "manifest_sha256":  "185EE86895E114F538B9A7995DC786846AEDF22F1B24EE285133525A9BC8247D"
+                 },
+    "smoke":  {
+                  "run_id":  "builder_useful_100k_pack_validation_100_20260714",
+                  "status":  "PASS_CAMPAIGN_PACK_CANDIDATE_FACTORY_V1",
+                  "candidates_created":  100,
+                  "seed_backed_percent":  100,
+                  "fallback_percent":  0,
+                  "contract_accepted":  100,
+                  "contract_rejected":  0,
+                  "active_memory_mutated":  false
+              },
+    "generation":  {
+                       "run_id":  "builder_useful_100k_20260714_185930",
+                       "run_kind":  "Test",
+                       "real_run_attempt_status":  "BLOCKED_REAL_RUN_REQUIRES_LIVE_AUTHORITY_PASSPORT",
+                       "status":  "PASS_CODEX_CANDIDATE_FACTORY_GENERATION_V1",
+                       "target_accepted":  100000,
+                       "batches_created":  1000,
+                       "candidates_created":  100000,
+                       "campaign_seeded_candidates":  100000,
+                       "fallback_template_candidates":  0,
+                       "generated_learning_key_count":  100000,
+                       "generated_theme_count":  288,
+                       "task_schedule_count":  288,
+                       "elapsed_seconds":  308.536,
+                       "run_dir":  ".runtime\\codex_curriculum_candidate_factory_runs\\builder_useful_100k_20260714_185930",
+                       "run_files":  1002,
+                       "run_bytes":  937616836,
+                       "all_candidates_lines":  100000,
+                       "all_candidates_bytes":  468807754,
+                       "checkpoint_status_observed":  "RUNNING",
+                       "checkpoint_limitation":  "Factory stdout reported PASS and process exited 0, but checkpoint.json remained RUNNING.",
+                       "active_memory_mutated":  false
+                   },
+    "streaming":  {
+                      "status":  "PASS_STREAMING_SCHOOL_TO_ABSORPTION_PIPELINE_V1",
+                      "run_dir":  ".runtime\\streaming_absorption\\builder_useful_100k_20260714_185930",
+                      "batches_processed":  1000,
+                      "processed_total":  100000,
+                      "contract_accepted_total":  100000,
+                      "contract_rejected_total":  0,
+                      "ready_atoms_total":  100000,
+                      "stream_quarantined_total":  0,
+                      "active_memory_mutated":  false,
+                      "streaming_memory_mode":  "bounded_counters_and_jsonl_writers_v2",
+                      "elapsed_seconds":  647.754,
+                      "ready_atoms_lines":  100000,
+                      "ready_atoms_bytes":  265984262,
+                      "quarantined_lines":  0,
+                      "contract_rejected_lines":  0,
+                      "batch_dirs":  1000,
+                      "stream_files":  2004,
+                      "stream_bytes":  315405225
+                  },
+    "active_memory_after":  {
+                                "manifest.json":  {
+                                                      "bytes":  1814,
+                                                      "sha256":  "1389CA778CC5B2C6F2D7DB9004A55430D04AB24A886401E81B01DD7EA4391623"
+                                                  },
+                                "index.json":  {
+                                                   "bytes":  308130,
+                                                   "sha256":  "BA7160FFA526376B08501A41F96225E0B98490A6CB5A58ECB927137FF91F6597"
+                                               },
+                                "cells.jsonl":  {
+                                                    "bytes":  12637868,
+                                                    "sha256":  "E4C7302F75A2838D2CF5FD91FDCC67D1D3D2F8544FC42393B7E956C712E56E00"
+                                                }
+                            },
+    "absorption_started":  false,
+    "digest_started":  false,
+    "active_memory_mutated":  false,
+    "runtime_ready":  false,
+    "next_action":  "Run usefulness/quality gate on 100k ready atoms before any digest/absorption; then decide compact digest vs reject raw bulk.",
+    "boundary":  "This is LAB/Test school staging proof only. It is not Real run, not digest, not active memory absorption."
+}

@@ -4,9 +4,9 @@ Status: PASS_CAMPAIGN_PACK_CANDIDATE_FACTORY_V1
 Runtime ready: false
 
 TargetAccepted: 100
-Run id: campaign_pack_validation_100_manual_20260713
-Campaign pack: operations/school/curriculum/candidate_factory/campaign_packs/builder_self_knowledge_deep_v1.jsonl
-Campaign seeds: 30
+Run id: builder_useful_100k_pack_validation_100_20260714
+Campaign pack: operations/school/curriculum/candidate_factory/campaign_packs/builder_useful_100k_v1.jsonl
+Campaign seeds: 48
 Candidates created: 100
 Seed-backed percent: 100
 Fallback percent: 0

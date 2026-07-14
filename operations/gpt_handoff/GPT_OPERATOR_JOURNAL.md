@@ -3883,3 +3883,41 @@ Boundary:
 - No 100k generation started.
 - No absorption/digest started.
 - Active memory not mutated.
+
+## 2026-07-14 - 100k useful school campaign generated and staged
+
+STATUS: PASS_100K_USEFUL_SCHOOL_STAGING_COMPLETE
+
+Codex/campaign:
+- Codex produced builder_useful_100k_v1 campaign pack through canonical repo-task route.
+- GPT/operator independent validation PASS: 48 seeds, 12 roots, total_expansion_budget=100000, failures=0.
+
+Smoke:
+- 100-candidate smoke PASS.
+- seed_backed_percent=100, fallback_percent=0, contract accepted=100, rejected=0.
+
+Generation:
+- RunId: builder_useful_100k_20260714_185930.
+- RunKind: Test/LAB. Real run attempt was blocked by BLOCKED_REAL_RUN_REQUIRES_LIVE_AUTHORITY_PASSPORT.
+- FACTORY_STATUS=PASS_CODEX_CANDIDATE_FACTORY_GENERATION_V1.
+- candidates_created=100000, batches_created=1000, campaign_seeded_candidates=100000, fallback_template_candidates=0.
+- elapsed_seconds=308.536.
+- Note: factory stdout PASS/process exit 0, but checkpoint.json remained RUNNING; recorded as checkpoint limitation.
+
+Streaming/staging:
+- STREAMING_STATUS=PASS_STREAMING_SCHOOL_TO_ABSORPTION_PIPELINE_V1.
+- processed_total=100000, contract_accepted=100000, contract_rejected=0.
+- ready_atoms=100000, stream_quarantined=0.
+- streaming_memory_mode=bounded_counters_and_jsonl_writers_v2.
+- active_memory_mutated=false.
+- elapsed_seconds=647.754.
+
+Boundary:
+- absorption_started=false
+- digest_started=false
+- active_memory_mutated=false
+- runtime_ready=false
+- This is LAB/Test staging proof, not live/Real memory absorption.
+
+Next action:
+- Run usefulness/quality gate over the 100k ready atoms before any digest or active memory absorption.
