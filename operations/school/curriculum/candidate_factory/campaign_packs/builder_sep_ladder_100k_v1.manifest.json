@@ -1,0 +1,64 @@
+{
+  "absorption_started": false,
+  "active_memory_mutated": false,
+  "budget_distribution": {
+    "83": 800,
+    "84": 400
+  },
+  "campaign_id": "builder_sep_ladder_100k_v1",
+  "campaign_pack_path": "operations/school/curriculum/candidate_factory/campaign_packs/builder_sep_ladder_100k_v1.jsonl",
+  "created_at": "2026-07-14T16:46:28+00:00",
+  "fallback_expected": 0,
+  "generation_100k_started": false,
+  "level_band_coverage": {
+    "L10_live_readiness": 120,
+    "L1_boundary_basics": 120,
+    "L2_preflight_and_authority": 120,
+    "L3_generation_contract": 120,
+    "L4_streaming_staging": 120,
+    "L5_quality_gate": 120,
+    "L6_digest_absorption_boundary": 120,
+    "L7_failure_recovery": 120,
+    "L8_autonomous_next_action": 120,
+    "L9_negative_cases": 120
+  },
+  "max_expansion_budget_per_seed": 84,
+  "origin_path": "operations/school/curriculum/candidate_factory/source_origins/builder_sep_ladder_100k_v1.jsonl",
+  "origin_unit_count": 180,
+  "proof_missing_expected": 0,
+  "scenario_family_count": 180,
+  "schema": "builder_sep_ladder_campaign_pack_manifest_v1",
+  "seed_count": 1200,
+  "seed_count_requirement": "1000-1500",
+  "source_missing_expected": 0,
+  "status": "CODEX_DRAFT",
+  "streaming_started": false,
+  "topic": "school_generation_absorption_separation",
+  "total_expansion_budget": 100000,
+  "contract_repair": {
+    "schema": "campaign_pack_allowed_modes_contract_repair_v1",
+    "applied_at": "2026-07-14T16:52:06.423122+00:00",
+    "reason": "candidate_factory maps seed allowed_modes to candidate source_mode; batch validator accepts only directed_curriculum or experience_curriculum",
+    "old_allowed_modes": {
+      "preflight": 180,
+      "bounded_authoring": 180,
+      "source_grounding": 180,
+      "structural_validation": 180,
+      "proof_design": 180,
+      "quality_gate": 180,
+      "negative_case_first": 180,
+      "review": 180,
+      "novelty_planning": 180,
+      "campaign_pack": 180,
+      "handoff": 180,
+      "operator_validation": 180,
+      "failure_recovery": 120,
+      "no_validation_loop": 120
+    },
+    "new_allowed_modes": {
+      "directed_curriculum": 1200,
+      "experience_curriculum": 1200
+    },
+    "semantic_modes_preserved_in": "operational_mode_family"
+  }
+}

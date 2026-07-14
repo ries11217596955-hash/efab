@@ -1,0 +1,47 @@
+{
+  "absorption_started": false,
+  "active_memory_mutated": false,
+  "anti_patterns_to_reject": [
+    "root + verb + mode templates without a source lesson",
+    "proof targets that do not name a file, field, manifest, report, or final-report boolean",
+    "candidate generation used as implicit permission for streaming, digest, or active memory mutation",
+    "large budgets assigned to a small number of generic seeds"
+  ],
+  "campaign_id": "builder_sep_ladder_100k_v1",
+  "created_at": "2026-07-14T16:46:28+00:00",
+  "generation_100k_started": false,
+  "next_operator_validation_command": "python -c <lightweight JSONL structural validation against the seven output files>; do not run 100k generation until accepted",
+  "novelty_controls": [
+    "Use 180 refined scenario families rather than stretching a small seed set.",
+    "Keep every expansion budget at 83 or 84 so no seed can dominate the later 100k run.",
+    "Require concrete decision constraints, repo-specific negative traps, observable proof targets, and next-time behavior deltas in every seed.",
+    "Cover all 10 level bands and source-path categories before later factory generation."
+  ],
+  "previous_problem": {
+    "candidate_count": 100000,
+    "decision": "Previous 100k was clean but low-novelty because 48 seeds expanded into repeated drills.",
+    "ready_count": 100000,
+    "root_count": 12,
+    "seed_count": 48,
+    "status": "PASS_CONTRACT_SOURCE_COVERAGE_BUT_LOW_NOVELTY_COMPACT_DIGEST_ONLY",
+    "unique_exercise_ratio": 0.00144,
+    "unique_expected_behavior_ratio": 0.00048
+  },
+  "schema": "builder_sep_ladder_100k_novelty_plan_v1",
+  "status": "CODEX_DRAFT",
+  "streaming_started": false,
+  "target_for_later_100k_run": {
+    "expected_expected_behavior_unique_ratio_target": 0.01,
+    "expected_unique_exercise_ratio_target": 0.01,
+    "fallback_expected": 0,
+    "max_expansion_budget_per_seed": 84,
+    "origin_unit_count": 180,
+    "proof_missing_expected": 0,
+    "runtime_ready_expected": false,
+    "scenario_families": 180,
+    "seed_count": 1200,
+    "source_missing_expected": 0,
+    "total_expansion_budget": 100000
+  },
+  "topic": "school_generation_absorption_separation"
+}

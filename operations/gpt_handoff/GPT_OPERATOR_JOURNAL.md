@@ -3992,3 +3992,45 @@ Boundary:
 Next recommended route:
 - Split Codex into smaller per-root deep-origin tasks or explicitly allow operator/GPT deterministic origin generation.
 - Do not retry the same broad Codex task blindly.
+
+## 2026-07-14 - One-topic SEP ladder campaign authored and smoke-validated
+
+STATUS: PASS_ONE_TOPIC_SEP_LADDER_PACK_SMOKE_VALIDATED
+
+Route:
+- One topic only: school_generation_absorption_separation.
+- Codex authored source origin + campaign pack via repo task file route.
+- GPT/operator independently validated and repaired contract mode mapping.
+
+Authoring proof:
+- origin_units=180
+- seeds=1200
+- total_expansion_budget=100000
+- max_expansion_budget_per_seed=84
+- scenario_families=180
+- independent_validation=PASS_ONE_TOPIC_SEP_LADDER_CODEX_DRAFT_VALIDATED_AFTER_REPAIR
+
+Repair:
+- Initial 100-smoke failed 100/100 due bad_source_mode.
+- Root cause: candidate_factory maps seed allowed_modes to candidate source_mode; batch validator accepts only directed_curriculum or experience_curriculum.
+- Repaired pack by setting allowed_modes=[directed_curriculum, experience_curriculum] and preserving original operational modes in operational_mode_family.
+- Repair report: operations/reports/ONE_TOPIC_SEP_LADDER_ALLOWED_MODES_CONTRACT_REPAIR_20260714.json
+
+Smoke proof:
+- run_id=builder_sep_ladder_100k_pack_validation_100_repaired_20260714
+- status=PASS_CAMPAIGN_PACK_CANDIDATE_FACTORY_V1
+- candidates_created=100
+- seed_backed_percent=100
+- fallback_percent=0
+- contract_accepted=100
+- contract_rejected=0
+- active_memory_mutated=False
+
+Boundary:
+- 100k generation NOT_STARTED.
+- streaming NOT_STARTED.
+- digest/absorption NOT_STARTED.
+- active_memory_mutated=false.
+
+Next action:
+- Commit/push authoring+smoke proof, then run 100k Test generation and streaming/staging. No digest/absorption.

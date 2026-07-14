@@ -584,7 +584,7 @@ operations/reports/SCHOOL_CANONICAL_LAUNCH_POINTER_20260714.md
 Active Codex task for the current deep-origin 100k campaign:
 
 ```text
-operations/gpt_handoff/CODEX_TASK_SCHOOL_DEEP_ORIGIN_100K_CANDIDATES_V1.md
+operations/gpt_handoff/CODEX_TASK_SCHOOL_ONE_TOPIC_SEP_LADDER_100K_V1.md
 ```
 
 Historical reference only, not the active route:
@@ -646,3 +646,5 @@ Codex output is CODEX_DRAFT until GPT/operator validates independently.
 absorption/digest is not started by Codex.
 active memory is not mutated by Codex.
 ```
+
+One-topic deep ladder rule: Codex authors one root/topic only; long 100k/200k runs are performed later by local school factory after operator validation.

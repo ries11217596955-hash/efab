@@ -1,26 +1,31 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-14T20:01:49.5522186+04:00",
+    "checked_at":  "2026-07-14T20:54:38.2707477+04:00",
     "branch":  "main",
-    "observed_head":  "b92e4c3c559fd9f9a1fc384b5b16bcbd63dc9946",
-    "subject_head":  "b92e4c3c559fd9f9a1fc384b5b16bcbd63dc9946",
+    "observed_head":  "70055d9b8590bf9fe679caf508bddfca18bcf16e",
+    "subject_head":  "70055d9b8590bf9fe679caf508bddfca18bcf16e",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
+                          "AGENTS.md",
+                          "operations/gpt_handoff/CODEX_TASK_SCHOOL_DEEP_ORIGIN_100K_CANDIDATES_V1.md",
                           "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                          "operations/reports/SCHOOL_100K_USEFULNESS_QUALITY_GATE_20260714.json",
-                          "operations/reports/SCHOOL_100K_USEFULNESS_QUALITY_GATE_20260714.md",
+                          "operations/reports/CODEX_DEEP_ORIGIN_100K_ATTEMPT_REPORT_20260714.json",
+                          "operations/reports/CODEX_DEEP_ORIGIN_100K_ATTEMPT_REPORT_20260714.md",
+                          "operations/reports/DEEP_ORIGIN_100K_CODEX_COMPACT_CONTEXT_20260714.json",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json"
                       ],
     "structural_paths":  [
+                             "operations/gpt_handoff/CODEX_TASK_SCHOOL_DEEP_ORIGIN_100K_CANDIDATES_V1.md",
                              "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                             "operations/reports/SCHOOL_100K_USEFULNESS_QUALITY_GATE_20260714.json",
-                             "operations/reports/SCHOOL_100K_USEFULNESS_QUALITY_GATE_20260714.md"
+                             "operations/reports/CODEX_DEEP_ORIGIN_100K_ATTEMPT_REPORT_20260714.json",
+                             "operations/reports/CODEX_DEEP_ORIGIN_100K_ATTEMPT_REPORT_20260714.md",
+                             "operations/reports/DEEP_ORIGIN_100K_CODEX_COMPACT_CONTEXT_20260714.json"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -32,8 +37,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1893,
-                                    "sha256":  "ccab3c8f9ff6131163545a727d942e44e3663f957f9f5159238f9664a030c0c6"
+                                    "structural_file_count":  1906,
+                                    "sha256":  "9f993f2fb8307ac56cd716ad6480bb05fd8afcf6d6a4424f2f3163e0da211f86"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -59,12 +64,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  149,
-                         "structural_path_count":  1893,
+                         "structural_path_count":  1906,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-14T20:02:14.6608703+04:00"
+    "refreshed_at":  "2026-07-14T20:55:03.6711029+04:00"
 }

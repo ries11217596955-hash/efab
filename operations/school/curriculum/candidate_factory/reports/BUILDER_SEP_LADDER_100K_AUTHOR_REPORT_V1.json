@@ -1,0 +1,46 @@
+{
+  "authoring_method": "Generated 180 source-origin units from 60 compact-context scenario families and three operational decision lenses, then expanded them into 1200 source-linked seeds for later local factory generation.",
+  "boundary_flags": {
+    "absorption_started": false,
+    "active_memory_mutated": false,
+    "generation_100k_started": false,
+    "runtime_ready": false,
+    "streaming_started": false
+  },
+  "campaign_id": "builder_sep_ladder_100k_v1",
+  "counts": {
+    "level_band_count": 10,
+    "max_expansion_budget_per_seed": 84,
+    "origin_unit_count": 180,
+    "scenario_family_count": 180,
+    "seed_count": 1200,
+    "total_expansion_budget": 100000
+  },
+  "created_at": "2026-07-14T16:46:28+00:00",
+  "files_written": [
+    "operations\\school\\curriculum\\candidate_factory\\source_origins\\builder_sep_ladder_100k_v1.jsonl",
+    "operations\\school\\curriculum\\candidate_factory\\source_origins\\builder_sep_ladder_100k_v1.manifest.json",
+    "operations\\school\\curriculum\\candidate_factory\\campaign_packs\\builder_sep_ladder_100k_v1.jsonl",
+    "operations\\school\\curriculum\\candidate_factory\\campaign_packs\\builder_sep_ladder_100k_v1.manifest.json",
+    "operations\\school\\curriculum\\candidate_factory\\reports\\BUILDER_SEP_LADDER_100K_AUTHOR_REPORT_V1.json",
+    "operations\\school\\curriculum\\candidate_factory\\reports\\BUILDER_SEP_LADDER_100K_COVERAGE_REPORT_V1.json",
+    "operations\\school\\curriculum\\candidate_factory\\reports\\BUILDER_SEP_LADDER_100K_NOVELTY_PLAN_V1.json"
+  ],
+  "limitations": [
+    "This is CODEX_DRAFT authoring, not independent GPT/operator acceptance.",
+    "The later 100k candidate generation, streaming, digest, and absorption runs were intentionally not started.",
+    "The compact context is treated as source of truth; source_pool files were used as anchors rather than expanding the read budget into full historical reports."
+  ],
+  "return_to_parent": "Operator should independently validate the pack, then run the existing local candidate factory only if this draft is accepted.",
+  "schema": "builder_sep_ladder_100k_author_report_v1",
+  "source_law": "No source/proof anchor -> no memory candidate. Seeds use generated origins as source_path, and origins use only compact-context source_pool files.",
+  "status": "CODEX_DRAFT",
+  "task_context": "operations\\reports\\ONE_TOPIC_SEP_LADDER_100K_CODEX_CONTEXT_20260714.json",
+  "topic": "school_generation_absorption_separation",
+  "validation_summary": {
+    "jsonl_parse_expected": "PASS",
+    "output_collision_prevented": true,
+    "source_pool_missing_paths": [],
+    "status": "AUTHOR_INTERNAL_STRUCTURAL_CHECK_PASS"
+  }
+}
