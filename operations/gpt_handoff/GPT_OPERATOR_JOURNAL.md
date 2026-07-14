@@ -197,3 +197,22 @@ Meaning:
 Codex receives one-topic patch tasks with topic, depth, count, schema, quality rules, proof fields, validator fields, source rule, return-to-parent rule, preflight guard, and retry/quarantine policy.
 Codex failure does not decrement Count and does not update memory.
 ```
+
+
+## School patch executor v1
+
+```text
+school_patch_executor_v1 = installed and validated
+executor_status = PASS_PATCH_EXECUTOR_VALIDATED_NO_ABSORB_V1
+codex_status = MOCK_CODEX_DRAFT_CREATED
+ledger_state = VALIDATED_NORMALIZED
+memory_changed = False
+```
+
+Meaning:
+
+```text
+One patch can now be executed through topic selection, 1000-patch planning, Codex task creation, candidate validation, normalization into atom JSONL, and runtime ledger update.
+This validation used MockCodex and no absorption.
+VALIDATED_NORMALIZED is not memory progress. Only ABSORBED counts.
+```

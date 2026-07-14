@@ -1,0 +1,28 @@
+{
+  "schema": "school_patch_executor_installation_v1",
+  "status": "PASS_SCHOOL_PATCH_EXECUTOR_V1_INSTALLED_AND_VALIDATED",
+  "created_at": "2026-07-14T19:22:45.224997+00:00",
+  "repo_head_before_commit": "8a1166a",
+  "purpose": "Execute one school patch bridge: select topic, plan 1000 patch, build Codex task, run/record Codex, validate-normalize candidates, optionally absorb, and update runtime ledger.",
+  "validation": {
+    "status": "PASS_SCHOOL_PATCH_EXECUTOR_VALIDATION_V1",
+    "executor_status": "PASS_PATCH_EXECUTOR_VALIDATED_NO_ABSORB_V1",
+    "codex_status": "MOCK_CODEX_DRAFT_CREATED",
+    "ledger_state": "VALIDATED_NORMALIZED",
+    "normalized_atoms_jsonl": ".runtime/school_patch_executor/school_patch_executor_test_1000_20260714_232214/normalized_patch_atoms.jsonl",
+    "patch_ledger_path": ".runtime/school_patch_executor/school_patch_executor_test_1000_20260714_232214/patch_ledger.jsonl",
+    "memory_changed": false
+  },
+  "executor_modes": {
+    "DryRun": "select topic, plan patch, build Codex task, stop before Codex",
+    "MockCodex": "generate validator-safe mock candidates, validate-normalize, no absorption by default",
+    "RunCodex": "run Codex CLI with generated task; record CODEX_FAILED or CODEX_DRAFT_CREATED"
+  },
+  "memory_progress_rule": "Only ledger_state=ABSORBED counts as memory update. VALIDATED_NORMALIZED is not memory progress.",
+  "files_changed": [
+    "operations/school/execute_school_patch_v1.ps1",
+    "operations/school/validate_school_patch_executor_v1.ps1",
+    "operations/school/codex/validate_and_normalize_codex_school_patch_candidates_v1.ps1"
+  ],
+  "boundary": "Validation used MockCodex without absorption; active memory was not mutated. Real Codex and absorption are next live-test slice."
+}

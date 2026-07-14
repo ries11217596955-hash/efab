@@ -6,19 +6,19 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "1c332ccebfe20736e2a835a853d748e66c366cf6",
-    "subject_head":  "1c332ccebfe20736e2a835a853d748e66c366cf6",
-    "generated_at":  "2026-07-14T23:06:15.4709515+04:00",
+    "observed_head_at_generation":  "8a1166a7dae0d93f4876c12133476b53fd24ecb6",
+    "subject_head":  "8a1166a7dae0d93f4876c12133476b53fd24ecb6",
+    "generated_at":  "2026-07-14T23:23:37.2375230+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  1895,
+    "structural_path_count":  1901,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1895,
-                                    "sha256":  "cefe55c496ebba775e527494020bf033a8042e77a8cadf89a30e18b0365921b9"
+                                    "structural_file_count":  1901,
+                                    "sha256":  "0067dd54ddb045d0b01b3156e7b170af81a118c1d22b2e05544f4b0bbbccea22"
                                 },
     "module_count":  203,
     "validator_count":  174,
@@ -29,8 +29,8 @@
                                      "root":  "operations/school",
                                      "status":  "CONFIRMED_PRIMARY_EVIDENCE_PRESENT",
                                      "confirmation_basis":  "explicit_required_component_with_primary_repo_evidence",
-                                     "file_count":  127,
-                                     "script_count":  69,
+                                     "file_count":  130,
+                                     "script_count":  72,
                                      "validator_count":  30,
                                      "proof_file_count":  12,
                                      "contract_or_policy_count":  14,
@@ -45,6 +45,7 @@
                                                                 ],
                                      "required_files_present":  true,
                                      "validator_refs":  [
+                                                            "operations/school/codex/validate_and_normalize_codex_school_patch_candidates_v1.ps1",
                                                             "operations/school/codex/validate_codex_school_patch_task_template_v1.ps1",
                                                             "operations/school/curriculum/candidate_factory/validate_campaign_pack_candidate_factory_v1.ps1",
                                                             "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_batch_delta_v1.ps1",
@@ -73,8 +74,7 @@
                                                             "operations/school/digestion/select_compact_semantic_digest_validation_budget_v1.ps1",
                                                             "operations/school/digestion/validate_active_memory_publish_retry_v1.ps1",
                                                             "operations/school/digestion/validate_compact_semantic_digestion_organ_v1.ps1",
-                                                            "operations/school/memory/validate_compact_memory_recall_use_probe_v1.ps1",
-                                                            "operations/school/memory/validate_dynamic_theme_cell_selector_v1.ps1"
+                                                            "operations/school/memory/validate_compact_memory_recall_use_probe_v1.ps1"
                                                         ],
                                      "proof_refs":  [
                                                         "operations/school/proofs/AUTONOMOUS_SCHOOL_CONTROL_PROOF_20260706_100215.json",
@@ -108,6 +108,7 @@
                                                                  ],
                                      "primary_evidence_refs":  [
                                                                    "operations/school/autonomous_school_cycle_policy.json",
+                                                                   "operations/school/codex/validate_and_normalize_codex_school_patch_candidates_v1.ps1",
                                                                    "operations/school/codex/validate_codex_school_patch_task_template_v1.ps1",
                                                                    "operations/school/curriculum/candidate_factory/validate_campaign_pack_candidate_factory_v1.ps1",
                                                                    "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_batch_delta_v1.ps1",
@@ -142,6 +143,7 @@
                                                                ],
                                      "entrypoint_scripts":  [
                                                                 "operations/school/codex/build_codex_school_patch_task_v1.ps1",
+                                                                "operations/school/codex/validate_and_normalize_codex_school_patch_candidates_v1.ps1",
                                                                 "operations/school/codex/validate_codex_school_patch_task_template_v1.ps1",
                                                                 "operations/school/control_autonomous_school_cycle_v1.ps1",
                                                                 "operations/school/curriculum/candidate_factory/generate_codex_curriculum_candidate_factory_run_v1.ps1",
@@ -179,13 +181,12 @@
                                                                 "operations/school/memory/validate_compact_memory_recall_use_probe_v1.ps1",
                                                                 "operations/school/memory/validate_dynamic_theme_cell_selector_v1.ps1",
                                                                 "operations/school/run_agent_school.ps1",
-                                                                "operations/school/run_autonomous_school_cycle_v1.ps1",
-                                                                "operations/school/validate_agent_school_canonical_entrypoint_v1.ps1"
+                                                                "operations/school/run_autonomous_school_cycle_v1.ps1"
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "1c332ccebfe20736e2a835a853d748e66c366cf6",
-                                                               "committed_at":  "2026-07-14T22:53:52+04:00",
-                                                               "subject":  "feat: add topic patch school launch"
+                                                               "head":  "8a1166a7dae0d93f4876c12133476b53fd24ecb6",
+                                                               "committed_at":  "2026-07-14T23:05:46+04:00",
+                                                               "subject":  "feat: build strict codex school patch tasks"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -628,9 +629,9 @@
 
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "1c332ccebfe20736e2a835a853d748e66c366cf6",
-                                                               "committed_at":  "2026-07-14T22:53:52+04:00",
-                                                               "subject":  "feat: add topic patch school launch"
+                                                               "head":  "8a1166a7dae0d93f4876c12133476b53fd24ecb6",
+                                                               "committed_at":  "2026-07-14T23:05:46+04:00",
+                                                               "subject":  "feat: build strict codex school patch tasks"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -2069,19 +2070,19 @@
                                             "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                                             "discovery_method":  "bounded_git_ls_files_path_discovery",
                                             "evidence_counts":  {
-                                                                    "files":  45,
+                                                                    "files":  48,
                                                                     "scripts":  0,
                                                                     "validators":  0,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  0,
-                                                                    "docs":  18
+                                                                    "docs":  19
                                                                 },
-                                            "file_count":  45,
+                                            "file_count":  48,
                                             "script_count":  0,
                                             "validator_count":  0,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  0,
-                                            "doc_count":  18,
+                                            "doc_count":  19,
                                             "validator_refs":  [
 
                                                                ],
@@ -7745,8 +7746,8 @@
                            "root":  "operations/school",
                            "status":  "CONFIRMED_PRIMARY_EVIDENCE_PRESENT",
                            "confirmation_basis":  "explicit_required_component_with_primary_repo_evidence",
-                           "file_count":  127,
-                           "script_count":  69,
+                           "file_count":  130,
+                           "script_count":  72,
                            "validator_count":  30,
                            "proof_file_count":  12,
                            "contract_or_policy_count":  14,
@@ -7761,6 +7762,7 @@
                                                       ],
                            "required_files_present":  true,
                            "validator_refs":  [
+                                                  "operations/school/codex/validate_and_normalize_codex_school_patch_candidates_v1.ps1",
                                                   "operations/school/codex/validate_codex_school_patch_task_template_v1.ps1",
                                                   "operations/school/curriculum/candidate_factory/validate_campaign_pack_candidate_factory_v1.ps1",
                                                   "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_batch_delta_v1.ps1",
@@ -7789,8 +7791,7 @@
                                                   "operations/school/digestion/select_compact_semantic_digest_validation_budget_v1.ps1",
                                                   "operations/school/digestion/validate_active_memory_publish_retry_v1.ps1",
                                                   "operations/school/digestion/validate_compact_semantic_digestion_organ_v1.ps1",
-                                                  "operations/school/memory/validate_compact_memory_recall_use_probe_v1.ps1",
-                                                  "operations/school/memory/validate_dynamic_theme_cell_selector_v1.ps1"
+                                                  "operations/school/memory/validate_compact_memory_recall_use_probe_v1.ps1"
                                               ],
                            "proof_refs":  [
                                               "operations/school/proofs/AUTONOMOUS_SCHOOL_CONTROL_PROOF_20260706_100215.json",
@@ -7824,6 +7825,7 @@
                                                        ],
                            "primary_evidence_refs":  [
                                                          "operations/school/autonomous_school_cycle_policy.json",
+                                                         "operations/school/codex/validate_and_normalize_codex_school_patch_candidates_v1.ps1",
                                                          "operations/school/codex/validate_codex_school_patch_task_template_v1.ps1",
                                                          "operations/school/curriculum/candidate_factory/validate_campaign_pack_candidate_factory_v1.ps1",
                                                          "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_batch_delta_v1.ps1",
@@ -7858,6 +7860,7 @@
                                                      ],
                            "entrypoint_scripts":  [
                                                       "operations/school/codex/build_codex_school_patch_task_v1.ps1",
+                                                      "operations/school/codex/validate_and_normalize_codex_school_patch_candidates_v1.ps1",
                                                       "operations/school/codex/validate_codex_school_patch_task_template_v1.ps1",
                                                       "operations/school/control_autonomous_school_cycle_v1.ps1",
                                                       "operations/school/curriculum/candidate_factory/generate_codex_curriculum_candidate_factory_run_v1.ps1",
@@ -7895,13 +7898,12 @@
                                                       "operations/school/memory/validate_compact_memory_recall_use_probe_v1.ps1",
                                                       "operations/school/memory/validate_dynamic_theme_cell_selector_v1.ps1",
                                                       "operations/school/run_agent_school.ps1",
-                                                      "operations/school/run_autonomous_school_cycle_v1.ps1",
-                                                      "operations/school/validate_agent_school_canonical_entrypoint_v1.ps1"
+                                                      "operations/school/run_autonomous_school_cycle_v1.ps1"
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "1c332ccebfe20736e2a835a853d748e66c366cf6",
-                                                     "committed_at":  "2026-07-14T22:53:52+04:00",
-                                                     "subject":  "feat: add topic patch school launch"
+                                                     "head":  "8a1166a7dae0d93f4876c12133476b53fd24ecb6",
+                                                     "committed_at":  "2026-07-14T23:05:46+04:00",
+                                                     "subject":  "feat: build strict codex school patch tasks"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -8344,9 +8346,9 @@
 
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "1c332ccebfe20736e2a835a853d748e66c366cf6",
-                                                     "committed_at":  "2026-07-14T22:53:52+04:00",
-                                                     "subject":  "feat: add topic patch school launch"
+                                                     "head":  "8a1166a7dae0d93f4876c12133476b53fd24ecb6",
+                                                     "committed_at":  "2026-07-14T23:05:46+04:00",
+                                                     "subject":  "feat: build strict codex school patch tasks"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -9783,19 +9785,19 @@
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                            "discovery_method":  "bounded_git_ls_files_path_discovery",
                            "evidence_counts":  {
-                                                   "files":  45,
+                                                   "files":  48,
                                                    "scripts":  0,
                                                    "validators":  0,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  0,
-                                                   "docs":  18
+                                                   "docs":  19
                                                },
-                           "file_count":  45,
+                           "file_count":  48,
                            "script_count":  0,
                            "validator_count":  0,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  0,
-                           "doc_count":  18,
+                           "doc_count":  19,
                            "validator_refs":  [
 
                                               ],
