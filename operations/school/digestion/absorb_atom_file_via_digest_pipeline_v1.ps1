@@ -167,6 +167,14 @@ if($digestStatus -ne 'PASS_COMPACT_SEMANTIC_DIGESTION_ORGAN_V1'){ throw "DIGEST_
 MarkAbsorbStage 'digest_candidate_memory'
 if(Test-Path $normalizedInput){ throw 'NORMALIZED_DIGEST_INPUT_NOT_DELETED' }
 if(Test-Path $stagedInput){ Remove-Item $stagedInput -Force }
+$guardReportPath="$runRoot/MEMORY_WEIGHT_GUARD_V1.json"
+$guardOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/digestion/apply_compact_memory_weight_guard_v1.ps1 -MemoryRoot $candidateMemoryRoot -ReportPath $guardReportPath -Mode Conservative -MaxListItems 1000 -MaxFieldBytes 262144 *>&1 | ForEach-Object {[string]$_})
+$guardStatus=($guardOut|Where-Object{$_ -match '^MEMORY_WEIGHT_GUARD_STATUS='}|Select-Object -Last 1) -replace '^MEMORY_WEIGHT_GUARD_STATUS=',''
+if($guardStatus -ne 'PASS_COMPACT_MEMORY_WEIGHT_GUARD_V1'){ throw "MEMORY_WEIGHT_GUARD_NOT_PASS:$guardStatus" }
+$guardProof=($guardOut|Where-Object{$_ -match '^MEMORY_WEIGHT_GUARD_REPORT='}|Select-Object -Last 1) -replace '^MEMORY_WEIGHT_GUARD_REPORT=',''
+$guardEvents=($guardOut|Where-Object{$_ -match '^MEMORY_WEIGHT_GUARD_EVENTS='}|Select-Object -Last 1) -replace '^MEMORY_WEIGHT_GUARD_EVENTS=',''
+$guardBytesSaved=($guardOut|Where-Object{$_ -match '^MEMORY_WEIGHT_GUARD_BYTES_SAVED='}|Select-Object -Last 1) -replace '^MEMORY_WEIGHT_GUARD_BYTES_SAVED=',''
+MarkAbsorbStage 'memory_weight_guard'
 $manifest=Get-Content (Join-Path $candidateMemoryRoot 'manifest.json') -Raw|ConvertFrom-Json
 $index=Get-Content (Join-Path $candidateMemoryRoot 'index.json') -Raw|ConvertFrom-Json
 $cellsPath=Join-Path $candidateMemoryRoot 'cells.jsonl'
@@ -208,6 +216,10 @@ $report=[ordered]@{
   candidate_memory_root=$candidateMemoryRoot
   active_memory_publish=$publishResult
   digest_status=$digestStatus
+  memory_weight_guard_status=$guardStatus
+  memory_weight_guard_proof=$guardProof
+  memory_weight_guard_events=[int]$guardEvents
+  memory_weight_guard_bytes_saved=[int64]$guardBytesSaved
   digested_cells=[int]$manifest.cell_count
   merged_count=[int]$manifest.merged_count
   cumulative_memory_merge=$cumulative_memory_merge

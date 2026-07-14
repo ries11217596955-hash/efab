@@ -3747,3 +3747,33 @@ Proof pointers:
 - operations/reports/COMPACT_MEMORY_COMPACTION_CANDIDATE_VALIDATION_20260714.json
 - operations/reports/ACTIVE_COMPACT_MEMORY_CONSERVATIVE_COMPACTION_REPLACEMENT_20260714.json
 - operations/reports/ACTIVE_COMPACT_MEMORY_CONSERVATIVE_COMPACTION_REPLACEMENT_20260714.md
+## 2026-07-14 - Memory Weight Guard installed in absorption pipeline
+
+STATUS: PASS_MEMORY_WEIGHT_GUARD_INSTALLED_AND_VALIDATED
+
+Installed:
+- operations/school/digestion/apply_compact_memory_weight_guard_v1.ps1
+- Hooked into operations/school/digestion/absorb_atom_file_via_digest_pipeline_v1.ps1 after compact semantic digestion and before active memory publish.
+
+Policy:
+- mode=Conservative
+- guarded_fields=relations,source_fingerprints
+- max_list_items=1000
+- max_field_bytes=262144
+- action=count+sha256+head/tail samples
+- properties_preserved_full=true
+
+Proof:
+- Synthetic heavy guard test PASS: events=2, bytes_saved=25064, properties preserved 1200/1200.
+- Absorption integration test PASS: FILE_ATOM_ABSORPTION_STATUS=PASS_FILE_ATOM_ABSORPTION_PIPELINE_V1.
+- Integration report includes memory_weight_guard_status=PASS_COMPACT_MEMORY_WEIGHT_GUARD_V1.
+- Integration recall probe PASS_COMPACT_MEMORY_RECALL_USE_PROBE_V1_VALID.
+
+Boundary:
+- Active memory was not mutated by guard installation.
+- Future file atom absorption / compact-intake merge now invokes weight guard before publish.
+- Still monitor size after large runs; this is guard installation, not unlimited scale proof.
+
+Proof pointers:
+- operations/reports/MEMORY_WEIGHT_GUARD_INSTALLATION_20260714.json
+- operations/reports/MEMORY_WEIGHT_GUARD_INSTALLATION_20260714.md
