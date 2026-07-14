@@ -16,10 +16,9 @@ if($RequestedTier -eq 'Auto'){
   $tier='Fast'
   $reason='default_per_digest_fast_guard'
   if($BeforePromotion){ $tier='Full'; $reason='before_promotion_requires_full' }
-  elseif($IncomingAtoms -ge 5000){ $tier='Full'; $reason='incoming_atoms_gte_5000' }
   elseif($DigestsSinceFull -ge 50){ $tier='Full'; $reason='digests_since_full_gte_50' }
-  elseif($IncomingAtoms -ge 1000){ $tier='Stable'; $reason='incoming_atoms_gte_1000' }
   elseif($DigestsSinceStable -ge 10){ $tier='Stable'; $reason='digests_since_stable_gte_10' }
+  elseif($IncomingAtoms -ge 50000){ $tier='Stable'; $reason='large_chunk_stable_guard_incoming_atoms_gte_50000' }
 }
 $checks=[ordered]@{}
 switch($tier){
@@ -50,7 +49,7 @@ $policy=[ordered]@{
   digests_since_full=$DigestsSinceFull
   before_promotion=[bool]$BeforePromotion
   checks=$checks
-  law='Do cheap safety checks every digest; run expensive validation only by tier, threshold, or promotion boundary.'
+  law='Do cheap safety checks every digest; 5000-atom school chunks stay Fast by default; run Stable/Full only by digest counters, very large chunks, or promotion boundary.'
   runtime_ready=$false
 }
 WriteJson '.runtime/digestion_policy/COMPACT_SEMANTIC_DIGEST_VALIDATION_BUDGET_V1.json' $policy 60

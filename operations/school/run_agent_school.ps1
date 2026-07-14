@@ -1,4 +1,4 @@
-﻿param(
+param(
   [Parameter(Mandatory=$true)][ValidateRange(1,1000000)][int]$Count,
   [Parameter(Mandatory=$true)][ValidateSet('Test','Live')][string]$Mode,
   [Parameter(Mandatory=$true)][string]$TopicsPlan
@@ -181,6 +181,34 @@ function BuildAggregationSummary($Status,$Chunks,$FailedCount,$QuarantinedCount,
     source_contract=$proofAggregatorPath
   }
 }
+function TestSchoolStopRequested($RunId,$ChunkIndex,$OrdinalOffset,$ProcessedInThisRun,$TargetAccepted,$Reason){
+  $stopPath=if($env:EF_SCHOOL_STOP_REQUEST_PATH){[string]$env:EF_SCHOOL_STOP_REQUEST_PATH}else{'.runtime/control/school_stop_requested.json'}
+  if(-not (Test-Path $stopPath)){ return $false }
+  $request=$null
+  try { $request=Get-Content $stopPath -Raw | ConvertFrom-Json } catch { $request=[ordered]@{ parse_error=$_.Exception.Message } }
+  $ackPath=(".runtime/control/school_stop_ack_{0}_chunk_{1}.json" -f $RunId,$ChunkIndex)
+  $ack=[ordered]@{
+    schema='school_controlled_stop_ack_v1'
+    status='CONTROLLED_STOP_REQUEST_ACKNOWLEDGED'
+    run_id=$RunId
+    chunk_index=[int]$ChunkIndex
+    ordinal_offset=[int]$OrdinalOffset
+    processed_in_this_run=[int]$ProcessedInThisRun
+    target_accepted=[int]$TargetAccepted
+    remaining_target=[int]([Math]::Max(0,$TargetAccepted-$ProcessedInThisRun))
+    reason=$Reason
+    stop_request_path=$stopPath
+    stop_request=$request
+    resume_hint=[ordered]@{ resume_completed_chunks=[int]($ChunkIndex-1); resume_ordinal_offset=[int]$OrdinalOffset; resume_remaining_target=[int]([Math]::Max(0,$TargetAccepted-$ProcessedInThisRun)) }
+    active_memory_root='.runtime/active_compact_semantic_memory_v1'
+    runtime_ready=$false
+    created_at=(Get-Date).ToString('o')
+  }
+  WriteJson $ackPath $ack 100
+  Write-Host "SCHOOL_CONTROLLED_STOP_ACK=$ackPath"
+  Write-Host 'SCHOOL_RUN_STATUS=CONTROLLED_STOP_REQUEST_ACKNOWLEDGED'
+  return $true
+}
 $runId="school_factory_digest_use_{0}_{1}_{2}" -f $RunKind.ToLowerInvariant(),$TargetAccepted,(Get-Date -Format 'yyyyMMdd_HHmmss')
 $proofDir=".runtime/school_runs/$runId"
 $proofPath="$proofDir/AGENT_SCHOOL_CANONICAL_ENTRYPOINT_V1.json"
@@ -210,7 +238,7 @@ if($env:EF_SCHOOL_FORCE_FAIL_CHUNK_INDEX -or $env:EF_SCHOOL_FORCE_FAIL_STAGE -or
   if($failureTestStage -eq 'after_digest_before_recall_use' -and $RunKind -ne 'Real'){ throw 'FAILURE_TEST_DIGEST_STAGE_REQUIRES_REAL' }
   $failureTestEnabled=$true
 }
-$cleanupRemoved=@(); $chunks=@(); $totalFactoryCandidates=0; $totalReadyAtoms=0; $totalStreamQuarantined=0; $lastProof=$null; $lastUseProof=$null; $lastSourceRouterReport=$null; $activeMemoryRoot='.runtime/active_compact_semantic_memory_v1'; $lastChunkMemoryCheckpoint=$null; $memoryRollbackEvents=@()
+$cleanupRemoved=@(); $chunks=@(); $totalFactoryCandidates=0; $totalReadyAtoms=0; $totalStreamQuarantined=0; $lastProof=$null; $lastUseProof=$null; $lastSourceRouterReport=$null; $activeMemoryRoot='.runtime/active_compact_semantic_memory_v1'; $lastChunkMemoryCheckpoint=$null; $memoryRollbackEvents=@(); $chunkTimingRows=@()
 $chunkIndex=$ResumeCompletedChunks; $remaining=$TargetAccepted; $processedInThisRun=0; $ordinalOffset=$ResumeOrdinalOffset; $totalChunks=$ResumeCompletedChunks + [int][Math]::Ceiling($TargetAccepted / $outerChunkSize)
 try {
   while($remaining -gt 0){
@@ -218,6 +246,8 @@ try {
     $ordinalOffset=$ResumeOrdinalOffset + $processedInThisRun
     $chunkTarget=[Math]::Min($outerChunkSize,$remaining)
     $batchSize=[Math]::Min($innerBatchSizeMax,[Math]::Max(1,$chunkTarget))
+    $chunkStart=Get-Date
+    if(TestSchoolStopRequested $runId $chunkIndex $ordinalOffset $processedInThisRun $TargetAccepted 'before_chunk_start'){ return }
     if($failureTestEnabled -and $chunkIndex -eq $failureTestChunk -and $failureTestStage -eq 'before_factory'){ throw ("FORCED_SCHOOL_CHUNK_FAILURE:chunk={0}:stage=before_factory" -f $chunkIndex) }
     $chunkRunId="${runId}_chunk_${chunkIndex}_of_$totalChunks"
     $factoryOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/curriculum/source_router/run_school_source_router_v1.ps1 -TargetAccepted $chunkTarget -RunKind Test -BatchSize $batchSize -RunId $chunkRunId -OrdinalOffset $ordinalOffset -TopicsPlan $TopicsPlan -SourceMode Auto *>&1 | ForEach-Object {[string]$_})
@@ -253,7 +283,10 @@ try {
     $activeMemoryBytes=0
     if(Test-Path $activeMemoryRoot){ $activeMemoryBytes=[int64]((Get-ChildItem $activeMemoryRoot -Recurse -File -ErrorAction SilentlyContinue | Measure-Object Length -Sum).Sum) }
     $budget=[int64][Math]::Max([double]1600000,[Math]::Max(([double]([Math]::Max($plannedTotalAccepted,1000) * 1600)),([double]($activeMemoryBytes + ($chunkTarget * 2000) + 2000000))))
-    $pipeOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/digestion/absorb_atom_file_via_digest_pipeline_v1.ps1 -InputPath $stream.ready_lane_path -MemoryRoot $activeMemoryRoot -ValidationTier Auto -SizeBudgetBytes $budget *>&1 | ForEach-Object {[string]$_})
+    $digestOrdinalForPolicy=[int]($ResumeCompletedChunks + $processedInThisRun / [Math]::Max(1,$outerChunkSize) + 1)
+    $digestsSinceStable=if(($digestOrdinalForPolicy % 10) -eq 0){10}else{[int]($digestOrdinalForPolicy % 10)}
+    $digestsSinceFull=if(($digestOrdinalForPolicy % 50) -eq 0){50}else{[int]($digestOrdinalForPolicy % 50)}
+    $pipeOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/digestion/absorb_atom_file_via_digest_pipeline_v1.ps1 -InputPath $stream.ready_lane_path -MemoryRoot $activeMemoryRoot -ValidationTier Auto -SizeBudgetBytes $budget -DigestsSinceStable $digestsSinceStable -DigestsSinceFull $digestsSinceFull *>&1 | ForEach-Object {[string]$_})
     $pipeStatus=($pipeOut|Where-Object{$_ -match '^FILE_ATOM_ABSORPTION_STATUS='}|Select-Object -Last 1) -replace '^FILE_ATOM_ABSORPTION_STATUS=',''
     $pipeProofPath=($pipeOut|Where-Object{$_ -match '^PROOF_PATH='}|Select-Object -Last 1) -replace '^PROOF_PATH=',''
     if($pipeStatus -ne 'PASS_FILE_ATOM_ABSORPTION_PIPELINE_V1'){ throw "PIPELINE_NOT_PASS:$pipeStatus" }
@@ -272,7 +305,10 @@ try {
     if([string]::IsNullOrWhiteSpace($useProofPath) -or -not (Test-Path $useProofPath)){ throw 'RECALL_USE_PROOF_MISSING' }
     $useProof=Get-Content $useProofPath -Raw|ConvertFrom-Json
     if($useProof.behavior_delta -ne $true){ throw 'BEHAVIOR_DELTA_NOT_PROVEN' }
-    $chunks += [ordered]@{chunk_index=$chunkIndex; chunk_target=$chunkTarget; ordinal_offset=$ordinalOffset; inner_batch_size=$batchSize; factory_candidates=[int]$factoryReport.candidates_created; ready_atoms=[int]$stream.ready_atoms_total; source_router_selected=if($sourceRouterReport){$sourceRouterReport.selected_source}else{'UNKNOWN'}; record_status='PASS'; digested=$true; digested_cells=[int]$pipeProof.digested_cells; merged_count=[int]$pipeProof.merged_count; cumulative_memory_merge=$pipeProof.cumulative_memory_merge; existing_memory_seeded=$pipeProof.existing_memory_seeded; existing_memory_cells_before=[int]$pipeProof.existing_memory_cells_before; total_memory_bytes=[int]$pipeProof.total_memory_bytes; recall_use_status=$useProof.status; behavior_delta=$useProof.behavior_delta; used_memory_cells_count=@($useProof.used_labels).Count; cleanup_after_chunk=$true}
+    $chunkElapsedMs=[int][Math]::Round(((Get-Date)-$chunkStart).TotalMilliseconds)
+    $chunkTimingRows += [ordered]@{chunk_index=[int]$chunkIndex; elapsed_ms=$chunkElapsedMs; validation_tier=$pipeProof.selected_validation_tier; absorption_total_elapsed_ms=$pipeProof.total_elapsed_ms; absorption_stage_timings=$pipeProof.stage_timings}
+    $chunks += [ordered]@{chunk_index=$chunkIndex; chunk_target=$chunkTarget; ordinal_offset=$ordinalOffset; inner_batch_size=$batchSize; factory_candidates=[int]$factoryReport.candidates_created; ready_atoms=[int]$stream.ready_atoms_total; source_router_selected=if($sourceRouterReport){$sourceRouterReport.selected_source}else{'UNKNOWN'}; record_status='PASS'; digested=$true; validation_tier=$pipeProof.selected_validation_tier; absorption_total_elapsed_ms=$pipeProof.total_elapsed_ms; digested_cells=[int]$pipeProof.digested_cells; merged_count=[int]$pipeProof.merged_count; cumulative_memory_merge=$pipeProof.cumulative_memory_merge; existing_memory_seeded=$pipeProof.existing_memory_seeded; existing_memory_cells_before=[int]$pipeProof.existing_memory_cells_before; total_memory_bytes=[int]$pipeProof.total_memory_bytes; recall_use_status=$useProof.status; behavior_delta=$useProof.behavior_delta; used_memory_cells_count=@($useProof.used_labels).Count; cleanup_after_chunk=$true}
+    if(TestSchoolStopRequested $runId ($chunkIndex+1) ($ordinalOffset+$chunkTarget) $processedInThisRun $TargetAccepted 'after_chunk_complete'){ return }
     $lastProof=$pipeProof; $lastUseProof=$useProof
     $cleanupRemoved += RemoveTrash @($factoryReport.run_dir,$pipeProofPath,$pipeProof.candidate_memory_root,$useProofPath,'operations/reports')
     $partial=[ordered]@{schema='agent_school_canonical_run_v7_chunked_cumulative_recovery_wired'; status='RUNNING_CHUNKED_SCHOOL_PARTIAL_PROOF_V1'; run_id=$runId; run_kind=$RunKind; public_mode=$Mode; target_accepted=$TargetAccepted; topics_plan=$TopicsPlan; resume_execution=[ordered]@{mode=[bool]$resumeMode; resume_ordinal_offset=[int]$ResumeOrdinalOffset; resume_completed_chunks=[int]$ResumeCompletedChunks; resume_remaining_target=[int]$TargetAccepted; planned_total_accepted=[int]$plannedTotalAccepted}; outer_chunk_size=$outerChunkSize; inner_batch_size_max=$innerBatchSizeMax; chunk_count=@($chunks).Count; chunks=@($chunks); ready_atoms=$totalReadyAtoms; recovery_contracts=$recoveryContracts; resume_state=(BuildResumeState 'RUNNING' 'NONE' @($chunks).Count ($chunkIndex+1) ($ordinalOffset+$chunkTarget) ($chunkIndex+1) ($ordinalOffset+$chunkTarget) $null); aggregation_summary=(BuildAggregationSummary 'RUNNING' $chunks 0 0 0 0); cleanup_after_each_chunk=$true; cleanup_removed=@($cleanupRemoved|Select-Object -Unique); runtime_ready=$false}
@@ -303,6 +339,7 @@ if([int]$ledgerAfter.replayed_active_count -ne [int]$ledgerBefore.replayed_activ
 $base=[ordered]@{schema='agent_school_canonical_run_v7_chunked_cumulative_recovery_wired'; run_id=$runId; run_kind=$RunKind; public_mode=$Mode; target_accepted=$TargetAccepted; topics_plan=$TopicsPlan; resume_execution=[ordered]@{mode=[bool]$resumeMode; resume_ordinal_offset=[int]$ResumeOrdinalOffset; resume_completed_chunks=[int]$ResumeCompletedChunks; resume_remaining_target=[int]$TargetAccepted; planned_total_accepted=[int]$plannedTotalAccepted}; outer_chunk_size=$outerChunkSize; inner_batch_size_max=$innerBatchSizeMax; chunk_count=@($chunks).Count; chunks=@($chunks); recovery_contracts=$recoveryContracts; school_recovery_wiring_status='PASS_SCHOOL_CHUNK_RECOVERY_CONTRACTS_WIRED_V1'; resume_state=(BuildResumeState 'COMPLETE' 'NONE' (@($chunks).Count + $ResumeCompletedChunks) ($chunkIndex+1) ($ResumeOrdinalOffset + $TargetAccepted) ($chunkIndex+1) ($ResumeOrdinalOffset + $TargetAccepted) $null); aggregation_summary=(BuildAggregationSummary 'PASS_AGGREGATED' $chunks 0 0 0 0); memory_rollback_capability='SCHOOL_REAL_CHUNK_MEMORY_CHECKPOINT_ROLLBACK_V1'; memory_rollback_events=@($memoryRollbackEvents); runtime_ready=$false; raw_route_absorption_allowed=$false; factory_candidates_created=$totalFactoryCandidates; ready_atoms=$totalReadyAtoms; stream_quarantined=$totalStreamQuarantined; codex_cli_invoked=$false; api_invoked=$false; school_source_router_status=if($lastSourceRouterReport){$lastSourceRouterReport.status}else{'UNKNOWN'}; school_source_selected=if($lastSourceRouterReport){$lastSourceRouterReport.selected_source}else{'UNKNOWN'}; route_before=[int]$routeBefore.routed_active_count; ledger_before=[int]$ledgerBefore.replayed_active_count; route_after=[int]$routeAfter.routed_active_count; ledger_after=[int]$ledgerAfter.replayed_active_count; retention_policy='KEEP_ACTIVE_COMPACT_MEMORY_AND_LATEST_3_MEMORY_CHECKPOINTS_V2'; cleanup_removed=@($cleanupRemoved|Select-Object -Unique); cleanup_after_each_chunk=$true; no_fake_pass=$true; no_hidden_failures=$true; failure_resume_boundary='Recovery contracts are wired into canonical proof. Controlled chunk failure/resume remains NOT_PROVEN until negative test.'; law='Count + Mode + TopicsPlan uses outer chunks of 5000 and inner factory batches of 100. Real uses cumulative compact semantic memory and cannot continue past a chunk without recall/use behavior_delta proof; failure records must expose resume_state and quarantine_record before any continuation.'}
 $base.aggregation_summary.planned_chunk_count=$totalChunks
 $base.resume_execution.processed_in_this_run=[int]$processedInThisRun
+$base.chunk_timing_rows=@($chunkTimingRows)
 if($RunKind -eq 'Test'){
   $base.status='PASS_TEST_FACTORY_STREAMING_READY_V1'; $base.digested_knowledge_mutated=$false; $base.recall_use_required=$false; $base.behavior_delta=$false; $base.boundary='Test validates existing factory and streaming ready lane only. It does not digest or mutate compact memory.'
 } else {

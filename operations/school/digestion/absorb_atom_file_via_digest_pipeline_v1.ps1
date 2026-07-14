@@ -3,6 +3,9 @@ param(
   [string]$MemoryRoot = '.runtime/active_compact_semantic_memory_v1',
   [ValidateSet('Auto','Fast','Stable','Full')][string]$ValidationTier = 'Auto',
   [int]$SizeBudgetBytes = 1048576,
+  [int]$DigestsSinceStable = 0,
+  [int]$DigestsSinceFull = 0,
+  [switch]$BeforePromotion,
   [switch]$DeleteOriginalRaw
 )
 $ErrorActionPreference='Stop'
@@ -68,6 +71,14 @@ $resolvedInput=(Resolve-Path $InputPath).Path
 $repoRuntime=(Join-Path $repoRoot '.runtime')
 $runId="file_atom_absorption_$(Get-Date -Format yyyyMMdd_HHmmss)"
 $runRoot=".runtime/file_atom_absorption/$runId"
+$script:absorbStageStart=Get-Date
+$script:absorbStageLast=$script:absorbStageStart
+$script:absorbStageTimings=New-Object 'System.Collections.Generic.List[object]'
+function MarkAbsorbStage($Name){
+  $now=Get-Date
+  $script:absorbStageTimings.Add([ordered]@{ stage=$Name; elapsed_ms=[int][Math]::Round(($now-$script:absorbStageLast).TotalMilliseconds); since_start_ms=[int][Math]::Round(($now-$script:absorbStageStart).TotalMilliseconds) }) | Out-Null
+  $script:absorbStageLast=$now
+}
 $stagingDir="$runRoot/staging"
 EnsureDir $stagingDir
 $stagedInput="$stagingDir/raw_atoms.jsonl"
@@ -84,16 +95,17 @@ if(Test-Path (Join-Path $targetMemoryRoot 'manifest.json')){
   $existing_memory_seeded=$true
 }
 Copy-Item -Path $InputPath -Destination $stagedInput -Force
-$rows=@()
+MarkAbsorbStage 'seed_candidate_and_stage_input'
+$rows=New-Object System.Collections.ArrayList
 $lineNo=0
 Get-Content $stagedInput | ForEach-Object {
   $line=[string]$_
   if([string]::IsNullOrWhiteSpace($line)){ return }
   $lineNo++
-  try { $rows += ($line | ConvertFrom-Json) } catch { throw "BAD_ATOM_JSONL_LINE:${lineNo}:$($_.Exception.Message)" }
+  try { [void]$rows.Add(($line | ConvertFrom-Json)) } catch { throw "BAD_ATOM_JSONL_LINE:${lineNo}:$($_.Exception.Message)" }
 }
 if($rows.Count -lt 1){ throw 'NO_ATOMS_IN_FILE' }
-$normalized=@()
+$normalized=New-Object System.Collections.ArrayList
 foreach($r in $rows){
   $isFactoryCandidate=($r.PSObject.Properties['theme_key'] -and $r.PSObject.Properties['learning_key'] -and $r.PSObject.Properties['level'])
   if($isFactoryCandidate){
@@ -127,7 +139,7 @@ foreach($r in $rows){
     $relations=@()
     foreach($name in @('prerequisite_key','theme_key')){ if($r.PSObject.Properties[$name]){ $v=[string]$r.PSObject.Properties[$name].Value; if($v){ $relations += "${name}:$v" } } }
   }
-  $normalized += [pscustomobject]@{
+  $normalizedRecord=[pscustomobject]@{
     concept_key=$concept
     label=$label
     kind=if($isFactoryCandidate){'factory_theme_ladder_memory'}else{'semantic_material'}
@@ -136,9 +148,14 @@ foreach($r in $rows){
     relations=@($relations)
     uses=@($uses)
   }
+  [void]$normalized.Add($normalizedRecord)
 }
 ($normalized | ForEach-Object { $_|ConvertTo-Json -Depth 30 -Compress }) -join "`n" | Set-Content -Path $normalizedInput -Encoding UTF8
-$policyOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/digestion/select_compact_semantic_digest_validation_budget_v1.ps1 -RequestedTier $ValidationTier -IncomingAtoms $rows.Count *>&1 | ForEach-Object {[string]$_})
+MarkAbsorbStage 'normalize_input'
+$policyArgs=@('-NoProfile','-ExecutionPolicy','Bypass','-File','operations/school/digestion/select_compact_semantic_digest_validation_budget_v1.ps1','-RequestedTier',$ValidationTier,'-IncomingAtoms',$rows.Count,'-DigestsSinceStable',$DigestsSinceStable,'-DigestsSinceFull',$DigestsSinceFull)
+if($BeforePromotion){ $policyArgs += '-BeforePromotion' }
+$policyOut=@(& powershell @policyArgs *>&1 | ForEach-Object {[string]$_})
+MarkAbsorbStage 'select_validation_budget'
 $selectedTier=($policyOut|Where-Object{$_ -match '^SELECTED_TIER='}|Select-Object -Last 1) -replace '^SELECTED_TIER=',''
 if([string]::IsNullOrWhiteSpace($selectedTier)){ throw 'VALIDATION_POLICY_TIER_MISSING' }
 $routeBefore=Get-Content operations/school/curriculum/incremental_active_store/ACTIVE_REPO_BODY_ROUTE_POINTER_V1.json -Raw|ConvertFrom-Json
@@ -147,6 +164,7 @@ $inputSha=FileSha256 $stagedInput
 $digestOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/digestion/invoke_compact_semantic_digestion_organ_v1.ps1 -InputPath $normalizedInput -MemoryRoot $candidateMemoryRoot -RunId $runId -CleanupRawSource -SizeBudgetBytes $SizeBudgetBytes *>&1 | ForEach-Object {[string]$_})
 $digestStatus=($digestOut|Where-Object{$_ -match '^DIGEST_STATUS='}|Select-Object -Last 1) -replace '^DIGEST_STATUS=',''
 if($digestStatus -ne 'PASS_COMPACT_SEMANTIC_DIGESTION_ORGAN_V1'){ throw "DIGEST_NOT_PASS:$digestStatus" }
+MarkAbsorbStage 'digest_candidate_memory'
 if(Test-Path $normalizedInput){ throw 'NORMALIZED_DIGEST_INPUT_NOT_DELETED' }
 if(Test-Path $stagedInput){ Remove-Item $stagedInput -Force }
 $manifest=Get-Content (Join-Path $candidateMemoryRoot 'manifest.json') -Raw|ConvertFrom-Json
@@ -160,6 +178,7 @@ if($selectedTier -ne 'Fast'){
   $cellsText=Get-Content $cellsPath -Raw
   foreach($bad in @('raw_text','source_text','ready_atoms','batch_trace','prompt_trace')){ if($cellsText -match $bad){ throw "RAW_FIELD_SURVIVED:$bad" } }
 }
+MarkAbsorbStage 'post_digest_validation'
 $originalDeleted=$false
 if($DeleteOriginalRaw){
   if(-not ($resolvedInput.StartsWith($repoRuntime,[System.StringComparison]::OrdinalIgnoreCase))){ throw 'REFUSE_DELETE_ORIGINAL_OUTSIDE_RUNTIME' }
@@ -171,6 +190,8 @@ $ledgerAfter=Get-Content operations/school/curriculum/incremental_active_store/A
 if([int]$routeBefore.routed_active_count -ne [int]$routeAfter.routed_active_count){ throw 'ROUTE_MUTATED_BY_FILE_ABSORPTION' }
 if([int]$ledgerBefore.replayed_active_count -ne [int]$ledgerAfter.replayed_active_count){ throw 'LEDGER_MUTATED_BY_FILE_ABSORPTION' }
 $publishResult=Publish-ActiveMemoryRootWithRetry -CandidateMemoryRoot $candidateMemoryRoot -TargetMemoryRoot $targetMemoryRoot
+MarkAbsorbStage 'publish_active_memory_root'
+$stageTimingsArray=@($script:absorbStageTimings.ToArray())
 $report=[ordered]@{
   schema='file_atom_absorption_pipeline_v1'
   status='PASS_FILE_ATOM_ABSORPTION_PIPELINE_V1'
@@ -180,6 +201,9 @@ $report=[ordered]@{
   input_atoms=$rows.Count
   normalized_digest_atoms=$normalized.Count
   selected_validation_tier=$selectedTier
+  validation_policy_counters=[ordered]@{ digests_since_stable=[int]$DigestsSinceStable; digests_since_full=[int]$DigestsSinceFull; before_promotion=[bool]$BeforePromotion }
+  stage_timings=$stageTimingsArray
+  total_elapsed_ms=[int][Math]::Round(((Get-Date)-$script:absorbStageStart).TotalMilliseconds)
   memory_root=$targetMemoryRoot
   candidate_memory_root=$candidateMemoryRoot
   active_memory_publish=$publishResult
