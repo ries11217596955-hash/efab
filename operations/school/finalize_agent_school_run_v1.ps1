@@ -194,7 +194,7 @@ Status: PROVEN_LIVE
 
 ## Boundary
 
-This finalizer records compact school evidence only. It does not commit raw `.runtime` files and does not change the three-field owner launch contract. The current school uses the local cursor-guided Codex-curriculum candidate factory unless a separate governed Codex-source lane is wired and proven. School PASS also submits a compact knowledge packet to multi-source compact memory intake so autonomous life can react to new knowledge.
+This finalizer records compact school evidence only. It does not commit raw `.runtime` files and does not change the two-field owner launch contract. The current school uses the local cursor-guided Codex-curriculum candidate factory unless a separate governed Codex-source lane is wired and proven. School PASS also submits a compact knowledge packet to multi-source compact memory intake so autonomous life can react to new knowledge.
 "@
     Set-Content -LiteralPath $summaryPath -Value $md -Encoding UTF8
     $check = Get-Content $summaryPath -Raw

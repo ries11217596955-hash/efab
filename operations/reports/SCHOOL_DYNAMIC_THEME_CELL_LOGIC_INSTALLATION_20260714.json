@@ -1,0 +1,30 @@
+{
+  "schema": "school_dynamic_theme_cell_logic_installation_v1",
+  "status": "PASS_SCHOOL_DYNAMIC_THEME_CELL_LOGIC_INSTALLED_AND_VALIDATED",
+  "created_at": "2026-07-14T18:19:24.295380+00:00",
+  "files_changed": [
+    "operations/school/memory/select_dynamic_theme_cell_v1.ps1",
+    "operations/school/memory/validate_dynamic_theme_cell_selector_v1.ps1",
+    "operations/school/run_autonomous_school_cycle_v1.ps1",
+    "operations/school/run_agent_school.ps1",
+    "operations/school/finalize_agent_school_run_v1.ps1"
+  ],
+  "purpose": "Update existing school logic toward dynamic thematic cells: existing topic cells receive matching atoms; missing topics can become new cells; no fixed cell count required.",
+  "boundary": "First working slice only: school now reads active compact memory and selects the next weak dynamic theme cell before a run. No long school run was executed and active memory was not mutated by validation.",
+  "validation": {
+    "selector_status": "PASS_DYNAMIC_THEME_CELL_SELECTOR_VALIDATION_V1",
+    "selected_topic": "intake_school_school_topics_plan_school_summary_school_factory_digest_use_real_1",
+    "selected_label": "school_topics_plan",
+    "selected_score": 108,
+    "selected_reasons": [
+      "low_observation_sum",
+      "missing_proof_signal",
+      "missing_validator_signal",
+      "missing_return_signal",
+      "missing_source_signal",
+      "thin_summary"
+    ],
+    "dynamic_topic_count": 122,
+    "memory_changed": false
+  }
+}

@@ -116,3 +116,22 @@ school_deep_cleanup = complete
 old generated school material = deleted
 old school reports = replaced by current compact audit/cleanup proof
 ```
+
+
+## Dynamic theme-cell selector
+
+```text
+dynamic_theme_cell_selector = installed and validated
+dynamic_topic_count = 122
+selected_topic = intake_school_school_topics_plan_school_summary_school_factory_digest_use_real_1
+selected_label = school_topics_plan
+selector_memory_changed = false
+```
+
+Meaning:
+
+```text
+School now reads active compact memory before a run and selects one weak dynamic topic cell.
+No fixed cell count is required.
+If future material has no matching topic cell, the school can create a new topic cell through the normal memory update path.
+```
