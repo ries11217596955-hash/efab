@@ -4034,3 +4034,25 @@ Boundary:
 
 Next action:
 - Commit/push authoring+smoke proof, then run 100k Test generation and streaming/staging. No digest/absorption.
+## 2026-07-14 - One-topic SEP 100k completed, absorbed, and cleaned
+
+STATUS: PASS_ONE_TOPIC_SEP_LADDER_100K_COMPLETED_AND_ABSORBED + PASS_RETENTION_CLEANUP_AFTER_ABSORPTION
+
+Completion:
+- stream accepted=100000 rejected=0 quarantine=0.
+- quality gate PASS with 1200 seeds, 180 origins, 180 scenario families.
+- compact digest packet atoms=191.
+- absorption PASS: input_atoms=191, normalized_digest_atoms=191, digested_cells=122, merged_count=190, validation_tier=Stable.
+- active compact memory changed and was published.
+- raw 100k promotion=false.
+
+Cleanup:
+- transient runtime deleted: 2842.6 MB.
+- obsolete failed deep-origin route files removed from tracked repo to reduce confusion.
+- active compact memory kept.
+- backup kept: .runtime/active_compact_semantic_memory_v1_backups/before_sep_ladder_100k_digest_20260714_1730.
+- absorption proof kept: .runtime/file_atom_absorption/file_atom_absorption_20260714_213120.
+
+Proof reports:
+- operations/reports/ONE_TOPIC_SEP_LADDER_100K_COMPLETION_20260714.json
+- operations/reports/ONE_TOPIC_SEP_LADDER_100K_RETENTION_CLEANUP_REPORT_20260714.json

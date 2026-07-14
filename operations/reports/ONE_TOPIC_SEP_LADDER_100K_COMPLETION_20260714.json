@@ -1,0 +1,84 @@
+{
+    "schema":  "one_topic_sep_ladder_100k_completion_v1",
+    "status":  "PASS_ONE_TOPIC_SEP_LADDER_100K_COMPLETED_AND_ABSORBED",
+    "created_at":  "2026-07-14T21:32:17.3153603+04:00",
+    "repo_head":  "00e4aba",
+    "run_id":  "builder_sep_ladder_100k_20260714_205600",
+    "stream":  {
+                   "status":  "PASS_STREAMING_SCHOOL_TO_ABSORPTION_PIPELINE_V1",
+                   "processed_total":  100000,
+                   "accepted":  100000,
+                   "rejected":  0,
+                   "ready":  100000,
+                   "quarantine":  0,
+                   "active_memory_mutated":  false
+               },
+    "quality_gate":  {
+                         "status":  "PASS_ONE_TOPIC_SEP_100K_QUALITY_GATE_COMPACT_DIGEST_READY",
+                         "candidate_count":  100000,
+                         "ready_count":  100000,
+                         "unique_exercise_ratio":  0.036,
+                         "unique_expected_behavior_ratio":  0.012,
+                         "pack_seed_count":  1200,
+                         "origin_unit_count":  180,
+                         "scenario_family_count":  180
+                     },
+    "compact_digest_packet":  {
+                                  "status":  "PASS_COMPACT_DIGEST_PACKET_CREATED",
+                                  "digest_atom_count":  191,
+                                  "bytes":  1645787,
+                                  "sha256":  "ead3580adcb76e50624c2f533cd1e2769f849c6277d9cb5bbbd41c29739d4e3d",
+                                  "raw_100k_promotion":  false
+                              },
+    "absorption":  {
+                       "status":  "PASS_FILE_ATOM_ABSORPTION_PIPELINE_V1",
+                       "input_atoms":  191,
+                       "normalized_digest_atoms":  191,
+                       "selected_validation_tier":  "Stable",
+                       "digest_status":  "PASS_COMPACT_SEMANTIC_DIGESTION_ORGAN_V1",
+                       "memory_weight_guard_status":  "PASS_COMPACT_MEMORY_WEIGHT_GUARD_V1",
+                       "memory_weight_guard_events":  0,
+                       "digested_cells":  122,
+                       "merged_count":  190,
+                       "total_memory_bytes":  12784150,
+                       "staged_raw_deleted":  true,
+                       "normalized_digest_input_deleted":  true,
+                       "original_raw_deleted":  true,
+                       "raw_source_dependency_removed":  true,
+                       "proof_path":  ".runtime/file_atom_absorption/file_atom_absorption_20260714_213120/FILE_ATOM_ABSORPTION_PIPELINE_V1.json"
+                   },
+    "active_memory_before":  {
+                                 "manifest.json":  {
+                                                       "bytes":  1814,
+                                                       "sha256":  "1389CA778CC5B2C6F2D7DB9004A55430D04AB24A886401E81B01DD7EA4391623"
+                                                   },
+                                 "index.json":  {
+                                                    "bytes":  308130,
+                                                    "sha256":  "BA7160FFA526376B08501A41F96225E0B98490A6CB5A58ECB927137FF91F6597"
+                                                },
+                                 "cells.jsonl":  {
+                                                     "bytes":  12637868,
+                                                     "sha256":  "E4C7302F75A2838D2CF5FD91FDCC67D1D3D2F8544FC42393B7E956C712E56E00"
+                                                 }
+                             },
+    "active_memory_after":  {
+                                "manifest.json":  {
+                                                      "bytes":  1892,
+                                                      "sha256":  "8035CE66AEA0D843FCD5E5585CDC36B1066D296ADA12C192C57C222C6045EEE1"
+                                                  },
+                                "index.json":  {
+                                                   "bytes":  309301,
+                                                   "sha256":  "54F2CBBB6148AF68EC9FF9B5E97EE10AF868677123775886BA4CEE4173457101"
+                                               },
+                                "cells.jsonl":  {
+                                                    "bytes":  12473703,
+                                                    "sha256":  "199C9D9391ED5C79BBC774F8F81E884E4B439A291091C8F6F2A36A7792BA8BD1"
+                                                }
+                            },
+    "active_memory_changed":  true,
+    "backup_path":  ".runtime/active_compact_semantic_memory_v1_backups/before_sep_ladder_100k_digest_20260714_1730",
+    "raw_100k_promoted":  false,
+    "compact_memory_updated":  true,
+    "cleanup_started":  false,
+    "boundary":  "100k raw candidates were not promoted. A 191-atom compact digest was absorbed through the digest pipeline and active compact memory was published. Runtime cleanup is separate and follows this proof."
+}

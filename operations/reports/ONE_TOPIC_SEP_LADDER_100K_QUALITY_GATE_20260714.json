@@ -1,0 +1,288 @@
+{
+  "schema": "one_topic_sep_ladder_100k_quality_gate_v2",
+  "status": "PASS_ONE_TOPIC_SEP_100K_QUALITY_GATE_COMPACT_DIGEST_READY",
+  "created_at": "2026-07-14T17:28:50.292288+00:00",
+  "run_id": "builder_sep_ladder_100k_20260714_205600",
+  "candidate_path": ".runtime/codex_curriculum_candidate_factory_runs/builder_sep_ladder_100k_20260714_205600/all_candidates.jsonl",
+  "ready_path": ".runtime/streaming_absorption/builder_sep_ladder_100k_20260714_205600/ready_atoms.jsonl",
+  "candidate_count": 100000,
+  "ready_count": 100000,
+  "bad_json": 0,
+  "fallback_template_count": 0,
+  "source_missing_count": 0,
+  "proof_missing_count": 0,
+  "missing_required_fields": {},
+  "seed_count_observed": 1200,
+  "origin_count_observed": 1,
+  "scenario_family_count_observed": 1,
+  "level_band_count_observed": 1,
+  "source_mode_counts": {
+    "directed_curriculum": 50000,
+    "experience_curriculum": 50000
+  },
+  "source_path_count": 1,
+  "top_sources": [
+    [
+      "operations/school/curriculum/candidate_factory/source_origins/builder_sep_ladder_100k_v1.jsonl",
+      100000
+    ]
+  ],
+  "duplicate_stats": {
+    "exact": {
+      "unique": 100000,
+      "duplicate_keys": 0,
+      "max_count": 1,
+      "duplicate_items_total": 0
+    },
+    "candidate_id": {
+      "unique": 100000,
+      "duplicate_keys": 0,
+      "max_count": 1,
+      "duplicate_items_total": 0
+    },
+    "learning_key": {
+      "unique": 100000,
+      "duplicate_keys": 0,
+      "max_count": 1,
+      "duplicate_items_total": 0
+    },
+    "exercise": {
+      "unique": 3600,
+      "duplicate_keys": 3600,
+      "max_count": 28,
+      "duplicate_items_total": 96400
+    },
+    "expected_behavior": {
+      "unique": 1200,
+      "duplicate_keys": 1200,
+      "max_count": 84,
+      "duplicate_items_total": 98800
+    }
+  },
+  "uniqueness": {
+    "unique_exercise_ratio": 0.036,
+    "unique_expected_behavior_ratio": 0.012
+  },
+  "old_100k_comparison": {
+    "old_status": "PASS_CONTRACT_SOURCE_COVERAGE_BUT_LOW_NOVELTY_COMPACT_DIGEST_ONLY",
+    "old_seed_count": 48,
+    "old_origin_count": null,
+    "old_scenario_family_count": null,
+    "old_unique_exercise_ratio": 0.00144,
+    "old_unique_expected_behavior_ratio": 0.00048,
+    "seed_count_multiplier": 25.0,
+    "exercise_novelty_multiplier": 25.0,
+    "expected_behavior_novelty_multiplier": 25.0
+  },
+  "length_stats": {
+    "exercise": {
+      "min": 194,
+      "p50": 197.0,
+      "avg": 196.92,
+      "max": 199
+    },
+    "expected_behavior": {
+      "min": 305,
+      "p50": 333.0,
+      "avg": 331.95,
+      "max": 355
+    },
+    "negative_trap": {
+      "min": 241,
+      "p50": 272.0,
+      "avg": 273.98,
+      "max": 323
+    },
+    "validator_hint": {
+      "min": 506,
+      "p50": 559.0,
+      "avg": 558.99,
+      "max": 607
+    },
+    "behavior_use_proof_target": {
+      "min": 272,
+      "p50": 325.0,
+      "avg": 324.99,
+      "max": 373
+    },
+    "return_to_parent": {
+      "min": 160,
+      "p50": 160.0,
+      "avg": 160,
+      "max": 160
+    },
+    "campaign_lesson": {
+      "min": 213,
+      "p50": 254.0,
+      "avg": 252.86,
+      "max": 297
+    },
+    "campaign_behavior_delta": {
+      "min": 151,
+      "p50": 179.0,
+      "avg": 177.95,
+      "max": 201
+    },
+    "campaign_proof_target": {
+      "min": 272,
+      "p50": 325.0,
+      "avg": 324.99,
+      "max": 373
+    }
+  },
+  "weak_field_counts": {},
+  "generic_hits": {
+    "empty_evidence": 21792
+  },
+  "failures": [],
+  "warnings": [],
+  "sample_candidates": [
+    {
+      "candidate_id": "cand_00000001",
+      "seed_id": "sep_seed_000001",
+      "origin_id": null,
+      "scenario_family": null,
+      "depth_level_band": null,
+      "source_mode": "directed_curriculum",
+      "exercise": "Given a Builder situation involving school_generation_absorption_separation, apply classify using seed sep_seed_000001, cite the source boundary, name the proof target, and state the behavior change.",
+      "expected_behavior": "Next time, run the preflight identity and source-existence gate before drafting any pack content. Apply it to candidate generation vs absorption boundary  authority gate before any later 100k run. The Builder should use this sourced lesson only after matching the local evidence boundary and should keep Count, runtime, and memory authority separate.",
+      "negative_trap": "continues because the goal sounds obvious while preflight evidence is incomplete; repo-specific risk: operator treats a draft school artifact as permission to start runtime, staging, digest, or active-memory mutation while dealing with candidate generation vs absorption boundary.",
+      "behavior_use_proof_target": "PREFLIGHT_STATUS=PREFLIGHT_PASS plus Files changed before PREFLIGHT_PASS: NO in the delivery report; origin proof surface: BUILDER_SEP_LADDER_100K_AUTHOR_REPORT_V1.json boundary_flags all false; lens proof: final report booleans generation_100k_started=false, streaming_started=false, absorption_started=false, active_memory_mutated=false",
+      "return_to_parent": "Return to operations/reports/SCHOOL_CANONICAL_LAUNCH_POINTER_20260714.md after authoring; do not start generation, streaming, digest, or active memory mutation."
+    },
+    {
+      "candidate_id": "cand_00000002",
+      "seed_id": "sep_seed_000001",
+      "origin_id": null,
+      "scenario_family": null,
+      "depth_level_band": null,
+      "source_mode": "experience_curriculum",
+      "exercise": "Given a Builder situation involving school_generation_absorption_separation, apply classify using seed sep_seed_000001, cite the source boundary, name the proof target, and state the behavior change.",
+      "expected_behavior": "Next time, run the preflight identity and source-existence gate before drafting any pack content. Apply it to candidate generation vs absorption boundary  authority gate before any later 100k run. The Builder should use this sourced lesson only after matching the local evidence boundary and should keep Count, runtime, and memory authority separate.",
+      "negative_trap": "continues because the goal sounds obvious while preflight evidence is incomplete; repo-specific risk: operator treats a draft school artifact as permission to start runtime, staging, digest, or active-memory mutation while dealing with candidate generation vs absorption boundary.",
+      "behavior_use_proof_target": "PREFLIGHT_STATUS=PREFLIGHT_PASS plus Files changed before PREFLIGHT_PASS: NO in the delivery report; origin proof surface: BUILDER_SEP_LADDER_100K_AUTHOR_REPORT_V1.json boundary_flags all false; lens proof: final report booleans generation_100k_started=false, streaming_started=false, absorption_started=false, active_memory_mutated=false",
+      "return_to_parent": "Return to operations/reports/SCHOOL_CANONICAL_LAUNCH_POINTER_20260714.md after authoring; do not start generation, streaming, digest, or active memory mutation."
+    },
+    {
+      "candidate_id": "cand_00000003",
+      "seed_id": "sep_seed_000001",
+      "origin_id": null,
+      "scenario_family": null,
+      "depth_level_band": null,
+      "source_mode": "directed_curriculum",
+      "exercise": "Given a Builder situation involving school_generation_absorption_separation, apply defer using seed sep_seed_000001, cite the source boundary, name the proof target, and state the behavior change.",
+      "expected_behavior": "Next time, run the preflight identity and source-existence gate before drafting any pack content. Apply it to candidate generation vs absorption boundary  authority gate before any later 100k run. The Builder should use this sourced lesson only after matching the local evidence boundary and should keep Count, runtime, and memory authority separate.",
+      "negative_trap": "continues because the goal sounds obvious while preflight evidence is incomplete; repo-specific risk: operator treats a draft school artifact as permission to start runtime, staging, digest, or active-memory mutation while dealing with candidate generation vs absorption boundary.",
+      "behavior_use_proof_target": "PREFLIGHT_STATUS=PREFLIGHT_PASS plus Files changed before PREFLIGHT_PASS: NO in the delivery report; origin proof surface: BUILDER_SEP_LADDER_100K_AUTHOR_REPORT_V1.json boundary_flags all false; lens proof: final report booleans generation_100k_started=false, streaming_started=false, absorption_started=false, active_memory_mutated=false",
+      "return_to_parent": "Return to operations/reports/SCHOOL_CANONICAL_LAUNCH_POINTER_20260714.md after authoring; do not start generation, streaming, digest, or active memory mutation."
+    },
+    {
+      "candidate_id": "cand_00000004",
+      "seed_id": "sep_seed_000001",
+      "origin_id": null,
+      "scenario_family": null,
+      "depth_level_band": null,
+      "source_mode": "experience_curriculum",
+      "exercise": "Given a Builder situation involving school_generation_absorption_separation, apply defer using seed sep_seed_000001, cite the source boundary, name the proof target, and state the behavior change.",
+      "expected_behavior": "Next time, run the preflight identity and source-existence gate before drafting any pack content. Apply it to candidate generation vs absorption boundary  authority gate before any later 100k run. The Builder should use this sourced lesson only after matching the local evidence boundary and should keep Count, runtime, and memory authority separate.",
+      "negative_trap": "continues because the goal sounds obvious while preflight evidence is incomplete; repo-specific risk: operator treats a draft school artifact as permission to start runtime, staging, digest, or active-memory mutation while dealing with candidate generation vs absorption boundary.",
+      "behavior_use_proof_target": "PREFLIGHT_STATUS=PREFLIGHT_PASS plus Files changed before PREFLIGHT_PASS: NO in the delivery report; origin proof surface: BUILDER_SEP_LADDER_100K_AUTHOR_REPORT_V1.json boundary_flags all false; lens proof: final report booleans generation_100k_started=false, streaming_started=false, absorption_started=false, active_memory_mutated=false",
+      "return_to_parent": "Return to operations/reports/SCHOOL_CANONICAL_LAUNCH_POINTER_20260714.md after authoring; do not start generation, streaming, digest, or active memory mutation."
+    },
+    {
+      "candidate_id": "cand_00000005",
+      "seed_id": "sep_seed_000001",
+      "origin_id": null,
+      "scenario_family": null,
+      "depth_level_band": null,
+      "source_mode": "directed_curriculum",
+      "exercise": "Given a Builder situation involving school_generation_absorption_separation, apply gate using seed sep_seed_000001, cite the source boundary, name the proof target, and state the behavior change.",
+      "expected_behavior": "Next time, run the preflight identity and source-existence gate before drafting any pack content. Apply it to candidate generation vs absorption boundary  authority gate before any later 100k run. The Builder should use this sourced lesson only after matching the local evidence boundary and should keep Count, runtime, and memory authority separate.",
+      "negative_trap": "continues because the goal sounds obvious while preflight evidence is incomplete; repo-specific risk: operator treats a draft school artifact as permission to start runtime, staging, digest, or active-memory mutation while dealing with candidate generation vs absorption boundary.",
+      "behavior_use_proof_target": "PREFLIGHT_STATUS=PREFLIGHT_PASS plus Files changed before PREFLIGHT_PASS: NO in the delivery report; origin proof surface: BUILDER_SEP_LADDER_100K_AUTHOR_REPORT_V1.json boundary_flags all false; lens proof: final report booleans generation_100k_started=false, streaming_started=false, absorption_started=false, active_memory_mutated=false",
+      "return_to_parent": "Return to operations/reports/SCHOOL_CANONICAL_LAUNCH_POINTER_20260714.md after authoring; do not start generation, streaming, digest, or active memory mutation."
+    },
+    {
+      "candidate_id": "cand_00000006",
+      "seed_id": "sep_seed_000001",
+      "origin_id": null,
+      "scenario_family": null,
+      "depth_level_band": null,
+      "source_mode": "experience_curriculum",
+      "exercise": "Given a Builder situation involving school_generation_absorption_separation, apply gate using seed sep_seed_000001, cite the source boundary, name the proof target, and state the behavior change.",
+      "expected_behavior": "Next time, run the preflight identity and source-existence gate before drafting any pack content. Apply it to candidate generation vs absorption boundary  authority gate before any later 100k run. The Builder should use this sourced lesson only after matching the local evidence boundary and should keep Count, runtime, and memory authority separate.",
+      "negative_trap": "continues because the goal sounds obvious while preflight evidence is incomplete; repo-specific risk: operator treats a draft school artifact as permission to start runtime, staging, digest, or active-memory mutation while dealing with candidate generation vs absorption boundary.",
+      "behavior_use_proof_target": "PREFLIGHT_STATUS=PREFLIGHT_PASS plus Files changed before PREFLIGHT_PASS: NO in the delivery report; origin proof surface: BUILDER_SEP_LADDER_100K_AUTHOR_REPORT_V1.json boundary_flags all false; lens proof: final report booleans generation_100k_started=false, streaming_started=false, absorption_started=false, active_memory_mutated=false",
+      "return_to_parent": "Return to operations/reports/SCHOOL_CANONICAL_LAUNCH_POINTER_20260714.md after authoring; do not start generation, streaming, digest, or active memory mutation."
+    },
+    {
+      "candidate_id": "cand_00000007",
+      "seed_id": "sep_seed_000002",
+      "origin_id": null,
+      "scenario_family": null,
+      "depth_level_band": null,
+      "source_mode": "directed_curriculum",
+      "exercise": "Given a Builder situation involving school_generation_absorption_separation, apply bind using seed sep_seed_000002, cite the source boundary, name the proof target, and state the behavior change.",
+      "expected_behavior": "Next time, make source_path and source_anchor_or_hint mandatory before writing the lesson. Apply it to candidate generation vs absorption boundary  authority gate before any later 100k run. The Builder should use this sourced lesson only after matching the local evidence boundary and should keep Count, runtime, and memory authority separate.",
+      "negative_trap": "fills source_summary from intuition instead of a compact-context source or origin anchor; repo-specific risk: operator treats a draft school artifact as permission to start runtime, staging, digest, or active-memory mutation while dealing with candidate generation vs absorption boundary.",
+      "behavior_use_proof_target": "campaign JSONL source_path exists and is either in source_pool or builder_sep_ladder_100k_v1.jsonl; origin proof surface: BUILDER_SEP_LADDER_100K_AUTHOR_REPORT_V1.json boundary_flags all false; lens proof: final report booleans generation_100k_started=false, streaming_started=false, absorption_started=false, active_memory_mutated=false",
+      "return_to_parent": "Return to operations/reports/SCHOOL_CANONICAL_LAUNCH_POINTER_20260714.md after authoring; do not start generation, streaming, digest, or active memory mutation."
+    },
+    {
+      "candidate_id": "cand_00000008",
+      "seed_id": "sep_seed_000002",
+      "origin_id": null,
+      "scenario_family": null,
+      "depth_level_band": null,
+      "source_mode": "experience_curriculum",
+      "exercise": "Given a Builder situation involving school_generation_absorption_separation, apply bind using seed sep_seed_000002, cite the source boundary, name the proof target, and state the behavior change.",
+      "expected_behavior": "Next time, make source_path and source_anchor_or_hint mandatory before writing the lesson. Apply it to candidate generation vs absorption boundary  authority gate before any later 100k run. The Builder should use this sourced lesson only after matching the local evidence boundary and should keep Count, runtime, and memory authority separate.",
+      "negative_trap": "fills source_summary from intuition instead of a compact-context source or origin anchor; repo-specific risk: operator treats a draft school artifact as permission to start runtime, staging, digest, or active-memory mutation while dealing with candidate generation vs absorption boundary.",
+      "behavior_use_proof_target": "campaign JSONL source_path exists and is either in source_pool or builder_sep_ladder_100k_v1.jsonl; origin proof surface: BUILDER_SEP_LADDER_100K_AUTHOR_REPORT_V1.json boundary_flags all false; lens proof: final report booleans generation_100k_started=false, streaming_started=false, absorption_started=false, active_memory_mutated=false",
+      "return_to_parent": "Return to operations/reports/SCHOOL_CANONICAL_LAUNCH_POINTER_20260714.md after authoring; do not start generation, streaming, digest, or active memory mutation."
+    }
+  ],
+  "decision": {
+    "raw_100k_promotion": false,
+    "compact_digest_allowed": true,
+    "recommended_digest": "compact origin/scenario/level digest from campaign pack + origin corpus + quality metrics; never raw 100k",
+    "reason": "100k candidates passed contract and source/proof checks; raw promotion remains forbidden; compact digest should preserve ladder lessons, failure modes, proof surfaces and retention rules."
+  },
+  "digest_started": false,
+  "absorption_started": false,
+  "active_memory_mutated": false,
+  "boundary": "Quality gate only. No digest/absorption/memory mutation performed by this report.",
+  "previous_status_before_schema_reclassification": "FAIL_ONE_TOPIC_SEP_100K_QUALITY_GATE_DO_NOT_DIGEST",
+  "schema_reclassification": {
+    "reason": "candidate_factory does not propagate origin_id/scenario_family/depth_level_band into generated candidates. Coverage must be measured from campaign pack/origin; novelty/contract from generated candidates and ready lane.",
+    "candidate_surface_used_for": [
+      "candidate_count",
+      "ready_count",
+      "contract",
+      "fallback",
+      "source/proof presence",
+      "exercise uniqueness",
+      "expected_behavior uniqueness"
+    ],
+    "pack_origin_surface_used_for": [
+      "origin_unit_count",
+      "seed_count",
+      "origin_refs",
+      "scenario_family_count",
+      "level_band_count",
+      "budget"
+    ]
+  },
+  "pack_origin_coverage": {
+    "origin_unit_count": 180,
+    "pack_seed_count": 1200,
+    "pack_origin_reference_count": 180,
+    "pack_scenario_family_count": 180,
+    "pack_level_band_count": 10,
+    "origin_scenario_family_count": 180,
+    "total_expansion_budget": 100000,
+    "max_expansion_budget_per_seed": 84,
+    "missing_origin_refs_count": 0
+  },
+  "created_at_v2": "2026-07-14T17:29:15.095287+00:00"
+}
