@@ -6,19 +6,19 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "46c5c31da807c528c094158b0ff70fd247469c76",
-    "subject_head":  "46c5c31da807c528c094158b0ff70fd247469c76",
-    "generated_at":  "2026-07-14T22:34:15.9651408+04:00",
+    "observed_head_at_generation":  "3dd48493d735539c71012836ddd966869599aa7e",
+    "subject_head":  "3dd48493d735539c71012836ddd966869599aa7e",
+    "generated_at":  "2026-07-14T22:54:21.4503676+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  1885,
+    "structural_path_count":  1890,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1885,
-                                    "sha256":  "c222c78e284532ba514856b684b2054dee18bbb4bd90338bf9ac0de6fbc330a3"
+                                    "structural_file_count":  1890,
+                                    "sha256":  "d98c113af8b691fed9a247bbc65945db1fa3f6e4e869a5eaea62febc7c452cec"
                                 },
     "module_count":  203,
     "validator_count":  174,
@@ -29,8 +29,8 @@
                                      "root":  "operations/school",
                                      "status":  "CONFIRMED_PRIMARY_EVIDENCE_PRESENT",
                                      "confirmation_basis":  "explicit_required_component_with_primary_repo_evidence",
-                                     "file_count":  123,
-                                     "script_count":  65,
+                                     "file_count":  125,
+                                     "script_count":  67,
                                      "validator_count":  30,
                                      "proof_file_count":  12,
                                      "contract_or_policy_count":  14,
@@ -178,12 +178,13 @@
                                                                 "operations/school/run_agent_school.ps1",
                                                                 "operations/school/run_autonomous_school_cycle_v1.ps1",
                                                                 "operations/school/validate_agent_school_canonical_entrypoint_v1.ps1",
+                                                                "operations/school/validate_topic_patch_plan_v1.ps1",
                                                                 "operations/school/value_grounded/validate_value_grounded_curriculum_prep_v1.ps1"
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "46c5c31da807c528c094158b0ff70fd247469c76",
-                                                               "committed_at":  "2026-07-14T22:22:20+04:00",
-                                                               "subject":  "feat: select dynamic school theme cells"
+                                                               "head":  "3dd48493d735539c71012836ddd966869599aa7e",
+                                                               "committed_at":  "2026-07-14T22:33:47+04:00",
+                                                               "subject":  "feat: add development vector school selector"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -626,9 +627,9 @@
 
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "46c5c31da807c528c094158b0ff70fd247469c76",
-                                                               "committed_at":  "2026-07-14T22:22:20+04:00",
-                                                               "subject":  "feat: select dynamic school theme cells"
+                                                               "head":  "3dd48493d735539c71012836ddd966869599aa7e",
+                                                               "committed_at":  "2026-07-14T22:33:47+04:00",
+                                                               "subject":  "feat: add development vector school selector"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -2067,19 +2068,19 @@
                                             "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                                             "discovery_method":  "bounded_git_ls_files_path_discovery",
                                             "evidence_counts":  {
-                                                                    "files":  39,
+                                                                    "files":  42,
                                                                     "scripts":  0,
                                                                     "validators":  0,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  0,
-                                                                    "docs":  16
+                                                                    "docs":  17
                                                                 },
-                                            "file_count":  39,
+                                            "file_count":  42,
                                             "script_count":  0,
                                             "validator_count":  0,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  0,
-                                            "doc_count":  16,
+                                            "doc_count":  17,
                                             "validator_refs":  [
 
                                                                ],
@@ -7743,8 +7744,8 @@
                            "root":  "operations/school",
                            "status":  "CONFIRMED_PRIMARY_EVIDENCE_PRESENT",
                            "confirmation_basis":  "explicit_required_component_with_primary_repo_evidence",
-                           "file_count":  123,
-                           "script_count":  65,
+                           "file_count":  125,
+                           "script_count":  67,
                            "validator_count":  30,
                            "proof_file_count":  12,
                            "contract_or_policy_count":  14,
@@ -7892,12 +7893,13 @@
                                                       "operations/school/run_agent_school.ps1",
                                                       "operations/school/run_autonomous_school_cycle_v1.ps1",
                                                       "operations/school/validate_agent_school_canonical_entrypoint_v1.ps1",
+                                                      "operations/school/validate_topic_patch_plan_v1.ps1",
                                                       "operations/school/value_grounded/validate_value_grounded_curriculum_prep_v1.ps1"
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "46c5c31da807c528c094158b0ff70fd247469c76",
-                                                     "committed_at":  "2026-07-14T22:22:20+04:00",
-                                                     "subject":  "feat: select dynamic school theme cells"
+                                                     "head":  "3dd48493d735539c71012836ddd966869599aa7e",
+                                                     "committed_at":  "2026-07-14T22:33:47+04:00",
+                                                     "subject":  "feat: add development vector school selector"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -8340,9 +8342,9 @@
 
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "46c5c31da807c528c094158b0ff70fd247469c76",
-                                                     "committed_at":  "2026-07-14T22:22:20+04:00",
-                                                     "subject":  "feat: select dynamic school theme cells"
+                                                     "head":  "3dd48493d735539c71012836ddd966869599aa7e",
+                                                     "committed_at":  "2026-07-14T22:33:47+04:00",
+                                                     "subject":  "feat: add development vector school selector"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -9779,19 +9781,19 @@
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                            "discovery_method":  "bounded_git_ls_files_path_discovery",
                            "evidence_counts":  {
-                                                   "files":  39,
+                                                   "files":  42,
                                                    "scripts":  0,
                                                    "validators":  0,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  0,
-                                                   "docs":  16
+                                                   "docs":  17
                                                },
-                           "file_count":  39,
+                           "file_count":  42,
                            "script_count":  0,
                            "validator_count":  0,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  0,
-                           "doc_count":  16,
+                           "doc_count":  17,
                            "validator_refs":  [
 
                                               ],

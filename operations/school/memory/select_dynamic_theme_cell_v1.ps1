@@ -1,6 +1,8 @@
 param(
   [string]$MemoryRoot = '.runtime/active_compact_semantic_memory_v1',
   [string]$VectorMapPath = 'operations/school/curriculum/development_vector/school_development_vector_map_v1.json',
+  [string]$RequestedTopics = 'AUTO',
+  [ValidateRange(1,1000)][int]$PatchSize = 1000,
   [string]$OutputPath = '.runtime/school_dynamic_theme_selection/latest_selection.json',
   [ValidateRange(1,50)][int]$Top = 12
 )
@@ -113,6 +115,35 @@ foreach($t in @($vector.topics)){
     codex_depth_focus=[string]$t.codex_depth_focus
   }
 }
+$requestedTopicList=@()
+if(-not [string]::IsNullOrWhiteSpace($RequestedTopics) -and $RequestedTopics.Trim().ToUpperInvariant() -ne 'AUTO'){
+  $requestedTopicList=@($RequestedTopics -split ',' | ForEach-Object { NormalizeTopic $_ } | Where-Object { -not [string]::IsNullOrWhiteSpace($_) } | Select-Object -Unique)
+}
+if($requestedTopicList.Count -gt 0){
+  $filtered=New-Object System.Collections.ArrayList
+  foreach($req in $requestedTopicList){
+    $matches=@($expectedCandidates | Where-Object { (NormalizeTopic $_.topic_key) -eq $req -or (NormalizeTopic $_.label) -eq $req })
+    if($matches.Count -gt 0){ foreach($m in $matches){ [void]$filtered.Add($m) } }
+    else {
+      [void]$filtered.Add([pscustomobject]@{
+        score=1500
+        selection_reason='missing_requested_topic'
+        topic_key=$req
+        label=$req
+        priority_queue=1
+        current_depth=0
+        target_depth=3
+        start_depth=0
+        depth_gap=3
+        matched_memory_topic=$null
+        why='Owner-requested topic is not present in development vector or active memory; create dynamic topic cell through school cycle.'
+        source_basis=@('Owner Topics field')
+        codex_depth_focus='create a new dynamic topic cell from depth 0 with proof, validator, source, and return-to-parent fields'
+      })
+    }
+  }
+  $expectedCandidates=@($filtered)
+}
 $actionable=@($expectedCandidates | Where-Object { $_.selection_reason -ne 'target_depth_met' } | Sort-Object @{Expression='score';Descending=$true}, @{Expression='priority_queue';Descending=$false}, @{Expression='depth_gap';Descending=$true}, topic_key)
 $ranked=@($actionable | Select-Object -First $Top)
 # Fallback to weak existing memory if all expected topics are satisfied.
@@ -144,7 +175,7 @@ $codexTemplate=[ordered]@{
   target_depth=$selected.target_depth
   start_depth=$selected.start_depth
   depth_gap=$selected.depth_gap
-  candidate_limit_hint=$vector.candidate_cycle_default
+  candidate_limit_hint=$PatchSize
   single_topic_boundary="Only this topic is allowed: $($selected.topic_key). Do not broaden into adjacent topics."
   depth_task="Start at depth $($selected.start_depth) and create material that advances toward depth $($selected.target_depth)."
   candidate_rules=@($vector.codex_task_template_contract.candidate_rules)
@@ -170,6 +201,9 @@ $result=[ordered]@{
   manifest_status=$manifest.status
   observed_cell_count=$cells.Count
   existing_dynamic_topic_count=$groups.Count
+  requested_topics_raw=$RequestedTopics
+  requested_topics=@($requestedTopicList)
+  patch_size=$PatchSize
   expected_topic_count=@($vector.topics).Count
   missing_expected_topic_count=@($expectedCandidates | Where-Object { $_.selection_reason -eq 'missing_expected_topic' }).Count
   under_depth_expected_topic_count=@($expectedCandidates | Where-Object { $_.selection_reason -eq 'under_depth_expected_topic' }).Count

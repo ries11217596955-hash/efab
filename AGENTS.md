@@ -576,7 +576,7 @@ Do not turn AGENTS.md into a ledger, report, or archive.
 Owner-facing school launch has exactly one entrypoint:
 
 ```powershell
-operations/school/run_agent_school.ps1 -Count <N> -Mode <Test|Live>
+operations/school/run_agent_school.ps1 -Count <N> -Mode <Test|Live> -Topics <AUTO|topic1,topic2>
 ```
 
 Owner-facing launch fields are exactly:
@@ -584,12 +584,18 @@ Owner-facing launch fields are exactly:
 ```text
 Count
 Mode = Test | Live
+Topics = AUTO | comma-separated topic keys
 ```
 
-`TopicsPlan`, candidate factory, streaming, quality gate, digest, source router, finalizer, and autonomous cycle controller are internal helpers only. They must not be presented as separate school launches.
+`TopicsPlan`, `PatchSize`, candidate factory, streaming, quality gate, digest, source router, finalizer, and autonomous cycle controller are internal helpers only. PatchSize is internally fixed at 1000. They must not be presented as separate school launches.
 
 School completion means compact memory update proof exists. If compact memory is not updated, the school run is not complete; it is blocked, failed, or pending.
 
 Codex remains a bounded material authoring tool before school. Codex task files are not school launch routes and must not be treated as active school entrypoints.
 
 Do not use or recreate deleted old school pointers. Current school route truth is only the single Owner launch above.
+
+
+## Partial school progress rule
+
+Patch ledger states `ABSORBED` and `CLEANED_AFTER_ABSORPTION` count as memory progress after restart. Other patch states do not count and must be quarantined or regenerated. Count is a ceiling, not equal budget per topic.

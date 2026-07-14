@@ -1,19 +1,20 @@
 # School Canonical Run Contract V1
 
-Status: ACTIVE_SINGLE_ENTRYPOINT_TWO_FIELD_LAUNCH
+Status: ACTIVE_SINGLE_ENTRYPOINT_THREE_FIELD_TOPIC_LAUNCH
 
 ## Owner-facing launch
 
 There is exactly one owner-facing school launch surface:
 
 ```text
-operations/school/run_agent_school.ps1 -Count <N> -Mode <Test|Live>
+operations/school/run_agent_school.ps1 -Count <N> -Mode <Test|Live> -Topics <AUTO|topic1,topic2>
 ```
 
 Fields:
 
 - `Count`: required positive integer, max 1,000,000.
 - `Mode`: required enum: `Test` or `Live`.
+- `Topics`: required. `AUTO` or comma-separated topic keys.
 - Internal canonical topics plan: `operations/school/curriculum/topics/builder_night_school_topics_v1.json`. This is not an Owner launch field.
 
 No owner-facing resume fields are allowed. Resume/recovery state is internal.
@@ -21,7 +22,7 @@ No owner-facing resume fields are allowed. Resume/recovery state is internal.
 ## Canonical flow
 
 ```text
-Count + Mode
+Count + Mode + Topics
 -> candidate factory
 -> curriculum validators
 -> streaming absorption validation
@@ -55,7 +56,7 @@ The factory is local/cursor-guided and does not call Codex CLI/API directly. Cod
 
 After a canonical PASS proof is written, the school invokes `operations/school/finalize_agent_school_run_v1.ps1` under `operations/school/school_lifecycle_policy.json`.
 
-The finalizer must keep the owner-facing launch contract unchanged: `Count`, `Mode` only.
+The finalizer must keep the owner-facing launch contract unchanged: `Count`, `Mode`, `Topics` only.
 
 Finalizer duties:
 
@@ -69,7 +70,7 @@ Finalizer failure must not convert a valid school PASS into a fake failure, but 
 
 ## Internal helper surfaces
 
-Owner-facing launch surface remains exactly one: `operations/school/run_agent_school.ps1`. Owner-facing launch fields are exactly two: `Count` and `Mode`.
+Owner-facing launch surface remains exactly one: `operations/school/run_agent_school.ps1`. Owner-facing launch fields are exactly three: `Count`, `Mode`, and `Topics`.
 
 Internal school launch/helper surfaces are allowed when they are called by the canonical entrypoint/controller and are not presented as separate owner-facing schools. This includes source router ports, candidate factory, streaming absorption, ready lane, digest/memory helpers, finalizer, and the autonomous school cycle controller.
 
@@ -116,7 +117,7 @@ boundary = school-live compact-memory digestion mode; not AgentLife runtime; not
 Correct max launch target:
 
 ```text
-operations/school/run_agent_school.ps1 -Count 1000000 -Mode Live
+operations/school/run_agent_school.ps1 -Count 1000000 -Mode Live -Topics AUTO
 ```
 
 Do not claim full completion until:
@@ -132,21 +133,24 @@ no school-related process remains
 Do not clean active `.runtime` surfaces while the process is alive.
 
 
-## 2026-07-14 two-field correction
+## 2026-07-14 topic-field correction
 
-Owner-facing school launch has exactly two fields:
+Owner-facing school launch has exactly three fields:
 
 ```text
 Count
 Mode = Test | Live
+Topics = AUTO | comma-separated topic keys
 ```
 
-`TopicsPlan` is internal canonical configuration:
+`PatchSize` is internal and fixed at 1000 for Codex stability. `TopicsPlan` is internal canonical configuration:
 
 ```text
 operations/school/curriculum/topics/builder_night_school_topics_v1.json
 ```
 
-Do not present candidate factory, streaming, digest, source router, Codex source ports, autonomous cycle controller, or TopicsPlan as separate Owner launch routes. They are internal organs/helpers called under the canonical entrypoint.
+Do not present candidate factory, streaming, digest, source router, Codex source ports, autonomous cycle controller, TopicsPlan, or PatchSize as separate Owner launch routes. They are internal organs/helpers called under the canonical entrypoint.
 
-School completion means compact memory update proof exists. If compact memory is not updated, the school run is not complete; it is blocked/failed/pending.
+School completion means compact memory update proof exists. If compact memory is not updated, the school run is not complete; it is blocked/failed/pending. Partial progress is allowed: after restart, only patch ledger states `ABSORBED` or `CLEANED_AFTER_ABSORPTION` count as memory progress.
+
+Patch retention rule: raw patch proof stays in runtime; tracked repo keeps compact topic/run summaries only. Keep latest 3-5 patch runtime proofs after absorption and clean older raw tails.

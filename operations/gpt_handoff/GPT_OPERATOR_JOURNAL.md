@@ -10,7 +10,7 @@ STATUS: PASS_SINGLE_OWNER_SCHOOL_LAUNCH_ROUTE_LOCK_VALIDATED
 Use only:
 
 ```powershell
-operations/school/run_agent_school.ps1 -Count <N> -Mode <Test|Live>
+operations/school/run_agent_school.ps1 -Count <N> -Mode <Test|Live> -Topics <AUTO|topic1,topic2>
 ```
 
 Owner-facing fields:
@@ -157,4 +157,23 @@ Meaning:
 School now compares active memory against its development vector.
 It can choose a missing expected topic or an under-depth topic.
 Codex receives target topic, current depth, target depth, single-topic boundary, candidate rules, and acceptance contract.
+```
+
+
+## Topics patch school launch
+
+```text
+owner_fields = Count, Mode, Topics
+patch_size_internal = 1000
+count = total ceiling, not equal topic split
+partial_progress_counted_states = ABSORBED, CLEANED_AFTER_ABSORPTION
+```
+
+Meaning:
+
+```text
+School can be launched with AUTO or selected topics.
+It works in 1000-candidate patches.
+After stop/restart, memory progress is whatever patches reached absorption proof.
+Open/generated/validated/digested-only patches do not count as memory update.
 ```

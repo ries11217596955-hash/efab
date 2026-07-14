@@ -1,6 +1,7 @@
 param(
   [ValidateRange(0,1000000)][int]$Count = 0,
   [Parameter(Mandatory=$true)][ValidateSet('Test','Live')][string]$Mode,
+  [string]$Topics = 'AUTO',
   [ValidateRange(0,1000)][int]$MaxCycles = 0,
   [Alias('MaxRuntimeMinutes')][ValidateRange(0,10080)][double]$MaxCycleRuntimeMinutes = 0,
   [ValidateRange(0,10080)][double]$MaxTotalRuntimeMinutes = 0,
@@ -58,7 +59,7 @@ while($true){
   $memoryBefore=MemoryState
   $cycleId="${runId}_cycle_$cycle"
   $cycleStartedAt=Get-Date
-  $out=@(& powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/run_agent_school.ps1 -Count $Count -Mode $Mode *>&1 | ForEach-Object{[string]$_})
+  $out=@(& powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/run_agent_school.ps1 -Count $Count -Mode $Mode -Topics $Topics *>&1 | ForEach-Object{[string]$_})
   $cycleFinishedAt=Get-Date
   $cycleDurationMinutes=[math]::Round(($cycleFinishedAt-$cycleStartedAt).TotalMinutes,6)
   $outPath=Join-Path $runRoot ("cycle_{0}_stdout.txt" -f $cycle)
@@ -85,6 +86,7 @@ while($true){
     status=$cycleStatus
     count=$Count
     mode=$Mode
+    topics=$Topics
     internal_topics_plan=$TopicsPlan
     school_status=$schoolStatus
     finalizer_status=$finalizerStatus
@@ -118,6 +120,7 @@ $result=[ordered]@{
   dirty_before=@($dirtyBefore)
   count=$Count
   mode=$Mode
+  topics=$Topics
   internal_topics_plan=$TopicsPlan
   max_cycles=$MaxCycles
   max_cycle_runtime_minutes=[double]$MaxCycleRuntimeMinutes

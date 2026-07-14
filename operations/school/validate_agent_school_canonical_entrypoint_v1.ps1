@@ -11,13 +11,13 @@ $cursor='operations/school/curriculum/candidate_factory/memory/theme_cursor_ledg
 foreach($p in @($contract,$entry,$cycle,$topics,$cursor,'operations/school/curriculum/source_router/run_school_source_router_v1.ps1','operations/school/curriculum/source_router/run_school_codex_source_port_v1.ps1','operations/school/curriculum/source_router/run_school_external_world_source_port_v1.ps1','operations/school/finalize_agent_school_run_v1.ps1')){RequireFile $p}
 if(Test-Path $contract){
   $c=Get-Content $contract -Raw
-  foreach($required in @('-Count <N> -Mode <Test|Live>','ACTIVE_SINGLE_ENTRYPOINT_TWO_FIELD_LAUNCH','Owner-facing launch surface','Internal school launch/helper surfaces are allowed')){
+  foreach($required in @('-Count <N> -Mode <Test|Live> -Topics <AUTO|topic1,topic2>','ACTIVE_SINGLE_ENTRYPOINT_THREE_FIELD_TOPIC_LAUNCH','Owner-facing launch surface','Internal school launch/helper surfaces are allowed')){
     if(-not $c.Contains($required)){AddErr "CONTRACT_REQUIRED_TEXT_MISSING:$required"}
   }
 }
 if(Test-Path $entry){
   $e=Get-Content $entry -Raw
-  foreach($required in @('[ValidateSet(''Test'',''Live'')]','[int]$Count','builder_night_school_topics_v1.json','finalize_agent_school_run_v1.ps1')){
+  foreach($required in @('[ValidateSet(''Test'',''Live'')]','[int]$Count','[string]$Topics','builder_night_school_topics_v1.json','plan_topic_patch_cycle_v1.ps1','finalize_agent_school_run_v1.ps1')){
     if(-not $e.Contains($required)){AddErr "ENTRYPOINT_REQUIRED_TEXT_MISSING:$required"}
   }
 }
@@ -60,8 +60,10 @@ if($errors.Count -gt 0){
 Write-Host 'VALIDATION_STATUS=PASS_AGENT_SCHOOL_CANONICAL_POLICY_V2'
 Write-Host 'OWNER_FACING_ENTRYPOINT_COUNT=1'
 Write-Host 'OWNER_ENTRYPOINT=operations/school/run_agent_school.ps1'
-Write-Host 'OWNER_FIELDS=Count,Mode'
+Write-Host 'OWNER_FIELDS=Count,Mode,Topics'
 Write-Host 'MODE_VALUES=Test,Live'
+Write-Host 'TOPICS_VALUES=AUTO_OR_COMMA_SEPARATED_TOPIC_KEYS'
+Write-Host 'PATCH_SIZE_INTERNAL=1000'
 Write-Host "INTERNAL_HELPER_SURFACES_ALLOWED=$($allowedInternal.Count)"
 Write-Host 'SCHOOL_LIVE_MODE_IS_MEMORY_DIGEST_MODE_NOT_AGENT_RUNTIME=true'
 Write-Host 'RUNTIME_READY=false'
