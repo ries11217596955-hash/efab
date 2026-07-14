@@ -1,19 +1,22 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-14T18:01:59.3530095+04:00",
+    "checked_at":  "2026-07-14T18:14:28.7667911+04:00",
     "branch":  "main",
-    "observed_head":  "98430f919d86872b398d892761fc484df3c7e453",
-    "subject_head":  "98430f919d86872b398d892761fc484df3c7e453",
+    "observed_head":  "b90d8375581490a65f29b1346a02292a2b7e880b",
+    "subject_head":  "b90d8375581490a65f29b1346a02292a2b7e880b",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
+                          "codex_tasks/CODEX_TASK_SCHOOL_100K_USEFUL_CAMPAIGN_PACK_20260714.md",
+                          "codex_tasks/CODEX_TASK_SCHOOL_100K_USEFUL_CAMPAIGN_PACK_LEAN_20260714.md",
                           "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                          "operations/reports/MEMORY_WEIGHT_GUARD_INSTALLATION_20260714.json",
-                          "operations/reports/MEMORY_WEIGHT_GUARD_INSTALLATION_20260714.md",
-                          "operations/school/digestion/absorb_atom_file_via_digest_pipeline_v1.ps1",
-                          "operations/school/digestion/apply_compact_memory_weight_guard_v1.ps1",
+                          "operations/reports/CODEX_100K_CAMPAIGN_ATTEMPT_REPORT_20260714.json",
+                          "operations/reports/CODEX_100K_CAMPAIGN_ATTEMPT_REPORT_20260714.md",
+                          "operations/reports/CODEX_100K_CAMPAIGN_COMPACT_CONTEXT_20260714.json",
+                          "operations/reports/SCHOOL_100K_USEFUL_CAMPAIGN_TOPIC_PLAN_20260714.json",
+                          "operations/reports/SCHOOL_100K_USEFUL_CAMPAIGN_TOPIC_PLAN_20260714.md",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
@@ -21,10 +24,11 @@
                       ],
     "structural_paths":  [
                              "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                             "operations/reports/MEMORY_WEIGHT_GUARD_INSTALLATION_20260714.json",
-                             "operations/reports/MEMORY_WEIGHT_GUARD_INSTALLATION_20260714.md",
-                             "operations/school/digestion/absorb_atom_file_via_digest_pipeline_v1.ps1",
-                             "operations/school/digestion/apply_compact_memory_weight_guard_v1.ps1"
+                             "operations/reports/CODEX_100K_CAMPAIGN_ATTEMPT_REPORT_20260714.json",
+                             "operations/reports/CODEX_100K_CAMPAIGN_ATTEMPT_REPORT_20260714.md",
+                             "operations/reports/CODEX_100K_CAMPAIGN_COMPACT_CONTEXT_20260714.json",
+                             "operations/reports/SCHOOL_100K_USEFUL_CAMPAIGN_TOPIC_PLAN_20260714.json",
+                             "operations/reports/SCHOOL_100K_USEFUL_CAMPAIGN_TOPIC_PLAN_20260714.md"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -36,8 +40,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1869,
-                                    "sha256":  "737c235c53d009c8057adb4514ab32ae9c226df9159dab2cfe81b521a67e75cb"
+                                    "structural_file_count":  1873,
+                                    "sha256":  "bf1771b63d6e06d81e62341482a9cb1488dcbd6b340b881b4f705d7b5ee0c563"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -63,12 +67,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  149,
-                         "structural_path_count":  1869,
+                         "structural_path_count":  1873,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-14T18:02:24.3780335+04:00"
+    "refreshed_at":  "2026-07-14T18:14:53.6670554+04:00"
 }

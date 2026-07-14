@@ -3809,3 +3809,29 @@ Proof boundary:
 Next recommended step:
 - Retry Codex with an even smaller no-shell authoring task, or split into seed-plan-only first.
 - Do not fabricate Codex-authored pack by GPT/operator hand unless Owner explicitly changes the route.
+## 2026-07-14 - School/Codex launch runbook recovered from journal
+
+STATUS: RUNBOOK_CREATED_CODEX_SEED_PLAN_NOT_PRODUCED
+
+Analysis from journal:
+- Successful route was not one giant Codex call.
+- Correct route: Codex slice 1 coverage/level plan -> Codex slice 2 campaign pack + validator support -> GPT/operator 25/100 validation -> local factory generation -> separate streaming/absorption later.
+- Owner correction remains active: Codex authors campaign content for school, not a replacement mechanism / Builder brain.
+
+Recovered runbook:
+- operations/reports/SCHOOL_CODEX_LAUNCH_RUNBOOK_20260714.json
+- operations/reports/SCHOOL_CODEX_LAUNCH_RUNBOOK_20260714.md
+
+Codex seed-plan attempts after recovery:
+- codex_tasks/CODEX_TASK_SCHOOL_100K_SEED_PLAN_ONLY_READONLY_20260714.md -> BLOCKED_PREFLIGHT because context path could not be read under no-shell rule.
+- codex_tasks/CODEX_TASK_SCHOOL_100K_SEED_PLAN_ONLY_EMBEDDED_20260714.md -> stopped after turn.started only; no last message/output.
+
+Boundary:
+- campaign_pack=NOT_PRODUCED
+- seed_plan=NOT_PRODUCED
+- 100k_generation=NOT_STARTED
+- absorption_or_digest=NOT_STARTED
+- active_memory_mutated=false
+
+Next recommended route:
+- Split Codex into per-root or 2-root seed outputs, or explicitly switch from Codex-authored material to operator-authored material if Owner decides.
