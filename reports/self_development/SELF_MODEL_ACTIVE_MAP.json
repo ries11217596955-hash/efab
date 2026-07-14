@@ -6,19 +6,19 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "494e69c7f01d61c334d337d4fa66fcc8d04624ea",
-    "subject_head":  "494e69c7f01d61c334d337d4fa66fcc8d04624ea",
-    "generated_at":  "2026-07-14T23:57:09.8177750+04:00",
+    "observed_head_at_generation":  "92c8b905b70d37d81f387ebb167bc93a3751ee77",
+    "subject_head":  "92c8b905b70d37d81f387ebb167bc93a3751ee77",
+    "generated_at":  "2026-07-15T00:16:55.9099866+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  1902,
+    "structural_path_count":  1908,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1902,
-                                    "sha256":  "a3e249ddfc9fee055b50f611ca9c3c87ae9c2f6519e13f3ab7ddc9c5f6ab49a8"
+                                    "structural_file_count":  1908,
+                                    "sha256":  "2aca5a951db897b9dbd2dfd6c679f61e6f491635b41e10d6fcc557133dbe6efd"
                                 },
     "module_count":  203,
     "validator_count":  174,
@@ -29,8 +29,8 @@
                                      "root":  "operations/school",
                                      "status":  "CONFIRMED_PRIMARY_EVIDENCE_PRESENT",
                                      "confirmation_basis":  "explicit_required_component_with_primary_repo_evidence",
-                                     "file_count":  130,
-                                     "script_count":  72,
+                                     "file_count":  133,
+                                     "script_count":  75,
                                      "validator_count":  30,
                                      "proof_file_count":  12,
                                      "contract_or_policy_count":  14,
@@ -184,9 +184,9 @@
                                                                 "operations/school/run_autonomous_school_cycle_v1.ps1"
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "494e69c7f01d61c334d337d4fa66fcc8d04624ea",
-                                                               "committed_at":  "2026-07-14T23:23:08+04:00",
-                                                               "subject":  "feat: add school patch executor"
+                                                               "head":  "92c8b905b70d37d81f387ebb167bc93a3751ee77",
+                                                               "committed_at":  "2026-07-14T23:56:37+04:00",
+                                                               "subject":  "fix: repair codex patch launcher timeout cleanup"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -629,9 +629,9 @@
 
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "494e69c7f01d61c334d337d4fa66fcc8d04624ea",
-                                                               "committed_at":  "2026-07-14T23:23:08+04:00",
-                                                               "subject":  "feat: add school patch executor"
+                                                               "head":  "92c8b905b70d37d81f387ebb167bc93a3751ee77",
+                                                               "committed_at":  "2026-07-14T23:56:37+04:00",
+                                                               "subject":  "fix: repair codex patch launcher timeout cleanup"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -2070,19 +2070,19 @@
                                             "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                                             "discovery_method":  "bounded_git_ls_files_path_discovery",
                                             "evidence_counts":  {
-                                                                    "files":  49,
+                                                                    "files":  52,
                                                                     "scripts":  0,
                                                                     "validators":  0,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  0,
-                                                                    "docs":  19
+                                                                    "docs":  20
                                                                 },
-                                            "file_count":  49,
+                                            "file_count":  52,
                                             "script_count":  0,
                                             "validator_count":  0,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  0,
-                                            "doc_count":  19,
+                                            "doc_count":  20,
                                             "validator_refs":  [
 
                                                                ],
@@ -2102,6 +2102,9 @@
                                                                   "operations/reports/CODEX_SCHOOL_PATCH_TASK_TEMPLATE_INSTALLATION_20260714.json",
                                                                   "operations/reports/CODEX_SCHOOL_PATCH_TASK_TEMPLATE_INSTALLATION_20260714.md",
                                                                   "operations/reports/CODEX_SCHOOL_PATCH_TASK_TEMPLATE_VALIDATION_20260714.json",
+                                                                  "operations/reports/CODEX_WAREHOUSE_PIPELINE_INSTALLATION_20260714.json",
+                                                                  "operations/reports/CODEX_WAREHOUSE_PIPELINE_INSTALLATION_20260714.md",
+                                                                  "operations/reports/CODEX_WAREHOUSE_PIPELINE_VALIDATION_20260714.json",
                                                                   "operations/reports/COMPACT_MEMORY_COMPACTION_CANDIDATES_20260714.json",
                                                                   "operations/reports/COMPACT_MEMORY_COMPACTION_CANDIDATE_VALIDATION_20260714.json",
                                                                   "operations/reports/COMPACT_MEMORY_WEIGHT_AUDIT_20260714.json",
@@ -2114,10 +2117,7 @@
                                                                   "operations/reports/GPT_OPERATOR_JOURNAL_ACTIVE_RESET_20260714.json",
                                                                   "operations/reports/GPT_OPERATOR_JOURNAL_ACTIVE_RESET_20260714.md",
                                                                   "operations/reports/MEMORY_WEIGHT_GUARD_INSTALLATION_20260714.json",
-                                                                  "operations/reports/MEMORY_WEIGHT_GUARD_INSTALLATION_20260714.md",
-                                                                  "operations/reports/ONE_TOPIC_SEP_LADDER_100K_COMPACT_DIGEST_PACKET_20260714.json",
-                                                                  "operations/reports/ONE_TOPIC_SEP_LADDER_100K_COMPLETION_20260714.json",
-                                                                  "operations/reports/ONE_TOPIC_SEP_LADDER_100K_COMPLETION_20260714.md"
+                                                                  "operations/reports/MEMORY_WEIGHT_GUARD_INSTALLATION_20260714.md"
                                                               ],
                                             "primary_evidence_refs":  [
 
@@ -7746,8 +7746,8 @@
                            "root":  "operations/school",
                            "status":  "CONFIRMED_PRIMARY_EVIDENCE_PRESENT",
                            "confirmation_basis":  "explicit_required_component_with_primary_repo_evidence",
-                           "file_count":  130,
-                           "script_count":  72,
+                           "file_count":  133,
+                           "script_count":  75,
                            "validator_count":  30,
                            "proof_file_count":  12,
                            "contract_or_policy_count":  14,
@@ -7901,9 +7901,9 @@
                                                       "operations/school/run_autonomous_school_cycle_v1.ps1"
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "494e69c7f01d61c334d337d4fa66fcc8d04624ea",
-                                                     "committed_at":  "2026-07-14T23:23:08+04:00",
-                                                     "subject":  "feat: add school patch executor"
+                                                     "head":  "92c8b905b70d37d81f387ebb167bc93a3751ee77",
+                                                     "committed_at":  "2026-07-14T23:56:37+04:00",
+                                                     "subject":  "fix: repair codex patch launcher timeout cleanup"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -8346,9 +8346,9 @@
 
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "494e69c7f01d61c334d337d4fa66fcc8d04624ea",
-                                                     "committed_at":  "2026-07-14T23:23:08+04:00",
-                                                     "subject":  "feat: add school patch executor"
+                                                     "head":  "92c8b905b70d37d81f387ebb167bc93a3751ee77",
+                                                     "committed_at":  "2026-07-14T23:56:37+04:00",
+                                                     "subject":  "fix: repair codex patch launcher timeout cleanup"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -9785,19 +9785,19 @@
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                            "discovery_method":  "bounded_git_ls_files_path_discovery",
                            "evidence_counts":  {
-                                                   "files":  49,
+                                                   "files":  52,
                                                    "scripts":  0,
                                                    "validators":  0,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  0,
-                                                   "docs":  19
+                                                   "docs":  20
                                                },
-                           "file_count":  49,
+                           "file_count":  52,
                            "script_count":  0,
                            "validator_count":  0,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  0,
-                           "doc_count":  19,
+                           "doc_count":  20,
                            "validator_refs":  [
 
                                               ],
@@ -9817,6 +9817,9 @@
                                                  "operations/reports/CODEX_SCHOOL_PATCH_TASK_TEMPLATE_INSTALLATION_20260714.json",
                                                  "operations/reports/CODEX_SCHOOL_PATCH_TASK_TEMPLATE_INSTALLATION_20260714.md",
                                                  "operations/reports/CODEX_SCHOOL_PATCH_TASK_TEMPLATE_VALIDATION_20260714.json",
+                                                 "operations/reports/CODEX_WAREHOUSE_PIPELINE_INSTALLATION_20260714.json",
+                                                 "operations/reports/CODEX_WAREHOUSE_PIPELINE_INSTALLATION_20260714.md",
+                                                 "operations/reports/CODEX_WAREHOUSE_PIPELINE_VALIDATION_20260714.json",
                                                  "operations/reports/COMPACT_MEMORY_COMPACTION_CANDIDATES_20260714.json",
                                                  "operations/reports/COMPACT_MEMORY_COMPACTION_CANDIDATE_VALIDATION_20260714.json",
                                                  "operations/reports/COMPACT_MEMORY_WEIGHT_AUDIT_20260714.json",
@@ -9829,10 +9832,7 @@
                                                  "operations/reports/GPT_OPERATOR_JOURNAL_ACTIVE_RESET_20260714.json",
                                                  "operations/reports/GPT_OPERATOR_JOURNAL_ACTIVE_RESET_20260714.md",
                                                  "operations/reports/MEMORY_WEIGHT_GUARD_INSTALLATION_20260714.json",
-                                                 "operations/reports/MEMORY_WEIGHT_GUARD_INSTALLATION_20260714.md",
-                                                 "operations/reports/ONE_TOPIC_SEP_LADDER_100K_COMPACT_DIGEST_PACKET_20260714.json",
-                                                 "operations/reports/ONE_TOPIC_SEP_LADDER_100K_COMPLETION_20260714.json",
-                                                 "operations/reports/ONE_TOPIC_SEP_LADDER_100K_COMPLETION_20260714.md"
+                                                 "operations/reports/MEMORY_WEIGHT_GUARD_INSTALLATION_20260714.md"
                                              ],
                            "primary_evidence_refs":  [
 

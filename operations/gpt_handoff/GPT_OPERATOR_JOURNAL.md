@@ -236,3 +236,24 @@ Codex bridge is now launchable, but 1000-candidate task is too heavy for first r
 Next step is not another 1000 run; use retry narrowing: 500 then 200, or simplify the Codex task before absorption.
 Executor timeout cleanup was repaired to kill only its own child process tree.
 ```
+
+
+## Codex warehouse pipeline v1
+
+```text
+warehouse_pipeline = installed and validated
+patch_candidate_count = 1000
+micro_batch_size = 100
+micro_batch_count = 10
+ready_consumer_status = PASS_WAREHOUSE_CONSUMED_READY_BATCHES_NO_ABSORB_V1
+ready_accepted_count = 100
+school_ahead_wait_status = PASS_WAREHOUSE_CONSUMER_WAIT_TIMEOUT_NO_READY_V1
+memory_changed = False
+```
+
+Meaning:
+
+```text
+Codex can be treated as producer that fills runtime warehouse with READY micro-batches.
+School is consumer that independently consumes READY only, waits with heartbeat when ahead, and never counts memory progress until ABSORBED.
+```
