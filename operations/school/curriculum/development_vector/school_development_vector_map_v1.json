@@ -1,0 +1,197 @@
+{
+  "schema": "school_development_vector_map_v1",
+  "status": "ACTIVE",
+  "purpose": "Give school a development vector: choose missing or under-depth topics before asking Codex for school material.",
+  "mode": "codex_available",
+  "candidate_cycle_default": 1000,
+  "selection_order": [
+    "missing_priority_1",
+    "under_depth_priority_1",
+    "missing_priority_2",
+    "under_depth_priority_2",
+    "weak_existing_memory_topic",
+    "priority_3_deepening"
+  ],
+  "depth_scale": {
+    "0": "absent topic: no usable memory cell",
+    "1": "name and boundary known",
+    "2": "basic rules and examples known",
+    "3": "validator and failure cases known",
+    "4": "can drive school/Codex task without operator repair",
+    "5": "mature organ knowledge: reusable, self-checking, return-to-parent aware"
+  },
+  "topics": [
+    {
+      "topic_key": "school_development_vector",
+      "label": "school development vector",
+      "priority_queue": 1,
+      "target_depth": 3,
+      "why": "school needs a compass before choosing lessons",
+      "source_basis": [
+        "Owner direction",
+        "Builder route truth"
+      ],
+      "codex_depth_focus": "define vector, queues, missing-topic handling, and proof boundary"
+    },
+    {
+      "topic_key": "expected_theme_gap_detection",
+      "label": "expected theme gap detection",
+      "priority_queue": 1,
+      "target_depth": 3,
+      "why": "school must detect absent required themes, not only weak existing cells",
+      "source_basis": [
+        "Owner direction",
+        "current selector limitation"
+      ],
+      "codex_depth_focus": "compare expected vector topics against active memory topics and output missing/under-depth targets"
+    },
+    {
+      "topic_key": "codex_school_task_template_strength",
+      "label": "strong Codex school task template",
+      "priority_queue": 1,
+      "target_depth": 4,
+      "why": "Codex requests must specify depth, candidate rules, proof fields, validators, and cut lines",
+      "source_basis": [
+        "Codex boundary",
+        "school automation"
+      ],
+      "codex_depth_focus": "make single-topic bounded material authoring task with acceptance contract"
+    },
+    {
+      "topic_key": "dynamic_topic_cell_routing",
+      "label": "dynamic topic cell routing",
+      "priority_queue": 1,
+      "target_depth": 4,
+      "why": "atoms must merge into matching topic cells or create new topic cells when absent",
+      "source_basis": [
+        "Owner dynamic cell model",
+        "active compact memory"
+      ],
+      "codex_depth_focus": "semantic match, duplicate prevention, new-cell creation criteria"
+    },
+    {
+      "topic_key": "school_cycle_completion_proof",
+      "label": "school cycle completion proof",
+      "priority_queue": 1,
+      "target_depth": 4,
+      "why": "school completion must mean compact memory update proof",
+      "source_basis": [
+        "route lock",
+        "Owner correction"
+      ],
+      "codex_depth_focus": "prove absorption PASS, active_memory_changed, compact_memory_updated, cleanup"
+    },
+    {
+      "topic_key": "memory_depth_ledger",
+      "label": "memory topic depth ledger",
+      "priority_queue": 2,
+      "target_depth": 3,
+      "why": "school must know where each topic stopped and where to continue",
+      "source_basis": [
+        "depth-aware school design"
+      ],
+      "codex_depth_focus": "track current depth, target depth, last proof, next depth"
+    },
+    {
+      "topic_key": "one_topic_school_microcycle",
+      "label": "one-topic school microcycle",
+      "priority_queue": 2,
+      "target_depth": 4,
+      "why": "large runs should be broken into one-topic cycles around 1000 candidates",
+      "source_basis": [
+        "Owner scaling direction"
+      ],
+      "codex_depth_focus": "1000-candidate cycle, digest, absorption, cleanup, next selection"
+    },
+    {
+      "topic_key": "memory_source_grounding",
+      "label": "memory source grounding",
+      "priority_queue": 2,
+      "target_depth": 3,
+      "why": "school must know when it has source basis and when it is extrapolating",
+      "source_basis": [
+        "source governance",
+        "book/reference discussion"
+      ],
+      "codex_depth_focus": "source fields, unsupported claim quarantine, external/internal source boundary"
+    },
+    {
+      "topic_key": "agent_error_to_school_lesson",
+      "label": "agent error to school lesson",
+      "priority_queue": 2,
+      "target_depth": 3,
+      "why": "recent operator errors should become school material",
+      "source_basis": [
+        "recent confusion around school route"
+      ],
+      "codex_depth_focus": "convert error evidence into lesson atoms and negative tests"
+    },
+    {
+      "topic_key": "organ_growth_hierarchy",
+      "label": "organ growth hierarchy",
+      "priority_queue": 3,
+      "target_depth": 3,
+      "why": "deep model of growth: atom, molecule, organ, system, organism",
+      "source_basis": [
+        "Builder architecture",
+        "Owner metaphysical source direction"
+      ],
+      "codex_depth_focus": "growth stages and acceptance boundary"
+    },
+    {
+      "topic_key": "matrix_memory_model",
+      "label": "matrix memory model",
+      "priority_queue": 3,
+      "target_depth": 2,
+      "why": "optional deep analogy: memory cells as quality accumulation matrix",
+      "source_basis": [
+        "Seklitova/Strelnikova discussion as structural inspiration"
+      ],
+      "codex_depth_focus": "use as analogy only unless source is explicitly provided"
+    },
+    {
+      "topic_key": "development_lawfulness",
+      "label": "lawful development sequence",
+      "priority_queue": 3,
+      "target_depth": 2,
+      "why": "school should learn in ordered depth, not random broad generation",
+      "source_basis": [
+        "Owner direction",
+        "growth discipline"
+      ],
+      "codex_depth_focus": "level order, prerequisites, stop rules"
+    }
+  ],
+  "codex_task_template_contract": {
+    "must_include": [
+      "target_topic",
+      "target_label",
+      "priority_queue",
+      "current_depth",
+      "target_depth",
+      "start_depth",
+      "candidate_limit",
+      "single_topic_boundary",
+      "atom_schema",
+      "proof_fields",
+      "validator_fields",
+      "negative_examples",
+      "return_to_parent",
+      "no_active_memory_mutation"
+    ],
+    "candidate_rules": [
+      "one candidate must serve the selected topic only",
+      "candidate must declare depth level",
+      "candidate must include expected behavior and failure contrast",
+      "candidate must include source_basis or mark source_missing",
+      "candidate must be digestible into compact memory",
+      "candidate must not invent external facts without source"
+    ],
+    "cut_lines": [
+      "no broad multi-topic pack",
+      "no raw memory mutation",
+      "no unbounded repair",
+      "no writing before PREFLIGHT_PASS for Codex file tasks"
+    ]
+  }
+}

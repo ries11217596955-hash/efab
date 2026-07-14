@@ -15,7 +15,8 @@ $DynamicThemeSelectionPath=".runtime/school_dynamic_theme_selection/${runId}_sel
 $DynamicThemeSelectionOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/memory/select_dynamic_theme_cell_v1.ps1 -OutputPath $DynamicThemeSelectionPath *>&1 | ForEach-Object{[string]$_})
 $DynamicThemeSelectionOut | Set-Content -LiteralPath ".runtime/school_dynamic_theme_selection/${runId}_selection_stdout.txt" -Encoding UTF8
 $DynamicThemeSelectionStatus=(($DynamicThemeSelectionOut|Where-Object{$_ -match '^DYNAMIC_THEME_SELECTION_STATUS='}|Select-Object -Last 1) -replace '^DYNAMIC_THEME_SELECTION_STATUS=','')
-if($DynamicThemeSelectionStatus -ne 'PASS_DYNAMIC_THEME_CELL_SELECTION_V1'){ throw "DYNAMIC_THEME_SELECTION_FAILED:$DynamicThemeSelectionStatus" }
+$AllowedDynamicThemeSelectionStatuses=@('PASS_DYNAMIC_THEME_CELL_SELECTION_V1','PASS_DEVELOPMENT_VECTOR_THEME_SELECTION_V1')
+if($AllowedDynamicThemeSelectionStatuses -notcontains $DynamicThemeSelectionStatus){ throw "DYNAMIC_THEME_SELECTION_FAILED:$DynamicThemeSelectionStatus" }
 Write-Host "SCHOOL_DYNAMIC_THEME_SELECTION_STATUS=$DynamicThemeSelectionStatus"
 Write-Host "SCHOOL_DYNAMIC_THEME_SELECTION_PROOF=$DynamicThemeSelectionPath"
 $ErrorActionPreference='Stop'

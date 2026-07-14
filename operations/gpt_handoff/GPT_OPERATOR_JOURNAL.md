@@ -135,3 +135,26 @@ School now reads active compact memory before a run and selects one weak dynamic
 No fixed cell count is required.
 If future material has no matching topic cell, the school can create a new topic cell through the normal memory update path.
 ```
+
+
+## Development vector and depth-aware school selection
+
+```text
+development_vector_selector = installed and validated
+expected_topic_count = 12
+missing_expected_topic_count = 12
+under_depth_expected_topic_count = 0
+selected_topic = codex_school_task_template_strength
+selection_reason = missing_expected_topic
+selected_depth = 0 -> 4
+codex_candidate_limit_hint = 1000
+selector_memory_changed = false
+```
+
+Meaning:
+
+```text
+School now compares active memory against its development vector.
+It can choose a missing expected topic or an under-depth topic.
+Codex receives target topic, current depth, target depth, single-topic boundary, candidate rules, and acceptance contract.
+```

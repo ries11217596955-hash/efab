@@ -1,0 +1,94 @@
+﻿{
+    "schema":  "development_vector_theme_selector_validation_v1",
+    "status":  "PASS_DEVELOPMENT_VECTOR_THEME_SELECTOR_VALIDATION_V1",
+    "created_at":  "2026-07-14T22:33:45.4970387+04:00",
+    "memory_before":  {
+                          "cells":  "199C9D9391ED5C79BBC774F8F81E884E4B439A291091C8F6F2A36A7792BA8BD1",
+                          "index":  "54F2CBBB6148AF68EC9FF9B5E97EE10AF868677123775886BA4CEE4173457101",
+                          "manifest":  "8035CE66AEA0D843FCD5E5585CDC36B1066D296ADA12C192C57C222C6045EEE1"
+                      },
+    "memory_after":  {
+                         "cells":  "199C9D9391ED5C79BBC774F8F81E884E4B439A291091C8F6F2A36A7792BA8BD1",
+                         "index":  "54F2CBBB6148AF68EC9FF9B5E97EE10AF868677123775886BA4CEE4173457101",
+                         "manifest":  "8035CE66AEA0D843FCD5E5585CDC36B1066D296ADA12C192C57C222C6045EEE1"
+                     },
+    "selected_topic":  {
+                           "score":  1760,
+                           "selection_reason":  "missing_expected_topic",
+                           "topic_key":  "codex_school_task_template_strength",
+                           "label":  "strong Codex school task template",
+                           "priority_queue":  1,
+                           "current_depth":  0,
+                           "target_depth":  4,
+                           "start_depth":  0,
+                           "depth_gap":  4,
+                           "matched_memory_topic":  null,
+                           "why":  "Codex requests must specify depth, candidate rules, proof fields, validators, and cut lines",
+                           "source_basis":  [
+                                                "Codex boundary",
+                                                "school automation"
+                                            ],
+                           "codex_depth_focus":  "make single-topic bounded material authoring task with acceptance contract"
+                       },
+    "expected_topic_count":  12,
+    "missing_expected_topic_count":  12,
+    "under_depth_expected_topic_count":  0,
+    "codex_request_template":  {
+                                   "role":  "bounded_school_material_author",
+                                   "target_topic":  "codex_school_task_template_strength",
+                                   "target_label":  "strong Codex school task template",
+                                   "priority_queue":  1,
+                                   "current_depth":  0,
+                                   "target_depth":  4,
+                                   "start_depth":  0,
+                                   "depth_gap":  4,
+                                   "candidate_limit_hint":  1000,
+                                   "single_topic_boundary":  "Only this topic is allowed: codex_school_task_template_strength. Do not broaden into adjacent topics.",
+                                   "depth_task":  "Start at depth 0 and create material that advances toward depth 4.",
+                                   "candidate_rules":  [
+                                                           "one candidate must serve the selected topic only",
+                                                           "candidate must declare depth level",
+                                                           "candidate must include expected behavior and failure contrast",
+                                                           "candidate must include source_basis or mark source_missing",
+                                                           "candidate must be digestible into compact memory",
+                                                           "candidate must not invent external facts without source"
+                                                       ],
+                                   "required_fields":  [
+                                                           "target_topic",
+                                                           "target_label",
+                                                           "priority_queue",
+                                                           "current_depth",
+                                                           "target_depth",
+                                                           "start_depth",
+                                                           "candidate_limit",
+                                                           "single_topic_boundary",
+                                                           "atom_schema",
+                                                           "proof_fields",
+                                                           "validator_fields",
+                                                           "negative_examples",
+                                                           "return_to_parent",
+                                                           "no_active_memory_mutation"
+                                                       ],
+                                   "cut_lines":  [
+                                                     "no broad multi-topic pack",
+                                                     "no raw memory mutation",
+                                                     "no unbounded repair",
+                                                     "no writing before PREFLIGHT_PASS for Codex file tasks"
+                                                 ],
+                                   "acceptance_contract":  [
+                                                               "candidate declares topic_key exactly",
+                                                               "candidate declares depth_level and prerequisite_depth",
+                                                               "candidate includes source_basis or source_missing=true",
+                                                               "candidate includes validator and negative case",
+                                                               "candidate includes return_to_parent relation",
+                                                               "candidate is compact-digest friendly",
+                                                               "no active memory mutation by Codex"
+                                                           ],
+                                   "output_status":  "CODEX_DRAFT_UNTIL_SCHOOL_VALIDATED"
+                               },
+    "output_path":  ".runtime/school_dynamic_theme_selection/validator_selection.json",
+    "stdout_path":  ".runtime/school_dynamic_theme_selection/validator_stdout.txt",
+    "failures":  [
+
+                 ]
+}
