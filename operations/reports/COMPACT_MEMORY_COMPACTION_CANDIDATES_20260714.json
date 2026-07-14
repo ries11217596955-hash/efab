@@ -1,0 +1,46 @@
+{
+  "schema": "compact_memory_compaction_candidate_generation_v1",
+  "status": "PASS_CANDIDATES_CREATED_NO_ACTIVE_MEMORY_MUTATION",
+  "created_at": "2026-07-14T12:35:25.089439+00:00",
+  "source": {
+    "root": ".runtime\\active_compact_semantic_memory_v1",
+    "cells_bytes": 113342972,
+    "index_bytes": 308130,
+    "manifest_bytes": 972,
+    "cells_sha256": "93532eea46e05b5307865d7cead9816f60740307d3eb741472a87be0cda1d5d6",
+    "index_sha256": "ba7160ffa526376b08501a41f96225e0b98490a6cb5a58ecb927137ff91f6597",
+    "manifest_sha256": "771149c5039767c124e6064eecc67dabd1eccfb83082423b8f7306f1675357bb",
+    "cell_count": 121,
+    "observation_count_sum": 450012
+  },
+  "candidates": {
+    "conservative": {
+      "path": ".runtime/active_compact_semantic_memory_v1_compaction_work_20260714/candidate_conservative",
+      "cells_bytes": 12637868,
+      "index_bytes": 308130,
+      "manifest_bytes": 1814,
+      "cells_sha256": "e4c7302f75a2838d2cf5fd91fdcc67d1d3d2f8544fc42393b7e956c712e56e00",
+      "fields_compacted": [
+        "relations",
+        "source_fingerprints"
+      ],
+      "properties_preserved_full": true,
+      "estimated_safe_for_replacement": true
+    },
+    "aggressive": {
+      "path": ".runtime/active_compact_semantic_memory_v1_compaction_work_20260714/candidate_aggressive",
+      "cells_bytes": 491515,
+      "index_bytes": 308130,
+      "manifest_bytes": 1831,
+      "cells_sha256": "445e92a0c6eb1b745736f46537c7e3498127999d2f646bb1f94eb678d3646536",
+      "fields_compacted": [
+        "relations",
+        "source_fingerprints",
+        "properties"
+      ],
+      "properties_preserved_full": false,
+      "estimated_safe_for_replacement": false
+    }
+  },
+  "boundary": "Candidate generation only. Active memory root was not modified."
+}

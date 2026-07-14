@@ -3714,3 +3714,36 @@ Proof pointers:
 - operations/reports/COMPACT_MEMORY_WEIGHT_AUDIT_20260714.json
 - operations/reports/COMPACT_MEMORY_WEIGHT_AUDIT_20260714.md
 - operations/reports/COMPACT_MEMORY_WEIGHT_AUDIT_COMPACTION_SAMPLE_20260714.json
+## 2026-07-14 - Active compact memory conservative compaction replacement
+
+STATUS: PASS_ACTIVE_COMPACT_MEMORY_CONSERVATIVE_COMPACTION_REPLACED_AND_VALIDATED
+
+Action:
+- Created conservative candidate: compacted relations + source_fingerprints; preserved properties full.
+- Validated candidate: cell_id set, index identity, observation_count sum, summary hashes, list compatibility.
+- Ran recall probe on source and candidate: PASS.
+- Created rollback backup before mutation.
+- Replaced .runtime/active_compact_semantic_memory_v1 with conservative candidate.
+- Ran live recall probe after replacement: PASS.
+- Ran structural live validation: PASS, failures=0.
+
+Size result:
+- cells.jsonl before: 113342972 bytes.
+- cells.jsonl after: 12637868 bytes.
+- bytes_saved: 100705104.
+- index.json kept unchanged.
+
+Rollback:
+- backup_path=.runtime\active_compact_semantic_memory_v1_backups\before_conservative_compaction_20260714_163639
+- rollback instruction: remove active memory root and copy backup_path back to .runtime/active_compact_semantic_memory_v1.
+
+Boundary:
+- Aggressive candidate was NOT installed.
+- Protected memory mutation was performed only after backup + validation.
+- This is PROVEN_LAB active memory replacement, not live long-run readiness.
+
+Proof pointers:
+- operations/reports/COMPACT_MEMORY_COMPACTION_CANDIDATES_20260714.json
+- operations/reports/COMPACT_MEMORY_COMPACTION_CANDIDATE_VALIDATION_20260714.json
+- operations/reports/ACTIVE_COMPACT_MEMORY_CONSERVATIVE_COMPACTION_REPLACEMENT_20260714.json
+- operations/reports/ACTIVE_COMPACT_MEMORY_CONSERVATIVE_COMPACTION_REPLACEMENT_20260714.md

@@ -6,19 +6,19 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "74a5999ca2420ae3701dd95a26740767dc8d8c98",
-    "subject_head":  "74a5999ca2420ae3701dd95a26740767dc8d8c98",
-    "generated_at":  "2026-07-14T16:27:27.4885950+04:00",
+    "observed_head_at_generation":  "037c773059206d04e1da96bf3fe124adee0cb0a4",
+    "subject_head":  "037c773059206d04e1da96bf3fe124adee0cb0a4",
+    "generated_at":  "2026-07-14T16:37:55.8272196+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  1857,
+    "structural_path_count":  1861,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1857,
-                                    "sha256":  "6ec7a5185a916dd385a0c125be3e97522da3d557ceece087d794cb985084a168"
+                                    "structural_file_count":  1861,
+                                    "sha256":  "14586128f95c29da77ad2a445468de540864ddf09071cbd822b9f4a6492b4bd1"
                                 },
     "module_count":  203,
     "validator_count":  174,
@@ -625,9 +625,9 @@
 
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "74a5999ca2420ae3701dd95a26740767dc8d8c98",
-                                                               "committed_at":  "2026-07-14T14:58:12+04:00",
-                                                               "subject":  "proof: clean runtime raw staging"
+                                                               "head":  "037c773059206d04e1da96bf3fe124adee0cb0a4",
+                                                               "committed_at":  "2026-07-14T16:26:58+04:00",
+                                                               "subject":  "audit: measure compact memory weight"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -2066,19 +2066,19 @@
                                             "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                                             "discovery_method":  "bounded_git_ls_files_path_discovery",
                                             "evidence_counts":  {
-                                                                    "files":  20,
+                                                                    "files":  24,
                                                                     "scripts":  0,
                                                                     "validators":  0,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  0,
-                                                                    "docs":  8
+                                                                    "docs":  9
                                                                 },
-                                            "file_count":  20,
+                                            "file_count":  24,
                                             "script_count":  0,
                                             "validator_count":  0,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  0,
-                                            "doc_count":  8,
+                                            "doc_count":  9,
                                             "validator_refs":  [
 
                                                                ],
@@ -2093,6 +2093,10 @@
                                                                   "operations/reports/ACTIVE_BEHAVIOR_ABSORPTION_PROMOTION_V1.md",
                                                                   "operations/reports/ACTIVE_BEHAVIOR_TASK_DECISION_FLOW_V1.json",
                                                                   "operations/reports/ACTIVE_BEHAVIOR_TASK_DECISION_FLOW_V1.md",
+                                                                  "operations/reports/ACTIVE_COMPACT_MEMORY_CONSERVATIVE_COMPACTION_REPLACEMENT_20260714.json",
+                                                                  "operations/reports/ACTIVE_COMPACT_MEMORY_CONSERVATIVE_COMPACTION_REPLACEMENT_20260714.md",
+                                                                  "operations/reports/COMPACT_MEMORY_COMPACTION_CANDIDATES_20260714.json",
+                                                                  "operations/reports/COMPACT_MEMORY_COMPACTION_CANDIDATE_VALIDATION_20260714.json",
                                                                   "operations/reports/COMPACT_MEMORY_WEIGHT_AUDIT_20260714.json",
                                                                   "operations/reports/COMPACT_MEMORY_WEIGHT_AUDIT_20260714.md",
                                                                   "operations/reports/COMPACT_MEMORY_WEIGHT_AUDIT_COMPACTION_SAMPLE_20260714.json",
@@ -8333,9 +8337,9 @@
 
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "74a5999ca2420ae3701dd95a26740767dc8d8c98",
-                                                     "committed_at":  "2026-07-14T14:58:12+04:00",
-                                                     "subject":  "proof: clean runtime raw staging"
+                                                     "head":  "037c773059206d04e1da96bf3fe124adee0cb0a4",
+                                                     "committed_at":  "2026-07-14T16:26:58+04:00",
+                                                     "subject":  "audit: measure compact memory weight"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -9772,19 +9776,19 @@
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                            "discovery_method":  "bounded_git_ls_files_path_discovery",
                            "evidence_counts":  {
-                                                   "files":  20,
+                                                   "files":  24,
                                                    "scripts":  0,
                                                    "validators":  0,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  0,
-                                                   "docs":  8
+                                                   "docs":  9
                                                },
-                           "file_count":  20,
+                           "file_count":  24,
                            "script_count":  0,
                            "validator_count":  0,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  0,
-                           "doc_count":  8,
+                           "doc_count":  9,
                            "validator_refs":  [
 
                                               ],
@@ -9799,6 +9803,10 @@
                                                  "operations/reports/ACTIVE_BEHAVIOR_ABSORPTION_PROMOTION_V1.md",
                                                  "operations/reports/ACTIVE_BEHAVIOR_TASK_DECISION_FLOW_V1.json",
                                                  "operations/reports/ACTIVE_BEHAVIOR_TASK_DECISION_FLOW_V1.md",
+                                                 "operations/reports/ACTIVE_COMPACT_MEMORY_CONSERVATIVE_COMPACTION_REPLACEMENT_20260714.json",
+                                                 "operations/reports/ACTIVE_COMPACT_MEMORY_CONSERVATIVE_COMPACTION_REPLACEMENT_20260714.md",
+                                                 "operations/reports/COMPACT_MEMORY_COMPACTION_CANDIDATES_20260714.json",
+                                                 "operations/reports/COMPACT_MEMORY_COMPACTION_CANDIDATE_VALIDATION_20260714.json",
                                                  "operations/reports/COMPACT_MEMORY_WEIGHT_AUDIT_20260714.json",
                                                  "operations/reports/COMPACT_MEMORY_WEIGHT_AUDIT_20260714.md",
                                                  "operations/reports/COMPACT_MEMORY_WEIGHT_AUDIT_COMPACTION_SAMPLE_20260714.json",
