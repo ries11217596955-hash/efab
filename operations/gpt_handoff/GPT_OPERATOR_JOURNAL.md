@@ -3577,3 +3577,32 @@ Boundary:
 Next:
 - Commit/push validated campaign pack/generator support.
 - Prepare 15,000 Live detached launch only after final clean/sync/process preflight.
+
+
+## 2026-07-14 — GPT Instructions V10.2 strengthened during 500k school run
+
+STATUS: SETTINGS_ARTIFACT_PREPARED / RUNTIME_UNTOUCHED
+
+Owner request:
+- While 500k school run continues, strengthen GPT settings using recent repo journal and failures.
+
+Runtime boundary:
+- Active school run was observed, not stopped or mutated.
+- Settings work created an install-ready artifact only.
+
+Created:
+- operations/gpt_handoff/GPT_INSTRUCTIONS_COMPACT_V10_2_RU.md
+
+Key deltas over V10.1:
+- Active compact memory is protected runtime memory, not cleanup trash.
+- Evidence snapshot/tail sample is not full memory and cannot prove old memory/million preserved.
+- Live school preflight must block if active memory root is missing.
+- School/campaign model clarified: Codex authors campaign pack/coverage/level plan; school remains accelerator.
+- Codex broad tasks should be split into slices because full campaign tasks can hang/overthink.
+- Long-run gate added: repo sync, process_count=0, active memory ready, last small proof PASS, disk/log plan.
+- Runtime retention law added: keep compact summaries + latest 3–5 chunk dirs after digest proof; do not clean while run active.
+- Settings update during running school must create install-ready artifact only and not mutate runtime/school surfaces.
+
+Install note:
+- This file is prepared for GPT Instructions field.
+- It is not installed until Owner copies it into the GPT UI and saves/updates the GPT.
