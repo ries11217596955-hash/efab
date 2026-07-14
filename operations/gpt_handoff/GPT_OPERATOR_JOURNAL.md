@@ -3627,3 +3627,35 @@ Boundary:
 Next:
 - Run bounded digest/promotion gate on 15k staging.
 - Then apply retention cleanup: compact summaries + latest 3-5 useful chunk dirs; never delete .runtime/active_compact_semantic_memory_v1.
+## 2026-07-14 - 15k usefulness gate and compact digest submit-only
+
+STATUS: PASS_COMPACT_30_TOPIC_DIGEST_VALIDATED_AND_SUBMITTED_ONLY
+
+Decision:
+- Full raw 15k promotion rejected. Audit showed 15k = 30 behavior topics x 500 drills, not 15k independent facts.
+- Useful part preserved as compact 30-topic digest packet.
+- Packet validated and submitted to compact-memory intake queue only; no merge / no active memory promotion.
+
+Proof pointers:
+- operations/reports/SCHOOL_15K_QUALITY_GATE_20260714.json
+- operations/reports/SCHOOL_15K_QUALITY_GATE_20260714.md
+- operations/reports/SCHOOL_15K_COMPACT_TOPIC_DIGEST_PACKET_20260714.json
+- operations/reports/SCHOOL_15K_COMPACT_DIGEST_SUBMIT_20260714.json
+- operations/reports/SCHOOL_15K_COMPACT_DIGEST_SUBMIT_20260714.md
+
+Validation:
+- PACKET_VALIDATION_STATUS=PASS_COMPACT_MEMORY_KNOWLEDGE_PACKET_V1
+- PACKET_DECLARED_ATOMS=15000
+- PACKET_TOPICS=30
+- min_quality_score=0.72
+- min_novelty_score=0.18
+- direct_active_memory_mutation_allowed=false
+
+Submit-only:
+- INTAKE_STATUS=PASS_MULTI_SOURCE_COMPACT_MEMORY_INTAKE_SUBMIT_V1
+- SUBMIT_AND_MERGE_STATUS=PASS_SUBMIT_ONLY_COMPACT_MEMORY_PACKET_V1
+- merge_performed=false
+
+Boundary:
+- This is useful school signal, not accepted active memory.
+- Do not clean raw staging until Owner accepts digest + retention gate.

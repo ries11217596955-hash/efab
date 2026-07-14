@@ -1,0 +1,23 @@
+{
+    "schema":  "school_15k_quality_gate_v1",
+    "status":  "PASS_USEFUL_ONLY_AS_COMPACT_30_TOPIC_DIGEST",
+    "created_at":  "2026-07-14T14:20:31.8969599+04:00",
+    "repo_head":  "e324c17",
+    "total_raw_atoms":  15000,
+    "unique_topics":  30,
+    "raw_promotion_decision":  "REJECT_FULL_15K_RAW_PROMOTION",
+    "compact_digest_decision":  "ALLOW_30_TOPIC_PACKET_VALIDATE_AND_SUBMIT_ONLY",
+    "reasons":  [
+                    "15k contains 30 topics with 500 drills each",
+                    "0 placeholder/generic/same-as-above hits",
+                    "all required objective/behavior/exercise fields present",
+                    "content is useful for behavior reinforcement but repetitive for active memory"
+                ],
+    "risks":  [
+                  "raw promotion would bloat active memory",
+                  "chunk1 factory source missing so full-run claim remains limited",
+                  "future merge still needs separate active memory proof"
+              ],
+    "packet_path":  "operations/reports/SCHOOL_15K_COMPACT_TOPIC_DIGEST_PACKET_20260714.json",
+    "active_memory_mutated":  false
+}
