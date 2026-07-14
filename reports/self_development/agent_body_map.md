@@ -2,9 +2,9 @@
 
 Status: ACTIVE_DERIVED_VIEW
 Branch: main
-Observed head at generation: 3625b8f0076b4e9eddd5738e1b20e1a0d20325b1
-Generated: 2026-07-14T21:53:16.9708544+04:00
-Body source fingerprint: 4fb13eea81ee91ba1708cee2f80e9d2c7b4bb42e456456ef410f39bf1ec2b351
+Observed head at generation: ae8e032102eb0d81bd72104369be6a8dd09d68d9
+Generated: 2026-07-14T22:06:49.1531681+04:00
+Body source fingerprint: d2af605a42341f3b9d9ae7d14848ebf4ab97ed64ced3f7e8c6e4ae5ae479685f
 
 Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
@@ -24,7 +24,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
 ## Confirmed Components
 
-- `school` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/school`, files=128, scripts=63, required_present=True
+- `school` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/school`, files=120, scripts=63, required_present=True
 - `school_source_router` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/school/curriculum/source_router`, files=8, scripts=6, required_present=True
 - `compact_memory_intake` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/compact_memory_intake`, files=10, scripts=6, required_present=True
 - `knowledge_acquisition_port` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/knowledge_acquisition_port`, files=50, scripts=2, required_present=True
@@ -59,7 +59,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `operations_readme_md` - root `operations/README.md`, files=1, scripts=0, validators=0, proofs=0, needs_triage=True
 - `operations_reasoning` - root `operations/reasoning`, files=6, scripts=6, validators=3, proofs=0, needs_triage=True
 - `operations_reflex_library` - root `operations/reflex_library`, files=2, scripts=1, validators=0, proofs=0, needs_triage=True
-- `operations_reports` - root `operations/reports`, files=62, scripts=0, validators=0, proofs=0, needs_triage=True
+- `operations_reports` - root `operations/reports`, files=33, scripts=0, validators=0, proofs=0, needs_triage=True
 - `operations_thinking_sandbox` - root `operations/thinking_sandbox`, files=2, scripts=2, validators=1, proofs=0, needs_triage=True
 - `packs_phase10_generated_agent_validation_harness_v1` - root `packs/PHASE10_GENERATED_AGENT_VALIDATION_HARNESS_V1`, files=6, scripts=3, validators=2, proofs=0, needs_triage=True
 - `packs_phase100_quarantine_and_blocker_registry_v1` - root `packs/PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1`, files=3, scripts=2, validators=0, proofs=0, needs_triage=True

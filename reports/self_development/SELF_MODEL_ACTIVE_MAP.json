@@ -6,19 +6,19 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "3625b8f0076b4e9eddd5738e1b20e1a0d20325b1",
-    "subject_head":  "3625b8f0076b4e9eddd5738e1b20e1a0d20325b1",
-    "generated_at":  "2026-07-14T21:53:16.9708544+04:00",
+    "observed_head_at_generation":  "ae8e032102eb0d81bd72104369be6a8dd09d68d9",
+    "subject_head":  "ae8e032102eb0d81bd72104369be6a8dd09d68d9",
+    "generated_at":  "2026-07-14T22:06:49.1531681+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  1909,
+    "structural_path_count":  1876,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1909,
-                                    "sha256":  "4fb13eea81ee91ba1708cee2f80e9d2c7b4bb42e456456ef410f39bf1ec2b351"
+                                    "structural_file_count":  1876,
+                                    "sha256":  "d2af605a42341f3b9d9ae7d14848ebf4ab97ed64ced3f7e8c6e4ae5ae479685f"
                                 },
     "module_count":  203,
     "validator_count":  174,
@@ -29,7 +29,7 @@
                                      "root":  "operations/school",
                                      "status":  "CONFIRMED_PRIMARY_EVIDENCE_PRESENT",
                                      "confirmation_basis":  "explicit_required_component_with_primary_repo_evidence",
-                                     "file_count":  128,
+                                     "file_count":  120,
                                      "script_count":  63,
                                      "validator_count":  30,
                                      "proof_file_count":  12,
@@ -625,9 +625,9 @@
 
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "3625b8f0076b4e9eddd5738e1b20e1a0d20325b1",
-                                                               "committed_at":  "2026-07-14T21:47:29+04:00",
-                                                               "subject":  "fix: lock school to single owner launch"
+                                                               "head":  "ae8e032102eb0d81bd72104369be6a8dd09d68d9",
+                                                               "committed_at":  "2026-07-14T21:52:47+04:00",
+                                                               "subject":  "chore: reset operator journal to active route"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -2066,19 +2066,19 @@
                                             "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                                             "discovery_method":  "bounded_git_ls_files_path_discovery",
                                             "evidence_counts":  {
-                                                                    "files":  62,
+                                                                    "files":  33,
                                                                     "scripts":  0,
                                                                     "validators":  0,
                                                                     "proofs":  0,
-                                                                    "contracts_or_policies":  1,
-                                                                    "docs":  25
+                                                                    "contracts_or_policies":  0,
+                                                                    "docs":  14
                                                                 },
-                                            "file_count":  62,
+                                            "file_count":  33,
                                             "script_count":  0,
                                             "validator_count":  0,
                                             "proof_file_count":  0,
-                                            "contract_or_policy_count":  1,
-                                            "doc_count":  25,
+                                            "contract_or_policy_count":  0,
+                                            "doc_count":  14,
                                             "validator_refs":  [
 
                                                                ],
@@ -2086,7 +2086,7 @@
 
                                                            ],
                                             "contract_or_policy_refs":  [
-                                                                            "operations/reports/ONE_TOPIC_SEP_LADDER_ALLOWED_MODES_CONTRACT_REPAIR_20260714.json"
+
                                                                         ],
                                             "notable_files":  [
                                                                   "operations/reports/ACTIVE_BEHAVIOR_ABSORPTION_PROMOTION_V1.json",
@@ -2095,10 +2095,6 @@
                                                                   "operations/reports/ACTIVE_BEHAVIOR_TASK_DECISION_FLOW_V1.md",
                                                                   "operations/reports/ACTIVE_COMPACT_MEMORY_CONSERVATIVE_COMPACTION_REPLACEMENT_20260714.json",
                                                                   "operations/reports/ACTIVE_COMPACT_MEMORY_CONSERVATIVE_COMPACTION_REPLACEMENT_20260714.md",
-                                                                  "operations/reports/CODEX_100K_CAMPAIGN_ATTEMPT_REPORT_20260714.json",
-                                                                  "operations/reports/CODEX_100K_CAMPAIGN_ATTEMPT_REPORT_20260714.md",
-                                                                  "operations/reports/CODEX_100K_CAMPAIGN_COMPACT_CONTEXT_20260714.json",
-                                                                  "operations/reports/CODEX_100K_CAMPAIGN_PACK_INDEPENDENT_VALIDATION_20260714.json",
                                                                   "operations/reports/COMPACT_MEMORY_COMPACTION_CANDIDATES_20260714.json",
                                                                   "operations/reports/COMPACT_MEMORY_COMPACTION_CANDIDATE_VALIDATION_20260714.json",
                                                                   "operations/reports/COMPACT_MEMORY_WEIGHT_AUDIT_20260714.json",
@@ -2110,13 +2106,17 @@
                                                                   "operations/reports/GPT_OPERATOR_JOURNAL_ACTIVE_RESET_20260714.md",
                                                                   "operations/reports/MEMORY_WEIGHT_GUARD_INSTALLATION_20260714.json",
                                                                   "operations/reports/MEMORY_WEIGHT_GUARD_INSTALLATION_20260714.md",
-                                                                  "operations/reports/ONE_TOPIC_SEP_LADDER_100K_AUTHORING_AND_SMOKE_20260714.json",
-                                                                  "operations/reports/ONE_TOPIC_SEP_LADDER_100K_AUTHORING_AND_SMOKE_20260714.md",
-                                                                  "operations/reports/ONE_TOPIC_SEP_LADDER_100K_CODEX_CONTEXT_20260714.json",
-                                                                  "operations/reports/ONE_TOPIC_SEP_LADDER_100K_COMPACT_DIGEST_PACKET_20260714.json"
+                                                                  "operations/reports/ONE_TOPIC_SEP_LADDER_100K_COMPACT_DIGEST_PACKET_20260714.json",
+                                                                  "operations/reports/ONE_TOPIC_SEP_LADDER_100K_COMPLETION_20260714.json",
+                                                                  "operations/reports/ONE_TOPIC_SEP_LADDER_100K_COMPLETION_20260714.md",
+                                                                  "operations/reports/ONE_TOPIC_SEP_LADDER_100K_QUALITY_GATE_20260714.json",
+                                                                  "operations/reports/ONE_TOPIC_SEP_LADDER_100K_QUALITY_GATE_20260714.md",
+                                                                  "operations/reports/ONE_TOPIC_SEP_LADDER_100K_RETENTION_CLEANUP_REPORT_20260714.json",
+                                                                  "operations/reports/ONE_TOPIC_SEP_LADDER_100K_RETENTION_CLEANUP_REPORT_20260714.md",
+                                                                  "operations/reports/RUNTIME_CLEANUP_PLAN_20260714.json"
                                                               ],
                                             "primary_evidence_refs":  [
-                                                                          "operations/reports/ONE_TOPIC_SEP_LADDER_ALLOWED_MODES_CONTRACT_REPAIR_20260714.json"
+
                                                                       ],
                                             "needs_triage":  true,
                                             "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
@@ -7742,7 +7742,7 @@
                            "root":  "operations/school",
                            "status":  "CONFIRMED_PRIMARY_EVIDENCE_PRESENT",
                            "confirmation_basis":  "explicit_required_component_with_primary_repo_evidence",
-                           "file_count":  128,
+                           "file_count":  120,
                            "script_count":  63,
                            "validator_count":  30,
                            "proof_file_count":  12,
@@ -8338,9 +8338,9 @@
 
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "3625b8f0076b4e9eddd5738e1b20e1a0d20325b1",
-                                                     "committed_at":  "2026-07-14T21:47:29+04:00",
-                                                     "subject":  "fix: lock school to single owner launch"
+                                                     "head":  "ae8e032102eb0d81bd72104369be6a8dd09d68d9",
+                                                     "committed_at":  "2026-07-14T21:52:47+04:00",
+                                                     "subject":  "chore: reset operator journal to active route"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -9777,19 +9777,19 @@
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                            "discovery_method":  "bounded_git_ls_files_path_discovery",
                            "evidence_counts":  {
-                                                   "files":  62,
+                                                   "files":  33,
                                                    "scripts":  0,
                                                    "validators":  0,
                                                    "proofs":  0,
-                                                   "contracts_or_policies":  1,
-                                                   "docs":  25
+                                                   "contracts_or_policies":  0,
+                                                   "docs":  14
                                                },
-                           "file_count":  62,
+                           "file_count":  33,
                            "script_count":  0,
                            "validator_count":  0,
                            "proof_file_count":  0,
-                           "contract_or_policy_count":  1,
-                           "doc_count":  25,
+                           "contract_or_policy_count":  0,
+                           "doc_count":  14,
                            "validator_refs":  [
 
                                               ],
@@ -9797,7 +9797,7 @@
 
                                           ],
                            "contract_or_policy_refs":  [
-                                                           "operations/reports/ONE_TOPIC_SEP_LADDER_ALLOWED_MODES_CONTRACT_REPAIR_20260714.json"
+
                                                        ],
                            "notable_files":  [
                                                  "operations/reports/ACTIVE_BEHAVIOR_ABSORPTION_PROMOTION_V1.json",
@@ -9806,10 +9806,6 @@
                                                  "operations/reports/ACTIVE_BEHAVIOR_TASK_DECISION_FLOW_V1.md",
                                                  "operations/reports/ACTIVE_COMPACT_MEMORY_CONSERVATIVE_COMPACTION_REPLACEMENT_20260714.json",
                                                  "operations/reports/ACTIVE_COMPACT_MEMORY_CONSERVATIVE_COMPACTION_REPLACEMENT_20260714.md",
-                                                 "operations/reports/CODEX_100K_CAMPAIGN_ATTEMPT_REPORT_20260714.json",
-                                                 "operations/reports/CODEX_100K_CAMPAIGN_ATTEMPT_REPORT_20260714.md",
-                                                 "operations/reports/CODEX_100K_CAMPAIGN_COMPACT_CONTEXT_20260714.json",
-                                                 "operations/reports/CODEX_100K_CAMPAIGN_PACK_INDEPENDENT_VALIDATION_20260714.json",
                                                  "operations/reports/COMPACT_MEMORY_COMPACTION_CANDIDATES_20260714.json",
                                                  "operations/reports/COMPACT_MEMORY_COMPACTION_CANDIDATE_VALIDATION_20260714.json",
                                                  "operations/reports/COMPACT_MEMORY_WEIGHT_AUDIT_20260714.json",
@@ -9821,13 +9817,17 @@
                                                  "operations/reports/GPT_OPERATOR_JOURNAL_ACTIVE_RESET_20260714.md",
                                                  "operations/reports/MEMORY_WEIGHT_GUARD_INSTALLATION_20260714.json",
                                                  "operations/reports/MEMORY_WEIGHT_GUARD_INSTALLATION_20260714.md",
-                                                 "operations/reports/ONE_TOPIC_SEP_LADDER_100K_AUTHORING_AND_SMOKE_20260714.json",
-                                                 "operations/reports/ONE_TOPIC_SEP_LADDER_100K_AUTHORING_AND_SMOKE_20260714.md",
-                                                 "operations/reports/ONE_TOPIC_SEP_LADDER_100K_CODEX_CONTEXT_20260714.json",
-                                                 "operations/reports/ONE_TOPIC_SEP_LADDER_100K_COMPACT_DIGEST_PACKET_20260714.json"
+                                                 "operations/reports/ONE_TOPIC_SEP_LADDER_100K_COMPACT_DIGEST_PACKET_20260714.json",
+                                                 "operations/reports/ONE_TOPIC_SEP_LADDER_100K_COMPLETION_20260714.json",
+                                                 "operations/reports/ONE_TOPIC_SEP_LADDER_100K_COMPLETION_20260714.md",
+                                                 "operations/reports/ONE_TOPIC_SEP_LADDER_100K_QUALITY_GATE_20260714.json",
+                                                 "operations/reports/ONE_TOPIC_SEP_LADDER_100K_QUALITY_GATE_20260714.md",
+                                                 "operations/reports/ONE_TOPIC_SEP_LADDER_100K_RETENTION_CLEANUP_REPORT_20260714.json",
+                                                 "operations/reports/ONE_TOPIC_SEP_LADDER_100K_RETENTION_CLEANUP_REPORT_20260714.md",
+                                                 "operations/reports/RUNTIME_CLEANUP_PLAN_20260714.json"
                                              ],
                            "primary_evidence_refs":  [
-                                                         "operations/reports/ONE_TOPIC_SEP_LADDER_ALLOWED_MODES_CONTRACT_REPAIR_20260714.json"
+
                                                      ],
                            "needs_triage":  true,
                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",

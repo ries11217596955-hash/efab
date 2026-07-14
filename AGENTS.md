@@ -592,9 +592,4 @@ School completion means compact memory update proof exists. If compact memory is
 
 Codex remains a bounded material authoring tool before school. Codex task files are not school launch routes and must not be treated as active school entrypoints.
 
-Do not use or recreate deleted school pointers:
-
-```text
-operations/reports/SCHOOL_CANONICAL_LAUNCH_POINTER_20260714.json
-operations/reports/SCHOOL_CANONICAL_LAUNCH_POINTER_20260714.md
-```
+Do not use or recreate deleted old school pointers. Current school route truth is only the single Owner launch above.

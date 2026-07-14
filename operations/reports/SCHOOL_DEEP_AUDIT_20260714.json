@@ -1,0 +1,1299 @@
+{
+  "schema": "school_deep_audit_v1",
+  "status": "AUDIT_COMPLETE_CLEANUP_CANDIDATES_IDENTIFIED",
+  "created_at": "2026-07-14T18:03:52.761777+00:00",
+  "repo_head": "ae8e032",
+  "owner_entrypoint": "operations/school/run_agent_school.ps1",
+  "owner_entrypoint_count": 1,
+  "run_like_surfaces_count": 10,
+  "internal_run_like_surfaces_count": 9,
+  "school_file_count": 128,
+  "report_file_count": 62,
+  "duplicate_basename_groups": {
+    "builder_sep_ladder_100k_v1": [
+      "operations/school/curriculum/candidate_factory/campaign_packs/builder_sep_ladder_100k_v1.jsonl",
+      "operations/school/curriculum/candidate_factory/source_origins/builder_sep_ladder_100k_v1.jsonl"
+    ],
+    "builder_sep_ladder_100k_v1.manifest": [
+      "operations/school/curriculum/candidate_factory/campaign_packs/builder_sep_ladder_100k_v1.manifest.json",
+      "operations/school/curriculum/candidate_factory/source_origins/builder_sep_ladder_100k_v1.manifest.json"
+    ],
+    "campaign_pack_candidate_factory_validation_v1": [
+      "operations/school/curriculum/candidate_factory/reports/CAMPAIGN_PACK_CANDIDATE_FACTORY_VALIDATION_V1.json",
+      "operations/school/curriculum/candidate_factory/reports/CAMPAIGN_PACK_CANDIDATE_FACTORY_VALIDATION_V1.md"
+    ],
+    "active_behavior_absorption_promotion_v1": [
+      "operations/reports/ACTIVE_BEHAVIOR_ABSORPTION_PROMOTION_V1.json",
+      "operations/reports/ACTIVE_BEHAVIOR_ABSORPTION_PROMOTION_V1.md"
+    ],
+    "active_behavior_task_decision_flow_v1": [
+      "operations/reports/ACTIVE_BEHAVIOR_TASK_DECISION_FLOW_V1.json",
+      "operations/reports/ACTIVE_BEHAVIOR_TASK_DECISION_FLOW_V1.md"
+    ],
+    "active_compact_memory_conservative_compaction_replacement_20260714": [
+      "operations/reports/ACTIVE_COMPACT_MEMORY_CONSERVATIVE_COMPACTION_REPLACEMENT_20260714.json",
+      "operations/reports/ACTIVE_COMPACT_MEMORY_CONSERVATIVE_COMPACTION_REPLACEMENT_20260714.md"
+    ],
+    "codex_100k_campaign_attempt_report_20260714": [
+      "operations/reports/CODEX_100K_CAMPAIGN_ATTEMPT_REPORT_20260714.json",
+      "operations/reports/CODEX_100K_CAMPAIGN_ATTEMPT_REPORT_20260714.md"
+    ],
+    "compact_memory_weight_audit_20260714": [
+      "operations/reports/COMPACT_MEMORY_WEIGHT_AUDIT_20260714.json",
+      "operations/reports/COMPACT_MEMORY_WEIGHT_AUDIT_20260714.md"
+    ],
+    "fresh_1000_candidate_behavior_absorption_v1": [
+      "operations/reports/FRESH_1000_CANDIDATE_BEHAVIOR_ABSORPTION_V1.json",
+      "operations/reports/FRESH_1000_CANDIDATE_BEHAVIOR_ABSORPTION_V1.md"
+    ],
+    "gpt_operator_journal_active_reset_20260714": [
+      "operations/reports/GPT_OPERATOR_JOURNAL_ACTIVE_RESET_20260714.json",
+      "operations/reports/GPT_OPERATOR_JOURNAL_ACTIVE_RESET_20260714.md"
+    ],
+    "memory_weight_guard_installation_20260714": [
+      "operations/reports/MEMORY_WEIGHT_GUARD_INSTALLATION_20260714.json",
+      "operations/reports/MEMORY_WEIGHT_GUARD_INSTALLATION_20260714.md"
+    ],
+    "one_topic_sep_ladder_100k_authoring_and_smoke_20260714": [
+      "operations/reports/ONE_TOPIC_SEP_LADDER_100K_AUTHORING_AND_SMOKE_20260714.json",
+      "operations/reports/ONE_TOPIC_SEP_LADDER_100K_AUTHORING_AND_SMOKE_20260714.md"
+    ],
+    "one_topic_sep_ladder_100k_completion_20260714": [
+      "operations/reports/ONE_TOPIC_SEP_LADDER_100K_COMPLETION_20260714.json",
+      "operations/reports/ONE_TOPIC_SEP_LADDER_100K_COMPLETION_20260714.md"
+    ],
+    "one_topic_sep_ladder_100k_independent_validation_20260714": [
+      "operations/reports/ONE_TOPIC_SEP_LADDER_100K_INDEPENDENT_VALIDATION_20260714.json",
+      "operations/reports/ONE_TOPIC_SEP_LADDER_100K_INDEPENDENT_VALIDATION_20260714.md"
+    ],
+    "one_topic_sep_ladder_100k_quality_gate_20260714": [
+      "operations/reports/ONE_TOPIC_SEP_LADDER_100K_QUALITY_GATE_20260714.json",
+      "operations/reports/ONE_TOPIC_SEP_LADDER_100K_QUALITY_GATE_20260714.md"
+    ],
+    "one_topic_sep_ladder_100k_retention_cleanup_report_20260714": [
+      "operations/reports/ONE_TOPIC_SEP_LADDER_100K_RETENTION_CLEANUP_REPORT_20260714.json",
+      "operations/reports/ONE_TOPIC_SEP_LADDER_100K_RETENTION_CLEANUP_REPORT_20260714.md"
+    ],
+    "runtime_cleanup_report_20260714": [
+      "operations/reports/RUNTIME_CLEANUP_REPORT_20260714.json",
+      "operations/reports/RUNTIME_CLEANUP_REPORT_20260714.md"
+    ],
+    "school_100k_usefulness_quality_gate_20260714": [
+      "operations/reports/SCHOOL_100K_USEFULNESS_QUALITY_GATE_20260714.json",
+      "operations/reports/SCHOOL_100K_USEFULNESS_QUALITY_GATE_20260714.md"
+    ],
+    "school_100k_useful_campaign_topic_plan_20260714": [
+      "operations/reports/SCHOOL_100K_USEFUL_CAMPAIGN_TOPIC_PLAN_20260714.json",
+      "operations/reports/SCHOOL_100K_USEFUL_CAMPAIGN_TOPIC_PLAN_20260714.md"
+    ],
+    "school_100k_useful_staging_run_20260714": [
+      "operations/reports/SCHOOL_100K_USEFUL_STAGING_RUN_20260714.json",
+      "operations/reports/SCHOOL_100K_USEFUL_STAGING_RUN_20260714.md"
+    ],
+    "school_15k_compact_digest_submit_20260714": [
+      "operations/reports/SCHOOL_15K_COMPACT_DIGEST_SUBMIT_20260714.json",
+      "operations/reports/SCHOOL_15K_COMPACT_DIGEST_SUBMIT_20260714.md"
+    ],
+    "school_15k_quality_gate_20260714": [
+      "operations/reports/SCHOOL_15K_QUALITY_GATE_20260714.json",
+      "operations/reports/SCHOOL_15K_QUALITY_GATE_20260714.md"
+    ],
+    "school_15k_streaming_completion_20260714": [
+      "operations/reports/SCHOOL_15K_STREAMING_COMPLETION_20260714.json",
+      "operations/reports/SCHOOL_15K_STREAMING_COMPLETION_20260714.md"
+    ],
+    "school_codex_launch_correction_20260714": [
+      "operations/reports/SCHOOL_CODEX_LAUNCH_CORRECTION_20260714.json",
+      "operations/reports/SCHOOL_CODEX_LAUNCH_CORRECTION_20260714.md"
+    ],
+    "school_codex_launch_recovery_and_seed_plan_attempts_20260714": [
+      "operations/reports/SCHOOL_CODEX_LAUNCH_RECOVERY_AND_SEED_PLAN_ATTEMPTS_20260714.json",
+      "operations/reports/SCHOOL_CODEX_LAUNCH_RECOVERY_AND_SEED_PLAN_ATTEMPTS_20260714.md"
+    ],
+    "school_codex_launch_runbook_20260714": [
+      "operations/reports/SCHOOL_CODEX_LAUNCH_RUNBOOK_20260714.json",
+      "operations/reports/SCHOOL_CODEX_LAUNCH_RUNBOOK_20260714.md"
+    ],
+    "school_launch_route_cleanup_20260714": [
+      "operations/reports/SCHOOL_LAUNCH_ROUTE_CLEANUP_20260714.json",
+      "operations/reports/SCHOOL_LAUNCH_ROUTE_CLEANUP_20260714.md"
+    ],
+    "school_single_owner_launch_route_lock_20260714": [
+      "operations/reports/SCHOOL_SINGLE_OWNER_LAUNCH_ROUTE_LOCK_20260714.json",
+      "operations/reports/SCHOOL_SINGLE_OWNER_LAUNCH_ROUTE_LOCK_20260714.md"
+    ]
+  },
+  "school_rows": [
+    {
+      "path": "operations/school/SCHOOL_CANONICAL_RUN_CONTRACT_V1.md",
+      "bytes": 5541,
+      "category": "ACTIVE_ROUTE_LOCK_KEEP"
+    },
+    {
+      "path": "operations/school/autonomous_school_cycle_policy.json",
+      "bytes": 1028,
+      "category": "EMBRYONIC_AUTOMATION_REVIEW"
+    },
+    {
+      "path": "operations/school/classification/ACTIVE_SCHOOL_BLOCK_CLASSIFICATION_V1.json",
+      "bytes": 5172,
+      "category": "REVIEW"
+    },
+    {
+      "path": "operations/school/control_autonomous_school_cycle_v1.ps1",
+      "bytes": 6274,
+      "category": "EMBRYONIC_AUTOMATION_REVIEW"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/CAMPAIGN_COVERAGE_STATUS_POINTER_V1.md",
+      "bytes": 3066,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/CODEX_CANDIDATE_FACTORY_V1.md",
+      "bytes": 1308,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/FACTORY_MEMORY_AND_LADDER_LEDGER_V1.md",
+      "bytes": 1010,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/FACTORY_MEMORY_FROM_ACTIVE_ROUTE_V1.md",
+      "bytes": 542,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/FACTORY_TOPIC_CURSOR_LEDGER_V1.md",
+      "bytes": 897,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/campaign_packs/builder_self_knowledge_deep_v1.jsonl",
+      "bytes": 36690,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/campaign_packs/builder_self_knowledge_deep_v1.manifest.json",
+      "bytes": 960,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/campaign_packs/builder_sep_ladder_100k_v1.jsonl",
+      "bytes": 3248348,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/campaign_packs/builder_sep_ladder_100k_v1.manifest.json",
+      "bytes": 2299,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/campaign_packs/builder_useful_100k_v1.jsonl",
+      "bytes": 63387,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/campaign_packs/builder_useful_100k_v1.manifest.json",
+      "bytes": 1396,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/generate_codex_curriculum_candidate_factory_run_v1.ps1",
+      "bytes": 21952,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/memory/active_compact_memory_snapshot_for_evidence_v1/SNAPSHOT_MANIFEST.json",
+      "bytes": 561,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/memory/active_compact_memory_snapshot_for_evidence_v1/cells_tail_sample_200.jsonl",
+      "bytes": 3725363,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/memory/active_compact_memory_snapshot_for_evidence_v1/index.json",
+      "bytes": 1742982,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/memory/active_compact_memory_snapshot_for_evidence_v1/manifest.json",
+      "bytes": 975,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/memory/factory_ledger.jsonl",
+      "bytes": 5,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/memory/theme_cursor_ledger.json",
+      "bytes": 13092556,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/rebuild_theme_cursor_ledger_v1.ps1",
+      "bytes": 7132,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/reports/BUILDER_SEP_LADDER_100K_AUTHOR_REPORT_V1.json",
+      "bytes": 2712,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/reports/BUILDER_SEP_LADDER_100K_COVERAGE_REPORT_V1.json",
+      "bytes": 3163,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/reports/BUILDER_SEP_LADDER_100K_NOVELTY_PLAN_V1.json",
+      "bytes": 2224,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/reports/BUILDER_USEFUL_100K_CAMPAIGN_AUTHOR_REPORT_V1.json",
+      "bytes": 3656,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/reports/BUILDER_USEFUL_100K_CAMPAIGN_COVERAGE_AUDIT_V1.json",
+      "bytes": 13527,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/reports/BUILDER_USEFUL_100K_CAMPAIGN_LEVEL_PLAN_V1.json",
+      "bytes": 9382,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/reports/CAMPAIGN_COVERAGE_AUDIT_V1.json",
+      "bytes": 161363,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/reports/CAMPAIGN_LEVEL_PLAN_V1.json",
+      "bytes": 103323,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/reports/CAMPAIGN_PACK_CANDIDATE_FACTORY_VALIDATION_V1.json",
+      "bytes": 1672,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/reports/CAMPAIGN_PACK_CANDIDATE_FACTORY_VALIDATION_V1.md",
+      "bytes": 705,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/reports/THEME_CURSOR_LEDGER_REBUILD_V1_REPORT.json",
+      "bytes": 678,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/source_origins/builder_sep_ladder_100k_v1.jsonl",
+      "bytes": 391244,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/source_origins/builder_sep_ladder_100k_v1.manifest.json",
+      "bytes": 2265,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/sync_codex_candidate_factory_memory_from_active_route_v1.ps1",
+      "bytes": 4820,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/update_codex_candidate_factory_memory_ladder_v1.ps1",
+      "bytes": 8631,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/update_codex_candidate_factory_topic_cursor_ledger_v1.ps1",
+      "bytes": 5831,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/validate_campaign_pack_candidate_factory_v1.ps1",
+      "bytes": 10161,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_batch_delta_v1.ps1",
+      "bytes": 3478,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_hot_path_invariants_v1.ps1",
+      "bytes": 4153,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_memory_ladder_v1.ps1",
+      "bytes": 3903,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_topic_cursor_ledger_v1.ps1",
+      "bytes": 3925,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/validate_codex_curriculum_candidate_factory_v1.ps1",
+      "bytes": 6819,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/candidate_factory/validate_theme_cursor_ledger_v1.ps1",
+      "bytes": 1909,
+      "category": "INTERNAL_HELPER_KEEP_CANDIDATE_FACTORY"
+    },
+    {
+      "path": "operations/school/curriculum/codex_active/invoke_codex_curriculum_active_decision_v1.ps1",
+      "bytes": 2758,
+      "category": "REVIEW"
+    },
+    {
+      "path": "operations/school/curriculum/codex_active/promote_codex_curriculum_digest_active_v1.ps1",
+      "bytes": 4366,
+      "category": "REVIEW"
+    },
+    {
+      "path": "operations/school/curriculum/codex_active/rollback_codex_curriculum_active_promotion_v1.ps1",
+      "bytes": 723,
+      "category": "REVIEW"
+    },
+    {
+      "path": "operations/school/curriculum/codex_active/validate_codex_curriculum_active_decision_v1.ps1",
+      "bytes": 4547,
+      "category": "REVIEW"
+    },
+    {
+      "path": "operations/school/curriculum/codex_contract/CODEX_CURRICULUM_CANARY_TASK_V1.md",
+      "bytes": 1278,
+      "category": "REVIEW"
+    },
+    {
+      "path": "operations/school/curriculum/codex_contract/CODEX_CURRICULUM_CONTRACT_V1.md",
+      "bytes": 2238,
+      "category": "REVIEW"
+    },
+    {
+      "path": "operations/school/curriculum/codex_contract/samples/mixed_codex_curriculum_batch_canary_v1.jsonl",
+      "bytes": 3836,
+      "category": "REVIEW"
+    },
+    {
+      "path": "operations/school/curriculum/codex_contract/validate_codex_curriculum_batch_v1.ps1",
+      "bytes": 4413,
+      "category": "REVIEW"
+    },
+    {
+      "path": "operations/school/curriculum/codex_contract/validate_codex_curriculum_contract_consistency_v1.ps1",
+      "bytes": 3309,
+      "category": "REVIEW"
+    },
+    {
+      "path": "operations/school/curriculum/codex_digest/digest_codex_curriculum_batch_v1.ps1",
+      "bytes": 6788,
+      "category": "REVIEW"
+    },
+    {
+      "path": "operations/school/curriculum/codex_digest/validate_codex_curriculum_digestion_v1.ps1",
+      "bytes": 3228,
+      "category": "INTERNAL_HELPER_KEEP_DIGESTION"
+    },
+    {
+      "path": "operations/school/curriculum/incremental_active_store/ACTIVE_REPO_BODY_REPLAY_AUDIT_POLICY_V1.json",
+      "bytes": 671,
+      "category": "INTERNAL_HELPER_REVIEW_READY_LANE"
+    },
+    {
+      "path": "operations/school/curriculum/incremental_active_store/ACTIVE_REPO_BODY_ROUTE_POINTER_V1.json",
+      "bytes": 663,
+      "category": "INTERNAL_HELPER_REVIEW_READY_LANE"
+    },
+    {
+      "path": "operations/school/curriculum/incremental_active_store/ACTIVE_REPO_BODY_ROUTE_REPLAY_LEDGER_V1.json",
+      "bytes": 535,
+      "category": "INTERNAL_HELPER_REVIEW_READY_LANE"
+    },
+    {
+      "path": "operations/school/curriculum/incremental_active_store/INCREMENTAL_ACTIVE_STORE_AND_ROLLBACK_V1.md",
+      "bytes": 1002,
+      "category": "INTERNAL_HELPER_REVIEW_READY_LANE"
+    },
+    {
+      "path": "operations/school/curriculum/incremental_active_store/REPLAY_AUDIT_POLICY_V1.md",
+      "bytes": 830,
+      "category": "INTERNAL_HELPER_REVIEW_READY_LANE"
+    },
+    {
+      "path": "operations/school/curriculum/incremental_active_store/ROUTE_REPLAY_LEDGER_V1.md",
+      "bytes": 610,
+      "category": "INTERNAL_HELPER_REVIEW_READY_LANE"
+    },
+    {
+      "path": "operations/school/curriculum/incremental_active_store/ROUTE_SWITCH_INCREMENTAL_ACTIVE_STORE_V1.md",
+      "bytes": 992,
+      "category": "INTERNAL_HELPER_REVIEW_READY_LANE"
+    },
+    {
+      "path": "operations/school/curriculum/incremental_active_store/activate_incremental_active_store_route_v1.ps1",
+      "bytes": 2893,
+      "category": "INTERNAL_HELPER_REVIEW_READY_LANE"
+    },
+    {
+      "path": "operations/school/curriculum/incremental_active_store/apply_ready_lane_incremental_active_delta_v1.ps1",
+      "bytes": 8936,
+      "category": "INTERNAL_HELPER_REVIEW_READY_LANE"
+    },
+    {
+      "path": "operations/school/curriculum/incremental_active_store/initialize_incremental_active_store_v1.ps1",
+      "bytes": 6610,
+      "category": "INTERNAL_HELPER_REVIEW_READY_LANE"
+    },
+    {
+      "path": "operations/school/curriculum/incremental_active_store/rebuild_incremental_active_store_from_route_replay_v1.ps1",
+      "bytes": 5365,
+      "category": "INTERNAL_HELPER_REVIEW_READY_LANE"
+    },
+    {
+      "path": "operations/school/curriculum/incremental_active_store/select_replay_audit_policy_v1.ps1",
+      "bytes": 4205,
+      "category": "INTERNAL_HELPER_REVIEW_READY_LANE"
+    },
+    {
+      "path": "operations/school/curriculum/incremental_active_store/validate_incremental_active_store_and_rollback_v1.ps1",
+      "bytes": 4924,
+      "category": "INTERNAL_HELPER_REVIEW_READY_LANE"
+    },
+    {
+      "path": "operations/school/curriculum/incremental_active_store/validate_incremental_active_store_route_switch_v1.ps1",
+      "bytes": 5982,
+      "category": "INTERNAL_HELPER_REVIEW_READY_LANE"
+    },
+    {
+      "path": "operations/school/curriculum/incremental_active_store/validate_replay_audit_policy_entrypoint_wiring_v1.ps1",
+      "bytes": 5583,
+      "category": "INTERNAL_HELPER_REVIEW_READY_LANE"
+    },
+    {
+      "path": "operations/school/curriculum/incremental_active_store/validate_replay_audit_policy_v1.ps1",
+      "bytes": 3519,
+      "category": "INTERNAL_HELPER_REVIEW_READY_LANE"
+    },
+    {
+      "path": "operations/school/curriculum/incremental_active_store/validate_replayable_incremental_active_route_v1.ps1",
+      "bytes": 4701,
+      "category": "INTERNAL_HELPER_REVIEW_READY_LANE"
+    },
+    {
+      "path": "operations/school/curriculum/incremental_active_store/write_incremental_active_store_compatibility_projection_v1.ps1",
+      "bytes": 3505,
+      "category": "INTERNAL_HELPER_REVIEW_READY_LANE"
+    },
+    {
+      "path": "operations/school/curriculum/ready_lane/ABSORPTION_ROUTE_GUARD_V1.md",
+      "bytes": 728,
+      "category": "INTERNAL_HELPER_REVIEW_READY_LANE"
+    },
+    {
+      "path": "operations/school/curriculum/ready_lane/CODEX_CURRICULUM_READY_LANE_ADDITIVE_ACTIVE_PROMOTION_V1.md",
+      "bytes": 717,
+      "category": "INTERNAL_HELPER_REVIEW_READY_LANE"
+    },
+    {
+      "path": "operations/school/curriculum/ready_lane/CODEX_CURRICULUM_READY_LANE_PROMOTION_GATE_V1.md",
+      "bytes": 730,
+      "category": "INTERNAL_HELPER_REVIEW_READY_LANE"
+    },
+    {
+      "path": "operations/school/curriculum/ready_lane/absorb_ready_lane_via_active_route_v1.ps1",
+      "bytes": 2312,
+      "category": "INTERNAL_HELPER_REVIEW_READY_LANE"
+    },
+    {
+      "path": "operations/school/curriculum/ready_lane/promote_codex_curriculum_ready_lane_active_v1.ps1",
+      "bytes": 7424,
+      "category": "INTERNAL_HELPER_REVIEW_READY_LANE"
+    },
+    {
+      "path": "operations/school/curriculum/ready_lane/promote_codex_curriculum_ready_lane_additive_active_v1.ps1",
+      "bytes": 9659,
+      "category": "INTERNAL_HELPER_REVIEW_READY_LANE"
+    },
+    {
+      "path": "operations/school/curriculum/ready_lane/rollback_codex_curriculum_ready_lane_active_promotion_v1.ps1",
+      "bytes": 846,
+      "category": "INTERNAL_HELPER_REVIEW_READY_LANE"
+    },
+    {
+      "path": "operations/school/curriculum/ready_lane/validate_absorption_route_guard_v1.ps1",
+      "bytes": 3564,
+      "category": "INTERNAL_HELPER_REVIEW_READY_LANE"
+    },
+    {
+      "path": "operations/school/curriculum/ready_lane/validate_codex_curriculum_ready_lane_active_decision_use_v1.ps1",
+      "bytes": 4330,
+      "category": "INTERNAL_HELPER_REVIEW_READY_LANE"
+    },
+    {
+      "path": "operations/school/curriculum/ready_lane/validate_codex_curriculum_ready_lane_promotion_gate_v1.ps1",
+      "bytes": 6355,
+      "category": "INTERNAL_HELPER_REVIEW_READY_LANE"
+    },
+    {
+      "path": "operations/school/curriculum/scale_gate/validate_codex_curriculum_scale_gate_v1.ps1",
+      "bytes": 6746,
+      "category": "REVIEW"
+    },
+    {
+      "path": "operations/school/curriculum/source_router/run_school_codex_source_port_v1.ps1",
+      "bytes": 4653,
+      "category": "INTERNAL_HELPER_REVIEW_SOURCE_ROUTER"
+    },
+    {
+      "path": "operations/school/curriculum/source_router/run_school_external_world_source_port_v1.ps1",
+      "bytes": 4414,
+      "category": "INTERNAL_HELPER_REVIEW_SOURCE_ROUTER"
+    },
+    {
+      "path": "operations/school/curriculum/source_router/run_school_source_router_v1.ps1",
+      "bytes": 8727,
+      "category": "INTERNAL_HELPER_REVIEW_SOURCE_ROUTER"
+    },
+    {
+      "path": "operations/school/curriculum/source_router/school_source_router_policy.json",
+      "bytes": 3118,
+      "category": "INTERNAL_HELPER_REVIEW_SOURCE_ROUTER"
+    },
+    {
+      "path": "operations/school/curriculum/source_router/template_filter/run_school_source_template_filter_v1.ps1",
+      "bytes": 3532,
+      "category": "INTERNAL_HELPER_REVIEW_SOURCE_ROUTER"
+    },
+    {
+      "path": "operations/school/curriculum/source_router/template_filter/school_source_template_filter_policy.json",
+      "bytes": 2801,
+      "category": "INTERNAL_HELPER_REVIEW_SOURCE_ROUTER"
+    },
+    {
+      "path": "operations/school/curriculum/source_router/template_filter/validate_school_source_template_filter_policy_v1.ps1",
+      "bytes": 2241,
+      "category": "INTERNAL_HELPER_REVIEW_SOURCE_ROUTER"
+    },
+    {
+      "path": "operations/school/curriculum/source_router/validate_external_world_source_material_v1.ps1",
+      "bytes": 2704,
+      "category": "INTERNAL_HELPER_REVIEW_SOURCE_ROUTER"
+    },
+    {
+      "path": "operations/school/curriculum/store/active_curriculum_school_v1/active_curriculum_checkpoint.json",
+      "bytes": 15771,
+      "category": "REVIEW"
+    },
+    {
+      "path": "operations/school/curriculum/streaming_absorption/STREAMING_SCHOOL_TO_ABSORPTION_PIPELINE_V1.md",
+      "bytes": 946,
+      "category": "INTERNAL_HELPER_KEEP_STREAMING"
+    },
+    {
+      "path": "operations/school/curriculum/streaming_absorption/process_codex_curriculum_streaming_absorption_v1.ps1",
+      "bytes": 10365,
+      "category": "INTERNAL_HELPER_KEEP_STREAMING"
+    },
+    {
+      "path": "operations/school/curriculum/streaming_absorption/validate_codex_curriculum_streaming_absorption_v1.ps1",
+      "bytes": 1684,
+      "category": "INTERNAL_HELPER_KEEP_STREAMING"
+    },
+    {
+      "path": "operations/school/curriculum/topics/builder_night_school_topics_v1.json",
+      "bytes": 47934,
+      "category": "ACTIVE_INTERNAL_CONFIG_KEEP"
+    },
+    {
+      "path": "operations/school/curriculum/validate_curriculum_school_v1.ps1",
+      "bytes": 1997,
+      "category": "REVIEW"
+    },
+    {
+      "path": "operations/school/digestion/absorb_atom_file_via_digest_pipeline_v1.ps1",
+      "bytes": 16101,
+      "category": "INTERNAL_HELPER_KEEP_DIGESTION"
+    },
+    {
+      "path": "operations/school/digestion/apply_compact_memory_weight_guard_v1.ps1",
+      "bytes": 7712,
+      "category": "INTERNAL_HELPER_KEEP_DIGESTION"
+    },
+    {
+      "path": "operations/school/digestion/invoke_compact_semantic_digestion_organ_v1.ps1",
+      "bytes": 9207,
+      "category": "INTERNAL_HELPER_KEEP_DIGESTION"
+    },
+    {
+      "path": "operations/school/digestion/select_compact_semantic_digest_validation_budget_v1.ps1",
+      "bytes": 2976,
+      "category": "INTERNAL_HELPER_KEEP_DIGESTION"
+    },
+    {
+      "path": "operations/school/digestion/validate_active_memory_publish_retry_v1.ps1",
+      "bytes": 3851,
+      "category": "INTERNAL_HELPER_KEEP_DIGESTION"
+    },
+    {
+      "path": "operations/school/digestion/validate_compact_semantic_digestion_organ_v1.ps1",
+      "bytes": 7298,
+      "category": "INTERNAL_HELPER_KEEP_DIGESTION"
+    },
+    {
+      "path": "operations/school/finalize_agent_school_run_v1.ps1",
+      "bytes": 14713,
+      "category": "INTERNAL_HELPER_KEEP_FINALIZER"
+    },
+    {
+      "path": "operations/school/memory/query_compact_semantic_memory_v1.ps1",
+      "bytes": 2951,
+      "category": "INTERNAL_HELPER_KEEP_MEMORY"
+    },
+    {
+      "path": "operations/school/memory/validate_compact_memory_recall_use_probe_v1.ps1",
+      "bytes": 3563,
+      "category": "INTERNAL_HELPER_KEEP_MEMORY"
+    },
+    {
+      "path": "operations/school/proofs/AUTONOMOUS_SCHOOL_CONTROL_PROOF_20260706_100215.json",
+      "bytes": 1109,
+      "category": "EMBRYONIC_AUTOMATION_REVIEW"
+    },
+    {
+      "path": "operations/school/proofs/AUTONOMOUS_SCHOOL_CYCLE_LIMITS_PROOF_20260706_095723.json",
+      "bytes": 882,
+      "category": "EMBRYONIC_AUTOMATION_REVIEW"
+    },
+    {
+      "path": "operations/school/proofs/AUTONOMOUS_SCHOOL_CYCLE_PROOF_20260706_095224.json",
+      "bytes": 830,
+      "category": "EMBRYONIC_AUTOMATION_REVIEW"
+    },
+    {
+      "path": "operations/school/proofs/AUTONOMOUS_SCHOOL_PER_CYCLE_SLA_PROOF_20260706_104148.json",
+      "bytes": 2494,
+      "category": "EMBRYONIC_AUTOMATION_REVIEW"
+    },
+    {
+      "path": "operations/school/proofs/SCHOOL_AFTER_TEMPLATE_FILTER_CANONICAL_TEST_PROOF_20260706_200300.json",
+      "bytes": 940,
+      "category": "REVIEW"
+    },
+    {
+      "path": "operations/school/proofs/SCHOOL_CODEX_SOURCE_PORT_PROOF_20260706_144500.json",
+      "bytes": 1409,
+      "category": "REVIEW"
+    },
+    {
+      "path": "operations/school/proofs/SCHOOL_EXTERNAL_WORLD_FETCH_PROOF_20260706_155200.json",
+      "bytes": 1529,
+      "category": "REVIEW"
+    },
+    {
+      "path": "operations/school/proofs/SCHOOL_EXTERNAL_WORLD_SOURCE_PORT_PROOF_20260706_155100.json",
+      "bytes": 1662,
+      "category": "REVIEW"
+    },
+    {
+      "path": "operations/school/proofs/SCHOOL_SOURCE_ROUTER_PROOF_20260706_133900.json",
+      "bytes": 1122,
+      "category": "REVIEW"
+    },
+    {
+      "path": "operations/school/proofs/SCHOOL_SOURCE_ROUTER_TEMPLATE_FILTER_AUTO_PROOF_20260706_200200.json",
+      "bytes": 2957,
+      "category": "REVIEW"
+    },
+    {
+      "path": "operations/school/proofs/SCHOOL_SOURCE_TEMPLATE_FILTER_ESCALATION_PROOF_20260706_193200.json",
+      "bytes": 2185,
+      "category": "REVIEW"
+    },
+    {
+      "path": "operations/school/proofs/SCHOOL_SOURCE_TEMPLATE_FILTER_HEALTHY_INTERNAL_PROOF_20260706_193100.json",
+      "bytes": 3261,
+      "category": "REVIEW"
+    },
+    {
+      "path": "operations/school/run_agent_school.ps1",
+      "bytes": 34384,
+      "category": "ACTIVE_OWNER_ENTRYPOINT_KEEP"
+    },
+    {
+      "path": "operations/school/run_autonomous_school_cycle_v1.ps1",
+      "bytes": 9070,
+      "category": "EMBRYONIC_AUTOMATION_REVIEW"
+    },
+    {
+      "path": "operations/school/school_lifecycle_policy.json",
+      "bytes": 1438,
+      "category": "EMBRYONIC_AUTOMATION_REVIEW"
+    },
+    {
+      "path": "operations/school/validate_agent_school_canonical_entrypoint_v1.ps1",
+      "bytes": 4635,
+      "category": "ACTIVE_ROUTE_LOCK_KEEP"
+    },
+    {
+      "path": "operations/school/value_grounded/prepare_value_grounded_curriculum_v1.ps1",
+      "bytes": 3514,
+      "category": "REVIEW"
+    },
+    {
+      "path": "operations/school/value_grounded/store/value_grounded_candidate_inbox_v1.json",
+      "bytes": 61329,
+      "category": "REVIEW"
+    },
+    {
+      "path": "operations/school/value_grounded/validate_value_grounded_curriculum_prep_v1.ps1",
+      "bytes": 1989,
+      "category": "REVIEW"
+    }
+  ],
+  "report_rows": [
+    {
+      "path": "operations/reports/ACTIVE_BEHAVIOR_ABSORPTION_PROMOTION_V1.json",
+      "bytes": 5623,
+      "category": "REVIEW"
+    },
+    {
+      "path": "operations/reports/ACTIVE_BEHAVIOR_ABSORPTION_PROMOTION_V1.md",
+      "bytes": 1321,
+      "category": "REVIEW"
+    },
+    {
+      "path": "operations/reports/ACTIVE_BEHAVIOR_TASK_DECISION_FLOW_V1.json",
+      "bytes": 6487,
+      "category": "REVIEW"
+    },
+    {
+      "path": "operations/reports/ACTIVE_BEHAVIOR_TASK_DECISION_FLOW_V1.md",
+      "bytes": 1220,
+      "category": "REVIEW"
+    },
+    {
+      "path": "operations/reports/ACTIVE_COMPACT_MEMORY_CONSERVATIVE_COMPACTION_REPLACEMENT_20260714.json",
+      "bytes": 3835,
+      "category": "OLD_MEMORY_RUNTIME_PROOF_REVIEW_KEEP_OR_COMPACT"
+    },
+    {
+      "path": "operations/reports/ACTIVE_COMPACT_MEMORY_CONSERVATIVE_COMPACTION_REPLACEMENT_20260714.md",
+      "bytes": 1277,
+      "category": "OLD_MEMORY_RUNTIME_PROOF_REVIEW_KEEP_OR_COMPACT"
+    },
+    {
+      "path": "operations/reports/CODEX_100K_CAMPAIGN_ATTEMPT_REPORT_20260714.json",
+      "bytes": 3997,
+      "category": "OLD_SCHOOL_PROOF_DELETE_CANDIDATE_AFTER_COMPACT_REPORT"
+    },
+    {
+      "path": "operations/reports/CODEX_100K_CAMPAIGN_ATTEMPT_REPORT_20260714.md",
+      "bytes": 699,
+      "category": "OLD_SCHOOL_PROOF_DELETE_CANDIDATE_AFTER_COMPACT_REPORT"
+    },
+    {
+      "path": "operations/reports/CODEX_100K_CAMPAIGN_COMPACT_CONTEXT_20260714.json",
+      "bytes": 10997,
+      "category": "OLD_SCHOOL_PROOF_DELETE_CANDIDATE_AFTER_COMPACT_REPORT"
+    },
+    {
+      "path": "operations/reports/CODEX_100K_CAMPAIGN_PACK_INDEPENDENT_VALIDATION_20260714.json",
+      "bytes": 3297,
+      "category": "OLD_SCHOOL_PROOF_DELETE_CANDIDATE_AFTER_COMPACT_REPORT"
+    },
+    {
+      "path": "operations/reports/COMPACT_MEMORY_COMPACTION_CANDIDATES_20260714.json",
+      "bytes": 1820,
+      "category": "OLD_MEMORY_RUNTIME_PROOF_REVIEW_KEEP_OR_COMPACT"
+    },
+    {
+      "path": "operations/reports/COMPACT_MEMORY_COMPACTION_CANDIDATE_VALIDATION_20260714.json",
+      "bytes": 2586,
+      "category": "OLD_MEMORY_RUNTIME_PROOF_REVIEW_KEEP_OR_COMPACT"
+    },
+    {
+      "path": "operations/reports/COMPACT_MEMORY_WEIGHT_AUDIT_20260714.json",
+      "bytes": 24088,
+      "category": "OLD_MEMORY_RUNTIME_PROOF_REVIEW_KEEP_OR_COMPACT"
+    },
+    {
+      "path": "operations/reports/COMPACT_MEMORY_WEIGHT_AUDIT_20260714.md",
+      "bytes": 1295,
+      "category": "OLD_MEMORY_RUNTIME_PROOF_REVIEW_KEEP_OR_COMPACT"
+    },
+    {
+      "path": "operations/reports/COMPACT_MEMORY_WEIGHT_AUDIT_COMPACTION_SAMPLE_20260714.json",
+      "bytes": 15503,
+      "category": "OLD_MEMORY_RUNTIME_PROOF_REVIEW_KEEP_OR_COMPACT"
+    },
+    {
+      "path": "operations/reports/FRESH_1000_CANDIDATE_BEHAVIOR_ABSORPTION_V1.json",
+      "bytes": 1874188,
+      "category": "REVIEW"
+    },
+    {
+      "path": "operations/reports/FRESH_1000_CANDIDATE_BEHAVIOR_ABSORPTION_V1.md",
+      "bytes": 662,
+      "category": "REVIEW"
+    },
+    {
+      "path": "operations/reports/GPT_OPERATOR_JOURNAL_ACTIVE_RESET_20260714.json",
+      "bytes": 773,
+      "category": "ACTIVE_PROOF_KEEP"
+    },
+    {
+      "path": "operations/reports/GPT_OPERATOR_JOURNAL_ACTIVE_RESET_20260714.md",
+      "bytes": 385,
+      "category": "ACTIVE_PROOF_KEEP"
+    },
+    {
+      "path": "operations/reports/MEMORY_WEIGHT_GUARD_INSTALLATION_20260714.json",
+      "bytes": 4092,
+      "category": "OLD_MEMORY_RUNTIME_PROOF_REVIEW_KEEP_OR_COMPACT"
+    },
+    {
+      "path": "operations/reports/MEMORY_WEIGHT_GUARD_INSTALLATION_20260714.md",
+      "bytes": 1289,
+      "category": "OLD_MEMORY_RUNTIME_PROOF_REVIEW_KEEP_OR_COMPACT"
+    },
+    {
+      "path": "operations/reports/ONE_TOPIC_SEP_LADDER_100K_AUTHORING_AND_SMOKE_20260714.json",
+      "bytes": 7730,
+      "category": "OLD_SCHOOL_PROOF_DELETE_CANDIDATE_AFTER_COMPACT_REPORT"
+    },
+    {
+      "path": "operations/reports/ONE_TOPIC_SEP_LADDER_100K_AUTHORING_AND_SMOKE_20260714.md",
+      "bytes": 1130,
+      "category": "OLD_SCHOOL_PROOF_DELETE_CANDIDATE_AFTER_COMPACT_REPORT"
+    },
+    {
+      "path": "operations/reports/ONE_TOPIC_SEP_LADDER_100K_CODEX_CONTEXT_20260714.json",
+      "bytes": 6761,
+      "category": "OLD_SCHOOL_PROOF_DELETE_CANDIDATE_AFTER_COMPACT_REPORT"
+    },
+    {
+      "path": "operations/reports/ONE_TOPIC_SEP_LADDER_100K_COMPACT_DIGEST_PACKET_20260714.json",
+      "bytes": 754,
+      "category": "ACTIVE_PROOF_KEEP"
+    },
+    {
+      "path": "operations/reports/ONE_TOPIC_SEP_LADDER_100K_COMPLETION_20260714.json",
+      "bytes": 5152,
+      "category": "ACTIVE_PROOF_KEEP"
+    },
+    {
+      "path": "operations/reports/ONE_TOPIC_SEP_LADDER_100K_COMPLETION_20260714.md",
+      "bytes": 1323,
+      "category": "ACTIVE_PROOF_KEEP"
+    },
+    {
+      "path": "operations/reports/ONE_TOPIC_SEP_LADDER_100K_INDEPENDENT_VALIDATION_20260714.json",
+      "bytes": 493,
+      "category": "OLD_SCHOOL_PROOF_DELETE_CANDIDATE_AFTER_COMPACT_REPORT"
+    },
+    {
+      "path": "operations/reports/ONE_TOPIC_SEP_LADDER_100K_INDEPENDENT_VALIDATION_20260714.md",
+      "bytes": 584,
+      "category": "OLD_SCHOOL_PROOF_DELETE_CANDIDATE_AFTER_COMPACT_REPORT"
+    },
+    {
+      "path": "operations/reports/ONE_TOPIC_SEP_LADDER_100K_QUALITY_GATE_20260714.json",
+      "bytes": 19134,
+      "category": "ACTIVE_PROOF_KEEP"
+    },
+    {
+      "path": "operations/reports/ONE_TOPIC_SEP_LADDER_100K_QUALITY_GATE_20260714.md",
+      "bytes": 1123,
+      "category": "ACTIVE_PROOF_KEEP"
+    },
+    {
+      "path": "operations/reports/ONE_TOPIC_SEP_LADDER_100K_RETENTION_CLEANUP_PLAN_20260714.json",
+      "bytes": 3947,
+      "category": "OLD_SCHOOL_PROOF_DELETE_CANDIDATE_AFTER_COMPACT_REPORT"
+    },
+    {
+      "path": "operations/reports/ONE_TOPIC_SEP_LADDER_100K_RETENTION_CLEANUP_REPORT_20260714.json",
+      "bytes": 6753,
+      "category": "ACTIVE_PROOF_KEEP"
+    },
+    {
+      "path": "operations/reports/ONE_TOPIC_SEP_LADDER_100K_RETENTION_CLEANUP_REPORT_20260714.md",
+      "bytes": 1637,
+      "category": "ACTIVE_PROOF_KEEP"
+    },
+    {
+      "path": "operations/reports/ONE_TOPIC_SEP_LADDER_ALLOWED_MODES_CONTRACT_REPAIR_20260714.json",
+      "bytes": 1420,
+      "category": "OLD_SCHOOL_PROOF_DELETE_CANDIDATE_AFTER_COMPACT_REPORT"
+    },
+    {
+      "path": "operations/reports/RUNTIME_CLEANUP_PLAN_20260714.json",
+      "bytes": 4835,
+      "category": "OLD_MEMORY_RUNTIME_PROOF_REVIEW_KEEP_OR_COMPACT"
+    },
+    {
+      "path": "operations/reports/RUNTIME_CLEANUP_REPORT_20260714.json",
+      "bytes": 8383,
+      "category": "OLD_MEMORY_RUNTIME_PROOF_REVIEW_KEEP_OR_COMPACT"
+    },
+    {
+      "path": "operations/reports/RUNTIME_CLEANUP_REPORT_20260714.md",
+      "bytes": 381,
+      "category": "OLD_MEMORY_RUNTIME_PROOF_REVIEW_KEEP_OR_COMPACT"
+    },
+    {
+      "path": "operations/reports/SCHOOL_100K_USEFULNESS_QUALITY_GATE_20260714.json",
+      "bytes": 33953,
+      "category": "OLD_SCHOOL_PROOF_DELETE_CANDIDATE_AFTER_COMPACT_REPORT"
+    },
+    {
+      "path": "operations/reports/SCHOOL_100K_USEFULNESS_QUALITY_GATE_20260714.md",
+      "bytes": 1330,
+      "category": "OLD_SCHOOL_PROOF_DELETE_CANDIDATE_AFTER_COMPACT_REPORT"
+    },
+    {
+      "path": "operations/reports/SCHOOL_100K_USEFUL_CAMPAIGN_TOPIC_PLAN_20260714.json",
+      "bytes": 12819,
+      "category": "OLD_SCHOOL_PROOF_DELETE_CANDIDATE_AFTER_COMPACT_REPORT"
+    },
+    {
+      "path": "operations/reports/SCHOOL_100K_USEFUL_CAMPAIGN_TOPIC_PLAN_20260714.md",
+      "bytes": 810,
+      "category": "OLD_SCHOOL_PROOF_DELETE_CANDIDATE_AFTER_COMPACT_REPORT"
+    },
+    {
+      "path": "operations/reports/SCHOOL_100K_USEFUL_STAGING_RUN_20260714.json",
+      "bytes": 5411,
+      "category": "OLD_SCHOOL_PROOF_DELETE_CANDIDATE_AFTER_COMPACT_REPORT"
+    },
+    {
+      "path": "operations/reports/SCHOOL_100K_USEFUL_STAGING_RUN_20260714.md",
+      "bytes": 1171,
+      "category": "OLD_SCHOOL_PROOF_DELETE_CANDIDATE_AFTER_COMPACT_REPORT"
+    },
+    {
+      "path": "operations/reports/SCHOOL_15K_COMPACT_DIGEST_SUBMIT_20260714.json",
+      "bytes": 3025,
+      "category": "OLD_SCHOOL_PROOF_DELETE_CANDIDATE_AFTER_COMPACT_REPORT"
+    },
+    {
+      "path": "operations/reports/SCHOOL_15K_COMPACT_DIGEST_SUBMIT_20260714.md",
+      "bytes": 856,
+      "category": "OLD_SCHOOL_PROOF_DELETE_CANDIDATE_AFTER_COMPACT_REPORT"
+    },
+    {
+      "path": "operations/reports/SCHOOL_15K_COMPACT_TOPIC_DIGEST_PACKET_20260714.json",
+      "bytes": 78711,
+      "category": "OLD_SCHOOL_PROOF_DELETE_CANDIDATE_AFTER_COMPACT_REPORT"
+    },
+    {
+      "path": "operations/reports/SCHOOL_15K_QUALITY_GATE_20260714.json",
+      "bytes": 1151,
+      "category": "OLD_SCHOOL_PROOF_DELETE_CANDIDATE_AFTER_COMPACT_REPORT"
+    },
+    {
+      "path": "operations/reports/SCHOOL_15K_QUALITY_GATE_20260714.md",
+      "bytes": 637,
+      "category": "OLD_SCHOOL_PROOF_DELETE_CANDIDATE_AFTER_COMPACT_REPORT"
+    },
+    {
+      "path": "operations/reports/SCHOOL_15K_STREAMING_COMPLETION_20260714.json",
+      "bytes": 7791,
+      "category": "OLD_SCHOOL_PROOF_DELETE_CANDIDATE_AFTER_COMPACT_REPORT"
+    },
+    {
+      "path": "operations/reports/SCHOOL_15K_STREAMING_COMPLETION_20260714.md",
+      "bytes": 1057,
+      "category": "OLD_SCHOOL_PROOF_DELETE_CANDIDATE_AFTER_COMPACT_REPORT"
+    },
+    {
+      "path": "operations/reports/SCHOOL_CODEX_LAUNCH_CORRECTION_20260714.json",
+      "bytes": 3001,
+      "category": "OLD_SCHOOL_PROOF_DELETE_CANDIDATE_AFTER_COMPACT_REPORT"
+    },
+    {
+      "path": "operations/reports/SCHOOL_CODEX_LAUNCH_CORRECTION_20260714.md",
+      "bytes": 1170,
+      "category": "OLD_SCHOOL_PROOF_DELETE_CANDIDATE_AFTER_COMPACT_REPORT"
+    },
+    {
+      "path": "operations/reports/SCHOOL_CODEX_LAUNCH_RECOVERY_AND_SEED_PLAN_ATTEMPTS_20260714.json",
+      "bytes": 3070,
+      "category": "OLD_SCHOOL_PROOF_DELETE_CANDIDATE_AFTER_COMPACT_REPORT"
+    },
+    {
+      "path": "operations/reports/SCHOOL_CODEX_LAUNCH_RECOVERY_AND_SEED_PLAN_ATTEMPTS_20260714.md",
+      "bytes": 1185,
+      "category": "OLD_SCHOOL_PROOF_DELETE_CANDIDATE_AFTER_COMPACT_REPORT"
+    },
+    {
+      "path": "operations/reports/SCHOOL_CODEX_LAUNCH_RUNBOOK_20260714.json",
+      "bytes": 6249,
+      "category": "OLD_SCHOOL_PROOF_DELETE_CANDIDATE_AFTER_COMPACT_REPORT"
+    },
+    {
+      "path": "operations/reports/SCHOOL_CODEX_LAUNCH_RUNBOOK_20260714.md",
+      "bytes": 1314,
+      "category": "OLD_SCHOOL_PROOF_DELETE_CANDIDATE_AFTER_COMPACT_REPORT"
+    },
+    {
+      "path": "operations/reports/SCHOOL_LAUNCH_ROUTE_CLEANUP_20260714.json",
+      "bytes": 2644,
+      "category": "OLD_SCHOOL_PROOF_DELETE_CANDIDATE_AFTER_COMPACT_REPORT"
+    },
+    {
+      "path": "operations/reports/SCHOOL_LAUNCH_ROUTE_CLEANUP_20260714.md",
+      "bytes": 918,
+      "category": "OLD_SCHOOL_PROOF_DELETE_CANDIDATE_AFTER_COMPACT_REPORT"
+    },
+    {
+      "path": "operations/reports/SCHOOL_PERFORMANCE_REPAIR_V1.json",
+      "bytes": 4802,
+      "category": "OLD_SCHOOL_PROOF_DELETE_CANDIDATE_AFTER_COMPACT_REPORT"
+    },
+    {
+      "path": "operations/reports/SCHOOL_SINGLE_OWNER_LAUNCH_ROUTE_LOCK_20260714.json",
+      "bytes": 2020,
+      "category": "ACTIVE_PROOF_KEEP"
+    },
+    {
+      "path": "operations/reports/SCHOOL_SINGLE_OWNER_LAUNCH_ROUTE_LOCK_20260714.md",
+      "bytes": 995,
+      "category": "ACTIVE_PROOF_KEEP"
+    }
+  ],
+  "runtime_rows": [
+    {
+      "path": ".runtime/active_compact_semantic_memory_v1",
+      "exists": true,
+      "files": 3,
+      "bytes": 12784896,
+      "category": "PROTECTED"
+    },
+    {
+      "path": ".runtime/active_compact_semantic_memory_v1/cells.jsonl",
+      "exists": true,
+      "files": 1,
+      "bytes": 12473703,
+      "category": "RUNTIME_FILE_REVIEW"
+    },
+    {
+      "path": ".runtime/active_compact_semantic_memory_v1/index.json",
+      "exists": true,
+      "files": 1,
+      "bytes": 309301,
+      "category": "RUNTIME_FILE_REVIEW"
+    },
+    {
+      "path": ".runtime/active_compact_semantic_memory_v1/manifest.json",
+      "exists": true,
+      "files": 1,
+      "bytes": 1892,
+      "category": "RUNTIME_FILE_REVIEW"
+    },
+    {
+      "path": ".runtime/active_compact_semantic_memory_v1_backups",
+      "exists": true,
+      "files": 6,
+      "bytes": 126599886,
+      "category": "PROTECTED"
+    },
+    {
+      "path": ".runtime/active_compact_semantic_memory_v1_backups/before_conservative_compaction_20260714_163639",
+      "exists": true,
+      "files": 3,
+      "bytes": 113652074,
+      "category": "RUNTIME_CHILD_REVIEW"
+    },
+    {
+      "path": ".runtime/active_compact_semantic_memory_v1_backups/before_sep_ladder_100k_digest_20260714_1730",
+      "exists": true,
+      "files": 3,
+      "bytes": 12947812,
+      "category": "RUNTIME_CHILD_REVIEW"
+    },
+    {
+      "path": ".runtime/file_atom_absorption",
+      "exists": true,
+      "files": 22,
+      "bytes": 126474655,
+      "category": "REVIEW_RUNTIME"
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_124613",
+      "exists": true,
+      "files": 4,
+      "bytes": 113656906,
+      "category": "RUNTIME_CHILD_REVIEW"
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_170226",
+      "exists": true,
+      "files": 3,
+      "bytes": 1678,
+      "category": "RUNTIME_CHILD_REVIEW"
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_170259",
+      "exists": true,
+      "files": 5,
+      "bytes": 9731,
+      "category": "RUNTIME_CHILD_REVIEW"
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_174139",
+      "exists": true,
+      "files": 5,
+      "bytes": 14281,
+      "category": "RUNTIME_CHILD_REVIEW"
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_213120",
+      "exists": true,
+      "files": 5,
+      "bytes": 12792059,
+      "category": "RUNTIME_CHILD_REVIEW"
+    },
+    {
+      "path": ".runtime/codex_curriculum_candidate_factory_runs",
+      "exists": true,
+      "files": 3,
+      "bytes": 961302,
+      "category": "REVIEW_RUNTIME"
+    },
+    {
+      "path": ".runtime/codex_curriculum_candidate_factory_runs/builder_useful_100k_pack_validation_100_20260714",
+      "exists": true,
+      "files": 3,
+      "bytes": 961302,
+      "category": "RUNTIME_CHILD_REVIEW"
+    },
+    {
+      "path": ".runtime/streaming_absorption",
+      "exists": true,
+      "files": 0,
+      "bytes": 0,
+      "category": "REVIEW_RUNTIME"
+    },
+    {
+      "path": ".runtime/compact_memory_intake_v1",
+      "exists": true,
+      "files": 16,
+      "bytes": 4212668,
+      "category": "REVIEW_RUNTIME"
+    },
+    {
+      "path": ".runtime/compact_memory_intake_v1/checkpoints",
+      "exists": true,
+      "files": 6,
+      "bytes": 4113600,
+      "category": "RUNTIME_CHILD_REVIEW"
+    },
+    {
+      "path": ".runtime/compact_memory_intake_v1/failed",
+      "exists": true,
+      "files": 0,
+      "bytes": 0,
+      "category": "RUNTIME_CHILD_REVIEW"
+    },
+    {
+      "path": ".runtime/compact_memory_intake_v1/maintenance_runs",
+      "exists": true,
+      "files": 2,
+      "bytes": 2735,
+      "category": "RUNTIME_CHILD_REVIEW"
+    },
+    {
+      "path": ".runtime/compact_memory_intake_v1/merge_runs",
+      "exists": true,
+      "files": 2,
+      "bytes": 6239,
+      "category": "RUNTIME_CHILD_REVIEW"
+    },
+    {
+      "path": ".runtime/compact_memory_intake_v1/processed",
+      "exists": true,
+      "files": 2,
+      "bytes": 4555,
+      "category": "RUNTIME_CHILD_REVIEW"
+    },
+    {
+      "path": ".runtime/compact_memory_intake_v1/queue",
+      "exists": true,
+      "files": 4,
+      "bytes": 85539,
+      "category": "RUNTIME_CHILD_REVIEW"
+    }
+  ],
+  "cleanup_candidates": {
+    "old_school_reports": [
+      "operations/reports/CODEX_100K_CAMPAIGN_ATTEMPT_REPORT_20260714.json",
+      "operations/reports/CODEX_100K_CAMPAIGN_ATTEMPT_REPORT_20260714.md",
+      "operations/reports/CODEX_100K_CAMPAIGN_COMPACT_CONTEXT_20260714.json",
+      "operations/reports/CODEX_100K_CAMPAIGN_PACK_INDEPENDENT_VALIDATION_20260714.json",
+      "operations/reports/ONE_TOPIC_SEP_LADDER_100K_AUTHORING_AND_SMOKE_20260714.json",
+      "operations/reports/ONE_TOPIC_SEP_LADDER_100K_AUTHORING_AND_SMOKE_20260714.md",
+      "operations/reports/ONE_TOPIC_SEP_LADDER_100K_CODEX_CONTEXT_20260714.json",
+      "operations/reports/ONE_TOPIC_SEP_LADDER_100K_INDEPENDENT_VALIDATION_20260714.json",
+      "operations/reports/ONE_TOPIC_SEP_LADDER_100K_INDEPENDENT_VALIDATION_20260714.md",
+      "operations/reports/ONE_TOPIC_SEP_LADDER_100K_RETENTION_CLEANUP_PLAN_20260714.json",
+      "operations/reports/ONE_TOPIC_SEP_LADDER_ALLOWED_MODES_CONTRACT_REPAIR_20260714.json",
+      "operations/reports/SCHOOL_100K_USEFULNESS_QUALITY_GATE_20260714.json",
+      "operations/reports/SCHOOL_100K_USEFULNESS_QUALITY_GATE_20260714.md",
+      "operations/reports/SCHOOL_100K_USEFUL_CAMPAIGN_TOPIC_PLAN_20260714.json",
+      "operations/reports/SCHOOL_100K_USEFUL_CAMPAIGN_TOPIC_PLAN_20260714.md",
+      "operations/reports/SCHOOL_100K_USEFUL_STAGING_RUN_20260714.json",
+      "operations/reports/SCHOOL_100K_USEFUL_STAGING_RUN_20260714.md",
+      "operations/reports/SCHOOL_15K_COMPACT_DIGEST_SUBMIT_20260714.json",
+      "operations/reports/SCHOOL_15K_COMPACT_DIGEST_SUBMIT_20260714.md",
+      "operations/reports/SCHOOL_15K_COMPACT_TOPIC_DIGEST_PACKET_20260714.json",
+      "operations/reports/SCHOOL_15K_QUALITY_GATE_20260714.json",
+      "operations/reports/SCHOOL_15K_QUALITY_GATE_20260714.md",
+      "operations/reports/SCHOOL_15K_STREAMING_COMPLETION_20260714.json",
+      "operations/reports/SCHOOL_15K_STREAMING_COMPLETION_20260714.md",
+      "operations/reports/SCHOOL_CODEX_LAUNCH_CORRECTION_20260714.json",
+      "operations/reports/SCHOOL_CODEX_LAUNCH_CORRECTION_20260714.md",
+      "operations/reports/SCHOOL_CODEX_LAUNCH_RECOVERY_AND_SEED_PLAN_ATTEMPTS_20260714.json",
+      "operations/reports/SCHOOL_CODEX_LAUNCH_RECOVERY_AND_SEED_PLAN_ATTEMPTS_20260714.md",
+      "operations/reports/SCHOOL_CODEX_LAUNCH_RUNBOOK_20260714.json",
+      "operations/reports/SCHOOL_CODEX_LAUNCH_RUNBOOK_20260714.md",
+      "operations/reports/SCHOOL_LAUNCH_ROUTE_CLEANUP_20260714.json",
+      "operations/reports/SCHOOL_LAUNCH_ROUTE_CLEANUP_20260714.md",
+      "operations/reports/SCHOOL_PERFORMANCE_REPAIR_V1.json"
+    ],
+    "old_school_materials": [
+      "operations/school/curriculum/candidate_factory/campaign_packs/builder_useful_100k_v1.jsonl",
+      "operations/school/curriculum/candidate_factory/campaign_packs/builder_useful_100k_v1.manifest.json"
+    ],
+    "runtime_small_staging_or_processed": [
+      ".runtime/codex_curriculum_candidate_factory_runs",
+      ".runtime/streaming_absorption",
+      ".runtime/compact_memory_intake_v1/processed",
+      ".runtime/compact_memory_intake_v1/queue"
+    ]
+  },
+  "do_not_delete": [
+    ".runtime/active_compact_semantic_memory_v1",
+    "operations/school/run_agent_school.ps1",
+    "operations/school/SCHOOL_CANONICAL_RUN_CONTRACT_V1.md",
+    "operations/reports/SCHOOL_SINGLE_OWNER_LAUNCH_ROUTE_LOCK_20260714.json",
+    "operations/reports/ONE_TOPIC_SEP_LADDER_100K_COMPLETION_20260714.json",
+    "operations/reports/ONE_TOPIC_SEP_LADDER_100K_RETENTION_CLEANUP_REPORT_20260714.json"
+  ],
+  "decision_needed_after_cleanup": "Update existing school logic into self-guided loop if current helpers are sufficient; build new mechanism only if audit finds missing chooser/Codex-template/gap-scan organs."
+}

@@ -107,3 +107,12 @@ fresh reality check
 use one school launch only
 claim completion only after compact memory proof
 ```
+
+## Current school cleanup state
+
+```text
+school_deep_audit = complete
+school_deep_cleanup = complete
+old generated school material = deleted
+old school reports = replaced by current compact audit/cleanup proof
+```
