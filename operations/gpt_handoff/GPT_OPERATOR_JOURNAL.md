@@ -177,3 +177,23 @@ It works in 1000-candidate patches.
 After stop/restart, memory progress is whatever patches reached absorption proof.
 Open/generated/validated/digested-only patches do not count as memory update.
 ```
+
+
+## Codex school patch task template
+
+```text
+codex_patch_task_template = installed and validated
+selected_topic = codex_school_task_template_strength
+candidate_limit = 1000
+depth = 0 -> 4
+required_candidate_fields_count = 18
+acceptance_contract_count = 9
+selector_memory_changed = false
+```
+
+Meaning:
+
+```text
+Codex receives one-topic patch tasks with topic, depth, count, schema, quality rules, proof fields, validator fields, source rule, return-to-parent rule, preflight guard, and retry/quarantine policy.
+Codex failure does not decrement Count and does not update memory.
+```

@@ -1,0 +1,63 @@
+{
+  "schema": "codex_school_patch_task_template_installation_v1",
+  "status": "PASS_CODEX_SCHOOL_PATCH_TASK_TEMPLATE_GENERATOR_INSTALLED_AND_VALIDATED",
+  "created_at": "2026-07-14T19:05:25.011492+00:00",
+  "repo_head_before_commit": "1c332cc",
+  "purpose": "Build a strict one-topic Codex task for a 1000-candidate school patch using selected topic, depth, quality, validator and absorption-friendly fields.",
+  "validation": {
+    "status": "PASS_CODEX_SCHOOL_PATCH_TASK_TEMPLATE_VALIDATION_V1",
+    "selected_topic": "codex_school_task_template_strength",
+    "candidate_limit": 1000,
+    "current_depth": 0,
+    "target_depth": 4,
+    "required_candidate_fields_count": 18,
+    "required_candidate_fields": [
+      "schema",
+      "candidate_id",
+      "topic_key",
+      "topic_label",
+      "depth_level",
+      "prerequisite_depth",
+      "target_depth",
+      "source_basis",
+      "source_missing",
+      "claim",
+      "expected_behavior",
+      "failure_contrast",
+      "validator",
+      "proof_requirements",
+      "negative_case",
+      "return_to_parent",
+      "digest_hint",
+      "quality_flags"
+    ],
+    "acceptance_contract_count": 9,
+    "failure_classes": [
+      "BROAD_TOPIC_DRIFT",
+      "SCHEMA_VIOLATION",
+      "EMPTY_OUTPUT",
+      "HANG_OR_TIMEOUT",
+      "SOURCE_MISSING",
+      "PRELIGHT_OR_PREFLIGHT_VIOLATION",
+      "WRITES_BEFORE_PREFLIGHT",
+      "UNVALIDATABLE_CANDIDATES"
+    ],
+    "memory_changed": false
+  },
+  "codex_failure_cycle": {
+    "attempt_1": "normal 1000 candidate task",
+    "attempt_2": "narrowed retry, max 500 candidates",
+    "attempt_3": "minimal retry, max 200 candidates; quarantine after failure",
+    "on_codex_failure": [
+      "do not decrement Count",
+      "do not update memory",
+      "record CODEX_FAILED in runtime patch ledger",
+      "retry narrowed or quarantine topic patch"
+    ]
+  },
+  "files_changed": [
+    "operations/school/codex/build_codex_school_patch_task_v1.ps1",
+    "operations/school/codex/validate_codex_school_patch_task_template_v1.ps1"
+  ],
+  "boundary": "No Codex run is executed. Task outputs are runtime artifacts; tracked repo keeps only compact validation proof."
+}

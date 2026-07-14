@@ -1,0 +1,56 @@
+﻿{
+    "schema":  "codex_school_patch_task_template_validation_v1",
+    "status":  "PASS_CODEX_SCHOOL_PATCH_TASK_TEMPLATE_VALIDATION_V1",
+    "created_at":  "2026-07-14T23:05:31.9552551+04:00",
+    "run_id":  "validator_codex_patch_task_20260714_230525",
+    "task_json":  ".runtime/school_patch_runs/validator_codex_patch_task_20260714_230525/codex_task_attempt_1/codex_school_patch_task.json",
+    "task_md":  ".runtime/school_patch_runs/validator_codex_patch_task_20260714_230525/codex_task_attempt_1/CODEX_SCHOOL_PATCH_TASK.md",
+    "selected_topic":  "codex_school_task_template_strength",
+    "candidate_limit":  1000,
+    "current_depth":  0,
+    "target_depth":  4,
+    "required_candidate_fields":  [
+                                      "schema",
+                                      "candidate_id",
+                                      "topic_key",
+                                      "topic_label",
+                                      "depth_level",
+                                      "prerequisite_depth",
+                                      "target_depth",
+                                      "source_basis",
+                                      "source_missing",
+                                      "claim",
+                                      "expected_behavior",
+                                      "failure_contrast",
+                                      "validator",
+                                      "proof_requirements",
+                                      "negative_case",
+                                      "return_to_parent",
+                                      "digest_hint",
+                                      "quality_flags"
+                                  ],
+    "acceptance_contract_count":  9,
+    "failure_classes":  [
+                            "BROAD_TOPIC_DRIFT",
+                            "SCHEMA_VIOLATION",
+                            "EMPTY_OUTPUT",
+                            "HANG_OR_TIMEOUT",
+                            "SOURCE_MISSING",
+                            "PRELIGHT_OR_PREFLIGHT_VIOLATION",
+                            "WRITES_BEFORE_PREFLIGHT",
+                            "UNVALIDATABLE_CANDIDATES"
+                        ],
+    "memory_before":  {
+                          "manifest":  "8035CE66AEA0D843FCD5E5585CDC36B1066D296ADA12C192C57C222C6045EEE1",
+                          "index":  "54F2CBBB6148AF68EC9FF9B5E97EE10AF868677123775886BA4CEE4173457101",
+                          "cells":  "199C9D9391ED5C79BBC774F8F81E884E4B439A291091C8F6F2A36A7792BA8BD1"
+                      },
+    "memory_after":  {
+                         "manifest":  "8035CE66AEA0D843FCD5E5585CDC36B1066D296ADA12C192C57C222C6045EEE1",
+                         "index":  "54F2CBBB6148AF68EC9FF9B5E97EE10AF868677123775886BA4CEE4173457101",
+                         "cells":  "199C9D9391ED5C79BBC774F8F81E884E4B439A291091C8F6F2A36A7792BA8BD1"
+                     },
+    "failures":  [
+
+                 ]
+}

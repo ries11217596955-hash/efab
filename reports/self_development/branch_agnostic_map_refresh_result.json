@@ -1,22 +1,27 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-14T22:53:56.6717349+04:00",
+    "checked_at":  "2026-07-14T23:05:50.4293732+04:00",
     "branch":  "main",
-    "observed_head":  "3dd48493d735539c71012836ddd966869599aa7e",
-    "subject_head":  "3dd48493d735539c71012836ddd966869599aa7e",
+    "observed_head":  "1c332ccebfe20736e2a835a853d748e66c366cf6",
+    "subject_head":  "1c332ccebfe20736e2a835a853d748e66c366cf6",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
+                          "AGENTS.md",
                           "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
                           "operations/reports/DEVELOPMENT_VECTOR_THEME_SELECTOR_VALIDATION_20260714.json",
-                          "operations/reports/SCHOOL_DEVELOPMENT_VECTOR_DEPTH_LOGIC_20260714.json",
-                          "operations/reports/SCHOOL_DEVELOPMENT_VECTOR_DEPTH_LOGIC_20260714.md",
-                          "operations/school/curriculum/development_vector/school_development_vector_map_v1.json",
+                          "operations/reports/SCHOOL_TOPICS_PATCH_RECOVERY_LAUNCH_UPDATE_20260714.json",
+                          "operations/reports/SCHOOL_TOPICS_PATCH_RECOVERY_LAUNCH_UPDATE_20260714.md",
+                          "operations/reports/SCHOOL_TOPIC_PATCH_PLAN_VALIDATION_20260714.json",
+                          "operations/school/SCHOOL_CANONICAL_RUN_CONTRACT_V1.md",
                           "operations/school/memory/select_dynamic_theme_cell_v1.ps1",
-                          "operations/school/memory/validate_dynamic_theme_cell_selector_v1.ps1",
+                          "operations/school/plan_topic_patch_cycle_v1.ps1",
                           "operations/school/run_agent_school.ps1",
+                          "operations/school/run_autonomous_school_cycle_v1.ps1",
+                          "operations/school/validate_agent_school_canonical_entrypoint_v1.ps1",
+                          "operations/school/validate_topic_patch_plan_v1.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
@@ -25,12 +30,16 @@
     "structural_paths":  [
                              "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
                              "operations/reports/DEVELOPMENT_VECTOR_THEME_SELECTOR_VALIDATION_20260714.json",
-                             "operations/reports/SCHOOL_DEVELOPMENT_VECTOR_DEPTH_LOGIC_20260714.json",
-                             "operations/reports/SCHOOL_DEVELOPMENT_VECTOR_DEPTH_LOGIC_20260714.md",
-                             "operations/school/curriculum/development_vector/school_development_vector_map_v1.json",
+                             "operations/reports/SCHOOL_TOPICS_PATCH_RECOVERY_LAUNCH_UPDATE_20260714.json",
+                             "operations/reports/SCHOOL_TOPICS_PATCH_RECOVERY_LAUNCH_UPDATE_20260714.md",
+                             "operations/reports/SCHOOL_TOPIC_PATCH_PLAN_VALIDATION_20260714.json",
+                             "operations/school/SCHOOL_CANONICAL_RUN_CONTRACT_V1.md",
                              "operations/school/memory/select_dynamic_theme_cell_v1.ps1",
-                             "operations/school/memory/validate_dynamic_theme_cell_selector_v1.ps1",
-                             "operations/school/run_agent_school.ps1"
+                             "operations/school/plan_topic_patch_cycle_v1.ps1",
+                             "operations/school/run_agent_school.ps1",
+                             "operations/school/run_autonomous_school_cycle_v1.ps1",
+                             "operations/school/validate_agent_school_canonical_entrypoint_v1.ps1",
+                             "operations/school/validate_topic_patch_plan_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -42,8 +51,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1890,
-                                    "sha256":  "d98c113af8b691fed9a247bbc65945db1fa3f6e4e869a5eaea62febc7c452cec"
+                                    "structural_file_count":  1895,
+                                    "sha256":  "cefe55c496ebba775e527494020bf033a8042e77a8cadf89a30e18b0365921b9"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -69,12 +78,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  149,
-                         "structural_path_count":  1890,
+                         "structural_path_count":  1895,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-14T22:54:21.5904182+04:00"
+    "refreshed_at":  "2026-07-14T23:06:15.6052940+04:00"
 }
