@@ -1,0 +1,32 @@
+{
+    "schema":  "school_single_owner_launch_route_lock_v1",
+    "status":  "PASS_SINGLE_OWNER_SCHOOL_LAUNCH_ROUTE_LOCK_VALIDATED",
+    "created_at":  "2026-07-14T21:47:28.8238232+04:00",
+    "repo_head":  "616f70e",
+    "owner_entrypoint":  "operations/school/run_agent_school.ps1",
+    "owner_entrypoint_count":  1,
+    "owner_fields":  [
+                         "Count",
+                         "Mode"
+                     ],
+    "mode_values":  [
+                        "Test",
+                        "Live"
+                    ],
+    "canonical_command":  "operations/school/run_agent_school.ps1 -Count \u003cN\u003e -Mode \u003cTest|Live\u003e",
+    "internal_topics_plan":  "operations/school/curriculum/topics/builder_night_school_topics_v1.json",
+    "validator_status":  "PASS_AGENT_SCHOOL_CANONICAL_POLICY_V2",
+    "validator_exit_code":  0,
+    "all_run_like_surfaces_count":  6,
+    "unexpected_owner_like_launch_surfaces_count":  0,
+    "deleted_conflicting_pointer_files":  [
+                                              "operations/reports/SCHOOL_CANONICAL_LAUNCH_POINTER_20260714.json",
+                                              "operations/reports/SCHOOL_CANONICAL_LAUNCH_POINTER_20260714.md"
+                                          ],
+    "deleted_old_codex_school_task_files":  [
+                                                "operations/gpt_handoff/CODEX_TASK_SCHOOL_100K_USEFUL_CAMPAIGN_GENERATOR_V1.md",
+                                                "operations/gpt_handoff/CODEX_TASK_SCHOOL_ONE_TOPIC_SEP_LADDER_100K_V1.md"
+                                            ],
+    "school_completion_definition":  "School completed means compact memory update proof exists. If compact memory is not updated, the school run is not complete.",
+    "boundary":  "Candidate factory, streaming, digest, source router, finalizer and autonomous cycle controller remain internal helpers only. Codex material authoring before school is not a school launch route."
+}

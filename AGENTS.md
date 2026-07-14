@@ -571,80 +571,30 @@ Do not turn AGENTS.md into a ledger, report, or archive.
 
 ---
 
-## 16. Current school / Codex campaign route
+## 16. Current school route lock
 
-Current Owner route: school remains the learning accelerator. Codex is used before a new serious knowledge campaign to author/update campaign material that the existing local candidate factory consumes.
+Owner-facing school launch has exactly one entrypoint:
 
-Canonical launch pointer:
+```powershell
+operations/school/run_agent_school.ps1 -Count <N> -Mode <Test|Live>
+```
+
+Owner-facing launch fields are exactly:
 
 ```text
+Count
+Mode = Test | Live
+```
+
+`TopicsPlan`, candidate factory, streaming, quality gate, digest, source router, finalizer, and autonomous cycle controller are internal helpers only. They must not be presented as separate school launches.
+
+School completion means compact memory update proof exists. If compact memory is not updated, the school run is not complete; it is blocked, failed, or pending.
+
+Codex remains a bounded material authoring tool before school. Codex task files are not school launch routes and must not be treated as active school entrypoints.
+
+Do not use or recreate deleted school pointers:
+
+```text
+operations/reports/SCHOOL_CANONICAL_LAUNCH_POINTER_20260714.json
 operations/reports/SCHOOL_CANONICAL_LAUNCH_POINTER_20260714.md
 ```
-
-Active Codex task for the current deep-origin 100k campaign:
-
-```text
-operations/gpt_handoff/CODEX_TASK_SCHOOL_ONE_TOPIC_SEP_LADDER_100K_V1.md
-```
-
-Historical reference only, not the active route:
-
-```text
-operations/gpt_handoff/CODEX_TASK_EVIDENCE_GROUNDED_SCHOOL_GENERATOR_V1.md
-```
-
-Hard route rules:
-
-```text
-repo task file route only
-Codex authors source origin / campaign pack / reports
-local candidate factory generates candidates later
-streaming/staging is later and separate
-absorption/digest/active memory mutation is later and separate
-no file writes before PREFLIGHT_PASS
-no 100k hand-written candidate dump by Codex
-no active compact memory mutation
-no duplicate school/generator organ
-no new launch route unless Owner explicitly changes route
-```
-
-Deep-origin quality target:
-
-```text
-previous 100k pack passed contract/source coverage but had low novelty
-new campaign must create a deeper origin, not stretch 48 seeds again
-source origin target: 240-480 distinct origin units
-campaign pack target: 1000-2000 seeds
-max expansion_budget per seed <= 100
-total expansion_budget = 100000
-source/proof per seed required
-fallback expected = 0
-```
-
-Candidate depth target:
-
-```text
-candidate = campaign seed + topic/root + real source + extracted lesson + negative trap + proof target + behavior delta + scenario family
-not root + verb + mode + generic template
-```
-
-Source law:
-
-```text
-No source -> no knowledge.
-No source/proof anchor -> no memory candidate.
-For external/domain campaigns, Owner/trusted sources must be provided before Codex authors knowledge content.
-```
-
-If evidence/source is missing, stop or mark a low-depth fallback. Do not manufacture knowledge.
-
-Final boundary:
-
-```text
-Codex output is CODEX_DRAFT until GPT/operator validates independently.
-100k generation is not started by Codex.
-absorption/digest is not started by Codex.
-active memory is not mutated by Codex.
-```
-
-One-topic deep ladder rule: Codex authors one root/topic only; long 100k/200k runs are performed later by local school factory after operator validation.

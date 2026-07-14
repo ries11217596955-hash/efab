@@ -1,27 +1,27 @@
-﻿# School Canonical Run Contract V1
+# School Canonical Run Contract V1
 
-Status: ACTIVE_SINGLE_ENTRYPOINT_THREE_FIELD_LAUNCH
+Status: ACTIVE_SINGLE_ENTRYPOINT_TWO_FIELD_LAUNCH
 
 ## Owner-facing launch
 
 There is exactly one owner-facing school launch surface:
 
 ```text
-operations/school/run_agent_school.ps1 -Count <N> -Mode <Test|Live> -TopicsPlan <path-to-json>
+operations/school/run_agent_school.ps1 -Count <N> -Mode <Test|Live>
 ```
 
 Fields:
 
 - `Count`: required positive integer, max 1,000,000.
 - `Mode`: required enum: `Test` or `Live`.
-- `TopicsPlan`: required JSON file that declares curriculum topics, relative weights, verbs, and source modes.
+- Internal canonical topics plan: `operations/school/curriculum/topics/builder_night_school_topics_v1.json`. This is not an Owner launch field.
 
 No owner-facing resume fields are allowed. Resume/recovery state is internal.
 
 ## Canonical flow
 
 ```text
-Count + Mode + TopicsPlan
+Count + Mode
 -> candidate factory
 -> curriculum validators
 -> streaming absorption validation
@@ -45,7 +45,7 @@ There must be no separate school for 100, 1000, 5000, 30000, 300000, or any othe
 
 ## Topic plan law
 
-The school must not rely on one hardcoded theme stream for night runs. `TopicsPlan` controls what the school studies and relative topic distribution. Cursor arithmetic controls level continuation inside selected themes.
+The school uses the internal canonical topics plan to control what it studies and relative topic distribution. Cursor arithmetic controls level continuation inside selected themes. Owner does not pass `TopicsPlan` at launch.
 
 ## Boundary
 
@@ -55,7 +55,7 @@ The factory is local/cursor-guided and does not call Codex CLI/API directly. Cod
 
 After a canonical PASS proof is written, the school invokes `operations/school/finalize_agent_school_run_v1.ps1` under `operations/school/school_lifecycle_policy.json`.
 
-The finalizer must keep the owner-facing launch contract unchanged: `Count`, `Mode`, `TopicsPlan` only.
+The finalizer must keep the owner-facing launch contract unchanged: `Count`, `Mode` only.
 
 Finalizer duties:
 
@@ -69,7 +69,7 @@ Finalizer failure must not convert a valid school PASS into a fake failure, but 
 
 ## Internal helper surfaces
 
-Owner-facing launch surface remains exactly one: `operations/school/run_agent_school.ps1`.
+Owner-facing launch surface remains exactly one: `operations/school/run_agent_school.ps1`. Owner-facing launch fields are exactly two: `Count` and `Mode`.
 
 Internal school launch/helper surfaces are allowed when they are called by the canonical entrypoint/controller and are not presented as separate owner-facing schools. This includes source router ports, candidate factory, streaming absorption, ready lane, digest/memory helpers, finalizer, and the autonomous school cycle controller.
 
@@ -108,7 +108,6 @@ pid
 count
 mode
 entrypoint
-topics_plan
 git head
 stdout/stderr paths
 boundary = school-live compact-memory digestion mode; not AgentLife runtime; not Codex
@@ -117,7 +116,7 @@ boundary = school-live compact-memory digestion mode; not AgentLife runtime; not
 Correct max launch target:
 
 ```text
-operations/school/run_agent_school.ps1 -Count 1000000 -Mode Live -TopicsPlan operations/school/curriculum/topics/builder_night_school_topics_v1.json
+operations/school/run_agent_school.ps1 -Count 1000000 -Mode Live
 ```
 
 Do not claim full completion until:
@@ -131,3 +130,23 @@ no school-related process remains
 ```
 
 Do not clean active `.runtime` surfaces while the process is alive.
+
+
+## 2026-07-14 two-field correction
+
+Owner-facing school launch has exactly two fields:
+
+```text
+Count
+Mode = Test | Live
+```
+
+`TopicsPlan` is internal canonical configuration:
+
+```text
+operations/school/curriculum/topics/builder_night_school_topics_v1.json
+```
+
+Do not present candidate factory, streaming, digest, source router, Codex source ports, autonomous cycle controller, or TopicsPlan as separate Owner launch routes. They are internal organs/helpers called under the canonical entrypoint.
+
+School completion means compact memory update proof exists. If compact memory is not updated, the school run is not complete; it is blocked/failed/pending.

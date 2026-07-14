@@ -1,14 +1,14 @@
 param(
   [Parameter(Mandatory=$true)][ValidateRange(1,1000000)][int]$Count,
-  [Parameter(Mandatory=$true)][ValidateSet('Test','Live')][string]$Mode,
-  [Parameter(Mandatory=$true)][string]$TopicsPlan
+  [Parameter(Mandatory=$true)][ValidateSet('Test','Live')][string]$Mode
 )
 $TargetAccepted=$Count
 $RunKind=if($Mode -eq 'Live'){'Real'}else{'Test'}
+$TopicsPlan='operations/school/curriculum/topics/builder_night_school_topics_v1.json'
 $ResumeOrdinalOffset=0
 $ResumeCompletedChunks=0
 $ResumePlannedTotalAccepted=0
-if(-not (Test-Path $TopicsPlan)){ throw "TOPICS_PLAN_MISSING:$TopicsPlan" }
+if(-not (Test-Path $TopicsPlan)){ throw "CANONICAL_TOPICS_PLAN_MISSING:$TopicsPlan" }
 $ErrorActionPreference='Stop'
 $repoRoot=(git rev-parse --show-toplevel).Trim(); Set-Location $repoRoot
 $utf8=New-Object System.Text.UTF8Encoding($false)

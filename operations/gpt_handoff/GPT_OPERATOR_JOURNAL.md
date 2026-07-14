@@ -4056,3 +4056,29 @@ Cleanup:
 Proof reports:
 - operations/reports/ONE_TOPIC_SEP_LADDER_100K_COMPLETION_20260714.json
 - operations/reports/ONE_TOPIC_SEP_LADDER_100K_RETENTION_CLEANUP_REPORT_20260714.json
+## 2026-07-14 - School route locked to one Owner launch
+
+STATUS: PASS_SINGLE_OWNER_SCHOOL_LAUNCH_ROUTE_LOCK_VALIDATED
+
+Owner-facing launch:
+- operations/school/run_agent_school.ps1 -Count <N> -Mode <Test|Live>
+
+Owner fields:
+- Count
+- Mode = Test | Live
+
+Changes:
+- run_agent_school.ps1 no longer requires owner-facing TopicsPlan; internal canonical topics plan is fixed to operations/school/curriculum/topics/builder_night_school_topics_v1.json.
+- Deleted old SCHOOL_CANONICAL_LAUNCH_POINTER_20260714.* because it described generation/staging/digest as separate later route and caused confusion.
+- Deleted old Codex school task files from gpt_handoff so they are not mistaken for active school launch routes.
+- AGENTS.md section 16 now says School completion requires compact memory update proof.
+
+Validator proof:
+- PASS_AGENT_SCHOOL_CANONICAL_POLICY_V2
+- OWNER_FACING_ENTRYPOINT_COUNT=1
+- OWNER_FIELDS=Count,Mode
+- unexpected_owner_like_launch_surfaces_count=0
+
+Boundary:
+- Candidate factory, streaming, digest, source router, finalizer and autonomous cycle controller are internal helpers only.
+- Codex material authoring before school is not a school launch route.
