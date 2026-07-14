@@ -3835,3 +3835,28 @@ Boundary:
 
 Next recommended route:
 - Split Codex into per-root or 2-root seed outputs, or explicitly switch from Codex-authored material to operator-authored material if Owner decides.
+## 2026-07-14 - Owner correction accepted: restore repo-task-file Codex route
+
+STATUS: OWNER_CORRECTION_ACCEPTED_REPO_TASK_FILE_ROUTE_RESTORED
+
+Correction:
+- Owner remembered correctly: old successful Codex route used a repo task file, not embedded stdin mega-prompt mode.
+- Journal evidence: launched Codex on operations/gpt_handoff/CODEX_TASK_EVIDENCE_GROUNDED_SCHOOL_GENERATOR_V1.md.
+- Journal evidence: supported command was codex exec -C H:/efab -s workspace-write --json after -a never failed.
+- Journal evidence: Codex created campaign pack and validator under existing candidate_factory; TargetAccepted=25/100 PASS.
+
+Action now:
+- Created operations/gpt_handoff/CODEX_TASK_SCHOOL_100K_USEFUL_CAMPAIGN_GENERATOR_V1.md using the repo-task-file route.
+- Tried old supported command pattern with prompt pointing to this task file.
+- Codex read repo context/pointers but did not create builder_useful_100k_v1 campaign pack files.
+
+Boundary:
+- campaign_pack=NOT_PRODUCED
+- 100k_generation=NOT_STARTED
+- absorption=NOT_STARTED
+- active_memory_mutated=false
+
+Corrected next route:
+- Stop embedded JSON prompt mode.
+- Use repo task file route.
+- Split into the proven two slices: 1) coverage/level only, 2) campaign pack/validator.

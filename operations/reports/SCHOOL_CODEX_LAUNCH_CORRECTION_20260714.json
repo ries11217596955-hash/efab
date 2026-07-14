@@ -1,0 +1,34 @@
+{
+    "schema":  "school_codex_launch_correction_report_v1",
+    "status":  "OWNER_CORRECTION_ACCEPTED_REPO_TASK_FILE_ROUTE_RESTORED",
+    "created_at":  "2026-07-14T18:44:33.0108794+04:00",
+    "repo_head":  "735359b",
+    "correction":  "Old successful route used a repo task file and supported codex exec -C H:/efab -s workspace-write --json, not embedded stdin mega-prompts.",
+    "historical_evidence":  [
+                                "GPT_OPERATOR_JOURNAL line 3507: Launched Codex on CODEX_TASK_EVIDENCE_GROUNDED_SCHOOL_GENERATOR_V1.md.",
+                                "GPT_OPERATOR_JOURNAL line 3508: first CLI attempt failed because -a never unsupported.",
+                                "GPT_OPERATOR_JOURNAL line 3509: relaunched with supported codex exec -C H:/efab -s workspace-write --json.",
+                                "GPT_OPERATOR_JOURNAL lines 3545-3553: Codex created campaign pack and validator under existing candidate_factory.",
+                                "GPT_OPERATOR_JOURNAL lines 3559-3560: TargetAccepted 25/100 PASS."
+                            ],
+    "restored_task_file":  "operations/gpt_handoff/CODEX_TASK_SCHOOL_100K_USEFUL_CAMPAIGN_GENERATOR_V1.md",
+    "latest_attempt":  {
+                           "command":  "prompt | codex exec -C H:/efab -s workspace-write --json",
+                           "prompt":  "Read and execute this repo task file: operations/gpt_handoff/CODEX_TASK_SCHOOL_100K_USEFUL_CAMPAIGN_GENERATOR_V1.md",
+                           "events_path":  ".runtime/codex_runs/CODEX_100K_USEFUL_CAMPAIGN_OLD_PATTERN_EVENTS_20260714.jsonl",
+                           "result":  "Codex read repo context/pointers but produced no builder_useful_100k_v1 pack files.",
+                           "output_files_created":  false
+                       },
+    "expected_output_files":  [
+                                  "operations/school/curriculum/candidate_factory/campaign_packs/builder_useful_100k_v1.jsonl",
+                                  "operations/school/curriculum/candidate_factory/campaign_packs/builder_useful_100k_v1.manifest.json",
+                                  "operations/school/curriculum/candidate_factory/reports/BUILDER_USEFUL_100K_CAMPAIGN_AUTHOR_REPORT_V1.json",
+                                  "operations/school/curriculum/candidate_factory/reports/BUILDER_USEFUL_100K_CAMPAIGN_COVERAGE_AUDIT_V1.json",
+                                  "operations/school/curriculum/candidate_factory/reports/BUILDER_USEFUL_100K_CAMPAIGN_LEVEL_PLAN_V1.json"
+                              ],
+    "generated_100k":  false,
+    "absorption_started":  false,
+    "active_memory_mutated":  false,
+    "corrected_next_route":  "Use repo task file route, but split into the proven two slices: slice1 coverage/level only, then slice2 campaign pack/validator. Do not use embedded JSON prompt mode.",
+    "boundary":  "Correction restored route and task file; campaign pack still not produced."
+}

@@ -2,9 +2,9 @@
 
 Status: ACTIVE_DERIVED_VIEW
 Branch: main
-Observed head at generation: b90d8375581490a65f29b1346a02292a2b7e880b
-Generated: 2026-07-14T18:14:53.5167056+04:00
-Body source fingerprint: bf1771b63d6e06d81e62341482a9cb1488dcbd6b340b881b4f705d7b5ee0c563
+Observed head at generation: 735359bab8770d0a53743adfe896d66091c717c9
+Generated: 2026-07-14T18:45:16.6220389+04:00
+Body source fingerprint: 977dd2694d2b87f1fa38956cf9cb83bbea2a71eb32842dc9c3698f45204f02e7
 
 Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
@@ -30,7 +30,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `knowledge_acquisition_port` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/knowledge_acquisition_port`, files=50, scripts=2, required_present=True
 - `map_control` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/map_control`, files=2, scripts=0, required_present=True
 - `operations_self_model` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/self_model`, files=62, scripts=62, required_present=True
-- `gpt_handoff` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/gpt_handoff`, files=5, scripts=0, required_present=True
+- `gpt_handoff` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/gpt_handoff`, files=6, scripts=0, required_present=True
 
 ## Candidate Triage Queue
 
@@ -59,7 +59,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `operations_readme_md` - root `operations/README.md`, files=1, scripts=0, validators=0, proofs=0, needs_triage=True
 - `operations_reasoning` - root `operations/reasoning`, files=6, scripts=6, validators=3, proofs=0, needs_triage=True
 - `operations_reflex_library` - root `operations/reflex_library`, files=2, scripts=1, validators=0, proofs=0, needs_triage=True
-- `operations_reports` - root `operations/reports`, files=35, scripts=0, validators=0, proofs=0, needs_triage=True
+- `operations_reports` - root `operations/reports`, files=37, scripts=0, validators=0, proofs=0, needs_triage=True
 - `operations_thinking_sandbox` - root `operations/thinking_sandbox`, files=2, scripts=2, validators=1, proofs=0, needs_triage=True
 - `packs_phase10_generated_agent_validation_harness_v1` - root `packs/PHASE10_GENERATED_AGENT_VALIDATION_HARNESS_V1`, files=6, scripts=3, validators=2, proofs=0, needs_triage=True
 - `packs_phase100_quarantine_and_blocker_registry_v1` - root `packs/PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1`, files=3, scripts=2, validators=0, proofs=0, needs_triage=True
