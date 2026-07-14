@@ -1,0 +1,60 @@
+{
+  "schema": "dynamic_school_request_planner_installation_v1",
+  "status": "PASS_DYNAMIC_SCHOOL_REQUEST_PLANNER_V1_INSTALLED_AND_VALIDATED",
+  "created_at": "2026-07-14T20:33:51.067339+00:00",
+  "repo_head_before_commit": "31418da",
+  "purpose": "Compute variable School Request size from compact memory/development vector pressure: 50..50000 candidates, micro-batch 100, bounded warehouse backlog, topic reselection only after request complete.",
+  "validation": {
+    "status": "PASS_DYNAMIC_SCHOOL_REQUEST_PLANNER_VALIDATION_V1",
+    "selected_topic": "codex_school_task_template_strength",
+    "selected_pressure_class": "MISSING_OR_ZERO_DEPTH_HIGH_GAP",
+    "selected_request_candidate_count": 20000,
+    "selected_micro_batch_size": 100,
+    "selected_micro_batch_count": 200,
+    "selected_max_ready_backlog_candidates": 3000,
+    "selected_topic_reselection_rule": "after_request_complete_only",
+    "task_total_candidate_count": 20000,
+    "task_micro_batch_count": 200,
+    "synthetic_cases": [
+      {
+        "case": "near_complete",
+        "request_candidate_count": 100,
+        "micro_batch_count": 1,
+        "pressure_class": "MAINTENANCE_OR_NEAR_COMPLETE",
+        "priority_queue": "p2"
+      },
+      {
+        "case": "missing_high_gap",
+        "request_candidate_count": 20000,
+        "micro_batch_count": 200,
+        "pressure_class": "MISSING_OR_ZERO_DEPTH_HIGH_GAP",
+        "priority_queue": "p2"
+      },
+      {
+        "case": "cap_50k",
+        "request_candidate_count": 50000,
+        "micro_batch_count": 500,
+        "pressure_class": "MISSING_OR_ZERO_DEPTH_HIGH_GAP",
+        "priority_queue": "p0"
+      }
+    ],
+    "memory_changed": false
+  },
+  "request_policy": {
+    "min_request_size": 50,
+    "max_request_size": 50000,
+    "micro_batch_size": 100,
+    "warehouse_backlog_limit_candidates": 3000,
+    "topic_reselection": "after_request_complete_only",
+    "memory_progress": "ABSORBED only",
+    "near_complete": "100 maintenance request",
+    "missing_zero_depth_high_gap": "20000 default request",
+    "priority_cap": "priority boost allowed but capped at 50000"
+  },
+  "files_changed": [
+    "operations/school/request/plan_dynamic_school_request_v1.ps1",
+    "operations/school/request/validate_dynamic_school_request_planner_v1.ps1",
+    "operations/school/warehouse/build_codex_warehouse_request_macro_task_v1.ps1"
+  ],
+  "boundary": "Planner and warehouse dynamic request task only; no real Codex and no absorption."
+}

@@ -1,0 +1,54 @@
+﻿{
+    "schema":  "dynamic_school_request_planner_validation_v1",
+    "status":  "PASS_DYNAMIC_SCHOOL_REQUEST_PLANNER_VALIDATION_V1",
+    "created_at":  "2026-07-15T00:33:59.6430500+04:00",
+    "selection_path":  ".runtime/dynamic_school_request_validation/validator_dynamic_request_20260715_003351/selection_auto.json",
+    "request_plan_path":  ".runtime/dynamic_school_request_validation/validator_dynamic_request_20260715_003351/request_plan.json",
+    "warehouse_request_task":  ".runtime/dynamic_school_request_validation/validator_dynamic_request_20260715_003351/warehouse_request/codex_warehouse_dynamic_request_task.json",
+    "selected_topic":  "codex_school_task_template_strength",
+    "selected_pressure_class":  "MISSING_OR_ZERO_DEPTH_HIGH_GAP",
+    "selected_request_candidate_count":  20000,
+    "selected_micro_batch_size":  100,
+    "selected_micro_batch_count":  200,
+    "selected_max_ready_backlog_candidates":  3000,
+    "selected_topic_reselection_rule":  "after_request_complete_only",
+    "task_total_candidate_count":  20000,
+    "task_micro_batch_count":  200,
+    "synthetic_cases":  [
+                            {
+                                "case":  "near_complete",
+                                "request_candidate_count":  100,
+                                "micro_batch_count":  1,
+                                "pressure_class":  "MAINTENANCE_OR_NEAR_COMPLETE",
+                                "priority_queue":  "p2"
+                            },
+                            {
+                                "case":  "missing_high_gap",
+                                "request_candidate_count":  20000,
+                                "micro_batch_count":  200,
+                                "pressure_class":  "MISSING_OR_ZERO_DEPTH_HIGH_GAP",
+                                "priority_queue":  "p2"
+                            },
+                            {
+                                "case":  "cap_50k",
+                                "request_candidate_count":  50000,
+                                "micro_batch_count":  500,
+                                "pressure_class":  "MISSING_OR_ZERO_DEPTH_HIGH_GAP",
+                                "priority_queue":  "p0"
+                            }
+                        ],
+    "memory_before":  {
+                          "manifest":  "8035CE66AEA0D843FCD5E5585CDC36B1066D296ADA12C192C57C222C6045EEE1",
+                          "index":  "54F2CBBB6148AF68EC9FF9B5E97EE10AF868677123775886BA4CEE4173457101",
+                          "cells":  "199C9D9391ED5C79BBC774F8F81E884E4B439A291091C8F6F2A36A7792BA8BD1"
+                      },
+    "memory_after":  {
+                         "manifest":  "8035CE66AEA0D843FCD5E5585CDC36B1066D296ADA12C192C57C222C6045EEE1",
+                         "index":  "54F2CBBB6148AF68EC9FF9B5E97EE10AF868677123775886BA4CEE4173457101",
+                         "cells":  "199C9D9391ED5C79BBC774F8F81E884E4B439A291091C8F6F2A36A7792BA8BD1"
+                     },
+    "memory_changed":  false,
+    "failures":  [
+
+                 ]
+}

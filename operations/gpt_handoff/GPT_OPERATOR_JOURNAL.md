@@ -257,3 +257,33 @@ Meaning:
 Codex can be treated as producer that fills runtime warehouse with READY micro-batches.
 School is consumer that independently consumes READY only, waits with heartbeat when ahead, and never counts memory progress until ABSORBED.
 ```
+
+
+## Dynamic School Request planner v1
+
+```text
+dynamic_request_planner = installed and validated
+selected_topic = codex_school_task_template_strength
+selected_pressure_class = MISSING_OR_ZERO_DEPTH_HIGH_GAP
+selected_request_candidate_count = 20000
+micro_batch_size = 100
+micro_batch_count = 200
+warehouse_backlog_limit_candidates = 3000
+topic_reselection_rule = after_request_complete_only
+memory_changed = False
+```
+
+Sizing proof:
+
+```text
+near_complete=100, missing_high_gap=20000, cap_50k=50000
+```
+
+Meaning:
+
+```text
+School chooses request size from compact memory/development vector pressure, from 50 to 50000.
+Codex still writes micro-batches of 100 through warehouse.
+School reselects next topic only after request complete/closed.
+Only ABSORBED counts as memory progress.
+```
