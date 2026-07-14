@@ -1,35 +1,44 @@
 # SCHOOL_PATCH_EXECUTOR_INSTALLATION_20260714
 
-Status: PASS_SCHOOL_PATCH_EXECUTOR_V1_INSTALLED_AND_VALIDATED
+Status: PASS_SCHOOL_PATCH_EXECUTOR_V1_LAUNCHER_REPAIRED_AND_VALIDATED
 
-Installed one-patch executor.
+What changed:
 
-It now performs this bridge:
-
-```text
-select topic
-plan 1000 patch
-build Codex task
-run/record Codex mode
-validate candidates
-normalize candidates into atom JSONL
-write runtime patch ledger
-optionally absorb into compact memory
-```
+- Windows launcher now uses `codex.cmd`, not `codex.ps1`.
+- Obsolete `--ask-for-approval` was removed.
+- Long Codex prompt is passed through stdin using `codex exec ... -`.
+- Windows `cmd /c` double-outer quoting is used for executable paths.
+- Timeout cleanup now kills only the process tree rooted at the executor cmd process.
 
 Validation:
 
-- status: PASS_SCHOOL_PATCH_EXECUTOR_VALIDATION_V1
-- executor_status: PASS_PATCH_EXECUTOR_VALIDATED_NO_ABSORB_V1
-- codex_status: MOCK_CODEX_DRAFT_CREATED
-- ledger_state: VALIDATED_NORMALIZED
-- memory_changed: False
+- mock_executor_validation: PASS_SCHOOL_PATCH_EXECUTOR_VALIDATION_V1
+- mock_executor_status: PASS_PATCH_EXECUTOR_VALIDATED_NO_ABSORB_V1
+- mock_codex_status: MOCK_CODEX_DRAFT_CREATED
+- mock_ledger_state: VALIDATED_NORMALIZED
+- mock_memory_changed: False
 
-Important boundary:
+Real Codex no-absorb trial:
+
+- status: PASS_REAL_CODEX_TIMEOUT_RECORDED_NO_MEMORY_MUTATION_V1
+- codex_status: CODEX_FAILED
+- codex_failure_class: HANG_OR_TIMEOUT
+- ledger_state: CODEX_FAILED
+- memory_changed: False
+- absorption_run: False
+- candidates_created: False
+
+Conclusion:
 
 ```text
-VALIDATED_NORMALIZED is not memory progress.
-Only ABSORBED counts as memory update.
+1000-candidate real Codex patch reached Codex execution but timed out without candidates.
+Next slice must use retry narrowing: 500, then 200, or reduce task complexity before absorption.
 ```
 
-Validation used MockCodex and did not run absorption.
+Operator incident:
+
+```text
+manual cleanup regex was too broad and stopped unrelated Codex app-server/node processes while clearing locked runtime files.
+No repo or memory damage was observed.
+Corrective change: executor timeout cleanup now kills only its own child process tree.
+```

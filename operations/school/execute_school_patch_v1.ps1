@@ -11,6 +11,11 @@ $repoRoot=(git rev-parse --show-toplevel).Trim(); Set-Location $repoRoot
 function EnsureDir($Path){ if($Path -and -not (Test-Path $Path)){ New-Item -ItemType Directory -Force -Path $Path | Out-Null } }
 function WriteJson($Path,$Obj,$Depth=100){ $d=Split-Path -Parent $Path; if($d){ EnsureDir $d }; $Obj|ConvertTo-Json -Depth $Depth|Set-Content -LiteralPath $Path -Encoding UTF8 }
 function Sha($p){ if(Test-Path $p){ (Get-FileHash $p -Algorithm SHA256).Hash } else { 'MISSING' } }
+function Stop-ProcessTreeByRootPid([int]$RootPid){
+  $children=@(Get-CimInstance Win32_Process | Where-Object { $_.ParentProcessId -eq $RootPid })
+  foreach($child in $children){ Stop-ProcessTreeByRootPid -RootPid ([int]$child.ProcessId) }
+  try { Stop-Process -Id $RootPid -Force -ErrorAction SilentlyContinue } catch {}
+}
 $mem='.runtime/active_compact_semantic_memory_v1'
 $memoryBefore=[ordered]@{manifest=Sha "$mem/manifest.json"; index=Sha "$mem/index.json"; cells=Sha "$mem/cells.jsonl"}
 $runId="school_patch_executor_{0}_{1}_{2}" -f $Mode.ToLowerInvariant(),$Count,(Get-Date -Format 'yyyyMMdd_HHmmss')
@@ -75,24 +80,38 @@ if($ExecutorMode -eq 'DryRun'){
   $codexStatus='MOCK_CODEX_DRAFT_CREATED'
   AddEvent 'MOCK_CODEX_DRAFT_CREATED' @{candidates=$candidatesPath; candidate_count=$rows.Count}
 }else{
-  $codexCmd=(Get-Command codex -ErrorAction Stop).Source
+  $cmdCandidate=$null
+  try{ $cmdCandidate=(Get-Command codex.cmd -ErrorAction Stop).Source }catch{}
+  if([string]::IsNullOrWhiteSpace($cmdCandidate)){ $cmdCandidate=(Get-Command codex -ErrorAction Stop).Source }
+  $codexCmd=$cmdCandidate
   $prompt=Get-Content $taskMd -Raw
+  $promptPath="$taskDir/codex_prompt.txt"
+  $prompt | Set-Content -LiteralPath $promptPath -Encoding UTF8
   $stdoutPath="$taskDir/codex_stdout.txt"
   $stderrPath="$taskDir/codex_stderr.txt"
-  $p=Start-Process -FilePath $codexCmd -ArgumentList @('exec','--cd',$repoRoot,'--sandbox','workspace-write','--ask-for-approval','never',$prompt) -NoNewWindow -PassThru -RedirectStandardOutput $stdoutPath -RedirectStandardError $stderrPath
-  if(-not $p.WaitForExit($CodexTimeoutSeconds*1000)){
-    try{ $p.Kill() }catch{}
-    $codexStatus='CODEX_FAILED'; $codexFailureClass='HANG_OR_TIMEOUT'
-    AddEvent 'CODEX_FAILED' @{failure_class=$codexFailureClass; stdout=$stdoutPath; stderr=$stderrPath}
-  } elseif($p.ExitCode -ne 0){
-    $codexStatus='CODEX_FAILED'; $codexFailureClass='NONZERO_EXIT'
-    AddEvent 'CODEX_FAILED' @{failure_class=$codexFailureClass; exit_code=$p.ExitCode; stdout=$stdoutPath; stderr=$stderrPath}
-  } elseif(-not (Test-Path $candidatesPath)){
-    $codexStatus='CODEX_FAILED'; $codexFailureClass='EMPTY_OUTPUT'
-    AddEvent 'CODEX_FAILED' @{failure_class=$codexFailureClass; stdout=$stdoutPath; stderr=$stderrPath}
-  } else {
-    $codexStatus='CODEX_DRAFT_CREATED'
-    AddEvent 'CODEX_DRAFT_CREATED' @{candidates=$candidatesPath; stdout=$stdoutPath; stderr=$stderrPath}
+  $cmdLine='""{0}" exec -C "{1}" -s workspace-write --ephemeral - < "{2}" > "{3}" 2> "{4}""' -f $codexCmd,$repoRoot,$promptPath,$stdoutPath,$stderrPath
+  try{
+    $p=Start-Process -FilePath $env:ComSpec -ArgumentList @('/d','/c',$cmdLine) -NoNewWindow -PassThru
+  }catch{
+    $codexStatus='CODEX_FAILED'; $codexFailureClass='LAUNCHER_ERROR'
+    AddEvent 'CODEX_FAILED' @{failure_class=$codexFailureClass; error=$_.Exception.Message; codex_cmd=$codexCmd; prompt_path=$promptPath; cmd_line=$cmdLine}
+    $p=$null
+  }
+  if($null -ne $p){
+    if(-not $p.WaitForExit($CodexTimeoutSeconds*1000)){
+      Stop-ProcessTreeByRootPid -RootPid ([int]$p.Id)
+      $codexStatus='CODEX_FAILED'; $codexFailureClass='HANG_OR_TIMEOUT'
+      AddEvent 'CODEX_FAILED' @{failure_class=$codexFailureClass; stdout=$stdoutPath; stderr=$stderrPath; codex_cmd=$codexCmd; process_tree_killed=$true; root_pid=$p.Id}
+    } elseif($p.ExitCode -ne 0){
+      $codexStatus='CODEX_FAILED'; $codexFailureClass='NONZERO_EXIT'
+      AddEvent 'CODEX_FAILED' @{failure_class=$codexFailureClass; exit_code=$p.ExitCode; stdout=$stdoutPath; stderr=$stderrPath; codex_cmd=$codexCmd}
+    } elseif(-not (Test-Path $candidatesPath)){
+      $codexStatus='CODEX_FAILED'; $codexFailureClass='EMPTY_OUTPUT'
+      AddEvent 'CODEX_FAILED' @{failure_class=$codexFailureClass; stdout=$stdoutPath; stderr=$stderrPath; codex_cmd=$codexCmd}
+    } else {
+      $codexStatus='CODEX_DRAFT_CREATED'
+      AddEvent 'CODEX_DRAFT_CREATED' @{candidates=$candidatesPath; stdout=$stdoutPath; stderr=$stderrPath; codex_cmd=$codexCmd}
+    }
   }
 }
 $normalizedAtomsPath="$runRoot/normalized_patch_atoms.jsonl"

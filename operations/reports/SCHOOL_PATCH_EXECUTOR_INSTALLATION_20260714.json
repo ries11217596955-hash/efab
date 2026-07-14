@@ -1,8 +1,8 @@
 {
   "schema": "school_patch_executor_installation_v1",
-  "status": "PASS_SCHOOL_PATCH_EXECUTOR_V1_INSTALLED_AND_VALIDATED",
+  "status": "PASS_SCHOOL_PATCH_EXECUTOR_V1_LAUNCHER_REPAIRED_AND_VALIDATED",
   "created_at": "2026-07-14T19:22:45.224997+00:00",
-  "repo_head_before_commit": "8a1166a",
+  "repo_head_before_commit": "494e69c",
   "purpose": "Execute one school patch bridge: select topic, plan 1000 patch, build Codex task, run/record Codex, validate-normalize candidates, optionally absorb, and update runtime ledger.",
   "validation": {
     "status": "PASS_SCHOOL_PATCH_EXECUTOR_VALIDATION_V1",
@@ -24,5 +24,37 @@
     "operations/school/validate_school_patch_executor_v1.ps1",
     "operations/school/codex/validate_and_normalize_codex_school_patch_candidates_v1.ps1"
   ],
-  "boundary": "Validation used MockCodex without absorption; active memory was not mutated. Real Codex and absorption are next live-test slice."
+  "boundary": "No absorption was run. Real 1000-candidate Codex attempt timed out without candidates. Runtime tails were cleaned.",
+  "updated_at": "2026-07-14T19:55:32.930992+00:00",
+  "mock_validation": {
+    "status": "PASS_SCHOOL_PATCH_EXECUTOR_VALIDATION_V1",
+    "executor_status": "PASS_PATCH_EXECUTOR_VALIDATED_NO_ABSORB_V1",
+    "codex_status": "MOCK_CODEX_DRAFT_CREATED",
+    "ledger_state": "VALIDATED_NORMALIZED",
+    "memory_changed": false
+  },
+  "real_codex_no_absorb_trial": {
+    "status": "PASS_REAL_CODEX_TIMEOUT_RECORDED_NO_MEMORY_MUTATION_V1",
+    "codex_status": "CODEX_FAILED",
+    "codex_failure_class": "HANG_OR_TIMEOUT",
+    "ledger_state": "CODEX_FAILED",
+    "memory_changed": false,
+    "candidates_created": false,
+    "absorption_run": false,
+    "conclusion": "Real 1000-candidate Codex patch reached Codex execution but timed out without candidates; next retry must narrow attempt to 500/200 or reduce task complexity before absorption."
+  },
+  "launcher_repairs": [
+    "use codex.cmd on Windows instead of codex.ps1 for Start-Process",
+    "remove obsolete --ask-for-approval flag rejected by codex-cli 0.142.5",
+    "send long prompt through stdin using codex exec ... -",
+    "use Windows cmd /c double-outer quoting for executable paths",
+    "on timeout kill only the process tree rooted at the executor cmd process"
+  ],
+  "operator_incident": {
+    "status": "RECORDED_OPERATOR_CLEANUP_OVERREACH",
+    "summary": "manual cleanup regex temporarily stopped unrelated Codex app-server/node processes while clearing locked patch runtime files",
+    "memory_changed": false,
+    "repo_changed_by_incident": false,
+    "corrective_change": "executor timeout cleanup now kills only its own child process tree instead of broad codex process matching"
+  }
 }

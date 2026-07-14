@@ -216,3 +216,23 @@ One patch can now be executed through topic selection, 1000-patch planning, Code
 This validation used MockCodex and no absorption.
 VALIDATED_NORMALIZED is not memory progress. Only ABSORBED counts.
 ```
+
+
+## Real Codex no-absorb patch trial
+
+```text
+launcher_probe = PASS, codex stdin exec returned OK
+real_1000_patch = CODEX_FAILED / HANG_OR_TIMEOUT
+ledger_state = CODEX_FAILED
+memory_changed = false
+absorption_run = false
+runtime_tails_cleaned = true
+```
+
+Meaning:
+
+```text
+Codex bridge is now launchable, but 1000-candidate task is too heavy for first real patch.
+Next step is not another 1000 run; use retry narrowing: 500 then 200, or simplify the Codex task before absorption.
+Executor timeout cleanup was repaired to kill only its own child process tree.
+```

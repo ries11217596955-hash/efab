@@ -1,0 +1,23 @@
+﻿{
+    "schema":  "real_codex_patch_no_absorb_trial_v1",
+    "status":  "PASS_REAL_CODEX_TIMEOUT_RECORDED_NO_MEMORY_MUTATION_V1",
+    "created_at":  "2026-07-14T23:53:46.1001507+04:00",
+    "executor_report_path":  "H:\\efab\\.runtime\\school_patch_executor\\school_patch_executor_test_1000_20260714_234745\\school_patch_executor_report.json",
+    "executor_status":  "PASS_PATCH_EXECUTOR_CODEX_FAILURE_RECORDED_V1",
+    "codex_status":  "CODEX_FAILED",
+    "codex_failure_class":  "HANG_OR_TIMEOUT",
+    "ledger_state":  "CODEX_FAILED",
+    "task_json":  ".runtime/school_patch_executor/school_patch_executor_test_1000_20260714_234745/codex_task_attempt_1/codex_school_patch_task.json",
+    "task_md":  ".runtime/school_patch_executor/school_patch_executor_test_1000_20260714_234745/codex_task_attempt_1/CODEX_SCHOOL_PATCH_TASK.md",
+    "memory_hashes":  {
+                          "manifest.json":  "8035CE66AEA0D843FCD5E5585CDC36B1066D296ADA12C192C57C222C6045EEE1",
+                          "index.json":  "54F2CBBB6148AF68EC9FF9B5E97EE10AF868677123775886BA4CEE4173457101",
+                          "cells.jsonl":  "199C9D9391ED5C79BBC774F8F81E884E4B439A291091C8F6F2A36A7792BA8BD1"
+                      },
+    "memory_changed":  false,
+    "absorption_run":  false,
+    "candidates_created":  false,
+    "cleanup_required":  true,
+    "launcher_status":  "PROVEN_CODEX_STDIN_EXEC_LAUNCHER_OK_ON_MINIMAL_PROMPT",
+    "conclusion":  "Real 1000-candidate Codex patch reached Codex execution but timed out without candidates; next retry must narrow attempt to 500/200 or reduce task complexity before absorption."
+}
