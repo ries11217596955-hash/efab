@@ -3860,3 +3860,26 @@ Corrected next route:
 - Stop embedded JSON prompt mode.
 - Use repo task file route.
 - Split into the proven two slices: 1) coverage/level only, 2) campaign pack/validator.
+
+## 2026-07-14 - School launch route cleanup: obsolete prompt-mode tasks removed
+
+STATUS: PASS_OBSOLETE_SCHOOL_LAUNCH_VARIANTS_REMOVED
+
+Decision:
+- Keep exactly one active 100k school Codex route: repo task file route.
+- Active task: operations/gpt_handoff/CODEX_TASK_SCHOOL_100K_USEFUL_CAMPAIGN_GENERATOR_V1.md
+- Canonical pointer: operations/reports/SCHOOL_CANONICAL_LAUNCH_POINTER_20260714.md
+
+Removed obsolete failed prompt-mode task files:
+- codex_tasks/CODEX_TASK_SCHOOL_100K_SEED_PLAN_ONLY_EMBEDDED_20260714.md
+- codex_tasks/CODEX_TASK_SCHOOL_100K_SEED_PLAN_ONLY_READONLY_20260714.md
+- codex_tasks/CODEX_TASK_SCHOOL_100K_USEFUL_CAMPAIGN_PACK_20260714.md
+- codex_tasks/CODEX_TASK_SCHOOL_100K_USEFUL_CAMPAIGN_PACK_LEAN_20260714.md
+
+Kept as historical reference, not active route:
+- operations/gpt_handoff/CODEX_TASK_EVIDENCE_GROUNDED_SCHOOL_GENERATOR_V1.md
+
+Boundary:
+- No 100k generation started.
+- No absorption/digest started.
+- Active memory not mutated.
