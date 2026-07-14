@@ -1,0 +1,136 @@
+{
+    "schema":  "runtime_cleanup_report_v1",
+    "status":  "PASS_TRANSIENT_RAW_STAGING_CLEANED_ACTIVE_MEMORY_UNCHANGED",
+    "created_at":  "2026-07-14T14:57:52.8278326+04:00",
+    "repo_head_before":  "9615b4c",
+    "deletion_performed":  true,
+    "deletion_targets_before":  [
+                                    {
+                                        "path":  ".runtime\\streaming_absorption",
+                                        "exists":  true,
+                                        "files":  9504,
+                                        "bytes":  1350037214,
+                                        "last_write":  "2026-07-14T13:37:00.3450848+04:00"
+                                    },
+                                    {
+                                        "path":  ".runtime\\school_runs",
+                                        "exists":  true,
+                                        "files":  33,
+                                        "bytes":  568654831,
+                                        "last_write":  "2026-07-14T12:29:43.1242997+04:00"
+                                    },
+                                    {
+                                        "path":  ".runtime\\codex_curriculum_candidate_factory_runs",
+                                        "exists":  true,
+                                        "files":  104,
+                                        "bytes":  86280016,
+                                        "last_write":  "2026-07-14T13:36:40.6531184+04:00"
+                                    },
+                                    {
+                                        "path":  ".runtime\\stream_fix_probe",
+                                        "exists":  true,
+                                        "files":  1,
+                                        "bytes":  433558,
+                                        "last_write":  "2026-07-14T13:25:39.7783364+04:00"
+                                    },
+                                    {
+                                        "path":  ".runtime\\school_long_runs",
+                                        "exists":  true,
+                                        "files":  9,
+                                        "bytes":  1341092,
+                                        "last_write":  "2026-07-13T23:25:05.6970121+04:00"
+                                    }
+                                ],
+    "deletion_targets_after":  [
+                                   {
+                                       "path":  ".runtime\\streaming_absorption",
+                                       "exists":  false,
+                                       "files":  0,
+                                       "bytes":  0,
+                                       "last_write":  null
+                                   },
+                                   {
+                                       "path":  ".runtime\\school_runs",
+                                       "exists":  false,
+                                       "files":  0,
+                                       "bytes":  0,
+                                       "last_write":  null
+                                   },
+                                   {
+                                       "path":  ".runtime\\codex_curriculum_candidate_factory_runs",
+                                       "exists":  false,
+                                       "files":  0,
+                                       "bytes":  0,
+                                       "last_write":  null
+                                   },
+                                   {
+                                       "path":  ".runtime\\stream_fix_probe",
+                                       "exists":  false,
+                                       "files":  0,
+                                       "bytes":  0,
+                                       "last_write":  null
+                                   },
+                                   {
+                                       "path":  ".runtime\\school_long_runs",
+                                       "exists":  false,
+                                       "files":  0,
+                                       "bytes":  0,
+                                       "last_write":  null
+                                   }
+                               ],
+    "protected_kept_after":  [
+                                 {
+                                     "path":  ".runtime\\active_compact_semantic_memory_v1",
+                                     "exists":  true,
+                                     "files":  3,
+                                     "bytes":  113652074,
+                                     "last_write":  "2026-07-14T13:01:13.1701157+04:00"
+                                 },
+                                 {
+                                     "path":  ".runtime\\compact_memory_intake_v1",
+                                     "exists":  true,
+                                     "files":  16,
+                                     "bytes":  4212668,
+                                     "last_write":  "2026-07-13T23:22:26.1958524+04:00"
+                                 },
+                                 {
+                                     "path":  ".runtime\\compact_memory_growth_signal_v1",
+                                     "exists":  true,
+                                     "files":  1,
+                                     "bytes":  5206,
+                                     "last_write":  "2026-07-13T23:15:30.5751624+04:00"
+                                 },
+                                 {
+                                     "path":  ".runtime\\file_atom_absorption",
+                                     "exists":  true,
+                                     "files":  4,
+                                     "bytes":  113656906,
+                                     "last_write":  "2026-07-14T12:46:13.4819853+04:00"
+                                 }
+                             ],
+    "bytes_freed":  2006746711,
+    "active_memory_hashes_before":  {
+                                        ".runtime\\active_compact_semantic_memory_v1\\cells.jsonl":  "93532EEA46E05B5307865D7CEAD9816F60740307D3EB741472A87BE0CDA1D5D6",
+                                        ".runtime\\active_compact_semantic_memory_v1\\index.json":  "BA7160FFA526376B08501A41F96225E0B98490A6CB5A58ECB927137FF91F6597",
+                                        ".runtime\\active_compact_semantic_memory_v1\\manifest.json":  "771149C5039767C124E6064EECC67DABD1ECCFB83082423B8F7306F1675357BB"
+                                    },
+    "active_memory_hashes_after":  {
+                                       ".runtime\\active_compact_semantic_memory_v1\\cells.jsonl":  "93532EEA46E05B5307865D7CEAD9816F60740307D3EB741472A87BE0CDA1D5D6",
+                                       ".runtime\\active_compact_semantic_memory_v1\\index.json":  "BA7160FFA526376B08501A41F96225E0B98490A6CB5A58ECB927137FF91F6597",
+                                       ".runtime\\active_compact_semantic_memory_v1\\manifest.json":  "771149C5039767C124E6064EECC67DABD1ECCFB83082423B8F7306F1675357BB"
+                                   },
+    "active_memory_hashes_match":  true,
+    "protected_not_deleted":  [
+                                  ".runtime\\active_compact_semantic_memory_v1",
+                                  ".runtime\\compact_memory_intake_v1",
+                                  ".runtime\\compact_memory_growth_signal_v1",
+                                  ".runtime\\file_atom_absorption"
+                              ],
+    "compact_proof_kept":  [
+                               "operations/reports/SCHOOL_15K_QUALITY_GATE_20260714.json",
+                               "operations/reports/SCHOOL_15K_COMPACT_DIGEST_SUBMIT_20260714.json",
+                               "operations/reports/SCHOOL_15K_STREAMING_COMPLETION_20260714.json",
+                               "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
+                           ],
+    "boundary":  "Raw staging removed after digest submit-only proof. This is not active memory mutation and not proof of live long-run readiness."
+}

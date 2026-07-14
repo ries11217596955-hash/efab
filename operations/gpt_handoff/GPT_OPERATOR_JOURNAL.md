@@ -3659,3 +3659,29 @@ Submit-only:
 Boundary:
 - This is useful school signal, not accepted active memory.
 - Do not clean raw staging until Owner accepts digest + retention gate.
+## 2026-07-14 - Runtime raw staging cleanup after 15k compact digest
+
+STATUS: PASS_TRANSIENT_RAW_STAGING_CLEANED_ACTIVE_MEMORY_UNCHANGED
+
+Deleted transient runtime staging:
+- .runtime/streaming_absorption: 9504 files, 1350037214 bytes
+- .runtime/school_runs: 33 files, 568654831 bytes
+- .runtime/codex_curriculum_candidate_factory_runs: 104 files, 86280016 bytes
+- .runtime/stream_fix_probe: 1 file, 433558 bytes
+- .runtime/school_long_runs: 9 files, 1341092 bytes
+
+Proof:
+- bytes_freed=2006746711
+- active_memory_hashes_match=true
+- cleanup report: operations/reports/RUNTIME_CLEANUP_REPORT_20260714.json
+- cleanup plan: operations/reports/RUNTIME_CLEANUP_PLAN_20260714.json
+
+Protected kept:
+- .runtime/active_compact_semantic_memory_v1
+- .runtime/compact_memory_intake_v1
+- .runtime/compact_memory_growth_signal_v1
+- .runtime/file_atom_absorption
+
+Boundary:
+- This is runtime raw staging cleanup, not active memory mutation.
+- Compact reports and GPT journal preserve proof; raw 15k/500k staging was intentionally removed after compact digest submit-only proof.

@@ -1,17 +1,20 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-14T14:21:30.9723856+04:00",
+    "checked_at":  "2026-07-14T14:58:16.0529857+04:00",
     "branch":  "main",
-    "observed_head":  "e324c17379676526eb47fafa1b9b733c22a7c991",
-    "subject_head":  "e324c17379676526eb47fafa1b9b733c22a7c991",
+    "observed_head":  "9615b4c3604e1f059661a8fd8d7d4bcd4319353c",
+    "subject_head":  "9615b4c3604e1f059661a8fd8d7d4bcd4319353c",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
                           "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                          "operations/reports/SCHOOL_15K_STREAMING_COMPLETION_20260714.json",
-                          "operations/reports/SCHOOL_15K_STREAMING_COMPLETION_20260714.md",
+                          "operations/reports/SCHOOL_15K_COMPACT_DIGEST_SUBMIT_20260714.json",
+                          "operations/reports/SCHOOL_15K_COMPACT_DIGEST_SUBMIT_20260714.md",
+                          "operations/reports/SCHOOL_15K_COMPACT_TOPIC_DIGEST_PACKET_20260714.json",
+                          "operations/reports/SCHOOL_15K_QUALITY_GATE_20260714.json",
+                          "operations/reports/SCHOOL_15K_QUALITY_GATE_20260714.md",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
@@ -19,8 +22,11 @@
                       ],
     "structural_paths":  [
                              "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                             "operations/reports/SCHOOL_15K_STREAMING_COMPLETION_20260714.json",
-                             "operations/reports/SCHOOL_15K_STREAMING_COMPLETION_20260714.md"
+                             "operations/reports/SCHOOL_15K_COMPACT_DIGEST_SUBMIT_20260714.json",
+                             "operations/reports/SCHOOL_15K_COMPACT_DIGEST_SUBMIT_20260714.md",
+                             "operations/reports/SCHOOL_15K_COMPACT_TOPIC_DIGEST_PACKET_20260714.json",
+                             "operations/reports/SCHOOL_15K_QUALITY_GATE_20260714.json",
+                             "operations/reports/SCHOOL_15K_QUALITY_GATE_20260714.md"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -32,8 +38,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1851,
-                                    "sha256":  "9296b891abdee2ebf85796d3ca20840ce8c3c5f806c6631b9ddb457d7dc7804e"
+                                    "structural_file_count":  1854,
+                                    "sha256":  "87343ee245a0f2770fb1c3ab2c09fbfeefb9f712f5ae18f899f662624460c4e1"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -59,12 +65,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  149,
-                         "structural_path_count":  1851,
+                         "structural_path_count":  1854,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-14T14:21:55.5040764+04:00"
+    "refreshed_at":  "2026-07-14T14:58:40.6284129+04:00"
 }
