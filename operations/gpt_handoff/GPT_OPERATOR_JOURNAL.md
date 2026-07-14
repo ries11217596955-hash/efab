@@ -1,4 +1,4 @@
-# GPT_OPERATOR_JOURNAL — ACTIVE CURRENT STATE ONLY
+﻿# GPT_OPERATOR_JOURNAL â€” ACTIVE CURRENT STATE ONLY
 
 Updated: 2026-07-14T17:52:26.206917+00:00
 Repo HEAD at update: 3625b8f
@@ -287,3 +287,4 @@ Codex still writes micro-batches of 100 through warehouse.
 School reselects next topic only after request complete/closed.
 Only ABSORBED counts as memory progress.
 ```
+

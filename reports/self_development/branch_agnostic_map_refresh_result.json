@@ -1,21 +1,22 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-15T00:34:29.3494032+04:00",
+    "checked_at":  "2026-07-15T00:57:56.4035949+04:00",
     "branch":  "main",
-    "observed_head":  "31418da8665b70353d08d05240907a2d4e003570",
-    "subject_head":  "31418da8665b70353d08d05240907a2d4e003570",
+    "observed_head":  "db3254ba8d72af619f50ad535a2dac7cd5481922",
+    "subject_head":  "db3254ba8d72af619f50ad535a2dac7cd5481922",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
                           "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                          "operations/reports/CODEX_WAREHOUSE_PIPELINE_INSTALLATION_20260714.json",
-                          "operations/reports/CODEX_WAREHOUSE_PIPELINE_INSTALLATION_20260714.md",
                           "operations/reports/CODEX_WAREHOUSE_PIPELINE_VALIDATION_20260714.json",
-                          "operations/school/warehouse/build_codex_warehouse_macro_task_v1.ps1",
-                          "operations/school/warehouse/consume_codex_warehouse_micro_batches_v1.ps1",
-                          "operations/school/warehouse/validate_codex_warehouse_pipeline_v1.ps1",
+                          "operations/reports/DYNAMIC_SCHOOL_REQUEST_PLANNER_INSTALLATION_20260715.json",
+                          "operations/reports/DYNAMIC_SCHOOL_REQUEST_PLANNER_INSTALLATION_20260715.md",
+                          "operations/reports/DYNAMIC_SCHOOL_REQUEST_PLANNER_VALIDATION_20260715.json",
+                          "operations/school/request/plan_dynamic_school_request_v1.ps1",
+                          "operations/school/request/validate_dynamic_school_request_planner_v1.ps1",
+                          "operations/school/warehouse/build_codex_warehouse_request_macro_task_v1.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
@@ -23,12 +24,13 @@
                       ],
     "structural_paths":  [
                              "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                             "operations/reports/CODEX_WAREHOUSE_PIPELINE_INSTALLATION_20260714.json",
-                             "operations/reports/CODEX_WAREHOUSE_PIPELINE_INSTALLATION_20260714.md",
                              "operations/reports/CODEX_WAREHOUSE_PIPELINE_VALIDATION_20260714.json",
-                             "operations/school/warehouse/build_codex_warehouse_macro_task_v1.ps1",
-                             "operations/school/warehouse/consume_codex_warehouse_micro_batches_v1.ps1",
-                             "operations/school/warehouse/validate_codex_warehouse_pipeline_v1.ps1"
+                             "operations/reports/DYNAMIC_SCHOOL_REQUEST_PLANNER_INSTALLATION_20260715.json",
+                             "operations/reports/DYNAMIC_SCHOOL_REQUEST_PLANNER_INSTALLATION_20260715.md",
+                             "operations/reports/DYNAMIC_SCHOOL_REQUEST_PLANNER_VALIDATION_20260715.json",
+                             "operations/school/request/plan_dynamic_school_request_v1.ps1",
+                             "operations/school/request/validate_dynamic_school_request_planner_v1.ps1",
+                             "operations/school/warehouse/build_codex_warehouse_request_macro_task_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -40,8 +42,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1914,
-                                    "sha256":  "9e7bdc0055c07d7ce83bcb5d3b0cf65129f0c4a5e120f8fe117d9890a0911c01"
+                                    "structural_file_count":  1921,
+                                    "sha256":  "22faed1da8b82e4c01015c134c9beea75bd8b1f477a3f28ce1bc9f6fff2c8522"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -67,12 +69,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  149,
-                         "structural_path_count":  1914,
+                         "structural_path_count":  1921,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-15T00:34:54.7184986+04:00"
+    "refreshed_at":  "2026-07-15T00:58:21.7933561+04:00"
 }

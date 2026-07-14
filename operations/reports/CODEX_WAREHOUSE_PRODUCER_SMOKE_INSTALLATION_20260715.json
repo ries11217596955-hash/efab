@@ -1,0 +1,33 @@
+﻿{
+    "schema":  "codex_warehouse_producer_smoke_installation_v1",
+    "status":  "PASS_CODEX_WAREHOUSE_PRODUCER_SMOKE_CONNECTED_WITH_RECOVERY_NO_ABSORB_V1",
+    "created_at":  "2026-07-15T00:56:22.1588953+04:00",
+    "purpose":  "Connect real Codex producer to dynamic warehouse request in smoke mode: produce micro_001 payload, recover marker if needed, School consumes 100 without absorption.",
+    "mock_validation":  {
+                            "status":  "PASS_CODEX_WAREHOUSE_PRODUCER_SMOKE_VALIDATION_V1",
+                            "smoke_status":  "PASS_MOCK_CODEX_WAREHOUSE_PRODUCER_SMOKE_NO_ABSORB_V1",
+                            "producer_status":  "MOCK_PRODUCER_READY_CREATED",
+                            "consumer_status":  "PASS_WAREHOUSE_CONSUMED_READY_BATCHES_NO_ABSORB_V1",
+                            "accepted_count":  100,
+                            "memory_changed":  false
+                        },
+    "real_smoke":  {
+                       "status":  "PASS_REAL_CODEX_WAREHOUSE_PAYLOAD_RECOVERED_AND_CONSUMED_NO_ABSORB_V1",
+                       "producer_payload_created":  true,
+                       "ready_jsonl_lines":  100,
+                       "ready_marker_recovered_by_school":  true,
+                       "consumer_status":  "PASS_WAREHOUSE_CONSUMED_READY_BATCHES_NO_ABSORB_V1",
+                       "accepted_count":  100,
+                       "absorption_run":  false,
+                       "memory_changed":  false
+                   },
+    "protocol_change":  "READY marker remains authoritative; if sandbox denies rename, producer may copy/write READY.jsonl directly and then write marker. School recovery can validate unmarked READY payload and create recovered marker.",
+    "files_changed":  [
+                          "operations/school/warehouse/invoke_codex_warehouse_producer_smoke_v1.ps1",
+                          "operations/school/warehouse/validate_codex_warehouse_producer_smoke_v1.ps1",
+                          "operations/school/warehouse/recover_unmarked_ready_micro_batch_v1.ps1",
+                          "operations/school/warehouse/consume_codex_warehouse_micro_batches_v1.ps1"
+                      ],
+    "boundary":  "No absorption was run. Active memory was not changed."
+}
+

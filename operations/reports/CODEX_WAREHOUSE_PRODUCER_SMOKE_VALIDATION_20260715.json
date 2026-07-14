@@ -1,0 +1,28 @@
+﻿{
+    "schema":  "codex_warehouse_producer_smoke_validation_v1",
+    "status":  "PASS_CODEX_WAREHOUSE_PRODUCER_SMOKE_VALIDATION_V1",
+    "created_at":  "2026-07-15T00:57:23.5197701+04:00",
+    "smoke_report":  ".runtime/real_warehouse_producer_smoke/real_warehouse_producer_smoke_mockproducer_20260715_005714/codex_warehouse_producer_smoke_report.json",
+    "smoke_status":  "PASS_MOCK_CODEX_WAREHOUSE_PRODUCER_SMOKE_NO_ABSORB_V1",
+    "producer_status":  "MOCK_PRODUCER_READY_CREATED",
+    "consumer_status":  "PASS_WAREHOUSE_CONSUMED_READY_BATCHES_NO_ABSORB_V1",
+    "request_candidate_count":  20000,
+    "micro_batch_size":  100,
+    "micro_batch_count":  200,
+    "accepted_count":  100,
+    "absorption_run":  false,
+    "memory_before":  {
+                          "manifest":  "8035CE66AEA0D843FCD5E5585CDC36B1066D296ADA12C192C57C222C6045EEE1",
+                          "index":  "54F2CBBB6148AF68EC9FF9B5E97EE10AF868677123775886BA4CEE4173457101",
+                          "cells":  "199C9D9391ED5C79BBC774F8F81E884E4B439A291091C8F6F2A36A7792BA8BD1"
+                      },
+    "memory_after":  {
+                         "manifest":  "8035CE66AEA0D843FCD5E5585CDC36B1066D296ADA12C192C57C222C6045EEE1",
+                         "index":  "54F2CBBB6148AF68EC9FF9B5E97EE10AF868677123775886BA4CEE4173457101",
+                         "cells":  "199C9D9391ED5C79BBC774F8F81E884E4B439A291091C8F6F2A36A7792BA8BD1"
+                     },
+    "memory_changed":  false,
+    "failures":  [
+
+                 ]
+}

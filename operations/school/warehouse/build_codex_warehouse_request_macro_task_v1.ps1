@@ -81,11 +81,11 @@ $task=[ordered]@{
     macro_request_rule="Produce total_candidate_count=$total for one topic, as micro-batches of $micro."
     no_wait_inside_request='Codex may continue producing micro-batches without waiting for School, while respecting backlog limit.'
     backlog_guard="If READY backlog reaches $maxBacklog candidates, pause producer until School drains READY/CONSUMING/ABSORBED backlog."
-    output_order=@('WRITING.marker','tmp.jsonl','atomic rename tmp to READY.jsonl','READY.marker','heartbeat update')
+    output_order=@('WRITING.marker','tmp.jsonl','promote tmp to READY.jsonl, or copy/write READY directly if sandbox denies rename','READY.marker','heartbeat update')
     next_topic_guard='Do not start a new topic/request. School reselects topic only after request is complete/closed.'
   }
   consumer_protocol=[ordered]@{
-    ready_only='School consumes only READY marker + READY JSONL.'
+    ready_only='School consumes only READY marker + READY JSONL. The READY marker is the final consumer-visible signal.'
     waiting='If no READY, School uses heartbeat and bounded wait; no duplicate producer until status is resolved.'
     memory_progress='Only ABSORBED counts as memory progress.'
   }
@@ -128,12 +128,12 @@ For each micro-batch:
 ```text
 1. write micro_NNN.WRITING.marker.json
 2. write micro_NNN.tmp.jsonl
-3. rename tmp JSONL to micro_NNN.READY.jsonl only when complete
+3. promote tmp JSONL to micro_NNN.READY.jsonl only when complete; if sandbox denies rename, write/copy READY.jsonl directly and keep tmp as staging
 4. write micro_NNN.READY.marker.json
 5. update producer.heartbeat.json
 ```
 
-School consumes only READY marker + READY JSONL. School never consumes WRITING.
+School consumes only READY marker + READY JSONL. The READY marker is the final consumer-visible signal. School never consumes WRITING.
 
 ## REQUIRED CANDIDATE FIELDS
 

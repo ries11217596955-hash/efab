@@ -1,0 +1,21 @@
+﻿{
+    "schema":  "real_codex_warehouse_producer_smoke_no_absorb_trial_v1",
+    "status":  "PASS_REAL_CODEX_WAREHOUSE_PAYLOAD_RECOVERED_AND_CONSUMED_NO_ABSORB_V1",
+    "created_at":  "2026-07-15T00:56:22.1087566+04:00",
+    "root":  "H:\\efab\\.runtime\\real_warehouse_producer_smoke\\real_warehouse_producer_smoke_runcodex_20260715_004905",
+    "task_json":  "H:\\efab\\.runtime\\real_warehouse_producer_smoke\\real_warehouse_producer_smoke_runcodex_20260715_004905\\warehouse_request\\codex_warehouse_dynamic_request_task.json",
+    "producer_original_status":  "CODEX_FAILED_HANG_OR_TIMEOUT_AFTER_PARTIAL_PAYLOAD_AND_MARKER_FAILURE",
+    "producer_payload_created":  true,
+    "producer_ready_jsonl":  "H:\\efab\\.runtime\\real_warehouse_producer_smoke\\real_warehouse_producer_smoke_runcodex_20260715_004905\\warehouse_request\\warehouse\\micro_001.READY.jsonl",
+    "producer_ready_jsonl_lines":  100,
+    "ready_marker_recovered_by_school":  true,
+    "recovery_report":  "H:\\efab\\.runtime\\real_warehouse_producer_smoke\\real_warehouse_producer_smoke_runcodex_20260715_004905\\warehouse_request\\warehouse\\micro_001.recovery_report.json",
+    "consumer_report":  "H:\\efab\\.runtime\\real_warehouse_producer_smoke\\real_warehouse_producer_smoke_runcodex_20260715_004905\\warehouse_request\\warehouse\\warehouse_consumer_report.json",
+    "consumer_status":  "PASS_WAREHOUSE_CONSUMED_READY_BATCHES_NO_ABSORB_V1",
+    "consumed_batches":  1,
+    "accepted_count":  100,
+    "absorption_run":  false,
+    "memory_changed":  false,
+    "protocol_repair":  "Future prompt/protocol allows promote/copy READY.jsonl and treats READY marker as final signal when sandbox denies rename.",
+    "note":  "Codex produced the 100-line READY payload but failed marker/heartbeat before timeout; School recovered the marker after validating JSONL and consumed without absorption."
+}

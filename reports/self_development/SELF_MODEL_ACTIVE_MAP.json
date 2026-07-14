@@ -6,19 +6,19 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "31418da8665b70353d08d05240907a2d4e003570",
-    "subject_head":  "31418da8665b70353d08d05240907a2d4e003570",
-    "generated_at":  "2026-07-15T00:34:54.5837182+04:00",
+    "observed_head_at_generation":  "db3254ba8d72af619f50ad535a2dac7cd5481922",
+    "subject_head":  "db3254ba8d72af619f50ad535a2dac7cd5481922",
+    "generated_at":  "2026-07-15T00:58:21.6533918+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  1914,
+    "structural_path_count":  1921,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1914,
-                                    "sha256":  "9e7bdc0055c07d7ce83bcb5d3b0cf65129f0c4a5e120f8fe117d9890a0911c01"
+                                    "structural_file_count":  1921,
+                                    "sha256":  "22faed1da8b82e4c01015c134c9beea75bd8b1f477a3f28ce1bc9f6fff2c8522"
                                 },
     "module_count":  203,
     "validator_count":  174,
@@ -29,8 +29,8 @@
                                      "root":  "operations/school",
                                      "status":  "CONFIRMED_PRIMARY_EVIDENCE_PRESENT",
                                      "confirmation_basis":  "explicit_required_component_with_primary_repo_evidence",
-                                     "file_count":  136,
-                                     "script_count":  78,
+                                     "file_count":  139,
+                                     "script_count":  81,
                                      "validator_count":  30,
                                      "proof_file_count":  12,
                                      "contract_or_policy_count":  14,
@@ -184,9 +184,9 @@
                                                                 "operations/school/run_agent_school.ps1"
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "31418da8665b70353d08d05240907a2d4e003570",
-                                                               "committed_at":  "2026-07-15T00:16:26+04:00",
-                                                               "subject":  "feat: add codex warehouse pipeline"
+                                                               "head":  "db3254ba8d72af619f50ad535a2dac7cd5481922",
+                                                               "committed_at":  "2026-07-15T00:34:25+04:00",
+                                                               "subject":  "feat: add dynamic school request planner"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -629,9 +629,9 @@
 
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "31418da8665b70353d08d05240907a2d4e003570",
-                                                               "committed_at":  "2026-07-15T00:16:26+04:00",
-                                                               "subject":  "feat: add codex warehouse pipeline"
+                                                               "head":  "db3254ba8d72af619f50ad535a2dac7cd5481922",
+                                                               "committed_at":  "2026-07-15T00:34:25+04:00",
+                                                               "subject":  "feat: add dynamic school request planner"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -2070,19 +2070,19 @@
                                             "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                                             "discovery_method":  "bounded_git_ls_files_path_discovery",
                                             "evidence_counts":  {
-                                                                    "files":  55,
+                                                                    "files":  59,
                                                                     "scripts":  0,
                                                                     "validators":  0,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  0,
-                                                                    "docs":  21
+                                                                    "docs":  22
                                                                 },
-                                            "file_count":  55,
+                                            "file_count":  59,
                                             "script_count":  0,
                                             "validator_count":  0,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  0,
-                                            "doc_count":  21,
+                                            "doc_count":  22,
                                             "validator_refs":  [
 
                                                                ],
@@ -2105,6 +2105,9 @@
                                                                   "operations/reports/CODEX_WAREHOUSE_PIPELINE_INSTALLATION_20260714.json",
                                                                   "operations/reports/CODEX_WAREHOUSE_PIPELINE_INSTALLATION_20260714.md",
                                                                   "operations/reports/CODEX_WAREHOUSE_PIPELINE_VALIDATION_20260714.json",
+                                                                  "operations/reports/CODEX_WAREHOUSE_PRODUCER_SMOKE_INSTALLATION_20260715.json",
+                                                                  "operations/reports/CODEX_WAREHOUSE_PRODUCER_SMOKE_INSTALLATION_20260715.md",
+                                                                  "operations/reports/CODEX_WAREHOUSE_PRODUCER_SMOKE_VALIDATION_20260715.json",
                                                                   "operations/reports/COMPACT_MEMORY_COMPACTION_CANDIDATES_20260714.json",
                                                                   "operations/reports/COMPACT_MEMORY_COMPACTION_CANDIDATE_VALIDATION_20260714.json",
                                                                   "operations/reports/COMPACT_MEMORY_WEIGHT_AUDIT_20260714.json",
@@ -2114,10 +2117,7 @@
                                                                   "operations/reports/DYNAMIC_SCHOOL_REQUEST_PLANNER_INSTALLATION_20260715.json",
                                                                   "operations/reports/DYNAMIC_SCHOOL_REQUEST_PLANNER_INSTALLATION_20260715.md",
                                                                   "operations/reports/DYNAMIC_SCHOOL_REQUEST_PLANNER_VALIDATION_20260715.json",
-                                                                  "operations/reports/DYNAMIC_THEME_CELL_SELECTOR_VALIDATION_20260714.json",
-                                                                  "operations/reports/FRESH_1000_CANDIDATE_BEHAVIOR_ABSORPTION_V1.json",
-                                                                  "operations/reports/FRESH_1000_CANDIDATE_BEHAVIOR_ABSORPTION_V1.md",
-                                                                  "operations/reports/GPT_OPERATOR_JOURNAL_ACTIVE_RESET_20260714.json"
+                                                                  "operations/reports/DYNAMIC_THEME_CELL_SELECTOR_VALIDATION_20260714.json"
                                                               ],
                                             "primary_evidence_refs":  [
 
@@ -7746,8 +7746,8 @@
                            "root":  "operations/school",
                            "status":  "CONFIRMED_PRIMARY_EVIDENCE_PRESENT",
                            "confirmation_basis":  "explicit_required_component_with_primary_repo_evidence",
-                           "file_count":  136,
-                           "script_count":  78,
+                           "file_count":  139,
+                           "script_count":  81,
                            "validator_count":  30,
                            "proof_file_count":  12,
                            "contract_or_policy_count":  14,
@@ -7901,9 +7901,9 @@
                                                       "operations/school/run_agent_school.ps1"
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "31418da8665b70353d08d05240907a2d4e003570",
-                                                     "committed_at":  "2026-07-15T00:16:26+04:00",
-                                                     "subject":  "feat: add codex warehouse pipeline"
+                                                     "head":  "db3254ba8d72af619f50ad535a2dac7cd5481922",
+                                                     "committed_at":  "2026-07-15T00:34:25+04:00",
+                                                     "subject":  "feat: add dynamic school request planner"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -8346,9 +8346,9 @@
 
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "31418da8665b70353d08d05240907a2d4e003570",
-                                                     "committed_at":  "2026-07-15T00:16:26+04:00",
-                                                     "subject":  "feat: add codex warehouse pipeline"
+                                                     "head":  "db3254ba8d72af619f50ad535a2dac7cd5481922",
+                                                     "committed_at":  "2026-07-15T00:34:25+04:00",
+                                                     "subject":  "feat: add dynamic school request planner"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -9785,19 +9785,19 @@
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                            "discovery_method":  "bounded_git_ls_files_path_discovery",
                            "evidence_counts":  {
-                                                   "files":  55,
+                                                   "files":  59,
                                                    "scripts":  0,
                                                    "validators":  0,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  0,
-                                                   "docs":  21
+                                                   "docs":  22
                                                },
-                           "file_count":  55,
+                           "file_count":  59,
                            "script_count":  0,
                            "validator_count":  0,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  0,
-                           "doc_count":  21,
+                           "doc_count":  22,
                            "validator_refs":  [
 
                                               ],
@@ -9820,6 +9820,9 @@
                                                  "operations/reports/CODEX_WAREHOUSE_PIPELINE_INSTALLATION_20260714.json",
                                                  "operations/reports/CODEX_WAREHOUSE_PIPELINE_INSTALLATION_20260714.md",
                                                  "operations/reports/CODEX_WAREHOUSE_PIPELINE_VALIDATION_20260714.json",
+                                                 "operations/reports/CODEX_WAREHOUSE_PRODUCER_SMOKE_INSTALLATION_20260715.json",
+                                                 "operations/reports/CODEX_WAREHOUSE_PRODUCER_SMOKE_INSTALLATION_20260715.md",
+                                                 "operations/reports/CODEX_WAREHOUSE_PRODUCER_SMOKE_VALIDATION_20260715.json",
                                                  "operations/reports/COMPACT_MEMORY_COMPACTION_CANDIDATES_20260714.json",
                                                  "operations/reports/COMPACT_MEMORY_COMPACTION_CANDIDATE_VALIDATION_20260714.json",
                                                  "operations/reports/COMPACT_MEMORY_WEIGHT_AUDIT_20260714.json",
@@ -9829,10 +9832,7 @@
                                                  "operations/reports/DYNAMIC_SCHOOL_REQUEST_PLANNER_INSTALLATION_20260715.json",
                                                  "operations/reports/DYNAMIC_SCHOOL_REQUEST_PLANNER_INSTALLATION_20260715.md",
                                                  "operations/reports/DYNAMIC_SCHOOL_REQUEST_PLANNER_VALIDATION_20260715.json",
-                                                 "operations/reports/DYNAMIC_THEME_CELL_SELECTOR_VALIDATION_20260714.json",
-                                                 "operations/reports/FRESH_1000_CANDIDATE_BEHAVIOR_ABSORPTION_V1.json",
-                                                 "operations/reports/FRESH_1000_CANDIDATE_BEHAVIOR_ABSORPTION_V1.md",
-                                                 "operations/reports/GPT_OPERATOR_JOURNAL_ACTIVE_RESET_20260714.json"
+                                                 "operations/reports/DYNAMIC_THEME_CELL_SELECTOR_VALIDATION_20260714.json"
                                              ],
                            "primary_evidence_refs":  [
 

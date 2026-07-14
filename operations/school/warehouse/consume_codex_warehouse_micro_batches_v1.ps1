@@ -16,7 +16,8 @@ $mem='.runtime/active_compact_semantic_memory_v1'
 $memoryBefore=[ordered]@{manifest=Sha "$mem/manifest.json"; index=Sha "$mem/index.json"; cells=Sha "$mem/cells.jsonl"}
 if(-not (Test-Path $MacroTaskJsonPath)){ throw "MACRO_TASK_MISSING:$MacroTaskJsonPath" }
 $task=Get-Content $MacroTaskJsonPath -Raw | ConvertFrom-Json
-if($task.status -ne 'CODEX_WAREHOUSE_MACRO_TASK_BUILT'){ throw "BAD_MACRO_TASK_STATUS:$($task.status)" }
+$acceptedTaskStatuses=@('CODEX_WAREHOUSE_MACRO_TASK_BUILT','CODEX_WAREHOUSE_DYNAMIC_REQUEST_TASK_BUILT')
+if($task.status -notin $acceptedTaskStatuses){ throw "BAD_MACRO_TASK_STATUS:$($task.status)" }
 $warehouseRoot=[string]$task.warehouse_root
 $ledgerPath=[string]$task.warehouse_ledger_path
 EnsureDir $warehouseRoot

@@ -131,7 +131,7 @@ For each micro-batch:
 5. update producer heartbeat
 ```
 
-School consumes only READY marker + READY JSONL. School never consumes WRITING.
+School consumes only READY marker + READY JSONL. The READY marker is the final consumer-visible signal. School never consumes WRITING.
 
 ## REQUIRED CANDIDATE FIELDS
 
