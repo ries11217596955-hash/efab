@@ -3958,3 +3958,37 @@ Decision:
 Proof pointers:
 - operations/reports/SCHOOL_100K_USEFULNESS_QUALITY_GATE_20260714.json
 - operations/reports/SCHOOL_100K_USEFULNESS_QUALITY_GATE_20260714.md
+
+## 2026-07-14 - Deep-origin 100k Codex attempt did not produce material
+
+STATUS: CODEX_DEEP_ORIGIN_NOT_PRODUCED
+
+Owner goal:
+- Codex should create a new deep origin and new campaign pack for another 100k candidates with higher novelty than builder_useful_100k_v1.
+
+Prepared:
+- Updated AGENTS.md section 16 to current school/Codex route and deep-origin task.
+- Created operations/gpt_handoff/CODEX_TASK_SCHOOL_DEEP_ORIGIN_100K_CANDIDATES_V1.md.
+- Created operations/reports/DEEP_ORIGIN_100K_CODEX_COMPACT_CONTEXT_20260714.json to avoid direct theme_cursor_ledger parsing.
+
+Codex attempts:
+- Initial broad task: no output; PowerShell parser failures.
+- After command-discipline patch: no output; stale AGENTS route interfered.
+- After AGENTS update: no output; task required uploaded EF_* files not present in repo.
+- After repo-only context fix: no output; Codex got stuck on theme_cursor_ledger BOM/quoting.
+- After compact context pack: no expected deep-origin/pack outputs.
+
+Expected outputs missing:
+- operations/school/curriculum/candidate_factory/source_origins/builder_deep_origin_100k_v1.jsonl
+- operations/school/curriculum/candidate_factory/campaign_packs/builder_deep_origin_100k_v1.jsonl
+- manifests and BUILDER_DEEP_ORIGIN_100K_* reports.
+
+Boundary:
+- new 100k generation NOT_STARTED.
+- streaming NOT_STARTED.
+- digest/absorption NOT_STARTED.
+- active_memory_mutated=false.
+
+Next recommended route:
+- Split Codex into smaller per-root deep-origin tasks or explicitly allow operator/GPT deterministic origin generation.
+- Do not retry the same broad Codex task blindly.

@@ -1,0 +1,187 @@
+{
+  "schema": "deep_origin_100k_codex_compact_context_v1",
+  "status": "READY_FOR_CODEX_DEEP_ORIGIN_AUTHORING",
+  "created_at": "2026-07-14T15:55:17.281969+00:00",
+  "repo_head": "b92e4c3",
+  "owner_goal": "Create a new deep origin and new campaign pack that can produce another 100000 candidates with higher novelty than builder_useful_100k_v1.",
+  "previous_100k_quality": {
+    "status": "PASS_CONTRACT_SOURCE_COVERAGE_BUT_LOW_NOVELTY_COMPACT_DIGEST_ONLY",
+    "candidate_count": 100000,
+    "ready_count": 100000,
+    "root_count": 12,
+    "seed_count": 48,
+    "fallback_template_count": 0,
+    "source_missing_count": 0,
+    "proof_missing_count": 0,
+    "unique_exercise_ratio": 0.00144,
+    "unique_expected_behavior_ratio": 0.00048,
+    "exercise_dup_max": 696,
+    "expected_behavior_dup_max": 2088,
+    "decision": "Do not raw-promote previous 100k; its problem was low novelty from 48 seeds."
+  },
+  "previous_100k_staging": {
+    "status": "PASS_100K_USEFUL_SCHOOL_STAGING_COMPLETE",
+    "generation_candidates": 100000,
+    "streaming_ready_atoms": 100000,
+    "streaming_rejected": 0,
+    "streaming_quarantine": 0,
+    "active_memory_mutated": false
+  },
+  "guard_and_memory": {
+    "memory_weight_guard_status": "PASS_MEMORY_WEIGHT_GUARD_INSTALLED_AND_VALIDATED",
+    "active_compaction_status": "PASS_ACTIVE_COMPACT_MEMORY_CONSERVATIVE_COMPACTION_REPLACED_AND_VALIDATED",
+    "guarded_fields": [
+      "relations",
+      "source_fingerprints"
+    ],
+    "properties_preserved_full": true
+  },
+  "old_pack_summary": {
+    "path": "operations/school/curriculum/candidate_factory/campaign_packs/builder_useful_100k_v1.jsonl",
+    "seed_count": 48,
+    "root_counts": {
+      "memory_weight_guard": 4,
+      "active_memory_compaction_and_rollback": 4,
+      "school_generation_absorption_separation": 4,
+      "hundred_k_scale_ladder": 4,
+      "codex_campaign_pack_governance": 4,
+      "theme_cursor_level_continuation": 4,
+      "speed_baseline_and_bottleneck_routing": 4,
+      "runtime_retention_cleanup_after_proof": 4,
+      "backup_retention_release_gate": 4,
+      "child_agent_production_boundary": 4,
+      "autonomous_next_action_selection": 4,
+      "live_lab_boundary_for_big_runs": 4
+    },
+    "do_not_copy": "Do not reuse old seed wording; use it only as anti-pattern for low novelty."
+  },
+  "new_campaign_targets": {
+    "campaign_id": "builder_deep_origin_100k_v1",
+    "origin_units_min": 240,
+    "origin_units_max": 480,
+    "seed_count_min": 1000,
+    "seed_count_max": 2000,
+    "recommended_seed_count": 1200,
+    "total_expansion_budget": 100000,
+    "max_expansion_budget_per_seed": 100,
+    "min_scenario_families": 80,
+    "min_roots": 12,
+    "expected_unique_exercise_ratio_target": 0.01,
+    "expected_expected_behavior_unique_ratio_target": 0.01
+  },
+  "roots": [
+    "memory_weight_guard",
+    "active_memory_compaction_and_rollback",
+    "school_generation_absorption_separation",
+    "hundred_k_scale_ladder",
+    "codex_campaign_pack_governance",
+    "theme_cursor_level_continuation",
+    "speed_baseline_and_bottleneck_routing",
+    "runtime_retention_cleanup_after_proof",
+    "backup_retention_release_gate",
+    "child_agent_production_boundary",
+    "autonomous_next_action_selection",
+    "live_lab_boundary_for_big_runs",
+    "quality_gate_and_novelty_control",
+    "single_canonical_launch_route",
+    "codex_failure_recovery_and_retry_slicing",
+    "factory_checkpoint_integrity"
+  ],
+  "cursor_summary": {
+    "memory_weight_guard": {
+      "exact_cursor_count": 0,
+      "start_policy": "new_or_new_scenario_family_start_level_1"
+    },
+    "active_memory_compaction_and_rollback": {
+      "exact_cursor_count": 0,
+      "start_policy": "new_or_new_scenario_family_start_level_1"
+    },
+    "school_generation_absorption_separation": {
+      "exact_cursor_count": 0,
+      "start_policy": "new_or_new_scenario_family_start_level_1"
+    },
+    "hundred_k_scale_ladder": {
+      "exact_cursor_count": 0,
+      "start_policy": "new_or_new_scenario_family_start_level_1"
+    },
+    "codex_campaign_pack_governance": {
+      "exact_cursor_count": 0,
+      "start_policy": "new_or_new_scenario_family_start_level_1"
+    },
+    "theme_cursor_level_continuation": {
+      "exact_cursor_count": 0,
+      "start_policy": "new_or_new_scenario_family_start_level_1"
+    },
+    "speed_baseline_and_bottleneck_routing": {
+      "exact_cursor_count": 0,
+      "start_policy": "new_or_new_scenario_family_start_level_1"
+    },
+    "runtime_retention_cleanup_after_proof": {
+      "exact_cursor_count": 0,
+      "start_policy": "new_or_new_scenario_family_start_level_1"
+    },
+    "backup_retention_release_gate": {
+      "exact_cursor_count": 0,
+      "start_policy": "new_or_new_scenario_family_start_level_1"
+    },
+    "child_agent_production_boundary": {
+      "exact_cursor_count": 0,
+      "start_policy": "new_or_new_scenario_family_start_level_1"
+    },
+    "autonomous_next_action_selection": {
+      "exact_cursor_count": 0,
+      "start_policy": "new_or_new_scenario_family_start_level_1"
+    },
+    "live_lab_boundary_for_big_runs": {
+      "exact_cursor_count": 0,
+      "start_policy": "new_or_new_scenario_family_start_level_1"
+    },
+    "quality_gate_and_novelty_control": {
+      "exact_cursor_count": 0,
+      "start_policy": "new_or_new_scenario_family_start_level_1"
+    },
+    "single_canonical_launch_route": {
+      "exact_cursor_count": 0,
+      "start_policy": "new_or_new_scenario_family_start_level_1"
+    },
+    "codex_failure_recovery_and_retry_slicing": {
+      "exact_cursor_count": 0,
+      "start_policy": "new_or_new_scenario_family_start_level_1"
+    },
+    "factory_checkpoint_integrity": {
+      "exact_cursor_count": 0,
+      "start_policy": "new_or_new_scenario_family_start_level_1"
+    }
+  },
+  "tracked_source_pool": [
+    "operations/reports/SCHOOL_100K_USEFULNESS_QUALITY_GATE_20260714.json",
+    "operations/reports/SCHOOL_100K_USEFUL_STAGING_RUN_20260714.json",
+    "operations/reports/SCHOOL_CANONICAL_LAUNCH_POINTER_20260714.json",
+    "operations/reports/SCHOOL_CODEX_LAUNCH_RUNBOOK_20260714.json",
+    "operations/reports/SCHOOL_LAUNCH_ROUTE_CLEANUP_20260714.json",
+    "operations/reports/SCHOOL_CODEX_LAUNCH_CORRECTION_20260714.json",
+    "operations/reports/MEMORY_WEIGHT_GUARD_INSTALLATION_20260714.json",
+    "operations/reports/ACTIVE_COMPACT_MEMORY_CONSERVATIVE_COMPACTION_REPLACEMENT_20260714.json",
+    "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
+    "AGENTS.md",
+    "operations/school/curriculum/candidate_factory/generate_codex_curriculum_candidate_factory_run_v1.ps1",
+    "operations/school/curriculum/candidate_factory/validate_campaign_pack_candidate_factory_v1.ps1"
+  ],
+  "forbidden_for_codex": [
+    "do not read theme_cursor_ledger.json directly for this task",
+    "do not run 100k generation",
+    "do not run absorption/digest",
+    "do not mutate active memory",
+    "do not create another launch route"
+  ],
+  "output_paths": {
+    "origin": "operations/school/curriculum/candidate_factory/source_origins/builder_deep_origin_100k_v1.jsonl",
+    "origin_manifest": "operations/school/curriculum/candidate_factory/source_origins/builder_deep_origin_100k_v1.manifest.json",
+    "pack": "operations/school/curriculum/candidate_factory/campaign_packs/builder_deep_origin_100k_v1.jsonl",
+    "pack_manifest": "operations/school/curriculum/candidate_factory/campaign_packs/builder_deep_origin_100k_v1.manifest.json",
+    "author_report": "operations/school/curriculum/candidate_factory/reports/BUILDER_DEEP_ORIGIN_100K_AUTHOR_REPORT_V1.json",
+    "coverage_audit": "operations/school/curriculum/candidate_factory/reports/BUILDER_DEEP_ORIGIN_100K_COVERAGE_AUDIT_V1.json",
+    "level_plan": "operations/school/curriculum/candidate_factory/reports/BUILDER_DEEP_ORIGIN_100K_LEVEL_PLAN_V1.json",
+    "novelty_plan": "operations/school/curriculum/candidate_factory/reports/BUILDER_DEEP_ORIGIN_100K_NOVELTY_PLAN_V1.json"
+  }
+}

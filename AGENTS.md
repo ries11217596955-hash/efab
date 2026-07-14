@@ -1,4 +1,4 @@
-﻿# AGENTS.md Ã¢â‚¬â€ EF Agent Builder Codex Command File
+# AGENTS.md Ã¢â‚¬â€ EF Agent Builder Codex Command File
 
 Status: ACTIVE_CODEX_COMMAND_FILE_V3
 Owner decision: AGENTS.md is a command file, not a history archive.
@@ -571,50 +571,60 @@ Do not turn AGENTS.md into a ledger, report, or archive.
 
 ---
 
-## 16. Current school-generator repair task
+## 16. Current school / Codex campaign route
 
-Current Owner route: school remains the learning accelerator. Codex is used before a new serious knowledge campaign to author/update the campaign content that the existing school generator consumes.
+Current Owner route: school remains the learning accelerator. Codex is used before a new serious knowledge campaign to author/update campaign material that the existing local candidate factory consumes.
 
-
-
-Coverage / level pointer before Codex spends tokens:
+Canonical launch pointer:
 
 ```text
-operations/school/curriculum/candidate_factory/CAMPAIGN_COVERAGE_STATUS_POINTER_V1.md
+operations/reports/SCHOOL_CANONICAL_LAUNCH_POINTER_20260714.md
 ```
 
-Codex must read the pointer and produce coverage audit + level plan before writing a campaign pack. Do not blindly start all themes at level 1; reconcile cursor ledger with compact memory snapshot and journal/proofs.
+Active Codex task for the current deep-origin 100k campaign:
 
-Use this task package:
+```text
+operations/gpt_handoff/CODEX_TASK_SCHOOL_DEEP_ORIGIN_100K_CANDIDATES_V1.md
+```
+
+Historical reference only, not the active route:
 
 ```text
 operations/gpt_handoff/CODEX_TASK_EVIDENCE_GROUNDED_SCHOOL_GENERATOR_V1.md
 ```
 
-Hard rules:
+Hard route rules:
 
 ```text
-update existing candidate_factory; do not create duplicate school/generator organ
-Codex authors campaign content/pack; school runs it later
+repo task file route only
+Codex authors source origin / campaign pack / reports
+local candidate factory generates candidates later
+streaming/staging is later and separate
+absorption/digest/active memory mutation is later and separate
 no file writes before PREFLIGHT_PASS
-no Count=50000 or Count=1000000 run inside Codex task
-no long Live school run
-no direct active compact memory mutation
-no report/runtime bloat
+no 100k hand-written candidate dump by Codex
+no active compact memory mutation
+no duplicate school/generator organ
+no new launch route unless Owner explicitly changes route
 ```
 
-Runtime cleanup status:
+Deep-origin quality target:
 
 ```text
-.runtime was intentionally removed before this Codex task
-heavy streaming/runtime reports were intentionally removed
-preserved evidence snapshot exists at operations/school/curriculum/candidate_factory/memory/active_compact_memory_snapshot_for_evidence_v1/
+previous 100k pack passed contract/source coverage but had low novelty
+new campaign must create a deeper origin, not stretch 48 seeds again
+source origin target: 240-480 distinct origin units
+campaign pack target: 1000-2000 seeds
+max expansion_budget per seed <= 100
+total expansion_budget = 100000
+source/proof per seed required
+fallback expected = 0
 ```
 
 Candidate depth target:
 
 ```text
-candidate = campaign seed + topic/root + real source + extracted lesson + negative trap + proof target + behavior delta
+candidate = campaign seed + topic/root + real source + extracted lesson + negative trap + proof target + behavior delta + scenario family
 not root + verb + mode + generic template
 ```
 
@@ -626,13 +636,13 @@ No source/proof anchor -> no memory candidate.
 For external/domain campaigns, Owner/trusted sources must be provided before Codex authors knowledge content.
 ```
 
-If evidence/source is missing, stop or use a clearly marked low-depth fallback. Do not manufacture knowledge.
+If evidence/source is missing, stop or mark a low-depth fallback. Do not manufacture knowledge.
 
-First Live validation run after Codex:
+Final boundary:
 
 ```text
-Count = 15000
-Mode = Live
+Codex output is CODEX_DRAFT until GPT/operator validates independently.
+100k generation is not started by Codex.
+absorption/digest is not started by Codex.
+active memory is not mutated by Codex.
 ```
-
-This is Owner-selected. Do not jump from Codex output directly to 50k or 1M. The 15k run validates the campaign-pack generator over 3 chunks of 5000 before larger scaling.
