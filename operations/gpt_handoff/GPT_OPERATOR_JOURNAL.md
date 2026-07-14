@@ -3685,3 +3685,32 @@ Protected kept:
 Boundary:
 - This is runtime raw staging cleanup, not active memory mutation.
 - Compact reports and GPT journal preserve proof; raw 15k/500k staging was intentionally removed after compact digest submit-only proof.
+## 2026-07-14 - Compact memory weight audit
+
+STATUS: PASS_AUDIT_ONLY_NO_MEMORY_MUTATION
+
+Findings:
+- active compact memory has 121 cells, manifest input_count=5000, merged_count=5000.
+- cells.jsonl=113342972 bytes / 108.09 MB.
+- index.json=308130 bytes / 0.29 MB; verdict: keep, not the storage problem.
+- observation_count_sum=450012, but these are observation/fingerprint traces, not separate accepted cells.
+
+Weight root cause:
+- relations: 72541028 bytes / 69.181 MB / 850001 list items.
+- source_fingerprints: 28478159 bytes / 27.159 MB / 425002 list items.
+- properties: 12220825 bytes / 11.655 MB / 425121 list items.
+
+Compaction estimate:
+- summarize relations/source_fingerprints/properties into count+sha256+samples.
+- candidate cells size estimate: 292455 bytes / 0.279 MB.
+- estimated cells.jsonl savings: 99.74%.
+
+Boundary:
+- No active memory replacement performed.
+- Next decision should be validator-first compaction candidate, not blind deletion.
+- Required before replacement: lookup parity, cell count parity, observation summary parity, source lineage hash preservation, rollback backup.
+
+Proof pointers:
+- operations/reports/COMPACT_MEMORY_WEIGHT_AUDIT_20260714.json
+- operations/reports/COMPACT_MEMORY_WEIGHT_AUDIT_20260714.md
+- operations/reports/COMPACT_MEMORY_WEIGHT_AUDIT_COMPACTION_SAMPLE_20260714.json

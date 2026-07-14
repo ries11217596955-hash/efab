@@ -1,0 +1,1095 @@
+{
+  "schema": "compact_memory_weight_audit_v1",
+  "status": "PASS_AUDIT_ONLY_NO_MEMORY_MUTATION",
+  "created_at": "2026-07-14T12:26:31.456550+00:00",
+  "repo_head": "74a5999",
+  "active_memory_files": {
+    "cells_jsonl_bytes": 113342972,
+    "index_json_bytes": 308130,
+    "manifest_json_bytes": 972,
+    "cells_sha256": "93532eea46e05b5307865d7cead9816f60740307d3eb741472a87be0cda1d5d6",
+    "index_sha256": "ba7160ffa526376b08501a41f96225e0b98490a6cb5a58ecb927137ff91f6597",
+    "manifest_sha256": "771149c5039767c124e6064eecc67dabd1eccfb83082423b8f7306f1675357bb"
+  },
+  "manifest_claims": {
+    "schema": "compact_semantic_memory_manifest_v1",
+    "status": "PASS_COMPACT_SEMANTIC_DIGESTION_ORGAN_V1",
+    "input_count": 5000,
+    "cell_count": 121,
+    "merged_count": 5000,
+    "raw_source_deleted": true,
+    "size_budget_bytes": 125652074,
+    "cells_bytes": 113342972,
+    "index_bytes": 308130,
+    "total_memory_bytes": 113651102,
+    "runtime_ready": false,
+    "boundary": "Compact semantic memory contains meaning cells, not raw candidate/ready/source traces."
+  },
+  "cell_count": 121,
+  "observation_count_stats": {
+    "sum": 450012,
+    "max": 3752,
+    "avg": 3719.11,
+    "median": 3750
+  },
+  "top_fields_by_total_bytes": [
+    {
+      "field": "relations",
+      "bytes": 72541028,
+      "mb": 69.181,
+      "count": 121,
+      "types": {
+        "list": 121
+      },
+      "list_items": 850001
+    },
+    {
+      "field": "source_fingerprints",
+      "bytes": 28478159,
+      "mb": 27.159,
+      "count": 121,
+      "types": {
+        "list": 121
+      },
+      "list_items": 425002
+    },
+    {
+      "field": "properties",
+      "bytes": 12220825,
+      "mb": 11.655,
+      "count": 121,
+      "types": {
+        "list": 121
+      },
+      "list_items": 425121
+    },
+    {
+      "field": "summary",
+      "bytes": 27603,
+      "mb": 0.026,
+      "count": 121,
+      "types": {
+        "str": 121
+      },
+      "list_items": 0
+    },
+    {
+      "field": "uses",
+      "bytes": 25695,
+      "mb": 0.025,
+      "count": 121,
+      "types": {
+        "list": 121
+      },
+      "list_items": 241
+    },
+    {
+      "field": "concept_key",
+      "bytes": 11386,
+      "mb": 0.011,
+      "count": 121,
+      "types": {
+        "str": 121
+      },
+      "list_items": 0
+    },
+    {
+      "field": "label",
+      "bytes": 10946,
+      "mb": 0.01,
+      "count": 121,
+      "types": {
+        "str": 121
+      },
+      "list_items": 0
+    },
+    {
+      "field": "updated_at",
+      "bytes": 6050,
+      "mb": 0.006,
+      "count": 121,
+      "types": {
+        "str": 121
+      },
+      "list_items": 0
+    },
+    {
+      "field": "kind",
+      "bytes": 4588,
+      "mb": 0.004,
+      "count": 121,
+      "types": {
+        "str": 121
+      },
+      "list_items": 0
+    },
+    {
+      "field": "schema",
+      "bytes": 4477,
+      "mb": 0.004,
+      "count": 121,
+      "types": {
+        "str": 121
+      },
+      "list_items": 0
+    },
+    {
+      "field": "cell_id",
+      "bytes": 4235,
+      "mb": 0.004,
+      "count": 121,
+      "types": {
+        "str": 121
+      },
+      "list_items": 0
+    },
+    {
+      "field": "observation_count",
+      "bytes": 3143,
+      "mb": 0.003,
+      "count": 121,
+      "types": {
+        "int": 121
+      },
+      "list_items": 0
+    },
+    {
+      "field": "confidence",
+      "bytes": 2299,
+      "mb": 0.002,
+      "count": 121,
+      "types": {
+        "float": 121
+      },
+      "list_items": 0
+    },
+    {
+      "field": "aliases",
+      "bytes": 2178,
+      "mb": 0.002,
+      "count": 121,
+      "types": {
+        "list": 121
+      },
+      "list_items": 121
+    },
+    {
+      "field": "version",
+      "bytes": 1933,
+      "mb": 0.002,
+      "count": 121,
+      "types": {
+        "int": 121
+      },
+      "list_items": 0
+    }
+  ],
+  "top_list_fields": [
+    {
+      "field": "relations",
+      "bytes": 72541028,
+      "mb": 69.181,
+      "items": 850001
+    },
+    {
+      "field": "source_fingerprints",
+      "bytes": 28478159,
+      "mb": 27.159,
+      "items": 425002
+    },
+    {
+      "field": "properties",
+      "bytes": 12220825,
+      "mb": 11.655,
+      "items": 425121
+    },
+    {
+      "field": "uses",
+      "bytes": 25695,
+      "mb": 0.025,
+      "items": 241
+    },
+    {
+      "field": "aliases",
+      "bytes": 2178,
+      "mb": 0.002,
+      "items": 121
+    }
+  ],
+  "top_dict_fields": [],
+  "top_cells_by_size": [
+    {
+      "line": 6,
+      "id": "cell_225f63141c1feea8",
+      "bytes": 1040603,
+      "top_fields": [
+        {
+          "field": "relations",
+          "bytes": 700178,
+          "type": "list",
+          "items": 7084
+        },
+        {
+          "field": "source_fingerprints",
+          "bytes": 237339,
+          "type": "list",
+          "items": 3542
+        },
+        {
+          "field": "properties",
+          "bytes": 102194,
+          "type": "list",
+          "items": 3543
+        },
+        {
+          "field": "summary",
+          "bytes": 247,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "uses",
+          "bytes": 214,
+          "type": "list",
+          "items": 2
+        },
+        {
+          "field": "label",
+          "bytes": 108,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "concept_key",
+          "bytes": 98,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "updated_at",
+          "bytes": 50,
+          "type": "str",
+          "items": null
+        }
+      ]
+    },
+    {
+      "line": 8,
+      "id": "cell_8de2dba92206358c",
+      "bytes": 1040603,
+      "top_fields": [
+        {
+          "field": "relations",
+          "bytes": 700178,
+          "type": "list",
+          "items": 7084
+        },
+        {
+          "field": "source_fingerprints",
+          "bytes": 237339,
+          "type": "list",
+          "items": 3542
+        },
+        {
+          "field": "properties",
+          "bytes": 102194,
+          "type": "list",
+          "items": 3543
+        },
+        {
+          "field": "summary",
+          "bytes": 247,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "uses",
+          "bytes": 214,
+          "type": "list",
+          "items": 2
+        },
+        {
+          "field": "label",
+          "bytes": 108,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "concept_key",
+          "bytes": 98,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "updated_at",
+          "bytes": 50,
+          "type": "str",
+          "items": null
+        }
+      ]
+    },
+    {
+      "line": 34,
+      "id": "cell_34ee0af40f44d606",
+      "bytes": 1028736,
+      "top_fields": [
+        {
+          "field": "relations",
+          "bytes": 688727,
+          "type": "list",
+          "items": 7084
+        },
+        {
+          "field": "source_fingerprints",
+          "bytes": 237339,
+          "type": "list",
+          "items": 3542
+        },
+        {
+          "field": "properties",
+          "bytes": 101782,
+          "type": "list",
+          "items": 3543
+        },
+        {
+          "field": "summary",
+          "bytes": 245,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "uses",
+          "bytes": 214,
+          "type": "list",
+          "items": 2
+        },
+        {
+          "field": "label",
+          "bytes": 106,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "concept_key",
+          "bytes": 98,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "updated_at",
+          "bytes": 50,
+          "type": "str",
+          "items": null
+        }
+      ]
+    },
+    {
+      "line": 5,
+      "id": "cell_520d23668b65e44a",
+      "bytes": 1026427,
+      "top_fields": [
+        {
+          "field": "relations",
+          "bytes": 686010,
+          "type": "list",
+          "items": 7084
+        },
+        {
+          "field": "source_fingerprints",
+          "bytes": 237339,
+          "type": "list",
+          "items": 3542
+        },
+        {
+          "field": "properties",
+          "bytes": 102192,
+          "type": "list",
+          "items": 3543
+        },
+        {
+          "field": "summary",
+          "bytes": 243,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "uses",
+          "bytes": 214,
+          "type": "list",
+          "items": 2
+        },
+        {
+          "field": "label",
+          "bytes": 106,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "concept_key",
+          "bytes": 98,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "updated_at",
+          "bytes": 50,
+          "type": "str",
+          "items": null
+        }
+      ]
+    },
+    {
+      "line": 7,
+      "id": "cell_6a3dbdf72e4ced58",
+      "bytes": 1026427,
+      "top_fields": [
+        {
+          "field": "relations",
+          "bytes": 686010,
+          "type": "list",
+          "items": 7084
+        },
+        {
+          "field": "source_fingerprints",
+          "bytes": 237339,
+          "type": "list",
+          "items": 3542
+        },
+        {
+          "field": "properties",
+          "bytes": 102192,
+          "type": "list",
+          "items": 3543
+        },
+        {
+          "field": "summary",
+          "bytes": 243,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "uses",
+          "bytes": 214,
+          "type": "list",
+          "items": 2
+        },
+        {
+          "field": "label",
+          "bytes": 106,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "concept_key",
+          "bytes": 98,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "updated_at",
+          "bytes": 50,
+          "type": "str",
+          "items": null
+        }
+      ]
+    },
+    {
+      "line": 114,
+      "id": "cell_4d5cc102908b561e",
+      "bytes": 1024904,
+      "top_fields": [
+        {
+          "field": "relations",
+          "bytes": 684991,
+          "type": "list",
+          "items": 7082
+        },
+        {
+          "field": "source_fingerprints",
+          "bytes": 237272,
+          "type": "list",
+          "items": 3541
+        },
+        {
+          "field": "properties",
+          "bytes": 101753,
+          "type": "list",
+          "items": 3542
+        },
+        {
+          "field": "summary",
+          "bytes": 245,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "uses",
+          "bytes": 214,
+          "type": "list",
+          "items": 2
+        },
+        {
+          "field": "label",
+          "bytes": 106,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "concept_key",
+          "bytes": 98,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "updated_at",
+          "bytes": 50,
+          "type": "str",
+          "items": null
+        }
+      ]
+    },
+    {
+      "line": 18,
+      "id": "cell_020f456d063a2969",
+      "bytes": 1022877,
+      "top_fields": [
+        {
+          "field": "relations",
+          "bytes": 682468,
+          "type": "list",
+          "items": 7084
+        },
+        {
+          "field": "source_fingerprints",
+          "bytes": 237339,
+          "type": "list",
+          "items": 3542
+        },
+        {
+          "field": "properties",
+          "bytes": 102194,
+          "type": "list",
+          "items": 3543
+        },
+        {
+          "field": "summary",
+          "bytes": 239,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "uses",
+          "bytes": 214,
+          "type": "list",
+          "items": 2
+        },
+        {
+          "field": "label",
+          "bytes": 100,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "concept_key",
+          "bytes": 98,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "updated_at",
+          "bytes": 50,
+          "type": "str",
+          "items": null
+        }
+      ]
+    },
+    {
+      "line": 46,
+      "id": "cell_2f372bb17ca968e4",
+      "bytes": 1018108,
+      "top_fields": [
+        {
+          "field": "relations",
+          "bytes": 678101,
+          "type": "list",
+          "items": 7084
+        },
+        {
+          "field": "source_fingerprints",
+          "bytes": 237339,
+          "type": "list",
+          "items": 3542
+        },
+        {
+          "field": "properties",
+          "bytes": 101782,
+          "type": "list",
+          "items": 3543
+        },
+        {
+          "field": "summary",
+          "bytes": 244,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "uses",
+          "bytes": 214,
+          "type": "list",
+          "items": 2
+        },
+        {
+          "field": "label",
+          "bytes": 105,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "concept_key",
+          "bytes": 98,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "updated_at",
+          "bytes": 50,
+          "type": "str",
+          "items": null
+        }
+      ]
+    },
+    {
+      "line": 116,
+      "id": "cell_a57b68f1d9546e17",
+      "bytes": 1017820,
+      "top_fields": [
+        {
+          "field": "relations",
+          "bytes": 677909,
+          "type": "list",
+          "items": 7082
+        },
+        {
+          "field": "source_fingerprints",
+          "bytes": 237272,
+          "type": "list",
+          "items": 3541
+        },
+        {
+          "field": "properties",
+          "bytes": 101753,
+          "type": "list",
+          "items": 3542
+        },
+        {
+          "field": "summary",
+          "bytes": 244,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "uses",
+          "bytes": 214,
+          "type": "list",
+          "items": 2
+        },
+        {
+          "field": "label",
+          "bytes": 105,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "concept_key",
+          "bytes": 98,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "updated_at",
+          "bytes": 50,
+          "type": "str",
+          "items": null
+        }
+      ]
+    },
+    {
+      "line": 20,
+      "id": "cell_c55cce663b4afe73",
+      "bytes": 1015791,
+      "top_fields": [
+        {
+          "field": "relations",
+          "bytes": 675384,
+          "type": "list",
+          "items": 7084
+        },
+        {
+          "field": "source_fingerprints",
+          "bytes": 237339,
+          "type": "list",
+          "items": 3542
+        },
+        {
+          "field": "properties",
+          "bytes": 102194,
+          "type": "list",
+          "items": 3543
+        },
+        {
+          "field": "summary",
+          "bytes": 238,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "uses",
+          "bytes": 214,
+          "type": "list",
+          "items": 2
+        },
+        {
+          "field": "label",
+          "bytes": 99,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "concept_key",
+          "bytes": 98,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "updated_at",
+          "bytes": 50,
+          "type": "str",
+          "items": null
+        }
+      ]
+    },
+    {
+      "line": 33,
+      "id": "cell_00931e959d2807b7",
+      "bytes": 1014560,
+      "top_fields": [
+        {
+          "field": "relations",
+          "bytes": 674559,
+          "type": "list",
+          "items": 7084
+        },
+        {
+          "field": "source_fingerprints",
+          "bytes": 237339,
+          "type": "list",
+          "items": 3542
+        },
+        {
+          "field": "properties",
+          "bytes": 101780,
+          "type": "list",
+          "items": 3543
+        },
+        {
+          "field": "summary",
+          "bytes": 241,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "uses",
+          "bytes": 214,
+          "type": "list",
+          "items": 2
+        },
+        {
+          "field": "label",
+          "bytes": 104,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "concept_key",
+          "bytes": 98,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "updated_at",
+          "bytes": 50,
+          "type": "str",
+          "items": null
+        }
+      ]
+    },
+    {
+      "line": 113,
+      "id": "cell_b7830ce51040e5e5",
+      "bytes": 1010732,
+      "top_fields": [
+        {
+          "field": "relations",
+          "bytes": 670827,
+          "type": "list",
+          "items": 7082
+        },
+        {
+          "field": "source_fingerprints",
+          "bytes": 237272,
+          "type": "list",
+          "items": 3541
+        },
+        {
+          "field": "properties",
+          "bytes": 101751,
+          "type": "list",
+          "items": 3542
+        },
+        {
+          "field": "summary",
+          "bytes": 241,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "uses",
+          "bytes": 214,
+          "type": "list",
+          "items": 2
+        },
+        {
+          "field": "label",
+          "bytes": 104,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "concept_key",
+          "bytes": 98,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "updated_at",
+          "bytes": 50,
+          "type": "str",
+          "items": null
+        }
+      ]
+    },
+    {
+      "line": 17,
+      "id": "cell_408fe622f7deaa89",
+      "bytes": 1008701,
+      "top_fields": [
+        {
+          "field": "relations",
+          "bytes": 668300,
+          "type": "list",
+          "items": 7084
+        },
+        {
+          "field": "source_fingerprints",
+          "bytes": 237339,
+          "type": "list",
+          "items": 3542
+        },
+        {
+          "field": "properties",
+          "bytes": 102192,
+          "type": "list",
+          "items": 3543
+        },
+        {
+          "field": "summary",
+          "bytes": 235,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "uses",
+          "bytes": 214,
+          "type": "list",
+          "items": 2
+        },
+        {
+          "field": "concept_key",
+          "bytes": 98,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "label",
+          "bytes": 98,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "updated_at",
+          "bytes": 50,
+          "type": "str",
+          "items": null
+        }
+      ]
+    },
+    {
+      "line": 36,
+      "id": "cell_7262a84b2727fa5d",
+      "bytes": 1007478,
+      "top_fields": [
+        {
+          "field": "relations",
+          "bytes": 667475,
+          "type": "list",
+          "items": 7084
+        },
+        {
+          "field": "source_fingerprints",
+          "bytes": 237339,
+          "type": "list",
+          "items": 3542
+        },
+        {
+          "field": "properties",
+          "bytes": 101782,
+          "type": "list",
+          "items": 3543
+        },
+        {
+          "field": "summary",
+          "bytes": 242,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "uses",
+          "bytes": 214,
+          "type": "list",
+          "items": 2
+        },
+        {
+          "field": "label",
+          "bytes": 103,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "concept_key",
+          "bytes": 98,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "updated_at",
+          "bytes": 50,
+          "type": "str",
+          "items": null
+        }
+      ]
+    },
+    {
+      "line": 112,
+      "id": "cell_f14a78f872acc67f",
+      "bytes": 1007190,
+      "top_fields": [
+        {
+          "field": "relations",
+          "bytes": 667286,
+          "type": "list",
+          "items": 7082
+        },
+        {
+          "field": "source_fingerprints",
+          "bytes": 237272,
+          "type": "list",
+          "items": 3541
+        },
+        {
+          "field": "properties",
+          "bytes": 101753,
+          "type": "list",
+          "items": 3542
+        },
+        {
+          "field": "summary",
+          "bytes": 241,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "uses",
+          "bytes": 214,
+          "type": "list",
+          "items": 2
+        },
+        {
+          "field": "label",
+          "bytes": 102,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "concept_key",
+          "bytes": 97,
+          "type": "str",
+          "items": null
+        },
+        {
+          "field": "updated_at",
+          "bytes": 50,
+          "type": "str",
+          "items": null
+        }
+      ]
+    }
+  ],
+  "index_audit": {
+    "bytes": 308130,
+    "top_keys_by_bytes": [
+      {
+        "key": "terms",
+        "type": "dict",
+        "bytes": 219190,
+        "items": 4038
+      },
+      {
+        "key": "schema",
+        "type": "str",
+        "bytes": 45,
+        "items": null
+      },
+      {
+        "key": "term_count",
+        "type": "int",
+        "bytes": 19,
+        "items": null
+      }
+    ],
+    "key_count": 3,
+    "verdict": "INDEX_IS_SMALL_KEEP; not the storage problem"
+  },
+  "compaction_estimate": {
+    "large_list_fields_to_summarize": [
+      "relations",
+      "source_fingerprints",
+      "properties"
+    ],
+    "large_dict_fields_to_summarize": [],
+    "current_cells_jsonl_bytes": 113342972,
+    "candidate_list_summary_bytes": 292455,
+    "candidate_list_summary_mb": 0.279,
+    "candidate_list_summary_savings_bytes": 113050517,
+    "candidate_list_summary_savings_pct": 99.74,
+    "candidate_list_and_dict_summary_bytes": 292455,
+    "candidate_list_and_dict_summary_mb": 0.279,
+    "candidate_list_and_dict_summary_savings_bytes": 113050517,
+    "candidate_list_and_dict_summary_savings_pct": 99.74,
+    "sample_candidate_path": "operations/reports/COMPACT_MEMORY_WEIGHT_AUDIT_COMPACTION_SAMPLE_20260714.json"
+  },
+  "risk_boundary": {
+    "memory_mutated": false,
+    "replacement_created": false,
+    "decision_required": "Do not replace active memory until validator/rebuild path proves lookup parity and proof lineage preservation."
+  }
+}
