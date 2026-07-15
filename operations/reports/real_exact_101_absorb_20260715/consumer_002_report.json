@@ -1,0 +1,34 @@
+﻿{
+    "schema":  "codex_warehouse_consumer_report_v1",
+    "status":  "PASS_WAREHOUSE_CONSUMED_READY_BATCHES_WITH_ABSORB_V1",
+    "created_at":  "2026-07-15T08:49:16.9765134+04:00",
+    "macro_task":  ".runtime\\exact_count_cycle\\real_101_absorb/warehouse_request/codex_warehouse_dynamic_request_task.json",
+    "warehouse_root":  ".runtime\\exact_count_cycle\\real_101_absorb/warehouse_request/warehouse",
+    "ledger_path":  ".runtime\\exact_count_cycle\\real_101_absorb/warehouse_request/warehouse/warehouse_ledger.jsonl",
+    "max_consume_batches":  1,
+    "consumed_batches":  [
+                             {
+                                 "micro_batch_id":  "micro_002",
+                                 "state":  "ABSORBED",
+                                 "candidate_count":  1,
+                                 "accepted_count":  1,
+                                 "absorption_status":  "PASS_FILE_ATOM_ABSORPTION_PIPELINE_V1"
+                             }
+                         ],
+    "wait_events":  [
+
+                    ],
+    "absorb_requested":  true,
+    "memory_before":  {
+                          "manifest":  "A449BE4D87EAA7D3BB2A716736C70E2F1280F97E84681C8AA8DEF79368E317D0",
+                          "index":  "8DFCF5988DAD694A76F825F87AFB8BF17C84A4F8E5D621E37F9EDE5ABE3C249C",
+                          "cells":  "F8EF0632243BBE087C81A40605981AD63EDC61B33944A49B956E450D30F480C7"
+                      },
+    "memory_after":  {
+                         "manifest":  "D86B883AE4F80DDF725EB76678B6A554C4F7A9B990A011AF9626533D28FE05EB",
+                         "index":  "8DFCF5988DAD694A76F825F87AFB8BF17C84A4F8E5D621E37F9EDE5ABE3C249C",
+                         "cells":  "38ABE6379CFE72AE37FA8B7DBC918B89095CFC28C83DE1C0B0924B82FFA0AEF6"
+                     },
+    "memory_changed":  true,
+    "counted_memory_state":  "ABSORBED only"
+}

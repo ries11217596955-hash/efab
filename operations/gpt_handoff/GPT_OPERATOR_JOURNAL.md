@@ -418,3 +418,27 @@ Real proof used Count=678 as a test case, not as a number-specific route.
 School consumed all 7 batches without absorption and active memory stayed unchanged.
 Next safe slice: same generic runner with -Absorb for a small bounded Count, or Count=678 absorption if Owner authorizes.
 ```
+
+
+## Generic exact Count 101 absorption
+
+```text
+real_status = PASS_REAL_CODEX_EXACT_COUNT_CYCLE_WITH_ABSORB_V1
+count = 101
+batch_counts = 100,1
+producer_status = CODEX_PRODUCER_ALL_READY_CREATED
+ready_candidate_count = 101
+consumed_batches = 2
+accepted_count = 101
+absorb = True
+memory_changed = True
+backup_root = .runtime/protected_backups/before_exact_101_absorb_20260715_084556
+```
+
+Meaning:
+
+```text
+Generic ExactCountCycle can absorb a non-rounded request with a partial final micro-batch.
+Count=101 proved 100+1 with real Codex and active memory mutation through School absorption.
+Next safe scale step: Count=678 with -Absorb, or a bounded window such as 1000 if Owner authorizes.
+```

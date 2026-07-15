@@ -1,0 +1,43 @@
+﻿{
+    "schema":  "generic_exact_count_warehouse_cycle_v1",
+    "status":  "PASS_REAL_CODEX_EXACT_COUNT_CYCLE_WITH_ABSORB_V1",
+    "created_at":  "2026-07-15T08:49:17.1558093+04:00",
+    "run_id":  "exact_count_cycle_101_runcodex_20260715_084557",
+    "producer_mode":  "RunCodex",
+    "count":  101,
+    "micro_batch_size":  100,
+    "micro_batch_count":  2,
+    "batch_counts":  [
+                         100,
+                         1
+                     ],
+    "producer_status":  "CODEX_PRODUCER_ALL_READY_CREATED",
+    "producer_failure_class":  "NONZERO_AFTER_ALL_READY_OUTPUT:",
+    "ready_batch_count":  2,
+    "ready_candidate_count":  101,
+    "consumed_batches":  2,
+    "accepted_count":  101,
+    "absorb":  true,
+    "consumer_statuses":  [
+                              "PASS_WAREHOUSE_CONSUMED_READY_BATCHES_WITH_ABSORB_V1",
+                              "PASS_WAREHOUSE_CONSUMED_READY_BATCHES_WITH_ABSORB_V1"
+                          ],
+    "consumer_reports":  [
+                             ".runtime\\exact_count_cycle\\real_101_absorb/consumer_001_report.json",
+                             ".runtime\\exact_count_cycle\\real_101_absorb/consumer_002_report.json"
+                         ],
+    "memory_before":  {
+                          "manifest":  "70B7C4EDD9AFF642CB44C2F0F4E89A82DE9572ECC075D5465F9FADC0F82BFCF5",
+                          "index":  "19A1AEFC2BE7034D29FAD774167B2BD3840C7062F57F99898F27AFABA9F6456E",
+                          "cells":  "36E85FF862223CD6734BEE5EC5EC218A025C473940417FEB194A187350BA9675"
+                      },
+    "memory_after":  {
+                         "manifest":  "D86B883AE4F80DDF725EB76678B6A554C4F7A9B990A011AF9626533D28FE05EB",
+                         "index":  "8DFCF5988DAD694A76F825F87AFB8BF17C84A4F8E5D621E37F9EDE5ABE3C249C",
+                         "cells":  "38ABE6379CFE72AE37FA8B7DBC918B89095CFC28C83DE1C0B0924B82FFA0AEF6"
+                     },
+    "memory_changed":  true,
+    "task_json":  ".runtime\\exact_count_cycle\\real_101_absorb/warehouse_request/codex_warehouse_dynamic_request_task.json",
+    "output_root":  ".runtime\\exact_count_cycle\\real_101_absorb",
+    "boundary":  "Generic exact Count cycle. Absorption only if -Absorb is passed."
+}
