@@ -1,0 +1,41 @@
+{
+  "schema": "generic_exact_count_cycle_installation_v1",
+  "status": "PASS_GENERIC_EXACT_COUNT_CYCLE_REAL_678_NO_ABSORB_V1",
+  "created_at": "2026-07-15T03:55:13.971164+00:00",
+  "mock_validation": {
+    "status": "PASS_GENERIC_EXACT_COUNT_CYCLE_VALIDATION_V1",
+    "counts": [
+      1,
+      101,
+      678
+    ],
+    "case_count": 3,
+    "memory_changed": false
+  },
+  "real_678": {
+    "status": "PASS_REAL_CODEX_EXACT_COUNT_CYCLE_NO_ABSORB_V1",
+    "producer_status": "CODEX_PRODUCER_ALL_READY_CREATED",
+    "producer_failure_class": "NONZERO_AFTER_ALL_READY_OUTPUT:",
+    "count": 678,
+    "batch_counts": [
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      78
+    ],
+    "ready_batch_count": 7,
+    "ready_candidate_count": 678,
+    "consumed_batches": 7,
+    "accepted_count": 678,
+    "absorb": false,
+    "memory_changed": false
+  },
+  "tracked_proof": {
+    "cycle_report": "operations/reports/real_exact_678_no_absorb_20260715/exact_count_cycle_report.json",
+    "warehouse_ledger": "operations/reports/real_exact_678_no_absorb_20260715/warehouse_ledger.jsonl"
+  },
+  "boundary": "Generic exact Count runner installed. Real proof run: Count=678 no absorption. Multi-count real runs and absorption are separate future slices."
+}

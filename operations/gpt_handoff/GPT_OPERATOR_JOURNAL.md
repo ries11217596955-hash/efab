@@ -392,3 +392,29 @@ Any exact Count from 1 to 50000 is planned by the same formula.
 678 is now only a test case, not a separate route.
 Next separate slice: real Codex producer/consumer cycle for an arbitrary Count, first no-absorb.
 ```
+
+
+## Generic exact Count warehouse cycle v1
+
+```text
+generic_exact_count_cycle = installed and real-tested
+mock_validation = PASS_GENERIC_EXACT_COUNT_CYCLE_VALIDATION_V1
+real_status = PASS_REAL_CODEX_EXACT_COUNT_CYCLE_NO_ABSORB_V1
+count = 678
+batch_counts = 100,100,100,100,100,100,78
+producer_status = CODEX_PRODUCER_ALL_READY_CREATED
+ready_candidate_count = 678
+consumed_batches = 7
+accepted_count = 678
+absorb = False
+memory_changed = False
+```
+
+Meaning:
+
+```text
+The same generic runner can execute arbitrary exact Count cycles.
+Real proof used Count=678 as a test case, not as a number-specific route.
+School consumed all 7 batches without absorption and active memory stayed unchanged.
+Next safe slice: same generic runner with -Absorb for a small bounded Count, or Count=678 absorption if Owner authorizes.
+```

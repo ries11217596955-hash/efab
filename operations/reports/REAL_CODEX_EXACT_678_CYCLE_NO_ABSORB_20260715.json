@@ -1,0 +1,41 @@
+{
+  "schema": "real_codex_exact_count_cycle_no_absorb_trial_v1",
+  "status": "PASS_REAL_CODEX_EXACT_COUNT_CYCLE_NO_ABSORB_V1",
+  "created_at": "2026-07-15T03:55:13.970277+00:00",
+  "runtime_report": ".runtime/exact_count_cycle/real_678_no_absorb/exact_count_cycle_report.json",
+  "tracked_cycle_report": "operations/reports/real_exact_678_no_absorb_20260715/exact_count_cycle_report.json",
+  "tracked_warehouse_ledger": "operations/reports/real_exact_678_no_absorb_20260715/warehouse_ledger.jsonl",
+  "producer_status": "CODEX_PRODUCER_ALL_READY_CREATED",
+  "producer_failure_class": "NONZERO_AFTER_ALL_READY_OUTPUT:",
+  "count": 678,
+  "micro_batch_size": 100,
+  "micro_batch_count": 7,
+  "batch_counts": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    78
+  ],
+  "ready_batch_count": 7,
+  "ready_candidate_count": 678,
+  "consumed_batches": 7,
+  "accepted_count": 678,
+  "absorb": false,
+  "memory_before": {
+    "manifest": "70B7C4EDD9AFF642CB44C2F0F4E89A82DE9572ECC075D5465F9FADC0F82BFCF5",
+    "index": "19A1AEFC2BE7034D29FAD774167B2BD3840C7062F57F99898F27AFABA9F6456E",
+    "cells": "36E85FF862223CD6734BEE5EC5EC218A025C473940417FEB194A187350BA9675"
+  },
+  "memory_after": {
+    "manifest": "70B7C4EDD9AFF642CB44C2F0F4E89A82DE9572ECC075D5465F9FADC0F82BFCF5",
+    "index": "19A1AEFC2BE7034D29FAD774167B2BD3840C7062F57F99898F27AFABA9F6456E",
+    "cells": "36E85FF862223CD6734BEE5EC5EC218A025C473940417FEB194A187350BA9675"
+  },
+  "memory_changed": false,
+  "task_json": ".runtime\\exact_count_cycle\\real_678_no_absorb/warehouse_request/codex_warehouse_dynamic_request_task.json",
+  "output_root": ".runtime\\exact_count_cycle\\real_678_no_absorb",
+  "boundary": "Real Codex exact Count cycle for 678 with no absorption. Active memory unchanged."
+}

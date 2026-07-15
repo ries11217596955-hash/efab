@@ -1,0 +1,64 @@
+﻿{
+    "schema":  "generic_exact_count_cycle_validation_v1",
+    "status":  "PASS_GENERIC_EXACT_COUNT_CYCLE_VALIDATION_V1",
+    "created_at":  "2026-07-15T07:57:16.6674008+04:00",
+    "counts":  [
+                   1,
+                   101,
+                   678
+               ],
+    "case_count":  3,
+    "cases":  [
+                  {
+                      "count":  1,
+                      "status":  "PASS_MOCK_EXACT_COUNT_CYCLE_NO_ABSORB_V1",
+                      "batch_counts":  [
+                                           1
+                                       ],
+                      "accepted_count":  1,
+                      "memory_changed":  false,
+                      "report":  ".runtime/exact_count_cycle_validation/count_1/exact_count_cycle_report.json"
+                  },
+                  {
+                      "count":  101,
+                      "status":  "PASS_MOCK_EXACT_COUNT_CYCLE_NO_ABSORB_V1",
+                      "batch_counts":  [
+                                           100,
+                                           1
+                                       ],
+                      "accepted_count":  101,
+                      "memory_changed":  false,
+                      "report":  ".runtime/exact_count_cycle_validation/count_101/exact_count_cycle_report.json"
+                  },
+                  {
+                      "count":  678,
+                      "status":  "PASS_MOCK_EXACT_COUNT_CYCLE_NO_ABSORB_V1",
+                      "batch_counts":  [
+                                           100,
+                                           100,
+                                           100,
+                                           100,
+                                           100,
+                                           100,
+                                           78
+                                       ],
+                      "accepted_count":  678,
+                      "memory_changed":  false,
+                      "report":  ".runtime/exact_count_cycle_validation/count_678/exact_count_cycle_report.json"
+                  }
+              ],
+    "memory_before":  {
+                          "manifest":  "70B7C4EDD9AFF642CB44C2F0F4E89A82DE9572ECC075D5465F9FADC0F82BFCF5",
+                          "index":  "19A1AEFC2BE7034D29FAD774167B2BD3840C7062F57F99898F27AFABA9F6456E",
+                          "cells":  "36E85FF862223CD6734BEE5EC5EC218A025C473940417FEB194A187350BA9675"
+                      },
+    "memory_after":  {
+                         "manifest":  "70B7C4EDD9AFF642CB44C2F0F4E89A82DE9572ECC075D5465F9FADC0F82BFCF5",
+                         "index":  "19A1AEFC2BE7034D29FAD774167B2BD3840C7062F57F99898F27AFABA9F6456E",
+                         "cells":  "36E85FF862223CD6734BEE5EC5EC218A025C473940417FEB194A187350BA9675"
+                     },
+    "memory_changed":  false,
+    "failures":  [
+
+                 ]
+}
