@@ -154,4 +154,3 @@ Step F: rerun body inventory map + repo audit to prove reduced size and no prote
 ## 8. Hard stop
 
 If any School/digest/absorption process is active, cleanup becomes observe-only.
-
