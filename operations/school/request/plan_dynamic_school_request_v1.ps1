@@ -5,7 +5,8 @@ param(
   [ValidateRange(1,1000000)][int]$MaxRequestSize = 50000,
   [ValidateRange(1,10000)][int]$MicroBatchSize = 100,
   [ValidateRange(1,1000000)][int]$MaxReadyBacklogCandidates = 3000,
-  [ValidateRange(1,1000000)][int]$ProductionWindowCandidates = 1000
+  [ValidateRange(1,1000000)][int]$ProductionWindowCandidates = 1000,
+  [ValidateRange(0,1000000)][int]$ExactRequestSize = 0
 )
 $ErrorActionPreference='Stop'
 $repoRoot=(git rev-parse --show-toplevel).Trim(); Set-Location $repoRoot
@@ -61,10 +62,17 @@ $priorityBoost=1.0
 if($priority -match '(p0|critical|core|head|brain|foundation|priority_1)'){ $priorityBoost=2.5 }
 elseif($priority -match '(p1|high|priority_2)'){ $priorityBoost=1.5 }
 $raw=[int][Math]::Round($base*$priorityBoost)
-$requestSize=RoundUpToMicro (Clamp $raw $MinRequestSize $MaxRequestSize) $MicroBatchSize $MinRequestSize $MaxRequestSize
-# If micro size is 100 and min is 50, allow tiny closeout request of 50 only for near-complete low pressure.
-if($pressure -ne 'MAINTENANCE_OR_NEAR_COMPLETE' -and $requestSize -lt $MicroBatchSize){ $requestSize=$MicroBatchSize }
+$exact_request_override=$false
+if($ExactRequestSize -gt 0){
+  $requestSize=Clamp $ExactRequestSize $MinRequestSize $MaxRequestSize
+  $exact_request_override=$true
+} else {
+  $requestSize=RoundUpToMicro (Clamp $raw $MinRequestSize $MaxRequestSize) $MicroBatchSize $MinRequestSize $MaxRequestSize
+  # If micro size is 100 and min is 50, allow tiny closeout request of 50 only for near-complete low pressure.
+  if($pressure -ne 'MAINTENANCE_OR_NEAR_COMPLETE' -and $requestSize -lt $MicroBatchSize){ $requestSize=$MicroBatchSize }
+}
 $microBatchCount=[int][Math]::Ceiling($requestSize/[double]$MicroBatchSize)
+$lastMicroBatchSize=$requestSize - (($microBatchCount-1)*$MicroBatchSize)
 $maxReadyBacklogCandidates=Clamp $MaxReadyBacklogCandidates $MicroBatchSize $MaxRequestSize
 $maxReadyBacklogBatches=[int][Math]::Ceiling($maxReadyBacklogCandidates/[double]$MicroBatchSize)
 $productionWindowCandidates=Clamp $ProductionWindowCandidates $MicroBatchSize $MaxRequestSize
@@ -91,8 +99,11 @@ $plan=[ordered]@{
   max_request_size=$MaxRequestSize
   request_candidate_count=$requestSize
   raw_request_before_rounding=$raw
+  exact_request_override=$exact_request_override
+  exact_request_size_param=$ExactRequestSize
   micro_batch_size=$MicroBatchSize
   micro_batch_count=$microBatchCount
+  last_micro_batch_size=$lastMicroBatchSize
   max_ready_backlog_candidates=$maxReadyBacklogCandidates
   max_ready_backlog_batches=$maxReadyBacklogBatches
   production_window_candidates=$productionWindowCandidates
@@ -121,5 +132,7 @@ Write-Host "DYNAMIC_SCHOOL_REQUEST_TOPIC=$topic"
 Write-Host "DYNAMIC_SCHOOL_REQUEST_SIZE=$requestSize"
 Write-Host "DYNAMIC_SCHOOL_REQUEST_MICRO_BATCH_SIZE=$MicroBatchSize"
 Write-Host "DYNAMIC_SCHOOL_REQUEST_MICRO_BATCH_COUNT=$microBatchCount"
+Write-Host "DYNAMIC_SCHOOL_REQUEST_LAST_MICRO_BATCH_SIZE=$lastMicroBatchSize"
+Write-Host "DYNAMIC_SCHOOL_REQUEST_EXACT_OVERRIDE=$exact_request_override"
 Write-Host "DYNAMIC_SCHOOL_REQUEST_PRESSURE=$pressure"
 Write-Host "DYNAMIC_SCHOOL_REQUEST_BACKLOG_LIMIT=$maxReadyBacklogCandidates"

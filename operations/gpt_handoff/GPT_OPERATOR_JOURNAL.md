@@ -336,3 +336,24 @@ Real Codex warehouse producer can feed one READY micro-batch of 100 into School.
 School can validate, normalize, and absorb that micro-batch into active compact memory.
 The next safe slice is not 20k; it is a bounded multi-micro cycle, e.g. 3×100 or one window of 1000 with per-micro absorption and cleanup.
 ```
+
+
+## Exact 678 dynamic request support
+
+```text
+exact_request_support = installed and validated
+request_candidate_count = 678
+micro_batch_size = 100
+micro_batch_count = 7
+last_micro_batch_size = 78
+batch_counts = 100,100,100,100,100,100,78
+memory_changed = False
+```
+
+Meaning:
+
+```text
+School can now request a non-rounded exact count without rounding 678 to 700.
+Warehouse task splits it as 6×100 + 1×78.
+Real production/absorption for exact 678 is still the next bounded slice.
+```
