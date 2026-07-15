@@ -47,9 +47,9 @@ $requiredIds = @(
   'school',
   'school_source_router',
   'compact_memory_intake',
-  'autonomous_inner_motor',
   'knowledge_acquisition_port',
   'map_control',
+  'operations_self_model',
   'gpt_handoff'
 )
 

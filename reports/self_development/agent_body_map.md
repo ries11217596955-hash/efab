@@ -1,10 +1,10 @@
-﻿# Agent Body Composition Map
+# Agent Body Composition Map
 
 Status: ACTIVE_DERIVED_VIEW
 Branch: main
-Observed head at generation: fe7c074b3ee27f34921f17caaa2a21c77d284419
-Generated: 2026-07-15T13:40:02.3061244+04:00
-Body source fingerprint: bd845d84afb0f9c85898ade86da0b9c36bb822321fe0f4679dcb1967f25aace1
+Observed head at generation: e8f41f1abdc0d754e3167dd7e6a448e194863be4
+Generated: 2026-07-15T16:08:00.2102013+04:00
+Body source fingerprint: 6c8cd067299e18f19460fb4b19601bac810342edabe84e9282039de35964b38c
 
 Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
@@ -24,13 +24,13 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
 ## Confirmed Components
 
-- `school` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/school`, files=142, scripts=84, required_present=True
+- `school` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/school`, files=144, scripts=84, required_present=True
 - `school_source_router` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/school/curriculum/source_router`, files=8, scripts=6, required_present=True
 - `compact_memory_intake` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/compact_memory_intake`, files=10, scripts=6, required_present=True
 - `knowledge_acquisition_port` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/knowledge_acquisition_port`, files=50, scripts=2, required_present=True
 - `map_control` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/map_control`, files=2, scripts=0, required_present=True
 - `operations_self_model` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/self_model`, files=62, scripts=62, required_present=True
-- `gpt_handoff` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/gpt_handoff`, files=6, scripts=0, required_present=True
+- `gpt_handoff` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/gpt_handoff`, files=8, scripts=0, required_present=True
 
 ## Candidate Triage Queue
 

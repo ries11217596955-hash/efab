@@ -1,4 +1,4 @@
-﻿{
+{
     "schema":  "AGENT_BODY_COMPOSITION_MAP_V1",
     "map_refresh_status":  "SELF_KNOWLEDGE_READY",
     "map_kind":  "COMPOSITION_STATUS_MAP",
@@ -6,22 +6,22 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "fe7c074b3ee27f34921f17caaa2a21c77d284419",
-    "subject_head":  "fe7c074b3ee27f34921f17caaa2a21c77d284419",
-    "generated_at":  "2026-07-15T13:40:02.3061244+04:00",
+    "observed_head_at_generation":  "e8f41f1abdc0d754e3167dd7e6a448e194863be4",
+    "subject_head":  "e8f41f1abdc0d754e3167dd7e6a448e194863be4",
+    "generated_at":  "2026-07-15T16:08:00.2102013+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
-    "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
+    "trigger_reason":  "body_inventory_map_hardening_indexed_validator_20260715",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  1974,
+    "structural_path_count":  1979,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1974,
-                                    "sha256":  "bd845d84afb0f9c85898ade86da0b9c36bb822321fe0f4679dcb1967f25aace1"
+                                    "structural_file_count":  1979,
+                                    "sha256":  "6c8cd067299e18f19460fb4b19601bac810342edabe84e9282039de35964b38c"
                                 },
     "module_count":  203,
-    "validator_count":  174,
+    "validator_count":  175,
     "confirmed_components":  [
                                  {
                                      "id":  "school",
@@ -29,12 +29,12 @@
                                      "root":  "operations/school",
                                      "status":  "CONFIRMED_PRIMARY_EVIDENCE_PRESENT",
                                      "confirmation_basis":  "explicit_required_component_with_primary_repo_evidence",
-                                     "file_count":  142,
+                                     "file_count":  144,
                                      "script_count":  84,
                                      "validator_count":  30,
                                      "proof_file_count":  12,
-                                     "contract_or_policy_count":  14,
-                                     "doc_count":  17,
+                                     "contract_or_policy_count":  15,
+                                     "doc_count":  19,
                                      "required_files":  [
                                                             "operations/school/run_agent_school.ps1",
                                                             "operations/school/finalize_agent_school_run_v1.ps1",
@@ -103,6 +103,7 @@
                                                                      "operations/school/curriculum/source_router/school_source_router_policy.json",
                                                                      "operations/school/curriculum/source_router/template_filter/school_source_template_filter_policy.json",
                                                                      "operations/school/curriculum/source_router/template_filter/validate_school_source_template_filter_policy_v1.ps1",
+                                                                     "operations/school/OWNER_SCHOOL_CONTROL_CONTRACT_V1.md",
                                                                      "operations/school/SCHOOL_CANONICAL_RUN_CONTRACT_V1.md",
                                                                      "operations/school/school_lifecycle_policy.json"
                                                                  ],
@@ -184,9 +185,9 @@
                                                                 "operations/school/request/validate_generic_exact_request_engine_v1.ps1"
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "fe7c074b3ee27f34921f17caaa2a21c77d284419",
-                                                               "committed_at":  "2026-07-15T09:26:37+04:00",
-                                                               "subject":  "feat: wire exact count cycle into canonical school"
+                                                               "head":  "e8f41f1abdc0d754e3167dd7e6a448e194863be4",
+                                                               "committed_at":  "2026-07-15T15:54:32+04:00",
+                                                               "subject":  "fix: remove school contract eof blank"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -600,12 +601,12 @@
                                      "root":  "operations/gpt_handoff",
                                      "status":  "CONFIRMED_PRIMARY_EVIDENCE_PRESENT",
                                      "confirmation_basis":  "explicit_required_component_with_primary_repo_evidence",
-                                     "file_count":  6,
+                                     "file_count":  8,
                                      "script_count":  0,
                                      "validator_count":  0,
                                      "proof_file_count":  0,
                                      "contract_or_policy_count":  0,
-                                     "doc_count":  6,
+                                     "doc_count":  7,
                                      "required_files":  [
                                                             "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
                                                         ],
@@ -629,9 +630,9 @@
 
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "fe7c074b3ee27f34921f17caaa2a21c77d284419",
-                                                               "committed_at":  "2026-07-15T09:26:37+04:00",
-                                                               "subject":  "feat: wire exact count cycle into canonical school"
+                                                               "head":  "a72919789a4376466d4b90af16f39b29158cc85d",
+                                                               "committed_at":  "2026-07-15T15:15:12+04:00",
+                                                               "subject":  "docs: add P1 body map passport audit"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -7748,12 +7749,12 @@
                            "root":  "operations/school",
                            "status":  "CONFIRMED_PRIMARY_EVIDENCE_PRESENT",
                            "confirmation_basis":  "explicit_required_component_with_primary_repo_evidence",
-                           "file_count":  142,
+                           "file_count":  144,
                            "script_count":  84,
                            "validator_count":  30,
                            "proof_file_count":  12,
-                           "contract_or_policy_count":  14,
-                           "doc_count":  17,
+                           "contract_or_policy_count":  15,
+                           "doc_count":  19,
                            "required_files":  [
                                                   "operations/school/run_agent_school.ps1",
                                                   "operations/school/finalize_agent_school_run_v1.ps1",
@@ -7822,6 +7823,7 @@
                                                            "operations/school/curriculum/source_router/school_source_router_policy.json",
                                                            "operations/school/curriculum/source_router/template_filter/school_source_template_filter_policy.json",
                                                            "operations/school/curriculum/source_router/template_filter/validate_school_source_template_filter_policy_v1.ps1",
+                                                           "operations/school/OWNER_SCHOOL_CONTROL_CONTRACT_V1.md",
                                                            "operations/school/SCHOOL_CANONICAL_RUN_CONTRACT_V1.md",
                                                            "operations/school/school_lifecycle_policy.json"
                                                        ],
@@ -7903,9 +7905,9 @@
                                                       "operations/school/request/validate_generic_exact_request_engine_v1.ps1"
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "fe7c074b3ee27f34921f17caaa2a21c77d284419",
-                                                     "committed_at":  "2026-07-15T09:26:37+04:00",
-                                                     "subject":  "feat: wire exact count cycle into canonical school"
+                                                     "head":  "e8f41f1abdc0d754e3167dd7e6a448e194863be4",
+                                                     "committed_at":  "2026-07-15T15:54:32+04:00",
+                                                     "subject":  "fix: remove school contract eof blank"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -8319,12 +8321,12 @@
                            "root":  "operations/gpt_handoff",
                            "status":  "CONFIRMED_PRIMARY_EVIDENCE_PRESENT",
                            "confirmation_basis":  "explicit_required_component_with_primary_repo_evidence",
-                           "file_count":  6,
+                           "file_count":  8,
                            "script_count":  0,
                            "validator_count":  0,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  0,
-                           "doc_count":  6,
+                           "doc_count":  7,
                            "required_files":  [
                                                   "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
                                               ],
@@ -8348,9 +8350,9 @@
 
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "fe7c074b3ee27f34921f17caaa2a21c77d284419",
-                                                     "committed_at":  "2026-07-15T09:26:37+04:00",
-                                                     "subject":  "feat: wire exact count cycle into canonical school"
+                                                     "head":  "a72919789a4376466d4b90af16f39b29158cc85d",
+                                                     "committed_at":  "2026-07-15T15:15:12+04:00",
+                                                     "subject":  "docs: add P1 body map passport audit"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
