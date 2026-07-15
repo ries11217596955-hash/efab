@@ -185,3 +185,13 @@ SCHOOL_AS_AGENT_ORGAN = NOT_CLAIMED
 SCHOOL_LIVE_RUNTIME = NOT_PROVEN_LIVE
 ACTIVE_MEMORY = NOT_TOUCHED
 ```
+## 11. Operator runbook
+
+Human-use runbook / practical pult:
+
+```text
+operations/school/OWNER_SCHOOL_RUNBOOK_V1.md
+```
+
+Use it when Owner asks to check, test, prepare Live, observe, or recover School.
+
