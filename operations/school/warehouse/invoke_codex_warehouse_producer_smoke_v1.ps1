@@ -5,6 +5,7 @@ param(
   [ValidateRange(1,10000)][int]$MicroBatchSize = 100,
   [ValidateRange(1,1000000)][int]$MaxReadyBacklogCandidates = 3000,
   [ValidateRange(30,3600)][int]$CodexTimeoutSeconds = 300,
+  [switch]$Absorb,
   [string]$OutputRoot = ''
 )
 $ErrorActionPreference='Stop'
@@ -27,7 +28,7 @@ $requestPlanPath="$OutputRoot/request_plan.json"
 $taskDir="$OutputRoot/warehouse_request"
 $eventsPath="$OutputRoot/smoke_events.jsonl"
 function AddEvent($State,$Data){ ([ordered]@{ts=(Get-Date).ToString('o'); state=$State; data=$Data}|ConvertTo-Json -Depth 80 -Compress)|Add-Content -LiteralPath $eventsPath -Encoding UTF8 }
-AddEvent 'SMOKE_STARTED' @{producer_mode=$ProducerMode; topics=$Topics; absorb=$false}
+AddEvent 'SMOKE_STARTED' @{producer_mode=$ProducerMode; topics=$Topics; absorb=[bool]$Absorb}
 & powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/memory/select_dynamic_theme_cell_v1.ps1 -RequestedTopics $Topics -PatchSize 1000 -OutputPath $selectionPath | Out-Host
 AddEvent 'TOPIC_SELECTED' @{selection_path=$selectionPath}
 & powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/request/plan_dynamic_school_request_v1.ps1 -SelectionPath $selectionPath -OutputPath $requestPlanPath -MaxRequestSize $MaxRequestSize -MicroBatchSize $MicroBatchSize -MaxReadyBacklogCandidates $MaxReadyBacklogCandidates | Out-Host
@@ -151,8 +152,20 @@ The shell may run in constrained PowerShell language mode. Therefore:
     }
     Stop-ProcessTreeByRootPid -RootPid ([int]$p.Id)
   } elseif($p.ExitCode -ne 0){
-    $producerStatus='CODEX_FAILED'; $producerFailureClass='NONZERO_EXIT'
-    AddEvent 'CODEX_FAILED' @{failure_class=$producerFailureClass; exit_code=$p.ExitCode; stdout=$stdoutPath; stderr=$stderrPath}
+    if((Test-Path ([string]$first.ready_marker)) -and (Test-Path ([string]$first.ready_jsonl))){
+      $lineCount=(Get-Content ([string]$first.ready_jsonl) | Measure-Object).Count
+      if($lineCount -eq [int]$first.candidate_count){
+        $producerStatus='CODEX_PRODUCER_READY_CREATED'
+        $producerFailureClass="NONZERO_EXIT_AFTER_READY_OUTPUT:$($p.ExitCode)"
+        AddEvent 'CODEX_PRODUCER_READY_CREATED_NONZERO_GRACE' @{ready_jsonl=$first.ready_jsonl; ready_marker=$first.ready_marker; line_count=$lineCount; exit_code=$p.ExitCode; stdout=$stdoutPath; stderr=$stderrPath}
+      } else {
+        $producerStatus='CODEX_FAILED'; $producerFailureClass="NONZERO_EXIT_READY_LINE_MISMATCH:$lineCount/$($first.candidate_count)"
+        AddEvent 'CODEX_FAILED' @{failure_class=$producerFailureClass; exit_code=$p.ExitCode; stdout=$stdoutPath; stderr=$stderrPath}
+      }
+    } else {
+      $producerStatus='CODEX_FAILED'; $producerFailureClass='NONZERO_EXIT'
+      AddEvent 'CODEX_FAILED' @{failure_class=$producerFailureClass; exit_code=$p.ExitCode; stdout=$stdoutPath; stderr=$stderrPath}
+    }
   } elseif((Test-Path ([string]$first.ready_marker)) -and (Test-Path ([string]$first.ready_jsonl))){
     $producerStatus='CODEX_PRODUCER_READY_CREATED'
     AddEvent 'CODEX_PRODUCER_READY_CREATED' @{ready_jsonl=$first.ready_jsonl; ready_marker=$first.ready_marker; stdout=$stdoutPath; stderr=$stderrPath}
@@ -165,7 +178,11 @@ $consumerStatus='NOT_RUN'
 $consumerReport=$null
 $acceptedCount=0
 if($producerStatus -in @('MOCK_PRODUCER_READY_CREATED','CODEX_PRODUCER_READY_CREATED')){
-  $consumeOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/warehouse/consume_codex_warehouse_micro_batches_v1.ps1 -MacroTaskJsonPath $taskJson -MaxConsumeBatches 1 -MaxWaitSeconds 0 *>&1 | ForEach-Object{[string]$_})
+  if($Absorb){
+    $consumeOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/warehouse/consume_codex_warehouse_micro_batches_v1.ps1 -MacroTaskJsonPath $taskJson -MaxConsumeBatches 1 -MaxWaitSeconds 0 -Absorb *>&1 | ForEach-Object{[string]$_})
+  } else {
+    $consumeOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/warehouse/consume_codex_warehouse_micro_batches_v1.ps1 -MacroTaskJsonPath $taskJson -MaxConsumeBatches 1 -MaxWaitSeconds 0 *>&1 | ForEach-Object{[string]$_})
+  }
   $consumeOut | Set-Content -LiteralPath "$OutputRoot/consumer_stdout.txt" -Encoding UTF8
   $consumerReport=(($consumeOut|Where-Object{$_ -match '^CODEX_WAREHOUSE_CONSUMER_REPORT='}|Select-Object -Last 1) -replace '^CODEX_WAREHOUSE_CONSUMER_REPORT=','')
   $consumer=Get-Content $consumerReport -Raw | ConvertFrom-Json
@@ -175,7 +192,7 @@ if($producerStatus -in @('MOCK_PRODUCER_READY_CREATED','CODEX_PRODUCER_READY_CRE
 }
 $memoryAfter=[ordered]@{manifest=Sha "$mem/manifest.json"; index=Sha "$mem/index.json"; cells=Sha "$mem/cells.jsonl"}
 $memoryChanged=($memoryBefore.cells -ne $memoryAfter.cells -or $memoryBefore.index -ne $memoryAfter.index -or $memoryBefore.manifest -ne $memoryAfter.manifest)
-$status=if($producerStatus -eq 'CODEX_PRODUCER_READY_CREATED' -and $consumerStatus -eq 'PASS_WAREHOUSE_CONSUMED_READY_BATCHES_NO_ABSORB_V1' -and $acceptedCount -eq 100 -and -not $memoryChanged){'PASS_REAL_CODEX_WAREHOUSE_PRODUCER_SMOKE_NO_ABSORB_V1'}elseif($producerStatus -eq 'MOCK_PRODUCER_READY_CREATED' -and $consumerStatus -eq 'PASS_WAREHOUSE_CONSUMED_READY_BATCHES_NO_ABSORB_V1' -and $acceptedCount -eq 100 -and -not $memoryChanged){'PASS_MOCK_CODEX_WAREHOUSE_PRODUCER_SMOKE_NO_ABSORB_V1'}elseif($producerStatus -eq 'CODEX_FAILED'){'PASS_REAL_CODEX_WAREHOUSE_PRODUCER_FAILURE_RECORDED_NO_MEMORY_MUTATION_V1'}else{'CHECK_CODEX_WAREHOUSE_PRODUCER_SMOKE_V1'}
+$status=if($Absorb -and $producerStatus -eq 'CODEX_PRODUCER_READY_CREATED' -and $consumerStatus -eq 'PASS_WAREHOUSE_CONSUMED_READY_BATCHES_WITH_ABSORB_V1' -and $acceptedCount -eq 100 -and $memoryChanged){'PASS_REAL_CODEX_WAREHOUSE_PRODUCER_SMOKE_WITH_ABSORB_V1'}elseif($Absorb -and $producerStatus -eq 'MOCK_PRODUCER_READY_CREATED' -and $consumerStatus -eq 'PASS_WAREHOUSE_CONSUMED_READY_BATCHES_WITH_ABSORB_V1' -and $acceptedCount -eq 100 -and $memoryChanged){'PASS_MOCK_CODEX_WAREHOUSE_PRODUCER_SMOKE_WITH_ABSORB_V1'}elseif((-not $Absorb) -and $producerStatus -eq 'CODEX_PRODUCER_READY_CREATED' -and $consumerStatus -eq 'PASS_WAREHOUSE_CONSUMED_READY_BATCHES_NO_ABSORB_V1' -and $acceptedCount -eq 100 -and -not $memoryChanged){'PASS_REAL_CODEX_WAREHOUSE_PRODUCER_SMOKE_NO_ABSORB_V1'}elseif((-not $Absorb) -and $producerStatus -eq 'MOCK_PRODUCER_READY_CREATED' -and $consumerStatus -eq 'PASS_WAREHOUSE_CONSUMED_READY_BATCHES_NO_ABSORB_V1' -and $acceptedCount -eq 100 -and -not $memoryChanged){'PASS_MOCK_CODEX_WAREHOUSE_PRODUCER_SMOKE_NO_ABSORB_V1'}elseif($producerStatus -eq 'CODEX_FAILED'){'PASS_REAL_CODEX_WAREHOUSE_PRODUCER_FAILURE_RECORDED_NO_MEMORY_MUTATION_V1'}else{'CHECK_CODEX_WAREHOUSE_PRODUCER_SMOKE_V1'}
 $report=[ordered]@{
   schema='codex_warehouse_producer_smoke_v1'
   status=$status
@@ -199,7 +216,7 @@ $report=[ordered]@{
   consumer_status=$consumerStatus
   consumer_report=$consumerReport
   accepted_count=$acceptedCount
-  absorption_run=$false
+  absorption_run=[bool]$Absorb
   memory_before=$memoryBefore
   memory_after=$memoryAfter
   memory_changed=$memoryChanged

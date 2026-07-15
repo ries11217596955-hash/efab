@@ -1,0 +1,36 @@
+{
+  "schema": "real_codex_warehouse_one_micro_absorb_trial_v1",
+  "status": "PASS_REAL_CODEX_WAREHOUSE_ONE_MICRO_ABSORBED_V1",
+  "created_at": "2026-07-15T03:10:06.142617+00:00",
+  "root": "H:\\efab\\.runtime\\real_warehouse_producer_smoke\\real_warehouse_producer_smoke_runcodex_20260715_070014",
+  "task_json": "H:\\efab\\.runtime\\real_warehouse_producer_smoke\\real_warehouse_producer_smoke_runcodex_20260715_070014\\warehouse_request\\codex_warehouse_dynamic_request_task.json",
+  "producer_status": "CODEX_PRODUCER_READY_CREATED",
+  "producer_failure_class": "NONZERO_EXIT_AFTER_READY_OUTPUT_ACCEPTED_AS_SUCCESS_WITH_GRACE_PATCHED",
+  "ready_jsonl": "H:\\efab\\.runtime\\real_warehouse_producer_smoke\\real_warehouse_producer_smoke_runcodex_20260715_070014\\warehouse_request\\warehouse\\micro_001.READY.jsonl",
+  "ready_marker": "H:\\efab\\.runtime\\real_warehouse_producer_smoke\\real_warehouse_producer_smoke_runcodex_20260715_070014\\warehouse_request\\warehouse\\micro_001.READY.marker.json",
+  "ready_jsonl_lines": 100,
+  "consumer_report": ".runtime\\real_warehouse_producer_smoke\\real_warehouse_producer_smoke_runcodex_20260715_070014\\warehouse_request\\warehouse\\warehouse_consumer_report.json",
+  "consumer_status": "PASS_WAREHOUSE_CONSUMED_READY_BATCHES_WITH_ABSORB_V1",
+  "consumed_batches": 1,
+  "accepted_count": 100,
+  "absorption_run": true,
+  "absorption_status": "PASS_FILE_ATOM_ABSORPTION_PIPELINE_V1",
+  "absorption_proof": "",
+  "size_budget_bytes": 26214400,
+  "memory_before": {
+    "manifest.json": "8035CE66AEA0D843FCD5E5585CDC36B1066D296ADA12C192C57C222C6045EEE1",
+    "index.json": "54F2CBBB6148AF68EC9FF9B5E97EE10AF868677123775886BA4CEE4173457101",
+    "cells.jsonl": "199C9D9391ED5C79BBC774F8F81E884E4B439A291091C8F6F2A36A7792BA8BD1"
+  },
+  "memory_after": {
+    "manifest.json": "70B7C4EDD9AFF642CB44C2F0F4E89A82DE9572ECC075D5465F9FADC0F82BFCF5",
+    "index.json": "19A1AEFC2BE7034D29FAD774167B2BD3840C7062F57F99898F27AFABA9F6456E",
+    "cells.jsonl": "36E85FF862223CD6734BEE5EC5EC218A025C473940417FEB194A187350BA9675"
+  },
+  "memory_changed": true,
+  "backup_root": "H:\\efab\\.runtime\\protected_backups\\before_one_micro_absorb_20260715_070013",
+  "boundary": "Exactly one READY micro-batch of 100 was absorbed. No full request or multi-batch absorption was run.",
+  "tracked_consumer_report": "operations/reports/one_micro_absorb_20260715/warehouse_consumer_report.json",
+  "tracked_micro_001_normalization_report_json": "operations/reports/one_micro_absorb_20260715/micro_001.normalization_report.json",
+  "tracked_micro_001_normalized_atoms_jsonl": "operations/reports/one_micro_absorb_20260715/micro_001.normalized_atoms.jsonl"
+}

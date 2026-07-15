@@ -6,19 +6,19 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "c8757ea5c4483567d01fc19e3f58ea26c9485f65",
-    "subject_head":  "c8757ea5c4483567d01fc19e3f58ea26c9485f65",
-    "generated_at":  "2026-07-15T06:44:14.3829000+04:00",
+    "observed_head_at_generation":  "94c12e1191ed88ff7cdb4b0e3b9a535d4dadca88",
+    "subject_head":  "94c12e1191ed88ff7cdb4b0e3b9a535d4dadca88",
+    "generated_at":  "2026-07-15T07:12:22.1161473+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  1921,
+    "structural_path_count":  1926,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1921,
-                                    "sha256":  "a005082f6e10e1106d4ac9fad6f528eec3cdbdd101f8cd1a5b738407ce9f8548"
+                                    "structural_file_count":  1926,
+                                    "sha256":  "2f8e5dd526331ffa2149282b2603b400eb7cc614b0337f9623c8b20b8b6bb4c2"
                                 },
     "module_count":  203,
     "validator_count":  174,
@@ -184,9 +184,9 @@
                                                                 "operations/school/run_agent_school.ps1"
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "c8757ea5c4483567d01fc19e3f58ea26c9485f65",
-                                                               "committed_at":  "2026-07-15T00:57:52+04:00",
-                                                               "subject":  "feat: connect codex warehouse producer smoke"
+                                                               "head":  "94c12e1191ed88ff7cdb4b0e3b9a535d4dadca88",
+                                                               "committed_at":  "2026-07-15T06:43:37+04:00",
+                                                               "subject":  "feat: prove codex warehouse ready producer"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -629,9 +629,9 @@
 
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "c8757ea5c4483567d01fc19e3f58ea26c9485f65",
-                                                               "committed_at":  "2026-07-15T00:57:52+04:00",
-                                                               "subject":  "feat: connect codex warehouse producer smoke"
+                                                               "head":  "94c12e1191ed88ff7cdb4b0e3b9a535d4dadca88",
+                                                               "committed_at":  "2026-07-15T06:43:37+04:00",
+                                                               "subject":  "feat: prove codex warehouse ready producer"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -2070,19 +2070,19 @@
                                             "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                                             "discovery_method":  "bounded_git_ls_files_path_discovery",
                                             "evidence_counts":  {
-                                                                    "files":  59,
+                                                                    "files":  65,
                                                                     "scripts":  0,
                                                                     "validators":  0,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  0,
-                                                                    "docs":  22
+                                                                    "docs":  23
                                                                 },
-                                            "file_count":  59,
+                                            "file_count":  65,
                                             "script_count":  0,
                                             "validator_count":  0,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  0,
-                                            "doc_count":  22,
+                                            "doc_count":  23,
                                             "validator_refs":  [
 
                                                                ],
@@ -2102,6 +2102,8 @@
                                                                   "operations/reports/CODEX_SCHOOL_PATCH_TASK_TEMPLATE_INSTALLATION_20260714.json",
                                                                   "operations/reports/CODEX_SCHOOL_PATCH_TASK_TEMPLATE_INSTALLATION_20260714.md",
                                                                   "operations/reports/CODEX_SCHOOL_PATCH_TASK_TEMPLATE_VALIDATION_20260714.json",
+                                                                  "operations/reports/CODEX_WAREHOUSE_ONE_MICRO_ABSORB_INSTALLATION_20260715.json",
+                                                                  "operations/reports/CODEX_WAREHOUSE_ONE_MICRO_ABSORB_INSTALLATION_20260715.md",
                                                                   "operations/reports/CODEX_WAREHOUSE_PIPELINE_INSTALLATION_20260714.json",
                                                                   "operations/reports/CODEX_WAREHOUSE_PIPELINE_INSTALLATION_20260714.md",
                                                                   "operations/reports/CODEX_WAREHOUSE_PIPELINE_VALIDATION_20260714.json",
@@ -2115,9 +2117,7 @@
                                                                   "operations/reports/COMPACT_MEMORY_WEIGHT_AUDIT_COMPACTION_SAMPLE_20260714.json",
                                                                   "operations/reports/DEVELOPMENT_VECTOR_THEME_SELECTOR_VALIDATION_20260714.json",
                                                                   "operations/reports/DYNAMIC_SCHOOL_REQUEST_PLANNER_INSTALLATION_20260715.json",
-                                                                  "operations/reports/DYNAMIC_SCHOOL_REQUEST_PLANNER_INSTALLATION_20260715.md",
-                                                                  "operations/reports/DYNAMIC_SCHOOL_REQUEST_PLANNER_VALIDATION_20260715.json",
-                                                                  "operations/reports/DYNAMIC_THEME_CELL_SELECTOR_VALIDATION_20260714.json"
+                                                                  "operations/reports/DYNAMIC_SCHOOL_REQUEST_PLANNER_INSTALLATION_20260715.md"
                                                               ],
                                             "primary_evidence_refs":  [
 
@@ -7901,9 +7901,9 @@
                                                       "operations/school/run_agent_school.ps1"
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "c8757ea5c4483567d01fc19e3f58ea26c9485f65",
-                                                     "committed_at":  "2026-07-15T00:57:52+04:00",
-                                                     "subject":  "feat: connect codex warehouse producer smoke"
+                                                     "head":  "94c12e1191ed88ff7cdb4b0e3b9a535d4dadca88",
+                                                     "committed_at":  "2026-07-15T06:43:37+04:00",
+                                                     "subject":  "feat: prove codex warehouse ready producer"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -8346,9 +8346,9 @@
 
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "c8757ea5c4483567d01fc19e3f58ea26c9485f65",
-                                                     "committed_at":  "2026-07-15T00:57:52+04:00",
-                                                     "subject":  "feat: connect codex warehouse producer smoke"
+                                                     "head":  "94c12e1191ed88ff7cdb4b0e3b9a535d4dadca88",
+                                                     "committed_at":  "2026-07-15T06:43:37+04:00",
+                                                     "subject":  "feat: prove codex warehouse ready producer"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -9785,19 +9785,19 @@
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                            "discovery_method":  "bounded_git_ls_files_path_discovery",
                            "evidence_counts":  {
-                                                   "files":  59,
+                                                   "files":  65,
                                                    "scripts":  0,
                                                    "validators":  0,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  0,
-                                                   "docs":  22
+                                                   "docs":  23
                                                },
-                           "file_count":  59,
+                           "file_count":  65,
                            "script_count":  0,
                            "validator_count":  0,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  0,
-                           "doc_count":  22,
+                           "doc_count":  23,
                            "validator_refs":  [
 
                                               ],
@@ -9817,6 +9817,8 @@
                                                  "operations/reports/CODEX_SCHOOL_PATCH_TASK_TEMPLATE_INSTALLATION_20260714.json",
                                                  "operations/reports/CODEX_SCHOOL_PATCH_TASK_TEMPLATE_INSTALLATION_20260714.md",
                                                  "operations/reports/CODEX_SCHOOL_PATCH_TASK_TEMPLATE_VALIDATION_20260714.json",
+                                                 "operations/reports/CODEX_WAREHOUSE_ONE_MICRO_ABSORB_INSTALLATION_20260715.json",
+                                                 "operations/reports/CODEX_WAREHOUSE_ONE_MICRO_ABSORB_INSTALLATION_20260715.md",
                                                  "operations/reports/CODEX_WAREHOUSE_PIPELINE_INSTALLATION_20260714.json",
                                                  "operations/reports/CODEX_WAREHOUSE_PIPELINE_INSTALLATION_20260714.md",
                                                  "operations/reports/CODEX_WAREHOUSE_PIPELINE_VALIDATION_20260714.json",
@@ -9830,9 +9832,7 @@
                                                  "operations/reports/COMPACT_MEMORY_WEIGHT_AUDIT_COMPACTION_SAMPLE_20260714.json",
                                                  "operations/reports/DEVELOPMENT_VECTOR_THEME_SELECTOR_VALIDATION_20260714.json",
                                                  "operations/reports/DYNAMIC_SCHOOL_REQUEST_PLANNER_INSTALLATION_20260715.json",
-                                                 "operations/reports/DYNAMIC_SCHOOL_REQUEST_PLANNER_INSTALLATION_20260715.md",
-                                                 "operations/reports/DYNAMIC_SCHOOL_REQUEST_PLANNER_VALIDATION_20260715.json",
-                                                 "operations/reports/DYNAMIC_THEME_CELL_SELECTOR_VALIDATION_20260714.json"
+                                                 "operations/reports/DYNAMIC_SCHOOL_REQUEST_PLANNER_INSTALLATION_20260715.md"
                                              ],
                            "primary_evidence_refs":  [
 

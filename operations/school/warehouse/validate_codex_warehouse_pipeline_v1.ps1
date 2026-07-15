@@ -25,7 +25,7 @@ $mb=$task.micro_batches[0]
 WriteJson ([string]$mb.writing_marker) ([ordered]@{status='WRITING'; micro_batch_id=$mb.micro_batch_id; updated_at=(Get-Date).ToString('o')}) 20
 $rows=New-Object System.Collections.ArrayList
 for($i=1;$i -le [int]$mb.candidate_count;$i++){
-  $depth=1 + (($i-1) % [Math]::Max(1,[int]$task.target_depth))
+  $depth=[int]$task.start_depth + (($i-1) % [Math]::Max(1,(([int]$task.target_depth - [int]$task.start_depth) + 1)))
   $obj=[ordered]@{
     schema='codex_school_patch_candidate_v1'
     candidate_id=("warehouse.mock.{0:D6}" -f $i)

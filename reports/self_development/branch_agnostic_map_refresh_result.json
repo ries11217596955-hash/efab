@@ -1,10 +1,10 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-15T06:43:47.1510096+04:00",
+    "checked_at":  "2026-07-15T07:11:56.6477430+04:00",
     "branch":  "main",
-    "observed_head":  "c8757ea5c4483567d01fc19e3f58ea26c9485f65",
-    "subject_head":  "c8757ea5c4483567d01fc19e3f58ea26c9485f65",
+    "observed_head":  "94c12e1191ed88ff7cdb4b0e3b9a535d4dadca88",
+    "subject_head":  "94c12e1191ed88ff7cdb4b0e3b9a535d4dadca88",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
@@ -14,13 +14,9 @@
                           "operations/reports/CODEX_WAREHOUSE_PRODUCER_SMOKE_INSTALLATION_20260715.json",
                           "operations/reports/CODEX_WAREHOUSE_PRODUCER_SMOKE_INSTALLATION_20260715.md",
                           "operations/reports/CODEX_WAREHOUSE_PRODUCER_SMOKE_VALIDATION_20260715.json",
+                          "operations/reports/DYNAMIC_SCHOOL_REQUEST_PLANNER_VALIDATION_20260715.json",
                           "operations/reports/REAL_CODEX_WAREHOUSE_PRODUCER_SMOKE_20260715.json",
-                          "operations/school/warehouse/build_codex_warehouse_macro_task_v1.ps1",
-                          "operations/school/warehouse/build_codex_warehouse_request_macro_task_v1.ps1",
-                          "operations/school/warehouse/consume_codex_warehouse_micro_batches_v1.ps1",
                           "operations/school/warehouse/invoke_codex_warehouse_producer_smoke_v1.ps1",
-                          "operations/school/warehouse/recover_unmarked_ready_micro_batch_v1.ps1",
-                          "operations/school/warehouse/validate_codex_warehouse_producer_smoke_v1.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
@@ -32,13 +28,9 @@
                              "operations/reports/CODEX_WAREHOUSE_PRODUCER_SMOKE_INSTALLATION_20260715.json",
                              "operations/reports/CODEX_WAREHOUSE_PRODUCER_SMOKE_INSTALLATION_20260715.md",
                              "operations/reports/CODEX_WAREHOUSE_PRODUCER_SMOKE_VALIDATION_20260715.json",
+                             "operations/reports/DYNAMIC_SCHOOL_REQUEST_PLANNER_VALIDATION_20260715.json",
                              "operations/reports/REAL_CODEX_WAREHOUSE_PRODUCER_SMOKE_20260715.json",
-                             "operations/school/warehouse/build_codex_warehouse_macro_task_v1.ps1",
-                             "operations/school/warehouse/build_codex_warehouse_request_macro_task_v1.ps1",
-                             "operations/school/warehouse/consume_codex_warehouse_micro_batches_v1.ps1",
-                             "operations/school/warehouse/invoke_codex_warehouse_producer_smoke_v1.ps1",
-                             "operations/school/warehouse/recover_unmarked_ready_micro_batch_v1.ps1",
-                             "operations/school/warehouse/validate_codex_warehouse_producer_smoke_v1.ps1"
+                             "operations/school/warehouse/invoke_codex_warehouse_producer_smoke_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -50,8 +42,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1921,
-                                    "sha256":  "a005082f6e10e1106d4ac9fad6f528eec3cdbdd101f8cd1a5b738407ce9f8548"
+                                    "structural_file_count":  1926,
+                                    "sha256":  "2f8e5dd526331ffa2149282b2603b400eb7cc614b0337f9623c8b20b8b6bb4c2"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -77,12 +69,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  149,
-                         "structural_path_count":  1921,
+                         "structural_path_count":  1926,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-15T06:44:14.5176113+04:00"
+    "refreshed_at":  "2026-07-15T07:12:22.2659780+04:00"
 }

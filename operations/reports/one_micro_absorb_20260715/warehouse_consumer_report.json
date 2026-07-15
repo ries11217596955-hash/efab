@@ -1,0 +1,34 @@
+﻿{
+    "schema":  "codex_warehouse_consumer_report_v1",
+    "status":  "PASS_WAREHOUSE_CONSUMED_READY_BATCHES_WITH_ABSORB_V1",
+    "created_at":  "2026-07-15T07:09:15.2301721+04:00",
+    "macro_task":  "H:\\efab\\.runtime\\real_warehouse_producer_smoke\\real_warehouse_producer_smoke_runcodex_20260715_070014\\warehouse_request\\codex_warehouse_dynamic_request_task.json",
+    "warehouse_root":  ".runtime/real_warehouse_producer_smoke/real_warehouse_producer_smoke_runcodex_20260715_070014/warehouse_request/warehouse",
+    "ledger_path":  ".runtime/real_warehouse_producer_smoke/real_warehouse_producer_smoke_runcodex_20260715_070014/warehouse_request/warehouse/warehouse_ledger.jsonl",
+    "max_consume_batches":  1,
+    "consumed_batches":  [
+                             {
+                                 "micro_batch_id":  "micro_001",
+                                 "state":  "ABSORBED",
+                                 "candidate_count":  100,
+                                 "accepted_count":  100,
+                                 "absorption_status":  "PASS_FILE_ATOM_ABSORPTION_PIPELINE_V1"
+                             }
+                         ],
+    "wait_events":  [
+
+                    ],
+    "absorb_requested":  true,
+    "memory_before":  {
+                          "manifest":  "8035CE66AEA0D843FCD5E5585CDC36B1066D296ADA12C192C57C222C6045EEE1",
+                          "index":  "54F2CBBB6148AF68EC9FF9B5E97EE10AF868677123775886BA4CEE4173457101",
+                          "cells":  "199C9D9391ED5C79BBC774F8F81E884E4B439A291091C8F6F2A36A7792BA8BD1"
+                      },
+    "memory_after":  {
+                         "manifest":  "70B7C4EDD9AFF642CB44C2F0F4E89A82DE9572ECC075D5465F9FADC0F82BFCF5",
+                         "index":  "19A1AEFC2BE7034D29FAD774167B2BD3840C7062F57F99898F27AFABA9F6456E",
+                         "cells":  "36E85FF862223CD6734BEE5EC5EC218A025C473940417FEB194A187350BA9675"
+                     },
+    "memory_changed":  true,
+    "counted_memory_state":  "ABSORBED only"
+}

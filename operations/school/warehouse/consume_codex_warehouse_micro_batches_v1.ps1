@@ -57,7 +57,7 @@ while($true){
       $absorbStatus='NOT_RUN'
       $absorbProof=$null
       if($Absorb){
-        $absorbOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/digestion/absorb_atom_file_via_digest_pipeline_v1.ps1 -InputPath ([string]$mb.normalized_atoms_jsonl) -RunId ("$($task.run_id)_$($mb.micro_batch_id)") *>&1 | ForEach-Object{[string]$_})
+        $absorbOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/digestion/absorb_atom_file_via_digest_pipeline_v1.ps1 -InputPath ([string]$mb.normalized_atoms_jsonl) -SizeBudgetBytes 26214400 *>&1 | ForEach-Object{[string]$_})
         $absorbStatus=(($absorbOut|Where-Object{$_ -match '^FILE_ATOM_ABSORPTION_STATUS='}|Select-Object -Last 1) -replace '^FILE_ATOM_ABSORPTION_STATUS=','')
         $absorbProof=(($absorbOut|Where-Object{$_ -match '^PROOF_PATH='}|Select-Object -Last 1) -replace '^PROOF_PATH=','')
         if($absorbStatus -ne 'PASS_FILE_ATOM_ABSORPTION_PIPELINE_V1'){ throw "MICRO_ABSORPTION_FAILED:$absorbStatus" }

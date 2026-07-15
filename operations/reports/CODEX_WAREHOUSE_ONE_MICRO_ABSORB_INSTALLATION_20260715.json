@@ -1,0 +1,29 @@
+{
+  "schema": "codex_warehouse_one_micro_absorb_installation_v1",
+  "status": "PASS_REAL_CODEX_WAREHOUSE_ONE_MICRO_ABSORBED_V1",
+  "created_at": "2026-07-15T03:10:06.143358+00:00",
+  "real_absorb": {
+    "status": "PASS_REAL_CODEX_WAREHOUSE_ONE_MICRO_ABSORBED_V1",
+    "producer_status": "CODEX_PRODUCER_READY_CREATED",
+    "ready_jsonl_lines": 100,
+    "consumer_status": "PASS_WAREHOUSE_CONSUMED_READY_BATCHES_WITH_ABSORB_V1",
+    "accepted_count": 100,
+    "absorption_run": true,
+    "absorption_status": "PASS_FILE_ATOM_ABSORPTION_PIPELINE_V1",
+    "memory_changed": true,
+    "size_budget_bytes": 26214400,
+    "backup_root": "H:\\efab\\.runtime\\protected_backups\\before_one_micro_absorb_20260715_070013"
+  },
+  "repairs": {
+    "runner_absorb_switch": "added",
+    "nonzero_after_ready_grace": "added",
+    "consumer_absorb_call": "fixed: removed unsupported RunId parameter",
+    "consumer_absorb_size_budget": "set to 25MB for current active memory size"
+  },
+  "tracked_proof": {
+    "compact_report": "operations/reports/REAL_CODEX_WAREHOUSE_ONE_MICRO_ABSORB_20260715.json",
+    "consumer_report": "operations/reports/one_micro_absorb_20260715/warehouse_consumer_report.json",
+    "normalization_report": "operations/reports/one_micro_absorb_20260715/micro_001.normalization_report.json"
+  },
+  "boundary": "Exactly one READY micro-batch of 100 was absorbed. No full request, no second micro-batch, no multi-batch absorption."
+}

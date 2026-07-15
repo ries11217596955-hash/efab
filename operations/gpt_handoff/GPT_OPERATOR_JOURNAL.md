@@ -313,3 +313,26 @@ School can consume and validate 100 candidates without recovery and without abso
 Runner treats timeout after valid READY output as producer success and kills only its own process tree.
 Next safe slice: enable absorption for exactly one READY micro-batch of 100.
 ```
+
+
+## Real Codex warehouse one-micro absorption
+
+```text
+one_micro_absorb = proven
+status = PASS_REAL_CODEX_WAREHOUSE_ONE_MICRO_ABSORBED_V1
+ready_jsonl_lines = 100
+accepted_count = 100
+consumer_status = PASS_WAREHOUSE_CONSUMED_READY_BATCHES_WITH_ABSORB_V1
+absorption_status = PASS_FILE_ATOM_ABSORPTION_PIPELINE_V1
+absorption_run = True
+memory_changed = True
+backup_root = H:\efab\.runtime\protected_backups\before_one_micro_absorb_20260715_070013
+```
+
+Meaning:
+
+```text
+Real Codex warehouse producer can feed one READY micro-batch of 100 into School.
+School can validate, normalize, and absorb that micro-batch into active compact memory.
+The next safe slice is not 20k; it is a bounded multi-micro cycle, e.g. 3×100 or one window of 1000 with per-micro absorption and cleanup.
+```
