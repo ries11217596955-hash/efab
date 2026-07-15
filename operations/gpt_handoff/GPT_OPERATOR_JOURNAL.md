@@ -442,3 +442,39 @@ Generic ExactCountCycle can absorb a non-rounded request with a partial final mi
 Count=101 proved 100+1 with real Codex and active memory mutation through School absorption.
 Next safe scale step: Count=678 with -Absorb, or a bounded window such as 1000 if Owner authorizes.
 ```
+
+
+## Canonical ExactCountCycle wiring
+
+```text
+canonical_exact_count_cycle = wired and proven
+entrypoint = operations/school/run_agent_school.ps1
+owner_fields = Count,Mode,Topics
+route = GENERIC_EXACT_COUNT_WAREHOUSE_CYCLE_V1
+
+test_proof:
+  Count = 101
+  Mode = Test
+  batch_counts = 100,1
+  accepted_count = 101
+  absorb = False
+  memory_changed = False
+
+live_proof:
+  Count = 1
+  Mode = Live
+  batch_counts = 1
+  accepted_count = 1
+  absorb = True
+  memory_changed = True
+  backup_root = .runtime/protected_backups/before_canonical_exact_live_1_20260715_092114
+```
+
+Meaning:
+
+```text
+The new exact-count warehouse organ is now wired to the canonical School entrypoint.
+run_agent_school.ps1 no longer depends on number-specific routes for Count handling.
+Canonical Test uses mock/no-absorb; canonical Live uses real Codex + absorption.
+Larger canonical Live counts still need scale proof before claiming readiness.
+```

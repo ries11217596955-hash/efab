@@ -1,0 +1,44 @@
+{
+  "schema": "canonical_exact_count_cycle_wiring_installation_v1",
+  "status": "PASS_CANONICAL_EXACT_COUNT_CYCLE_WIRED_AND_PROVEN_V1",
+  "created_at": "2026-07-15T05:25:11.840470+00:00",
+  "entrypoint": "operations/school/run_agent_school.ps1",
+  "owner_fields": [
+    "Count",
+    "Mode",
+    "Topics"
+  ],
+  "route": "GENERIC_EXACT_COUNT_WAREHOUSE_CYCLE_V1",
+  "test_proof": {
+    "status": "PASS_CANONICAL_EXACT_COUNT_CYCLE_TEST_V1",
+    "mode": "Test",
+    "count": 101,
+    "batch_counts": [
+      100,
+      1
+    ],
+    "accepted_count": 101,
+    "absorb": false,
+    "memory_changed": false,
+    "tracked_proof": "operations/reports/canonical_exact_count_cycle_test_101_20260715/canonical_run_proof.json"
+  },
+  "live_proof": {
+    "status": "PASS_CANONICAL_EXACT_COUNT_CYCLE_LIVE_V1",
+    "mode": "Live",
+    "count": 1,
+    "batch_counts": [
+      1
+    ],
+    "accepted_count": 1,
+    "absorb": true,
+    "memory_changed": true,
+    "backup_root": ".runtime/protected_backups/before_canonical_exact_live_1_20260715_092114",
+    "tracked_proof": "operations/reports/canonical_exact_count_cycle_live_1_20260715/canonical_run_proof.json"
+  },
+  "active_memory_after_live": {
+    "manifest": "D63FD96A26B7640C6F04EC4EB92A893354C54C3270976F04BC29116A35204750",
+    "index": "A940C484995A27A08DDDB8F0A7C84E8FE539198D1973B64E505BFFE6FE33F85D",
+    "cells": "C81A0E22DF19DC412CD1C012995E0EB994FCB4C536B2A7DD8B2A95249895C0A2"
+  },
+  "boundary": "Canonical wiring proven with Test Count=101 no-absorb and Live Count=1 absorb. Larger canonical Live counts are not claimed."
+}

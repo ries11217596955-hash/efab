@@ -1,0 +1,33 @@
+﻿{
+    "schema":  "agent_school_canonical_exact_count_cycle_v1",
+    "status":  "PASS_CANONICAL_EXACT_COUNT_CYCLE_LIVE_V1",
+    "run_id":  "canonical_exact_count_cycle_real_1_20260715_092114",
+    "run_kind":  "Real",
+    "public_mode":  "Live",
+    "target_accepted":  1,
+    "requested_topics":  "AUTO",
+    "owner_fields":  "Count,Mode,Topics",
+    "route":  "GENERIC_EXACT_COUNT_WAREHOUSE_CYCLE_V1",
+    "producer_mode":  "RunCodex",
+    "cycle_status":  "PASS_REAL_CODEX_EXACT_COUNT_CYCLE_WITH_ABSORB_V1",
+    "cycle_report":  ".runtime/canonical_exact_count_cycle/canonical_exact_count_cycle_real_1_20260715_092114/exact_count_cycle_report.json",
+    "count":  1,
+    "micro_batch_size":  100,
+    "micro_batch_count":  1,
+    "batch_counts":  [
+                         1
+                     ],
+    "ready_batch_count":  1,
+    "ready_candidate_count":  1,
+    "consumed_batches":  1,
+    "accepted_count":  1,
+    "absorb":  true,
+    "memory_changed":  true,
+    "codex_cli_invoked":  true,
+    "api_invoked":  false,
+    "runtime_ready":  false,
+    "boundary":  "Canonical Live uses real Codex exact count warehouse cycle with absorption.",
+    "no_fake_pass":  true,
+    "no_hidden_failures":  true,
+    "law":  "Owner launch uses Count + Mode + Topics. Count is exact and may be non-rounded. Generic Exact Count Warehouse Cycle splits Count into micro-batches of 100 with partial final batch."
+}

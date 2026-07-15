@@ -6,19 +6,19 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "1ff04098570a516197550fe86720facb3280cfcf",
-    "subject_head":  "1ff04098570a516197550fe86720facb3280cfcf",
-    "generated_at":  "2026-07-15T08:52:24.3103504+04:00",
+    "observed_head_at_generation":  "837d39de94e177aed36e41574b2f3c132ea49b6e",
+    "subject_head":  "837d39de94e177aed36e41574b2f3c132ea49b6e",
+    "generated_at":  "2026-07-15T09:27:16.3056593+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  1958,
+    "structural_path_count":  1973,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1958,
-                                    "sha256":  "fec50478bda812ca5259fe2796648378e82ee29b7baa528527256f9ede543556"
+                                    "structural_file_count":  1973,
+                                    "sha256":  "4d9354c5ace445fabd31306818b177fdb30a549379e830575bed07e6712425c3"
                                 },
     "module_count":  203,
     "validator_count":  174,
@@ -629,9 +629,9 @@
 
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "1ff04098570a516197550fe86720facb3280cfcf",
-                                                               "committed_at":  "2026-07-15T07:57:31+04:00",
-                                                               "subject":  "feat: add generic exact count warehouse cycle"
+                                                               "head":  "837d39de94e177aed36e41574b2f3c132ea49b6e",
+                                                               "committed_at":  "2026-07-15T08:51:42+04:00",
+                                                               "subject":  "feat: absorb exact count warehouse cycle 101"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -2070,24 +2070,25 @@
                                             "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                                             "discovery_method":  "bounded_git_ls_files_path_discovery",
                                             "evidence_counts":  {
-                                                                    "files":  96,
+                                                                    "files":  113,
                                                                     "scripts":  0,
                                                                     "validators":  0,
-                                                                    "proofs":  0,
+                                                                    "proofs":  2,
                                                                     "contracts_or_policies":  0,
-                                                                    "docs":  27
+                                                                    "docs":  28
                                                                 },
-                                            "file_count":  96,
+                                            "file_count":  113,
                                             "script_count":  0,
                                             "validator_count":  0,
-                                            "proof_file_count":  0,
+                                            "proof_file_count":  2,
                                             "contract_or_policy_count":  0,
-                                            "doc_count":  27,
+                                            "doc_count":  28,
                                             "validator_refs":  [
 
                                                                ],
                                             "proof_refs":  [
-
+                                                               "operations/reports/canonical_exact_count_cycle_live_1_20260715/canonical_run_proof.json",
+                                                               "operations/reports/canonical_exact_count_cycle_test_101_20260715/canonical_run_proof.json"
                                                            ],
                                             "contract_or_policy_refs":  [
 
@@ -2099,6 +2100,11 @@
                                                                   "operations/reports/ACTIVE_BEHAVIOR_TASK_DECISION_FLOW_V1.md",
                                                                   "operations/reports/ACTIVE_COMPACT_MEMORY_CONSERVATIVE_COMPACTION_REPLACEMENT_20260714.json",
                                                                   "operations/reports/ACTIVE_COMPACT_MEMORY_CONSERVATIVE_COMPACTION_REPLACEMENT_20260714.md",
+                                                                  "operations/reports/CANONICAL_EXACT_COUNT_CYCLE_LIVE_1_20260715.json",
+                                                                  "operations/reports/CANONICAL_EXACT_COUNT_CYCLE_RUN_20260715_092056.json",
+                                                                  "operations/reports/CANONICAL_EXACT_COUNT_CYCLE_RUN_20260715_092404.json",
+                                                                  "operations/reports/CANONICAL_EXACT_COUNT_CYCLE_WIRING_INSTALLATION_20260715.json",
+                                                                  "operations/reports/CANONICAL_EXACT_COUNT_CYCLE_WIRING_INSTALLATION_20260715.md",
                                                                   "operations/reports/CODEX_SCHOOL_PATCH_TASK_TEMPLATE_INSTALLATION_20260714.json",
                                                                   "operations/reports/CODEX_SCHOOL_PATCH_TASK_TEMPLATE_INSTALLATION_20260714.md",
                                                                   "operations/reports/CODEX_SCHOOL_PATCH_TASK_TEMPLATE_VALIDATION_20260714.json",
@@ -2112,15 +2118,11 @@
                                                                   "operations/reports/CODEX_WAREHOUSE_PRODUCER_SMOKE_VALIDATION_20260715.json",
                                                                   "operations/reports/COMPACT_MEMORY_COMPACTION_CANDIDATES_20260714.json",
                                                                   "operations/reports/COMPACT_MEMORY_COMPACTION_CANDIDATE_VALIDATION_20260714.json",
-                                                                  "operations/reports/COMPACT_MEMORY_WEIGHT_AUDIT_20260714.json",
-                                                                  "operations/reports/COMPACT_MEMORY_WEIGHT_AUDIT_20260714.md",
-                                                                  "operations/reports/COMPACT_MEMORY_WEIGHT_AUDIT_COMPACTION_SAMPLE_20260714.json",
-                                                                  "operations/reports/DEVELOPMENT_VECTOR_THEME_SELECTOR_VALIDATION_20260714.json",
-                                                                  "operations/reports/DYNAMIC_SCHOOL_REQUEST_PLANNER_INSTALLATION_20260715.json",
-                                                                  "operations/reports/DYNAMIC_SCHOOL_REQUEST_PLANNER_INSTALLATION_20260715.md"
+                                                                  "operations/reports/COMPACT_MEMORY_WEIGHT_AUDIT_20260714.json"
                                                               ],
                                             "primary_evidence_refs":  [
-
+                                                                          "operations/reports/canonical_exact_count_cycle_live_1_20260715/canonical_run_proof.json",
+                                                                          "operations/reports/canonical_exact_count_cycle_test_101_20260715/canonical_run_proof.json"
                                                                       ],
                                             "needs_triage":  true,
                                             "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
@@ -8346,9 +8348,9 @@
 
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "1ff04098570a516197550fe86720facb3280cfcf",
-                                                     "committed_at":  "2026-07-15T07:57:31+04:00",
-                                                     "subject":  "feat: add generic exact count warehouse cycle"
+                                                     "head":  "837d39de94e177aed36e41574b2f3c132ea49b6e",
+                                                     "committed_at":  "2026-07-15T08:51:42+04:00",
+                                                     "subject":  "feat: absorb exact count warehouse cycle 101"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -9785,24 +9787,25 @@
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                            "discovery_method":  "bounded_git_ls_files_path_discovery",
                            "evidence_counts":  {
-                                                   "files":  96,
+                                                   "files":  113,
                                                    "scripts":  0,
                                                    "validators":  0,
-                                                   "proofs":  0,
+                                                   "proofs":  2,
                                                    "contracts_or_policies":  0,
-                                                   "docs":  27
+                                                   "docs":  28
                                                },
-                           "file_count":  96,
+                           "file_count":  113,
                            "script_count":  0,
                            "validator_count":  0,
-                           "proof_file_count":  0,
+                           "proof_file_count":  2,
                            "contract_or_policy_count":  0,
-                           "doc_count":  27,
+                           "doc_count":  28,
                            "validator_refs":  [
 
                                               ],
                            "proof_refs":  [
-
+                                              "operations/reports/canonical_exact_count_cycle_live_1_20260715/canonical_run_proof.json",
+                                              "operations/reports/canonical_exact_count_cycle_test_101_20260715/canonical_run_proof.json"
                                           ],
                            "contract_or_policy_refs":  [
 
@@ -9814,6 +9817,11 @@
                                                  "operations/reports/ACTIVE_BEHAVIOR_TASK_DECISION_FLOW_V1.md",
                                                  "operations/reports/ACTIVE_COMPACT_MEMORY_CONSERVATIVE_COMPACTION_REPLACEMENT_20260714.json",
                                                  "operations/reports/ACTIVE_COMPACT_MEMORY_CONSERVATIVE_COMPACTION_REPLACEMENT_20260714.md",
+                                                 "operations/reports/CANONICAL_EXACT_COUNT_CYCLE_LIVE_1_20260715.json",
+                                                 "operations/reports/CANONICAL_EXACT_COUNT_CYCLE_RUN_20260715_092056.json",
+                                                 "operations/reports/CANONICAL_EXACT_COUNT_CYCLE_RUN_20260715_092404.json",
+                                                 "operations/reports/CANONICAL_EXACT_COUNT_CYCLE_WIRING_INSTALLATION_20260715.json",
+                                                 "operations/reports/CANONICAL_EXACT_COUNT_CYCLE_WIRING_INSTALLATION_20260715.md",
                                                  "operations/reports/CODEX_SCHOOL_PATCH_TASK_TEMPLATE_INSTALLATION_20260714.json",
                                                  "operations/reports/CODEX_SCHOOL_PATCH_TASK_TEMPLATE_INSTALLATION_20260714.md",
                                                  "operations/reports/CODEX_SCHOOL_PATCH_TASK_TEMPLATE_VALIDATION_20260714.json",
@@ -9827,15 +9835,11 @@
                                                  "operations/reports/CODEX_WAREHOUSE_PRODUCER_SMOKE_VALIDATION_20260715.json",
                                                  "operations/reports/COMPACT_MEMORY_COMPACTION_CANDIDATES_20260714.json",
                                                  "operations/reports/COMPACT_MEMORY_COMPACTION_CANDIDATE_VALIDATION_20260714.json",
-                                                 "operations/reports/COMPACT_MEMORY_WEIGHT_AUDIT_20260714.json",
-                                                 "operations/reports/COMPACT_MEMORY_WEIGHT_AUDIT_20260714.md",
-                                                 "operations/reports/COMPACT_MEMORY_WEIGHT_AUDIT_COMPACTION_SAMPLE_20260714.json",
-                                                 "operations/reports/DEVELOPMENT_VECTOR_THEME_SELECTOR_VALIDATION_20260714.json",
-                                                 "operations/reports/DYNAMIC_SCHOOL_REQUEST_PLANNER_INSTALLATION_20260715.json",
-                                                 "operations/reports/DYNAMIC_SCHOOL_REQUEST_PLANNER_INSTALLATION_20260715.md"
+                                                 "operations/reports/COMPACT_MEMORY_WEIGHT_AUDIT_20260714.json"
                                              ],
                            "primary_evidence_refs":  [
-
+                                                         "operations/reports/canonical_exact_count_cycle_live_1_20260715/canonical_run_proof.json",
+                                                         "operations/reports/canonical_exact_count_cycle_test_101_20260715/canonical_run_proof.json"
                                                      ],
                            "needs_triage":  true,
                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",

@@ -1,0 +1,34 @@
+﻿{
+    "schema":  "codex_warehouse_consumer_report_v1",
+    "status":  "PASS_WAREHOUSE_CONSUMED_READY_BATCHES_NO_ABSORB_V1",
+    "created_at":  "2026-07-15T09:20:54.6077653+04:00",
+    "macro_task":  ".runtime/canonical_exact_count_cycle/canonical_exact_count_cycle_test_101_20260715_092045/warehouse_request/codex_warehouse_dynamic_request_task.json",
+    "warehouse_root":  ".runtime/canonical_exact_count_cycle/canonical_exact_count_cycle_test_101_20260715_092045/warehouse_request/warehouse",
+    "ledger_path":  ".runtime/canonical_exact_count_cycle/canonical_exact_count_cycle_test_101_20260715_092045/warehouse_request/warehouse/warehouse_ledger.jsonl",
+    "max_consume_batches":  1,
+    "consumed_batches":  [
+                             {
+                                 "micro_batch_id":  "micro_001",
+                                 "state":  "VALIDATED_NORMALIZED",
+                                 "candidate_count":  100,
+                                 "accepted_count":  100,
+                                 "absorption_status":  "NOT_RUN"
+                             }
+                         ],
+    "wait_events":  [
+
+                    ],
+    "absorb_requested":  false,
+    "memory_before":  {
+                          "manifest":  "D86B883AE4F80DDF725EB76678B6A554C4F7A9B990A011AF9626533D28FE05EB",
+                          "index":  "8DFCF5988DAD694A76F825F87AFB8BF17C84A4F8E5D621E37F9EDE5ABE3C249C",
+                          "cells":  "38ABE6379CFE72AE37FA8B7DBC918B89095CFC28C83DE1C0B0924B82FFA0AEF6"
+                      },
+    "memory_after":  {
+                         "manifest":  "D86B883AE4F80DDF725EB76678B6A554C4F7A9B990A011AF9626533D28FE05EB",
+                         "index":  "8DFCF5988DAD694A76F825F87AFB8BF17C84A4F8E5D621E37F9EDE5ABE3C249C",
+                         "cells":  "38ABE6379CFE72AE37FA8B7DBC918B89095CFC28C83DE1C0B0924B82FFA0AEF6"
+                     },
+    "memory_changed":  false,
+    "counted_memory_state":  "ABSORBED only"
+}

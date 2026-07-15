@@ -14,6 +14,81 @@ $ResumeCompletedChunks=0
 $ResumePlannedTotalAccepted=0
 if(-not (Test-Path $TopicsPlan)){ throw "CANONICAL_TOPICS_PLAN_MISSING:$TopicsPlan" }
 
+# Generic Exact Count Warehouse Cycle canonical route.
+# Owner-facing fields remain only Count, Mode, Topics.
+# Test = mock producer/no absorption. Live = real Codex producer/absorption.
+if($env:EF_SCHOOL_DISABLE_EXACT_COUNT_CYCLE_V1 -ne '1'){
+  $ExactCycleRunId="canonical_exact_count_cycle_{0}_{1}_{2}" -f $RunKind.ToLowerInvariant(),$TargetAccepted,(Get-Date -Format 'yyyyMMdd_HHmmss')
+  $ExactCycleRoot=".runtime/canonical_exact_count_cycle/$ExactCycleRunId"
+  $ExactCycleProducerMode=if($RunKind -eq 'Real'){'RunCodex'}else{'MockProducer'}
+  $ExactCycleArgs=@('-NoProfile','-ExecutionPolicy','Bypass','-File','operations/school/warehouse/invoke_exact_count_warehouse_cycle_v1.ps1','-ProducerMode',$ExactCycleProducerMode,'-Count',[string]$TargetAccepted,'-MicroBatchSize','100','-Topics',$RequestedTopics,'-OutputRoot',$ExactCycleRoot)
+  if($RunKind -eq 'Real'){
+    $ExactCycleArgs += @('-CodexTimeoutSeconds','900','-Absorb')
+  } else {
+    $ExactCycleArgs += @('-CodexTimeoutSeconds','300')
+  }
+  $ExactCycleOut=@(& powershell @ExactCycleArgs *>&1 | ForEach-Object{[string]$_})
+  New-Item -ItemType Directory -Force -Path $ExactCycleRoot | Out-Null
+  $ExactCycleOut | Set-Content -LiteralPath (Join-Path $ExactCycleRoot 'canonical_exact_cycle_stdout.txt') -Encoding UTF8
+  $ExactCycleReportPath=(($ExactCycleOut|Where-Object{$_ -match '^EXACT_COUNT_CYCLE_REPORT='}|Select-Object -Last 1) -replace '^EXACT_COUNT_CYCLE_REPORT=','')
+  if([string]::IsNullOrWhiteSpace($ExactCycleReportPath) -or -not (Test-Path $ExactCycleReportPath)){ throw "CANONICAL_EXACT_COUNT_CYCLE_REPORT_MISSING" }
+  $ExactCycleReport=Get-Content $ExactCycleReportPath -Raw | ConvertFrom-Json
+  $ExpectedExactStatus=if($RunKind -eq 'Real'){'PASS_REAL_CODEX_EXACT_COUNT_CYCLE_WITH_ABSORB_V1'}else{'PASS_MOCK_EXACT_COUNT_CYCLE_NO_ABSORB_V1'}
+  if($ExactCycleReport.status -ne $ExpectedExactStatus){ throw ("CANONICAL_EXACT_COUNT_CYCLE_STATUS_BAD:{0}:expected:{1}" -f $ExactCycleReport.status,$ExpectedExactStatus) }
+  if([int]$ExactCycleReport.accepted_count -ne [int]$TargetAccepted){ throw ("CANONICAL_EXACT_COUNT_CYCLE_ACCEPTED_MISMATCH:{0}/{1}" -f $ExactCycleReport.accepted_count,$TargetAccepted) }
+  $proofPath="operations/reports/CANONICAL_EXACT_COUNT_CYCLE_RUN_{0}.json" -f (Get-Date -Format 'yyyyMMdd_HHmmss')
+  $base=[ordered]@{
+    schema='agent_school_canonical_exact_count_cycle_v1'
+    status=if($RunKind -eq 'Real'){'PASS_CANONICAL_EXACT_COUNT_CYCLE_LIVE_V1'}else{'PASS_CANONICAL_EXACT_COUNT_CYCLE_TEST_V1'}
+    run_id=$ExactCycleRunId
+    run_kind=$RunKind
+    public_mode=$Mode
+    target_accepted=[int]$TargetAccepted
+    requested_topics=$RequestedTopics
+    owner_fields='Count,Mode,Topics'
+    route='GENERIC_EXACT_COUNT_WAREHOUSE_CYCLE_V1'
+    producer_mode=$ExactCycleProducerMode
+    cycle_status=$ExactCycleReport.status
+    cycle_report=$ExactCycleReportPath
+    count=[int]$ExactCycleReport.count
+    micro_batch_size=[int]$ExactCycleReport.micro_batch_size
+    micro_batch_count=[int]$ExactCycleReport.micro_batch_count
+    batch_counts=@($ExactCycleReport.batch_counts)
+    ready_batch_count=[int]$ExactCycleReport.ready_batch_count
+    ready_candidate_count=[int]$ExactCycleReport.ready_candidate_count
+    consumed_batches=[int]$ExactCycleReport.consumed_batches
+    accepted_count=[int]$ExactCycleReport.accepted_count
+    absorb=[bool]$ExactCycleReport.absorb
+    memory_changed=[bool]$ExactCycleReport.memory_changed
+    codex_cli_invoked=($ExactCycleProducerMode -eq 'RunCodex')
+    api_invoked=$false
+    runtime_ready=$false
+    boundary=if($RunKind -eq 'Real'){'Canonical Live uses real Codex exact count warehouse cycle with absorption.'}else{'Canonical Test uses mock exact count warehouse cycle with no absorption.'}
+    no_fake_pass=$true
+    no_hidden_failures=$true
+    law='Owner launch uses Count + Mode + Topics. Count is exact and may be non-rounded. Generic Exact Count Warehouse Cycle splits Count into micro-batches of 100 with partial final batch.'
+  }
+  $base | ConvertTo-Json -Depth 100 | Set-Content -LiteralPath $proofPath -Encoding UTF8
+  Write-Host 'FINALIZER_STATUS=SKIPPED_EXACT_COUNT_CYCLE_CANONICAL_ROUTE'
+  Write-Host 'FINALIZER_INTAKE_STATUS=SKIPPED_EXACT_COUNT_CYCLE_CANONICAL_ROUTE'
+  Write-Host 'FINALIZER_MERGE_QUEUE_STATUS=SKIPPED_EXACT_COUNT_CYCLE_CANONICAL_ROUTE'
+  Write-Host 'FINALIZER_MERGE_QUEUE_PROOF=SKIPPED_EXACT_COUNT_CYCLE_CANONICAL_ROUTE'
+  Write-Host "SCHOOL_RUN_STATUS=$($base.status)"
+  Write-Host "PROOF_PATH=$proofPath"
+  Write-Host "TARGET_ACCEPTED=$TargetAccepted"
+  Write-Host "RUN_KIND=$RunKind"
+  Write-Host "REQUESTED_TOPICS=$RequestedTopics"
+  Write-Host 'PATCH_SIZE=100'
+  Write-Host "EXACT_COUNT_CYCLE_STATUS=$($base.cycle_status)"
+  Write-Host "EXACT_COUNT_CYCLE_REPORT=$ExactCycleReportPath"
+  Write-Host "EXACT_COUNT_CYCLE_BATCH_COUNTS=$(@($base.batch_counts) -join ',')"
+  Write-Host "EXACT_COUNT_CYCLE_ACCEPTED_COUNT=$($base.accepted_count)"
+  Write-Host "EXACT_COUNT_CYCLE_ABSORB=$($base.absorb)"
+  Write-Host "EXACT_COUNT_CYCLE_MEMORY_CHANGED=$($base.memory_changed)"
+  Write-Host 'RUNTIME_READY=false'
+  return
+}
+
 # Dynamic theme cell selection: school looks at compact memory before choosing material direction.
 $DynamicThemeSelectionPath=".runtime/school_dynamic_theme_selection/${runId}_selection.json"
 $DynamicThemeSelectionOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/memory/select_dynamic_theme_cell_v1.ps1 -RequestedTopics $RequestedTopics -PatchSize $PatchSize -OutputPath $DynamicThemeSelectionPath *>&1 | ForEach-Object{[string]$_})
