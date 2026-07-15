@@ -1,0 +1,26 @@
+{
+  "schema": "aimo_deep_thinking_policy_v1",
+  "status": "ACTIVE_FOR_AIMO_SELF_BUILD_THINKING",
+  "depth_budget": {
+    "max_depth": 4,
+    "max_nodes": 40,
+    "min_root_children": 3
+  },
+  "memory_learning": {
+    "enabled_by_switch": "EnableMemoryLearning",
+    "max_atoms_per_cycle": 1,
+    "route": "operations/school/digestion/absorb_atom_file_via_digest_pipeline_v1.ps1",
+    "direct_active_memory_write": false,
+    "requires_governed_absorption": true
+  },
+  "priority_terms": [
+    "relevance_to_parent",
+    "impact_on_self_build",
+    "proof_availability",
+    "risk_reduction",
+    "memory_support",
+    "validator_possibility",
+    "action_risk_penalty"
+  ],
+  "stop_rule": "return_to_parent_with_proof_and_protective_checkpoint"
+}

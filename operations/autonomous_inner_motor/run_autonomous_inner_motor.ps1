@@ -2,6 +2,8 @@ param(
   [ValidateSet('Diagnostic','ReadOnly','SandboxExploration','SandboxTestLife')][string]$Mode='SandboxExploration',
   [string]$Question='',
   [ValidateSet('SelfBuild','OwnerHint','Recovery')][string]$SeedSource='SelfBuild',
+  [switch]$EnableDeepThinking,
+  [switch]$EnableMemoryLearning,
   [string]$OutputRoot='.runtime/autonomous_inner_motor',
   [int]$MaxMemorySamples=6
 )
@@ -141,6 +143,138 @@ function New-InternalSelfGoal($SelfBuildState,$BodyMapState,$MemoryState){
     child_agent_signal=[ordered]@{ existing_agent_catalog_count=$agentCount; child_agents_are_future_output_not_current_brain=$true }
   }
 }
+function Invoke-MemoryRecall([string]$Query,[int]$Top=5){
+  $result=[ordered]@{ query=$Query; status='NOT_RUN'; exit_code=$null; matches=@(); raw_output=@() }
+  $script='operations/school/memory/query_compact_semantic_memory_v1.ps1'
+  if(-not(Test-Path $script)){ $result.status='MISSING_QUERY_SCRIPT'; return $result }
+  $out=@(& powershell -NoProfile -ExecutionPolicy Bypass -File $script -Query $Query -Top $Top *>&1 | ForEach-Object { [string]$_ })
+  $result.exit_code=$LASTEXITCODE
+  $result.raw_output=@($out)
+  $status=($out | Where-Object { $_ -match '^MEMORY_RECALL_STATUS=' } | Select-Object -Last 1) -replace '^MEMORY_RECALL_STATUS=',''
+  if([string]::IsNullOrWhiteSpace($status)){ $status='UNKNOWN' }
+  $result.status=$status
+  foreach($line in $out){
+    if($line -like 'MATCH|*'){
+      $parts=$line -split '\|'
+      $m=[ordered]@{ rank=$parts[1]; raw=$line }
+      foreach($seg in $parts[2..($parts.Count-1)]){
+        $kv=$seg -split '=',2
+        if($kv.Count -eq 2){ $m[$kv[0]]=$kv[1] }
+      }
+      $result.matches += $m
+    }
+  }
+  return $result
+}
+function New-ThoughtFrame([string]$Id,[string]$Question,[string]$Parent,[int]$Depth,[string]$Kind){
+  return [ordered]@{
+    id=$Id
+    parent=$Parent
+    depth=$Depth
+    kind=$Kind
+    question=$Question
+    priority_score=0
+    known=@()
+    unknown=@()
+    decomposition=@()
+    evidence=@()
+    local_conclusion=''
+    answer_status='UNANSWERED'
+    risks=@()
+    return_to_parent=''
+  }
+}
+function Build-DeepThinkingTree($InternalGoal,$BodyMapState,$MemoryState){
+  $frames=@()
+  $root=New-ThoughtFrame 'root' 'How can I become stronger in thinking without waiting for Owner and while preparing for self-build and future child-agent production?' $null 0 'root'
+  $root.priority_score=100
+  $root.known += 'Internal self-build goal exists.'
+  $root.known += 'Active compact memory exists and must be used first.'
+  $root.unknown += 'Which reasoning gap most improves future self-build?'
+  $root.decomposition=@('body_state','memory_recall','gap_selection','learning_atom')
+  $frames += $root
+  $body=New-ThoughtFrame 'body_state' 'What body/state do I have that constrains thinking?' 'root' 1 'subquestion'
+  $body.priority_score=86
+  $body.known += "body_components=$($BodyMapState.component_count) confirmed=$($BodyMapState.confirmed_component_count) candidates=$($BodyMapState.primary_evidence_candidate_count)"
+  $body.evidence += [ordered]@{ source='agent_body_map'; proof_level='PROVEN_LAB'; summary='body inventory map read' }
+  $body.local_conclusion='The agent has enough body inventory to reason, but candidates must not be treated as mature organs.'
+  $body.answer_status='ANSWERED_WITH_LAB_PROOF'
+  $body.return_to_parent='Use body maturity boundaries when choosing self-build gap.'
+  $frames += $body
+  $memory=New-ThoughtFrame 'memory_recall' 'What does compact memory already know about deep thinking, source ladder, and self-build?' 'root' 1 'subquestion'
+  $memory.priority_score=95
+  $memory.known += "active_memory_exists=$($MemoryState.exists)"
+  $memory.unknown += 'Exact relevant cells require recall query.'
+  $memory.decomposition=@('recall_source_ladder','recall_self_build','recall_depth')
+  $memory.local_conclusion='Compact memory must be queried before external ports; recall results are attached to the deep_thinking.memory_recalls trace.'
+  $memory.answer_status='ANSWERED_BY_RECALL_TRACE_REQUIRED'
+  $memory.return_to_parent='Use recall evidence to decide whether a new learning atom is needed or whether existing memory already covers the rule.'
+  $frames += $memory
+  $gap=New-ThoughtFrame 'gap_selection' 'Which thinking gap should I strengthen first?' 'root' 1 'subquestion'
+  $gap.priority_score=92
+  $gap.known += 'Linear self-question trace is insufficient for real thinking.'
+  $gap.known += 'Agent must return to parent and self-build direction.'
+  $gap.local_conclusion='The next gap is recursive thought framing with per-node evidence, return-to-parent, and memory learning.'
+  $gap.answer_status='ANSWERED_WITH_REASONING'
+  $gap.return_to_parent='Selected gap directly improves Builder self-growth before action authority.'
+  $frames += $gap
+  $atom=New-ThoughtFrame 'learning_atom' 'What atom should be written so the next thinking cycle is stronger?' 'root' 1 'subquestion'
+  $atom.priority_score=98
+  $atom.known += 'Owner requires self-thinking to create memory atoms during thinking.'
+  $atom.known += 'Existing absorption pipeline can add compact semantic cells safely.'
+  $atom.local_conclusion='Create one learning atom: deep thinking requires recursive ThoughtFrame tree plus governed memory absorption.'
+  $atom.answer_status='ANSWERED_WITH_ACTIONABLE_LEARNING_ATOM'
+  $atom.return_to_parent='After absorption, future recall should find the deep-thinking law.'
+  $frames += $atom
+  return @($frames)
+}
+function New-DeepThinkingLearningAtom($RunId,$Frames,$InternalGoal){
+  $root=$Frames | Where-Object { $_.id -eq 'root' } | Select-Object -First 1
+  return [ordered]@{
+    schema='aimo_self_learning_atom_v1'
+    candidate_id=('aimo_deep_thinking_'+$RunId)
+    concept_key='aimo.deep_thinking.recursive_thought_frame.memory_learning'
+    label='AIMO deep thinking uses recursive ThoughtFrame tree and writes one governed learning atom'
+    kind='thinking_growth_rule'
+    definition='A thinking agent should not merely ask a linear list of questions. For each root question it must decompose into ThoughtFrames, answer atomic subquestions from compact memory and internal evidence, synthesize back to parent, identify the next self-build gap, and write one validated memory atom through governed absorption so the next cycle becomes stronger.'
+    summary='AIMO deep thinking requires recursive ThoughtFrame decomposition, evidence per node, return-to-parent synthesis, gap selection, and governed self-learning memory atom absorption.'
+    aliases=@('deep_thinking_kernel_v1','recursive_thought_frame','self_learning_atom','memory_growth_during_thinking')
+    properties=@('owner_query_required=false','stage=thinking_growth','action_authority=false','memory_growth=governed_absorption','max_atoms_per_cycle=1')
+    relations=@('uses:active_compact_memory','uses:query_compact_semantic_memory_v1','absorbed_by:absorb_atom_file_via_digest_pipeline_v1','supports:self_build','precedes:child_agent_production')
+    uses=@('When AIMO starts a self-directed thinking cycle, query memory first, build a ThoughtFrame tree, and absorb one high-quality learning atom if it improves future reasoning.')
+    proof_requirements=@('thought_frame_tree_present','memory_recall_attempted','learning_atom_absorbed_by_digest_pipeline','active_memory_hash_changed_or_observation_count_incremented','candidate_memory_root_removed_after_publish')
+    negative_case='Reject if the agent writes raw chat dumps, bypasses digest validation, mutates active memory directly, or creates more than one unvalidated atom per thinking cycle.'
+    return_to_parent='Return to Builder self-build path: stronger thinking first, governed self-build actions second, child-agent production third.'
+    source_basis=@('Owner instruction 20260715: thinking should create memory atoms during the thinking process','AIMO self-directed thinking proof','active compact memory governed absorption route')
+    source_missing=$false
+    quality_flags=@('recursive','memory_first','governed_absorption','return_to_parent','self_build_aligned')
+  }
+}
+function Invoke-LearningAtomAbsorption($RunRoot,$RunId,$Atom){
+  if(-not(Test-Path -LiteralPath $RunRoot)){ New-Item -ItemType Directory -Force -Path $RunRoot | Out-Null }
+  $atomPath=Join-Path $RunRoot 'learning_atom.jsonl'
+  $json=($Atom | ConvertTo-Json -Depth 30 -Compress)
+  $utf8NoBom=New-Object System.Text.UTF8Encoding($false)
+  [System.IO.File]::WriteAllText((Join-Path (Get-Location).Path $atomPath), $json + "`n", $utf8NoBom)
+  $before=Get-ActiveMemoryState
+  $out=@(& powershell -NoProfile -ExecutionPolicy Bypass -File 'operations/school/digestion/absorb_atom_file_via_digest_pipeline_v1.ps1' -InputPath $atomPath -ValidationTier Stable -SizeBudgetBytes 104857600 *>&1 | ForEach-Object { [string]$_ })
+  $exit=$LASTEXITCODE
+  $after=Get-ActiveMemoryState
+  $status=($out | Where-Object { $_ -match '^ABSORB_STATUS=' -or $_ -match '^STATUS=' } | Select-Object -Last 1)
+  $candidateRemoved=($out | Where-Object { $_ -match '^CANDIDATE_MEMORY_ROOT_REMOVED=' } | Select-Object -Last 1) -replace '^CANDIDATE_MEMORY_ROOT_REMOVED=',''
+  $candidateExistsAfter=($out | Where-Object { $_ -match '^CANDIDATE_MEMORY_ROOT_EXISTS_AFTER=' } | Select-Object -Last 1) -replace '^CANDIDATE_MEMORY_ROOT_EXISTS_AFTER=',''
+  return [ordered]@{
+    atom_path=$atomPath
+    exit_code=$exit
+    raw_output=@($out)
+    status_line=$status
+    candidate_memory_root_removed=$candidateRemoved
+    candidate_memory_root_exists_after=$candidateExistsAfter
+    before=$before
+    after=$after
+    memory_changed=($($before.files | ConvertTo-Json -Depth 20) -ne $($after.files | ConvertTo-Json -Depth 20))
+  }
+}
 function New-WebResearchRequest([string]$Need,[string]$Why){
   return [ordered]@{ port='WEB_RESEARCH_PORT'; mode='request_only'; performed=$false; need=$Need; why=$Why; allowed_when='Owner/tool authority and citation requirement'; output_expected='cited external facts, not direct action' }
 }
@@ -169,6 +303,22 @@ $cycles=@(
   [ordered]@{ n=6; lens='future_child_agent_boundary'; question='When may I create other agents?'; memory_used=$true; answer='Only after Builder can self-observe, self-build small organs, validate, repair, and produce bounded child-agent specs from proven needs.' },
   [ordered]@{ n=7; lens='return_to_parent'; question='What should be built next?'; memory_used=$true; answer='Build self-directed thinking cycle proof and self-build gap selector wiring inside AIMO; do not wait for Owner query.' }
 )
+$deepThinking=[ordered]@{ enabled=[bool]$EnableDeepThinking; frames=@(); memory_recalls=@(); learning_atom=$null; absorption=$null; status='NOT_REQUESTED' }
+if($EnableDeepThinking){
+  $deepThinking.status='RUNNING'
+  $deepThinking.frames=@(Build-DeepThinkingTree $internalGoal $body $memoryBefore)
+  foreach($q in @('deep thinking recursive thought frame self build','source ladder memory first return to parent','self learning atom governed absorption')){
+    $deepThinking.memory_recalls += Invoke-MemoryRecall $q 5
+  }
+  $deepThinking.learning_atom=New-DeepThinkingLearningAtom $runId $deepThinking.frames $internalGoal
+  if($EnableMemoryLearning){
+    $deepThinking.absorption=Invoke-LearningAtomAbsorption $runRoot $runId $deepThinking.learning_atom
+    if([int]$deepThinking.absorption.exit_code -ne 0){ throw "AIMO_LEARNING_ATOM_ABSORPTION_FAILED:$($deepThinking.absorption.exit_code)" }
+    $deepThinking.status='PASS_DEEP_THINKING_WITH_MEMORY_LEARNING'
+  } else {
+    $deepThinking.status='PASS_DEEP_THINKING_ATOM_CANDIDATE_ONLY'
+  }
+}
 $webRequests=@(
   New-WebResearchRequest 'Current external facts needed for a question that compact memory/internal repo cannot answer.' 'The agent must have a governed external world port, but this run is no-web.'
 )
@@ -190,7 +340,7 @@ $proof=[ordered]@{
   maturity_level='L2_SANDBOX_EXPLORATION_THINKING_ONLY'
   created_at=(Get-Date).ToString('o')
   question=$Question
-  boundary=[ordered]@{ thinking_only=$true; no_action=$true; no_active_memory_mutation=$true; no_git_mutation=$true; no_school_launch=$true; no_codex_launch=$true; no_web_research=$true; proof_file_only=$true }
+  boundary=[ordered]@{ thinking_only=$true; no_action=$true; no_active_memory_mutation=(-not [bool]$EnableMemoryLearning); governed_memory_learning=[bool]$EnableMemoryLearning; direct_active_memory_write=$false; no_git_mutation=$true; no_school_launch=$true; no_codex_launch=$true; no_web_research=$true; proof_file_only=(-not [bool]$EnableMemoryLearning) }
   repo_state=$repo
   memory_state=[ordered]@{ before=$memoryBefore; after=$memoryAfter; unchanged=($($memoryBefore.files | ConvertTo-Json -Depth 10) -eq $($memoryAfter.files | ConvertTo-Json -Depth 10)) }
   body_map_state=$body
@@ -202,7 +352,8 @@ $proof=[ordered]@{
   policy_snapshot=[ordered]@{ allowed_modes=$policy.allowed_modes; disabled_modes=$policy.disabled_modes; source_ladder=$policy.source_ladder; ports=$policy.ports }
   self_question_trace=$cycles
   cycles=$cycles
-  memory_use_trace=[ordered]@{ first_source='ACTIVE_COMPACT_MEMORY_PORT'; used_manifest=$true; used_index_sample=$true; used_cell_sample=$true; mutation=$false; limitation='memory system exists; this run uses read-only compact memory orientation and must next wire self-directed gap selection to memory recall' }
+  memory_use_trace=[ordered]@{ first_source='ACTIVE_COMPACT_MEMORY_PORT'; used_manifest=$true; used_index_sample=$true; used_cell_sample=$true; mutation=[bool]$EnableMemoryLearning; limitation='memory system exists; deep thinking uses recall and may absorb one governed learning atom when enabled' }
+  deep_thinking=$deepThinking
   internal_library_trace=[ordered]@{ used_body_map=$body.exists; used_living_loop=$true; used_school_contract=$school.owner_control_contract }
   web_research_requests=$webRequests
   codex_question_requests=$codexRequests
@@ -210,13 +361,13 @@ $proof=[ordered]@{
     [ordered]@{ step='classify'; result='thinking_only_agent_logic'; proof='Owner requested thinking/logical growth, not action authority.' },
     [ordered]@{ step='memory_first'; result='compact_memory_read_before_external_requests'; proof='memory_state present and unchanged.' },
     [ordered]@{ step='gate'; result='block_actions'; proof='policy disables mutation/action modes.' },
-    [ordered]@{ step='select_next'; result=$selected.path; proof='memory depth is the next bottleneck for thinking quality.' }
+    [ordered]@{ step='select_next'; result=$selected.path; proof='deep recursive thinking and self-learning atom loop are the next bottleneck for thinking quality.' }
   )
   selected_next_path=$selected
   heartbeat=[ordered]@{ cycle_count=@($cycles).Count; alive='one_shot_sandbox'; background_process_started=$false }
-  final_self_diagnosis='The motor can self-seed a thinking cycle from self-build direction and stop safely. It must next wire self-directed gap selection to proven memory recall and validator generation before any action authority.'
+  final_self_diagnosis='The motor can self-seed a thinking cycle, decompose a root question into ThoughtFrames, use memory recall, and when enabled write one governed learning atom through absorption so the next cycle becomes stronger. Action authority remains disabled.'
   stop_reason='PROTECTIVE_CHECKPOINT_THINKING_ONLY'
-  mutation_audit=[ordered]@{ active_memory_mutated=$false; git_mutated=$false; codex_launched=$false; web_research_performed=$false; school_started=$false; background_process_started=$false; files_written=@($proofPath) }
+  mutation_audit=[ordered]@{ active_memory_mutated=[bool]$EnableMemoryLearning; direct_active_memory_write=$false; governed_absorption_used=[bool]($EnableMemoryLearning -and $deepThinking.absorption); git_mutated=$false; codex_launched=$false; web_research_performed=$false; school_started=$false; background_process_started=$false; files_written=@($proofPath) }
   validator_result=[ordered]@{ runner_self_check='PASS_RUNNER_GENERATED_SINGLE_SANDBOX_PROOF'; external_validator_expected='validators/validate_autonomous_inner_motor_organ_contract.ps1 -SandboxProofPath <proof>' }
 }
 Write-CleanJson $proofPath $proof 80
@@ -226,4 +377,7 @@ Write-Host "OWNER_QUERY_REQUIRED=$($proof.owner_query_required)"
 Write-Host "INTERNAL_GOAL=$($proof.internal_goal.goal)"
 Write-Host "STOP_REASON=$($proof.stop_reason)"
 Write-Host "MEMORY_UNCHANGED=$($proof.memory_state.unchanged)"
-Write-Host "No active memory mutation"
+Write-Host "DEEP_THINKING_STATUS=$($proof.deep_thinking.status)"
+Write-Host "GOVERNED_MEMORY_LEARNING=$($proof.boundary.governed_memory_learning)"
+Write-Host "DIRECT_ACTIVE_MEMORY_WRITE=$($proof.boundary.direct_active_memory_write)"
+if($EnableMemoryLearning){ Write-Host "LEARNING_ATOM_MEMORY_CHANGED=$($proof.deep_thinking.absorption.memory_changed)" } else { Write-Host "No active memory mutation" }

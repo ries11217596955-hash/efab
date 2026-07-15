@@ -1,0 +1,21 @@
+{
+  "schema": "aimo_thought_frame_schema_v1",
+  "required_fields": [
+    "id",
+    "parent",
+    "depth",
+    "kind",
+    "question",
+    "priority_score",
+    "known",
+    "unknown",
+    "decomposition",
+    "evidence",
+    "local_conclusion",
+    "answer_status",
+    "risks",
+    "return_to_parent"
+  ],
+  "max_depth_default": 4,
+  "rule": "Every non-root frame must return to parent. Unknowns must use source ladder before external requests."
+}

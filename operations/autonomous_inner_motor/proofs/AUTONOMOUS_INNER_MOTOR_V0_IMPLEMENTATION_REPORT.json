@@ -1,6 +1,6 @@
 {
   "schema": "autonomous_inner_motor_v0_implementation_report",
-  "status": "PASS_AUTONOMOUS_INNER_MOTOR_V0_SELF_DIRECTED_THINKING_ORGAN",
+  "status": "PASS_AUTONOMOUS_INNER_MOTOR_V0_DEEP_THINKING_MEMORY_LEARNING",
   "created_at": "2026-07-15T18:40:46.8339696+04:00",
   "contract_validation": "PASS_AUTONOMOUS_INNER_MOTOR_ORGAN_CONTRACT",
   "sandbox_validation": "PASS_AUTONOMOUS_INNER_MOTOR_SANDBOX_EXPLORATION_PROOF",
@@ -21,5 +21,31 @@
   "owner_query_required": false,
   "internal_goal_source": "SELF_BUILD_INTERNAL_SEED",
   "selected_next_path": "build_self_directed_thinking_cycle_and_gap_selector_wiring_v1",
-  "tracked_self_directed_proof_path": "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SELF_DIRECTED_THINKING_PROOF_20260715.json"
+  "tracked_self_directed_proof_path": "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SELF_DIRECTED_THINKING_PROOF_20260715.json",
+  "deep_thinking_memory_learning_validation": "PASS_AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_V1",
+  "tracked_deep_thinking_proof_path": "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_PROOF_20260715.json",
+  "deep_thinking_status": "PASS_DEEP_THINKING_WITH_MEMORY_LEARNING",
+  "deep_thinking_frames": 5,
+  "memory_recalls": 3,
+  "learning_atom_concept_key": "aimo.deep_thinking.recursive_thought_frame.memory_learning",
+  "governed_memory_learning": true,
+  "direct_active_memory_write": false,
+  "active_memory_hashes_after_learning": [
+    {
+      "path": ".runtime\\active_compact_semantic_memory_v1\\manifest.json",
+      "bytes": 1889,
+      "sha256": "11bb132c0744af6e67d5eff499177e059679388b90bb397b73b5ad1ab0c46948"
+    },
+    {
+      "path": ".runtime\\active_compact_semantic_memory_v1\\index.json",
+      "bytes": 310493,
+      "sha256": "e2f7474639a74c7e841b76dd16f7d48d4533d90fe6bb4bfb2fe3ea1f7a610b81"
+    },
+    {
+      "path": ".runtime\\active_compact_semantic_memory_v1\\cells.jsonl",
+      "bytes": 12611878,
+      "sha256": "4c223596866338d3906d3648b93406c600c4aacfb7c483b5501329657d03fa23"
+    }
+  ],
+  "missing_return_to_parent": 0
 }

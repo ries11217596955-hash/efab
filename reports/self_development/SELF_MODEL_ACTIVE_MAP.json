@@ -6,22 +6,22 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "fc065d95583e1597a97f0db6cc84c1afcd8da2f0",
-    "subject_head":  "fc065d95583e1597a97f0db6cc84c1afcd8da2f0",
-    "generated_at":  "2026-07-15T18:54:27.9241369+04:00",
+    "observed_head_at_generation":  "30e986db5b5aff6e0986849a0c868c3997447828",
+    "subject_head":  "30e986db5b5aff6e0986849a0c868c3997447828",
+    "generated_at":  "2026-07-15T19:18:27.0900569+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
-    "trigger_reason":  "aimo_self_directed_final_staged_refresh_20260715",
+    "trigger_reason":  "aimo_deep_thinking_memory_learning_final_after_all_proofs_staged_20260715",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  2001,
+    "structural_path_count":  2007,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2001,
-                                    "sha256":  "242231dcc29ef189fbdebd1dce992b5c017ea1938181bd760c699265b966bbca"
+                                    "structural_file_count":  2007,
+                                    "sha256":  "1e09f0fd32e46fe74f65c7d76c73201ac76473536fcdc13914d4b15d738fd579"
                                 },
     "module_count":  203,
-    "validator_count":  177,
+    "validator_count":  178,
     "confirmed_components":  [
                                  {
                                      "id":  "school",
@@ -1442,47 +1442,57 @@
                                             "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                                             "discovery_method":  "bounded_git_ls_files_path_discovery",
                                             "evidence_counts":  {
-                                                                    "files":  9,
+                                                                    "files":  13,
                                                                     "scripts":  1,
                                                                     "validators":  0,
-                                                                    "proofs":  4,
-                                                                    "contracts_or_policies":  2,
+                                                                    "proofs":  6,
+                                                                    "contracts_or_policies":  3,
                                                                     "docs":  1
                                                                 },
-                                            "file_count":  9,
+                                            "file_count":  13,
                                             "script_count":  1,
                                             "validator_count":  0,
-                                            "proof_file_count":  4,
-                                            "contract_or_policy_count":  2,
+                                            "proof_file_count":  6,
+                                            "contract_or_policy_count":  3,
                                             "doc_count":  1,
                                             "validator_refs":  [
 
                                                                ],
                                             "proof_refs":  [
                                                                "operations/autonomous_inner_motor/motor_proof_schema.json",
+                                                               "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_PROOF_20260715.json",
+                                                               "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_REPORT_20260715.json",
                                                                "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SANDBOX_EXPLORATION_PROOF_20260715.json",
                                                                "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SELF_DIRECTED_THINKING_PROOF_20260715.json",
                                                                "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_V0_IMPLEMENTATION_REPORT.json"
                                                            ],
                                             "contract_or_policy_refs":  [
+                                                                            "operations/autonomous_inner_motor/deep_thinking_policy.json",
                                                                             "operations/autonomous_inner_motor/motor_policy.json",
                                                                             "operations/autonomous_inner_motor/organ_contract.json"
                                                                         ],
                                             "notable_files":  [
                                                                   "operations/autonomous_inner_motor/AUTONOMOUS_INNER_MOTOR_ORGAN_SPEC.md",
+                                                                  "operations/autonomous_inner_motor/deep_thinking_policy.json",
                                                                   "operations/autonomous_inner_motor/motor_policy.json",
                                                                   "operations/autonomous_inner_motor/motor_proof_schema.json",
                                                                   "operations/autonomous_inner_motor/motor_state_schema.json",
                                                                   "operations/autonomous_inner_motor/organ_contract.json",
+                                                                  "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_PROOF_20260715.json",
+                                                                  "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_REPORT_20260715.json",
                                                                   "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SANDBOX_EXPLORATION_PROOF_20260715.json",
                                                                   "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SELF_DIRECTED_THINKING_PROOF_20260715.json",
                                                                   "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_V0_IMPLEMENTATION_REPORT.json",
-                                                                  "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1"
+                                                                  "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+                                                                  "operations/autonomous_inner_motor/thought_frame_schema.json"
                                                               ],
                                             "primary_evidence_refs":  [
+                                                                          "operations/autonomous_inner_motor/deep_thinking_policy.json",
                                                                           "operations/autonomous_inner_motor/motor_policy.json",
                                                                           "operations/autonomous_inner_motor/motor_proof_schema.json",
                                                                           "operations/autonomous_inner_motor/organ_contract.json",
+                                                                          "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_PROOF_20260715.json",
+                                                                          "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_REPORT_20260715.json",
                                                                           "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SANDBOX_EXPLORATION_PROOF_20260715.json",
                                                                           "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SELF_DIRECTED_THINKING_PROOF_20260715.json",
                                                                           "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_V0_IMPLEMENTATION_REPORT.json",
@@ -9218,47 +9228,57 @@
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                            "discovery_method":  "bounded_git_ls_files_path_discovery",
                            "evidence_counts":  {
-                                                   "files":  9,
+                                                   "files":  13,
                                                    "scripts":  1,
                                                    "validators":  0,
-                                                   "proofs":  4,
-                                                   "contracts_or_policies":  2,
+                                                   "proofs":  6,
+                                                   "contracts_or_policies":  3,
                                                    "docs":  1
                                                },
-                           "file_count":  9,
+                           "file_count":  13,
                            "script_count":  1,
                            "validator_count":  0,
-                           "proof_file_count":  4,
-                           "contract_or_policy_count":  2,
+                           "proof_file_count":  6,
+                           "contract_or_policy_count":  3,
                            "doc_count":  1,
                            "validator_refs":  [
 
                                               ],
                            "proof_refs":  [
                                               "operations/autonomous_inner_motor/motor_proof_schema.json",
+                                              "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_PROOF_20260715.json",
+                                              "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_REPORT_20260715.json",
                                               "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SANDBOX_EXPLORATION_PROOF_20260715.json",
                                               "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SELF_DIRECTED_THINKING_PROOF_20260715.json",
                                               "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_V0_IMPLEMENTATION_REPORT.json"
                                           ],
                            "contract_or_policy_refs":  [
+                                                           "operations/autonomous_inner_motor/deep_thinking_policy.json",
                                                            "operations/autonomous_inner_motor/motor_policy.json",
                                                            "operations/autonomous_inner_motor/organ_contract.json"
                                                        ],
                            "notable_files":  [
                                                  "operations/autonomous_inner_motor/AUTONOMOUS_INNER_MOTOR_ORGAN_SPEC.md",
+                                                 "operations/autonomous_inner_motor/deep_thinking_policy.json",
                                                  "operations/autonomous_inner_motor/motor_policy.json",
                                                  "operations/autonomous_inner_motor/motor_proof_schema.json",
                                                  "operations/autonomous_inner_motor/motor_state_schema.json",
                                                  "operations/autonomous_inner_motor/organ_contract.json",
+                                                 "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_PROOF_20260715.json",
+                                                 "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_REPORT_20260715.json",
                                                  "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SANDBOX_EXPLORATION_PROOF_20260715.json",
                                                  "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SELF_DIRECTED_THINKING_PROOF_20260715.json",
                                                  "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_V0_IMPLEMENTATION_REPORT.json",
-                                                 "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1"
+                                                 "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+                                                 "operations/autonomous_inner_motor/thought_frame_schema.json"
                                              ],
                            "primary_evidence_refs":  [
+                                                         "operations/autonomous_inner_motor/deep_thinking_policy.json",
                                                          "operations/autonomous_inner_motor/motor_policy.json",
                                                          "operations/autonomous_inner_motor/motor_proof_schema.json",
                                                          "operations/autonomous_inner_motor/organ_contract.json",
+                                                         "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_PROOF_20260715.json",
+                                                         "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_REPORT_20260715.json",
                                                          "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SANDBOX_EXPLORATION_PROOF_20260715.json",
                                                          "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SELF_DIRECTED_THINKING_PROOF_20260715.json",
                                                          "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_V0_IMPLEMENTATION_REPORT.json",

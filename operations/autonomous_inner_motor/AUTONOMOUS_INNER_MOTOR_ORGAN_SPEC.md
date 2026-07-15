@@ -157,3 +157,16 @@ think better -> choose self-build gap -> prove reasoning -> stop
 The second stage is governed self-build action. The third stage is child-agent creation.
 
 Child-agent production is not current brain behavior. It is a future output of a Builder that can already self-observe, self-select gaps, validate, repair, and explain proof boundaries.
+
+
+## Deep thinking with memory growth
+
+AIMO must not only think and stop. In the thinking-growth stage it may, when explicitly enabled, create exactly one compact learning atom from its own validated reasoning and add it through the governed absorption route.
+
+This is not direct active-memory editing. The only allowed path is:
+
+```text
+deep thought frame proof -> one learning atom JSONL -> absorb_atom_file_via_digest_pipeline_v1.ps1 -> compact memory updated -> candidate memory root removed -> protective checkpoint
+```
+
+This makes the next thinking cycle stronger without granting repo action authority.
