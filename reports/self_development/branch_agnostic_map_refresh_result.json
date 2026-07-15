@@ -1,27 +1,21 @@
 ﻿{
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-15T07:17:11.4841029+04:00",
+    "checked_at":  "2026-07-15T07:45:44.4473152+04:00",
     "branch":  "main",
-    "observed_head":  "007e4447b19b78635d94fd46db0e07cb482c1676",
-    "subject_head":  "007e4447b19b78635d94fd46db0e07cb482c1676",
+    "observed_head":  "f754a82d835b2a52697a85f3014d36b1daac94c9",
+    "subject_head":  "f754a82d835b2a52697a85f3014d36b1daac94c9",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
                           "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                          "operations/reports/CODEX_WAREHOUSE_ONE_MICRO_ABSORB_INSTALLATION_20260715.json",
-                          "operations/reports/CODEX_WAREHOUSE_ONE_MICRO_ABSORB_INSTALLATION_20260715.md",
-                          "operations/reports/CODEX_WAREHOUSE_PIPELINE_VALIDATION_20260714.json",
-                          "operations/reports/CODEX_WAREHOUSE_PRODUCER_SMOKE_VALIDATION_20260715.json",
                           "operations/reports/DYNAMIC_SCHOOL_REQUEST_PLANNER_VALIDATION_20260715.json",
-                          "operations/reports/REAL_CODEX_WAREHOUSE_ONE_MICRO_ABSORB_20260715.json",
-                          "operations/reports/one_micro_absorb_20260715/micro_001.normalization_report.json",
-                          "operations/reports/one_micro_absorb_20260715/micro_001.normalized_atoms.jsonl",
-                          "operations/reports/one_micro_absorb_20260715/warehouse_consumer_report.json",
-                          "operations/school/warehouse/consume_codex_warehouse_micro_batches_v1.ps1",
-                          "operations/school/warehouse/invoke_codex_warehouse_producer_smoke_v1.ps1",
-                          "operations/school/warehouse/validate_codex_warehouse_pipeline_v1.ps1",
+                          "operations/reports/EXACT_678_DYNAMIC_REQUEST_INSTALLATION_20260715.json",
+                          "operations/reports/EXACT_678_DYNAMIC_REQUEST_INSTALLATION_20260715.md",
+                          "operations/reports/EXACT_678_DYNAMIC_REQUEST_VALIDATION_20260715.json",
+                          "operations/school/request/plan_dynamic_school_request_v1.ps1",
+                          "operations/school/request/validate_exact_678_dynamic_request_v1.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
@@ -29,17 +23,12 @@
                       ],
     "structural_paths":  [
                              "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                             "operations/reports/CODEX_WAREHOUSE_ONE_MICRO_ABSORB_INSTALLATION_20260715.json",
-                             "operations/reports/CODEX_WAREHOUSE_ONE_MICRO_ABSORB_INSTALLATION_20260715.md",
-                             "operations/reports/CODEX_WAREHOUSE_PIPELINE_VALIDATION_20260714.json",
-                             "operations/reports/CODEX_WAREHOUSE_PRODUCER_SMOKE_VALIDATION_20260715.json",
                              "operations/reports/DYNAMIC_SCHOOL_REQUEST_PLANNER_VALIDATION_20260715.json",
-                             "operations/reports/REAL_CODEX_WAREHOUSE_ONE_MICRO_ABSORB_20260715.json",
-                             "operations/reports/one_micro_absorb_20260715/micro_001.normalization_report.json",
-                             "operations/reports/one_micro_absorb_20260715/warehouse_consumer_report.json",
-                             "operations/school/warehouse/consume_codex_warehouse_micro_batches_v1.ps1",
-                             "operations/school/warehouse/invoke_codex_warehouse_producer_smoke_v1.ps1",
-                             "operations/school/warehouse/validate_codex_warehouse_pipeline_v1.ps1"
+                             "operations/reports/EXACT_678_DYNAMIC_REQUEST_INSTALLATION_20260715.json",
+                             "operations/reports/EXACT_678_DYNAMIC_REQUEST_INSTALLATION_20260715.md",
+                             "operations/reports/EXACT_678_DYNAMIC_REQUEST_VALIDATION_20260715.json",
+                             "operations/school/request/plan_dynamic_school_request_v1.ps1",
+                             "operations/school/request/validate_exact_678_dynamic_request_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -51,8 +40,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1930,
-                                    "sha256":  "91ba31a062e1b02df2d52f6e9683d2f89d90a87e5f2f6806562c1f8a43b13938"
+                                    "structural_file_count":  1933,
+                                    "sha256":  "49eb16de2e768931bd78e95ec8e28b9b8011bbc49f671e539112a579471e2a9c"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -78,12 +67,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  149,
-                         "structural_path_count":  1930,
+                         "structural_path_count":  1933,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-15T07:17:36.9682351+04:00"
+    "refreshed_at":  "2026-07-15T07:46:10.2315183+04:00"
 }

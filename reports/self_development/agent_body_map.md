@@ -2,9 +2,9 @@
 
 Status: ACTIVE_DERIVED_VIEW
 Branch: main
-Observed head at generation: 007e4447b19b78635d94fd46db0e07cb482c1676
-Generated: 2026-07-15T07:17:36.8184473+04:00
-Body source fingerprint: 91ba31a062e1b02df2d52f6e9683d2f89d90a87e5f2f6806562c1f8a43b13938
+Observed head at generation: f754a82d835b2a52697a85f3014d36b1daac94c9
+Generated: 2026-07-15T07:46:10.0943997+04:00
+Body source fingerprint: 49eb16de2e768931bd78e95ec8e28b9b8011bbc49f671e539112a579471e2a9c
 
 Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
@@ -59,7 +59,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `operations_readme_md` - root `operations/README.md`, files=1, scripts=0, validators=0, proofs=0, needs_triage=True
 - `operations_reasoning` - root `operations/reasoning`, files=6, scripts=6, validators=3, proofs=0, needs_triage=True
 - `operations_reflex_library` - root `operations/reflex_library`, files=2, scripts=1, validators=0, proofs=0, needs_triage=True
-- `operations_reports` - root `operations/reports`, files=68, scripts=0, validators=0, proofs=0, needs_triage=True
+- `operations_reports` - root `operations/reports`, files=71, scripts=0, validators=0, proofs=0, needs_triage=True
 - `operations_thinking_sandbox` - root `operations/thinking_sandbox`, files=2, scripts=2, validators=1, proofs=0, needs_triage=True
 - `packs_phase10_generated_agent_validation_harness_v1` - root `packs/PHASE10_GENERATED_AGENT_VALIDATION_HARNESS_V1`, files=6, scripts=3, validators=2, proofs=0, needs_triage=True
 - `packs_phase100_quarantine_and_blocker_registry_v1` - root `packs/PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1`, files=3, scripts=2, validators=0, proofs=0, needs_triage=True

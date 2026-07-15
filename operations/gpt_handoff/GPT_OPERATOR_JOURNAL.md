@@ -357,3 +357,38 @@ School can now request a non-rounded exact count without rounding 678 to 700.
 Warehouse task splits it as 6×100 + 1×78.
 Real production/absorption for exact 678 is still the next bounded slice.
 ```
+
+
+## Generic ExactRequestEngine v1
+
+```text
+exact_request_engine = installed and validated
+supported_count_range = 1..50000
+micro_batch_size = 100
+case_count = 9
+validated_counts = 1,50,99,100,101,678,1000,3581,50000
+memory_changed = False
+```
+
+Examples:
+
+```text
+1 => 1
+50 => 50
+99 => 99
+100 => 100
+101 => 100,1
+678 => 100,100,100,100,100,100,78
+1000 => 10×100
+3581 => 35×100 + 81
+50000 => 500×100
+```
+
+Meaning:
+
+```text
+School no longer needs number-specific organs.
+Any exact Count from 1 to 50000 is planned by the same formula.
+678 is now only a test case, not a separate route.
+Next separate slice: real Codex producer/consumer cycle for an arbitrary Count, first no-absorb.
+```

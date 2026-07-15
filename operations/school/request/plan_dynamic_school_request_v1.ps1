@@ -64,7 +64,8 @@ elseif($priority -match '(p1|high|priority_2)'){ $priorityBoost=1.5 }
 $raw=[int][Math]::Round($base*$priorityBoost)
 $exact_request_override=$false
 if($ExactRequestSize -gt 0){
-  $requestSize=Clamp $ExactRequestSize $MinRequestSize $MaxRequestSize
+  # Exact override is intentionally allowed below MinRequestSize. MinRequestSize belongs to dynamic auto-sizing, not owner/operator exact Count.
+  $requestSize=Clamp $ExactRequestSize 1 $MaxRequestSize
   $exact_request_override=$true
 } else {
   $requestSize=RoundUpToMicro (Clamp $raw $MinRequestSize $MaxRequestSize) $MicroBatchSize $MinRequestSize $MaxRequestSize
