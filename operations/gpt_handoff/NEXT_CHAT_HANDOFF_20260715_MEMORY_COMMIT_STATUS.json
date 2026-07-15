@@ -1,0 +1,73 @@
+{
+  "schema": "next_chat_handoff_memory_commit_status_v1",
+  "created_at": "2026-07-15T22:56:17.757956+04:00",
+  "branch": "main",
+  "head_before_handoff_commit": "6070171",
+  "origin_delta_before_handoff_commit": "0\t0",
+  "current_classification": {
+    "memory_commit_organ": "PROVEN_LAB_AND_LIVE_POST_SCHOOL_DRAIN",
+    "school_2000": "PROVEN_LIVE_PASS",
+    "aimo_10min_parallel": "PROVEN_LIVE_QUEUE_ONLY_DURING_SCHOOL",
+    "agentlife_post_school_drain": "PROVEN_LIVE_ACCEPTED_37_QUEUE_0",
+    "agentlife_processed_retention": "PROVEN_LIVE_FULL_PACKETS_PRUNED",
+    "school_atom_quality": "MIXED_USEFUL_BUT_NEEDS_STRENGTHENING"
+  },
+  "proof_paths": {
+    "memory_commit_report": "operations/memory_commit/proofs/MEMORY_COMMIT_ORGAN_V1_IMPLEMENTATION_REPORT_20260715.json",
+    "memory_commit_validator": "tests/self_development/MEMORY_COMMIT_ORGAN_V1_PROOF.json",
+    "school_quality_audit": "operations/memory_commit/proofs/SCHOOL_ATOM_QUALITY_AUDIT_20260715.json",
+    "agentlife_drain_proof": "operations/memory_commit/proofs/MEMORY_COMMIT_AGENTLIFE_POST_SCHOOL_DRAIN_PROOF_20260715.json",
+    "retention_prune_proof": "operations/memory_commit/proofs/MEMORY_COMMIT_PROCESSED_AGENTLIFE_RETENTION_PRUNE_20260715.json",
+    "aimo_dual_pipe_report": "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DUAL_PIPE_MEMORY_INGESTION_REPORT_20260715.json"
+  },
+  "facts": {
+    "school_accepted_count": 2000,
+    "school_micro_batch_count": 20,
+    "aimo_parallel_iterations": 37,
+    "aimo_parallel_mode": "QueueOnly during active School",
+    "agentlife_queue_before_drain": 37,
+    "agentlife_drain_accepted": 37,
+    "agentlife_drain_rejected": 0,
+    "agentlife_queue_after_drain": 0,
+    "processed_agentlife_deleted": 39,
+    "processed_agentlife_after": 0,
+    "active_memory_after": {
+      "manifest.json": {
+        "bytes": 1888,
+        "sha256": "c7360deed7790561759dd481fd806a88724b5237f5f339d906d87bd5610a6f97"
+      },
+      "index.json": {
+        "bytes": 311062,
+        "sha256": "23454e01581552321e5adc2aa135b30c16a4746908ecb68a81ae075592fde116"
+      },
+      "cells.jsonl": {
+        "bytes": 12678289,
+        "sha256": "a6db59a0267a8068ed45e55dda41c312d03b3b5094fd3685d12ddbc521b53fcb"
+      }
+    },
+    "queue_now_count": 0,
+    "processed_agentlife_full_packets_now": 0
+  },
+  "school_quality": {
+    "classification": "VALID_WITH_SOME_VARIETY",
+    "candidate_count": 2000,
+    "topic_count": 1,
+    "depth_keys": "3,4,2,1,0",
+    "conclusion": "School produced usable atoms with the classification shown.",
+    "debt": "Strengthen School content generation: less one-topic scaffold, more source-backed reusable lessons, gap/validator/repair patterns, negative examples, and quality gates."
+  },
+  "known_gaps_next_actions": [
+    "Build batch-drain: combine valid AgentLife packets into one merge instead of one packet per publish cycle.",
+    "Add live negative reject-delete proof: invalid/no-delta/rule-copy packet is rejected and deleted immediately, keeping only compact metric.",
+    "Add validator/proof that AIMO sees fresh memory after every School batch of 100 atoms.",
+    "Strengthen School: Codex-authored campaign pack with sources, coverage audit, level plan, and quality gate before big runs.",
+    "Add runtime retention for School run raw intermediate/staging after PASS while preserving final reports/hash proofs."
+  ],
+  "do_not_forget": [
+    "Do not claim two independent active-memory throats. Current correct model is one commit throat, School priority, AgentLife queue/drain.",
+    "Do not rerun School/AIMO until next slice is built/validated unless Owner explicitly asks.",
+    "Do not clean active compact memory root. It is protected.",
+    "Do not keep rejected full packets; delete after compact metric.",
+    "Do not treat School atom quality as fully solved; it is useful but still weak/narrow."
+  ]
+}

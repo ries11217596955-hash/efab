@@ -524,3 +524,30 @@ run_agent_school.ps1 no longer depends on number-specific routes for Count handl
 Canonical Test uses mock/no-absorb; canonical Live uses real Codex + absorption.
 Larger canonical Live counts still need scale proof before claiming readiness.
 ```
+
+## 2026-07-15 — Memory Commit Organ / School quality / Next chat handoff
+
+```text
+status = PROVEN_REMOTE before handoff update
+head = 6070171
+memory_commit_organ = PROVEN_LIVE_POST_SCHOOL_DRAIN
+school_2000 = PASS / accepted 2000 / 20 batches
+AIMO_10min = DONE / 37 QueueOnly packets during School
+AgentLife_drain = accepted 37 / rejected 0 / queue 0 / active memory changed
+processed_retention = deleted 39 full AgentLife processed packets / after 0
+school_quality = VALID_WITH_SOME_VARIETY but weak/narrow; must strengthen next
+```
+
+Next action:
+
+```text
+build batch-drain + negative reject-delete proof + AIMO fresh-memory signal after each School batch 100;
+then strengthen School campaign content before next large run.
+```
+
+See:
+
+```text
+operations/gpt_handoff/NEXT_CHAT_HANDOFF_20260715_MEMORY_COMMIT_ORGAN.md
+operations/gpt_handoff/NEXT_CHAT_HANDOFF_20260715_MEMORY_COMMIT_STATUS.json
+```
