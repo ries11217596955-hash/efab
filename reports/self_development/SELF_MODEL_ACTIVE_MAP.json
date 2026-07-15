@@ -6,22 +6,22 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "88c337fd07036b2dd1acca588dcdf33e13ea1a66",
-    "subject_head":  "88c337fd07036b2dd1acca588dcdf33e13ea1a66",
-    "generated_at":  "2026-07-15T20:31:58.2391083+04:00",
+    "observed_head_at_generation":  "c46ceab29b18a9b6de544941803ff0af593ca53a",
+    "subject_head":  "c46ceab29b18a9b6de544941803ff0af593ca53a",
+    "generated_at":  "2026-07-15T21:03:04.3349502+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
-    "trigger_reason":  "aimo_memory_atom_acceptance_gate_v1_20260715",
+    "trigger_reason":  "aimo_dual_pipe_memory_ingestion_v1_20260715",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  2012,
+    "structural_path_count":  2016,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2012,
-                                    "sha256":  "801f36a63e067655d963276f9ddbc50c6d97beb5374cdaddf38961ed6bf019ee"
+                                    "structural_file_count":  2016,
+                                    "sha256":  "f6fd95e65ed1942347814385c14e14cc93cda7ba4cb675b84a832b07ab014cf1"
                                 },
     "module_count":  203,
-    "validator_count":  179,
+    "validator_count":  180,
     "confirmed_components":  [
                                  {
                                      "id":  "school",
@@ -1442,18 +1442,18 @@
                                             "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                                             "discovery_method":  "bounded_git_ls_files_path_discovery",
                                             "evidence_counts":  {
-                                                                    "files":  16,
+                                                                    "files":  18,
                                                                     "scripts":  2,
                                                                     "validators":  0,
-                                                                    "proofs":  6,
-                                                                    "contracts_or_policies":  4,
+                                                                    "proofs":  7,
+                                                                    "contracts_or_policies":  5,
                                                                     "docs":  1
                                                                 },
-                                            "file_count":  16,
+                                            "file_count":  18,
                                             "script_count":  2,
                                             "validator_count":  0,
-                                            "proof_file_count":  6,
-                                            "contract_or_policy_count":  4,
+                                            "proof_file_count":  7,
+                                            "contract_or_policy_count":  5,
                                             "doc_count":  1,
                                             "validator_refs":  [
 
@@ -1462,12 +1462,14 @@
                                                                "operations/autonomous_inner_motor/motor_proof_schema.json",
                                                                "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_PROOF_20260715.json",
                                                                "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_REPORT_20260715.json",
+                                                               "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DUAL_PIPE_MEMORY_INGESTION_REPORT_20260715.json",
                                                                "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SANDBOX_EXPLORATION_PROOF_20260715.json",
                                                                "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SELF_DIRECTED_THINKING_PROOF_20260715.json",
                                                                "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_V0_IMPLEMENTATION_REPORT.json"
                                                            ],
                                             "contract_or_policy_refs":  [
                                                                             "operations/autonomous_inner_motor/deep_thinking_policy.json",
+                                                                            "operations/autonomous_inner_motor/dual_pipe_memory_policy.json",
                                                                             "operations/autonomous_inner_motor/memory_atom_acceptance_gate_policy.json",
                                                                             "operations/autonomous_inner_motor/motor_policy.json",
                                                                             "operations/autonomous_inner_motor/organ_contract.json"
@@ -1475,6 +1477,7 @@
                                             "notable_files":  [
                                                                   "operations/autonomous_inner_motor/AUTONOMOUS_INNER_MOTOR_ORGAN_SPEC.md",
                                                                   "operations/autonomous_inner_motor/deep_thinking_policy.json",
+                                                                  "operations/autonomous_inner_motor/dual_pipe_memory_policy.json",
                                                                   "operations/autonomous_inner_motor/invoke_memory_atom_acceptance_gate_v1.ps1",
                                                                   "operations/autonomous_inner_motor/memory_atom_acceptance_gate_policy.json",
                                                                   "operations/autonomous_inner_motor/memory_atom_acceptance_gate_schema.json",
@@ -1484,6 +1487,7 @@
                                                                   "operations/autonomous_inner_motor/organ_contract.json",
                                                                   "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_PROOF_20260715.json",
                                                                   "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_REPORT_20260715.json",
+                                                                  "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DUAL_PIPE_MEMORY_INGESTION_REPORT_20260715.json",
                                                                   "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SANDBOX_EXPLORATION_PROOF_20260715.json",
                                                                   "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SELF_DIRECTED_THINKING_PROOF_20260715.json",
                                                                   "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_V0_IMPLEMENTATION_REPORT.json",
@@ -1492,6 +1496,7 @@
                                                               ],
                                             "primary_evidence_refs":  [
                                                                           "operations/autonomous_inner_motor/deep_thinking_policy.json",
+                                                                          "operations/autonomous_inner_motor/dual_pipe_memory_policy.json",
                                                                           "operations/autonomous_inner_motor/invoke_memory_atom_acceptance_gate_v1.ps1",
                                                                           "operations/autonomous_inner_motor/memory_atom_acceptance_gate_policy.json",
                                                                           "operations/autonomous_inner_motor/motor_policy.json",
@@ -1499,6 +1504,7 @@
                                                                           "operations/autonomous_inner_motor/organ_contract.json",
                                                                           "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_PROOF_20260715.json",
                                                                           "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_REPORT_20260715.json",
+                                                                          "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DUAL_PIPE_MEMORY_INGESTION_REPORT_20260715.json",
                                                                           "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SANDBOX_EXPLORATION_PROOF_20260715.json",
                                                                           "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SELF_DIRECTED_THINKING_PROOF_20260715.json",
                                                                           "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_V0_IMPLEMENTATION_REPORT.json",
@@ -9234,18 +9240,18 @@
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                            "discovery_method":  "bounded_git_ls_files_path_discovery",
                            "evidence_counts":  {
-                                                   "files":  16,
+                                                   "files":  18,
                                                    "scripts":  2,
                                                    "validators":  0,
-                                                   "proofs":  6,
-                                                   "contracts_or_policies":  4,
+                                                   "proofs":  7,
+                                                   "contracts_or_policies":  5,
                                                    "docs":  1
                                                },
-                           "file_count":  16,
+                           "file_count":  18,
                            "script_count":  2,
                            "validator_count":  0,
-                           "proof_file_count":  6,
-                           "contract_or_policy_count":  4,
+                           "proof_file_count":  7,
+                           "contract_or_policy_count":  5,
                            "doc_count":  1,
                            "validator_refs":  [
 
@@ -9254,12 +9260,14 @@
                                               "operations/autonomous_inner_motor/motor_proof_schema.json",
                                               "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_PROOF_20260715.json",
                                               "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_REPORT_20260715.json",
+                                              "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DUAL_PIPE_MEMORY_INGESTION_REPORT_20260715.json",
                                               "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SANDBOX_EXPLORATION_PROOF_20260715.json",
                                               "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SELF_DIRECTED_THINKING_PROOF_20260715.json",
                                               "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_V0_IMPLEMENTATION_REPORT.json"
                                           ],
                            "contract_or_policy_refs":  [
                                                            "operations/autonomous_inner_motor/deep_thinking_policy.json",
+                                                           "operations/autonomous_inner_motor/dual_pipe_memory_policy.json",
                                                            "operations/autonomous_inner_motor/memory_atom_acceptance_gate_policy.json",
                                                            "operations/autonomous_inner_motor/motor_policy.json",
                                                            "operations/autonomous_inner_motor/organ_contract.json"
@@ -9267,6 +9275,7 @@
                            "notable_files":  [
                                                  "operations/autonomous_inner_motor/AUTONOMOUS_INNER_MOTOR_ORGAN_SPEC.md",
                                                  "operations/autonomous_inner_motor/deep_thinking_policy.json",
+                                                 "operations/autonomous_inner_motor/dual_pipe_memory_policy.json",
                                                  "operations/autonomous_inner_motor/invoke_memory_atom_acceptance_gate_v1.ps1",
                                                  "operations/autonomous_inner_motor/memory_atom_acceptance_gate_policy.json",
                                                  "operations/autonomous_inner_motor/memory_atom_acceptance_gate_schema.json",
@@ -9276,6 +9285,7 @@
                                                  "operations/autonomous_inner_motor/organ_contract.json",
                                                  "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_PROOF_20260715.json",
                                                  "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_REPORT_20260715.json",
+                                                 "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DUAL_PIPE_MEMORY_INGESTION_REPORT_20260715.json",
                                                  "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SANDBOX_EXPLORATION_PROOF_20260715.json",
                                                  "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SELF_DIRECTED_THINKING_PROOF_20260715.json",
                                                  "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_V0_IMPLEMENTATION_REPORT.json",
@@ -9284,6 +9294,7 @@
                                              ],
                            "primary_evidence_refs":  [
                                                          "operations/autonomous_inner_motor/deep_thinking_policy.json",
+                                                         "operations/autonomous_inner_motor/dual_pipe_memory_policy.json",
                                                          "operations/autonomous_inner_motor/invoke_memory_atom_acceptance_gate_v1.ps1",
                                                          "operations/autonomous_inner_motor/memory_atom_acceptance_gate_policy.json",
                                                          "operations/autonomous_inner_motor/motor_policy.json",
@@ -9291,6 +9302,7 @@
                                                          "operations/autonomous_inner_motor/organ_contract.json",
                                                          "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_PROOF_20260715.json",
                                                          "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_REPORT_20260715.json",
+                                                         "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DUAL_PIPE_MEMORY_INGESTION_REPORT_20260715.json",
                                                          "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SANDBOX_EXPLORATION_PROOF_20260715.json",
                                                          "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SELF_DIRECTED_THINKING_PROOF_20260715.json",
                                                          "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_V0_IMPLEMENTATION_REPORT.json",

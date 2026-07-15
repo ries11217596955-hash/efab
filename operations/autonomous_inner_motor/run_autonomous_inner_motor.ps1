@@ -4,6 +4,7 @@ param(
   [ValidateSet('SelfBuild','OwnerHint','Recovery')][string]$SeedSource='SelfBuild',
   [switch]$EnableDeepThinking,
   [switch]$EnableMemoryLearning,
+  [ValidateSet('Auto','QueueOnly','QueueAndMerge','DirectAbsorb')][string]$MemoryIngestionMode='Auto',
   [string]$OutputRoot='.runtime/autonomous_inner_motor',
   [int]$MaxMemorySamples=6
 )
@@ -267,6 +268,121 @@ function Invoke-MemoryAtomAcceptanceGate($RunRoot,$RunId,$Atom,$Frames,$MemoryRe
   if(Test-Path -LiteralPath $decisionPath){ $decision=Read-JsonSafe $decisionPath }
   return [ordered]@{ exit_code=$exit; raw_output=@($out); candidate_atom_path=$candidatePath; context_path=$contextPath; decision_path=$decisionPath; final_atom_path=$finalAtomPath; decision=$decision }
 }
+function Get-CurrentProcessAncestryIds {
+  $ids=New-Object System.Collections.Generic.HashSet[int]
+  $cur=$PID
+  while($cur -and -not $ids.Contains([int]$cur)){
+    [void]$ids.Add([int]$cur)
+    $proc=Get-CimInstance Win32_Process -Filter "ProcessId=$cur" -ErrorAction SilentlyContinue
+    if(-not $proc){ break }
+    $cur=[int]$proc.ParentProcessId
+  }
+  return $ids
+}
+function Test-MemoryPublishBusy {
+  $lockPath='.runtime/compact_memory_intake_v1/MERGE_QUEUE.lock.json'
+  $busy=@()
+  if(Test-Path -LiteralPath $lockPath){ $busy += 'MERGE_QUEUE_LOCK_EXISTS' }
+  $ignoreIds=Get-CurrentProcessAncestryIds
+  $terms=@('run_agent_school','exact_count_cycle','codex_warehouse','consume_codex_warehouse','absorb_atom_file_via_digest_pipeline','invoke_compact_semantic_digestion','merge_compact_memory_intake_queue')
+  foreach($p in @(Get-CimInstance Win32_Process -ErrorAction SilentlyContinue)){
+    if($ignoreIds.Contains([int]$p.ProcessId)){ continue }
+    $cmd=[string]$p.CommandLine
+    if([string]::IsNullOrWhiteSpace($cmd)){ $cmd='' }
+    foreach($t in $terms){
+      if($p.Name -like "*$t*" -or $cmd -like "*$t*"){
+        $busy += ("PROCESS:$($p.ProcessId):$t")
+        break
+      }
+    }
+  }
+  return [ordered]@{ busy=(@($busy).Count -gt 0); reasons=@($busy); ignored_process_ids=@($ignoreIds) }
+}
+function New-AgentLifeCompactMemoryPacket($RunRoot,$RunId,$AcceptedAtomPath,$GateDecision){
+  if(-not(Test-Path -LiteralPath $RunRoot)){ New-Item -ItemType Directory -Force -Path $RunRoot | Out-Null }
+  $policy=Read-JsonSafe 'operations/compact_memory_intake/multi_source_compact_memory_intake_policy.json'
+  if(-not $policy){ throw 'COMPACT_MEMORY_INTAKE_POLICY_MISSING' }
+  $queueRoot=[string]$policy.runtime_queue_root
+  if([string]::IsNullOrWhiteSpace($queueRoot)){ throw 'COMPACT_MEMORY_INTAKE_QUEUE_ROOT_MISSING' }
+  if(-not(Test-Path -LiteralPath $queueRoot)){ New-Item -ItemType Directory -Force -Path $queueRoot | Out-Null }
+  $atom=Read-JsonSafe $AcceptedAtomPath
+  if(-not $atom){ throw "ACCEPTED_ATOM_BAD_JSON:$AcceptedAtomPath" }
+  $topic=[string]$atom.concept_key
+  if([string]::IsNullOrWhiteSpace($topic)){ $topic='aimo.agentlife.memory_learning' }
+  $topic=$topic -replace '[^A-Za-z0-9_.-]','_'
+  $id=[string]$atom.candidate_id
+  if([string]::IsNullOrWhiteSpace($id)){ $id='aimo_agentlife_'+$RunId }
+  $id=$id -replace '[^A-Za-z0-9_.-]','_'
+  $hint=[string]$atom.summary
+  if([string]::IsNullOrWhiteSpace($hint)){ $hint=[string]$atom.definition }
+  if([string]::IsNullOrWhiteSpace($hint)){ $hint=[string]$atom.label }
+  $packet=[ordered]@{
+    schema='compact_memory_knowledge_packet_v1'
+    source_kind='AgentLife'
+    source_id=('AIMO:'+$RunId)
+    created_at=(Get-Date).ToString('o')
+    atoms=@([ordered]@{
+      id=$id
+      topic=$topic
+      level=1
+      quality_score=0.95
+      novelty_score=0.60
+      summary=$hint
+      behavior_use_hint=$hint
+      source_ref=$AcceptedAtomPath
+      gate_decision=$GateDecision.decision
+      gate_reason=$GateDecision.reason
+    })
+    quality_summary=[ordered]@{ atom_count=1; min_quality_score=0.95; min_novelty_score=0.60; gate_decision=$GateDecision.decision }
+    boundary=[ordered]@{ source='AIMO_AGENT_LIFE'; direct_active_memory_write=$false; queue_first=$true; active_memory_merge_requires_lock=$true }
+  }
+  $packetPath=Join-Path $queueRoot ("agentlife_aimo_$RunId.json")
+  Write-CleanJson $packetPath $packet 60
+  return [ordered]@{ packet_path=$packetPath; queue_root=$queueRoot; packet=$packet }
+}
+function Invoke-AgentLifeMemoryQueueIntake($RunRoot,$RunId,$AcceptedAtomPath,$GateDecision,[string]$RequestedMode){
+  $busy=Test-MemoryPublishBusy
+  $mode=$RequestedMode
+  if($mode -eq 'Auto'){
+    if($busy.busy){ $mode='QueueOnly' } else { $mode='QueueAndMerge' }
+  }
+  if($mode -eq 'DirectAbsorb'){
+    $direct=Invoke-AcceptedLearningAtomAbsorption $RunRoot $RunId $AcceptedAtomPath
+    return [ordered]@{ mode='DirectAbsorb'; requested_mode=$RequestedMode; busy_at_decision=$busy; queue_packet=$null; merge=$null; direct_absorption=$direct; atom_path=$direct.atom_path; exit_code=$direct.exit_code; memory_changed=$direct.memory_changed; candidate_memory_root_removed=$direct.candidate_memory_root_removed; candidate_memory_root_exists_after=$direct.candidate_memory_root_exists_after; status_line=$direct.status_line }
+  }
+  $packet=New-AgentLifeCompactMemoryPacket $RunRoot $RunId $AcceptedAtomPath $GateDecision
+  $validationOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File 'operations/compact_memory_intake/validate_compact_memory_packet_v1.ps1' -PacketPath $packet.packet_path *>&1 | ForEach-Object { [string]$_ })
+  $validationStatus=($validationOut | Where-Object { $_ -match '^PACKET_VALIDATION_STATUS=' } | Select-Object -Last 1) -replace '^PACKET_VALIDATION_STATUS=',''
+  if($validationStatus -ne 'PASS_COMPACT_MEMORY_KNOWLEDGE_PACKET_V1'){ throw "AGENTLIFE_PACKET_VALIDATION_NOT_PASS:$validationStatus" }
+  if($mode -eq 'QueueOnly'){
+    $after=Get-ActiveMemoryState
+    return [ordered]@{ mode='QueueOnly'; requested_mode=$RequestedMode; busy_at_decision=$busy; queue_packet=$packet; packet_validation_status=$validationStatus; packet_validation_output=@($validationOut); merge=$null; atom_path=$packet.packet_path; exit_code=0; memory_changed=$false; candidate_memory_root_removed=$null; candidate_memory_root_exists_after=$null; status_line='QUEUED_AGENTLIFE_PACKET_NO_ACTIVE_MEMORY_MERGE' }
+  }
+  if($mode -ne 'QueueAndMerge'){ throw "UNKNOWN_MEMORY_INGESTION_MODE:$mode" }
+  $before=Get-ActiveMemoryState
+  $mergeOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File 'operations/compact_memory_intake/merge_compact_memory_intake_queue_v1.ps1' -PacketPath $packet.packet_path -ProcessLimit 1 *>&1 | ForEach-Object { [string]$_ })
+  $mergeExit=$LASTEXITCODE
+  $mergeStatus=($mergeOut | Where-Object { $_ -match '^MERGE_QUEUE_STATUS=' } | Select-Object -Last 1) -replace '^MERGE_QUEUE_STATUS=',''
+  $mergeProof=($mergeOut | Where-Object { $_ -match '^MERGE_QUEUE_PROOF=' } | Select-Object -Last 1) -replace '^MERGE_QUEUE_PROOF=',''
+  $after=Get-ActiveMemoryState
+  return [ordered]@{
+    mode='QueueAndMerge'
+    requested_mode=$RequestedMode
+    busy_at_decision=$busy
+    queue_packet=$packet
+    packet_validation_status=$validationStatus
+    packet_validation_output=@($validationOut)
+    merge=[ordered]@{ exit_code=$mergeExit; status=$mergeStatus; proof_path=$mergeProof; output=@($mergeOut) }
+    atom_path=$packet.packet_path
+    exit_code=$mergeExit
+    status_line=$mergeStatus
+    before=$before
+    after=$after
+    memory_changed=($($before.files | ConvertTo-Json -Depth 20) -ne $($after.files | ConvertTo-Json -Depth 20))
+    candidate_memory_root_removed=$null
+    candidate_memory_root_exists_after=$null
+  }
+}
 function Invoke-AcceptedLearningAtomAbsorption($RunRoot,$RunId,$AcceptedAtomPath){
   if(-not(Test-Path -LiteralPath $RunRoot)){ New-Item -ItemType Directory -Force -Path $RunRoot | Out-Null }
   $before=Get-ActiveMemoryState
@@ -353,8 +469,8 @@ if($EnableDeepThinking){
     $deepThinking.acceptance_gate=Invoke-MemoryAtomAcceptanceGate $runRoot $runId $deepThinking.learning_atom $deepThinking.frames $deepThinking.memory_recalls
     if([int]$deepThinking.acceptance_gate.exit_code -ne 0){ throw "AIMO_MEMORY_ATOM_ACCEPTANCE_GATE_BLOCKED:$($deepThinking.acceptance_gate.exit_code)" }
     if(-not $deepThinking.acceptance_gate.decision.absorption_allowed){ throw "AIMO_MEMORY_ATOM_ACCEPTANCE_GATE_REJECTED" }
-    $deepThinking.absorption=Invoke-AcceptedLearningAtomAbsorption $runRoot $runId $deepThinking.acceptance_gate.final_atom_path
-    if([int]$deepThinking.absorption.exit_code -ne 0){ throw "AIMO_LEARNING_ATOM_ABSORPTION_FAILED:$($deepThinking.absorption.exit_code)" }
+    $deepThinking.absorption=Invoke-AgentLifeMemoryQueueIntake $runRoot $runId $deepThinking.acceptance_gate.final_atom_path $deepThinking.acceptance_gate.decision $MemoryIngestionMode
+    if([int]$deepThinking.absorption.exit_code -ne 0){ throw "AIMO_LEARNING_ATOM_INGESTION_FAILED:$($deepThinking.absorption.exit_code)" }
     $deepThinking.status='PASS_DEEP_THINKING_WITH_MEMORY_LEARNING'
   } else {
     $deepThinking.status='PASS_DEEP_THINKING_ATOM_CANDIDATE_ONLY'
@@ -381,7 +497,7 @@ $proof=[ordered]@{
   maturity_level='L2_SANDBOX_EXPLORATION_THINKING_ONLY'
   created_at=(Get-Date).ToString('o')
   question=$Question
-  boundary=[ordered]@{ thinking_only=$true; no_action=$true; no_active_memory_mutation=(-not [bool]$EnableMemoryLearning); governed_memory_learning=[bool]$EnableMemoryLearning; direct_active_memory_write=$false; no_git_mutation=$true; no_school_launch=$true; no_codex_launch=$true; no_web_research=$true; proof_file_only=(-not [bool]$EnableMemoryLearning) }
+  boundary=[ordered]@{ thinking_only=$true; no_action=$true; no_active_memory_mutation=(-not [bool]$EnableMemoryLearning); governed_memory_learning=[bool]$EnableMemoryLearning; memory_ingestion_mode=$MemoryIngestionMode; agentlife_queue_first=([bool]$EnableMemoryLearning -and $MemoryIngestionMode -ne 'DirectAbsorb'); direct_active_memory_write=$false; no_git_mutation=$true; no_school_launch=$true; no_codex_launch=$true; no_web_research=$true; proof_file_only=(-not [bool]$EnableMemoryLearning) }
   repo_state=$repo
   memory_state=[ordered]@{ before=$memoryBefore; after=$memoryAfter; unchanged=($($memoryBefore.files | ConvertTo-Json -Depth 10) -eq $($memoryAfter.files | ConvertTo-Json -Depth 10)) }
   body_map_state=$body
@@ -408,7 +524,7 @@ $proof=[ordered]@{
   heartbeat=[ordered]@{ cycle_count=@($cycles).Count; alive='one_shot_sandbox'; background_process_started=$false }
   final_self_diagnosis='The motor can self-seed a thinking cycle, decompose a root question into ThoughtFrames, use memory recall, and when enabled write one governed learning atom through absorption so the next cycle becomes stronger. Action authority remains disabled.'
   stop_reason='PROTECTIVE_CHECKPOINT_THINKING_ONLY'
-  mutation_audit=[ordered]@{ active_memory_mutated=[bool]$EnableMemoryLearning; direct_active_memory_write=$false; governed_absorption_used=[bool]($EnableMemoryLearning -and $deepThinking.absorption); git_mutated=$false; codex_launched=$false; web_research_performed=$false; school_started=$false; background_process_started=$false; files_written=@($proofPath) }
+  mutation_audit=[ordered]@{ active_memory_mutated=[bool]$EnableMemoryLearning; direct_active_memory_write=$false; governed_absorption_used=[bool]($EnableMemoryLearning -and $deepThinking.absorption); memory_ingestion_mode=if($deepThinking.absorption){$deepThinking.absorption.mode}else{$MemoryIngestionMode}; git_mutated=$false; codex_launched=$false; web_research_performed=$false; school_started=$false; background_process_started=$false; files_written=@($proofPath) }
   validator_result=[ordered]@{ runner_self_check='PASS_RUNNER_GENERATED_SINGLE_SANDBOX_PROOF'; external_validator_expected='validators/validate_autonomous_inner_motor_organ_contract.ps1 -SandboxProofPath <proof>' }
 }
 Write-CleanJson $proofPath $proof 80
@@ -420,5 +536,6 @@ Write-Host "STOP_REASON=$($proof.stop_reason)"
 Write-Host "MEMORY_UNCHANGED=$($proof.memory_state.unchanged)"
 Write-Host "DEEP_THINKING_STATUS=$($proof.deep_thinking.status)"
 Write-Host "GOVERNED_MEMORY_LEARNING=$($proof.boundary.governed_memory_learning)"
+Write-Host "MEMORY_INGESTION_MODE=$($proof.boundary.memory_ingestion_mode)"
 Write-Host "DIRECT_ACTIVE_MEMORY_WRITE=$($proof.boundary.direct_active_memory_write)"
 if($EnableMemoryLearning){ Write-Host "LEARNING_ATOM_MEMORY_CHANGED=$($proof.deep_thinking.absorption.memory_changed)" } else { Write-Host "No active memory mutation" }

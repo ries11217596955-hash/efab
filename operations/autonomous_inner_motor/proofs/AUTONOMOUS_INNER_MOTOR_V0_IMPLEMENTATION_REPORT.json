@@ -1,6 +1,6 @@
 {
   "schema": "autonomous_inner_motor_v0_implementation_report",
-  "status": "PASS_AUTONOMOUS_INNER_MOTOR_V0_MEMORY_ATOM_ACCEPTANCE_GATE",
+  "status": "PASS_AUTONOMOUS_INNER_MOTOR_V0_DUAL_PIPE_MEMORY_INGESTION",
   "created_at": "2026-07-15T18:40:46.8339696+04:00",
   "contract_validation": "PASS_AUTONOMOUS_INNER_MOTOR_ORGAN_CONTRACT",
   "sandbox_validation": "PASS_AUTONOMOUS_INNER_MOTOR_SANDBOX_EXPLORATION_PROOF",
@@ -54,5 +54,11 @@
   "final_atom_concept_key": "aimo.memory_atom_acceptance_gate.delta_over_rule_duplicate",
   "duplicate_rule_refs_count": 1,
   "absorption_atom_path_equals_gate_final_atom_path": true,
-  "memory_atom_acceptance_gate_validation": "PASS_AUTONOMOUS_INNER_MOTOR_MEMORY_ATOM_ACCEPTANCE_GATE_V1"
+  "memory_atom_acceptance_gate_validation": "PASS_AUTONOMOUS_INNER_MOTOR_MEMORY_ATOM_ACCEPTANCE_GATE_V1",
+  "dual_pipe_memory_ingestion": "PASS_AIMO_AGENTLIFE_QUEUE_AND_MERGE_INGESTION",
+  "tracked_dual_pipe_report_path": "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DUAL_PIPE_MEMORY_INGESTION_REPORT_20260715.json",
+  "memory_ingestion_mode": "QueueAndMerge",
+  "queue_packet_source_kind": "AgentLife",
+  "merge_status": "PASS_MULTI_SOURCE_COMPACT_MEMORY_MERGE_QUEUE_V1",
+  "agentlife_queue_first": true
 }

@@ -183,3 +183,17 @@ candidate atom -> duplicate rule/memory scan -> DELTA test -> ACCEPT / REWRITE_A
 ```
 
 The gate must explain rejections and rewrites. A useful but generic rule-like candidate should be rewritten into a local, evidence-backed experience atom rather than copied as a rule.
+
+
+## Dual-pipe compact memory ingestion
+
+AIMO treats compact memory as one growing source-agnostic memory. School and AgentLife may both generate knowledge, but AIMO must not compete with School by direct active-memory publish.
+
+Default AIMO memory ingestion mode is Auto:
+
+```text
+if School/digest/merge is busy -> AgentLife packet goes to compact_memory_intake queue only
+if memory publish path is free -> AgentLife packet goes to compact_memory_intake queue and locked merge runs immediately
+```
+
+This lets the agent begin each new thinking cycle with a fresh memory state that may include School atoms and AgentLife atoms, without needing to reason separately about ownership of those atoms.

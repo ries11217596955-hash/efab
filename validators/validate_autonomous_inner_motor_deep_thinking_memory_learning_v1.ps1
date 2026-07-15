@@ -24,7 +24,7 @@ $proof=Read-Json $ProofPath
 $runnerText=if(Test-Path 'operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1'){ Get-Content 'operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1' -Raw } else { Add-Err 'missing_runner'; '' }
 $policy=Read-Json 'operations/autonomous_inner_motor/deep_thinking_policy.json'
 $schema=Read-Json 'operations/autonomous_inner_motor/thought_frame_schema.json'
-foreach($needle in @('Build-DeepThinkingTree','New-ThoughtFrame','New-DeepThinkingLearningAtom','Invoke-LearningAtomAbsorption','Invoke-MemoryAtomAcceptanceGate','Invoke-AcceptedLearningAtomAbsorption','EnableMemoryLearning','EnableDeepThinking')){
+foreach($needle in @('Build-DeepThinkingTree','New-ThoughtFrame','New-DeepThinkingLearningAtom','Invoke-LearningAtomAbsorption','Invoke-MemoryAtomAcceptanceGate','Invoke-AcceptedLearningAtomAbsorption','Invoke-AgentLifeMemoryQueueIntake','EnableMemoryLearning','EnableDeepThinking')){
   if($runnerText -notlike "*$needle*"){ Add-Err "runner_missing:$needle" }
 }
 if($null -ne $policy){
@@ -46,13 +46,23 @@ if($null -ne $proof){
   else {
     if($proof.deep_thinking.acceptance_gate.decision.absorption_allowed -ne $true){ Add-Err 'acceptance_gate_absorption_not_allowed' }
     if([string]::IsNullOrWhiteSpace($proof.deep_thinking.acceptance_gate.decision.explanation)){ Add-Err 'acceptance_gate_explanation_missing' }
-    if($proof.deep_thinking.absorption.atom_path -ne $proof.deep_thinking.acceptance_gate.final_atom_path){ Add-Err 'absorption_not_using_gate_final_atom' }
+    if($proof.deep_thinking.absorption.mode -eq 'QueueAndMerge'){
+      if($proof.deep_thinking.absorption.queue_packet.packet.source_kind -ne 'AgentLife'){ Add-Err 'queue_packet_not_agentlife' }
+      if($proof.deep_thinking.absorption.queue_packet.packet.atoms[0].source_ref -ne $proof.deep_thinking.acceptance_gate.final_atom_path){ Add-Err 'queue_packet_source_ref_not_gate_final_atom' }
+      if($proof.deep_thinking.absorption.merge.status -ne 'PASS_MULTI_SOURCE_COMPACT_MEMORY_MERGE_QUEUE_V1'){ Add-Err 'queue_merge_not_pass' }
+    } elseif($proof.deep_thinking.absorption.atom_path -ne $proof.deep_thinking.acceptance_gate.final_atom_path){
+      Add-Err 'absorption_not_using_gate_final_atom'
+    }
   }
   if($proof.boundary.governed_memory_learning -ne $true){ Add-Err 'boundary_governed_memory_learning_not_true' }
   if($proof.boundary.direct_active_memory_write -ne $false){ Add-Err 'direct_active_memory_write_not_false' }
   if($proof.deep_thinking.absorption.memory_changed -ne $true){ Add-Err 'absorption_memory_changed_not_true' }
   if([int]$proof.deep_thinking.absorption.exit_code -ne 0){ Add-Err 'absorption_exit_not_zero' }
-  if(($proof.deep_thinking.absorption.candidate_memory_root_removed -ne 'True') -and ($proof.deep_thinking.absorption.candidate_memory_root_removed -ne $true)){ Add-Err 'candidate_memory_root_not_removed' }
+  if($proof.deep_thinking.absorption.mode -eq 'QueueAndMerge'){
+    if($proof.deep_thinking.absorption.merge.status -ne 'PASS_MULTI_SOURCE_COMPACT_MEMORY_MERGE_QUEUE_V1'){ Add-Err 'queue_merge_not_pass_for_candidate_cleanup_boundary' }
+  } elseif(($proof.deep_thinking.absorption.candidate_memory_root_removed -ne 'True') -and ($proof.deep_thinking.absorption.candidate_memory_root_removed -ne $true)){
+    Add-Err 'candidate_memory_root_not_removed'
+  }
   if($proof.stop_reason -ne 'PROTECTIVE_CHECKPOINT_THINKING_ONLY'){ Add-Err 'stop_reason_bad' }
   if($proof.mutation_audit.direct_active_memory_write -ne $false){ Add-Err 'mutation_audit_direct_write_not_false' }
   if($proof.mutation_audit.governed_absorption_used -ne $true){ Add-Err 'governed_absorption_not_used' }

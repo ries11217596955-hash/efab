@@ -1,0 +1,26 @@
+{
+  "schema": "aimo_dual_pipe_memory_policy_v1",
+  "status": "ACTIVE_FOR_AIMO_AGENTLIFE_PIPE",
+  "purpose": "AIMO learns from life while School may also grow compact memory; AIMO uses AgentLife compact_memory_intake queue to avoid direct publish races.",
+  "pipes": {
+    "School": "existing School absorption/live batch pipe",
+    "AgentLife": "AIMO acceptance-gated atom -> compact_memory_intake AgentLife packet -> locked merge queue"
+  },
+  "default_mode": "Auto",
+  "auto_rule": "If School/digest/merge lock is active, queue only. Otherwise submit to queue and immediately run locked merge for bounded proof.",
+  "agent_view": "AIMO should treat compact memory as one source-agnostic growing memory and resample memory state at each cycle boundary.",
+  "forbidden": [
+    "direct_active_memory_write",
+    "parallel direct publish against School",
+    "lost update",
+    "source-specific reasoning unless debugging/proof"
+  ],
+  "proof_requirements": [
+    "agentlife_packet_validated",
+    "queue_packet_source_kind_AgentLife",
+    "merge_queue_status_pass_when_merge_allowed",
+    "memory_hash_changed_after_merge",
+    "queue_only_when_busy",
+    "recall_finds_merged_atom"
+  ]
+}

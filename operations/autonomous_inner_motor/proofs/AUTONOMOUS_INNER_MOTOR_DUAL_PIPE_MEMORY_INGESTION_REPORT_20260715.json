@@ -1,0 +1,187 @@
+{
+  "schema": "aimo_dual_pipe_memory_ingestion_live_report_v1",
+  "status": "PASS_AIMO_AGENTLIFE_QUEUE_AND_MERGE_INGESTION",
+  "created_at": "2026-07-15T17:01:23.770047+00:00",
+  "branch": "main",
+  "head": "c46ceab",
+  "runtime_proof_path": ".runtime/autonomous_inner_motor/aimo_20260715_210003/SANDBOX_EXPLORATION_PROOF.json",
+  "tracked_proof_path": "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_PROOF_20260715.json",
+  "requested_mode": "Auto",
+  "resolved_mode": "QueueAndMerge",
+  "busy_at_decision": {
+    "busy": false,
+    "reasons": [],
+    "ignored_process_ids": [
+      13716,
+      14024,
+      10732,
+      10596,
+      10452
+    ]
+  },
+  "queue_packet_path": ".runtime\\compact_memory_intake_v1\\queue\\agentlife_aimo_aimo_20260715_210003.json",
+  "queue_packet_source_kind": "AgentLife",
+  "packet_validation_status": "PASS_COMPACT_MEMORY_KNOWLEDGE_PACKET_V1",
+  "merge_status": "PASS_MULTI_SOURCE_COMPACT_MEMORY_MERGE_QUEUE_V1",
+  "merge_proof": ".runtime\\compact_memory_intake_v1\\merge_runs\\merge_queue_20260715_210013\\COMPACT_MEMORY_MERGE_QUEUE_RESULT_V1.json",
+  "memory_changed": true,
+  "direct_active_memory_write": false,
+  "agentlife_queue_first": true,
+  "memory_before": {
+    "root": ".runtime/active_compact_semantic_memory_v1",
+    "exists": true,
+    "unchanged": true,
+    "files": [
+      {
+        "path": ".runtime\\active_compact_semantic_memory_v1\\manifest.json",
+        "bytes": 1888,
+        "sha256": "f616fefcc8c6a5a1cad0b9ef1918ae784a822e9eaf61c2ef6c798bf0070bbb5d"
+      },
+      {
+        "path": ".runtime\\active_compact_semantic_memory_v1\\index.json",
+        "bytes": 310986,
+        "sha256": "fc228f8174016e06a59cd5f0854619b20ba5635019b31d3b785ca28840540abd"
+      },
+      {
+        "path": ".runtime\\active_compact_semantic_memory_v1\\cells.jsonl",
+        "bytes": 12613613,
+        "sha256": "3b089b2523aa094bbc77ad992760b952b2dd93d1692a8a8e2028eca42831d76f"
+      }
+    ],
+    "manifest_summary": {
+      "schema": "compact_semantic_memory_manifest_v1",
+      "status": "PASS_COMPACT_SEMANTIC_DIGESTION_ORGAN_V1",
+      "run_id": "file_atom_absorption_20260715_205836",
+      "cell_count": 130,
+      "merged_count": 0,
+      "total_memory_bytes": 12925741,
+      "runtime_ready": false,
+      "boundary": "Compact semantic memory contains meaning cells, not raw candidate/ready/source traces."
+    },
+    "index_key_sample": [
+      {
+        "key": "schema",
+        "value": "compact_semantic_lookup_index_v1"
+      },
+      {
+        "key": "term_count",
+        "value": "4069"
+      },
+      {
+        "key": "terms",
+        "value": "@{latest-observed-level-2109=cell_f49f9102e836c9a2; latest-observed-level-3648=cell_c55cce663b4afe73; latest-observed-le"
+      }
+    ],
+    "cell_sample": [
+      {
+        "id": null,
+        "kind": "semantic_material",
+        "title": "A thinking agent should not merely ask a linear list of questions. For each root question it must decompose into ThoughtFrames, answer atomi"
+      },
+      {
+        "id": null,
+        "kind": "semantic_material",
+        "title": "During AIMO run aimo_20260715_202921, the pre-absorption gate detected that the proposed learning atom was too close to existing deep-thinki"
+      },
+      {
+        "id": null,
+        "kind": "factory_theme_ladder_memory",
+        "title": "Factory curriculum theme bskd_seed_001_source_ladder|route|source_ladder|directed_curriculum is a Builder learning ladder theme. Current obs"
+      },
+      {
+        "id": null,
+        "kind": "factory_theme_ladder_memory",
+        "title": "Factory curriculum theme bskd_seed_001_source_ladder|route|source_ladder|experience_curriculum is a Builder learning ladder theme. Current o"
+      },
+      {
+        "id": null,
+        "kind": "factory_theme_ladder_memory",
+        "title": "Factory curriculum theme bskd_seed_001_source_ladder|validate|source_ladder|directed_curriculum is a Builder learning ladder theme. Current "
+      },
+      {
+        "id": null,
+        "kind": "factory_theme_ladder_memory",
+        "title": "Factory curriculum theme bskd_seed_001_source_ladder|validate|source_ladder|experience_curriculum is a Builder learning ladder theme. Curren"
+      }
+    ]
+  },
+  "memory_after": {
+    "root": ".runtime/active_compact_semantic_memory_v1",
+    "exists": true,
+    "unchanged": true,
+    "files": [
+      {
+        "path": ".runtime\\active_compact_semantic_memory_v1\\manifest.json",
+        "bytes": 1888,
+        "sha256": "665b989c986eadd1d2a1d2e3b2c0ca5c4ee3910a05d21b6264b175919ea97f00"
+      },
+      {
+        "path": ".runtime\\active_compact_semantic_memory_v1\\index.json",
+        "bytes": 310986,
+        "sha256": "fc228f8174016e06a59cd5f0854619b20ba5635019b31d3b785ca28840540abd"
+      },
+      {
+        "path": ".runtime\\active_compact_semantic_memory_v1\\cells.jsonl",
+        "bytes": 12613696,
+        "sha256": "e808587adea9fec887c1c6f991a03ef88355c9939202bb7a4b12b473ae95328b"
+      }
+    ],
+    "manifest_summary": {
+      "schema": "compact_semantic_memory_manifest_v1",
+      "status": "PASS_COMPACT_SEMANTIC_DIGESTION_ORGAN_V1",
+      "run_id": "file_atom_absorption_20260715_210014",
+      "cell_count": 130,
+      "merged_count": 1,
+      "total_memory_bytes": 12925824,
+      "runtime_ready": false,
+      "boundary": "Compact semantic memory contains meaning cells, not raw candidate/ready/source traces."
+    },
+    "index_key_sample": [
+      {
+        "key": "schema",
+        "value": "compact_semantic_lookup_index_v1"
+      },
+      {
+        "key": "term_count",
+        "value": "4069"
+      },
+      {
+        "key": "terms",
+        "value": "@{latest-observed-level-2109=cell_f49f9102e836c9a2; latest-observed-level-3648=cell_c55cce663b4afe73; latest-observed-le"
+      }
+    ],
+    "cell_sample": [
+      {
+        "id": null,
+        "kind": "semantic_material",
+        "title": "A thinking agent should not merely ask a linear list of questions. For each root question it must decompose into ThoughtFrames, answer atomi"
+      },
+      {
+        "id": null,
+        "kind": "semantic_material",
+        "title": "During AIMO run aimo_20260715_202921, the pre-absorption gate detected that the proposed learning atom was too close to existing deep-thinki"
+      },
+      {
+        "id": null,
+        "kind": "factory_theme_ladder_memory",
+        "title": "Factory curriculum theme bskd_seed_001_source_ladder|route|source_ladder|directed_curriculum is a Builder learning ladder theme. Current obs"
+      },
+      {
+        "id": null,
+        "kind": "factory_theme_ladder_memory",
+        "title": "Factory curriculum theme bskd_seed_001_source_ladder|route|source_ladder|experience_curriculum is a Builder learning ladder theme. Current o"
+      },
+      {
+        "id": null,
+        "kind": "factory_theme_ladder_memory",
+        "title": "Factory curriculum theme bskd_seed_001_source_ladder|validate|source_ladder|directed_curriculum is a Builder learning ladder theme. Current "
+      },
+      {
+        "id": null,
+        "kind": "factory_theme_ladder_memory",
+        "title": "Factory curriculum theme bskd_seed_001_source_ladder|validate|source_ladder|experience_curriculum is a Builder learning ladder theme. Curren"
+      }
+    ]
+  },
+  "boundary": "AgentLife accepted atom goes through compact_memory_intake queue and locked merge. AIMO sees compact memory as one source-agnostic memory."
+}

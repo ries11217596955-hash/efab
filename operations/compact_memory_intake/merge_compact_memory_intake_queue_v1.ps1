@@ -83,6 +83,8 @@ try {
   Copy-Item -Path $MemoryRoot -Destination $checkpointMemory -Recurse -Force
   $actions += "CHECKPOINT_CREATED:$checkpointMemory"
   $packetFiles=@()
+  $queueRootFull=$null
+  if(Test-Path ([string]$policy.runtime_queue_root)){ $queueRootFull=(Resolve-Path ([string]$policy.runtime_queue_root)).Path }
   if($PacketPath.Count -gt 0){ $packetFiles=@($PacketPath | ForEach-Object { (Resolve-Path $_).Path }) } else { $packetFiles=QueuePackets $policy $ProcessLimit }
   if($packetFiles.Count -lt 1){
     $status='PASS_MERGE_QUEUE_NO_PACKETS_V1'
@@ -114,7 +116,14 @@ try {
   foreach($pf in $packetFiles){
     $dest=Join-Path $processedRoot ((Split-Path $pf -Leaf) + ".$runId.processed")
     Copy-Item -LiteralPath $pf -Destination $dest -Force
-    if($pf -like (Join-Path ([string]$policy.runtime_queue_root) '*')){ Remove-Item -LiteralPath $pf -Force }
+      $removeQueuePacket=$false
+      if($queueRootFull){
+        $packetFull=(Resolve-Path $pf).Path
+        if($packetFull.StartsWith($queueRootFull,[System.StringComparison]::OrdinalIgnoreCase)){ $removeQueuePacket=$true }
+      } elseif($pf -like (Join-Path ([string]$policy.runtime_queue_root) '*')){
+        $removeQueuePacket=$true
+      }
+      if($removeQueuePacket){ Remove-Item -LiteralPath $pf -Force }
   }
   $status='PASS_MULTI_SOURCE_COMPACT_MEMORY_MERGE_QUEUE_V1'
   $result=[ordered]@{

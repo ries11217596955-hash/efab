@@ -1,16 +1,18 @@
 {
   "schema": "AUTONOMOUS_INNER_MOTOR_SANDBOX_EXPLORATION_PROOF",
   "organ_id": "AUTONOMOUS_INNER_MOTOR_ORGAN",
-  "run_id": "aimo_20260715_202921",
+  "run_id": "aimo_20260715_210003",
   "mode": "SandboxExploration",
   "maturity_level": "L2_SANDBOX_EXPLORATION_THINKING_ONLY",
-  "created_at": "2026-07-15T20:29:57.7798353+04:00",
+  "created_at": "2026-07-15T21:00:41.3512765+04:00",
   "question": "Increase the agent thinking capacity so it can later govern self-build actions and eventually produce child agents.",
   "boundary": {
     "thinking_only": true,
     "no_action": true,
     "no_active_memory_mutation": false,
     "governed_memory_learning": true,
+    "memory_ingestion_mode": "Auto",
+    "agentlife_queue_first": true,
     "direct_active_memory_write": false,
     "no_git_mutation": true,
     "no_school_launch": true,
@@ -20,17 +22,14 @@
   },
   "repo_state": {
     "branch": "main",
-    "head": "88c337f",
+    "head": "c46ceab",
     "origin_delta": "0\t0",
     "dirty": [
       " M operations/autonomous_inner_motor/AUTONOMOUS_INNER_MOTOR_ORGAN_SPEC.md",
-      " M operations/autonomous_inner_motor/deep_thinking_policy.json",
       " M operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
-      " M validators/validate_autonomous_inner_motor_deep_thinking_memory_learning_v1.ps1",
-      "?? operations/autonomous_inner_motor/invoke_memory_atom_acceptance_gate_v1.ps1",
-      "?? operations/autonomous_inner_motor/memory_atom_acceptance_gate_policy.json",
-      "?? operations/autonomous_inner_motor/memory_atom_acceptance_gate_schema.json",
-      "?? validators/validate_autonomous_inner_motor_memory_atom_acceptance_gate_v1.ps1"
+      " M operations/compact_memory_intake/merge_compact_memory_intake_queue_v1.ps1",
+      "?? operations/autonomous_inner_motor/dual_pipe_memory_policy.json",
+      "?? validators/validate_autonomous_inner_motor_dual_pipe_memory_ingestion_v1.ps1"
     ]
   },
   "memory_state": {
@@ -41,27 +40,27 @@
       "files": [
         {
           "path": ".runtime\\active_compact_semantic_memory_v1\\manifest.json",
-          "bytes": 1889,
-          "sha256": "11bb132c0744af6e67d5eff499177e059679388b90bb397b73b5ad1ab0c46948"
+          "bytes": 1888,
+          "sha256": "f616fefcc8c6a5a1cad0b9ef1918ae784a822e9eaf61c2ef6c798bf0070bbb5d"
         },
         {
           "path": ".runtime\\active_compact_semantic_memory_v1\\index.json",
-          "bytes": 310493,
-          "sha256": "e2f7474639a74c7e841b76dd16f7d48d4533d90fe6bb4bfb2fe3ea1f7a610b81"
+          "bytes": 310986,
+          "sha256": "fc228f8174016e06a59cd5f0854619b20ba5635019b31d3b785ca28840540abd"
         },
         {
           "path": ".runtime\\active_compact_semantic_memory_v1\\cells.jsonl",
-          "bytes": 12611878,
-          "sha256": "4c223596866338d3906d3648b93406c600c4aacfb7c483b5501329657d03fa23"
+          "bytes": 12613613,
+          "sha256": "3b089b2523aa094bbc77ad992760b952b2dd93d1692a8a8e2028eca42831d76f"
         }
       ],
       "manifest_summary": {
         "schema": "compact_semantic_memory_manifest_v1",
         "status": "PASS_COMPACT_SEMANTIC_DIGESTION_ORGAN_V1",
-        "run_id": "file_atom_absorption_20260715_191223",
-        "cell_count": 128,
-        "merged_count": 1,
-        "total_memory_bytes": 12923514,
+        "run_id": "file_atom_absorption_20260715_205836",
+        "cell_count": 130,
+        "merged_count": 0,
+        "total_memory_bytes": 12925741,
         "runtime_ready": false,
         "boundary": "Compact semantic memory contains meaning cells, not raw candidate/ready/source traces."
       },
@@ -72,7 +71,7 @@
         },
         {
           "key": "term_count",
-          "value": "4065"
+          "value": "4069"
         },
         {
           "key": "terms",
@@ -84,6 +83,11 @@
           "id": null,
           "kind": "semantic_material",
           "title": "A thinking agent should not merely ask a linear list of questions. For each root question it must decompose into ThoughtFrames, answer atomi"
+        },
+        {
+          "id": null,
+          "kind": "semantic_material",
+          "title": "During AIMO run aimo_20260715_202921, the pre-absorption gate detected that the proposed learning atom was too close to existing deep-thinki"
         },
         {
           "id": null,
@@ -104,11 +108,6 @@
           "id": null,
           "kind": "factory_theme_ladder_memory",
           "title": "Factory curriculum theme bskd_seed_001_source_ladder|validate|source_ladder|experience_curriculum is a Builder learning ladder theme. Curren"
-        },
-        {
-          "id": null,
-          "kind": "factory_theme_ladder_memory",
-          "title": "Factory curriculum theme bskd_seed_002_topic_cursor_continuation|continue|topic_cursor_continuation|directed_curriculum is a Builder learnin"
         }
       ]
     },
@@ -119,27 +118,27 @@
       "files": [
         {
           "path": ".runtime\\active_compact_semantic_memory_v1\\manifest.json",
-          "bytes": 1889,
-          "sha256": "72dc50d738f48acc60cf1ae845992b24bcf330cdb1635a36b25072daa5c1ed90"
+          "bytes": 1888,
+          "sha256": "665b989c986eadd1d2a1d2e3b2c0ca5c4ee3910a05d21b6264b175919ea97f00"
         },
         {
           "path": ".runtime\\active_compact_semantic_memory_v1\\index.json",
-          "bytes": 310857,
-          "sha256": "639349096e34ea551e88a9d1fd518c2df2e9aac23380f1dc62dc25486bb834e9"
+          "bytes": 310986,
+          "sha256": "fc228f8174016e06a59cd5f0854619b20ba5635019b31d3b785ca28840540abd"
         },
         {
           "path": ".runtime\\active_compact_semantic_memory_v1\\cells.jsonl",
-          "bytes": 12612881,
-          "sha256": "ca37ba52b9d1320ab8d386bc07abc5391602b2b913d75373489c77daccf43bd1"
+          "bytes": 12613696,
+          "sha256": "e808587adea9fec887c1c6f991a03ef88355c9939202bb7a4b12b473ae95328b"
         }
       ],
       "manifest_summary": {
         "schema": "compact_semantic_memory_manifest_v1",
         "status": "PASS_COMPACT_SEMANTIC_DIGESTION_ORGAN_V1",
-        "run_id": "file_atom_absorption_20260715_202930",
-        "cell_count": 129,
-        "merged_count": 0,
-        "total_memory_bytes": 12924881,
+        "run_id": "file_atom_absorption_20260715_210014",
+        "cell_count": 130,
+        "merged_count": 1,
+        "total_memory_bytes": 12925824,
         "runtime_ready": false,
         "boundary": "Compact semantic memory contains meaning cells, not raw candidate/ready/source traces."
       },
@@ -150,7 +149,7 @@
         },
         {
           "key": "term_count",
-          "value": "4068"
+          "value": "4069"
         },
         {
           "key": "terms",
@@ -205,9 +204,9 @@
     "schoolActive": true,
     "processes": [
       {
-        "pid": 9588,
+        "pid": 14024,
         "name": "powershell.exe",
-        "command": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command \"$global:LASTEXITCODE = $null & { $ErrorActionPreference='Stop' Write-Output '=== PROCESS_GATE_BEFORE_RUN ===' $names=@('run_agent_school','ex"
+        "command": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command \"$global:LASTEXITCODE = $null & { $ErrorActionPreference='Stop' Write-Output '=== PROCESS_GATE_BEFORE_SECOND_AUTO ===' $terms=@('run_agent_sch"
       }
     ],
     "owner_control_contract": true,
@@ -330,10 +329,10 @@
       "manifest": {
         "schema": "compact_semantic_memory_manifest_v1",
         "status": "PASS_COMPACT_SEMANTIC_DIGESTION_ORGAN_V1",
-        "run_id": "file_atom_absorption_20260715_191223",
-        "cell_count": 128,
-        "merged_count": 1,
-        "total_memory_bytes": 12923514,
+        "run_id": "file_atom_absorption_20260715_205836",
+        "cell_count": 130,
+        "merged_count": 0,
+        "total_memory_bytes": 12925741,
         "runtime_ready": false,
         "boundary": "Compact semantic memory contains meaning cells, not raw candidate/ready/source traces."
       }
@@ -644,7 +643,16 @@
           },
           {
             "rank": "2",
-            "raw": "MATCH|2|score=2|label=school_generation_absorption_separation|hits=deep,build|obs=191|summary=Factory curriculum theme school_generation_absorption_separation is a Builder learning ladder theme. Current observed step is level L6_digest_absorption_boundary from source_mode school_compact_digest.",
+            "raw": "MATCH|2|score=4|label=AIMO memory atom gate rewrites rule-like candidates into DELTA experience atoms|hits=deep,thinking,self,build|obs=1|summary=During AIMO run aimo_20260715_202921, the pre-absorption gate detected that the proposed learning atom was too close to existing deep-thinking policy/validator language. The gate did not silently reject it; it rewrote the candidate into a DELTA-backed experience atom. Reusable lesson: compact memory should store local, evidence-backed learning from a run, no",
+            "score": "4",
+            "label": "AIMO memory atom gate rewrites rule-like candidates into DELTA experience atoms",
+            "hits": "deep,thinking,self,build",
+            "obs": "1",
+            "summary": "During AIMO run aimo_20260715_202921, the pre-absorption gate detected that the proposed learning atom was too close to existing deep-thinking policy/validator language. The gate did not silently reject it; it rewrote the candidate into a DELTA-backed experience atom. Reusable lesson: compact memory should store local, evidence-backed learning from a run, no"
+          },
+          {
+            "rank": "3",
+            "raw": "MATCH|3|score=2|label=school_generation_absorption_separation|hits=deep,build|obs=191|summary=Factory curriculum theme school_generation_absorption_separation is a Builder learning ladder theme. Current observed step is level L6_digest_absorption_boundary from source_mode school_compact_digest.",
             "score": "2",
             "label": "school_generation_absorption_separation",
             "hits": "deep,build",
@@ -652,17 +660,8 @@
             "summary": "Factory curriculum theme school_generation_absorption_separation is a Builder learning ladder theme. Current observed step is level L6_digest_absorption_boundary from source_mode school_compact_digest."
           },
           {
-            "rank": "3",
-            "raw": "MATCH|3|score=1|label=bskd_seed_001_source_ladder|route|source_ladder|directed_curriculum|hits=build|obs=3752|summary=Factory curriculum theme bskd_seed_001_source_ladder|route|source_ladder|directed_curriculum is a Builder learning ladder theme. Current observed step is level 1000 from source_mode directed_curriculum.",
-            "score": "1",
-            "label": "bskd_seed_001_source_ladder",
-            "hits": "build",
-            "obs": "3752",
-            "summary": "Factory curriculum theme bskd_seed_001_source_ladder"
-          },
-          {
             "rank": "4",
-            "raw": "MATCH|4|score=1|label=bskd_seed_001_source_ladder|route|source_ladder|experience_curriculum|hits=build|obs=3752|summary=Factory curriculum theme bskd_seed_001_source_ladder|route|source_ladder|experience_curriculum is a Builder learning ladder theme. Current observed step is level 1000 from source_mode experience_curriculum.",
+            "raw": "MATCH|4|score=1|label=bskd_seed_001_source_ladder|route|source_ladder|directed_curriculum|hits=build|obs=3752|summary=Factory curriculum theme bskd_seed_001_source_ladder|route|source_ladder|directed_curriculum is a Builder learning ladder theme. Current observed step is level 1000 from source_mode directed_curriculum.",
             "score": "1",
             "label": "bskd_seed_001_source_ladder",
             "hits": "build",
@@ -671,7 +670,7 @@
           },
           {
             "rank": "5",
-            "raw": "MATCH|5|score=1|label=bskd_seed_001_source_ladder|validate|source_ladder|directed_curriculum|hits=build|obs=3752|summary=Factory curriculum theme bskd_seed_001_source_ladder|validate|source_ladder|directed_curriculum is a Builder learning ladder theme. Current observed step is level 1000 from source_mode directed_curriculum.",
+            "raw": "MATCH|5|score=1|label=bskd_seed_001_source_ladder|route|source_ladder|experience_curriculum|hits=build|obs=3752|summary=Factory curriculum theme bskd_seed_001_source_ladder|route|source_ladder|experience_curriculum is a Builder learning ladder theme. Current observed step is level 1000 from source_mode experience_curriculum.",
             "score": "1",
             "label": "bskd_seed_001_source_ladder",
             "hits": "build",
@@ -684,13 +683,13 @@
           "QUERY=deep thinking recursive thought frame self build",
           "QUERY_TERMS=deep,thinking,recursive,thought,frame,self,build",
           "MEMORY_STATUS=PASS_COMPACT_SEMANTIC_DIGESTION_ORGAN_V1",
-          "MEMORY_CELLS=128",
-          "MATCH_COUNT=127",
+          "MEMORY_CELLS=130",
+          "MATCH_COUNT=128",
           "MATCH|1|score=32|label=AIMO deep thinking uses recursive ThoughtFrame tree and writes one governed learning atom|hits=deep,thinking,recursive,thought,frame,self,build|obs=2|summary=A thinking agent should not merely ask a linear list of questions. For each root question it must decompose into ThoughtFrames, answer atomic subquestions from compact memory and internal evidence, synthesize back to parent, identify the next self-build gap, and write one validated memory atom through governed absorption so the next cycle becomes stronger.",
-          "MATCH|2|score=2|label=school_generation_absorption_separation|hits=deep,build|obs=191|summary=Factory curriculum theme school_generation_absorption_separation is a Builder learning ladder theme. Current observed step is level L6_digest_absorption_boundary from source_mode school_compact_digest.",
-          "MATCH|3|score=1|label=bskd_seed_001_source_ladder|route|source_ladder|directed_curriculum|hits=build|obs=3752|summary=Factory curriculum theme bskd_seed_001_source_ladder|route|source_ladder|directed_curriculum is a Builder learning ladder theme. Current observed step is level 1000 from source_mode directed_curriculum.",
-          "MATCH|4|score=1|label=bskd_seed_001_source_ladder|route|source_ladder|experience_curriculum|hits=build|obs=3752|summary=Factory curriculum theme bskd_seed_001_source_ladder|route|source_ladder|experience_curriculum is a Builder learning ladder theme. Current observed step is level 1000 from source_mode experience_curriculum.",
-          "MATCH|5|score=1|label=bskd_seed_001_source_ladder|validate|source_ladder|directed_curriculum|hits=build|obs=3752|summary=Factory curriculum theme bskd_seed_001_source_ladder|validate|source_ladder|directed_curriculum is a Builder learning ladder theme. Current observed step is level 1000 from source_mode directed_curriculum."
+          "MATCH|2|score=4|label=AIMO memory atom gate rewrites rule-like candidates into DELTA experience atoms|hits=deep,thinking,self,build|obs=1|summary=During AIMO run aimo_20260715_202921, the pre-absorption gate detected that the proposed learning atom was too close to existing deep-thinking policy/validator language. The gate did not silently reject it; it rewrote the candidate into a DELTA-backed experience atom. Reusable lesson: compact memory should store local, evidence-backed learning from a run, no",
+          "MATCH|3|score=2|label=school_generation_absorption_separation|hits=deep,build|obs=191|summary=Factory curriculum theme school_generation_absorption_separation is a Builder learning ladder theme. Current observed step is level L6_digest_absorption_boundary from source_mode school_compact_digest.",
+          "MATCH|4|score=1|label=bskd_seed_001_source_ladder|route|source_ladder|directed_curriculum|hits=build|obs=3752|summary=Factory curriculum theme bskd_seed_001_source_ladder|route|source_ladder|directed_curriculum is a Builder learning ladder theme. Current observed step is level 1000 from source_mode directed_curriculum.",
+          "MATCH|5|score=1|label=bskd_seed_001_source_ladder|route|source_ladder|experience_curriculum|hits=build|obs=3752|summary=Factory curriculum theme bskd_seed_001_source_ladder|route|source_ladder|experience_curriculum is a Builder learning ladder theme. Current observed step is level 1000 from source_mode experience_curriculum."
         ]
       },
       {
@@ -749,8 +748,8 @@
           "QUERY=source ladder memory first return to parent",
           "QUERY_TERMS=source,ladder,memory,first,return,parent",
           "MEMORY_STATUS=PASS_COMPACT_SEMANTIC_DIGESTION_ORGAN_V1",
-          "MEMORY_CELLS=128",
-          "MATCH_COUNT=128",
+          "MEMORY_CELLS=130",
+          "MATCH_COUNT=130",
           "MATCH|1|score=18|label=bskd_seed_001_source_ladder|route|source_ladder|directed_curriculum|hits=source,ladder,memory|obs=3752|summary=Factory curriculum theme bskd_seed_001_source_ladder|route|source_ladder|directed_curriculum is a Builder learning ladder theme. Current observed step is level 1000 from source_mode directed_curriculum.",
           "MATCH|2|score=18|label=bskd_seed_001_source_ladder|route|source_ladder|experience_curriculum|hits=source,ladder,memory|obs=3752|summary=Factory curriculum theme bskd_seed_001_source_ladder|route|source_ladder|experience_curriculum is a Builder learning ladder theme. Current observed step is level 1000 from source_mode experience_curriculum.",
           "MATCH|3|score=18|label=bskd_seed_001_source_ladder|validate|source_ladder|directed_curriculum|hits=source,ladder,memory|obs=3752|summary=Factory curriculum theme bskd_seed_001_source_ladder|validate|source_ladder|directed_curriculum is a Builder learning ladder theme. Current observed step is level 1000 from source_mode directed_curriculum.",
@@ -774,38 +773,38 @@
           },
           {
             "rank": "2",
-            "raw": "MATCH|2|score=7|label=bskd_seed_003_streaming_absorption|stream|streaming_absorption|directed_curriculum|hits=learning,absorption|obs=3752|summary=Factory curriculum theme bskd_seed_003_streaming_absorption|stream|streaming_absorption|directed_curriculum is a Builder learning ladder theme. Current observed step is level 1000 from source_mode directed_curriculum.",
-            "score": "7",
-            "label": "bskd_seed_003_streaming_absorption",
-            "hits": "learning,absorption",
-            "obs": "3752",
-            "summary": "Factory curriculum theme bskd_seed_003_streaming_absorption"
+            "raw": "MATCH|2|score=9|label=AIMO memory atom gate rewrites rule-like candidates into DELTA experience atoms|hits=self,learning,atom,absorption|obs=1|summary=During AIMO run aimo_20260715_202921, the pre-absorption gate detected that the proposed learning atom was too close to existing deep-thinking policy/validator language. The gate did not silently reject it; it rewrote the candidate into a DELTA-backed experience atom. Reusable lesson: compact memory should store local, evidence-backed learning from a run, no",
+            "score": "9",
+            "label": "AIMO memory atom gate rewrites rule-like candidates into DELTA experience atoms",
+            "hits": "self,learning,atom,absorption",
+            "obs": "1",
+            "summary": "During AIMO run aimo_20260715_202921, the pre-absorption gate detected that the proposed learning atom was too close to existing deep-thinking policy/validator language. The gate did not silently reject it; it rewrote the candidate into a DELTA-backed experience atom. Reusable lesson: compact memory should store local, evidence-backed learning from a run, no"
           },
           {
             "rank": "3",
-            "raw": "MATCH|3|score=7|label=bskd_seed_003_streaming_absorption|stream|streaming_absorption|experience_curriculum|hits=learning,absorption|obs=3752|summary=Factory curriculum theme bskd_seed_003_streaming_absorption|stream|streaming_absorption|experience_curriculum is a Builder learning ladder theme. Current observed step is level 1000 from source_mode experience_curriculum.",
+            "raw": "MATCH|3|score=8|label=aimo.memory_atom_acceptance_gate.delta_over_rule_duplicate|hits=atom,governed,absorption|obs=1|summary=AIMO memory atom acceptance gate prevents rule-copy memory pollution by explaining duplicate-rule risk and rewriting useful generic candidates into evidence-backed experience atoms before governed absorption.",
+            "score": "8",
+            "label": "aimo.memory_atom_acceptance_gate.delta_over_rule_duplicate",
+            "hits": "atom,governed,absorption",
+            "obs": "1",
+            "summary": "AIMO memory atom acceptance gate prevents rule-copy memory pollution by explaining duplicate-rule risk and rewriting useful generic candidates into evidence-backed experience atoms before governed absorption."
+          },
+          {
+            "rank": "4",
+            "raw": "MATCH|4|score=7|label=bskd_seed_003_streaming_absorption|stream|streaming_absorption|directed_curriculum|hits=learning,absorption|obs=3752|summary=Factory curriculum theme bskd_seed_003_streaming_absorption|stream|streaming_absorption|directed_curriculum is a Builder learning ladder theme. Current observed step is level 1000 from source_mode directed_curriculum.",
             "score": "7",
             "label": "bskd_seed_003_streaming_absorption",
             "hits": "learning,absorption",
             "obs": "3752",
-            "summary": "Factory curriculum theme bskd_seed_003_streaming_absorption"
-          },
-          {
-            "rank": "4",
-            "raw": "MATCH|4|score=7|label=bskd_seed_003_streaming_absorption|validate|streaming_absorption|directed_curriculum|hits=learning,absorption|obs=3751|summary=Factory curriculum theme bskd_seed_003_streaming_absorption|validate|streaming_absorption|directed_curriculum is a Builder learning ladder theme. Current observed step is level 1000 from source_mode directed_curriculum.",
-            "score": "7",
-            "label": "bskd_seed_003_streaming_absorption",
-            "hits": "learning,absorption",
-            "obs": "3751",
             "summary": "Factory curriculum theme bskd_seed_003_streaming_absorption"
           },
           {
             "rank": "5",
-            "raw": "MATCH|5|score=7|label=bskd_seed_003_streaming_absorption|validate|streaming_absorption|experience_curriculum|hits=learning,absorption|obs=3751|summary=Factory curriculum theme bskd_seed_003_streaming_absorption|validate|streaming_absorption|experience_curriculum is a Builder learning ladder theme. Current observed step is level 1000 from source_mode experience_curriculum.",
+            "raw": "MATCH|5|score=7|label=bskd_seed_003_streaming_absorption|stream|streaming_absorption|experience_curriculum|hits=learning,absorption|obs=3752|summary=Factory curriculum theme bskd_seed_003_streaming_absorption|stream|streaming_absorption|experience_curriculum is a Builder learning ladder theme. Current observed step is level 1000 from source_mode experience_curriculum.",
             "score": "7",
             "label": "bskd_seed_003_streaming_absorption",
             "hits": "learning,absorption",
-            "obs": "3751",
+            "obs": "3752",
             "summary": "Factory curriculum theme bskd_seed_003_streaming_absorption"
           }
         ],
@@ -814,19 +813,19 @@
           "QUERY=self learning atom governed absorption",
           "QUERY_TERMS=self,learning,atom,governed,absorption",
           "MEMORY_STATUS=PASS_COMPACT_SEMANTIC_DIGESTION_ORGAN_V1",
-          "MEMORY_CELLS=128",
-          "MATCH_COUNT=127",
+          "MEMORY_CELLS=130",
+          "MATCH_COUNT=129",
           "MATCH|1|score=16|label=AIMO deep thinking uses recursive ThoughtFrame tree and writes one governed learning atom|hits=self,learning,atom,governed,absorption|obs=2|summary=A thinking agent should not merely ask a linear list of questions. For each root question it must decompose into ThoughtFrames, answer atomic subquestions from compact memory and internal evidence, synthesize back to parent, identify the next self-build gap, and write one validated memory atom through governed absorption so the next cycle becomes stronger.",
-          "MATCH|2|score=7|label=bskd_seed_003_streaming_absorption|stream|streaming_absorption|directed_curriculum|hits=learning,absorption|obs=3752|summary=Factory curriculum theme bskd_seed_003_streaming_absorption|stream|streaming_absorption|directed_curriculum is a Builder learning ladder theme. Current observed step is level 1000 from source_mode directed_curriculum.",
-          "MATCH|3|score=7|label=bskd_seed_003_streaming_absorption|stream|streaming_absorption|experience_curriculum|hits=learning,absorption|obs=3752|summary=Factory curriculum theme bskd_seed_003_streaming_absorption|stream|streaming_absorption|experience_curriculum is a Builder learning ladder theme. Current observed step is level 1000 from source_mode experience_curriculum.",
-          "MATCH|4|score=7|label=bskd_seed_003_streaming_absorption|validate|streaming_absorption|directed_curriculum|hits=learning,absorption|obs=3751|summary=Factory curriculum theme bskd_seed_003_streaming_absorption|validate|streaming_absorption|directed_curriculum is a Builder learning ladder theme. Current observed step is level 1000 from source_mode directed_curriculum.",
-          "MATCH|5|score=7|label=bskd_seed_003_streaming_absorption|validate|streaming_absorption|experience_curriculum|hits=learning,absorption|obs=3751|summary=Factory curriculum theme bskd_seed_003_streaming_absorption|validate|streaming_absorption|experience_curriculum is a Builder learning ladder theme. Current observed step is level 1000 from source_mode experience_curriculum."
+          "MATCH|2|score=9|label=AIMO memory atom gate rewrites rule-like candidates into DELTA experience atoms|hits=self,learning,atom,absorption|obs=1|summary=During AIMO run aimo_20260715_202921, the pre-absorption gate detected that the proposed learning atom was too close to existing deep-thinking policy/validator language. The gate did not silently reject it; it rewrote the candidate into a DELTA-backed experience atom. Reusable lesson: compact memory should store local, evidence-backed learning from a run, no",
+          "MATCH|3|score=8|label=aimo.memory_atom_acceptance_gate.delta_over_rule_duplicate|hits=atom,governed,absorption|obs=1|summary=AIMO memory atom acceptance gate prevents rule-copy memory pollution by explaining duplicate-rule risk and rewriting useful generic candidates into evidence-backed experience atoms before governed absorption.",
+          "MATCH|4|score=7|label=bskd_seed_003_streaming_absorption|stream|streaming_absorption|directed_curriculum|hits=learning,absorption|obs=3752|summary=Factory curriculum theme bskd_seed_003_streaming_absorption|stream|streaming_absorption|directed_curriculum is a Builder learning ladder theme. Current observed step is level 1000 from source_mode directed_curriculum.",
+          "MATCH|5|score=7|label=bskd_seed_003_streaming_absorption|stream|streaming_absorption|experience_curriculum|hits=learning,absorption|obs=3752|summary=Factory curriculum theme bskd_seed_003_streaming_absorption|stream|streaming_absorption|experience_curriculum is a Builder learning ladder theme. Current observed step is level 1000 from source_mode experience_curriculum."
         ]
       }
     ],
     "learning_atom": {
       "schema": "aimo_self_learning_atom_v1",
-      "candidate_id": "aimo_deep_thinking_aimo_20260715_202921",
+      "candidate_id": "aimo_deep_thinking_aimo_20260715_210003",
       "concept_key": "aimo.deep_thinking.recursive_thought_frame.memory_learning",
       "label": "AIMO deep thinking uses recursive ThoughtFrame tree and writes one governed learning atom",
       "kind": "thinking_growth_rule",
@@ -883,21 +882,21 @@
       "raw_output": [
         "MEMORY_ATOM_GATE_DECISION=REWRITE_AS_EXPERIENCE_ATOM",
         "ABSORPTION_ALLOWED=True",
-        "GATE_DECISION_PATH=.runtime\\autonomous_inner_motor\\aimo_20260715_202921\\memory_atom_acceptance_gate_decision.json",
-        "FINAL_ATOM_PATH=.runtime\\autonomous_inner_motor\\aimo_20260715_202921\\learning_atom.accepted.jsonl",
+        "GATE_DECISION_PATH=.runtime\\autonomous_inner_motor\\aimo_20260715_210003\\memory_atom_acceptance_gate_decision.json",
+        "FINAL_ATOM_PATH=.runtime\\autonomous_inner_motor\\aimo_20260715_210003\\learning_atom.accepted.jsonl",
         "EXPLANATION=The candidate repeats existing AIMO deep-thinking rules. It is rewritten into an experience atom about this run: the gate detected rule-duplication risk before absorption and converted the candidate into a DELTA-backed operational lesson."
       ],
-      "candidate_atom_path": ".runtime\\autonomous_inner_motor\\aimo_20260715_202921\\learning_atom.candidate.jsonl",
-      "context_path": ".runtime\\autonomous_inner_motor\\aimo_20260715_202921\\memory_atom_gate_context.json",
-      "decision_path": ".runtime\\autonomous_inner_motor\\aimo_20260715_202921\\memory_atom_acceptance_gate_decision.json",
-      "final_atom_path": ".runtime\\autonomous_inner_motor\\aimo_20260715_202921\\learning_atom.accepted.jsonl",
+      "candidate_atom_path": ".runtime\\autonomous_inner_motor\\aimo_20260715_210003\\learning_atom.candidate.jsonl",
+      "context_path": ".runtime\\autonomous_inner_motor\\aimo_20260715_210003\\memory_atom_gate_context.json",
+      "decision_path": ".runtime\\autonomous_inner_motor\\aimo_20260715_210003\\memory_atom_acceptance_gate_decision.json",
+      "final_atom_path": ".runtime\\autonomous_inner_motor\\aimo_20260715_210003\\learning_atom.accepted.jsonl",
       "decision": {
         "schema": "aimo_memory_atom_acceptance_gate_decision_v1",
         "decision": "REWRITE_AS_EXPERIENCE_ATOM",
         "reason": "candidate_too_close_to_existing_rule_but_run_has_experience_delta",
         "explanation": "The candidate repeats existing AIMO deep-thinking rules. It is rewritten into an experience atom about this run: the gate detected rule-duplication risk before absorption and converted the candidate into a DELTA-backed operational lesson.",
-        "candidate_atom_path": ".runtime\\autonomous_inner_motor\\aimo_20260715_202921\\learning_atom.candidate.jsonl",
-        "final_atom_path": ".runtime\\autonomous_inner_motor\\aimo_20260715_202921\\learning_atom.accepted.jsonl",
+        "candidate_atom_path": ".runtime\\autonomous_inner_motor\\aimo_20260715_210003\\learning_atom.candidate.jsonl",
+        "final_atom_path": ".runtime\\autonomous_inner_motor\\aimo_20260715_210003\\learning_atom.accepted.jsonl",
         "duplicate_rule_refs": [
           {
             "path": "operations/autonomous_inner_motor/AUTONOMOUS_INNER_MOTOR_ORGAN_SPEC.md",
@@ -911,19 +910,19 @@
             "reason": "existing compact memory recall match for same or near-same concept"
           },
           {
-            "raw": "MATCH|2|score=7|label=bskd_seed_009_candidate_factory_memory|separate|candidate_factory_memory|directed_curriculum|hits=and,learning|obs=3751|summary=Factory curriculum theme bskd_seed_009_candidate_factory_memory|separate|candidate_factory_memory|directed_curriculum is a Builder learning ladder theme. Current observed step is level 1000 from source_mode directed_curriculum.",
+            "raw": "MATCH|2|score=23|label=AIMO memory atom gate rewrites rule-like candidates into DELTA experience atoms|hits=aimo,deep,thinking,and,writes,learning,atom|obs=1|summary=During AIMO run aimo_20260715_202921, the pre-absorption gate detected that the proposed learning atom was too close to existing deep-thinking policy/validator language. The gate did not silently reject it; it rewrote the candidate into a DELTA-backed experience atom. Reusable lesson: compact memory should store local, evidence-backed learning from a run, no",
             "reason": "existing compact memory recall match for same or near-same concept"
           },
           {
-            "raw": "MATCH|3|score=7|label=bskd_seed_009_candidate_factory_memory|separate|candidate_factory_memory|experience_curriculum|hits=and,learning|obs=3751|summary=Factory curriculum theme bskd_seed_009_candidate_factory_memory|separate|candidate_factory_memory|experience_curriculum is a Builder learning ladder theme. Current observed step is level 1000 from source_mode experience_curriculum.",
+            "raw": "MATCH|3|score=14|label=aimo.memory_atom_acceptance_gate.delta_over_rule_duplicate|hits=aimo,and,governed,atom|obs=1|summary=AIMO memory atom acceptance gate prevents rule-copy memory pollution by explaining duplicate-rule risk and rewriting useful generic candidates into evidence-backed experience atoms before governed absorption.",
             "reason": "existing compact memory recall match for same or near-same concept"
           },
           {
-            "raw": "MATCH|4|score=7|label=bskd_seed_009_candidate_factory_memory|track|candidate_factory_memory|directed_curriculum|hits=and,learning|obs=3751|summary=Factory curriculum theme bskd_seed_009_candidate_factory_memory|track|candidate_factory_memory|directed_curriculum is a Builder learning ladder theme. Current observed step is level 1000 from source_mode directed_curriculum.",
+            "raw": "MATCH|4|score=7|label=bskd_seed_009_candidate_factory_memory|separate|candidate_factory_memory|directed_curriculum|hits=and,learning|obs=3751|summary=Factory curriculum theme bskd_seed_009_candidate_factory_memory|separate|candidate_factory_memory|directed_curriculum is a Builder learning ladder theme. Current observed step is level 1000 from source_mode directed_curriculum.",
             "reason": "existing compact memory recall match for same or near-same concept"
           },
           {
-            "raw": "MATCH|5|score=7|label=bskd_seed_009_candidate_factory_memory|track|candidate_factory_memory|experience_curriculum|hits=and,learning|obs=3751|summary=Factory curriculum theme bskd_seed_009_candidate_factory_memory|track|candidate_factory_memory|experience_curriculum is a Builder learning ladder theme. Current observed step is level 1000 from source_mode experience_curriculum.",
+            "raw": "MATCH|5|score=7|label=bskd_seed_009_candidate_factory_memory|separate|candidate_factory_memory|experience_curriculum|hits=and,learning|obs=3751|summary=Factory curriculum theme bskd_seed_009_candidate_factory_memory|separate|candidate_factory_memory|experience_curriculum is a Builder learning ladder theme. Current observed step is level 1000 from source_mode experience_curriculum.",
             "reason": "existing compact memory recall match for same or near-same concept"
           }
         ],
@@ -936,11 +935,11 @@
         },
         "final_atom": {
           "schema": "aimo_self_learning_atom_v1",
-          "candidate_id": "aimo_memory_atom_gate_experience_aimo_20260715_202921",
+          "candidate_id": "aimo_memory_atom_gate_experience_aimo_20260715_210003",
           "concept_key": "aimo.memory_atom_acceptance_gate.delta_over_rule_duplicate",
           "label": "AIMO memory atom gate rewrites rule-like candidates into DELTA experience atoms",
           "kind": "memory_acceptance_repair_pattern",
-          "definition": "During AIMO run aimo_20260715_202921, the pre-absorption gate detected that the proposed learning atom was too close to existing deep-thinking policy/validator language. The gate did not silently reject it; it rewrote the candidate into a DELTA-backed experience atom. Reusable lesson: compact memory should store local, evidence-backed learning from a run, not raw copies of settings, contracts, or validators.",
+          "definition": "During AIMO run aimo_20260715_210003, the pre-absorption gate detected that the proposed learning atom was too close to existing deep-thinking policy/validator language. The gate did not silently reject it; it rewrote the candidate into a DELTA-backed experience atom. Reusable lesson: compact memory should store local, evidence-backed learning from a run, not raw copies of settings, contracts, or validators.",
           "summary": "AIMO memory atom acceptance gate prevents rule-copy memory pollution by explaining duplicate-rule risk and rewriting useful generic candidates into evidence-backed experience atoms before governed absorption.",
           "aliases": [
             "memory_atom_acceptance_gate_v1",
@@ -950,7 +949,7 @@
           ],
           "properties": [
             "decision=REWRITE_AS_EXPERIENCE_ATOM",
-            "run_id=aimo_20260715_202921",
+            "run_id=aimo_20260715_210003",
             "frames=5",
             "missing_return_to_parent=0",
             "memory_recalls=3",
@@ -1007,31 +1006,93 @@
       }
     },
     "absorption": {
-      "atom_path": ".runtime\\autonomous_inner_motor\\aimo_20260715_202921\\learning_atom.accepted.jsonl",
-      "exit_code": 0,
-      "raw_output": [
-        "FILE_ATOM_ABSORPTION_STATUS=PASS_FILE_ATOM_ABSORPTION_PIPELINE_V1",
-        "PROOF_PATH=.runtime/file_atom_absorption/file_atom_absorption_20260715_202930/FILE_ATOM_ABSORPTION_PIPELINE_V1.json",
-        "INPUT_ATOMS=1",
-        "NORMALIZED_DIGEST_ATOMS=1",
-        "DIGESTED_CELLS=129",
-        "MERGED_COUNT=0",
-        "VALIDATION_TIER=Stable",
-        "RAW_SOURCE_DEPENDENCY_REMOVED=True",
-        "STAGED_RAW_DELETED=True",
-        "NORMALIZED_DIGEST_INPUT_DELETED=True",
-        "ORIGINAL_RAW_DELETED=False",
-        "TOTAL_MEMORY_BYTES=12924881",
-        "CANDIDATE_MEMORY_ROOT_REMOVED=True",
-        "CANDIDATE_MEMORY_ROOT_REMOVED_BYTES=12925627",
-        "CANDIDATE_MEMORY_ROOT_EXISTS_AFTER=False",
-        "ROUTE_AFTER=0",
-        "LEDGER_AFTER=0",
-        "RUNTIME_READY=false"
+      "mode": "QueueAndMerge",
+      "requested_mode": "Auto",
+      "busy_at_decision": {
+        "busy": false,
+        "reasons": [],
+        "ignored_process_ids": [
+          13716,
+          14024,
+          10732,
+          10596,
+          10452
+        ]
+      },
+      "queue_packet": {
+        "packet_path": ".runtime\\compact_memory_intake_v1\\queue\\agentlife_aimo_aimo_20260715_210003.json",
+        "queue_root": ".runtime/compact_memory_intake_v1/queue",
+        "packet": {
+          "schema": "compact_memory_knowledge_packet_v1",
+          "source_kind": "AgentLife",
+          "source_id": "AIMO:aimo_20260715_210003",
+          "created_at": "2026-07-15T21:00:12.5830837+04:00",
+          "atoms": [
+            {
+              "id": "aimo_memory_atom_gate_experience_aimo_20260715_210003",
+              "topic": "aimo.memory_atom_acceptance_gate.delta_over_rule_duplicate",
+              "level": 1,
+              "quality_score": 0.95,
+              "novelty_score": 0.6,
+              "summary": "AIMO memory atom acceptance gate prevents rule-copy memory pollution by explaining duplicate-rule risk and rewriting useful generic candidates into evidence-backed experience atoms before governed absorption.",
+              "behavior_use_hint": "AIMO memory atom acceptance gate prevents rule-copy memory pollution by explaining duplicate-rule risk and rewriting useful generic candidates into evidence-backed experience atoms before governed absorption.",
+              "source_ref": ".runtime\\autonomous_inner_motor\\aimo_20260715_210003\\learning_atom.accepted.jsonl",
+              "gate_decision": "REWRITE_AS_EXPERIENCE_ATOM",
+              "gate_reason": "candidate_too_close_to_existing_rule_but_run_has_experience_delta"
+            }
+          ],
+          "quality_summary": {
+            "atom_count": 1,
+            "min_quality_score": 0.95,
+            "min_novelty_score": 0.6,
+            "gate_decision": "REWRITE_AS_EXPERIENCE_ATOM"
+          },
+          "boundary": {
+            "source": "AIMO_AGENT_LIFE",
+            "direct_active_memory_write": false,
+            "queue_first": true,
+            "active_memory_merge_requires_lock": true
+          }
+        }
+      },
+      "packet_validation_status": "PASS_COMPACT_MEMORY_KNOWLEDGE_PACKET_V1",
+      "packet_validation_output": [
+        "PACKET_VALIDATION_STATUS=PASS_COMPACT_MEMORY_KNOWLEDGE_PACKET_V1",
+        "PACKET_SOURCE=AgentLife",
+        "PACKET_DECLARED_ATOMS=1",
+        "PACKET_TOPICS=1",
+        "{",
+        "    \"schema\":  \"compact_memory_knowledge_packet_validation_v1\",",
+        "    \"status\":  \"PASS_COMPACT_MEMORY_KNOWLEDGE_PACKET_V1\",",
+        "    \"packet_path\":  \".runtime\\\\compact_memory_intake_v1\\\\queue\\\\agentlife_aimo_aimo_20260715_210003.json\",",
+        "    \"source_kind\":  \"AgentLife\",",
+        "    \"source_id\":  \"AIMO:aimo_20260715_210003\",",
+        "    \"declared_atom_count\":  1,",
+        "    \"packet_atoms\":  1,",
+        "    \"topic_count\":  1,",
+        "    \"min_quality_score\":  0.95,",
+        "    \"min_novelty_score\":  0.6,",
+        "    \"direct_active_memory_mutation_allowed\":  false,",
+        "    \"validated_at\":  \"2026-07-15T21:00:12.9510204+04:00\"",
+        "}"
       ],
-      "status_line": {},
-      "candidate_memory_root_removed": "True",
-      "candidate_memory_root_exists_after": "False",
+      "merge": {
+        "exit_code": 0,
+        "status": "PASS_MULTI_SOURCE_COMPACT_MEMORY_MERGE_QUEUE_V1",
+        "proof_path": ".runtime\\compact_memory_intake_v1\\merge_runs\\merge_queue_20260715_210013\\COMPACT_MEMORY_MERGE_QUEUE_RESULT_V1.json",
+        "output": [
+          "MERGE_QUEUE_STATUS=PASS_MULTI_SOURCE_COMPACT_MEMORY_MERGE_QUEUE_V1",
+          "MERGE_QUEUE_PROOF=.runtime\\compact_memory_intake_v1\\merge_runs\\merge_queue_20260715_210013\\COMPACT_MEMORY_MERGE_QUEUE_RESULT_V1.json",
+          "MERGED_PACKETS=1",
+          "DIGEST_ATOMS=1",
+          "MEMORY_CELLS_BEFORE=130",
+          "MEMORY_CELLS_AFTER=130",
+          "MEMORY_HASH_CHANGED=True"
+        ]
+      },
+      "atom_path": ".runtime\\compact_memory_intake_v1\\queue\\agentlife_aimo_aimo_20260715_210003.json",
+      "exit_code": 0,
+      "status_line": "PASS_MULTI_SOURCE_COMPACT_MEMORY_MERGE_QUEUE_V1",
       "before": {
         "root": ".runtime/active_compact_semantic_memory_v1",
         "exists": true,
@@ -1039,105 +1100,27 @@
         "files": [
           {
             "path": ".runtime\\active_compact_semantic_memory_v1\\manifest.json",
-            "bytes": 1889,
-            "sha256": "11bb132c0744af6e67d5eff499177e059679388b90bb397b73b5ad1ab0c46948"
+            "bytes": 1888,
+            "sha256": "f616fefcc8c6a5a1cad0b9ef1918ae784a822e9eaf61c2ef6c798bf0070bbb5d"
           },
           {
             "path": ".runtime\\active_compact_semantic_memory_v1\\index.json",
-            "bytes": 310493,
-            "sha256": "e2f7474639a74c7e841b76dd16f7d48d4533d90fe6bb4bfb2fe3ea1f7a610b81"
+            "bytes": 310986,
+            "sha256": "fc228f8174016e06a59cd5f0854619b20ba5635019b31d3b785ca28840540abd"
           },
           {
             "path": ".runtime\\active_compact_semantic_memory_v1\\cells.jsonl",
-            "bytes": 12611878,
-            "sha256": "4c223596866338d3906d3648b93406c600c4aacfb7c483b5501329657d03fa23"
+            "bytes": 12613613,
+            "sha256": "3b089b2523aa094bbc77ad992760b952b2dd93d1692a8a8e2028eca42831d76f"
           }
         ],
         "manifest_summary": {
           "schema": "compact_semantic_memory_manifest_v1",
           "status": "PASS_COMPACT_SEMANTIC_DIGESTION_ORGAN_V1",
-          "run_id": "file_atom_absorption_20260715_191223",
-          "cell_count": 128,
-          "merged_count": 1,
-          "total_memory_bytes": 12923514,
-          "runtime_ready": false,
-          "boundary": "Compact semantic memory contains meaning cells, not raw candidate/ready/source traces."
-        },
-        "index_key_sample": [
-          {
-            "key": "schema",
-            "value": "compact_semantic_lookup_index_v1"
-          },
-          {
-            "key": "term_count",
-            "value": "4065"
-          },
-          {
-            "key": "terms",
-            "value": "@{latest-observed-level-2109=cell_f49f9102e836c9a2; latest-observed-level-3648=cell_c55cce663b4afe73; latest-observed-le"
-          }
-        ],
-        "cell_sample": [
-          {
-            "id": null,
-            "kind": "semantic_material",
-            "title": "A thinking agent should not merely ask a linear list of questions. For each root question it must decompose into ThoughtFrames, answer atomi"
-          },
-          {
-            "id": null,
-            "kind": "factory_theme_ladder_memory",
-            "title": "Factory curriculum theme bskd_seed_001_source_ladder|route|source_ladder|directed_curriculum is a Builder learning ladder theme. Current obs"
-          },
-          {
-            "id": null,
-            "kind": "factory_theme_ladder_memory",
-            "title": "Factory curriculum theme bskd_seed_001_source_ladder|route|source_ladder|experience_curriculum is a Builder learning ladder theme. Current o"
-          },
-          {
-            "id": null,
-            "kind": "factory_theme_ladder_memory",
-            "title": "Factory curriculum theme bskd_seed_001_source_ladder|validate|source_ladder|directed_curriculum is a Builder learning ladder theme. Current "
-          },
-          {
-            "id": null,
-            "kind": "factory_theme_ladder_memory",
-            "title": "Factory curriculum theme bskd_seed_001_source_ladder|validate|source_ladder|experience_curriculum is a Builder learning ladder theme. Curren"
-          },
-          {
-            "id": null,
-            "kind": "factory_theme_ladder_memory",
-            "title": "Factory curriculum theme bskd_seed_002_topic_cursor_continuation|continue|topic_cursor_continuation|directed_curriculum is a Builder learnin"
-          }
-        ]
-      },
-      "after": {
-        "root": ".runtime/active_compact_semantic_memory_v1",
-        "exists": true,
-        "unchanged": true,
-        "files": [
-          {
-            "path": ".runtime\\active_compact_semantic_memory_v1\\manifest.json",
-            "bytes": 1889,
-            "sha256": "72dc50d738f48acc60cf1ae845992b24bcf330cdb1635a36b25072daa5c1ed90"
-          },
-          {
-            "path": ".runtime\\active_compact_semantic_memory_v1\\index.json",
-            "bytes": 310857,
-            "sha256": "639349096e34ea551e88a9d1fd518c2df2e9aac23380f1dc62dc25486bb834e9"
-          },
-          {
-            "path": ".runtime\\active_compact_semantic_memory_v1\\cells.jsonl",
-            "bytes": 12612881,
-            "sha256": "ca37ba52b9d1320ab8d386bc07abc5391602b2b913d75373489c77daccf43bd1"
-          }
-        ],
-        "manifest_summary": {
-          "schema": "compact_semantic_memory_manifest_v1",
-          "status": "PASS_COMPACT_SEMANTIC_DIGESTION_ORGAN_V1",
-          "run_id": "file_atom_absorption_20260715_202930",
-          "cell_count": 129,
+          "run_id": "file_atom_absorption_20260715_205836",
+          "cell_count": 130,
           "merged_count": 0,
-          "total_memory_bytes": 12924881,
+          "total_memory_bytes": 12925741,
           "runtime_ready": false,
           "boundary": "Compact semantic memory contains meaning cells, not raw candidate/ready/source traces."
         },
@@ -1148,7 +1131,7 @@
           },
           {
             "key": "term_count",
-            "value": "4068"
+            "value": "4069"
           },
           {
             "key": "terms",
@@ -1188,7 +1171,87 @@
           }
         ]
       },
-      "memory_changed": true
+      "after": {
+        "root": ".runtime/active_compact_semantic_memory_v1",
+        "exists": true,
+        "unchanged": true,
+        "files": [
+          {
+            "path": ".runtime\\active_compact_semantic_memory_v1\\manifest.json",
+            "bytes": 1888,
+            "sha256": "665b989c986eadd1d2a1d2e3b2c0ca5c4ee3910a05d21b6264b175919ea97f00"
+          },
+          {
+            "path": ".runtime\\active_compact_semantic_memory_v1\\index.json",
+            "bytes": 310986,
+            "sha256": "fc228f8174016e06a59cd5f0854619b20ba5635019b31d3b785ca28840540abd"
+          },
+          {
+            "path": ".runtime\\active_compact_semantic_memory_v1\\cells.jsonl",
+            "bytes": 12613696,
+            "sha256": "e808587adea9fec887c1c6f991a03ef88355c9939202bb7a4b12b473ae95328b"
+          }
+        ],
+        "manifest_summary": {
+          "schema": "compact_semantic_memory_manifest_v1",
+          "status": "PASS_COMPACT_SEMANTIC_DIGESTION_ORGAN_V1",
+          "run_id": "file_atom_absorption_20260715_210014",
+          "cell_count": 130,
+          "merged_count": 1,
+          "total_memory_bytes": 12925824,
+          "runtime_ready": false,
+          "boundary": "Compact semantic memory contains meaning cells, not raw candidate/ready/source traces."
+        },
+        "index_key_sample": [
+          {
+            "key": "schema",
+            "value": "compact_semantic_lookup_index_v1"
+          },
+          {
+            "key": "term_count",
+            "value": "4069"
+          },
+          {
+            "key": "terms",
+            "value": "@{latest-observed-level-2109=cell_f49f9102e836c9a2; latest-observed-level-3648=cell_c55cce663b4afe73; latest-observed-le"
+          }
+        ],
+        "cell_sample": [
+          {
+            "id": null,
+            "kind": "semantic_material",
+            "title": "A thinking agent should not merely ask a linear list of questions. For each root question it must decompose into ThoughtFrames, answer atomi"
+          },
+          {
+            "id": null,
+            "kind": "semantic_material",
+            "title": "During AIMO run aimo_20260715_202921, the pre-absorption gate detected that the proposed learning atom was too close to existing deep-thinki"
+          },
+          {
+            "id": null,
+            "kind": "factory_theme_ladder_memory",
+            "title": "Factory curriculum theme bskd_seed_001_source_ladder|route|source_ladder|directed_curriculum is a Builder learning ladder theme. Current obs"
+          },
+          {
+            "id": null,
+            "kind": "factory_theme_ladder_memory",
+            "title": "Factory curriculum theme bskd_seed_001_source_ladder|route|source_ladder|experience_curriculum is a Builder learning ladder theme. Current o"
+          },
+          {
+            "id": null,
+            "kind": "factory_theme_ladder_memory",
+            "title": "Factory curriculum theme bskd_seed_001_source_ladder|validate|source_ladder|directed_curriculum is a Builder learning ladder theme. Current "
+          },
+          {
+            "id": null,
+            "kind": "factory_theme_ladder_memory",
+            "title": "Factory curriculum theme bskd_seed_001_source_ladder|validate|source_ladder|experience_curriculum is a Builder learning ladder theme. Curren"
+          }
+        ]
+      },
+      "memory_changed": true,
+      "candidate_memory_root_removed": null,
+      "candidate_memory_root_exists_after": null
     },
     "status": "PASS_DEEP_THINKING_WITH_MEMORY_LEARNING"
   },
@@ -1267,13 +1330,14 @@
     "active_memory_mutated": true,
     "direct_active_memory_write": false,
     "governed_absorption_used": true,
+    "memory_ingestion_mode": "QueueAndMerge",
     "git_mutated": false,
     "codex_launched": false,
     "web_research_performed": false,
     "school_started": false,
     "background_process_started": false,
     "files_written": [
-      ".runtime\\autonomous_inner_motor\\aimo_20260715_202921\\SANDBOX_EXPLORATION_PROOF.json"
+      ".runtime\\autonomous_inner_motor\\aimo_20260715_210003\\SANDBOX_EXPLORATION_PROOF.json"
     ]
   },
   "validator_result": {

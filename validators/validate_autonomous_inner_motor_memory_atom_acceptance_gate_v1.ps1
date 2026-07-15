@@ -42,7 +42,13 @@ if($proof -and $proof.deep_thinking.acceptance_gate){
     if(@($gate.duplicate_rule_refs).Count -lt 1){ Add-Err 'rewrite_without_duplicate_rule_refs' }
     if($gate.final_atom.concept_key -ne 'aimo.memory_atom_acceptance_gate.delta_over_rule_duplicate'){ Add-Err "rewrite_final_atom_concept_bad:$($gate.final_atom.concept_key)" }
     if($gate.delta.local_experience -ne $true){ Add-Err 'rewrite_delta_local_experience_false' }
-    if($proof.deep_thinking.absorption.atom_path -ne $proof.deep_thinking.acceptance_gate.final_atom_path){ Add-Err 'absorption_did_not_use_gate_final_atom' }
+    if($proof.deep_thinking.absorption.mode -eq 'QueueAndMerge'){
+      if($proof.deep_thinking.absorption.queue_packet.packet.source_kind -ne 'AgentLife'){ Add-Err 'queue_packet_not_agentlife' }
+      if($proof.deep_thinking.absorption.queue_packet.packet.atoms[0].source_ref -ne $proof.deep_thinking.acceptance_gate.final_atom_path){ Add-Err 'queue_packet_source_ref_not_gate_final_atom' }
+      if($proof.deep_thinking.absorption.merge.status -ne 'PASS_MULTI_SOURCE_COMPACT_MEMORY_MERGE_QUEUE_V1'){ Add-Err 'queue_merge_not_pass' }
+    } elseif($proof.deep_thinking.absorption.atom_path -ne $proof.deep_thinking.acceptance_gate.final_atom_path){
+      Add-Err 'absorption_did_not_use_gate_final_atom'
+    }
   }
 } elseif(-not [string]::IsNullOrWhiteSpace($DecisionPath)){
   $decision=Read-Json $DecisionPath
