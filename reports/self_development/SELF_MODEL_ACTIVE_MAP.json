@@ -6,19 +6,19 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "e8f41f1abdc0d754e3167dd7e6a448e194863be4",
-    "subject_head":  "e8f41f1abdc0d754e3167dd7e6a448e194863be4",
-    "generated_at":  "2026-07-15T16:08:00.2102013+04:00",
+    "observed_head_at_generation":  "2da513cccf2f987251863ed210abd253a69e3455",
+    "subject_head":  "2da513cccf2f987251863ed210abd253a69e3455",
+    "generated_at":  "2026-07-15T16:10:00.5611704+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
-    "trigger_reason":  "body_inventory_map_hardening_indexed_validator_20260715",
+    "trigger_reason":  "body_inventory_map_hardening_eof_fix_20260715",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
     "structural_path_count":  1979,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  1979,
-                                    "sha256":  "6c8cd067299e18f19460fb4b19601bac810342edabe84e9282039de35964b38c"
+                                    "sha256":  "a79b40253f61c8c50f569c52fb8d76d66b890240a917519e4d055e6547a3d955"
                                 },
     "module_count":  203,
     "validator_count":  175,
@@ -584,9 +584,9 @@
                                                                 "operations/self_model/validate_route_v4_execution_report_phase_m_v1.ps1"
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "cc97c55f6b5754fa1491c2fdb26e6c0357ad5a53",
-                                                               "committed_at":  "2026-07-10T21:46:08+04:00",
-                                                               "subject":  "cleanup: retire phase84 operation runtime chain"
+                                                               "head":  "2da513cccf2f987251863ed210abd253a69e3455",
+                                                               "committed_at":  "2026-07-15T16:09:09+04:00",
+                                                               "subject":  "fix: harden body inventory map validation"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -8304,9 +8304,9 @@
                                                       "operations/self_model/validate_route_v4_execution_report_phase_m_v1.ps1"
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "cc97c55f6b5754fa1491c2fdb26e6c0357ad5a53",
-                                                     "committed_at":  "2026-07-10T21:46:08+04:00",
-                                                     "subject":  "cleanup: retire phase84 operation runtime chain"
+                                                     "head":  "2da513cccf2f987251863ed210abd253a69e3455",
+                                                     "committed_at":  "2026-07-15T16:09:09+04:00",
+                                                     "subject":  "fix: harden body inventory map validation"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,

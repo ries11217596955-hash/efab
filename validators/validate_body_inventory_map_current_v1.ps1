@@ -1,4 +1,4 @@
-﻿$ErrorActionPreference = 'Stop'
+$ErrorActionPreference = 'Stop'
 $errors = New-Object System.Collections.Generic.List[string]
 function Add-Err([string]$Message) { $script:errors.Add($Message) | Out-Null }
 function Read-Json([string]$Path, [string]$Label) {
@@ -98,4 +98,3 @@ Write-Host "CONFIRMED_COMPONENT_COUNT=$($out.confirmed_component_count)"
 Write-Host "PRIMARY_EVIDENCE_CANDIDATE_COUNT=$($out.primary_evidence_candidate_count)"
 foreach ($e in $errors) { Write-Host "ERROR=$e" }
 if ($errors.Count -gt 0) { exit 1 }
-

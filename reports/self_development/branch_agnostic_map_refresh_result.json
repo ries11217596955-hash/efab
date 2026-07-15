@@ -1,18 +1,26 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-15T16:07:33.6101155+04:00",
+    "checked_at":  "2026-07-15T16:09:34.2290067+04:00",
     "branch":  "main",
-    "observed_head":  "e8f41f1abdc0d754e3167dd7e6a448e194863be4",
-    "subject_head":  "e8f41f1abdc0d754e3167dd7e6a448e194863be4",
-    "trigger_reason":  "body_inventory_map_hardening_indexed_validator_20260715",
+    "observed_head":  "2da513cccf2f987251863ed210abd253a69e3455",
+    "subject_head":  "2da513cccf2f987251863ed210abd253a69e3455",
+    "trigger_reason":  "body_inventory_map_hardening_eof_fix_20260715",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "operations/school/OWNER_SCHOOL_CONTROL_CONTRACT_V1.md"
+                          "operations/self_model/validate_body_map_primary_evidence_rebuild_v1.ps1",
+                          "reports/self_development/BODY_MAP_PRIMARY_EVIDENCE_REBUILD_V1.json",
+                          "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+                          "reports/self_development/agent_body_map.json",
+                          "reports/self_development/agent_body_map.md",
+                          "reports/self_development/branch_agnostic_map_refresh_result.json",
+                          "tests/self_development/BODY_MAP_PRIMARY_EVIDENCE_REBUILD_V1_PROOF.json",
+                          "validators/validate_body_inventory_map_current_v1.ps1"
                       ],
     "structural_paths":  [
-                             "operations/school/OWNER_SCHOOL_CONTROL_CONTRACT_V1.md"
+                             "operations/self_model/validate_body_map_primary_evidence_rebuild_v1.ps1",
+                             "validators/validate_body_inventory_map_current_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -25,7 +33,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  1979,
-                                    "sha256":  "6c8cd067299e18f19460fb4b19601bac810342edabe84e9282039de35964b38c"
+                                    "sha256":  "a79b40253f61c8c50f569c52fb8d76d66b890240a917519e4d055e6547a3d955"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -58,5 +66,5 @@
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-15T16:08:00.3604149+04:00"
+    "refreshed_at":  "2026-07-15T16:10:00.7112149+04:00"
 }
