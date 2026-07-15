@@ -6,22 +6,22 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "08b10b768d7a16fa5892fd12318fbd68ad010d4b",
-    "subject_head":  "08b10b768d7a16fa5892fd12318fbd68ad010d4b",
-    "generated_at":  "2026-07-15T22:47:30.2308136+04:00",
+    "observed_head_at_generation":  "495c85a85552f0f96871ac3c349b052ad2463cbc",
+    "subject_head":  "495c85a85552f0f96871ac3c349b052ad2463cbc",
+    "generated_at":  "2026-07-15T23:08:00.7546647+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
-    "trigger_reason":  "memory_commit_organ_v1_after_validator_proof_20260715",
+    "trigger_reason":  "memory_commit_batch_drain_reject_delete_fresh_signal_20260715",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  2026,
+    "structural_path_count":  2033,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2026,
-                                    "sha256":  "57e63541ce803a96f025a33d7aecaa7fcd1e16af82b826bfd7a7b4f815b21d82"
+                                    "structural_file_count":  2033,
+                                    "sha256":  "b6582697e33eccd6e0bcc47563e0c3425a884c2eef771019a63f8e58ed207bcb"
                                 },
     "module_count":  203,
-    "validator_count":  181,
+    "validator_count":  182,
     "confirmed_components":  [
                                  {
                                      "id":  "school",
@@ -601,12 +601,12 @@
                                      "root":  "operations/gpt_handoff",
                                      "status":  "CONFIRMED_PRIMARY_EVIDENCE_PRESENT",
                                      "confirmation_basis":  "explicit_required_component_with_primary_repo_evidence",
-                                     "file_count":  17,
+                                     "file_count":  19,
                                      "script_count":  0,
                                      "validator_count":  0,
                                      "proof_file_count":  0,
                                      "contract_or_policy_count":  0,
-                                     "doc_count":  11,
+                                     "doc_count":  12,
                                      "required_files":  [
                                                             "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
                                                         ],
@@ -630,9 +630,9 @@
 
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "cd1e3d0024149fd71ac6377d99c7ccaca3e76ac8",
-                                                               "committed_at":  "2026-07-15T17:26:11+04:00",
-                                                               "subject":  "fix: clean live school proof formatting"
+                                                               "head":  "495c85a85552f0f96871ac3c349b052ad2463cbc",
+                                                               "committed_at":  "2026-07-15T22:56:29+04:00",
+                                                               "subject":  "docs: add memory commit handoff"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -1874,17 +1874,17 @@
                                             "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                                             "discovery_method":  "bounded_git_ls_files_path_discovery",
                                             "evidence_counts":  {
-                                                                    "files":  8,
+                                                                    "files":  11,
                                                                     "scripts":  1,
                                                                     "validators":  0,
-                                                                    "proofs":  4,
+                                                                    "proofs":  7,
                                                                     "contracts_or_policies":  2,
                                                                     "docs":  1
                                                                 },
-                                            "file_count":  8,
+                                            "file_count":  11,
                                             "script_count":  1,
                                             "validator_count":  0,
-                                            "proof_file_count":  4,
+                                            "proof_file_count":  7,
                                             "contract_or_policy_count":  2,
                                             "doc_count":  1,
                                             "validator_refs":  [
@@ -1892,8 +1892,11 @@
                                                                ],
                                             "proof_refs":  [
                                                                "operations/memory_commit/proofs/MEMORY_COMMIT_AGENTLIFE_POST_SCHOOL_DRAIN_PROOF_20260715.json",
+                                                               "operations/memory_commit/proofs/MEMORY_COMMIT_BATCH_DRAIN_AGENTLIFE_PROOF_20260715.json",
+                                                               "operations/memory_commit/proofs/MEMORY_COMMIT_BATCH_DRAIN_RETENTION_PRUNE_20260715.json",
                                                                "operations/memory_commit/proofs/MEMORY_COMMIT_ORGAN_V1_IMPLEMENTATION_REPORT_20260715.json",
                                                                "operations/memory_commit/proofs/MEMORY_COMMIT_PROCESSED_AGENTLIFE_RETENTION_PRUNE_20260715.json",
+                                                               "operations/memory_commit/proofs/MEMORY_COMMIT_REJECT_DELETE_PROOF_20260715.json",
                                                                "operations/memory_commit/proofs/SCHOOL_ATOM_QUALITY_AUDIT_20260715.json"
                                                            ],
                                             "contract_or_policy_refs":  [
@@ -1905,8 +1908,11 @@
                                                                   "operations/memory_commit/memory_commit_controller_v1.ps1",
                                                                   "operations/memory_commit/memory_commit_policy_v1.json",
                                                                   "operations/memory_commit/proofs/MEMORY_COMMIT_AGENTLIFE_POST_SCHOOL_DRAIN_PROOF_20260715.json",
+                                                                  "operations/memory_commit/proofs/MEMORY_COMMIT_BATCH_DRAIN_AGENTLIFE_PROOF_20260715.json",
+                                                                  "operations/memory_commit/proofs/MEMORY_COMMIT_BATCH_DRAIN_RETENTION_PRUNE_20260715.json",
                                                                   "operations/memory_commit/proofs/MEMORY_COMMIT_ORGAN_V1_IMPLEMENTATION_REPORT_20260715.json",
                                                                   "operations/memory_commit/proofs/MEMORY_COMMIT_PROCESSED_AGENTLIFE_RETENTION_PRUNE_20260715.json",
+                                                                  "operations/memory_commit/proofs/MEMORY_COMMIT_REJECT_DELETE_PROOF_20260715.json",
                                                                   "operations/memory_commit/proofs/SCHOOL_ATOM_QUALITY_AUDIT_20260715.json",
                                                                   "operations/memory_commit/runtime_retention_policy_v1.json"
                                                               ],
@@ -1914,8 +1920,11 @@
                                                                           "operations/memory_commit/memory_commit_controller_v1.ps1",
                                                                           "operations/memory_commit/memory_commit_policy_v1.json",
                                                                           "operations/memory_commit/proofs/MEMORY_COMMIT_AGENTLIFE_POST_SCHOOL_DRAIN_PROOF_20260715.json",
+                                                                          "operations/memory_commit/proofs/MEMORY_COMMIT_BATCH_DRAIN_AGENTLIFE_PROOF_20260715.json",
+                                                                          "operations/memory_commit/proofs/MEMORY_COMMIT_BATCH_DRAIN_RETENTION_PRUNE_20260715.json",
                                                                           "operations/memory_commit/proofs/MEMORY_COMMIT_ORGAN_V1_IMPLEMENTATION_REPORT_20260715.json",
                                                                           "operations/memory_commit/proofs/MEMORY_COMMIT_PROCESSED_AGENTLIFE_RETENTION_PRUNE_20260715.json",
+                                                                          "operations/memory_commit/proofs/MEMORY_COMMIT_REJECT_DELETE_PROOF_20260715.json",
                                                                           "operations/memory_commit/proofs/SCHOOL_ATOM_QUALITY_AUDIT_20260715.json",
                                                                           "operations/memory_commit/runtime_retention_policy_v1.json"
                                                                       ],
@@ -8458,12 +8467,12 @@
                            "root":  "operations/gpt_handoff",
                            "status":  "CONFIRMED_PRIMARY_EVIDENCE_PRESENT",
                            "confirmation_basis":  "explicit_required_component_with_primary_repo_evidence",
-                           "file_count":  17,
+                           "file_count":  19,
                            "script_count":  0,
                            "validator_count":  0,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  0,
-                           "doc_count":  11,
+                           "doc_count":  12,
                            "required_files":  [
                                                   "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
                                               ],
@@ -8487,9 +8496,9 @@
 
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "cd1e3d0024149fd71ac6377d99c7ccaca3e76ac8",
-                                                     "committed_at":  "2026-07-15T17:26:11+04:00",
-                                                     "subject":  "fix: clean live school proof formatting"
+                                                     "head":  "495c85a85552f0f96871ac3c349b052ad2463cbc",
+                                                     "committed_at":  "2026-07-15T22:56:29+04:00",
+                                                     "subject":  "docs: add memory commit handoff"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -9729,17 +9738,17 @@
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                            "discovery_method":  "bounded_git_ls_files_path_discovery",
                            "evidence_counts":  {
-                                                   "files":  8,
+                                                   "files":  11,
                                                    "scripts":  1,
                                                    "validators":  0,
-                                                   "proofs":  4,
+                                                   "proofs":  7,
                                                    "contracts_or_policies":  2,
                                                    "docs":  1
                                                },
-                           "file_count":  8,
+                           "file_count":  11,
                            "script_count":  1,
                            "validator_count":  0,
-                           "proof_file_count":  4,
+                           "proof_file_count":  7,
                            "contract_or_policy_count":  2,
                            "doc_count":  1,
                            "validator_refs":  [
@@ -9747,8 +9756,11 @@
                                               ],
                            "proof_refs":  [
                                               "operations/memory_commit/proofs/MEMORY_COMMIT_AGENTLIFE_POST_SCHOOL_DRAIN_PROOF_20260715.json",
+                                              "operations/memory_commit/proofs/MEMORY_COMMIT_BATCH_DRAIN_AGENTLIFE_PROOF_20260715.json",
+                                              "operations/memory_commit/proofs/MEMORY_COMMIT_BATCH_DRAIN_RETENTION_PRUNE_20260715.json",
                                               "operations/memory_commit/proofs/MEMORY_COMMIT_ORGAN_V1_IMPLEMENTATION_REPORT_20260715.json",
                                               "operations/memory_commit/proofs/MEMORY_COMMIT_PROCESSED_AGENTLIFE_RETENTION_PRUNE_20260715.json",
+                                              "operations/memory_commit/proofs/MEMORY_COMMIT_REJECT_DELETE_PROOF_20260715.json",
                                               "operations/memory_commit/proofs/SCHOOL_ATOM_QUALITY_AUDIT_20260715.json"
                                           ],
                            "contract_or_policy_refs":  [
@@ -9760,8 +9772,11 @@
                                                  "operations/memory_commit/memory_commit_controller_v1.ps1",
                                                  "operations/memory_commit/memory_commit_policy_v1.json",
                                                  "operations/memory_commit/proofs/MEMORY_COMMIT_AGENTLIFE_POST_SCHOOL_DRAIN_PROOF_20260715.json",
+                                                 "operations/memory_commit/proofs/MEMORY_COMMIT_BATCH_DRAIN_AGENTLIFE_PROOF_20260715.json",
+                                                 "operations/memory_commit/proofs/MEMORY_COMMIT_BATCH_DRAIN_RETENTION_PRUNE_20260715.json",
                                                  "operations/memory_commit/proofs/MEMORY_COMMIT_ORGAN_V1_IMPLEMENTATION_REPORT_20260715.json",
                                                  "operations/memory_commit/proofs/MEMORY_COMMIT_PROCESSED_AGENTLIFE_RETENTION_PRUNE_20260715.json",
+                                                 "operations/memory_commit/proofs/MEMORY_COMMIT_REJECT_DELETE_PROOF_20260715.json",
                                                  "operations/memory_commit/proofs/SCHOOL_ATOM_QUALITY_AUDIT_20260715.json",
                                                  "operations/memory_commit/runtime_retention_policy_v1.json"
                                              ],
@@ -9769,8 +9784,11 @@
                                                          "operations/memory_commit/memory_commit_controller_v1.ps1",
                                                          "operations/memory_commit/memory_commit_policy_v1.json",
                                                          "operations/memory_commit/proofs/MEMORY_COMMIT_AGENTLIFE_POST_SCHOOL_DRAIN_PROOF_20260715.json",
+                                                         "operations/memory_commit/proofs/MEMORY_COMMIT_BATCH_DRAIN_AGENTLIFE_PROOF_20260715.json",
+                                                         "operations/memory_commit/proofs/MEMORY_COMMIT_BATCH_DRAIN_RETENTION_PRUNE_20260715.json",
                                                          "operations/memory_commit/proofs/MEMORY_COMMIT_ORGAN_V1_IMPLEMENTATION_REPORT_20260715.json",
                                                          "operations/memory_commit/proofs/MEMORY_COMMIT_PROCESSED_AGENTLIFE_RETENTION_PRUNE_20260715.json",
+                                                         "operations/memory_commit/proofs/MEMORY_COMMIT_REJECT_DELETE_PROOF_20260715.json",
                                                          "operations/memory_commit/proofs/SCHOOL_ATOM_QUALITY_AUDIT_20260715.json",
                                                          "operations/memory_commit/runtime_retention_policy_v1.json"
                                                      ],

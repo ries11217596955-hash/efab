@@ -1,6 +1,6 @@
 {
   "schema": "memory_commit_organ_v1_implementation_report",
-  "status": "PASS_MEMORY_COMMIT_ORGAN_V1_POST_SCHOOL_DRAIN",
+  "status": "PASS_MEMORY_COMMIT_ORGAN_V1_BATCH_DRAIN_REJECT_DELETE_PARTIAL_FRESH_SIGNAL",
   "created_at": "2026-07-15T22:44:02.6860684+04:00",
   "branch": "main",
   "head": "08b10b7",
@@ -41,7 +41,7 @@
     "count": 0,
     "bytes": null
   },
-  "known_gap": "Current drain is proven but one-packet-at-a-time; next optimization should batch valid AgentLife packets into one combined merge packet for faster post-school drain.",
+  "known_gap": "Fresh-memory signal is PARTIAL from existing trace: 13/20 exact School batch hashes observed by later AIMO cycles. Next live run must instrument explicit post-batch signal to reach PASS_AFTER_EACH_BATCH.",
   "retention": {
     "status": "PASS_MEMORY_COMMIT_PROCESSED_AGENTLIFE_RETENTION_PRUNE_V1",
     "processed_agentlife_before": 39,
@@ -49,5 +49,69 @@
     "deleted_count": 39,
     "summary_path": ".runtime\\memory_commit_organ_v1\\processed_retention_summary.jsonl",
     "tracked_proof": "operations/memory_commit/proofs/MEMORY_COMMIT_PROCESSED_AGENTLIFE_RETENTION_PRUNE_20260715.json"
+  },
+  "updated_at": "2026-07-15T19:07:03.012465+00:00",
+  "head_at_update": "495c85a",
+  "batch_drain": {
+    "status": "PASS_MEMORY_COMMIT_BATCH_DRAIN_AGENTLIFE_V1",
+    "queue_before": 3,
+    "valid_packet_count": 3,
+    "accepted_count": 3,
+    "rejected_count": 0,
+    "queue_after": 0,
+    "merge_status": "PASS_MULTI_SOURCE_COMPACT_MEMORY_MERGE_QUEUE_V1",
+    "active_memory_changed": true,
+    "tracked_proof": "operations/memory_commit/proofs/MEMORY_COMMIT_BATCH_DRAIN_AGENTLIFE_PROOF_20260715.json",
+    "runtime_proof": ".runtime/memory_commit_organ_v1/memory_commit_batch_20260715_230036_proof.json"
+  },
+  "reject_delete": {
+    "status": "PASS_MEMORY_COMMIT_REJECT_DELETE_V1",
+    "packet_deleted": true,
+    "rejected_count": 1,
+    "queue_after": 0,
+    "active_memory_changed": false,
+    "tracked_proof": "operations/memory_commit/proofs/MEMORY_COMMIT_REJECT_DELETE_PROOF_20260715.json",
+    "runtime_proof": ".runtime/memory_commit_organ_v1/reject_delete_selftest_20260715_230241.json"
+  },
+  "batch_retention": {
+    "status": "PASS_MEMORY_COMMIT_PROCESSED_AGENTLIFE_RETENTION_PRUNE_V1",
+    "processed_before": 0,
+    "processed_after": 0,
+    "processed_deleted": 0,
+    "batch_packet_before": 1,
+    "batch_packet_after": 0,
+    "batch_packet_deleted": 1,
+    "tracked_proof": "operations/memory_commit/proofs/MEMORY_COMMIT_BATCH_DRAIN_RETENTION_PRUNE_20260715.json",
+    "runtime_proof": ".runtime/memory_commit_organ_v1/processed_retention_prune_20260715_230558.json"
+  },
+  "fresh_memory_signal": {
+    "status": "PARTIAL_AIMO_FRESH_MEMORY_SIGNAL_OBSERVED_V1",
+    "school_changed_batches": 20,
+    "aimo_iterations": 37,
+    "aimo_iterations_with_memory_hash": 37,
+    "aimo_unique_memory_hashes": 14,
+    "exact_batch_matches": 13,
+    "missing_exact_matches": 7,
+    "interpretation": "Existing trace proves AIMO observed changing memory during School, but does not prove exact post-batch observation after every batch. Need explicit fresh-memory signal in next live test.",
+    "tracked_proof": "tests/self_development/AIMO_FRESH_MEMORY_SIGNAL_AFTER_SCHOOL_BATCH_V1_PROOF.json"
+  },
+  "active_memory_after_current_slice": {
+    "manifest.json": {
+      "bytes": 1888,
+      "sha256": "862a207f30be741bc7905598de137af215e7adb280830df6e80f7321afef33ba"
+    },
+    "index.json": {
+      "bytes": 311274,
+      "sha256": "4d5bec683fdb7b730e5dda88b916dcc9ec4973b54ae072e4b5c4c74c25fdd331"
+    },
+    "cells.jsonl": {
+      "bytes": 12679016,
+      "sha256": "9941072e25d335a96bca4ba7f3313a7e12b13f4215b360e9af150ac4d82236e8"
+    }
+  },
+  "runtime_after_current_slice": {
+    "queue_count": 0,
+    "processed_count": 0,
+    "batch_packet_count": 0
   }
 }

@@ -1,0 +1,111 @@
+{
+    "schema":  "memory_commit_reject_delete_selftest_v1",
+    "status":  "PASS_MEMORY_COMMIT_REJECT_DELETE_V1",
+    "bad_packet_path":  ".runtime\\compact_memory_intake_v1\\queue\\reject_delete_20260715_230240.json",
+    "packet_deleted":  true,
+    "drain_proof":  {
+                        "schema":  "memory_commit_batch_drain_proof_v1",
+                        "status":  "PASS_MEMORY_COMMIT_BATCH_DRAIN_AGENTLIFE_V1",
+                        "action":  "BatchDrainAgentLife",
+                        "reason":  "SelfTestRejectDelete",
+                        "run_id":  "memory_commit_batch_20260715_230240",
+                        "queue_root":  ".runtime/compact_memory_intake_v1/queue",
+                        "queue_before":  1,
+                        "queue_after":  0,
+                        "valid_packet_count":  0,
+                        "accepted_count":  0,
+                        "rejected_count":  1,
+                        "deleted_rejected_count":  1,
+                        "skipped_count":  0,
+                        "processed_count":  0,
+                        "combined_packet_path":  null,
+                        "merge_exit":  null,
+                        "merge_status":  null,
+                        "merge_proof":  null,
+                        "active_memory_before":  {
+                                                     "root":  ".runtime/active_compact_semantic_memory_v1",
+                                                     "files":  {
+                                                                   "manifest.json":  {
+                                                                                         "bytes":  1888,
+                                                                                         "sha256":  "862a207f30be741bc7905598de137af215e7adb280830df6e80f7321afef33ba",
+                                                                                         "last_write":  "2026-07-15T23:01:05.6517666+04:00"
+                                                                                     },
+                                                                   "index.json":  {
+                                                                                      "bytes":  311274,
+                                                                                      "sha256":  "4d5bec683fdb7b730e5dda88b916dcc9ec4973b54ae072e4b5c4c74c25fdd331",
+                                                                                      "last_write":  "2026-07-15T23:01:03.5330816+04:00"
+                                                                                  },
+                                                                   "cells.jsonl":  {
+                                                                                       "bytes":  12679016,
+                                                                                       "sha256":  "9941072e25d335a96bca4ba7f3313a7e12b13f4215b360e9af150ac4d82236e8",
+                                                                                       "last_write":  "2026-07-15T23:01:05.6179922+04:00"
+                                                                                   }
+                                                               }
+                                                 },
+                        "active_memory_after":  {
+                                                    "root":  ".runtime/active_compact_semantic_memory_v1",
+                                                    "files":  {
+                                                                  "manifest.json":  {
+                                                                                        "bytes":  1888,
+                                                                                        "sha256":  "862a207f30be741bc7905598de137af215e7adb280830df6e80f7321afef33ba",
+                                                                                        "last_write":  "2026-07-15T23:01:05.6517666+04:00"
+                                                                                    },
+                                                                  "index.json":  {
+                                                                                     "bytes":  311274,
+                                                                                     "sha256":  "4d5bec683fdb7b730e5dda88b916dcc9ec4973b54ae072e4b5c4c74c25fdd331",
+                                                                                     "last_write":  "2026-07-15T23:01:03.5330816+04:00"
+                                                                                 },
+                                                                  "cells.jsonl":  {
+                                                                                      "bytes":  12679016,
+                                                                                      "sha256":  "9941072e25d335a96bca4ba7f3313a7e12b13f4215b360e9af150ac4d82236e8",
+                                                                                      "last_write":  "2026-07-15T23:01:05.6179922+04:00"
+                                                                                  }
+                                                              }
+                                                },
+                        "active_memory_changed":  false,
+                        "events":  [
+                                       {
+                                           "packet":  "reject_delete_20260715_230240.json",
+                                           "source_kind":  "AgentLife",
+                                           "source_id":  "NegativeTest:reject_delete_20260715_230240",
+                                           "atom_count":  1,
+                                           "atoms":  [
+                                                         {
+                                                             "id":  "reject_delete_20260715_230240",
+                                                             "topic":  "negative.reject.delete",
+                                                             "quality_score":  0.1,
+                                                             "novelty_score":  0.1,
+                                                             "source_ref":  null
+                                                         }
+                                                     ],
+                                           "decision":  "REJECT_DELETE",
+                                           "reason":  "validation_status=FAIL",
+                                           "deleted":  true,
+                                           "timestamp":  "2026-07-15T23:02:41.3283222+04:00",
+                                           "validation":  {
+                                                              "status":  "FAIL",
+                                                              "exit_code":  1,
+                                                              "output":  [
+                                                                             "PACKET_VALIDATION_STATUS=FAIL",
+                                                                             "PACKET_VALIDATION_ERROR=ATOM_QUALITY_TOO_LOW",
+                                                                             "quality_score too low for reject_delete_20260715_230240",
+                                                                             "At H:\\efab\\operations\\compact_memory_intake\\validate_compact_memory_packet_v1.ps1:9 char:3",
+                                                                             "+   throw $Message",
+                                                                             "+   ~~~~~~~~~~~~~~",
+                                                                             "    + CategoryInfo          : OperationStopped: (quality_score t...20260715_230240:String) [], RuntimeException",
+                                                                             "    + FullyQualifiedErrorId : quality_score too low for reject_delete_20260715_230240",
+                                                                             " "
+                                                                         ]
+                                                          }
+                                       }
+                                   ],
+                        "created_at":  "2026-07-15T23:02:41.4283872+04:00",
+                        "retention":  {
+                                          "rejected_full_packets_deleted":  true,
+                                          "processed_summaries_path":  ".runtime\\memory_commit_organ_v1\\processed_summaries.jsonl",
+                                          "rejected_metrics_path":  ".runtime\\memory_commit_organ_v1\\rejected_metrics.jsonl",
+                                          "accepted_source_packets_deleted":  false
+                                      }
+                    },
+    "created_at":  "2026-07-15T23:02:41.4683111+04:00"
+}

@@ -2,9 +2,9 @@
 
 Status: ACTIVE_DERIVED_VIEW
 Branch: main
-Observed head at generation: 08b10b768d7a16fa5892fd12318fbd68ad010d4b
-Generated: 2026-07-15T22:47:30.2308136+04:00
-Body source fingerprint: 57e63541ce803a96f025a33d7aecaa7fcd1e16af82b826bfd7a7b4f815b21d82
+Observed head at generation: 495c85a85552f0f96871ac3c349b052ad2463cbc
+Generated: 2026-07-15T23:08:00.7546647+04:00
+Body source fingerprint: b6582697e33eccd6e0bcc47563e0c3425a884c2eef771019a63f8e58ed207bcb
 
 Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
@@ -30,7 +30,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `knowledge_acquisition_port` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/knowledge_acquisition_port`, files=50, scripts=2, required_present=True
 - `map_control` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/map_control`, files=2, scripts=0, required_present=True
 - `operations_self_model` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/self_model`, files=62, scripts=62, required_present=True
-- `gpt_handoff` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/gpt_handoff`, files=17, scripts=0, required_present=True
+- `gpt_handoff` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/gpt_handoff`, files=19, scripts=0, required_present=True
 
 ## Candidate Triage Queue
 
@@ -54,7 +54,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `operations_live_start` - root `operations/live_start`, files=5, scripts=5, validators=2, proofs=0, needs_triage=True
 - `operations_living_loop` - root `operations/living_loop`, files=21, scripts=21, validators=11, proofs=0, needs_triage=True
 - `operations_memory` - root `operations/memory`, files=4, scripts=4, validators=2, proofs=0, needs_triage=True
-- `operations_memory_commit` - root `operations/memory_commit`, files=8, scripts=1, validators=0, proofs=4, needs_triage=True
+- `operations_memory_commit` - root `operations/memory_commit`, files=11, scripts=1, validators=0, proofs=7, needs_triage=True
 - `operations_organ_promotion_lanes` - root `operations/organ_promotion_lanes`, files=5, scripts=5, validators=3, proofs=0, needs_triage=True
 - `operations_overnight_school` - root `operations/overnight_school`, files=3, scripts=3, validators=1, proofs=0, needs_triage=True
 - `operations_parallel_life` - root `operations/parallel_life`, files=5, scripts=5, validators=3, proofs=0, needs_triage=True

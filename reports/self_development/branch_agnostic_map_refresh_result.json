@@ -1,46 +1,22 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-15T22:47:02.8144244+04:00",
+    "checked_at":  "2026-07-15T23:07:32.9701740+04:00",
     "branch":  "main",
-    "observed_head":  "08b10b768d7a16fa5892fd12318fbd68ad010d4b",
-    "subject_head":  "08b10b768d7a16fa5892fd12318fbd68ad010d4b",
-    "trigger_reason":  "memory_commit_organ_v1_after_validator_proof_20260715",
+    "observed_head":  "495c85a85552f0f96871ac3c349b052ad2463cbc",
+    "subject_head":  "495c85a85552f0f96871ac3c349b052ad2463cbc",
+    "trigger_reason":  "memory_commit_batch_drain_reject_delete_fresh_signal_20260715",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "operations/autonomous_inner_motor/AUTONOMOUS_INNER_MOTOR_ORGAN_SPEC.md",
-                          "operations/autonomous_inner_motor/dual_pipe_memory_policy.json",
-                          "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_PROOF_20260715.json",
-                          "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DUAL_PIPE_MEMORY_INGESTION_REPORT_20260715.json",
-                          "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_V0_IMPLEMENTATION_REPORT.json",
-                          "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
-                          "operations/compact_memory_intake/merge_compact_memory_intake_queue_v1.ps1",
-                          "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-                          "reports/self_development/agent_body_map.json",
-                          "reports/self_development/agent_body_map.md",
-                          "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "tests/self_development/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_V1_PROOF.json",
-                          "tests/self_development/AUTONOMOUS_INNER_MOTOR_DUAL_PIPE_MEMORY_INGESTION_V1_PROOF.json",
-                          "tests/self_development/AUTONOMOUS_INNER_MOTOR_MEMORY_ATOM_ACCEPTANCE_GATE_V1_PROOF.json",
-                          "validators/validate_autonomous_inner_motor_deep_thinking_memory_learning_v1.ps1",
-                          "validators/validate_autonomous_inner_motor_dual_pipe_memory_ingestion_v1.ps1",
-                          "validators/validate_autonomous_inner_motor_memory_atom_acceptance_gate_v1.ps1"
+                          "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
+                          "operations/gpt_handoff/NEXT_CHAT_HANDOFF_20260715_MEMORY_COMMIT_ORGAN.md",
+                          "operations/gpt_handoff/NEXT_CHAT_HANDOFF_20260715_MEMORY_COMMIT_STATUS.json"
                       ],
     "structural_paths":  [
-                             "operations/autonomous_inner_motor/AUTONOMOUS_INNER_MOTOR_ORGAN_SPEC.md",
-                             "operations/autonomous_inner_motor/dual_pipe_memory_policy.json",
-                             "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_PROOF_20260715.json",
-                             "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DUAL_PIPE_MEMORY_INGESTION_REPORT_20260715.json",
-                             "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_V0_IMPLEMENTATION_REPORT.json",
-                             "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
-                             "operations/compact_memory_intake/merge_compact_memory_intake_queue_v1.ps1",
-                             "tests/self_development/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_V1_PROOF.json",
-                             "tests/self_development/AUTONOMOUS_INNER_MOTOR_DUAL_PIPE_MEMORY_INGESTION_V1_PROOF.json",
-                             "tests/self_development/AUTONOMOUS_INNER_MOTOR_MEMORY_ATOM_ACCEPTANCE_GATE_V1_PROOF.json",
-                             "validators/validate_autonomous_inner_motor_deep_thinking_memory_learning_v1.ps1",
-                             "validators/validate_autonomous_inner_motor_dual_pipe_memory_ingestion_v1.ps1",
-                             "validators/validate_autonomous_inner_motor_memory_atom_acceptance_gate_v1.ps1"
+                             "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
+                             "operations/gpt_handoff/NEXT_CHAT_HANDOFF_20260715_MEMORY_COMMIT_ORGAN.md",
+                             "operations/gpt_handoff/NEXT_CHAT_HANDOFF_20260715_MEMORY_COMMIT_STATUS.json"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -52,8 +28,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2026,
-                                    "sha256":  "57e63541ce803a96f025a33d7aecaa7fcd1e16af82b826bfd7a7b4f815b21d82"
+                                    "structural_file_count":  2033,
+                                    "sha256":  "b6582697e33eccd6e0bcc47563e0c3425a884c2eef771019a63f8e58ed207bcb"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -79,12 +55,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  151,
-                         "structural_path_count":  2026,
+                         "structural_path_count":  2033,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-15T22:47:30.6721291+04:00"
+    "refreshed_at":  "2026-07-15T23:08:01.2520299+04:00"
 }

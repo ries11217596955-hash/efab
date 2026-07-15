@@ -1,10 +1,11 @@
 param(
-  [ValidateSet('Status','DrainAgentLife','PostSchoolComplete','AuditSchoolQuality','PruneProcessedAgentLife')][string]$Action='Status',
+  [ValidateSet('Status','DrainAgentLife','PostSchoolComplete','AuditSchoolQuality','PruneProcessedAgentLife','BatchDrainAgentLife','SelfTestRejectDelete')][string]$Action='Status',
   [int]$MaxPackets=0,
   [string]$QueueRoot='.runtime/compact_memory_intake_v1/queue',
   [string]$RunRoot='.runtime/memory_commit_organ_v1',
   [switch]$DeleteRejected,
   [switch]$SummarizeProcessed,
+  [switch]$BatchMerge,
   [string]$SchoolRunDir='.runtime/canonical_exact_count_cycle/canonical_exact_count_cycle_real_2000_20260715_211515'
 )
 $ErrorActionPreference='Stop'
@@ -74,10 +75,24 @@ function Get-QueuePackets([string]$Root,[int]$Limit){
   return $items
 }
 function Validate-Packet([string]$Path){
-  $out=@(& powershell -NoProfile -ExecutionPolicy Bypass -File 'operations/compact_memory_intake/validate_compact_memory_packet_v1.ps1' -PacketPath $Path *>&1 | ForEach-Object { [string]$_ })
+  $previousPreference=$ErrorActionPreference
+  $ErrorActionPreference='Continue'
+  $out=@()
+  $exitCode=$null
+  try {
+    $out=@(& powershell -NoProfile -ExecutionPolicy Bypass -File 'operations/compact_memory_intake/validate_compact_memory_packet_v1.ps1' -PacketPath $Path *>&1 | ForEach-Object { [string]$_ })
+    $exitCode=$LASTEXITCODE
+  } catch {
+    $out += [string]$_.Exception.Message
+    $exitCode=1
+  } finally {
+    $ErrorActionPreference=$previousPreference
+  }
   $status=($out | Where-Object { $_ -match '^PACKET_VALIDATION_STATUS=' } | Select-Object -Last 1) -replace '^PACKET_VALIDATION_STATUS=',''
-  if([string]::IsNullOrWhiteSpace($status)){ $status='UNKNOWN' }
-  return [ordered]@{ status=$status; output=@($out) }
+  if([string]::IsNullOrWhiteSpace($status)){
+    if($exitCode -ne 0){ $status='FAIL_PACKET_VALIDATION_EXCEPTION' } else { $status='UNKNOWN' }
+  }
+  return [ordered]@{ status=$status; exit_code=$exitCode; output=@($out) }
 }
 function Packet-Summary([string]$Path,[string]$Decision,[string]$Reason){
   $packet=Read-JsonSafe $Path
@@ -85,6 +100,176 @@ function Packet-Summary([string]$Path,[string]$Decision,[string]$Reason){
   if($packet -and $packet.atoms){ foreach($a in @($packet.atoms)){ $atoms += [ordered]@{ id=$a.id; topic=$a.topic; quality_score=$a.quality_score; novelty_score=$a.novelty_score; source_ref=$a.source_ref } } }
   return [ordered]@{ packet=(Split-Path $Path -Leaf); source_kind=if($packet){$packet.source_kind}else{$null}; source_id=if($packet){$packet.source_id}else{$null}; atom_count=@($atoms).Count; atoms=@($atoms); decision=$Decision; reason=$Reason; deleted=$false; timestamp=(Get-Date).ToString('o') }
 }
+
+function New-CombinedAgentLifePacket([array]$ValidItems,[string]$RunId,[string]$OutputDir){
+  New-Item -ItemType Directory -Force -Path $OutputDir | Out-Null
+  $atoms=@(); $sourceFiles=@(); $minQuality=1.0; $minNovelty=1.0
+  foreach($item in $ValidItems){
+    $packet=$item.packet
+    $sourceFiles += [string]$item.path
+    foreach($a in @($packet.atoms)){
+      $atom=[ordered]@{}
+      foreach($prop in $a.PSObject.Properties){ $atom[$prop.Name]=$prop.Value }
+      if([string]::IsNullOrWhiteSpace([string]$atom.id)){ $atom.id='agentlife_atom_'+([guid]::NewGuid().ToString('n')) }
+      if($null -eq $atom.quality_score){ $atom.quality_score=0.95 }
+      if($null -eq $atom.novelty_score){ $atom.novelty_score=0.60 }
+      $minQuality=[Math]::Min($minQuality,[double]$atom.quality_score)
+      $minNovelty=[Math]::Min($minNovelty,[double]$atom.novelty_score)
+      $atoms += $atom
+    }
+  }
+  $combined=[ordered]@{
+    schema='compact_memory_knowledge_packet_v1'
+    source_kind='AgentLife'
+    source_id=('MemoryCommitBatchDrain:'+$RunId)
+    created_at=(Get-Date).ToString('o')
+    atoms=@($atoms)
+    quality_summary=[ordered]@{ atom_count=@($atoms).Count; min_quality_score=$minQuality; min_novelty_score=$minNovelty; combined_from_packets=@($ValidItems).Count }
+    boundary=[ordered]@{ source='MEMORY_COMMIT_BATCH_DRAIN'; direct_active_memory_write=$false; combined_agentlife_packets=@($ValidItems).Count; original_packet_paths=@($sourceFiles) }
+  }
+  $path=Join-Path $OutputDir ('agentlife_batch_'+$RunId+'.json')
+  Write-CleanJson $path $combined 80
+  return [ordered]@{ path=$path; packet=$combined; source_files=@($sourceFiles) }
+}
+function Invoke-BatchDrainAgentLife([int]$Limit,[string]$Reason){
+  New-Item -ItemType Directory -Force -Path $RunRoot | Out-Null
+  $runId='memory_commit_batch_'+(Get-Date -Format 'yyyyMMdd_HHmmss')
+  $proofPath=Join-Path $RunRoot ($runId + '_proof.json')
+  $rejectedPath=Join-Path $RunRoot 'rejected_metrics.jsonl'
+  $processedSummaryPath=Join-Path $RunRoot 'processed_summaries.jsonl'
+  $before=Get-ActiveMemoryState
+  $busy=Test-MemoryPathBusy
+  $allPackets=@(Get-QueuePackets $QueueRoot $Limit)
+  if($busy.busy){
+    $out=[ordered]@{ schema='memory_commit_batch_drain_proof_v1'; status='BLOCKED_MEMORY_PATH_BUSY'; action='BatchDrainAgentLife'; reason=$Reason; busy=$busy; queue_root=$QueueRoot; queue_before=@($allPackets).Count; queue_after=@(Get-QueuePackets $QueueRoot 0).Count; active_memory_before=$before; active_memory_after=$before; created_at=(Get-Date).ToString('o') }
+    Write-CleanJson $proofPath $out 40
+    Write-Host "MEMORY_COMMIT_BATCH_STATUS=BLOCKED_MEMORY_PATH_BUSY"
+    Write-Host "MEMORY_COMMIT_BATCH_PROOF=$proofPath"
+    return $out
+  }
+  $valid=@(); $events=@(); $rejected=0; $deletedRejected=0; $skipped=0
+  foreach($file in $allPackets){
+    $packet=Read-JsonSafe $file.FullName
+    $sourceKind=if($packet){ [string]$packet.source_kind } else { '<bad_json>' }
+    if($sourceKind -ne 'AgentLife'){
+      $skipped++
+      $events += [ordered]@{ packet=$file.Name; decision='SKIP_NON_AGENTLIFE'; source_kind=$sourceKind }
+      continue
+    }
+    $validation=Validate-Packet $file.FullName
+    if($validation.status -ne 'PASS_COMPACT_MEMORY_KNOWLEDGE_PACKET_V1'){
+      $rejected++
+      $summary=Packet-Summary $file.FullName 'REJECT_DELETE' ('validation_status='+$validation.status)
+      $summary.validation=$validation
+      $deleteRequired=($DeleteRejected.IsPresent -or $Reason -eq 'SelfTestRejectDelete')
+      if($deleteRequired){ Remove-Item -LiteralPath $file.FullName -Force; $summary.deleted=$true; $deletedRejected++ }
+      Append-CleanJsonLine $rejectedPath $summary
+      $events += $summary
+      continue
+    }
+    $valid += [ordered]@{ file=$file; path=$file.FullName; packet=$packet; validation=$validation }
+  }
+  $accepted=0; $processed=0; $mergeProof=$null; $mergeStatus=$null; $mergeExit=$null; $combinedPath=$null
+  if(@($valid).Count -gt 0){
+    $combined=New-CombinedAgentLifePacket $valid $runId (Join-Path $RunRoot 'batch_packets')
+    $combinedPath=$combined.path
+    $combinedValidation=Validate-Packet $combinedPath
+    if($combinedValidation.status -ne 'PASS_COMPACT_MEMORY_KNOWLEDGE_PACKET_V1'){
+      $rejected += @($valid).Count
+      foreach($item in $valid){
+        $summary=Packet-Summary $item.path 'REJECT_DELETE' ('combined_validation_status='+$combinedValidation.status)
+        $deleteRequired=($DeleteRejected.IsPresent -or $Reason -eq 'SelfTestRejectDelete')
+        if($deleteRequired){ Remove-Item -LiteralPath $item.path -Force; $summary.deleted=$true; $deletedRejected++ }
+        Append-CleanJsonLine $rejectedPath $summary
+        $events += $summary
+      }
+    } else {
+      $mergeOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File 'operations/compact_memory_intake/merge_compact_memory_intake_queue_v1.ps1' -PacketPath $combinedPath -ProcessLimit 1 *>&1 | ForEach-Object { [string]$_ })
+      $mergeExit=$LASTEXITCODE
+      $mergeStatus=($mergeOut | Where-Object { $_ -match '^MERGE_QUEUE_STATUS=' } | Select-Object -Last 1) -replace '^MERGE_QUEUE_STATUS=',''
+      $mergeProof=($mergeOut | Where-Object { $_ -match '^MERGE_QUEUE_PROOF=' } | Select-Object -Last 1) -replace '^MERGE_QUEUE_PROOF=',''
+      if($mergeExit -eq 0 -and $mergeStatus -eq 'PASS_MULTI_SOURCE_COMPACT_MEMORY_MERGE_QUEUE_V1'){
+        foreach($item in $valid){
+          if(Test-Path -LiteralPath $item.path){ Remove-Item -LiteralPath $item.path -Force }
+          $event=Packet-Summary $item.path 'ACCEPT_BATCH_MERGE' ('merge_status='+$mergeStatus)
+          $event.deleted=$true; $event.combined_packet_path=$combinedPath; $event.merge_proof=$mergeProof
+          Append-CleanJsonLine $processedSummaryPath $event
+          $events += $event
+        }
+        $accepted=@($valid).Count; $processed=@($valid).Count
+      } else {
+        foreach($item in $valid){
+          $event=Packet-Summary $item.path 'MERGE_FAILED_KEEP_PENDING' ('merge_status='+$mergeStatus)
+          $event.deleted=$false; $event.merge_output_tail=@($mergeOut | Select-Object -Last 8)
+          Append-CleanJsonLine $rejectedPath $event
+          $events += $event
+        }
+      }
+    }
+  }
+  $after=Get-ActiveMemoryState
+  $out=[ordered]@{
+    schema='memory_commit_batch_drain_proof_v1'
+    status='PASS_MEMORY_COMMIT_BATCH_DRAIN_AGENTLIFE_V1'
+    action='BatchDrainAgentLife'
+    reason=$Reason
+    run_id=$runId
+    queue_root=$QueueRoot
+    queue_before=@($allPackets).Count
+    queue_after=@(Get-QueuePackets $QueueRoot 0).Count
+    valid_packet_count=@($valid).Count
+    accepted_count=$accepted
+    rejected_count=$rejected
+    deleted_rejected_count=$deletedRejected
+    skipped_count=$skipped
+    processed_count=$processed
+    combined_packet_path=$combinedPath
+    merge_exit=$mergeExit
+    merge_status=$mergeStatus
+    merge_proof=$mergeProof
+    active_memory_before=$before
+    active_memory_after=$after
+    active_memory_changed=($($before.files | ConvertTo-Json -Depth 20) -ne $($after.files | ConvertTo-Json -Depth 20))
+    events=@($events)
+    created_at=(Get-Date).ToString('o')
+    retention=[ordered]@{ rejected_full_packets_deleted=($DeleteRejected.IsPresent -or $Reason -eq 'SelfTestRejectDelete'); processed_summaries_path=$processedSummaryPath; rejected_metrics_path=$rejectedPath; accepted_source_packets_deleted=($accepted -gt 0) }
+  }
+  Write-CleanJson $proofPath $out 80
+  Write-Host "MEMORY_COMMIT_BATCH_STATUS=$($out.status)"
+  Write-Host "VALID_PACKET_COUNT=$($out.valid_packet_count)"
+  Write-Host "ACCEPTED_COUNT=$accepted"
+  Write-Host "REJECTED_COUNT=$rejected"
+  Write-Host "QUEUE_AFTER=$($out.queue_after)"
+  Write-Host "ACTIVE_MEMORY_CHANGED=$($out.active_memory_changed)"
+  Write-Host "MEMORY_COMMIT_BATCH_PROOF=$proofPath"
+  return $out
+}
+function Invoke-SelfTestRejectDelete {
+  New-Item -ItemType Directory -Force -Path $QueueRoot | Out-Null
+  $testId='reject_delete_'+(Get-Date -Format 'yyyyMMdd_HHmmss')
+  $badPath=Join-Path $QueueRoot ($testId+'.json')
+  $bad=[ordered]@{
+    schema='compact_memory_knowledge_packet_v1'
+    source_kind='AgentLife'
+    source_id=('NegativeTest:'+$testId)
+    created_at=(Get-Date).ToString('o')
+    atoms=@([ordered]@{ id=$testId; topic='negative.reject.delete'; level=1; quality_score=0.10; novelty_score=0.10; summary='bad packet intentionally below quality threshold'; behavior_use_hint='must be rejected and deleted' })
+    quality_summary=[ordered]@{ atom_count=1; min_quality_score=0.10; min_novelty_score=0.10 }
+    boundary=[ordered]@{ source='MEMORY_COMMIT_NEGATIVE_TEST'; direct_active_memory_write=$false }
+  }
+  Write-CleanJson $badPath $bad 30
+  $proof=Invoke-BatchDrainAgentLife 1 'SelfTestRejectDelete'
+  $deleted=(-not(Test-Path -LiteralPath $badPath))
+  $status=if($proof.rejected_count -ge 1 -and $deleted){'PASS_MEMORY_COMMIT_REJECT_DELETE_V1'}else{'FAIL_MEMORY_COMMIT_REJECT_DELETE_V1'}
+  $out=[ordered]@{ schema='memory_commit_reject_delete_selftest_v1'; status=$status; bad_packet_path=$badPath; packet_deleted=$deleted; drain_proof=$proof; created_at=(Get-Date).ToString('o') }
+  $path=Join-Path $RunRoot ('reject_delete_selftest_'+(Get-Date -Format 'yyyyMMdd_HHmmss')+'.json')
+  Write-CleanJson $path $out 80
+  Write-Host "REJECT_DELETE_STATUS=$status"
+  Write-Host "PACKET_DELETED=$deleted"
+  Write-Host "REJECT_DELETE_PROOF=$path"
+  return $out
+}
+
 function Invoke-DrainAgentLife([int]$Limit,[string]$Reason){
   New-Item -ItemType Directory -Force -Path $RunRoot | Out-Null
   $runId='memory_commit_'+(Get-Date -Format 'yyyyMMdd_HHmmss')
@@ -114,7 +299,8 @@ function Invoke-DrainAgentLife([int]$Limit,[string]$Reason){
       $rejected++
       $summary=Packet-Summary $file.FullName 'REJECT_DELETE' ('validation_status='+$validation.status)
       $summary.validation=$validation
-      if($DeleteRejected){ Remove-Item -LiteralPath $file.FullName -Force; $summary.deleted=$true; $deletedRejected++ }
+      $deleteRequired=($DeleteRejected.IsPresent -or $Reason -eq 'SelfTestRejectDelete')
+      if($deleteRequired){ Remove-Item -LiteralPath $file.FullName -Force; $summary.deleted=$true; $deletedRejected++ }
       Append-CleanJsonLine $rejectedPath $summary
       $events += $summary
       continue
@@ -153,7 +339,7 @@ function Invoke-DrainAgentLife([int]$Limit,[string]$Reason){
     active_memory_changed=($($before.files | ConvertTo-Json -Depth 20) -ne $($after.files | ConvertTo-Json -Depth 20))
     events=@($events)
     created_at=(Get-Date).ToString('o')
-    retention=[ordered]@{ rejected_full_packets_deleted=$DeleteRejected.IsPresent; processed_summaries_path=$processedSummaryPath; rejected_metrics_path=$rejectedPath; full_processed_packet_retention='existing_merge_processed_retention_not_yet_pruned' }
+    retention=[ordered]@{ rejected_full_packets_deleted=($DeleteRejected.IsPresent -or $Reason -eq 'SelfTestRejectDelete'); processed_summaries_path=$processedSummaryPath; rejected_metrics_path=$rejectedPath; full_processed_packet_retention='existing_merge_processed_retention_not_yet_pruned' }
   }
   Write-CleanJson $proofPath $out 60
   Write-Host "MEMORY_COMMIT_STATUS=$($out.status)"
@@ -170,7 +356,7 @@ function Invoke-PruneProcessedAgentLife {
   $summaryPath=Join-Path $RunRoot 'processed_retention_summary.jsonl'
   $processedRoot='.runtime/compact_memory_intake_v1/processed'
   $beforeFiles=@()
-  if(Test-Path -LiteralPath $processedRoot){ $beforeFiles=@(Get-ChildItem -LiteralPath $processedRoot -Recurse -File -Filter 'agentlife_aimo_*.processed' -ErrorAction SilentlyContinue) }
+  if(Test-Path -LiteralPath $processedRoot){ $beforeFiles=@(Get-ChildItem -LiteralPath $processedRoot -Recurse -File -Filter '*.processed' -ErrorAction SilentlyContinue) }
   $deleted=0; $kept=0; $events=@()
   foreach($f in $beforeFiles){
     $packet=Read-JsonSafe $f.FullName
@@ -187,8 +373,20 @@ function Invoke-PruneProcessedAgentLife {
     $events += $summary
   }
   $afterFiles=@()
-  if(Test-Path -LiteralPath $processedRoot){ $afterFiles=@(Get-ChildItem -LiteralPath $processedRoot -Recurse -File -Filter 'agentlife_aimo_*.processed' -ErrorAction SilentlyContinue) }
-  $proof=[ordered]@{ schema='memory_commit_processed_retention_prune_v1'; status='PASS_MEMORY_COMMIT_PROCESSED_AGENTLIFE_RETENTION_PRUNE_V1'; processed_root=$processedRoot; before_count=@($beforeFiles).Count; after_count=@($afterFiles).Count; deleted_count=$deleted; kept_count=$kept; summary_path=$summaryPath; events=@($events); created_at=(Get-Date).ToString('o') }
+  if(Test-Path -LiteralPath $processedRoot){ $afterFiles=@(Get-ChildItem -LiteralPath $processedRoot -Recurse -File -Filter '*.processed' -ErrorAction SilentlyContinue) }
+  $batchPacketRoot=Join-Path $RunRoot 'batch_packets'
+  $batchBefore=@()
+  if(Test-Path -LiteralPath $batchPacketRoot){ $batchBefore=@(Get-ChildItem -LiteralPath $batchPacketRoot -File -Filter 'agentlife_batch_*.json' -ErrorAction SilentlyContinue) }
+  $batchDeleted=0
+  foreach($bf in $batchBefore){
+    $summary=[ordered]@{ file=$bf.FullName; name=$bf.Name; bytes=$bf.Length; deleted=$true; reason='combined_agentlife_batch_packet_replaced_by_merge_proof_and_processed_summary'; timestamp=(Get-Date).ToString('o') }
+    Append-CleanJsonLine $summaryPath $summary
+    Remove-Item -LiteralPath $bf.FullName -Force
+    $batchDeleted++
+  }
+  $batchAfter=@()
+  if(Test-Path -LiteralPath $batchPacketRoot){ $batchAfter=@(Get-ChildItem -LiteralPath $batchPacketRoot -File -Filter 'agentlife_batch_*.json' -ErrorAction SilentlyContinue) }
+  $proof=[ordered]@{ schema='memory_commit_processed_retention_prune_v1'; status='PASS_MEMORY_COMMIT_PROCESSED_AGENTLIFE_RETENTION_PRUNE_V1'; processed_root=$processedRoot; before_count=@($beforeFiles).Count; after_count=@($afterFiles).Count; deleted_count=$deleted; kept_count=$kept; batch_packet_root=$batchPacketRoot; batch_packet_before_count=@($batchBefore).Count; batch_packet_after_count=@($batchAfter).Count; batch_packet_deleted_count=$batchDeleted; summary_path=$summaryPath; events=@($events); created_at=(Get-Date).ToString('o') }
   $proofPath=Join-Path $RunRoot ('processed_retention_prune_'+(Get-Date -Format 'yyyyMMdd_HHmmss')+'.json')
   Write-CleanJson $proofPath $proof 60
   Write-Host "MEMORY_COMMIT_RETENTION_STATUS=$($proof.status)"
@@ -247,4 +445,6 @@ if($Action -eq 'Status'){
 }
 if($Action -eq 'AuditSchoolQuality'){ Invoke-SchoolQualityAudit $SchoolRunDir | Out-Null; return }
 if($Action -eq 'PruneProcessedAgentLife'){ Invoke-PruneProcessedAgentLife | Out-Null; return }
-if($Action -eq 'DrainAgentLife' -or $Action -eq 'PostSchoolComplete'){ Invoke-DrainAgentLife $MaxPackets $Action | Out-Null; return }
+if($Action -eq 'BatchDrainAgentLife'){ Invoke-BatchDrainAgentLife $MaxPackets $Action | Out-Null; return }
+if($Action -eq 'SelfTestRejectDelete'){ Invoke-SelfTestRejectDelete | Out-Null; return }
+if($Action -eq 'DrainAgentLife' -or $Action -eq 'PostSchoolComplete'){ if($BatchMerge){ Invoke-BatchDrainAgentLife $MaxPackets $Action | Out-Null } else { Invoke-DrainAgentLife $MaxPackets $Action | Out-Null }; return }

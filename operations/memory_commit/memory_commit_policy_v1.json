@@ -20,7 +20,8 @@
   "rejected_packet_rule": {
     "store_full_rejected_packet": false,
     "delete_packet_immediately": true,
-    "keep_only_compact_metric": true
+    "keep_only_compact_metric": true,
+    "negative_proof_required": "SelfTestRejectDelete"
   },
   "accepted_packet_rule": {
     "delete_queue_packet_after_successful_commit": true,
@@ -39,5 +40,9 @@
     "rejected_deleted_immediately",
     "active_memory_hash_changed_for_accepted",
     "runtime_size_reported"
-  ]
+  ],
+  "batch_drain": {
+    "status": "ACTIVE",
+    "rule": "Combine valid AgentLife packets into one compact packet and run one merge/publish cycle when memory path is free. Delete original source packets after successful merge."
+  }
 }

@@ -1,0 +1,115 @@
+{
+    "schema":  "memory_commit_batch_drain_proof_v1",
+    "status":  "PASS_MEMORY_COMMIT_BATCH_DRAIN_AGENTLIFE_V1",
+    "action":  "BatchDrainAgentLife",
+    "reason":  "BatchDrainAgentLife",
+    "run_id":  "memory_commit_batch_20260715_230036",
+    "queue_root":  ".runtime/compact_memory_intake_v1/queue",
+    "queue_before":  3,
+    "queue_after":  0,
+    "valid_packet_count":  3,
+    "accepted_count":  3,
+    "rejected_count":  0,
+    "deleted_rejected_count":  0,
+    "skipped_count":  0,
+    "processed_count":  3,
+    "combined_packet_path":  ".runtime\\memory_commit_organ_v1\\batch_packets\\agentlife_batch_memory_commit_batch_20260715_230036.json",
+    "merge_exit":  0,
+    "merge_status":  "PASS_MULTI_SOURCE_COMPACT_MEMORY_MERGE_QUEUE_V1",
+    "merge_proof":  ".runtime\\compact_memory_intake_v1\\merge_runs\\merge_queue_20260715_230039\\COMPACT_MEMORY_MERGE_QUEUE_RESULT_V1.json",
+    "active_memory_before":  {
+                                 "root":  ".runtime/active_compact_semantic_memory_v1",
+                                 "files":  {
+                                               "manifest.json":  {
+                                                                     "bytes":  1888,
+                                                                     "sha256":  "c7360deed7790561759dd481fd806a88724b5237f5f339d906d87bd5610a6f97",
+                                                                     "last_write":  "2026-07-15T22:42:58.4702406+04:00"
+                                                                 },
+                                               "index.json":  {
+                                                                  "bytes":  311062,
+                                                                  "sha256":  "23454e01581552321e5adc2aa135b30c16a4746908ecb68a81ae075592fde116",
+                                                                  "last_write":  "2026-07-15T22:42:56.6256967+04:00"
+                                                              },
+                                               "cells.jsonl":  {
+                                                                   "bytes":  12678289,
+                                                                   "sha256":  "a6db59a0267a8068ed45e55dda41c312d03b3b5094fd3685d12ddbc521b53fcb",
+                                                                   "last_write":  "2026-07-15T22:42:58.4444217+04:00"
+                                                               }
+                                           }
+                             },
+    "active_memory_after":  {
+                                "root":  ".runtime/active_compact_semantic_memory_v1",
+                                "files":  {
+                                              "manifest.json":  {
+                                                                    "bytes":  1888,
+                                                                    "sha256":  "862a207f30be741bc7905598de137af215e7adb280830df6e80f7321afef33ba",
+                                                                    "last_write":  "2026-07-15T23:01:05.6517666+04:00"
+                                                                },
+                                              "index.json":  {
+                                                                 "bytes":  311274,
+                                                                 "sha256":  "4d5bec683fdb7b730e5dda88b916dcc9ec4973b54ae072e4b5c4c74c25fdd331",
+                                                                 "last_write":  "2026-07-15T23:01:03.5330816+04:00"
+                                                             },
+                                              "cells.jsonl":  {
+                                                                  "bytes":  12679016,
+                                                                  "sha256":  "9941072e25d335a96bca4ba7f3313a7e12b13f4215b360e9af150ac4d82236e8",
+                                                                  "last_write":  "2026-07-15T23:01:05.6179922+04:00"
+                                                              }
+                                          }
+                            },
+    "active_memory_changed":  true,
+    "events":  [
+                   {
+                       "packet":  "batch_drain_selftest_20260715_230034_1.json",
+                       "source_kind":  null,
+                       "source_id":  null,
+                       "atom_count":  0,
+                       "atoms":  [
+
+                                 ],
+                       "decision":  "ACCEPT_BATCH_MERGE",
+                       "reason":  "merge_status=PASS_MULTI_SOURCE_COMPACT_MEMORY_MERGE_QUEUE_V1",
+                       "deleted":  true,
+                       "timestamp":  "2026-07-15T23:01:06.4677343+04:00",
+                       "combined_packet_path":  ".runtime\\memory_commit_organ_v1\\batch_packets\\agentlife_batch_memory_commit_batch_20260715_230036.json",
+                       "merge_proof":  ".runtime\\compact_memory_intake_v1\\merge_runs\\merge_queue_20260715_230039\\COMPACT_MEMORY_MERGE_QUEUE_RESULT_V1.json"
+                   },
+                   {
+                       "packet":  "batch_drain_selftest_20260715_230034_2.json",
+                       "source_kind":  null,
+                       "source_id":  null,
+                       "atom_count":  0,
+                       "atoms":  [
+
+                                 ],
+                       "decision":  "ACCEPT_BATCH_MERGE",
+                       "reason":  "merge_status=PASS_MULTI_SOURCE_COMPACT_MEMORY_MERGE_QUEUE_V1",
+                       "deleted":  true,
+                       "timestamp":  "2026-07-15T23:01:06.4832574+04:00",
+                       "combined_packet_path":  ".runtime\\memory_commit_organ_v1\\batch_packets\\agentlife_batch_memory_commit_batch_20260715_230036.json",
+                       "merge_proof":  ".runtime\\compact_memory_intake_v1\\merge_runs\\merge_queue_20260715_230039\\COMPACT_MEMORY_MERGE_QUEUE_RESULT_V1.json"
+                   },
+                   {
+                       "packet":  "batch_drain_selftest_20260715_230034_3.json",
+                       "source_kind":  null,
+                       "source_id":  null,
+                       "atom_count":  0,
+                       "atoms":  [
+
+                                 ],
+                       "decision":  "ACCEPT_BATCH_MERGE",
+                       "reason":  "merge_status=PASS_MULTI_SOURCE_COMPACT_MEMORY_MERGE_QUEUE_V1",
+                       "deleted":  true,
+                       "timestamp":  "2026-07-15T23:01:06.5018866+04:00",
+                       "combined_packet_path":  ".runtime\\memory_commit_organ_v1\\batch_packets\\agentlife_batch_memory_commit_batch_20260715_230036.json",
+                       "merge_proof":  ".runtime\\compact_memory_intake_v1\\merge_runs\\merge_queue_20260715_230039\\COMPACT_MEMORY_MERGE_QUEUE_RESULT_V1.json"
+                   }
+               ],
+    "created_at":  "2026-07-15T23:01:06.5839103+04:00",
+    "retention":  {
+                      "rejected_full_packets_deleted":  true,
+                      "processed_summaries_path":  ".runtime\\memory_commit_organ_v1\\processed_summaries.jsonl",
+                      "rejected_metrics_path":  ".runtime\\memory_commit_organ_v1\\rejected_metrics.jsonl",
+                      "accepted_source_packets_deleted":  true
+                  }
+}
