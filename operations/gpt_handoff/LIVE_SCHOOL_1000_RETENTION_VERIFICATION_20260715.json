@@ -1,0 +1,237 @@
+{
+  "schema": "live_school_1000_retention_verification_v1",
+  "created_at": "2026-07-15T13:21:34.904926+00:00",
+  "branch": "main",
+  "head": "b02c212",
+  "origin_delta": "0\t0",
+  "status": "PASS_LIVE_SCHOOL_1000_RETENTION_VERIFICATION",
+  "run_command": "operations/school/run_agent_school.ps1 -Count 1000 -Mode Live -Topics AUTO",
+  "run_proof_path": "operations/reports/CANONICAL_EXACT_COUNT_CYCLE_RUN_20260715_171952.json",
+  "run_proof_sha256": "a9dd8110edf37302cda0fbb28d9837b0db35585fa1efc50dbed61552474dbf5b",
+  "cycle_report_path": ".runtime/canonical_exact_count_cycle/canonical_exact_count_cycle_real_1000_20260715_171146/exact_count_cycle_report.json",
+  "target_accepted": 1000,
+  "accepted_count": 1000,
+  "micro_batch_size": 100,
+  "micro_batch_count": 10,
+  "batch_counts": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+  ],
+  "cycle_status": "PASS_REAL_CODEX_EXACT_COUNT_CYCLE_WITH_ABSORB_V1",
+  "school_run_status": "PASS_CANONICAL_EXACT_COUNT_CYCLE_LIVE_V1",
+  "absorb": true,
+  "memory_changed": true,
+  "consumer_report_count": 10,
+  "consumers": [
+    {
+      "report": ".runtime/canonical_exact_count_cycle/canonical_exact_count_cycle_real_1000_20260715_171146/consumer_001_report.json",
+      "batch": "micro_001",
+      "state": "ABSORBED",
+      "accepted": 100,
+      "status": "PASS_FILE_ATOM_ABSORPTION_PIPELINE_V1",
+      "memory_changed": true
+    },
+    {
+      "report": ".runtime/canonical_exact_count_cycle/canonical_exact_count_cycle_real_1000_20260715_171146/consumer_002_report.json",
+      "batch": "micro_002",
+      "state": "ABSORBED",
+      "accepted": 100,
+      "status": "PASS_FILE_ATOM_ABSORPTION_PIPELINE_V1",
+      "memory_changed": true
+    },
+    {
+      "report": ".runtime/canonical_exact_count_cycle/canonical_exact_count_cycle_real_1000_20260715_171146/consumer_003_report.json",
+      "batch": "micro_003",
+      "state": "ABSORBED",
+      "accepted": 100,
+      "status": "PASS_FILE_ATOM_ABSORPTION_PIPELINE_V1",
+      "memory_changed": true
+    },
+    {
+      "report": ".runtime/canonical_exact_count_cycle/canonical_exact_count_cycle_real_1000_20260715_171146/consumer_004_report.json",
+      "batch": "micro_004",
+      "state": "ABSORBED",
+      "accepted": 100,
+      "status": "PASS_FILE_ATOM_ABSORPTION_PIPELINE_V1",
+      "memory_changed": true
+    },
+    {
+      "report": ".runtime/canonical_exact_count_cycle/canonical_exact_count_cycle_real_1000_20260715_171146/consumer_005_report.json",
+      "batch": "micro_005",
+      "state": "ABSORBED",
+      "accepted": 100,
+      "status": "PASS_FILE_ATOM_ABSORPTION_PIPELINE_V1",
+      "memory_changed": true
+    },
+    {
+      "report": ".runtime/canonical_exact_count_cycle/canonical_exact_count_cycle_real_1000_20260715_171146/consumer_006_report.json",
+      "batch": "micro_006",
+      "state": "ABSORBED",
+      "accepted": 100,
+      "status": "PASS_FILE_ATOM_ABSORPTION_PIPELINE_V1",
+      "memory_changed": true
+    },
+    {
+      "report": ".runtime/canonical_exact_count_cycle/canonical_exact_count_cycle_real_1000_20260715_171146/consumer_007_report.json",
+      "batch": "micro_007",
+      "state": "ABSORBED",
+      "accepted": 100,
+      "status": "PASS_FILE_ATOM_ABSORPTION_PIPELINE_V1",
+      "memory_changed": true
+    },
+    {
+      "report": ".runtime/canonical_exact_count_cycle/canonical_exact_count_cycle_real_1000_20260715_171146/consumer_008_report.json",
+      "batch": "micro_008",
+      "state": "ABSORBED",
+      "accepted": 100,
+      "status": "PASS_FILE_ATOM_ABSORPTION_PIPELINE_V1",
+      "memory_changed": true
+    },
+    {
+      "report": ".runtime/canonical_exact_count_cycle/canonical_exact_count_cycle_real_1000_20260715_171146/consumer_009_report.json",
+      "batch": "micro_009",
+      "state": "ABSORBED",
+      "accepted": 100,
+      "status": "PASS_FILE_ATOM_ABSORPTION_PIPELINE_V1",
+      "memory_changed": true
+    },
+    {
+      "report": ".runtime/canonical_exact_count_cycle/canonical_exact_count_cycle_real_1000_20260715_171146/consumer_010_report.json",
+      "batch": "micro_010",
+      "state": "ABSORBED",
+      "accepted": 100,
+      "status": "PASS_FILE_ATOM_ABSORPTION_PIPELINE_V1",
+      "memory_changed": true
+    }
+  ],
+  "new_absorption_report_count": 10,
+  "retention_reports": [
+    {
+      "run_id": "file_atom_absorption_20260715_171452",
+      "merged": 99,
+      "removed": true,
+      "exists_after": false,
+      "removed_bytes": 12871683,
+      "removed_mb": 12.28,
+      "candidate": ".runtime/file_atom_absorption/file_atom_absorption_20260715_171452/memory_candidate"
+    },
+    {
+      "run_id": "file_atom_absorption_20260715_171521",
+      "merged": 100,
+      "removed": true,
+      "exists_after": false,
+      "removed_bytes": 12887784,
+      "removed_mb": 12.29,
+      "candidate": ".runtime/file_atom_absorption/file_atom_absorption_20260715_171521/memory_candidate"
+    },
+    {
+      "run_id": "file_atom_absorption_20260715_171550",
+      "merged": 100,
+      "removed": true,
+      "exists_after": false,
+      "removed_bytes": 12903884,
+      "removed_mb": 12.31,
+      "candidate": ".runtime/file_atom_absorption/file_atom_absorption_20260715_171550/memory_candidate"
+    },
+    {
+      "run_id": "file_atom_absorption_20260715_171619",
+      "merged": 100,
+      "removed": true,
+      "exists_after": false,
+      "removed_bytes": 12919984,
+      "removed_mb": 12.32,
+      "candidate": ".runtime/file_atom_absorption/file_atom_absorption_20260715_171619/memory_candidate"
+    },
+    {
+      "run_id": "file_atom_absorption_20260715_171649",
+      "merged": 100,
+      "removed": true,
+      "exists_after": false,
+      "removed_bytes": 12936084,
+      "removed_mb": 12.34,
+      "candidate": ".runtime/file_atom_absorption/file_atom_absorption_20260715_171649/memory_candidate"
+    },
+    {
+      "run_id": "file_atom_absorption_20260715_171719",
+      "merged": 100,
+      "removed": true,
+      "exists_after": false,
+      "removed_bytes": 12952184,
+      "removed_mb": 12.35,
+      "candidate": ".runtime/file_atom_absorption/file_atom_absorption_20260715_171719/memory_candidate"
+    },
+    {
+      "run_id": "file_atom_absorption_20260715_171749",
+      "merged": 100,
+      "removed": true,
+      "exists_after": false,
+      "removed_bytes": 12968284,
+      "removed_mb": 12.37,
+      "candidate": ".runtime/file_atom_absorption/file_atom_absorption_20260715_171749/memory_candidate"
+    },
+    {
+      "run_id": "file_atom_absorption_20260715_171821",
+      "merged": 100,
+      "removed": true,
+      "exists_after": false,
+      "removed_bytes": 12984384,
+      "removed_mb": 12.38,
+      "candidate": ".runtime/file_atom_absorption/file_atom_absorption_20260715_171821/memory_candidate"
+    },
+    {
+      "run_id": "file_atom_absorption_20260715_171851",
+      "merged": 100,
+      "removed": true,
+      "exists_after": false,
+      "removed_bytes": 13000484,
+      "removed_mb": 12.4,
+      "candidate": ".runtime/file_atom_absorption/file_atom_absorption_20260715_171851/memory_candidate"
+    },
+    {
+      "run_id": "file_atom_absorption_20260715_171923",
+      "merged": 100,
+      "removed": true,
+      "exists_after": false,
+      "removed_bytes": 12923993,
+      "removed_mb": 12.33,
+      "candidate": ".runtime/file_atom_absorption/file_atom_absorption_20260715_171923/memory_candidate"
+    }
+  ],
+  "retention_pass": true,
+  "active_candidate_count_after": 0,
+  "active_candidates_after": [],
+  "file_atom_absorption_bytes_after": 176328,
+  "file_atom_absorption_mb_after": 0.17,
+  "active_memory_after": [
+    {
+      "path": ".runtime/active_compact_semantic_memory_v1/cells.jsonl",
+      "bytes": 12611973,
+      "sha256": "f72f6cbbd476c921bf47d9260f4fd0109207d0ee286468c2fe36317efe2af9f4"
+    },
+    {
+      "path": ".runtime/active_compact_semantic_memory_v1/index.json",
+      "bytes": 310128,
+      "sha256": "9c1996de0004aae47710193172bc12ea1665e7d066b489e457a3d153b83bef34"
+    },
+    {
+      "path": ".runtime/active_compact_semantic_memory_v1/manifest.json",
+      "bytes": 1892,
+      "sha256": "d224b2e95d3d283a2e211c72eac655612163400978bbf236d46fa3367adffa6d"
+    }
+  ],
+  "boundary": {
+    "active_memory_was_updated_by_live_absorption": true,
+    "active_memory_deleted": false,
+    "reports_proofs_deleted": false,
+    "runtime_candidate_cleanup_per_batch_verified": true,
+    "live_runtime_ready_claimed": false
+  }
+}

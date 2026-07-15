@@ -1,20 +1,28 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-15T17:04:53.7684017+04:00",
+    "checked_at":  "2026-07-15T17:21:49.3853121+04:00",
     "branch":  "main",
-    "observed_head":  "b2793411643ffba6ed29e927fcc36a7b25f1a123",
-    "subject_head":  "b2793411643ffba6ed29e927fcc36a7b25f1a123",
-    "trigger_reason":  "file_atom_absorption_batch_retention_clean_writer_20260715",
+    "observed_head":  "b02c2125002f8efe4f4d4adc8b4a5ac41aeb9c78",
+    "subject_head":  "b02c2125002f8efe4f4d4adc8b4a5ac41aeb9c78",
+    "trigger_reason":  "live_school_1000_retention_verification_report_20260715",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "operations/gpt_handoff/RUNTIME_BLOAT_ROOT_CAUSE_AUDIT_V1.json",
-                          "operations/gpt_handoff/RUNTIME_BLOAT_ROOT_CAUSE_AUDIT_V1.md"
+                          "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
+                          "operations/school/digestion/absorb_atom_file_via_digest_pipeline_v1.ps1",
+                          "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+                          "reports/self_development/agent_body_map.json",
+                          "reports/self_development/agent_body_map.md",
+                          "reports/self_development/branch_agnostic_map_refresh_result.json",
+                          "tests/self_development/FILE_ATOM_ABSORPTION_BATCH_RETENTION_V1_PROOF.json",
+                          "validators/validate_file_atom_absorption_batch_retention_v1.ps1"
                       ],
     "structural_paths":  [
-                             "operations/gpt_handoff/RUNTIME_BLOAT_ROOT_CAUSE_AUDIT_V1.json",
-                             "operations/gpt_handoff/RUNTIME_BLOAT_ROOT_CAUSE_AUDIT_V1.md"
+                             "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
+                             "operations/school/digestion/absorb_atom_file_via_digest_pipeline_v1.ps1",
+                             "tests/self_development/FILE_ATOM_ABSORPTION_BATCH_RETENTION_V1_PROOF.json",
+                             "validators/validate_file_atom_absorption_batch_retention_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -26,8 +34,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1988,
-                                    "sha256":  "f7dff88e9cc3404e27767cff358495837a6477da604f1c36dedc943cb8107f68"
+                                    "structural_file_count":  1990,
+                                    "sha256":  "a813a1cf6bb425c40dc7a99fcdea20ced89e55652f0493c3f583fc67fefea75d"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -53,12 +61,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  149,
-                         "structural_path_count":  1988,
+                         "structural_path_count":  1990,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-15T17:05:21.0682079+04:00"
+    "refreshed_at":  "2026-07-15T17:22:16.9260631+04:00"
 }
