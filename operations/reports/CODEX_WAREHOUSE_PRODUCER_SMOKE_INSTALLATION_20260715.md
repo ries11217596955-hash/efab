@@ -1,26 +1,23 @@
 ﻿# CODEX_WAREHOUSE_PRODUCER_SMOKE_INSTALLATION_20260715
 
-Status: PASS_CODEX_WAREHOUSE_PRODUCER_SMOKE_CONNECTED_WITH_RECOVERY_NO_ABSORB_V1
+Status: PASS_CODEX_WAREHOUSE_PRODUCER_HAPPY_PATH_READY_MARKER_NO_ABSORB_V1
 
-Real Codex producer was connected to the dynamic warehouse request in smoke mode.
-
-Result:
+Real Codex producer happy-path is proven for one micro-batch.
 
 `	ext
-Codex produced micro_001 READY payload = 100 JSONL lines
-Codex failed before marker/heartbeat completion due sandbox rename/timeout behavior
-School recovered READY marker after validating payload
-School consumed 100 candidates without absorption
+Codex wrote micro_001.READY.jsonl directly
+Codex wrote micro_001.READY.marker.json
+Codex wrote producer.heartbeat.json
+School consumed 100 candidates
+absorption_run = false
 memory_changed = false
 `
 
-Protocol repair:
+Runner repair:
 
 `	ext
-READY marker remains authoritative.
-If sandbox denies rename, producer may copy/write READY.jsonl directly and then write marker.
-School recovery can validate unmarked READY payload and create recovered READY marker.
+The smoke prompt forbids tmp/rename and requires direct READY write.
+If Codex CLI stays alive after valid READY output, runner treats timeout-after-ready as success and kills only its own process tree.
 `
 
 Boundary: no absorption was run.
-

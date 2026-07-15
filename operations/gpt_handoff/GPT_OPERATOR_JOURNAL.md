@@ -1,4 +1,4 @@
-﻿# GPT_OPERATOR_JOURNAL â€” ACTIVE CURRENT STATE ONLY
+# GPT_OPERATOR_JOURNAL â€” ACTIVE CURRENT STATE ONLY
 
 Updated: 2026-07-14T17:52:26.206917+00:00
 Repo HEAD at update: 3625b8f
@@ -288,3 +288,28 @@ School reselects next topic only after request complete/closed.
 Only ABSORBED counts as memory progress.
 ```
 
+
+
+## Real Codex warehouse producer happy path
+
+```text
+real_codex_warehouse_producer = happy-path proven
+status = PASS_REAL_CODEX_WAREHOUSE_HAPPY_PATH_READY_MARKER_CONSUMED_NO_ABSORB_V1
+producer_status = CODEX_PRODUCER_READY_CREATED
+ready_jsonl_lines = 100
+ready_marker = created
+heartbeat = created
+school_consumer_status = PASS_WAREHOUSE_CONSUMED_READY_BATCHES_NO_ABSORB_V1
+accepted_count = 100
+absorption_run = False
+memory_changed = False
+```
+
+Meaning:
+
+```text
+Codex can now produce one READY warehouse micro-batch directly.
+School can consume and validate 100 candidates without recovery and without absorption.
+Runner treats timeout after valid READY output as producer success and kills only its own process tree.
+Next safe slice: enable absorption for exactly one READY micro-batch of 100.
+```

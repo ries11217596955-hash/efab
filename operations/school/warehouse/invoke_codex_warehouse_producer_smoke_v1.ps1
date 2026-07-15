@@ -85,23 +85,34 @@ $basePrompt
 
 # SMOKE LIMIT OVERRIDE
 
-This is a real producer smoke test. Produce ONLY the first micro-batch now:
+This is a real producer smoke test. Produce ONLY the first micro-batch now.
+
+IMPORTANT: for this smoke test, ignore any earlier tmp/rename protocol. Do NOT use tmp_jsonl. Do NOT rename files. Write the final READY JSONL directly, then write the READY marker, then update heartbeat.
 
 ```text
 micro_batch_id = $($first.micro_batch_id)
 candidate_count = $($first.candidate_count)
-writing_marker = $($first.writing_marker)
-tmp_jsonl = $($first.tmp_jsonl)
 ready_jsonl = $($first.ready_jsonl)
 ready_marker = $($first.ready_marker)
 heartbeat_path = $($task.heartbeat_path)
+```
+
+Required exact order for this smoke:
+
+```text
+1. create parent directory if needed
+2. write exactly 100 JSONL lines to ready_jsonl
+3. verify ready_jsonl has exactly 100 lines
+4. write ready_marker JSON with status=READY
+5. write producer heartbeat JSON
+6. stop immediately
 ```
 
 Do not produce micro_002 or later in this smoke test.
 Do not write producer.DONE.marker.json in this smoke test.
 Do not mutate active compact memory.
 Do not edit tracked repo files.
-After micro_001 is READY, stop.
+After READY marker and heartbeat are written, stop.
 
 # EXECUTION CONSTRAINTS
 
@@ -124,9 +135,21 @@ The shell may run in constrained PowerShell language mode. Therefore:
   AddEvent 'CODEX_PRODUCER_LAUNCH' @{codex_cmd=$codexCmd; prompt_path=$promptPath; timeout_seconds=$CodexTimeoutSeconds}
   $p=Start-Process -FilePath $env:ComSpec -ArgumentList @('/d','/c',$cmdLine) -NoNewWindow -PassThru
   if(-not $p.WaitForExit($CodexTimeoutSeconds*1000)){
+    if((Test-Path ([string]$first.ready_marker)) -and (Test-Path ([string]$first.ready_jsonl))){
+      $lineCount=(Get-Content ([string]$first.ready_jsonl) | Measure-Object).Count
+      if($lineCount -eq [int]$first.candidate_count){
+        $producerStatus='CODEX_PRODUCER_READY_CREATED'
+        $producerFailureClass='TIMEOUT_AFTER_READY_OUTPUT'
+        AddEvent 'CODEX_PRODUCER_READY_CREATED_TIMEOUT_GRACE' @{ready_jsonl=$first.ready_jsonl; ready_marker=$first.ready_marker; line_count=$lineCount; root_pid=$p.Id; process_tree_killed=$true; stdout=$stdoutPath; stderr=$stderrPath}
+      } else {
+        $producerStatus='CODEX_FAILED'; $producerFailureClass="HANG_OR_TIMEOUT_READY_LINE_MISMATCH:$lineCount/$($first.candidate_count)"
+        AddEvent 'CODEX_FAILED' @{failure_class=$producerFailureClass; root_pid=$p.Id; process_tree_killed=$true; stdout=$stdoutPath; stderr=$stderrPath}
+      }
+    } else {
+      $producerStatus='CODEX_FAILED'; $producerFailureClass='HANG_OR_TIMEOUT'
+      AddEvent 'CODEX_FAILED' @{failure_class=$producerFailureClass; root_pid=$p.Id; process_tree_killed=$true; stdout=$stdoutPath; stderr=$stderrPath}
+    }
     Stop-ProcessTreeByRootPid -RootPid ([int]$p.Id)
-    $producerStatus='CODEX_FAILED'; $producerFailureClass='HANG_OR_TIMEOUT'
-    AddEvent 'CODEX_FAILED' @{failure_class=$producerFailureClass; root_pid=$p.Id; process_tree_killed=$true; stdout=$stdoutPath; stderr=$stderrPath}
   } elseif($p.ExitCode -ne 0){
     $producerStatus='CODEX_FAILED'; $producerFailureClass='NONZERO_EXIT'
     AddEvent 'CODEX_FAILED' @{failure_class=$producerFailureClass; exit_code=$p.ExitCode; stdout=$stdoutPath; stderr=$stderrPath}
