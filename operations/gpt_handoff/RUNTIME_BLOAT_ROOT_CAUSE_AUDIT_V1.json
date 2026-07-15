@@ -1,0 +1,55 @@
+{
+  "schema": "runtime_bloat_root_cause_audit_v1",
+  "created_at": "2026-07-15T12:53:58.498534+00:00",
+  "branch": "main",
+  "head": "f89a8a7",
+  "origin_delta": "0\t0",
+  "status": "ROOT_CAUSE_IDENTIFIED_NO_PATCH",
+  "root_cause": "absorb_atom_file_via_digest_pipeline_v1 creates a per-run candidate copy of active compact memory under .runtime/file_atom_absorption/<run>/memory_candidate, publishes it to active memory, but does not remove the candidate directory after successful publish.",
+  "call_chain": [
+    "operations/school/run_agent_school.ps1 Live mode adds -Absorb to exact count cycle",
+    "operations/school/warehouse/invoke_exact_count_warehouse_cycle_v1.ps1 passes -Absorb to consume_codex_warehouse_micro_batches_v1.ps1",
+    "operations/school/warehouse/consume_codex_warehouse_micro_batches_v1.ps1 calls operations/school/digestion/absorb_atom_file_via_digest_pipeline_v1.ps1 for each micro-batch",
+    "absorb_atom_file_via_digest_pipeline_v1.ps1 copies active memory to .runtime/file_atom_absorption/<run>/memory_candidate",
+    "digest organ writes cells/index/manifest in memory_candidate and deletes raw normalized input",
+    "pipeline publishes memory_candidate into .runtime/active_compact_semantic_memory_v1",
+    "pipeline leaves memory_candidate directory behind"
+  ],
+  "evidence_lines": {
+    "run_agent_school.ps1": [
+      "line 026: Live exact cycle args add -Absorb"
+    ],
+    "invoke_exact_count_warehouse_cycle_v1.ps1": [
+      "line 132: calls consume_codex_warehouse_micro_batches_v1.ps1 -Absorb"
+    ],
+    "consume_codex_warehouse_micro_batches_v1.ps1": [
+      "line 060: calls absorb_atom_file_via_digest_pipeline_v1.ps1 -InputPath normalized_atoms_jsonl"
+    ],
+    "absorb_atom_file_via_digest_pipeline_v1.ps1": [
+      "line 073: runRoot=.runtime/file_atom_absorption/$runId",
+      "line 087: candidateMemoryRoot=$runRoot/memory_candidate",
+      "line 094: Copy-Item targetMemoryRoot to candidateMemoryRoot",
+      "line 164: invoke_compact_semantic_digestion_organ_v1.ps1 -MemoryRoot candidateMemoryRoot -CleanupRawSource",
+      "lines 181-182: staged raw source and raw source dependency are checked deleted",
+      "line 200: Publish-ActiveMemoryRootWithRetry candidateMemoryRoot -> targetMemoryRoot",
+      "missing: no Remove-Item candidateMemoryRoot after successful publish"
+    ],
+    "invoke_compact_semantic_digestion_organ_v1.ps1": [
+      "line 187: CleanupRawSource removes only input raw source, not candidate memory root"
+    ]
+  },
+  "manual_cleanup_repeat_risk": "YES, for Live School with absorption, unless retention cleanup is added. Test mode without Absorb should not create these memory_candidate copies through the exact-count route.",
+  "protected_boundaries": {
+    "active_memory_delete_required": false,
+    "active_memory_should_not_be_touched_by_cleanup": true,
+    "reports_proofs_should_not_be_dedup_deleted": true,
+    "duplicate_cleanup_should_be_a_separate_manifested_slice": true
+  },
+  "recommended_fix": {
+    "type": "pipeline_retention_patch",
+    "target": "operations/school/digestion/absorb_atom_file_via_digest_pipeline_v1.ps1",
+    "behavior": "after successful publish and report write, remove .runtime/file_atom_absorption/<run>/memory_candidate by default, keep compact proof and optionally latest N failed/debug runs",
+    "must_record": "candidate_memory_root_removed, removed_bytes, active_memory_hash_after_publish, proof_path, no reports/proofs deleted",
+    "validator_needed": "validate no stale successful memory_candidate dirs remain outside active memory after absorption success"
+  }
+}
