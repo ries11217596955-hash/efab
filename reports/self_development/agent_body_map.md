@@ -2,9 +2,9 @@
 
 Status: ACTIVE_DERIVED_VIEW
 Branch: main
-Observed head at generation: 495c85a85552f0f96871ac3c349b052ad2463cbc
-Generated: 2026-07-15T23:08:00.7546647+04:00
-Body source fingerprint: b6582697e33eccd6e0bcc47563e0c3425a884c2eef771019a63f8e58ed207bcb
+Observed head at generation: 4676cdb46c0d436a75fc708ca982958543b01ed5
+Generated: 2026-07-15T23:34:55.8982072+04:00
+Body source fingerprint: 88e320db7a307538835e6de745b55e0817e491bb3e158484634c1c4a83658884
 
 Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
@@ -24,7 +24,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
 ## Confirmed Components
 
-- `school` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/school`, files=144, scripts=84, required_present=True
+- `school` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/school`, files=138, scripts=78, required_present=True
 - `school_source_router` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/school/curriculum/source_router`, files=8, scripts=6, required_present=True
 - `compact_memory_intake` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/compact_memory_intake`, files=10, scripts=6, required_present=True
 - `knowledge_acquisition_port` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/knowledge_acquisition_port`, files=50, scripts=2, required_present=True

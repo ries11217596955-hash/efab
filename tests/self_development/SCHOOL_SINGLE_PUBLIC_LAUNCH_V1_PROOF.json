@@ -1,0 +1,20 @@
+{
+    "schema":  "school_single_public_launch_validation_v1",
+    "status":  "PASS_SCHOOL_SINGLE_PUBLIC_LAUNCH_V1",
+    "checked_at":  "2026-07-15T23:34:13.4781122+04:00",
+    "public_launcher":  "operations/school/run_agent_school.ps1",
+    "removed_bicycles":  [
+                             "operations/school/warehouse/invoke_exact_count_warehouse_cycle_v1.ps1",
+                             "operations/school/warehouse/consume_codex_warehouse_micro_batches_v1.ps1",
+                             "operations/school/warehouse/invoke_codex_warehouse_producer_smoke_v1.ps1",
+                             "operations/school/warehouse/validate_codex_warehouse_pipeline_v1.ps1",
+                             "operations/school/warehouse/validate_codex_warehouse_producer_smoke_v1.ps1",
+                             "operations/school/warehouse/validate_generic_exact_count_cycle_v1.ps1"
+                         ],
+    "live_refs_to_removed_bicycles":  [
+
+                                      ],
+    "errors":  [
+
+               ]
+}

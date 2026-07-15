@@ -1,22 +1,42 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-15T23:07:32.9701740+04:00",
+    "checked_at":  "2026-07-15T23:34:28.0657014+04:00",
     "branch":  "main",
-    "observed_head":  "495c85a85552f0f96871ac3c349b052ad2463cbc",
-    "subject_head":  "495c85a85552f0f96871ac3c349b052ad2463cbc",
-    "trigger_reason":  "memory_commit_batch_drain_reject_delete_fresh_signal_20260715",
+    "observed_head":  "4676cdb46c0d436a75fc708ca982958543b01ed5",
+    "subject_head":  "4676cdb46c0d436a75fc708ca982958543b01ed5",
+    "trigger_reason":  "school_single_public_launch_one_bike_20260715",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                          "operations/gpt_handoff/NEXT_CHAT_HANDOFF_20260715_MEMORY_COMMIT_ORGAN.md",
-                          "operations/gpt_handoff/NEXT_CHAT_HANDOFF_20260715_MEMORY_COMMIT_STATUS.json"
+                          "operations/memory_commit/memory_commit_controller_v1.ps1",
+                          "operations/memory_commit/memory_commit_policy_v1.json",
+                          "operations/memory_commit/proofs/MEMORY_COMMIT_BATCH_DRAIN_AGENTLIFE_PROOF_20260715.json",
+                          "operations/memory_commit/proofs/MEMORY_COMMIT_BATCH_DRAIN_RETENTION_PRUNE_20260715.json",
+                          "operations/memory_commit/proofs/MEMORY_COMMIT_ORGAN_V1_IMPLEMENTATION_REPORT_20260715.json",
+                          "operations/memory_commit/proofs/MEMORY_COMMIT_REJECT_DELETE_PROOF_20260715.json",
+                          "operations/memory_commit/runtime_retention_policy_v1.json",
+                          "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+                          "reports/self_development/agent_body_map.json",
+                          "reports/self_development/agent_body_map.md",
+                          "reports/self_development/branch_agnostic_map_refresh_result.json",
+                          "tests/self_development/AIMO_FRESH_MEMORY_SIGNAL_AFTER_SCHOOL_BATCH_V1_PROOF.json",
+                          "tests/self_development/MEMORY_COMMIT_ORGAN_V1_PROOF.json",
+                          "validators/validate_aimo_fresh_memory_signal_after_school_batch_v1.ps1",
+                          "validators/validate_memory_commit_organ_v1.ps1"
                       ],
     "structural_paths":  [
-                             "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
-                             "operations/gpt_handoff/NEXT_CHAT_HANDOFF_20260715_MEMORY_COMMIT_ORGAN.md",
-                             "operations/gpt_handoff/NEXT_CHAT_HANDOFF_20260715_MEMORY_COMMIT_STATUS.json"
+                             "operations/memory_commit/memory_commit_controller_v1.ps1",
+                             "operations/memory_commit/memory_commit_policy_v1.json",
+                             "operations/memory_commit/proofs/MEMORY_COMMIT_BATCH_DRAIN_AGENTLIFE_PROOF_20260715.json",
+                             "operations/memory_commit/proofs/MEMORY_COMMIT_BATCH_DRAIN_RETENTION_PRUNE_20260715.json",
+                             "operations/memory_commit/proofs/MEMORY_COMMIT_ORGAN_V1_IMPLEMENTATION_REPORT_20260715.json",
+                             "operations/memory_commit/proofs/MEMORY_COMMIT_REJECT_DELETE_PROOF_20260715.json",
+                             "operations/memory_commit/runtime_retention_policy_v1.json",
+                             "tests/self_development/AIMO_FRESH_MEMORY_SIGNAL_AFTER_SCHOOL_BATCH_V1_PROOF.json",
+                             "tests/self_development/MEMORY_COMMIT_ORGAN_V1_PROOF.json",
+                             "validators/validate_aimo_fresh_memory_signal_after_school_batch_v1.ps1",
+                             "validators/validate_memory_commit_organ_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -28,8 +48,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2033,
-                                    "sha256":  "b6582697e33eccd6e0bcc47563e0c3425a884c2eef771019a63f8e58ed207bcb"
+                                    "structural_file_count":  2030,
+                                    "sha256":  "88e320db7a307538835e6de745b55e0817e491bb3e158484634c1c4a83658884"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -55,12 +75,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  151,
-                         "structural_path_count":  2033,
+                         "structural_path_count":  2030,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-15T23:08:01.2520299+04:00"
+    "refreshed_at":  "2026-07-15T23:34:56.3824368+04:00"
 }
