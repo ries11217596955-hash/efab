@@ -2,9 +2,9 @@
 
 Status: ACTIVE_DERIVED_VIEW
 Branch: main
-Observed head at generation: b02c2125002f8efe4f4d4adc8b4a5ac41aeb9c78
-Generated: 2026-07-15T17:22:16.4417085+04:00
-Body source fingerprint: a813a1cf6bb425c40dc7a99fcdea20ced89e55652f0493c3f583fc67fefea75d
+Observed head at generation: cd1e3d0024149fd71ac6377d99c7ccaca3e76ac8
+Generated: 2026-07-15T18:42:53.1438593+04:00
+Body source fingerprint: 843041aace6d7b2f23b9d5daaaa2c80b3e6b5783a9ad50a9076932f5197cd618
 
 Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
@@ -18,7 +18,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 ## Counts
 
 - Confirmed components: 7
-- Primary evidence candidates: 142
+- Primary evidence candidates: 143
 - Legacy unverified hints: 4
 - Rejected or stale hints: 3
 
@@ -47,6 +47,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `modules_self_development` - root `modules/self_development`, files=20, scripts=20, validators=0, proofs=1, needs_triage=True
 - `operations_accepted_atom_retention_calibration` - root `operations/accepted_atom_retention_calibration`, files=2, scripts=2, validators=1, proofs=0, needs_triage=True
 - `operations_active_behavior` - root `operations/active_behavior`, files=22, scripts=12, validators=5, proofs=0, needs_triage=True
+- `operations_autonomous_inner_motor` - root `operations/autonomous_inner_motor`, files=8, scripts=1, validators=0, proofs=3, needs_triage=True
 - `operations_bridge_diagnostics` - root `operations/bridge_diagnostics`, files=2, scripts=0, validators=0, proofs=2, needs_triage=True
 - `operations_live_like` - root `operations/live_like`, files=5, scripts=5, validators=3, proofs=0, needs_triage=True
 - `operations_live_readiness` - root `operations/live_readiness`, files=11, scripts=11, validators=5, proofs=2, needs_triage=True
@@ -113,7 +114,6 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `packs_phase49_remediation_seed_program_materialization_v1` - root `packs/PHASE49_REMEDIATION_SEED_PROGRAM_MATERIALIZATION_V1`, files=5, scripts=3, validators=1, proofs=1, needs_triage=True
 - `packs_phase5_external_agent_spec_intake` - root `packs/PHASE5_EXTERNAL_AGENT_SPEC_INTAKE`, files=7, scripts=3, validators=2, proofs=0, needs_triage=True
 - `packs_phase50_one_run_remediation_seed_program_synthesis_proof_v1` - root `packs/PHASE50_ONE_RUN_REMEDIATION_SEED_PROGRAM_SYNTHESIS_PROOF_V1`, files=3, scripts=2, validators=1, proofs=3, needs_triage=True
-- `packs_phase51_builder_github_action_manual_run_surface_v1` - root `packs/PHASE51_BUILDER_GITHUB_ACTION_MANUAL_RUN_SURFACE_V1`, files=5, scripts=2, validators=1, proofs=0, needs_triage=True
 
 ## Freshness
 

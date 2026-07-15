@@ -1,28 +1,20 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-15T17:21:49.3853121+04:00",
+    "checked_at":  "2026-07-15T18:42:25.6094950+04:00",
     "branch":  "main",
-    "observed_head":  "b02c2125002f8efe4f4d4adc8b4a5ac41aeb9c78",
-    "subject_head":  "b02c2125002f8efe4f4d4adc8b4a5ac41aeb9c78",
-    "trigger_reason":  "live_school_1000_retention_verification_report_20260715",
+    "observed_head":  "cd1e3d0024149fd71ac6377d99c7ccaca3e76ac8",
+    "subject_head":  "cd1e3d0024149fd71ac6377d99c7ccaca3e76ac8",
+    "trigger_reason":  "autonomous_inner_motor_v0_final_no_generated_validation_20260715",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
-                          "operations/school/digestion/absorb_atom_file_via_digest_pipeline_v1.ps1",
-                          "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-                          "reports/self_development/agent_body_map.json",
-                          "reports/self_development/agent_body_map.md",
-                          "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "tests/self_development/FILE_ATOM_ABSORPTION_BATCH_RETENTION_V1_PROOF.json",
-                          "validators/validate_file_atom_absorption_batch_retention_v1.ps1"
+                          "operations/gpt_handoff/LIVE_SCHOOL_1000_RETENTION_VERIFICATION_20260715.json",
+                          "operations/gpt_handoff/LIVE_SCHOOL_1000_RETENTION_VERIFICATION_20260715.md"
                       ],
     "structural_paths":  [
-                             "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
-                             "operations/school/digestion/absorb_atom_file_via_digest_pipeline_v1.ps1",
-                             "tests/self_development/FILE_ATOM_ABSORPTION_BATCH_RETENTION_V1_PROOF.json",
-                             "validators/validate_file_atom_absorption_batch_retention_v1.ps1"
+                             "operations/gpt_handoff/LIVE_SCHOOL_1000_RETENTION_VERIFICATION_20260715.json",
+                             "operations/gpt_handoff/LIVE_SCHOOL_1000_RETENTION_VERIFICATION_20260715.md"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -34,8 +26,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1990,
-                                    "sha256":  "a813a1cf6bb425c40dc7a99fcdea20ced89e55652f0493c3f583fc67fefea75d"
+                                    "structural_file_count":  1998,
+                                    "sha256":  "843041aace6d7b2f23b9d5daaaa2c80b3e6b5783a9ad50a9076932f5197cd618"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -57,16 +49,16 @@
                          "builder":  "AGENT_BODY_COMPOSITION_MAP_PRIMARY_EVIDENCE_V1",
                          "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                          "confirmed_component_count":  7,
-                         "primary_evidence_candidate_count":  142,
+                         "primary_evidence_candidate_count":  143,
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
-                         "total_component_count":  149,
-                         "structural_path_count":  1990,
+                         "total_component_count":  150,
+                         "structural_path_count":  1998,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-15T17:22:16.9260631+04:00"
+    "refreshed_at":  "2026-07-15T18:42:53.6434968+04:00"
 }

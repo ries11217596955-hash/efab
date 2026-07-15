@@ -1,0 +1,24 @@
+{
+  "schema": "autonomous_inner_motor_proof_schema_v1",
+  "required_sections": [
+    "boundary",
+    "repo_state",
+    "memory_state",
+    "school_state",
+    "policy_snapshot",
+    "self_question_trace",
+    "decision_trace",
+    "heartbeat",
+    "stop_reason",
+    "mutation_audit",
+    "validator_result"
+  ],
+  "recommended_sections": [
+    "memory_use_trace",
+    "internal_library_trace",
+    "web_research_requests",
+    "codex_question_requests",
+    "final_self_diagnosis",
+    "selected_next_path"
+  ]
+}

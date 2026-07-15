@@ -1,0 +1,81 @@
+{
+  "schema": "autonomous_inner_motor_policy_v1",
+  "organ_id": "AUTONOMOUS_INNER_MOTOR_ORGAN",
+  "runner_contract": "single_runner_only_no_runner_per_level",
+  "mutation_allowed": false,
+  "active_memory_mutation_allowed": false,
+  "git_mutation_allowed": false,
+  "allowed_modes": [
+    "Diagnostic",
+    "ReadOnly",
+    "SandboxExploration",
+    "SandboxTestLife"
+  ],
+  "disabled_modes": [
+    "SandboxAction",
+    "GovernedRepoAction",
+    "Continuous",
+    "LiveAuthority"
+  ],
+  "school_priority": {
+    "enabled": true,
+    "rule": "School teaches; motor observes and uses compact memory; motor does not launch School in thinking phase."
+  },
+  "ports": {
+    "school_port": {
+      "mode": "observe_only",
+      "can_start_school": false,
+      "purpose": "observe whether School/digest is active and read proof summaries"
+    },
+    "active_memory_port": {
+      "mode": "read_hash_sample_only",
+      "can_mutate": false,
+      "root": ".runtime/active_compact_semantic_memory_v1",
+      "purpose": "use compact semantic memory as first source of agent thought"
+    },
+    "internal_library_port": {
+      "mode": "read_only",
+      "purpose": "read repo contracts, maps, validators, and proofs"
+    },
+    "web_research_port": {
+      "mode": "request_only",
+      "can_browse": false,
+      "purpose": "prepare external web research questions for owner/governed tool execution"
+    },
+    "codex_question_port": {
+      "mode": "request_only",
+      "can_launch_codex": false,
+      "purpose": "prepare bounded Codex question packs when memory/repo do not answer"
+    },
+    "validator_port": {
+      "mode": "read_or_run_explicit_validators_only",
+      "purpose": "record proof boundary"
+    },
+    "rollback_port": {
+      "mode": "plan_only",
+      "purpose": "state what rollback would be needed before future action modes"
+    }
+  },
+  "source_ladder": [
+    "active_compact_memory",
+    "internal_library",
+    "web_research_request",
+    "codex_question_request",
+    "validator",
+    "owner_decision"
+  ],
+  "sandbox_exploration": {
+    "no_extra_files": true,
+    "max_proof_bytes": 240000,
+    "max_cycles": 8,
+    "min_cycles": 5
+  },
+  "thinking_quality_gates": [
+    "memory_used_before_external_request",
+    "unknowns_named",
+    "no_action_without_authority",
+    "protective_checkpoint_stop",
+    "proof_written"
+  ],
+  "boundary": "Thinking-only policy. No active memory mutation, no git mutation, no live actions."
+}

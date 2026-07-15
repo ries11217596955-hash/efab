@@ -1,0 +1,32 @@
+{
+  "schema": "autonomous_inner_motor_organ_contract_v1",
+  "organ_id": "AUTONOMOUS_INNER_MOTOR_ORGAN",
+  "role": "not_whole_brain; inner thinking motor that coordinates memory-first reasoning and gap selection",
+  "single_runner_rule": "one_runner_only: operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+  "no_sprawl_law": "No new runner per level, no new autonomous runner without owner decision and validator update.",
+  "input_contract": {
+    "question": "owner or system question",
+    "mode": "Diagnostic|ReadOnly|SandboxExploration|SandboxTestLife",
+    "context_roots": [
+      "body_inventory_map",
+      "active_compact_memory",
+      "living_loop_reports",
+      "school_state"
+    ]
+  },
+  "output_contract": {
+    "proof": "one JSON proof per sandbox run",
+    "selected_next_path": "draft only",
+    "external_requests": "request objects only, not executed"
+  },
+  "forbidden": [
+    "active_memory_mutation",
+    "git_mutation",
+    "school_launch",
+    "codex_launch",
+    "web_browse",
+    "background_process",
+    "repo_patch"
+  ],
+  "quality_law": "The motor must think with compact memory before asking web or Codex."
+}

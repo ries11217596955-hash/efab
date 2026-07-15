@@ -1,0 +1,25 @@
+{
+  "schema": "autonomous_inner_motor_state_schema_v1",
+  "required_fields": [
+    "organ_id",
+    "run_id",
+    "mode",
+    "maturity_level",
+    "repo_state",
+    "memory_state",
+    "school_state",
+    "policy_decision",
+    "selected_next_path",
+    "stop_reason",
+    "created_at"
+  ],
+  "optional_fields": [
+    "body_map_state",
+    "living_loop_state",
+    "external_request_state",
+    "codex_question_state",
+    "memory_use_trace",
+    "unknowns",
+    "risk_register"
+  ]
+}

@@ -6,19 +6,19 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "b02c2125002f8efe4f4d4adc8b4a5ac41aeb9c78",
-    "subject_head":  "b02c2125002f8efe4f4d4adc8b4a5ac41aeb9c78",
-    "generated_at":  "2026-07-15T17:22:16.4417085+04:00",
+    "observed_head_at_generation":  "cd1e3d0024149fd71ac6377d99c7ccaca3e76ac8",
+    "subject_head":  "cd1e3d0024149fd71ac6377d99c7ccaca3e76ac8",
+    "generated_at":  "2026-07-15T18:42:53.1438593+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
-    "trigger_reason":  "live_school_1000_retention_verification_report_20260715",
+    "trigger_reason":  "autonomous_inner_motor_v0_final_no_generated_validation_20260715",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  1990,
+    "structural_path_count":  1998,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1990,
-                                    "sha256":  "a813a1cf6bb425c40dc7a99fcdea20ced89e55652f0493c3f583fc67fefea75d"
+                                    "structural_file_count":  1998,
+                                    "sha256":  "843041aace6d7b2f23b9d5daaaa2c80b3e6b5783a9ad50a9076932f5197cd618"
                                 },
     "module_count":  203,
     "validator_count":  176,
@@ -630,9 +630,9 @@
 
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "b2793411643ffba6ed29e927fcc36a7b25f1a123",
-                                                               "committed_at":  "2026-07-15T16:54:26+04:00",
-                                                               "subject":  "fix: clean runtime bloat audit formatting"
+                                                               "head":  "cd1e3d0024149fd71ac6377d99c7ccaca3e76ac8",
+                                                               "committed_at":  "2026-07-15T17:26:11+04:00",
+                                                               "subject":  "fix: clean live school proof formatting"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -1429,6 +1429,61 @@
                                                                           "operations/active_behavior/validate_active_behavior_fresh_1000_lifecycle_pass_v1.ps1",
                                                                           "operations/active_behavior/validate_active_behavior_task_decision_flow_v1.ps1",
                                                                           "operations/active_behavior/validate_fresh_1000_candidate_behavior_absorption_v1.ps1"
+                                                                      ],
+                                            "needs_triage":  true,
+                                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
+                                            "source_ref":  "bounded_tracked_file_discovery_v1",
+                                            "is_required_component":  false
+                                        },
+                                        {
+                                            "id":  "operations_autonomous_inner_motor",
+                                            "path":  "operations/autonomous_inner_motor",
+                                            "root":  "operations/autonomous_inner_motor",
+                                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
+                                            "discovery_method":  "bounded_git_ls_files_path_discovery",
+                                            "evidence_counts":  {
+                                                                    "files":  8,
+                                                                    "scripts":  1,
+                                                                    "validators":  0,
+                                                                    "proofs":  3,
+                                                                    "contracts_or_policies":  2,
+                                                                    "docs":  1
+                                                                },
+                                            "file_count":  8,
+                                            "script_count":  1,
+                                            "validator_count":  0,
+                                            "proof_file_count":  3,
+                                            "contract_or_policy_count":  2,
+                                            "doc_count":  1,
+                                            "validator_refs":  [
+
+                                                               ],
+                                            "proof_refs":  [
+                                                               "operations/autonomous_inner_motor/motor_proof_schema.json",
+                                                               "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SANDBOX_EXPLORATION_PROOF_20260715.json",
+                                                               "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_V0_IMPLEMENTATION_REPORT.json"
+                                                           ],
+                                            "contract_or_policy_refs":  [
+                                                                            "operations/autonomous_inner_motor/motor_policy.json",
+                                                                            "operations/autonomous_inner_motor/organ_contract.json"
+                                                                        ],
+                                            "notable_files":  [
+                                                                  "operations/autonomous_inner_motor/AUTONOMOUS_INNER_MOTOR_ORGAN_SPEC.md",
+                                                                  "operations/autonomous_inner_motor/motor_policy.json",
+                                                                  "operations/autonomous_inner_motor/motor_proof_schema.json",
+                                                                  "operations/autonomous_inner_motor/motor_state_schema.json",
+                                                                  "operations/autonomous_inner_motor/organ_contract.json",
+                                                                  "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SANDBOX_EXPLORATION_PROOF_20260715.json",
+                                                                  "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_V0_IMPLEMENTATION_REPORT.json",
+                                                                  "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1"
+                                                              ],
+                                            "primary_evidence_refs":  [
+                                                                          "operations/autonomous_inner_motor/motor_policy.json",
+                                                                          "operations/autonomous_inner_motor/motor_proof_schema.json",
+                                                                          "operations/autonomous_inner_motor/organ_contract.json",
+                                                                          "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SANDBOX_EXPLORATION_PROOF_20260715.json",
+                                                                          "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_V0_IMPLEMENTATION_REPORT.json",
+                                                                          "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1"
                                                                       ],
                                             "needs_triage":  true,
                                             "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
@@ -7714,11 +7769,11 @@
                                 ],
     "component_authority_summary":  {
                                         "confirmed_components":  7,
-                                        "primary_evidence_candidates":  142,
+                                        "primary_evidence_candidates":  143,
                                         "legacy_unverified_hints":  4,
                                         "rejected_or_stale_hints":  3,
                                         "required_components":  7,
-                                        "total_components_in_compatibility_view":  149,
+                                        "total_components_in_compatibility_view":  150,
                                         "bounded_discovery_pathspecs":  [
                                                                             "operations",
                                                                             "modules",
@@ -8350,9 +8405,9 @@
 
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "b2793411643ffba6ed29e927fcc36a7b25f1a123",
-                                                     "committed_at":  "2026-07-15T16:54:26+04:00",
-                                                     "subject":  "fix: clean runtime bloat audit formatting"
+                                                     "head":  "cd1e3d0024149fd71ac6377d99c7ccaca3e76ac8",
+                                                     "committed_at":  "2026-07-15T17:26:11+04:00",
+                                                     "subject":  "fix: clean live school proof formatting"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -9147,6 +9202,61 @@
                                                          "operations/active_behavior/validate_active_behavior_fresh_1000_lifecycle_pass_v1.ps1",
                                                          "operations/active_behavior/validate_active_behavior_task_decision_flow_v1.ps1",
                                                          "operations/active_behavior/validate_fresh_1000_candidate_behavior_absorption_v1.ps1"
+                                                     ],
+                           "needs_triage":  true,
+                           "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
+                           "source_ref":  "bounded_tracked_file_discovery_v1",
+                           "is_required_component":  false
+                       },
+                       {
+                           "id":  "operations_autonomous_inner_motor",
+                           "path":  "operations/autonomous_inner_motor",
+                           "root":  "operations/autonomous_inner_motor",
+                           "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
+                           "discovery_method":  "bounded_git_ls_files_path_discovery",
+                           "evidence_counts":  {
+                                                   "files":  8,
+                                                   "scripts":  1,
+                                                   "validators":  0,
+                                                   "proofs":  3,
+                                                   "contracts_or_policies":  2,
+                                                   "docs":  1
+                                               },
+                           "file_count":  8,
+                           "script_count":  1,
+                           "validator_count":  0,
+                           "proof_file_count":  3,
+                           "contract_or_policy_count":  2,
+                           "doc_count":  1,
+                           "validator_refs":  [
+
+                                              ],
+                           "proof_refs":  [
+                                              "operations/autonomous_inner_motor/motor_proof_schema.json",
+                                              "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SANDBOX_EXPLORATION_PROOF_20260715.json",
+                                              "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_V0_IMPLEMENTATION_REPORT.json"
+                                          ],
+                           "contract_or_policy_refs":  [
+                                                           "operations/autonomous_inner_motor/motor_policy.json",
+                                                           "operations/autonomous_inner_motor/organ_contract.json"
+                                                       ],
+                           "notable_files":  [
+                                                 "operations/autonomous_inner_motor/AUTONOMOUS_INNER_MOTOR_ORGAN_SPEC.md",
+                                                 "operations/autonomous_inner_motor/motor_policy.json",
+                                                 "operations/autonomous_inner_motor/motor_proof_schema.json",
+                                                 "operations/autonomous_inner_motor/motor_state_schema.json",
+                                                 "operations/autonomous_inner_motor/organ_contract.json",
+                                                 "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SANDBOX_EXPLORATION_PROOF_20260715.json",
+                                                 "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_V0_IMPLEMENTATION_REPORT.json",
+                                                 "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1"
+                                             ],
+                           "primary_evidence_refs":  [
+                                                         "operations/autonomous_inner_motor/motor_policy.json",
+                                                         "operations/autonomous_inner_motor/motor_proof_schema.json",
+                                                         "operations/autonomous_inner_motor/organ_contract.json",
+                                                         "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SANDBOX_EXPLORATION_PROOF_20260715.json",
+                                                         "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_V0_IMPLEMENTATION_REPORT.json",
+                                                         "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1"
                                                      ],
                            "needs_triage":  true,
                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
