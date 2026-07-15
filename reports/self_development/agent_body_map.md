@@ -2,9 +2,9 @@
 
 Status: ACTIVE_DERIVED_VIEW
 Branch: main
-Observed head at generation: fe7c074b3ee27f34921f17caaa2a21c77d284419
-Generated: 2026-07-15T13:40:02.3061244+04:00
-Body source fingerprint: bd845d84afb0f9c85898ade86da0b9c36bb822321fe0f4679dcb1967f25aace1
+Observed head at generation: 12c118bc85d2c5531ed02debbe80f2afead777b3
+Generated: 2026-07-15T15:15:42.7446302+04:00
+Body source fingerprint: 1035e4c22e32c8039defc70539fd624cb4149d1a9c2606a5dca320e97df8967e
 
 Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
@@ -30,7 +30,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `knowledge_acquisition_port` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/knowledge_acquisition_port`, files=50, scripts=2, required_present=True
 - `map_control` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/map_control`, files=2, scripts=0, required_present=True
 - `operations_self_model` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/self_model`, files=62, scripts=62, required_present=True
-- `gpt_handoff` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/gpt_handoff`, files=6, scripts=0, required_present=True
+- `gpt_handoff` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/gpt_handoff`, files=8, scripts=0, required_present=True
 
 ## Candidate Triage Queue
 
