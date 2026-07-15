@@ -1,4 +1,4 @@
-﻿param(
+param(
   [string]$RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path,
   [string]$SubjectHead = 'HEAD',
   [string]$OutputRoot = 'reports/self_development',
@@ -50,6 +50,22 @@ function Test-StructuralPath([string]$Path) {
   return ($p.EndsWith('.ps1') -or $p.EndsWith('.json') -or $p.EndsWith('.md'))
 }
 
+function Write-CleanUtf8Text([string]$Path,[string]$Text){
+  $dir = Split-Path $Path -Parent
+  if($dir){ New-Item -ItemType Directory -Force -Path $dir | Out-Null }
+  $lines = @($Text -split "`r?`n" | ForEach-Object { $_.TrimEnd() })
+  while($lines.Count -gt 0 -and $lines[$lines.Count-1] -eq ''){
+    if($lines.Count -eq 1){ $lines=@(); break }
+    $lines = @($lines[0..($lines.Count-2)])
+  }
+  $clean = ($lines -join "`n") + "`n"
+  $fullPath = if([System.IO.Path]::IsPathRooted($Path)){ $Path } else { Join-Path (Get-Location).Path $Path }
+  $utf8NoBom = New-Object System.Text.UTF8Encoding($false)
+  [System.IO.File]::WriteAllText($fullPath, $clean, $utf8NoBom)
+}
+function Write-CleanJson([string]$Path,$Obj,[int]$Depth=32){
+  Write-CleanUtf8Text $Path ($Obj | ConvertTo-Json -Depth $Depth)
+}
 function Get-CompositionSourceFingerprint([string[]]$Paths) {
   $entries = New-Object System.Collections.Generic.List[string]
   foreach($path in @($Paths | Sort-Object -Unique)){
@@ -172,13 +188,13 @@ $result = [ordered]@{
 
 if (-not $shouldRefresh) {
   $result.skip_reason = 'NO_STRUCTURAL_PATHS_CHANGED_AND_FORCE_NOT_SET'
-  $result | ConvertTo-Json -Depth 28 | Set-Content -Path $resultPath -Encoding UTF8
+  Write-CleanJson $resultPath $result 28
   return [pscustomobject]$result
 }
 if ($DryRun) {
   $result.status = 'MAP_REFRESH_DRY_RUN_READY'
   $result.skip_reason = 'DRY_RUN_NO_BUILD_EXECUTED'
-  $result | ConvertTo-Json -Depth 28 | Set-Content -Path $resultPath -Encoding UTF8
+  Write-CleanJson $resultPath $result 28
   return [pscustomobject]$result
 }
 
@@ -475,9 +491,9 @@ foreach($c in @($primaryEvidenceCandidates | Select-Object -First 80)){
 }
 $bodyMapMd += @('', '## Freshness', '', '- Currentness criterion: body source fingerprint over bounded primary evidence files.', "- Required components present: $($missingRequiredComponents.Count -eq 0)")
 
-$activeMap | ConvertTo-Json -Depth 32 | Set-Content -Path $canonicalMapPath -Encoding UTF8
-$bodyMap | ConvertTo-Json -Depth 32 | Set-Content -Path $bodyMapPath -Encoding UTF8
-$bodyMapMd -join "`n" | Set-Content -Path $bodyMapMdPath -Encoding UTF8
+Write-CleanJson $canonicalMapPath $activeMap 32
+Write-CleanJson $bodyMapPath $bodyMap 32
+Write-CleanUtf8Text $bodyMapMdPath ($bodyMapMd -join "`n")
 $result.status = 'MAP_REFRESHED'
 $result.map_contains_required_components = ($missingRequiredComponents.Count -eq 0)
 $result.required_components = @($requiredComponentSpecs.id)
@@ -499,7 +515,7 @@ $result.build_result = [ordered]@{
   files_changed_before_preflight_pass = $false
 }
 $result.refreshed_at = (Get-Date).ToString('o')
-$result | ConvertTo-Json -Depth 32 | Set-Content -Path $resultPath -Encoding UTF8
+Write-CleanJson $resultPath $result 32
 [pscustomobject]$result
 
 

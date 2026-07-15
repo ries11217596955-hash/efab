@@ -1,22 +1,20 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-15T16:34:52.4151855+04:00",
+    "checked_at":  "2026-07-15T17:04:53.7684017+04:00",
     "branch":  "main",
-    "observed_head":  "b6573d6772dd7df3586c603d020aea1adae7cbf6",
-    "subject_head":  "b6573d6772dd7df3586c603d020aea1adae7cbf6",
-    "trigger_reason":  "runtime_cleanup_slice1_post_delete_refresh_20260715",
+    "observed_head":  "b2793411643ffba6ed29e927fcc36a7b25f1a123",
+    "subject_head":  "b2793411643ffba6ed29e927fcc36a7b25f1a123",
+    "trigger_reason":  "file_atom_absorption_batch_retention_clean_writer_20260715",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "operations/gpt_handoff/REPO_CLEANUP_PLAN_V1.md",
-                          "operations/gpt_handoff/REPO_DEEP_CLEANUP_AUDIT_V1.json",
-                          "operations/gpt_handoff/REPO_DEEP_CLEANUP_AUDIT_V1.md"
+                          "operations/gpt_handoff/RUNTIME_BLOAT_ROOT_CAUSE_AUDIT_V1.json",
+                          "operations/gpt_handoff/RUNTIME_BLOAT_ROOT_CAUSE_AUDIT_V1.md"
                       ],
     "structural_paths":  [
-                             "operations/gpt_handoff/REPO_CLEANUP_PLAN_V1.md",
-                             "operations/gpt_handoff/REPO_DEEP_CLEANUP_AUDIT_V1.json",
-                             "operations/gpt_handoff/REPO_DEEP_CLEANUP_AUDIT_V1.md"
+                             "operations/gpt_handoff/RUNTIME_BLOAT_ROOT_CAUSE_AUDIT_V1.json",
+                             "operations/gpt_handoff/RUNTIME_BLOAT_ROOT_CAUSE_AUDIT_V1.md"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -28,8 +26,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1982,
-                                    "sha256":  "35fccba14baf102f191659d8d041ef154bf86883272a1c0ec147e44c872d18da"
+                                    "structural_file_count":  1988,
+                                    "sha256":  "f7dff88e9cc3404e27767cff358495837a6477da604f1c36dedc943cb8107f68"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -55,12 +53,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  149,
-                         "structural_path_count":  1982,
+                         "structural_path_count":  1988,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-15T16:35:19.2373956+04:00"
+    "refreshed_at":  "2026-07-15T17:05:21.0682079+04:00"
 }

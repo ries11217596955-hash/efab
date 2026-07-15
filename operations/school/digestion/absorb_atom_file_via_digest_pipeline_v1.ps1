@@ -6,7 +6,8 @@ param(
   [int]$DigestsSinceStable = 0,
   [int]$DigestsSinceFull = 0,
   [switch]$BeforePromotion,
-  [switch]$DeleteOriginalRaw
+  [switch]$DeleteOriginalRaw,
+  [switch]$KeepCandidateMemoryRoot
 )
 $ErrorActionPreference='Stop'
 $repoRoot=(git rev-parse --show-toplevel).Trim(); Set-Location $repoRoot
@@ -14,6 +15,57 @@ $utf8=New-Object System.Text.UTF8Encoding($false)
 function EnsureDir($Path){ if(-not (Test-Path $Path)){ New-Item -ItemType Directory -Force $Path | Out-Null } }
 function WriteText($Path,$Text){ $d=Split-Path $Path -Parent; if($d){ EnsureDir $d }; [IO.File]::WriteAllText((Join-Path (Get-Location).Path $Path),$Text,$utf8) }
 function WriteJson($Path,$Obj,$Depth=80){ WriteText $Path ($Obj|ConvertTo-Json -Depth $Depth) }
+function Get-DirectoryByteCount([string]$Path){
+  if(-not (Test-Path -LiteralPath $Path)){ return [int64]0 }
+  $sum=(Get-ChildItem -LiteralPath $Path -Recurse -Force -File -ErrorAction Stop | Measure-Object Length -Sum).Sum
+  if($null -eq $sum){ return [int64]0 }
+  return [int64]$sum
+}
+function Get-MemoryRootFileProof([string]$Path){
+  $items=@()
+  if(Test-Path -LiteralPath $Path){
+    Get-ChildItem -LiteralPath $Path -Recurse -Force -File -ErrorAction Stop | Sort-Object FullName | ForEach-Object {
+      $rel=$_.FullName.Substring((Resolve-Path '.').Path.Length+1).Replace('\','/')
+      $items += [ordered]@{ path=$rel; bytes=[int64]$_.Length; sha256=(Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash.ToLower() }
+    }
+  }
+  return @($items)
+}
+function Remove-SuccessfulCandidateMemoryRoot {
+  param(
+    [Parameter(Mandatory=$true)][string]$CandidateMemoryRoot,
+    [Parameter(Mandatory=$true)][string]$TargetMemoryRoot,
+    [Parameter(Mandatory=$true)][string]$RunRoot,
+    [switch]$Keep
+  )
+  $result=[ordered]@{
+    policy='delete_per_micro_batch_after_successful_publish'
+    keep_requested=[bool]$Keep
+    candidate_memory_root=$CandidateMemoryRoot
+    target_memory_root=$TargetMemoryRoot
+    removed=$false
+    removed_bytes=[int64]0
+    exists_after=$null
+    active_memory_cleanup_touched=$false
+    skipped_reason=$null
+  }
+  if($Keep){ $result.skipped_reason='KEEP_CANDIDATE_MEMORY_ROOT_REQUESTED'; $result.exists_after=(Test-Path -LiteralPath $CandidateMemoryRoot); return $result }
+  if(-not (Test-Path -LiteralPath $CandidateMemoryRoot)){ $result.skipped_reason='CANDIDATE_MEMORY_ROOT_ALREADY_ABSENT'; $result.exists_after=$false; return $result }
+  $candidateResolved=(Resolve-Path -LiteralPath $CandidateMemoryRoot).Path
+  $targetResolved=(Resolve-Path -LiteralPath $TargetMemoryRoot).Path
+  $runResolved=(Resolve-Path -LiteralPath $RunRoot).Path
+  $runtimeAbsorptionResolved=(Resolve-Path -LiteralPath '.runtime/file_atom_absorption').Path
+  if(-not $candidateResolved.StartsWith($runtimeAbsorptionResolved,[System.StringComparison]::OrdinalIgnoreCase)){ throw "REFUSE_DELETE_CANDIDATE_OUTSIDE_FILE_ATOM_ABSORPTION:$candidateResolved" }
+  if(-not $candidateResolved.StartsWith($runResolved,[System.StringComparison]::OrdinalIgnoreCase)){ throw "REFUSE_DELETE_CANDIDATE_OUTSIDE_RUN_ROOT:$candidateResolved" }
+  if($candidateResolved -eq $targetResolved){ throw 'REFUSE_DELETE_CANDIDATE_EQUALS_ACTIVE_MEMORY_ROOT' }
+  if($targetResolved.StartsWith($candidateResolved,[System.StringComparison]::OrdinalIgnoreCase)){ throw 'REFUSE_DELETE_CANDIDATE_PARENT_OF_ACTIVE_MEMORY_ROOT' }
+  if($candidateResolved.StartsWith($targetResolved,[System.StringComparison]::OrdinalIgnoreCase)){ throw 'REFUSE_DELETE_CANDIDATE_INSIDE_ACTIVE_MEMORY_ROOT' }
+  $result.removed_bytes=Get-DirectoryByteCount $CandidateMemoryRoot
+  Remove-Item -LiteralPath $CandidateMemoryRoot -Recurse -Force -ErrorAction Stop
+  $result.removed=$true
+  $result.exists_after=(Test-Path -LiteralPath $CandidateMemoryRoot)
+  return $result
+}
 function FileSha256($Path){
   $sha=[System.Security.Cryptography.SHA256]::Create()
   $fs=[IO.File]::OpenRead((Resolve-Path $Path).Path)
@@ -199,6 +251,9 @@ if([int]$routeBefore.routed_active_count -ne [int]$routeAfter.routed_active_coun
 if([int]$ledgerBefore.replayed_active_count -ne [int]$ledgerAfter.replayed_active_count){ throw 'LEDGER_MUTATED_BY_FILE_ABSORPTION' }
 $publishResult=Publish-ActiveMemoryRootWithRetry -CandidateMemoryRoot $candidateMemoryRoot -TargetMemoryRoot $targetMemoryRoot
 MarkAbsorbStage 'publish_active_memory_root'
+$activeMemoryAfterPublishProof=Get-MemoryRootFileProof $targetMemoryRoot
+$candidateMemoryCleanup=Remove-SuccessfulCandidateMemoryRoot -CandidateMemoryRoot $candidateMemoryRoot -TargetMemoryRoot $targetMemoryRoot -RunRoot $runRoot -Keep:$KeepCandidateMemoryRoot
+MarkAbsorbStage 'cleanup_successful_candidate_memory_root'
 $stageTimingsArray=@($script:absorbStageTimings.ToArray())
 $report=[ordered]@{
   schema='file_atom_absorption_pipeline_v1'
@@ -214,6 +269,13 @@ $report=[ordered]@{
   total_elapsed_ms=[int][Math]::Round(((Get-Date)-$script:absorbStageStart).TotalMilliseconds)
   memory_root=$targetMemoryRoot
   candidate_memory_root=$candidateMemoryRoot
+  candidate_memory_cleanup=$candidateMemoryCleanup
+  candidate_memory_root_removed=[bool]$candidateMemoryCleanup.removed
+  candidate_memory_root_exists_after=[bool]$candidateMemoryCleanup.exists_after
+  candidate_memory_root_removed_bytes=[int64]$candidateMemoryCleanup.removed_bytes
+  active_memory_after_publish_proof=$activeMemoryAfterPublishProof
+  active_memory_cleanup_touched=$false
+  batch_retention_policy='per_micro_batch_cleanup_after_successful_publish'
   active_memory_publish=$publishResult
   digest_status=$digestStatus
   memory_weight_guard_status=$guardStatus
@@ -254,6 +316,9 @@ Write-Host "STAGED_RAW_DELETED=$($report.staged_raw_deleted)"
 Write-Host "NORMALIZED_DIGEST_INPUT_DELETED=$($report.normalized_digest_input_deleted)"
 Write-Host "ORIGINAL_RAW_DELETED=$($report.original_raw_deleted)"
 Write-Host "TOTAL_MEMORY_BYTES=$($report.total_memory_bytes)"
+Write-Host "CANDIDATE_MEMORY_ROOT_REMOVED=$($report.candidate_memory_root_removed)"
+Write-Host "CANDIDATE_MEMORY_ROOT_REMOVED_BYTES=$($report.candidate_memory_root_removed_bytes)"
+Write-Host "CANDIDATE_MEMORY_ROOT_EXISTS_AFTER=$($report.candidate_memory_root_exists_after)"
 Write-Host "ROUTE_AFTER=$($report.route_after)"
 Write-Host "LEDGER_AFTER=$($report.ledger_after)"
 Write-Host 'RUNTIME_READY=false'

@@ -1,0 +1,16 @@
+{
+    "schema":  "file_atom_absorption_batch_retention_static_validation_v1",
+    "status":  "PASS_FILE_ATOM_ABSORPTION_BATCH_RETENTION_V1",
+    "checked_at":  "2026-07-15T17:04:49.5024088+04:00",
+    "script":  "operations/school/digestion/absorb_atom_file_via_digest_pipeline_v1.ps1",
+    "boundary":  {
+                     "validates_static_policy":  true,
+                     "runs_absorption":  false,
+                     "touches_active_memory":  false,
+                     "deletes_files":  false
+                 },
+    "expected_behavior":  "per micro-batch: publish candidate to active memory, remove only that successful run candidate root, keep reports/proofs and failed runs",
+    "errors":  [
+
+               ]
+}
