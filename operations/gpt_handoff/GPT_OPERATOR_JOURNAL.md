@@ -1,3 +1,49 @@
+<!-- GPT_OPERATOR_INDEX_BEGIN -->
+# GPT_OPERATOR_INDEX — START HERE
+
+Status: ACTIVE_OPERATOR_INDEX
+Updated: 2026-07-15T13:39:01+04:00
+Installed with: GPT_ENTRYPOINT.md
+
+## START HERE
+Read order: GPT_ENTRYPOINT.md -> GPT_OPERATOR_JOURNAL.md -> agent_body_map.json -> SELF_MODEL_ACTIVE_MAP.json -> ORGAN_PROMOTION_LANES_V1.json -> organ_passports -> protected active memory only after preflight.
+
+## Sources of Truth
+GPT_ENTRYPOINT.md = stable BIOS. GPT_OPERATOR_JOURNAL.md = living operator index. agent_body_map.json = body composition, not capability map. SELF_MODEL_ACTIVE_MAP.json = self-model, not body inventory. ORGAN_PROMOTION_LANES_V1.json = governance material, not acceptance. .runtime/active_compact_semantic_memory_v1 = protected active memory.
+
+## Active Body Map
+Use reports/self_development/agent_body_map.json to identify active body composition. It does not prove live processes and does not define callable reflexes.
+
+## Self-Model Map
+Use reports/self_development/SELF_MODEL_ACTIVE_MAP.json only for self-model state. Do not use it as active body inventory or runtime proof.
+
+## Canonical School
+Canonical launcher: operations/school/run_agent_school.ps1 -Count <N> -Mode <Test|Live> -Topics <AUTO|topic1,topic2>. Count is a launch parameter, not a code rewrite trigger.
+
+## Compact Memory
+Protected surface: .runtime/active_compact_semantic_memory_v1 with manifest.json, index.json, cells.jsonl. Never cleanup as trash. Backup/hash before live absorption.
+
+## Organ Passports / Promotion Lanes
+Do not create passport per script. Mature organ requires purpose, authority, state contract, invocation contract, validator, self-health, negative tests, rollback/quarantine, and discovery by maps. Promotion lanes do not accept organs by themselves.
+
+## Evidence Rules
+No proof -> no claim. Transcript -> context only. Codex output -> CODEX_DRAFT until validated. Lab proof != live proof. Owner-reported live status != PROVEN_LIVE.
+
+## Live/Lab Safety
+Before mutation: check folder, git root, branch, HEAD, dirty state, origin delta, active processes, route/protected surfaces, proof boundary. If live school may run: observe first, no duplicate runtime, no cleanup, no accepted-surface mutation.
+
+## Source Ladder / School Generator Rules
+Consolidated from GPT_OPERATOR_LIVING_CELL_SOURCE_LADDER_V1.md and CODEX_TASK_EVIDENCE_GROUNDED_SCHOOL_GENERATOR_V1.md: no source -> no knowledge; no source anchor -> no memory candidate; no coverage audit/level plan -> reject serious campaign generation; blind level=1 for all roots -> reject; campaign pack = content for existing generator, not second school organ; update existing candidate_factory, do not duplicate; campaign candidates need seed_id/campaign_id/source_path/source_summary; fallback_template must be marked; bounded 25/100 tests before large run.
+
+## Known Traps
+Bridge unavailable claim without fresh proof; body map treated as capability map; SELF_MODEL_ACTIVE_MAP treated as body inventory; smoke test treated as 500k/1M readiness; operator files deleted before coverage proof; duplicate school/producer launch; broad Codex kill; raw archive dump into active settings/journal.
+
+## Current Proven State From This Session
+Bridge context H:/efab READY; branch main; HEAD fe7c074; origin delta after fetch 0/0; required operator/map files present; process proof found no school/producer/digest hit except checking PowerShell process. Refresh before future mutation.
+
+## Next Actions
+P0 validate GPT_ENTRYPOINT and journal index coverage. Do not delete source operator files yet. P1 audit body map/passport lifecycle and school component passport coverage. P2 cleanup only after protected/tracked/transient/legacy classification and proof.
+<!-- GPT_OPERATOR_INDEX_END -->
 # GPT_OPERATOR_JOURNAL â€” ACTIVE CURRENT STATE ONLY
 
 Updated: 2026-07-14T17:52:26.206917+00:00
