@@ -1,0 +1,31 @@
+{
+  "schema": "runtime_retention_policy_v1",
+  "status": "ACTIVE_FOR_MEMORY_COMMIT_ORGAN_V1",
+  "rules": [
+    {
+      "surface": "compact_memory_intake.queue",
+      "keep": "only pending valid packets",
+      "delete": "accepted_or_rejected_packets"
+    },
+    {
+      "surface": "compact_memory_intake.processed",
+      "keep": "compact processed summaries",
+      "delete": "full processed packet copies after summary is written"
+    },
+    {
+      "surface": "compact_memory_intake.merge_runs",
+      "keep": "latest compact merge proof summaries",
+      "delete": "old raw checkpoints after PASS"
+    },
+    {
+      "surface": "canonical_exact_count_cycle run",
+      "keep": "final report, batch summary, tail logs, hash proof",
+      "delete": "raw intermediate after explicit retention pass"
+    },
+    {
+      "surface": "file_atom_absorption",
+      "keep": "latest compact proof and active memory hash proof",
+      "delete": "successful candidate roots and stale staging"
+    }
+  ]
+}

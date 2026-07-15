@@ -1,0 +1,225 @@
+{
+    "schema":  "school_atom_quality_audit_v1",
+    "status":  "PASS_SCHOOL_ATOM_QUALITY_AUDIT_V1",
+    "quality_classification":  "VALID_WITH_SOME_VARIETY",
+    "school_run_dir":  ".runtime/canonical_exact_count_cycle/canonical_exact_count_cycle_real_2000_20260715_211515",
+    "ready_file_count":  20,
+    "candidate_count":  2000,
+    "topic_distribution":  {
+                               "one_topic_school_microcycle":  2000
+                           },
+    "depth_distribution":  {
+                               "3":  400,
+                               "4":  400,
+                               "2":  400,
+                               "1":  400,
+                               "0":  400
+                           },
+    "duplicate_claim_instances":  0,
+    "unique_claims":  2000,
+    "source_missing_count":  0,
+    "sample":  [
+                   {
+                       "file":  "micro_001.READY.jsonl",
+                       "candidate_id":  "one_topic_school_microcycle_micro_001_item_001_global_0001",
+                       "topic_key":  "one_topic_school_microcycle",
+                       "depth_level":  0,
+                       "target_depth":  4,
+                       "source_missing":  false,
+                       "claim":  "Depth 0 microcycle candidate 0001 preserves a bounded one-topic school step: form one small claim, keep it schema-valid, and return it to the parent cycle for later absorption review.",
+                       "expected_behavior":  "For micro_001 item 001, the producer emits one JSONL candidate tied to one_topic_school_microcycle without mutating active memory or changing tracked repository files."
+                   },
+                   {
+                       "file":  "micro_001.READY.jsonl",
+                       "candidate_id":  "one_topic_school_microcycle_micro_001_item_002_global_0002",
+                       "topic_key":  "one_topic_school_microcycle",
+                       "depth_level":  1,
+                       "target_depth":  4,
+                       "source_missing":  false,
+                       "claim":  "Depth 1 microcycle candidate 0002 preserves a bounded one-topic school step: form one small claim, keep it schema-valid, and return it to the parent cycle for later absorption review.",
+                       "expected_behavior":  "For micro_001 item 002, the producer emits one JSONL candidate tied to one_topic_school_microcycle without mutating active memory or changing tracked repository files."
+                   },
+                   {
+                       "file":  "micro_001.READY.jsonl",
+                       "candidate_id":  "one_topic_school_microcycle_micro_001_item_003_global_0003",
+                       "topic_key":  "one_topic_school_microcycle",
+                       "depth_level":  2,
+                       "target_depth":  4,
+                       "source_missing":  false,
+                       "claim":  "Depth 2 microcycle candidate 0003 preserves a bounded one-topic school step: form one small claim, keep it schema-valid, and return it to the parent cycle for later absorption review.",
+                       "expected_behavior":  "For micro_001 item 003, the producer emits one JSONL candidate tied to one_topic_school_microcycle without mutating active memory or changing tracked repository files."
+                   },
+                   {
+                       "file":  "micro_001.READY.jsonl",
+                       "candidate_id":  "one_topic_school_microcycle_micro_001_item_004_global_0004",
+                       "topic_key":  "one_topic_school_microcycle",
+                       "depth_level":  3,
+                       "target_depth":  4,
+                       "source_missing":  false,
+                       "claim":  "Depth 3 microcycle candidate 0004 preserves a bounded one-topic school step: form one small claim, keep it schema-valid, and return it to the parent cycle for later absorption review.",
+                       "expected_behavior":  "For micro_001 item 004, the producer emits one JSONL candidate tied to one_topic_school_microcycle without mutating active memory or changing tracked repository files."
+                   },
+                   {
+                       "file":  "micro_001.READY.jsonl",
+                       "candidate_id":  "one_topic_school_microcycle_micro_001_item_005_global_0005",
+                       "topic_key":  "one_topic_school_microcycle",
+                       "depth_level":  4,
+                       "target_depth":  4,
+                       "source_missing":  false,
+                       "claim":  "Depth 4 microcycle candidate 0005 preserves a bounded one-topic school step: form one small claim, keep it schema-valid, and return it to the parent cycle for later absorption review.",
+                       "expected_behavior":  "For micro_001 item 005, the producer emits one JSONL candidate tied to one_topic_school_microcycle without mutating active memory or changing tracked repository files."
+                   },
+                   {
+                       "file":  "micro_001.READY.jsonl",
+                       "candidate_id":  "one_topic_school_microcycle_micro_001_item_006_global_0006",
+                       "topic_key":  "one_topic_school_microcycle",
+                       "depth_level":  0,
+                       "target_depth":  4,
+                       "source_missing":  false,
+                       "claim":  "Depth 0 microcycle candidate 0006 preserves a bounded one-topic school step: form one small claim, keep it schema-valid, and return it to the parent cycle for later absorption review.",
+                       "expected_behavior":  "For micro_001 item 006, the producer emits one JSONL candidate tied to one_topic_school_microcycle without mutating active memory or changing tracked repository files."
+                   },
+                   {
+                       "file":  "micro_001.READY.jsonl",
+                       "candidate_id":  "one_topic_school_microcycle_micro_001_item_007_global_0007",
+                       "topic_key":  "one_topic_school_microcycle",
+                       "depth_level":  1,
+                       "target_depth":  4,
+                       "source_missing":  false,
+                       "claim":  "Depth 1 microcycle candidate 0007 preserves a bounded one-topic school step: form one small claim, keep it schema-valid, and return it to the parent cycle for later absorption review.",
+                       "expected_behavior":  "For micro_001 item 007, the producer emits one JSONL candidate tied to one_topic_school_microcycle without mutating active memory or changing tracked repository files."
+                   },
+                   {
+                       "file":  "micro_001.READY.jsonl",
+                       "candidate_id":  "one_topic_school_microcycle_micro_001_item_008_global_0008",
+                       "topic_key":  "one_topic_school_microcycle",
+                       "depth_level":  2,
+                       "target_depth":  4,
+                       "source_missing":  false,
+                       "claim":  "Depth 2 microcycle candidate 0008 preserves a bounded one-topic school step: form one small claim, keep it schema-valid, and return it to the parent cycle for later absorption review.",
+                       "expected_behavior":  "For micro_001 item 008, the producer emits one JSONL candidate tied to one_topic_school_microcycle without mutating active memory or changing tracked repository files."
+                   },
+                   {
+                       "file":  "micro_001.READY.jsonl",
+                       "candidate_id":  "one_topic_school_microcycle_micro_001_item_009_global_0009",
+                       "topic_key":  "one_topic_school_microcycle",
+                       "depth_level":  3,
+                       "target_depth":  4,
+                       "source_missing":  false,
+                       "claim":  "Depth 3 microcycle candidate 0009 preserves a bounded one-topic school step: form one small claim, keep it schema-valid, and return it to the parent cycle for later absorption review.",
+                       "expected_behavior":  "For micro_001 item 009, the producer emits one JSONL candidate tied to one_topic_school_microcycle without mutating active memory or changing tracked repository files."
+                   },
+                   {
+                       "file":  "micro_001.READY.jsonl",
+                       "candidate_id":  "one_topic_school_microcycle_micro_001_item_010_global_0010",
+                       "topic_key":  "one_topic_school_microcycle",
+                       "depth_level":  4,
+                       "target_depth":  4,
+                       "source_missing":  false,
+                       "claim":  "Depth 4 microcycle candidate 0010 preserves a bounded one-topic school step: form one small claim, keep it schema-valid, and return it to the parent cycle for later absorption review.",
+                       "expected_behavior":  "For micro_001 item 010, the producer emits one JSONL candidate tied to one_topic_school_microcycle without mutating active memory or changing tracked repository files."
+                   },
+                   {
+                       "file":  "micro_001.READY.jsonl",
+                       "candidate_id":  "one_topic_school_microcycle_micro_001_item_011_global_0011",
+                       "topic_key":  "one_topic_school_microcycle",
+                       "depth_level":  0,
+                       "target_depth":  4,
+                       "source_missing":  false,
+                       "claim":  "Depth 0 microcycle candidate 0011 preserves a bounded one-topic school step: form one small claim, keep it schema-valid, and return it to the parent cycle for later absorption review.",
+                       "expected_behavior":  "For micro_001 item 011, the producer emits one JSONL candidate tied to one_topic_school_microcycle without mutating active memory or changing tracked repository files."
+                   },
+                   {
+                       "file":  "micro_001.READY.jsonl",
+                       "candidate_id":  "one_topic_school_microcycle_micro_001_item_012_global_0012",
+                       "topic_key":  "one_topic_school_microcycle",
+                       "depth_level":  1,
+                       "target_depth":  4,
+                       "source_missing":  false,
+                       "claim":  "Depth 1 microcycle candidate 0012 preserves a bounded one-topic school step: form one small claim, keep it schema-valid, and return it to the parent cycle for later absorption review.",
+                       "expected_behavior":  "For micro_001 item 012, the producer emits one JSONL candidate tied to one_topic_school_microcycle without mutating active memory or changing tracked repository files."
+                   },
+                   {
+                       "file":  "micro_001.READY.jsonl",
+                       "candidate_id":  "one_topic_school_microcycle_micro_001_item_013_global_0013",
+                       "topic_key":  "one_topic_school_microcycle",
+                       "depth_level":  2,
+                       "target_depth":  4,
+                       "source_missing":  false,
+                       "claim":  "Depth 2 microcycle candidate 0013 preserves a bounded one-topic school step: form one small claim, keep it schema-valid, and return it to the parent cycle for later absorption review.",
+                       "expected_behavior":  "For micro_001 item 013, the producer emits one JSONL candidate tied to one_topic_school_microcycle without mutating active memory or changing tracked repository files."
+                   },
+                   {
+                       "file":  "micro_001.READY.jsonl",
+                       "candidate_id":  "one_topic_school_microcycle_micro_001_item_014_global_0014",
+                       "topic_key":  "one_topic_school_microcycle",
+                       "depth_level":  3,
+                       "target_depth":  4,
+                       "source_missing":  false,
+                       "claim":  "Depth 3 microcycle candidate 0014 preserves a bounded one-topic school step: form one small claim, keep it schema-valid, and return it to the parent cycle for later absorption review.",
+                       "expected_behavior":  "For micro_001 item 014, the producer emits one JSONL candidate tied to one_topic_school_microcycle without mutating active memory or changing tracked repository files."
+                   },
+                   {
+                       "file":  "micro_001.READY.jsonl",
+                       "candidate_id":  "one_topic_school_microcycle_micro_001_item_015_global_0015",
+                       "topic_key":  "one_topic_school_microcycle",
+                       "depth_level":  4,
+                       "target_depth":  4,
+                       "source_missing":  false,
+                       "claim":  "Depth 4 microcycle candidate 0015 preserves a bounded one-topic school step: form one small claim, keep it schema-valid, and return it to the parent cycle for later absorption review.",
+                       "expected_behavior":  "For micro_001 item 015, the producer emits one JSONL candidate tied to one_topic_school_microcycle without mutating active memory or changing tracked repository files."
+                   },
+                   {
+                       "file":  "micro_001.READY.jsonl",
+                       "candidate_id":  "one_topic_school_microcycle_micro_001_item_016_global_0016",
+                       "topic_key":  "one_topic_school_microcycle",
+                       "depth_level":  0,
+                       "target_depth":  4,
+                       "source_missing":  false,
+                       "claim":  "Depth 0 microcycle candidate 0016 preserves a bounded one-topic school step: form one small claim, keep it schema-valid, and return it to the parent cycle for later absorption review.",
+                       "expected_behavior":  "For micro_001 item 016, the producer emits one JSONL candidate tied to one_topic_school_microcycle without mutating active memory or changing tracked repository files."
+                   },
+                   {
+                       "file":  "micro_001.READY.jsonl",
+                       "candidate_id":  "one_topic_school_microcycle_micro_001_item_017_global_0017",
+                       "topic_key":  "one_topic_school_microcycle",
+                       "depth_level":  1,
+                       "target_depth":  4,
+                       "source_missing":  false,
+                       "claim":  "Depth 1 microcycle candidate 0017 preserves a bounded one-topic school step: form one small claim, keep it schema-valid, and return it to the parent cycle for later absorption review.",
+                       "expected_behavior":  "For micro_001 item 017, the producer emits one JSONL candidate tied to one_topic_school_microcycle without mutating active memory or changing tracked repository files."
+                   },
+                   {
+                       "file":  "micro_001.READY.jsonl",
+                       "candidate_id":  "one_topic_school_microcycle_micro_001_item_018_global_0018",
+                       "topic_key":  "one_topic_school_microcycle",
+                       "depth_level":  2,
+                       "target_depth":  4,
+                       "source_missing":  false,
+                       "claim":  "Depth 2 microcycle candidate 0018 preserves a bounded one-topic school step: form one small claim, keep it schema-valid, and return it to the parent cycle for later absorption review.",
+                       "expected_behavior":  "For micro_001 item 018, the producer emits one JSONL candidate tied to one_topic_school_microcycle without mutating active memory or changing tracked repository files."
+                   },
+                   {
+                       "file":  "micro_001.READY.jsonl",
+                       "candidate_id":  "one_topic_school_microcycle_micro_001_item_019_global_0019",
+                       "topic_key":  "one_topic_school_microcycle",
+                       "depth_level":  3,
+                       "target_depth":  4,
+                       "source_missing":  false,
+                       "claim":  "Depth 3 microcycle candidate 0019 preserves a bounded one-topic school step: form one small claim, keep it schema-valid, and return it to the parent cycle for later absorption review.",
+                       "expected_behavior":  "For micro_001 item 019, the producer emits one JSONL candidate tied to one_topic_school_microcycle without mutating active memory or changing tracked repository files."
+                   },
+                   {
+                       "file":  "micro_001.READY.jsonl",
+                       "candidate_id":  "one_topic_school_microcycle_micro_001_item_020_global_0020",
+                       "topic_key":  "one_topic_school_microcycle",
+                       "depth_level":  4,
+                       "target_depth":  4,
+                       "source_missing":  false,
+                       "claim":  "Depth 4 microcycle candidate 0020 preserves a bounded one-topic school step: form one small claim, keep it schema-valid, and return it to the parent cycle for later absorption review.",
+                       "expected_behavior":  "For micro_001 item 020, the producer emits one JSONL candidate tied to one_topic_school_microcycle without mutating active memory or changing tracked repository files."
+                   }
+               ],
+    "conclusion":  "School produced usable atoms with the classification shown.",
+    "created_at":  "2026-07-15T22:25:21.7555310+04:00"
+}

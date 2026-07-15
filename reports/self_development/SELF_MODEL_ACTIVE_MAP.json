@@ -6,22 +6,22 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "c46ceab29b18a9b6de544941803ff0af593ca53a",
-    "subject_head":  "c46ceab29b18a9b6de544941803ff0af593ca53a",
-    "generated_at":  "2026-07-15T21:03:04.3349502+04:00",
+    "observed_head_at_generation":  "08b10b768d7a16fa5892fd12318fbd68ad010d4b",
+    "subject_head":  "08b10b768d7a16fa5892fd12318fbd68ad010d4b",
+    "generated_at":  "2026-07-15T22:47:30.2308136+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
-    "trigger_reason":  "aimo_dual_pipe_memory_ingestion_v1_20260715",
+    "trigger_reason":  "memory_commit_organ_v1_after_validator_proof_20260715",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  2016,
+    "structural_path_count":  2026,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2016,
-                                    "sha256":  "f6fd95e65ed1942347814385c14e14cc93cda7ba4cb675b84a832b07ab014cf1"
+                                    "structural_file_count":  2026,
+                                    "sha256":  "57e63541ce803a96f025a33d7aecaa7fcd1e16af82b826bfd7a7b4f815b21d82"
                                 },
     "module_count":  203,
-    "validator_count":  180,
+    "validator_count":  181,
     "confirmed_components":  [
                                  {
                                      "id":  "school",
@@ -314,9 +314,9 @@
                                                                 "operations/compact_memory_intake/validate_growth_signal_quality_v1.ps1"
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "2d5a0cc53f478435fca39b4394546094d31d1391",
-                                                               "committed_at":  "2026-07-13T19:04:22+04:00",
-                                                               "subject":  "school: fix queue maintenance slug helper"
+                                                               "head":  "08b10b768d7a16fa5892fd12318fbd68ad010d4b",
+                                                               "committed_at":  "2026-07-15T21:03:41+04:00",
+                                                               "subject":  "feat: route AIMO memory learning through intake queue"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -1861,6 +1861,63 @@
                                                                           "operations/memory/episodic/validate_episode_cell_v1.ps1",
                                                                           "operations/memory/episodic/validate_episode_recall_v1.ps1",
                                                                           "operations/memory/episodic/write_episode_cell_v1.ps1"
+                                                                      ],
+                                            "needs_triage":  true,
+                                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
+                                            "source_ref":  "bounded_tracked_file_discovery_v1",
+                                            "is_required_component":  false
+                                        },
+                                        {
+                                            "id":  "operations_memory_commit",
+                                            "path":  "operations/memory_commit",
+                                            "root":  "operations/memory_commit",
+                                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
+                                            "discovery_method":  "bounded_git_ls_files_path_discovery",
+                                            "evidence_counts":  {
+                                                                    "files":  8,
+                                                                    "scripts":  1,
+                                                                    "validators":  0,
+                                                                    "proofs":  4,
+                                                                    "contracts_or_policies":  2,
+                                                                    "docs":  1
+                                                                },
+                                            "file_count":  8,
+                                            "script_count":  1,
+                                            "validator_count":  0,
+                                            "proof_file_count":  4,
+                                            "contract_or_policy_count":  2,
+                                            "doc_count":  1,
+                                            "validator_refs":  [
+
+                                                               ],
+                                            "proof_refs":  [
+                                                               "operations/memory_commit/proofs/MEMORY_COMMIT_AGENTLIFE_POST_SCHOOL_DRAIN_PROOF_20260715.json",
+                                                               "operations/memory_commit/proofs/MEMORY_COMMIT_ORGAN_V1_IMPLEMENTATION_REPORT_20260715.json",
+                                                               "operations/memory_commit/proofs/MEMORY_COMMIT_PROCESSED_AGENTLIFE_RETENTION_PRUNE_20260715.json",
+                                                               "operations/memory_commit/proofs/SCHOOL_ATOM_QUALITY_AUDIT_20260715.json"
+                                                           ],
+                                            "contract_or_policy_refs":  [
+                                                                            "operations/memory_commit/memory_commit_policy_v1.json",
+                                                                            "operations/memory_commit/runtime_retention_policy_v1.json"
+                                                                        ],
+                                            "notable_files":  [
+                                                                  "operations/memory_commit/MEMORY_COMMIT_ORGAN_V1.md",
+                                                                  "operations/memory_commit/memory_commit_controller_v1.ps1",
+                                                                  "operations/memory_commit/memory_commit_policy_v1.json",
+                                                                  "operations/memory_commit/proofs/MEMORY_COMMIT_AGENTLIFE_POST_SCHOOL_DRAIN_PROOF_20260715.json",
+                                                                  "operations/memory_commit/proofs/MEMORY_COMMIT_ORGAN_V1_IMPLEMENTATION_REPORT_20260715.json",
+                                                                  "operations/memory_commit/proofs/MEMORY_COMMIT_PROCESSED_AGENTLIFE_RETENTION_PRUNE_20260715.json",
+                                                                  "operations/memory_commit/proofs/SCHOOL_ATOM_QUALITY_AUDIT_20260715.json",
+                                                                  "operations/memory_commit/runtime_retention_policy_v1.json"
+                                                              ],
+                                            "primary_evidence_refs":  [
+                                                                          "operations/memory_commit/memory_commit_controller_v1.ps1",
+                                                                          "operations/memory_commit/memory_commit_policy_v1.json",
+                                                                          "operations/memory_commit/proofs/MEMORY_COMMIT_AGENTLIFE_POST_SCHOOL_DRAIN_PROOF_20260715.json",
+                                                                          "operations/memory_commit/proofs/MEMORY_COMMIT_ORGAN_V1_IMPLEMENTATION_REPORT_20260715.json",
+                                                                          "operations/memory_commit/proofs/MEMORY_COMMIT_PROCESSED_AGENTLIFE_RETENTION_PRUNE_20260715.json",
+                                                                          "operations/memory_commit/proofs/SCHOOL_ATOM_QUALITY_AUDIT_20260715.json",
+                                                                          "operations/memory_commit/runtime_retention_policy_v1.json"
                                                                       ],
                                             "needs_triage":  true,
                                             "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
@@ -7794,11 +7851,11 @@
                                 ],
     "component_authority_summary":  {
                                         "confirmed_components":  7,
-                                        "primary_evidence_candidates":  143,
+                                        "primary_evidence_candidates":  144,
                                         "legacy_unverified_hints":  4,
                                         "rejected_or_stale_hints":  3,
                                         "required_components":  7,
-                                        "total_components_in_compatibility_view":  150,
+                                        "total_components_in_compatibility_view":  151,
                                         "bounded_discovery_pathspecs":  [
                                                                             "operations",
                                                                             "modules",
@@ -8114,9 +8171,9 @@
                                                       "operations/compact_memory_intake/validate_growth_signal_quality_v1.ps1"
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "2d5a0cc53f478435fca39b4394546094d31d1391",
-                                                     "committed_at":  "2026-07-13T19:04:22+04:00",
-                                                     "subject":  "school: fix queue maintenance slug helper"
+                                                     "head":  "08b10b768d7a16fa5892fd12318fbd68ad010d4b",
+                                                     "committed_at":  "2026-07-15T21:03:41+04:00",
+                                                     "subject":  "feat: route AIMO memory learning through intake queue"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -9659,6 +9716,63 @@
                                                          "operations/memory/episodic/validate_episode_cell_v1.ps1",
                                                          "operations/memory/episodic/validate_episode_recall_v1.ps1",
                                                          "operations/memory/episodic/write_episode_cell_v1.ps1"
+                                                     ],
+                           "needs_triage":  true,
+                           "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
+                           "source_ref":  "bounded_tracked_file_discovery_v1",
+                           "is_required_component":  false
+                       },
+                       {
+                           "id":  "operations_memory_commit",
+                           "path":  "operations/memory_commit",
+                           "root":  "operations/memory_commit",
+                           "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
+                           "discovery_method":  "bounded_git_ls_files_path_discovery",
+                           "evidence_counts":  {
+                                                   "files":  8,
+                                                   "scripts":  1,
+                                                   "validators":  0,
+                                                   "proofs":  4,
+                                                   "contracts_or_policies":  2,
+                                                   "docs":  1
+                                               },
+                           "file_count":  8,
+                           "script_count":  1,
+                           "validator_count":  0,
+                           "proof_file_count":  4,
+                           "contract_or_policy_count":  2,
+                           "doc_count":  1,
+                           "validator_refs":  [
+
+                                              ],
+                           "proof_refs":  [
+                                              "operations/memory_commit/proofs/MEMORY_COMMIT_AGENTLIFE_POST_SCHOOL_DRAIN_PROOF_20260715.json",
+                                              "operations/memory_commit/proofs/MEMORY_COMMIT_ORGAN_V1_IMPLEMENTATION_REPORT_20260715.json",
+                                              "operations/memory_commit/proofs/MEMORY_COMMIT_PROCESSED_AGENTLIFE_RETENTION_PRUNE_20260715.json",
+                                              "operations/memory_commit/proofs/SCHOOL_ATOM_QUALITY_AUDIT_20260715.json"
+                                          ],
+                           "contract_or_policy_refs":  [
+                                                           "operations/memory_commit/memory_commit_policy_v1.json",
+                                                           "operations/memory_commit/runtime_retention_policy_v1.json"
+                                                       ],
+                           "notable_files":  [
+                                                 "operations/memory_commit/MEMORY_COMMIT_ORGAN_V1.md",
+                                                 "operations/memory_commit/memory_commit_controller_v1.ps1",
+                                                 "operations/memory_commit/memory_commit_policy_v1.json",
+                                                 "operations/memory_commit/proofs/MEMORY_COMMIT_AGENTLIFE_POST_SCHOOL_DRAIN_PROOF_20260715.json",
+                                                 "operations/memory_commit/proofs/MEMORY_COMMIT_ORGAN_V1_IMPLEMENTATION_REPORT_20260715.json",
+                                                 "operations/memory_commit/proofs/MEMORY_COMMIT_PROCESSED_AGENTLIFE_RETENTION_PRUNE_20260715.json",
+                                                 "operations/memory_commit/proofs/SCHOOL_ATOM_QUALITY_AUDIT_20260715.json",
+                                                 "operations/memory_commit/runtime_retention_policy_v1.json"
+                                             ],
+                           "primary_evidence_refs":  [
+                                                         "operations/memory_commit/memory_commit_controller_v1.ps1",
+                                                         "operations/memory_commit/memory_commit_policy_v1.json",
+                                                         "operations/memory_commit/proofs/MEMORY_COMMIT_AGENTLIFE_POST_SCHOOL_DRAIN_PROOF_20260715.json",
+                                                         "operations/memory_commit/proofs/MEMORY_COMMIT_ORGAN_V1_IMPLEMENTATION_REPORT_20260715.json",
+                                                         "operations/memory_commit/proofs/MEMORY_COMMIT_PROCESSED_AGENTLIFE_RETENTION_PRUNE_20260715.json",
+                                                         "operations/memory_commit/proofs/SCHOOL_ATOM_QUALITY_AUDIT_20260715.json",
+                                                         "operations/memory_commit/runtime_retention_policy_v1.json"
                                                      ],
                            "needs_triage":  true,
                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",

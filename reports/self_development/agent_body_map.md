@@ -2,9 +2,9 @@
 
 Status: ACTIVE_DERIVED_VIEW
 Branch: main
-Observed head at generation: c46ceab29b18a9b6de544941803ff0af593ca53a
-Generated: 2026-07-15T21:03:04.3349502+04:00
-Body source fingerprint: f6fd95e65ed1942347814385c14e14cc93cda7ba4cb675b84a832b07ab014cf1
+Observed head at generation: 08b10b768d7a16fa5892fd12318fbd68ad010d4b
+Generated: 2026-07-15T22:47:30.2308136+04:00
+Body source fingerprint: 57e63541ce803a96f025a33d7aecaa7fcd1e16af82b826bfd7a7b4f815b21d82
 
 Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
@@ -18,7 +18,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 ## Counts
 
 - Confirmed components: 7
-- Primary evidence candidates: 143
+- Primary evidence candidates: 144
 - Legacy unverified hints: 4
 - Rejected or stale hints: 3
 
@@ -54,6 +54,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `operations_live_start` - root `operations/live_start`, files=5, scripts=5, validators=2, proofs=0, needs_triage=True
 - `operations_living_loop` - root `operations/living_loop`, files=21, scripts=21, validators=11, proofs=0, needs_triage=True
 - `operations_memory` - root `operations/memory`, files=4, scripts=4, validators=2, proofs=0, needs_triage=True
+- `operations_memory_commit` - root `operations/memory_commit`, files=8, scripts=1, validators=0, proofs=4, needs_triage=True
 - `operations_organ_promotion_lanes` - root `operations/organ_promotion_lanes`, files=5, scripts=5, validators=3, proofs=0, needs_triage=True
 - `operations_overnight_school` - root `operations/overnight_school`, files=3, scripts=3, validators=1, proofs=0, needs_triage=True
 - `operations_parallel_life` - root `operations/parallel_life`, files=5, scripts=5, validators=3, proofs=0, needs_triage=True
@@ -113,7 +114,6 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `packs_phase48_remediation_seed_program_blueprint_contract_v1` - root `packs/PHASE48_REMEDIATION_SEED_PROGRAM_BLUEPRINT_CONTRACT_V1`, files=6, scripts=3, validators=1, proofs=0, needs_triage=True
 - `packs_phase49_remediation_seed_program_materialization_v1` - root `packs/PHASE49_REMEDIATION_SEED_PROGRAM_MATERIALIZATION_V1`, files=5, scripts=3, validators=1, proofs=1, needs_triage=True
 - `packs_phase5_external_agent_spec_intake` - root `packs/PHASE5_EXTERNAL_AGENT_SPEC_INTAKE`, files=7, scripts=3, validators=2, proofs=0, needs_triage=True
-- `packs_phase50_one_run_remediation_seed_program_synthesis_proof_v1` - root `packs/PHASE50_ONE_RUN_REMEDIATION_SEED_PROGRAM_SYNTHESIS_PROOF_V1`, files=3, scripts=2, validators=1, proofs=3, needs_triage=True
 
 ## Freshness
 

@@ -1,0 +1,43 @@
+{
+  "schema": "memory_commit_policy_v1",
+  "status": "ACTIVE_FOR_AGENTLIFE_POST_SCHOOL_DRAIN",
+  "purpose": "One active-memory commit throat with School priority, AgentLife queue/drain, immediate rejection cleanup, and bounded runtime retention.",
+  "commit_throat": "single_active_compact_memory_publish_path",
+  "source_lanes": {
+    "School": {
+      "priority": "P1",
+      "mode": "batch_commit_first",
+      "batch_size_hint": 100,
+      "agent_strength_signal": "AIMO must refresh active compact memory at cycle boundary after School batch commit."
+    },
+    "AgentLife": {
+      "priority": "P3",
+      "mode": "queue_during_school_micro_drain_or_post_school_drain",
+      "max_delay_batches": 3,
+      "queue_root": ".runtime/compact_memory_intake_v1/queue"
+    }
+  },
+  "rejected_packet_rule": {
+    "store_full_rejected_packet": false,
+    "delete_packet_immediately": true,
+    "keep_only_compact_metric": true
+  },
+  "accepted_packet_rule": {
+    "delete_queue_packet_after_successful_commit": true,
+    "keep_processed_summary_not_full_archive": true
+  },
+  "retention": {
+    "merge_checkpoints": "delete_after_successful_commit_and_hash_proof",
+    "processed_full_packet": "replace_or_summarize",
+    "raw_school_run": "keep_final_report_batch_summary_tail_logs_after_pass"
+  },
+  "proof_requirements": [
+    "school_batch_memory_changed",
+    "aimo_queue_only_when_school_busy",
+    "agentlife_drain_after_school",
+    "accepted_deleted_from_queue",
+    "rejected_deleted_immediately",
+    "active_memory_hash_changed_for_accepted",
+    "runtime_size_reported"
+  ]
+}
