@@ -1,0 +1,22 @@
+{
+  "schema": "aimo_memory_atom_acceptance_gate_schema_v1",
+  "required_fields": [
+    "decision",
+    "reason",
+    "explanation",
+    "duplicate_rule_refs",
+    "duplicate_memory_refs",
+    "delta",
+    "final_atom",
+    "rejection_explanation",
+    "absorption_allowed"
+  ],
+  "delta_required": [
+    "discovered_in_run",
+    "evidence_backed",
+    "local_experience",
+    "transferable",
+    "actionable_next_cycle"
+  ],
+  "rule": "Gate must explain every non-ACCEPT decision and must never silently discard a candidate."
+}

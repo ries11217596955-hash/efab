@@ -11,7 +11,11 @@
     "max_atoms_per_cycle": 1,
     "route": "operations/school/digestion/absorb_atom_file_via_digest_pipeline_v1.ps1",
     "direct_active_memory_write": false,
-    "requires_governed_absorption": true
+    "requires_governed_absorption": true,
+    "acceptance_gate": "operations/autonomous_inner_motor/invoke_memory_atom_acceptance_gate_v1.ps1",
+    "requires_acceptance_gate": true,
+    "reject_rule_duplicates": true,
+    "rewrite_rule_like_candidate_to_experience_atom": true
   },
   "priority_terms": [
     "relevance_to_parent",

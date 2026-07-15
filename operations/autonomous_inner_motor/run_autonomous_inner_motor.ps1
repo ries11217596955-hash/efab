@@ -250,6 +250,44 @@ function New-DeepThinkingLearningAtom($RunId,$Frames,$InternalGoal){
     quality_flags=@('recursive','memory_first','governed_absorption','return_to_parent','self_build_aligned')
   }
 }
+function Invoke-MemoryAtomAcceptanceGate($RunRoot,$RunId,$Atom,$Frames,$MemoryRecalls){
+  if(-not(Test-Path -LiteralPath $RunRoot)){ New-Item -ItemType Directory -Force -Path $RunRoot | Out-Null }
+  $candidatePath=Join-Path $RunRoot 'learning_atom.candidate.jsonl'
+  $contextPath=Join-Path $RunRoot 'memory_atom_gate_context.json'
+  $decisionPath=Join-Path $RunRoot 'memory_atom_acceptance_gate_decision.json'
+  $finalAtomPath=Join-Path $RunRoot 'learning_atom.accepted.jsonl'
+  $candidateJson=($Atom | ConvertTo-Json -Depth 40 -Compress)
+  $utf8NoBom=New-Object System.Text.UTF8Encoding($false)
+  [System.IO.File]::WriteAllText((Join-Path (Get-Location).Path $candidatePath), $candidateJson + "`n", $utf8NoBom)
+  $context=[ordered]@{ run_id=$RunId; frames=@($Frames); memory_recalls=@($MemoryRecalls); created_at=(Get-Date).ToString('o') }
+  Write-CleanJson $contextPath $context 60
+  $out=@(& powershell -NoProfile -ExecutionPolicy Bypass -File 'operations/autonomous_inner_motor/invoke_memory_atom_acceptance_gate_v1.ps1' -CandidateAtomPath $candidatePath -RunContextPath $contextPath -OutputPath $decisionPath -FinalAtomPath $finalAtomPath *>&1 | ForEach-Object { [string]$_ })
+  $exit=$LASTEXITCODE
+  $decision=$null
+  if(Test-Path -LiteralPath $decisionPath){ $decision=Read-JsonSafe $decisionPath }
+  return [ordered]@{ exit_code=$exit; raw_output=@($out); candidate_atom_path=$candidatePath; context_path=$contextPath; decision_path=$decisionPath; final_atom_path=$finalAtomPath; decision=$decision }
+}
+function Invoke-AcceptedLearningAtomAbsorption($RunRoot,$RunId,$AcceptedAtomPath){
+  if(-not(Test-Path -LiteralPath $RunRoot)){ New-Item -ItemType Directory -Force -Path $RunRoot | Out-Null }
+  $before=Get-ActiveMemoryState
+  $out=@(& powershell -NoProfile -ExecutionPolicy Bypass -File 'operations/school/digestion/absorb_atom_file_via_digest_pipeline_v1.ps1' -InputPath $AcceptedAtomPath -ValidationTier Stable -SizeBudgetBytes 104857600 *>&1 | ForEach-Object { [string]$_ })
+  $exit=$LASTEXITCODE
+  $after=Get-ActiveMemoryState
+  $status=($out | Where-Object { $_ -match '^ABSORB_STATUS=' -or $_ -match '^STATUS=' } | Select-Object -Last 1)
+  $candidateRemoved=($out | Where-Object { $_ -match '^CANDIDATE_MEMORY_ROOT_REMOVED=' } | Select-Object -Last 1) -replace '^CANDIDATE_MEMORY_ROOT_REMOVED=',''
+  $candidateExistsAfter=($out | Where-Object { $_ -match '^CANDIDATE_MEMORY_ROOT_EXISTS_AFTER=' } | Select-Object -Last 1) -replace '^CANDIDATE_MEMORY_ROOT_EXISTS_AFTER=',''
+  return [ordered]@{
+    atom_path=$AcceptedAtomPath
+    exit_code=$exit
+    raw_output=@($out)
+    status_line=$status
+    candidate_memory_root_removed=$candidateRemoved
+    candidate_memory_root_exists_after=$candidateExistsAfter
+    before=$before
+    after=$after
+    memory_changed=($($before.files | ConvertTo-Json -Depth 20) -ne $($after.files | ConvertTo-Json -Depth 20))
+  }
+}
 function Invoke-LearningAtomAbsorption($RunRoot,$RunId,$Atom){
   if(-not(Test-Path -LiteralPath $RunRoot)){ New-Item -ItemType Directory -Force -Path $RunRoot | Out-Null }
   $atomPath=Join-Path $RunRoot 'learning_atom.jsonl'
@@ -303,7 +341,7 @@ $cycles=@(
   [ordered]@{ n=6; lens='future_child_agent_boundary'; question='When may I create other agents?'; memory_used=$true; answer='Only after Builder can self-observe, self-build small organs, validate, repair, and produce bounded child-agent specs from proven needs.' },
   [ordered]@{ n=7; lens='return_to_parent'; question='What should be built next?'; memory_used=$true; answer='Build self-directed thinking cycle proof and self-build gap selector wiring inside AIMO; do not wait for Owner query.' }
 )
-$deepThinking=[ordered]@{ enabled=[bool]$EnableDeepThinking; frames=@(); memory_recalls=@(); learning_atom=$null; absorption=$null; status='NOT_REQUESTED' }
+$deepThinking=[ordered]@{ enabled=[bool]$EnableDeepThinking; frames=@(); memory_recalls=@(); learning_atom=$null; acceptance_gate=$null; absorption=$null; status='NOT_REQUESTED' }
 if($EnableDeepThinking){
   $deepThinking.status='RUNNING'
   $deepThinking.frames=@(Build-DeepThinkingTree $internalGoal $body $memoryBefore)
@@ -312,7 +350,10 @@ if($EnableDeepThinking){
   }
   $deepThinking.learning_atom=New-DeepThinkingLearningAtom $runId $deepThinking.frames $internalGoal
   if($EnableMemoryLearning){
-    $deepThinking.absorption=Invoke-LearningAtomAbsorption $runRoot $runId $deepThinking.learning_atom
+    $deepThinking.acceptance_gate=Invoke-MemoryAtomAcceptanceGate $runRoot $runId $deepThinking.learning_atom $deepThinking.frames $deepThinking.memory_recalls
+    if([int]$deepThinking.acceptance_gate.exit_code -ne 0){ throw "AIMO_MEMORY_ATOM_ACCEPTANCE_GATE_BLOCKED:$($deepThinking.acceptance_gate.exit_code)" }
+    if(-not $deepThinking.acceptance_gate.decision.absorption_allowed){ throw "AIMO_MEMORY_ATOM_ACCEPTANCE_GATE_REJECTED" }
+    $deepThinking.absorption=Invoke-AcceptedLearningAtomAbsorption $runRoot $runId $deepThinking.acceptance_gate.final_atom_path
     if([int]$deepThinking.absorption.exit_code -ne 0){ throw "AIMO_LEARNING_ATOM_ABSORPTION_FAILED:$($deepThinking.absorption.exit_code)" }
     $deepThinking.status='PASS_DEEP_THINKING_WITH_MEMORY_LEARNING'
   } else {

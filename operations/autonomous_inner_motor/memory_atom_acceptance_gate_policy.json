@@ -1,0 +1,43 @@
+{
+  "schema": "aimo_memory_atom_acceptance_gate_policy_v1",
+  "status": "ACTIVE_PRE_ABSORPTION_GATE",
+  "purpose": "Prevent AIMO from writing settings/contract/validator duplicates into compact memory as fake learning atoms.",
+  "decisions": [
+    "ACCEPT",
+    "REWRITE_AS_EXPERIENCE_ATOM",
+    "REJECT_WITH_EXPLANATION",
+    "ESCALATE_TO_RULE_UPDATE"
+  ],
+  "delta_test": {
+    "D": "discovered_during_this_reasoning_or_run",
+    "E": "evidence_backed",
+    "L": "local_experience_not_generic_law",
+    "T": "transferable_to_future_reasoning",
+    "A": "actionable_for_next_self_build_cycle"
+  },
+  "reject_when": [
+    "raw_rule_copy",
+    "settings_contract_validator_duplicate",
+    "no_new_observation",
+    "no_proof_delta",
+    "not_reusable",
+    "raw_chat_dump"
+  ],
+  "rewrite_when": [
+    "useful_but_generic_rule",
+    "policy_duplicate_with_run_specific_experience_available",
+    "candidate_missing_local_failure_or_repair_pattern"
+  ],
+  "escalate_when": [
+    "new_safety_law",
+    "contract_gap",
+    "validator_should_be_updated_instead_of_memory"
+  ],
+  "absorption_allowed_only_when": [
+    "decision_accept_or_rewrite",
+    "final_atom_present",
+    "explanation_present",
+    "delta_report_present",
+    "direct_active_memory_write_false"
+  ]
+}

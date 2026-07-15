@@ -1,0 +1,27 @@
+{
+    "schema":  "autonomous_inner_motor_memory_atom_acceptance_gate_validation_v1",
+    "status":  "PASS_AUTONOMOUS_INNER_MOTOR_MEMORY_ATOM_ACCEPTANCE_GATE_V1",
+    "checked_at":  "2026-07-15T20:31:08.2887214+04:00",
+    "proof_path":  "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_PROOF_20260715.json",
+    "decision_path":  "",
+    "boundary":  {
+                     "validates_explained_gate":  true,
+                     "validates_no_rule_copy_absorption":  true,
+                     "validates_rewrite_or_reject":  true
+                 },
+    "negative_case_rule_duplicate_without_context":  {
+                                                         "exit_code":  2,
+                                                         "decision":  "REJECT_WITH_EXPLANATION",
+                                                         "absorption_allowed":  false,
+                                                         "explanation":  "The candidate repeats an existing rule/policy/validator but no run context was provided to rewrite it as an experience atom.",
+                                                         "output":  [
+                                                                        "MEMORY_ATOM_GATE_DECISION=REJECT_WITH_EXPLANATION",
+                                                                        "ABSORPTION_ALLOWED=False",
+                                                                        "GATE_DECISION_PATH=.runtime\\autonomous_inner_motor_gate_validator\\rule_duplicate_decision.json",
+                                                                        "EXPLANATION=The candidate repeats an existing rule/policy/validator but no run context was provided to rewrite it as an experience atom."
+                                                                    ]
+                                                     },
+    "errors":  [
+
+               ]
+}

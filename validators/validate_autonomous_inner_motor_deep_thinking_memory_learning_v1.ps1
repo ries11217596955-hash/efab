@@ -24,7 +24,7 @@ $proof=Read-Json $ProofPath
 $runnerText=if(Test-Path 'operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1'){ Get-Content 'operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1' -Raw } else { Add-Err 'missing_runner'; '' }
 $policy=Read-Json 'operations/autonomous_inner_motor/deep_thinking_policy.json'
 $schema=Read-Json 'operations/autonomous_inner_motor/thought_frame_schema.json'
-foreach($needle in @('Build-DeepThinkingTree','New-ThoughtFrame','New-DeepThinkingLearningAtom','Invoke-LearningAtomAbsorption','EnableMemoryLearning','EnableDeepThinking')){
+foreach($needle in @('Build-DeepThinkingTree','New-ThoughtFrame','New-DeepThinkingLearningAtom','Invoke-LearningAtomAbsorption','Invoke-MemoryAtomAcceptanceGate','Invoke-AcceptedLearningAtomAbsorption','EnableMemoryLearning','EnableDeepThinking')){
   if($runnerText -notlike "*$needle*"){ Add-Err "runner_missing:$needle" }
 }
 if($null -ne $policy){
@@ -42,6 +42,12 @@ if($null -ne $proof){
   if($badReturn.Count -gt 0){ Add-Err 'missing_return_to_parent_in_frames' }
   if(@($proof.deep_thinking.memory_recalls).Count -lt 3){ Add-Err 'memory_recall_less_than_three' }
   if($proof.deep_thinking.learning_atom.concept_key -ne 'aimo.deep_thinking.recursive_thought_frame.memory_learning'){ Add-Err 'learning_atom_concept_key_bad' }
+  if(-not $proof.deep_thinking.acceptance_gate){ Add-Err 'acceptance_gate_missing' }
+  else {
+    if($proof.deep_thinking.acceptance_gate.decision.absorption_allowed -ne $true){ Add-Err 'acceptance_gate_absorption_not_allowed' }
+    if([string]::IsNullOrWhiteSpace($proof.deep_thinking.acceptance_gate.decision.explanation)){ Add-Err 'acceptance_gate_explanation_missing' }
+    if($proof.deep_thinking.absorption.atom_path -ne $proof.deep_thinking.acceptance_gate.final_atom_path){ Add-Err 'absorption_not_using_gate_final_atom' }
+  }
   if($proof.boundary.governed_memory_learning -ne $true){ Add-Err 'boundary_governed_memory_learning_not_true' }
   if($proof.boundary.direct_active_memory_write -ne $false){ Add-Err 'direct_active_memory_write_not_false' }
   if($proof.deep_thinking.absorption.memory_changed -ne $true){ Add-Err 'absorption_memory_changed_not_true' }

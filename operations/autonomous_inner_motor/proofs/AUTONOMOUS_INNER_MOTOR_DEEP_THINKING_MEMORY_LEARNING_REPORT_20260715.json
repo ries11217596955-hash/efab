@@ -1,17 +1,24 @@
 {
-  "schema": "aimo_deep_thinking_memory_learning_live_report_v1",
-  "status": "PASS_AIMO_DEEP_THINKING_CREATED_MEMORY_ATOM",
-  "created_at": "2026-07-15T15:13:22.327557+00:00",
+  "schema": "aimo_deep_thinking_memory_learning_live_report_v2",
+  "status": "PASS_AIMO_DEEP_THINKING_MEMORY_ATOM_GATE_REWRITE_AND_ABSORB",
+  "created_at": "2026-07-15T16:30:50.351418+00:00",
   "branch": "main",
-  "head": "30e986d",
-  "runtime_proof_path": ".runtime/autonomous_inner_motor/aimo_20260715_191217/SANDBOX_EXPLORATION_PROOF.json",
+  "head": "88c337f",
+  "runtime_proof_path": ".runtime/autonomous_inner_motor/aimo_20260715_202921/SANDBOX_EXPLORATION_PROOF.json",
   "tracked_proof_path": "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_PROOF_20260715.json",
   "deep_thinking_status": "PASS_DEEP_THINKING_WITH_MEMORY_LEARNING",
   "frames": 5,
   "missing_return_to_parent": 0,
   "memory_recalls": 3,
-  "learning_atom_concept_key": "aimo.deep_thinking.recursive_thought_frame.memory_learning",
+  "candidate_learning_atom_concept_key": "aimo.deep_thinking.recursive_thought_frame.memory_learning",
+  "gate_decision": "REWRITE_AS_EXPERIENCE_ATOM",
+  "gate_reason": "candidate_too_close_to_existing_rule_but_run_has_experience_delta",
+  "gate_explanation": "The candidate repeats existing AIMO deep-thinking rules. It is rewritten into an experience atom about this run: the gate detected rule-duplication risk before absorption and converted the candidate into a DELTA-backed operational lesson.",
+  "duplicate_rule_refs_count": 1,
+  "final_atom_concept_key": "aimo.memory_atom_acceptance_gate.delta_over_rule_duplicate",
   "absorption_exit": 0,
+  "absorption_atom_path": ".runtime\\autonomous_inner_motor\\aimo_20260715_202921\\learning_atom.accepted.jsonl",
+  "gate_final_atom_path": ".runtime\\autonomous_inner_motor\\aimo_20260715_202921\\learning_atom.accepted.jsonl",
   "absorption_memory_changed": true,
   "candidate_memory_root_removed": "True",
   "candidate_memory_root_exists_after": "False",
@@ -22,17 +29,17 @@
     {
       "path": ".runtime\\active_compact_semantic_memory_v1\\manifest.json",
       "bytes": 1889,
-      "sha256": "11bb132c0744af6e67d5eff499177e059679388b90bb397b73b5ad1ab0c46948"
+      "sha256": "72dc50d738f48acc60cf1ae845992b24bcf330cdb1635a36b25072daa5c1ed90"
     },
     {
       "path": ".runtime\\active_compact_semantic_memory_v1\\index.json",
-      "bytes": 310493,
-      "sha256": "e2f7474639a74c7e841b76dd16f7d48d4533d90fe6bb4bfb2fe3ea1f7a610b81"
+      "bytes": 310857,
+      "sha256": "639349096e34ea551e88a9d1fd518c2df2e9aac23380f1dc62dc25486bb834e9"
     },
     {
       "path": ".runtime\\active_compact_semantic_memory_v1\\cells.jsonl",
-      "bytes": 12611878,
-      "sha256": "4c223596866338d3906d3648b93406c600c4aacfb7c483b5501329657d03fa23"
+      "bytes": 12612881,
+      "sha256": "ca37ba52b9d1320ab8d386bc07abc5391602b2b913d75373489c77daccf43bd1"
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "schema": "autonomous_inner_motor_v0_implementation_report",
-  "status": "PASS_AUTONOMOUS_INNER_MOTOR_V0_DEEP_THINKING_MEMORY_LEARNING",
+  "status": "PASS_AUTONOMOUS_INNER_MOTOR_V0_MEMORY_ATOM_ACCEPTANCE_GATE",
   "created_at": "2026-07-15T18:40:46.8339696+04:00",
   "contract_validation": "PASS_AUTONOMOUS_INNER_MOTOR_ORGAN_CONTRACT",
   "sandbox_validation": "PASS_AUTONOMOUS_INNER_MOTOR_SANDBOX_EXPLORATION_PROOF",
@@ -47,5 +47,12 @@
       "sha256": "4c223596866338d3906d3648b93406c600c4aacfb7c483b5501329657d03fa23"
     }
   ],
-  "missing_return_to_parent": 0
+  "missing_return_to_parent": 0,
+  "memory_atom_acceptance_gate": "PASS_REWRITE_AS_EXPERIENCE_ATOM_WITH_EXPLANATION",
+  "gate_decision": "REWRITE_AS_EXPERIENCE_ATOM",
+  "gate_reason": "candidate_too_close_to_existing_rule_but_run_has_experience_delta",
+  "final_atom_concept_key": "aimo.memory_atom_acceptance_gate.delta_over_rule_duplicate",
+  "duplicate_rule_refs_count": 1,
+  "absorption_atom_path_equals_gate_final_atom_path": true,
+  "memory_atom_acceptance_gate_validation": "PASS_AUTONOMOUS_INNER_MOTOR_MEMORY_ATOM_ACCEPTANCE_GATE_V1"
 }

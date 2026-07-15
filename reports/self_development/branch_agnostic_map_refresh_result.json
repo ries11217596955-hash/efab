@@ -1,34 +1,38 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-15T19:17:59.5838742+04:00",
+    "checked_at":  "2026-07-15T20:31:30.6044635+04:00",
     "branch":  "main",
-    "observed_head":  "30e986db5b5aff6e0986849a0c868c3997447828",
-    "subject_head":  "30e986db5b5aff6e0986849a0c868c3997447828",
-    "trigger_reason":  "aimo_deep_thinking_memory_learning_final_after_all_proofs_staged_20260715",
+    "observed_head":  "88c337fd07036b2dd1acca588dcdf33e13ea1a66",
+    "subject_head":  "88c337fd07036b2dd1acca588dcdf33e13ea1a66",
+    "trigger_reason":  "aimo_memory_atom_acceptance_gate_v1_20260715",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
                           "operations/autonomous_inner_motor/AUTONOMOUS_INNER_MOTOR_ORGAN_SPEC.md",
-                          "operations/autonomous_inner_motor/motor_policy.json",
-                          "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SELF_DIRECTED_THINKING_PROOF_20260715.json",
+                          "operations/autonomous_inner_motor/deep_thinking_policy.json",
+                          "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_PROOF_20260715.json",
+                          "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_REPORT_20260715.json",
                           "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_V0_IMPLEMENTATION_REPORT.json",
                           "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+                          "operations/autonomous_inner_motor/thought_frame_schema.json",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "tests/self_development/AUTONOMOUS_INNER_MOTOR_SELF_DIRECTED_THINKING_V1_PROOF.json",
-                          "validators/validate_autonomous_inner_motor_self_directed_thinking_v1.ps1"
+                          "tests/self_development/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_V1_PROOF.json",
+                          "validators/validate_autonomous_inner_motor_deep_thinking_memory_learning_v1.ps1"
                       ],
     "structural_paths":  [
                              "operations/autonomous_inner_motor/AUTONOMOUS_INNER_MOTOR_ORGAN_SPEC.md",
-                             "operations/autonomous_inner_motor/motor_policy.json",
-                             "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SELF_DIRECTED_THINKING_PROOF_20260715.json",
+                             "operations/autonomous_inner_motor/deep_thinking_policy.json",
+                             "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_PROOF_20260715.json",
+                             "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_REPORT_20260715.json",
                              "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_V0_IMPLEMENTATION_REPORT.json",
                              "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
-                             "tests/self_development/AUTONOMOUS_INNER_MOTOR_SELF_DIRECTED_THINKING_V1_PROOF.json",
-                             "validators/validate_autonomous_inner_motor_self_directed_thinking_v1.ps1"
+                             "operations/autonomous_inner_motor/thought_frame_schema.json",
+                             "tests/self_development/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_V1_PROOF.json",
+                             "validators/validate_autonomous_inner_motor_deep_thinking_memory_learning_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -40,8 +44,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2007,
-                                    "sha256":  "1e09f0fd32e46fe74f65c7d76c73201ac76473536fcdc13914d4b15d738fd579"
+                                    "structural_file_count":  2012,
+                                    "sha256":  "801f36a63e067655d963276f9ddbc50c6d97beb5374cdaddf38961ed6bf019ee"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -67,12 +71,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  150,
-                         "structural_path_count":  2007,
+                         "structural_path_count":  2012,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-15T19:18:27.5582935+04:00"
+    "refreshed_at":  "2026-07-15T20:31:58.7148612+04:00"
 }

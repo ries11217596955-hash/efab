@@ -170,3 +170,16 @@ deep thought frame proof -> one learning atom JSONL -> absorb_atom_file_via_dige
 ```
 
 This makes the next thinking cycle stronger without granting repo action authority.
+
+
+## Memory atom acceptance gate
+
+AIMO must not absorb a memory atom merely because it restates a rule already present in settings, contracts, or validators.
+
+Before governed absorption, every candidate atom must pass the Memory Atom Acceptance Gate:
+
+```text
+candidate atom -> duplicate rule/memory scan -> DELTA test -> ACCEPT / REWRITE_AS_EXPERIENCE_ATOM / REJECT_WITH_EXPLANATION / ESCALATE_TO_RULE_UPDATE -> only accepted/rewrite atom may be absorbed
+```
+
+The gate must explain rejections and rewrites. A useful but generic rule-like candidate should be rewritten into a local, evidence-backed experience atom rather than copied as a rule.
