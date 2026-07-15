@@ -77,5 +77,25 @@
     "protective_checkpoint_stop",
     "proof_written"
   ],
-  "boundary": "Thinking-only policy. No active memory mutation, no git mutation, no live actions."
+  "boundary": "Thinking-only policy. No active memory mutation, no git mutation, no live actions.",
+  "owner_query_required": false,
+  "default_seed_source": "self_build_internal_seed",
+  "self_directed_thinking": {
+    "enabled": true,
+    "does_not_wait_for_owner_query": true,
+    "seed_sources": [
+      "active_compact_memory",
+      "body_inventory_map",
+      "self_build_backlog",
+      "living_loop_state",
+      "school_proofs",
+      "agent_catalog"
+    ],
+    "stage_order": [
+      "thinking_growth",
+      "governed_self_build_actions",
+      "child_agent_production"
+    ],
+    "current_stage": "thinking_growth"
+  }
 }

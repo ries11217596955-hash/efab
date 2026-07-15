@@ -131,3 +131,29 @@ L3 SandboxTestLife: simulated life loop, no mutation.
 L4 GovernedRepoAction: disabled for now.
 L5 LiveAuthority: disabled for now.
 ```
+
+
+## Self-directed thinking law
+
+The motor must not wait for Owner questions to think.
+
+Owner can give direction, correction, or authority, but the default thinking loop is self-seeded from:
+
+```text
+active compact memory
+body inventory map
+self-build backlog
+living loop state
+School proof state
+agent catalog / future child-agent direction
+```
+
+The first development stage is not action. It is thinking growth:
+
+```text
+think better -> choose self-build gap -> prove reasoning -> stop
+```
+
+The second stage is governed self-build action. The third stage is child-agent creation.
+
+Child-agent production is not current brain behavior. It is a future output of a Builder that can already self-observe, self-select gaps, validate, repair, and explain proof boundaries.

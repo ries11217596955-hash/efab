@@ -1,18 +1,25 @@
 {
-    "schema":  "autonomous_inner_motor_v0_implementation_report",
-    "status":  "PASS_AUTONOMOUS_INNER_MOTOR_V0_THINKING_ORGAN",
-    "created_at":  "2026-07-15T18:40:46.8339696+04:00",
-    "contract_validation":  "PASS_AUTONOMOUS_INNER_MOTOR_ORGAN_CONTRACT",
-    "sandbox_validation":  "PASS_AUTONOMOUS_INNER_MOTOR_SANDBOX_EXPLORATION_PROOF",
-    "runtime_proof_path":  ".runtime\\autonomous_inner_motor\\aimo_20260715_184024\\SANDBOX_EXPLORATION_PROOF.json",
-    "tracked_proof_path":  "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SANDBOX_EXPLORATION_PROOF_20260715.json",
-    "thinking_scope":  {
-                           "memory_first":  true,
-                           "web_research_port":  "request_only_not_executed",
-                           "codex_question_port":  "request_only_not_launched",
-                           "active_memory_mutation":  false,
-                           "git_mutation_by_runner":  false,
-                           "school_launch_by_runner":  false
-                       },
-    "next_gap":  "build_read_only_compact_memory_query_port_v1"
+  "schema": "autonomous_inner_motor_v0_implementation_report",
+  "status": "PASS_AUTONOMOUS_INNER_MOTOR_V0_SELF_DIRECTED_THINKING_ORGAN",
+  "created_at": "2026-07-15T18:40:46.8339696+04:00",
+  "contract_validation": "PASS_AUTONOMOUS_INNER_MOTOR_ORGAN_CONTRACT",
+  "sandbox_validation": "PASS_AUTONOMOUS_INNER_MOTOR_SANDBOX_EXPLORATION_PROOF",
+  "runtime_proof_path": ".runtime\\autonomous_inner_motor\\aimo_20260715_184024\\SANDBOX_EXPLORATION_PROOF.json",
+  "tracked_proof_path": "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SANDBOX_EXPLORATION_PROOF_20260715.json",
+  "thinking_scope": {
+    "memory_first": true,
+    "web_research_port": "request_only_not_executed",
+    "codex_question_port": "request_only_not_launched",
+    "active_memory_mutation": false,
+    "git_mutation_by_runner": false,
+    "school_launch_by_runner": false,
+    "self_seeded_from_self_build": true,
+    "owner_query_required": false
+  },
+  "next_gap": "build_self_directed_thinking_cycle_and_gap_selector_wiring_v1",
+  "self_directed_validation": "PASS_AUTONOMOUS_INNER_MOTOR_SELF_DIRECTED_THINKING_V1",
+  "owner_query_required": false,
+  "internal_goal_source": "SELF_BUILD_INTERNAL_SEED",
+  "selected_next_path": "build_self_directed_thinking_cycle_and_gap_selector_wiring_v1",
+  "tracked_self_directed_proof_path": "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SELF_DIRECTED_THINKING_PROOF_20260715.json"
 }

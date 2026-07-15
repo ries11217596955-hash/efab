@@ -1,20 +1,36 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-15T18:42:25.6094950+04:00",
+    "checked_at":  "2026-07-15T18:54:00.5739600+04:00",
     "branch":  "main",
-    "observed_head":  "cd1e3d0024149fd71ac6377d99c7ccaca3e76ac8",
-    "subject_head":  "cd1e3d0024149fd71ac6377d99c7ccaca3e76ac8",
-    "trigger_reason":  "autonomous_inner_motor_v0_final_no_generated_validation_20260715",
+    "observed_head":  "fc065d95583e1597a97f0db6cc84c1afcd8da2f0",
+    "subject_head":  "fc065d95583e1597a97f0db6cc84c1afcd8da2f0",
+    "trigger_reason":  "aimo_self_directed_final_staged_refresh_20260715",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "operations/gpt_handoff/LIVE_SCHOOL_1000_RETENTION_VERIFICATION_20260715.json",
-                          "operations/gpt_handoff/LIVE_SCHOOL_1000_RETENTION_VERIFICATION_20260715.md"
+                          "operations/autonomous_inner_motor/AUTONOMOUS_INNER_MOTOR_ORGAN_SPEC.md",
+                          "operations/autonomous_inner_motor/motor_policy.json",
+                          "operations/autonomous_inner_motor/motor_proof_schema.json",
+                          "operations/autonomous_inner_motor/motor_state_schema.json",
+                          "operations/autonomous_inner_motor/organ_contract.json",
+                          "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SANDBOX_EXPLORATION_PROOF_20260715.json",
+                          "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_V0_IMPLEMENTATION_REPORT.json",
+                          "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+                          "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+                          "reports/self_development/agent_body_map.json",
+                          "reports/self_development/agent_body_map.md",
+                          "reports/self_development/branch_agnostic_map_refresh_result.json"
                       ],
     "structural_paths":  [
-                             "operations/gpt_handoff/LIVE_SCHOOL_1000_RETENTION_VERIFICATION_20260715.json",
-                             "operations/gpt_handoff/LIVE_SCHOOL_1000_RETENTION_VERIFICATION_20260715.md"
+                             "operations/autonomous_inner_motor/AUTONOMOUS_INNER_MOTOR_ORGAN_SPEC.md",
+                             "operations/autonomous_inner_motor/motor_policy.json",
+                             "operations/autonomous_inner_motor/motor_proof_schema.json",
+                             "operations/autonomous_inner_motor/motor_state_schema.json",
+                             "operations/autonomous_inner_motor/organ_contract.json",
+                             "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SANDBOX_EXPLORATION_PROOF_20260715.json",
+                             "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_V0_IMPLEMENTATION_REPORT.json",
+                             "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -26,8 +42,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  1998,
-                                    "sha256":  "843041aace6d7b2f23b9d5daaaa2c80b3e6b5783a9ad50a9076932f5197cd618"
+                                    "structural_file_count":  2001,
+                                    "sha256":  "242231dcc29ef189fbdebd1dce992b5c017ea1938181bd760c699265b966bbca"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -53,12 +69,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  150,
-                         "structural_path_count":  1998,
+                         "structural_path_count":  2001,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-15T18:42:53.6434968+04:00"
+    "refreshed_at":  "2026-07-15T18:54:28.3894602+04:00"
 }
