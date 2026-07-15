@@ -66,5 +66,9 @@ At creation session: Bridge context H:/efab READY; branch main; HEAD fe7c074; or
 ## Next Actions
 P0 validate GPT_ENTRYPOINT and journal index coverage. Do not delete source operator files yet. P1 audit body map/passport lifecycle and school component passport coverage. P2 cleanup only after protected/tracked/transient/legacy classification and proof.
 
+## Owner School Control Contract
+
+School is an organ for the Owner/operator layer first, not automatically an autonomous Builder organ. Use `operations/school/OWNER_SCHOOL_CONTROL_CONTRACT_V1.md` as the human control contract before School launch/repair decisions. Do not create one passport per script and do not patch body maps merely to make audits green.
+
 ## Stop / Do Not Do
 Do not claim live runtime state from old chat. Do not delete operator files before coverage proof. Do not create passport per script. Do not treat smoke proof as scale readiness. Do not say ready/working/done without fresh proof.
