@@ -1,0 +1,247 @@
+{
+  "schema": "runtime_cleanup_slice1_after_delete_report_v1",
+  "created_at": "2026-07-15T12:34:22.050342+00:00",
+  "branch": "main",
+  "head": "b6573d6",
+  "origin_delta": "0\t0",
+  "before_manifest": "operations/gpt_handoff/RUNTIME_CLEANUP_SLICE1_MANIFEST_BEFORE_DELETE.json",
+  "delete_scope": "ONLY manifest candidates under .runtime/file_atom_absorption/*/(memory_candidate|staging|chunks|raw_chunks)",
+  "deleted_dir_count": 26,
+  "deleted_file_count": 40,
+  "deleted_bytes": 229381115,
+  "deleted_human": "218.8MB",
+  "blocked": [],
+  "missing_before_delete": [],
+  "deleted": [
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_124613/memory_candidate",
+      "bytes": 113652074,
+      "human": "108.4MB",
+      "file_count": 3,
+      "exists_after": false
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_124613/staging",
+      "bytes": 0,
+      "human": "0.0B",
+      "file_count": 0,
+      "exists_after": false
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_170226/memory_candidate",
+      "bytes": 1678,
+      "human": "1.6KB",
+      "file_count": 3,
+      "exists_after": false
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_170226/staging",
+      "bytes": 0,
+      "human": "0.0B",
+      "file_count": 0,
+      "exists_after": false
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_170259/memory_candidate",
+      "bytes": 2608,
+      "human": "2.5KB",
+      "file_count": 3,
+      "exists_after": false
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_170259/staging",
+      "bytes": 0,
+      "human": "0.0B",
+      "file_count": 0,
+      "exists_after": false
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_174139/memory_candidate",
+      "bytes": 7208,
+      "human": "7.0KB",
+      "file_count": 3,
+      "exists_after": false
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_174139/staging",
+      "bytes": 0,
+      "human": "0.0B",
+      "file_count": 0,
+      "exists_after": false
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_213120/memory_candidate",
+      "bytes": 12784896,
+      "human": "12.2MB",
+      "file_count": 3,
+      "exists_after": false
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_213120/staging",
+      "bytes": 0,
+      "human": "0.0B",
+      "file_count": 0,
+      "exists_after": false
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_070747/memory_candidate",
+      "bytes": 12803508,
+      "human": "12.2MB",
+      "file_count": 3,
+      "exists_after": false
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_070747/staging",
+      "bytes": 313704,
+      "human": "306.4KB",
+      "file_count": 1,
+      "exists_after": false
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_070849/memory_candidate",
+      "bytes": 12804407,
+      "human": "12.2MB",
+      "file_count": 3,
+      "exists_after": false
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_070849/staging",
+      "bytes": 0,
+      "human": "0.0B",
+      "file_count": 0,
+      "exists_after": false
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_084812/memory_candidate",
+      "bytes": 12820708,
+      "human": "12.2MB",
+      "file_count": 3,
+      "exists_after": false
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_084812/staging",
+      "bytes": 0,
+      "human": "0.0B",
+      "file_count": 0,
+      "exists_after": false
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_084844/memory_candidate",
+      "bytes": 12820856,
+      "human": "12.2MB",
+      "file_count": 3,
+      "exists_after": false
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_084844/staging",
+      "bytes": 0,
+      "human": "0.0B",
+      "file_count": 0,
+      "exists_after": false
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_092338/memory_candidate",
+      "bytes": 12821975,
+      "human": "12.2MB",
+      "file_count": 3,
+      "exists_after": false
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_092338/staging",
+      "bytes": 0,
+      "human": "0.0B",
+      "file_count": 0,
+      "exists_after": false
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_102156/memory_candidate",
+      "bytes": 12838713,
+      "human": "12.2MB",
+      "file_count": 3,
+      "exists_after": false
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_102156/staging",
+      "bytes": 0,
+      "human": "0.0B",
+      "file_count": 0,
+      "exists_after": false
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_102224/memory_candidate",
+      "bytes": 12854314,
+      "human": "12.3MB",
+      "file_count": 3,
+      "exists_after": false
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_102224/staging",
+      "bytes": 0,
+      "human": "0.0B",
+      "file_count": 0,
+      "exists_after": false
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_102251/memory_candidate",
+      "bytes": 12854466,
+      "human": "12.3MB",
+      "file_count": 3,
+      "exists_after": false
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_102251/staging",
+      "bytes": 0,
+      "human": "0.0B",
+      "file_count": 0,
+      "exists_after": false
+    }
+  ],
+  "runtime_bytes_before": 439642833,
+  "runtime_bytes_after": 210261718,
+  "runtime_human_before": "419.3MB",
+  "runtime_human_after": "200.5MB",
+  "runtime_bytes_saved": 229381115,
+  "runtime_human_saved": "218.8MB",
+  "file_atom_absorption_bytes_before": 229457779,
+  "file_atom_absorption_bytes_after": 76664,
+  "file_atom_absorption_human_before": "218.8MB",
+  "file_atom_absorption_human_after": "74.9KB",
+  "active_memory_before": [
+    {
+      "path": ".runtime/active_compact_semantic_memory_v1/cells.jsonl",
+      "bytes": 12542524,
+      "sha256": "e967d5c0a087a87888d47b8f5f4653214074a992880f9d0eb6762bbb51fb3044"
+    },
+    {
+      "path": ".runtime/active_compact_semantic_memory_v1/index.json",
+      "bytes": 310054,
+      "sha256": "8c8295d8da9095725eb0185dbde84885cf47c6c4f33247a302c8bfa6d8b20e56"
+    },
+    {
+      "path": ".runtime/active_compact_semantic_memory_v1/manifest.json",
+      "bytes": 1888,
+      "sha256": "2e22e17d79f59f6eb8983f9e9001eb55d74d336bc337345a145bdff139657c56"
+    }
+  ],
+  "active_memory_after": [
+    {
+      "path": ".runtime/active_compact_semantic_memory_v1/cells.jsonl",
+      "bytes": 12542524,
+      "sha256": "e967d5c0a087a87888d47b8f5f4653214074a992880f9d0eb6762bbb51fb3044"
+    },
+    {
+      "path": ".runtime/active_compact_semantic_memory_v1/index.json",
+      "bytes": 310054,
+      "sha256": "8c8295d8da9095725eb0185dbde84885cf47c6c4f33247a302c8bfa6d8b20e56"
+    },
+    {
+      "path": ".runtime/active_compact_semantic_memory_v1/manifest.json",
+      "bytes": 1888,
+      "sha256": "2e22e17d79f59f6eb8983f9e9001eb55d74d336bc337345a145bdff139657c56"
+    }
+  ],
+  "active_memory_hashes_unchanged": true,
+  "reports_proofs_deleted": false,
+  "tracked_files_deleted": false,
+  "duplicates_dedup_deleted": false
+}

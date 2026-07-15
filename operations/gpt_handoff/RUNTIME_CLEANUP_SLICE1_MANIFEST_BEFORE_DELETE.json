@@ -1,0 +1,470 @@
+{
+  "schema": "runtime_cleanup_slice1_manifest_v1",
+  "created_at": "2026-07-15T12:33:44.542327+00:00",
+  "branch": "main",
+  "head": "b6573d6",
+  "origin_delta": "0\t0",
+  "mode": "MANIFEST_BEFORE_DELETE",
+  "delete_scope": "ONLY .runtime/file_atom_absorption/*/(memory_candidate|staging|chunks|raw_chunks)",
+  "explicitly_not_deleted": [
+    ".runtime/active_compact_semantic_memory_v1",
+    ".runtime/active_compact_semantic_memory_v1_backups",
+    ".runtime/protected_backups",
+    "operations/gpt_handoff",
+    "reports/",
+    "tests/",
+    "operations/school/proofs",
+    "self_model/organ_passports"
+  ],
+  "blocked_candidates": [],
+  "candidate_dir_count": 26,
+  "candidate_file_count": 40,
+  "candidate_bytes": 229381115,
+  "candidate_human": "218.8MB",
+  "candidates": [
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_124613/memory_candidate",
+      "bytes": 113652074,
+      "human": "108.4MB",
+      "file_count": 3,
+      "files": [
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_124613/memory_candidate/cells.jsonl",
+          "bytes": 113342972,
+          "sha256": "93532eea46e05b5307865d7cead9816f60740307d3eb741472a87be0cda1d5d6",
+          "mtime": "2026-07-14T09:00:50.514045+00:00"
+        },
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_124613/memory_candidate/index.json",
+          "bytes": 308130,
+          "sha256": "ba7160ffa526376b08501a41f96225e0b98490a6cb5a58ecb927137ff91f6597",
+          "mtime": "2026-07-14T09:01:11.264463+00:00"
+        },
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_124613/memory_candidate/manifest.json",
+          "bytes": 972,
+          "sha256": "771149c5039767c124e6064eecc67dabd1eccfb83082423b8f7306f1675357bb",
+          "mtime": "2026-07-14T09:01:11.988699+00:00"
+        }
+      ]
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_124613/staging",
+      "bytes": 0,
+      "human": "0.0B",
+      "file_count": 0,
+      "files": []
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_170226/memory_candidate",
+      "bytes": 1678,
+      "human": "1.6KB",
+      "file_count": 3,
+      "files": [
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_170226/memory_candidate/cells.jsonl",
+          "bytes": 545,
+          "sha256": "8f135f289226cff7cb7bcbb8f8b15cbed43dc51bcb1f6e9c4fab2b147382fee7",
+          "mtime": "2026-07-14T13:02:27.753333+00:00"
+        },
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_170226/memory_candidate/index.json",
+          "bytes": 185,
+          "sha256": "4ad34ff397c52e8a3e6d11df0c121f2d35eabb15aac90f5a8dac605eb25bceca",
+          "mtime": "2026-07-14T13:02:27.774566+00:00"
+        },
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_170226/memory_candidate/manifest.json",
+          "bytes": 948,
+          "sha256": "5a9756cae12a4fb1dee1bc93977f33105c9d5a114bef7c702155be9c2c227b88",
+          "mtime": "2026-07-14T13:02:27.787647+00:00"
+        }
+      ]
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_170226/staging",
+      "bytes": 0,
+      "human": "0.0B",
+      "file_count": 0,
+      "files": []
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_170259/memory_candidate",
+      "bytes": 2608,
+      "human": "2.5KB",
+      "file_count": 3,
+      "files": [
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_170259/memory_candidate/cells.jsonl",
+          "bytes": 549,
+          "sha256": "d122995fc2c3643b1164a22db3da15324f6976159895ab4d05903ae616db897b",
+          "mtime": "2026-07-14T13:03:01.019799+00:00"
+        },
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_170259/memory_candidate/index.json",
+          "bytes": 185,
+          "sha256": "4ad34ff397c52e8a3e6d11df0c121f2d35eabb15aac90f5a8dac605eb25bceca",
+          "mtime": "2026-07-14T13:03:00.513428+00:00"
+        },
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_170259/memory_candidate/manifest.json",
+          "bytes": 1874,
+          "sha256": "0fd841b761deb89ccb0535e624a6e90da077364b80fd74c1409e48b4134777e9",
+          "mtime": "2026-07-14T13:03:01.053674+00:00"
+        }
+      ]
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_170259/staging",
+      "bytes": 0,
+      "human": "0.0B",
+      "file_count": 0,
+      "files": []
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_174139/memory_candidate",
+      "bytes": 7208,
+      "human": "7.0KB",
+      "file_count": 3,
+      "files": [
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_174139/memory_candidate/cells.jsonl",
+          "bytes": 4597,
+          "sha256": "d6f9d2b7258f9c498b23a6486d37ca935fdc15813c36194544f2ead8dbd61ddf",
+          "mtime": "2026-07-14T13:41:41.103193+00:00"
+        },
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_174139/memory_candidate/index.json",
+          "bytes": 734,
+          "sha256": "12490c685d4161bb22939aaffe3d91dc3517294e3bd449aab43ea80cb4008d66",
+          "mtime": "2026-07-14T13:41:40.553284+00:00"
+        },
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_174139/memory_candidate/manifest.json",
+          "bytes": 1877,
+          "sha256": "e711f6ebc5f24be561c9a79d118e2d49ef0707b104dd6e5db55eb91863f0bd01",
+          "mtime": "2026-07-14T13:41:41.153844+00:00"
+        }
+      ]
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_174139/staging",
+      "bytes": 0,
+      "human": "0.0B",
+      "file_count": 0,
+      "files": []
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_213120/memory_candidate",
+      "bytes": 12784896,
+      "human": "12.2MB",
+      "file_count": 3,
+      "files": [
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_213120/memory_candidate/cells.jsonl",
+          "bytes": 12473703,
+          "sha256": "199c9d9391ed5c79bbc774f8f81e884e4b439a291091c8f6f2a36a7792ba8bd1",
+          "mtime": "2026-07-14T17:31:47.308730+00:00"
+        },
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_213120/memory_candidate/index.json",
+          "bytes": 309301,
+          "sha256": "54f2cbbb6148af68ec9ff9b5e97ee10af868677123775886ba4cee4173457101",
+          "mtime": "2026-07-14T17:31:45.598903+00:00"
+        },
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_213120/memory_candidate/manifest.json",
+          "bytes": 1892,
+          "sha256": "8035ce66aea0d843fcd5e5585cdc36b1066d296ada12c192c57c222c6045eee1",
+          "mtime": "2026-07-14T17:31:47.348687+00:00"
+        }
+      ]
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260714_213120/staging",
+      "bytes": 0,
+      "human": "0.0B",
+      "file_count": 0,
+      "files": []
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_070747/memory_candidate",
+      "bytes": 12803508,
+      "human": "12.2MB",
+      "file_count": 3,
+      "files": [
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_070747/memory_candidate/cells.jsonl",
+          "bytes": 12492688,
+          "sha256": "6d6080cff72bf55f5e887f488fe937c281f4af09f6966162a9fd3daf780e60e3",
+          "mtime": "2026-07-15T03:07:50.813750+00:00"
+        },
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_070747/memory_candidate/index.json",
+          "bytes": 309824,
+          "sha256": "19a1aefc2be7034d29fad774167b2bd3840c7062f57f99898f27afaba9f6456e",
+          "mtime": "2026-07-15T03:08:11.289348+00:00"
+        },
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_070747/memory_candidate/manifest.json",
+          "bytes": 996,
+          "sha256": "d57b457a1f88b837112b439798f10717bb7f46b914231a102e9c68b541f4ad35",
+          "mtime": "2026-07-15T03:08:11.379549+00:00"
+        }
+      ]
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_070747/staging",
+      "bytes": 313704,
+      "human": "306.4KB",
+      "file_count": 1,
+      "files": [
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_070747/staging/raw_atoms.jsonl",
+          "bytes": 313704,
+          "sha256": "a8feb5d92ecdfcc885da67f2cb2ee395dd9dfba37b6f0e2ac2e94261a54af675",
+          "mtime": "2026-07-15T03:07:47.263474+00:00"
+        }
+      ]
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_070849/memory_candidate",
+      "bytes": 12804407,
+      "human": "12.2MB",
+      "file_count": 3,
+      "files": [
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_070849/memory_candidate/cells.jsonl",
+          "bytes": 12492692,
+          "sha256": "36e85ff862223cd6734bee5ec5ec218a025c473940417feb194a187350ba9675",
+          "mtime": "2026-07-15T03:09:14.679719+00:00"
+        },
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_070849/memory_candidate/index.json",
+          "bytes": 309824,
+          "sha256": "19a1aefc2be7034d29fad774167b2bd3840c7062f57f99898f27afaba9f6456e",
+          "mtime": "2026-07-15T03:09:12.964272+00:00"
+        },
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_070849/memory_candidate/manifest.json",
+          "bytes": 1891,
+          "sha256": "70b7c4edd9aff642cb44c2f0f4e89a82de9572ecc075d5465f9fadc0f82bfcf5",
+          "mtime": "2026-07-15T03:09:14.730389+00:00"
+        }
+      ]
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_070849/staging",
+      "bytes": 0,
+      "human": "0.0B",
+      "file_count": 0,
+      "files": []
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_084812/memory_candidate",
+      "bytes": 12820708,
+      "human": "12.2MB",
+      "file_count": 3,
+      "files": [
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_084812/memory_candidate/cells.jsonl",
+          "bytes": 12508918,
+          "sha256": "f8ef0632243bbe087c81a40605981ad63edc61b33944a49b956e450d30f480c7",
+          "mtime": "2026-07-15T04:48:42.383683+00:00"
+        },
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_084812/memory_candidate/index.json",
+          "bytes": 309899,
+          "sha256": "8dfcf5988dad694a76f825f87afb8bf17c84a4f8e5d621e37f9ede5abe3c249c",
+          "mtime": "2026-07-15T04:48:40.158284+00:00"
+        },
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_084812/memory_candidate/manifest.json",
+          "bytes": 1891,
+          "sha256": "a449be4d87eaa7d3bb2a716736c70e2f1280f97e84681c8aa8def79368e317d0",
+          "mtime": "2026-07-15T04:48:42.433546+00:00"
+        }
+      ]
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_084812/staging",
+      "bytes": 0,
+      "human": "0.0B",
+      "file_count": 0,
+      "files": []
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_084844/memory_candidate",
+      "bytes": 12820856,
+      "human": "12.2MB",
+      "file_count": 3,
+      "files": [
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_084844/memory_candidate/cells.jsonl",
+          "bytes": 12509069,
+          "sha256": "38abe6379cfe72ae37fa8b7dbc918b89095cfc28c83de1c0b0924b82ffa0aef6",
+          "mtime": "2026-07-15T04:49:15.124327+00:00"
+        },
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_084844/memory_candidate/index.json",
+          "bytes": 309899,
+          "sha256": "8dfcf5988dad694a76f825f87afb8bf17c84a4f8e5d621e37f9ede5abe3c249c",
+          "mtime": "2026-07-15T04:49:11.923952+00:00"
+        },
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_084844/memory_candidate/manifest.json",
+          "bytes": 1888,
+          "sha256": "d86b883ae4f80ddf725eb76678b6a554c4f7a9b990a011af9626533d28fe05eb",
+          "mtime": "2026-07-15T04:49:15.158103+00:00"
+        }
+      ]
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_084844/staging",
+      "bytes": 0,
+      "human": "0.0B",
+      "file_count": 0,
+      "files": []
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_092338/memory_candidate",
+      "bytes": 12821975,
+      "human": "12.2MB",
+      "file_count": 3,
+      "files": [
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_092338/memory_candidate/cells.jsonl",
+          "bytes": 12510110,
+          "sha256": "c81a0e22df19dc412cd1c012995e0eb994fcb4c536b2a7dd8b2a95249895c0a2",
+          "mtime": "2026-07-15T05:24:03.673182+00:00"
+        },
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_092338/memory_candidate/index.json",
+          "bytes": 309977,
+          "sha256": "a940c484995a27a08dddb8f0a7c84e8fe539198d1973b64e505bffe6fe33f85d",
+          "mtime": "2026-07-15T05:24:01.914598+00:00"
+        },
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_092338/memory_candidate/manifest.json",
+          "bytes": 1888,
+          "sha256": "d63fd96a26b7640c6f04ec4eb92a893354c54c3270976f04bc29116a35204750",
+          "mtime": "2026-07-15T05:24:03.723032+00:00"
+        }
+      ]
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_092338/staging",
+      "bytes": 0,
+      "human": "0.0B",
+      "file_count": 0,
+      "files": []
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_102156/memory_candidate",
+      "bytes": 12838713,
+      "human": "12.2MB",
+      "file_count": 3,
+      "files": [
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_102156/memory_candidate/cells.jsonl",
+          "bytes": 12526768,
+          "sha256": "15a2f3d483af3da46692aeb0aa450a0f3cd56961faf3cb164b3852c53501cae4",
+          "mtime": "2026-07-15T06:22:21.847280+00:00"
+        },
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_102156/memory_candidate/index.json",
+          "bytes": 310054,
+          "sha256": "8c8295d8da9095725eb0185dbde84885cf47c6c4f33247a302c8bfa6d8b20e56",
+          "mtime": "2026-07-15T06:22:20.063206+00:00"
+        },
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_102156/memory_candidate/manifest.json",
+          "bytes": 1891,
+          "sha256": "23d9f410ea546938f0cb2f74592a293b4614a20f0143ecfc6c563f7d3a6c77d6",
+          "mtime": "2026-07-15T06:22:21.897350+00:00"
+        }
+      ]
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_102156/staging",
+      "bytes": 0,
+      "human": "0.0B",
+      "file_count": 0,
+      "files": []
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_102224/memory_candidate",
+      "bytes": 12854314,
+      "human": "12.3MB",
+      "file_count": 3,
+      "files": [
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_102224/memory_candidate/cells.jsonl",
+          "bytes": 12542368,
+          "sha256": "9d1ef1755970c758f06c54fe79c04f2a18b14e6f91671ecacad1be77246444b4",
+          "mtime": "2026-07-15T06:22:49.663404+00:00"
+        },
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_102224/memory_candidate/index.json",
+          "bytes": 310054,
+          "sha256": "8c8295d8da9095725eb0185dbde84885cf47c6c4f33247a302c8bfa6d8b20e56",
+          "mtime": "2026-07-15T06:22:47.913442+00:00"
+        },
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_102224/memory_candidate/manifest.json",
+          "bytes": 1892,
+          "sha256": "3b75d040eaa798cfa4d6490fc13f9c6e74981cc392df7ff9028e083bc1206ddf",
+          "mtime": "2026-07-15T06:22:49.689056+00:00"
+        }
+      ]
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_102224/staging",
+      "bytes": 0,
+      "human": "0.0B",
+      "file_count": 0,
+      "files": []
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_102251/memory_candidate",
+      "bytes": 12854466,
+      "human": "12.3MB",
+      "file_count": 3,
+      "files": [
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_102251/memory_candidate/cells.jsonl",
+          "bytes": 12542524,
+          "sha256": "e967d5c0a087a87888d47b8f5f4653214074a992880f9d0eb6762bbb51fb3044",
+          "mtime": "2026-07-15T06:23:16.298523+00:00"
+        },
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_102251/memory_candidate/index.json",
+          "bytes": 310054,
+          "sha256": "8c8295d8da9095725eb0185dbde84885cf47c6c4f33247a302c8bfa6d8b20e56",
+          "mtime": "2026-07-15T06:23:14.597693+00:00"
+        },
+        {
+          "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_102251/memory_candidate/manifest.json",
+          "bytes": 1888,
+          "sha256": "2e22e17d79f59f6eb8983f9e9001eb55d74d336bc337345a145bdff139657c56",
+          "mtime": "2026-07-15T06:23:16.329823+00:00"
+        }
+      ]
+    },
+    {
+      "path": ".runtime/file_atom_absorption/file_atom_absorption_20260715_102251/staging",
+      "bytes": 0,
+      "human": "0.0B",
+      "file_count": 0,
+      "files": []
+    }
+  ],
+  "delicate_reports_and_proofs_policy": {
+    "reports_proofs_deleted": false,
+    "tracked_reports_deleted": false,
+    "operations_gpt_handoff_deleted": false,
+    "tests_deleted": false,
+    "proofs_are_reviewed_not_dedup_deleted": true
+  },
+  "duplicates_policy": "record duplicates separately; no dedup deletion in slice1"
+}
