@@ -194,4 +194,3 @@ operations/school/OWNER_SCHOOL_RUNBOOK_V1.md
 ```
 
 Use it when Owner asks to check, test, prepare Live, observe, or recover School.
-
