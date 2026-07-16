@@ -1,0 +1,494 @@
+{
+    "circuit_ref":  "BODY_SELF_INSPECTION_CIRCUIT_V1",
+    "boundary":  {
+                     "web_launched":  false,
+                     "accepted_core_mutated":  false,
+                     "body_map_mutated":  false,
+                     "live_process_touched":  false,
+                     "active_memory_mutated":  false,
+                     "capability_map_mutated":  false,
+                     "codex_launched":  false,
+                     "repo_mutated":  false,
+                     "cleanup_performed":  false
+                 },
+    "validator_ref":  "validators/validate_body_self_inspection_slice_b_v1.ps1",
+    "aggregate_counts":  {
+                             "capability_map_read":  {
+                                                         "conflict_count":  0,
+                                                         "maps_failed":  8,
+                                                         "maps_seen":  11,
+                                                         "maps_parsed":  3,
+                                                         "missing_root_markers":  [
+
+                                                                                  ],
+                                                         "declared_organs_count":  0,
+                                                         "declared_capabilities_count":  0,
+                                                         "stale_maps_count":  0,
+                                                         "declared_validators_count":  0,
+                                                         "declared_invocation_paths_count":  0,
+                                                         "declared_proof_refs_count":  1
+                                                     },
+                             "organ_candidates":  {
+                                                      "candidate_type_counts":  {
+                                                                                    "CAPABILITY_PASSPORT_CANDIDATE":  14,
+                                                                                    "RUNTIME_TOOL_CANDIDATE":  4,
+                                                                                    "MEMORY_TOOL_CANDIDATE":  4,
+                                                                                    "VALIDATOR_CLUSTER_CANDIDATE":  209,
+                                                                                    "ORGAN_SCRIPT_CANDIDATE":  43,
+                                                                                    "ORGAN_CONTRACT_CANDIDATE":  3,
+                                                                                    "PROOF_PRODUCER_CANDIDATE":  165,
+                                                                                    "AUTHORITY_PASSPORT_CANDIDATE":  2,
+                                                                                    "MAP_TOOL_CANDIDATE":  15
+                                                                                },
+                                                      "confidence_counts":  {
+                                                                                "MEDIUM_VALIDATOR_BACKED":  188,
+                                                                                "MEDIUM_MAP_DECLARED":  44,
+                                                                                "LOW_NAME_PATTERN_ONLY":  183,
+                                                                                "HIGH_CONTRACT_BACKED":  44
+                                                                            },
+                                                      "declared_in_maps_count":  92,
+                                                      "multi_path_family_count":  53,
+                                                      "candidate_count":  459,
+                                                      "candidate_family_count":  459
+                                                  },
+                             "body_map_read":  {
+                                                   "conflict_count":  0,
+                                                   "maps_failed":  38,
+                                                   "maps_seen":  88,
+                                                   "maps_parsed":  50,
+                                                   "missing_root_markers":  [
+
+                                                                            ],
+                                                   "declared_organs_count":  0,
+                                                   "declared_capabilities_count":  0,
+                                                   "stale_maps_count":  0,
+                                                   "declared_validators_count":  25,
+                                                   "declared_invocation_paths_count":  66,
+                                                   "declared_proof_refs_count":  21
+                                               },
+                             "organ_similarity_index":  {
+                                                            "similarity_record_count":  456,
+                                                            "status_counts":  {
+                                                                                  "UNIQUE_ORGAN_CANDIDATE":  449,
+                                                                                  "FUNCTIONAL_OVERLAP":  7
+                                                                              },
+                                                            "declared_capability_subject_count":  0,
+                                                            "repo_compare_subject_limit":  160,
+                                                            "declared_organ_subject_count":  0,
+                                                            "record_limit":  800,
+                                                            "repo_candidate_subject_count":  459,
+                                                            "map_compare_subject_limit":  60
+                                                        }
+                         },
+    "errors":  [
+
+               ],
+    "schema":  "body_self_inspection_slice_b_validator_proof_v1",
+    "generated_at":  "2026-07-16T18:26:41.7995779Z",
+    "status":  "PASS_BODY_SELF_INSPECTION_SLICE_B_V1",
+    "git_status_before_invoker":  [
+                                      "?? operations/body_self_inspection/detect_organ_candidates_v1.ps1",
+                                      "?? operations/body_self_inspection/detect_organ_similarity_v1.ps1",
+                                      "?? operations/body_self_inspection/invoke_body_self_inspection_slice_b_v1.ps1",
+                                      "?? operations/body_self_inspection/read_body_maps_v1.ps1",
+                                      "?? tests/self_development/BODY_SELF_INSPECTION_SLICE_B_V1_PROOF.json",
+                                      "?? validators/validate_body_self_inspection_slice_b_v1.ps1"
+                                  ],
+    "output_refs":  {
+                        "scan_skipped_surfaces":  "H:\\efab\\.runtime\\body_self_inspection_v1\\scan_skipped_surfaces.json",
+                        "capability_map_read":  "H:\\efab\\.runtime\\body_self_inspection_v1\\capability_map_read.json",
+                        "organ_similarity_index":  "H:\\efab\\.runtime\\body_self_inspection_v1\\organ_similarity_index.json",
+                        "body_map_read":  "H:\\efab\\.runtime\\body_self_inspection_v1\\body_map_read.json",
+                        "repo_inventory":  "H:\\efab\\.runtime\\body_self_inspection_v1\\repo_inventory.json",
+                        "scan_policy_effective":  "H:\\efab\\.runtime\\body_self_inspection_v1\\scan_policy_effective.json",
+                        "runtime_proof":  "H:\\efab\\.runtime\\body_self_inspection_v1\\BODY_SELF_INSPECTION_SLICE_B_PROOF.json",
+                        "organ_candidates":  "H:\\efab\\.runtime\\body_self_inspection_v1\\organ_candidates.json",
+                        "slice_a_runtime_proof":  "H:\\efab\\.runtime\\body_self_inspection_v1\\BODY_SELF_INSPECTION_SLICE_A_PROOF.json"
+                    },
+    "git_status_after_invoker":  [
+                                     "?? operations/body_self_inspection/detect_organ_candidates_v1.ps1",
+                                     "?? operations/body_self_inspection/detect_organ_similarity_v1.ps1",
+                                     "?? operations/body_self_inspection/invoke_body_self_inspection_slice_b_v1.ps1",
+                                     "?? operations/body_self_inspection/read_body_maps_v1.ps1",
+                                     "?? tests/self_development/BODY_SELF_INSPECTION_SLICE_B_V1_PROOF.json",
+                                     "?? validators/validate_body_self_inspection_slice_b_v1.ps1"
+                                 ],
+    "validator_checks":  [
+                             {
+                                 "message":  "scan_policy exists and parses",
+                                 "name":  "scan_policy_parses",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "skipped_surfaces exists and parses",
+                                 "name":  "skipped_surfaces_parses",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "repo_inventory exists and parses",
+                                 "name":  "repo_inventory_parses",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "slice_a_runtime_proof exists and parses",
+                                 "name":  "slice_a_runtime_proof_parses",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "body_map_read exists and parses",
+                                 "name":  "body_map_read_parses",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "capability_map_read exists and parses",
+                                 "name":  "capability_map_read_parses",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "organ_candidates exists and parses",
+                                 "name":  "organ_candidates_parses",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "organ_similarity_index exists and parses",
+                                 "name":  "organ_similarity_index_parses",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof exists and parses",
+                                 "name":  "runtime_proof_parses",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "Slice A runtime proof status must be PASS",
+                                 "name":  "slice_a_runtime_status_pass",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "map records include required fields",
+                                 "name":  "map_records_required_fields",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "map reader records root marker: CAPABILITY_ROADMAP.json",
+                                 "name":  "map_reader_records_CAPABILITY_ROADMAP.json",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "map reader records root marker: GENESIS_STATE.json",
+                                 "name":  "map_reader_records_GENESIS_STATE.json",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "map reader records root marker: TASK_QUEUE.json",
+                                 "name":  "map_reader_records_TASK_QUEUE.json",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "map reader records root marker: packs/registry.json",
+                                 "name":  "map_reader_records_packs/registry.json",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "map reader records root marker: orchestrator/run.ps1",
+                                 "name":  "map_reader_records_orchestrator/run.ps1",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "map reader records map-like surfaces",
+                                 "name":  "map_reader_records_map_like_surfaces",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "declared organs/capabilities are not claimed mature or usable",
+                                 "name":  "declared_not_claimed_mature",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "organ candidate detector status must be PASS",
+                                 "name":  "organ_candidate_status_pass",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "organ candidate records have required fields",
+                                 "name":  "candidate_records_required_fields",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "candidate records include evidence_refs",
+                                 "name":  "candidate_records_have_evidence_refs",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "candidate detector does not promote candidates to organs",
+                                 "name":  "candidate_not_promoted_to_organ",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "candidate family grouping exists when repo evidence supports it",
+                                 "name":  "candidate_family_grouping_exists",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "similarity detector status must be PASS",
+                                 "name":  "similarity_status_pass",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "similarity records include required fields",
+                                 "name":  "similarity_records_required_fields",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "similarity records include forbidden_now",
+                                 "name":  "similarity_records_have_forbidden_now",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "duplicate is not proven solely from filename",
+                                 "name":  "similarity_not_filename_only_duplicate",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "similarity index has records and statuses",
+                                 "name":  "similarity_records_exist",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "Slice B runtime proof status must be PASS",
+                                 "name":  "runtime_proof_status_pass",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "no tracked map/passport/contract mutation observed",
+                                 "name":  "no_tracked_map_passport_contract_mutation",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "body_map boundary flag is false: repo_mutated",
+                                 "name":  "boundary_body_map_repo_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "body_map boundary flag is false: active_memory_mutated",
+                                 "name":  "boundary_body_map_active_memory_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "body_map boundary flag is false: accepted_core_mutated",
+                                 "name":  "boundary_body_map_accepted_core_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "body_map boundary flag is false: body_map_mutated",
+                                 "name":  "boundary_body_map_body_map_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "body_map boundary flag is false: capability_map_mutated",
+                                 "name":  "boundary_body_map_capability_map_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "body_map boundary flag is false: live_process_touched",
+                                 "name":  "boundary_body_map_live_process_touched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "body_map boundary flag is false: codex_launched",
+                                 "name":  "boundary_body_map_codex_launched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "body_map boundary flag is false: web_launched",
+                                 "name":  "boundary_body_map_web_launched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "body_map boundary flag is false: cleanup_performed",
+                                 "name":  "boundary_body_map_cleanup_performed",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "capability_map boundary flag is false: repo_mutated",
+                                 "name":  "boundary_capability_map_repo_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "capability_map boundary flag is false: active_memory_mutated",
+                                 "name":  "boundary_capability_map_active_memory_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "capability_map boundary flag is false: accepted_core_mutated",
+                                 "name":  "boundary_capability_map_accepted_core_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "capability_map boundary flag is false: body_map_mutated",
+                                 "name":  "boundary_capability_map_body_map_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "capability_map boundary flag is false: capability_map_mutated",
+                                 "name":  "boundary_capability_map_capability_map_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "capability_map boundary flag is false: live_process_touched",
+                                 "name":  "boundary_capability_map_live_process_touched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "capability_map boundary flag is false: codex_launched",
+                                 "name":  "boundary_capability_map_codex_launched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "capability_map boundary flag is false: web_launched",
+                                 "name":  "boundary_capability_map_web_launched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "capability_map boundary flag is false: cleanup_performed",
+                                 "name":  "boundary_capability_map_cleanup_performed",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "organ_candidates boundary flag is false: repo_mutated",
+                                 "name":  "boundary_organ_candidates_repo_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "organ_candidates boundary flag is false: active_memory_mutated",
+                                 "name":  "boundary_organ_candidates_active_memory_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "organ_candidates boundary flag is false: accepted_core_mutated",
+                                 "name":  "boundary_organ_candidates_accepted_core_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "organ_candidates boundary flag is false: body_map_mutated",
+                                 "name":  "boundary_organ_candidates_body_map_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "organ_candidates boundary flag is false: capability_map_mutated",
+                                 "name":  "boundary_organ_candidates_capability_map_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "organ_candidates boundary flag is false: live_process_touched",
+                                 "name":  "boundary_organ_candidates_live_process_touched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "organ_candidates boundary flag is false: codex_launched",
+                                 "name":  "boundary_organ_candidates_codex_launched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "organ_candidates boundary flag is false: web_launched",
+                                 "name":  "boundary_organ_candidates_web_launched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "organ_candidates boundary flag is false: cleanup_performed",
+                                 "name":  "boundary_organ_candidates_cleanup_performed",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "organ_similarity boundary flag is false: repo_mutated",
+                                 "name":  "boundary_organ_similarity_repo_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "organ_similarity boundary flag is false: active_memory_mutated",
+                                 "name":  "boundary_organ_similarity_active_memory_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "organ_similarity boundary flag is false: accepted_core_mutated",
+                                 "name":  "boundary_organ_similarity_accepted_core_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "organ_similarity boundary flag is false: body_map_mutated",
+                                 "name":  "boundary_organ_similarity_body_map_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "organ_similarity boundary flag is false: capability_map_mutated",
+                                 "name":  "boundary_organ_similarity_capability_map_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "organ_similarity boundary flag is false: live_process_touched",
+                                 "name":  "boundary_organ_similarity_live_process_touched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "organ_similarity boundary flag is false: codex_launched",
+                                 "name":  "boundary_organ_similarity_codex_launched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "organ_similarity boundary flag is false: web_launched",
+                                 "name":  "boundary_organ_similarity_web_launched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "organ_similarity boundary flag is false: cleanup_performed",
+                                 "name":  "boundary_organ_similarity_cleanup_performed",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: repo_mutated",
+                                 "name":  "boundary_runtime_proof_repo_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: active_memory_mutated",
+                                 "name":  "boundary_runtime_proof_active_memory_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: accepted_core_mutated",
+                                 "name":  "boundary_runtime_proof_accepted_core_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: body_map_mutated",
+                                 "name":  "boundary_runtime_proof_body_map_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: capability_map_mutated",
+                                 "name":  "boundary_runtime_proof_capability_map_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: live_process_touched",
+                                 "name":  "boundary_runtime_proof_live_process_touched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: codex_launched",
+                                 "name":  "boundary_runtime_proof_codex_launched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: web_launched",
+                                 "name":  "boundary_runtime_proof_web_launched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: cleanup_performed",
+                                 "name":  "boundary_runtime_proof_cleanup_performed",
+                                 "passed":  true
+                             }
+                         ],
+    "slice":  "B"
+}
