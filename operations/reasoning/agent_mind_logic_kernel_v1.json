@@ -1,0 +1,27 @@
+{
+  "schema": "agent_mind_logic_kernel_v1",
+  "organ_id": "agent_mind_logic_kernel",
+  "purpose": "Reusable cognitive operation: restore context, separate known/unknown, detect contradiction, build hypotheses, choose source ladder, and return one logical next step.",
+  "status": "LAB_LOGIC_KERNEL",
+  "not_a_passport": true,
+  "cognitive_cycle": [
+    "observe_input",
+    "restore_nearest_context",
+    "classify_problem",
+    "separate_known_unknown_assumption",
+    "detect_contradictions",
+    "build_hypotheses",
+    "rank_hypotheses_by_evidence",
+    "choose_source_ladder",
+    "select_next_logical_step",
+    "return_to_parent"
+  ],
+  "logic_rules": [
+    "No evidence -> no factual claim.",
+    "Owner correction overrides the current branch and triggers mismatch repair.",
+    "If knowledge is insufficient, generate a memory/source need instead of pretending to know.",
+    "Contradiction must be named before solution.",
+    "A next step is logical only if it reduces the highest-impact unknown or contradiction."
+  ],
+  "mind_maturity_boundary": "This kernel reasons and chooses. It does not execute actions, mutate memory, or launch external tools by itself."
+}

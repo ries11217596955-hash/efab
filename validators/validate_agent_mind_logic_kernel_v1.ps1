@@ -1,0 +1,70 @@
+$ErrorActionPreference='Stop'
+$errors=New-Object System.Collections.Generic.List[string]
+function Add-Err([string]$m){ $errors.Add($m)|Out-Null }
+function Assert($cond,[string]$msg){ if(-not $cond){ Add-Err $msg } }
+function Normalize([string]$p){ $txt=Get-Content $p -Raw; $lines=$txt -split "`r?`n" | ForEach-Object { $_.TrimEnd() }; while($lines.Count -gt 0 -and $lines[$lines.Count-1] -eq ''){ if($lines.Count -eq 1){ $lines=@(); break }; $lines=$lines[0..($lines.Count-2)] }; $utf8=New-Object System.Text.UTF8Encoding($false); [System.IO.File]::WriteAllText((Resolve-Path $p), (($lines -join "`n") + "`n"), $utf8) }
+$kernel='operations/reasoning/agent_mind_logic_kernel_v1.json'
+$builder='operations/reasoning/build_agent_mind_logic_frame_v1.ps1'
+Assert (Test-Path $kernel) 'kernel_missing'
+Assert (Test-Path $builder) 'builder_missing'
+try{ [void][scriptblock]::Create((Get-Content $builder -Raw)) }catch{ Add-Err ('builder_parse_failed:'+ $_.Exception.Message) }
+$k=Get-Content $kernel -Raw|ConvertFrom-Json
+Assert ($k.schema -eq 'agent_mind_logic_kernel_v1') 'kernel_schema_bad'
+Assert (($k.cognitive_cycle -join ' ') -match 'separate_known_unknown_assumption') 'cycle_missing_known_unknown'
+Assert (($k.cognitive_cycle -join ' ') -match 'detect_contradictions') 'cycle_missing_contradiction'
+Assert (($k.logic_rules -join ' ') -match 'No evidence') 'rules_missing_no_evidence'
+$before=@{}
+foreach($f0 in @('.runtime/active_compact_semantic_memory_v1/manifest.json','.runtime/active_compact_semantic_memory_v1/index.json','.runtime/active_compact_semantic_memory_v1/cells.jsonl')){ if(Test-Path $f0){ $before[$f0]=(Get-FileHash $f0 -Algorithm SHA256).Hash.ToLower() } }
+$correctionPath='.runtime/agent_mind_logic_kernel_v1/validator_owner_correction_frame.json'
+$out=@(& $builder -OutputPath $correctionPath *>&1 | ForEach-Object { [string]$_ })
+$f=Get-Content $correctionPath -Raw|ConvertFrom-Json
+Assert ($f.status -eq 'PASS_AGENT_MIND_LOGIC_FRAME_V1') 'correction_frame_status_bad'
+Assert ($f.classification -eq 'CONTEXT_MISMATCH_CORRECTION') ('classification_bad:'+ $f.classification)
+Assert (@($f.contradictions).Count -ge 2) 'contradictions_too_few'
+Assert ($f.selected_next_logical_step.step_id -eq 'BUILD_MIND_LOGIC_KERNEL') 'next_step_not_logic_kernel'
+Assert ($f.boundary.action_executed -eq $false) 'action_executed_not_false'
+Assert (@($f.known).Count -ge 3) 'known_too_few'
+Assert (@($f.unknown).Count -ge 3) 'unknown_too_few'
+Assert (@($f.hypotheses).Count -ge 3) 'hypotheses_too_few'
+Assert (@($f.source_ladder).Count -ge 4) 'source_ladder_too_short'
+$gapPath='.runtime/agent_mind_logic_kernel_v1/validator_no_knowledge_frame.json'
+$out2=@(& $builder -Problem no_evidence_no_knowledge -OutputPath $gapPath *>&1 | ForEach-Object { [string]$_ })
+$g=Get-Content $gapPath -Raw|ConvertFrom-Json
+Assert ($g.no_evidence_no_claim -eq $true) 'no_evidence_no_claim_false'
+Assert ($g.selected_next_logical_step.step_id -eq 'ASK_OR_RECALL_SOURCE_BEFORE_ACTION') ('knowledge_next_step_bad:'+ $g.selected_next_logical_step.step_id)
+$after=@{}
+foreach($f1 in @('.runtime/active_compact_semantic_memory_v1/manifest.json','.runtime/active_compact_semantic_memory_v1/index.json','.runtime/active_compact_semantic_memory_v1/cells.jsonl')){ if(Test-Path $f1){ $after[$f1]=(Get-FileHash $f1 -Algorithm SHA256).Hash.ToLower(); if($before[$f1] -ne $after[$f1]){ Add-Err ('active_memory_hash_changed:'+ $f1) } } }
+$status=if($errors.Count -eq 0){'PASS_AGENT_MIND_LOGIC_KERNEL_V1'}else{'FAIL_AGENT_MIND_LOGIC_KERNEL_V1'}
+$proof=[ordered]@{
+  schema='agent_mind_logic_kernel_validation_v1'
+  status=$status
+  checked_at=(Get-Date).ToString('o')
+  kernel_path=$kernel
+  builder_path=$builder
+  correction_frame=$correctionPath
+  no_knowledge_frame=$gapPath
+  correction_classification=$f.classification
+  correction_next_step=$f.selected_next_logical_step
+  no_knowledge_next_step=$g.selected_next_logical_step
+  tests=@(
+    [ordered]@{name='kernel_has_cognitive_cycle';status=if(($k.cognitive_cycle -join ' ') -match 'detect_contradictions'){'PASS'}else{'FAIL'}},
+    [ordered]@{name='owner_correction_cuts_wrong_branch';status=if($f.classification -eq 'CONTEXT_MISMATCH_CORRECTION'){'PASS'}else{'FAIL'}},
+    [ordered]@{name='known_unknown_hypothesis_present';status=if(@($f.known).Count -ge 3 -and @($f.unknown).Count -ge 3 -and @($f.hypotheses).Count -ge 3){'PASS'}else{'FAIL'}},
+    [ordered]@{name='no_knowledge_selects_source_before_action';status=if($g.selected_next_logical_step.step_id -eq 'ASK_OR_RECALL_SOURCE_BEFORE_ACTION'){'PASS'}else{'FAIL'}},
+    [ordered]@{name='active_memory_unchanged';status=if(($errors|Where-Object{$_ -match 'active_memory_hash_changed'}).Count -eq 0){'PASS'}else{'FAIL'}}
+  )
+  active_memory_hash_unchanged=($errors|Where-Object{$_ -match 'active_memory_hash_changed'}).Count -eq 0
+  action_executed=$false
+  live_process_touched=$false
+  errors=@($errors)
+}
+$proofPath='tests/self_development/AGENT_MIND_LOGIC_KERNEL_V1_PROOF.json'
+New-Item -ItemType Directory -Force -Path (Split-Path $proofPath -Parent) | Out-Null
+$proof|ConvertTo-Json -Depth 100|Set-Content $proofPath -Encoding UTF8
+foreach($p in @($proofPath,$correctionPath,$gapPath)){ if(Test-Path $p){ Normalize $p } }
+Write-Host ('VALIDATION_STATUS='+$status)
+Write-Host ('PROOF_PATH='+$proofPath)
+Write-Host ('CORRECTION_NEXT_STEP='+$f.selected_next_logical_step.step_id)
+Write-Host ('NO_KNOWLEDGE_NEXT_STEP='+$g.selected_next_logical_step.step_id)
+Write-Host ('ACTIVE_MEMORY_HASH_UNCHANGED='+$proof.active_memory_hash_unchanged)
+if($errors.Count -gt 0){ $errors|ForEach-Object{ Write-Host ('ERROR='+$_) }; exit 1 }
