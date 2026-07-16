@@ -46,5 +46,15 @@
     "grants": "GRANT_CANDIDATE_ONLY for safe lab candidates",
     "never_grants": "execution_allowed=true",
     "boundary": "evaluation-only; no live process, no active memory mutation, no repo execution"
+  },
+  "mind_logic_kernel_v1_wiring": {
+    "status": "PROVEN_LAB",
+    "kernel_ref": "operations/reasoning/agent_mind_logic_kernel_v1.json",
+    "builder_ref": "operations/reasoning/build_agent_mind_logic_frame_v1.ps1",
+    "validator_ref": "validators/validate_autonomous_inner_motor_mind_logic_wiring_v1.ps1",
+    "proof_ref": "tests/self_development/AUTONOMOUS_INNER_MOTOR_MIND_LOGIC_WIRING_V1_PROOF.json",
+    "runner_field": "mind_logic_frame",
+    "order": "mind_logic_frame before next_action_candidate",
+    "boundary": "cognitive frame only; no execution, no Codex, no School, no background process, no direct active memory write"
   }
 }

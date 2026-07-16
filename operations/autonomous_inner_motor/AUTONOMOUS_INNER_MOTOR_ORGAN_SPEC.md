@@ -207,3 +207,8 @@ Boundary: this is not action execution. The runner must keep `action_execution_a
 AIMO action candidates must pass `operations/autonomous_inner_motor/evaluate_action_execution_authority_v1.ps1` against `execution_authority_passport_v1.json` before any future execution layer can consider them. V1 is evaluation-only: it can grant `GRANT_CANDIDATE_ONLY` for safe lab candidates, but it never sets `execution_allowed=true`.
 
 Hard boundary: live actions, repo execution, School/AIMO launch, direct active memory mutation, runtime deletion, push, and child-agent launch are denied unless a separate Owner-authorized surface passport, validator, proof, and rollback plan exist.
+## Mind Logic Kernel V1 wiring
+
+AIMO must build a `mind_logic_frame` before selecting a `next_action_candidate`. The frame is produced by `operations/reasoning/build_agent_mind_logic_frame_v1.ps1` and must include classification, known/unknown separation, contradictions, hypotheses, source ladder, and selected next logical step.
+
+Boundary: this is cognitive wiring, not execution. The runner must keep `action_execution_allowed=false`, `no_action=true`, `direct_active_memory_write=false`, `codex_launched=false`, `school_started=false`, and `background_process_started=false`. The action candidate may use the mind frame as context, but it cannot execute.
