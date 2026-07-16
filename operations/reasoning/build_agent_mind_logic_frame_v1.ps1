@@ -251,6 +251,31 @@ if((Test-Path $assimilationScript) -and (Test-Path $deepAnswerPath)){
   $deepSourceAssimilation.status='DEEP_SOURCE_ANSWER_RESULT_MISSING_FOR_ASSIMILATION'
 }
 
+$mindDeltaAcceptance=[ordered]@{
+  status='NOT_RUN'
+}
+$acceptanceScript='operations/reasoning/evaluate_mind_delta_acceptance_v1.ps1'
+$acceptancePath=Join-Path (Split-Path $OutputPath -Parent) 'mind_delta_acceptance_decision.json'
+if((Test-Path $acceptanceScript) -and (Test-Path $assimilationPath)){
+  $accOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File $acceptanceScript -AssimilationPath $assimilationPath -OutputPath $acceptancePath *>&1 | ForEach-Object { [string]$_ })
+  $mindDeltaAcceptance.acceptance_stdout=@($accOut | Where-Object { $_ -match '^(ACCEPTANCE_GATE_STATUS|ACCEPTANCE_GATE_DECISION|ACCEPTANCE_GATE_PATH)=' })
+  $mindDeltaAcceptance.exit_code=$LASTEXITCODE
+  $mindDeltaAcceptance.result_path=$acceptancePath
+  if((Test-Path $acceptancePath) -and $LASTEXITCODE -eq 0){
+    $mindDeltaAcceptance.result=Get-Content $acceptancePath -Raw | ConvertFrom-Json
+    $mindDeltaAcceptance.status=$mindDeltaAcceptance.result.status
+  } elseif(Test-Path $acceptancePath){
+    $mindDeltaAcceptance.result=Get-Content $acceptancePath -Raw | ConvertFrom-Json
+    $mindDeltaAcceptance.status='MIND_DELTA_ACCEPTANCE_NONZERO_WITH_RESULT'
+  } else {
+    $mindDeltaAcceptance.status='MIND_DELTA_ACCEPTANCE_FAILED_NO_RESULT'
+  }
+} elseif(!(Test-Path $acceptanceScript)){
+  $mindDeltaAcceptance.status='MIND_DELTA_ACCEPTANCE_GATE_MISSING'
+} else {
+  $mindDeltaAcceptance.status='MIND_DELTA_CANDIDATE_MISSING_FOR_ACCEPTANCE_GATE'
+}
+
 $sourceLadder=@(
   [ordered]@{rank=1; source='current input / Owner correction'; use='highest priority intent and mismatch signal'},
   [ordered]@{rank=2; source='fresh repo proof'; use='what agent can actually do now'},
@@ -287,6 +312,7 @@ $frame=[ordered]@{
   deep_source_answer_request=$deepSourceAnswer
   deep_source_answer_assimilation=$deepSourceAssimilation
   mind_delta_candidate=if($deepSourceAssimilation.result){$deepSourceAssimilation.result.mind_delta_candidate}else{$null}
+  mind_delta_acceptance_decision=$mindDeltaAcceptance
   selected_next_logical_step=$nextStep
   selected_resolution_step=if($contradictionResolution.result){$contradictionResolution.result.selected_resolution_step}else{$null}
   strongest_hypothesis=if($hypothesisTest.result){$hypothesisTest.result.strongest_hypothesis}else{$null}

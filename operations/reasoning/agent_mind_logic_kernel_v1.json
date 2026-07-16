@@ -18,6 +18,7 @@
                             "choose_source_ladder",
                             "request_deep_source_answer",
                             "assimilate_deep_source_answer",
+                            "evaluate_mind_delta_acceptance",
                             "select_next_logical_step",
                             "return_to_parent"
                         ],
@@ -32,7 +33,8 @@
                         "Detected contradiction must produce branch cut/preserve decision and proof needs before next step.",
                         "Hypotheses must be scored against evidence, memory recall/filter signals, contradiction result, and risk before selecting strongest hypothesis.",
                         "When unknown remains, the agent must request a deep answer in the exact format it needs, not just ask a vague question.",
-                        "A ready deep source answer must become a bounded mind_delta candidate before any memory acceptance or action claim."
+                        "A ready deep source answer must become a bounded mind_delta candidate before any memory acceptance or action claim.",
+                        "A mind_delta_candidate must pass an acceptance gate decision before it can be treated as known, routed for accepted-core admission, or used for action."
                     ],
     "mind_maturity_boundary":  "This kernel reasons and chooses. It does not execute actions, mutate memory, or launch external tools by itself.",
     "memory_recall_wiring":  "build_agent_mind_logic_frame_v1.ps1 calls operations/school/memory/query_compact_semantic_memory_v1.ps1 before known/unknown synthesis when recall is enabled.",
@@ -40,5 +42,6 @@
     "contradiction_resolution_wiring":  "Mind Logic Frame calls resolve_mind_logic_contradiction_v1.ps1 and stores contradiction_resolution before selected next logical step.",
     "hypothesis_tester_wiring":  "Mind Logic Frame calls test_mind_logic_hypotheses_v1.ps1 and stores hypothesis_test_result before next logical step.",
     "deep_source_answer_request_wiring":  "Mind Logic Frame calls request_deep_source_answer_v1.ps1 and stores source_answer_request with answer contract and memory candidate if available.",
-    "deep_source_answer_assimilation_wiring":  "Mind Logic Frame calls assimilate_deep_source_answer_v1.ps1 after request_deep_source_answer_v1.ps1 and stores a bounded mind_delta_candidate; it does not mutate active memory."
+    "deep_source_answer_assimilation_wiring":  "Mind Logic Frame calls assimilate_deep_source_answer_v1.ps1 after request_deep_source_answer_v1.ps1 and stores a bounded mind_delta_candidate; it does not mutate active memory.",
+    "mind_delta_acceptance_gate_wiring":  "Mind Logic Frame calls evaluate_mind_delta_acceptance_v1.ps1 after assimilation and records ACCEPT_AS_KNOWN_CANDIDATE / KEEP_AS_ASSUMPTION / REQUEST_MORE_PROOF without mutating accepted memory."
 }

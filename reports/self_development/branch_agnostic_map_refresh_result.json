@@ -1,50 +1,38 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-16T17:16:17.8929781+04:00",
+    "checked_at":  "2026-07-16T17:44:36.2891403+04:00",
     "branch":  "main",
-    "observed_head":  "84f81968d731d3c91458b5fa4d222523ade0fd88",
-    "subject_head":  "84f81968d731d3c91458b5fa4d222523ade0fd88",
+    "observed_head":  "d468faac02506d7a92081c7c9c86d63822dfc230",
+    "subject_head":  "d468faac02506d7a92081c7c9c86d63822dfc230",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "operations/autonomous_inner_motor/AUTONOMOUS_INNER_MOTOR_ORGAN_SPEC.md",
-                          "operations/autonomous_inner_motor/organ_contract.json",
-                          "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
-                          "operations/autonomous_inner_motor/validation/AUTONOMOUS_INNER_MOTOR_ORGAN_CONTRACT_VALIDATION.json",
                           "operations/reasoning/agent_mind_logic_kernel_v1.json",
+                          "operations/reasoning/assimilate_deep_source_answer_v1.ps1",
                           "operations/reasoning/build_agent_mind_logic_frame_v1.ps1",
-                          "operations/reasoning/request_deep_source_answer_v1.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
                           "tests/self_development/AGENT_MIND_LOGIC_KERNEL_V1_PROOF.json",
-                          "tests/self_development/AUTONOMOUS_INNER_MOTOR_ACTION_DECISION_WIRING_V1_PROOF.json",
                           "tests/self_development/AUTONOMOUS_INNER_MOTOR_MIND_LOGIC_WIRING_V1_PROOF.json",
+                          "tests/self_development/DEEP_SOURCE_ANSWER_ASSIMILATION_V1_PROOF.json",
                           "tests/self_development/DEEP_SOURCE_ANSWER_REQUEST_V1_PROOF.json",
-                          "validators/validate_agent_mind_logic_kernel_v1.ps1",
                           "validators/validate_autonomous_inner_motor_mind_logic_wiring_v1.ps1",
-                          "validators/validate_autonomous_inner_motor_organ_contract.ps1",
-                          "validators/validate_deep_source_answer_request_v1.ps1"
+                          "validators/validate_deep_source_answer_assimilation_v1.ps1"
                       ],
     "structural_paths":  [
-                             "operations/autonomous_inner_motor/AUTONOMOUS_INNER_MOTOR_ORGAN_SPEC.md",
-                             "operations/autonomous_inner_motor/organ_contract.json",
-                             "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
-                             "operations/autonomous_inner_motor/validation/AUTONOMOUS_INNER_MOTOR_ORGAN_CONTRACT_VALIDATION.json",
                              "operations/reasoning/agent_mind_logic_kernel_v1.json",
+                             "operations/reasoning/assimilate_deep_source_answer_v1.ps1",
                              "operations/reasoning/build_agent_mind_logic_frame_v1.ps1",
-                             "operations/reasoning/request_deep_source_answer_v1.ps1",
                              "tests/self_development/AGENT_MIND_LOGIC_KERNEL_V1_PROOF.json",
-                             "tests/self_development/AUTONOMOUS_INNER_MOTOR_ACTION_DECISION_WIRING_V1_PROOF.json",
                              "tests/self_development/AUTONOMOUS_INNER_MOTOR_MIND_LOGIC_WIRING_V1_PROOF.json",
+                             "tests/self_development/DEEP_SOURCE_ANSWER_ASSIMILATION_V1_PROOF.json",
                              "tests/self_development/DEEP_SOURCE_ANSWER_REQUEST_V1_PROOF.json",
-                             "validators/validate_agent_mind_logic_kernel_v1.ps1",
                              "validators/validate_autonomous_inner_motor_mind_logic_wiring_v1.ps1",
-                             "validators/validate_autonomous_inner_motor_organ_contract.ps1",
-                             "validators/validate_deep_source_answer_request_v1.ps1"
+                             "validators/validate_deep_source_answer_assimilation_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -56,8 +44,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2069,
-                                    "sha256":  "ce5fdcc3723f3418c0c812451b11f5193320062838d60dc261129ab63efe2158"
+                                    "structural_file_count":  2074,
+                                    "sha256":  "8587161ff98267bb6bbe2be8d68c21b7ef635be04420cf90ea739c90faf2baba"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -83,12 +71,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  151,
-                         "structural_path_count":  2069,
+                         "structural_path_count":  2074,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-16T17:16:46.1427205+04:00"
+    "refreshed_at":  "2026-07-16T17:45:04.9147488+04:00"
 }

@@ -27,6 +27,12 @@ if($proof){
   if($proof.mind_logic_frame.frame.deep_source_answer_assimilation.status -eq 'PASS_DEEP_SOURCE_ANSWER_ASSIMILATION_CANDIDATE_V1' -and $proof.mind_logic_frame.frame.PSObject.Properties.Name -notcontains 'mind_delta_candidate'){ Add-Err 'mind_delta_candidate_missing_after_assimilation' }
   if($proof.mind_logic_frame.frame.mind_delta_candidate -and $proof.mind_logic_frame.frame.mind_delta_candidate.status -ne 'CANDIDATE_NOT_ACCEPTED'){ Add-Err ('mind_delta_candidate_status_bad:'+ $proof.mind_logic_frame.frame.mind_delta_candidate.status) }
   if($proof.mind_logic_frame.frame.deep_source_answer_assimilation.result -and $proof.mind_logic_frame.frame.deep_source_answer_assimilation.result.boundary.active_memory_mutated -ne $false){ Add-Err 'assimilation_active_memory_mutated' }
+  if($proof.mind_logic_frame.frame.PSObject.Properties.Name -notcontains 'mind_delta_acceptance_decision'){ Add-Err 'mind_delta_acceptance_decision_missing' }
+  if($proof.mind_logic_frame.frame.mind_delta_acceptance_decision.status -ne 'PASS_MIND_DELTA_ACCEPTANCE_DECISION_V1'){ Add-Err ('mind_delta_acceptance_decision_status_bad:'+ $proof.mind_logic_frame.frame.mind_delta_acceptance_decision.status) }
+  if($proof.mind_logic_frame.frame.mind_delta_acceptance_decision.result.decision -notin @('ACCEPT_AS_KNOWN_CANDIDATE','KEEP_AS_ASSUMPTION','REQUEST_MORE_PROOF')){ Add-Err ('mind_delta_acceptance_decision_bad:'+ $proof.mind_logic_frame.frame.mind_delta_acceptance_decision.result.decision) }
+  if($proof.mind_logic_frame.frame.mind_delta_acceptance_decision.result.accepted_memory_update -ne $false){ Add-Err 'acceptance_gate_mutated_accepted_memory' }
+  if($proof.mind_logic_frame.frame.mind_delta_acceptance_decision.result.boundary.accepted_core_mutated -ne $false){ Add-Err 'acceptance_gate_mutated_accepted_core' }
+  if($proof.mind_logic_frame.frame.mind_delta_acceptance_decision.result.boundary.codex_launched -ne $false){ Add-Err 'acceptance_gate_launched_codex' }
   if($proof.mind_logic_frame.frame.PSObject.Properties.Name -notcontains 'memory_recall'){ Add-Err 'mind_logic_memory_recall_missing' }
   if($proof.mind_logic_frame.frame.PSObject.Properties.Name -notcontains 'memory_recall_filter'){ Add-Err 'mind_logic_memory_recall_filter_missing' }
   if($proof.mind_logic_frame.frame.memory_recall.status -notin @('PASS_COMPACT_MEMORY_RECALL_V1','BLOCKED_NO_RELEVANT_MEMORY_CELLS_V1')){ Add-Err ('mind_logic_memory_recall_status_bad:'+ $proof.mind_logic_frame.frame.memory_recall.status) }
@@ -63,6 +69,7 @@ $out=[ordered]@{
   mind_logic_deep_source_answer_evidence_count=if($proof -and $proof.mind_logic_frame.frame.deep_source_answer_request.result.answer_candidate){@($proof.mind_logic_frame.frame.deep_source_answer_request.result.answer_candidate.evidence_items).Count}else{0}
   mind_logic_deep_source_answer_assimilation_status=if($proof){$proof.mind_logic_frame.frame.deep_source_answer_assimilation.status}else{$null}
   mind_logic_delta_candidate_status=if($proof -and $proof.mind_logic_frame.frame.mind_delta_candidate){$proof.mind_logic_frame.frame.mind_delta_candidate.status}else{$null}
+  mind_logic_delta_acceptance_decision=if($proof -and $proof.mind_logic_frame.frame.mind_delta_acceptance_decision.result){$proof.mind_logic_frame.frame.mind_delta_acceptance_decision.result.decision}else{$null}
   mind_logic_hypothesis_test_status=if($proof){$proof.mind_logic_frame.frame.hypothesis_test_result.status}else{$null}
   mind_logic_strongest_hypothesis=if($proof){$proof.mind_logic_frame.frame.hypothesis_test_result.result.strongest_hypothesis}else{$null}
   mind_logic_contradiction_resolution_status=if($proof){$proof.mind_logic_frame.frame.contradiction_resolution.status}else{$null}
