@@ -1,10 +1,10 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-16T19:37:23.4803104+04:00",
+    "checked_at":  "2026-07-16T19:40:44.1316721+04:00",
     "branch":  "main",
-    "observed_head":  "7330fa2541881a4968b962af80a1e3ef50e61d56",
-    "subject_head":  "7330fa2541881a4968b962af80a1e3ef50e61d56",
+    "observed_head":  "097ffb8f2462b819bf5236003419493c1a7d4341",
+    "subject_head":  "097ffb8f2462b819bf5236003419493c1a7d4341",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
@@ -28,8 +28,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2081,
-                                    "sha256":  "ecfb910099dae34283c127cb03ec812e648cd79dbba843c35a6149ca72af38e8"
+                                    "structural_file_count":  2082,
+                                    "sha256":  "dc10f9c45c863e2c3892c385b1a2776414db757bf16b1a11fb3696a98c6f40fb"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -55,12 +55,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  152,
-                         "structural_path_count":  2081,
+                         "structural_path_count":  2082,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-16T19:37:52.0561417+04:00"
+    "refreshed_at":  "2026-07-16T19:41:12.4136669+04:00"
 }
