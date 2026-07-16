@@ -6,19 +6,19 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "45ce147976376af2f64a01ad42c530a6dba4e3bf",
-    "subject_head":  "45ce147976376af2f64a01ad42c530a6dba4e3bf",
-    "generated_at":  "2026-07-16T19:14:02.9701146+04:00",
+    "observed_head_at_generation":  "f3b0b7e6e85ba6adfee321d7346073ee010befcb",
+    "subject_head":  "f3b0b7e6e85ba6adfee321d7346073ee010befcb",
+    "generated_at":  "2026-07-16T19:22:31.1147067+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  2080,
+    "structural_path_count":  2081,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2080,
-                                    "sha256":  "979ab2323034b6b2b054ef3dd52b8da81302da79d784f01abc87738849015570"
+                                    "structural_file_count":  2081,
+                                    "sha256":  "21e9dbf3335bf8d02f29e923d0402f2a3303b7b9ba199ca66f5893d918702704"
                                 },
     "module_count":  203,
     "validator_count":  196,
@@ -630,9 +630,9 @@
 
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "45ce147976376af2f64a01ad42c530a6dba4e3bf",
-                                                               "committed_at":  "2026-07-16T18:19:21+04:00",
-                                                               "subject":  "feat: build route request packets for mind proof"
+                                                               "head":  "f3b0b7e6e85ba6adfee321d7346073ee010befcb",
+                                                               "committed_at":  "2026-07-16T19:13:30+04:00",
+                                                               "subject":  "docs: capture body self inspection circuit route"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -1520,6 +1520,46 @@
                                                                           "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
                                                                           "operations/autonomous_inner_motor/select_agent_next_action_candidate_v1.ps1",
                                                                           "operations/autonomous_inner_motor/validation/AUTONOMOUS_INNER_MOTOR_ORGAN_CONTRACT_VALIDATION.json"
+                                                                      ],
+                                            "needs_triage":  true,
+                                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
+                                            "source_ref":  "bounded_tracked_file_discovery_v1",
+                                            "is_required_component":  false
+                                        },
+                                        {
+                                            "id":  "operations_body_self_inspection",
+                                            "path":  "operations/body_self_inspection",
+                                            "root":  "operations/body_self_inspection",
+                                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
+                                            "discovery_method":  "bounded_git_ls_files_path_discovery",
+                                            "evidence_counts":  {
+                                                                    "files":  1,
+                                                                    "scripts":  0,
+                                                                    "validators":  0,
+                                                                    "proofs":  0,
+                                                                    "contracts_or_policies":  0,
+                                                                    "docs":  1
+                                                                },
+                                            "file_count":  1,
+                                            "script_count":  0,
+                                            "validator_count":  0,
+                                            "proof_file_count":  0,
+                                            "contract_or_policy_count":  0,
+                                            "doc_count":  1,
+                                            "validator_refs":  [
+
+                                                               ],
+                                            "proof_refs":  [
+
+                                                           ],
+                                            "contract_or_policy_refs":  [
+
+                                                                        ],
+                                            "notable_files":  [
+                                                                  "operations/body_self_inspection/BODY_SELF_INSPECTION_CIRCUIT_V1_PLAN.md"
+                                                              ],
+                                            "primary_evidence_refs":  [
+
                                                                       ],
                                             "needs_triage":  true,
                                             "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
@@ -7888,11 +7928,11 @@
                                 ],
     "component_authority_summary":  {
                                         "confirmed_components":  7,
-                                        "primary_evidence_candidates":  144,
+                                        "primary_evidence_candidates":  145,
                                         "legacy_unverified_hints":  4,
                                         "rejected_or_stale_hints":  3,
                                         "required_components":  7,
-                                        "total_components_in_compatibility_view":  151,
+                                        "total_components_in_compatibility_view":  152,
                                         "bounded_discovery_pathspecs":  [
                                                                             "operations",
                                                                             "modules",
@@ -8524,9 +8564,9 @@
 
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "45ce147976376af2f64a01ad42c530a6dba4e3bf",
-                                                     "committed_at":  "2026-07-16T18:19:21+04:00",
-                                                     "subject":  "feat: build route request packets for mind proof"
+                                                     "head":  "f3b0b7e6e85ba6adfee321d7346073ee010befcb",
+                                                     "committed_at":  "2026-07-16T19:13:30+04:00",
+                                                     "subject":  "docs: capture body self inspection circuit route"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -9412,6 +9452,46 @@
                                                          "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
                                                          "operations/autonomous_inner_motor/select_agent_next_action_candidate_v1.ps1",
                                                          "operations/autonomous_inner_motor/validation/AUTONOMOUS_INNER_MOTOR_ORGAN_CONTRACT_VALIDATION.json"
+                                                     ],
+                           "needs_triage":  true,
+                           "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
+                           "source_ref":  "bounded_tracked_file_discovery_v1",
+                           "is_required_component":  false
+                       },
+                       {
+                           "id":  "operations_body_self_inspection",
+                           "path":  "operations/body_self_inspection",
+                           "root":  "operations/body_self_inspection",
+                           "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
+                           "discovery_method":  "bounded_git_ls_files_path_discovery",
+                           "evidence_counts":  {
+                                                   "files":  1,
+                                                   "scripts":  0,
+                                                   "validators":  0,
+                                                   "proofs":  0,
+                                                   "contracts_or_policies":  0,
+                                                   "docs":  1
+                                               },
+                           "file_count":  1,
+                           "script_count":  0,
+                           "validator_count":  0,
+                           "proof_file_count":  0,
+                           "contract_or_policy_count":  0,
+                           "doc_count":  1,
+                           "validator_refs":  [
+
+                                              ],
+                           "proof_refs":  [
+
+                                          ],
+                           "contract_or_policy_refs":  [
+
+                                                       ],
+                           "notable_files":  [
+                                                 "operations/body_self_inspection/BODY_SELF_INSPECTION_CIRCUIT_V1_PLAN.md"
+                                             ],
+                           "primary_evidence_refs":  [
+
                                                      ],
                            "needs_triage":  true,
                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",

@@ -2,16 +2,16 @@
     "schema":  "AGENT_BODY_MAP_COMPATIBILITY_VIEW_V2",
     "source":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
     "branch":  "main",
-    "observed_head_at_generation":  "45ce147976376af2f64a01ad42c530a6dba4e3bf",
-    "generated_at":  "2026-07-16T19:14:02.9701146+04:00",
+    "observed_head_at_generation":  "f3b0b7e6e85ba6adfee321d7346073ee010befcb",
+    "generated_at":  "2026-07-16T19:22:31.1147067+04:00",
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2080,
-                                    "sha256":  "979ab2323034b6b2b054ef3dd52b8da81302da79d784f01abc87738849015570"
+                                    "structural_file_count":  2081,
+                                    "sha256":  "21e9dbf3335bf8d02f29e923d0402f2a3303b7b9ba199ca66f5893d918702704"
                                 },
     "map_kind":  "DERIVED_HUMAN_COMPATIBILITY_VIEW",
     "confirmed_component_count":  7,
-    "primary_evidence_candidate_count":  144,
+    "primary_evidence_candidate_count":  145,
     "components":  [
                        {
                            "id":  "school",
@@ -259,6 +259,18 @@
                            "root":  "operations/autonomous_inner_motor",
                            "file_count":  23,
                            "script_count":  4,
+                           "required_files_present":  null,
+                           "is_required_component":  false,
+                           "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
+                           "source_ref":  "bounded_tracked_file_discovery_v1",
+                           "needs_triage":  true
+                       },
+                       {
+                           "id":  "operations_body_self_inspection",
+                           "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
+                           "root":  "operations/body_self_inspection",
+                           "file_count":  1,
+                           "script_count":  0,
                            "required_files_present":  null,
                            "is_required_component":  false,
                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
