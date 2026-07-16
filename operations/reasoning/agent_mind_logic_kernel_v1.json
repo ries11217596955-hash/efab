@@ -7,6 +7,7 @@
   "cognitive_cycle": [
     "observe_input",
     "restore_nearest_context",
+    "recall_relevant_memory",
     "classify_problem",
     "separate_known_unknown_assumption",
     "detect_contradictions",
@@ -21,7 +22,9 @@
     "Owner correction overrides the current branch and triggers mismatch repair.",
     "If knowledge is insufficient, generate a memory/source need instead of pretending to know.",
     "Contradiction must be named before solution.",
-    "A next step is logical only if it reduces the highest-impact unknown or contradiction."
+    "A next step is logical only if it reduces the highest-impact unknown or contradiction.",
+    "Memory recall is evidence only when its status is PASS_COMPACT_MEMORY_RECALL_V1 and it is cited as memory-supported known."
   ],
-  "mind_maturity_boundary": "This kernel reasons and chooses. It does not execute actions, mutate memory, or launch external tools by itself."
+  "mind_maturity_boundary": "This kernel reasons and chooses. It does not execute actions, mutate memory, or launch external tools by itself.",
+  "memory_recall_wiring": "build_agent_mind_logic_frame_v1.ps1 calls operations/school/memory/query_compact_semantic_memory_v1.ps1 before known/unknown synthesis when recall is enabled."
 }

@@ -56,5 +56,17 @@
     "runner_field": "mind_logic_frame",
     "order": "mind_logic_frame before next_action_candidate",
     "boundary": "cognitive frame only; no execution, no Codex, no School, no background process, no direct active memory write"
+  },
+  "mind_logic_memory_recall_wiring_v1": {
+    "status": "PROVEN_LAB",
+    "memory_query_ref": "operations/school/memory/query_compact_semantic_memory_v1.ps1",
+    "builder_ref": "operations/reasoning/build_agent_mind_logic_frame_v1.ps1",
+    "validator_ref": "validators/validate_agent_mind_logic_kernel_v1.ps1 and validators/validate_autonomous_inner_motor_mind_logic_wiring_v1.ps1",
+    "proof_refs": [
+      "tests/self_development/AGENT_MIND_LOGIC_KERNEL_V1_PROOF.json",
+      "tests/self_development/AUTONOMOUS_INNER_MOTOR_MIND_LOGIC_WIRING_V1_PROOF.json"
+    ],
+    "runner_field": "mind_logic_frame.frame.memory_recall",
+    "boundary": "read-only recall; evidence for known/unknown; no active memory mutation or external launch"
   }
 }

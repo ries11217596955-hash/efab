@@ -212,3 +212,8 @@ Hard boundary: live actions, repo execution, School/AIMO launch, direct active m
 AIMO must build a `mind_logic_frame` before selecting a `next_action_candidate`. The frame is produced by `operations/reasoning/build_agent_mind_logic_frame_v1.ps1` and must include classification, known/unknown separation, contradictions, hypotheses, source ladder, and selected next logical step.
 
 Boundary: this is cognitive wiring, not execution. The runner must keep `action_execution_allowed=false`, `no_action=true`, `direct_active_memory_write=false`, `codex_launched=false`, `school_started=false`, and `background_process_started=false`. The action candidate may use the mind frame as context, but it cannot execute.
+## Memory Recall inside Mind Logic Frame
+
+AIMO's `mind_logic_frame` must include `memory_recall` from `operations/school/memory/query_compact_semantic_memory_v1.ps1` before it synthesizes known/unknown. When recall status is `PASS_COMPACT_MEMORY_RECALL_V1`, the frame must add a memory-supported known claim and keep memory recall as evidence, not as blind truth.
+
+Boundary: recall is read-only. It must not mutate active memory, launch School, launch Codex, start background processes, or execute actions.
