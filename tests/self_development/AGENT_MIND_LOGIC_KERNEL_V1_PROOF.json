@@ -1,7 +1,7 @@
 {
     "schema":  "agent_mind_logic_kernel_validation_v1",
     "status":  "PASS_AGENT_MIND_LOGIC_KERNEL_V1",
-    "checked_at":  "2026-07-16T13:51:27.2909135+04:00",
+    "checked_at":  "2026-07-16T13:59:41.9778954+04:00",
     "kernel_path":  "operations/reasoning/agent_mind_logic_kernel_v1.json",
     "builder_path":  "operations/reasoning/build_agent_mind_logic_frame_v1.ps1",
     "correction_frame":  ".runtime/agent_mind_logic_kernel_v1/validator_owner_correction_frame.json",
@@ -17,7 +17,10 @@
                              },
     "correction_memory_recall_status":  "PASS_COMPACT_MEMORY_RECALL_V1",
     "memory_recall_status":  "PASS_COMPACT_MEMORY_RECALL_V1",
+    "memory_recall_filter_status":  "PASS_MEMORY_RECALL_RELEVANCE_FILTER_V1",
     "memory_recall_match_count":  5,
+    "memory_recall_filter_accepted_count":  1,
+    "memory_recall_filter_used_in_known":  true,
     "memory_recall_used_in_known":  true,
     "no_knowledge_next_step":  {
                                    "step_id":  "ASK_OR_RECALL_SOURCE_BEFORE_ACTION",
@@ -45,6 +48,10 @@
                   },
                   {
                       "name":  "memory_recall_used_when_relevant",
+                      "status":  "PASS"
+                  },
+                  {
+                      "name":  "memory_recall_filter_used_when_relevant",
                       "status":  "PASS"
                   },
                   {

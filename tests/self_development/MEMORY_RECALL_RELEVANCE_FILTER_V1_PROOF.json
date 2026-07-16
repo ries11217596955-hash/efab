@@ -1,0 +1,23 @@
+{
+    "schema":  "memory_recall_relevance_filter_validation_v1",
+    "status":  "PASS_MEMORY_RECALL_RELEVANCE_FILTER_V1",
+    "checked_at":  "2026-07-16T13:59:27.9443664+04:00",
+    "filter_path":  "operations/reasoning/filter_memory_recall_relevance_v1.ps1",
+    "filter_result_path":  ".runtime/memory_recall_relevance_filter_v1/validator_filter_result.json",
+    "filter_status":  "PASS_MEMORY_RECALL_RELEVANCE_FILTER_V1",
+    "raw_match_count":  8,
+    "accepted_count":  3,
+    "accepted_labels":  [
+                            "aimo.memory_atom_acceptance_gate.delta_over_rule_duplicate",
+                            "AIMO memory atom gate rewrites rule-like candidates into DELTA experience atoms",
+                            "memory_commit.batch_drain.selftest"
+                        ],
+    "duplicate_reject_count":  3,
+    "curriculum_noise_reject_count":  5,
+    "active_memory_hash_unchanged":  true,
+    "action_executed":  false,
+    "live_process_touched":  false,
+    "errors":  [
+
+               ]
+}

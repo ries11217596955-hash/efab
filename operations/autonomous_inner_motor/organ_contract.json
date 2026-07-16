@@ -68,5 +68,15 @@
     ],
     "runner_field": "mind_logic_frame.frame.memory_recall",
     "boundary": "read-only recall; evidence for known/unknown; no active memory mutation or external launch"
+  },
+  "mind_logic_memory_recall_filter_v1": {
+    "status": "PROVEN_LAB",
+    "filter_ref": "operations/reasoning/filter_memory_recall_relevance_v1.ps1",
+    "filter_validator_ref": "validators/validate_memory_recall_relevance_filter_v1.ps1",
+    "filter_proof_ref": "tests/self_development/MEMORY_RECALL_RELEVANCE_FILTER_V1_PROOF.json",
+    "mind_kernel_validator_ref": "validators/validate_agent_mind_logic_kernel_v1.ps1",
+    "aimo_wiring_validator_ref": "validators/validate_autonomous_inner_motor_mind_logic_wiring_v1.ps1",
+    "runner_field": "mind_logic_frame.frame.memory_recall_filter",
+    "boundary": "read-only relevance filtering; accepts evidence, rejects duplicates/noise, no mutation or execution"
   }
 }

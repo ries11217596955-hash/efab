@@ -17,7 +17,10 @@ if($proof){
   if(@($proof.mind_logic_frame.frame.hypotheses).Count -lt 3){ Add-Err 'mind_logic_hypotheses_too_few' }
   if(@($proof.mind_logic_frame.frame.source_ladder).Count -lt 4){ Add-Err 'mind_logic_source_ladder_too_short' }
   if($proof.mind_logic_frame.frame.PSObject.Properties.Name -notcontains 'memory_recall'){ Add-Err 'mind_logic_memory_recall_missing' }
+  if($proof.mind_logic_frame.frame.PSObject.Properties.Name -notcontains 'memory_recall_filter'){ Add-Err 'mind_logic_memory_recall_filter_missing' }
   if($proof.mind_logic_frame.frame.memory_recall.status -notin @('PASS_COMPACT_MEMORY_RECALL_V1','BLOCKED_NO_RELEVANT_MEMORY_CELLS_V1')){ Add-Err ('mind_logic_memory_recall_status_bad:'+ $proof.mind_logic_frame.frame.memory_recall.status) }
+  if($proof.mind_logic_frame.frame.memory_recall_filter.status -notin @('PASS_MEMORY_RECALL_RELEVANCE_FILTER_V1','BLOCKED_NO_RELEVANT_MEMORY_AFTER_FILTER_V1','DISABLED_BY_CALLER','FILTER_SCRIPT_MISSING')){ Add-Err ('mind_logic_memory_recall_filter_status_bad:'+ $proof.mind_logic_frame.frame.memory_recall_filter.status) }
+  if($proof.mind_logic_frame.frame.memory_recall_filter.status -eq 'PASS_MEMORY_RECALL_RELEVANCE_FILTER_V1' -and $proof.mind_logic_frame.frame.memory_recall_filter.accepted_count -lt 1){ Add-Err 'mind_logic_filter_pass_without_accepted' }
   if($proof.mind_logic_frame.frame.memory_recall.status -eq 'PASS_COMPACT_MEMORY_RECALL_V1' -and @($proof.mind_logic_frame.frame.memory_recall.matches).Count -lt 1){ Add-Err 'mind_logic_memory_recall_pass_without_matches' }
 
   if([string]::IsNullOrWhiteSpace([string]$proof.mind_logic_frame.frame.selected_next_logical_step.step_id)){ Add-Err 'mind_logic_next_step_missing' }
@@ -46,6 +49,8 @@ $out=[ordered]@{
   mind_logic_next_step=if($proof){$proof.mind_logic_frame.frame.selected_next_logical_step}else{$null}
   mind_logic_memory_recall_status=if($proof){$proof.mind_logic_frame.frame.memory_recall.status}else{$null}
   mind_logic_memory_recall_match_count=if($proof){@($proof.mind_logic_frame.frame.memory_recall.matches).Count}else{$null}
+  mind_logic_memory_recall_filter_status=if($proof){$proof.mind_logic_frame.frame.memory_recall_filter.status}else{$null}
+  mind_logic_memory_recall_filter_accepted_count=if($proof){$proof.mind_logic_frame.frame.memory_recall_filter.accepted_count}else{$null}
   action_decision_status=if($proof){$proof.next_action_candidate.status}else{$null}
   action_execution_allowed=if($proof){$proof.boundary.action_execution_allowed}else{$null}
   validates_order='mind_logic_frame_before_action_candidate'

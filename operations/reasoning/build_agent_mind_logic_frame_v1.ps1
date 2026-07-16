@@ -59,6 +59,42 @@ if(-not $DisableMemoryRecall -and (Test-Path $memoryQueryScript)){
   $memoryRecall.status='MEMORY_QUERY_SCRIPT_MISSING'
 }
 
+$memoryRecallFilter=[ordered]@{
+  status='NOT_RUN'
+  result_path=$null
+  accepted_count=0
+  accepted_matches=@()
+  rejected_count=0
+  used_in_known=$false
+}
+$memoryFilterScript='operations/reasoning/filter_memory_recall_relevance_v1.ps1'
+$memoryFilterPath=Join-Path (Split-Path $OutputPath -Parent) 'memory_recall_filter.json'
+if(-not $DisableMemoryRecall -and (Test-Path $memoryFilterScript)){
+  $filterOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File $memoryFilterScript -Query $Problem -Top $MemoryTop -AcceptTop 3 -OutputPath $memoryFilterPath *>&1 | ForEach-Object { [string]$_ })
+  $memoryRecallFilter.stdout=@($filterOut)
+  $memoryRecallFilter.exit_code=$LASTEXITCODE
+  $memoryRecallFilter.result_path=$memoryFilterPath
+  if((Test-Path $memoryFilterPath) -and $LASTEXITCODE -eq 0){
+    $filterResult=Get-Content $memoryFilterPath -Raw | ConvertFrom-Json
+    $memoryRecallFilter.status=$filterResult.status
+    $memoryRecallFilter.accepted_count=[int]$filterResult.accepted_count
+    $memoryRecallFilter.accepted_matches=@($filterResult.accepted_matches)
+    $memoryRecallFilter.rejected_count=@($filterResult.rejected_matches).Count
+  } elseif(Test-Path $memoryFilterPath){
+    $filterResult=Get-Content $memoryFilterPath -Raw | ConvertFrom-Json
+    $memoryRecallFilter.status='FILTER_NONZERO_WITH_RESULT'
+    $memoryRecallFilter.accepted_count=[int]$filterResult.accepted_count
+    $memoryRecallFilter.accepted_matches=@($filterResult.accepted_matches)
+    $memoryRecallFilter.rejected_count=@($filterResult.rejected_matches).Count
+  } else {
+    $memoryRecallFilter.status='FILTER_FAILED_NO_RESULT'
+  }
+} elseif($DisableMemoryRecall){
+  $memoryRecallFilter.status='DISABLED_BY_CALLER'
+} else {
+  $memoryRecallFilter.status='FILTER_SCRIPT_MISSING'
+}
+
 $signals=New-Object System.Collections.Generic.List[string]
 if(Has $lower 'logic|mind|think|thinking|reasoning|agent mind|agent logic'){ $signals.Add('OWNER_WANTS_MIND_LOGIC') | Out-Null }
 if(Has $lower 'safety|passport|authority|permission|gate|execution authority'){ $signals.Add('SAFETY_BRANCH_PRESENT') | Out-Null }
@@ -71,10 +107,15 @@ $known=@(
   [ordered]@{claim='Memory learning mechanism exists through governed queue/merge, but that is not general knowledge competence.'; evidence='AIMO memory learning mechanism proofs'; confidence='PROVEN_LIVE_FOR_MECHANISM_ONLY'},
   [ordered]@{claim='Recent work over-focused on authority layers relative to current Owner intent.'; evidence='Owner correction in current problem text'; confidence='OWNER_REPORTED_AND_CONTEXT_SUPPORTED'}
 )
-if($memoryRecall.status -eq 'PASS_COMPACT_MEMORY_RECALL_V1' -and @($memoryRecall.matches).Count -gt 0){
+if($memoryRecallFilter.status -eq 'PASS_MEMORY_RECALL_RELEVANCE_FILTER_V1' -and @($memoryRecallFilter.accepted_matches).Count -gt 0){
+  $memoryRecall.used_in_known=$true
+  $memoryRecallFilter.used_in_known=$true
+  $topLabels=(@($memoryRecallFilter.accepted_matches) | Select-Object -First 3 | ForEach-Object { $_.label }) -join '; '
+  $known += [ordered]@{claim=('Filtered active memory recalls accepted as relevant evidence: ' + $topLabels); evidence='filter_memory_recall_relevance_v1'; confidence='FILTERED_MEMORY_RECALL_SUPPORTED'}
+} elseif($memoryRecall.status -eq 'PASS_COMPACT_MEMORY_RECALL_V1' -and @($memoryRecall.matches).Count -gt 0){
   $memoryRecall.used_in_known=$true
   $topLabels=(@($memoryRecall.matches) | Select-Object -First 3 | ForEach-Object { $_.label }) -join '; '
-  $known += [ordered]@{claim=('Active memory returned relevant recalls: ' + $topLabels); evidence='query_compact_semantic_memory_v1'; confidence='MEMORY_RECALL_SUPPORTED'}
+  $known += [ordered]@{claim=('Unfiltered active memory returned recalls: ' + $topLabels); evidence='query_compact_semantic_memory_v1'; confidence='RAW_MEMORY_RECALL_SUPPORTED_FILTER_UNAVAILABLE'}
 }
 $unknown=@(
   [ordered]@{unknown='Can the agent autonomously choose the best reasoning operation for a novel task?'; impact='HIGH'; reduction='validate mind logic frame on correction and no-evidence cases'},
@@ -100,7 +141,7 @@ $hypotheses=@(
 $sourceLadder=@(
   [ordered]@{rank=1; source='current input / Owner correction'; use='highest priority intent and mismatch signal'},
   [ordered]@{rank=2; source='fresh repo proof'; use='what agent can actually do now'},
-  [ordered]@{rank=3; source='active compact memory recall'; use='prior lessons and reusable rules; used_in_this_frame=' + [string]$memoryRecall.used_in_known},
+  [ordered]@{rank=3; source='active compact memory recall'; use='prior lessons and reusable rules; used_in_this_frame=' + [string]$memoryRecallFilter.used_in_known},
   [ordered]@{rank=4; source='external/source material'; use='only for facts absent from memory/repo or current unstable facts'}
 )
 $nextStep=if($classification -eq 'CONTEXT_MISMATCH_CORRECTION'){
@@ -119,6 +160,7 @@ $frame=[ordered]@{
   classification=$classification
   signals=@($signals.ToArray())
   memory_recall=$memoryRecall
+  memory_recall_filter=$memoryRecallFilter
   evidence_refs=@($evidence)
   restored_context=[ordered]@{current_branch='Owner corrected direction from safety/passports to mind/logic'; nearest_project_context='AIMO has thinking proof and action-candidate proof, but needs stable cognitive operator.'}
   known=@($known)

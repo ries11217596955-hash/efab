@@ -23,8 +23,10 @@
     "If knowledge is insufficient, generate a memory/source need instead of pretending to know.",
     "Contradiction must be named before solution.",
     "A next step is logical only if it reduces the highest-impact unknown or contradiction.",
-    "Memory recall is evidence only when its status is PASS_COMPACT_MEMORY_RECALL_V1 and it is cited as memory-supported known."
+    "Memory recall is evidence only when its status is PASS_COMPACT_MEMORY_RECALL_V1 and it is cited as memory-supported known.",
+    "Raw memory recall must pass Memory Recall Relevance Filter before becoming strong known evidence."
   ],
   "mind_maturity_boundary": "This kernel reasons and chooses. It does not execute actions, mutate memory, or launch external tools by itself.",
-  "memory_recall_wiring": "build_agent_mind_logic_frame_v1.ps1 calls operations/school/memory/query_compact_semantic_memory_v1.ps1 before known/unknown synthesis when recall is enabled."
+  "memory_recall_wiring": "build_agent_mind_logic_frame_v1.ps1 calls operations/school/memory/query_compact_semantic_memory_v1.ps1 before known/unknown synthesis when recall is enabled.",
+  "memory_recall_filter_wiring": "Memory Recall Relevance Filter V1 deduplicates, rejects curriculum noise, and accepts only relevant matches before known synthesis."
 }

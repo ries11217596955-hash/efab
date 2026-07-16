@@ -217,3 +217,8 @@ Boundary: this is cognitive wiring, not execution. The runner must keep `action_
 AIMO's `mind_logic_frame` must include `memory_recall` from `operations/school/memory/query_compact_semantic_memory_v1.ps1` before it synthesizes known/unknown. When recall status is `PASS_COMPACT_MEMORY_RECALL_V1`, the frame must add a memory-supported known claim and keep memory recall as evidence, not as blind truth.
 
 Boundary: recall is read-only. It must not mutate active memory, launch School, launch Codex, start background processes, or execute actions.
+## Memory Recall Relevance Filter inside Mind Logic
+
+AIMO's `mind_logic_frame` now carries both raw `memory_recall` and `memory_recall_filter`. Raw recall is not enough to become strong known evidence. `operations/reasoning/filter_memory_recall_relevance_v1.ps1` must parse labels with embedded pipes, reject duplicate/noisy curriculum matches, and accept only relevant memory evidence before known/unknown synthesis.
+
+Boundary: the filter is read-only and evidence-selection only. It must not mutate active memory, launch School/Codex, start background processes, or execute actions.
