@@ -78,5 +78,15 @@
     "aimo_wiring_validator_ref": "validators/validate_autonomous_inner_motor_mind_logic_wiring_v1.ps1",
     "runner_field": "mind_logic_frame.frame.memory_recall_filter",
     "boundary": "read-only relevance filtering; accepts evidence, rejects duplicates/noise, no mutation or execution"
+  },
+  "mind_logic_contradiction_resolver_v1": {
+    "status": "PROVEN_LAB",
+    "resolver_ref": "operations/reasoning/resolve_mind_logic_contradiction_v1.ps1",
+    "resolver_validator_ref": "validators/validate_contradiction_resolver_v1.ps1",
+    "resolver_proof_ref": "tests/self_development/CONTRADICTION_RESOLVER_V1_PROOF.json",
+    "mind_kernel_validator_ref": "validators/validate_agent_mind_logic_kernel_v1.ps1",
+    "aimo_wiring_validator_ref": "validators/validate_autonomous_inner_motor_mind_logic_wiring_v1.ps1",
+    "runner_field": "mind_logic_frame.frame.contradiction_resolution",
+    "boundary": "reasoning-only branch cut/preserve/proof-needs decision; no mutation or execution"
   }
 }

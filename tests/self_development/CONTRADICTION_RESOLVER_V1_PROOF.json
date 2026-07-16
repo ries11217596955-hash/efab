@@ -1,0 +1,56 @@
+{
+    "schema":  "contradiction_resolver_validation_v1",
+    "status":  "PASS_CONTRADICTION_RESOLVER_V1",
+    "checked_at":  "2026-07-16T14:17:20.8777770+04:00",
+    "resolver_path":  "operations/reasoning/resolve_mind_logic_contradiction_v1.ps1",
+    "correction_resolution":  ".runtime/contradiction_resolver_v1/validator_correction_resolution.json",
+    "no_conflict_resolution":  ".runtime/contradiction_resolver_v1/validator_no_conflict_resolution.json",
+    "correction_decision":  "CUT_LOSING_BRANCH_AND_CONTINUE_WINNING_BRANCH",
+    "correction_cut_branches":  [
+                                    {
+                                        "branch":  "SAFETY_AUTHORITY_BRANCH",
+                                        "reason":  "Current work risks drifting into passports/authority while Owner asked for agent mind/logic.",
+                                        "cut_type":  "STOP_EXPANDING_THIS_BRANCH_NOW"
+                                    },
+                                    {
+                                        "branch":  "ACTION_OR_AUTHORITY_BRANCH",
+                                        "reason":  "Action/authority is premature when the agent cannot separate known from unknown.",
+                                        "cut_type":  "STOP_EXPANDING_THIS_BRANCH_NOW"
+                                    }
+                                ],
+    "correction_preserve_branches":  [
+                                         {
+                                             "branch":  "MIND_LOGIC_BRANCH",
+                                             "reason":  "branch directly reduces the dominant contradiction or unknown",
+                                             "preserve_type":  "CONTINUE"
+                                         },
+                                         {
+                                             "branch":  "KNOWLEDGE_LOGIC_BRANCH",
+                                             "reason":  "branch directly reduces the dominant contradiction or unknown",
+                                             "preserve_type":  "CONTINUE"
+                                         }
+                                     ],
+    "correction_proof_needs":  [
+                                   {
+                                       "proof_id":  "PROVE_MIND_LOGIC_OPERATOR",
+                                       "need":  "Show a cognitive operation that classifies mismatch and chooses a logic step, not a safety document.",
+                                       "validator":  "validators/validate_agent_mind_logic_kernel_v1.ps1"
+                                   },
+                                   {
+                                       "proof_id":  "PROVE_KNOWN_UNKNOWN_SOURCE_SELECTION",
+                                       "need":  "Show no-evidence task selects memory/source recall before action.",
+                                       "validator":  "validators/validate_agent_mind_logic_kernel_v1.ps1"
+                                   }
+                               ],
+    "no_conflict_next_step":  {
+                                  "step_id":  "RESOLVE_BY_LARGEST_UNKNOWN",
+                                  "reason":  "no high conflict; continue reducing largest unknown",
+                                  "proof_needed":  "unknown reduction proof"
+                              },
+    "active_memory_hash_unchanged":  true,
+    "action_executed":  false,
+    "live_process_touched":  false,
+    "errors":  [
+
+               ]
+}

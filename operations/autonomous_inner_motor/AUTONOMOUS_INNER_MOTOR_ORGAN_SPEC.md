@@ -222,3 +222,8 @@ Boundary: recall is read-only. It must not mutate active memory, launch School, 
 AIMO's `mind_logic_frame` now carries both raw `memory_recall` and `memory_recall_filter`. Raw recall is not enough to become strong known evidence. `operations/reasoning/filter_memory_recall_relevance_v1.ps1` must parse labels with embedded pipes, reject duplicate/noisy curriculum matches, and accept only relevant memory evidence before known/unknown synthesis.
 
 Boundary: the filter is read-only and evidence-selection only. It must not mutate active memory, launch School/Codex, start background processes, or execute actions.
+## Contradiction Resolver inside Mind Logic
+
+AIMO's `mind_logic_frame` must include `contradiction_resolution`. Detection alone is not enough: the resolver must decide which branch to cut, which branch to preserve, what proof is needed, and which resolution step reduces the contradiction or largest unknown.
+
+Boundary: contradiction resolution is reasoning-only. It must not mutate active memory, launch School/Codex, start background processes, or execute actions.

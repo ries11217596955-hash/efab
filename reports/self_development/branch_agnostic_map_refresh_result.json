@@ -1,19 +1,21 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-16T14:00:24.9266929+04:00",
+    "checked_at":  "2026-07-16T14:18:16.4835992+04:00",
     "branch":  "main",
-    "observed_head":  "a5cb2ab0fde97b9b3cc9ae04258c1c5bb5cc61b1",
-    "subject_head":  "a5cb2ab0fde97b9b3cc9ae04258c1c5bb5cc61b1",
-    "trigger_reason":  "memory_recall_relevance_filter_v1_20260716",
+    "observed_head":  "842933386d6c88aec1527e52d335b9cc940dbcaa",
+    "subject_head":  "842933386d6c88aec1527e52d335b9cc940dbcaa",
+    "trigger_reason":  "contradiction_resolver_v1_20260716",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
                           "operations/autonomous_inner_motor/AUTONOMOUS_INNER_MOTOR_ORGAN_SPEC.md",
                           "operations/autonomous_inner_motor/organ_contract.json",
+                          "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
                           "operations/autonomous_inner_motor/validation/AUTONOMOUS_INNER_MOTOR_ORGAN_CONTRACT_VALIDATION.json",
                           "operations/reasoning/agent_mind_logic_kernel_v1.json",
                           "operations/reasoning/build_agent_mind_logic_frame_v1.ps1",
+                          "operations/reasoning/filter_memory_recall_relevance_v1.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
@@ -21,20 +23,28 @@
                           "tests/self_development/AGENT_MIND_LOGIC_KERNEL_V1_PROOF.json",
                           "tests/self_development/AUTONOMOUS_INNER_MOTOR_ACTION_DECISION_WIRING_V1_PROOF.json",
                           "tests/self_development/AUTONOMOUS_INNER_MOTOR_MIND_LOGIC_WIRING_V1_PROOF.json",
+                          "tests/self_development/MEMORY_RECALL_RELEVANCE_FILTER_V1_PROOF.json",
                           "validators/validate_agent_mind_logic_kernel_v1.ps1",
-                          "validators/validate_autonomous_inner_motor_mind_logic_wiring_v1.ps1"
+                          "validators/validate_autonomous_inner_motor_mind_logic_wiring_v1.ps1",
+                          "validators/validate_autonomous_inner_motor_organ_contract.ps1",
+                          "validators/validate_memory_recall_relevance_filter_v1.ps1"
                       ],
     "structural_paths":  [
                              "operations/autonomous_inner_motor/AUTONOMOUS_INNER_MOTOR_ORGAN_SPEC.md",
                              "operations/autonomous_inner_motor/organ_contract.json",
+                             "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
                              "operations/autonomous_inner_motor/validation/AUTONOMOUS_INNER_MOTOR_ORGAN_CONTRACT_VALIDATION.json",
                              "operations/reasoning/agent_mind_logic_kernel_v1.json",
                              "operations/reasoning/build_agent_mind_logic_frame_v1.ps1",
+                             "operations/reasoning/filter_memory_recall_relevance_v1.ps1",
                              "tests/self_development/AGENT_MIND_LOGIC_KERNEL_V1_PROOF.json",
                              "tests/self_development/AUTONOMOUS_INNER_MOTOR_ACTION_DECISION_WIRING_V1_PROOF.json",
                              "tests/self_development/AUTONOMOUS_INNER_MOTOR_MIND_LOGIC_WIRING_V1_PROOF.json",
+                             "tests/self_development/MEMORY_RECALL_RELEVANCE_FILTER_V1_PROOF.json",
                              "validators/validate_agent_mind_logic_kernel_v1.ps1",
-                             "validators/validate_autonomous_inner_motor_mind_logic_wiring_v1.ps1"
+                             "validators/validate_autonomous_inner_motor_mind_logic_wiring_v1.ps1",
+                             "validators/validate_autonomous_inner_motor_organ_contract.ps1",
+                             "validators/validate_memory_recall_relevance_filter_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -46,8 +56,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2057,
-                                    "sha256":  "f5c358d2dfea9f038874f3335f8bf10f3bb6399ca804e40389de52389f8aa3ee"
+                                    "structural_file_count":  2060,
+                                    "sha256":  "5bbee07e4c4c0d23361d63bdb7f3e67882d50cd375360bd7b2ddeb67ad10e1e3"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -73,12 +83,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  151,
-                         "structural_path_count":  2057,
+                         "structural_path_count":  2060,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-16T14:00:53.4365708+04:00"
+    "refreshed_at":  "2026-07-16T14:18:45.0497727+04:00"
 }

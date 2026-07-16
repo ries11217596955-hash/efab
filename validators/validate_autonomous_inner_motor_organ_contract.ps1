@@ -50,7 +50,7 @@ foreach ($needle in @('No new autonomous runner','School teaches','INTERNAL_LIBR
 $RunnerPath = Join-Path $OrganRoot 'run_autonomous_inner_motor.ps1'
 if (Test-Path $RunnerPath) {
   $RunnerText = Get-Content $RunnerPath -Raw
-  foreach ($needle in @('SandboxExploration','sandbox_exploration','SANDBOX_EXPLORATION_PROOF.json','SandboxTestLife','TEST_LIFE_PROOF.json','Get-ActiveMemoryState','schoolActive','PROTECTIVE_CHECKPOINT','No active memory mutation','next_action_candidate','ACTION_DECISION_STATUS','mind_logic_frame','MIND_LOGIC_STATUS','memory_recall_filter')) { if ($RunnerText -notmatch [regex]::Escape($needle)) { $Errors.Add("runner_missing:$needle") } }
+  foreach ($needle in @('SandboxExploration','sandbox_exploration','SANDBOX_EXPLORATION_PROOF.json','SandboxTestLife','TEST_LIFE_PROOF.json','Get-ActiveMemoryState','schoolActive','PROTECTIVE_CHECKPOINT','No active memory mutation','next_action_candidate','ACTION_DECISION_STATUS','mind_logic_frame','MIND_LOGIC_STATUS','memory_recall_filter','contradiction_resolution')) { if ($RunnerText -notmatch [regex]::Escape($needle)) { $Errors.Add("runner_missing:$needle") } }
 }
 $RunnerFiles = @(Get-ChildItem -Path $OrganRoot -Filter 'run_*motor*.ps1' -File | ForEach-Object { $_.FullName })
 if ($RunnerFiles.Count -ne 1) { $Errors.Add("runner_sprawl_detected_count:$($RunnerFiles.Count)") }
@@ -62,7 +62,7 @@ if ($SandboxProofPath -ne '') {
     $ProofFile = Get-Item $SandboxProofPath
     $RunRoot = Split-Path $ProofFile.FullName -Parent
     $files = @(Get-ChildItem -Path $RunRoot -File)
-    $allowedSandboxFiles=@('SANDBOX_EXPLORATION_PROOF.json','action_decision_packet.json','mind_logic_frame.json','memory_recall_filter.json')
+    $allowedSandboxFiles=@('SANDBOX_EXPLORATION_PROOF.json','action_decision_packet.json','mind_logic_frame.json','memory_recall_filter.json','contradiction_resolution.json')
     $extraFiles=@($files | Where-Object { $allowedSandboxFiles -notcontains $_.Name })
     if ($extraFiles.Count -gt 0) { $Errors.Add("sandbox_extra_files_detected:$($extraFiles.Count)") }
     if (-not ($files | Where-Object { $_.Name -eq 'SANDBOX_EXPLORATION_PROOF.json' })) { $Errors.Add('sandbox_proof_file_missing_in_runroot') }

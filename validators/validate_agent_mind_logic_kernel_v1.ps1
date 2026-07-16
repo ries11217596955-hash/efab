@@ -22,6 +22,9 @@ $f=Get-Content $correctionPath -Raw|ConvertFrom-Json
 Assert ($f.status -eq 'PASS_AGENT_MIND_LOGIC_FRAME_V1') 'correction_frame_status_bad'
 Assert ($f.classification -eq 'CONTEXT_MISMATCH_CORRECTION') ('classification_bad:'+ $f.classification)
 Assert (@($f.contradictions).Count -ge 2) 'contradictions_too_few'
+Assert ($f.PSObject.Properties.Name -contains 'contradiction_resolution') 'contradiction_resolution_field_missing'
+Assert ($f.contradiction_resolution.status -eq 'PASS_CONTRADICTION_RESOLUTION_V1') ('contradiction_resolution_status_bad:'+ $f.contradiction_resolution.status)
+Assert ($f.contradiction_resolution.result.decision -eq 'CUT_LOSING_BRANCH_AND_CONTINUE_WINNING_BRANCH') ('contradiction_resolution_decision_bad:'+ $f.contradiction_resolution.result.decision)
 Assert ($f.selected_next_logical_step.step_id -eq 'BUILD_MIND_LOGIC_KERNEL') 'next_step_not_logic_kernel'
 Assert ($f.boundary.action_executed -eq $false) 'action_executed_not_false'
 Assert ($f.PSObject.Properties.Name -contains 'memory_recall') 'memory_recall_field_missing'
@@ -60,6 +63,10 @@ $proof=[ordered]@{
   no_knowledge_frame=$gapPath
   correction_classification=$f.classification
   correction_next_step=$f.selected_next_logical_step
+  correction_resolution_status=$f.contradiction_resolution.status
+  correction_resolution_decision=$f.contradiction_resolution.result.decision
+  correction_resolution_cut_branches=@($f.contradiction_resolution.result.cut_branches)
+  correction_resolution_proof_needs=@($f.contradiction_resolution.result.proof_needs)
   correction_memory_recall_status=$f.memory_recall.status
   memory_recall_status=$mem.memory_recall.status
   memory_recall_filter_status=$mem.memory_recall_filter.status
@@ -72,6 +79,7 @@ $proof=[ordered]@{
     [ordered]@{name='kernel_has_cognitive_cycle';status=if(($k.cognitive_cycle -join ' ') -match 'detect_contradictions'){'PASS'}else{'FAIL'}},
     [ordered]@{name='memory_recall_cycle_present';status=if(($k.cognitive_cycle -join ' ') -match 'recall_relevant_memory'){'PASS'}else{'FAIL'}},
     [ordered]@{name='owner_correction_cuts_wrong_branch';status=if($f.classification -eq 'CONTEXT_MISMATCH_CORRECTION'){'PASS'}else{'FAIL'}},
+    [ordered]@{name='contradiction_resolution_cuts_wrong_branch';status=if($f.contradiction_resolution.result.decision -eq 'CUT_LOSING_BRANCH_AND_CONTINUE_WINNING_BRANCH'){'PASS'}else{'FAIL'}},
     [ordered]@{name='known_unknown_hypothesis_present';status=if(@($f.known).Count -ge 3 -and @($f.unknown).Count -ge 3 -and @($f.hypotheses).Count -ge 3){'PASS'}else{'FAIL'}},
     [ordered]@{name='memory_recall_used_when_relevant';status=if($mem.memory_recall.status -eq 'PASS_COMPACT_MEMORY_RECALL_V1' -and $mem.memory_recall.used_in_known -eq $true){'PASS'}else{'FAIL'}},
     [ordered]@{name='memory_recall_filter_used_when_relevant';status=if($mem.memory_recall_filter.status -eq 'PASS_MEMORY_RECALL_RELEVANCE_FILTER_V1' -and $mem.memory_recall_filter.used_in_known -eq $true){'PASS'}else{'FAIL'}},

@@ -133,6 +133,33 @@ if(($signals -contains 'OWNER_WANTS_MIND_LOGIC') -and ($signals -contains 'SAFET
 if($signals -contains 'KNOWLEDGE_GAP_CHALLENGE'){
   $contradictions.Add([ordered]@{id='KNOWLEDGE_VS_ACTION'; statement='Execution capacity is meaningless if the agent cannot know what is true or what is unknown.'; severity='HIGH'; repair='make no-evidence/no-claim and source-ladder selection first-class logic.'}) | Out-Null
 }
+$contradictionResolution=[ordered]@{
+  status='NOT_RUN'
+  result_path=$null
+  resolver_stdout=@()
+  exit_code=$null
+  result=$null
+}
+$contradictionResolver='operations/reasoning/resolve_mind_logic_contradiction_v1.ps1'
+$contradictionResolutionPath=Join-Path (Split-Path $OutputPath -Parent) 'contradiction_resolution.json'
+if(Test-Path $contradictionResolver){
+  $resolverOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File $contradictionResolver -Problem $Problem -OutputPath $contradictionResolutionPath *>&1 | ForEach-Object { [string]$_ })
+  $contradictionResolution.resolver_stdout=@($resolverOut)
+  $contradictionResolution.exit_code=$LASTEXITCODE
+  $contradictionResolution.result_path=$contradictionResolutionPath
+  if((Test-Path $contradictionResolutionPath) -and $LASTEXITCODE -eq 0){
+    $contradictionResolution.result=Get-Content $contradictionResolutionPath -Raw | ConvertFrom-Json
+    $contradictionResolution.status=$contradictionResolution.result.status
+  } elseif(Test-Path $contradictionResolutionPath){
+    $contradictionResolution.result=Get-Content $contradictionResolutionPath -Raw | ConvertFrom-Json
+    $contradictionResolution.status='RESOLVER_NONZERO_WITH_RESULT'
+  } else {
+    $contradictionResolution.status='RESOLVER_FAILED_NO_RESULT'
+  }
+} else {
+  $contradictionResolution.status='RESOLVER_SCRIPT_MISSING'
+}
+
 $hypotheses=@(
   [ordered]@{id='H1'; text='The next useful mind organ is a logic frame builder, not another authority layer.'; evidence_refs=@('Owner correction','existing AIMO thinking proof'); confidence='HIGH'; test='frame must name mismatch and select knowledge/logic next step.'},
   [ordered]@{id='H2'; text='The agent becomes smarter by adding a repeatable cognitive cycle, not by adding more static documents.'; evidence_refs=@('kernel cognitive_cycle','validator checks operator order'); confidence='HIGH'; test='validator rejects missing contradiction/unknown/source ladder.'},
@@ -167,9 +194,11 @@ $frame=[ordered]@{
   unknown=@($unknown)
   assumptions=@($assumptions)
   contradictions=@($contradictions.ToArray())
+  contradiction_resolution=$contradictionResolution
   hypotheses=@($hypotheses)
   source_ladder=@($sourceLadder)
   selected_next_logical_step=$nextStep
+  selected_resolution_step=if($contradictionResolution.result){$contradictionResolution.result.selected_resolution_step}else{$null}
   no_evidence_no_claim=$true
   return_to_parent='Use this frame to build/wire AIMO cognitive logic before any further execution authority work.'
   boundary=[ordered]@{reasoning_only=$true; action_executed=$false; live_process_touched=$false; active_memory_mutated=$false; repo_mutated_by_kernel=$false}

@@ -1,7 +1,7 @@
 {
     "schema":  "agent_mind_logic_kernel_validation_v1",
     "status":  "PASS_AGENT_MIND_LOGIC_KERNEL_V1",
-    "checked_at":  "2026-07-16T13:59:41.9778954+04:00",
+    "checked_at":  "2026-07-16T14:17:36.1838435+04:00",
     "kernel_path":  "operations/reasoning/agent_mind_logic_kernel_v1.json",
     "builder_path":  "operations/reasoning/build_agent_mind_logic_frame_v1.ps1",
     "correction_frame":  ".runtime/agent_mind_logic_kernel_v1/validator_owner_correction_frame.json",
@@ -15,6 +15,32 @@
                                  "reduces_unknown":  "Can the agent detect mismatch and choose logic over safety?",
                                  "not_action":  "does not grant execution authority"
                              },
+    "correction_resolution_status":  "PASS_CONTRADICTION_RESOLUTION_V1",
+    "correction_resolution_decision":  "CUT_LOSING_BRANCH_AND_CONTINUE_WINNING_BRANCH",
+    "correction_resolution_cut_branches":  [
+                                               {
+                                                   "branch":  "SAFETY_AUTHORITY_BRANCH",
+                                                   "reason":  "Current work risks drifting into passports/authority while Owner asked for agent mind/logic.",
+                                                   "cut_type":  "STOP_EXPANDING_THIS_BRANCH_NOW"
+                                               },
+                                               {
+                                                   "branch":  "ACTION_OR_AUTHORITY_BRANCH",
+                                                   "reason":  "Action/authority is premature when the agent cannot separate known from unknown.",
+                                                   "cut_type":  "STOP_EXPANDING_THIS_BRANCH_NOW"
+                                               }
+                                           ],
+    "correction_resolution_proof_needs":  [
+                                              {
+                                                  "proof_id":  "PROVE_MIND_LOGIC_OPERATOR",
+                                                  "need":  "Show a cognitive operation that classifies mismatch and chooses a logic step, not a safety document.",
+                                                  "validator":  "validators/validate_agent_mind_logic_kernel_v1.ps1"
+                                              },
+                                              {
+                                                  "proof_id":  "PROVE_KNOWN_UNKNOWN_SOURCE_SELECTION",
+                                                  "need":  "Show no-evidence task selects memory/source recall before action.",
+                                                  "validator":  "validators/validate_agent_mind_logic_kernel_v1.ps1"
+                                              }
+                                          ],
     "correction_memory_recall_status":  "PASS_COMPACT_MEMORY_RECALL_V1",
     "memory_recall_status":  "PASS_COMPACT_MEMORY_RECALL_V1",
     "memory_recall_filter_status":  "PASS_MEMORY_RECALL_RELEVANCE_FILTER_V1",
@@ -40,6 +66,10 @@
                   },
                   {
                       "name":  "owner_correction_cuts_wrong_branch",
+                      "status":  "PASS"
+                  },
+                  {
+                      "name":  "contradiction_resolution_cuts_wrong_branch",
                       "status":  "PASS"
                   },
                   {
