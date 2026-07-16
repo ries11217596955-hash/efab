@@ -1050,7 +1050,17 @@ Not acceptable:
     duplicate detection that rewrites map directly
 ### 7. Passport / Contract Audit Cell
 
-Use existing passport/contract surfaces, not invented replacements:
+Purpose: enforce the rule that a candidate is not a real organ unless its passport/contract surfaces exist, parse, and satisfy the required fields.
+
+Output:
+
+    .runtime/body_self_inspection_v1/passport_audit.json
+
+This cell must use existing repo passport/contract surfaces. It must not invent a new passport law unless the reconciliation later creates a draft requirement.
+
+#### 7.1 Existing passport and contract refs
+
+Known required surfaces to read/check when present:
 
     contracts/accepted_atom_retention_organ/passports/ORGAN_PASSPORT.json
     contracts/accepted_atom_retention_organ/passports/PASSPORT_INDEX.json
@@ -1060,19 +1070,234 @@ Use existing passport/contract surfaces, not invented replacements:
     validators/validate_accepted_atom_retention_passports_v1.ps1
     validators/validate_autonomous_inner_motor_organ_contract.ps1
 
-Must detect:
+The audit must record these as law/reference surfaces, not as proof that all organs comply.
+
+#### 7.2 Passport audit target set
+
+Audit targets come from:
+
+    map-declared organs
+    repo organ candidates
+    candidate families
+    organ_contract files
+    authority passport files
+    capability passport files
+    validator clusters claiming organ validation
+    known active organs from body/capability maps
+
+Every target must receive one passport_status.
+
+#### 7.3 Passport status values
+
+Allowed passport_status:
+
+    PASSPORT_PRESENT_VALIDATED
+    PASSPORT_PRESENT_UNVALIDATED
+    PASSPORT_PRESENT_PARSE_FAILED
+    PASSPORT_MISSING
+    PASSPORT_INDEX_ONLY
+    CONTRACT_PRESENT_PASSPORT_MISSING
+    PASSPORT_PRESENT_CONTRACT_MISSING
+    AUTHORITY_PASSPORT_MISSING
+    CAPABILITY_PASSPORT_MISSING
+    PASSPORT_REQUIRED_FIELD_MISSING
+    PASSPORT_SCHEMA_UNKNOWN
+    NOT_ORGAN_NO_PASSPORT_REQUIRED_YET
+
+Boundary:
+
+    PASSPORT_PRESENT != PASSPORT_VALIDATED
+    PASSPORT_VALIDATED != ORGAN_MATURE
+    CONTRACT_PRESENT != ORGAN_WIRED
+
+#### 7.4 Required passport fields to check
+
+The exact required fields should be loaded from the existing passport schema/contract if available.
+
+Minimum fields to check for every organ/passport-like record:
+
+    organ_id
+    organ_name
+    organ_type
+    purpose
+    capabilities
+    input_contract
+    output_contract
+    state_touched
+    authority
+    invocation_contract
+    validator_refs
+    proof_refs
+    maturity_status
+    owner_or_parent_ref
+    rollback_or_quarantine_rule
+    last_validated_at or evidence timestamp
+
+If field names differ in existing repo schema, the audit must map to canonical concepts and record mapping_source.
+
+#### 7.5 Contract audit fields
+
+For organ_contract-like files check:
+
+    organ_id
+    contract_schema
+    mode
+    allowed_inputs
+    allowed_outputs
+    forbidden_actions
+    state_boundaries
+    memory_boundaries
+    live_boundaries
+    validator_contract
+    proof_expectations
+    failure_modes
+    quarantine_rule
+
+#### 7.6 Authority passport audit fields
+
+For authority passport-like files check:
+
+    organ_id
+    authority_scope
+    allowed_actions
+    forbidden_actions
+    state_mutation_authority
+    live_runtime_authority
+    repo_mutation_authority
+    memory_mutation_authority
+    codex_authority
+    web_authority
+    validator_required
+    proof_required
+    rollback_required
+
+If authority is ambiguous, emit pain candidate:
+
+    authority_scope_ambiguous
+
+#### 7.7 Validator relationship check
+
+For every organ/candidate with passport or contract, check whether validator refs exist and whether validators are wired to the same organ/capability.
+
+Statuses:
+
+    VALIDATOR_PRESENT_AND_REFERENCED
+    VALIDATOR_PRESENT_NOT_REFERENCED
+    VALIDATOR_REFERENCED_MISSING
+    VALIDATOR_TARGET_MISMATCH
+    VALIDATOR_CLUSTER_FOUND_NO_CONTRACT
+    VALIDATOR_MISSING
+    VALIDATOR_UNKNOWN
+
+#### 7.8 Proof relationship check
+
+For every passport/contract, check proof refs:
+
+    proof_ref_present
+    proof_ref_path_exists
+    proof_ref_parse_status
+    proof_status_if_present
+    proof_head_or_timestamp
+    proof_matches_organ_id
+    proof_matches_validator
+
+Statuses:
+
+    PROOF_REF_VALID
+    PROOF_REF_BROKEN
+    PROOF_REF_PARSE_FAILED
+    PROOF_REF_TARGET_MISMATCH
+    PROOF_REF_MISSING
+    PROOF_STALE
+    PROOF_UNKNOWN
+
+#### 7.9 Passport pain candidates
+
+This cell may emit pain candidates:
 
     organ_missing_passport
     passport_missing_required_field
+    passport_parse_failed
+    passport_schema_unknown
     organ_contract_missing
+    organ_contract_parse_failed
     authority_passport_missing
-    validator_contract_missing
+    authority_scope_ambiguous
+    capability_passport_missing
+    validator_referenced_missing
+    validator_target_mismatch
+    proof_ref_broken
+    proof_ref_target_mismatch
+    proof_stale
+
+These become final body pains only after reconciliation confirms them.
+
+#### 7.10 Passport audit record schema
+
+Each audited target:
+
+    audit_id
+    target_id
+    target_kind
+    target_refs
+    passport_status
+    contract_status
+    authority_status
+    capability_passport_status
+    validator_status
+    proof_status
+    required_fields_checked
+    missing_fields
+    parse_errors
+    evidence_refs
+    pain_candidates
+    recommended_logic_action
+    forbidden_now
+
+recommended_logic_action examples:
+
+    create_passport_requirement_draft
+    create_contract_requirement_draft
+    create_validator_requirement_draft
+    compare_existing_passport_schema
+    quarantine_candidate_until_passport
+    mark_not_organ_candidate
+
+forbidden_now examples:
+
+    claim organ mature
+    wire organ
+    mutate body map
+    auto-create passport without proof
+    delete candidate
+
+#### 7.11 Non-success patterns
+
+Not acceptable:
+
+    only checking file existence
+    treating passport presence as maturity
+    ignoring authority passport
+    ignoring validator refs
+    ignoring proof refs
+    ignoring parse failures
+    not using existing passport surfaces
+    creating new passport law silently
+    no pain candidates for missing passport
 
 ### 8. Signal Readiness Audit Cell
 
-Prepare future nervous-system compatibility now.
+Purpose: make organs/candidates future-compatible with the nervous system before the nervous system exists.
 
-For every organ/cell candidate include:
+Output:
+
+    .runtime/body_self_inspection_v1/signal_readiness_audit.json
+
+This cell does not require a complete nervous system. It checks whether an organ/candidate has a visible contract for emitting/consuming signals and whether that contract has proof or validator support.
+
+#### 8.1 Signal readiness fields
+
+Every organ/cell candidate and every map-declared organ should receive:
 
     signal_contract_status
     expected_signals_emitted
@@ -1080,17 +1305,180 @@ For every organ/cell candidate include:
     signal_schema_ref
     signal_validator_ref
     signal_emission_proof_ref
+    signal_sink_status
+    signal_adapter_status
+    nervous_system_dependency_status
 
-Statuses:
+#### 8.2 Signal contract status values
+
+Allowed signal_contract_status:
 
     NATIVE_SIGNAL_EMITTER
     LEGACY_SIGNAL_ADAPTED
     SIGNAL_MISSING
     SIGNAL_UNKNOWN
     SIGNAL_CONTRACT_WITHOUT_VALIDATOR
+    SIGNAL_VALIDATOR_WITHOUT_CONTRACT
+    SIGNAL_SCHEMA_REF_BROKEN
+    SIGNAL_PROOF_REF_BROKEN
+    SIGNAL_EMITS_TO_PLACEHOLDER
+    SIGNAL_NOT_REQUIRED_FOR_NON_ORGAN
 
-Signals may be emitted into a placeholder/void now, but contract visibility is required for future nervous-system consumption.
+Boundary:
 
+    SIGNAL_FIELD_PRESENT != SIGNAL_READY
+    SIGNAL_READY != NERVOUS_SYSTEM_CONNECTED
+    EMITS_TO_PLACEHOLDER is allowed for now, but must be explicit.
+
+#### 8.3 Expected signal envelope concepts
+
+The future common language should be compatible with this minimum envelope:
+
+    signal_id
+    signal_schema_version
+    emitted_at
+    emitter_organ_id
+    emitter_cell_id
+    capability_id
+    event_type
+    status
+    evidence_status
+    proof_ref
+    state_touched
+    authority_used
+    risk_flags
+    next_route
+    parent_task_ref
+    stale_after
+
+This cell should not enforce final nervous-system schema yet, but it must record whether the candidate can map to these concepts.
+
+#### 8.4 Signal source discovery
+
+Look for signal readiness in:
+
+    organ passports
+    organ contracts
+    authority passports
+    validators with signal contract names
+    operations/*signal* files
+    proof JSON containing signal fields
+    body/capability maps with signal refs
+    runtime summaries with signal-like outputs
+    existing live-like or promotion lane signal validators
+
+Known signal-adjacent validators/scripts should be recorded when found.
+
+#### 8.5 Placeholder/void emission policy
+
+Until a nervous system exists, an organ may emit to a placeholder/void if:
+
+    signal schema ref exists or is declared as provisional
+    emission output path is bounded
+    validator checks emission shape
+    no active memory mutation occurs
+    no body map mutation occurs
+    no live action is triggered by signal
+
+Status:
+
+    SIGNAL_EMITS_TO_PLACEHOLDER
+
+This is better than no signal contract, but not equal to nervous-system integration.
+
+#### 8.6 Native vs adapter status
+
+A candidate can be:
+
+    NATIVE_SIGNAL_EMITTER
+    LEGACY_SIGNAL_ADAPTED
+    SIGNAL_MISSING
+    SIGNAL_UNKNOWN
+
+NATIVE_SIGNAL_EMITTER:
+
+    organ itself emits standard/provisional signal
+    validator checks signal output
+    proof ref exists
+
+LEGACY_SIGNAL_ADAPTED:
+
+    old proof/validator output can be converted into signal by adapter
+    adapter ref exists or is required as draft
+    native emission missing
+
+SIGNAL_MISSING:
+
+    no contract, no adapter, no proof
+
+SIGNAL_UNKNOWN:
+
+    insufficient evidence due to skipped/failed parse or ambiguous surface
+
+#### 8.7 Signal pain candidates
+
+This cell may emit pain candidates:
+
+    organ_missing_signal_contract
+    signal_contract_without_validator
+    signal_validator_without_contract
+    signal_schema_ref_broken
+    signal_emission_proof_missing
+    signal_emission_proof_broken
+    signal_adapter_needed_for_legacy_organ
+    signal_sink_missing_future_dependency
+    signal_fields_ambiguous
+
+These become final pains only after reconciliation.
+
+#### 8.8 Signal audit record schema
+
+Each target:
+
+    audit_id
+    target_id
+    target_kind
+    signal_contract_status
+    expected_signals_emitted
+    expected_signals_consumed
+    signal_schema_ref
+    signal_validator_ref
+    signal_emission_proof_ref
+    signal_sink_status
+    signal_adapter_status
+    nervous_system_dependency_status
+    evidence_refs
+    pain_candidates
+    recommended_logic_action
+    forbidden_now
+
+recommended_logic_action examples:
+
+    create_signal_contract_requirement_draft
+    create_signal_validator_requirement_draft
+    create_legacy_signal_adapter_draft
+    mark_signal_not_required_for_non_organ
+    wait_for_nervous_system_layer
+
+forbidden_now examples:
+
+    claim nervous system connected
+    mutate organ to emit signal
+    mutate active memory
+    wire signal consumer
+    launch live action from signal
+
+#### 8.9 Non-success patterns
+
+Not acceptable:
+
+    no signal fields on candidates
+    treating placeholder emission as nervous system
+    requiring full nervous system before recording readiness
+    claiming signal readiness without validator/proof
+    ignoring legacy adapter path
+    ignoring signal refs in existing validators
+    losing signal pain candidates
 ### 9. Reconciliation Cell
 
 Compare repo inventory, maps, capability map, passport index, contracts, validators, proof refs, draft board, runtime summaries.
