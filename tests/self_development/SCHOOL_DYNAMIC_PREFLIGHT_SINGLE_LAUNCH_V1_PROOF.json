@@ -1,0 +1,29 @@
+{
+    "schema":  "school_dynamic_preflight_single_launch_v1",
+    "status":  "PASS_SCHOOL_DYNAMIC_PREFLIGHT_SINGLE_LAUNCH_V1",
+    "created_at":  "2026-07-16T07:00:17.3842268+04:00",
+    "command":  "operations/school/run_agent_school.ps1 -Count 1 -Mode Test -Topics AUTO",
+    "school_status":  "PASS_CANONICAL_EXACT_COUNT_CYCLE_TEST_V1",
+    "raw_report":  "operations/reports/CANONICAL_EXACT_COUNT_CYCLE_RUN_20260716_070017.json",
+    "report_status":  "PASS_CANONICAL_EXACT_COUNT_CYCLE_TEST_V1",
+    "route":  "ONE_PUBLIC_SCHOOL_LAUNCHER_EMBEDDED_ENGINE_V1",
+    "accepted_count":  1,
+    "requested_topics":  "agent_error_to_school_lesson",
+    "preflight_status":  "PASS_SCHOOL_DYNAMIC_REQUEST_PREFLIGHT_V1",
+    "preflight":  {
+                      "status":  "PASS_SCHOOL_DYNAMIC_REQUEST_PREFLIGHT_V1",
+                      "selection_status":  "PASS_DEVELOPMENT_VECTOR_THEME_SELECTION_V1",
+                      "selection_path":  ".runtime\\school_single_public_launch_preflight\\school_factory_digest_use_test_1_20260716_070003\\selection.json",
+                      "request_plan_status":  "PASS_DYNAMIC_SCHOOL_REQUEST_PLAN_READY_V1",
+                      "request_plan_path":  ".runtime\\school_single_public_launch_preflight\\school_factory_digest_use_test_1_20260716_070003\\request_plan.json",
+                      "topic_key":  "agent_error_to_school_lesson",
+                      "current_depth":  0,
+                      "target_depth":  3,
+                      "depth_gap":  3,
+                      "pressure_class":  "MISSING_OR_ZERO_DEPTH"
+                  },
+    "memory_changed":  false,
+    "memory_hash_changed":  false,
+    "legacy_env_switch_removed":  true,
+    "legacy_patch_route_removed":  true
+}

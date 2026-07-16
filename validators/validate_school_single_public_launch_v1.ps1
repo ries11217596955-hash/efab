@@ -26,8 +26,17 @@ $tracked=@(git ls-files | Where-Object { Test-Path $_ })
 $liveRefs=@()
 foreach($needle in @('invoke_exact_count_warehouse_cycle_v1.ps1','consume_codex_warehouse_micro_batches_v1.ps1')){
   foreach($hit in @(Select-String -Path $tracked -Pattern $needle -SimpleMatch -ErrorAction SilentlyContinue)){
-    if($hit.Path -match 'RUNTIME_BLOAT_ROOT_CAUSE_AUDIT|CODEX_WAREHOUSE_PIPELINE_INSTALLATION') { continue }
-    $liveRefs += [ordered]@{ file=$hit.Path.Replace((Resolve-Path '.').Path+'\','').Replace('\','/'); line=$hit.LineNumber; text=$hit.Line.Trim() }
+    $repoRoot=(Resolve-Path '.').Path.Replace('\','/')
+    $hitPath=([string]$hit.Path).Replace('\','/')
+    $relPath=$hitPath
+    if($hitPath.StartsWith($repoRoot + '/')){ $relPath=$hitPath.Substring($repoRoot.Length + 1) }
+    if($relPath -eq 'validators/validate_school_single_public_launch_v1.ps1') { continue }
+    if($relPath -match '^tests/self_development/SCHOOL_SINGLE_PUBLIC_LAUNCH') { continue }
+    if($relPath -match '^tests/self_development/SCHOOL_DYNAMIC_PREFLIGHT_SINGLE_LAUNCH') { continue }
+    if($relPath -match '^operations/gpt_handoff/RUNTIME_BLOAT_ROOT_CAUSE_AUDIT') { continue }
+    if($relPath -match '^operations/reports/CODEX_WAREHOUSE_PIPELINE_INSTALLATION') { continue }
+    if($relPath -eq 'reports/self_development/branch_agnostic_map_refresh_result.json') { continue }
+    $liveRefs += [ordered]@{ file=$relPath; line=$hit.LineNumber; text=$hit.Line.Trim() }
   }
 }
 if(@($liveRefs).Count -gt 0){ Add-Err ('live_refs_to_removed_bicycles:' + (@($liveRefs).Count)) }
@@ -36,6 +45,20 @@ if(Test-Path $public){ $runText=Get-Content $public -Raw }
 if($runText -notmatch 'ONE BIKE LAW'){ Add-Err 'public_launcher_missing_one_bike_law_marker' }
 if($runText -notmatch 'function Invoke-SchoolExactCountWarehouseCycle'){ Add-Err 'public_launcher_missing_embedded_exact_engine' }
 if($runText -notmatch 'function Invoke-SchoolWarehouseConsumer'){ Add-Err 'public_launcher_missing_embedded_consumer_engine' }
+if($runText -notmatch 'SCHOOL_PREFLIGHT_STATUS=PASS_SCHOOL_DYNAMIC_REQUEST_PREFLIGHT_V1'){ Add-Err 'public_launcher_missing_dynamic_request_preflight_status' }
+if($runText -notmatch 'plan_dynamic_school_request_v1.ps1'){ Add-Err 'public_launcher_missing_dynamic_request_planner_call' }
+if($runText -notmatch 'select_dynamic_theme_cell_v1.ps1'){ Add-Err 'public_launcher_missing_dynamic_theme_selection_call' }
+if($runText -match 'EF_SCHOOL_DISABLE_EXACT_COUNT_CYCLE_V1'){ Add-Err 'legacy_exact_count_disable_switch_still_present' }
+if($runText -match 'TopicPatchPlan|SCHOOL_TOPIC_PATCH_PLAN|school_patch_runs'){ Add-Err 'legacy_topic_patch_route_still_present' }
+$smokeProofPath='tests/self_development/SCHOOL_DYNAMIC_PREFLIGHT_SINGLE_LAUNCH_V1_PROOF.json'
+$smokeProof=$null
+if(Test-Path $smokeProofPath){
+  try { $smokeProof=Get-Content $smokeProofPath -Raw | ConvertFrom-Json } catch { Add-Err 'dynamic_preflight_smoke_bad_json' }
+  if($smokeProof -and $smokeProof.status -ne 'PASS_SCHOOL_DYNAMIC_PREFLIGHT_SINGLE_LAUNCH_V1'){ Add-Err ('dynamic_preflight_smoke_status_bad:' + $smokeProof.status) }
+  if($smokeProof -and $smokeProof.preflight_status -ne 'PASS_SCHOOL_DYNAMIC_REQUEST_PREFLIGHT_V1'){ Add-Err ('dynamic_preflight_status_bad:' + $smokeProof.preflight_status) }
+  if($smokeProof -and $smokeProof.legacy_env_switch_removed -ne $true){ Add-Err 'dynamic_preflight_smoke_legacy_env_not_removed' }
+  if($smokeProof -and $smokeProof.legacy_patch_route_removed -ne $true){ Add-Err 'dynamic_preflight_smoke_legacy_patch_not_removed' }
+} else { Add-Err 'dynamic_preflight_smoke_proof_missing' }
 $status=if($errors.Count -eq 0){'PASS_SCHOOL_SINGLE_PUBLIC_LAUNCH_V1'}else{'FAIL_SCHOOL_SINGLE_PUBLIC_LAUNCH_V1'}
 $out=[ordered]@{
   schema='school_single_public_launch_validation_v1'
@@ -44,6 +67,7 @@ $out=[ordered]@{
   public_launcher=$public
   removed_bicycles=$removed
   live_refs_to_removed_bicycles=@($liveRefs)
+  dynamic_preflight_smoke_proof=$smokeProofPath
   errors=@($errors)
 }
 Write-CleanJson 'tests/self_development/SCHOOL_SINGLE_PUBLIC_LAUNCH_V1_PROOF.json' $out 50
