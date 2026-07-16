@@ -1795,64 +1795,528 @@ Not acceptable:
     no skipped-surface awareness
 ### 10. Body Pain Register
 
+Purpose: preserve body pains as agent-readable working state across cycles, without duplicating the same pain every run.
+
 Output:
 
     .runtime/body_self_inspection_v1/body_pain_register.jsonl
 
-Pain records must include:
+This is not a human report. It is the agent's open-pain memory for body self-repair logic.
+
+#### 10.1 Pain lifecycle
+
+Allowed pain statuses:
+
+    OPEN
+    ACTIVE_DRAFT_LINKED
+    EVIDENCE_LINKED
+    READY_FOR_LOGIC_REPAIR
+    BLOCKED_BY_MISSING_PROOF
+    BLOCKED_BY_OWNER_DECISION
+    BLOCKED_BY_UNSAFE_SURFACE
+    MONITOR_ONLY
+    STALE
+    SUPERSEDED
+    CLOSED
+    REOPENED
+    QUARANTINED
+
+Status transition rules:
+
+    new confirmed pain -> OPEN
+    OPEN + active draft -> ACTIVE_DRAFT_LINKED
+    OPEN + required proof found -> EVIDENCE_LINKED
+    EVIDENCE_LINKED + safe repair route -> READY_FOR_LOGIC_REPAIR
+    insufficient proof -> BLOCKED_BY_MISSING_PROOF
+    unsafe/protected target -> BLOCKED_BY_UNSAFE_SURFACE
+    owner choice required -> BLOCKED_BY_OWNER_DECISION
+    same pain absent for N scans -> STALE candidate
+    stale and replaced by newer pain -> SUPERSEDED
+    confirmed resolved by proof -> CLOSED
+    closed pain appears again -> REOPENED
+
+The circuit must not close pain without evidence/proof.
+
+#### 10.2 Pain identity and deduplication
+
+Pain identity must be stable across runs.
+
+pain_id should be derived from:
+
+    pain_type
+    normalized affected_surface
+    related organ_id or candidate_id
+    source map/ref when relevant
+    contradiction type when relevant
+
+A repeat observation must update:
+
+    last_seen
+    seen_count
+    evidence_refs
+    current_status
+    latest_scan_ref
+
+It must not create a second active pain unless affected_surface or root cause differs.
+
+#### 10.3 Pain record schema
+
+Each jsonl record:
 
     pain_id
+    schema
+    status
     pain_type
     symptom
     affected_surface
+    affected_ids
+    root_cause_guess
     evidence_refs
-    why_it_matters
+    evidence_status
+    confidence
     severity
+    why_it_matters
     repairability
+    recommended_next_logic_action
+    allowed_now
+    forbidden_now
     blocked_by
-    status
+    linked_draft_ids
+    linked_proof_refs
+    linked_validator_refs
+    source_cell_refs
     first_seen
     last_seen
+    seen_count
+    stale_after
+    supersedes
+    superseded_by
+    closure_proof_ref
 
-If pain repeats, update existing pain instead of duplicating.
+#### 10.4 Required pain types
+
+The register must support at least:
+
+    repo_candidate_unmapped
+    map_entry_missing_file
+    organ_missing_passport
+    passport_missing_required_field
+    passport_parse_failed
+    organ_contract_missing
+    authority_passport_missing
+    authority_scope_ambiguous
+    organ_missing_validator
+    validator_unwired
+    validator_target_mismatch
+    organ_missing_signal_contract
+    signal_contract_without_validator
+    signal_schema_ref_broken
+    signal_emission_proof_missing
+    capability_without_invocation
+    capability_without_validator
+    capability_without_proof
+    proof_ref_broken
+    proof_ref_target_mismatch
+    proof_stale
+    possible_duplicate_organ
+    functional_overlap_without_decision
+    shadow_organ_unmapped
+    old_version_not_quarantined
+    wrapper_without_contract
+    conflicting_organ_claims_same_capability
+    draft_stale_or_unread
+    draft_references_missing_pain
+    draft_references_missing_surface
+    runtime_surface_unindexed
+    skipped_surface_may_hide_body_part
+    map_conflict
+    root_marker_missing
+
+#### 10.5 Severity and priority fields
+
+Severity is risk to organism integrity.
+
+Priority is what the agent should reason about first.
+
+priority_score should consider:
+
+    severity
+    evidence strength
+    whether it blocks current route_request_packet
+    whether it affects active/limited organ
+    whether it affects accepted memory or live boundary
+    whether an active draft already exists
+    whether repair is logic-level safe now
+
+#### 10.6 Agent consumption rules
+
+The next cycle must be able to ask:
+
+    What open pains exist?
+    Which pain is blocking my current route?
+    Which pain has an active draft?
+    Which pain is ready for logic repair?
+    Which pain requires proof first?
+    Which pain requires Owner decision?
+    Which pain should only be monitored?
+
+Therefore the register must include an index summary at end or in companion summary:
+
+    open_count
+    critical_count
+    ready_for_logic_repair_count
+    blocked_count
+    active_draft_linked_count
+    top_priority_pain_ids
+
+#### 10.7 Forbidden behavior
+
+The pain register must not:
+
+    auto-fix files
+    mutate maps
+    mutate passports
+    mutate active memory
+    claim resolution without proof
+    duplicate same pain every run
+    promote weak heuristic candidates to pain
+    hide skipped-surface uncertainty
+
+#### 10.8 Non-success patterns
+
+Not acceptable:
+
+    pain as one-off report only
+    no stable pain_id
+    no lifecycle
+    no deduplication
+    no severity/priority
+    no linked draft ids
+    no next logic action
+    no blocked_by
+    no stale handling
 
 ### 11. Repair Draft Board
+
+Purpose: store candidate logic repairs that the agent can revisit, strengthen, reject, or route into implementation later.
 
 Output:
 
     .runtime/body_self_inspection_v1/repair_draft_board.jsonl
 
-Draft records must include:
+A draft is not an implemented fix. It is a structured hypothesis and safe next-thinking route.
 
-    draft_id
-    from_pain_id
-    hypothesis
-    proposed_logic_repair
-    required_proof
-    required_validator
-    allowed_now
-    forbidden_now
-    status
-    next_read_required
+#### 11.1 Draft lifecycle
 
-Statuses:
+Allowed draft statuses:
 
     ACTIVE_DRAFT
     EVIDENCE_LINKED
     READY_FOR_PROBE
-    BLOCKED
-    STALE
+    BLOCKED_BY_MISSING_PROOF
+    BLOCKED_BY_OWNER_DECISION
+    BLOCKED_BY_UNSAFE_SURFACE
+    CODEX_TASK_CANDIDATE
     SUPERSEDED
+    STALE
+    REJECTED
     CLOSED
+    QUARANTINED
+
+Transition rules:
+
+    pain with safe logic repair -> ACTIVE_DRAFT
+    draft + proof refs -> EVIDENCE_LINKED
+    draft + validator requirement + proof path -> READY_FOR_PROBE
+    needs implementation beyond logic -> CODEX_TASK_CANDIDATE
+    unsafe target -> BLOCKED_BY_UNSAFE_SURFACE
+    missing evidence -> BLOCKED_BY_MISSING_PROOF
+    owner choice needed -> BLOCKED_BY_OWNER_DECISION
+    newer better draft replaces it -> SUPERSEDED
+    target disappears or map changes -> STALE
+    proof contradicts hypothesis -> REJECTED
+    repair proven accepted elsewhere -> CLOSED
+
+#### 11.2 Draft identity and deduplication
+
+Draft id should be stable from:
+
+    from_pain_id
+    proposed_repair_type
+    target_id
+    affected_surface
+
+If same pain already has active draft, update draft instead of creating a duplicate.
+
+#### 11.3 Draft record schema
+
+Each jsonl record:
+
+    draft_id
+    schema
+    status
+    from_pain_id
+    target_id
+    target_kind
+    hypothesis
+    proposed_logic_repair
+    proposed_repair_type
+    required_proof
+    required_validator
+    required_inputs
+    allowed_now
+    forbidden_now
+    risk_flags
+    expected_outputs
+    acceptance_boundary
+    rollback_or_quarantine_note
+    linked_evidence_refs
+    linked_validator_refs
+    linked_proof_refs
+    next_read_required
+    next_probe_candidate
+    codex_task_candidate
+    owner_decision_required
+    created_at
+    updated_at
+    stale_after
+    supersedes
+    superseded_by
+    closure_proof_ref
+
+#### 11.4 Proposed repair types
+
+Allowed proposed_repair_type values:
+
+    CREATE_PASSPORT_REQUIREMENT
+    CREATE_CONTRACT_REQUIREMENT
+    CREATE_AUTHORITY_REQUIREMENT
+    CREATE_VALIDATOR_REQUIREMENT
+    CREATE_SIGNAL_CONTRACT_REQUIREMENT
+    CREATE_SIGNAL_ADAPTER_REQUIREMENT
+    CREATE_MAP_ENTRY_CANDIDATE
+    CREATE_INVOCATION_REQUIREMENT
+    CREATE_PROOF_REF_REPAIR_REQUIREMENT
+    CREATE_DUPLICATE_RESOLUTION_REQUIREMENT
+    CREATE_QUARANTINE_REQUIREMENT
+    MARK_SUPPORT_TOOL_NON_ORGAN
+    REQUEST_MORE_PROOF
+    ASK_OWNER_DECISION
+    MONITOR_ONLY
+
+#### 11.5 Draft-to-Codex boundary
+
+A draft may become CODEX_TASK_CANDIDATE only if it has:
+
+    clear target files or target surfaces
+    explicit allowed writes
+    explicit forbidden writes
+    expected outputs
+    validator requirements
+    proof expectations
+    rollback/quarantine rule
+    preflight requirements
+
+Draft board does not launch Codex.
+
+Codex task pack is created later by GPT/operator after reviewing draft candidates.
+
+#### 11.6 Draft board read path
+
+Next agent cycle must read draft board before creating new drafts.
+
+Read questions:
+
+    Do I already have a draft for this pain?
+    Did new evidence strengthen it?
+    Did new evidence contradict it?
+    Is it ready for probe?
+    Is it blocked?
+    Is it stale?
+    Should it become Codex task candidate?
+
+#### 11.7 Forbidden behavior
+
+The draft board must not:
+
+    directly mutate repo
+    directly mutate maps
+    directly mutate passports
+    directly wire organs
+    directly launch Codex
+    directly claim acceptance
+    create implementation task without proof/validator boundary
+    create duplicate drafts for same pain
+
+#### 11.8 Non-success patterns
+
+Not acceptable:
+
+    draft without from_pain_id
+    draft without allowed/forbidden actions
+    draft without required proof
+    draft without required validator when repair affects organism structure
+    draft that cannot be read next cycle
+    Codex candidate without preflight boundary
+    stale drafts never detected
 
 ### 12. Next Logic Queue
+
+Purpose: choose the next reasoning action for the agent from current body reality, open pains, and active drafts.
 
 Output:
 
     .runtime/body_self_inspection_v1/next_logic_queue.json
 
-Select what the agent should reason about next, not what Owner should manually inspect.
+This is the bridge from inspection to the agent's mind. It is not a human todo list.
 
+#### 12.1 Queue structure
+
+next_logic_queue.json must include:
+
+    schema
+    status
+    generated_at
+    source_reality_ref
+    source_pain_register_ref
+    source_draft_board_ref
+    queue_items
+    selected_next_item
+    selection_reason
+    blocked_items
+    monitor_items
+    stale_after
+    boundary
+
+#### 12.2 Queue item schema
+
+Each queue item:
+
+    queue_item_id
+    from_pain_id
+    from_draft_id
+    target_id
+    target_kind
+    next_logic_action
+    reason
+    priority_score
+    severity
+    repairability
+    required_read_refs
+    required_proof_refs
+    required_validator_refs
+    allowed_now
+    forbidden_now
+    expected_logic_output
+    stop_condition
+    escalation_candidate
+    owner_decision_required
+    codex_candidate
+
+#### 12.3 Selection rules
+
+Prioritize:
+
+    current route_request_packet blockers
+    critical/high severity pains with strong evidence
+    pains ready for logic-level repair
+    drafts ready for probe
+    missing passport/validator on active or map-declared organ
+    duplicate/conflict affecting capability routing
+    broken proof refs used by current map
+
+Deprioritize:
+
+    weak heuristic-only observations
+    low severity signal readiness for non-active candidates
+    monitor-only support tools
+    skipped-surface uncertainty without evidence
+    pains already blocked by owner decision
+
+#### 12.4 Allowed next_logic_action values
+
+    READ_SPECIFIC_MAP
+    READ_SPECIFIC_PASSPORT
+    READ_SPECIFIC_CONTRACT
+    READ_SPECIFIC_VALIDATOR
+    READ_SPECIFIC_PROOF
+    COMPARE_CONTRACTS
+    COMPARE_VALIDATORS
+    COMPARE_PROOFS
+    CREATE_PASSPORT_REQUIREMENT_DRAFT
+    CREATE_CONTRACT_REQUIREMENT_DRAFT
+    CREATE_VALIDATOR_REQUIREMENT_DRAFT
+    CREATE_SIGNAL_CONTRACT_REQUIREMENT_DRAFT
+    CREATE_MAP_ENTRY_CANDIDATE_DRAFT
+    CREATE_DUPLICATE_RESOLUTION_DRAFT
+    CREATE_QUARANTINE_DRAFT
+    UPDATE_EXISTING_DRAFT
+    MARK_SUPPORT_TOOL_NON_ORGAN_DRAFT
+    REQUEST_MORE_PROOF
+    ASK_OWNER_DECISION
+    MONITOR_ONLY
+    BLOCKED_NO_SAFE_LOGIC_ACTION
+
+#### 12.5 Boundary of queue execution
+
+The queue selects reasoning, not mutation.
+
+Allowed immediate execution after queue selection:
+
+    read selected refs
+    create/update runtime draft
+    create/update runtime pain status
+    produce reasoning proof
+    produce Codex task candidate draft, not launch Codex
+
+Forbidden immediate execution:
+
+    edit tracked repo files
+    edit maps
+    edit passports
+    edit validators
+    wire organs
+    launch live runtime
+    launch Codex
+    browse web
+    mutate active memory
+
+#### 12.6 Stop conditions
+
+Each selected item must include a stop condition:
+
+    proof_found
+    proof_missing
+    contradiction_found
+    draft_updated
+    owner_decision_required
+    unsafe_surface_detected
+    no_safe_logic_action
+    codex_task_candidate_ready
+
+#### 12.7 Queue proof
+
+next_logic_queue.json must prove:
+
+    source refs exist
+    selected item is from open pain or active draft
+    selected action is allowed
+    forbidden actions are listed
+    no mutation was performed
+    stale_after exists
+
+#### 12.8 Non-success patterns
+
+Not acceptable:
+
+    queue as human todo list only
+    selected action without source pain/draft
+    no priority reason
+    no stop condition
+    action that mutates repo immediately
+    Codex launched from queue
+    no stale_after
+    no boundary proof
 ### 13. Self-Inspection Signal
 
 Output:
