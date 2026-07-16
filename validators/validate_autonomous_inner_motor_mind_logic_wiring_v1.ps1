@@ -33,6 +33,14 @@ if($proof){
   if($proof.mind_logic_frame.frame.mind_delta_acceptance_decision.result.accepted_memory_update -ne $false){ Add-Err 'acceptance_gate_mutated_accepted_memory' }
   if($proof.mind_logic_frame.frame.mind_delta_acceptance_decision.result.boundary.accepted_core_mutated -ne $false){ Add-Err 'acceptance_gate_mutated_accepted_core' }
   if($proof.mind_logic_frame.frame.mind_delta_acceptance_decision.result.boundary.codex_launched -ne $false){ Add-Err 'acceptance_gate_launched_codex' }
+  if($proof.mind_logic_frame.frame.PSObject.Properties.Name -notcontains 'source_authority_route'){ Add-Err 'source_authority_route_missing' }
+  if($proof.mind_logic_frame.frame.source_authority_route.status -ne 'PASS_SOURCE_AUTHORITY_ROUTE_DECISION_V1'){ Add-Err ('source_authority_route_status_bad:'+ $proof.mind_logic_frame.frame.source_authority_route.status) }
+  if($proof.mind_logic_frame.frame.source_authority_route.result.route -notin @('LOCAL_ACCEPTANCE_PIPELINE_REQUIRED','LOCAL_MEMORY_THEN_REPO_PROOF','REPO_PROOF_LOOKUP','OWNER_OR_REPO_PROOF_FIRST','SOURCE_LADDER_START_LOCAL','SOURCE_LADDER_EXPAND_LOCAL_FIRST','BLOCKED_UNKNOWN_ACCEPTANCE_DECISION')){ Add-Err ('source_authority_route_bad:'+ $proof.mind_logic_frame.frame.source_authority_route.result.route) }
+  if($proof.mind_logic_frame.frame.source_authority_route.result.boundary.codex_launched -ne $false){ Add-Err 'source_router_launched_codex' }
+  if($proof.mind_logic_frame.frame.source_authority_route.result.boundary.web_launched -ne $false){ Add-Err 'source_router_launched_web' }
+  if($proof.mind_logic_frame.frame.source_authority_route.result.boundary.action_executed -ne $false){ Add-Err 'source_router_executed_action' }
+  if($proof.mind_logic_frame.frame.source_authority_route.result.blocked_now -notcontains 'codex'){ Add-Err 'source_router_codex_not_blocked_now' }
+  if($proof.mind_logic_frame.frame.source_authority_route.result.blocked_now -notcontains 'web_external'){ Add-Err 'source_router_web_not_blocked_now' }
   if($proof.mind_logic_frame.frame.PSObject.Properties.Name -notcontains 'memory_recall'){ Add-Err 'mind_logic_memory_recall_missing' }
   if($proof.mind_logic_frame.frame.PSObject.Properties.Name -notcontains 'memory_recall_filter'){ Add-Err 'mind_logic_memory_recall_filter_missing' }
   if($proof.mind_logic_frame.frame.memory_recall.status -notin @('PASS_COMPACT_MEMORY_RECALL_V1','BLOCKED_NO_RELEVANT_MEMORY_CELLS_V1')){ Add-Err ('mind_logic_memory_recall_status_bad:'+ $proof.mind_logic_frame.frame.memory_recall.status) }
@@ -70,6 +78,7 @@ $out=[ordered]@{
   mind_logic_deep_source_answer_assimilation_status=if($proof){$proof.mind_logic_frame.frame.deep_source_answer_assimilation.status}else{$null}
   mind_logic_delta_candidate_status=if($proof -and $proof.mind_logic_frame.frame.mind_delta_candidate){$proof.mind_logic_frame.frame.mind_delta_candidate.status}else{$null}
   mind_logic_delta_acceptance_decision=if($proof -and $proof.mind_logic_frame.frame.mind_delta_acceptance_decision.result){$proof.mind_logic_frame.frame.mind_delta_acceptance_decision.result.decision}else{$null}
+  source_authority_route=if($proof -and $proof.mind_logic_frame.frame.source_authority_route.result){$proof.mind_logic_frame.frame.source_authority_route.result.route}else{$null}
   mind_logic_hypothesis_test_status=if($proof){$proof.mind_logic_frame.frame.hypothesis_test_result.status}else{$null}
   mind_logic_strongest_hypothesis=if($proof){$proof.mind_logic_frame.frame.hypothesis_test_result.result.strongest_hypothesis}else{$null}
   mind_logic_contradiction_resolution_status=if($proof){$proof.mind_logic_frame.frame.contradiction_resolution.status}else{$null}

@@ -40,3 +40,35 @@ It produces a decision candidate only:
 
 After validator proof and remote commit, next safe step is source-authority routing:
 when acceptance gate says REQUEST_MORE_PROOF or KEEP_AS_ASSUMPTION, the agent should choose whether to ask local memory, repo proof, Owner, Codex, or web — but only through authority gates.
+
+## 2026-07-16 update — Source Authority Router
+
+Implemented candidate slice:
+
+- operations/reasoning/route_source_authority_v1.ps1
+- validators/validate_source_authority_router_v1.ps1
+- wiring in build_agent_mind_logic_frame_v1.ps1 after mind_delta_acceptance_decision
+- kernel cycle step: route_source_authority
+- strict AIMO validator checks source_authority_route and confirms Codex/web/action remain blocked
+
+Decision outputs:
+
+- LOCAL_ACCEPTANCE_PIPELINE_REQUIRED
+- LOCAL_MEMORY_THEN_REPO_PROOF
+- REPO_PROOF_LOOKUP
+- OWNER_OR_REPO_PROOF_FIRST
+- SOURCE_LADDER_START_LOCAL
+- SOURCE_LADDER_EXPAND_LOCAL_FIRST
+- BLOCKED_UNKNOWN_ACCEPTANCE_DECISION
+
+Boundary:
+
+- codex_launched=false
+- web_launched=false
+- accepted_memory_mutated=false
+- accepted_core_mutated=false
+- action_executed=false
+
+Next safe route after commit:
+
+Build a request-packet layer for the selected route, starting with repo_proof_lookup / owner_clarification_request. Do not build Codex/web bridge yet.

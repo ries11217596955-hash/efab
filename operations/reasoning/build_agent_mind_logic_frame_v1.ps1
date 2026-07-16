@@ -276,6 +276,31 @@ if((Test-Path $acceptanceScript) -and (Test-Path $assimilationPath)){
   $mindDeltaAcceptance.status='MIND_DELTA_CANDIDATE_MISSING_FOR_ACCEPTANCE_GATE'
 }
 
+$sourceAuthorityRoute=[ordered]@{
+  status='NOT_RUN'
+}
+$sourceRouterScript='operations/reasoning/route_source_authority_v1.ps1'
+$sourceRouterPath=Join-Path (Split-Path $OutputPath -Parent) 'source_authority_route_decision.json'
+if((Test-Path $sourceRouterScript) -and (Test-Path $acceptancePath)){
+  $routeOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File $sourceRouterScript -AcceptanceDecisionPath $acceptancePath -OutputPath $sourceRouterPath *>&1 | ForEach-Object { [string]$_ })
+  $sourceAuthorityRoute.router_stdout=@($routeOut | Where-Object { $_ -match '^(SOURCE_ROUTER_STATUS|SOURCE_ROUTER_ROUTE|SOURCE_ROUTER_PATH)=' })
+  $sourceAuthorityRoute.exit_code=$LASTEXITCODE
+  $sourceAuthorityRoute.result_path=$sourceRouterPath
+  if((Test-Path $sourceRouterPath) -and $LASTEXITCODE -eq 0){
+    $sourceAuthorityRoute.result=Get-Content $sourceRouterPath -Raw | ConvertFrom-Json
+    $sourceAuthorityRoute.status=$sourceAuthorityRoute.result.status
+  } elseif(Test-Path $sourceRouterPath){
+    $sourceAuthorityRoute.result=Get-Content $sourceRouterPath -Raw | ConvertFrom-Json
+    $sourceAuthorityRoute.status='SOURCE_AUTHORITY_ROUTER_NONZERO_WITH_RESULT'
+  } else {
+    $sourceAuthorityRoute.status='SOURCE_AUTHORITY_ROUTER_FAILED_NO_RESULT'
+  }
+} elseif(!(Test-Path $sourceRouterScript)){
+  $sourceAuthorityRoute.status='SOURCE_AUTHORITY_ROUTER_MISSING'
+} else {
+  $sourceAuthorityRoute.status='ACCEPTANCE_DECISION_MISSING_FOR_SOURCE_ROUTER'
+}
+
 $sourceLadder=@(
   [ordered]@{rank=1; source='current input / Owner correction'; use='highest priority intent and mismatch signal'},
   [ordered]@{rank=2; source='fresh repo proof'; use='what agent can actually do now'},
@@ -313,6 +338,7 @@ $frame=[ordered]@{
   deep_source_answer_assimilation=$deepSourceAssimilation
   mind_delta_candidate=if($deepSourceAssimilation.result){$deepSourceAssimilation.result.mind_delta_candidate}else{$null}
   mind_delta_acceptance_decision=$mindDeltaAcceptance
+  source_authority_route=$sourceAuthorityRoute
   selected_next_logical_step=$nextStep
   selected_resolution_step=if($contradictionResolution.result){$contradictionResolution.result.selected_resolution_step}else{$null}
   strongest_hypothesis=if($hypothesisTest.result){$hypothesisTest.result.strongest_hypothesis}else{$null}

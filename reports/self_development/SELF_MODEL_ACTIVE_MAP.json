@@ -6,22 +6,22 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "d468faac02506d7a92081c7c9c86d63822dfc230",
-    "subject_head":  "d468faac02506d7a92081c7c9c86d63822dfc230",
-    "generated_at":  "2026-07-16T17:45:04.4647333+04:00",
+    "observed_head_at_generation":  "9e0605fb7127c7599364369f32b49415a334a0ce",
+    "subject_head":  "9e0605fb7127c7599364369f32b49415a334a0ce",
+    "generated_at":  "2026-07-16T18:14:32.1659876+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  2074,
+    "structural_path_count":  2077,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2074,
-                                    "sha256":  "8587161ff98267bb6bbe2be8d68c21b7ef635be04420cf90ea739c90faf2baba"
+                                    "structural_file_count":  2077,
+                                    "sha256":  "f0445498941004978d5fb27b1d207503a5147790497983c26504d6b68e1ba89d"
                                 },
     "module_count":  203,
-    "validator_count":  194,
+    "validator_count":  195,
     "confirmed_components":  [
                                  {
                                      "id":  "school",
@@ -630,9 +630,9 @@
 
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "495c85a85552f0f96871ac3c349b052ad2463cbc",
-                                                               "committed_at":  "2026-07-15T22:56:29+04:00",
-                                                               "subject":  "docs: add memory commit handoff"
+                                                               "head":  "9e0605fb7127c7599364369f32b49415a334a0ce",
+                                                               "committed_at":  "2026-07-16T17:44:32+04:00",
+                                                               "subject":  "feat: gate mind delta acceptance decisions"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -2135,15 +2135,15 @@
                                             "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                                             "discovery_method":  "bounded_git_ls_files_path_discovery",
                                             "evidence_counts":  {
-                                                                    "files":  14,
-                                                                    "scripts":  13,
+                                                                    "files":  15,
+                                                                    "scripts":  14,
                                                                     "validators":  3,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  0,
                                                                     "docs":  0
                                                                 },
-                                            "file_count":  14,
-                                            "script_count":  13,
+                                            "file_count":  15,
+                                            "script_count":  14,
                                             "validator_count":  3,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  0,
@@ -2167,6 +2167,7 @@
                                                                   "operations/reasoning/filter_memory_recall_relevance_v1.ps1",
                                                                   "operations/reasoning/request_deep_source_answer_v1.ps1",
                                                                   "operations/reasoning/resolve_mind_logic_contradiction_v1.ps1",
+                                                                  "operations/reasoning/route_source_authority_v1.ps1",
                                                                   "operations/reasoning/run_reasoning_episode_v1.ps1",
                                                                   "operations/reasoning/select_decision_from_episodic_recall_v1.ps1",
                                                                   "operations/reasoning/select_task_fork_from_episodic_decision_v1.ps1",
@@ -2182,10 +2183,10 @@
                                                                           "operations/reasoning/filter_memory_recall_relevance_v1.ps1",
                                                                           "operations/reasoning/request_deep_source_answer_v1.ps1",
                                                                           "operations/reasoning/resolve_mind_logic_contradiction_v1.ps1",
+                                                                          "operations/reasoning/route_source_authority_v1.ps1",
                                                                           "operations/reasoning/run_reasoning_episode_v1.ps1",
                                                                           "operations/reasoning/select_decision_from_episodic_recall_v1.ps1",
                                                                           "operations/reasoning/select_task_fork_from_episodic_decision_v1.ps1",
-                                                                          "operations/reasoning/test_mind_logic_hypotheses_v1.ps1",
                                                                           "operations/reasoning/validate_episodic_decision_task_fork_v1.ps1",
                                                                           "operations/reasoning/validate_episodic_recall_decision_v1.ps1",
                                                                           "operations/reasoning/validate_reasoning_episode_v1.ps1"
@@ -8522,9 +8523,9 @@
 
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "495c85a85552f0f96871ac3c349b052ad2463cbc",
-                                                     "committed_at":  "2026-07-15T22:56:29+04:00",
-                                                     "subject":  "docs: add memory commit handoff"
+                                                     "head":  "9e0605fb7127c7599364369f32b49415a334a0ce",
+                                                     "committed_at":  "2026-07-16T17:44:32+04:00",
+                                                     "subject":  "feat: gate mind delta acceptance decisions"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -10025,15 +10026,15 @@
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                            "discovery_method":  "bounded_git_ls_files_path_discovery",
                            "evidence_counts":  {
-                                                   "files":  14,
-                                                   "scripts":  13,
+                                                   "files":  15,
+                                                   "scripts":  14,
                                                    "validators":  3,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  0,
                                                    "docs":  0
                                                },
-                           "file_count":  14,
-                           "script_count":  13,
+                           "file_count":  15,
+                           "script_count":  14,
                            "validator_count":  3,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  0,
@@ -10057,6 +10058,7 @@
                                                  "operations/reasoning/filter_memory_recall_relevance_v1.ps1",
                                                  "operations/reasoning/request_deep_source_answer_v1.ps1",
                                                  "operations/reasoning/resolve_mind_logic_contradiction_v1.ps1",
+                                                 "operations/reasoning/route_source_authority_v1.ps1",
                                                  "operations/reasoning/run_reasoning_episode_v1.ps1",
                                                  "operations/reasoning/select_decision_from_episodic_recall_v1.ps1",
                                                  "operations/reasoning/select_task_fork_from_episodic_decision_v1.ps1",
@@ -10072,10 +10074,10 @@
                                                          "operations/reasoning/filter_memory_recall_relevance_v1.ps1",
                                                          "operations/reasoning/request_deep_source_answer_v1.ps1",
                                                          "operations/reasoning/resolve_mind_logic_contradiction_v1.ps1",
+                                                         "operations/reasoning/route_source_authority_v1.ps1",
                                                          "operations/reasoning/run_reasoning_episode_v1.ps1",
                                                          "operations/reasoning/select_decision_from_episodic_recall_v1.ps1",
                                                          "operations/reasoning/select_task_fork_from_episodic_decision_v1.ps1",
-                                                         "operations/reasoning/test_mind_logic_hypotheses_v1.ps1",
                                                          "operations/reasoning/validate_episodic_decision_task_fork_v1.ps1",
                                                          "operations/reasoning/validate_episodic_recall_decision_v1.ps1",
                                                          "operations/reasoning/validate_reasoning_episode_v1.ps1"

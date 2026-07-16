@@ -1,17 +1,19 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-16T17:44:36.2891403+04:00",
+    "checked_at":  "2026-07-16T18:14:04.2572765+04:00",
     "branch":  "main",
-    "observed_head":  "d468faac02506d7a92081c7c9c86d63822dfc230",
-    "subject_head":  "d468faac02506d7a92081c7c9c86d63822dfc230",
+    "observed_head":  "9e0605fb7127c7599364369f32b49415a334a0ce",
+    "subject_head":  "9e0605fb7127c7599364369f32b49415a334a0ce",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
+                          "operations/gpt_handoff/NEXT_CHAT_HANDOFF_20260716_MIND_LOGIC.md",
+                          "operations/gpt_handoff/NEXT_CHAT_HANDOFF_20260716_MIND_LOGIC_STATUS.json",
                           "operations/reasoning/agent_mind_logic_kernel_v1.json",
-                          "operations/reasoning/assimilate_deep_source_answer_v1.ps1",
                           "operations/reasoning/build_agent_mind_logic_frame_v1.ps1",
+                          "operations/reasoning/evaluate_mind_delta_acceptance_v1.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
@@ -20,19 +22,23 @@
                           "tests/self_development/AUTONOMOUS_INNER_MOTOR_MIND_LOGIC_WIRING_V1_PROOF.json",
                           "tests/self_development/DEEP_SOURCE_ANSWER_ASSIMILATION_V1_PROOF.json",
                           "tests/self_development/DEEP_SOURCE_ANSWER_REQUEST_V1_PROOF.json",
+                          "tests/self_development/MIND_DELTA_ACCEPTANCE_GATE_V1_PROOF.json",
                           "validators/validate_autonomous_inner_motor_mind_logic_wiring_v1.ps1",
-                          "validators/validate_deep_source_answer_assimilation_v1.ps1"
+                          "validators/validate_mind_delta_acceptance_gate_v1.ps1"
                       ],
     "structural_paths":  [
+                             "operations/gpt_handoff/NEXT_CHAT_HANDOFF_20260716_MIND_LOGIC.md",
+                             "operations/gpt_handoff/NEXT_CHAT_HANDOFF_20260716_MIND_LOGIC_STATUS.json",
                              "operations/reasoning/agent_mind_logic_kernel_v1.json",
-                             "operations/reasoning/assimilate_deep_source_answer_v1.ps1",
                              "operations/reasoning/build_agent_mind_logic_frame_v1.ps1",
+                             "operations/reasoning/evaluate_mind_delta_acceptance_v1.ps1",
                              "tests/self_development/AGENT_MIND_LOGIC_KERNEL_V1_PROOF.json",
                              "tests/self_development/AUTONOMOUS_INNER_MOTOR_MIND_LOGIC_WIRING_V1_PROOF.json",
                              "tests/self_development/DEEP_SOURCE_ANSWER_ASSIMILATION_V1_PROOF.json",
                              "tests/self_development/DEEP_SOURCE_ANSWER_REQUEST_V1_PROOF.json",
+                             "tests/self_development/MIND_DELTA_ACCEPTANCE_GATE_V1_PROOF.json",
                              "validators/validate_autonomous_inner_motor_mind_logic_wiring_v1.ps1",
-                             "validators/validate_deep_source_answer_assimilation_v1.ps1"
+                             "validators/validate_mind_delta_acceptance_gate_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -44,8 +50,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2074,
-                                    "sha256":  "8587161ff98267bb6bbe2be8d68c21b7ef635be04420cf90ea739c90faf2baba"
+                                    "structural_file_count":  2077,
+                                    "sha256":  "f0445498941004978d5fb27b1d207503a5147790497983c26504d6b68e1ba89d"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -71,12 +77,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  151,
-                         "structural_path_count":  2074,
+                         "structural_path_count":  2077,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-16T17:45:04.9147488+04:00"
+    "refreshed_at":  "2026-07-16T18:14:32.6075152+04:00"
 }
