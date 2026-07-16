@@ -6,22 +6,22 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "9de95b7299e39b5ec835efe2658a4a52c13f198f",
-    "subject_head":  "9de95b7299e39b5ec835efe2658a4a52c13f198f",
-    "generated_at":  "2026-07-16T11:47:57.6892522+04:00",
+    "observed_head_at_generation":  "6c6173b2cdfbca3b471cd81caf760f88eb3cc7ca",
+    "subject_head":  "6c6173b2cdfbca3b471cd81caf760f88eb3cc7ca",
+    "generated_at":  "2026-07-16T13:04:30.2558760+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
-    "trigger_reason":  "school_codex_exit_anomaly_schema_repair_20260716",
+    "trigger_reason":  "agent_action_decision_contract_v1_final_no_action_validator_rerun_20260716",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  2037,
+    "structural_path_count":  2041,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2037,
-                                    "sha256":  "e8500b88c82576175aaecafb6bd6731f19908735fbdc20016df0706e64253ad8"
+                                    "structural_file_count":  2041,
+                                    "sha256":  "b1cf03271c2604cf14b075079eca5ccbb32348406067b0cbf738644629ec0406"
                                 },
     "module_count":  203,
-    "validator_count":  183,
+    "validator_count":  184,
     "confirmed_components":  [
                                  {
                                      "id":  "school",
@@ -185,9 +185,9 @@
                                                                 "operations/school/request/validate_generic_exact_request_engine_v1.ps1"
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "1dfaac2e4ac54842fbe67aea398f718c204f6ea2",
-                                                               "committed_at":  "2026-07-16T07:04:49+04:00",
-                                                               "subject":  "fix: require dynamic school preflight"
+                                                               "head":  "6c6173b2cdfbca3b471cd81caf760f88eb3cc7ca",
+                                                               "committed_at":  "2026-07-16T11:49:43+04:00",
+                                                               "subject":  "fix: classify codex complete output exit anomaly"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -1442,18 +1442,18 @@
                                             "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                                             "discovery_method":  "bounded_git_ls_files_path_discovery",
                                             "evidence_counts":  {
-                                                                    "files":  18,
-                                                                    "scripts":  2,
+                                                                    "files":  20,
+                                                                    "scripts":  3,
                                                                     "validators":  0,
                                                                     "proofs":  7,
-                                                                    "contracts_or_policies":  5,
+                                                                    "contracts_or_policies":  6,
                                                                     "docs":  1
                                                                 },
-                                            "file_count":  18,
-                                            "script_count":  2,
+                                            "file_count":  20,
+                                            "script_count":  3,
                                             "validator_count":  0,
                                             "proof_file_count":  7,
-                                            "contract_or_policy_count":  5,
+                                            "contract_or_policy_count":  6,
                                             "doc_count":  1,
                                             "validator_refs":  [
 
@@ -1468,6 +1468,7 @@
                                                                "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_V0_IMPLEMENTATION_REPORT.json"
                                                            ],
                                             "contract_or_policy_refs":  [
+                                                                            "operations/autonomous_inner_motor/action_decision_contract_v1.json",
                                                                             "operations/autonomous_inner_motor/deep_thinking_policy.json",
                                                                             "operations/autonomous_inner_motor/dual_pipe_memory_policy.json",
                                                                             "operations/autonomous_inner_motor/memory_atom_acceptance_gate_policy.json",
@@ -1476,6 +1477,7 @@
                                                                         ],
                                             "notable_files":  [
                                                                   "operations/autonomous_inner_motor/AUTONOMOUS_INNER_MOTOR_ORGAN_SPEC.md",
+                                                                  "operations/autonomous_inner_motor/action_decision_contract_v1.json",
                                                                   "operations/autonomous_inner_motor/deep_thinking_policy.json",
                                                                   "operations/autonomous_inner_motor/dual_pipe_memory_policy.json",
                                                                   "operations/autonomous_inner_motor/invoke_memory_atom_acceptance_gate_v1.ps1",
@@ -1492,9 +1494,11 @@
                                                                   "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SELF_DIRECTED_THINKING_PROOF_20260715.json",
                                                                   "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_V0_IMPLEMENTATION_REPORT.json",
                                                                   "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+                                                                  "operations/autonomous_inner_motor/select_agent_next_action_candidate_v1.ps1",
                                                                   "operations/autonomous_inner_motor/thought_frame_schema.json"
                                                               ],
                                             "primary_evidence_refs":  [
+                                                                          "operations/autonomous_inner_motor/action_decision_contract_v1.json",
                                                                           "operations/autonomous_inner_motor/deep_thinking_policy.json",
                                                                           "operations/autonomous_inner_motor/dual_pipe_memory_policy.json",
                                                                           "operations/autonomous_inner_motor/invoke_memory_atom_acceptance_gate_v1.ps1",
@@ -1508,7 +1512,8 @@
                                                                           "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SANDBOX_EXPLORATION_PROOF_20260715.json",
                                                                           "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SELF_DIRECTED_THINKING_PROOF_20260715.json",
                                                                           "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_V0_IMPLEMENTATION_REPORT.json",
-                                                                          "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1"
+                                                                          "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+                                                                          "operations/autonomous_inner_motor/select_agent_next_action_candidate_v1.ps1"
                                                                       ],
                                             "needs_triage":  true,
                                             "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
@@ -8051,9 +8056,9 @@
                                                       "operations/school/request/validate_generic_exact_request_engine_v1.ps1"
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "1dfaac2e4ac54842fbe67aea398f718c204f6ea2",
-                                                     "committed_at":  "2026-07-16T07:04:49+04:00",
-                                                     "subject":  "fix: require dynamic school preflight"
+                                                     "head":  "6c6173b2cdfbca3b471cd81caf760f88eb3cc7ca",
+                                                     "committed_at":  "2026-07-16T11:49:43+04:00",
+                                                     "subject":  "fix: classify codex complete output exit anomaly"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -9306,18 +9311,18 @@
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                            "discovery_method":  "bounded_git_ls_files_path_discovery",
                            "evidence_counts":  {
-                                                   "files":  18,
-                                                   "scripts":  2,
+                                                   "files":  20,
+                                                   "scripts":  3,
                                                    "validators":  0,
                                                    "proofs":  7,
-                                                   "contracts_or_policies":  5,
+                                                   "contracts_or_policies":  6,
                                                    "docs":  1
                                                },
-                           "file_count":  18,
-                           "script_count":  2,
+                           "file_count":  20,
+                           "script_count":  3,
                            "validator_count":  0,
                            "proof_file_count":  7,
-                           "contract_or_policy_count":  5,
+                           "contract_or_policy_count":  6,
                            "doc_count":  1,
                            "validator_refs":  [
 
@@ -9332,6 +9337,7 @@
                                               "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_V0_IMPLEMENTATION_REPORT.json"
                                           ],
                            "contract_or_policy_refs":  [
+                                                           "operations/autonomous_inner_motor/action_decision_contract_v1.json",
                                                            "operations/autonomous_inner_motor/deep_thinking_policy.json",
                                                            "operations/autonomous_inner_motor/dual_pipe_memory_policy.json",
                                                            "operations/autonomous_inner_motor/memory_atom_acceptance_gate_policy.json",
@@ -9340,6 +9346,7 @@
                                                        ],
                            "notable_files":  [
                                                  "operations/autonomous_inner_motor/AUTONOMOUS_INNER_MOTOR_ORGAN_SPEC.md",
+                                                 "operations/autonomous_inner_motor/action_decision_contract_v1.json",
                                                  "operations/autonomous_inner_motor/deep_thinking_policy.json",
                                                  "operations/autonomous_inner_motor/dual_pipe_memory_policy.json",
                                                  "operations/autonomous_inner_motor/invoke_memory_atom_acceptance_gate_v1.ps1",
@@ -9356,9 +9363,11 @@
                                                  "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SELF_DIRECTED_THINKING_PROOF_20260715.json",
                                                  "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_V0_IMPLEMENTATION_REPORT.json",
                                                  "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+                                                 "operations/autonomous_inner_motor/select_agent_next_action_candidate_v1.ps1",
                                                  "operations/autonomous_inner_motor/thought_frame_schema.json"
                                              ],
                            "primary_evidence_refs":  [
+                                                         "operations/autonomous_inner_motor/action_decision_contract_v1.json",
                                                          "operations/autonomous_inner_motor/deep_thinking_policy.json",
                                                          "operations/autonomous_inner_motor/dual_pipe_memory_policy.json",
                                                          "operations/autonomous_inner_motor/invoke_memory_atom_acceptance_gate_v1.ps1",
@@ -9372,7 +9381,8 @@
                                                          "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SANDBOX_EXPLORATION_PROOF_20260715.json",
                                                          "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SELF_DIRECTED_THINKING_PROOF_20260715.json",
                                                          "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_V0_IMPLEMENTATION_REPORT.json",
-                                                         "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1"
+                                                         "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+                                                         "operations/autonomous_inner_motor/select_agent_next_action_candidate_v1.ps1"
                                                      ],
                            "needs_triage":  true,
                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",

@@ -1,0 +1,56 @@
+{
+  "schema": "agent_action_decision_contract_v1",
+  "organ_id": "agent_action_decision_contract",
+  "purpose": "Bridge AIMO thinking to safe action candidates without granting execution authority.",
+  "status": "LAB_CONTRACT",
+  "decision_packet_required_fields": [
+    "goal",
+    "evidence_refs",
+    "known",
+    "unknown",
+    "gap",
+    "candidate_actions",
+    "selected_action",
+    "rejected_actions",
+    "safety_boundary",
+    "proof_expectation",
+    "return_to_parent"
+  ],
+  "selected_action_required_fields": [
+    "action_id",
+    "action_type",
+    "target_surface",
+    "required_authority",
+    "validator_required",
+    "validator_refs",
+    "proof_required",
+    "rollback_plan",
+    "execution_allowed",
+    "why_selected",
+    "why_safe_now"
+  ],
+  "hard_rules": [
+    "No execution authority in LabOnly mode.",
+    "No repo/live/runtime mutation except writing explicit lab proof/report files.",
+    "Every action candidate that touches repo/runtime/live must have validator_refs and rollback_plan.",
+    "Candidate without validator_refs must be rejected unless action_type is observe_only.",
+    "Selected action must return to parent with proof expectation."
+  ],
+  "allowed_lab_action_types": [
+    "observe_only",
+    "write_install_ready_artifact",
+    "prepare_codex_task",
+    "prepare_terminal_command",
+    "propose_repo_patch"
+  ],
+  "forbidden_without_owner_live_authority": [
+    "run_school_live",
+    "run_aimo_live",
+    "push_to_remote",
+    "delete_runtime",
+    "mutate_active_memory_directly",
+    "launch_child_agent",
+    "execute_repo_patch"
+  ],
+  "maturity": "PROVEN_LAB_REQUIRED_BEFORE_AIMO_WIRING"
+}

@@ -1,0 +1,53 @@
+{
+    "schema":  "agent_action_decision_contract_validation_v1",
+    "status":  "PASS_AGENT_ACTION_DECISION_CONTRACT_V1",
+    "checked_at":  "2026-07-16T13:03:40.0684953+04:00",
+    "contract_path":  "operations/autonomous_inner_motor/action_decision_contract_v1.json",
+    "selector_script":  "operations/autonomous_inner_motor/select_agent_next_action_candidate_v1.ps1",
+    "positive_packet":  ".runtime/agent_action_decision_contract_v1/validator_positive_packet.json",
+    "negative_packet":  ".runtime/agent_action_decision_contract_v1/validator_negative_packet.json",
+    "selected_action":  {
+                            "action_id":  "ACTION_CONTRACT_V1",
+                            "action_type":  "write_install_ready_artifact",
+                            "target_surface":  "operations/autonomous_inner_motor",
+                            "required_authority":  "LAB_FILE_WRITE",
+                            "validator_required":  true,
+                            "validator_refs":  [
+                                                   "validators/validate_agent_action_decision_contract_v1.ps1"
+                                               ],
+                            "proof_required":  true,
+                            "rollback_plan":  "git restore changed files before commit; no active memory mutation",
+                            "execution_allowed":  false,
+                            "why_candidate":  "Smallest safe bridge from thinking to action without granting hands.",
+                            "why_safe_now":  "Selected only as candidate/contract proof. Actual execution remains blocked by LabOnly boundary."
+                        },
+    "rejected_negative":  [
+                              {
+                                  "action":  {
+                                                 "action_id":  "NEGATIVE_NO_VALIDATOR",
+                                                 "action_type":  "execute_repo_patch",
+                                                 "target_surface":  "repo",
+                                                 "required_authority":  "LAB_FILE_WRITE",
+                                                 "validator_required":  true,
+                                                 "validator_refs":  [
+
+                                                                    ],
+                                                 "proof_required":  true,
+                                                 "rollback_plan":  "none",
+                                                 "execution_allowed":  true,
+                                                 "why_candidate":  "Synthetic unsafe candidate for negative test."
+                                             },
+                                  "reject_reasons":  [
+                                                         "missing_validator_refs",
+                                                         "missing_rollback_plan",
+                                                         "lab_mode_execution_forbidden"
+                                                     ]
+                              }
+                          ],
+    "active_memory_hash_unchanged":  true,
+    "live_process_touched":  false,
+    "action_execution_performed":  false,
+    "errors":  [
+
+               ]
+}
