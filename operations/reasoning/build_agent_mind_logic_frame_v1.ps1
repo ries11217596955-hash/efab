@@ -226,6 +226,31 @@ if(Test-Path $deepAnswerRequester){
   $deepSourceAnswer.status='DEEP_SOURCE_ANSWER_REQUESTER_MISSING'
 }
 
+$deepSourceAssimilation=[ordered]@{
+  status='NOT_RUN'
+}
+$assimilationScript='operations/reasoning/assimilate_deep_source_answer_v1.ps1'
+$assimilationPath=Join-Path (Split-Path $OutputPath -Parent) 'deep_source_answer_assimilation.json'
+if((Test-Path $assimilationScript) -and (Test-Path $deepAnswerPath)){
+  $assimOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File $assimilationScript -DeepSourceAnswerPath $deepAnswerPath -OutputPath $assimilationPath *>&1 | ForEach-Object { [string]$_ })
+  $deepSourceAssimilation.assimilator_stdout=@($assimOut | Where-Object { $_ -match '^(ASSIMILATION_STATUS|ASSIMILATION_EVIDENCE_COUNT|ASSIMILATION_PATH)=' })
+  $deepSourceAssimilation.exit_code=$LASTEXITCODE
+  $deepSourceAssimilation.result_path=$assimilationPath
+  if((Test-Path $assimilationPath) -and $LASTEXITCODE -eq 0){
+    $deepSourceAssimilation.result=Get-Content $assimilationPath -Raw | ConvertFrom-Json
+    $deepSourceAssimilation.status=$deepSourceAssimilation.result.status
+  } elseif(Test-Path $assimilationPath){
+    $deepSourceAssimilation.result=Get-Content $assimilationPath -Raw | ConvertFrom-Json
+    $deepSourceAssimilation.status='DEEP_SOURCE_ASSIMILATION_NONZERO_WITH_RESULT'
+  } else {
+    $deepSourceAssimilation.status='DEEP_SOURCE_ASSIMILATION_FAILED_NO_RESULT'
+  }
+} elseif(!(Test-Path $assimilationScript)){
+  $deepSourceAssimilation.status='DEEP_SOURCE_ASSIMILATOR_MISSING'
+} else {
+  $deepSourceAssimilation.status='DEEP_SOURCE_ANSWER_RESULT_MISSING_FOR_ASSIMILATION'
+}
+
 $sourceLadder=@(
   [ordered]@{rank=1; source='current input / Owner correction'; use='highest priority intent and mismatch signal'},
   [ordered]@{rank=2; source='fresh repo proof'; use='what agent can actually do now'},
@@ -260,6 +285,8 @@ $frame=[ordered]@{
   hypothesis_test_result=$hypothesisTest
   source_ladder=@($sourceLadder)
   deep_source_answer_request=$deepSourceAnswer
+  deep_source_answer_assimilation=$deepSourceAssimilation
+  mind_delta_candidate=if($deepSourceAssimilation.result){$deepSourceAssimilation.result.mind_delta_candidate}else{$null}
   selected_next_logical_step=$nextStep
   selected_resolution_step=if($contradictionResolution.result){$contradictionResolution.result.selected_resolution_step}else{$null}
   strongest_hypothesis=if($hypothesisTest.result){$hypothesisTest.result.strongest_hypothesis}else{$null}
