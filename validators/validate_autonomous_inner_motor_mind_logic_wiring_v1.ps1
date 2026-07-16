@@ -20,6 +20,8 @@ if($proof){
   if($proof.mind_logic_frame.frame.PSObject.Properties.Name -notcontains 'contradiction_resolution'){ Add-Err 'mind_logic_contradiction_resolution_missing' }
   if($proof.mind_logic_frame.frame.contradiction_resolution.status -ne 'PASS_CONTRADICTION_RESOLUTION_V1'){ Add-Err ('mind_logic_contradiction_resolution_status_bad:'+ $proof.mind_logic_frame.frame.contradiction_resolution.status) }
   if(@($proof.mind_logic_frame.frame.source_ladder).Count -lt 4){ Add-Err 'mind_logic_source_ladder_too_short' }
+  if($proof.mind_logic_frame.frame.PSObject.Properties.Name -notcontains 'deep_source_answer_request'){ Add-Err 'mind_logic_deep_source_answer_missing' }
+  if($proof.mind_logic_frame.frame.deep_source_answer_request.status -notin @('PASS_DEEP_SOURCE_ANSWER_REQUEST_WITH_MEMORY_CANDIDATE_V1','PASS_DEEP_SOURCE_ANSWER_REQUEST_PACKET_V1')){ Add-Err ('mind_logic_deep_source_answer_status_bad:'+ $proof.mind_logic_frame.frame.deep_source_answer_request.status) }
   if($proof.mind_logic_frame.frame.PSObject.Properties.Name -notcontains 'memory_recall'){ Add-Err 'mind_logic_memory_recall_missing' }
   if($proof.mind_logic_frame.frame.PSObject.Properties.Name -notcontains 'memory_recall_filter'){ Add-Err 'mind_logic_memory_recall_filter_missing' }
   if($proof.mind_logic_frame.frame.memory_recall.status -notin @('PASS_COMPACT_MEMORY_RECALL_V1','BLOCKED_NO_RELEVANT_MEMORY_CELLS_V1')){ Add-Err ('mind_logic_memory_recall_status_bad:'+ $proof.mind_logic_frame.frame.memory_recall.status) }
@@ -51,6 +53,9 @@ $out=[ordered]@{
   mind_logic_status=if($proof){$proof.mind_logic_frame.status}else{$null}
   mind_logic_classification=if($proof){$proof.mind_logic_frame.frame.classification}else{$null}
   mind_logic_next_step=if($proof){$proof.mind_logic_frame.frame.selected_next_logical_step}else{$null}
+  mind_logic_deep_source_answer_status=if($proof){$proof.mind_logic_frame.frame.deep_source_answer_request.status}else{$null}
+  mind_logic_deep_source_answer_ready=if($proof){$proof.mind_logic_frame.frame.deep_source_answer_request.result.answer_ready}else{$null}
+  mind_logic_deep_source_answer_evidence_count=if($proof -and $proof.mind_logic_frame.frame.deep_source_answer_request.result.answer_candidate){@($proof.mind_logic_frame.frame.deep_source_answer_request.result.answer_candidate.evidence_items).Count}else{0}
   mind_logic_hypothesis_test_status=if($proof){$proof.mind_logic_frame.frame.hypothesis_test_result.status}else{$null}
   mind_logic_strongest_hypothesis=if($proof){$proof.mind_logic_frame.frame.hypothesis_test_result.result.strongest_hypothesis}else{$null}
   mind_logic_contradiction_resolution_status=if($proof){$proof.mind_logic_frame.frame.contradiction_resolution.status}else{$null}

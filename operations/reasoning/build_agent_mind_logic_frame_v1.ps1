@@ -36,7 +36,7 @@ $memoryRecall=[ordered]@{
 $memoryQueryScript='operations/school/memory/query_compact_semantic_memory_v1.ps1'
 if(-not $DisableMemoryRecall -and (Test-Path $memoryQueryScript)){
   $recallOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File $memoryQueryScript -Query $Problem -Top $MemoryTop *>&1 | ForEach-Object { [string]$_ })
-  $memoryRecall.stdout=@($recallOut)
+  $memoryRecall.stdout=@($recallOut | Where-Object { $_ -match '^(MEMORY_RECALL_STATUS|MATCH\|)' } | Select-Object -First 8)
   $memoryRecall.exit_code=$LASTEXITCODE
   $statusLine=($recallOut | Where-Object { $_ -match '^MEMORY_RECALL_STATUS=' } | Select-Object -Last 1)
   if($statusLine){ $memoryRecall.status=($statusLine -replace '^MEMORY_RECALL_STATUS=','') }
@@ -71,7 +71,7 @@ $memoryFilterScript='operations/reasoning/filter_memory_recall_relevance_v1.ps1'
 $memoryFilterPath=Join-Path (Split-Path $OutputPath -Parent) 'memory_recall_filter.json'
 if(-not $DisableMemoryRecall -and (Test-Path $memoryFilterScript)){
   $filterOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File $memoryFilterScript -Query $Problem -Top $MemoryTop -AcceptTop 3 -OutputPath $memoryFilterPath *>&1 | ForEach-Object { [string]$_ })
-  $memoryRecallFilter.stdout=@($filterOut)
+  $memoryRecallFilter.stdout=@($filterOut | Where-Object { $_ -match '^(RECALL_FILTER_STATUS|RECALL_FILTER_ACCEPTED_COUNT|RECALL_FILTER_TOP_LABEL)=' })
   $memoryRecallFilter.exit_code=$LASTEXITCODE
   $memoryRecallFilter.result_path=$memoryFilterPath
   if((Test-Path $memoryFilterPath) -and $LASTEXITCODE -eq 0){
@@ -144,7 +144,7 @@ $contradictionResolver='operations/reasoning/resolve_mind_logic_contradiction_v1
 $contradictionResolutionPath=Join-Path (Split-Path $OutputPath -Parent) 'contradiction_resolution.json'
 if(Test-Path $contradictionResolver){
   $resolverOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File $contradictionResolver -Problem $Problem -OutputPath $contradictionResolutionPath *>&1 | ForEach-Object { [string]$_ })
-  $contradictionResolution.resolver_stdout=@($resolverOut)
+  $contradictionResolution.resolver_stdout=@($resolverOut | Where-Object { $_ -match '^(CONTRADICTION_RESOLUTION_STATUS|CONTRADICTION_RESOLUTION_DECISION|CONTRADICTION_RESOLUTION_NEXT_STEP)=' })
   $contradictionResolution.exit_code=$LASTEXITCODE
   $contradictionResolution.result_path=$contradictionResolutionPath
   if((Test-Path $contradictionResolutionPath) -and $LASTEXITCODE -eq 0){
@@ -176,7 +176,7 @@ $hypothesisTester='operations/reasoning/test_mind_logic_hypotheses_v1.ps1'
 $hypothesisTestPath=Join-Path (Split-Path $OutputPath -Parent) 'hypothesis_test_result.json'
 if(Test-Path $hypothesisTester){
   $testerOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File $hypothesisTester -Problem $Problem -OutputPath $hypothesisTestPath *>&1 | ForEach-Object { [string]$_ })
-  $hypothesisTest.tester_stdout=@($testerOut)
+  $hypothesisTest.tester_stdout=@($testerOut | Where-Object { $_ -match '^(HYPOTHESIS_TEST_STATUS|HYPOTHESIS_WINNER|HYPOTHESIS_WINNER_KIND|HYPOTHESIS_TEST_PATH)=' })
   $hypothesisTest.exit_code=$LASTEXITCODE
   $hypothesisTest.result_path=$hypothesisTestPath
   if((Test-Path $hypothesisTestPath) -and $LASTEXITCODE -eq 0){
@@ -190,6 +190,40 @@ if(Test-Path $hypothesisTester){
   }
 } else {
   $hypothesisTest.status='HYPOTHESIS_TESTER_SCRIPT_MISSING'
+}
+
+$deepSourceAnswer=[ordered]@{
+  status='NOT_RUN'
+  result_path=$null
+  requester_stdout=@()
+  exit_code=$null
+  result=$null
+}
+$deepAnswerRequester='operations/reasoning/request_deep_source_answer_v1.ps1'
+$deepAnswerPath=Join-Path (Split-Path $OutputPath -Parent) 'deep_source_answer_request.json'
+if(Test-Path $deepAnswerRequester){
+  $needText=if($hypothesisTest.result -and $hypothesisTest.result.strongest_hypothesis){
+    'Need deep answer for strongest hypothesis: ' + [string]$hypothesisTest.result.strongest_hypothesis.text
+  } elseif($contradictionResolution.result -and $contradictionResolution.result.selected_resolution_step){
+    'Need deep answer for contradiction resolution step: ' + [string]$contradictionResolution.result.selected_resolution_step.step_id
+  } else {
+    'Need deep answer for next logical step.'
+  }
+  $answerOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File $deepAnswerRequester -Problem $Problem -Need $needText -Mode Auto -OutputPath $deepAnswerPath *>&1 | ForEach-Object { [string]$_ })
+  $deepSourceAnswer.requester_stdout=@($answerOut | Where-Object { $_ -match '^(DEEP_SOURCE_ANSWER_STATUS|DEEP_SOURCE_ANSWER_READY|DEEP_SOURCE_ANSWER_EVIDENCE_COUNT)=' })
+  $deepSourceAnswer.exit_code=$LASTEXITCODE
+  $deepSourceAnswer.result_path=$deepAnswerPath
+  if((Test-Path $deepAnswerPath) -and $LASTEXITCODE -eq 0){
+    $deepSourceAnswer.result=Get-Content $deepAnswerPath -Raw | ConvertFrom-Json
+    $deepSourceAnswer.status=$deepSourceAnswer.result.status
+  } elseif(Test-Path $deepAnswerPath){
+    $deepSourceAnswer.result=Get-Content $deepAnswerPath -Raw | ConvertFrom-Json
+    $deepSourceAnswer.status='DEEP_SOURCE_ANSWER_NONZERO_WITH_RESULT'
+  } else {
+    $deepSourceAnswer.status='DEEP_SOURCE_ANSWER_FAILED_NO_RESULT'
+  }
+} else {
+  $deepSourceAnswer.status='DEEP_SOURCE_ANSWER_REQUESTER_MISSING'
 }
 
 $sourceLadder=@(
@@ -225,9 +259,11 @@ $frame=[ordered]@{
   hypotheses=@($hypotheses)
   hypothesis_test_result=$hypothesisTest
   source_ladder=@($sourceLadder)
+  deep_source_answer_request=$deepSourceAnswer
   selected_next_logical_step=$nextStep
   selected_resolution_step=if($contradictionResolution.result){$contradictionResolution.result.selected_resolution_step}else{$null}
   strongest_hypothesis=if($hypothesisTest.result){$hypothesisTest.result.strongest_hypothesis}else{$null}
+  deep_answer_candidate=if($deepSourceAnswer.result){$deepSourceAnswer.result.answer_candidate}else{$null}
   no_evidence_no_claim=$true
   return_to_parent='Use this frame to build/wire AIMO cognitive logic before any further execution authority work.'
   boundary=[ordered]@{reasoning_only=$true; action_executed=$false; live_process_touched=$false; active_memory_mutated=$false; repo_mutated_by_kernel=$false}

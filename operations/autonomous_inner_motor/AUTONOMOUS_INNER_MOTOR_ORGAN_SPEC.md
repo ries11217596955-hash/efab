@@ -232,3 +232,8 @@ Boundary: contradiction resolution is reasoning-only. It must not mutate active 
 AIMO's `mind_logic_frame` must include `hypothesis_test_result`. Hypotheses are not accepted merely because they were generated: the tester scores them against current signals, evidence/memory intent, correction context, and risk. Premature action/authority hypotheses are penalized unless evidence and authority justify them.
 
 Boundary: hypothesis testing is reasoning-only. It must not mutate active memory, launch School/Codex, start background processes, or execute actions.
+## Deep Source Answer Request inside Mind Logic
+
+AIMO's `mind_logic_frame` must include `deep_source_answer_request`. The agent must not only ask a vague question; it must request the exact answer shape it needs: direct answer, evidence items, confidence, known/unknown, assumptions, risks, next verification step, and reusable rule. Local memory can produce a read-only answer candidate immediately; Codex/web/external sources remain request packets unless explicitly authorized.
+
+Boundary: deep answer request is reasoning/source-request only. It must not mutate active memory, launch School/Codex, call web, start background processes, or execute actions.

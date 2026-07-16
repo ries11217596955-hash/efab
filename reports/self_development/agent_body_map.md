@@ -2,9 +2,9 @@
 
 Status: ACTIVE_DERIVED_VIEW
 Branch: main
-Observed head at generation: 271f921b1789c1a06bebe1a65fca3fbba7d4e397
-Generated: 2026-07-16T14:28:12.8227494+04:00
-Body source fingerprint: ed49ec8709f16cea44ff272f97f3f0934565508b3e6f83e9bcf9ebb613400417
+Observed head at generation: 087c8034f959148ef3863d0db14d95f3328481ae
+Generated: 2026-07-16T15:47:01.7153078+04:00
+Body source fingerprint: a55b7c309fc5b86b8b62c2c8948606653f9d29677c733d758a251744cf03d420
 
 Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
@@ -59,7 +59,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `operations_overnight_school` - root `operations/overnight_school`, files=3, scripts=3, validators=1, proofs=0, needs_triage=True
 - `operations_parallel_life` - root `operations/parallel_life`, files=5, scripts=5, validators=3, proofs=0, needs_triage=True
 - `operations_readme_md` - root `operations/README.md`, files=1, scripts=0, validators=0, proofs=0, needs_triage=True
-- `operations_reasoning` - root `operations/reasoning`, files=11, scripts=10, validators=3, proofs=0, needs_triage=True
+- `operations_reasoning` - root `operations/reasoning`, files=12, scripts=11, validators=3, proofs=0, needs_triage=True
 - `operations_reflex_library` - root `operations/reflex_library`, files=2, scripts=1, validators=0, proofs=0, needs_triage=True
 - `operations_reports` - root `operations/reports`, files=115, scripts=0, validators=0, proofs=2, needs_triage=True
 - `operations_thinking_sandbox` - root `operations/thinking_sandbox`, files=2, scripts=2, validators=1, proofs=0, needs_triage=True

@@ -98,5 +98,15 @@
     "aimo_wiring_validator_ref": "validators/validate_autonomous_inner_motor_mind_logic_wiring_v1.ps1",
     "runner_field": "mind_logic_frame.frame.hypothesis_test_result",
     "boundary": "reasoning-only hypothesis ranking; no mutation or execution"
+  },
+  "mind_logic_deep_source_answer_request_v1": {
+    "status": "PROVEN_LAB",
+    "requester_ref": "operations/reasoning/request_deep_source_answer_v1.ps1",
+    "validator_ref": "validators/validate_deep_source_answer_request_v1.ps1",
+    "proof_ref": "tests/self_development/DEEP_SOURCE_ANSWER_REQUEST_V1_PROOF.json",
+    "mind_kernel_validator_ref": "validators/validate_agent_mind_logic_kernel_v1.ps1",
+    "aimo_wiring_validator_ref": "validators/validate_autonomous_inner_motor_mind_logic_wiring_v1.ps1",
+    "runner_field": "mind_logic_frame.frame.deep_source_answer_request",
+    "boundary": "read-only memory answer candidate or exact answer request packet; no Codex/web/execution without authority"
   }
 }

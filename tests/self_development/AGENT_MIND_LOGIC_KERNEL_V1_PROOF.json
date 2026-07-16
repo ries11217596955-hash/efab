@@ -1,7 +1,7 @@
 {
     "schema":  "agent_mind_logic_kernel_validation_v1",
     "status":  "PASS_AGENT_MIND_LOGIC_KERNEL_V1",
-    "checked_at":  "2026-07-16T14:27:05.3220337+04:00",
+    "checked_at":  "2026-07-16T15:46:05.9590392+04:00",
     "kernel_path":  "operations/reasoning/agent_mind_logic_kernel_v1.json",
     "builder_path":  "operations/reasoning/build_agent_mind_logic_frame_v1.ps1",
     "correction_frame":  ".runtime/agent_mind_logic_kernel_v1/validator_owner_correction_frame.json",
@@ -67,6 +67,9 @@
                                                         ],
                                             "rejected":  false
                                         },
+    "correction_deep_source_answer_status":  "PASS_DEEP_SOURCE_ANSWER_REQUEST_WITH_MEMORY_CANDIDATE_V1",
+    "correction_deep_source_answer_ready":  true,
+    "correction_deep_source_answer_evidence_count":  3,
     "memory_recall_used_in_known":  true,
     "no_knowledge_next_step":  {
                                    "step_id":  "ASK_OR_RECALL_SOURCE_BEFORE_ACTION",
@@ -98,6 +101,10 @@
                   },
                   {
                       "name":  "hypothesis_test_selects_strongest",
+                      "status":  "PASS"
+                  },
+                  {
+                      "name":  "deep_source_answer_request_has_contract",
                       "status":  "PASS"
                   },
                   {
