@@ -6,22 +6,22 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "097ffb8f2462b819bf5236003419493c1a7d4341",
-    "subject_head":  "097ffb8f2462b819bf5236003419493c1a7d4341",
-    "generated_at":  "2026-07-16T19:41:11.9815489+04:00",
+    "observed_head_at_generation":  "b5f689f79a9163952c8176ae5a2e0f7b17935d1c",
+    "subject_head":  "b5f689f79a9163952c8176ae5a2e0f7b17935d1c",
+    "generated_at":  "2026-07-16T20:47:35.8419679+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  2082,
+    "structural_path_count":  2087,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2082,
-                                    "sha256":  "dc10f9c45c863e2c3892c385b1a2776414db757bf16b1a11fb3696a98c6f40fb"
+                                    "structural_file_count":  2087,
+                                    "sha256":  "2aed90f726e24618b98b5ad823b22813e77d7f7c30e019387a3cff83d184e380"
                                 },
     "module_count":  203,
-    "validator_count":  196,
+    "validator_count":  197,
     "confirmed_components":  [
                                  {
                                      "id":  "school",
@@ -1533,18 +1533,18 @@
                                             "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                                             "discovery_method":  "bounded_git_ls_files_path_discovery",
                                             "evidence_counts":  {
-                                                                    "files":  2,
-                                                                    "scripts":  0,
+                                                                    "files":  5,
+                                                                    "scripts":  3,
                                                                     "validators":  0,
                                                                     "proofs":  0,
-                                                                    "contracts_or_policies":  0,
+                                                                    "contracts_or_policies":  1,
                                                                     "docs":  2
                                                                 },
-                                            "file_count":  2,
-                                            "script_count":  0,
+                                            "file_count":  5,
+                                            "script_count":  3,
                                             "validator_count":  0,
                                             "proof_file_count":  0,
-                                            "contract_or_policy_count":  0,
+                                            "contract_or_policy_count":  1,
                                             "doc_count":  2,
                                             "validator_refs":  [
 
@@ -1553,14 +1553,19 @@
 
                                                            ],
                                             "contract_or_policy_refs":  [
-
+                                                                            "operations/body_self_inspection/build_body_scan_policy_v1.ps1"
                                                                         ],
                                             "notable_files":  [
                                                                   "operations/body_self_inspection/BODY_SELF_INSPECTION_CIRCUIT_V1_PLAN.md",
-                                                                  "operations/body_self_inspection/CODEX_TASK_BODY_SELF_INSPECTION_SLICE_A.md"
+                                                                  "operations/body_self_inspection/CODEX_TASK_BODY_SELF_INSPECTION_SLICE_A.md",
+                                                                  "operations/body_self_inspection/build_body_repo_inventory_v1.ps1",
+                                                                  "operations/body_self_inspection/build_body_scan_policy_v1.ps1",
+                                                                  "operations/body_self_inspection/invoke_body_self_inspection_slice_a_v1.ps1"
                                                               ],
                                             "primary_evidence_refs":  [
-
+                                                                          "operations/body_self_inspection/build_body_repo_inventory_v1.ps1",
+                                                                          "operations/body_self_inspection/build_body_scan_policy_v1.ps1",
+                                                                          "operations/body_self_inspection/invoke_body_self_inspection_slice_a_v1.ps1"
                                                                       ],
                                             "needs_triage":  true,
                                             "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
@@ -9466,18 +9471,18 @@
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                            "discovery_method":  "bounded_git_ls_files_path_discovery",
                            "evidence_counts":  {
-                                                   "files":  2,
-                                                   "scripts":  0,
+                                                   "files":  5,
+                                                   "scripts":  3,
                                                    "validators":  0,
                                                    "proofs":  0,
-                                                   "contracts_or_policies":  0,
+                                                   "contracts_or_policies":  1,
                                                    "docs":  2
                                                },
-                           "file_count":  2,
-                           "script_count":  0,
+                           "file_count":  5,
+                           "script_count":  3,
                            "validator_count":  0,
                            "proof_file_count":  0,
-                           "contract_or_policy_count":  0,
+                           "contract_or_policy_count":  1,
                            "doc_count":  2,
                            "validator_refs":  [
 
@@ -9486,14 +9491,19 @@
 
                                           ],
                            "contract_or_policy_refs":  [
-
+                                                           "operations/body_self_inspection/build_body_scan_policy_v1.ps1"
                                                        ],
                            "notable_files":  [
                                                  "operations/body_self_inspection/BODY_SELF_INSPECTION_CIRCUIT_V1_PLAN.md",
-                                                 "operations/body_self_inspection/CODEX_TASK_BODY_SELF_INSPECTION_SLICE_A.md"
+                                                 "operations/body_self_inspection/CODEX_TASK_BODY_SELF_INSPECTION_SLICE_A.md",
+                                                 "operations/body_self_inspection/build_body_repo_inventory_v1.ps1",
+                                                 "operations/body_self_inspection/build_body_scan_policy_v1.ps1",
+                                                 "operations/body_self_inspection/invoke_body_self_inspection_slice_a_v1.ps1"
                                              ],
                            "primary_evidence_refs":  [
-
+                                                         "operations/body_self_inspection/build_body_repo_inventory_v1.ps1",
+                                                         "operations/body_self_inspection/build_body_scan_policy_v1.ps1",
+                                                         "operations/body_self_inspection/invoke_body_self_inspection_slice_a_v1.ps1"
                                                      ],
                            "needs_triage":  true,
                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",

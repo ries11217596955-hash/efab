@@ -1,0 +1,599 @@
+{
+    "output_refs":  {
+                        "scan_skipped_surfaces":  "H:\\efab\\.runtime\\body_self_inspection_v1\\scan_skipped_surfaces.json",
+                        "repo_inventory":  "H:\\efab\\.runtime\\body_self_inspection_v1\\repo_inventory.json",
+                        "scan_policy_effective":  "H:\\efab\\.runtime\\body_self_inspection_v1\\scan_policy_effective.json",
+                        "runtime_proof":  "H:\\efab\\.runtime\\body_self_inspection_v1\\BODY_SELF_INSPECTION_SLICE_A_PROOF.json"
+                    },
+    "slice":  "A",
+    "boundary":  {
+                     "web_launched":  false,
+                     "accepted_core_mutated":  false,
+                     "body_map_mutated":  false,
+                     "live_process_touched":  false,
+                     "active_memory_mutated":  false,
+                     "capability_map_mutated":  false,
+                     "codex_launched":  false,
+                     "repo_mutated":  false,
+                     "cleanup_performed":  false
+                 },
+    "errors":  [
+
+               ],
+    "validator_checks":  [
+                             {
+                                 "message":  "scan_policy_effective.json parses",
+                                 "name":  "scan_policy_parses",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "scan_skipped_surfaces.json parses",
+                                 "name":  "skipped_surfaces_parses",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "repo_inventory.json parses",
+                                 "name":  "repo_inventory_parses",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "BODY_SELF_INSPECTION_SLICE_A_PROOF.json parses",
+                                 "name":  "runtime_proof_parses",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "scan policy status must be PASS_BODY_SCAN_POLICY_V1",
+                                 "name":  "policy_status_pass",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "scan policy stale_after exists",
+                                 "name":  "policy_stale_after_exists",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "policy denied_dirs includes .git",
+                                 "name":  "policy_denied_dir_.git",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "policy denied_dirs includes node_modules",
+                                 "name":  "policy_denied_dir_node_modules",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "policy denied_dirs includes .venv",
+                                 "name":  "policy_denied_dir_.venv",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "policy denied_dirs includes env",
+                                 "name":  "policy_denied_dir_env",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "policy denied_dirs includes __pycache__",
+                                 "name":  "policy_denied_dir___pycache__",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "policy denied_dirs includes .pytest_cache",
+                                 "name":  "policy_denied_dir_.pytest_cache",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "policy denied_dirs includes .mypy_cache",
+                                 "name":  "policy_denied_dir_.mypy_cache",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "policy denied_dirs includes dist",
+                                 "name":  "policy_denied_dir_dist",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "policy denied_dirs includes build",
+                                 "name":  "policy_denied_dir_build",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "policy denied_dirs includes cache",
+                                 "name":  "policy_denied_dir_cache",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "policy denied_dirs includes tmp",
+                                 "name":  "policy_denied_dir_tmp",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "policy denied_dirs includes temp",
+                                 "name":  "policy_denied_dir_temp",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "policy denied_dirs includes large archives",
+                                 "name":  "policy_denied_dir_large archives",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "policy denied_dirs includes generated streaming chunks",
+                                 "name":  "policy_denied_dir_generated streaming chunks",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "policy denied_dirs includes old raw school run bodies",
+                                 "name":  "policy_denied_dir_old raw school run bodies",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "policy denied_dirs includes stale raw runtime chunks",
+                                 "name":  "policy_denied_dir_stale raw runtime chunks",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "git denylist includes git add",
+                                 "name":  "policy_git_deny_git add",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "git denylist includes git commit",
+                                 "name":  "policy_git_deny_git commit",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "git denylist includes git push",
+                                 "name":  "policy_git_deny_git push",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "git denylist includes git clean",
+                                 "name":  "policy_git_deny_git clean",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "git denylist includes git checkout",
+                                 "name":  "policy_git_deny_git checkout",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "git denylist includes git reset",
+                                 "name":  "policy_git_deny_git reset",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "git allowlist includes git status",
+                                 "name":  "policy_git_allow_git status",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "git allowlist includes git rev-parse",
+                                 "name":  "policy_git_allow_git rev-parse",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "git allowlist includes git rev-list",
+                                 "name":  "policy_git_allow_git rev-list",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "git allowlist includes git log",
+                                 "name":  "policy_git_allow_git log",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "max_content_read_bytes is 262144",
+                                 "name":  "policy_max_content_read_bytes",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "repo inventory status must be PASS_BODY_REPO_INVENTORY_V1",
+                                 "name":  "inventory_status_pass",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "repo inventory includes boundary proof",
+                                 "name":  "inventory_boundary_exists",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "repo inventory stale_after exists",
+                                 "name":  "inventory_stale_after_exists",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "repo inventory includes root marker checks",
+                                 "name":  "inventory_root_markers_exists",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "root marker checked: CAPABILITY_ROADMAP.json",
+                                 "name":  "root_marker_checked_CAPABILITY_ROADMAP.json",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "root marker checked: GENESIS_STATE.json",
+                                 "name":  "root_marker_checked_GENESIS_STATE.json",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "root marker checked: TASK_QUEUE.json",
+                                 "name":  "root_marker_checked_TASK_QUEUE.json",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "root marker checked: packs/registry.json",
+                                 "name":  "root_marker_checked_packs/registry.json",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "root marker checked: orchestrator/run.ps1",
+                                 "name":  "root_marker_checked_orchestrator/run.ps1",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "aggregate field exists: total_files_seen",
+                                 "name":  "aggregate_field_total_files_seen",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "aggregate field exists: total_dirs_seen",
+                                 "name":  "aggregate_field_total_dirs_seen",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "aggregate field exists: files_skipped",
+                                 "name":  "aggregate_field_files_skipped",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "aggregate field exists: dirs_skipped",
+                                 "name":  "aggregate_field_dirs_skipped",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "aggregate field exists: content_files_read",
+                                 "name":  "aggregate_field_content_files_read",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "aggregate field exists: content_files_metadata_only",
+                                 "name":  "aggregate_field_content_files_metadata_only",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "aggregate field exists: role_counts",
+                                 "name":  "aggregate_field_role_counts",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "aggregate field exists: organ_candidate_count",
+                                 "name":  "aggregate_field_organ_candidate_count",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "aggregate field exists: passport_file_count",
+                                 "name":  "aggregate_field_passport_file_count",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "aggregate field exists: contract_file_count",
+                                 "name":  "aggregate_field_contract_file_count",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "aggregate field exists: validator_file_count",
+                                 "name":  "aggregate_field_validator_file_count",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "aggregate field exists: proof_json_count",
+                                 "name":  "aggregate_field_proof_json_count",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "aggregate field exists: runtime_summary_count",
+                                 "name":  "aggregate_field_runtime_summary_count",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "aggregate field exists: heavy_skipped_count",
+                                 "name":  "aggregate_field_heavy_skipped_count",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "aggregate field exists: protected_skipped_count",
+                                 "name":  "aggregate_field_protected_skipped_count",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "role_counts exists",
+                                 "name":  "role_counts_exists",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "Slice A inventory must not bulk-read file content",
+                                 "name":  "no_content_files_read",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "all inventory records include required fields",
+                                 "name":  "records_required_fields",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime bulk surfaces are skipped or policy-denied",
+                                 "name":  "runtime_raw_chunks_not_bulk_read",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "skipped surfaces status is PASS",
+                                 "name":  "skipped_status_pass",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "skipped surfaces output is populated",
+                                 "name":  "skipped_surfaces_present",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  ".git surface is skipped or policy-denied",
+                                 "name":  "git_surface_skipped",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  ".runtime surface is skipped or policy-denied",
+                                 "name":  "runtime_surface_skipped",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "active compact memory surface is skipped or policy-denied",
+                                 "name":  "active_memory_surface_skipped",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime proof status must be PASS",
+                                 "name":  "runtime_proof_status_pass",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime proof stale_after exists",
+                                 "name":  "runtime_proof_stale_after_exists",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "policy boundary flag is false: repo_mutated",
+                                 "name":  "boundary_policy_repo_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "policy boundary flag is false: active_memory_mutated",
+                                 "name":  "boundary_policy_active_memory_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "policy boundary flag is false: accepted_core_mutated",
+                                 "name":  "boundary_policy_accepted_core_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "policy boundary flag is false: body_map_mutated",
+                                 "name":  "boundary_policy_body_map_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "policy boundary flag is false: capability_map_mutated",
+                                 "name":  "boundary_policy_capability_map_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "policy boundary flag is false: live_process_touched",
+                                 "name":  "boundary_policy_live_process_touched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "policy boundary flag is false: codex_launched",
+                                 "name":  "boundary_policy_codex_launched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "policy boundary flag is false: web_launched",
+                                 "name":  "boundary_policy_web_launched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "policy boundary flag is false: cleanup_performed",
+                                 "name":  "boundary_policy_cleanup_performed",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "skipped boundary flag is false: repo_mutated",
+                                 "name":  "boundary_skipped_repo_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "skipped boundary flag is false: active_memory_mutated",
+                                 "name":  "boundary_skipped_active_memory_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "skipped boundary flag is false: accepted_core_mutated",
+                                 "name":  "boundary_skipped_accepted_core_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "skipped boundary flag is false: body_map_mutated",
+                                 "name":  "boundary_skipped_body_map_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "skipped boundary flag is false: capability_map_mutated",
+                                 "name":  "boundary_skipped_capability_map_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "skipped boundary flag is false: live_process_touched",
+                                 "name":  "boundary_skipped_live_process_touched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "skipped boundary flag is false: codex_launched",
+                                 "name":  "boundary_skipped_codex_launched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "skipped boundary flag is false: web_launched",
+                                 "name":  "boundary_skipped_web_launched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "skipped boundary flag is false: cleanup_performed",
+                                 "name":  "boundary_skipped_cleanup_performed",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "inventory boundary flag is false: repo_mutated",
+                                 "name":  "boundary_inventory_repo_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "inventory boundary flag is false: active_memory_mutated",
+                                 "name":  "boundary_inventory_active_memory_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "inventory boundary flag is false: accepted_core_mutated",
+                                 "name":  "boundary_inventory_accepted_core_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "inventory boundary flag is false: body_map_mutated",
+                                 "name":  "boundary_inventory_body_map_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "inventory boundary flag is false: capability_map_mutated",
+                                 "name":  "boundary_inventory_capability_map_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "inventory boundary flag is false: live_process_touched",
+                                 "name":  "boundary_inventory_live_process_touched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "inventory boundary flag is false: codex_launched",
+                                 "name":  "boundary_inventory_codex_launched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "inventory boundary flag is false: web_launched",
+                                 "name":  "boundary_inventory_web_launched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "inventory boundary flag is false: cleanup_performed",
+                                 "name":  "boundary_inventory_cleanup_performed",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: repo_mutated",
+                                 "name":  "boundary_runtime_proof_repo_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: active_memory_mutated",
+                                 "name":  "boundary_runtime_proof_active_memory_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: accepted_core_mutated",
+                                 "name":  "boundary_runtime_proof_accepted_core_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: body_map_mutated",
+                                 "name":  "boundary_runtime_proof_body_map_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: capability_map_mutated",
+                                 "name":  "boundary_runtime_proof_capability_map_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: live_process_touched",
+                                 "name":  "boundary_runtime_proof_live_process_touched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: codex_launched",
+                                 "name":  "boundary_runtime_proof_codex_launched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: web_launched",
+                                 "name":  "boundary_runtime_proof_web_launched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: cleanup_performed",
+                                 "name":  "boundary_runtime_proof_cleanup_performed",
+                                 "passed":  true
+                             }
+                         ],
+    "aggregate_counts":  {
+                             "repo_inventory":  {
+                                                    "organ_candidate_count":  304,
+                                                    "proof_json_count":  263,
+                                                    "content_files_read":  0,
+                                                    "runtime_summary_count":  0,
+                                                    "validator_file_count":  197,
+                                                    "dirs_skipped":  13,
+                                                    "contract_file_count":  3,
+                                                    "protected_skipped_count":  3,
+                                                    "files_skipped":  3,
+                                                    "total_files_seen":  2383,
+                                                    "heavy_skipped_count":  6,
+                                                    "passport_file_count":  159,
+                                                    "role_counts":  {
+                                                                        "BODY_PAIN_REGISTER":  0,
+                                                                        "ORGAN_REGISTRY_FILE":  5,
+                                                                        "REPAIR_DRAFT_BOARD":  0,
+                                                                        "AUTHORITY_PASSPORT_FILE":  2,
+                                                                        "CAPABILITY_MAP_FILE":  8,
+                                                                        "UNKNOWN":  2403,
+                                                                        "ORGAN_CANDIDATE_SCRIPT":  304,
+                                                                        "MAP_FILE":  11,
+                                                                        "RUNTIME_SUMMARY":  0,
+                                                                        "PROTECTED_SURFACE":  3,
+                                                                        "ORGAN_PASSPORT_FILE":  157,
+                                                                        "VALIDATOR_FILE":  197,
+                                                                        "HEAVY_SKIPPED_SURFACE":  6,
+                                                                        "HANDOFF_POINTER":  29,
+                                                                        "PLAN_FILE":  4,
+                                                                        "TRANSIENT_RUNTIME":  0,
+                                                                        "ORGAN_CONTRACT_FILE":  3,
+                                                                        "PROOF_JSON":  263
+                                                                    },
+                                                    "content_files_metadata_only":  2380,
+                                                    "total_dirs_seen":  1012
+                                                },
+                             "skipped_surfaces":  {
+                                                      "skipped_by_reason":  {
+                                                                                "CONTENT_HEAVY_METADATA_ONLY":  6,
+                                                                                "DENIED_DIR":  10,
+                                                                                "RUNTIME_BULK_POLICY_DENIED":  2,
+                                                                                "PROTECTED_SURFACE_POLICY_DENIED":  1,
+                                                                                "DENIED_FILE_PATTERN":  3
+                                                                            },
+                                                      "total_skipped_surfaces":  22,
+                                                      "metadata_seen_count":  22
+                                                  }
+                         },
+    "generated_at":  "2026-07-16T16:46:33.5351338Z",
+    "schema":  "body_self_inspection_slice_a_validator_proof_v1",
+    "status":  "PASS_BODY_SELF_INSPECTION_SLICE_A_V1",
+    "circuit_ref":  "BODY_SELF_INSPECTION_CIRCUIT_V1",
+    "validator_ref":  "validators/validate_body_self_inspection_slice_a_v1.ps1"
+}
