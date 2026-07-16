@@ -1,0 +1,138 @@
+{
+    "schema":  "agent_execution_authority_passport_validation_v1",
+    "status":  "PASS_AGENT_EXECUTION_AUTHORITY_PASSPORT_V1",
+    "checked_at":  "2026-07-16T13:27:09.9969724+04:00",
+    "passport_path":  "operations/autonomous_inner_motor/execution_authority_passport_v1.json",
+    "evaluator_path":  "operations/autonomous_inner_motor/evaluate_action_execution_authority_v1.ps1",
+    "grant_candidate_only_evaluation":  {
+                                            "schema":  "agent_execution_authority_evaluation_v1",
+                                            "status":  "PASS_EXECUTION_AUTHORITY_EVALUATION_V1",
+                                            "created_at":  "2026-07-16T13:27:08.6470080+04:00",
+                                            "passport_ref":  "operations/autonomous_inner_motor/execution_authority_passport_v1.json",
+                                            "action_packet_ref":  ".runtime/agent_action_decision_contract_v1/validator_positive_packet.json",
+                                            "selected_action_id":  "ACTION_CONTRACT_V1",
+                                            "action_type":  "write_install_ready_artifact",
+                                            "required_authority":  "LAB_FILE_WRITE",
+                                            "decision":  "GRANT_CANDIDATE_ONLY",
+                                            "execution_allowed":  false,
+                                            "request_execution":  false,
+                                            "deny_reasons":  [
+
+                                                             ],
+                                            "grant_reasons":  [
+                                                                  "authority_class_grantable_for_candidate",
+                                                                  "validator_refs_present",
+                                                                  "rollback_plan_present"
+                                                              ],
+                                            "passport_proof":  {
+                                                                   "path":  "operations/autonomous_inner_motor/execution_authority_passport_v1.json",
+                                                                   "exists":  true,
+                                                                   "bytes":  3155,
+                                                                   "sha256":  "559925a9480dcf7975fbe83eabff5f0b045077ef33d964385dd64bc2dd6d7f46"
+                                                               },
+                                            "packet_proof":  {
+                                                                 "path":  ".runtime/agent_action_decision_contract_v1/validator_positive_packet.json",
+                                                                 "exists":  true,
+                                                                 "bytes":  12517,
+                                                                 "sha256":  "fd05616c87398214864c536ef21a6e33606e8040816bc6b06e576f1714a2edd2"
+                                                             },
+                                            "boundary":  {
+                                                             "evaluation_only":  true,
+                                                             "action_executed":  false,
+                                                             "live_process_touched":  false,
+                                                             "active_memory_mutated":  false,
+                                                             "repo_mutated":  false,
+                                                             "owner_authority_required_for_execution":  true
+                                                         }
+                                        },
+    "request_execution_blocked_evaluation":  {
+                                                 "schema":  "agent_execution_authority_evaluation_v1",
+                                                 "status":  "BLOCKED_EXECUTION_AUTHORITY_EVALUATION_V1",
+                                                 "created_at":  "2026-07-16T13:27:09.1966012+04:00",
+                                                 "passport_ref":  "operations/autonomous_inner_motor/execution_authority_passport_v1.json",
+                                                 "action_packet_ref":  ".runtime/agent_action_decision_contract_v1/validator_positive_packet.json",
+                                                 "selected_action_id":  "ACTION_CONTRACT_V1",
+                                                 "action_type":  "write_install_ready_artifact",
+                                                 "required_authority":  "LAB_FILE_WRITE",
+                                                 "decision":  "DENY",
+                                                 "execution_allowed":  false,
+                                                 "request_execution":  true,
+                                                 "deny_reasons":  [
+                                                                      "execution_request_not_supported_by_passport_v1"
+                                                                  ],
+                                                 "grant_reasons":  [
+
+                                                                   ],
+                                                 "passport_proof":  {
+                                                                        "path":  "operations/autonomous_inner_motor/execution_authority_passport_v1.json",
+                                                                        "exists":  true,
+                                                                        "bytes":  3155,
+                                                                        "sha256":  "559925a9480dcf7975fbe83eabff5f0b045077ef33d964385dd64bc2dd6d7f46"
+                                                                    },
+                                                 "packet_proof":  {
+                                                                      "path":  ".runtime/agent_action_decision_contract_v1/validator_positive_packet.json",
+                                                                      "exists":  true,
+                                                                      "bytes":  12517,
+                                                                      "sha256":  "fd05616c87398214864c536ef21a6e33606e8040816bc6b06e576f1714a2edd2"
+                                                                  },
+                                                 "boundary":  {
+                                                                  "evaluation_only":  true,
+                                                                  "action_executed":  false,
+                                                                  "live_process_touched":  false,
+                                                                  "active_memory_mutated":  false,
+                                                                  "repo_mutated":  false,
+                                                                  "owner_authority_required_for_execution":  true
+                                                              }
+                                             },
+    "hard_deny_evaluation":  {
+                                 "schema":  "agent_execution_authority_evaluation_v1",
+                                 "status":  "BLOCKED_EXECUTION_AUTHORITY_EVALUATION_V1",
+                                 "created_at":  "2026-07-16T13:27:09.7628409+04:00",
+                                 "passport_ref":  "operations/autonomous_inner_motor/execution_authority_passport_v1.json",
+                                 "action_packet_ref":  ".runtime/execution_authority_passport_v1/validator_hard_deny_packet.json",
+                                 "selected_action_id":  "NEGATIVE_MUTATE_MEMORY",
+                                 "action_type":  "mutate_active_memory_directly",
+                                 "required_authority":  "PROTECTED_MEMORY_MUTATION",
+                                 "decision":  "DENY",
+                                 "execution_allowed":  false,
+                                 "request_execution":  false,
+                                 "deny_reasons":  [
+                                                      "hard_denied_action_type",
+                                                      "authority_class_not_grantable_in_lab",
+                                                      "owner_explicit_authority_required",
+                                                      "missing_required_validator_ref:active_memory_backup_proof",
+                                                      "missing_required_validator_ref:memory_integrity_validator",
+                                                      "candidate_validator_refs_missing"
+                                                  ],
+                                 "grant_reasons":  [
+
+                                                   ],
+                                 "passport_proof":  {
+                                                        "path":  "operations/autonomous_inner_motor/execution_authority_passport_v1.json",
+                                                        "exists":  true,
+                                                        "bytes":  3155,
+                                                        "sha256":  "559925a9480dcf7975fbe83eabff5f0b045077ef33d964385dd64bc2dd6d7f46"
+                                                    },
+                                 "packet_proof":  {
+                                                      "path":  ".runtime/execution_authority_passport_v1/validator_hard_deny_packet.json",
+                                                      "exists":  true,
+                                                      "bytes":  12423,
+                                                      "sha256":  "61626916594d38ba4e3f9fa27d90d48c3feb6f750a63321cb89dd5983f9b3b0d"
+                                                  },
+                                 "boundary":  {
+                                                  "evaluation_only":  true,
+                                                  "action_executed":  false,
+                                                  "live_process_touched":  false,
+                                                  "active_memory_mutated":  false,
+                                                  "repo_mutated":  false,
+                                                  "owner_authority_required_for_execution":  true
+                                              }
+                             },
+    "active_memory_hash_unchanged":  true,
+    "action_executed":  false,
+    "live_process_touched":  false,
+    "repo_mutated_by_evaluator":  false,
+    "errors":  [
+
+               ]
+}

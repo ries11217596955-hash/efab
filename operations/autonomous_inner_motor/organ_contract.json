@@ -36,5 +36,15 @@
     "validator_ref": "validators/validate_autonomous_inner_motor_action_decision_wiring_v1.ps1",
     "proof_ref": "tests/self_development/AUTONOMOUS_INNER_MOTOR_ACTION_DECISION_WIRING_V1_PROOF.json",
     "execution_boundary": "action candidate is generated; action execution remains forbidden until separate authority passport and proof exist"
+  },
+  "execution_authority_passport_v1": {
+    "status": "PROVEN_LAB_EVALUATION_ONLY",
+    "passport_ref": "operations/autonomous_inner_motor/execution_authority_passport_v1.json",
+    "evaluator_ref": "operations/autonomous_inner_motor/evaluate_action_execution_authority_v1.ps1",
+    "validator_ref": "validators/validate_agent_execution_authority_passport_v1.ps1",
+    "proof_ref": "tests/self_development/AGENT_EXECUTION_AUTHORITY_PASSPORT_V1_PROOF.json",
+    "grants": "GRANT_CANDIDATE_ONLY for safe lab candidates",
+    "never_grants": "execution_allowed=true",
+    "boundary": "evaluation-only; no live process, no active memory mutation, no repo execution"
   }
 }

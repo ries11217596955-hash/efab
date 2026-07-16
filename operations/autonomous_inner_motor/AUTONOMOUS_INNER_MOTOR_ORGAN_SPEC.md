@@ -202,3 +202,8 @@ This lets the agent begin each new thinking cycle with a fresh memory state that
 AIMO must return a `next_action_candidate` for every sandbox thinking cycle. The candidate is produced through `operations/autonomous_inner_motor/select_agent_next_action_candidate_v1.ps1` and must follow `action_decision_contract_v1.json`.
 
 Boundary: this is not action execution. The runner must keep `action_execution_allowed=false`, `no_action=true`, `direct_active_memory_write=false`, `codex_launched=false`, `school_started=false`, and `background_process_started=false`. Any future execution wiring requires a separate authority passport, validator, proof, rollback plan, and Owner decision.
+## Execution Authority Passport V1
+
+AIMO action candidates must pass `operations/autonomous_inner_motor/evaluate_action_execution_authority_v1.ps1` against `execution_authority_passport_v1.json` before any future execution layer can consider them. V1 is evaluation-only: it can grant `GRANT_CANDIDATE_ONLY` for safe lab candidates, but it never sets `execution_allowed=true`.
+
+Hard boundary: live actions, repo execution, School/AIMO launch, direct active memory mutation, runtime deletion, push, and child-agent launch are denied unless a separate Owner-authorized surface passport, validator, proof, and rollback plan exist.

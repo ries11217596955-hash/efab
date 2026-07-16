@@ -1,0 +1,88 @@
+{
+  "schema": "agent_execution_authority_passport_v1",
+  "organ_id": "agent_execution_authority_passport",
+  "purpose": "Classify whether an AIMO next_action_candidate has any execution authority. This passport grants evaluation only; it does not execute actions.",
+  "status": "LAB_AUTHORITY_GATE",
+  "default_decision": "DENY",
+  "authority_classes": {
+    "OBSERVE_ONLY": {
+      "grantable_in_lab": true,
+      "execution_allowed": false,
+      "allowed_action_types": [
+        "observe_only"
+      ],
+      "required_validator_refs": [],
+      "required_proof": "observation_report",
+      "rollback_required": false,
+      "boundary": "read-only observation; no mutation"
+    },
+    "LAB_FILE_WRITE": {
+      "grantable_in_lab": true,
+      "execution_allowed": false,
+      "allowed_action_types": [
+        "write_install_ready_artifact",
+        "prepare_codex_task",
+        "prepare_terminal_command",
+        "propose_repo_patch"
+      ],
+      "required_validator_refs": [
+        "validators/validate_agent_action_decision_contract_v1.ps1"
+      ],
+      "required_proof": "lab proof/report; no active memory mutation; no live process launch",
+      "rollback_required": true,
+      "boundary": "may prepare install-ready artifacts or proof files only; cannot execute patch/live action"
+    },
+    "OWNER_LIVE_ACTION_AUTHORITY": {
+      "grantable_in_lab": false,
+      "execution_allowed": false,
+      "allowed_action_types": [
+        "execute_repo_patch",
+        "run_school_live",
+        "run_aimo_live",
+        "push_to_remote"
+      ],
+      "required_validator_refs": [
+        "OWNER_EXPLICIT_AUTHORITY",
+        "surface_specific_validator",
+        "rollback_validator"
+      ],
+      "required_proof": "preflight, rollback, execution log, validation report, return-to-parent proof",
+      "rollback_required": true,
+      "boundary": "blocked until explicit Owner decision and surface-specific passport exist"
+    },
+    "PROTECTED_MEMORY_MUTATION": {
+      "grantable_in_lab": false,
+      "execution_allowed": false,
+      "allowed_action_types": [
+        "mutate_active_memory_directly",
+        "delete_runtime"
+      ],
+      "required_validator_refs": [
+        "OWNER_EXPLICIT_AUTHORITY",
+        "active_memory_backup_proof",
+        "memory_integrity_validator"
+      ],
+      "required_proof": "full active memory backup, manifest/index/cells hashes, rollback proof, post-write validator",
+      "rollback_required": true,
+      "boundary": "default denied; direct active memory writes are not allowed through AIMO action candidate layer"
+    }
+  },
+  "hard_denies": [
+    "delete_runtime",
+    "mutate_active_memory_directly",
+    "launch_child_agent",
+    "push_to_remote",
+    "run_school_live",
+    "run_aimo_live",
+    "execute_repo_patch"
+  ],
+  "grant_rules": [
+    {
+      "rule_id": "LAB_FILE_WRITE_CANDIDATE_ONLY",
+      "when": "required_authority=LAB_FILE_WRITE and action_type in class allowed_action_types and validator_refs/proof/rollback present",
+      "decision": "GRANT_CANDIDATE_ONLY",
+      "execution_allowed": false
+    }
+  ],
+  "maturity": "PROVEN_LAB_REQUIRED_BEFORE_ANY_EXECUTION_GATE"
+}
