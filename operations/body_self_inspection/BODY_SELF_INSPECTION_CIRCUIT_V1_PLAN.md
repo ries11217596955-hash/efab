@@ -1481,10 +1481,318 @@ Not acceptable:
     losing signal pain candidates
 ### 9. Reconciliation Cell
 
-Compare repo inventory, maps, capability map, passport index, contracts, validators, proof refs, draft board, runtime summaries.
+Purpose: convert many partial truths into one bounded body reality diagnosis for the agent.
 
-Detect mismatches and body pains.
+This is the central cell. It decides which differences are real body pains, which are only weak candidates, which are stale, and which require more proof.
 
+Output:
+
+    .runtime/body_self_inspection_v1/map_reconciliation.json
+    .runtime/body_self_inspection_v1/current_body_reality.json
+
+#### 9.1 Reconciliation inputs
+
+The cell must read outputs from previous cells:
+
+    scan_policy_effective.json
+    scan_skipped_surfaces.json
+    repo_inventory.json
+    body_map_read.json
+    capability_map_read.json
+    organ_candidates.json
+    organ_similarity_index.json
+    passport_audit.json
+    signal_readiness_audit.json
+
+It must also read existing circuit memory if present:
+
+    body_pain_register.jsonl
+    repair_draft_board.jsonl
+    next_logic_queue.json
+    self_inspection_signal.json
+
+This lets the agent distinguish new pain from old pain.
+
+#### 9.2 Truth model
+
+No single input is final truth.
+
+Labels:
+
+    REPO_OBSERVED
+    MAP_DECLARED
+    CAPABILITY_DECLARED
+    PASSPORT_DECLARED
+    CONTRACT_DECLARED
+    VALIDATOR_DECLARED
+    PROOF_DECLARED
+    PROOF_VALIDATED
+    RUNTIME_OBSERVED
+    DRAFT_OBSERVED
+    SIGNAL_DECLARED
+    SIGNAL_VALIDATED
+    HEURISTIC_ONLY
+    CONFLICTING_EVIDENCE
+    UNKNOWN
+
+Reconciliation must produce:
+
+    evidence_status
+    confidence
+    proof_boundary
+    remaining_unknowns
+
+#### 9.3 Body reality object
+
+current_body_reality.json must include:
+
+    schema
+    status
+    scan_started_at
+    scan_finished_at
+    repo_head
+    branch
+    source_refs
+    organs
+    organ_candidates
+    capabilities
+    maps
+    validators
+    passports
+    signal_readiness
+    proofs
+    drafts
+    pains_summary
+    contradictions
+    skipped_surfaces
+    next_logic_ref
+    stale_after
+    boundary
+
+#### 9.4 Organ reality classification
+
+Every declared organ/candidate should be classified as one:
+
+    ACTIVE_MATURE_ORGAN
+    ACTIVE_LIMITED_ORGAN
+    MAP_DECLARED_ORGAN_UNVERIFIED
+    REPO_CANDIDATE_UNMAPPED
+    PASSPORTED_BUT_UNWIRED
+    CONTRACTED_BUT_UNMAPPED
+    VALIDATOR_CLUSTER_WITHOUT_ORGAN
+    PROOF_PRODUCER_WITHOUT_MAP_ENTRY
+    SHADOW_ORGAN
+    POSSIBLE_DUPLICATE_ORGAN
+    LEGACY_ORGAN_ADAPTED
+    NON_ORGAN_SUPPORT_TOOL
+    QUARANTINE_CANDIDATE
+    UNKNOWN_BODY_SURFACE
+
+Boundary:
+
+    ACTIVE_MATURE_ORGAN requires map/contract/passport/validator/proof evidence.
+    REPO_CANDIDATE_UNMAPPED is not a failure by itself, but can create pain if it looks reusable or has proofs/contracts.
+
+#### 9.5 Capability reality classification
+
+Every capability-like item should be classified as one:
+
+    USABLE_CAPABILITY
+    DECLARED_CAPABILITY_UNVERIFIED
+    CAPABILITY_WITHOUT_INVOCATION
+    CAPABILITY_WITHOUT_VALIDATOR
+    CAPABILITY_WITHOUT_PROOF
+    CAPABILITY_WITH_DUPLICATE_ORGANS
+    CAPABILITY_ORPHANED
+    CAPABILITY_CONFLICTING_CLAIMS
+    CAPABILITY_UNKNOWN
+
+#### 9.6 Contradiction types
+
+The cell must detect contradictions:
+
+    map_declares_file_missing
+    repo_candidate_unmapped
+    map_declares_organ_but_passport_missing
+    passport_exists_but_map_missing
+    contract_exists_but_passport_missing
+    validator_exists_but_target_missing
+    validator_ref_missing
+    validator_target_mismatch
+    proof_ref_broken
+    proof_target_mismatch
+    proof_stale
+    capability_declared_without_invocation
+    capability_declared_without_validator
+    duplicate_candidates_same_capability
+    signal_contract_missing_for_organ
+    signal_validator_without_contract
+    draft_references_missing_pain
+    draft_references_missing_surface
+    runtime_summary_unindexed
+    skipped_surface_may_hide_body_part
+
+#### 9.7 Pain promotion rules
+
+A pain candidate becomes an open pain only if:
+
+    evidence_refs are present
+    pain_type is allowed
+    affected_surface is known or UNKNOWN_SURFACE explicitly labeled
+    why_it_matters is non-empty
+    repairability is classified
+    forbidden_now is listed
+
+Pain candidate must stay CANDIDATE_ONLY if:
+
+    source is filename heuristic only
+    required surface was skipped
+    map parse failed before comparison
+    evidence contradicts itself
+    affected target is non-organ support tool and impact is unknown
+
+#### 9.8 Repairability classification
+
+Every promoted pain must be classified:
+
+    LOGIC_LEVEL_REPAIR_CANDIDATE
+    REQUIREMENT_DRAFT_ONLY
+    VALIDATOR_REQUIREMENT_NEEDED
+    MAP_ENTRY_DRAFT_NEEDED
+    PASSPORT_REQUIREMENT_NEEDED
+    SIGNAL_CONTRACT_DRAFT_NEEDED
+    OWNER_DECISION_REQUIRED
+    CODEX_IMPLEMENTATION_REQUIRED_LATER
+    BLOCKED_BY_MISSING_PROOF
+    BLOCKED_BY_UNSAFE_SURFACE
+    NOT_REPAIRABLE_BY_AGENT_NOW
+
+This controls what the agent may do next.
+
+#### 9.9 Recommended next logic action
+
+For every promoted pain, propose one next_logic_action:
+
+    create_passport_requirement_draft
+    create_contract_requirement_draft
+    create_validator_requirement_draft
+    create_signal_contract_requirement_draft
+    create_map_entry_candidate_draft
+    create_duplicate_resolution_draft
+    create_quarantine_candidate_draft
+    request_more_proof
+    read_specific_map
+    read_specific_passport
+    read_specific_validator
+    compare_contracts
+    compare_proofs
+    mark_support_tool_non_organ
+    ask_owner_decision
+    no_action_monitor_only
+
+The next logic selector will later pick priority from these.
+
+#### 9.10 Draft interaction
+
+Reconciliation must compare new pains with existing drafts.
+
+Draft relation values:
+
+    NO_DRAFT
+    ACTIVE_DRAFT_EXISTS
+    DRAFT_STALE
+    DRAFT_SUPERSEDED
+    DRAFT_TARGET_MISSING
+    DRAFT_READY_FOR_PROBE
+    DRAFT_BLOCKED
+    DRAFT_CLOSED_BUT_PAIN_REOPENED
+
+If pain already has an active draft, do not create duplicate draft. Update relation and last_seen.
+
+#### 9.11 Severity rules
+
+Severity values:
+
+    CRITICAL
+    HIGH
+    MEDIUM
+    LOW
+    INFO
+
+Initial severity guidance:
+
+    CRITICAL = accepted/live/protected surface mismatch or active map points to missing unsafe target
+    HIGH = organ declared active but missing passport/validator/proof
+    MEDIUM = strong repo candidate unmapped or duplicate with same capability
+    LOW = weak candidate, stale proof, missing optional signal readiness
+    INFO = non-organ support tool or monitor-only observation
+
+#### 9.12 Current body reality summaries
+
+current_body_reality.json must include summaries for agent use:
+
+    total_declared_organs
+    total_repo_candidates
+    total_active_mature_organs
+    total_active_limited_organs
+    total_unmapped_candidates
+    total_missing_passports
+    total_missing_validators
+    total_missing_signal_contracts
+    total_possible_duplicates
+    total_open_pains
+    total_active_drafts
+    highest_severity
+    next_logic_available
+
+#### 9.13 Boundary proof
+
+map_reconciliation.json and current_body_reality.json must include:
+
+    repo_mutated = false
+    active_memory_mutated = false
+    accepted_core_mutated = false
+    body_map_mutated = false
+    capability_map_mutated = false
+    live_process_touched = false
+    codex_launched = false
+    web_launched = false
+    cleanup_performed = false
+
+#### 9.14 Failure behavior
+
+If required previous cell output is missing:
+
+    BLOCKED_RECONCILIATION_INPUT_MISSING
+
+If previous cell output is parse-failed:
+
+    PARTIAL_RECONCILIATION_WITH_PARSE_ERRORS
+
+If contradictions cannot be resolved:
+
+    RECONCILIATION_CONFLICT_UNRESOLVED
+
+If only weak heuristics exist:
+
+    RECONCILIATION_HEURISTIC_ONLY_NO_PAIN_PROMOTION
+
+#### 9.15 Non-success patterns
+
+Not acceptable:
+
+    treating repo as truth
+    treating map as truth
+    treating passport as truth
+    turning weak filename matches into pains
+    creating duplicate pains every run
+    creating duplicate drafts every run
+    no repairability classification
+    no next_logic_action
+    no boundary proof
+    no stale_after
+    no contradiction records
+    no skipped-surface awareness
 ### 10. Body Pain Register
 
 Output:
