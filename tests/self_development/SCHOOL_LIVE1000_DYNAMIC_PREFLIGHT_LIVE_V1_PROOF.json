@@ -1,0 +1,112 @@
+{
+  "schema": "school_live1000_dynamic_preflight_live_proof_v1",
+  "status": "PASS_SCHOOL_LIVE1000_DYNAMIC_PREFLIGHT_LIVE_V1",
+  "created_at": "2026-07-16T06:06:01.591186+00:00",
+  "head_at_run": "aec46fe",
+  "command": "operations/school/run_agent_school.ps1 -Count 1000 -Mode Live -Topics AUTO",
+  "bridge_run_id": "managed_run-20260716-055725-cac5d02f",
+  "bridge_duration_ms": null,
+  "runtime_root": ".runtime/canonical_exact_count_cycle/canonical_exact_count_cycle_real_1000_20260716_095732",
+  "runtime_file_mtime_span_sec": 472.819,
+  "runtime_mb": 4.333003,
+  "operations_report": "operations/reports/CANONICAL_EXACT_COUNT_CYCLE_RUN_20260716_100530.json",
+  "exact_count_cycle_report": ".runtime/canonical_exact_count_cycle/canonical_exact_count_cycle_real_1000_20260716_095732/exact_count_cycle_report.json",
+  "school_run_status": "PASS_CANONICAL_EXACT_COUNT_CYCLE_LIVE_V1",
+  "exact_cycle_status": "PASS_REAL_CODEX_EXACT_COUNT_CYCLE_WITH_ABSORB_V1",
+  "producer_status": "CODEX_PRODUCER_ALL_READY_CREATED",
+  "producer_failure_class": "NONZERO_AFTER_ALL_READY_OUTPUT:",
+  "count": 1000,
+  "accepted_count": 1000,
+  "ready_candidate_count": 1000,
+  "consumed_batches": 10,
+  "batch_counts": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+  ],
+  "absorb": true,
+  "memory_changed": true,
+  "memory_before": {
+    "manifest": "F48D6BD163A3626FA53D09857167F680E2B585F03627F837AF3C0B344DCF94E4",
+    "index": "261176ACCB6681059C118CF0E7AFD42EA9C7D8C2AA2D13E4EDFDD3933E373FD8",
+    "cells": "D5AE8383C3B6768C94BE2A1A3E6D866F8E48FED2ACD61AFF29AE3186D25ABCE4"
+  },
+  "memory_after": {
+    "manifest": "4440BFF0CD772565788E1D66529E8481FBF920B037D187614B4E3DE01B750516",
+    "index": "999D532D4BFCD6EDFD560751B325DF912DC0B1A25245D47F06928966243DEA02",
+    "cells": "0465DE5A4084A604275A13E91EBFF53F0439E92F053B0D2A64A38A6BA2069073"
+  },
+  "active_memory_before_files": {
+    "manifest.json": {
+      "bytes": 1888,
+      "sha256": "f48d6bd163a3626fa53d09857167f680e2b585f03627f837af3c0b344dcf94e4"
+    },
+    "index.json": {
+      "bytes": 311351,
+      "sha256": "261176accb6681059c118cf0e7afd42ea9c7d8c2aa2d13e4edfdd3933e373fd8"
+    },
+    "cells.jsonl": {
+      "bytes": 12696335,
+      "sha256": "d5ae8383c3b6768c94be2a1a3e6d866f8e48fed2acd61aff29ae3186d25abce4"
+    }
+  },
+  "active_memory_after_files": {
+    "manifest.json": {
+      "bytes": 1892,
+      "sha256": "4440bff0cd772565788e1d66529e8481fbf920b037d187614b4e3de01b750516"
+    },
+    "index.json": {
+      "bytes": 311419,
+      "sha256": "999d532d4bfcd6edfd560751b325df912dc0b1a25245d47f06928966243dea02"
+    },
+    "cells.jsonl": {
+      "bytes": 12765760,
+      "sha256": "0465de5a4084a604275a13e91ebff53f0439e92f053b0d2a64a38a6ba2069073"
+    }
+  },
+  "active_memory_delta_bytes": {
+    "manifest.json": 4,
+    "index.json": 68,
+    "cells.jsonl": 69425
+  },
+  "preflight": {
+    "status": "PASS_SCHOOL_DYNAMIC_REQUEST_PREFLIGHT_V1",
+    "selection_status": "PASS_DEVELOPMENT_VECTOR_THEME_SELECTION_V1",
+    "selection_path": ".runtime\\school_single_public_launch_preflight\\school_factory_digest_use_real_1000_20260716_095725\\selection.json",
+    "request_plan_status": "PASS_DYNAMIC_SCHOOL_REQUEST_PLAN_READY_V1",
+    "request_plan_path": ".runtime\\school_single_public_launch_preflight\\school_factory_digest_use_real_1000_20260716_095725\\request_plan.json",
+    "topic_key": "memory_depth_ledger",
+    "current_depth": 0,
+    "target_depth": 3,
+    "depth_gap": 3,
+    "pressure_class": "MISSING_OR_ZERO_DEPTH"
+  },
+  "requested_topics": "memory_depth_ledger",
+  "queue_after_count": 0,
+  "compact_memory_intake_processed_count": 0,
+  "memory_commit_batch_packets_count": 0,
+  "runtime_ready_flag": false,
+  "runtime_growth_observed": {
+    "file_atom_absorption_before_mb": 13.1084,
+    "file_atom_absorption_after_mb": 13.2035,
+    "file_atom_absorption_delta_mb": 0.0951,
+    "canonical_exact_count_cycle_before_mb": 17.5484,
+    "canonical_exact_count_cycle_after_mb": 21.8814,
+    "canonical_exact_count_cycle_delta_mb": 4.333
+  },
+  "classification": {
+    "single_public_launcher": "PROVEN_LIVE",
+    "dynamic_preflight": "PROVEN_LIVE",
+    "codex_producer_exact_1000": "PROVEN_LIVE",
+    "absorption_to_active_memory": "PROVEN_LIVE",
+    "repo_tracked_raw_runtime": "NOT_TRACKED"
+  },
+  "note": "Live 1000 used one public School launcher, dynamic preflight selected memory_depth_ledger depth 0->3, Codex produced 1000 candidates in 10 batches, all 10 batches absorbed, active memory changed, queue remained empty."
+}
