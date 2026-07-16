@@ -1,14 +1,18 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-16T09:08:24.2811369+04:00",
+    "checked_at":  "2026-07-16T09:25:16.2325177+04:00",
     "branch":  "main",
-    "observed_head":  "14371c258840ce0005c12975b324819c1f9a828a",
-    "subject_head":  "14371c258840ce0005c12975b324819c1f9a828a",
-    "trigger_reason":  "school_count100_dynamic_preflight_test_proof_20260716_final",
+    "observed_head":  "3304144d1d5aa4808c34b63c8ac21eb50546e0ca",
+    "subject_head":  "3304144d1d5aa4808c34b63c8ac21eb50546e0ca",
+    "trigger_reason":  "school_live101_final_proof_set_20260716",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
+                          "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+                          "reports/self_development/agent_body_map.json",
+                          "reports/self_development/agent_body_map.md",
+                          "reports/self_development/branch_agnostic_map_refresh_result.json",
                           "tests/self_development/SCHOOL_COUNT100_DYNAMIC_PREFLIGHT_TEST_V1_PROOF.json"
                       ],
     "structural_paths":  [
@@ -24,8 +28,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2032,
-                                    "sha256":  "61011434c48adc73b0a9c279f09a6dc0602cf864222e04f5fe31283c5cf4e18c"
+                                    "structural_file_count":  2034,
+                                    "sha256":  "a36e59ee3e5dc21993e21cb2c1b1c3ebdf72bfdf3e2b6e51920e4c73df5c9e31"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -51,12 +55,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  151,
-                         "structural_path_count":  2032,
+                         "structural_path_count":  2034,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-16T09:08:54.6997257+04:00"
+    "refreshed_at":  "2026-07-16T09:25:44.5663475+04:00"
 }
