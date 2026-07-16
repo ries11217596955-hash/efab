@@ -593,41 +593,461 @@ Not acceptable:
     inventory without scan policy ref
 ### 4. Body / Capability Map Reader Cell
 
-Read existing maps, registries, capability surfaces, known invocation paths and proof refs.
+Purpose: read the organism's declared self-map and capability surfaces before falling back to repo-level proof search.
+
+This cell does not decide truth alone. It reads what the body claims about itself and passes those claims into reconciliation.
+
+Output:
+
+    .runtime/body_self_inspection_v1/body_map_read.json
+    .runtime/body_self_inspection_v1/capability_map_read.json
+
+#### 4.1 Required map surfaces to look for
+
+The reader must search for known root markers and map-like surfaces:
+
+    CAPABILITY_ROADMAP.json
+    GENESIS_STATE.json
+    TASK_QUEUE.json
+    packs/registry.json
+    orchestrator/run.ps1
+    operations/gpt_handoff/NEXT_CHAT_HANDOFF_20260716_MIND_LOGIC_STATUS.json
+    operations/gpt_handoff/NEXT_CHAT_HANDOFF_20260716_MIND_LOGIC.md
+
+It must also look for files whose path/name suggests:
+
+    body map
+    capability map
+    composition map
+    organ registry
+    invocation map
+    launch map
+    passport index
+    validator index
+    proof index
+    signal index
+    draft board
+    pain register
+
+#### 4.2 Map record schema
+
+Each map-like surface should become a record:
+
+    path
+    map_type
+    parse_status
+    schema
+    status
+    declared_organs
+    declared_capabilities
+    declared_invocation_paths
+    declared_validators
+    declared_proof_refs
+    declared_passport_refs
+    declared_signal_refs
+    stale_after
+    last_updated_if_present
+    evidence_status
+    errors
+
+map_type values:
+
+    BODY_MAP
+    CAPABILITY_MAP
+    ORGAN_REGISTRY
+    INVOCATION_MAP
+    LAUNCH_MAP
+    PASSPORT_INDEX
+    VALIDATOR_INDEX
+    PROOF_INDEX
+    SIGNAL_INDEX
+    HANDOFF_STATUS_POINTER
+    UNKNOWN_MAP_LIKE
+
+#### 4.3 Declared organ schema
+
+When a map declares an organ, capture:
+
+    declared_organ_id
+    name
+    source_map_ref
+    implementation_refs
+    contract_refs
+    passport_refs
+    validator_refs
+    proof_refs
+    capabilities
+    invocation_paths
+    state_touched
+    authority_refs
+    signal_refs
+    lifecycle_status
+    evidence_status
+
+Important boundary:
+
+    DECLARED_ORGAN != PRESENT_ORGAN
+    DECLARED_ORGAN != VALID_ORGAN
+    DECLARED_ORGAN != MATURE_ORGAN
+
+The reconciliation cell must verify declarations against repo inventory and proof refs.
+
+#### 4.4 Declared capability schema
+
+When a map declares a capability, capture:
+
+    capability_id
+    name
+    source_map_ref
+    owning_organ_refs
+    invocation_refs
+    validator_refs
+    proof_refs
+    input_contract
+    output_contract
+    state_touched
+    maturity_status
+    evidence_status
+
+Important boundary:
+
+    DECLARED_CAPABILITY != USABLE_CAPABILITY
+    CAPABILITY_WITHOUT_INVOCATION is a pain candidate.
+    CAPABILITY_WITHOUT_VALIDATOR is a pain candidate.
+    CAPABILITY_WITHOUT_PROOF is a pain candidate.
+
+#### 4.5 Map freshness and conflict handling
+
+Every map read must be labeled:
+
+    FRESH_ENOUGH
+    STALE_BY_TIME
+    STALE_BY_HEAD_CHANGE
+    PARSE_FAILED
+    MISSING
+    CONFLICTING_WITH_OTHER_MAP
+    UNKNOWN_FRESHNESS
+
+If two maps disagree, do not choose silently.
+
+Record conflict candidate:
+
+    map_conflict
+
+with:
+
+    map_a
+    map_b
+    conflicting_field
+    value_a
+    value_b
+    required_resolution
+
+#### 4.6 Output aggregates
+
+body_map_read.json and capability_map_read.json must include:
+
+    maps_seen
+    maps_parsed
+    maps_failed
+    declared_organs_count
+    declared_capabilities_count
+    declared_validators_count
+    declared_invocation_paths_count
+    declared_proof_refs_count
+    stale_maps_count
+    conflict_count
+    missing_root_markers
+
+#### 4.7 Non-success patterns
+
+Not acceptable:
+
+    treating map declaration as proof
+    ignoring stale maps
+    ignoring conflicting declarations
+    losing proof refs
+    losing invocation refs
+    no evidence_status labels
+    no parse errors
+    no missing root marker records
 
 ### 5. Organ Candidate Detector Cell
 
-Detect organ candidates from repo surfaces without promoting them to organs.
+Purpose: detect possible organs and organ-adjacent surfaces in repo inventory without promoting them.
+
+Output:
+
+    .runtime/body_self_inspection_v1/organ_candidates.json
+
+#### 5.1 Candidate definition
+
+An organ candidate is a repo surface that may represent a reusable capability, controller, runner, validator set, memory tool, map tool, proof tool, or governed subsystem.
+
+Boundary:
+
+    ORGAN_CANDIDATE != ORGAN
+    SCRIPT != ORGAN
+    VALIDATOR != ORGAN
+    PASSPORT != ORGAN
+    PROOF PRODUCER != ORGAN
+
+Promotion is impossible here. This cell only detects candidates.
+
+#### 5.2 Candidate sources
+
+Candidate patterns:
+
+    operations/<name>/**
+    modules/invoke_*.ps1
+    orchestrator/*.ps1
+    validators/validate_*_organ*.ps1
+    validators/validate_*_wiring*.ps1
+    contracts/**/ORGAN_PASSPORT.json
+    contracts/**/CAPABILITY_PASSPORT.json
+    **/organ_contract.json
+    **/execution_authority_passport*.json
+    scripts that produce *_PROOF.json
+    scripts that read/write maps
+    scripts that manage active memory
+    scripts that manage runtime/school/inner motor
+    scripts that emit or validate signals
+
+#### 5.3 Candidate record schema
+
+Each candidate must include:
+
+    candidate_id
+    candidate_type
+    primary_path
+    related_paths
+    family_root
+    name_guess
+    capability_guess
+    role_guess
+    evidence_refs
+    confidence
+    discovered_from
+    declared_in_maps
+    has_contract_ref
+    has_passport_ref
+    has_validator_ref
+    has_proof_ref
+    has_invocation_ref
+    has_signal_ref
+    state_touched_guess
+    authority_guess
+    maturity_guess
+    warnings
+
+candidate_type values:
+
+    ORGAN_SCRIPT_CANDIDATE
+    ORGAN_FOLDER_CANDIDATE
+    ORGAN_CONTRACT_CANDIDATE
+    AUTHORITY_PASSPORT_CANDIDATE
+    CAPABILITY_PASSPORT_CANDIDATE
+    VALIDATOR_CLUSTER_CANDIDATE
+    PROOF_PRODUCER_CANDIDATE
+    MAP_TOOL_CANDIDATE
+    MEMORY_TOOL_CANDIDATE
+    RUNTIME_TOOL_CANDIDATE
+    SIGNAL_TOOL_CANDIDATE
+    UNKNOWN_BODY_SURFACE_CANDIDATE
+
+#### 5.4 Candidate grouping
+
+The detector should group related files into candidate families.
+
+Family grouping hints:
+
+    same directory root
+    same normalized name stem
+    same capability words
+    same validator target
+    same proof file prefix
+    same contract organ_id
+    same passport organ_id
+    same invocation script reference
+
+Example family:
+
+    operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1
+    operations/autonomous_inner_motor/organ_contract.json
+    operations/autonomous_inner_motor/execution_authority_passport_v1.json
+    validators/validate_autonomous_inner_motor_*.ps1
+    tests/self_development/AUTONOMOUS_INNER_MOTOR_*_PROOF.json
+
+#### 5.5 Evidence strength
+
+Candidate confidence values:
+
+    HIGH_CONTRACT_BACKED
+    MEDIUM_VALIDATOR_BACKED
+    MEDIUM_MAP_DECLARED
+    LOW_NAME_PATTERN_ONLY
+    LOW_DIRECTORY_PATTERN_ONLY
+    UNKNOWN
+
+A candidate discovered only by name must not be used as proof.
+
+#### 5.6 Required pain candidates from this cell
+
+The detector may emit pain candidates:
+
+    repo_candidate_unmapped
+    candidate_has_validator_but_no_contract
+    candidate_has_contract_but_no_map_entry
+    candidate_has_proof_but_no_map_entry
+    candidate_family_split_across_dirs
+    unknown_body_surface_needs_classification
+
+These are not final pains until reconciliation confirms them.
+
+#### 5.7 Non-success patterns
+
+Not acceptable:
+
+    every script becomes organ candidate
+    every folder becomes organ candidate
+    candidate promoted to organ
+    no grouping
+    no confidence
+    no evidence refs
+    no relation to maps/contracts/validators/proofs
 
 ### 6. Organ Similarity / Duplicate Detector Cell
 
-Compare organ candidates and known organs.
+Purpose: prevent body bloat by comparing organ candidates to known organs and to each other before any future promotion or wiring.
 
-Must detect:
+Output:
+
+    .runtime/body_self_inspection_v1/organ_similarity_index.json
+
+#### 6.1 Comparison targets
+
+Compare:
+
+    repo organ candidates vs map-declared organs
+    repo organ candidates vs repo organ candidates
+    map-declared organs vs map-declared organs
+    candidate families vs validator clusters
+    candidate families vs proof producers
+    capability declarations vs candidate capabilities
+
+#### 6.2 Similarity dimensions
+
+Similarity features:
+
+    same capability_id
+    same normalized name stem
+    same purpose words
+    same input contract shape
+    same output contract shape
+    same touched state
+    same authority surface
+    same validator target
+    same proof type
+    same invocation path
+    same file family
+    same parent task or handoff route
+    same signal schema ref
+    same passport organ_id
+    same contract organ_id
+
+#### 6.3 Similarity status values
+
+Each pair or cluster must be assigned one:
 
     UNIQUE_ORGAN_CANDIDATE
     POSSIBLE_DUPLICATE
     FUNCTIONAL_OVERLAP
     OLDER_VERSION_CANDIDATE
+    NEWER_VERSION_CANDIDATE
     SHADOW_ORGAN
     WRAPPER_AROUND_EXISTING_ORGAN
     MERGE_CANDIDATE
     CONFLICTING_ORGAN
+    SAME_FAMILY
     UNKNOWN_SIMILARITY
 
-Comparison dimensions:
+#### 6.4 Similarity record schema
 
-    same capability_id
-    same purpose
-    same input/output shape
-    same touched state
-    same validator target
-    same proof type
-    same invocation path
-    same file family
-    same naming pattern
-    same parent task
+Each record:
 
+    similarity_id
+    subject_a
+    subject_b
+    cluster_id
+    similarity_status
+    similarity_score
+    matching_features
+    conflicting_features
+    evidence_refs
+    risk
+    recommended_logic_action
+    forbidden_now
+
+recommended_logic_action examples:
+
+    compare_contracts
+    compare_validators
+    check_if_wrapper
+    create_merge_draft
+    create_quarantine_draft
+    create_map_cleanup_draft
+    mark_unique_candidate
+    ask_owner_if_intent_unknown
+
+forbidden_now examples:
+
+    promote either candidate
+    delete duplicate
+    merge files
+    rewrite map
+    claim replacement
+
+#### 6.5 Duplicate pain candidates
+
+Similarity cell may emit pain candidates:
+
+    possible_duplicate_organ
+    functional_overlap_without_decision
+    shadow_organ_unmapped
+    old_version_not_quarantined
+    wrapper_without_contract
+    conflicting_organ_claims_same_capability
+
+These must go through reconciliation before entering BODY_PAIN_REGISTER.
+
+#### 6.6 Similarity scoring boundary
+
+Similarity score is a heuristic, not proof.
+
+Allowed labels:
+
+    SIMILARITY_HEURISTIC
+    CONTRACT_SUPPORTED_SIMILARITY
+    VALIDATOR_SUPPORTED_SIMILARITY
+    MAP_SUPPORTED_SIMILARITY
+
+Forbidden:
+
+    duplicate proven solely by filename
+    replacement proven without validator/proof
+    automatic deletion or merge
+
+#### 6.7 Non-success patterns
+
+Not acceptable:
+
+    no duplicate check
+    only exact filename matching
+    no feature list
+    no conflict list
+    no recommended logic action
+    duplicate detection that mutates repo
+    duplicate detection that rewrites map directly
 ### 7. Passport / Contract Audit Cell
 
 Use existing passport/contract surfaces, not invented replacements:

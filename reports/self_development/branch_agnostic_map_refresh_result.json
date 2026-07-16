@@ -1,10 +1,10 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-16T19:24:44.5659070+04:00",
+    "checked_at":  "2026-07-16T19:27:00.1410195+04:00",
     "branch":  "main",
-    "observed_head":  "1259862d3e1bdc059ce8293caf276a724889f434",
-    "subject_head":  "1259862d3e1bdc059ce8293caf276a724889f434",
+    "observed_head":  "cfe16660f80ed2395e12ecc02c25ab754082ea26",
+    "subject_head":  "cfe16660f80ed2395e12ecc02c25ab754082ea26",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
@@ -29,7 +29,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  2081,
-                                    "sha256":  "8fc8c3f648eb58679a1d8999f30fd219695e4f435b958b3f2a76c63fb39724df"
+                                    "sha256":  "1a195d5587fa105db1e12a13eb8c20408866abb4cc47cc1be84337600de780a5"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -62,5 +62,5 @@
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-16T19:25:12.7753510+04:00"
+    "refreshed_at":  "2026-07-16T19:27:28.7671509+04:00"
 }
