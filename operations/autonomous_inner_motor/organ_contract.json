@@ -28,5 +28,13 @@
     "background_process",
     "repo_patch"
   ],
-  "quality_law": "The motor must think with compact memory before asking web or Codex."
+  "quality_law": "The motor must think with compact memory before asking web or Codex.",
+  "action_decision_contract_v1": {
+    "status": "WIRED_LAB",
+    "contract_ref": "operations/autonomous_inner_motor/action_decision_contract_v1.json",
+    "selector_ref": "operations/autonomous_inner_motor/select_agent_next_action_candidate_v1.ps1",
+    "validator_ref": "validators/validate_autonomous_inner_motor_action_decision_wiring_v1.ps1",
+    "proof_ref": "tests/self_development/AUTONOMOUS_INNER_MOTOR_ACTION_DECISION_WIRING_V1_PROOF.json",
+    "execution_boundary": "action candidate is generated; action execution remains forbidden until separate authority passport and proof exist"
+  }
 }

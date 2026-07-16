@@ -1,0 +1,33 @@
+{
+    "schema":  "autonomous_inner_motor_action_decision_wiring_validation_v1",
+    "status":  "PASS_AUTONOMOUS_INNER_MOTOR_ACTION_DECISION_WIRING_V1",
+    "checked_at":  "2026-07-16T13:21:35.3444927+04:00",
+    "proof_path":  ".runtime/autonomous_inner_motor/aimo_20260716_132027/SANDBOX_EXPLORATION_PROOF.json",
+    "selected_action":  {
+                            "action_id":  "ACTION_CONTRACT_V1",
+                            "action_type":  "write_install_ready_artifact",
+                            "target_surface":  "operations/autonomous_inner_motor",
+                            "required_authority":  "LAB_FILE_WRITE",
+                            "validator_required":  true,
+                            "validator_refs":  [
+                                                   "validators/validate_agent_action_decision_contract_v1.ps1"
+                                               ],
+                            "proof_required":  true,
+                            "rollback_plan":  "git restore changed files before commit; no active memory mutation",
+                            "execution_allowed":  false,
+                            "why_candidate":  "Smallest safe bridge from thinking to action without granting hands.",
+                            "why_safe_now":  "Selected only as candidate/contract proof. Actual execution remains blocked by LabOnly boundary."
+                        },
+    "action_execution_allowed":  false,
+    "action_decision_status":  "PASS_AGENT_ACTION_DECISION_PACKET_V1",
+    "boundary":  {
+                     "validates_candidate_generated":  true,
+                     "validates_execution_blocked":  true,
+                     "validates_validator_refs":  true,
+                     "validates_rollback_required":  true,
+                     "validates_no_codex_school_background":  true
+                 },
+    "errors":  [
+
+               ]
+}

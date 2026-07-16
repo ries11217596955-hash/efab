@@ -489,6 +489,36 @@ $selected=[ordered]@{
   validator_needed='memory_query_read_only_validator'
 }
 $memoryAfter=Get-ActiveMemoryState
+
+$actionDecision=[ordered]@{
+  status='NOT_RUN'
+  packet_path=$null
+  selector_stdout=@()
+  selector_exit_code=$null
+  packet=$null
+}
+$actionDecisionPath=Join-Path $runRoot 'action_decision_packet.json'
+$actionSelector='operations/autonomous_inner_motor/select_agent_next_action_candidate_v1.ps1'
+if(Test-Path $actionSelector){
+  $actionGoal=if($internalGoal -and $internalGoal.goal){ [string]$internalGoal.goal } else { [string]$Question }
+  if([string]::IsNullOrWhiteSpace($actionGoal)){ $actionGoal='Select the next safe self-build action candidate without execution authority.' }
+  $actionOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File $actionSelector -Mode LabOnly -Goal $actionGoal -OutputPath $actionDecisionPath *>&1 | ForEach-Object { [string]$_ })
+  $actionDecision.selector_stdout=@($actionOut)
+  $actionDecision.selector_exit_code=$LASTEXITCODE
+  $actionDecision.packet_path=$actionDecisionPath
+  if((Test-Path $actionDecisionPath) -and $LASTEXITCODE -eq 0){
+    $actionDecision.packet=Get-Content $actionDecisionPath -Raw | ConvertFrom-Json
+    $actionDecision.status=$actionDecision.packet.status
+  } elseif(Test-Path $actionDecisionPath){
+    $actionDecision.packet=Get-Content $actionDecisionPath -Raw | ConvertFrom-Json
+    $actionDecision.status='SELECTOR_NONZERO_WITH_PACKET'
+  } else {
+    $actionDecision.status='ACTION_DECISION_SELECTOR_FAILED_NO_PACKET'
+  }
+} else {
+  $actionDecision.status='ACTION_DECISION_SELECTOR_MISSING'
+}
+
 $proof=[ordered]@{
   schema='AUTONOMOUS_INNER_MOTOR_SANDBOX_EXPLORATION_PROOF'
   organ_id='AUTONOMOUS_INNER_MOTOR_ORGAN'
@@ -497,7 +527,7 @@ $proof=[ordered]@{
   maturity_level='L2_SANDBOX_EXPLORATION_THINKING_ONLY'
   created_at=(Get-Date).ToString('o')
   question=$Question
-  boundary=[ordered]@{ thinking_only=$true; no_action=$true; no_active_memory_mutation=(-not [bool]$EnableMemoryLearning); governed_memory_learning=[bool]$EnableMemoryLearning; memory_ingestion_mode=$MemoryIngestionMode; agentlife_queue_first=([bool]$EnableMemoryLearning -and $MemoryIngestionMode -ne 'DirectAbsorb'); direct_active_memory_write=$false; no_git_mutation=$true; no_school_launch=$true; no_codex_launch=$true; no_web_research=$true; proof_file_only=(-not [bool]$EnableMemoryLearning) }
+  boundary=[ordered]@{ thinking_only=$true; no_action=$true; action_decision_candidate_generated=($actionDecision.status -eq 'PASS_AGENT_ACTION_DECISION_PACKET_V1'); action_execution_allowed=$false; no_active_memory_mutation=(-not [bool]$EnableMemoryLearning); governed_memory_learning=[bool]$EnableMemoryLearning; memory_ingestion_mode=$MemoryIngestionMode; agentlife_queue_first=([bool]$EnableMemoryLearning -and $MemoryIngestionMode -ne 'DirectAbsorb'); direct_active_memory_write=$false; no_git_mutation=$true; no_school_launch=$true; no_codex_launch=$true; no_web_research=$true; proof_file_only=(-not [bool]$EnableMemoryLearning) }
   repo_state=$repo
   memory_state=[ordered]@{ before=$memoryBefore; after=$memoryAfter; unchanged=($($memoryBefore.files | ConvertTo-Json -Depth 10) -eq $($memoryAfter.files | ConvertTo-Json -Depth 10)) }
   body_map_state=$body
@@ -518,14 +548,16 @@ $proof=[ordered]@{
     [ordered]@{ step='classify'; result='thinking_only_agent_logic'; proof='Owner requested thinking/logical growth, not action authority.' },
     [ordered]@{ step='memory_first'; result='compact_memory_read_before_external_requests'; proof='memory_state present and unchanged.' },
     [ordered]@{ step='gate'; result='block_actions'; proof='policy disables mutation/action modes.' },
+    [ordered]@{ step='action_candidate_contract'; result=$actionDecision.status; proof='Action Decision Contract selects a next action candidate but keeps execution_allowed=false.' },
     [ordered]@{ step='select_next'; result=$selected.path; proof='deep recursive thinking and self-learning atom loop are the next bottleneck for thinking quality.' }
   )
   selected_next_path=$selected
+  next_action_candidate=$actionDecision
   heartbeat=[ordered]@{ cycle_count=@($cycles).Count; alive='one_shot_sandbox'; background_process_started=$false }
   final_self_diagnosis='The motor can self-seed a thinking cycle, decompose a root question into ThoughtFrames, use memory recall, and when enabled write one governed learning atom through absorption so the next cycle becomes stronger. Action authority remains disabled.'
   stop_reason='PROTECTIVE_CHECKPOINT_THINKING_ONLY'
-  mutation_audit=[ordered]@{ active_memory_mutated=[bool]$EnableMemoryLearning; direct_active_memory_write=$false; governed_absorption_used=[bool]($EnableMemoryLearning -and $deepThinking.absorption); memory_ingestion_mode=if($deepThinking.absorption){$deepThinking.absorption.mode}else{$MemoryIngestionMode}; git_mutated=$false; codex_launched=$false; web_research_performed=$false; school_started=$false; background_process_started=$false; files_written=@($proofPath) }
-  validator_result=[ordered]@{ runner_self_check='PASS_RUNNER_GENERATED_SINGLE_SANDBOX_PROOF'; external_validator_expected='validators/validate_autonomous_inner_motor_organ_contract.ps1 -SandboxProofPath <proof>' }
+  mutation_audit=[ordered]@{ active_memory_mutated=[bool]$EnableMemoryLearning; direct_active_memory_write=$false; governed_absorption_used=[bool]($EnableMemoryLearning -and $deepThinking.absorption); memory_ingestion_mode=if($deepThinking.absorption){$deepThinking.absorption.mode}else{$MemoryIngestionMode}; git_mutated=$false; codex_launched=$false; web_research_performed=$false; school_started=$false; background_process_started=$false; files_written=@($proofPath,$actionDecisionPath) }
+  validator_result=[ordered]@{ runner_self_check='PASS_RUNNER_GENERATED_SINGLE_SANDBOX_PROOF'; external_validator_expected='validators/validate_autonomous_inner_motor_organ_contract.ps1 -SandboxProofPath <proof>; validators/validate_autonomous_inner_motor_action_decision_wiring_v1.ps1 -ProofPath <proof>' }
 }
 Write-CleanJson $proofPath $proof 80
 Write-Host "MODE=$Mode"
@@ -538,4 +570,6 @@ Write-Host "DEEP_THINKING_STATUS=$($proof.deep_thinking.status)"
 Write-Host "GOVERNED_MEMORY_LEARNING=$($proof.boundary.governed_memory_learning)"
 Write-Host "MEMORY_INGESTION_MODE=$($proof.boundary.memory_ingestion_mode)"
 Write-Host "DIRECT_ACTIVE_MEMORY_WRITE=$($proof.boundary.direct_active_memory_write)"
+Write-Host "ACTION_DECISION_STATUS=$($proof.next_action_candidate.status)"
+Write-Host "ACTION_EXECUTION_ALLOWED=$($proof.boundary.action_execution_allowed)"
 if($EnableMemoryLearning){ Write-Host "LEARNING_ATOM_MEMORY_CHANGED=$($proof.deep_thinking.absorption.memory_changed)" } else { Write-Host "No active memory mutation" }

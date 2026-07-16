@@ -197,3 +197,8 @@ if memory publish path is free -> AgentLife packet goes to compact_memory_intake
 ```
 
 This lets the agent begin each new thinking cycle with a fresh memory state that may include School atoms and AgentLife atoms, without needing to reason separately about ownership of those atoms.
+## Action Decision Contract V1 wiring
+
+AIMO must return a `next_action_candidate` for every sandbox thinking cycle. The candidate is produced through `operations/autonomous_inner_motor/select_agent_next_action_candidate_v1.ps1` and must follow `action_decision_contract_v1.json`.
+
+Boundary: this is not action execution. The runner must keep `action_execution_allowed=false`, `no_action=true`, `direct_active_memory_write=false`, `codex_launched=false`, `school_started=false`, and `background_process_started=false`. Any future execution wiring requires a separate authority passport, validator, proof, rollback plan, and Owner decision.
