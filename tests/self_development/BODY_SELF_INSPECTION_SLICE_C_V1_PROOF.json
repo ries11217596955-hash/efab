@@ -1,0 +1,494 @@
+{
+    "circuit_ref":  "BODY_SELF_INSPECTION_CIRCUIT_V1",
+    "boundary":  {
+                     "passports_mutated":  false,
+                     "web_launched":  false,
+                     "accepted_core_mutated":  false,
+                     "body_map_mutated":  false,
+                     "live_process_touched":  false,
+                     "active_memory_mutated":  false,
+                     "capability_map_mutated":  false,
+                     "codex_launched":  false,
+                     "contracts_mutated":  false,
+                     "repo_mutated":  false,
+                     "cleanup_performed":  false
+                 },
+    "validator_ref":  "validators/validate_body_self_inspection_slice_c_v1.ps1",
+    "aggregate_counts":  {
+                             "signal_readiness_audit":  {
+                                                            "inventory_signal_like_records_seen":  10,
+                                                            "signal_contract_status_counts":  {
+                                                                                                  "LEGACY_SIGNAL_ADAPTED":  3,
+                                                                                                  "SIGNAL_CONTRACT_WITHOUT_VALIDATOR":  2,
+                                                                                                  "SIGNAL_NOT_REQUIRED_FOR_NON_ORGAN":  984,
+                                                                                                  "NATIVE_SIGNAL_EMITTER":  2,
+                                                                                                  "SIGNAL_MISSING":  290
+                                                                                              },
+                                                            "target_count":  1281,
+                                                            "pain_candidate_count":  292
+                                                        },
+                             "passport_audit":  {
+                                                    "target_count":  1281,
+                                                    "similarity_record_count_seen":  456,
+                                                    "pain_candidate_count":  505,
+                                                    "passport_status_counts":  {
+                                                                                   "CONTRACT_PRESENT_PASSPORT_MISSING":  159,
+                                                                                   "PASSPORT_INDEX_ONLY":  1,
+                                                                                   "NOT_ORGAN_NO_PASSPORT_REQUIRED_YET":  852,
+                                                                                   "PASSPORT_MISSING":  265,
+                                                                                   "PASSPORT_REQUIRED_FIELD_MISSING":  4
+                                                                               },
+                                                    "validator_status_counts":  {
+                                                                                    "VALIDATOR_CLUSTER_FOUND_NO_CONTRACT":  568,
+                                                                                    "VALIDATOR_UNKNOWN":  519,
+                                                                                    "VALIDATOR_PRESENT_AND_REFERENCED":  95,
+                                                                                    "VALIDATOR_MISSING":  99
+                                                                                },
+                                                    "proof_status_counts":  {
+                                                                                "PROOF_UNKNOWN":  498,
+                                                                                "PROOF_REF_MISSING":  221,
+                                                                                "PROOF_REF_BROKEN":  126,
+                                                                                "PROOF_REF_VALID":  436
+                                                                            }
+                                                }
+                         },
+    "errors":  [
+
+               ],
+    "schema":  "body_self_inspection_slice_c_validator_proof_v1",
+    "negative_test_results":  [
+                                  {
+                                      "evidence":  "target_kind checked for ORGAN/PROMOTED claims",
+                                      "name":  "candidate_is_not_promoted_to_organ",
+                                      "passed":  true
+                                  },
+                                  {
+                                      "evidence":  "passport audit boundary_claims",
+                                      "name":  "passport_presence_not_maturity",
+                                      "passed":  true
+                                  },
+                                  {
+                                      "evidence":  "passport audit boundary_claims",
+                                      "name":  "contract_presence_not_wiring",
+                                      "passed":  true
+                                  },
+                                  {
+                                      "evidence":  "signal readiness boundary_claims",
+                                      "name":  "signal_field_not_nervous_system_connection",
+                                      "passed":  true
+                                  }
+                              ],
+    "generated_at":  "2026-07-16T19:06:29.0191359Z",
+    "status":  "PASS_BODY_SELF_INSPECTION_SLICE_C_V1",
+    "git_status_before_invoker":  [
+                                      "?? operations/body_self_inspection/audit_passports_and_contracts_v1.ps1",
+                                      "?? operations/body_self_inspection/audit_signal_readiness_v1.ps1",
+                                      "?? operations/body_self_inspection/invoke_body_self_inspection_slice_c_v1.ps1",
+                                      "?? tests/self_development/BODY_SELF_INSPECTION_SLICE_C_V1_PROOF.json",
+                                      "?? validators/validate_body_self_inspection_slice_c_v1.ps1"
+                                  ],
+    "output_refs":  {
+                        "scan_skipped_surfaces":  "H:\\efab\\.runtime\\body_self_inspection_v1\\scan_skipped_surfaces.json",
+                        "capability_map_read":  "H:\\efab\\.runtime\\body_self_inspection_v1\\capability_map_read.json",
+                        "organ_similarity_index":  "H:\\efab\\.runtime\\body_self_inspection_v1\\organ_similarity_index.json",
+                        "body_map_read":  "H:\\efab\\.runtime\\body_self_inspection_v1\\body_map_read.json",
+                        "repo_inventory":  "H:\\efab\\.runtime\\body_self_inspection_v1\\repo_inventory.json",
+                        "scan_policy_effective":  "H:\\efab\\.runtime\\body_self_inspection_v1\\scan_policy_effective.json",
+                        "runtime_proof":  "H:\\efab\\.runtime\\body_self_inspection_v1\\BODY_SELF_INSPECTION_SLICE_C_PROOF.json",
+                        "slice_b_runtime_proof":  "H:\\efab\\.runtime\\body_self_inspection_v1\\BODY_SELF_INSPECTION_SLICE_B_PROOF.json",
+                        "signal_readiness_audit":  "H:\\efab\\.runtime\\body_self_inspection_v1\\signal_readiness_audit.json",
+                        "passport_audit":  "H:\\efab\\.runtime\\body_self_inspection_v1\\passport_audit.json",
+                        "organ_candidates":  "H:\\efab\\.runtime\\body_self_inspection_v1\\organ_candidates.json",
+                        "slice_a_runtime_proof":  "H:\\efab\\.runtime\\body_self_inspection_v1\\BODY_SELF_INSPECTION_SLICE_A_PROOF.json"
+                    },
+    "git_status_after_invoker":  [
+                                     "?? operations/body_self_inspection/audit_passports_and_contracts_v1.ps1",
+                                     "?? operations/body_self_inspection/audit_signal_readiness_v1.ps1",
+                                     "?? operations/body_self_inspection/invoke_body_self_inspection_slice_c_v1.ps1",
+                                     "?? tests/self_development/BODY_SELF_INSPECTION_SLICE_C_V1_PROOF.json",
+                                     "?? validators/validate_body_self_inspection_slice_c_v1.ps1"
+                                 ],
+    "validator_checks":  [
+                             {
+                                 "message":  "scan_policy exists and parses",
+                                 "name":  "scan_policy_parses",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "skipped_surfaces exists and parses",
+                                 "name":  "skipped_surfaces_parses",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "repo_inventory exists and parses",
+                                 "name":  "repo_inventory_parses",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "body_map_read exists and parses",
+                                 "name":  "body_map_read_parses",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "capability_map_read exists and parses",
+                                 "name":  "capability_map_read_parses",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "organ_candidates exists and parses",
+                                 "name":  "organ_candidates_parses",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "organ_similarity_index exists and parses",
+                                 "name":  "organ_similarity_index_parses",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "slice_a_runtime_proof exists and parses",
+                                 "name":  "slice_a_runtime_proof_parses",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "slice_b_runtime_proof exists and parses",
+                                 "name":  "slice_b_runtime_proof_parses",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "passport_audit exists and parses",
+                                 "name":  "passport_audit_parses",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "signal_readiness_audit exists and parses",
+                                 "name":  "signal_readiness_audit_parses",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof exists and parses",
+                                 "name":  "runtime_proof_parses",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "Slice A runtime proof status must be PASS",
+                                 "name":  "slice_a_runtime_status_pass",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "Slice B runtime proof status must be PASS",
+                                 "name":  "slice_b_runtime_status_pass",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "Slice C runtime proof status must be PASS",
+                                 "name":  "slice_c_runtime_status_pass",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "passport audit status must be PASS",
+                                 "name":  "passport_audit_status_pass",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "passport audit has records",
+                                 "name":  "passport_audit_targets_exist",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "every passport audit record has required fields",
+                                 "name":  "passport_records_required_fields",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "every passport audit record has evidence_refs",
+                                 "name":  "passport_records_have_evidence_refs",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "every passport audit record has forbidden_now",
+                                 "name":  "passport_records_have_forbidden_now",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "passport_status values are from allowed set",
+                                 "name":  "passport_status_values_allowed",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "Slice C does not promote candidates to organs",
+                                 "name":  "candidate_not_promoted_to_organ",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "missing passport cases have pain candidates",
+                                 "name":  "missing_passport_cases_have_pain_candidates",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "missing validator cases have pain candidates",
+                                 "name":  "missing_validator_cases_have_pain_candidates",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "missing proof cases have pain candidates",
+                                 "name":  "missing_proof_cases_have_pain_candidates",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "passport presence is not claimed as maturity",
+                                 "name":  "passport_presence_not_maturity",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "contract presence is not claimed as wiring",
+                                 "name":  "contract_presence_not_wiring",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "passport audit distinguishes missing/unvalidated/problem states",
+                                 "name":  "passport_distinguishes_missing_unvalidated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "signal readiness audit status must be PASS",
+                                 "name":  "signal_audit_status_pass",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "signal readiness audit has records",
+                                 "name":  "signal_audit_targets_exist",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "every signal audit record has required fields",
+                                 "name":  "signal_records_required_fields",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "every signal audit record has evidence_refs",
+                                 "name":  "signal_records_have_evidence_refs",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "every signal audit record has forbidden_now",
+                                 "name":  "signal_records_have_forbidden_now",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "signal_contract_status values are from allowed set",
+                                 "name":  "signal_status_values_allowed",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "missing signal cases have pain candidates",
+                                 "name":  "missing_signal_cases_have_pain_candidates",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "signal field presence is not claimed as nervous system connection",
+                                 "name":  "signal_field_presence_not_nervous_connection",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "signal audit does not claim nervous-system connection",
+                                 "name":  "nervous_system_not_claimed_connected",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "signal audit distinguishes readiness from non-connection",
+                                 "name":  "signal_distinguishes_missing_or_placeholder",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime proof does not claim passport presence as maturity",
+                                 "name":  "runtime_passport_presence_not_maturity",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime proof does not claim contract presence as wiring",
+                                 "name":  "runtime_contract_presence_not_wiring",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime proof does not claim signal field as nervous system connection",
+                                 "name":  "runtime_signal_presence_not_nervous_connection",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "audit target count covers candidates plus contract/passport surfaces",
+                                 "name":  "audit_targets_derived_from_candidates_maps_contracts",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "no tracked map/passport/contract/active-memory mutation observed",
+                                 "name":  "no_tracked_map_passport_contract_mutation",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "passport_audit boundary flag is false: repo_mutated",
+                                 "name":  "boundary_passport_audit_repo_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "passport_audit boundary flag is false: active_memory_mutated",
+                                 "name":  "boundary_passport_audit_active_memory_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "passport_audit boundary flag is false: accepted_core_mutated",
+                                 "name":  "boundary_passport_audit_accepted_core_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "passport_audit boundary flag is false: body_map_mutated",
+                                 "name":  "boundary_passport_audit_body_map_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "passport_audit boundary flag is false: capability_map_mutated",
+                                 "name":  "boundary_passport_audit_capability_map_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "passport_audit boundary flag is false: passports_mutated",
+                                 "name":  "boundary_passport_audit_passports_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "passport_audit boundary flag is false: contracts_mutated",
+                                 "name":  "boundary_passport_audit_contracts_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "passport_audit boundary flag is false: live_process_touched",
+                                 "name":  "boundary_passport_audit_live_process_touched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "passport_audit boundary flag is false: codex_launched",
+                                 "name":  "boundary_passport_audit_codex_launched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "passport_audit boundary flag is false: web_launched",
+                                 "name":  "boundary_passport_audit_web_launched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "passport_audit boundary flag is false: cleanup_performed",
+                                 "name":  "boundary_passport_audit_cleanup_performed",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "signal_audit boundary flag is false: repo_mutated",
+                                 "name":  "boundary_signal_audit_repo_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "signal_audit boundary flag is false: active_memory_mutated",
+                                 "name":  "boundary_signal_audit_active_memory_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "signal_audit boundary flag is false: accepted_core_mutated",
+                                 "name":  "boundary_signal_audit_accepted_core_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "signal_audit boundary flag is false: body_map_mutated",
+                                 "name":  "boundary_signal_audit_body_map_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "signal_audit boundary flag is false: capability_map_mutated",
+                                 "name":  "boundary_signal_audit_capability_map_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "signal_audit boundary flag is false: passports_mutated",
+                                 "name":  "boundary_signal_audit_passports_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "signal_audit boundary flag is false: contracts_mutated",
+                                 "name":  "boundary_signal_audit_contracts_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "signal_audit boundary flag is false: live_process_touched",
+                                 "name":  "boundary_signal_audit_live_process_touched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "signal_audit boundary flag is false: codex_launched",
+                                 "name":  "boundary_signal_audit_codex_launched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "signal_audit boundary flag is false: web_launched",
+                                 "name":  "boundary_signal_audit_web_launched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "signal_audit boundary flag is false: cleanup_performed",
+                                 "name":  "boundary_signal_audit_cleanup_performed",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: repo_mutated",
+                                 "name":  "boundary_runtime_proof_repo_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: active_memory_mutated",
+                                 "name":  "boundary_runtime_proof_active_memory_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: accepted_core_mutated",
+                                 "name":  "boundary_runtime_proof_accepted_core_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: body_map_mutated",
+                                 "name":  "boundary_runtime_proof_body_map_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: capability_map_mutated",
+                                 "name":  "boundary_runtime_proof_capability_map_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: passports_mutated",
+                                 "name":  "boundary_runtime_proof_passports_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: contracts_mutated",
+                                 "name":  "boundary_runtime_proof_contracts_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: live_process_touched",
+                                 "name":  "boundary_runtime_proof_live_process_touched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: codex_launched",
+                                 "name":  "boundary_runtime_proof_codex_launched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: web_launched",
+                                 "name":  "boundary_runtime_proof_web_launched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: cleanup_performed",
+                                 "name":  "boundary_runtime_proof_cleanup_performed",
+                                 "passed":  true
+                             }
+                         ],
+    "slice":  "C"
+}

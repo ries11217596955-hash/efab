@@ -6,22 +6,22 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "a1f7c804a9eb5cbafc55a4c63bd1ef34692fb50e",
-    "subject_head":  "a1f7c804a9eb5cbafc55a4c63bd1ef34692fb50e",
-    "generated_at":  "2026-07-16T22:31:01.7798870+04:00",
+    "observed_head_at_generation":  "b3fd0dd5c47add1d3c24b1c2a93eea883baff1a0",
+    "subject_head":  "b3fd0dd5c47add1d3c24b1c2a93eea883baff1a0",
+    "generated_at":  "2026-07-16T23:07:19.0695879+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  2095,
+    "structural_path_count":  2100,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2095,
-                                    "sha256":  "0150feaad850295c13f4e3aad9abdba11d97ecf7492bc1fcd82470237921bc5f"
+                                    "structural_file_count":  2100,
+                                    "sha256":  "091a23f598db82ef7d7e728c5e84defa51aec87865ace91365936f16a6c6fe9e"
                                 },
     "module_count":  203,
-    "validator_count":  198,
+    "validator_count":  199,
     "confirmed_components":  [
                                  {
                                      "id":  "school",
@@ -1533,18 +1533,18 @@
                                             "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                                             "discovery_method":  "bounded_git_ls_files_path_discovery",
                                             "evidence_counts":  {
-                                                                    "files":  11,
-                                                                    "scripts":  7,
+                                                                    "files":  14,
+                                                                    "scripts":  10,
                                                                     "validators":  0,
                                                                     "proofs":  0,
-                                                                    "contracts_or_policies":  1,
+                                                                    "contracts_or_policies":  2,
                                                                     "docs":  4
                                                                 },
-                                            "file_count":  11,
-                                            "script_count":  7,
+                                            "file_count":  14,
+                                            "script_count":  10,
                                             "validator_count":  0,
                                             "proof_file_count":  0,
-                                            "contract_or_policy_count":  1,
+                                            "contract_or_policy_count":  2,
                                             "doc_count":  4,
                                             "validator_refs":  [
 
@@ -1553,6 +1553,7 @@
 
                                                            ],
                                             "contract_or_policy_refs":  [
+                                                                            "operations/body_self_inspection/audit_passports_and_contracts_v1.ps1",
                                                                             "operations/body_self_inspection/build_body_scan_policy_v1.ps1"
                                                                         ],
                                             "notable_files":  [
@@ -1560,21 +1561,27 @@
                                                                   "operations/body_self_inspection/CODEX_TASK_BODY_SELF_INSPECTION_SLICE_A.md",
                                                                   "operations/body_self_inspection/CODEX_TASK_BODY_SELF_INSPECTION_SLICE_B.md",
                                                                   "operations/body_self_inspection/CODEX_TASK_BODY_SELF_INSPECTION_SLICE_C.md",
+                                                                  "operations/body_self_inspection/audit_passports_and_contracts_v1.ps1",
+                                                                  "operations/body_self_inspection/audit_signal_readiness_v1.ps1",
                                                                   "operations/body_self_inspection/build_body_repo_inventory_v1.ps1",
                                                                   "operations/body_self_inspection/build_body_scan_policy_v1.ps1",
                                                                   "operations/body_self_inspection/detect_organ_candidates_v1.ps1",
                                                                   "operations/body_self_inspection/detect_organ_similarity_v1.ps1",
                                                                   "operations/body_self_inspection/invoke_body_self_inspection_slice_a_v1.ps1",
                                                                   "operations/body_self_inspection/invoke_body_self_inspection_slice_b_v1.ps1",
+                                                                  "operations/body_self_inspection/invoke_body_self_inspection_slice_c_v1.ps1",
                                                                   "operations/body_self_inspection/read_body_maps_v1.ps1"
                                                               ],
                                             "primary_evidence_refs":  [
+                                                                          "operations/body_self_inspection/audit_passports_and_contracts_v1.ps1",
+                                                                          "operations/body_self_inspection/audit_signal_readiness_v1.ps1",
                                                                           "operations/body_self_inspection/build_body_repo_inventory_v1.ps1",
                                                                           "operations/body_self_inspection/build_body_scan_policy_v1.ps1",
                                                                           "operations/body_self_inspection/detect_organ_candidates_v1.ps1",
                                                                           "operations/body_self_inspection/detect_organ_similarity_v1.ps1",
                                                                           "operations/body_self_inspection/invoke_body_self_inspection_slice_a_v1.ps1",
                                                                           "operations/body_self_inspection/invoke_body_self_inspection_slice_b_v1.ps1",
+                                                                          "operations/body_self_inspection/invoke_body_self_inspection_slice_c_v1.ps1",
                                                                           "operations/body_self_inspection/read_body_maps_v1.ps1"
                                                                       ],
                                             "needs_triage":  true,
@@ -9481,18 +9488,18 @@
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                            "discovery_method":  "bounded_git_ls_files_path_discovery",
                            "evidence_counts":  {
-                                                   "files":  11,
-                                                   "scripts":  7,
+                                                   "files":  14,
+                                                   "scripts":  10,
                                                    "validators":  0,
                                                    "proofs":  0,
-                                                   "contracts_or_policies":  1,
+                                                   "contracts_or_policies":  2,
                                                    "docs":  4
                                                },
-                           "file_count":  11,
-                           "script_count":  7,
+                           "file_count":  14,
+                           "script_count":  10,
                            "validator_count":  0,
                            "proof_file_count":  0,
-                           "contract_or_policy_count":  1,
+                           "contract_or_policy_count":  2,
                            "doc_count":  4,
                            "validator_refs":  [
 
@@ -9501,6 +9508,7 @@
 
                                           ],
                            "contract_or_policy_refs":  [
+                                                           "operations/body_self_inspection/audit_passports_and_contracts_v1.ps1",
                                                            "operations/body_self_inspection/build_body_scan_policy_v1.ps1"
                                                        ],
                            "notable_files":  [
@@ -9508,21 +9516,27 @@
                                                  "operations/body_self_inspection/CODEX_TASK_BODY_SELF_INSPECTION_SLICE_A.md",
                                                  "operations/body_self_inspection/CODEX_TASK_BODY_SELF_INSPECTION_SLICE_B.md",
                                                  "operations/body_self_inspection/CODEX_TASK_BODY_SELF_INSPECTION_SLICE_C.md",
+                                                 "operations/body_self_inspection/audit_passports_and_contracts_v1.ps1",
+                                                 "operations/body_self_inspection/audit_signal_readiness_v1.ps1",
                                                  "operations/body_self_inspection/build_body_repo_inventory_v1.ps1",
                                                  "operations/body_self_inspection/build_body_scan_policy_v1.ps1",
                                                  "operations/body_self_inspection/detect_organ_candidates_v1.ps1",
                                                  "operations/body_self_inspection/detect_organ_similarity_v1.ps1",
                                                  "operations/body_self_inspection/invoke_body_self_inspection_slice_a_v1.ps1",
                                                  "operations/body_self_inspection/invoke_body_self_inspection_slice_b_v1.ps1",
+                                                 "operations/body_self_inspection/invoke_body_self_inspection_slice_c_v1.ps1",
                                                  "operations/body_self_inspection/read_body_maps_v1.ps1"
                                              ],
                            "primary_evidence_refs":  [
+                                                         "operations/body_self_inspection/audit_passports_and_contracts_v1.ps1",
+                                                         "operations/body_self_inspection/audit_signal_readiness_v1.ps1",
                                                          "operations/body_self_inspection/build_body_repo_inventory_v1.ps1",
                                                          "operations/body_self_inspection/build_body_scan_policy_v1.ps1",
                                                          "operations/body_self_inspection/detect_organ_candidates_v1.ps1",
                                                          "operations/body_self_inspection/detect_organ_similarity_v1.ps1",
                                                          "operations/body_self_inspection/invoke_body_self_inspection_slice_a_v1.ps1",
                                                          "operations/body_self_inspection/invoke_body_self_inspection_slice_b_v1.ps1",
+                                                         "operations/body_self_inspection/invoke_body_self_inspection_slice_c_v1.ps1",
                                                          "operations/body_self_inspection/read_body_maps_v1.ps1"
                                                      ],
                            "needs_triage":  true,

@@ -1,32 +1,22 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-16T22:30:30.6537978+04:00",
+    "checked_at":  "2026-07-16T23:06:47.6852529+04:00",
     "branch":  "main",
-    "observed_head":  "a1f7c804a9eb5cbafc55a4c63bd1ef34692fb50e",
-    "subject_head":  "a1f7c804a9eb5cbafc55a4c63bd1ef34692fb50e",
+    "observed_head":  "b3fd0dd5c47add1d3c24b1c2a93eea883baff1a0",
+    "subject_head":  "b3fd0dd5c47add1d3c24b1c2a93eea883baff1a0",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "operations/body_self_inspection/detect_organ_candidates_v1.ps1",
-                          "operations/body_self_inspection/detect_organ_similarity_v1.ps1",
-                          "operations/body_self_inspection/invoke_body_self_inspection_slice_b_v1.ps1",
-                          "operations/body_self_inspection/read_body_maps_v1.ps1",
+                          "operations/body_self_inspection/CODEX_TASK_BODY_SELF_INSPECTION_SLICE_C.md",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
-                          "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "tests/self_development/BODY_SELF_INSPECTION_SLICE_B_V1_PROOF.json",
-                          "validators/validate_body_self_inspection_slice_b_v1.ps1"
+                          "reports/self_development/branch_agnostic_map_refresh_result.json"
                       ],
     "structural_paths":  [
-                             "operations/body_self_inspection/detect_organ_candidates_v1.ps1",
-                             "operations/body_self_inspection/detect_organ_similarity_v1.ps1",
-                             "operations/body_self_inspection/invoke_body_self_inspection_slice_b_v1.ps1",
-                             "operations/body_self_inspection/read_body_maps_v1.ps1",
-                             "tests/self_development/BODY_SELF_INSPECTION_SLICE_B_V1_PROOF.json",
-                             "validators/validate_body_self_inspection_slice_b_v1.ps1"
+                             "operations/body_self_inspection/CODEX_TASK_BODY_SELF_INSPECTION_SLICE_C.md"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -38,8 +28,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2095,
-                                    "sha256":  "0150feaad850295c13f4e3aad9abdba11d97ecf7492bc1fcd82470237921bc5f"
+                                    "structural_file_count":  2100,
+                                    "sha256":  "091a23f598db82ef7d7e728c5e84defa51aec87865ace91365936f16a6c6fe9e"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -65,12 +55,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  152,
-                         "structural_path_count":  2095,
+                         "structural_path_count":  2100,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-16T22:31:02.2953714+04:00"
+    "refreshed_at":  "2026-07-16T23:07:19.6195747+04:00"
 }
