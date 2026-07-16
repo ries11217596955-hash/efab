@@ -1,10 +1,10 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-16T18:19:25.6217548+04:00",
+    "checked_at":  "2026-07-16T19:13:35.2857507+04:00",
     "branch":  "main",
-    "observed_head":  "60e441c1a49ce5ec0452ef2d4a8258134c01b0ef",
-    "subject_head":  "60e441c1a49ce5ec0452ef2d4a8258134c01b0ef",
+    "observed_head":  "45ce147976376af2f64a01ad42c530a6dba4e3bf",
+    "subject_head":  "45ce147976376af2f64a01ad42c530a6dba4e3bf",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
@@ -13,7 +13,7 @@
                           "operations/gpt_handoff/NEXT_CHAT_HANDOFF_20260716_MIND_LOGIC_STATUS.json",
                           "operations/reasoning/agent_mind_logic_kernel_v1.json",
                           "operations/reasoning/build_agent_mind_logic_frame_v1.ps1",
-                          "operations/reasoning/route_source_authority_v1.ps1",
+                          "operations/reasoning/build_route_request_packet_v1.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
@@ -23,24 +23,26 @@
                           "tests/self_development/DEEP_SOURCE_ANSWER_ASSIMILATION_V1_PROOF.json",
                           "tests/self_development/DEEP_SOURCE_ANSWER_REQUEST_V1_PROOF.json",
                           "tests/self_development/MIND_DELTA_ACCEPTANCE_GATE_V1_PROOF.json",
+                          "tests/self_development/ROUTE_REQUEST_PACKET_V1_PROOF.json",
                           "tests/self_development/SOURCE_AUTHORITY_ROUTER_V1_PROOF.json",
                           "validators/validate_autonomous_inner_motor_mind_logic_wiring_v1.ps1",
-                          "validators/validate_source_authority_router_v1.ps1"
+                          "validators/validate_route_request_packet_v1.ps1"
                       ],
     "structural_paths":  [
                              "operations/gpt_handoff/NEXT_CHAT_HANDOFF_20260716_MIND_LOGIC.md",
                              "operations/gpt_handoff/NEXT_CHAT_HANDOFF_20260716_MIND_LOGIC_STATUS.json",
                              "operations/reasoning/agent_mind_logic_kernel_v1.json",
                              "operations/reasoning/build_agent_mind_logic_frame_v1.ps1",
-                             "operations/reasoning/route_source_authority_v1.ps1",
+                             "operations/reasoning/build_route_request_packet_v1.ps1",
                              "tests/self_development/AGENT_MIND_LOGIC_KERNEL_V1_PROOF.json",
                              "tests/self_development/AUTONOMOUS_INNER_MOTOR_MIND_LOGIC_WIRING_V1_PROOF.json",
                              "tests/self_development/DEEP_SOURCE_ANSWER_ASSIMILATION_V1_PROOF.json",
                              "tests/self_development/DEEP_SOURCE_ANSWER_REQUEST_V1_PROOF.json",
                              "tests/self_development/MIND_DELTA_ACCEPTANCE_GATE_V1_PROOF.json",
+                             "tests/self_development/ROUTE_REQUEST_PACKET_V1_PROOF.json",
                              "tests/self_development/SOURCE_AUTHORITY_ROUTER_V1_PROOF.json",
                              "validators/validate_autonomous_inner_motor_mind_logic_wiring_v1.ps1",
-                             "validators/validate_source_authority_router_v1.ps1"
+                             "validators/validate_route_request_packet_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -53,7 +55,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  2080,
-                                    "sha256":  "d25914bed1dd08bef744eaea1f89b4884367b0140267ce091e8085f741aedb45"
+                                    "sha256":  "979ab2323034b6b2b054ef3dd52b8da81302da79d784f01abc87738849015570"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -86,5 +88,5 @@
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-16T18:19:53.7820694+04:00"
+    "refreshed_at":  "2026-07-16T19:14:03.4207661+04:00"
 }

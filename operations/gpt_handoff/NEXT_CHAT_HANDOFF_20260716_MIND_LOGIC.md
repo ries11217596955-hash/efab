@@ -106,3 +106,91 @@ Boundary:
 Next safe route after commit:
 
 Build the first bounded executor for repo_proof_lookup_packet as observe-only. It may read repo proof files/validators/commits, but must not edit repo, run live runtime, launch Codex, or browse web.
+
+## 2026-07-16 update — Body Self-Inspection Circuit decision
+
+Owner corrected the route: do not build a plain repo_proof_lookup executor first.
+Build a robust Body Self-Inspection Circuit that reads repo reality, body/capability maps, organ contracts/passports, existing proofs, active drafts, and produces internal next-logic inputs for the agent.
+
+Key decision:
+
+- Output is not a human report only.
+- Output is agent-consumable internal state: CURRENT_BODY_REALITY, BODY_PAIN_REGISTER, REPAIR_DRAFT_BOARD, NEXT_LOGIC_QUEUE, SELF_INSPECTION_SIGNAL.
+- The agent must use this to ask: what hurts, why, what can be repaired at logic level, what draft should be created/updated, what must be remembered, what remains blocked.
+
+Mandatory additions requested by Owner:
+
+1. Passport requirement.
+   Existing passport/contract surfaces must be used, not reinvented:
+   - contracts/accepted_atom_retention_organ/passports/ORGAN_PASSPORT.json
+   - contracts/accepted_atom_retention_organ/passports/PASSPORT_INDEX.json
+   - contracts/accepted_atom_retention_organ/passports/CAPABILITY_PASSPORT.json
+   - operations/autonomous_inner_motor/organ_contract.json
+   - operations/autonomous_inner_motor/execution_authority_passport_v1.json
+   - validators/validate_accepted_atom_retention_passports_v1.ps1
+   - validators/validate_autonomous_inner_motor_organ_contract.ps1
+
+2. Future signal compatibility.
+   Each organ/cell candidate surfaced by the circuit must include signal readiness fields even before the nervous system exists:
+   - signal_contract_status: NATIVE_SIGNAL_EMITTER | LEGACY_SIGNAL_ADAPTED | SIGNAL_MISSING | SIGNAL_UNKNOWN
+   - expected_signals_emitted
+   - expected_signals_consumed
+   - signal_schema_ref
+   - signal_validator_ref
+   - signal_emission_proof_ref
+   For now signals may be emitted into a void/placeholder, but the contract must be visible so future nervous system can consume them without retrofitting every organ.
+
+Circuit scope:
+
+This is one large organ/circuit with multiple internal cells, not a pile of unrelated organs.
+Suggested cells:
+
+- repo_inventory_cell
+- map_reader_cell
+- capability_reader_cell
+- organ_candidate_detector_cell
+- passport_contract_reader_cell
+- signal_contract_reader_cell
+- reconciliation_cell
+- pain_register_cell
+- repair_draft_board_cell
+- next_logic_selector_cell
+- self_inspection_signal_cell
+
+Required outputs:
+
+- .runtime/body_self_inspection_v1/current_body_reality.json
+- .runtime/body_self_inspection_v1/body_pain_register.jsonl
+- .runtime/body_self_inspection_v1/repair_draft_board.jsonl
+- .runtime/body_self_inspection_v1/next_logic_queue.json
+- .runtime/body_self_inspection_v1/self_inspection_signal.json
+
+Body pains must include at least:
+
+- repo_candidate_unmapped
+- map_entry_missing_file
+- organ_missing_passport
+- passport_missing_required_field
+- organ_missing_validator
+- validator_unwired
+- organ_missing_signal_contract
+- signal_contract_without_validator
+- capability_without_invocation
+- proof_ref_broken
+- draft_stale_or_unread
+- runtime_surface_unindexed
+
+Boundaries:
+
+- read-only repo inventory
+- skip heavy/protected folders by default: .git, .runtime raw/chunks/old runs, node_modules, .venv, __pycache__, dist/build/cache, archives unless manifest selected
+- runtime scan only via manifests/latest summaries/selected proof refs
+- no repo mutation
+- no active memory mutation
+- no accepted-core mutation
+- no live runtime start/stop
+- no Codex/web launch
+
+Next build route:
+
+Because this is complex and multi-cell, use Codex for implementation only after a strict PREFLIGHT task pack is written. GPT/operator should design the bounded requirement, files in/out, schemas, validators, denied surfaces, and proof expectations first. Codex must not decide architecture or mutate before PREFLIGHT_PASS.

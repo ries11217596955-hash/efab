@@ -55,5 +55,60 @@
                                         "active_memory_mutated":  false,
                                         "accepted_core_mutated":  false,
                                         "action_executed":  false
-                                    }
+                                    },
+    "body_self_inspection_circuit_decision":  {
+                                                  "updated_at":  "2026-07-16T19:12:58+04:00",
+                                                  "status":  "ROUTE_DECISION_CAPTURED_NOT_IMPLEMENTED",
+                                                  "owner_decision":  "Build robust Body Self-Inspection Circuit, not plain repo proof lookup executor.",
+                                                  "output_for":  "agent_internal_logic_not_human_report_only",
+                                                  "required_agent_consumables":  [
+                                                                                     "CURRENT_BODY_REALITY",
+                                                                                     "BODY_PAIN_REGISTER",
+                                                                                     "REPAIR_DRAFT_BOARD",
+                                                                                     "NEXT_LOGIC_QUEUE",
+                                                                                     "SELF_INSPECTION_SIGNAL"
+                                                                                 ],
+                                                  "required_passport_refs":  [
+                                                                                 "contracts/accepted_atom_retention_organ/passports/ORGAN_PASSPORT.json",
+                                                                                 "contracts/accepted_atom_retention_organ/passports/PASSPORT_INDEX.json",
+                                                                                 "contracts/accepted_atom_retention_organ/passports/CAPABILITY_PASSPORT.json",
+                                                                                 "operations/autonomous_inner_motor/organ_contract.json",
+                                                                                 "operations/autonomous_inner_motor/execution_authority_passport_v1.json",
+                                                                                 "validators/validate_accepted_atom_retention_passports_v1.ps1",
+                                                                                 "validators/validate_autonomous_inner_motor_organ_contract.ps1"
+                                                                             ],
+                                                  "signal_readiness_fields":  [
+                                                                                  "signal_contract_status",
+                                                                                  "expected_signals_emitted",
+                                                                                  "expected_signals_consumed",
+                                                                                  "signal_schema_ref",
+                                                                                  "signal_validator_ref",
+                                                                                  "signal_emission_proof_ref"
+                                                                              ],
+                                                  "circuit_cells":  [
+                                                                        "repo_inventory_cell",
+                                                                        "map_reader_cell",
+                                                                        "capability_reader_cell",
+                                                                        "organ_candidate_detector_cell",
+                                                                        "passport_contract_reader_cell",
+                                                                        "signal_contract_reader_cell",
+                                                                        "reconciliation_cell",
+                                                                        "pain_register_cell",
+                                                                        "repair_draft_board_cell",
+                                                                        "next_logic_selector_cell",
+                                                                        "self_inspection_signal_cell"
+                                                                    ],
+                                                  "boundaries":  {
+                                                                     "read_only":  true,
+                                                                     "no_repo_mutation":  true,
+                                                                     "no_active_memory_mutation":  true,
+                                                                     "no_accepted_core_mutation":  true,
+                                                                     "no_live_runtime_start_stop":  true,
+                                                                     "no_codex_launch_in_circuit":  true,
+                                                                     "no_web_launch":  true,
+                                                                     "heavy_folders_skipped":  true
+                                                                 },
+                                                  "implementation_route":  "CODEX_ALLOWED_FOR_IMPLEMENTATION_AFTER_GPT_AUTHORED_PREFLIGHT_TASK_PACK",
+                                                  "codex_boundary":  "Codex is implementation tool only; no architecture decision; no writes before PREFLIGHT_PASS; validators/proof required."
+                                              }
 }
