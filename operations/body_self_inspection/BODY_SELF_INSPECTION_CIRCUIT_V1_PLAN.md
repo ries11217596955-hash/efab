@@ -2319,62 +2319,480 @@ Not acceptable:
     no boundary proof
 ### 13. Self-Inspection Signal
 
+Purpose: emit one compact, future nervous-system-compatible signal after each body self-inspection run.
+
 Output:
 
     .runtime/body_self_inspection_v1/self_inspection_signal.json
 
-Compact signal for future nervous system:
+This signal is not the full report. It is the compact agent-consumable summary that future nervous-system logic can route.
 
-    signal_type = BODY_SELF_INSPECTION_COMPLETED
+#### 13.1 Signal status
+
+Allowed status values:
+
+    BODY_SELF_INSPECTION_COMPLETED
+    BODY_SELF_INSPECTION_PARTIAL
+    BODY_SELF_INSPECTION_BLOCKED
+    BODY_SELF_INSPECTION_UNSAFE
+
+#### 13.2 Signal schema
+
+self_inspection_signal.json must include:
+
+    signal_id
+    signal_schema_version
+    signal_type
+    emitted_at
+    emitter_organ_id
+    emitter_cell_id
+    circuit_version
+    repo_head
+    branch
+    source_reality_ref
+    source_pain_register_ref
+    source_draft_board_ref
+    source_next_logic_queue_ref
+    proof_ref
     pain_count
     critical_pain_count
-    new_drafts_count
-    next_logic_action
-    proof_ref
+    high_pain_count
+    new_pain_count
+    reopened_pain_count
+    active_draft_count
+    new_draft_count
+    selected_next_logic_action
+    selected_target_id
+    selected_reason
+    status
+    evidence_status
+    risk_flags
     stale_after
+    boundary
+
+#### 13.3 Placeholder sink policy
+
+Until a real nervous system exists, signal output goes to a placeholder path only:
+
+    .runtime/body_self_inspection_v1/self_inspection_signal.json
+
+This means:
+
+    signal emitted = true
+    nervous_system_consumed = false
+    signal_sink = PLACEHOLDER_RUNTIME_FILE
+
+It must not claim nervous-system wiring.
+
+#### 13.4 Signal relation to next cycle
+
+The next agent cycle should read this signal first as a quick body-state pointer.
+
+If signal is fresh and points to current_body_reality, pain register, draft board, and queue, the agent can avoid broad repo read unless the queue requires it.
+
+#### 13.5 Boundary proof
+
+Signal must prove:
+
+    no active memory mutation
+    no accepted-core mutation
+    no body map mutation
+    no live action
+    no Codex launch
+    no web launch
+
+#### 13.6 Non-success patterns
+
+Not acceptable:
+
+    signal without proof_ref
+    signal without next_logic pointer
+    signal claims nervous system consumption
+    signal duplicates full report
+    signal omits stale_after
+    signal omits boundary
 
 ### 14. Validator Layer
 
-Validator must check quality, not only file existence:
+Purpose: prove the circuit is safe, useful to the agent, and not merely producing files.
 
-    heavy folders skipped
-    maps read
+Primary validator:
+
+    validators/validate_body_self_inspection_circuit_v1.ps1
+
+Primary proof:
+
+    tests/self_development/BODY_SELF_INSPECTION_CIRCUIT_V1_PROOF.json
+
+#### 14.1 Validator must execute the circuit
+
+The validator must run the circuit in a test/sandbox mode and verify outputs.
+
+Required output checks:
+
+    scan_policy_effective.json exists and parses
+    scan_skipped_surfaces.json exists and parses
+    repo_inventory.json exists and parses
+    body_map_read.json exists and parses
+    capability_map_read.json exists and parses
+    organ_candidates.json exists and parses
+    organ_similarity_index.json exists and parses
+    passport_audit.json exists and parses
+    signal_readiness_audit.json exists and parses
+    map_reconciliation.json exists and parses
+    current_body_reality.json exists and parses
+    body_pain_register.jsonl exists and parses
+    repair_draft_board.jsonl exists and parses
+    next_logic_queue.json exists and parses
+    self_inspection_signal.json exists and parses
+    BODY_SELF_INSPECTION_PROOF.json exists and parses
+
+#### 14.2 Quality checks
+
+Validator must check:
+
+    heavy/protected surfaces skipped
+    runtime raw chunks not bulk-read
+    root markers checked
+    maps read or missing recorded
+    organ candidates detected
+    candidate grouping exists
+    similarity/duplicate check exists
     passport refs checked
-    signal fields checked
-    similarity checked
-    repo/map mismatches detected
-    pain register updated
-    repair draft board updated
-    next logic queue produced
-    self-inspection signal produced
-    next cycle can read drafts
-    no repo mutation
-    no active memory mutation
-    no accepted-core mutation
-    no Codex/web
+    validator/proof refs checked
+    signal readiness fields checked
+    reconciliation produces body reality
+    pains have stable ids
+    repeated pains deduplicate
+    drafts link to pains
+    next_logic_queue selects from pain or draft
+    self_inspection_signal points to queue/proof
+    stale_after exists on key outputs
+
+#### 14.3 Boundary checks
+
+Validator must prove:
+
+    repo_mutated = false
+    active_memory_mutated = false
+    accepted_core_mutated = false
+    body_map_mutated = false
+    capability_map_mutated = false
+    live_process_touched = false
+    codex_launched = false
+    web_launched = false
+    cleanup_performed = false
+
+It should record git status before and after the circuit run. Runtime outputs under .runtime/body_self_inspection_v1 are allowed.
+
+#### 14.4 Negative tests
+
+Validator should include negative fixtures or synthetic cases for:
+
+    map declares missing file
+    repo candidate unmapped
+    organ candidate missing passport
+    passport missing required field
+    validator target mismatch
+    proof ref broken
+    duplicate-like candidate pair
+    signal contract missing
+    existing draft for same pain prevents duplicate draft
+
+Negative tests may use fixture data under tests/fixtures/body_self_inspection_v1 or generated runtime-only temp fixtures.
+
+#### 14.5 Proof schema
+
+BODY_SELF_INSPECTION_CIRCUIT_V1_PROOF.json should include:
+
+    status
+    generated_at
+    circuit_ref
+    output_refs
+    validator_checks
+    negative_test_results
+    aggregate_counts
+    selected_next_logic_action
+    boundary
+    errors
+
+PASS status:
+
+    PASS_BODY_SELF_INSPECTION_CIRCUIT_V1
+
+Failure statuses:
+
+    FAIL_BODY_SELF_INSPECTION_CIRCUIT_V1
+    BLOCKED_BODY_SELF_INSPECTION_CIRCUIT_V1
+    PARTIAL_BODY_SELF_INSPECTION_CIRCUIT_V1
+
+#### 14.6 Non-success patterns
+
+Not acceptable:
+
+    validator checks only file existence
+    no negative tests
+    no mutation proof
+    no skipped-surface proof
+    no draft deduplication check
+    no next-cycle readability check
+    no signal check
+    PASS despite parse errors in required outputs
 
 ### 15. Integration with Mind Logic
 
-After route_request_packet:
+Purpose: connect body self-inspection to the agent mind so it becomes part of reasoning, not a standalone report.
 
-    body_self_inspection
-    -> check maps/drafts/pains
-    -> if internal answer exists, use it
-    -> if body gap exists, create logic draft
-    -> only then fallback to repo proof lookup
+#### 15.1 Initial integration point
+
+Initial integration should happen after:
+
+    route_request_packet
+
+Current chain:
+
+    deep answer
+    -> mind_delta_candidate
+    -> acceptance decision
+    -> source authority route
+    -> route_request_packet
+
+New target chain:
+
+    deep answer
+    -> mind_delta_candidate
+    -> acceptance decision
+    -> source authority route
+    -> route_request_packet
+    -> body_self_inspection
+    -> next_logic_queue consumption
+
+#### 15.2 Route handling
+
+If route_request_packet is:
+
+    repo_or_owner_proof_request_packet
+    repo_proof_lookup_packet
+    local_memory_then_repo_proof_packet
+
+then body_self_inspection runs before any broad repo proof lookup.
+
+It asks:
+
+    does current_body_reality already know this?
+    does pain register show a known body gap?
+    does draft board already have a repair draft?
+    does next_logic_queue select a safe reasoning action?
+
+#### 15.3 Mind output fields
+
+Mind logic frame should eventually include:
+
+    body_self_inspection_result
+    body_reality_ref
+    body_pain_summary
+    active_repair_draft_ref
+    selected_body_next_logic_item
+    self_inspection_signal_ref
+
+#### 15.4 Allowed integration behavior
+
+Allowed:
+
+    read self-inspection outputs
+    trigger read-only self-inspection circuit
+    create/update runtime pain/draft/queue outputs
+    select next reasoning step
+    produce logic proof
+
+Forbidden:
+
+    mutate maps directly
+    mutate passports directly
+    mutate validators directly
+    wire organs directly
+    launch Codex from mind frame
+    launch live runtime
+    claim repair accepted
+
+#### 15.5 Fallback logic
+
+Fallback repo proof lookup is allowed only when:
+
+    self-inspection is missing
+    self-inspection is stale
+    self-inspection returns BLOCKED input missing
+    queue selects READ_SPECIFIC_PROOF
+    specific proof refs are needed
+
+Fallback must be targeted, not broad full repo scan.
+
+#### 15.6 Non-success patterns
+
+Not acceptable:
+
+    circuit exists but mind does not read it
+    mind reads report but ignores pain/draft/queue
+    mind falls back to broad repo scan first
+    mind treats draft as implemented fix
+    mind launches Codex directly from queue
 
 ### 16. Codex Implementation Pack
 
-Codex gets implementation only after GPT/operator writes strict pack:
+Purpose: convert this plan into a strict bounded implementation task for Codex.
 
-    files in/out
-    schemas
-    denylist
+Codex may implement code, but it must not decide architecture.
+
+#### 16.1 Primary spec reference
+
+Codex task must explicitly instruct Codex to read this file first:
+
+    operations/body_self_inspection/BODY_SELF_INSPECTION_CIRCUIT_V1_PLAN.md
+
+This plan is the primary architecture spec.
+
+However, the task pack must not rely on the plan path alone. It must also duplicate the critical boundaries, required files, schemas, validators, proof expectations, and cut list in the task itself.
+
+Reason: a link/path is context, not enforcement.
+
+#### 16.2 Codex preflight rule
+
+Any Codex file-write task must start with:
+
+    PREFLIGHT_PASS or BLOCKED_PREFLIGHT
+
+No file writes before PREFLIGHT_PASS.
+
+Codex final report must include:
+
+    Files changed before PREFLIGHT_PASS: YES/NO
+
+Expected:
+
+    NO
+
+#### 16.3 Required task pack sections
+
+Codex task pack must include:
+
+    role and boundary
+    required plan file to read
+    repo preflight commands
+    files allowed to create/edit
+    files forbidden to edit
+    runtime output paths
+    schemas to implement
+    scan denylist
+    protected surfaces
     existing passport refs
-    signal fields
-    validators
-    proof expectations
+    signal readiness fields
+    validators to create/run
+    proof files to produce
+    negative tests
+    success criteria
+    failure statuses
     cut list
-    PREFLIGHT_PASS before writes
+    final report format
 
-Codex does not decide architecture.
+#### 16.4 Allowed implementation files
+
+Likely allowed new files:
+
+    operations/body_self_inspection/invoke_body_self_inspection_circuit_v1.ps1
+    operations/body_self_inspection/build_body_repo_inventory_v1.ps1
+    operations/body_self_inspection/read_body_maps_v1.ps1
+    operations/body_self_inspection/detect_organ_candidates_v1.ps1
+    operations/body_self_inspection/detect_organ_similarity_v1.ps1
+    operations/body_self_inspection/audit_passports_and_contracts_v1.ps1
+    operations/body_self_inspection/audit_signal_readiness_v1.ps1
+    operations/body_self_inspection/reconcile_body_reality_v1.ps1
+    operations/body_self_inspection/update_body_pain_register_v1.ps1
+    operations/body_self_inspection/update_repair_draft_board_v1.ps1
+    operations/body_self_inspection/select_next_body_logic_v1.ps1
+    operations/body_self_inspection/emit_self_inspection_signal_v1.ps1
+    validators/validate_body_self_inspection_circuit_v1.ps1
+    tests/fixtures/body_self_inspection_v1/*
+
+Allowed tracked proof only if validator convention requires it:
+
+    tests/self_development/BODY_SELF_INSPECTION_CIRCUIT_V1_PROOF.json
+
+#### 16.5 Forbidden implementation scope
+
+Codex must not:
+
+    edit active memory
+    edit accepted-core
+    edit live runtime surfaces
+    launch live runtime
+    launch web
+    edit unrelated organs
+    rewrite existing passport law without explicit task
+    rewrite body map directly except pre-commit/generated map updates
+    implement nervous system
+    implement Codex launcher
+    implement broad repo proof lookup executor
+    delete or cleanup runtime
+
+#### 16.6 Slice strategy
+
+Because this organ is large, implementation should be split into slices:
+
+Slice A:
+
+    scan policy + repo inventory + validator smoke
+
+Slice B:
+
+    map reader + organ candidate detector + similarity detector
+
+Slice C:
+
+    passport audit + signal readiness audit
+
+Slice D:
+
+    reconciliation + pain register + draft board + next logic queue
+
+Slice E:
+
+    self-inspection signal + mind integration hook + full validator
+
+Codex should not attempt all slices in one huge uncontrolled patch unless explicitly authorized.
+
+#### 16.7 First Codex task recommendation
+
+First Codex task should implement Slice A only or Slice A+B if preflight confirms scope is small enough.
+
+Recommended first task:
+
+    Implement read-only scan policy and repo inventory cell for BODY_SELF_INSPECTION_CIRCUIT_V1, using the plan file as spec, with validator proving denylist, metadata-first scan, role counts, skipped surfaces, and no mutation.
+
+#### 16.8 Codex final report requirements
+
+Codex final report must include:
+
+    PREFLIGHT_PASS or BLOCKED_PREFLIGHT
+    files changed
+    files created
+    validators run
+    proof paths
+    skipped surfaces
+    mutation boundary proof
+    known gaps
+    next recommended slice
+    Files changed before PREFLIGHT_PASS: YES/NO
+
+#### 16.9 Non-success patterns
+
+Not acceptable:
+
+    Codex reads plan but ignores boundaries
+    Codex implements everything at once without slice proof
+    Codex mutates active memory/runtime/live
+    Codex creates report for human only
+    Codex omits validator
+    Codex omits negative tests
+    Codex omits proof
+    Codex claims nervous system built
+    Codex changes files before PREFLIGHT_PASS
