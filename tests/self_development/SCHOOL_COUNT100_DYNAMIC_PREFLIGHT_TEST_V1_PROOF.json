@@ -26,9 +26,8 @@
     "runtime_first_mtime":  "2026-07-16T07:15:25.0223847+04:00",
     "runtime_last_mtime":  "2026-07-16T07:15:32.7403641+04:00",
     "runtime_mtime_span_seconds":  7.718,
-    "duration_interpretation":  "Count100 Test passed. School runtime was seconds, not an hour: runtime artifact span 7.718s, bridge run duration 15.345s. Biggest internal gap was 5.26s before selection.json, meaning dynamic theme selection / memory scan dominated the actual School run. The long operator session came from diagnostics, cleanup, map refreshes and commits around the run.",
+    "duration_interpretation":  "Count100 Test passed. School runtime was seconds, not an hour. Runtime artifact span was 7.718s; biggest internal gap was dynamic theme selection / memory scan before selection.json. Long wall-clock came from operator-side debugging/auditing around the run.",
     "proof_boundary":  "PROVEN_LAB/Test only; no active memory mutation; not Live readiness proof.",
-    "duration_audit":  "operations/school/proofs/SCHOOL_COUNT100_DURATION_AUDIT_20260716.json",
     "runtime_file_mtime_span_sec":  7.718,
     "largest_duration_gap":  {
                                  "gap_sec":  5.26,
@@ -43,5 +42,6 @@
     "bridge_school_run_duration_ms":  15345,
     "largest_internal_gap_seconds":  5.26,
     "largest_internal_gap_from":  "events.jsonl",
-    "largest_internal_gap_to":  "selection.json"
+    "largest_internal_gap_to":  "selection.json",
+    "duration_proof_location":  "embedded_in_this_proof"
 }
