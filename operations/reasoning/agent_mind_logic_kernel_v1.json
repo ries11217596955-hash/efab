@@ -13,6 +13,7 @@
     "detect_contradictions",
     "resolve_contradictions",
     "build_hypotheses",
+    "test_hypotheses",
     "rank_hypotheses_by_evidence",
     "choose_source_ladder",
     "select_next_logical_step",
@@ -26,10 +27,12 @@
     "A next step is logical only if it reduces the highest-impact unknown or contradiction.",
     "Memory recall is evidence only when its status is PASS_COMPACT_MEMORY_RECALL_V1 and it is cited as memory-supported known.",
     "Raw memory recall must pass Memory Recall Relevance Filter before becoming strong known evidence.",
-    "Detected contradiction must produce branch cut/preserve decision and proof needs before next step."
+    "Detected contradiction must produce branch cut/preserve decision and proof needs before next step.",
+    "Hypotheses must be scored against evidence, memory recall/filter signals, contradiction result, and risk before selecting strongest hypothesis."
   ],
   "mind_maturity_boundary": "This kernel reasons and chooses. It does not execute actions, mutate memory, or launch external tools by itself.",
   "memory_recall_wiring": "build_agent_mind_logic_frame_v1.ps1 calls operations/school/memory/query_compact_semantic_memory_v1.ps1 before known/unknown synthesis when recall is enabled.",
   "memory_recall_filter_wiring": "Memory Recall Relevance Filter V1 deduplicates, rejects curriculum noise, and accepts only relevant matches before known synthesis.",
-  "contradiction_resolution_wiring": "Mind Logic Frame calls resolve_mind_logic_contradiction_v1.ps1 and stores contradiction_resolution before selected next logical step."
+  "contradiction_resolution_wiring": "Mind Logic Frame calls resolve_mind_logic_contradiction_v1.ps1 and stores contradiction_resolution before selected next logical step.",
+  "hypothesis_tester_wiring": "Mind Logic Frame calls test_mind_logic_hypotheses_v1.ps1 and stores hypothesis_test_result before next logical step."
 }

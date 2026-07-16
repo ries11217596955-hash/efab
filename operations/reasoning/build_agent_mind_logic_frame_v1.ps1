@@ -165,6 +165,33 @@ $hypotheses=@(
   [ordered]@{id='H2'; text='The agent becomes smarter by adding a repeatable cognitive cycle, not by adding more static documents.'; evidence_refs=@('kernel cognitive_cycle','validator checks operator order'); confidence='HIGH'; test='validator rejects missing contradiction/unknown/source ladder.'},
   [ordered]@{id='H3'; text='If the agent lacks knowledge, it should choose memory/source acquisition rather than action.'; evidence_refs=@('knowledge gap challenge'); confidence='HIGH'; test='no-evidence task selects ASK_OR_RECALL_SOURCE step.'}
 )
+$hypothesisTest=[ordered]@{
+  status='NOT_RUN'
+  result_path=$null
+  tester_stdout=@()
+  exit_code=$null
+  result=$null
+}
+$hypothesisTester='operations/reasoning/test_mind_logic_hypotheses_v1.ps1'
+$hypothesisTestPath=Join-Path (Split-Path $OutputPath -Parent) 'hypothesis_test_result.json'
+if(Test-Path $hypothesisTester){
+  $testerOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File $hypothesisTester -Problem $Problem -OutputPath $hypothesisTestPath *>&1 | ForEach-Object { [string]$_ })
+  $hypothesisTest.tester_stdout=@($testerOut)
+  $hypothesisTest.exit_code=$LASTEXITCODE
+  $hypothesisTest.result_path=$hypothesisTestPath
+  if((Test-Path $hypothesisTestPath) -and $LASTEXITCODE -eq 0){
+    $hypothesisTest.result=Get-Content $hypothesisTestPath -Raw | ConvertFrom-Json
+    $hypothesisTest.status=$hypothesisTest.result.status
+  } elseif(Test-Path $hypothesisTestPath){
+    $hypothesisTest.result=Get-Content $hypothesisTestPath -Raw | ConvertFrom-Json
+    $hypothesisTest.status='HYPOTHESIS_TESTER_NONZERO_WITH_RESULT'
+  } else {
+    $hypothesisTest.status='HYPOTHESIS_TESTER_FAILED_NO_RESULT'
+  }
+} else {
+  $hypothesisTest.status='HYPOTHESIS_TESTER_SCRIPT_MISSING'
+}
+
 $sourceLadder=@(
   [ordered]@{rank=1; source='current input / Owner correction'; use='highest priority intent and mismatch signal'},
   [ordered]@{rank=2; source='fresh repo proof'; use='what agent can actually do now'},
@@ -196,9 +223,11 @@ $frame=[ordered]@{
   contradictions=@($contradictions.ToArray())
   contradiction_resolution=$contradictionResolution
   hypotheses=@($hypotheses)
+  hypothesis_test_result=$hypothesisTest
   source_ladder=@($sourceLadder)
   selected_next_logical_step=$nextStep
   selected_resolution_step=if($contradictionResolution.result){$contradictionResolution.result.selected_resolution_step}else{$null}
+  strongest_hypothesis=if($hypothesisTest.result){$hypothesisTest.result.strongest_hypothesis}else{$null}
   no_evidence_no_claim=$true
   return_to_parent='Use this frame to build/wire AIMO cognitive logic before any further execution authority work.'
   boundary=[ordered]@{reasoning_only=$true; action_executed=$false; live_process_touched=$false; active_memory_mutated=$false; repo_mutated_by_kernel=$false}

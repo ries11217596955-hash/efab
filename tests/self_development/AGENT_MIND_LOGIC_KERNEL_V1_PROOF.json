@@ -1,7 +1,7 @@
 {
     "schema":  "agent_mind_logic_kernel_validation_v1",
     "status":  "PASS_AGENT_MIND_LOGIC_KERNEL_V1",
-    "checked_at":  "2026-07-16T14:17:36.1838435+04:00",
+    "checked_at":  "2026-07-16T14:27:05.3220337+04:00",
     "kernel_path":  "operations/reasoning/agent_mind_logic_kernel_v1.json",
     "builder_path":  "operations/reasoning/build_agent_mind_logic_frame_v1.ps1",
     "correction_frame":  ".runtime/agent_mind_logic_kernel_v1/validator_owner_correction_frame.json",
@@ -47,6 +47,26 @@
     "memory_recall_match_count":  5,
     "memory_recall_filter_accepted_count":  1,
     "memory_recall_filter_used_in_known":  true,
+    "correction_hypothesis_test_status":  "PASS_HYPOTHESIS_TESTER_V1",
+    "correction_strongest_hypothesis":  {
+                                            "id":  "H1",
+                                            "text":  "The best next improvement is to strengthen the mind logic pipeline, not execution or authority.",
+                                            "kind":  "mind_logic",
+                                            "score":  26,
+                                            "class":  "STRONG",
+                                            "coverage_terms":  [
+                                                                   "correction",
+                                                                   "mind",
+                                                                   "logic",
+                                                                   "not",
+                                                                   "the"
+                                                               ],
+                                            "reasons":  [
+                                                            "matches_mind_logic_signal",
+                                                            "owner_correction_supports_mind_logic"
+                                                        ],
+                                            "rejected":  false
+                                        },
     "memory_recall_used_in_known":  true,
     "no_knowledge_next_step":  {
                                    "step_id":  "ASK_OR_RECALL_SOURCE_BEFORE_ACTION",
@@ -74,6 +94,10 @@
                   },
                   {
                       "name":  "known_unknown_hypothesis_present",
+                      "status":  "PASS"
+                  },
+                  {
+                      "name":  "hypothesis_test_selects_strongest",
                       "status":  "PASS"
                   },
                   {

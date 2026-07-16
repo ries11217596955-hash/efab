@@ -227,3 +227,8 @@ Boundary: the filter is read-only and evidence-selection only. It must not mutat
 AIMO's `mind_logic_frame` must include `contradiction_resolution`. Detection alone is not enough: the resolver must decide which branch to cut, which branch to preserve, what proof is needed, and which resolution step reduces the contradiction or largest unknown.
 
 Boundary: contradiction resolution is reasoning-only. It must not mutate active memory, launch School/Codex, start background processes, or execute actions.
+## Hypothesis Tester inside Mind Logic
+
+AIMO's `mind_logic_frame` must include `hypothesis_test_result`. Hypotheses are not accepted merely because they were generated: the tester scores them against current signals, evidence/memory intent, correction context, and risk. Premature action/authority hypotheses are penalized unless evidence and authority justify them.
+
+Boundary: hypothesis testing is reasoning-only. It must not mutate active memory, launch School/Codex, start background processes, or execute actions.

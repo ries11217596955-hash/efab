@@ -33,6 +33,9 @@ Assert ($f.memory_recall.status -in @('PASS_COMPACT_MEMORY_RECALL_V1','BLOCKED_N
 Assert (@($f.known).Count -ge 3) 'known_too_few'
 Assert (@($f.unknown).Count -ge 3) 'unknown_too_few'
 Assert (@($f.hypotheses).Count -ge 3) 'hypotheses_too_few'
+Assert ($f.PSObject.Properties.Name -contains 'hypothesis_test_result') 'hypothesis_test_result_field_missing'
+Assert ($f.hypothesis_test_result.status -eq 'PASS_HYPOTHESIS_TESTER_V1') ('hypothesis_test_status_bad:'+ $f.hypothesis_test_result.status)
+Assert ($f.hypothesis_test_result.result.strongest_hypothesis.kind -in @('mind_logic','memory_evidence')) ('strongest_hypothesis_bad:'+ $f.hypothesis_test_result.result.strongest_hypothesis.kind)
 Assert (@($f.source_ladder).Count -ge 4) 'source_ladder_too_short'
 $memoryPath='.runtime/agent_mind_logic_kernel_v1/validator_memory_recall_frame.json'
 $outMem=@(& $builder -Problem 'agent mind logic memory recall action candidate' -OutputPath $memoryPath *>&1 | ForEach-Object { [string]$_ })
@@ -73,6 +76,8 @@ $proof=[ordered]@{
   memory_recall_match_count=@($mem.memory_recall.matches).Count
   memory_recall_filter_accepted_count=$mem.memory_recall_filter.accepted_count
   memory_recall_filter_used_in_known=$mem.memory_recall_filter.used_in_known
+  correction_hypothesis_test_status=$f.hypothesis_test_result.status
+  correction_strongest_hypothesis=$f.hypothesis_test_result.result.strongest_hypothesis
   memory_recall_used_in_known=$mem.memory_recall.used_in_known
   no_knowledge_next_step=$g.selected_next_logical_step
   tests=@(
@@ -81,6 +86,7 @@ $proof=[ordered]@{
     [ordered]@{name='owner_correction_cuts_wrong_branch';status=if($f.classification -eq 'CONTEXT_MISMATCH_CORRECTION'){'PASS'}else{'FAIL'}},
     [ordered]@{name='contradiction_resolution_cuts_wrong_branch';status=if($f.contradiction_resolution.result.decision -eq 'CUT_LOSING_BRANCH_AND_CONTINUE_WINNING_BRANCH'){'PASS'}else{'FAIL'}},
     [ordered]@{name='known_unknown_hypothesis_present';status=if(@($f.known).Count -ge 3 -and @($f.unknown).Count -ge 3 -and @($f.hypotheses).Count -ge 3){'PASS'}else{'FAIL'}},
+    [ordered]@{name='hypothesis_test_selects_strongest';status=if($f.hypothesis_test_result.status -eq 'PASS_HYPOTHESIS_TESTER_V1' -and $f.hypothesis_test_result.result.strongest_hypothesis){'PASS'}else{'FAIL'}},
     [ordered]@{name='memory_recall_used_when_relevant';status=if($mem.memory_recall.status -eq 'PASS_COMPACT_MEMORY_RECALL_V1' -and $mem.memory_recall.used_in_known -eq $true){'PASS'}else{'FAIL'}},
     [ordered]@{name='memory_recall_filter_used_when_relevant';status=if($mem.memory_recall_filter.status -eq 'PASS_MEMORY_RECALL_RELEVANCE_FILTER_V1' -and $mem.memory_recall_filter.used_in_known -eq $true){'PASS'}else{'FAIL'}},
     [ordered]@{name='no_knowledge_selects_source_before_action';status=if($g.selected_next_logical_step.step_id -eq 'ASK_OR_RECALL_SOURCE_BEFORE_ACTION'){'PASS'}else{'FAIL'}},
