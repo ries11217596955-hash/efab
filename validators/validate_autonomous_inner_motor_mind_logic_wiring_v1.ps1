@@ -41,6 +41,14 @@ if($proof){
   if($proof.mind_logic_frame.frame.source_authority_route.result.boundary.action_executed -ne $false){ Add-Err 'source_router_executed_action' }
   if($proof.mind_logic_frame.frame.source_authority_route.result.blocked_now -notcontains 'codex'){ Add-Err 'source_router_codex_not_blocked_now' }
   if($proof.mind_logic_frame.frame.source_authority_route.result.blocked_now -notcontains 'web_external'){ Add-Err 'source_router_web_not_blocked_now' }
+  if($proof.mind_logic_frame.frame.PSObject.Properties.Name -notcontains 'route_request_packet'){ Add-Err 'route_request_packet_missing' }
+  if($proof.mind_logic_frame.frame.route_request_packet.status -ne 'PASS_ROUTE_REQUEST_PACKET_V1'){ Add-Err ('route_request_packet_status_bad:'+ $proof.mind_logic_frame.frame.route_request_packet.status) }
+  if($proof.mind_logic_frame.frame.route_request_packet.result.request_type -notin @('accepted_pipeline_request_packet','local_memory_then_repo_proof_packet','repo_proof_lookup_packet','repo_or_owner_proof_request_packet','source_ladder_local_start_packet','source_ladder_expand_local_first_packet','blocked_unknown_route_packet')){ Add-Err ('route_request_packet_type_bad:'+ $proof.mind_logic_frame.frame.route_request_packet.result.request_type) }
+  if($proof.mind_logic_frame.frame.route_request_packet.result.boundary.codex_launched -ne $false){ Add-Err 'route_packet_launched_codex' }
+  if($proof.mind_logic_frame.frame.route_request_packet.result.boundary.web_launched -ne $false){ Add-Err 'route_packet_launched_web' }
+  if($proof.mind_logic_frame.frame.route_request_packet.result.boundary.action_executed -ne $false){ Add-Err 'route_packet_executed_action' }
+  if($proof.mind_logic_frame.frame.route_request_packet.result.codex_request_packet.allowed_now -ne $false){ Add-Err 'route_packet_codex_allowed_now' }
+  if($proof.mind_logic_frame.frame.route_request_packet.result.web_scout_request_packet.allowed_now -ne $false){ Add-Err 'route_packet_web_allowed_now' }
   if($proof.mind_logic_frame.frame.PSObject.Properties.Name -notcontains 'memory_recall'){ Add-Err 'mind_logic_memory_recall_missing' }
   if($proof.mind_logic_frame.frame.PSObject.Properties.Name -notcontains 'memory_recall_filter'){ Add-Err 'mind_logic_memory_recall_filter_missing' }
   if($proof.mind_logic_frame.frame.memory_recall.status -notin @('PASS_COMPACT_MEMORY_RECALL_V1','BLOCKED_NO_RELEVANT_MEMORY_CELLS_V1')){ Add-Err ('mind_logic_memory_recall_status_bad:'+ $proof.mind_logic_frame.frame.memory_recall.status) }
@@ -79,6 +87,7 @@ $out=[ordered]@{
   mind_logic_delta_candidate_status=if($proof -and $proof.mind_logic_frame.frame.mind_delta_candidate){$proof.mind_logic_frame.frame.mind_delta_candidate.status}else{$null}
   mind_logic_delta_acceptance_decision=if($proof -and $proof.mind_logic_frame.frame.mind_delta_acceptance_decision.result){$proof.mind_logic_frame.frame.mind_delta_acceptance_decision.result.decision}else{$null}
   source_authority_route=if($proof -and $proof.mind_logic_frame.frame.source_authority_route.result){$proof.mind_logic_frame.frame.source_authority_route.result.route}else{$null}
+  route_request_packet_type=if($proof -and $proof.mind_logic_frame.frame.route_request_packet.result){$proof.mind_logic_frame.frame.route_request_packet.result.request_type}else{$null}
   mind_logic_hypothesis_test_status=if($proof){$proof.mind_logic_frame.frame.hypothesis_test_result.status}else{$null}
   mind_logic_strongest_hypothesis=if($proof){$proof.mind_logic_frame.frame.hypothesis_test_result.result.strongest_hypothesis}else{$null}
   mind_logic_contradiction_resolution_status=if($proof){$proof.mind_logic_frame.frame.contradiction_resolution.status}else{$null}

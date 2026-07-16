@@ -72,3 +72,37 @@ Boundary:
 Next safe route after commit:
 
 Build a request-packet layer for the selected route, starting with repo_proof_lookup / owner_clarification_request. Do not build Codex/web bridge yet.
+
+## 2026-07-16 update — Route Request Packet Layer
+
+Implemented candidate slice:
+
+- operations/reasoning/build_route_request_packet_v1.ps1
+- validators/validate_route_request_packet_v1.ps1
+- wiring in build_agent_mind_logic_frame_v1.ps1 after source_authority_route
+- kernel cycle step: build_route_request_packet
+- strict AIMO validator checks route_request_packet and confirms no source launch
+
+Packet outputs include:
+
+- accepted_pipeline_request_packet
+- local_memory_then_repo_proof_packet
+- repo_proof_lookup_packet
+- repo_or_owner_proof_request_packet
+- source_ladder_local_start_packet
+- source_ladder_expand_local_first_packet
+- blocked_unknown_route_packet
+
+Boundary:
+
+- codex_request_packet = FUTURE_BLOCKED_NOT_BUILT_NOW
+- web_scout_request_packet = FUTURE_BLOCKED_NOT_BUILT_NOW
+- codex_launched=false
+- web_launched=false
+- active_memory_mutated=false
+- accepted_core_mutated=false
+- action_executed=false
+
+Next safe route after commit:
+
+Build the first bounded executor for repo_proof_lookup_packet as observe-only. It may read repo proof files/validators/commits, but must not edit repo, run live runtime, launch Codex, or browse web.

@@ -301,6 +301,31 @@ if((Test-Path $sourceRouterScript) -and (Test-Path $acceptancePath)){
   $sourceAuthorityRoute.status='ACCEPTANCE_DECISION_MISSING_FOR_SOURCE_ROUTER'
 }
 
+$routeRequestPacket=[ordered]@{
+  status='NOT_RUN'
+}
+$routePacketScript='operations/reasoning/build_route_request_packet_v1.ps1'
+$routePacketPath=Join-Path (Split-Path $OutputPath -Parent) 'route_request_packet.json'
+if((Test-Path $routePacketScript) -and (Test-Path $sourceRouterPath)){
+  $packetOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File $routePacketScript -SourceAuthorityRoutePath $sourceRouterPath -OutputPath $routePacketPath *>&1 | ForEach-Object { [string]$_ })
+  $routeRequestPacket.packet_stdout=@($packetOut | Where-Object { $_ -match '^(ROUTE_REQUEST_PACKET_STATUS|ROUTE_REQUEST_PACKET_TYPE|ROUTE_REQUEST_PACKET_PATH)=' })
+  $routeRequestPacket.exit_code=$LASTEXITCODE
+  $routeRequestPacket.result_path=$routePacketPath
+  if((Test-Path $routePacketPath) -and $LASTEXITCODE -eq 0){
+    $routeRequestPacket.result=Get-Content $routePacketPath -Raw | ConvertFrom-Json
+    $routeRequestPacket.status=$routeRequestPacket.result.status
+  } elseif(Test-Path $routePacketPath){
+    $routeRequestPacket.result=Get-Content $routePacketPath -Raw | ConvertFrom-Json
+    $routeRequestPacket.status='ROUTE_REQUEST_PACKET_NONZERO_WITH_RESULT'
+  } else {
+    $routeRequestPacket.status='ROUTE_REQUEST_PACKET_FAILED_NO_RESULT'
+  }
+} elseif(!(Test-Path $routePacketScript)){
+  $routeRequestPacket.status='ROUTE_REQUEST_PACKET_BUILDER_MISSING'
+} else {
+  $routeRequestPacket.status='SOURCE_AUTHORITY_ROUTE_MISSING_FOR_PACKET'
+}
+
 $sourceLadder=@(
   [ordered]@{rank=1; source='current input / Owner correction'; use='highest priority intent and mismatch signal'},
   [ordered]@{rank=2; source='fresh repo proof'; use='what agent can actually do now'},
@@ -339,6 +364,7 @@ $frame=[ordered]@{
   mind_delta_candidate=if($deepSourceAssimilation.result){$deepSourceAssimilation.result.mind_delta_candidate}else{$null}
   mind_delta_acceptance_decision=$mindDeltaAcceptance
   source_authority_route=$sourceAuthorityRoute
+  route_request_packet=$routeRequestPacket
   selected_next_logical_step=$nextStep
   selected_resolution_step=if($contradictionResolution.result){$contradictionResolution.result.selected_resolution_step}else{$null}
   strongest_hypothesis=if($hypothesisTest.result){$hypothesisTest.result.strongest_hypothesis}else{$null}
