@@ -165,7 +165,7 @@ $taskMd=(($taskOut|Where-Object{$_ -match '^CODEX_WAREHOUSE_DYNAMIC_REQUEST_TASK
 if([string]::IsNullOrWhiteSpace($taskJson) -or -not (Test-Path $taskJson)){ throw 'TASK_JSON_MISSING' }
 $task=Get-Content $taskJson -Raw | ConvertFrom-Json
 $batchCounts=@($task.micro_batches | ForEach-Object {[int]$_.candidate_count})
-$producerStatus='NOT_RUN'; $producerFailureClass=''; $readyBatchCount=0; $readyCandidateCount=0
+$producerStatus='NOT_RUN'; $producerFailureClass=''; $producerExitAnomaly=$false; $producerExitClass=''; $producerExitCode=$null; $readyBatchCount=0; $readyCandidateCount=0
 if($ProducerMode -eq 'MockProducer'){
   foreach($mb in @($task.micro_batches)){
     $rows=New-Object System.Collections.ArrayList
@@ -244,9 +244,9 @@ if($ProducerMode -eq 'MockProducer'){
   foreach($mb in $readyFiles){ $readyCandidateCount += (Get-Content ([string]$mb.ready_jsonl) | Measure-Object).Count }
   if(-not $completed){
     Stop-ProcessTreeByRootPid -RootPid ([int]$p.Id)
-    if($readyBatchCount -eq [int]$task.micro_batch_count -and $readyCandidateCount -eq $Count){ $producerStatus='CODEX_PRODUCER_ALL_READY_CREATED'; $producerFailureClass='TIMEOUT_AFTER_ALL_READY_OUTPUT' } else { $producerStatus='CODEX_FAILED'; $producerFailureClass=("TIMEOUT_READY_BATCHES_{0}/{1}_CANDIDATES_{2}/{3}" -f $readyBatchCount,$task.micro_batch_count,$readyCandidateCount,$Count) }
+    if($readyBatchCount -eq [int]$task.micro_batch_count -and $readyCandidateCount -eq $Count){ $producerStatus='CODEX_PRODUCER_ALL_READY_CREATED'; $producerExitAnomaly=$true; $producerExitClass='TIMEOUT_AFTER_VALID_READY_DONE'; $producerExitCode='TIMEOUT' } else { $producerStatus='CODEX_FAILED'; $producerFailureClass=("TIMEOUT_READY_BATCHES_{0}/{1}_CANDIDATES_{2}/{3}" -f $readyBatchCount,$task.micro_batch_count,$readyCandidateCount,$Count) }
   } elseif($p.ExitCode -ne 0){
-    if($readyBatchCount -eq [int]$task.micro_batch_count -and $readyCandidateCount -eq $Count){ $producerStatus='CODEX_PRODUCER_ALL_READY_CREATED'; $producerFailureClass=("NONZERO_AFTER_ALL_READY_OUTPUT:{0}" -f $p.ExitCode) } else { $producerStatus='CODEX_FAILED'; $producerFailureClass=("NONZERO_READY_BATCHES_{0}/{1}_CANDIDATES_{2}/{3}" -f $readyBatchCount,$task.micro_batch_count,$readyCandidateCount,$Count) }
+    if($readyBatchCount -eq [int]$task.micro_batch_count -and $readyCandidateCount -eq $Count){ $producerStatus='CODEX_PRODUCER_ALL_READY_CREATED'; $producerExitAnomaly=$true; $producerExitClass='NONZERO_EXIT_AFTER_VALID_READY_DONE'; $producerExitCode=$p.ExitCode } else { $producerStatus='CODEX_FAILED'; $producerFailureClass=("NONZERO_READY_BATCHES_{0}/{1}_CANDIDATES_{2}/{3}" -f $readyBatchCount,$task.micro_batch_count,$readyCandidateCount,$Count) }
   } else {
     if($readyBatchCount -eq [int]$task.micro_batch_count -and $readyCandidateCount -eq $Count){ $producerStatus='CODEX_PRODUCER_ALL_READY_CREATED' } else { $producerStatus='CODEX_FAILED'; $producerFailureClass=("READY_BATCHES_{0}/{1}_CANDIDATES_{2}/{3}" -f $readyBatchCount,$task.micro_batch_count,$readyCandidateCount,$Count) }
   }
@@ -274,13 +274,16 @@ if($producerStatus -in @('MOCK_PRODUCER_ALL_READY_CREATED','CODEX_PRODUCER_ALL_R
 $memoryAfter=[ordered]@{manifest=Sha "$mem/manifest.json"; index=Sha "$mem/index.json"; cells=Sha "$mem/cells.jsonl"}
 $memoryChanged=($memoryBefore.cells -ne $memoryAfter.cells -or $memoryBefore.index -ne $memoryAfter.index -or $memoryBefore.manifest -ne $memoryAfter.manifest)
 $status=if($producerStatus -eq 'CODEX_PRODUCER_ALL_READY_CREATED' -and $accepted -eq $Count -and -not $Absorb -and -not $memoryChanged){'PASS_REAL_CODEX_EXACT_COUNT_CYCLE_NO_ABSORB_V1'}elseif($producerStatus -eq 'MOCK_PRODUCER_ALL_READY_CREATED' -and $accepted -eq $Count -and -not $Absorb -and -not $memoryChanged){'PASS_MOCK_EXACT_COUNT_CYCLE_NO_ABSORB_V1'}elseif($producerStatus -eq 'CODEX_PRODUCER_ALL_READY_CREATED' -and $accepted -eq $Count -and $Absorb -and $memoryChanged){'PASS_REAL_CODEX_EXACT_COUNT_CYCLE_WITH_ABSORB_V1'}else{'CHECK_EXACT_COUNT_CYCLE_V1'}
-$report=[ordered]@{schema='generic_exact_count_warehouse_cycle_v1'; status=$status; created_at=(Get-Date).ToString('o'); run_id=$runId; producer_mode=$ProducerMode; count=$Count; micro_batch_size=$MicroBatchSize; micro_batch_count=[int]$task.micro_batch_count; batch_counts=$batchCounts; producer_status=$producerStatus; producer_failure_class=$producerFailureClass; ready_batch_count=$readyBatchCount; ready_candidate_count=$readyCandidateCount; consumed_batches=$consumed; accepted_count=$accepted; absorb=[bool]$Absorb; consumer_statuses=@($consumerStatuses); consumer_reports=@($consumerReports); memory_before=$memoryBefore; memory_after=$memoryAfter; memory_changed=$memoryChanged; task_json=$taskJson; output_root=$OutputRoot; boundary='Generic exact Count cycle. Absorption only if -Absorb is passed.'}
+$report=[ordered]@{schema='generic_exact_count_warehouse_cycle_v1'; status=$status; created_at=(Get-Date).ToString('o'); run_id=$runId; producer_mode=$ProducerMode; count=$Count; micro_batch_size=$MicroBatchSize; micro_batch_count=[int]$task.micro_batch_count; batch_counts=$batchCounts; producer_status=$producerStatus; producer_failure_class=$producerFailureClass; producer_exit_anomaly=[bool]$producerExitAnomaly; producer_exit_class=$producerExitClass; producer_exit_code=$producerExitCode; ready_batch_count=$readyBatchCount; ready_candidate_count=$readyCandidateCount; consumed_batches=$consumed; accepted_count=$accepted; absorb=[bool]$Absorb; consumer_statuses=@($consumerStatuses); consumer_reports=@($consumerReports); memory_before=$memoryBefore; memory_after=$memoryAfter; memory_changed=$memoryChanged; task_json=$taskJson; output_root=$OutputRoot; boundary='Generic exact Count cycle. Absorption only if -Absorb is passed. Complete valid READY/DONE output with nonzero/timeout external exit is reported as producer_exit_anomaly, not producer_failure_class.'}
 $reportPath="$OutputRoot/exact_count_cycle_report.json"
 WriteJson $reportPath $report 100
 Write-Host "EXACT_COUNT_CYCLE_STATUS=$status"
 Write-Host "EXACT_COUNT_CYCLE_REPORT=$reportPath"
 Write-Host "EXACT_COUNT_CYCLE_PRODUCER_STATUS=$producerStatus"
 Write-Host "EXACT_COUNT_CYCLE_PRODUCER_FAILURE_CLASS=$producerFailureClass"
+Write-Host "EXACT_COUNT_CYCLE_PRODUCER_EXIT_ANOMALY=$producerExitAnomaly"
+Write-Host "EXACT_COUNT_CYCLE_PRODUCER_EXIT_CLASS=$producerExitClass"
+Write-Host "EXACT_COUNT_CYCLE_PRODUCER_EXIT_CODE=$producerExitCode"
 Write-Host "EXACT_COUNT_CYCLE_BATCH_COUNTS=$($batchCounts -join ',')"
 Write-Host "EXACT_COUNT_CYCLE_READY_BATCHES=$readyBatchCount"
 Write-Host "EXACT_COUNT_CYCLE_READY_CANDIDATES=$readyCandidateCount"
@@ -378,6 +381,11 @@ Write-Host "SCHOOL_PREFLIGHT_PRESSURE=$($SchoolRequestPlan.pressure_class)"
     absorb=[bool]$ExactCycleReport.absorb
     memory_changed=[bool]$ExactCycleReport.memory_changed
     codex_cli_invoked=($ExactCycleProducerMode -eq 'RunCodex')
+    producer_status=$ExactCycleReport.producer_status
+    producer_failure_class=$ExactCycleReport.producer_failure_class
+    producer_exit_anomaly=[bool]$ExactCycleReport.producer_exit_anomaly
+    producer_exit_class=$ExactCycleReport.producer_exit_class
+    producer_exit_code=$ExactCycleReport.producer_exit_code
     api_invoked=$false
     runtime_ready=$false
     school_preflight=[ordered]@{status='PASS_SCHOOL_DYNAMIC_REQUEST_PREFLIGHT_V1'; selection_status=$SchoolSelectionStatus; selection_path=$SchoolSelectionPath; request_plan_status=$SchoolPlanStatus; request_plan_path=$SchoolRequestPlanPath; topic_key=$SchoolRequestPlan.topic_key; current_depth=[int]$SchoolRequestPlan.current_depth; target_depth=[int]$SchoolRequestPlan.target_depth; depth_gap=[int]$SchoolRequestPlan.depth_gap; pressure_class=$SchoolRequestPlan.pressure_class}
