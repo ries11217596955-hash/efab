@@ -1,24 +1,22 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-16T19:22:03.0708524+04:00",
+    "checked_at":  "2026-07-16T19:24:44.5659070+04:00",
     "branch":  "main",
-    "observed_head":  "f3b0b7e6e85ba6adfee321d7346073ee010befcb",
-    "subject_head":  "f3b0b7e6e85ba6adfee321d7346073ee010befcb",
+    "observed_head":  "1259862d3e1bdc059ce8293caf276a724889f434",
+    "subject_head":  "1259862d3e1bdc059ce8293caf276a724889f434",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "operations/gpt_handoff/NEXT_CHAT_HANDOFF_20260716_MIND_LOGIC.md",
-                          "operations/gpt_handoff/NEXT_CHAT_HANDOFF_20260716_MIND_LOGIC_STATUS.json",
+                          "operations/body_self_inspection/BODY_SELF_INSPECTION_CIRCUIT_V1_PLAN.md",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json"
                       ],
     "structural_paths":  [
-                             "operations/gpt_handoff/NEXT_CHAT_HANDOFF_20260716_MIND_LOGIC.md",
-                             "operations/gpt_handoff/NEXT_CHAT_HANDOFF_20260716_MIND_LOGIC_STATUS.json"
+                             "operations/body_self_inspection/BODY_SELF_INSPECTION_CIRCUIT_V1_PLAN.md"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -31,7 +29,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  2081,
-                                    "sha256":  "21e9dbf3335bf8d02f29e923d0402f2a3303b7b9ba199ca66f5893d918702704"
+                                    "sha256":  "8fc8c3f648eb58679a1d8999f30fd219695e4f435b958b3f2a76c63fb39724df"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -64,5 +62,5 @@
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-16T19:22:31.5737146+04:00"
+    "refreshed_at":  "2026-07-16T19:25:12.7753510+04:00"
 }

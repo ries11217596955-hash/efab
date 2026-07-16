@@ -213,24 +213,384 @@ Not success:
 
 ### 2. Boundaries, protected surfaces, scan policy, denylist
 
-Define exact skip/read policy for heavy and protected surfaces.
+Purpose: make inspection reliable without turning it into an expensive full repo read or unsafe runtime touch.
 
-Must include:
+This cell defines what the circuit may inspect, what it must skip, and what it may read only through compact summaries.
+
+#### 2.1 Boundary class
+
+The first implementation is:
+
+    READ_ONLY_BODY_INSPECTION
+
+It may create only runtime outputs under:
+
+    .runtime/body_self_inspection_v1/
+
+It must not change tracked source files, active memory, accepted-core, body maps, capability maps, runtime state, or live processes.
+
+#### 2.2 Protected surfaces
+
+Protected surfaces are never mutated by this circuit:
+
+    .runtime/active_compact_semantic_memory_v1
+    accepted-core surfaces
+    D2B/accepted-core pipeline surfaces
+    body map / capability map tracked files
+    route locks
+    registry files
+    validators
+    organ contracts
+    passports
+    runtime runners
+    launch scripts
+    git metadata
+    credentials/secrets/env files
+
+Read permission is not write permission.
+
+#### 2.3 Hard denylist
+
+The inventory must skip these surfaces by default:
 
     .git
     node_modules
     .venv
+    env
+    .env folders
     __pycache__
-    dist/build/cache
+    .pytest_cache
+    .mypy_cache
+    dist
+    build
+    cache
+    tmp
+    temp
     large archives
-    .runtime raw chunks / old run bodies / transient logs
+    binary blobs
+    generated streaming chunks
+    old raw school run bodies
+    stale raw runtime chunks
+    browser/cache exports
 
-Runtime may be read only via manifests, latest summaries, and selected proof refs.
+If a skipped surface has a manifest or latest summary, the circuit may read only that manifest/summary through an allowlist rule.
+
+#### 2.4 Runtime read policy
+
+Runtime is not a normal repo subtree.
+
+Allowed runtime reads:
+
+    latest summary json
+    latest proof json selected by manifest
+    compact run report
+    current body_self_inspection_v1 outputs
+    active draft board
+    active pain register
+
+Forbidden runtime reads by default:
+
+    full raw streaming chunks
+    old run body dumps
+    bulk logs
+    temporary generated candidates
+    large file blobs
+
+The circuit must output scan_skipped_surfaces.json so the agent knows what was intentionally skipped.
+
+#### 2.5 File size and content policy
+
+Inventory stage reads metadata first:
+
+    path
+    extension
+    size_bytes
+    mtime
+    directory_role_guess
+    file_role_guess
+    scan_status
+
+Content read is allowed only for selected file roles:
+
+    body map
+    capability map
+    organ registry
+    passport
+    organ contract
+    authority passport
+    validator header / validator metadata
+    proof json summary
+    runtime latest summary
+    repair draft board
+    pain register
+    plan / handoff pointer
+
+Large file threshold must be configurable. Initial default:
+
+    max_content_read_bytes = 262144
+
+Files above threshold are metadata-only unless allowlisted.
+
+#### 2.6 Allowlist roles
+
+Allowed content roles:
+
+    MAP_FILE
+    CAPABILITY_MAP_FILE
+    ORGAN_REGISTRY_FILE
+    ORGAN_PASSPORT_FILE
+    ORGAN_CONTRACT_FILE
+    AUTHORITY_PASSPORT_FILE
+    VALIDATOR_FILE_HEADER
+    PROOF_JSON_SUMMARY
+    RUNTIME_SUMMARY
+    REPAIR_DRAFT_BOARD
+    BODY_PAIN_REGISTER
+    GPT_HANDOFF_POINTER
+    PLAN_FILE
+
+No raw full scan is allowed just because a file is text.
+
+#### 2.7 Git snapshot policy
+
+The circuit may record:
+
+    branch
+    HEAD short hash
+    git status --short
+    origin delta
+    latest commits metadata
+
+It must not run:
+
+    git add
+    git commit
+    git push
+    git clean
+    git checkout
+    git reset
+
+#### 2.8 Scan freshness and staleness
+
+Every output must include:
+
+    scan_started_at
+    scan_finished_at
+    repo_head
+    branch
+    scan_policy_version
+    stale_after
+
+Default stale_after:
+
+    24h for body reality
+    1h for active runtime references
+    immediate stale if git HEAD changes
+
+#### 2.9 Failure behavior
+
+If scan policy cannot be loaded or protected surface is ambiguous:
+
+    BLOCKED_SCAN_POLICY_UNSAFE
+
+If repo is dirty before inspection:
+
+    DIRTY_REPO_OBSERVED
+
+Dirty repo does not automatically block read-only inspection, but it must be recorded in proof and next logic queue.
+
+If active runtime is detected:
+
+    ACTIVE_RUNTIME_OBSERVED
+
+The circuit may continue read-only summary inspection, but must not touch runtime surfaces beyond allowlisted summaries.
+
+#### 2.10 Required output from this section
+
+    .runtime/body_self_inspection_v1/scan_policy_effective.json
+    .runtime/body_self_inspection_v1/scan_skipped_surfaces.json
+
+scan_policy_effective.json must include:
+
+    denied_dirs
+    denied_file_patterns
+    allowed_content_roles
+    max_content_read_bytes
+    runtime_read_policy
+    protected_surfaces
+    git_command_allowlist
+    git_command_denylist
+
+scan_skipped_surfaces.json must include:
+
+    path
+    reason
+    policy_rule
+    metadata_seen
+    summary_ref_if_any
 
 ### 3. Repo Inventory Cell
 
-Build bounded metadata inventory. No full content read by default.
+Purpose: produce a bounded, role-aware inventory of repo reality without promoting files to organs and without reading everything.
 
+Output:
+
+    .runtime/body_self_inspection_v1/repo_inventory.json
+
+#### 3.1 Input
+
+Inputs:
+
+    repo root
+    effective scan policy
+    git snapshot
+    optional route_request_packet context
+
+The cell must not depend on internet, Codex, live runtime, or Owner intervention.
+
+#### 3.2 Inventory record schema
+
+Each file/directory record should include:
+
+    path
+    normalized_path
+    kind = file | directory
+    extension
+    size_bytes
+    mtime_utc
+    depth
+    parent_dir
+    scan_status
+    skipped_reason
+    role_guess
+    confidence
+    evidence
+    content_read_status
+    content_summary_ref
+    risk_flags
+
+role_guess values:
+
+    UNKNOWN
+    MAP_FILE
+    CAPABILITY_MAP_FILE
+    ORGAN_REGISTRY_FILE
+    ORGAN_CANDIDATE_SCRIPT
+    ORGAN_CONTRACT_FILE
+    ORGAN_PASSPORT_FILE
+    AUTHORITY_PASSPORT_FILE
+    VALIDATOR_FILE
+    PROOF_JSON
+    RUNTIME_SUMMARY
+    REPAIR_DRAFT_BOARD
+    BODY_PAIN_REGISTER
+    HANDOFF_POINTER
+    PLAN_FILE
+    TRANSIENT_RUNTIME
+    PROTECTED_SURFACE
+    HEAVY_SKIPPED_SURFACE
+
+#### 3.3 Organ candidate signals
+
+A file may be an organ candidate if it matches one or more:
+
+    operations/<name>/...runner or orchestrator script
+    operations/<name>/organ_contract.json
+    operations/<name>/execution_authority_passport*.json
+    modules/invoke_*.ps1
+    orchestrator/*.ps1
+    validators/validate_*_organ*.ps1
+    contracts/**/ORGAN_PASSPORT.json
+    scripts that produce proof json
+    scripts that manage memory, maps, body, runtime, proof, school, or route
+
+Candidate detection is weak evidence only:
+
+    ORGAN_CANDIDATE != ORGAN
+
+#### 3.4 Content summary for selected files
+
+For selected allowed roles, the inventory may write a compact content summary, not a full copy.
+
+Summary fields:
+
+    schema_if_json
+    status_if_present
+    role_if_present
+    declared_organ_id
+    declared_capability_ids
+    declared_validator_refs
+    declared_signal_refs
+    declared_proof_refs
+    top_level_keys
+    parse_status
+    parse_errors
+
+#### 3.5 Inventory aggregates
+
+repo_inventory.json must include aggregates:
+
+    total_files_seen
+    total_dirs_seen
+    files_skipped
+    dirs_skipped
+    content_files_read
+    content_files_metadata_only
+    role_counts
+    organ_candidate_count
+    passport_file_count
+    contract_file_count
+    validator_file_count
+    proof_json_count
+    runtime_summary_count
+    heavy_skipped_count
+    protected_skipped_count
+
+#### 3.6 Required safety proof
+
+repo_inventory.json must include boundary proof:
+
+    repo_mutated = false
+    active_memory_mutated = false
+    accepted_core_mutated = false
+    live_process_touched = false
+    codex_launched = false
+    web_launched = false
+    cleanup_performed = false
+
+#### 3.7 Failure behavior
+
+If a file cannot be read:
+
+    record scan_status = READ_FAILED
+    record error class
+    continue unless it is a required root marker
+
+If root markers are missing:
+
+    record ROOT_MARKER_MISSING pain candidate
+    do not invent marker
+
+Required root markers to check:
+
+    CAPABILITY_ROADMAP.json
+    GENESIS_STATE.json
+    TASK_QUEUE.json
+    packs/registry.json
+    orchestrator/run.ps1
+
+#### 3.8 Non-success patterns
+
+Not acceptable:
+
+    raw full repo file dump
+    recursive runtime dump
+    treating file name match as organ proof
+    ignoring skipped surfaces
+    no role counts
+    no boundary proof
+    no stale_after
+    inventory without scan policy ref
 ### 4. Body / Capability Map Reader Cell
 
 Read existing maps, registries, capability surfaces, known invocation paths and proof refs.
