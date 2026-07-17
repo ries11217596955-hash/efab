@@ -6,11 +6,31 @@ param(
 
 $ErrorActionPreference = "Stop"
 
+function Convert-JsonCompatible {
+    param($Value)
+    if ($null -eq $Value) { return $null }
+    if ($Value -is [string] -or $Value -is [char] -or $Value -is [bool] -or $Value -is [int] -or $Value -is [long] -or $Value -is [double] -or $Value -is [decimal]) { return $Value }
+    if ($Value -is [datetime]) { return $Value.ToUniversalTime().ToString("o") }
+    if ($Value -is [System.Collections.IDictionary]) {
+        $out = [ordered]@{}
+        foreach ($key in $Value.Keys) { $out[[string]$key] = Convert-JsonCompatible $Value[$key] }
+        return $out
+    }
+    if ($Value -is [System.Collections.IEnumerable] -and -not ($Value -is [string])) {
+        return @($Value | ForEach-Object { Convert-JsonCompatible $_ })
+    }
+    if ($Value.PSObject -and $Value.PSObject.Properties) {
+        $out = [ordered]@{}
+        foreach ($prop in $Value.PSObject.Properties) { $out[[string]$prop.Name] = Convert-JsonCompatible $prop.Value }
+        return $out
+    }
+    return [string]$Value
+}
 function Write-JsonFile {
     param([string]$Path, $Data)
     $dir = Split-Path -Parent $Path
     if ($dir -and -not (Test-Path -LiteralPath $dir)) { New-Item -ItemType Directory -Force -Path $dir | Out-Null }
-    $json = ($Data | ConvertTo-Json -Depth 40) -replace "`r`n", "`n"
+    $json = ((Convert-JsonCompatible $Data) | ConvertTo-Json -Depth 40) -replace "`r`n", "`n"
     [System.IO.File]::WriteAllText($Path, $json.TrimEnd() + "`n", (New-Object System.Text.UTF8Encoding($false)))
 }
 

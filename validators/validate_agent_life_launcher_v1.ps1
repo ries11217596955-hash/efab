@@ -36,6 +36,7 @@ else {
         "-EnableDeepThinking",
         "-EnableMemoryLearning",
         "-MemoryIngestionMode QueueOnly",
+        'Convert-JsonCompatible',
         "action_execution_allowed = `$false",
         "codex_allowed = `$false",
         "web_allowed = `$false",
