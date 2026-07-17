@@ -457,3 +457,81 @@ Reason:
 ```text
 Without reflection, compact memory and short-term memory can still feed a looping mind. Reflection is the circuit that notices the loop and changes the next decision.
 ```
+## 9. Correction — reflex debt is the active Owner-confirmed branch
+
+Status: ACTIVE_CORRECTION
+
+Owner correction:
+
+```text
+The discussed topic was reflexes, not a separate reflection/reflexion organ set.
+```
+
+Correction:
+
+```text
+REFLECTION_DEBT_SOURCE_MAP_V1 is not an Owner-confirmed active branch.
+It is superseded for current planning by REFLEX_DEBT_SOURCE_MAP_V1.
+```
+
+Active source:
+
+```text
+AGENT_BUILDER_INNATE_REFLEX_KERNEL_V1_PLAN.md
+section: Reflex groups and proposed first matrix
+```
+
+Full matrix in that source contains 25 reserved reflex slots:
+
+```text
+body_audit_reflex
+organ_audit_reflex
+full_body_map_audit_reflex
+repo_reality_reflex
+process_scan_reflex
+runtime_pressure_reflex
+preflight_reflex
+validator_run_reflex
+proof_pack_reflex
+rollback_reflex
+quarantine_reflex
+stop_or_freeze_reflex
+memory_queue_reflex
+active_memory_read_reflex
+memory_digest_reflex
+handoff_write_reflex
+self_notebook_update_reflex
+directory_create_reflex
+file_normalize_reflex
+archive_backup_reflex
+artifact_convert_reflex
+codex_consult_reflex
+codex_task_authoring_reflex
+web_source_search_reflex
+source_ingestion_reflex
+```
+
+Current status:
+
+```text
+REFLEX_TRACK_PARTIAL_PROVEN
+```
+
+Known proven/wired subset:
+
+```text
+DEFAULT_WAKE_REFLEXES_V2 = wake-default context includes body_audit_reflex, repo_reality_reflex, process_scan_reflex, runtime_pressure_reflex, active_memory_read_reflex.
+```
+
+Remaining debt:
+
+```text
+Most reflex slots are reserved/not fully built/not fully wired.
+Need audit to compare plan slots vs registry vs canonical wake/default usage.
+```
+
+Needed audit:
+
+```text
+AUDIT_RX1_REFLEX_MATRIX_CURRENT_STATE_V1
+```
