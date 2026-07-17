@@ -692,6 +692,31 @@ function New-WebResearchRequest([string]$Need,[string]$Why){
 function New-CodexQuestionRequest([string]$Need,[string]$Why){
   return [ordered]@{ port='CODEX_QUESTION_PORT'; mode='request_only'; launched=$false; need=$Need; why=$Why; constraints=@('bounded question','no file writes before PREFLIGHT_PASS','Codex is not brain','answer returns as CODEX_DRAFT') }
 }
+function New-SelectiveCompactMemoryRetrieval($RunId,$InternalGoal,$MindLogic,$MentalFrontierRouter,[string]$ActiveMemoryRoot='.runtime/active_compact_semantic_memory_v1'){
+  $cellsPath=Join-Path $ActiveMemoryRoot 'cells.jsonl'
+  $indexPath=Join-Path $ActiveMemoryRoot 'index.json'
+  $manifestPath=Join-Path $ActiveMemoryRoot 'manifest.json'
+  $queryParts=@()
+  if($InternalGoal -and $InternalGoal.goal){ $queryParts += [string]$InternalGoal.goal }
+  if($MindLogic -and $MindLogic.frame -and $MindLogic.frame.selected_next_logical_step){ $queryParts += [string]$MindLogic.frame.selected_next_logical_step }
+  if($MentalFrontierRouter){ foreach($field in @('selected_frontier','frontier_id','route','selected_route','next_frontier')){ $value=Get-ObjectField $MentalFrontierRouter $field; if($value){ $queryParts += [string]$value } } }
+  $seedTerms=@('decision','build','task','frontier','validator','proof','memory','retrieval','parent','goal','queue','compact','short-term','working','router','repair')
+  $queryText=(($queryParts + $seedTerms) -join ' ').ToLowerInvariant()
+  $terms=@($queryText -split '[^a-z0-9_-]+' | Where-Object { $_ -and $_.Length -ge 4 } | Select-Object -Unique)
+  $selected=@(); $scanned=0
+  if(-not(Test-Path -LiteralPath $cellsPath)){
+    return [ordered]@{ schema='selective_compact_memory_retrieval_v1'; status='BLOCKED_ACTIVE_COMPACT_MEMORY_CELLS_MISSING'; run_id=$RunId; active_memory_root=$ActiveMemoryRoot; cells_path=$cellsPath; index_path=$indexPath; manifest_path=$manifestPath; query_terms=@($terms); scanned_cells=0; selected_memory_refs=@(); selected_count=0; decision_effect='none; cells missing'; active_memory_mutated=$false }
+  }
+  $lineNo=0
+  Get-Content -LiteralPath $cellsPath | ForEach-Object {
+    $lineNo++; $raw=[string]$_; if([string]::IsNullOrWhiteSpace($raw)){ return }; $scanned++
+    try{ $cell=$raw|ConvertFrom-Json; $blob=$raw.ToLowerInvariant(); $matched=@(); foreach($t in $terms){ if($blob.Contains($t)){ $matched += $t } }; $matched=@($matched|Select-Object -Unique); if($matched.Count -gt 0){ $confidence=0.0; try{ $confidence=[double]$cell.confidence }catch{}; $score=[math]::Round(($matched.Count*1.0)+($confidence*0.5),3); $selected += [ordered]@{ cell_id=$cell.cell_id; concept_key=$cell.concept_key; label=$cell.label; kind=$cell.kind; summary=$cell.summary; confidence=$cell.confidence; line=$lineNo; matched_terms=@($matched|Select-Object -First 12); relevance_score=$score; source_ref=($cellsPath + '#line:' + $lineNo); uses=@($cell.uses|Select-Object -First 2) } } }catch{}
+  }
+  $top=@($selected|Sort-Object relevance_score -Descending|Select-Object -First 7)
+  $status=if($top.Count -gt 0){'PASS_SELECTIVE_COMPACT_MEMORY_RETRIEVAL_V1'}else{'NO_RELEVANT_COMPACT_MEMORY_REFS_FOUND'}
+  $effect=if($top.Count -gt 0){'retrieved compact memory refs are available to decision_spine and must affect next_action_type'}else{'no retrieved refs; decision_spine may remain blocked'}
+  return [ordered]@{ schema='selective_compact_memory_retrieval_v1'; status=$status; run_id=$RunId; active_memory_root=$ActiveMemoryRoot; cells_path=$cellsPath; index_path=$indexPath; manifest_path=$manifestPath; query_parts=@($queryParts); query_terms=@($terms|Select-Object -First 40); scanned_cells=$scanned; selected_memory_refs=@($top); selected_count=@($top).Count; decision_effect=$effect; active_memory_mutated=$false }
+}
 function New-NextBuildTaskDecisionSpine($RunId,$InternalGoal,$MindLogic,$ActionDecision,$MentalFrontierRouter,$MemoryRecalls,$AntiRepeatGuard,$MemoryToNextPathReuseGate,[string]$MemoryIngestionMode,[bool]$EnableMemoryLearning){
   $selectedFrontier = $null
   if($MentalFrontierRouter){
@@ -710,9 +735,11 @@ function New-NextBuildTaskDecisionSpine($RunId,$InternalGoal,$MindLogic,$ActionD
   foreach($r in @($MemoryRecalls)){
     if($null -ne $r){
       $recallRefs += [ordered]@{
-        id=if(Get-ObjectField $r 'id'){ Get-ObjectField $r 'id' } elseif(Get-ObjectField $r 'path'){ Get-ObjectField $r 'path' } else { $null }
-        topic=if(Get-ObjectField $r 'topic'){ Get-ObjectField $r 'topic' } elseif(Get-ObjectField $r 'title'){ Get-ObjectField $r 'title' } else { $null }
-        source=if(Get-ObjectField $r 'source'){ Get-ObjectField $r 'source' } else { $null }
+        id=if(Get-ObjectField $r 'cell_id'){ Get-ObjectField $r 'cell_id' } elseif(Get-ObjectField $r 'id'){ Get-ObjectField $r 'id' } elseif(Get-ObjectField $r 'path'){ Get-ObjectField $r 'path' } else { $null }
+        topic=if(Get-ObjectField $r 'concept_key'){ Get-ObjectField $r 'concept_key' } elseif(Get-ObjectField $r 'topic'){ Get-ObjectField $r 'topic' } elseif(Get-ObjectField $r 'title'){ Get-ObjectField $r 'title' } elseif(Get-ObjectField $r 'label'){ Get-ObjectField $r 'label' } else { $null }
+        source=if(Get-ObjectField $r 'source_ref'){ Get-ObjectField $r 'source_ref' } elseif(Get-ObjectField $r 'source'){ Get-ObjectField $r 'source' } else { $null }
+        relevance_score=if(Get-ObjectField $r 'relevance_score'){ Get-ObjectField $r 'relevance_score' } else { $null }
+        matched_terms=if(Get-ObjectField $r 'matched_terms'){ @(Get-ObjectField $r 'matched_terms') } else { @() }
       }
     }
   }
@@ -721,13 +748,20 @@ function New-NextBuildTaskDecisionSpine($RunId,$InternalGoal,$MindLogic,$ActionD
   $blockedReason='no selected_action_id available; selective compact memory retrieval and build-task routing must run before execution'
   $nextActionType='BLOCKED_NEEDS_MEMORY_RETRIEVAL'
   $utilityScore=0.35
+  if($recallRefs.Count -gt 0){
+    $observedGap='RELEVANT_COMPACT_MEMORY_RETRIEVED_BUT_NEXT_ORGAN_MISSING'
+    $candidateBuildTask='SHORT_TERM_MIND_STATE_V1_SLICE_A: create compact short-term mind state so retrieved memory and recent decisions persist across canonical cycles.'
+    $blockedReason=$null
+    $nextActionType='REPAIR_TASK_CANDIDATE'
+    $utilityScore=0.62
+  }
   if($selectedActionId){
     $observedGap='ACTION_CANDIDATE_EXISTS_BUT_BUILD_TASK_CONTRACT_MISSING'
     $blockedReason='selected_action_id exists, but no candidate_files_in/files_out/validator_target/proof_target contract is proven yet'
     $nextActionType='BLOCKED_NEEDS_PROOF'
     $utilityScore=0.45
   }
-  if($AntiRepeatGuard -and $AntiRepeatGuard.status -eq 'REPEAT_PRESSURE_DETECTED'){
+  if($AntiRepeatGuard -and $AntiRepeatGuard.status -eq 'REPEAT_PRESSURE_DETECTED' -and $recallRefs.Count -eq 0){
     $observedGap='REPEAT_PRESSURE_REQUIRES_DIFFERENT_BUILD_TASK_OR_OPERATOR_REVIEW'
     $blockedReason='anti_repeat_guard detected repeated candidate; queue packet is not allowed to count as progress by itself'
     $nextActionType='BLOCKED_NEEDS_OWNER_DECISION'
@@ -1004,12 +1038,15 @@ $memoryToNextPathReuseGate = [ordered]@{
   gate_ref=$memoryToNextPathReuseGatePath
 }
 Write-CleanJson $memoryToNextPathReuseGatePath $memoryToNextPathReuseGate 20
+$selectiveCompactMemoryRetrievalPath = Join-Path $runRoot 'selective_compact_memory_retrieval.json'
+$selectiveCompactMemoryRetrieval = New-SelectiveCompactMemoryRetrieval $runId $internalGoal $mindLogic $mentalFrontierRouter
+Write-CleanJson $selectiveCompactMemoryRetrievalPath $selectiveCompactMemoryRetrieval 40
 $decisionSpinePath = Join-Path $runRoot 'next_build_task_decision_spine.json'
-$decisionSpine = New-NextBuildTaskDecisionSpine $runId $internalGoal $mindLogic $actionDecision $mentalFrontierRouter $deepThinking.memory_recalls $antiRepeatGuard $memoryToNextPathReuseGate $MemoryIngestionMode ([bool]$EnableMemoryLearning)
+$decisionSpine = New-NextBuildTaskDecisionSpine $runId $internalGoal $mindLogic $actionDecision $mentalFrontierRouter $selectiveCompactMemoryRetrieval.selected_memory_refs $antiRepeatGuard $memoryToNextPathReuseGate $MemoryIngestionMode ([bool]$EnableMemoryLearning)
 Write-CleanJson $decisionSpinePath $decisionSpine 30
 $proofPackManifestPath = Join-Path $runRoot 'sandbox_proof_pack_manifest.json'
 
-$filesWritten=@($proofPath,$mindLogicPath,$actionDecisionPath,$antiRepeatGuardPath,$memoryToNextPathReuseGatePath,$mentalFrontierExpansionGatePath,$mentalFrontierRouterPath,$decisionSpinePath,$proofPackManifestPath)
+$filesWritten=@($proofPath,$mindLogicPath,$actionDecisionPath,$antiRepeatGuardPath,$memoryToNextPathReuseGatePath,$mentalFrontierExpansionGatePath,$mentalFrontierRouterPath,$selectiveCompactMemoryRetrievalPath,$decisionSpinePath,$proofPackManifestPath)
 if($cycleWakeArtifactsWritten){ $filesWritten += @($innateReflexBootloadPath,$defaultWakeReflexesPath) }
 if($lifeWorkingMemoryCreated){ $filesWritten += $lifeWorkingMemoryPath }
 $proof=[ordered]@{
@@ -1041,6 +1078,7 @@ $proof=[ordered]@{
   memory_to_next_path_reuse_gate=$memoryToNextPathReuseGate
   mental_frontier_expansion_gate=$mentalFrontierExpansionGate
   mental_frontier_router=$mentalFrontierRouter
+  selective_compact_memory_retrieval=$selectiveCompactMemoryRetrieval
   decision_spine=$decisionSpine
   policy_snapshot=[ordered]@{ allowed_modes=$policy.allowed_modes; disabled_modes=$policy.disabled_modes; source_ladder=$policy.source_ladder; ports=$policy.ports }
   self_question_trace=$cycles
@@ -1059,6 +1097,7 @@ $proof=[ordered]@{
     [ordered]@{ step='life_working_memory'; result=$lifeWorkingMemory.status; proof='Life working memory keeps wake context once per life and cycles reuse it instead of re-scanning body every breath.' },
     [ordered]@{ step='mind_logic_frame'; result=$mindLogic.status; proof='Mind Logic Kernel separates known/unknown, contradiction, hypotheses, source ladder, and next logical step before action candidate.' },
     [ordered]@{ step='action_candidate_contract'; result=$actionDecision.status; proof='Action Decision Contract selects a next action candidate from the mind logic frame but keeps execution_allowed=false.' },
+    [ordered]@{ step='selective_compact_memory_retrieval'; result=$selectiveCompactMemoryRetrieval.status; proof='Active compact memory refs are retrieved before decision_spine chooses next action type.' },
     [ordered]@{ step='decision_spine'; result=$decisionSpine.next_action_type; proof='Cycle must end with candidate build task or explicit blocked reason, not just queue packet.' },
     [ordered]@{ step='select_next'; result=$selected.path; proof='deep recursive thinking and self-learning atom loop are the next bottleneck for thinking quality.' }
   )
@@ -1072,7 +1111,7 @@ $proof=[ordered]@{
   validator_result=[ordered]@{ runner_self_check='PASS_RUNNER_GENERATED_SINGLE_SANDBOX_PROOF'; external_validator_expected='validators/validate_autonomous_inner_motor_organ_contract.ps1 -SandboxProofPath <proof>; validators/validate_autonomous_inner_motor_mind_logic_wiring_v1.ps1 -ProofPath <proof>; validators/validate_autonomous_inner_motor_action_decision_wiring_v1.ps1 -ProofPath <proof>' }
 }
 Write-CleanJson $proofPath $proof 80
-$proofPackRequiredFiles=@('SANDBOX_EXPLORATION_PROOF.json','mind_logic_frame.json','action_decision_packet.json','anti_repeat_guard.json','memory_to_next_path_reuse_gate.json','mental_frontier_expansion_gate.json','mental_frontier_router.json','next_build_task_decision_spine.json')
+$proofPackRequiredFiles=@('SANDBOX_EXPLORATION_PROOF.json','mind_logic_frame.json','action_decision_packet.json','anti_repeat_guard.json','memory_to_next_path_reuse_gate.json','mental_frontier_expansion_gate.json','mental_frontier_router.json','selective_compact_memory_retrieval.json','next_build_task_decision_spine.json')
 if($cycleWakeArtifactsWritten){ $proofPackRequiredFiles += @('innate_reflex_bootload.json','default_wake_reflexes.json') }
 $proofPackOptionalSidecars=@('memory_recall_filter.json','contradiction_resolution.json','hypothesis_test_result.json','deep_source_answer_request.json','memory_filter_for_answer.json','route_request_packet.json','source_authority_route_decision.json','deep_source_answer_assimilation.json','mind_delta_acceptance_decision.json')
 $proofPackFiles=@()

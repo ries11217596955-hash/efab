@@ -1,0 +1,27 @@
+{
+    "schema":  "selective_compact_memory_retrieval_v1_acceptance",
+    "status":  "ACCEPTED_SELECTIVE_COMPACT_MEMORY_RETRIEVAL_V1_SLICE_A",
+    "accepted_at":  "2026-07-17T20:36:49.5983068Z",
+    "proof":  "tests/self_development/SELECTIVE_COMPACT_MEMORY_RETRIEVAL_V1_PROOF.json",
+    "runtime_proof_path":  ".runtime\\selective_compact_memory_retrieval_v1_validation\\aimo_20260718_003415\\SANDBOX_EXPLORATION_PROOF.json",
+    "retrieval_path":  ".runtime\\selective_compact_memory_retrieval_v1_validation\\aimo_20260718_003415\\selective_compact_memory_retrieval.json",
+    "may_claim":  "Slice A retrieves active compact memory refs and proves they affect decision_spine next_action_type.",
+    "may_not_claim":  [
+                          "semantic retrieval is optimal",
+                          "short-term memory built",
+                          "frontier router built",
+                          "agent executes build task autonomously",
+                          "active memory was mutated"
+                      ],
+    "boundary":  {
+                     "runtime_launched_by_validator":  true,
+                     "active_memory_mutated":  false,
+                     "direct_active_memory_write":  false,
+                     "action_execution_allowed":  false,
+                     "canonical_launcher_mutated":  false,
+                     "codex_launched":  false,
+                     "web_launched":  false,
+                     "school_launched":  false,
+                     "ram_migration":  false
+                 }
+}

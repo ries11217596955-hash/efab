@@ -248,3 +248,42 @@ Next repair:
 ```text
 SELECTIVE_COMPACT_MEMORY_RETRIEVAL_V1
 ```
+## 8. Selective Compact Memory Retrieval Slice A acceptance
+
+Status: PROVEN_LAB / ACCEPTED
+
+```text
+SELECTIVE_COMPACT_MEMORY_RETRIEVAL_V1_SLICE_A = PASS
+```
+
+Proof:
+
+```text
+tests/self_development/SELECTIVE_COMPACT_MEMORY_RETRIEVAL_V1_PROOF.json
+operations/autonomous_inner_motor/reports/SELECTIVE_COMPACT_MEMORY_RETRIEVAL_V1_ACCEPTANCE.json
+```
+
+Validated result:
+
+```text
+selective_compact_memory_retrieval.status = PASS_SELECTIVE_COMPACT_MEMORY_RETRIEVAL_V1
+selective_compact_memory_retrieval.scanned_cells = 134
+selective_compact_memory_retrieval.selected_count = 7
+decision_effect.previous_next_action_type = BLOCKED_NEEDS_MEMORY_RETRIEVAL
+decision_effect.current_next_action_type = REPAIR_TASK_CANDIDATE
+decision_effect.changed_by_retrieval = true
+decision_spine.candidate_build_task = SHORT_TERM_MIND_STATE_V1_SLICE_A
+active_memory_mutated = false
+```
+
+Interpretation:
+
+```text
+Compact memory now affects decision_spine. The next missing organ is short-term mind state.
+```
+
+Next repair:
+
+```text
+SHORT_TERM_MIND_STATE_V1_SLICE_A
+```
