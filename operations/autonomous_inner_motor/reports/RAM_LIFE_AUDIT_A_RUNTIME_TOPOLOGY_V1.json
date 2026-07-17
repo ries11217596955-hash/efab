@@ -1,0 +1,104 @@
+{
+    "schema":  "ram_life_audit_a_runtime_topology_v1",
+    "status":  "PASS_RAM_LIFE_AUDIT_A_RUNTIME_TOPOLOGY_V1",
+    "checked_at":  "2026-07-17T17:17:11.5553626Z",
+    "inspected":  [
+                      "operations/autonomous_inner_motor/start_agent_life_v1.ps1",
+                      "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1"
+                  ],
+    "current_runtime_topology":  {
+                                     "model":  "canonical_launcher_loop_spawns_separate_runner_process_per_cycle",
+                                     "owner_command":  "powershell -NoProfile -ExecutionPolicy Bypass -File operations/autonomous_inner_motor/start_agent_life_v1.ps1 -DurationMinutes \u003cminutes\u003e",
+                                     "launcher_role":  "preflight, trial root, duration loop, runner spawn, live trial summary",
+                                     "runner_role":  "single cycle reasoning/proof/memory packet generation, then process exits",
+                                     "continuous_runtime":  "NOT_IMPLEMENTED",
+                                     "ram_persistence":  "only within one runner process; lost after runner exits",
+                                     "life_bridge":  "life_working_memory_context.json is shared across runner processes"
+                                 },
+    "process_boundaries":  {
+                               "launcher_process":  "longer-lived during canonical trial",
+                               "runner_process":  "short-lived per cycle",
+                               "cycle_ram_state":  "dies when runner process exits",
+                               "persistent_between_cycles":  [
+                                                                 "life_working_memory_context.json",
+                                                                 "compact memory queue packets",
+                                                                 "cycle proof files",
+                                                                 "trial summary"
+                                                             ],
+                               "not_persistent_between_cycles":  [
+                                                                     "runner local variables",
+                                                                     "cycle scratch",
+                                                                     "in-process action decision objects unless written to proof"
+                                                                 ]
+                           },
+    "file_bridge_surfaces":  {
+                                 "life_context":  "life_working_memory_context.json",
+                                 "cycle_proof":  "SANDBOX_EXPLORATION_PROOF.json",
+                                 "cycle_sidecars":  [
+                                                        "mind_logic_frame.json",
+                                                        "action_decision_packet.json",
+                                                        "anti_repeat_guard.json",
+                                                        "memory_to_next_path_reuse_gate.json",
+                                                        "mental_frontier_expansion_gate.json",
+                                                        "mental_frontier_router.json"
+                                                    ],
+                                 "wake_files_first_cycle":  [
+                                                                "innate_reflex_bootload.json",
+                                                                "default_wake_reflexes.json",
+                                                                "wake_body_audit compact files"
+                                                            ],
+                                 "memory_growth":  "compact_memory_intake_v1 queue packets",
+                                 "trial_summary":  "LIVE_TRIAL_SUMMARY.json"
+                             },
+    "launcher_evidence":  {
+                              "has_duration_param":  true,
+                              "has_preflight":  true,
+                              "has_runner_spawn":  true,
+                              "has_wake_context_path":  true,
+                              "has_life_summary":  true,
+                              "has_process_check":  true
+                          },
+    "runner_evidence":  {
+                            "has_wake_context_param":  true,
+                            "has_life_working_memory":  true,
+                            "has_default_wake":  true,
+                            "has_body_retention":  true,
+                            "has_proof_pack_required":  true,
+                            "has_mutation_audit_files_written":  true,
+                            "has_queue_only":  true
+                        },
+    "strengths":  [
+                      "canonical launcher exists",
+                      "process preflight exists",
+                      "life working memory bridge exists",
+                      "wake context reuse exists",
+                      "body wake raw retention is controlled",
+                      "proof discipline exists",
+                      "QueueOnly memory path exists"
+                  ],
+    "gaps_for_ram_life":  [
+                              "no single long-running agent process yet",
+                              "no RAM-resident agent state across cycles",
+                              "no continuous runtime lock/pid/heartbeat/stop contract yet",
+                              "cycle sidecar files still exist",
+                              "cycle scratch is not RAM-persistent by design",
+                              "orientation card is not built yet",
+                              "orientation drift sensor is not built yet"
+                          ],
+    "transition_implications":  [
+                                    "continuous lab must preserve state in one process across multiple cycles",
+                                    "continuous lab must prove same PID across cycles",
+                                    "continuous lab must not use per-cycle JSON bridges for RAM state",
+                                    "continuous lab must still write compact boundary proof/checkpoint",
+                                    "canonical launcher should not be replaced until lab is proven"
+                                ],
+    "boundary":  {
+                     "audit_only":  true,
+                     "repo_runtime_mutated":  false,
+                     "active_memory_mutated":  false,
+                     "continuous_runtime_launched":  false,
+                     "codex_launched":  false,
+                     "web_launched":  false,
+                     "school_launched":  false
+                 }
+}
