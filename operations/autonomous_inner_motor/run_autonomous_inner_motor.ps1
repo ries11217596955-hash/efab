@@ -444,7 +444,7 @@ function Get-MentalFrontierExpansionGate([string]$QueueRoot,[int]$WindowSize=12,
       } catch { }
     }
   }
-  $groups=@($records | Group-Object topic | Sort-Object Count -Descending)
+  $groups=@($records | Group-Object { $_.topic } | Sort-Object Count -Descending)
   $top=$groups | Select-Object -First 1
   $saturated=[bool]($top -and $top.Count -ge $TopicRepeatThreshold)
   return [ordered]@{

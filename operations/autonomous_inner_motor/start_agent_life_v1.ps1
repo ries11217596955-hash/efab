@@ -181,7 +181,7 @@ while ((Get-Date) -lt $end) {
         memory_ingestion_mode = if ($proof) { $proof.mutation_audit.memory_ingestion_mode } else { "QueueOnly" }
         governed_absorption_used = if ($proof) { $proof.mutation_audit.governed_absorption_used } else { $null }
         anti_repeat_status = if ($proof) { $proof.memory_to_next_path_reuse_gate.status } else { $null }
-        selected_action_id = if ($proof) { $proof.next_action_candidate.selected_action.action_id } else { $null }
+        selected_action_id = if ($proof -and $proof.next_action_candidate -and $proof.next_action_candidate.packet -and $proof.next_action_candidate.packet.selected_action) { $proof.next_action_candidate.packet.selected_action.action_id } elseif ($proof -and $proof.next_action_candidate -and $proof.next_action_candidate.selected_action) { $proof.next_action_candidate.selected_action.action_id } else { $null }
         consecutive_repeat_count = if ($proof) { $proof.memory_to_next_path_reuse_gate.consecutive_repeat_count } else { $null }
         repeated_candidate_is_progress = if ($proof) { -not $proof.memory_to_next_path_reuse_gate.repeat_pressure_detected } else { $null }
         repeat_requires_new_learning_or_escalation = if ($proof) { $proof.memory_to_next_path_reuse_gate.repeat_pressure_detected } else { $null }

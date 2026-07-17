@@ -28,7 +28,7 @@ if($packet){
   if(@($packet.selected_action.validator_refs) -notcontains 'validators/validate_mental_frontier_expansion_gate_v1.ps1'){ Add-Err 'missing_self_validator_ref' }
 }
 $runnerText=Get-Content 'operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1' -Raw
-foreach($needle in @('Get-MentalFrontierExpansionGate','mental_frontier_expansion_gate.json','PASS_MENTAL_FRONTIER_EXPANSION_GATE_V1','body_self_inspection_signal','knowledge_source_gap')){
+foreach($needle in @('Get-MentalFrontierExpansionGate','mental_frontier_expansion_gate.json','PASS_MENTAL_FRONTIER_EXPANSION_GATE_V1','body_self_inspection_signal','knowledge_source_gap','Group-Object { $_.topic }')){
   if($runnerText -notlike "*$needle*"){ Add-Err "runner_missing:$needle" }
 }
 $status=if($errors.Count -eq 0){'PASS_MENTAL_FRONTIER_EXPANSION_GATE_V1'}else{'FAIL_MENTAL_FRONTIER_EXPANSION_GATE_V1'}
