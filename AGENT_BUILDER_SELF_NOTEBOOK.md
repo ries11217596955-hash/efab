@@ -333,7 +333,7 @@ If Owner asks what is next from current state:
     verify memory QueueOnly effect
     then choose Answer Assimilator V1 or action contract formalization based on proof
 
-## 2026-07-17 ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â AIMO memory-to-next-path reuse gate
+## 2026-07-17 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â AIMO memory-to-next-path reuse gate
 
 STATUS: IMPLEMENTED_CANDIDATE / VALIDATOR_PASS
 
@@ -363,7 +363,7 @@ Next proof:
 - Validator must pass.
 - Next canonical agent life run should show consumed repeat candidate is not selected again after reuse gate.
 
-## 2026-07-17 Ã¢â‚¬â€ AIMO mental frontier expansion gate
+## 2026-07-17 ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â AIMO mental frontier expansion gate
 
 STATUS: IMPLEMENTED_CANDIDATE / VALIDATOR_PASS
 
@@ -393,7 +393,7 @@ Next proof:
 - Validator PASS.
 - Next canonical smoke should show saturated old paths avoided and `MENTAL_FRONTIER_EXPANSION_GATE_V1` selected.
 
-## 2026-07-17 â€” AIMO mental frontier router
+## 2026-07-17 ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â AIMO mental frontier router
 
 STATUS: IMPLEMENTED_CANDIDATE / VALIDATOR_PASS
 
@@ -422,9 +422,9 @@ Next proof:
 - Validator PASS.
 - Canonical smoke should show `mental_frontier_router.json` with selected concrete frontier.
 
-## 2026-07-17 — Single-launch wiring audit pause
+## 2026-07-17 Ã¢â‚¬â€ Single-launch wiring audit pause
 
-STATUS: AUDIT_IN_PROGRESS
+STATUS: AUDIT_PASS / NEXT_GUARD_BUILT
 
 Owner concern:
 - Multiple historical life-launch variants may have caused organs to be wired to different launch paths.
@@ -437,3 +437,27 @@ Audit target:
 - Canonical Owner launch must be `operations/autonomous_inner_motor/start_agent_life_v1.ps1 -DurationMinutes <minutes>`.
 - Raw runner and historical `.runtime/live_trials` wrappers must not be treated as current Owner launch paths.
 - Current mental organs must be wired into canonical runner/selector/proof pack.
+
+## 2026-07-17 â€” Agent life launch quarantine and body integration plan
+
+STATUS: VALIDATOR_PENDING
+
+Decision:
+- Do not split into many tiny tasks.
+- Close the launch-surface risk and body-inspection integration gap in one bounded slice.
+
+Artifacts:
+- `operations/autonomous_inner_motor/AGENT_LIFE_LEGACY_LAUNCH_QUARANTINE_V1.json`
+- `operations/autonomous_inner_motor/BODY_SELF_INSPECTION_CANONICAL_INTEGRATION_PLAN_V1.md`
+- `validators/validate_agent_life_quarantine_and_body_integration_v1.ps1`
+- `tests/self_development/AGENT_LIFE_QUARANTINE_AND_BODY_INTEGRATION_V1_PROOF.json`
+
+Boundary:
+- No deletion of legacy launch scripts.
+- No body-inspection invocation yet.
+- No live action.
+- No active memory mutation.
+- Canonical Owner launch remains `start_agent_life_v1.ps1 -DurationMinutes <minutes>`.
+
+Next implementation after proof:
+- `BODY_SELF_INSPECTION_CANONICAL_OBSERVE_HOOK_V1`.

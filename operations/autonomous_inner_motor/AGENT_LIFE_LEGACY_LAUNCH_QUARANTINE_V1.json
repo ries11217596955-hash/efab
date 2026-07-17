@@ -1,0 +1,64 @@
+{
+    "schema":  "agent_life_legacy_launch_quarantine_v1",
+    "status":  "ACTIVE_QUARANTINE_MANIFEST",
+    "created_at":  "2026-07-17T09:13:01.2175664Z",
+    "canonical_owner_launch":  "operations/autonomous_inner_motor/start_agent_life_v1.ps1 -DurationMinutes \u003cminutes\u003e",
+    "rule":  "Only canonical_owner_launch may be used as Owner-facing agent life launch.",
+    "legacy_noncanonical_launch_surfaces":  [
+                                                {
+                                                    "path":  "operations/live_like/run_school_aimo_live_like_observation_gate_v1.ps1",
+                                                    "classification":  "LEGACY_NON_CANONICAL_LAUNCH_SURFACE",
+                                                    "allowed_use":  "historical_reference_or_validator_material_only",
+                                                    "forbidden_use":  "Owner-facing agent life launch",
+                                                    "migration":  "do not delete; route through canonical launcher or create explicit integration contract if needed"
+                                                },
+                                                {
+                                                    "path":  "operations/live_readiness/run_school_aimo_continuous_runtime_proof_v1.ps1",
+                                                    "classification":  "LEGACY_NON_CANONICAL_LAUNCH_SURFACE",
+                                                    "allowed_use":  "historical_reference_or_validator_material_only",
+                                                    "forbidden_use":  "Owner-facing agent life launch",
+                                                    "migration":  "do not delete; route through canonical launcher or create explicit integration contract if needed"
+                                                },
+                                                {
+                                                    "path":  "operations/live_readiness/run_school_aimo_live_readiness_gate_v1.ps1",
+                                                    "classification":  "LEGACY_NON_CANONICAL_LAUNCH_SURFACE",
+                                                    "allowed_use":  "historical_reference_or_validator_material_only",
+                                                    "forbidden_use":  "Owner-facing agent life launch",
+                                                    "migration":  "do not delete; route through canonical launcher or create explicit integration contract if needed"
+                                                },
+                                                {
+                                                    "path":  "operations/live_start/restart_aimo_agent_only_v1.ps1",
+                                                    "classification":  "LEGACY_NON_CANONICAL_LAUNCH_SURFACE",
+                                                    "allowed_use":  "historical_reference_or_validator_material_only",
+                                                    "forbidden_use":  "Owner-facing agent life launch",
+                                                    "migration":  "do not delete; route through canonical launcher or create explicit integration contract if needed"
+                                                },
+                                                {
+                                                    "path":  "operations/live_start/start_school_aimo_controlled_live_v1.ps1",
+                                                    "classification":  "LEGACY_NON_CANONICAL_LAUNCH_SURFACE",
+                                                    "allowed_use":  "historical_reference_or_validator_material_only",
+                                                    "forbidden_use":  "Owner-facing agent life launch",
+                                                    "migration":  "do not delete; route through canonical launcher or create explicit integration contract if needed"
+                                                },
+                                                {
+                                                    "path":  "operations/parallel_life/run_school_aimo_parallel_lab_v1.ps1",
+                                                    "classification":  "LEGACY_NON_CANONICAL_LAUNCH_SURFACE",
+                                                    "allowed_use":  "historical_reference_or_validator_material_only",
+                                                    "forbidden_use":  "Owner-facing agent life launch",
+                                                    "migration":  "do not delete; route through canonical launcher or create explicit integration contract if needed"
+                                                }
+                                            ],
+    "runtime_wrappers":  {
+                             "classification":  "HISTORICAL_RUNTIME_WRAPPER_NOT_CANONICAL",
+                             "root":  ".runtime/live_trials",
+                             "forbidden_use":  "current Owner-facing launch",
+                             "note":  "runtime history may contain old generated wrappers; do not reuse manually"
+                         },
+    "boundary":  {
+                     "deletion_performed":  false,
+                     "legacy_files_modified":  false,
+                     "runtime_cleaned":  false,
+                     "active_memory_mutated":  false,
+                     "live_process_touched":  false
+                 }
+}
