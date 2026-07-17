@@ -1,5 +1,5 @@
 <!-- GPT_OPERATOR_INDEX_BEGIN -->
-# GPT_OPERATOR_INDEX — START HERE
+# GPT_OPERATOR_INDEX â€” START HERE
 
 Status: ACTIVE_OPERATOR_INDEX
 Updated: 2026-07-15T13:39:01+04:00
@@ -44,7 +44,7 @@ Bridge context H:/efab READY; branch main; HEAD fe7c074; origin delta after fetc
 ## Next Actions
 P0 validate GPT_ENTRYPOINT and journal index coverage. Do not delete source operator files yet. P1 audit body map/passport lifecycle and school component passport coverage. P2 cleanup only after protected/tracked/transient/legacy classification and proof.
 <!-- GPT_OPERATOR_INDEX_END -->
-# GPT_OPERATOR_JOURNAL â€” ACTIVE CURRENT STATE ONLY
+# GPT_OPERATOR_JOURNAL Ã¢â‚¬â€ ACTIVE CURRENT STATE ONLY
 
 Updated: 2026-07-14T17:52:26.206917+00:00
 Repo HEAD at update: 3625b8f
@@ -380,7 +380,7 @@ Meaning:
 ```text
 Real Codex warehouse producer can feed one READY micro-batch of 100 into School.
 School can validate, normalize, and absorb that micro-batch into active compact memory.
-The next safe slice is not 20k; it is a bounded multi-micro cycle, e.g. 3×100 or one window of 1000 with per-micro absorption and cleanup.
+The next safe slice is not 20k; it is a bounded multi-micro cycle, e.g. 3Ã—100 or one window of 1000 with per-micro absorption and cleanup.
 ```
 
 
@@ -400,7 +400,7 @@ Meaning:
 
 ```text
 School can now request a non-rounded exact count without rounding 678 to 700.
-Warehouse task splits it as 6×100 + 1×78.
+Warehouse task splits it as 6Ã—100 + 1Ã—78.
 Real production/absorption for exact 678 is still the next bounded slice.
 ```
 
@@ -425,9 +425,9 @@ Examples:
 100 => 100
 101 => 100,1
 678 => 100,100,100,100,100,100,78
-1000 => 10×100
-3581 => 35×100 + 81
-50000 => 500×100
+1000 => 10Ã—100
+3581 => 35Ã—100 + 81
+50000 => 500Ã—100
 ```
 
 Meaning:
@@ -525,7 +525,7 @@ Canonical Test uses mock/no-absorb; canonical Live uses real Codex + absorption.
 Larger canonical Live counts still need scale proof before claiming readiness.
 ```
 
-## 2026-07-15 — Memory Commit Organ / School quality / Next chat handoff
+## 2026-07-15 â€” Memory Commit Organ / School quality / Next chat handoff
 
 ```text
 status = PROVEN_REMOTE before handoff update
@@ -551,3 +551,22 @@ See:
 operations/gpt_handoff/NEXT_CHAT_HANDOFF_20260715_MEMORY_COMMIT_ORGAN.md
 operations/gpt_handoff/NEXT_CHAT_HANDOFF_20260715_MEMORY_COMMIT_STATUS.json
 ```
+
+## 2026-07-17 â€” Root notebook / GPT settings discipline reinforcement
+
+`	ext
+status = PROVEN_LAB / READY_FOR_COMMIT
+head_before = a2e03bd
+remote_delta_before = 0	0
+root_notebook = AGENT_BUILDER_SELF_NOTEBOOK.md
+reason = Owner requested stronger GPT settings so migration does not drift
+`
+
+Decision:
+
+`	ext
+AGENT_BUILDER_SELF_NOTEBOOK.md is the single first-read operator notebook.
+After important accepted work, runtime trials, cleanup, handoff changes, or settings/protocol deltas, update the notebook.
+For important project work, append compact delta here in GPT_OPERATOR_JOURNAL.md.
+Do not scatter ad-hoc handoff/index files outside operations/gpt_handoff unless they are real validator proofs.
+`

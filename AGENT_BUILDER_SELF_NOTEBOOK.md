@@ -102,6 +102,39 @@ Existing handoff/catalog area:
 
 Do not create duplicate ad-hoc handoff files in tests/self_development unless they are actual validator proofs.
 
+## 3A. GPT Settings active delta
+
+This root notebook must be treated as the operator's first-read file.
+
+Active behavior rule for GPT settings:
+
+    On chat migration, repo recovery, confusion, long-running project work, or Owner saying "Ñ‚Ñ‹ Ð¿Ð»Ñ‹Ð²Ñ‘ÑˆÑŒ": first restore reality, then read AGENT_BUILDER_SELF_NOTEBOOK.md before proposing the next action.
+
+    After every accepted important slice, validator PASS, runtime trial, cleanup, handoff change, or settings change: update AGENT_BUILDER_SELF_NOTEBOOK.md in the same commit or in the immediate next cleanup commit.
+
+    For important project work: also append a compact entry to operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md.
+
+    Do not create scattered handoff/status/index files unless Owner explicitly asks or a validator requires a tracked proof file.
+
+    If a formal next-chat handoff is needed, create it under operations/gpt_handoff/ and link it from this notebook.
+
+    If this notebook and runtime reality disagree, runtime/repo proof wins and this notebook must be corrected.
+
+    Repeated thinking is not progress. Repeated action candidates require anti-repeat pressure, QueueOnly learning, or operator review.
+
+    Settings/Knowledge updates are behavior law candidates. Do not paste raw archives. Extract compact active rules and record insertion point.
+
+Minimum update trigger:
+
+    commit/push completed
+    validator/proof status changed
+    live/lab trial completed
+    cleanup removed files
+    migration/handoff changed
+    Owner gave settings/protocol delta
+    AIMO route/next action changed
+
+Notebook update is not optional for these triggers.
 ## 4. BIOS / settings / strategy reality
 
 Exact tracked repo file named BIOS/bios was not found.
@@ -320,9 +353,9 @@ If a future handoff is needed, prefer updating this root notebook and operations
 
 ## 11. Owner reminder map
 
-If Owner says "ты плывёшь", check this file first.
+If Owner says "Ã‘â€šÃ‘â€¹ ÃÂ¿ÃÂ»Ã‘â€¹ÃÂ²Ã‘â€˜Ã‘Ë†Ã‘Å’", check this file first.
 
-If Owner asks "какие файлы для тебя существуют", answer:
+If Owner asks "ÃÂºÃÂ°ÃÂºÃÂ¸ÃÂµ Ã‘â€žÃÂ°ÃÂ¹ÃÂ»Ã‘â€¹ ÃÂ´ÃÂ»Ã‘Â Ã‘â€šÃÂµÃÂ±Ã‘Â Ã‘ÂÃ‘Æ’Ã‘â€°ÃÂµÃ‘ÂÃ‘â€šÃÂ²Ã‘Æ’Ã‘Å½Ã‘â€š", answer:
 
     AGENT_BUILDER_SELF_NOTEBOOK.md = root notebook / first-read
     operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md = formal operator journal
@@ -332,7 +365,7 @@ If Owner asks "какие файлы для тебя существуют", answ
     operations/body_self_inspection/* = body inspection circuit
     tests/self_development/*_PROOF.json = tracked validator proofs
 
-If Owner asks "что дальше", answer from current state:
+If Owner asks "Ã‘â€¡Ã‘â€šÃÂ¾ ÃÂ´ÃÂ°ÃÂ»Ã‘Å’Ã‘Ë†ÃÂµ", answer from current state:
 
     analyze QueueOnly trial
     verify memory QueueOnly effect
