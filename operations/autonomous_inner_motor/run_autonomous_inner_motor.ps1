@@ -606,7 +606,8 @@ $antiRepeatGuard = [ordered]@{
 }
 Write-CleanJson $antiRepeatGuardPath $antiRepeatGuard 20
 $memoryToNextPathReuseGatePath = Join-Path $runRoot 'memory_to_next_path_reuse_gate.json'
-$absorptionChanged = [bool]($EnableMemoryLearning -and $deepThinking.absorption -and $deepThinking.absorption.memory_changed)
+$memoryGrowthPacketQueued = [bool]($EnableMemoryLearning -and $deepThinking.absorption -and $deepThinking.absorption.packet_validation_status -eq "PASS_COMPACT_MEMORY_KNOWLEDGE_PACKET_V1" -and -not [string]::IsNullOrWhiteSpace([string]$deepThinking.absorption.atom_path))
+$absorptionChanged = [bool]($EnableMemoryLearning -and $deepThinking.absorption -and ([bool]$deepThinking.absorption.memory_changed -or $memoryGrowthPacketQueued))
 $reuseGateStatus = if($repeatPressure -and $absorptionChanged){ 'PASS_MEMORY_TO_NEXT_PATH_REUSE_GATE_V1' } elseif($repeatPressure){ 'BLOCKED_MEMORY_TO_NEXT_PATH_REUSE_GATE_NO_MEMORY_DELTA' } else { 'PASS_MEMORY_TO_NEXT_PATH_REUSE_GATE_NOT_REQUIRED' }
 $memoryToNextPathReuseGate = [ordered]@{
   schema='memory_to_next_path_reuse_gate_v1'
@@ -618,7 +619,9 @@ $memoryToNextPathReuseGate = [ordered]@{
   repeat_pressure_detected=[bool]$repeatPressure
   consecutive_repeat_count=$consecutiveRepeatCount
   governed_absorption_used=[bool]($EnableMemoryLearning -and $deepThinking.absorption)
-  memory_changed=$absorptionChanged
+  memory_changed=[bool]$deepThinking.absorption.memory_changed
+  memory_growth_packet_queued=$memoryGrowthPacketQueued
+  learning_signal_available=$absorptionChanged
   next_action_avoid_ids=if($reuseGateStatus -eq 'PASS_MEMORY_TO_NEXT_PATH_REUSE_GATE_V1'){ @($selectedActionId) } else { @() }
   next_loop_instruction=if($reuseGateStatus -eq 'PASS_MEMORY_TO_NEXT_PATH_REUSE_GATE_V1'){ 'Treat consumed_action_id as already absorbed knowledge. Next loop must choose a different mental-growth path unless new evidence changes the route.' } else { 'No consumed repeat candidate available for next-path reuse.' }
   boundary=[ordered]@{ action_execution_allowed=$false; direct_active_memory_write=$false; reuse_gate_only=$true; no_repo_patch_execution=$true; no_codex_launch=$true; no_web_research=$true }

@@ -172,19 +172,19 @@ while ((Get-Date) -lt $end) {
         exit_code = $exit
         run_dir = if ($latest) { $latest.FullName } else { $null }
         proof_path = $proofPath
-        proof_status = if ($proof) { $proof.status } else { $null }
+        proof_status = if ($proof) { $proof.deep_thinking.status } else { $null }
         action_execution_allowed = if ($proof) { $proof.boundary.action_execution_allowed } else { $null }
         active_memory_mutated = if ($proof) { $proof.mutation_audit.active_memory_mutated } else { $null }
         git_mutated = if ($proof) { $proof.mutation_audit.git_mutated } else { $null }
         codex_launched = if ($proof) { $proof.mutation_audit.codex_launched } else { $null }
         web_research_performed = if ($proof) { $proof.mutation_audit.web_research_performed } else { $null }
-        memory_ingestion_mode = if ($proof) { $proof.memory_learning.memory_ingestion_mode } else { "QueueOnly" }
-        governed_absorption_used = if ($proof) { $proof.memory_learning.governed_absorption_used } else { $null }
-        anti_repeat_status = if ($proof) { $proof.anti_repeat.status } else { $null }
-        selected_action_id = if ($proof) { $proof.action_decision_summary.selected_action_id } else { $null }
-        consecutive_repeat_count = if ($proof) { $proof.anti_repeat.consecutive_repeat_count } else { $null }
-        repeated_candidate_is_progress = if ($proof) { $proof.anti_repeat.repeated_candidate_is_progress } else { $null }
-        repeat_requires_new_learning_or_escalation = if ($proof) { $proof.anti_repeat.repeat_requires_new_learning_or_escalation } else { $null }
+        memory_ingestion_mode = if ($proof) { $proof.mutation_audit.memory_ingestion_mode } else { "QueueOnly" }
+        governed_absorption_used = if ($proof) { $proof.mutation_audit.governed_absorption_used } else { $null }
+        anti_repeat_status = if ($proof) { $proof.memory_to_next_path_reuse_gate.status } else { $null }
+        selected_action_id = if ($proof) { $proof.next_action_candidate.selected_action.action_id } else { $null }
+        consecutive_repeat_count = if ($proof) { $proof.memory_to_next_path_reuse_gate.consecutive_repeat_count } else { $null }
+        repeated_candidate_is_progress = if ($proof) { -not $proof.memory_to_next_path_reuse_gate.repeat_pressure_detected } else { $null }
+        repeat_requires_new_learning_or_escalation = if ($proof) { $proof.memory_to_next_path_reuse_gate.repeat_pressure_detected } else { $null }
         manifest_status = if ($proof) { $proof.sandbox_proof_pack_manifest.status } else { $null }
         manifest_files = if ($proof) { @($proof.sandbox_proof_pack_manifest.files).Count } else { $null }
     }

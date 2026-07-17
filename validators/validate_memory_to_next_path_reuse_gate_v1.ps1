@@ -35,7 +35,7 @@ if($avoid){
   if($avoid.selected_action.execution_allowed -ne $false){ Add-Err 'avoid_selected_execution_allowed_not_false' }
 }
 $runnerText=Get-Content 'operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1' -Raw
-foreach($needle in @('memory_to_next_path_reuse_gate.json','PASS_MEMORY_TO_NEXT_PATH_REUSE_GATE_V1','Get-LatestMemoryToNextPathReuseGate','selectorArgs')){
+foreach($needle in @('memory_to_next_path_reuse_gate.json','PASS_MEMORY_TO_NEXT_PATH_REUSE_GATE_V1','Get-LatestMemoryToNextPathReuseGate','selectorArgs','memoryGrowthPacketQueued','PASS_COMPACT_MEMORY_KNOWLEDGE_PACKET_V1')){
   if($runnerText -notlike "*$needle*"){ Add-Err "runner_missing:$needle" }
 }
 $status=if($errors.Count -eq 0){'PASS_MEMORY_TO_NEXT_PATH_REUSE_GATE_V1'}else{'FAIL_MEMORY_TO_NEXT_PATH_REUSE_GATE_V1'}

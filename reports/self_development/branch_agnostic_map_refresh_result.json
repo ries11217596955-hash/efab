@@ -1,26 +1,28 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-17T11:45:09.1008549+04:00",
+    "checked_at":  "2026-07-17T11:50:22.4951065+04:00",
     "branch":  "main",
-    "observed_head":  "a00070f306e9047198c17cac6d513f1fe655a3af",
-    "subject_head":  "a00070f306e9047198c17cac6d513f1fe655a3af",
+    "observed_head":  "0f7d079ea20b64d93348d47694e4913534e99a61",
+    "subject_head":  "0f7d079ea20b64d93348d47694e4913534e99a61",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "operations/autonomous_inner_motor/start_agent_life_v1.ps1",
+                          "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
                           "tests/self_development/AGENT_LIFE_LAUNCHER_V1_PROOF.json",
-                          "validators/validate_agent_life_launcher_v1.ps1"
+                          "tests/self_development/MEMORY_TO_NEXT_PATH_REUSE_GATE_V1_PROOF.json",
+                          "validators/validate_memory_to_next_path_reuse_gate_v1.ps1"
                       ],
     "structural_paths":  [
-                             "operations/autonomous_inner_motor/start_agent_life_v1.ps1",
+                             "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
                              "tests/self_development/AGENT_LIFE_LAUNCHER_V1_PROOF.json",
-                             "validators/validate_agent_life_launcher_v1.ps1"
+                             "tests/self_development/MEMORY_TO_NEXT_PATH_REUSE_GATE_V1_PROOF.json",
+                             "validators/validate_memory_to_next_path_reuse_gate_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -33,7 +35,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  2122,
-                                    "sha256":  "db65cd7981667b366adecc751de2511be619ad1f92968752f3120a1f9517733e"
+                                    "sha256":  "9ab63f924a4ba8e6cf9cb7b78589f73ac16d1e409cf31c16e29698f0acabb81a"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -66,5 +68,5 @@
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-17T11:45:43.6995605+04:00"
+    "refreshed_at":  "2026-07-17T11:50:56.8100200+04:00"
 }
