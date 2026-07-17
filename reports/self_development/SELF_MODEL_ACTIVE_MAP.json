@@ -6,22 +6,22 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "121704de0b255c9160e5b36d1dfea0412bf0f172",
-    "subject_head":  "121704de0b255c9160e5b36d1dfea0412bf0f172",
-    "generated_at":  "2026-07-17T10:48:10.6575114+04:00",
+    "observed_head_at_generation":  "c77aeeae757fe8e13c9b9e422978d08611161390",
+    "subject_head":  "c77aeeae757fe8e13c9b9e422978d08611161390",
+    "generated_at":  "2026-07-17T11:23:25.9224547+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  2117,
+    "structural_path_count":  2120,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2117,
-                                    "sha256":  "fe81d4469f0273de6226c3943eedcdb3260939a194ebab42347c9936fe109abc"
+                                    "structural_file_count":  2120,
+                                    "sha256":  "31fa1a430c650bde15ce5dd1098ee4b5e356af8d0e08ff4edb5c2c50d63d710a"
                                 },
     "module_count":  203,
-    "validator_count":  202,
+    "validator_count":  203,
     "confirmed_components":  [
                                  {
                                      "id":  "school",
@@ -630,9 +630,9 @@
 
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "121704de0b255c9160e5b36d1dfea0412bf0f172",
-                                                               "committed_at":  "2026-07-17T09:54:19+04:00",
-                                                               "subject":  "docs: reinforce GPT notebook discipline"
+                                                               "head":  "c77aeeae757fe8e13c9b9e422978d08611161390",
+                                                               "committed_at":  "2026-07-17T10:47:31+04:00",
+                                                               "subject":  "docs: rewrite root notebook as ascii"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -1442,15 +1442,15 @@
                                             "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                                             "discovery_method":  "bounded_git_ls_files_path_discovery",
                                             "evidence_counts":  {
-                                                                    "files":  23,
-                                                                    "scripts":  4,
+                                                                    "files":  24,
+                                                                    "scripts":  5,
                                                                     "validators":  1,
                                                                     "proofs":  7,
                                                                     "contracts_or_policies":  7,
                                                                     "docs":  1
                                                                 },
-                                            "file_count":  23,
-                                            "script_count":  4,
+                                            "file_count":  24,
+                                            "script_count":  5,
                                             "validator_count":  1,
                                             "proof_file_count":  7,
                                             "contract_or_policy_count":  7,
@@ -1498,6 +1498,7 @@
                                                                   "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_V0_IMPLEMENTATION_REPORT.json",
                                                                   "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
                                                                   "operations/autonomous_inner_motor/select_agent_next_action_candidate_v1.ps1",
+                                                                  "operations/autonomous_inner_motor/start_agent_life_v1.ps1",
                                                                   "operations/autonomous_inner_motor/thought_frame_schema.json",
                                                                   "operations/autonomous_inner_motor/validation/AUTONOMOUS_INNER_MOTOR_ORGAN_CONTRACT_VALIDATION.json"
                                                               ],
@@ -1519,6 +1520,7 @@
                                                                           "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_V0_IMPLEMENTATION_REPORT.json",
                                                                           "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
                                                                           "operations/autonomous_inner_motor/select_agent_next_action_candidate_v1.ps1",
+                                                                          "operations/autonomous_inner_motor/start_agent_life_v1.ps1",
                                                                           "operations/autonomous_inner_motor/validation/AUTONOMOUS_INNER_MOTOR_ORGAN_CONTRACT_VALIDATION.json"
                                                                       ],
                                             "needs_triage":  true,
@@ -8598,9 +8600,9 @@
 
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "121704de0b255c9160e5b36d1dfea0412bf0f172",
-                                                     "committed_at":  "2026-07-17T09:54:19+04:00",
-                                                     "subject":  "docs: reinforce GPT notebook discipline"
+                                                     "head":  "c77aeeae757fe8e13c9b9e422978d08611161390",
+                                                     "committed_at":  "2026-07-17T10:47:31+04:00",
+                                                     "subject":  "docs: rewrite root notebook as ascii"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -9408,15 +9410,15 @@
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                            "discovery_method":  "bounded_git_ls_files_path_discovery",
                            "evidence_counts":  {
-                                                   "files":  23,
-                                                   "scripts":  4,
+                                                   "files":  24,
+                                                   "scripts":  5,
                                                    "validators":  1,
                                                    "proofs":  7,
                                                    "contracts_or_policies":  7,
                                                    "docs":  1
                                                },
-                           "file_count":  23,
-                           "script_count":  4,
+                           "file_count":  24,
+                           "script_count":  5,
                            "validator_count":  1,
                            "proof_file_count":  7,
                            "contract_or_policy_count":  7,
@@ -9464,6 +9466,7 @@
                                                  "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_V0_IMPLEMENTATION_REPORT.json",
                                                  "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
                                                  "operations/autonomous_inner_motor/select_agent_next_action_candidate_v1.ps1",
+                                                 "operations/autonomous_inner_motor/start_agent_life_v1.ps1",
                                                  "operations/autonomous_inner_motor/thought_frame_schema.json",
                                                  "operations/autonomous_inner_motor/validation/AUTONOMOUS_INNER_MOTOR_ORGAN_CONTRACT_VALIDATION.json"
                                              ],
@@ -9485,6 +9488,7 @@
                                                          "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_V0_IMPLEMENTATION_REPORT.json",
                                                          "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
                                                          "operations/autonomous_inner_motor/select_agent_next_action_candidate_v1.ps1",
+                                                         "operations/autonomous_inner_motor/start_agent_life_v1.ps1",
                                                          "operations/autonomous_inner_motor/validation/AUTONOMOUS_INNER_MOTOR_ORGAN_CONTRACT_VALIDATION.json"
                                                      ],
                            "needs_triage":  true,
