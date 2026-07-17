@@ -37,6 +37,7 @@ else {
         "-EnableMemoryLearning",
         "-MemoryIngestionMode QueueOnly",
         'Convert-JsonCompatible',
+        'if ($pattern -in @("run_autonomous_inner_motor.ps1", "start_agent_life_v1.ps1"))',
         "action_execution_allowed = `$false",
         "codex_allowed = `$false",
         "web_allowed = `$false",
@@ -63,6 +64,7 @@ $proof = [ordered]@{
     user_required_parameter = "DurationMinutes"
     canonical_contract = [ordered]@{
         one_launch_way = $true
+        requires_file_invocation_for_launcher_conflict_detection = $true
         user_mode_choice_allowed = $false
         mode = "SandboxExploration"
         enable_deep_thinking = $true

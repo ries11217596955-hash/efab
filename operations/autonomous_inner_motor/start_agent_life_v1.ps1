@@ -54,12 +54,16 @@ function Get-ProcessConflicts {
     foreach ($p in $processes) {
         if ([int]$p.ProcessId -eq [int]$selfPid) { continue }
         foreach ($pattern in $patterns) {
-            if ($p.CommandLine -match [regex]::Escape($pattern)) {
+            $cmd = [string]$p.CommandLine
+            if ($pattern -in @("run_autonomous_inner_motor.ps1", "start_agent_life_v1.ps1")) {
+                if ($cmd -notmatch "(?i)\s-File\s" -and $cmd -notmatch "(?i)^.*powershell.*-f\s") { continue }
+            }
+            if ($cmd -match [regex]::Escape($pattern)) {
                 $matches += [ordered]@{
                     process_id = [int]$p.ProcessId
                     name = [string]$p.Name
                     matched_pattern = $pattern
-                    command_line = [string]$p.CommandLine
+                    command_line = $cmd
                 }
                 break
             }
