@@ -1,10 +1,10 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-17T23:28:50.4121925+04:00",
+    "checked_at":  "2026-07-17T23:33:13.4875044+04:00",
     "branch":  "main",
-    "observed_head":  "1105bc4160a53e65368ddc727e8d6dd705539764",
-    "subject_head":  "1105bc4160a53e65368ddc727e8d6dd705539764",
+    "observed_head":  "7f95a4be0a5a2369ed3712fe41161e62591763ba",
+    "subject_head":  "7f95a4be0a5a2369ed3712fe41161e62591763ba",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
@@ -12,17 +12,19 @@
                           "AGENT_BUILDER_MIND_LOGIC_DEEP_AUDIT_PLAN_V1.md",
                           "AGENT_BUILDER_SELF_NOTEBOOK.md",
                           "operations/autonomous_inner_motor/reports/REFLECTION_DEBT_SOURCE_MAP_V1.json",
+                          "operations/autonomous_inner_motor/reports/REFLEX_DEBT_SOURCE_MAP_V1.json",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "tests/self_development/REFLECTION_DEBT_SOURCE_MAP_V1_PROOF.json",
-                          "validators/validate_reflection_debt_source_map_v1.ps1"
+                          "tests/self_development/REFLEX_DEBT_SOURCE_MAP_V1_PROOF.json",
+                          "validators/validate_reflex_debt_source_map_v1.ps1"
                       ],
     "structural_paths":  [
                              "operations/autonomous_inner_motor/reports/REFLECTION_DEBT_SOURCE_MAP_V1.json",
-                             "tests/self_development/REFLECTION_DEBT_SOURCE_MAP_V1_PROOF.json",
-                             "validators/validate_reflection_debt_source_map_v1.ps1"
+                             "operations/autonomous_inner_motor/reports/REFLEX_DEBT_SOURCE_MAP_V1.json",
+                             "tests/self_development/REFLEX_DEBT_SOURCE_MAP_V1_PROOF.json",
+                             "validators/validate_reflex_debt_source_map_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -34,8 +36,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2214,
-                                    "sha256":  "ac52366436002375ea27b8a0c16ae3b2c5d11c72ec97772fdfd1101e9a373bf9"
+                                    "structural_file_count":  2217,
+                                    "sha256":  "33ddb108f29c64682a2165a4806a9bcebf348bd3510c1ec1db2f0e1da72aec10"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -61,12 +63,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  152,
-                         "structural_path_count":  2214,
+                         "structural_path_count":  2217,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-17T23:29:26.7175972+04:00"
+    "refreshed_at":  "2026-07-17T23:33:49.5216245+04:00"
 }
