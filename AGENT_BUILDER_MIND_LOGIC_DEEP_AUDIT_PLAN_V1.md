@@ -159,3 +159,152 @@ active_memory_mutated = false
 canonical_launcher_mutated = false
 cycle_runner_mutated = false
 ```
+## 7. Three parallel memory/life tracks
+
+Status: ACTIVE_TRACKING_RULE
+
+Owner correction:
+
+```text
+Work must proceed sequentially, but not forget three directions:
+1. Compact Memory
+2. Short-Term Memory
+3. RAM / life process
+```
+
+### 7.1 Track A — Compact Memory
+
+Current status:
+
+```text
+PARTIAL
+write/queue path works
+active memory root exists and is protected
+selective read/use path is not mature
+```
+
+Known gap:
+
+```text
+Agent can create queue packets, but does not yet prove that it retrieves relevant active compact memory cells and uses them to change a decision.
+```
+
+Needed audit:
+
+```text
+AUDIT_M3_COMPACT_MEMORY_READ_PATH_V1
+```
+
+Candidate organ:
+
+```text
+SELECTIVE_COMPACT_MEMORY_RETRIEVAL_V1
+```
+
+Acceptance condition:
+
+```text
+proof shows retrieved memory atoms, relevance reasons, and decision effect
+```
+
+### 7.2 Track B — Short-Term Memory
+
+Current status:
+
+```text
+PARTIAL / NOT_FULL_ORGAN
+LIFE_WORKING_MEMORY_V1 exists and passed lab validation
+but it is not yet a complete short-term mind memory organ
+```
+
+What exists:
+
+```text
+A life working memory context can be created once and reused across canonical process-per-cycle life runs.
+It reduces repeated wake files and stores compact wake context for a run.
+```
+
+Known gap:
+
+```text
+It does not yet act like active short-term reasoning memory: current objective, recent decisions, unresolved blockers, hypotheses, last failed attempt, next intended step, and parent-goal return state.
+```
+
+Needed audit:
+
+```text
+AUDIT_S1_SHORT_TERM_MEMORY_CURRENT_STATE_V1
+```
+
+Candidate organs:
+
+```text
+SHORT_TERM_MIND_STATE_V1
+RECENT_DECISION_RING_V1
+UNRESOLVED_BLOCKER_MEMORY_V1
+PARENT_GOAL_STACK_V1
+```
+
+Acceptance condition:
+
+```text
+proof shows short-term state survives across cycles and changes next decision without becoming a raw diary or long-term memory dump
+```
+
+### 7.3 Track C — RAM / life process
+
+Current status:
+
+```text
+PROVEN_LAB_NOT_CANONICAL
+CONTINUOUS_AGENT_RUNTIME_V1_LAB passed 5-minute proof
+canonical life still uses start_agent_life_v1.ps1 + run_autonomous_inner_motor.ps1
+```
+
+Known debt:
+
+```text
+RAM lab has not been migrated into canonical life.
+Transition plan remains open.
+```
+
+Needed future audit/design:
+
+```text
+AUDIT_R1_RAM_CANONICAL_MIGRATION_GAP_V1
+```
+
+Candidate organs/slices:
+
+```text
+CANONICAL_RAM_LIFE_MIGRATION_PLAN_V1
+DUAL_MODE_LIFE_LAUNCHER_V1
+RAM_RUNTIME_WATCHDOG_V1
+RAM_TO_CANONICAL_PROOF_COMPARISON_V1
+```
+
+Acceptance condition:
+
+```text
+explicit owner decision + validator proof that RAM mode can replace or coexist with canonical life without losing safety, memory gates, proofs, stop control, and operator visibility
+```
+
+### 7.4 Sequencing rule
+
+Do not jump between tracks randomly.
+
+Default order:
+
+```text
+1. Audit mind topology.
+2. Audit compact memory read path.
+3. Audit short-term memory current state.
+4. Audit frontier-to-build-task gap.
+5. Only then decide whether RAM migration is needed immediately or later.
+```
+
+Reason:
+
+```text
+RAM gives a different body. Compact memory and short-term memory give the mind usable context. A better body without a better mind only loops faster.
+```

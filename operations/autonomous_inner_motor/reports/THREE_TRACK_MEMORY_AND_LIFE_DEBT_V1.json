@@ -1,0 +1,54 @@
+{
+    "schema":  "three_track_memory_and_life_debt_v1",
+    "status":  "PASS_THREE_TRACK_MEMORY_AND_LIFE_DEBT_V1",
+    "checked_at":  "2026-07-17T19:14:45.9311194Z",
+    "tracks":  {
+                   "compact_memory":  {
+                                          "status":  "PARTIAL",
+                                          "proven":  "queue/write path works; active memory protected",
+                                          "gap":  "selective retrieval/use path not mature",
+                                          "next_audit":  "AUDIT_M3_COMPACT_MEMORY_READ_PATH_V1",
+                                          "candidate_organ":  "SELECTIVE_COMPACT_MEMORY_RETRIEVAL_V1"
+                                      },
+                   "short_term_memory":  {
+                                             "status":  "PARTIAL_NOT_FULL_ORGAN",
+                                             "proven":  "LIFE_WORKING_MEMORY_V1 proof exists",
+                                             "proof":  "tests/self_development/LIFE_WORKING_MEMORY_V1_PROOF.json",
+                                             "gap":  "no full short-term mind state organ for objective/recent decisions/blockers/parent-goal stack",
+                                             "next_audit":  "AUDIT_S1_SHORT_TERM_MEMORY_CURRENT_STATE_V1",
+                                             "candidate_organs":  [
+                                                                      "SHORT_TERM_MIND_STATE_V1",
+                                                                      "RECENT_DECISION_RING_V1",
+                                                                      "UNRESOLVED_BLOCKER_MEMORY_V1",
+                                                                      "PARENT_GOAL_STACK_V1"
+                                                                  ]
+                                         },
+                   "ram_life_process":  {
+                                            "status":  "PROVEN_LAB_NOT_CANONICAL",
+                                            "proof":  "tests/self_development/CONTINUOUS_AGENT_RUNTIME_V1_LAB_PROOF.json",
+                                            "gap":  "RAM lab not migrated into canonical life",
+                                            "next_audit":  "AUDIT_R1_RAM_CANONICAL_MIGRATION_GAP_V1",
+                                            "candidate_slices":  [
+                                                                     "CANONICAL_RAM_LIFE_MIGRATION_PLAN_V1",
+                                                                     "DUAL_MODE_LIFE_LAUNCHER_V1",
+                                                                     "RAM_RUNTIME_WATCHDOG_V1",
+                                                                     "RAM_TO_CANONICAL_PROOF_COMPARISON_V1"
+                                                                 ]
+                                        }
+               },
+    "sequencing":  [
+                       "AUDIT_M1_CURRENT_MIND_TOPOLOGY_V1",
+                       "AUDIT_M3_COMPACT_MEMORY_READ_PATH_V1",
+                       "AUDIT_S1_SHORT_TERM_MEMORY_CURRENT_STATE_V1",
+                       "AUDIT_M4_FRONTIER_TO_BUILD_TASK_GAP_V1",
+                       "AUDIT_R1_RAM_CANONICAL_MIGRATION_GAP_V1 when owner decides migration timing"
+                   ],
+    "boundary":  {
+                     "plan_only":  true,
+                     "runtime_launched":  false,
+                     "active_memory_mutated":  false,
+                     "canonical_launcher_mutated":  false,
+                     "cycle_runner_mutated":  false,
+                     "ram_migrated":  false
+                 }
+}

@@ -894,3 +894,45 @@ Next focus:
 ```text
 Agent mind / logic / decision audit, not more blind runtime launches.
 ```
+## 14. Open RAM debt marker
+
+Status: OPEN_DEBT / DO_NOT_FORGET
+
+Debt:
+
+```text
+RAM lab is proven, but RAM is not canonical life.
+```
+
+Do not delete this plan until one of the following is true:
+
+```text
+1. RAM canonical migration is implemented, validated, accepted, and documented.
+2. Owner explicitly decides to keep process-per-cycle canonical life and archive RAM as lab-only.
+```
+
+Required return point:
+
+```text
+AUDIT_R1_RAM_CANONICAL_MIGRATION_GAP_V1
+```
+
+This audit must answer:
+
+```text
+What canonical launcher behavior would change?
+What safety gates must move into RAM mode?
+How does stop/resume work?
+How do proofs remain compact?
+How does compact memory retrieval work inside RAM life?
+How does short-term memory differ from RAM process state?
+How do we prevent duplicate runtimes?
+What is rollback to canonical process-per-cycle life?
+```
+
+Boundary:
+
+```text
+RAM debt is tracked, not solved.
+No migration claim without fresh proof.
+```
