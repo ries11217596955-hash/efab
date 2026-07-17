@@ -1,27 +1,90 @@
 {
-    "schema":  "callable_innate_reflex_kernel_v1_slice_a_proof",
+    "schema":  "callable_innate_reflex_kernel_v1_validation",
     "status":  "PASS_CALLABLE_INNATE_REFLEX_KERNEL_V1_SLICE_A",
-    "checked_at":  "2026-07-17T12:55:31.1452602Z",
-    "manifest_path":  "operations/autonomous_inner_motor/innate_reflex_kernel_v1.json",
-    "builder_path":  "operations/autonomous_inner_motor/build_innate_reflex_kernel_v1.ps1",
-    "body_organ_knowledge_path":  "operations/autonomous_inner_motor/organ_knowledge/BODY_SELF_INSPECTION_CIRCUIT_V1_KNOWLEDGE.json",
-    "runtime_output_path":  ".runtime/self_development/innate_reflex_kernel_v1_test/innate_reflex_kernel.json",
-    "required_reflex_count":  25,
-    "manifest_reflex_count":  25,
-    "runtime_reflex_count":  25,
-    "available_not_wired_count":  1,
-    "reserved_count":  24,
-    "callable_count":  0,
-    "boundary":  {
-                     "runner_modified":  false,
-                     "canonical_launcher_modified":  false,
-                     "body_inspection_invoked":  false,
-                     "active_memory_mutated":  false,
-                     "legacy_launch_used":  false,
-                     "runner_integrated":  false,
-                     "validator_only_temp_output":  ".runtime/self_development/innate_reflex_kernel_v1_test/innate_reflex_kernel.json"
-                 },
+    "checked_at":  "2026-07-17T14:45:21.4708197Z",
+    "manifest":  "operations/autonomous_inner_motor/innate_reflex_kernel_v1.json",
+    "builder":  "operations/autonomous_inner_motor/build_innate_reflex_kernel_v1.ps1",
+    "reflex_count":  25,
+    "body_audit_reflex":  {
+                              "reflex_id":  "body_audit_reflex",
+                              "built_in":  true,
+                              "organ_id":  "BODY_SELF_INSPECTION_CIRCUIT_V1",
+                              "entrypoint":  "operations/body_self_inspection/invoke_body_self_inspection_circuit_v1.ps1",
+                              "can_hear_body":  true,
+                              "validator":  "validators/validate_body_self_inspection_circuit_v1.ps1",
+                              "callable":  true,
+                              "status":  "DEFAULT_WAKE_OBSERVE",
+                              "organ_status":  "KNOWN_ORGAN_AVAILABLE_WAKE_DEFAULT",
+                              "body_inspection_invoked":  false,
+                              "invoked_this_cycle":  false,
+                              "input_contract":  "wake_default_observe_only_no_owner_permission_required",
+                              "output_contract":  "body_self_inspection_signal_parent_packet_and_circuit_proof",
+                              "allowed_surfaces":  [
+                                                       "innate_reflex_kernel_registry",
+                                                       "canonical_wake_default_observe",
+                                                       "runtime_body_self_inspection_outputs",
+                                                       "runtime_default_wake_reflexes_proof"
+                                                   ],
+                              "forbidden_surfaces":  [
+                                                         "repair_execution",
+                                                         "map_mutation",
+                                                         "passport_mutation",
+                                                         "contract_mutation",
+                                                         "live_action",
+                                                         "direct_active_memory_write",
+                                                         "running_every_cycle",
+                                                         "legacy_launch_usage",
+                                                         "cleanup_performed"
+                                                     ],
+                              "proof_expectation":  "Wake-default observe-only body audit must prove body_self_inspection_signal, parent packet, circuit proof, and no repair/mutation.",
+                              "maturity":  "DEFAULT_WAKE_OBSERVE_READY",
+                              "invocation_policy":  "WAKE_DEFAULT_ON_AGENT_LIFE_START",
+                              "requires_owner_permission":  false,
+                              "trigger_required":  false,
+                              "wake_default":  true,
+                              "boundary":  {
+                                               "observe_only_wake_default":  true,
+                                               "body_inspection_invoked":  false,
+                                               "active_memory_mutated":  false,
+                                               "live_process_touched":  false,
+                                               "repair_executed":  false,
+                                               "legacy_launch_used":  false,
+                                               "runner_integrated":  true
+                                           }
+                          },
+    "runtime_summary":  {
+                            "status":  "PASS_CALLABLE_INNATE_REFLEX_KERNEL_V1_SLICE_A",
+                            "reflex_count":  25,
+                            "callable_count":  1,
+                            "wake_default_count":  1,
+                            "reserved_count":  24,
+                            "body_audit_reflex":  {
+                                                      "reflex_id":  "body_audit_reflex",
+                                                      "built_in":  true,
+                                                      "callable":  true,
+                                                      "status":  "DEFAULT_WAKE_OBSERVE",
+                                                      "invocation_policy":  "WAKE_DEFAULT_ON_AGENT_LIFE_START",
+                                                      "wake_default":  true,
+                                                      "requires_owner_permission":  false,
+                                                      "trigger_required":  false,
+                                                      "organ_id":  "BODY_SELF_INSPECTION_CIRCUIT_V1",
+                                                      "organ_status":  "KNOWN_ORGAN_AVAILABLE_WAKE_DEFAULT",
+                                                      "entrypoint":  "operations/body_self_inspection/invoke_body_self_inspection_circuit_v1.ps1",
+                                                      "can_hear_body":  true,
+                                                      "invoked_this_cycle":  false,
+                                                      "body_inspection_invoked":  false
+                                                  }
+                        },
     "errors":  [
 
-               ]
+               ],
+    "boundary":  {
+                     "manifest_only":  true,
+                     "body_audit_reflex_wake_default":  true,
+                     "body_inspection_invoked":  false,
+                     "active_memory_mutated":  false,
+                     "live_process_touched":  false,
+                     "repair_executed":  false,
+                     "legacy_launch_used":  false
+                 }
 }

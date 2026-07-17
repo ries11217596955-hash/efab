@@ -1,611 +1,786 @@
 {
-  "schema": "innate_reflex_kernel_v1",
-  "kernel_id": "INNATE_REFLEX_KERNEL_V1",
-  "status": "REGISTRY_AVAILABLE_BODY_AUDIT_NOT_WIRED",
-  "purpose": "Birth-layer registry of built-in callable reflex slots for canonical AIMO life.",
-  "model": "callable_innate_reflex_registry_not_behavioral_law",
-  "reflex_count": 25,
-  "boundary": {
-    "registry_only": true,
-    "body_inspection_invoked": false,
-    "active_memory_mutated": false,
-    "live_process_touched": false,
-    "repair_executed": false,
-    "legacy_launch_used": false,
-    "runner_integrated": false
-  },
-  "reflexes": [
-    {
-      "reflex_id": "body_audit_reflex",
-      "built_in": true,
-      "callable": false,
-      "status": "AVAILABLE_NOT_WIRED",
-      "organ_id": "BODY_SELF_INSPECTION_CIRCUIT_V1",
-      "organ_status": "KNOWN_ORGAN_AVAILABLE_NOT_WIRED",
-      "entrypoint": "operations/body_self_inspection/invoke_body_self_inspection_circuit_v1.ps1",
-      "can_hear_body": true,
-      "body_inspection_invoked": false,
-      "invoked_this_cycle": false,
-      "input_contract": "future_canonical_observe_hook_request_only",
-      "output_contract": "future_body_self_inspection_signal_parent_packet_and_proof",
-      "allowed_surfaces": [
-        "innate_reflex_kernel_registry",
-        "future_observe_only_body_audit_hook"
-      ],
-      "forbidden_surfaces": [
-        "repair_execution",
-        "map_mutation",
-        "passport_mutation",
-        "contract_mutation",
-        "live_action",
-        "direct_active_memory_write",
-        "running_every_cycle",
-        "legacy_launch_usage"
-      ],
-      "validator": "validators/validate_body_self_inspection_circuit_v1.ps1",
-      "proof_expectation": "Kernel proves the organ is known and not invoked; future observe hook must prove signal and parent packet.",
-      "boundary": {
-        "observe_only_future_use": true,
-        "body_inspection_invoked": false,
-        "active_memory_mutated": false,
-        "live_process_touched": false,
-        "repair_executed": false,
-        "legacy_launch_used": false,
-        "runner_integrated": false
-      },
-      "maturity": "KNOWN_ORGAN_AVAILABLE_NOT_WIRED"
-    },
-    {
-      "reflex_id": "organ_audit_reflex",
-      "built_in": true,
-      "callable": false,
-      "status": "RESERVED_NOT_BUILT",
-      "planned_entrypoint": "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
-      "input_contract": "reserved_future_contract",
-      "output_contract": "reserved_future_proof",
-      "allowed_surfaces": [ "innate_reflex_kernel_registry" ],
-      "forbidden_surfaces": [ "live_action", "direct_active_memory_write", "legacy_launch_usage", "repair_execution" ],
-      "validator": "RESERVED_NOT_BUILT",
-      "proof_expectation": "Slot is present, non-callable, and not falsely wired.",
-      "boundary": {
-        "registry_only": true,
-        "body_inspection_invoked": false,
-        "active_memory_mutated": false,
-        "live_process_touched": false,
-        "repair_executed": false,
-        "legacy_launch_used": false,
-        "runner_integrated": false
-      },
-      "maturity": "RESERVED_SLOT"
-    },
-    {
-      "reflex_id": "full_body_map_audit_reflex",
-      "built_in": true,
-      "callable": false,
-      "status": "RESERVED_NOT_BUILT",
-      "planned_entrypoint": "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
-      "input_contract": "reserved_future_contract",
-      "output_contract": "reserved_future_proof",
-      "allowed_surfaces": [ "innate_reflex_kernel_registry" ],
-      "forbidden_surfaces": [ "live_action", "direct_active_memory_write", "legacy_launch_usage", "repair_execution" ],
-      "validator": "RESERVED_NOT_BUILT",
-      "proof_expectation": "Slot is present, non-callable, and not falsely wired.",
-      "boundary": {
-        "registry_only": true,
-        "body_inspection_invoked": false,
-        "active_memory_mutated": false,
-        "live_process_touched": false,
-        "repair_executed": false,
-        "legacy_launch_used": false,
-        "runner_integrated": false
-      },
-      "maturity": "RESERVED_SLOT"
-    },
-    {
-      "reflex_id": "repo_reality_reflex",
-      "built_in": true,
-      "callable": false,
-      "status": "RESERVED_NOT_BUILT",
-      "planned_entrypoint": "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
-      "input_contract": "reserved_future_contract",
-      "output_contract": "reserved_future_proof",
-      "allowed_surfaces": [ "innate_reflex_kernel_registry" ],
-      "forbidden_surfaces": [ "live_action", "direct_active_memory_write", "legacy_launch_usage", "repair_execution" ],
-      "validator": "RESERVED_NOT_BUILT",
-      "proof_expectation": "Slot is present, non-callable, and not falsely wired.",
-      "boundary": {
-        "registry_only": true,
-        "body_inspection_invoked": false,
-        "active_memory_mutated": false,
-        "live_process_touched": false,
-        "repair_executed": false,
-        "legacy_launch_used": false,
-        "runner_integrated": false
-      },
-      "maturity": "RESERVED_SLOT"
-    },
-    {
-      "reflex_id": "process_scan_reflex",
-      "built_in": true,
-      "callable": false,
-      "status": "RESERVED_NOT_BUILT",
-      "planned_entrypoint": "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
-      "input_contract": "reserved_future_contract",
-      "output_contract": "reserved_future_proof",
-      "allowed_surfaces": [ "innate_reflex_kernel_registry" ],
-      "forbidden_surfaces": [ "live_action", "direct_active_memory_write", "legacy_launch_usage", "repair_execution" ],
-      "validator": "RESERVED_NOT_BUILT",
-      "proof_expectation": "Slot is present, non-callable, and not falsely wired.",
-      "boundary": {
-        "registry_only": true,
-        "body_inspection_invoked": false,
-        "active_memory_mutated": false,
-        "live_process_touched": false,
-        "repair_executed": false,
-        "legacy_launch_used": false,
-        "runner_integrated": false
-      },
-      "maturity": "RESERVED_SLOT"
-    },
-    {
-      "reflex_id": "runtime_pressure_reflex",
-      "built_in": true,
-      "callable": false,
-      "status": "RESERVED_NOT_BUILT",
-      "planned_entrypoint": "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
-      "input_contract": "reserved_future_contract",
-      "output_contract": "reserved_future_proof",
-      "allowed_surfaces": [ "innate_reflex_kernel_registry" ],
-      "forbidden_surfaces": [ "live_action", "direct_active_memory_write", "legacy_launch_usage", "repair_execution" ],
-      "validator": "RESERVED_NOT_BUILT",
-      "proof_expectation": "Slot is present, non-callable, and not falsely wired.",
-      "boundary": {
-        "registry_only": true,
-        "body_inspection_invoked": false,
-        "active_memory_mutated": false,
-        "live_process_touched": false,
-        "repair_executed": false,
-        "legacy_launch_used": false,
-        "runner_integrated": false
-      },
-      "maturity": "RESERVED_SLOT"
-    },
-    {
-      "reflex_id": "preflight_reflex",
-      "built_in": true,
-      "callable": false,
-      "status": "RESERVED_NOT_BUILT",
-      "planned_entrypoint": "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
-      "input_contract": "reserved_future_contract",
-      "output_contract": "reserved_future_proof",
-      "allowed_surfaces": [ "innate_reflex_kernel_registry" ],
-      "forbidden_surfaces": [ "live_action", "direct_active_memory_write", "legacy_launch_usage", "repair_execution" ],
-      "validator": "RESERVED_NOT_BUILT",
-      "proof_expectation": "Slot is present, non-callable, and not falsely wired.",
-      "boundary": {
-        "registry_only": true,
-        "body_inspection_invoked": false,
-        "active_memory_mutated": false,
-        "live_process_touched": false,
-        "repair_executed": false,
-        "legacy_launch_used": false,
-        "runner_integrated": false
-      },
-      "maturity": "RESERVED_SLOT"
-    },
-    {
-      "reflex_id": "validator_run_reflex",
-      "built_in": true,
-      "callable": false,
-      "status": "RESERVED_NOT_BUILT",
-      "planned_entrypoint": "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
-      "input_contract": "reserved_future_contract",
-      "output_contract": "reserved_future_proof",
-      "allowed_surfaces": [ "innate_reflex_kernel_registry" ],
-      "forbidden_surfaces": [ "live_action", "direct_active_memory_write", "legacy_launch_usage", "repair_execution" ],
-      "validator": "RESERVED_NOT_BUILT",
-      "proof_expectation": "Slot is present, non-callable, and not falsely wired.",
-      "boundary": {
-        "registry_only": true,
-        "body_inspection_invoked": false,
-        "active_memory_mutated": false,
-        "live_process_touched": false,
-        "repair_executed": false,
-        "legacy_launch_used": false,
-        "runner_integrated": false
-      },
-      "maturity": "RESERVED_SLOT"
-    },
-    {
-      "reflex_id": "proof_pack_reflex",
-      "built_in": true,
-      "callable": false,
-      "status": "RESERVED_NOT_BUILT",
-      "planned_entrypoint": "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
-      "input_contract": "reserved_future_contract",
-      "output_contract": "reserved_future_proof",
-      "allowed_surfaces": [ "innate_reflex_kernel_registry" ],
-      "forbidden_surfaces": [ "live_action", "direct_active_memory_write", "legacy_launch_usage", "repair_execution" ],
-      "validator": "RESERVED_NOT_BUILT",
-      "proof_expectation": "Slot is present, non-callable, and not falsely wired.",
-      "boundary": {
-        "registry_only": true,
-        "body_inspection_invoked": false,
-        "active_memory_mutated": false,
-        "live_process_touched": false,
-        "repair_executed": false,
-        "legacy_launch_used": false,
-        "runner_integrated": false
-      },
-      "maturity": "RESERVED_SLOT"
-    },
-    {
-      "reflex_id": "rollback_reflex",
-      "built_in": true,
-      "callable": false,
-      "status": "RESERVED_NOT_BUILT",
-      "planned_entrypoint": "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
-      "input_contract": "reserved_future_contract",
-      "output_contract": "reserved_future_proof",
-      "allowed_surfaces": [ "innate_reflex_kernel_registry" ],
-      "forbidden_surfaces": [ "live_action", "direct_active_memory_write", "legacy_launch_usage", "repair_execution" ],
-      "validator": "RESERVED_NOT_BUILT",
-      "proof_expectation": "Slot is present, non-callable, and not falsely wired.",
-      "boundary": {
-        "registry_only": true,
-        "body_inspection_invoked": false,
-        "active_memory_mutated": false,
-        "live_process_touched": false,
-        "repair_executed": false,
-        "legacy_launch_used": false,
-        "runner_integrated": false
-      },
-      "maturity": "RESERVED_SLOT"
-    },
-    {
-      "reflex_id": "quarantine_reflex",
-      "built_in": true,
-      "callable": false,
-      "status": "RESERVED_NOT_BUILT",
-      "planned_entrypoint": "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
-      "input_contract": "reserved_future_contract",
-      "output_contract": "reserved_future_proof",
-      "allowed_surfaces": [ "innate_reflex_kernel_registry" ],
-      "forbidden_surfaces": [ "live_action", "direct_active_memory_write", "legacy_launch_usage", "repair_execution" ],
-      "validator": "RESERVED_NOT_BUILT",
-      "proof_expectation": "Slot is present, non-callable, and not falsely wired.",
-      "boundary": {
-        "registry_only": true,
-        "body_inspection_invoked": false,
-        "active_memory_mutated": false,
-        "live_process_touched": false,
-        "repair_executed": false,
-        "legacy_launch_used": false,
-        "runner_integrated": false
-      },
-      "maturity": "RESERVED_SLOT"
-    },
-    {
-      "reflex_id": "stop_or_freeze_reflex",
-      "built_in": true,
-      "callable": false,
-      "status": "RESERVED_NOT_BUILT",
-      "planned_entrypoint": "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
-      "input_contract": "reserved_future_contract",
-      "output_contract": "reserved_future_proof",
-      "allowed_surfaces": [ "innate_reflex_kernel_registry" ],
-      "forbidden_surfaces": [ "live_action", "direct_active_memory_write", "legacy_launch_usage", "repair_execution" ],
-      "validator": "RESERVED_NOT_BUILT",
-      "proof_expectation": "Slot is present, non-callable, and not falsely wired.",
-      "boundary": {
-        "registry_only": true,
-        "body_inspection_invoked": false,
-        "active_memory_mutated": false,
-        "live_process_touched": false,
-        "repair_executed": false,
-        "legacy_launch_used": false,
-        "runner_integrated": false
-      },
-      "maturity": "RESERVED_SLOT"
-    },
-    {
-      "reflex_id": "memory_queue_reflex",
-      "built_in": true,
-      "callable": false,
-      "status": "RESERVED_NOT_BUILT",
-      "planned_entrypoint": "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
-      "input_contract": "reserved_future_contract",
-      "output_contract": "reserved_future_proof",
-      "allowed_surfaces": [ "innate_reflex_kernel_registry" ],
-      "forbidden_surfaces": [ "live_action", "direct_active_memory_write", "legacy_launch_usage", "repair_execution" ],
-      "validator": "RESERVED_NOT_BUILT",
-      "proof_expectation": "Slot is present, non-callable, and not falsely wired.",
-      "boundary": {
-        "registry_only": true,
-        "body_inspection_invoked": false,
-        "active_memory_mutated": false,
-        "live_process_touched": false,
-        "repair_executed": false,
-        "legacy_launch_used": false,
-        "runner_integrated": false
-      },
-      "maturity": "RESERVED_SLOT"
-    },
-    {
-      "reflex_id": "active_memory_read_reflex",
-      "built_in": true,
-      "callable": false,
-      "status": "RESERVED_NOT_BUILT",
-      "planned_entrypoint": "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
-      "input_contract": "reserved_future_contract",
-      "output_contract": "reserved_future_proof",
-      "allowed_surfaces": [ "innate_reflex_kernel_registry" ],
-      "forbidden_surfaces": [ "live_action", "direct_active_memory_write", "legacy_launch_usage", "repair_execution" ],
-      "validator": "RESERVED_NOT_BUILT",
-      "proof_expectation": "Slot is present, non-callable, and not falsely wired.",
-      "boundary": {
-        "registry_only": true,
-        "body_inspection_invoked": false,
-        "active_memory_mutated": false,
-        "live_process_touched": false,
-        "repair_executed": false,
-        "legacy_launch_used": false,
-        "runner_integrated": false
-      },
-      "maturity": "RESERVED_SLOT"
-    },
-    {
-      "reflex_id": "memory_digest_reflex",
-      "built_in": true,
-      "callable": false,
-      "status": "RESERVED_NOT_BUILT",
-      "planned_entrypoint": "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
-      "input_contract": "reserved_future_contract",
-      "output_contract": "reserved_future_proof",
-      "allowed_surfaces": [ "innate_reflex_kernel_registry" ],
-      "forbidden_surfaces": [ "live_action", "direct_active_memory_write", "legacy_launch_usage", "repair_execution" ],
-      "validator": "RESERVED_NOT_BUILT",
-      "proof_expectation": "Slot is present, non-callable, and not falsely wired.",
-      "boundary": {
-        "registry_only": true,
-        "body_inspection_invoked": false,
-        "active_memory_mutated": false,
-        "live_process_touched": false,
-        "repair_executed": false,
-        "legacy_launch_used": false,
-        "runner_integrated": false
-      },
-      "maturity": "RESERVED_SLOT"
-    },
-    {
-      "reflex_id": "handoff_write_reflex",
-      "built_in": true,
-      "callable": false,
-      "status": "RESERVED_NOT_BUILT",
-      "planned_entrypoint": "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
-      "input_contract": "reserved_future_contract",
-      "output_contract": "reserved_future_proof",
-      "allowed_surfaces": [ "innate_reflex_kernel_registry" ],
-      "forbidden_surfaces": [ "live_action", "direct_active_memory_write", "legacy_launch_usage", "repair_execution" ],
-      "validator": "RESERVED_NOT_BUILT",
-      "proof_expectation": "Slot is present, non-callable, and not falsely wired.",
-      "boundary": {
-        "registry_only": true,
-        "body_inspection_invoked": false,
-        "active_memory_mutated": false,
-        "live_process_touched": false,
-        "repair_executed": false,
-        "legacy_launch_used": false,
-        "runner_integrated": false
-      },
-      "maturity": "RESERVED_SLOT"
-    },
-    {
-      "reflex_id": "self_notebook_update_reflex",
-      "built_in": true,
-      "callable": false,
-      "status": "RESERVED_NOT_BUILT",
-      "planned_entrypoint": "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
-      "input_contract": "reserved_future_contract",
-      "output_contract": "reserved_future_proof",
-      "allowed_surfaces": [ "innate_reflex_kernel_registry" ],
-      "forbidden_surfaces": [ "live_action", "direct_active_memory_write", "legacy_launch_usage", "repair_execution" ],
-      "validator": "RESERVED_NOT_BUILT",
-      "proof_expectation": "Slot is present, non-callable, and not falsely wired.",
-      "boundary": {
-        "registry_only": true,
-        "body_inspection_invoked": false,
-        "active_memory_mutated": false,
-        "live_process_touched": false,
-        "repair_executed": false,
-        "legacy_launch_used": false,
-        "runner_integrated": false
-      },
-      "maturity": "RESERVED_SLOT"
-    },
-    {
-      "reflex_id": "directory_create_reflex",
-      "built_in": true,
-      "callable": false,
-      "status": "RESERVED_NOT_BUILT",
-      "planned_entrypoint": "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
-      "input_contract": "reserved_future_contract",
-      "output_contract": "reserved_future_proof",
-      "allowed_surfaces": [ "innate_reflex_kernel_registry" ],
-      "forbidden_surfaces": [ "live_action", "direct_active_memory_write", "legacy_launch_usage", "repair_execution" ],
-      "validator": "RESERVED_NOT_BUILT",
-      "proof_expectation": "Slot is present, non-callable, and not falsely wired.",
-      "boundary": {
-        "registry_only": true,
-        "body_inspection_invoked": false,
-        "active_memory_mutated": false,
-        "live_process_touched": false,
-        "repair_executed": false,
-        "legacy_launch_used": false,
-        "runner_integrated": false
-      },
-      "maturity": "RESERVED_SLOT"
-    },
-    {
-      "reflex_id": "file_normalize_reflex",
-      "built_in": true,
-      "callable": false,
-      "status": "RESERVED_NOT_BUILT",
-      "planned_entrypoint": "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
-      "input_contract": "reserved_future_contract",
-      "output_contract": "reserved_future_proof",
-      "allowed_surfaces": [ "innate_reflex_kernel_registry" ],
-      "forbidden_surfaces": [ "live_action", "direct_active_memory_write", "legacy_launch_usage", "repair_execution" ],
-      "validator": "RESERVED_NOT_BUILT",
-      "proof_expectation": "Slot is present, non-callable, and not falsely wired.",
-      "boundary": {
-        "registry_only": true,
-        "body_inspection_invoked": false,
-        "active_memory_mutated": false,
-        "live_process_touched": false,
-        "repair_executed": false,
-        "legacy_launch_used": false,
-        "runner_integrated": false
-      },
-      "maturity": "RESERVED_SLOT"
-    },
-    {
-      "reflex_id": "archive_backup_reflex",
-      "built_in": true,
-      "callable": false,
-      "status": "RESERVED_NOT_BUILT",
-      "planned_entrypoint": "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
-      "input_contract": "reserved_future_contract",
-      "output_contract": "reserved_future_proof",
-      "allowed_surfaces": [ "innate_reflex_kernel_registry" ],
-      "forbidden_surfaces": [ "live_action", "direct_active_memory_write", "legacy_launch_usage", "repair_execution" ],
-      "validator": "RESERVED_NOT_BUILT",
-      "proof_expectation": "Slot is present, non-callable, and not falsely wired.",
-      "boundary": {
-        "registry_only": true,
-        "body_inspection_invoked": false,
-        "active_memory_mutated": false,
-        "live_process_touched": false,
-        "repair_executed": false,
-        "legacy_launch_used": false,
-        "runner_integrated": false
-      },
-      "maturity": "RESERVED_SLOT"
-    },
-    {
-      "reflex_id": "artifact_convert_reflex",
-      "built_in": true,
-      "callable": false,
-      "status": "RESERVED_NOT_BUILT",
-      "planned_entrypoint": "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
-      "input_contract": "reserved_future_contract",
-      "output_contract": "reserved_future_proof",
-      "allowed_surfaces": [ "innate_reflex_kernel_registry" ],
-      "forbidden_surfaces": [ "live_action", "direct_active_memory_write", "legacy_launch_usage", "repair_execution" ],
-      "validator": "RESERVED_NOT_BUILT",
-      "proof_expectation": "Slot is present, non-callable, and not falsely wired.",
-      "boundary": {
-        "registry_only": true,
-        "body_inspection_invoked": false,
-        "active_memory_mutated": false,
-        "live_process_touched": false,
-        "repair_executed": false,
-        "legacy_launch_used": false,
-        "runner_integrated": false
-      },
-      "maturity": "RESERVED_SLOT"
-    },
-    {
-      "reflex_id": "codex_consult_reflex",
-      "built_in": true,
-      "callable": false,
-      "status": "RESERVED_NOT_BUILT",
-      "planned_entrypoint": "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
-      "input_contract": "reserved_future_contract",
-      "output_contract": "reserved_future_proof",
-      "allowed_surfaces": [ "innate_reflex_kernel_registry" ],
-      "forbidden_surfaces": [ "live_action", "direct_active_memory_write", "legacy_launch_usage", "repair_execution" ],
-      "validator": "RESERVED_NOT_BUILT",
-      "proof_expectation": "Slot is present, non-callable, and not falsely wired.",
-      "boundary": {
-        "registry_only": true,
-        "body_inspection_invoked": false,
-        "active_memory_mutated": false,
-        "live_process_touched": false,
-        "repair_executed": false,
-        "legacy_launch_used": false,
-        "runner_integrated": false
-      },
-      "maturity": "RESERVED_SLOT"
-    },
-    {
-      "reflex_id": "codex_task_authoring_reflex",
-      "built_in": true,
-      "callable": false,
-      "status": "RESERVED_NOT_BUILT",
-      "planned_entrypoint": "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
-      "input_contract": "reserved_future_contract",
-      "output_contract": "reserved_future_proof",
-      "allowed_surfaces": [ "innate_reflex_kernel_registry" ],
-      "forbidden_surfaces": [ "live_action", "direct_active_memory_write", "legacy_launch_usage", "repair_execution" ],
-      "validator": "RESERVED_NOT_BUILT",
-      "proof_expectation": "Slot is present, non-callable, and not falsely wired.",
-      "boundary": {
-        "registry_only": true,
-        "body_inspection_invoked": false,
-        "active_memory_mutated": false,
-        "live_process_touched": false,
-        "repair_executed": false,
-        "legacy_launch_used": false,
-        "runner_integrated": false
-      },
-      "maturity": "RESERVED_SLOT"
-    },
-    {
-      "reflex_id": "web_source_search_reflex",
-      "built_in": true,
-      "callable": false,
-      "status": "RESERVED_NOT_BUILT",
-      "planned_entrypoint": "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
-      "input_contract": "reserved_future_contract",
-      "output_contract": "reserved_future_proof",
-      "allowed_surfaces": [ "innate_reflex_kernel_registry" ],
-      "forbidden_surfaces": [ "live_action", "direct_active_memory_write", "legacy_launch_usage", "repair_execution" ],
-      "validator": "RESERVED_NOT_BUILT",
-      "proof_expectation": "Slot is present, non-callable, and not falsely wired.",
-      "boundary": {
-        "registry_only": true,
-        "body_inspection_invoked": false,
-        "active_memory_mutated": false,
-        "live_process_touched": false,
-        "repair_executed": false,
-        "legacy_launch_used": false,
-        "runner_integrated": false
-      },
-      "maturity": "RESERVED_SLOT"
-    },
-    {
-      "reflex_id": "source_ingestion_reflex",
-      "built_in": true,
-      "callable": false,
-      "status": "RESERVED_NOT_BUILT",
-      "planned_entrypoint": "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
-      "input_contract": "reserved_future_contract",
-      "output_contract": "reserved_future_proof",
-      "allowed_surfaces": [ "innate_reflex_kernel_registry" ],
-      "forbidden_surfaces": [ "live_action", "direct_active_memory_write", "legacy_launch_usage", "repair_execution" ],
-      "validator": "RESERVED_NOT_BUILT",
-      "proof_expectation": "Slot is present, non-callable, and not falsely wired.",
-      "boundary": {
-        "registry_only": true,
-        "body_inspection_invoked": false,
-        "active_memory_mutated": false,
-        "live_process_touched": false,
-        "repair_executed": false,
-        "legacy_launch_used": false,
-        "runner_integrated": false
-      },
-      "maturity": "RESERVED_SLOT"
-    }
-  ]
+    "schema":  "innate_reflex_kernel_v1",
+    "kernel_id":  "INNATE_REFLEX_KERNEL_V1",
+    "status":  "REGISTRY_AVAILABLE_BODY_AUDIT_NOT_WIRED",
+    "purpose":  "Birth-layer registry of built-in callable reflex slots for canonical AIMO life.",
+    "model":  "callable_innate_reflex_registry_not_behavioral_law",
+    "reflex_count":  25,
+    "boundary":  {
+                     "registry_only":  true,
+                     "body_inspection_invoked":  false,
+                     "active_memory_mutated":  false,
+                     "live_process_touched":  false,
+                     "repair_executed":  false,
+                     "legacy_launch_used":  false,
+                     "runner_integrated":  false
+                 },
+    "reflexes":  [
+                     {
+                         "reflex_id":  "body_audit_reflex",
+                         "built_in":  true,
+                         "organ_id":  "BODY_SELF_INSPECTION_CIRCUIT_V1",
+                         "entrypoint":  "operations/body_self_inspection/invoke_body_self_inspection_circuit_v1.ps1",
+                         "can_hear_body":  true,
+                         "validator":  "validators/validate_body_self_inspection_circuit_v1.ps1",
+                         "callable":  true,
+                         "status":  "DEFAULT_WAKE_OBSERVE",
+                         "organ_status":  "KNOWN_ORGAN_AVAILABLE_WAKE_DEFAULT",
+                         "body_inspection_invoked":  false,
+                         "invoked_this_cycle":  false,
+                         "input_contract":  "wake_default_observe_only_no_owner_permission_required",
+                         "output_contract":  "body_self_inspection_signal_parent_packet_and_circuit_proof",
+                         "allowed_surfaces":  [
+                                                  "innate_reflex_kernel_registry",
+                                                  "canonical_wake_default_observe",
+                                                  "runtime_body_self_inspection_outputs",
+                                                  "runtime_default_wake_reflexes_proof"
+                                              ],
+                         "forbidden_surfaces":  [
+                                                    "repair_execution",
+                                                    "map_mutation",
+                                                    "passport_mutation",
+                                                    "contract_mutation",
+                                                    "live_action",
+                                                    "direct_active_memory_write",
+                                                    "running_every_cycle",
+                                                    "legacy_launch_usage",
+                                                    "cleanup_performed"
+                                                ],
+                         "proof_expectation":  "Wake-default observe-only body audit must prove body_self_inspection_signal, parent packet, circuit proof, and no repair/mutation.",
+                         "maturity":  "DEFAULT_WAKE_OBSERVE_READY",
+                         "invocation_policy":  "WAKE_DEFAULT_ON_AGENT_LIFE_START",
+                         "requires_owner_permission":  false,
+                         "trigger_required":  false,
+                         "wake_default":  true,
+                         "boundary":  {
+                                          "observe_only_wake_default":  true,
+                                          "body_inspection_invoked":  false,
+                                          "active_memory_mutated":  false,
+                                          "live_process_touched":  false,
+                                          "repair_executed":  false,
+                                          "legacy_launch_used":  false,
+                                          "runner_integrated":  true
+                                      }
+                     },
+                     {
+                         "reflex_id":  "organ_audit_reflex",
+                         "built_in":  true,
+                         "callable":  false,
+                         "status":  "RESERVED_NOT_BUILT",
+                         "planned_entrypoint":  "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
+                         "input_contract":  "reserved_future_contract",
+                         "output_contract":  "reserved_future_proof",
+                         "allowed_surfaces":  [
+                                                  "innate_reflex_kernel_registry"
+                                              ],
+                         "forbidden_surfaces":  [
+                                                    "live_action",
+                                                    "direct_active_memory_write",
+                                                    "legacy_launch_usage",
+                                                    "repair_execution"
+                                                ],
+                         "validator":  "RESERVED_NOT_BUILT",
+                         "proof_expectation":  "Slot is present, non-callable, and not falsely wired.",
+                         "boundary":  {
+                                          "registry_only":  true,
+                                          "body_inspection_invoked":  false,
+                                          "active_memory_mutated":  false,
+                                          "live_process_touched":  false,
+                                          "repair_executed":  false,
+                                          "legacy_launch_used":  false,
+                                          "runner_integrated":  false
+                                      },
+                         "maturity":  "RESERVED_SLOT"
+                     },
+                     {
+                         "reflex_id":  "full_body_map_audit_reflex",
+                         "built_in":  true,
+                         "callable":  false,
+                         "status":  "RESERVED_NOT_BUILT",
+                         "planned_entrypoint":  "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
+                         "input_contract":  "reserved_future_contract",
+                         "output_contract":  "reserved_future_proof",
+                         "allowed_surfaces":  [
+                                                  "innate_reflex_kernel_registry"
+                                              ],
+                         "forbidden_surfaces":  [
+                                                    "live_action",
+                                                    "direct_active_memory_write",
+                                                    "legacy_launch_usage",
+                                                    "repair_execution"
+                                                ],
+                         "validator":  "RESERVED_NOT_BUILT",
+                         "proof_expectation":  "Slot is present, non-callable, and not falsely wired.",
+                         "boundary":  {
+                                          "registry_only":  true,
+                                          "body_inspection_invoked":  false,
+                                          "active_memory_mutated":  false,
+                                          "live_process_touched":  false,
+                                          "repair_executed":  false,
+                                          "legacy_launch_used":  false,
+                                          "runner_integrated":  false
+                                      },
+                         "maturity":  "RESERVED_SLOT"
+                     },
+                     {
+                         "reflex_id":  "repo_reality_reflex",
+                         "built_in":  true,
+                         "callable":  false,
+                         "status":  "RESERVED_NOT_BUILT",
+                         "planned_entrypoint":  "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
+                         "input_contract":  "reserved_future_contract",
+                         "output_contract":  "reserved_future_proof",
+                         "allowed_surfaces":  [
+                                                  "innate_reflex_kernel_registry"
+                                              ],
+                         "forbidden_surfaces":  [
+                                                    "live_action",
+                                                    "direct_active_memory_write",
+                                                    "legacy_launch_usage",
+                                                    "repair_execution"
+                                                ],
+                         "validator":  "RESERVED_NOT_BUILT",
+                         "proof_expectation":  "Slot is present, non-callable, and not falsely wired.",
+                         "boundary":  {
+                                          "registry_only":  true,
+                                          "body_inspection_invoked":  false,
+                                          "active_memory_mutated":  false,
+                                          "live_process_touched":  false,
+                                          "repair_executed":  false,
+                                          "legacy_launch_used":  false,
+                                          "runner_integrated":  false
+                                      },
+                         "maturity":  "RESERVED_SLOT"
+                     },
+                     {
+                         "reflex_id":  "process_scan_reflex",
+                         "built_in":  true,
+                         "callable":  false,
+                         "status":  "RESERVED_NOT_BUILT",
+                         "planned_entrypoint":  "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
+                         "input_contract":  "reserved_future_contract",
+                         "output_contract":  "reserved_future_proof",
+                         "allowed_surfaces":  [
+                                                  "innate_reflex_kernel_registry"
+                                              ],
+                         "forbidden_surfaces":  [
+                                                    "live_action",
+                                                    "direct_active_memory_write",
+                                                    "legacy_launch_usage",
+                                                    "repair_execution"
+                                                ],
+                         "validator":  "RESERVED_NOT_BUILT",
+                         "proof_expectation":  "Slot is present, non-callable, and not falsely wired.",
+                         "boundary":  {
+                                          "registry_only":  true,
+                                          "body_inspection_invoked":  false,
+                                          "active_memory_mutated":  false,
+                                          "live_process_touched":  false,
+                                          "repair_executed":  false,
+                                          "legacy_launch_used":  false,
+                                          "runner_integrated":  false
+                                      },
+                         "maturity":  "RESERVED_SLOT"
+                     },
+                     {
+                         "reflex_id":  "runtime_pressure_reflex",
+                         "built_in":  true,
+                         "callable":  false,
+                         "status":  "RESERVED_NOT_BUILT",
+                         "planned_entrypoint":  "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
+                         "input_contract":  "reserved_future_contract",
+                         "output_contract":  "reserved_future_proof",
+                         "allowed_surfaces":  [
+                                                  "innate_reflex_kernel_registry"
+                                              ],
+                         "forbidden_surfaces":  [
+                                                    "live_action",
+                                                    "direct_active_memory_write",
+                                                    "legacy_launch_usage",
+                                                    "repair_execution"
+                                                ],
+                         "validator":  "RESERVED_NOT_BUILT",
+                         "proof_expectation":  "Slot is present, non-callable, and not falsely wired.",
+                         "boundary":  {
+                                          "registry_only":  true,
+                                          "body_inspection_invoked":  false,
+                                          "active_memory_mutated":  false,
+                                          "live_process_touched":  false,
+                                          "repair_executed":  false,
+                                          "legacy_launch_used":  false,
+                                          "runner_integrated":  false
+                                      },
+                         "maturity":  "RESERVED_SLOT"
+                     },
+                     {
+                         "reflex_id":  "preflight_reflex",
+                         "built_in":  true,
+                         "callable":  false,
+                         "status":  "RESERVED_NOT_BUILT",
+                         "planned_entrypoint":  "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
+                         "input_contract":  "reserved_future_contract",
+                         "output_contract":  "reserved_future_proof",
+                         "allowed_surfaces":  [
+                                                  "innate_reflex_kernel_registry"
+                                              ],
+                         "forbidden_surfaces":  [
+                                                    "live_action",
+                                                    "direct_active_memory_write",
+                                                    "legacy_launch_usage",
+                                                    "repair_execution"
+                                                ],
+                         "validator":  "RESERVED_NOT_BUILT",
+                         "proof_expectation":  "Slot is present, non-callable, and not falsely wired.",
+                         "boundary":  {
+                                          "registry_only":  true,
+                                          "body_inspection_invoked":  false,
+                                          "active_memory_mutated":  false,
+                                          "live_process_touched":  false,
+                                          "repair_executed":  false,
+                                          "legacy_launch_used":  false,
+                                          "runner_integrated":  false
+                                      },
+                         "maturity":  "RESERVED_SLOT"
+                     },
+                     {
+                         "reflex_id":  "validator_run_reflex",
+                         "built_in":  true,
+                         "callable":  false,
+                         "status":  "RESERVED_NOT_BUILT",
+                         "planned_entrypoint":  "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
+                         "input_contract":  "reserved_future_contract",
+                         "output_contract":  "reserved_future_proof",
+                         "allowed_surfaces":  [
+                                                  "innate_reflex_kernel_registry"
+                                              ],
+                         "forbidden_surfaces":  [
+                                                    "live_action",
+                                                    "direct_active_memory_write",
+                                                    "legacy_launch_usage",
+                                                    "repair_execution"
+                                                ],
+                         "validator":  "RESERVED_NOT_BUILT",
+                         "proof_expectation":  "Slot is present, non-callable, and not falsely wired.",
+                         "boundary":  {
+                                          "registry_only":  true,
+                                          "body_inspection_invoked":  false,
+                                          "active_memory_mutated":  false,
+                                          "live_process_touched":  false,
+                                          "repair_executed":  false,
+                                          "legacy_launch_used":  false,
+                                          "runner_integrated":  false
+                                      },
+                         "maturity":  "RESERVED_SLOT"
+                     },
+                     {
+                         "reflex_id":  "proof_pack_reflex",
+                         "built_in":  true,
+                         "callable":  false,
+                         "status":  "RESERVED_NOT_BUILT",
+                         "planned_entrypoint":  "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
+                         "input_contract":  "reserved_future_contract",
+                         "output_contract":  "reserved_future_proof",
+                         "allowed_surfaces":  [
+                                                  "innate_reflex_kernel_registry"
+                                              ],
+                         "forbidden_surfaces":  [
+                                                    "live_action",
+                                                    "direct_active_memory_write",
+                                                    "legacy_launch_usage",
+                                                    "repair_execution"
+                                                ],
+                         "validator":  "RESERVED_NOT_BUILT",
+                         "proof_expectation":  "Slot is present, non-callable, and not falsely wired.",
+                         "boundary":  {
+                                          "registry_only":  true,
+                                          "body_inspection_invoked":  false,
+                                          "active_memory_mutated":  false,
+                                          "live_process_touched":  false,
+                                          "repair_executed":  false,
+                                          "legacy_launch_used":  false,
+                                          "runner_integrated":  false
+                                      },
+                         "maturity":  "RESERVED_SLOT"
+                     },
+                     {
+                         "reflex_id":  "rollback_reflex",
+                         "built_in":  true,
+                         "callable":  false,
+                         "status":  "RESERVED_NOT_BUILT",
+                         "planned_entrypoint":  "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
+                         "input_contract":  "reserved_future_contract",
+                         "output_contract":  "reserved_future_proof",
+                         "allowed_surfaces":  [
+                                                  "innate_reflex_kernel_registry"
+                                              ],
+                         "forbidden_surfaces":  [
+                                                    "live_action",
+                                                    "direct_active_memory_write",
+                                                    "legacy_launch_usage",
+                                                    "repair_execution"
+                                                ],
+                         "validator":  "RESERVED_NOT_BUILT",
+                         "proof_expectation":  "Slot is present, non-callable, and not falsely wired.",
+                         "boundary":  {
+                                          "registry_only":  true,
+                                          "body_inspection_invoked":  false,
+                                          "active_memory_mutated":  false,
+                                          "live_process_touched":  false,
+                                          "repair_executed":  false,
+                                          "legacy_launch_used":  false,
+                                          "runner_integrated":  false
+                                      },
+                         "maturity":  "RESERVED_SLOT"
+                     },
+                     {
+                         "reflex_id":  "quarantine_reflex",
+                         "built_in":  true,
+                         "callable":  false,
+                         "status":  "RESERVED_NOT_BUILT",
+                         "planned_entrypoint":  "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
+                         "input_contract":  "reserved_future_contract",
+                         "output_contract":  "reserved_future_proof",
+                         "allowed_surfaces":  [
+                                                  "innate_reflex_kernel_registry"
+                                              ],
+                         "forbidden_surfaces":  [
+                                                    "live_action",
+                                                    "direct_active_memory_write",
+                                                    "legacy_launch_usage",
+                                                    "repair_execution"
+                                                ],
+                         "validator":  "RESERVED_NOT_BUILT",
+                         "proof_expectation":  "Slot is present, non-callable, and not falsely wired.",
+                         "boundary":  {
+                                          "registry_only":  true,
+                                          "body_inspection_invoked":  false,
+                                          "active_memory_mutated":  false,
+                                          "live_process_touched":  false,
+                                          "repair_executed":  false,
+                                          "legacy_launch_used":  false,
+                                          "runner_integrated":  false
+                                      },
+                         "maturity":  "RESERVED_SLOT"
+                     },
+                     {
+                         "reflex_id":  "stop_or_freeze_reflex",
+                         "built_in":  true,
+                         "callable":  false,
+                         "status":  "RESERVED_NOT_BUILT",
+                         "planned_entrypoint":  "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
+                         "input_contract":  "reserved_future_contract",
+                         "output_contract":  "reserved_future_proof",
+                         "allowed_surfaces":  [
+                                                  "innate_reflex_kernel_registry"
+                                              ],
+                         "forbidden_surfaces":  [
+                                                    "live_action",
+                                                    "direct_active_memory_write",
+                                                    "legacy_launch_usage",
+                                                    "repair_execution"
+                                                ],
+                         "validator":  "RESERVED_NOT_BUILT",
+                         "proof_expectation":  "Slot is present, non-callable, and not falsely wired.",
+                         "boundary":  {
+                                          "registry_only":  true,
+                                          "body_inspection_invoked":  false,
+                                          "active_memory_mutated":  false,
+                                          "live_process_touched":  false,
+                                          "repair_executed":  false,
+                                          "legacy_launch_used":  false,
+                                          "runner_integrated":  false
+                                      },
+                         "maturity":  "RESERVED_SLOT"
+                     },
+                     {
+                         "reflex_id":  "memory_queue_reflex",
+                         "built_in":  true,
+                         "callable":  false,
+                         "status":  "RESERVED_NOT_BUILT",
+                         "planned_entrypoint":  "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
+                         "input_contract":  "reserved_future_contract",
+                         "output_contract":  "reserved_future_proof",
+                         "allowed_surfaces":  [
+                                                  "innate_reflex_kernel_registry"
+                                              ],
+                         "forbidden_surfaces":  [
+                                                    "live_action",
+                                                    "direct_active_memory_write",
+                                                    "legacy_launch_usage",
+                                                    "repair_execution"
+                                                ],
+                         "validator":  "RESERVED_NOT_BUILT",
+                         "proof_expectation":  "Slot is present, non-callable, and not falsely wired.",
+                         "boundary":  {
+                                          "registry_only":  true,
+                                          "body_inspection_invoked":  false,
+                                          "active_memory_mutated":  false,
+                                          "live_process_touched":  false,
+                                          "repair_executed":  false,
+                                          "legacy_launch_used":  false,
+                                          "runner_integrated":  false
+                                      },
+                         "maturity":  "RESERVED_SLOT"
+                     },
+                     {
+                         "reflex_id":  "active_memory_read_reflex",
+                         "built_in":  true,
+                         "callable":  false,
+                         "status":  "RESERVED_NOT_BUILT",
+                         "planned_entrypoint":  "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
+                         "input_contract":  "reserved_future_contract",
+                         "output_contract":  "reserved_future_proof",
+                         "allowed_surfaces":  [
+                                                  "innate_reflex_kernel_registry"
+                                              ],
+                         "forbidden_surfaces":  [
+                                                    "live_action",
+                                                    "direct_active_memory_write",
+                                                    "legacy_launch_usage",
+                                                    "repair_execution"
+                                                ],
+                         "validator":  "RESERVED_NOT_BUILT",
+                         "proof_expectation":  "Slot is present, non-callable, and not falsely wired.",
+                         "boundary":  {
+                                          "registry_only":  true,
+                                          "body_inspection_invoked":  false,
+                                          "active_memory_mutated":  false,
+                                          "live_process_touched":  false,
+                                          "repair_executed":  false,
+                                          "legacy_launch_used":  false,
+                                          "runner_integrated":  false
+                                      },
+                         "maturity":  "RESERVED_SLOT"
+                     },
+                     {
+                         "reflex_id":  "memory_digest_reflex",
+                         "built_in":  true,
+                         "callable":  false,
+                         "status":  "RESERVED_NOT_BUILT",
+                         "planned_entrypoint":  "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
+                         "input_contract":  "reserved_future_contract",
+                         "output_contract":  "reserved_future_proof",
+                         "allowed_surfaces":  [
+                                                  "innate_reflex_kernel_registry"
+                                              ],
+                         "forbidden_surfaces":  [
+                                                    "live_action",
+                                                    "direct_active_memory_write",
+                                                    "legacy_launch_usage",
+                                                    "repair_execution"
+                                                ],
+                         "validator":  "RESERVED_NOT_BUILT",
+                         "proof_expectation":  "Slot is present, non-callable, and not falsely wired.",
+                         "boundary":  {
+                                          "registry_only":  true,
+                                          "body_inspection_invoked":  false,
+                                          "active_memory_mutated":  false,
+                                          "live_process_touched":  false,
+                                          "repair_executed":  false,
+                                          "legacy_launch_used":  false,
+                                          "runner_integrated":  false
+                                      },
+                         "maturity":  "RESERVED_SLOT"
+                     },
+                     {
+                         "reflex_id":  "handoff_write_reflex",
+                         "built_in":  true,
+                         "callable":  false,
+                         "status":  "RESERVED_NOT_BUILT",
+                         "planned_entrypoint":  "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
+                         "input_contract":  "reserved_future_contract",
+                         "output_contract":  "reserved_future_proof",
+                         "allowed_surfaces":  [
+                                                  "innate_reflex_kernel_registry"
+                                              ],
+                         "forbidden_surfaces":  [
+                                                    "live_action",
+                                                    "direct_active_memory_write",
+                                                    "legacy_launch_usage",
+                                                    "repair_execution"
+                                                ],
+                         "validator":  "RESERVED_NOT_BUILT",
+                         "proof_expectation":  "Slot is present, non-callable, and not falsely wired.",
+                         "boundary":  {
+                                          "registry_only":  true,
+                                          "body_inspection_invoked":  false,
+                                          "active_memory_mutated":  false,
+                                          "live_process_touched":  false,
+                                          "repair_executed":  false,
+                                          "legacy_launch_used":  false,
+                                          "runner_integrated":  false
+                                      },
+                         "maturity":  "RESERVED_SLOT"
+                     },
+                     {
+                         "reflex_id":  "self_notebook_update_reflex",
+                         "built_in":  true,
+                         "callable":  false,
+                         "status":  "RESERVED_NOT_BUILT",
+                         "planned_entrypoint":  "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
+                         "input_contract":  "reserved_future_contract",
+                         "output_contract":  "reserved_future_proof",
+                         "allowed_surfaces":  [
+                                                  "innate_reflex_kernel_registry"
+                                              ],
+                         "forbidden_surfaces":  [
+                                                    "live_action",
+                                                    "direct_active_memory_write",
+                                                    "legacy_launch_usage",
+                                                    "repair_execution"
+                                                ],
+                         "validator":  "RESERVED_NOT_BUILT",
+                         "proof_expectation":  "Slot is present, non-callable, and not falsely wired.",
+                         "boundary":  {
+                                          "registry_only":  true,
+                                          "body_inspection_invoked":  false,
+                                          "active_memory_mutated":  false,
+                                          "live_process_touched":  false,
+                                          "repair_executed":  false,
+                                          "legacy_launch_used":  false,
+                                          "runner_integrated":  false
+                                      },
+                         "maturity":  "RESERVED_SLOT"
+                     },
+                     {
+                         "reflex_id":  "directory_create_reflex",
+                         "built_in":  true,
+                         "callable":  false,
+                         "status":  "RESERVED_NOT_BUILT",
+                         "planned_entrypoint":  "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
+                         "input_contract":  "reserved_future_contract",
+                         "output_contract":  "reserved_future_proof",
+                         "allowed_surfaces":  [
+                                                  "innate_reflex_kernel_registry"
+                                              ],
+                         "forbidden_surfaces":  [
+                                                    "live_action",
+                                                    "direct_active_memory_write",
+                                                    "legacy_launch_usage",
+                                                    "repair_execution"
+                                                ],
+                         "validator":  "RESERVED_NOT_BUILT",
+                         "proof_expectation":  "Slot is present, non-callable, and not falsely wired.",
+                         "boundary":  {
+                                          "registry_only":  true,
+                                          "body_inspection_invoked":  false,
+                                          "active_memory_mutated":  false,
+                                          "live_process_touched":  false,
+                                          "repair_executed":  false,
+                                          "legacy_launch_used":  false,
+                                          "runner_integrated":  false
+                                      },
+                         "maturity":  "RESERVED_SLOT"
+                     },
+                     {
+                         "reflex_id":  "file_normalize_reflex",
+                         "built_in":  true,
+                         "callable":  false,
+                         "status":  "RESERVED_NOT_BUILT",
+                         "planned_entrypoint":  "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
+                         "input_contract":  "reserved_future_contract",
+                         "output_contract":  "reserved_future_proof",
+                         "allowed_surfaces":  [
+                                                  "innate_reflex_kernel_registry"
+                                              ],
+                         "forbidden_surfaces":  [
+                                                    "live_action",
+                                                    "direct_active_memory_write",
+                                                    "legacy_launch_usage",
+                                                    "repair_execution"
+                                                ],
+                         "validator":  "RESERVED_NOT_BUILT",
+                         "proof_expectation":  "Slot is present, non-callable, and not falsely wired.",
+                         "boundary":  {
+                                          "registry_only":  true,
+                                          "body_inspection_invoked":  false,
+                                          "active_memory_mutated":  false,
+                                          "live_process_touched":  false,
+                                          "repair_executed":  false,
+                                          "legacy_launch_used":  false,
+                                          "runner_integrated":  false
+                                      },
+                         "maturity":  "RESERVED_SLOT"
+                     },
+                     {
+                         "reflex_id":  "archive_backup_reflex",
+                         "built_in":  true,
+                         "callable":  false,
+                         "status":  "RESERVED_NOT_BUILT",
+                         "planned_entrypoint":  "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
+                         "input_contract":  "reserved_future_contract",
+                         "output_contract":  "reserved_future_proof",
+                         "allowed_surfaces":  [
+                                                  "innate_reflex_kernel_registry"
+                                              ],
+                         "forbidden_surfaces":  [
+                                                    "live_action",
+                                                    "direct_active_memory_write",
+                                                    "legacy_launch_usage",
+                                                    "repair_execution"
+                                                ],
+                         "validator":  "RESERVED_NOT_BUILT",
+                         "proof_expectation":  "Slot is present, non-callable, and not falsely wired.",
+                         "boundary":  {
+                                          "registry_only":  true,
+                                          "body_inspection_invoked":  false,
+                                          "active_memory_mutated":  false,
+                                          "live_process_touched":  false,
+                                          "repair_executed":  false,
+                                          "legacy_launch_used":  false,
+                                          "runner_integrated":  false
+                                      },
+                         "maturity":  "RESERVED_SLOT"
+                     },
+                     {
+                         "reflex_id":  "artifact_convert_reflex",
+                         "built_in":  true,
+                         "callable":  false,
+                         "status":  "RESERVED_NOT_BUILT",
+                         "planned_entrypoint":  "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
+                         "input_contract":  "reserved_future_contract",
+                         "output_contract":  "reserved_future_proof",
+                         "allowed_surfaces":  [
+                                                  "innate_reflex_kernel_registry"
+                                              ],
+                         "forbidden_surfaces":  [
+                                                    "live_action",
+                                                    "direct_active_memory_write",
+                                                    "legacy_launch_usage",
+                                                    "repair_execution"
+                                                ],
+                         "validator":  "RESERVED_NOT_BUILT",
+                         "proof_expectation":  "Slot is present, non-callable, and not falsely wired.",
+                         "boundary":  {
+                                          "registry_only":  true,
+                                          "body_inspection_invoked":  false,
+                                          "active_memory_mutated":  false,
+                                          "live_process_touched":  false,
+                                          "repair_executed":  false,
+                                          "legacy_launch_used":  false,
+                                          "runner_integrated":  false
+                                      },
+                         "maturity":  "RESERVED_SLOT"
+                     },
+                     {
+                         "reflex_id":  "codex_consult_reflex",
+                         "built_in":  true,
+                         "callable":  false,
+                         "status":  "RESERVED_NOT_BUILT",
+                         "planned_entrypoint":  "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
+                         "input_contract":  "reserved_future_contract",
+                         "output_contract":  "reserved_future_proof",
+                         "allowed_surfaces":  [
+                                                  "innate_reflex_kernel_registry"
+                                              ],
+                         "forbidden_surfaces":  [
+                                                    "live_action",
+                                                    "direct_active_memory_write",
+                                                    "legacy_launch_usage",
+                                                    "repair_execution"
+                                                ],
+                         "validator":  "RESERVED_NOT_BUILT",
+                         "proof_expectation":  "Slot is present, non-callable, and not falsely wired.",
+                         "boundary":  {
+                                          "registry_only":  true,
+                                          "body_inspection_invoked":  false,
+                                          "active_memory_mutated":  false,
+                                          "live_process_touched":  false,
+                                          "repair_executed":  false,
+                                          "legacy_launch_used":  false,
+                                          "runner_integrated":  false
+                                      },
+                         "maturity":  "RESERVED_SLOT"
+                     },
+                     {
+                         "reflex_id":  "codex_task_authoring_reflex",
+                         "built_in":  true,
+                         "callable":  false,
+                         "status":  "RESERVED_NOT_BUILT",
+                         "planned_entrypoint":  "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
+                         "input_contract":  "reserved_future_contract",
+                         "output_contract":  "reserved_future_proof",
+                         "allowed_surfaces":  [
+                                                  "innate_reflex_kernel_registry"
+                                              ],
+                         "forbidden_surfaces":  [
+                                                    "live_action",
+                                                    "direct_active_memory_write",
+                                                    "legacy_launch_usage",
+                                                    "repair_execution"
+                                                ],
+                         "validator":  "RESERVED_NOT_BUILT",
+                         "proof_expectation":  "Slot is present, non-callable, and not falsely wired.",
+                         "boundary":  {
+                                          "registry_only":  true,
+                                          "body_inspection_invoked":  false,
+                                          "active_memory_mutated":  false,
+                                          "live_process_touched":  false,
+                                          "repair_executed":  false,
+                                          "legacy_launch_used":  false,
+                                          "runner_integrated":  false
+                                      },
+                         "maturity":  "RESERVED_SLOT"
+                     },
+                     {
+                         "reflex_id":  "web_source_search_reflex",
+                         "built_in":  true,
+                         "callable":  false,
+                         "status":  "RESERVED_NOT_BUILT",
+                         "planned_entrypoint":  "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
+                         "input_contract":  "reserved_future_contract",
+                         "output_contract":  "reserved_future_proof",
+                         "allowed_surfaces":  [
+                                                  "innate_reflex_kernel_registry"
+                                              ],
+                         "forbidden_surfaces":  [
+                                                    "live_action",
+                                                    "direct_active_memory_write",
+                                                    "legacy_launch_usage",
+                                                    "repair_execution"
+                                                ],
+                         "validator":  "RESERVED_NOT_BUILT",
+                         "proof_expectation":  "Slot is present, non-callable, and not falsely wired.",
+                         "boundary":  {
+                                          "registry_only":  true,
+                                          "body_inspection_invoked":  false,
+                                          "active_memory_mutated":  false,
+                                          "live_process_touched":  false,
+                                          "repair_executed":  false,
+                                          "legacy_launch_used":  false,
+                                          "runner_integrated":  false
+                                      },
+                         "maturity":  "RESERVED_SLOT"
+                     },
+                     {
+                         "reflex_id":  "source_ingestion_reflex",
+                         "built_in":  true,
+                         "callable":  false,
+                         "status":  "RESERVED_NOT_BUILT",
+                         "planned_entrypoint":  "RESERVED_FUTURE_CONTRACT_NOT_BUILT",
+                         "input_contract":  "reserved_future_contract",
+                         "output_contract":  "reserved_future_proof",
+                         "allowed_surfaces":  [
+                                                  "innate_reflex_kernel_registry"
+                                              ],
+                         "forbidden_surfaces":  [
+                                                    "live_action",
+                                                    "direct_active_memory_write",
+                                                    "legacy_launch_usage",
+                                                    "repair_execution"
+                                                ],
+                         "validator":  "RESERVED_NOT_BUILT",
+                         "proof_expectation":  "Slot is present, non-callable, and not falsely wired.",
+                         "boundary":  {
+                                          "registry_only":  true,
+                                          "body_inspection_invoked":  false,
+                                          "active_memory_mutated":  false,
+                                          "live_process_touched":  false,
+                                          "repair_executed":  false,
+                                          "legacy_launch_used":  false,
+                                          "runner_integrated":  false
+                                      },
+                         "maturity":  "RESERVED_SLOT"
+                     }
+                 ]
 }

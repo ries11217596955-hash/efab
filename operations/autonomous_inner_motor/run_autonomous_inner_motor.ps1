@@ -81,13 +81,44 @@ function New-InnateReflexBootload([string]$RunRoot,[string]$OutputPath){
   }
   if($bootload.reflex_count -lt 25){ throw "INNATE_REFLEX_BOOTLOAD_REFLEX_COUNT_TOO_SMALL:$($bootload.reflex_count)" }
   if($bootload.body_audit_reflex.reflex_id -ne 'body_audit_reflex'){ throw 'BODY_AUDIT_REFLEX_ID_MISMATCH' }
-  if($bootload.body_audit_reflex.status -ne 'AVAILABLE_NOT_WIRED'){ throw "BODY_AUDIT_REFLEX_STATUS_MISMATCH:$($bootload.body_audit_reflex.status)" }
+  if($bootload.body_audit_reflex.status -ne 'DEFAULT_WAKE_OBSERVE'){ throw "BODY_AUDIT_REFLEX_STATUS_MISMATCH:$($bootload.body_audit_reflex.status)" }
   if($bootload.body_audit_reflex.organ_id -ne 'BODY_SELF_INSPECTION_CIRCUIT_V1'){ throw "BODY_AUDIT_REFLEX_ORGAN_MISMATCH:$($bootload.body_audit_reflex.organ_id)" }
-  if($bootload.body_audit_reflex.callable -ne $false){ throw 'BODY_AUDIT_REFLEX_MUST_REMAIN_NOT_CALLABLE' }
+  if($bootload.body_audit_reflex.callable -ne $true){ throw 'BODY_AUDIT_REFLEX_MUST_BE_CALLABLE_FOR_WAKE_OBSERVE' }
   if($bootload.body_audit_reflex.body_inspection_invoked -ne $false){ throw 'BODY_INSPECTION_MUST_NOT_BE_INVOKED_BY_BOOTLOAD' }
   Write-CleanJson $OutputPath $bootload 30
   return $bootload
 }
+
+function Invoke-DefaultWakeReflexes([string]$RunRoot,$Bootload,[string]$OutputPath){
+  $bodyRuntimeRoot=Join-Path $RunRoot 'wake_body_audit'
+  $bodyInvoker='operations/body_self_inspection/invoke_body_self_inspection_circuit_v1.ps1'
+  if(-not(Test-Path -LiteralPath $bodyInvoker -PathType Leaf)){ throw "BODY_AUDIT_INVOKER_MISSING:$bodyInvoker" }
+  if($null -eq $Bootload -or $Bootload.loaded -ne $true){ throw 'WAKE_REFLEX_BOOTLOAD_NOT_LOADED' }
+  if($Bootload.body_audit_reflex.status -ne 'DEFAULT_WAKE_OBSERVE'){ throw "WAKE_BODY_REFLEX_NOT_DEFAULT:$($Bootload.body_audit_reflex.status)" }
+  if($Bootload.body_audit_reflex.callable -ne $true){ throw 'WAKE_BODY_REFLEX_NOT_CALLABLE' }
+  $bodyOutput=@(& powershell -NoProfile -ExecutionPolicy Bypass -File $bodyInvoker -RepoRoot (Get-Location).Path -RuntimeRoot $bodyRuntimeRoot 2>&1 | ForEach-Object { [string]$_ })
+  $bodyExit=$LASTEXITCODE
+  if($bodyExit -ne 0){ throw "BODY_AUDIT_WAKE_REFLEX_FAILED:$bodyExit $($bodyOutput -join ' | ')" }
+  $signalPath=Join-Path $bodyRuntimeRoot 'body_self_inspection_signal.json'
+  $parentPacketPath=Join-Path $bodyRuntimeRoot 'body_self_inspection_parent_packet.json'
+  $circuitProofPath=Join-Path $bodyRuntimeRoot 'BODY_SELF_INSPECTION_CIRCUIT_PROOF.json'
+  foreach($required in @($signalPath,$parentPacketPath,$circuitProofPath)){ if(-not(Test-Path -LiteralPath $required -PathType Leaf)){ throw "BODY_AUDIT_WAKE_OUTPUT_MISSING:$required" } }
+  $signal=Get-Content -Raw -LiteralPath $signalPath | ConvertFrom-Json
+  $parentPacket=Get-Content -Raw -LiteralPath $parentPacketPath | ConvertFrom-Json
+  $circuitProof=Get-Content -Raw -LiteralPath $circuitProofPath | ConvertFrom-Json
+  foreach($name in @('repo_mutated','active_memory_mutated','repair_executed','parent_action_executed','live_process_touched','codex_launched','web_launched','cleanup_performed')){
+    if($circuitProof.boundary.$name -ne $false){ throw "BODY_AUDIT_WAKE_BOUNDARY_VIOLATION:$name" }
+  }
+  $wake=[ordered]@{
+    schema='default_wake_reflexes_v1'; status='PASS_DEFAULT_WAKE_REFLEXES_V1'; invoked_at=(Get-Date).ToUniversalTime().ToString('o'); run_root=$RunRoot; bootload_loaded=$true
+    default_reflexes_invoked=@('body_audit_reflex'); default_reflexes_deferred=@()
+    body_audit_reflex=[ordered]@{ status='PASS_BODY_AUDIT_WAKE_REFLEX_V1'; reflex_id='body_audit_reflex'; invocation_policy='WAKE_DEFAULT_ON_AGENT_LIFE_START'; requires_owner_permission=$false; trigger_required=$false; observe_only=$true; invoked_this_run=$true; body_inspection_invoked=$true; callable=$true; source_entrypoint=$bodyInvoker; runtime_root=$bodyRuntimeRoot; signal_path=$signalPath; parent_packet_path=$parentPacketPath; circuit_proof_path=$circuitProofPath; signal_status=$signal.status; parent_packet_status=$parentPacket.status; circuit_proof_status=$circuitProof.status }
+    boundary=[ordered]@{ wake_default_body_audit_invoked=$true; body_observe_only=$true; body_repair_executed=$false; repo_mutated=$false; active_memory_mutated=$false; body_map_mutated=$false; passports_mutated=$false; contracts_mutated=$false; parent_action_executed=$false; live_process_touched=$false; codex_launched=$false; web_launched=$false; cleanup_performed=$false }
+  }
+  Write-CleanJson $OutputPath $wake 40
+  return $wake
+}
+
 function Get-ActiveMemoryState {
   $root='.runtime/active_compact_semantic_memory_v1'
   $state=[ordered]@{ root=$root; exists=(Test-Path -LiteralPath $root); unchanged=$true; files=@(); manifest_summary=$null; index_key_sample=@(); cell_sample=@() }
@@ -607,6 +638,8 @@ $proofName=if($Mode -eq 'SandboxTestLife'){ 'TEST_LIFE_PROOF.json' } else { 'SAN
 $proofPath=Join-Path $runRoot $proofName
 $innateReflexBootloadPath=Join-Path $runRoot 'innate_reflex_bootload.json'
 $innateReflexBootload=New-InnateReflexBootload $runRoot $innateReflexBootloadPath
+$defaultWakeReflexesPath=Join-Path $runRoot 'default_wake_reflexes.json'
+$defaultWakeReflexes=Invoke-DefaultWakeReflexes $runRoot $innateReflexBootload $defaultWakeReflexesPath
 $cycles=@(
   [ordered]@{ n=1; lens='self_seed'; question='What should I think about without waiting for Owner?'; memory_used=$true; answer='Derive internal goal from self-build direction: improve thinking capacity first, then governed self-build action, then child-agent production.' },
   [ordered]@{ n=2; lens='body_memory_orientation'; question='What body and memory do I already have?'; memory_used=$true; answer='Read body inventory, active compact memory state, living loop state, School proof state, and self-build artifacts before external requests.' },
@@ -802,6 +835,8 @@ $proof=[ordered]@{
   proof_pack_manifest_path=$proofPackManifestPath
   innate_reflex_bootload_path=$innateReflexBootloadPath
   innate_reflex_bootload=$innateReflexBootload
+  default_wake_reflexes_path=$defaultWakeReflexesPath
+  default_wake_reflexes=$defaultWakeReflexes
   anti_repeat_guard=$antiRepeatGuard
   memory_to_next_path_reuse_gate=$memoryToNextPathReuseGate
   mental_frontier_expansion_gate=$mentalFrontierExpansionGate
@@ -819,6 +854,7 @@ $proof=[ordered]@{
     [ordered]@{ step='memory_first'; result='compact_memory_read_before_external_requests'; proof='memory_state present and unchanged.' },
     [ordered]@{ step='gate'; result='block_actions'; proof='policy disables mutation/action modes.' },
     [ordered]@{ step='innate_reflex_bootload'; result=$innateReflexBootload.status; proof='Permanent innate reflex kernel was loaded once for this run; full reflex matrix is not written every cycle.' },
+    [ordered]@{ step='default_wake_reflexes'; result=$defaultWakeReflexes.status; proof='Wake-default body_audit_reflex observed the body without repair/mutation.' },
     [ordered]@{ step='mind_logic_frame'; result=$mindLogic.status; proof='Mind Logic Kernel separates known/unknown, contradiction, hypotheses, source ladder, and next logical step before action candidate.' },
     [ordered]@{ step='action_candidate_contract'; result=$actionDecision.status; proof='Action Decision Contract selects a next action candidate from the mind logic frame but keeps execution_allowed=false.' },
     [ordered]@{ step='select_next'; result=$selected.path; proof='deep recursive thinking and self-learning atom loop are the next bottleneck for thinking quality.' }
@@ -829,11 +865,11 @@ $proof=[ordered]@{
   heartbeat=[ordered]@{ cycle_count=@($cycles).Count; alive='one_shot_sandbox'; background_process_started=$false }
   final_self_diagnosis='The motor can self-seed a thinking cycle, build a Mind Logic Frame, decompose a root question into ThoughtFrames, use memory recall, and return a next_action_candidate with execution disabled. Memory learning remains governed and optional.'
   stop_reason='PROTECTIVE_CHECKPOINT_THINKING_ONLY'
-  mutation_audit=[ordered]@{ active_memory_mutated=[bool]$EnableMemoryLearning; direct_active_memory_write=$false; governed_absorption_used=[bool]($EnableMemoryLearning -and $deepThinking.absorption); memory_ingestion_mode=if($deepThinking.absorption){$deepThinking.absorption.mode}else{$MemoryIngestionMode}; git_mutated=$false; codex_launched=$false; web_research_performed=$false; school_started=$false; background_process_started=$false; files_written=@($proofPath,$mindLogicPath,$actionDecisionPath,$antiRepeatGuardPath,$memoryToNextPathReuseGatePath,$mentalFrontierExpansionGatePath,$mentalFrontierRouterPath,$proofPackManifestPath,$innateReflexBootloadPath) }
+  mutation_audit=[ordered]@{ active_memory_mutated=[bool]$EnableMemoryLearning; direct_active_memory_write=$false; governed_absorption_used=[bool]($EnableMemoryLearning -and $deepThinking.absorption); memory_ingestion_mode=if($deepThinking.absorption){$deepThinking.absorption.mode}else{$MemoryIngestionMode}; git_mutated=$false; codex_launched=$false; web_research_performed=$false; school_started=$false; background_process_started=$false; files_written=@($proofPath,$mindLogicPath,$actionDecisionPath,$antiRepeatGuardPath,$memoryToNextPathReuseGatePath,$mentalFrontierExpansionGatePath,$mentalFrontierRouterPath,$proofPackManifestPath,$innateReflexBootloadPath,$defaultWakeReflexesPath) }
   validator_result=[ordered]@{ runner_self_check='PASS_RUNNER_GENERATED_SINGLE_SANDBOX_PROOF'; external_validator_expected='validators/validate_autonomous_inner_motor_organ_contract.ps1 -SandboxProofPath <proof>; validators/validate_autonomous_inner_motor_mind_logic_wiring_v1.ps1 -ProofPath <proof>; validators/validate_autonomous_inner_motor_action_decision_wiring_v1.ps1 -ProofPath <proof>' }
 }
 Write-CleanJson $proofPath $proof 80
-$proofPackRequiredFiles=@('SANDBOX_EXPLORATION_PROOF.json','mind_logic_frame.json','action_decision_packet.json','anti_repeat_guard.json','memory_to_next_path_reuse_gate.json','mental_frontier_expansion_gate.json','mental_frontier_router.json','innate_reflex_bootload.json')
+$proofPackRequiredFiles=@('SANDBOX_EXPLORATION_PROOF.json','mind_logic_frame.json','action_decision_packet.json','anti_repeat_guard.json','memory_to_next_path_reuse_gate.json','mental_frontier_expansion_gate.json','mental_frontier_router.json','innate_reflex_bootload.json','default_wake_reflexes.json')
 $proofPackOptionalSidecars=@('memory_recall_filter.json','contradiction_resolution.json','hypothesis_test_result.json','deep_source_answer_request.json','memory_filter_for_answer.json','route_request_packet.json','source_authority_route_decision.json','deep_source_answer_assimilation.json','mind_delta_acceptance_decision.json')
 $proofPackFiles=@()
 foreach($name in @($proofPackRequiredFiles + $proofPackOptionalSidecars)){
@@ -875,6 +911,8 @@ Write-Host "MIND_LOGIC_HYPOTHESIS_TEST_STATUS=$($proof.mind_logic_frame.frame.hy
 Write-Host "MIND_LOGIC_STRONGEST_HYPOTHESIS=$($proof.mind_logic_frame.frame.hypothesis_test_result.result.strongest_hypothesis.kind)"
 Write-Host "MIND_LOGIC_DEEP_SOURCE_ANSWER_STATUS=$($proof.mind_logic_frame.frame.deep_source_answer_request.status)"
 Write-Host "MIND_LOGIC_DEEP_SOURCE_ANSWER_READY=$($proof.mind_logic_frame.frame.deep_source_answer_request.result.answer_ready)"
+Write-Host "DEFAULT_WAKE_REFLEXES_STATUS=$($proof.default_wake_reflexes.status)"
+Write-Host "DEFAULT_WAKE_REFLEXES_REF=$($proof.default_wake_reflexes_path)"
 Write-Host "INNATE_REFLEX_BOOTLOAD_STATUS=$($proof.innate_reflex_bootload.status)"
 Write-Host "INNATE_REFLEX_BOOTLOAD_REF=$($proof.innate_reflex_bootload_path)"
 Write-Host "ACTION_DECISION_STATUS=$($proof.next_action_candidate.status)"

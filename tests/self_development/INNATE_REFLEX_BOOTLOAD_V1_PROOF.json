@@ -1,22 +1,21 @@
 {
     "schema":  "innate_reflex_bootload_v1_validation",
     "status":  "PASS_INNATE_REFLEX_BOOTLOAD_V1",
-    "checked_at":  "2026-07-17T14:05:33.7802080Z",
+    "checked_at":  "2026-07-17T14:47:30.7378650Z",
     "runner":  "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
-    "validator":  "validators/validate_innate_reflex_bootload_v1.ps1",
     "runner_smoke_exit_code":  0,
     "runner_smoke_output_root":  ".runtime/self_development/innate_reflex_bootload_v1_runner_test",
-    "runtime_run_dir":  "H:\\efab\\.runtime\\self_development\\innate_reflex_bootload_v1_runner_test\\aimo_20260717_180516",
+    "runtime_run_dir":  "H:\\efab\\.runtime\\self_development\\innate_reflex_bootload_v1_runner_test\\aimo_20260717_184525",
     "bootload_summary":  {
                              "status":  "PASS_INNATE_REFLEX_BOOTLOAD_V1",
                              "loaded":  true,
                              "reflex_count":  25,
                              "body_audit_reflex":  {
                                                        "reflex_id":  "body_audit_reflex",
-                                                       "status":  "AVAILABLE_NOT_WIRED",
+                                                       "status":  "DEFAULT_WAKE_OBSERVE",
                                                        "organ_id":  "BODY_SELF_INSPECTION_CIRCUIT_V1",
                                                        "can_hear_body":  true,
-                                                       "callable":  false,
+                                                       "callable":  true,
                                                        "invoked_this_cycle":  false,
                                                        "body_inspection_invoked":  false
                                                    },
@@ -39,9 +38,9 @@
                      "bootload_once_per_run":  true,
                      "full_kernel_written_each_cycle":  false,
                      "canonical_launcher_modified":  false,
-                     "permanent_kernel_mutated":  false,
-                     "body_inspection_invoked":  false,
-                     "body_audit_reflex_callable":  false,
+                     "permanent_kernel_mutated_by_runtime":  false,
+                     "body_inspection_invoked_by_bootload":  false,
+                     "body_audit_reflex_callable":  true,
                      "active_memory_mutated":  false,
                      "legacy_launch_used":  false
                  }

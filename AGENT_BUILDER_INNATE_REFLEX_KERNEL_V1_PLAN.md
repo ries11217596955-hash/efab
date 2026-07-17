@@ -17,7 +17,7 @@ right layer: innate callable reflexes / built-in executable capabilities
 Owner correction:
 
 ```text
-A reflex is not merely Ã¢â‚¬Å“the agent should notice XÃ¢â‚¬Â.
+A reflex is not merely ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œthe agent should notice XÃƒÂ¢Ã¢â€šÂ¬Ã‚Â.
 A reflex is a built-in callable mechanism, script, tool, or bounded procedure that the agent has from birth and can invoke under a contract.
 ```
 
@@ -79,7 +79,7 @@ A trigger law decides when a reflex should be considered.
 Example:
 
 ```text
-body_state_unknown Ã¢â€ â€™ consider body_audit_reflex
+body_state_unknown ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ consider body_audit_reflex
 ```
 
 Trigger law is not the reflex itself.
@@ -97,10 +97,10 @@ It may help select a reflex, but it does not create the reflex.
 ## 3. Correct layer split
 
 ```text
-logic/trigger: Ã¢â‚¬Å“body state is unknownÃ¢â‚¬Â
-reflex:       Ã¢â‚¬Å“call observe-only body audit procedureÃ¢â‚¬Â
-organ:        Ã¢â‚¬Å“BODY_SELF_INSPECTION_CIRCUIT_V1Ã¢â‚¬Â
-proof:        Ã¢â‚¬Å“body audit signal/proof exists, no repair executedÃ¢â‚¬Â
+logic/trigger: ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œbody state is unknownÃƒÂ¢Ã¢â€šÂ¬Ã‚Â
+reflex:       ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œcall observe-only body audit procedureÃƒÂ¢Ã¢â€šÂ¬Ã‚Â
+organ:        ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œBODY_SELF_INSPECTION_CIRCUIT_V1ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â
+proof:        ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œbody audit signal/proof exists, no repair executedÃƒÂ¢Ã¢â€šÂ¬Ã‚Â
 ```
 
 Explicit rule:
@@ -160,7 +160,7 @@ DEPRECATED           old reflex replaced by newer one
 The first kernel should reserve about 25 reflex slots.
 Not all are implemented now.
 
-### Group A Ã¢â‚¬â€ body / self / repo awareness
+### Group A ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â body / self / repo awareness
 
 #### 1. body_audit_reflex
 
@@ -223,7 +223,7 @@ Current status: RESERVED_NOT_BUILT
 Expected output: runtime pressure snapshot.
 ```
 
-### Group B Ã¢â‚¬â€ proof / safety / control
+### Group B ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â proof / safety / control
 
 #### 7. preflight_reflex
 
@@ -277,7 +277,7 @@ Expected output: freeze/stop decision with proof.
 Forbidden: killing unknown processes without authority.
 ```
 
-### Group C Ã¢â‚¬â€ memory / learning / continuity
+### Group C ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â memory / learning / continuity
 
 #### 13. memory_queue_reflex
 
@@ -322,7 +322,7 @@ Expected output: notebook checkpoint.
 Forbidden: claiming proof without proof refs.
 ```
 
-### Group D Ã¢â‚¬â€ file / artifact / environment manipulation
+### Group D ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â file / artifact / environment manipulation
 
 #### 18. directory_create_reflex
 
@@ -360,7 +360,7 @@ Expected output: converted artifact + validator/proof.
 Forbidden: using unapproved conversion path or leaking font files.
 ```
 
-### Group E Ã¢â‚¬â€ external help / external knowledge
+### Group E ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â external help / external knowledge
 
 #### 22. codex_consult_reflex
 
@@ -680,4 +680,67 @@ bootload validator/proof
 no body inspection invocation
 no observe hook
 no permanent kernel mutation
+```
+## 18. DEFAULT_WAKE_REFLEXES_V1 correction
+
+Owner correction:
+
+```text
+Some reflexes must run by default on wake.
+They do not need extra trigger or Owner permission because they are observe-only body sensing.
+```
+
+Correct class split:
+
+```text
+wake-default reflexes = run automatically at agent wake/start
+triggered reflexes = run when a signal/event appears
+authorized reflexes = require authority because they can mutate body/memory/live surfaces
+```
+
+First wake-default reflex:
+
+```text
+body_audit_reflex
+status = DEFAULT_WAKE_OBSERVE
+callable = true
+wake_default = true
+requires_owner_permission = false
+trigger_required = false
+mode = observe_only
+entrypoint = operations/body_self_inspection/invoke_body_self_inspection_circuit_v1.ps1
+```
+
+This means:
+
+```text
+Agent wakes.
+Agent boot-loads innate reflex DNA.
+Agent automatically observes its body using body_audit_reflex.
+Agent writes default_wake_reflexes.json.
+Agent does not repair/mutate/write active memory/live act.
+```
+
+Runtime proof must show:
+
+```text
+default_wake_reflexes.status = PASS_DEFAULT_WAKE_REFLEXES_V1
+body_audit_reflex.status = PASS_BODY_AUDIT_WAKE_REFLEX_V1
+body_audit_reflex.requires_owner_permission = false
+body_audit_reflex.trigger_required = false
+body_audit_reflex.observe_only = true
+body_audit_reflex.body_inspection_invoked = true
+boundary.body_repair_executed = false
+boundary.active_memory_mutated = false
+boundary.live_process_touched = false
+```
+
+Non-goals:
+
+```text
+Do not execute repair drafts.
+Do not mutate maps/passports/contracts.
+Do not write active memory directly.
+Do not treat body sensing as Owner-authorized live action.
+Do not run all reflexes by default.
 ```
