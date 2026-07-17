@@ -38,6 +38,8 @@ else {
         "-MemoryIngestionMode QueueOnly",
         'Convert-JsonCompatible',
         'if ($pattern -in @("run_autonomous_inner_motor.ps1", "start_agent_life_v1.ps1"))',
+        '-Command',
+        'IsNullOrWhiteSpace',
         "action_execution_allowed = `$false",
         "codex_allowed = `$false",
         "web_allowed = `$false",
@@ -65,6 +67,8 @@ $proof = [ordered]@{
     canonical_contract = [ordered]@{
         one_launch_way = $true
         requires_file_invocation_for_launcher_conflict_detection = $true
+        ignores_bridge_command_wrapper = $true
+        filters_blank_git_status_lines = $true
         user_mode_choice_allowed = $false
         mode = "SandboxExploration"
         enable_deep_thinking = $true

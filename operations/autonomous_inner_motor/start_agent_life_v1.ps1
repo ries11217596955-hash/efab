@@ -56,6 +56,7 @@ function Get-ProcessConflicts {
         foreach ($pattern in $patterns) {
             $cmd = [string]$p.CommandLine
             if ($pattern -in @("run_autonomous_inner_motor.ps1", "start_agent_life_v1.ps1")) {
+                if ($cmd -match "(?i)\s-Command\s") { continue }
                 if ($cmd -notmatch "(?i)\s-File\s" -and $cmd -notmatch "(?i)^.*powershell.*-f\s") { continue }
             }
             if ($cmd -match [regex]::Escape($pattern)) {
@@ -85,7 +86,7 @@ $summaryPath = Join-Path $trialRoot "LIVE_TRIAL_SUMMARY.json"
 
 $head = (git rev-parse --short HEAD).Trim()
 $delta = (git rev-list --left-right --count HEAD...origin/main 2>$null).Trim()
-$dirty = @(git status --short --untracked-files=all)
+$dirty = @(git status --short --untracked-files=all | Where-Object { -not [string]::IsNullOrWhiteSpace([string]$_) })
 $activeMemoryRoot = Join-Path $RepoRoot ".runtime/active_compact_semantic_memory_v1"
 $activeMemoryReady = (Test-Path (Join-Path $activeMemoryRoot "manifest.json")) -and (Test-Path (Join-Path $activeMemoryRoot "index.json")) -and (Test-Path (Join-Path $activeMemoryRoot "cells.jsonl"))
 $conflicts = @(Get-ProcessConflicts)
@@ -223,7 +224,7 @@ $summary = [ordered]@{
     repo_after = [ordered]@{
         head = (git rev-parse --short HEAD).Trim()
         delta = (git rev-list --left-right --count HEAD...origin/main 2>$null).Trim()
-        dirty = @(git status --short --untracked-files=all)
+        dirty = @(git status --short --untracked-files=all | Where-Object { -not [string]::IsNullOrWhiteSpace([string]$_) })
     }
 }
 Write-JsonFile -Path $summaryPath -Data $summary
