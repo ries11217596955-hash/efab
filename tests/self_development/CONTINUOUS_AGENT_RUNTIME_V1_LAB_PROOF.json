@@ -1,284 +1,1274 @@
 {
     "schema":  "continuous_agent_runtime_v1_lab_validation",
     "status":  "PASS_CONTINUOUS_AGENT_RUNTIME_V1_LAB",
-    "checked_at":  "2026-07-17T18:31:35.1210584Z",
+    "checked_at":  "2026-07-17T18:42:43.3003583Z",
     "lab_script":  "operations/autonomous_inner_motor/run_continuous_agent_runtime_v1_lab.ps1",
-    "runtime_proof_path":  ".runtime\\continuous_agent_runtime_v1_lab\\continuous_lab_20260717_223031_b0c24fda\\CONTINUOUS_AGENT_RUNTIME_V1_LAB_PROOF.json",
-    "runtime_root":  ".runtime\\continuous_agent_runtime_v1_lab\\continuous_lab_20260717_223031_b0c24fda",
+    "runtime_proof_path":  ".runtime\\continuous_agent_runtime_v1_lab\\continuous_lab_20260717_223738_dd55a70d\\CONTINUOUS_AGENT_RUNTIME_V1_LAB_PROOF.json",
+    "runtime_root":  ".runtime\\continuous_agent_runtime_v1_lab\\continuous_lab_20260717_223738_dd55a70d",
     "runtime_proof":  {
                           "schema":  "continuous_agent_runtime_v1_lab_proof",
                           "status":  "PASS_CONTINUOUS_AGENT_RUNTIME_V1_LAB",
-                          "runtime_id":  "continuous_lab_20260717_223031_b0c24fda",
-                          "runtime_root":  ".runtime\\continuous_agent_runtime_v1_lab\\continuous_lab_20260717_223031_b0c24fda",
-                          "started_at":  "2026-07-17T18:30:31.4647697Z",
-                          "finished_at":  "2026-07-17T18:31:33.5120489Z",
-                          "duration_minutes_requested":  1,
-                          "pid":  1021948,
+                          "runtime_id":  "continuous_lab_20260717_223738_dd55a70d",
+                          "runtime_root":  ".runtime\\continuous_agent_runtime_v1_lab\\continuous_lab_20260717_223738_dd55a70d",
+                          "started_at":  "2026-07-17T18:37:38.2511485Z",
+                          "finished_at":  "2026-07-17T18:42:40.9822316Z",
+                          "duration_minutes_requested":  5,
+                          "pid":  939864,
                           "cycle_records":  [
                                                 {
                                                     "cycle":  1,
-                                                    "pid":  1021948,
+                                                    "pid":  939864,
                                                     "ram_counter":  1,
-                                                    "started_at":  "2026-07-17T18:30:31.5330051Z",
+                                                    "started_at":  "2026-07-17T18:37:38.2980808Z",
                                                     "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
                                                     "scratch_created":  true,
                                                     "scratch_cleared":  true,
-                                                    "finished_at":  "2026-07-17T18:30:31.5330051Z"
+                                                    "finished_at":  "2026-07-17T18:37:38.2980808Z"
                                                 },
                                                 {
                                                     "cycle":  2,
-                                                    "pid":  1021948,
+                                                    "pid":  939864,
                                                     "ram_counter":  2,
-                                                    "started_at":  "2026-07-17T18:30:33.8949186Z",
+                                                    "started_at":  "2026-07-17T18:37:40.8305162Z",
                                                     "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
                                                     "scratch_created":  true,
                                                     "scratch_cleared":  true,
-                                                    "finished_at":  "2026-07-17T18:30:33.8949186Z"
+                                                    "finished_at":  "2026-07-17T18:37:40.8305162Z"
                                                 },
                                                 {
                                                     "cycle":  3,
-                                                    "pid":  1021948,
+                                                    "pid":  939864,
                                                     "ram_counter":  3,
-                                                    "started_at":  "2026-07-17T18:30:36.1428117Z",
+                                                    "started_at":  "2026-07-17T18:37:43.1961541Z",
                                                     "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
                                                     "scratch_created":  true,
                                                     "scratch_cleared":  true,
-                                                    "finished_at":  "2026-07-17T18:30:36.1428117Z"
+                                                    "finished_at":  "2026-07-17T18:37:43.1961541Z"
                                                 },
                                                 {
                                                     "cycle":  4,
-                                                    "pid":  1021948,
+                                                    "pid":  939864,
                                                     "ram_counter":  4,
-                                                    "started_at":  "2026-07-17T18:30:38.3822358Z",
+                                                    "started_at":  "2026-07-17T18:37:45.7894006Z",
                                                     "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
                                                     "scratch_created":  true,
                                                     "scratch_cleared":  true,
-                                                    "finished_at":  "2026-07-17T18:30:38.3822358Z"
+                                                    "finished_at":  "2026-07-17T18:37:45.7894006Z"
                                                 },
                                                 {
                                                     "cycle":  5,
-                                                    "pid":  1021948,
+                                                    "pid":  939864,
                                                     "ram_counter":  5,
-                                                    "started_at":  "2026-07-17T18:30:40.6259805Z",
+                                                    "started_at":  "2026-07-17T18:37:48.2641813Z",
                                                     "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
                                                     "scratch_created":  true,
                                                     "scratch_cleared":  true,
-                                                    "finished_at":  "2026-07-17T18:30:40.6259805Z"
+                                                    "finished_at":  "2026-07-17T18:37:48.2641813Z"
                                                 },
                                                 {
                                                     "cycle":  6,
-                                                    "pid":  1021948,
+                                                    "pid":  939864,
                                                     "ram_counter":  6,
-                                                    "started_at":  "2026-07-17T18:30:43.0772747Z",
+                                                    "started_at":  "2026-07-17T18:37:50.5400745Z",
                                                     "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
                                                     "scratch_created":  true,
                                                     "scratch_cleared":  true,
-                                                    "finished_at":  "2026-07-17T18:30:43.0772747Z"
+                                                    "finished_at":  "2026-07-17T18:37:50.5400745Z"
                                                 },
                                                 {
                                                     "cycle":  7,
-                                                    "pid":  1021948,
+                                                    "pid":  939864,
                                                     "ram_counter":  7,
-                                                    "started_at":  "2026-07-17T18:30:45.6109135Z",
+                                                    "started_at":  "2026-07-17T18:37:52.9987486Z",
                                                     "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
                                                     "scratch_created":  true,
                                                     "scratch_cleared":  true,
-                                                    "finished_at":  "2026-07-17T18:30:45.6109135Z"
+                                                    "finished_at":  "2026-07-17T18:37:52.9987486Z"
                                                 },
                                                 {
                                                     "cycle":  8,
-                                                    "pid":  1021948,
+                                                    "pid":  939864,
                                                     "ram_counter":  8,
-                                                    "started_at":  "2026-07-17T18:30:48.1278524Z",
+                                                    "started_at":  "2026-07-17T18:37:55.3819801Z",
                                                     "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
                                                     "scratch_created":  true,
                                                     "scratch_cleared":  true,
-                                                    "finished_at":  "2026-07-17T18:30:48.1278524Z"
+                                                    "finished_at":  "2026-07-17T18:37:55.3819801Z"
                                                 },
                                                 {
                                                     "cycle":  9,
-                                                    "pid":  1021948,
+                                                    "pid":  939864,
                                                     "ram_counter":  9,
-                                                    "started_at":  "2026-07-17T18:30:50.5609209Z",
+                                                    "started_at":  "2026-07-17T18:37:57.8644706Z",
                                                     "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
                                                     "scratch_created":  true,
                                                     "scratch_cleared":  true,
-                                                    "finished_at":  "2026-07-17T18:30:50.5609209Z"
+                                                    "finished_at":  "2026-07-17T18:37:57.8644706Z"
                                                 },
                                                 {
                                                     "cycle":  10,
-                                                    "pid":  1021948,
+                                                    "pid":  939864,
                                                     "ram_counter":  10,
-                                                    "started_at":  "2026-07-17T18:30:52.8113324Z",
+                                                    "started_at":  "2026-07-17T18:38:00.4645214Z",
                                                     "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
                                                     "scratch_created":  true,
                                                     "scratch_cleared":  true,
-                                                    "finished_at":  "2026-07-17T18:30:52.8113324Z"
+                                                    "finished_at":  "2026-07-17T18:38:00.4645214Z"
                                                 },
                                                 {
                                                     "cycle":  11,
-                                                    "pid":  1021948,
+                                                    "pid":  939864,
                                                     "ram_counter":  11,
-                                                    "started_at":  "2026-07-17T18:30:55.2369547Z",
+                                                    "started_at":  "2026-07-17T18:38:02.7959761Z",
                                                     "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
                                                     "scratch_created":  true,
                                                     "scratch_cleared":  true,
-                                                    "finished_at":  "2026-07-17T18:30:55.2369547Z"
+                                                    "finished_at":  "2026-07-17T18:38:02.7959761Z"
                                                 },
                                                 {
                                                     "cycle":  12,
-                                                    "pid":  1021948,
+                                                    "pid":  939864,
                                                     "ram_counter":  12,
-                                                    "started_at":  "2026-07-17T18:30:57.7923136Z",
+                                                    "started_at":  "2026-07-17T18:38:05.2900864Z",
                                                     "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
                                                     "scratch_created":  true,
                                                     "scratch_cleared":  true,
-                                                    "finished_at":  "2026-07-17T18:30:57.7923136Z"
+                                                    "finished_at":  "2026-07-17T18:38:05.2900864Z"
                                                 },
                                                 {
                                                     "cycle":  13,
-                                                    "pid":  1021948,
+                                                    "pid":  939864,
                                                     "ram_counter":  13,
-                                                    "started_at":  "2026-07-17T18:31:00.1304884Z",
+                                                    "started_at":  "2026-07-17T18:38:07.8713231Z",
                                                     "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
                                                     "scratch_created":  true,
                                                     "scratch_cleared":  true,
-                                                    "finished_at":  "2026-07-17T18:31:00.1304884Z"
+                                                    "finished_at":  "2026-07-17T18:38:07.8713231Z"
                                                 },
                                                 {
                                                     "cycle":  14,
-                                                    "pid":  1021948,
+                                                    "pid":  939864,
                                                     "ram_counter":  14,
-                                                    "started_at":  "2026-07-17T18:31:02.6781133Z",
+                                                    "started_at":  "2026-07-17T18:38:10.3241338Z",
                                                     "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
                                                     "scratch_created":  true,
                                                     "scratch_cleared":  true,
-                                                    "finished_at":  "2026-07-17T18:31:02.6781133Z"
+                                                    "finished_at":  "2026-07-17T18:38:10.3241338Z"
                                                 },
                                                 {
                                                     "cycle":  15,
-                                                    "pid":  1021948,
+                                                    "pid":  939864,
                                                     "ram_counter":  15,
-                                                    "started_at":  "2026-07-17T18:31:05.1216154Z",
+                                                    "started_at":  "2026-07-17T18:38:12.6804111Z",
                                                     "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
                                                     "scratch_created":  true,
                                                     "scratch_cleared":  true,
-                                                    "finished_at":  "2026-07-17T18:31:05.1216154Z"
+                                                    "finished_at":  "2026-07-17T18:38:12.6804111Z"
                                                 },
                                                 {
                                                     "cycle":  16,
-                                                    "pid":  1021948,
+                                                    "pid":  939864,
                                                     "ram_counter":  16,
-                                                    "started_at":  "2026-07-17T18:31:07.3868317Z",
+                                                    "started_at":  "2026-07-17T18:38:14.9397311Z",
                                                     "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
                                                     "scratch_created":  true,
                                                     "scratch_cleared":  true,
-                                                    "finished_at":  "2026-07-17T18:31:07.3868317Z"
+                                                    "finished_at":  "2026-07-17T18:38:14.9397311Z"
                                                 },
                                                 {
                                                     "cycle":  17,
-                                                    "pid":  1021948,
+                                                    "pid":  939864,
                                                     "ram_counter":  17,
-                                                    "started_at":  "2026-07-17T18:31:09.6566635Z",
+                                                    "started_at":  "2026-07-17T18:38:17.5068135Z",
                                                     "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
                                                     "scratch_created":  true,
                                                     "scratch_cleared":  true,
-                                                    "finished_at":  "2026-07-17T18:31:09.6566635Z"
+                                                    "finished_at":  "2026-07-17T18:38:17.5068135Z"
                                                 },
                                                 {
                                                     "cycle":  18,
-                                                    "pid":  1021948,
+                                                    "pid":  939864,
                                                     "ram_counter":  18,
-                                                    "started_at":  "2026-07-17T18:31:12.1931491Z",
+                                                    "started_at":  "2026-07-17T18:38:19.9898754Z",
                                                     "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
                                                     "scratch_created":  true,
                                                     "scratch_cleared":  true,
-                                                    "finished_at":  "2026-07-17T18:31:12.1931491Z"
+                                                    "finished_at":  "2026-07-17T18:38:19.9898754Z"
                                                 },
                                                 {
                                                     "cycle":  19,
-                                                    "pid":  1021948,
+                                                    "pid":  939864,
                                                     "ram_counter":  19,
-                                                    "started_at":  "2026-07-17T18:31:14.4366550Z",
+                                                    "started_at":  "2026-07-17T18:38:22.4486227Z",
                                                     "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
                                                     "scratch_created":  true,
                                                     "scratch_cleared":  true,
-                                                    "finished_at":  "2026-07-17T18:31:14.4366550Z"
+                                                    "finished_at":  "2026-07-17T18:38:22.4491580Z"
                                                 },
                                                 {
                                                     "cycle":  20,
-                                                    "pid":  1021948,
+                                                    "pid":  939864,
                                                     "ram_counter":  20,
-                                                    "started_at":  "2026-07-17T18:31:16.7869345Z",
+                                                    "started_at":  "2026-07-17T18:38:24.7141124Z",
                                                     "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
                                                     "scratch_created":  true,
                                                     "scratch_cleared":  true,
-                                                    "finished_at":  "2026-07-17T18:31:16.7869345Z"
+                                                    "finished_at":  "2026-07-17T18:38:24.7141124Z"
                                                 },
                                                 {
                                                     "cycle":  21,
-                                                    "pid":  1021948,
+                                                    "pid":  939864,
                                                     "ram_counter":  21,
-                                                    "started_at":  "2026-07-17T18:31:19.1343911Z",
+                                                    "started_at":  "2026-07-17T18:38:27.2900787Z",
                                                     "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
                                                     "scratch_created":  true,
                                                     "scratch_cleared":  true,
-                                                    "finished_at":  "2026-07-17T18:31:19.1343911Z"
+                                                    "finished_at":  "2026-07-17T18:38:27.2900787Z"
                                                 },
                                                 {
                                                     "cycle":  22,
-                                                    "pid":  1021948,
+                                                    "pid":  939864,
                                                     "ram_counter":  22,
-                                                    "started_at":  "2026-07-17T18:31:21.5804902Z",
+                                                    "started_at":  "2026-07-17T18:38:29.7837132Z",
                                                     "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
                                                     "scratch_created":  true,
                                                     "scratch_cleared":  true,
-                                                    "finished_at":  "2026-07-17T18:31:21.5804902Z"
+                                                    "finished_at":  "2026-07-17T18:38:29.7837132Z"
                                                 },
                                                 {
                                                     "cycle":  23,
-                                                    "pid":  1021948,
+                                                    "pid":  939864,
                                                     "ram_counter":  23,
-                                                    "started_at":  "2026-07-17T18:31:23.9368669Z",
+                                                    "started_at":  "2026-07-17T18:38:32.2460622Z",
                                                     "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
                                                     "scratch_created":  true,
                                                     "scratch_cleared":  true,
-                                                    "finished_at":  "2026-07-17T18:31:23.9368669Z"
+                                                    "finished_at":  "2026-07-17T18:38:32.2460622Z"
                                                 },
                                                 {
                                                     "cycle":  24,
-                                                    "pid":  1021948,
+                                                    "pid":  939864,
                                                     "ram_counter":  24,
-                                                    "started_at":  "2026-07-17T18:31:26.1869397Z",
+                                                    "started_at":  "2026-07-17T18:38:34.5144448Z",
                                                     "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
                                                     "scratch_created":  true,
                                                     "scratch_cleared":  true,
-                                                    "finished_at":  "2026-07-17T18:31:26.1869397Z"
+                                                    "finished_at":  "2026-07-17T18:38:34.5144448Z"
                                                 },
                                                 {
                                                     "cycle":  25,
-                                                    "pid":  1021948,
+                                                    "pid":  939864,
                                                     "ram_counter":  25,
-                                                    "started_at":  "2026-07-17T18:31:28.6569847Z",
+                                                    "started_at":  "2026-07-17T18:38:36.7814211Z",
                                                     "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
                                                     "scratch_created":  true,
                                                     "scratch_cleared":  true,
-                                                    "finished_at":  "2026-07-17T18:31:28.6569847Z"
+                                                    "finished_at":  "2026-07-17T18:38:36.7814211Z"
                                                 },
                                                 {
                                                     "cycle":  26,
-                                                    "pid":  1021948,
+                                                    "pid":  939864,
                                                     "ram_counter":  26,
-                                                    "started_at":  "2026-07-17T18:31:31.1153596Z",
+                                                    "started_at":  "2026-07-17T18:38:39.2144330Z",
                                                     "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
                                                     "scratch_created":  true,
                                                     "scratch_cleared":  true,
-                                                    "finished_at":  "2026-07-17T18:31:31.1153596Z"
+                                                    "finished_at":  "2026-07-17T18:38:39.2144330Z"
+                                                },
+                                                {
+                                                    "cycle":  27,
+                                                    "pid":  939864,
+                                                    "ram_counter":  27,
+                                                    "started_at":  "2026-07-17T18:38:41.4806179Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:38:41.4806179Z"
+                                                },
+                                                {
+                                                    "cycle":  28,
+                                                    "pid":  939864,
+                                                    "ram_counter":  28,
+                                                    "started_at":  "2026-07-17T18:38:43.7433216Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:38:43.7433216Z"
+                                                },
+                                                {
+                                                    "cycle":  29,
+                                                    "pid":  939864,
+                                                    "ram_counter":  29,
+                                                    "started_at":  "2026-07-17T18:38:46.2142172Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:38:46.2142172Z"
+                                                },
+                                                {
+                                                    "cycle":  30,
+                                                    "pid":  939864,
+                                                    "ram_counter":  30,
+                                                    "started_at":  "2026-07-17T18:38:48.5954711Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:38:48.5954711Z"
+                                                },
+                                                {
+                                                    "cycle":  31,
+                                                    "pid":  939864,
+                                                    "ram_counter":  31,
+                                                    "started_at":  "2026-07-17T18:38:51.0653141Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:38:51.0653141Z"
+                                                },
+                                                {
+                                                    "cycle":  32,
+                                                    "pid":  939864,
+                                                    "ram_counter":  32,
+                                                    "started_at":  "2026-07-17T18:38:53.3308541Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:38:53.3308541Z"
+                                                },
+                                                {
+                                                    "cycle":  33,
+                                                    "pid":  939864,
+                                                    "ram_counter":  33,
+                                                    "started_at":  "2026-07-17T18:38:55.7144317Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:38:55.7144317Z"
+                                                },
+                                                {
+                                                    "cycle":  34,
+                                                    "pid":  939864,
+                                                    "ram_counter":  34,
+                                                    "started_at":  "2026-07-17T18:38:57.9903751Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:38:57.9903751Z"
+                                                },
+                                                {
+                                                    "cycle":  35,
+                                                    "pid":  939864,
+                                                    "ram_counter":  35,
+                                                    "started_at":  "2026-07-17T18:39:00.5644864Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:39:00.5644864Z"
+                                                },
+                                                {
+                                                    "cycle":  36,
+                                                    "pid":  939864,
+                                                    "ram_counter":  36,
+                                                    "started_at":  "2026-07-17T18:39:02.9803616Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:39:02.9803616Z"
+                                                },
+                                                {
+                                                    "cycle":  37,
+                                                    "pid":  939864,
+                                                    "ram_counter":  37,
+                                                    "started_at":  "2026-07-17T18:39:05.5903382Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:39:05.5903382Z"
+                                                },
+                                                {
+                                                    "cycle":  38,
+                                                    "pid":  939864,
+                                                    "ram_counter":  38,
+                                                    "started_at":  "2026-07-17T18:39:08.2803740Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:39:08.2803740Z"
+                                                },
+                                                {
+                                                    "cycle":  39,
+                                                    "pid":  939864,
+                                                    "ram_counter":  39,
+                                                    "started_at":  "2026-07-17T18:39:10.7649761Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:39:10.7649761Z"
+                                                },
+                                                {
+                                                    "cycle":  40,
+                                                    "pid":  939864,
+                                                    "ram_counter":  40,
+                                                    "started_at":  "2026-07-17T18:39:13.1393644Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:39:13.1393644Z"
+                                                },
+                                                {
+                                                    "cycle":  41,
+                                                    "pid":  939864,
+                                                    "ram_counter":  41,
+                                                    "started_at":  "2026-07-17T18:39:15.5057515Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:39:15.5057515Z"
+                                                },
+                                                {
+                                                    "cycle":  42,
+                                                    "pid":  939864,
+                                                    "ram_counter":  42,
+                                                    "started_at":  "2026-07-17T18:39:17.8648040Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:39:17.8648040Z"
+                                                },
+                                                {
+                                                    "cycle":  43,
+                                                    "pid":  939864,
+                                                    "ram_counter":  43,
+                                                    "started_at":  "2026-07-17T18:39:20.2405100Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:39:20.2405100Z"
+                                                },
+                                                {
+                                                    "cycle":  44,
+                                                    "pid":  939864,
+                                                    "ram_counter":  44,
+                                                    "started_at":  "2026-07-17T18:39:22.6323310Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:39:22.6323310Z"
+                                                },
+                                                {
+                                                    "cycle":  45,
+                                                    "pid":  939864,
+                                                    "ram_counter":  45,
+                                                    "started_at":  "2026-07-17T18:39:25.0066132Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:39:25.0066132Z"
+                                                },
+                                                {
+                                                    "cycle":  46,
+                                                    "pid":  939864,
+                                                    "ram_counter":  46,
+                                                    "started_at":  "2026-07-17T18:39:27.5898109Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:39:27.5898109Z"
+                                                },
+                                                {
+                                                    "cycle":  47,
+                                                    "pid":  939864,
+                                                    "ram_counter":  47,
+                                                    "started_at":  "2026-07-17T18:39:29.9589651Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:39:29.9589651Z"
+                                                },
+                                                {
+                                                    "cycle":  48,
+                                                    "pid":  939864,
+                                                    "ram_counter":  48,
+                                                    "started_at":  "2026-07-17T18:39:32.2303302Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:39:32.2303302Z"
+                                                },
+                                                {
+                                                    "cycle":  49,
+                                                    "pid":  939864,
+                                                    "ram_counter":  49,
+                                                    "started_at":  "2026-07-17T18:39:34.6245524Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:39:34.6245524Z"
+                                                },
+                                                {
+                                                    "cycle":  50,
+                                                    "pid":  939864,
+                                                    "ram_counter":  50,
+                                                    "started_at":  "2026-07-17T18:39:36.8902969Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:39:36.8902969Z"
+                                                },
+                                                {
+                                                    "cycle":  51,
+                                                    "pid":  939864,
+                                                    "ram_counter":  51,
+                                                    "started_at":  "2026-07-17T18:39:39.5306182Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:39:39.5306182Z"
+                                                },
+                                                {
+                                                    "cycle":  52,
+                                                    "pid":  939864,
+                                                    "ram_counter":  52,
+                                                    "started_at":  "2026-07-17T18:39:41.7866219Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:39:41.7866219Z"
+                                                },
+                                                {
+                                                    "cycle":  53,
+                                                    "pid":  939864,
+                                                    "ram_counter":  53,
+                                                    "started_at":  "2026-07-17T18:39:44.0309712Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:39:44.0309712Z"
+                                                },
+                                                {
+                                                    "cycle":  54,
+                                                    "pid":  939864,
+                                                    "ram_counter":  54,
+                                                    "started_at":  "2026-07-17T18:39:46.4146090Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:39:46.4146090Z"
+                                                },
+                                                {
+                                                    "cycle":  55,
+                                                    "pid":  939864,
+                                                    "ram_counter":  55,
+                                                    "started_at":  "2026-07-17T18:39:49.0148571Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:39:49.0148571Z"
+                                                },
+                                                {
+                                                    "cycle":  56,
+                                                    "pid":  939864,
+                                                    "ram_counter":  56,
+                                                    "started_at":  "2026-07-17T18:39:51.2758162Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:39:51.2758162Z"
+                                                },
+                                                {
+                                                    "cycle":  57,
+                                                    "pid":  939864,
+                                                    "ram_counter":  57,
+                                                    "started_at":  "2026-07-17T18:39:53.8648479Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:39:53.8648479Z"
+                                                },
+                                                {
+                                                    "cycle":  58,
+                                                    "pid":  939864,
+                                                    "ram_counter":  58,
+                                                    "started_at":  "2026-07-17T18:39:56.3403852Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:39:56.3403852Z"
+                                                },
+                                                {
+                                                    "cycle":  59,
+                                                    "pid":  939864,
+                                                    "ram_counter":  59,
+                                                    "started_at":  "2026-07-17T18:39:58.7250853Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:39:58.7250853Z"
+                                                },
+                                                {
+                                                    "cycle":  60,
+                                                    "pid":  939864,
+                                                    "ram_counter":  60,
+                                                    "started_at":  "2026-07-17T18:40:01.0961014Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:40:01.0961014Z"
+                                                },
+                                                {
+                                                    "cycle":  61,
+                                                    "pid":  939864,
+                                                    "ram_counter":  61,
+                                                    "started_at":  "2026-07-17T18:40:03.3651425Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:40:03.3651425Z"
+                                                },
+                                                {
+                                                    "cycle":  62,
+                                                    "pid":  939864,
+                                                    "ram_counter":  62,
+                                                    "started_at":  "2026-07-17T18:40:05.6420513Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:40:05.6420513Z"
+                                                },
+                                                {
+                                                    "cycle":  63,
+                                                    "pid":  939864,
+                                                    "ram_counter":  63,
+                                                    "started_at":  "2026-07-17T18:40:08.0150559Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:40:08.0150559Z"
+                                                },
+                                                {
+                                                    "cycle":  64,
+                                                    "pid":  939864,
+                                                    "ram_counter":  64,
+                                                    "started_at":  "2026-07-17T18:40:10.3906712Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:40:10.3906712Z"
+                                                },
+                                                {
+                                                    "cycle":  65,
+                                                    "pid":  939864,
+                                                    "ram_counter":  65,
+                                                    "started_at":  "2026-07-17T18:40:12.6653711Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:40:12.6653711Z"
+                                                },
+                                                {
+                                                    "cycle":  66,
+                                                    "pid":  939864,
+                                                    "ram_counter":  66,
+                                                    "started_at":  "2026-07-17T18:40:15.0409026Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:40:15.0409026Z"
+                                                },
+                                                {
+                                                    "cycle":  67,
+                                                    "pid":  939864,
+                                                    "ram_counter":  67,
+                                                    "started_at":  "2026-07-17T18:40:17.6361745Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:40:17.6361745Z"
+                                                },
+                                                {
+                                                    "cycle":  68,
+                                                    "pid":  939864,
+                                                    "ram_counter":  68,
+                                                    "started_at":  "2026-07-17T18:40:20.1251985Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:40:20.1251985Z"
+                                                },
+                                                {
+                                                    "cycle":  69,
+                                                    "pid":  939864,
+                                                    "ram_counter":  69,
+                                                    "started_at":  "2026-07-17T18:40:22.7156625Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:40:22.7156625Z"
+                                                },
+                                                {
+                                                    "cycle":  70,
+                                                    "pid":  939864,
+                                                    "ram_counter":  70,
+                                                    "started_at":  "2026-07-17T18:40:24.9762922Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:40:24.9762922Z"
+                                                },
+                                                {
+                                                    "cycle":  71,
+                                                    "pid":  939864,
+                                                    "ram_counter":  71,
+                                                    "started_at":  "2026-07-17T18:40:27.3410424Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:40:27.3410424Z"
+                                                },
+                                                {
+                                                    "cycle":  72,
+                                                    "pid":  939864,
+                                                    "ram_counter":  72,
+                                                    "started_at":  "2026-07-17T18:40:29.8121027Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:40:29.8121027Z"
+                                                },
+                                                {
+                                                    "cycle":  73,
+                                                    "pid":  939864,
+                                                    "ram_counter":  73,
+                                                    "started_at":  "2026-07-17T18:40:32.3814471Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:40:32.3814471Z"
+                                                },
+                                                {
+                                                    "cycle":  74,
+                                                    "pid":  939864,
+                                                    "ram_counter":  74,
+                                                    "started_at":  "2026-07-17T18:40:34.9722981Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:40:34.9722981Z"
+                                                },
+                                                {
+                                                    "cycle":  75,
+                                                    "pid":  939864,
+                                                    "ram_counter":  75,
+                                                    "started_at":  "2026-07-17T18:40:37.4648313Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:40:37.4648313Z"
+                                                },
+                                                {
+                                                    "cycle":  76,
+                                                    "pid":  939864,
+                                                    "ram_counter":  76,
+                                                    "started_at":  "2026-07-17T18:40:39.8390010Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:40:39.8390010Z"
+                                                },
+                                                {
+                                                    "cycle":  77,
+                                                    "pid":  939864,
+                                                    "ram_counter":  77,
+                                                    "started_at":  "2026-07-17T18:40:42.3159477Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:40:42.3159477Z"
+                                                },
+                                                {
+                                                    "cycle":  78,
+                                                    "pid":  939864,
+                                                    "ram_counter":  78,
+                                                    "started_at":  "2026-07-17T18:40:44.5810212Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:40:44.5810212Z"
+                                                },
+                                                {
+                                                    "cycle":  79,
+                                                    "pid":  939864,
+                                                    "ram_counter":  79,
+                                                    "started_at":  "2026-07-17T18:40:47.1940010Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:40:47.1940010Z"
+                                                },
+                                                {
+                                                    "cycle":  80,
+                                                    "pid":  939864,
+                                                    "ram_counter":  80,
+                                                    "started_at":  "2026-07-17T18:40:49.6654606Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:40:49.6654606Z"
+                                                },
+                                                {
+                                                    "cycle":  81,
+                                                    "pid":  939864,
+                                                    "ram_counter":  81,
+                                                    "started_at":  "2026-07-17T18:40:52.1656430Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:40:52.1656430Z"
+                                                },
+                                                {
+                                                    "cycle":  82,
+                                                    "pid":  939864,
+                                                    "ram_counter":  82,
+                                                    "started_at":  "2026-07-17T18:40:54.4262036Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:40:54.4262036Z"
+                                                },
+                                                {
+                                                    "cycle":  83,
+                                                    "pid":  939864,
+                                                    "ram_counter":  83,
+                                                    "started_at":  "2026-07-17T18:40:56.9155177Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:40:56.9155177Z"
+                                                },
+                                                {
+                                                    "cycle":  84,
+                                                    "pid":  939864,
+                                                    "ram_counter":  84,
+                                                    "started_at":  "2026-07-17T18:40:59.1755977Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:40:59.1755977Z"
+                                                },
+                                                {
+                                                    "cycle":  85,
+                                                    "pid":  939864,
+                                                    "ram_counter":  85,
+                                                    "started_at":  "2026-07-17T18:41:01.5408650Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:41:01.5408650Z"
+                                                },
+                                                {
+                                                    "cycle":  86,
+                                                    "pid":  939864,
+                                                    "ram_counter":  86,
+                                                    "started_at":  "2026-07-17T18:41:03.8004147Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:41:03.8004147Z"
+                                                },
+                                                {
+                                                    "cycle":  87,
+                                                    "pid":  939864,
+                                                    "ram_counter":  87,
+                                                    "started_at":  "2026-07-17T18:41:06.1751816Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:41:06.1751816Z"
+                                                },
+                                                {
+                                                    "cycle":  88,
+                                                    "pid":  939864,
+                                                    "ram_counter":  88,
+                                                    "started_at":  "2026-07-17T18:41:08.4432764Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:41:08.4432764Z"
+                                                },
+                                                {
+                                                    "cycle":  89,
+                                                    "pid":  939864,
+                                                    "ram_counter":  89,
+                                                    "started_at":  "2026-07-17T18:41:10.8154934Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:41:10.8154934Z"
+                                                },
+                                                {
+                                                    "cycle":  90,
+                                                    "pid":  939864,
+                                                    "ram_counter":  90,
+                                                    "started_at":  "2026-07-17T18:41:13.3161225Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:41:13.3161225Z"
+                                                },
+                                                {
+                                                    "cycle":  91,
+                                                    "pid":  939864,
+                                                    "ram_counter":  91,
+                                                    "started_at":  "2026-07-17T18:41:15.5931452Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:41:15.5931452Z"
+                                                },
+                                                {
+                                                    "cycle":  92,
+                                                    "pid":  939864,
+                                                    "ram_counter":  92,
+                                                    "started_at":  "2026-07-17T18:41:18.0914360Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:41:18.0914360Z"
+                                                },
+                                                {
+                                                    "cycle":  93,
+                                                    "pid":  939864,
+                                                    "ram_counter":  93,
+                                                    "started_at":  "2026-07-17T18:41:20.3654735Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:41:20.3654735Z"
+                                                },
+                                                {
+                                                    "cycle":  94,
+                                                    "pid":  939864,
+                                                    "ram_counter":  94,
+                                                    "started_at":  "2026-07-17T18:41:22.9660594Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:41:22.9660594Z"
+                                                },
+                                                {
+                                                    "cycle":  95,
+                                                    "pid":  939864,
+                                                    "ram_counter":  95,
+                                                    "started_at":  "2026-07-17T18:41:25.2255265Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:41:25.2255265Z"
+                                                },
+                                                {
+                                                    "cycle":  96,
+                                                    "pid":  939864,
+                                                    "ram_counter":  96,
+                                                    "started_at":  "2026-07-17T18:41:27.4939259Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:41:27.4939259Z"
+                                                },
+                                                {
+                                                    "cycle":  97,
+                                                    "pid":  939864,
+                                                    "ram_counter":  97,
+                                                    "started_at":  "2026-07-17T18:41:29.9680344Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:41:29.9680344Z"
+                                                },
+                                                {
+                                                    "cycle":  98,
+                                                    "pid":  939864,
+                                                    "ram_counter":  98,
+                                                    "started_at":  "2026-07-17T18:41:32.5313271Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:41:32.5313271Z"
+                                                },
+                                                {
+                                                    "cycle":  99,
+                                                    "pid":  939864,
+                                                    "ram_counter":  99,
+                                                    "started_at":  "2026-07-17T18:41:34.7910680Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:41:34.7910680Z"
+                                                },
+                                                {
+                                                    "cycle":  100,
+                                                    "pid":  939864,
+                                                    "ram_counter":  100,
+                                                    "started_at":  "2026-07-17T18:41:37.0656322Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:41:37.0656322Z"
+                                                },
+                                                {
+                                                    "cycle":  101,
+                                                    "pid":  939864,
+                                                    "ram_counter":  101,
+                                                    "started_at":  "2026-07-17T18:41:39.6505835Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:41:39.6505835Z"
+                                                },
+                                                {
+                                                    "cycle":  102,
+                                                    "pid":  939864,
+                                                    "ram_counter":  102,
+                                                    "started_at":  "2026-07-17T18:41:41.9818546Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:41:41.9818546Z"
+                                                },
+                                                {
+                                                    "cycle":  103,
+                                                    "pid":  939864,
+                                                    "ram_counter":  103,
+                                                    "started_at":  "2026-07-17T18:41:44.4659008Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:41:44.4659008Z"
+                                                },
+                                                {
+                                                    "cycle":  104,
+                                                    "pid":  939864,
+                                                    "ram_counter":  104,
+                                                    "started_at":  "2026-07-17T18:41:46.7159583Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:41:46.7159583Z"
+                                                },
+                                                {
+                                                    "cycle":  105,
+                                                    "pid":  939864,
+                                                    "ram_counter":  105,
+                                                    "started_at":  "2026-07-17T18:41:48.9913955Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:41:48.9913955Z"
+                                                },
+                                                {
+                                                    "cycle":  106,
+                                                    "pid":  939864,
+                                                    "ram_counter":  106,
+                                                    "started_at":  "2026-07-17T18:41:51.5693190Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:41:51.5693190Z"
+                                                },
+                                                {
+                                                    "cycle":  107,
+                                                    "pid":  939864,
+                                                    "ram_counter":  107,
+                                                    "started_at":  "2026-07-17T18:41:54.0459238Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:41:54.0459238Z"
+                                                },
+                                                {
+                                                    "cycle":  108,
+                                                    "pid":  939864,
+                                                    "ram_counter":  108,
+                                                    "started_at":  "2026-07-17T18:41:56.4411928Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:41:56.4411928Z"
+                                                },
+                                                {
+                                                    "cycle":  109,
+                                                    "pid":  939864,
+                                                    "ram_counter":  109,
+                                                    "started_at":  "2026-07-17T18:41:58.6998857Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:41:58.6998857Z"
+                                                },
+                                                {
+                                                    "cycle":  110,
+                                                    "pid":  939864,
+                                                    "ram_counter":  110,
+                                                    "started_at":  "2026-07-17T18:42:01.2770389Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:42:01.2770389Z"
+                                                },
+                                                {
+                                                    "cycle":  111,
+                                                    "pid":  939864,
+                                                    "ram_counter":  111,
+                                                    "started_at":  "2026-07-17T18:42:03.7659611Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:42:03.7659611Z"
+                                                },
+                                                {
+                                                    "cycle":  112,
+                                                    "pid":  939864,
+                                                    "ram_counter":  112,
+                                                    "started_at":  "2026-07-17T18:42:06.0377479Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:42:06.0377479Z"
+                                                },
+                                                {
+                                                    "cycle":  113,
+                                                    "pid":  939864,
+                                                    "ram_counter":  113,
+                                                    "started_at":  "2026-07-17T18:42:08.5416800Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:42:08.5416800Z"
+                                                },
+                                                {
+                                                    "cycle":  114,
+                                                    "pid":  939864,
+                                                    "ram_counter":  114,
+                                                    "started_at":  "2026-07-17T18:42:10.9435552Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:42:10.9435552Z"
+                                                },
+                                                {
+                                                    "cycle":  115,
+                                                    "pid":  939864,
+                                                    "ram_counter":  115,
+                                                    "started_at":  "2026-07-17T18:42:13.4166325Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:42:13.4166325Z"
+                                                },
+                                                {
+                                                    "cycle":  116,
+                                                    "pid":  939864,
+                                                    "ram_counter":  116,
+                                                    "started_at":  "2026-07-17T18:42:15.8846590Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:42:15.8846590Z"
+                                                },
+                                                {
+                                                    "cycle":  117,
+                                                    "pid":  939864,
+                                                    "ram_counter":  117,
+                                                    "started_at":  "2026-07-17T18:42:18.2681618Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:42:18.2681618Z"
+                                                },
+                                                {
+                                                    "cycle":  118,
+                                                    "pid":  939864,
+                                                    "ram_counter":  118,
+                                                    "started_at":  "2026-07-17T18:42:20.7662634Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:42:20.7662634Z"
+                                                },
+                                                {
+                                                    "cycle":  119,
+                                                    "pid":  939864,
+                                                    "ram_counter":  119,
+                                                    "started_at":  "2026-07-17T18:42:23.1320532Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:42:23.1320532Z"
+                                                },
+                                                {
+                                                    "cycle":  120,
+                                                    "pid":  939864,
+                                                    "ram_counter":  120,
+                                                    "started_at":  "2026-07-17T18:42:25.4159268Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:42:25.4159268Z"
+                                                },
+                                                {
+                                                    "cycle":  121,
+                                                    "pid":  939864,
+                                                    "ram_counter":  121,
+                                                    "started_at":  "2026-07-17T18:42:28.0157823Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:42:28.0157823Z"
+                                                },
+                                                {
+                                                    "cycle":  122,
+                                                    "pid":  939864,
+                                                    "ram_counter":  122,
+                                                    "started_at":  "2026-07-17T18:42:30.5199172Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:42:30.5224242Z"
+                                                },
+                                                {
+                                                    "cycle":  123,
+                                                    "pid":  939864,
+                                                    "ram_counter":  123,
+                                                    "started_at":  "2026-07-17T18:42:32.9886060Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:42:32.9886060Z"
+                                                },
+                                                {
+                                                    "cycle":  124,
+                                                    "pid":  939864,
+                                                    "ram_counter":  124,
+                                                    "started_at":  "2026-07-17T18:42:35.4660618Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:42:35.4660618Z"
+                                                },
+                                                {
+                                                    "cycle":  125,
+                                                    "pid":  939864,
+                                                    "ram_counter":  125,
+                                                    "started_at":  "2026-07-17T18:42:38.0328182Z",
+                                                    "decision":  "NO_OP_SAFE_RAM_STATE_PERSISTENCE_STEP",
+                                                    "scratch_created":  true,
+                                                    "scratch_cleared":  true,
+                                                    "finished_at":  "2026-07-17T18:42:38.0328182Z"
                                                 }
                                             ],
                           "same_pid_across_cycles":  true,
-                          "cycle_count":  26,
-                          "ram_counter_final":  26,
+                          "cycle_count":  125,
+                          "ram_counter_final":  125,
                           "ram_state_persisted":  true,
                           "per_cycle_json_bridge_used_for_ram_state":  false,
                           "lock_created":  true,
@@ -312,16 +1302,10 @@
                                                                                "mb":  12.47
                                                                            },
                                              "repo_status_before":  [
-                                                                        "?? operations/autonomous_inner_motor/reports/CONTINUOUS_AGENT_RUNTIME_V1_LAB_ACCEPTANCE.json",
-                                                                        "?? operations/autonomous_inner_motor/run_continuous_agent_runtime_v1_lab.ps1",
-                                                                        "?? tests/self_development/CONTINUOUS_AGENT_RUNTIME_V1_LAB_PROOF.json",
-                                                                        "?? validators/validate_continuous_agent_runtime_v1_lab.ps1"
+
                                                                     ],
                                              "repo_status_after":  [
-                                                                       "?? operations/autonomous_inner_motor/reports/CONTINUOUS_AGENT_RUNTIME_V1_LAB_ACCEPTANCE.json",
-                                                                       "?? operations/autonomous_inner_motor/run_continuous_agent_runtime_v1_lab.ps1",
-                                                                       "?? tests/self_development/CONTINUOUS_AGENT_RUNTIME_V1_LAB_PROOF.json",
-                                                                       "?? validators/validate_continuous_agent_runtime_v1_lab.ps1"
+
                                                                    ],
                                              "tracked_diff_names":  [
 
@@ -331,12 +1315,12 @@
                                                                            ]
                                          },
                           "artifacts":  {
-                                            "lock":  ".runtime\\continuous_agent_runtime_v1_lab\\continuous_lab_20260717_223031_b0c24fda\\runtime.lock.json",
-                                            "heartbeat":  ".runtime\\continuous_agent_runtime_v1_lab\\continuous_lab_20260717_223031_b0c24fda\\heartbeat.json",
-                                            "checkpoint":  ".runtime\\continuous_agent_runtime_v1_lab\\continuous_lab_20260717_223031_b0c24fda\\checkpoints\\latest.json",
-                                            "proof":  ".runtime\\continuous_agent_runtime_v1_lab\\continuous_lab_20260717_223031_b0c24fda\\CONTINUOUS_AGENT_RUNTIME_V1_LAB_PROOF.json",
-                                            "summary":  ".runtime\\continuous_agent_runtime_v1_lab\\continuous_lab_20260717_223031_b0c24fda\\CONTINUOUS_AGENT_RUNTIME_V1_LAB_SUMMARY.json",
-                                            "stop_signal_path":  ".runtime\\continuous_agent_runtime_v1_lab\\continuous_lab_20260717_223031_b0c24fda\\STOP.json"
+                                            "lock":  ".runtime\\continuous_agent_runtime_v1_lab\\continuous_lab_20260717_223738_dd55a70d\\runtime.lock.json",
+                                            "heartbeat":  ".runtime\\continuous_agent_runtime_v1_lab\\continuous_lab_20260717_223738_dd55a70d\\heartbeat.json",
+                                            "checkpoint":  ".runtime\\continuous_agent_runtime_v1_lab\\continuous_lab_20260717_223738_dd55a70d\\checkpoints\\latest.json",
+                                            "proof":  ".runtime\\continuous_agent_runtime_v1_lab\\continuous_lab_20260717_223738_dd55a70d\\CONTINUOUS_AGENT_RUNTIME_V1_LAB_PROOF.json",
+                                            "summary":  ".runtime\\continuous_agent_runtime_v1_lab\\continuous_lab_20260717_223738_dd55a70d\\CONTINUOUS_AGENT_RUNTIME_V1_LAB_SUMMARY.json",
+                                            "stop_signal_path":  ".runtime\\continuous_agent_runtime_v1_lab\\continuous_lab_20260717_223738_dd55a70d\\STOP.json"
                                         }
                       },
     "validation":  {
