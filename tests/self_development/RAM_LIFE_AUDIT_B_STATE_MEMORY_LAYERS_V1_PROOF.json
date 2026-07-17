@@ -1,0 +1,29 @@
+{
+    "schema":  "ram_life_audit_b_state_memory_layers_v1_validation",
+    "status":  "PASS_RAM_LIFE_AUDIT_B_STATE_MEMORY_LAYERS_V1",
+    "checked_at":  "2026-07-17T17:25:07.6761722Z",
+    "report":  "operations/autonomous_inner_motor/reports/RAM_LIFE_AUDIT_B_STATE_MEMORY_LAYERS_V1.json",
+    "required_layers":  [
+                            "immutable_life_orientation_card",
+                            "active_compact_memory",
+                            "ram_state",
+                            "cycle_scratch",
+                            "proof",
+                            "checkpoint",
+                            "archive",
+                            "raw_debug"
+                        ],
+    "process_count":  0,
+    "errors":  [
+
+               ],
+    "boundary":  {
+                     "audit_only":  true,
+                     "continuous_runtime_launched":  false,
+                     "active_memory_mutated":  false,
+                     "runtime_deleted":  false,
+                     "codex_launched":  false,
+                     "web_launched":  false,
+                     "school_launched":  false
+                 }
+}

@@ -1,34 +1,34 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-17T21:17:38.6778927+04:00",
+    "checked_at":  "2026-07-17T21:25:29.6458920+04:00",
     "branch":  "main",
-    "observed_head":  "0037ba7865135ad9758a11217c3274179646cfff",
-    "subject_head":  "0037ba7865135ad9758a11217c3274179646cfff",
+    "observed_head":  "ce9a7e0ee327a5c99601593197d3e1bb741df6e9",
+    "subject_head":  "ce9a7e0ee327a5c99601593197d3e1bb741df6e9",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "AGENT_BUILDER_INNATE_REFLEX_KERNEL_V1_PLAN.md",
+                          "AGENT_BUILDER_RAM_LIFE_TRANSITION_MASTER_PLAN_V1.md",
                           "AGENT_BUILDER_SELF_NOTEBOOK.md",
-                          "operations/autonomous_inner_motor/reports/LIFE_WORKING_MEMORY_V1_ACCEPTANCE.json",
-                          "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
-                          "operations/autonomous_inner_motor/start_agent_life_v1.ps1",
+                          "operations/autonomous_inner_motor/reports/RAM_LIFE_AUDIT_0_CURRENT_REALITY_V1.json",
+                          "operations/autonomous_inner_motor/reports/RAM_LIFE_AUDIT_A_RUNTIME_TOPOLOGY_V1.json",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "tests/self_development/DEFAULT_WAKE_REFLEXES_V1_PROOF.json",
-                          "tests/self_development/LIFE_WORKING_MEMORY_V1_PROOF.json",
-                          "validators/validate_life_working_memory_v1.ps1"
+                          "tests/self_development/RAM_LIFE_AUDIT_A_RUNTIME_TOPOLOGY_V1_PROOF.json",
+                          "tests/self_development/RAM_LIFE_TRANSITION_MASTER_PLAN_V1_PROOF.json",
+                          "validators/validate_ram_life_audit_a_runtime_topology_v1.ps1",
+                          "validators/validate_ram_life_transition_master_plan_v1.ps1"
                       ],
     "structural_paths":  [
-                             "operations/autonomous_inner_motor/reports/LIFE_WORKING_MEMORY_V1_ACCEPTANCE.json",
-                             "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
-                             "operations/autonomous_inner_motor/start_agent_life_v1.ps1",
-                             "tests/self_development/DEFAULT_WAKE_REFLEXES_V1_PROOF.json",
-                             "tests/self_development/LIFE_WORKING_MEMORY_V1_PROOF.json",
-                             "validators/validate_life_working_memory_v1.ps1"
+                             "operations/autonomous_inner_motor/reports/RAM_LIFE_AUDIT_0_CURRENT_REALITY_V1.json",
+                             "operations/autonomous_inner_motor/reports/RAM_LIFE_AUDIT_A_RUNTIME_TOPOLOGY_V1.json",
+                             "tests/self_development/RAM_LIFE_AUDIT_A_RUNTIME_TOPOLOGY_V1_PROOF.json",
+                             "tests/self_development/RAM_LIFE_TRANSITION_MASTER_PLAN_V1_PROOF.json",
+                             "validators/validate_ram_life_audit_a_runtime_topology_v1.ps1",
+                             "validators/validate_ram_life_transition_master_plan_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -40,8 +40,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2177,
-                                    "sha256":  "c690ab3a9aefe437adb8c075eb04fa5f950e3d92f5351aaac545897931e9d4e4"
+                                    "structural_file_count":  2180,
+                                    "sha256":  "04368c104f6c813514c003bca3e82d9bed53a358d56252f279a8ad1af028d39a"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -67,12 +67,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  152,
-                         "structural_path_count":  2177,
+                         "structural_path_count":  2180,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-17T21:18:13.4572819+04:00"
+    "refreshed_at":  "2026-07-17T21:26:04.7306109+04:00"
 }

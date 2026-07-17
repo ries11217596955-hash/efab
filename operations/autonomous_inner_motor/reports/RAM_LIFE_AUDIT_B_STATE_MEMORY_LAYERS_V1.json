@@ -1,0 +1,355 @@
+{
+    "schema":  "ram_life_audit_b_state_memory_layers_v1",
+    "status":  "PASS_RAM_LIFE_AUDIT_B_STATE_MEMORY_LAYERS_V1",
+    "checked_at":  "2026-07-17T17:24:47.0026622Z",
+    "purpose":  "Separate orientation, compact memory, RAM state, cycle scratch, proof, checkpoint, archive, and raw/debug so RAM-life does not become a JSON diary.",
+    "current_observation":  {
+                                "active_compact_memory":  {
+                                                              "path":  ".runtime/active_compact_semantic_memory_v1",
+                                                              "files":  3,
+                                                              "mb":  12.47,
+                                                              "role":  "protected active long-term compact memory"
+                                                          },
+                                "compact_memory_intake":  {
+                                                              "path":  ".runtime/compact_memory_intake_v1",
+                                                              "files":  305,
+                                                              "mb":  711.66,
+                                                              "role":  "intake/queue/staging, not active mind context",
+                                                              "top_files":  [
+                                                                                {
+                                                                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_182408\\active_memory_before\\cells.jsonl",
+                                                                                    "Length":  12765760,
+                                                                                    "LastWriteTime":  "\/Date(1784181929545)\/"
+                                                                                },
+                                                                                {
+                                                                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_183838\\active_memory_before\\cells.jsonl",
+                                                                                    "Length":  12765710,
+                                                                                    "LastWriteTime":  "\/Date(1784212690009)\/"
+                                                                                },
+                                                                                {
+                                                                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_183743\\active_memory_before\\cells.jsonl",
+                                                                                    "Length":  12765643,
+                                                                                    "LastWriteTime":  "\/Date(1784212635692)\/"
+                                                                                },
+                                                                                {
+                                                                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_183649\\active_memory_before\\cells.jsonl",
+                                                                                    "Length":  12765576,
+                                                                                    "LastWriteTime":  "\/Date(1784212581617)\/"
+                                                                                },
+                                                                                {
+                                                                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_183555\\active_memory_before\\cells.jsonl",
+                                                                                    "Length":  12765509,
+                                                                                    "LastWriteTime":  "\/Date(1784212527540)\/"
+                                                                                },
+                                                                                {
+                                                                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_183501\\active_memory_before\\cells.jsonl",
+                                                                                    "Length":  12765442,
+                                                                                    "LastWriteTime":  "\/Date(1784212473155)\/"
+                                                                                },
+                                                                                {
+                                                                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_183406\\active_memory_before\\cells.jsonl",
+                                                                                    "Length":  12765375,
+                                                                                    "LastWriteTime":  "\/Date(1784212418238)\/"
+                                                                                },
+                                                                                {
+                                                                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_183312\\active_memory_before\\cells.jsonl",
+                                                                                    "Length":  12765308,
+                                                                                    "LastWriteTime":  "\/Date(1784212363937)\/"
+                                                                                },
+                                                                                {
+                                                                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_183218\\active_memory_before\\cells.jsonl",
+                                                                                    "Length":  12765241,
+                                                                                    "LastWriteTime":  "\/Date(1784212309836)\/"
+                                                                                },
+                                                                                {
+                                                                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_183123\\active_memory_before\\cells.jsonl",
+                                                                                    "Length":  12765174,
+                                                                                    "LastWriteTime":  "\/Date(1784212255701)\/"
+                                                                                },
+                                                                                {
+                                                                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_183029\\active_memory_before\\cells.jsonl",
+                                                                                    "Length":  12765107,
+                                                                                    "LastWriteTime":  "\/Date(1784212201384)\/"
+                                                                                },
+                                                                                {
+                                                                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_182935\\active_memory_before\\cells.jsonl",
+                                                                                    "Length":  12765040,
+                                                                                    "LastWriteTime":  "\/Date(1784212146866)\/"
+                                                                                },
+                                                                                {
+                                                                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_182840\\active_memory_before\\cells.jsonl",
+                                                                                    "Length":  12764973,
+                                                                                    "LastWriteTime":  "\/Date(1784212092597)\/"
+                                                                                },
+                                                                                {
+                                                                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_182746\\active_memory_before\\cells.jsonl",
+                                                                                    "Length":  12764906,
+                                                                                    "LastWriteTime":  "\/Date(1784212038556)\/"
+                                                                                },
+                                                                                {
+                                                                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_182652\\active_memory_before\\cells.jsonl",
+                                                                                    "Length":  12764839,
+                                                                                    "LastWriteTime":  "\/Date(1784211983821)\/"
+                                                                                },
+                                                                                {
+                                                                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_182557\\active_memory_before\\cells.jsonl",
+                                                                                    "Length":  12764772,
+                                                                                    "LastWriteTime":  "\/Date(1784211929854)\/"
+                                                                                },
+                                                                                {
+                                                                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_182503\\active_memory_before\\cells.jsonl",
+                                                                                    "Length":  12764705,
+                                                                                    "LastWriteTime":  "\/Date(1784211875493)\/"
+                                                                                },
+                                                                                {
+                                                                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_230039\\active_memory_before\\cells.jsonl",
+                                                                                    "Length":  12678289,
+                                                                                    "LastWriteTime":  "\/Date(1784140978444)\/"
+                                                                                },
+                                                                                {
+                                                                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_224232\\active_memory_before\\cells.jsonl",
+                                                                                    "Length":  12678222,
+                                                                                    "LastWriteTime":  "\/Date(1784140950628)\/"
+                                                                                },
+                                                                                {
+                                                                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_224204\\active_memory_before\\cells.jsonl",
+                                                                                    "Length":  12678155,
+                                                                                    "LastWriteTime":  "\/Date(1784140922794)\/"
+                                                                                }
+                                                                            ]
+                                                          },
+                                "life_working_memory":  "currently a bridge/context file; target is immutable orientation/wake context plus later RAM resident runtime state"
+                            },
+    "memory_layers":  {
+                          "immutable_life_orientation_card":  {
+                                                                  "owner":  "operator/GPT controlled, not cycle controlled",
+                                                                  "mutability":  "read_only_during_life",
+                                                                  "purpose":  "tell the agent who it is, where it woke, what it can/cannot do, how reflexes run, and what self-build path matters",
+                                                                  "allowed_content":  [
+                                                                                          "identity",
+                                                                                          "mission",
+                                                                                          "body summary",
+                                                                                          "organs/capabilities/reflexes and launch rules",
+                                                                                          "wake-default/triggered/authorized classes",
+                                                                                          "safety prohibitions",
+                                                                                          "compact memory usage rule",
+                                                                                          "proof discipline",
+                                                                                          "current high-level self-build gaps",
+                                                                                          "next growth doctrine"
+                                                                                      ],
+                                                                  "forbidden_content":  [
+                                                                                            "cycle transcripts",
+                                                                                            "topic notes",
+                                                                                            "raw proof bodies",
+                                                                                            "debug dumps",
+                                                                                            "large atom content",
+                                                                                            "per-cycle history",
+                                                                                            "unvalidated ideas"
+                                                                                        ],
+                                                                  "max_size_policy":  "strong card, but budgeted; target \u003c=100KB until proven otherwise",
+                                                                  "update_authority":  "operator-approved update only; drift sensor may propose but not apply"
+                                                              },
+                          "active_compact_memory":  {
+                                                        "owner":  "memory gates/validators",
+                                                        "mutability":  "append/merge only through governed acceptance",
+                                                        "purpose":  "long-term learned atoms and validated reusable knowledge",
+                                                        "allowed_content":  [
+                                                                                "validated atoms",
+                                                                                "accepted rules",
+                                                                                "experience atoms",
+                                                                                "compact semantic cells",
+                                                                                "proof references"
+                                                                            ],
+                                                        "forbidden_content":  [
+                                                                                  "raw cycle scratch",
+                                                                                  "unvalidated topic notes",
+                                                                                  "orientation card body",
+                                                                                  "debug logs",
+                                                                                  "full proof dumps"
+                                                                              ],
+                                                        "use_policy":  "retrieved selectively by relevance; not loaded wholesale into RAM context",
+                                                        "growth_policy":  "can grow, but must be compacted/indexed and not used as full-context dump"
+                                                    },
+                          "ram_state":  {
+                                            "owner":  "continuous runtime process in lab/future live",
+                                            "mutability":  "mutable inside one running process",
+                                            "purpose":  "current live state: loaded orientation, selected memory slices, current goal, router state, recent compact decisions, active scratch pointer",
+                                            "allowed_content":  [
+                                                                    "orientation card copy/ref",
+                                                                    "wake context compact",
+                                                                    "selected compact memory atoms",
+                                                                    "current goal/frontier",
+                                                                    "recent decision ring buffer",
+                                                                    "runtime counters",
+                                                                    "heartbeat state"
+                                                                ],
+                                            "forbidden_content":  [
+                                                                      "all compact memory",
+                                                                      "raw proofs",
+                                                                      "full file inventories",
+                                                                      "unbounded topic diary",
+                                                                      "large debug outputs"
+                                                                  ],
+                                            "max_size_policy":  "budget required before continuous lab; no unbounded growth",
+                                            "persistence":  "RAM first; checkpoint only on boundaries/error/end"
+                                        },
+                          "cycle_scratch":  {
+                                                "owner":  "one reasoning cycle",
+                                                "mutability":  "temporary",
+                                                "purpose":  "local thought/work area for the current task/candidate",
+                                                "allowed_content":  [
+                                                                        "candidate reasoning",
+                                                                        "temporary analysis",
+                                                                        "local evidence summary",
+                                                                        "draft delta"
+                                                                    ],
+                                                "forbidden_content":  [
+                                                                          "automatic life orientation update",
+                                                                          "direct compact memory write",
+                                                                          "durable raw logs by default"
+                                                                      ],
+                                                "retention":  "discard after cycle unless accepted as atom/proof/ref or compact issue"
+                                            },
+                          "proof":  {
+                                        "owner":  "validators/runners",
+                                        "mutability":  "durable once written",
+                                        "purpose":  "evidence for claims and boundaries",
+                                        "allowed_content":  [
+                                                                "status",
+                                                                "validator refs",
+                                                                "hash/path refs",
+                                                                "compact summaries",
+                                                                "boundary booleans",
+                                                                "small samples when required"
+                                                            ],
+                                        "forbidden_content":  [
+                                                                  "using proof as working memory",
+                                                                  "huge raw dumps",
+                                                                  "cycle transcript as default"
+                                                              ],
+                                        "policy":  "compact proof, not memory layer"
+                                    },
+                          "checkpoint":  {
+                                             "owner":  "runtime safety layer",
+                                             "mutability":  "bounded rolling snapshots",
+                                             "purpose":  "crash recovery / resume boundary for continuous runtime",
+                                             "allowed_content":  [
+                                                                     "orientation card ref/hash",
+                                                                     "RAM state compact snapshot",
+                                                                     "cycle counter",
+                                                                     "last safe decision",
+                                                                     "heartbeat/ref"
+                                                                 ],
+                                             "forbidden_content":  [
+                                                                       "raw debug dumps",
+                                                                       "all compact memory",
+                                                                       "unbounded history"
+                                                                   ],
+                                             "retention":  "latest bounded N only; exact N to be decided in safety audit"
+                                         },
+                          "archive":  {
+                                          "owner":  "retention/cleanup policy with authority",
+                                          "mutability":  "cold storage, not active context",
+                                          "purpose":  "historical proofs/reports/debug material after compaction",
+                                          "allowed_content":  [
+                                                                  "old reports",
+                                                                  "compressed raw debug when explicitly retained",
+                                                                  "historical trial summaries"
+                                                              ],
+                                          "forbidden_content":  [
+                                                                    "active memory root deletion",
+                                                                    "current proof deletion without backup",
+                                                                    "runtime cleanup while life/school runs"
+                                                                ],
+                                          "authority":  "authorized/gated only"
+                                      },
+                          "raw_debug":  {
+                                            "owner":  "debug mode only",
+                                            "mutability":  "transient",
+                                            "purpose":  "diagnosis when compact proof is insufficient",
+                                            "allowed_content":  [
+                                                                    "temporary inventories",
+                                                                    "raw scan dumps",
+                                                                    "debug stderr/stdout"
+                                                                ],
+                                            "forbidden_content":  [
+                                                                      "default retention",
+                                                                      "loading into mind context",
+                                                                      "automatic promotion to memory"
+                                                                  ],
+                                            "retention":  "off by default; delete/compress after compact proof unless explicitly kept"
+                                        }
+                      },
+    "routing_rules":  [
+                          {
+                              "input":  "validated atom",
+                              "destination":  "active_compact_memory",
+                              "gate":  "validator/acceptance required"
+                          },
+                          {
+                              "input":  "who/where/abilities/reflex rules",
+                              "destination":  "immutable_life_orientation_card",
+                              "gate":  "operator update only"
+                          },
+                          {
+                              "input":  "current cycle temporary reasoning",
+                              "destination":  "cycle_scratch",
+                              "gate":  "discard unless promoted via proof/atom/issue"
+                          },
+                          {
+                              "input":  "current live counters/router state",
+                              "destination":  "ram_state",
+                              "gate":  "continuous runtime budget"
+                          },
+                          {
+                              "input":  "claim evidence",
+                              "destination":  "proof",
+                              "gate":  "validator/proof writer"
+                          },
+                          {
+                              "input":  "crash recovery state",
+                              "destination":  "checkpoint",
+                              "gate":  "safety policy"
+                          },
+                          {
+                              "input":  "raw scan/debug",
+                              "destination":  "raw_debug",
+                              "gate":  "debug mode/retention policy"
+                          }
+                      ],
+    "anti_patterns":  [
+                          "life orientation card as diary",
+                          "proof files as memory",
+                          "raw debug as context",
+                          "loading all compact memory into every cycle",
+                          "cycle scratch auto-writing life context",
+                          "unbounded RAM state",
+                          "auto-updating orientation card without operator acceptance"
+                      ],
+    "ram_life_implications":  [
+                                  "continuous process should load orientation card once",
+                                  "continuous process should retrieve compact memory selectively",
+                                  "continuous process should keep cycle scratch in RAM and discard it",
+                                  "continuous process should write compact boundary proof/checkpoint only",
+                                  "drift sensor may signal stale orientation but cannot mutate it",
+                                  "accepted atoms still go to compact memory, not orientation card"
+                              ],
+    "acceptance":  {
+                       "orientation_card_read_only_during_life":  true,
+                       "compact_memory_grows_only_through_gates":  true,
+                       "cycle_scratch_discarded_by_default":  true,
+                       "proof_is_not_memory":  true,
+                       "raw_debug_off_by_default":  true,
+                       "ram_state_budget_required":  true,
+                       "no_layer_allowed_to_become_diary":  true
+                   },
+    "boundary":  {
+                     "audit_only":  true,
+                     "active_memory_mutated":  false,
+                     "runtime_deleted":  false,
+                     "continuous_runtime_launched":  false,
+                     "codex_launched":  false,
+                     "web_launched":  false,
+                     "school_launched":  false
+                 }
+}
