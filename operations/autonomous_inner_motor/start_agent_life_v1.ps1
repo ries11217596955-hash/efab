@@ -87,9 +87,10 @@ $summaryPath = Join-Path $trialRoot "LIVE_TRIAL_SUMMARY.json"
 $head = (git rev-parse --short HEAD).Trim()
 $delta = (git rev-list --left-right --count HEAD...origin/main 2>$null).Trim()
 $dirty = @(git status --short --untracked-files=all | Where-Object { -not [string]::IsNullOrWhiteSpace([string]$_) })
+$dirty = @($dirty | Where-Object { -not [string]::IsNullOrWhiteSpace([string]$_) })
 $activeMemoryRoot = Join-Path $RepoRoot ".runtime/active_compact_semantic_memory_v1"
 $activeMemoryReady = (Test-Path (Join-Path $activeMemoryRoot "manifest.json")) -and (Test-Path (Join-Path $activeMemoryRoot "index.json")) -and (Test-Path (Join-Path $activeMemoryRoot "cells.jsonl"))
-$conflicts = @(Get-ProcessConflicts)
+$conflicts = @(Get-ProcessConflicts | Where-Object { $null -ne $_ -and $_.process_id })
 
 $preflight = [ordered]@{
     schema = "agent_life_launcher_preflight_v1"
