@@ -1,0 +1,26 @@
+{
+    "schema":  "memory_to_next_path_reuse_gate_v1_validation",
+    "status":  "PASS_MEMORY_TO_NEXT_PATH_REUSE_GATE_V1",
+    "checked_at":  "2026-07-17T11:31:59.1021584+04:00",
+    "default_packet":  ".runtime/memory_to_next_path_reuse_gate_v1/default_packet.json",
+    "avoid_packet":  ".runtime/memory_to_next_path_reuse_gate_v1/avoid_packet.json",
+    "default_selected_action":  "ACTION_CONTRACT_V1",
+    "avoid_selected_action":  "MEMORY_TO_NEXT_PATH_REUSE_GATE_V1",
+    "validates":  {
+                      "consumed_repeat_is_not_reselected":  true,
+                      "new_mental_growth_candidate_selected":  true,
+                      "execution_allowed_false":  true,
+                      "runner_emits_reuse_gate":  true
+                  },
+    "boundary":  {
+                     "validator_did_not_start_agent_life":  true,
+                     "active_memory_mutated":  false,
+                     "live_process_touched":  false,
+                     "codex_launched":  false,
+                     "web_launched":  false,
+                     "action_execution_performed":  false
+                 },
+    "errors":  [
+
+               ]
+}

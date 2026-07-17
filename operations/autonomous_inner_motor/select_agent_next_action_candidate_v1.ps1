@@ -1,5 +1,6 @@
 param(
-  [string]$Goal='Increase agent logic: choose the next safe self-build action from thinking evidence.',
+  [string[]]$AvoidActionIds = @(),
+[string]$Goal='Increase agent logic: choose the next safe self-build action from thinking evidence.',
   [ValidateSet('LabOnly')][string]$Mode='LabOnly',
   [string]$OutputPath='.runtime/agent_action_decision_contract_v1/decision_packet.json',
   [switch]$NegativeMissingValidator
@@ -39,7 +40,11 @@ $unknown=@(
   'AIMO fresh-memory per School batch remains partial proof, not full live proof.'
 )
 $gap='Agent has thinking and memory learning, but lacks a governed action-candidate contract between thought and execution.'
-$candidateActions=@(
+$candidateActions=@()
+if($AvoidActionIds -contains 'ACTION_CONTRACT_V1'){
+  $candidateActions += [ordered]@{action_id='MEMORY_TO_NEXT_PATH_REUSE_GATE_V1'; action_type='write_install_ready_artifact'; target_surface='operations/autonomous_inner_motor'; required_authority='LAB_FILE_WRITE'; validator_required=$true; validator_refs=@('validators/validate_memory_to_next_path_reuse_gate_v1.ps1'); proof_required=$true; rollback_plan='git restore changed files before commit; no active memory mutation'; execution_allowed=($Mode -eq 'LabOnly'); why_candidate='Prior repeated ACTION_CONTRACT_V1 was absorbed into memory; next safe mental-growth step is to reuse that knowledge and choose a new path, not repeat the same candidate.'}
+}
+$candidateActions += @(
   [ordered]@{action_id='ACTION_CONTRACT_V1'; action_type='write_install_ready_artifact'; target_surface='operations/autonomous_inner_motor'; required_authority='LAB_FILE_WRITE'; validator_required=$true; validator_refs=@('validators/validate_agent_action_decision_contract_v1.ps1'); proof_required=$true; rollback_plan='git restore changed files before commit; no active memory mutation'; execution_allowed=($Mode -eq 'LabOnly'); why_candidate='Smallest safe bridge from thinking to action without granting hands.'},
   [ordered]@{action_id='WIRE_AIMO_TO_EXECUTION'; action_type='execute_repo_patch'; target_surface='operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1'; required_authority='OWNER_LIVE_ACTION_AUTHORITY'; validator_required=$true; validator_refs=@('validators/validate_autonomous_inner_motor_organ_contract.ps1'); proof_required=$true; rollback_plan='git restore runner and proof files'; execution_allowed=$false; why_candidate='Too early: execution wiring before action contract would mix thinking and hands.'},
   [ordered]@{action_id='RUN_BIG_LIVE_AGENT'; action_type='run_aimo_live'; target_surface='runtime'; required_authority='OWNER_EXPLICIT_LIVE_AUTHORITY'; validator_required=$true; validator_refs=@(); proof_required=$true; rollback_plan='stop process and preserve logs'; execution_allowed=$false; why_candidate='Rejected: missing validator refs and live authority.'}
@@ -53,6 +58,7 @@ foreach($a in $candidateActions){
   $reasons=@()
   if($a.action_type -ne 'observe_only' -and $a.validator_required -and @($a.validator_refs).Count -eq 0){ $reasons+='missing_validator_refs' }
   if([string]::IsNullOrWhiteSpace([string]$a.rollback_plan) -or $a.rollback_plan -eq 'none'){ $reasons+='missing_rollback_plan' }
+  if($AvoidActionIds -contains [string]$a.action_id){ $reasons+='already_absorbed_repeat_candidate' }
   if($Mode -eq 'LabOnly' -and @('run_school_live','run_aimo_live','push_to_remote','delete_runtime','mutate_active_memory_directly','launch_child_agent','execute_repo_patch') -contains $a.action_type){ $reasons+='lab_mode_execution_forbidden' }
   if($reasons.Count -gt 0){ $rejected += [ordered]@{action=$a; reject_reasons=$reasons} } else { $valid += $a }
 }
@@ -72,6 +78,7 @@ $packet=[ordered]@{
   known=@($known)
   unknown=@($unknown)
   gap=$gap
+  avoid_action_ids=@($AvoidActionIds)
   candidate_actions=@($candidateActions)
   selected_action=$selected
   rejected_actions=@($rejected)

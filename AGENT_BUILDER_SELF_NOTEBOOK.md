@@ -332,3 +332,33 @@ If Owner asks what is next from current state:
     analyze QueueOnly trial
     verify memory QueueOnly effect
     then choose Answer Assimilator V1 or action contract formalization based on proof
+
+## 2026-07-17 â€” AIMO memory-to-next-path reuse gate
+
+STATUS: IMPLEMENTED_CANDIDATE / VALIDATOR_PASS
+
+Context:
+- Canonical launcher is `operations/autonomous_inner_motor/start_agent_life_v1.ps1`.
+- Owner-facing launch must require only `DurationMinutes`.
+- Agent life mode is fixed: deep thinking + governed memory learning QueueOnly + action execution false.
+- Queue-only run proved memory absorption, but repeated `ACTION_CONTRACT_V1` remained the selected candidate.
+
+Decision:
+- Do not move toward hands/live action.
+- Add a memory-to-next-path reuse gate: once a repeated candidate is absorbed, the next loop must treat that candidate as known/consumed and choose a different mental-growth path.
+
+Files:
+- `operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1`
+- `operations/autonomous_inner_motor/select_agent_next_action_candidate_v1.ps1`
+- `validators/validate_memory_to_next_path_reuse_gate_v1.ps1`
+- `tests/self_development/MEMORY_TO_NEXT_PATH_REUSE_GATE_V1_PROOF.json`
+
+Boundary:
+- No live action.
+- No Codex/web from agent.
+- No repo repair execution by agent.
+- Memory growth remains governed QueueOnly through canonical launcher.
+
+Next proof:
+- Validator must pass.
+- Next canonical agent life run should show consumed repeat candidate is not selected again after reuse gate.

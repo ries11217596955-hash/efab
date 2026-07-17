@@ -1,23 +1,26 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-17T11:22:52.1510993+04:00",
+    "checked_at":  "2026-07-17T11:32:16.1179117+04:00",
     "branch":  "main",
-    "observed_head":  "c77aeeae757fe8e13c9b9e422978d08611161390",
-    "subject_head":  "c77aeeae757fe8e13c9b9e422978d08611161390",
+    "observed_head":  "8b038e30a483b618166e360c9abfe5a686bc049a",
+    "subject_head":  "8b038e30a483b618166e360c9abfe5a686bc049a",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "AGENT_BUILDER_SELF_NOTEBOOK.md",
-                          "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
+                          "operations/autonomous_inner_motor/start_agent_life_v1.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
-                          "reports/self_development/branch_agnostic_map_refresh_result.json"
+                          "reports/self_development/branch_agnostic_map_refresh_result.json",
+                          "tests/self_development/AGENT_LIFE_LAUNCHER_V1_PROOF.json",
+                          "validators/validate_agent_life_launcher_v1.ps1"
                       ],
     "structural_paths":  [
-                             "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
+                             "operations/autonomous_inner_motor/start_agent_life_v1.ps1",
+                             "tests/self_development/AGENT_LIFE_LAUNCHER_V1_PROOF.json",
+                             "validators/validate_agent_life_launcher_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -29,8 +32,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2120,
-                                    "sha256":  "31fa1a430c650bde15ce5dd1098ee4b5e356af8d0e08ff4edb5c2c50d63d710a"
+                                    "structural_file_count":  2122,
+                                    "sha256":  "8047933d9d19639d92ef46203c10d9ec6d675393e7b8ce0cc30830e6ecae78de"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -56,12 +59,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  152,
-                         "structural_path_count":  2120,
+                         "structural_path_count":  2122,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-17T11:23:26.4330891+04:00"
+    "refreshed_at":  "2026-07-17T11:32:50.5264190+04:00"
 }
