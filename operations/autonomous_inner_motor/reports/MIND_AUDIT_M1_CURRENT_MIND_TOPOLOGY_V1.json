@@ -1,0 +1,443 @@
+{
+    "schema":  "mind_audit_m1_current_mind_topology_v1",
+    "status":  "PASS_MIND_AUDIT_M1_CURRENT_MIND_TOPOLOGY_V1",
+    "checked_at":  "2026-07-17T19:39:25.2401566Z",
+    "purpose":  "Map current agent mind/logic topology from launcher, runner, latest trial artifacts, and queue packets.",
+    "scope":  {
+                  "audit_only":  true,
+                  "runtime_launched":  false,
+                  "source_files":  [
+                                       "operations/autonomous_inner_motor/start_agent_life_v1.ps1",
+                                       "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+                                       "AGENT_BUILDER_MIND_LOGIC_DEEP_AUDIT_PLAN_V1.md"
+                                   ],
+                  "latest_trial":  ".runtime/live_trials/agent_life_5min_20260717_225256",
+                  "latest_trial_summary":  ".runtime\\live_trials\\agent_life_5min_20260717_225256\\LIVE_TRIAL_SUMMARY.json"
+              },
+    "topology":  {
+                     "canonical_body":  "start_agent_life_v1.ps1 launches run_autonomous_inner_motor.ps1 per cycle; RAM lab has not replaced canonical life.",
+                     "preflight":  "Launcher checks repo/process/active memory readiness before cycles.",
+                     "life_working_memory":  "Launcher passes WakeContextPath; first cycle can create life_working_memory_context.json, later cycles reuse it.",
+                     "wake_reflex_context":  "Runner can use default wake context/reflexes, including body/repo/process/runtime/active-memory sensing.",
+                     "compact_memory_position":  "Runner protects active compact memory and writes learning packets to compact_memory_intake_v1/queue; selective active-memory retrieval is not proven in M1 evidence.",
+                     "mind_logic_frame":  "Runner has mind_logic_frame/proof concepts; current latest trial did not retain per-cycle SANDBOX_EXPLORATION_PROOF files under trial root.",
+                     "action_decision":  "Runner has action_decision/frontier gate terms; latest retained evidence does not show a build-task decision chain, only queue packet outputs.",
+                     "output":  "Current useful output path is compact memory queue packet creation, not validated build task execution."
+                 },
+    "evidence":  {
+                     "launcher_line_hits":  {
+                                                "path":  "operations/autonomous_inner_motor/start_agent_life_v1.ps1",
+                                                "line":  207,
+                                                "pattern":  "lifeWorkingMemory",
+                                                "text":  "life_working_memory_path = $lifeWorkingMemoryPath"
+                                            },
+                     "runner_line_hits":  {
+                                              "path":  "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+                                              "line":  1040,
+                                              "pattern":  "mind_logic_frame",
+                                              "text":  "Write-Host \"MIND_LOGIC_HYPOTHESIS_TEST_STATUS=$($proof.mind_logic_frame.frame.hypothesis_test_result.status)\""
+                                          },
+                     "latest_trial_summary":  {
+                                                  "status":  "PASS_AGENT_LIFE_CANONICAL_TRIAL",
+                                                  "duration_seconds":  301,
+                                                  "cycles":  4,
+                                                  "memory_changed_count":  null,
+                                                  "queued_packets":  null,
+                                                  "codex_launched":  null,
+                                                  "web_research_performed":  null,
+                                                  "git_mutated":  null,
+                                                  "repo_dirty_count":  null,
+                                                  "fields":  [
+                                                                 "schema",
+                                                                 "status",
+                                                                 "started_at",
+                                                                 "finished_at",
+                                                                 "duration_minutes_requested",
+                                                                 "duration_seconds",
+                                                                 "life_working_memory_path",
+                                                                 "life_working_memory_exists",
+                                                                 "cycles",
+                                                                 "launcher",
+                                                                 "launch_contract",
+                                                                 "preflight_ref",
+                                                                 "proof_status_counts",
+                                                                 "anti_repeat_status_counts",
+                                                                 "selected_action_counts",
+                                                                 "governed_absorption_count",
+                                                                 "active_memory_mutated_count",
+                                                                 "boundary",
+                                                                 "cycles_detail",
+                                                                 "repo_after"
+                                                             ]
+                                              },
+                     "latest_trial_files":  [
+                                                {
+                                                    "path":  ".runtime\\live_trials\\agent_life_5min_20260717_225256\\exit_status.txt",
+                                                    "size":  36,
+                                                    "modified":  "2026-07-17T22:57:59.2281388+04:00"
+                                                },
+                                                {
+                                                    "path":  ".runtime\\live_trials\\agent_life_5min_20260717_225256\\life_working_memory_context.json",
+                                                    "size":  55642,
+                                                    "modified":  "2026-07-17T22:54:54.0552802+04:00"
+                                                },
+                                                {
+                                                    "path":  ".runtime\\live_trials\\agent_life_5min_20260717_225256\\LIVE_TRIAL_SUMMARY.json",
+                                                    "size":  8643,
+                                                    "modified":  "2026-07-17T22:57:59.2281388+04:00"
+                                                },
+                                                {
+                                                    "path":  ".runtime\\live_trials\\agent_life_5min_20260717_225256\\PREFLIGHT.json",
+                                                    "size":  1832,
+                                                    "modified":  "2026-07-17T22:52:58.1399773+04:00"
+                                                }
+                                            ],
+                     "retained_cycle_proofs":  [
+
+                                               ],
+                     "retained_cycle_proof_count":  0,
+                     "latest_queue_packets":  [
+                                                  {
+                                                      "file":  "agentlife_aimo_aimo_20260717_225715.json",
+                                                      "modified":  "2026-07-17T22:57:31.7564141+04:00",
+                                                      "schema":  "compact_memory_knowledge_packet_v1",
+                                                      "source_kind":  "AgentLife",
+                                                      "source_id":  "AIMO:aimo_20260717_225715",
+                                                      "atom_count":  1,
+                                                      "first_topic":  "aimo.memory_atom_acceptance_gate.delta_over_rule_duplicate",
+                                                      "first_gate_decision":  "REWRITE_AS_EXPERIENCE_ATOM",
+                                                      "first_gate_reason":  "candidate_too_close_to_existing_rule_but_run_has_experience_delta",
+                                                      "quality_summary":  {
+                                                                              "atom_count":  1,
+                                                                              "min_quality_score":  0.95,
+                                                                              "min_novelty_score":  0.6,
+                                                                              "gate_decision":  "REWRITE_AS_EXPERIENCE_ATOM"
+                                                                          },
+                                                      "boundary":  {
+                                                                       "source":  "AIMO_AGENT_LIFE",
+                                                                       "direct_active_memory_write":  false,
+                                                                       "queue_first":  true,
+                                                                       "active_memory_merge_requires_lock":  true
+                                                                   }
+                                                  },
+                                                  {
+                                                      "file":  "agentlife_aimo_aimo_20260717_225628.json",
+                                                      "modified":  "2026-07-17T22:56:44.6732218+04:00",
+                                                      "schema":  "compact_memory_knowledge_packet_v1",
+                                                      "source_kind":  "AgentLife",
+                                                      "source_id":  "AIMO:aimo_20260717_225628",
+                                                      "atom_count":  1,
+                                                      "first_topic":  "aimo.memory_atom_acceptance_gate.delta_over_rule_duplicate",
+                                                      "first_gate_decision":  "REWRITE_AS_EXPERIENCE_ATOM",
+                                                      "first_gate_reason":  "candidate_too_close_to_existing_rule_but_run_has_experience_delta",
+                                                      "quality_summary":  {
+                                                                              "atom_count":  1,
+                                                                              "min_quality_score":  0.95,
+                                                                              "min_novelty_score":  0.6,
+                                                                              "gate_decision":  "REWRITE_AS_EXPERIENCE_ATOM"
+                                                                          },
+                                                      "boundary":  {
+                                                                       "source":  "AIMO_AGENT_LIFE",
+                                                                       "direct_active_memory_write":  false,
+                                                                       "queue_first":  true,
+                                                                       "active_memory_merge_requires_lock":  true
+                                                                   }
+                                                  },
+                                                  {
+                                                      "file":  "agentlife_aimo_aimo_20260717_225540.json",
+                                                      "modified":  "2026-07-17T22:55:57.9757313+04:00",
+                                                      "schema":  "compact_memory_knowledge_packet_v1",
+                                                      "source_kind":  "AgentLife",
+                                                      "source_id":  "AIMO:aimo_20260717_225540",
+                                                      "atom_count":  1,
+                                                      "first_topic":  "aimo.memory_atom_acceptance_gate.delta_over_rule_duplicate",
+                                                      "first_gate_decision":  "REWRITE_AS_EXPERIENCE_ATOM",
+                                                      "first_gate_reason":  "candidate_too_close_to_existing_rule_but_run_has_experience_delta",
+                                                      "quality_summary":  {
+                                                                              "atom_count":  1,
+                                                                              "min_quality_score":  0.95,
+                                                                              "min_novelty_score":  0.6,
+                                                                              "gate_decision":  "REWRITE_AS_EXPERIENCE_ATOM"
+                                                                          },
+                                                      "boundary":  {
+                                                                       "source":  "AIMO_AGENT_LIFE",
+                                                                       "direct_active_memory_write":  false,
+                                                                       "queue_first":  true,
+                                                                       "active_memory_merge_requires_lock":  true
+                                                                   }
+                                                  },
+                                                  {
+                                                      "file":  "agentlife_aimo_aimo_20260717_225301.json",
+                                                      "modified":  "2026-07-17T22:55:10.8213824+04:00",
+                                                      "schema":  "compact_memory_knowledge_packet_v1",
+                                                      "source_kind":  "AgentLife",
+                                                      "source_id":  "AIMO:aimo_20260717_225301",
+                                                      "atom_count":  1,
+                                                      "first_topic":  "aimo.memory_atom_acceptance_gate.delta_over_rule_duplicate",
+                                                      "first_gate_decision":  "REWRITE_AS_EXPERIENCE_ATOM",
+                                                      "first_gate_reason":  "candidate_too_close_to_existing_rule_but_run_has_experience_delta",
+                                                      "quality_summary":  {
+                                                                              "atom_count":  1,
+                                                                              "min_quality_score":  0.95,
+                                                                              "min_novelty_score":  0.6,
+                                                                              "gate_decision":  "REWRITE_AS_EXPERIENCE_ATOM"
+                                                                          },
+                                                      "boundary":  {
+                                                                       "source":  "AIMO_AGENT_LIFE",
+                                                                       "direct_active_memory_write":  false,
+                                                                       "queue_first":  true,
+                                                                       "active_memory_merge_requires_lock":  true
+                                                                   }
+                                                  },
+                                                  {
+                                                      "file":  "agentlife_aimo_aimo_20260717_191613.json",
+                                                      "modified":  "2026-07-17T19:18:14.7499236+04:00",
+                                                      "schema":  "compact_memory_knowledge_packet_v1",
+                                                      "source_kind":  "AgentLife",
+                                                      "source_id":  "AIMO:aimo_20260717_191613",
+                                                      "atom_count":  1,
+                                                      "first_topic":  "aimo.memory_atom_acceptance_gate.delta_over_rule_duplicate",
+                                                      "first_gate_decision":  "REWRITE_AS_EXPERIENCE_ATOM",
+                                                      "first_gate_reason":  "candidate_too_close_to_existing_rule_but_run_has_experience_delta",
+                                                      "quality_summary":  {
+                                                                              "atom_count":  1,
+                                                                              "min_quality_score":  0.95,
+                                                                              "min_novelty_score":  0.6,
+                                                                              "gate_decision":  "REWRITE_AS_EXPERIENCE_ATOM"
+                                                                          },
+                                                      "boundary":  {
+                                                                       "source":  "AIMO_AGENT_LIFE",
+                                                                       "direct_active_memory_write":  false,
+                                                                       "queue_first":  true,
+                                                                       "active_memory_merge_requires_lock":  true
+                                                                   }
+                                                  },
+                                                  {
+                                                      "file":  "agentlife_aimo_aimo_20260717_191353.json",
+                                                      "modified":  "2026-07-17T19:15:52.4715456+04:00",
+                                                      "schema":  "compact_memory_knowledge_packet_v1",
+                                                      "source_kind":  "AgentLife",
+                                                      "source_id":  "AIMO:aimo_20260717_191353",
+                                                      "atom_count":  1,
+                                                      "first_topic":  "aimo.memory_atom_acceptance_gate.delta_over_rule_duplicate",
+                                                      "first_gate_decision":  "REWRITE_AS_EXPERIENCE_ATOM",
+                                                      "first_gate_reason":  "candidate_too_close_to_existing_rule_but_run_has_experience_delta",
+                                                      "quality_summary":  {
+                                                                              "atom_count":  1,
+                                                                              "min_quality_score":  0.95,
+                                                                              "min_novelty_score":  0.6,
+                                                                              "gate_decision":  "REWRITE_AS_EXPERIENCE_ATOM"
+                                                                          },
+                                                      "boundary":  {
+                                                                       "source":  "AIMO_AGENT_LIFE",
+                                                                       "direct_active_memory_write":  false,
+                                                                       "queue_first":  true,
+                                                                       "active_memory_merge_requires_lock":  true
+                                                                   }
+                                                  },
+                                                  {
+                                                      "file":  "agentlife_aimo_aimo_20260717_191116.json",
+                                                      "modified":  "2026-07-17T19:13:23.1143650+04:00",
+                                                      "schema":  "compact_memory_knowledge_packet_v1",
+                                                      "source_kind":  "AgentLife",
+                                                      "source_id":  "AIMO:aimo_20260717_191116",
+                                                      "atom_count":  1,
+                                                      "first_topic":  "aimo.memory_atom_acceptance_gate.delta_over_rule_duplicate",
+                                                      "first_gate_decision":  "REWRITE_AS_EXPERIENCE_ATOM",
+                                                      "first_gate_reason":  "candidate_too_close_to_existing_rule_but_run_has_experience_delta",
+                                                      "quality_summary":  {
+                                                                              "atom_count":  1,
+                                                                              "min_quality_score":  0.95,
+                                                                              "min_novelty_score":  0.6,
+                                                                              "gate_decision":  "REWRITE_AS_EXPERIENCE_ATOM"
+                                                                          },
+                                                      "boundary":  {
+                                                                       "source":  "AIMO_AGENT_LIFE",
+                                                                       "direct_active_memory_write":  false,
+                                                                       "queue_first":  true,
+                                                                       "active_memory_merge_requires_lock":  true
+                                                                   }
+                                                  },
+                                                  {
+                                                      "file":  "agentlife_aimo_aimo_20260717_135804.json",
+                                                      "modified":  "2026-07-17T13:58:20.4154783+04:00",
+                                                      "schema":  "compact_memory_knowledge_packet_v1",
+                                                      "source_kind":  "AgentLife",
+                                                      "source_id":  "AIMO:aimo_20260717_135804",
+                                                      "atom_count":  1,
+                                                      "first_topic":  "aimo.memory_atom_acceptance_gate.delta_over_rule_duplicate",
+                                                      "first_gate_decision":  "REWRITE_AS_EXPERIENCE_ATOM",
+                                                      "first_gate_reason":  "candidate_too_close_to_existing_rule_but_run_has_experience_delta",
+                                                      "quality_summary":  {
+                                                                              "atom_count":  1,
+                                                                              "min_quality_score":  0.95,
+                                                                              "min_novelty_score":  0.6,
+                                                                              "gate_decision":  "REWRITE_AS_EXPERIENCE_ATOM"
+                                                                          },
+                                                      "boundary":  {
+                                                                       "source":  "AIMO_AGENT_LIFE",
+                                                                       "direct_active_memory_write":  false,
+                                                                       "queue_first":  true,
+                                                                       "active_memory_merge_requires_lock":  true
+                                                                   }
+                                                  },
+                                                  {
+                                                      "file":  "agentlife_aimo_aimo_20260717_135719.json",
+                                                      "modified":  "2026-07-17T13:57:35.7224752+04:00",
+                                                      "schema":  "compact_memory_knowledge_packet_v1",
+                                                      "source_kind":  "AgentLife",
+                                                      "source_id":  "AIMO:aimo_20260717_135719",
+                                                      "atom_count":  1,
+                                                      "first_topic":  "aimo.memory_atom_acceptance_gate.delta_over_rule_duplicate",
+                                                      "first_gate_decision":  "REWRITE_AS_EXPERIENCE_ATOM",
+                                                      "first_gate_reason":  "candidate_too_close_to_existing_rule_but_run_has_experience_delta",
+                                                      "quality_summary":  {
+                                                                              "atom_count":  1,
+                                                                              "min_quality_score":  0.95,
+                                                                              "min_novelty_score":  0.6,
+                                                                              "gate_decision":  "REWRITE_AS_EXPERIENCE_ATOM"
+                                                                          },
+                                                      "boundary":  {
+                                                                       "source":  "AIMO_AGENT_LIFE",
+                                                                       "direct_active_memory_write":  false,
+                                                                       "queue_first":  true,
+                                                                       "active_memory_merge_requires_lock":  true
+                                                                   }
+                                                  },
+                                                  {
+                                                      "file":  "agentlife_aimo_aimo_20260717_125243.json",
+                                                      "modified":  "2026-07-17T12:52:55.0050830+04:00",
+                                                      "schema":  "compact_memory_knowledge_packet_v1",
+                                                      "source_kind":  "AgentLife",
+                                                      "source_id":  "AIMO:aimo_20260717_125243",
+                                                      "atom_count":  1,
+                                                      "first_topic":  "aimo.memory_atom_acceptance_gate.delta_over_rule_duplicate",
+                                                      "first_gate_decision":  "REWRITE_AS_EXPERIENCE_ATOM",
+                                                      "first_gate_reason":  "candidate_too_close_to_existing_rule_but_run_has_experience_delta",
+                                                      "quality_summary":  {
+                                                                              "atom_count":  1,
+                                                                              "min_quality_score":  0.95,
+                                                                              "min_novelty_score":  0.6,
+                                                                              "gate_decision":  "REWRITE_AS_EXPERIENCE_ATOM"
+                                                                          },
+                                                      "boundary":  {
+                                                                       "source":  "AIMO_AGENT_LIFE",
+                                                                       "direct_active_memory_write":  false,
+                                                                       "queue_first":  true,
+                                                                       "active_memory_merge_requires_lock":  true
+                                                                   }
+                                                  },
+                                                  {
+                                                      "file":  "agentlife_aimo_aimo_20260717_125207.json",
+                                                      "modified":  "2026-07-17T12:52:19.7492166+04:00",
+                                                      "schema":  "compact_memory_knowledge_packet_v1",
+                                                      "source_kind":  "AgentLife",
+                                                      "source_id":  "AIMO:aimo_20260717_125207",
+                                                      "atom_count":  1,
+                                                      "first_topic":  "aimo.memory_atom_acceptance_gate.delta_over_rule_duplicate",
+                                                      "first_gate_decision":  "REWRITE_AS_EXPERIENCE_ATOM",
+                                                      "first_gate_reason":  "candidate_too_close_to_existing_rule_but_run_has_experience_delta",
+                                                      "quality_summary":  {
+                                                                              "atom_count":  1,
+                                                                              "min_quality_score":  0.95,
+                                                                              "min_novelty_score":  0.6,
+                                                                              "gate_decision":  "REWRITE_AS_EXPERIENCE_ATOM"
+                                                                          },
+                                                      "boundary":  {
+                                                                       "source":  "AIMO_AGENT_LIFE",
+                                                                       "direct_active_memory_write":  false,
+                                                                       "queue_first":  true,
+                                                                       "active_memory_merge_requires_lock":  true
+                                                                   }
+                                                  },
+                                                  {
+                                                      "file":  "agentlife_aimo_aimo_20260717_124056.json",
+                                                      "modified":  "2026-07-17T12:41:07.7943840+04:00",
+                                                      "schema":  "compact_memory_knowledge_packet_v1",
+                                                      "source_kind":  "AgentLife",
+                                                      "source_id":  "AIMO:aimo_20260717_124056",
+                                                      "atom_count":  1,
+                                                      "first_topic":  "aimo.memory_atom_acceptance_gate.delta_over_rule_duplicate",
+                                                      "first_gate_decision":  "REWRITE_AS_EXPERIENCE_ATOM",
+                                                      "first_gate_reason":  "candidate_too_close_to_existing_rule_but_run_has_experience_delta",
+                                                      "quality_summary":  {
+                                                                              "atom_count":  1,
+                                                                              "min_quality_score":  0.95,
+                                                                              "min_novelty_score":  0.6,
+                                                                              "gate_decision":  "REWRITE_AS_EXPERIENCE_ATOM"
+                                                                          },
+                                                      "boundary":  {
+                                                                       "source":  "AIMO_AGENT_LIFE",
+                                                                       "direct_active_memory_write":  false,
+                                                                       "queue_first":  true,
+                                                                       "active_memory_merge_requires_lock":  true
+                                                                   }
+                                                  }
+                                              ]
+                 },
+    "findings":  [
+                     {
+                         "id":  "M1_F1",
+                         "severity":  "HIGH",
+                         "label":  "CANONICAL_MIND_IS_PROCESS_PER_CYCLE",
+                         "finding":  "Canonical life still uses separate runner executions. In-process RAM state is proven only in lab, not canonical mind.",
+                         "consequence":  "Mind continuity depends on files/context, not live process memory."
+                     },
+                     {
+                         "id":  "M1_F2",
+                         "severity":  "HIGH",
+                         "label":  "DECISION_CHAIN_ENDS_AT_QUEUE_PACKET",
+                         "finding":  "Latest evidence shows queue packets around memory acceptance experience atoms, not concrete build-task execution.",
+                         "consequence":  "Agent can produce learning artifacts without advancing construction."
+                     },
+                     {
+                         "id":  "M1_F3",
+                         "severity":  "HIGH",
+                         "label":  "COMPACT_MEMORY_READ_USE_NOT_PROVEN",
+                         "finding":  "Queue/write path is visible; active compact memory retrieval affecting action decision is not proven by retained evidence.",
+                         "consequence":  "Agent may remember by writing, but not think by retrieving."
+                     },
+                     {
+                         "id":  "M1_F4",
+                         "severity":  "MEDIUM",
+                         "label":  "SHORT_TERM_MEMORY_IS_WAKE_CONTEXT_NOT_MIND_STATE",
+                         "finding":  "LIFE_WORKING_MEMORY_V1 reduces repeated wake context but does not yet hold objective/recent decisions/blockers/parent stack as mind state.",
+                         "consequence":  "Agent can reorient cheaply but still lacks working reasoning memory."
+                     },
+                     {
+                         "id":  "M1_F5",
+                         "severity":  "MEDIUM",
+                         "label":  "PROOF_ECONOMY_OBSCURES_DECISION_TRACE",
+                         "finding":  "Latest canonical trial retained only four files and no per-cycle SANDBOX_EXPLORATION_PROOF under trial root.",
+                         "consequence":  "File economy improved, but mind audit needs compact decision trace fields retained in summary."
+                     },
+                     {
+                         "id":  "M1_F6",
+                         "severity":  "HIGH",
+                         "label":  "FRONTIER_TO_BUILD_TASK_MISSING",
+                         "finding":  "Existing frontier/router terms are present in runner, but latest retained evidence does not show frontier converted into task contract with validator/proof.",
+                         "consequence":  "The agent can select/open a frontier but not reliably turn it into useful construction work."
+                     }
+                 ],
+    "current_mind_chain":  {
+                               "observed":  "preflight -\u003e wake/life working context -\u003e active memory protection/state check -\u003e mind/frontier/action terms -\u003e compact memory queue packet -\u003e summary/proof",
+                               "missing":  "current goal -\u003e selective memory retrieval -\u003e gap diagnosis -\u003e build task contract -\u003e validator target -\u003e execution/proof -\u003e parent-goal return"
+                           },
+    "next_audits":  [
+                        "AUDIT_M3_COMPACT_MEMORY_READ_PATH_V1",
+                        "AUDIT_S1_SHORT_TERM_MEMORY_CURRENT_STATE_V1",
+                        "AUDIT_M4_FRONTIER_TO_BUILD_TASK_GAP_V1",
+                        "AUDIT_RX1_REFLEX_MATRIX_CURRENT_STATE_V1"
+                    ],
+    "recommended_next_action":  "AUDIT_M3_COMPACT_MEMORY_READ_PATH_V1",
+    "boundary":  {
+                     "audit_only":  true,
+                     "runtime_launched":  false,
+                     "active_memory_mutated":  false,
+                     "canonical_launcher_mutated":  false,
+                     "cycle_runner_mutated":  false,
+                     "codex_launched":  false,
+                     "web_launched":  false,
+                     "school_launched":  false
+                 }
+}
