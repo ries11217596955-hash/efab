@@ -6,22 +6,22 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "ddaf13cb68ffd680b395bd5739db617cd9f391ba",
-    "subject_head":  "ddaf13cb68ffd680b395bd5739db617cd9f391ba",
-    "generated_at":  "2026-07-17T13:14:12.0862729+04:00",
+    "observed_head_at_generation":  "cd0357ca6db071cca5412cdbf178d3232bd239aa",
+    "subject_head":  "cd0357ca6db071cca5412cdbf178d3232bd239aa",
+    "generated_at":  "2026-07-17T13:56:43.5702118+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  2134,
+    "structural_path_count":  2137,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2134,
-                                    "sha256":  "918afcea3b2e592b5fd440e553d86e0f459185282ccd0b218d0c7297fa68f431"
+                                    "structural_file_count":  2137,
+                                    "sha256":  "3559e42fee95a574db4dd23d0fb0b7ae1af572cc8333d6761797e597f053cc59"
                                 },
     "module_count":  203,
-    "validator_count":  208,
+    "validator_count":  209,
     "confirmed_components":  [
                                  {
                                      "id":  "school",
@@ -1442,14 +1442,14 @@
                                             "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                                             "discovery_method":  "bounded_git_ls_files_path_discovery",
                                             "evidence_counts":  {
-                                                                    "files":  28,
+                                                                    "files":  29,
                                                                     "scripts":  6,
                                                                     "validators":  1,
                                                                     "proofs":  7,
                                                                     "contracts_or_policies":  7,
                                                                     "docs":  2
                                                                 },
-                                            "file_count":  28,
+                                            "file_count":  29,
                                             "script_count":  6,
                                             "validator_count":  1,
                                             "proof_file_count":  7,
@@ -1493,6 +1493,7 @@
                                                                   "operations/autonomous_inner_motor/motor_proof_schema.json",
                                                                   "operations/autonomous_inner_motor/motor_state_schema.json",
                                                                   "operations/autonomous_inner_motor/organ_contract.json",
+                                                                  "operations/autonomous_inner_motor/organ_knowledge/BODY_SELF_INSPECTION_CIRCUIT_V1_KNOWLEDGE.json",
                                                                   "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_PROOF_20260715.json",
                                                                   "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_REPORT_20260715.json",
                                                                   "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DUAL_PIPE_MEMORY_INGESTION_REPORT_20260715.json",
@@ -1500,8 +1501,7 @@
                                                                   "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SELF_DIRECTED_THINKING_PROOF_20260715.json",
                                                                   "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_V0_IMPLEMENTATION_REPORT.json",
                                                                   "operations/autonomous_inner_motor/reports/AGENT_LIFE_SINGLE_LAUNCH_WIRING_AUDIT_V1.json",
-                                                                  "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
-                                                                  "operations/autonomous_inner_motor/select_agent_next_action_candidate_v1.ps1"
+                                                                  "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1"
                                                               ],
                                             "primary_evidence_refs":  [
                                                                           "operations/autonomous_inner_motor/action_decision_contract_v1.json",
@@ -9412,14 +9412,14 @@
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                            "discovery_method":  "bounded_git_ls_files_path_discovery",
                            "evidence_counts":  {
-                                                   "files":  28,
+                                                   "files":  29,
                                                    "scripts":  6,
                                                    "validators":  1,
                                                    "proofs":  7,
                                                    "contracts_or_policies":  7,
                                                    "docs":  2
                                                },
-                           "file_count":  28,
+                           "file_count":  29,
                            "script_count":  6,
                            "validator_count":  1,
                            "proof_file_count":  7,
@@ -9463,6 +9463,7 @@
                                                  "operations/autonomous_inner_motor/motor_proof_schema.json",
                                                  "operations/autonomous_inner_motor/motor_state_schema.json",
                                                  "operations/autonomous_inner_motor/organ_contract.json",
+                                                 "operations/autonomous_inner_motor/organ_knowledge/BODY_SELF_INSPECTION_CIRCUIT_V1_KNOWLEDGE.json",
                                                  "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_PROOF_20260715.json",
                                                  "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_REPORT_20260715.json",
                                                  "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DUAL_PIPE_MEMORY_INGESTION_REPORT_20260715.json",
@@ -9470,8 +9471,7 @@
                                                  "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_SELF_DIRECTED_THINKING_PROOF_20260715.json",
                                                  "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_V0_IMPLEMENTATION_REPORT.json",
                                                  "operations/autonomous_inner_motor/reports/AGENT_LIFE_SINGLE_LAUNCH_WIRING_AUDIT_V1.json",
-                                                 "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
-                                                 "operations/autonomous_inner_motor/select_agent_next_action_candidate_v1.ps1"
+                                                 "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1"
                                              ],
                            "primary_evidence_refs":  [
                                                          "operations/autonomous_inner_motor/action_decision_contract_v1.json",

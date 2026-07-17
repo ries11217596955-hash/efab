@@ -333,7 +333,7 @@ If Owner asks what is next from current state:
     verify memory QueueOnly effect
     then choose Answer Assimilator V1 or action contract formalization based on proof
 
-## 2026-07-17 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â AIMO memory-to-next-path reuse gate
+## 2026-07-17 ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â AIMO memory-to-next-path reuse gate
 
 STATUS: IMPLEMENTED_CANDIDATE / VALIDATOR_PASS
 
@@ -363,7 +363,7 @@ Next proof:
 - Validator must pass.
 - Next canonical agent life run should show consumed repeat candidate is not selected again after reuse gate.
 
-## 2026-07-17 ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â AIMO mental frontier expansion gate
+## 2026-07-17 ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â AIMO mental frontier expansion gate
 
 STATUS: IMPLEMENTED_CANDIDATE / VALIDATOR_PASS
 
@@ -393,7 +393,7 @@ Next proof:
 - Validator PASS.
 - Next canonical smoke should show saturated old paths avoided and `MENTAL_FRONTIER_EXPANSION_GATE_V1` selected.
 
-## 2026-07-17 ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â AIMO mental frontier router
+## 2026-07-17 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â AIMO mental frontier router
 
 STATUS: IMPLEMENTED_CANDIDATE / VALIDATOR_PASS
 
@@ -422,7 +422,7 @@ Next proof:
 - Validator PASS.
 - Canonical smoke should show `mental_frontier_router.json` with selected concrete frontier.
 
-## 2026-07-17 Ã¢â‚¬â€ Single-launch wiring audit pause
+## 2026-07-17 ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â Single-launch wiring audit pause
 
 STATUS: AUDIT_PASS / NEXT_GUARD_BUILT
 
@@ -438,7 +438,7 @@ Audit target:
 - Raw runner and historical `.runtime/live_trials` wrappers must not be treated as current Owner launch paths.
 - Current mental organs must be wired into canonical runner/selector/proof pack.
 
-## 2026-07-17 â€” Agent life launch quarantine and body integration plan
+## 2026-07-17 ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Agent life launch quarantine and body integration plan
 
 STATUS: VALIDATOR_PENDING
 
@@ -461,3 +461,27 @@ Boundary:
 
 Next implementation after proof:
 - `BODY_SELF_INSPECTION_CANONICAL_OBSERVE_HOOK_V1`.
+
+## 2026-07-17 â€” Body self-inspection organ knowledge
+
+STATUS: VALIDATOR_PENDING
+
+Owner correction:
+- Before the agent can use the body self-inspection organ, it must know that this organ exists.
+
+Decision:
+- Add an explicit organ knowledge card for `BODY_SELF_INSPECTION_CIRCUIT_V1`.
+- Wire this knowledge into `MENTAL_FRONTIER_ROUTER_V1` as context only.
+- Do not invoke the organ yet.
+
+Artifacts:
+- `operations/autonomous_inner_motor/organ_knowledge/BODY_SELF_INSPECTION_CIRCUIT_V1_KNOWLEDGE.json`
+- `validators/validate_body_self_inspection_organ_knowledge_v1.ps1`
+- `tests/self_development/BODY_SELF_INSPECTION_ORGAN_KNOWLEDGE_V1_PROOF.json`
+
+Boundary:
+- Knowledge only.
+- Body inspection not invoked.
+- No live action.
+- No active memory mutation.
+- No repair execution.

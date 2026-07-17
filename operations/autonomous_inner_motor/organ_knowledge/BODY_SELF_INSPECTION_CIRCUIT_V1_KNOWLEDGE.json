@@ -1,0 +1,36 @@
+{
+    "schema":  "body_self_inspection_circuit_organ_knowledge_v1",
+    "status":  "KNOWN_ORGAN_AVAILABLE_NOT_WIRED",
+    "organ_id":  "BODY_SELF_INSPECTION_CIRCUIT_V1",
+    "organ_name":  "Body Self-Inspection Circuit",
+    "organ_kind":  "observe_only_self_inspection_circuit",
+    "capability_summary":  "Can inspect current body/repo/map/passport/signal state and emit body_self_inspection_signal plus parent packet without executing repairs.",
+    "proven_status":  "PROVEN_LAB",
+    "canonical_life_status":  "FRONTIER_REFERENCED_NOT_INVOKED",
+    "allowed_use":  "mental_frontier_router_context_only_until_observe_hook_is_installed",
+    "forbidden_use":  [
+                          "owner_facing_launch",
+                          "repair_execution",
+                          "map_mutation",
+                          "passport_mutation",
+                          "contract_mutation",
+                          "live_action",
+                          "run_every_cycle"
+                      ],
+    "invocation_entrypoint":  "operations/body_self_inspection/invoke_body_self_inspection_circuit_v1.ps1",
+    "signal_entrypoint":  "operations/body_self_inspection/emit_body_self_inspection_signal_v1.ps1",
+    "validator":  "validators/validate_body_self_inspection_circuit_v1.ps1",
+    "proof":  "tests/self_development/BODY_SELF_INSPECTION_CIRCUIT_V1_PROOF.json",
+    "integration_plan":  "operations/autonomous_inner_motor/BODY_SELF_INSPECTION_CANONICAL_INTEGRATION_PLAN_V1.md",
+    "canonical_launch_quarantine":  "operations/autonomous_inner_motor/AGENT_LIFE_LEGACY_LAUNCH_QUARANTINE_V1.json",
+    "router_frontier_id":  "body_self_inspection_signal",
+    "use_when":  "mental_frontier_router needs a concrete self-observation frontier and selected_frontier can be body_self_inspection_signal",
+    "not_enough_for":  "Not permission to invoke the circuit; observe hook is still NOT_WIRED.",
+    "boundary":  {
+                     "knowledge_only":  true,
+                     "body_inspection_invoked":  false,
+                     "action_execution_allowed":  false,
+                     "active_memory_mutated":  false,
+                     "live_process_touched":  false
+                 }
+}

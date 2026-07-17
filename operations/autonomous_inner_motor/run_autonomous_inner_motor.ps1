@@ -463,15 +463,27 @@ function Get-MentalFrontierExpansionGate([string]$QueueRoot,[int]$WindowSize=12,
     boundary=[ordered]@{ action_execution_allowed=$false; direct_active_memory_write=$false; queue_scan_only=$true; no_codex_launch=$true; no_web_research=$true }
   }
 }
+function Get-BodySelfInspectionOrganKnowledge {
+  $path='operations/autonomous_inner_motor/organ_knowledge/BODY_SELF_INSPECTION_CIRCUIT_V1_KNOWLEDGE.json'
+  if(Test-Path -LiteralPath $path){
+    try {
+      $card=Get-Content -LiteralPath $path -Raw | ConvertFrom-Json
+      return [ordered]@{ available=$true; path=$path; status=$card.status; organ_id=$card.organ_id; router_frontier_id=$card.router_frontier_id; capability_summary=$card.capability_summary; canonical_life_status=$card.canonical_life_status; allowed_use=$card.allowed_use; not_enough_for=$card.not_enough_for; proof=$card.proof; integration_plan=$card.integration_plan }
+    } catch { }
+  }
+  return [ordered]@{ available=$false; path=$path; status='MISSING_OR_INVALID_ORGAN_KNOWLEDGE'; organ_id='BODY_SELF_INSPECTION_CIRCUIT_V1'; router_frontier_id='body_self_inspection_signal' }
+}
+
 function Get-MentalFrontierRouter($ExpansionGate){
   $candidates=@($ExpansionGate.next_frontier_candidates)
+  $bodyOrganKnowledge=Get-BodySelfInspectionOrganKnowledge
   $scores=@()
   foreach($candidate in $candidates){
     $score=1
     $reason='fallback_available_frontier'
-    if($candidate -eq 'body_self_inspection_signal'){
-      $score=5
-      $reason='body_self_inspection_circuit_exists_and_can_feed_self_observation'
+    if($candidate -eq 'body_self_inspection_signal' -and $bodyOrganKnowledge.available){
+      $score=6
+      $reason='known_body_self_inspection_organ_available_not_wired_can_feed_self_observation'
     } elseif($candidate -eq 'memory_quality_frontier'){
       $score=4
       $reason='recent_memory_topic_saturation_requires_quality_diversity'
@@ -493,6 +505,7 @@ function Get-MentalFrontierRouter($ExpansionGate){
     expansion_gate_status=$ExpansionGate.status
     saturated_topic=$ExpansionGate.saturated_topic
     saturated_topic_count=$ExpansionGate.saturated_topic_count
+    known_organs=[ordered]@{ body_self_inspection_circuit_v1=$bodyOrganKnowledge }
     candidates=@($ordered)
     selected_frontier=if($selected){$selected.frontier}else{$null}
     selected_reason=if($selected){$selected.reason}else{$null}
