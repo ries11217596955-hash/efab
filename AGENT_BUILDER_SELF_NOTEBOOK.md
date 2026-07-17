@@ -333,7 +333,7 @@ If Owner asks what is next from current state:
     verify memory QueueOnly effect
     then choose Answer Assimilator V1 or action contract formalization based on proof
 
-## 2026-07-17 â€” AIMO memory-to-next-path reuse gate
+## 2026-07-17 Ã¢â‚¬â€ AIMO memory-to-next-path reuse gate
 
 STATUS: IMPLEMENTED_CANDIDATE / VALIDATOR_PASS
 
@@ -362,3 +362,33 @@ Boundary:
 Next proof:
 - Validator must pass.
 - Next canonical agent life run should show consumed repeat candidate is not selected again after reuse gate.
+
+## 2026-07-17 â€” AIMO mental frontier expansion gate
+
+STATUS: IMPLEMENTED_CANDIDATE / VALIDATOR_PASS
+
+Context:
+- 10-minute canonical life run proved QueueOnly memory packets and next-path reuse.
+- Agent no longer stayed forever on one candidate, but memory packets remained topic-saturated.
+- Repeated topic: `aimo.memory_atom_acceptance_gate.delta_over_rule_duplicate`.
+
+Decision:
+- Keep action execution disabled.
+- Add mental frontier expansion: if recent queued memory atoms repeat one topic 3+ times, old mental paths are treated as saturated and the selector must choose a new mental frontier candidate.
+
+Files:
+- `operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1`
+- `operations/autonomous_inner_motor/select_agent_next_action_candidate_v1.ps1`
+- `validators/validate_mental_frontier_expansion_gate_v1.ps1`
+- `tests/self_development/MENTAL_FRONTIER_EXPANSION_GATE_V1_PROOF.json`
+
+Boundary:
+- Queue scan only.
+- No live action.
+- No Codex/web from agent.
+- No repo repair execution by agent.
+- Memory growth remains governed QueueOnly through canonical launcher.
+
+Next proof:
+- Validator PASS.
+- Next canonical smoke should show saturated old paths avoided and `MENTAL_FRONTIER_EXPANSION_GATE_V1` selected.

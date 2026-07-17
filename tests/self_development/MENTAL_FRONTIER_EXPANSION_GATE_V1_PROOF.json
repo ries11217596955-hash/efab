@@ -1,0 +1,27 @@
+{
+    "schema":  "mental_frontier_expansion_gate_v1_validation",
+    "status":  "PASS_MENTAL_FRONTIER_EXPANSION_GATE_V1",
+    "checked_at":  "2026-07-17T08:35:56.6181601Z",
+    "selected_action":  "MENTAL_FRONTIER_EXPANSION_GATE_V1",
+    "avoid_action_ids":  [
+                             "ACTION_CONTRACT_V1",
+                             "MEMORY_TO_NEXT_PATH_REUSE_GATE_V1"
+                         ],
+    "validates":  {
+                      "topic_saturation_can_force_new_frontier":  true,
+                      "old_paths_avoided":  true,
+                      "action_execution_false":  true,
+                      "runner_emits_gate":  true
+                  },
+    "boundary":  {
+                     "validator_did_not_start_agent_life":  true,
+                     "active_memory_mutated":  false,
+                     "live_process_touched":  false,
+                     "codex_launched":  false,
+                     "web_launched":  false,
+                     "action_execution_performed":  false
+                 },
+    "errors":  [
+
+               ]
+}

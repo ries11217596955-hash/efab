@@ -429,6 +429,40 @@ function Invoke-LearningAtomAbsorption($RunRoot,$RunId,$Atom){
     memory_changed=($($before.files | ConvertTo-Json -Depth 20) -ne $($after.files | ConvertTo-Json -Depth 20))
   }
 }
+function Get-MentalFrontierExpansionGate([string]$QueueRoot,[int]$WindowSize=12,[int]$TopicRepeatThreshold=3){
+  $records=@()
+  if(Test-Path -LiteralPath $QueueRoot){
+    $files=@(Get-ChildItem -LiteralPath $QueueRoot -File -Filter '*.json' -ErrorAction SilentlyContinue | Sort-Object LastWriteTime -Descending | Select-Object -First $WindowSize)
+    foreach($file in $files){
+      try {
+        $packet=Get-Content -LiteralPath $file.FullName -Raw | ConvertFrom-Json
+        foreach($atom in @($packet.atoms)){
+          if(-not [string]::IsNullOrWhiteSpace([string]$atom.topic)){
+            $records += [ordered]@{ topic=[string]$atom.topic; atom_id=[string]$atom.id; path=$file.FullName; last_write=$file.LastWriteTime.ToUniversalTime().ToString('o') }
+          }
+        }
+      } catch { }
+    }
+  }
+  $groups=@($records | Group-Object topic | Sort-Object Count -Descending)
+  $top=$groups | Select-Object -First 1
+  $saturated=[bool]($top -and $top.Count -ge $TopicRepeatThreshold)
+  return [ordered]@{
+    schema='mental_frontier_expansion_gate_v1'
+    status=if($saturated){'PASS_MENTAL_FRONTIER_EXPANSION_GATE_V1'}else{'PASS_MENTAL_FRONTIER_EXPANSION_GATE_NOT_REQUIRED'}
+    checked_at=(Get-Date).ToUniversalTime().ToString('o')
+    queue_root=$QueueRoot
+    window_size=$WindowSize
+    topic_repeat_threshold=$TopicRepeatThreshold
+    recent_atom_count=@($records).Count
+    saturated_topic=if($saturated){[string]$top.Name}else{$null}
+    saturated_topic_count=if($saturated){[int]$top.Count}else{0}
+    topic_counts=@($groups | ForEach-Object { [ordered]@{ topic=[string]$_.Name; count=[int]$_.Count } })
+    next_action_avoid_ids=if($saturated){ @('ACTION_CONTRACT_V1','MEMORY_TO_NEXT_PATH_REUSE_GATE_V1') } else { @() }
+    next_frontier_candidates=if($saturated){ @('body_self_inspection_signal','memory_quality_frontier','knowledge_source_gap','self_map_gap','validator_proof_gap','learning_campaign_need') } else { @() }
+    boundary=[ordered]@{ action_execution_allowed=$false; direct_active_memory_write=$false; queue_scan_only=$true; no_codex_launch=$true; no_web_research=$true }
+  }
+}
 function Get-LatestMemoryToNextPathReuseGate([string]$OutputRoot,[string]$CurrentRunRoot){
   if(-not(Test-Path -LiteralPath $OutputRoot)){ return $null }
   $currentPath=$null
@@ -539,6 +573,12 @@ if(Test-Path $mindBuilder){
 $previousReuseGate=Get-LatestMemoryToNextPathReuseGate $OutputRoot $runRoot
 $avoidActionIds=@()
 if($previousReuseGate -and $previousReuseGate.consumed_action_id){ $avoidActionIds += [string]$previousReuseGate.consumed_action_id }
+$mentalFrontierExpansionGatePath = Join-Path $runRoot 'mental_frontier_expansion_gate.json'
+$mentalFrontierExpansionGate = Get-MentalFrontierExpansionGate -QueueRoot (Join-Path (Get-Location).Path '.runtime/compact_memory_intake_v1/queue') -WindowSize 12 -TopicRepeatThreshold 3
+foreach($id in @($mentalFrontierExpansionGate.next_action_avoid_ids)){
+  if(-not [string]::IsNullOrWhiteSpace([string]$id) -and $avoidActionIds -notcontains [string]$id){ $avoidActionIds += [string]$id }
+}
+Write-CleanJson $mentalFrontierExpansionGatePath $mentalFrontierExpansionGate 20
 
 $actionDecision=[ordered]@{
   status='NOT_RUN'
@@ -553,7 +593,7 @@ if(Test-Path $actionSelector){
   $actionGoal=if($mindLogic.frame -and $mindLogic.frame.selected_next_logical_step){ ('MindLogicNextStep=' + [string]$mindLogic.frame.selected_next_logical_step.step_id + '; Reason=' + [string]$mindLogic.frame.selected_next_logical_step.reason) } elseif($internalGoal -and $internalGoal.goal){ [string]$internalGoal.goal } else { [string]$Question }
   if([string]::IsNullOrWhiteSpace($actionGoal)){ $actionGoal='Select the next safe self-build action candidate without execution authority.' }
     $selectorArgs=@('-NoProfile','-ExecutionPolicy','Bypass','-File',$actionSelector,'-Mode','LabOnly','-Goal',$actionGoal,'-OutputPath',$actionDecisionPath)
-  if(@($avoidActionIds).Count -gt 0){ $selectorArgs += @('-AvoidActionIds'); $selectorArgs += @($avoidActionIds) }
+  if(@($avoidActionIds).Count -gt 0){ $selectorArgs += @('-AvoidActionIds', ((@($avoidActionIds) | Select-Object -Unique) -join ',')) }
   $actionOut=@(& powershell @selectorArgs *>&1 | ForEach-Object { [string]$_ })
   $actionDecision.selector_stdout=@($actionOut)
   $actionDecision.selector_exit_code=$LASTEXITCODE
@@ -650,6 +690,7 @@ $proof=[ordered]@{
   proof_pack_manifest_path=$proofPackManifestPath
   anti_repeat_guard=$antiRepeatGuard
   memory_to_next_path_reuse_gate=$memoryToNextPathReuseGate
+  mental_frontier_expansion_gate=$mentalFrontierExpansionGate
   policy_snapshot=[ordered]@{ allowed_modes=$policy.allowed_modes; disabled_modes=$policy.disabled_modes; source_ladder=$policy.source_ladder; ports=$policy.ports }
   self_question_trace=$cycles
   cycles=$cycles
@@ -672,11 +713,11 @@ $proof=[ordered]@{
   heartbeat=[ordered]@{ cycle_count=@($cycles).Count; alive='one_shot_sandbox'; background_process_started=$false }
   final_self_diagnosis='The motor can self-seed a thinking cycle, build a Mind Logic Frame, decompose a root question into ThoughtFrames, use memory recall, and return a next_action_candidate with execution disabled. Memory learning remains governed and optional.'
   stop_reason='PROTECTIVE_CHECKPOINT_THINKING_ONLY'
-  mutation_audit=[ordered]@{ active_memory_mutated=[bool]$EnableMemoryLearning; direct_active_memory_write=$false; governed_absorption_used=[bool]($EnableMemoryLearning -and $deepThinking.absorption); memory_ingestion_mode=if($deepThinking.absorption){$deepThinking.absorption.mode}else{$MemoryIngestionMode}; git_mutated=$false; codex_launched=$false; web_research_performed=$false; school_started=$false; background_process_started=$false; files_written=@($proofPath,$mindLogicPath,$actionDecisionPath,$antiRepeatGuardPath,$memoryToNextPathReuseGatePath,$proofPackManifestPath) }
+  mutation_audit=[ordered]@{ active_memory_mutated=[bool]$EnableMemoryLearning; direct_active_memory_write=$false; governed_absorption_used=[bool]($EnableMemoryLearning -and $deepThinking.absorption); memory_ingestion_mode=if($deepThinking.absorption){$deepThinking.absorption.mode}else{$MemoryIngestionMode}; git_mutated=$false; codex_launched=$false; web_research_performed=$false; school_started=$false; background_process_started=$false; files_written=@($proofPath,$mindLogicPath,$actionDecisionPath,$antiRepeatGuardPath,$memoryToNextPathReuseGatePath,$mentalFrontierExpansionGatePath,$proofPackManifestPath) }
   validator_result=[ordered]@{ runner_self_check='PASS_RUNNER_GENERATED_SINGLE_SANDBOX_PROOF'; external_validator_expected='validators/validate_autonomous_inner_motor_organ_contract.ps1 -SandboxProofPath <proof>; validators/validate_autonomous_inner_motor_mind_logic_wiring_v1.ps1 -ProofPath <proof>; validators/validate_autonomous_inner_motor_action_decision_wiring_v1.ps1 -ProofPath <proof>' }
 }
 Write-CleanJson $proofPath $proof 80
-$proofPackRequiredFiles=@('SANDBOX_EXPLORATION_PROOF.json','mind_logic_frame.json','action_decision_packet.json','anti_repeat_guard.json','memory_to_next_path_reuse_gate.json')
+$proofPackRequiredFiles=@('SANDBOX_EXPLORATION_PROOF.json','mind_logic_frame.json','action_decision_packet.json','anti_repeat_guard.json','memory_to_next_path_reuse_gate.json','mental_frontier_expansion_gate.json')
 $proofPackOptionalSidecars=@('memory_recall_filter.json','contradiction_resolution.json','hypothesis_test_result.json','deep_source_answer_request.json','memory_filter_for_answer.json','route_request_packet.json','source_authority_route_decision.json','deep_source_answer_assimilation.json','mind_delta_acceptance_decision.json')
 $proofPackFiles=@()
 foreach($name in @($proofPackRequiredFiles + $proofPackOptionalSidecars)){

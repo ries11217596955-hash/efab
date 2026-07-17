@@ -6,6 +6,8 @@ param(
   [switch]$NegativeMissingValidator
 )
 $ErrorActionPreference='Stop'
+# Normalize AvoidActionIds because external powershell -File array binding may pass comma-separated strings.
+$AvoidActionIds = @($AvoidActionIds | ForEach-Object { [string]$_ -split ',' } | ForEach-Object { $_.Trim() } | Where-Object { -not [string]::IsNullOrWhiteSpace($_) } | Select-Object -Unique)
 function WJson($o,$p){ New-Item -ItemType Directory -Force -Path (Split-Path $p -Parent) | Out-Null; $o|ConvertTo-Json -Depth 80|Set-Content -Path $p -Encoding UTF8 }
 function FileProof($p){ if(Test-Path $p){ $i=Get-Item $p; return [ordered]@{path=$p; exists=$true; bytes=$i.Length; sha256=(Get-FileHash $p -Algorithm SHA256).Hash.ToLower()} } return [ordered]@{path=$p; exists=$false} }
 function GitValue($cmd){ try { return (& git $cmd 2>$null) -join ' ' } catch { return '' } }
@@ -41,6 +43,9 @@ $unknown=@(
 )
 $gap='Agent has thinking and memory learning, but lacks a governed action-candidate contract between thought and execution.'
 $candidateActions=@()
+if(($AvoidActionIds -contains 'ACTION_CONTRACT_V1') -and ($AvoidActionIds -contains 'MEMORY_TO_NEXT_PATH_REUSE_GATE_V1')){
+  $candidateActions += [ordered]@{action_id='MENTAL_FRONTIER_EXPANSION_GATE_V1'; action_type='write_install_ready_artifact'; target_surface='operations/autonomous_inner_motor'; required_authority='LAB_FILE_WRITE'; validator_required=$true; validator_refs=@('validators/validate_mental_frontier_expansion_gate_v1.ps1'); proof_required=$true; rollback_plan='git restore changed files before commit; no active memory mutation'; execution_allowed=($Mode -eq 'LabOnly'); why_candidate='Recent governed memory packets saturated one knowledge topic; next safe mental-growth step is to open a new frontier instead of alternating consumed paths.'}
+}
 if($AvoidActionIds -contains 'ACTION_CONTRACT_V1'){
   $candidateActions += [ordered]@{action_id='MEMORY_TO_NEXT_PATH_REUSE_GATE_V1'; action_type='write_install_ready_artifact'; target_surface='operations/autonomous_inner_motor'; required_authority='LAB_FILE_WRITE'; validator_required=$true; validator_refs=@('validators/validate_memory_to_next_path_reuse_gate_v1.ps1'); proof_required=$true; rollback_plan='git restore changed files before commit; no active memory mutation'; execution_allowed=($Mode -eq 'LabOnly'); why_candidate='Prior repeated ACTION_CONTRACT_V1 was absorbed into memory; next safe mental-growth step is to reuse that knowledge and choose a new path, not repeat the same candidate.'}
 }
