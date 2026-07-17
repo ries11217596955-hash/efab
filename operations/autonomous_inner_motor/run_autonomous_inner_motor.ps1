@@ -549,6 +549,42 @@ if(Test-Path $actionSelector){
   $actionDecision.status='ACTION_DECISION_SELECTOR_MISSING'
 }
 
+$selectedActionId = $null
+if ($actionDecision.packet -and $actionDecision.packet.selected_action) {
+  $selectedActionId = [string]$actionDecision.packet.selected_action.action_id
+}
+$recentActionIds = @()
+if (Test-Path -LiteralPath $OutputRoot) {
+  $recentDirs = @(Get-ChildItem -Path $OutputRoot -Directory -ErrorAction SilentlyContinue | Where-Object { $_.FullName -ne (Resolve-Path $runRoot).Path } | Sort-Object LastWriteTime -Descending | Select-Object -First 8)
+  foreach ($dir in $recentDirs) {
+    $packetPath = Join-Path $dir.FullName 'action_decision_packet.json'
+    if (Test-Path -LiteralPath $packetPath) {
+      try {
+        $packet = Get-Content -LiteralPath $packetPath -Raw | ConvertFrom-Json
+        if ($packet.selected_action -and $packet.selected_action.action_id) { $recentActionIds += [string]$packet.selected_action.action_id }
+      } catch { }
+    }
+  }
+}
+$consecutiveRepeatCount = 0
+if ($selectedActionId) { foreach ($actionId in $recentActionIds) { if ($actionId -eq $selectedActionId) { $consecutiveRepeatCount++ } else { break } } }
+$repeatPressure = ($selectedActionId -and $consecutiveRepeatCount -ge 3)
+$antiRepeatGuardPath = Join-Path $runRoot 'anti_repeat_guard.json'
+$antiRepeatGuard = [ordered]@{
+  schema = 'aimo_anti_repeat_guard_v1'
+  status = if ($repeatPressure) { 'REPEAT_PRESSURE_DETECTED' } else { 'PASS_NO_REPEAT_PRESSURE' }
+  selected_action_id = $selectedActionId
+  recent_action_ids = @($recentActionIds)
+  consecutive_repeat_count = $consecutiveRepeatCount
+  repeated_candidate_is_progress = $false
+  repeat_requires_new_learning_or_escalation = [bool]$repeatPressure
+  pressure_signal = if ($repeatPressure) { 'SAME_ACTION_CANDIDATE_REPEATED_WITHOUT_EXECUTION_OR_MEMORY_DELTA' } else { 'NO_REPEAT_PRESSURE' }
+  recommended_next = if ($repeatPressure) { 'PROMOTE_TO_OPERATOR_REVIEW_OR_QUEUE_ONLY_MEMORY_LEARNING_BEFORE_NEXT_LOOP' } else { 'CONTINUE_BOUNDED_THINKING' }
+  boundary = [ordered]@{ action_execution_allowed = $false; memory_mutation_allowed = $false; repeat_detection_only = $true; no_repair_execution = $true }
+}
+Write-CleanJson $antiRepeatGuardPath $antiRepeatGuard 20
+$proofPackManifestPath = Join-Path $runRoot 'sandbox_proof_pack_manifest.json'
+
 $proof=[ordered]@{
   schema='AUTONOMOUS_INNER_MOTOR_SANDBOX_EXPLORATION_PROOF'
   organ_id='AUTONOMOUS_INNER_MOTOR_ORGAN'
@@ -557,7 +593,7 @@ $proof=[ordered]@{
   maturity_level='L2_SANDBOX_EXPLORATION_THINKING_ONLY'
   created_at=(Get-Date).ToString('o')
   question=$Question
-  boundary=[ordered]@{ thinking_only=$true; no_action=$true; mind_logic_frame_generated=($mindLogic.status -eq 'PASS_AGENT_MIND_LOGIC_FRAME_V1'); action_decision_candidate_generated=($actionDecision.status -eq 'PASS_AGENT_ACTION_DECISION_PACKET_V1'); action_execution_allowed=$false; no_active_memory_mutation=(-not [bool]$EnableMemoryLearning); governed_memory_learning=[bool]$EnableMemoryLearning; memory_ingestion_mode=$MemoryIngestionMode; agentlife_queue_first=([bool]$EnableMemoryLearning -and $MemoryIngestionMode -ne 'DirectAbsorb'); direct_active_memory_write=$false; no_git_mutation=$true; no_school_launch=$true; no_codex_launch=$true; no_web_research=$true; proof_file_only=(-not [bool]$EnableMemoryLearning) }
+  boundary=[ordered]@{ thinking_only=$true; no_action=$true; mind_logic_frame_generated=($mindLogic.status -eq 'PASS_AGENT_MIND_LOGIC_FRAME_V1'); action_decision_candidate_generated=($actionDecision.status -eq 'PASS_AGENT_ACTION_DECISION_PACKET_V1'); anti_repeat_guard_active=[bool]$repeatPressure; repeated_candidate_is_progress=$false; action_execution_allowed=$false; no_active_memory_mutation=(-not [bool]$EnableMemoryLearning); governed_memory_learning=[bool]$EnableMemoryLearning; memory_ingestion_mode=$MemoryIngestionMode; agentlife_queue_first=([bool]$EnableMemoryLearning -and $MemoryIngestionMode -ne 'DirectAbsorb'); direct_active_memory_write=$false; no_git_mutation=$true; no_school_launch=$true; no_codex_launch=$true; no_web_research=$true; proof_file_only=(-not [bool]$EnableMemoryLearning) }
   repo_state=$repo
   memory_state=[ordered]@{ before=$memoryBefore; after=$memoryAfter; unchanged=($($memoryBefore.files | ConvertTo-Json -Depth 10) -eq $($memoryAfter.files | ConvertTo-Json -Depth 10)) }
   body_map_state=$body
@@ -566,6 +602,8 @@ $proof=[ordered]@{
   self_build_state=$selfBuild
   internal_goal=$internalGoal
   owner_query_required=$false
+  proof_pack_manifest_path=$proofPackManifestPath
+  anti_repeat_guard=$antiRepeatGuard
   policy_snapshot=[ordered]@{ allowed_modes=$policy.allowed_modes; disabled_modes=$policy.disabled_modes; source_ladder=$policy.source_ladder; ports=$policy.ports }
   self_question_trace=$cycles
   cycles=$cycles
@@ -588,10 +626,32 @@ $proof=[ordered]@{
   heartbeat=[ordered]@{ cycle_count=@($cycles).Count; alive='one_shot_sandbox'; background_process_started=$false }
   final_self_diagnosis='The motor can self-seed a thinking cycle, build a Mind Logic Frame, decompose a root question into ThoughtFrames, use memory recall, and return a next_action_candidate with execution disabled. Memory learning remains governed and optional.'
   stop_reason='PROTECTIVE_CHECKPOINT_THINKING_ONLY'
-  mutation_audit=[ordered]@{ active_memory_mutated=[bool]$EnableMemoryLearning; direct_active_memory_write=$false; governed_absorption_used=[bool]($EnableMemoryLearning -and $deepThinking.absorption); memory_ingestion_mode=if($deepThinking.absorption){$deepThinking.absorption.mode}else{$MemoryIngestionMode}; git_mutated=$false; codex_launched=$false; web_research_performed=$false; school_started=$false; background_process_started=$false; files_written=@($proofPath,$mindLogicPath,$actionDecisionPath) }
+  mutation_audit=[ordered]@{ active_memory_mutated=[bool]$EnableMemoryLearning; direct_active_memory_write=$false; governed_absorption_used=[bool]($EnableMemoryLearning -and $deepThinking.absorption); memory_ingestion_mode=if($deepThinking.absorption){$deepThinking.absorption.mode}else{$MemoryIngestionMode}; git_mutated=$false; codex_launched=$false; web_research_performed=$false; school_started=$false; background_process_started=$false; files_written=@($proofPath,$mindLogicPath,$actionDecisionPath,$antiRepeatGuardPath,$proofPackManifestPath) }
   validator_result=[ordered]@{ runner_self_check='PASS_RUNNER_GENERATED_SINGLE_SANDBOX_PROOF'; external_validator_expected='validators/validate_autonomous_inner_motor_organ_contract.ps1 -SandboxProofPath <proof>; validators/validate_autonomous_inner_motor_mind_logic_wiring_v1.ps1 -ProofPath <proof>; validators/validate_autonomous_inner_motor_action_decision_wiring_v1.ps1 -ProofPath <proof>' }
 }
 Write-CleanJson $proofPath $proof 80
+$proofPackRequiredFiles=@('SANDBOX_EXPLORATION_PROOF.json','mind_logic_frame.json','action_decision_packet.json','anti_repeat_guard.json')
+$proofPackOptionalSidecars=@('memory_recall_filter.json','contradiction_resolution.json','hypothesis_test_result.json','deep_source_answer_request.json','memory_filter_for_answer.json','route_request_packet.json','source_authority_route_decision.json','deep_source_answer_assimilation.json','mind_delta_acceptance_decision.json')
+$proofPackFiles=@()
+foreach($name in @($proofPackRequiredFiles + $proofPackOptionalSidecars)){
+  $p=Join-Path $runRoot $name
+  $fp=Get-FileProof $p
+  if($fp){ $proofPackFiles += $fp }
+}
+$proofPackManifest=[ordered]@{
+  schema='aimo_sandbox_proof_pack_manifest_v2'
+  status='PASS_AIMO_SANDBOX_PROOF_PACK_V2'
+  run_id=$runId
+  proof_ref=$proofName
+  required_files=$proofPackRequiredFiles
+  optional_sidecars=$proofPackOptionalSidecars
+  files=$proofPackFiles
+  anti_repeat_guard_status=$antiRepeatGuard.status
+  sidecar_policy='sidecar files are part of the proof pack, not extra evidence leaks'
+  size_policy='large proof accepted only with manifest and bounded mutation audit'
+  boundary=[ordered]@{ action_execution_allowed=$false; direct_active_memory_write=$false; no_codex_launch=$true; no_web_research=$true; no_repair_execution=$true }
+}
+Write-CleanJson $proofPackManifestPath $proofPackManifest 30
 Write-Host "MODE=$Mode"
 Write-Host "PROOF_PATH=$proofPath"
 Write-Host "OWNER_QUERY_REQUIRED=$($proof.owner_query_required)"

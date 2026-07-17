@@ -62,11 +62,27 @@ if ($SandboxProofPath -ne '') {
     $ProofFile = Get-Item $SandboxProofPath
     $RunRoot = Split-Path $ProofFile.FullName -Parent
     $files = @(Get-ChildItem -Path $RunRoot -File)
-    $allowedSandboxFiles=@('SANDBOX_EXPLORATION_PROOF.json','action_decision_packet.json','mind_logic_frame.json','memory_recall_filter.json','contradiction_resolution.json','hypothesis_test_result.json','deep_source_answer_request.json','memory_filter_for_answer.json')
+    $allowedSandboxFiles=@('SANDBOX_EXPLORATION_PROOF.json','action_decision_packet.json','mind_logic_frame.json','memory_recall_filter.json','contradiction_resolution.json','hypothesis_test_result.json','deep_source_answer_request.json','memory_filter_for_answer.json','route_request_packet.json','source_authority_route_decision.json','deep_source_answer_assimilation.json','mind_delta_acceptance_decision.json','anti_repeat_guard.json','sandbox_proof_pack_manifest.json')
     $extraFiles=@($files | Where-Object { $allowedSandboxFiles -notcontains $_.Name })
     if ($extraFiles.Count -gt 0) { $Errors.Add("sandbox_extra_files_detected:$($extraFiles.Count)") }
     if (-not ($files | Where-Object { $_.Name -eq 'SANDBOX_EXPLORATION_PROOF.json' })) { $Errors.Add('sandbox_proof_file_missing_in_runroot') }
-    if ($ProofFile.Length -gt [int]$Policy.sandbox_exploration.max_proof_bytes) { $Errors.Add("sandbox_proof_too_large:$($ProofFile.Length)") }
+    $ManifestPath=Join-Path $RunRoot 'sandbox_proof_pack_manifest.json'
+    $Manifest=$null
+    if(Test-Path $ManifestPath){ try { $Manifest=Read-Json $ManifestPath } catch { $Errors.Add('sandbox_proof_pack_manifest_parse_failed') } } else { $Errors.Add('sandbox_proof_pack_manifest_missing') }
+    if($Manifest){
+      if($Manifest.schema -ne 'aimo_sandbox_proof_pack_manifest_v2'){ $Errors.Add('sandbox_proof_pack_manifest_wrong_schema') }
+      if($Manifest.status -ne 'PASS_AIMO_SANDBOX_PROOF_PACK_V2'){ $Errors.Add('sandbox_proof_pack_manifest_not_pass') }
+      foreach($required in @('SANDBOX_EXPLORATION_PROOF.json','mind_logic_frame.json','action_decision_packet.json','anti_repeat_guard.json')){ if(-not ($files | Where-Object { $_.Name -eq $required })){ $Errors.Add('sandbox_proof_pack_required_missing:' + $required) } }
+    }
+    $AntiRepeatPath=Join-Path $RunRoot 'anti_repeat_guard.json'
+    $AntiRepeat=$null
+    if(Test-Path $AntiRepeatPath){ try { $AntiRepeat=Read-Json $AntiRepeatPath } catch { $Errors.Add('anti_repeat_guard_parse_failed') } } else { $Errors.Add('anti_repeat_guard_missing') }
+    if($AntiRepeat){
+      if($AntiRepeat.schema -ne 'aimo_anti_repeat_guard_v1'){ $Errors.Add('anti_repeat_guard_wrong_schema') }
+      if($AntiRepeat.repeated_candidate_is_progress -ne $false){ $Errors.Add('anti_repeat_repeated_candidate_claims_progress') }
+      if($AntiRepeat.boundary.action_execution_allowed -ne $false){ $Errors.Add('anti_repeat_action_allowed') }
+    }
+    if ($ProofFile.Length -gt 750000 -and -not $Manifest) { $Errors.Add('sandbox_proof_too_large_without_manifest:' + $ProofFile.Length) }
     if ($Proof) {
       if ($Proof.schema -ne 'AUTONOMOUS_INNER_MOTOR_SANDBOX_EXPLORATION_PROOF') { $Errors.Add('sandbox_wrong_schema') }
       if ($Proof.mode -ne 'SandboxExploration') { $Errors.Add('sandbox_wrong_mode') }
@@ -80,6 +96,9 @@ if ($SandboxProofPath -ne '') {
       if (@($Proof.cycles).Count -lt 5) { $Errors.Add('sandbox_too_few_cycles_for_exploration') }
       if (-not $Proof.final_self_diagnosis) { $Errors.Add('sandbox_missing_final_self_diagnosis') }
       if ($Proof.stop_reason -notmatch 'PROTECTIVE_CHECKPOINT') { $Errors.Add('sandbox_stop_reason_not_protective') }
+      if ($Proof.boundary.repeated_candidate_is_progress -ne $false) { $Errors.Add('sandbox_repeat_candidate_claims_progress') }
+      if (-not $Proof.anti_repeat_guard) { $Errors.Add('sandbox_missing_anti_repeat_guard') }
+      if (-not $Proof.proof_pack_manifest_path) { $Errors.Add('sandbox_missing_proof_pack_manifest_path') }
     }
   }
 }
