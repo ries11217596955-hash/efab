@@ -279,12 +279,33 @@ Step 1: Run AUDIT A Runtime Topology.
 Step 2: Run AUDIT B State/Memory Layer Separation.
 Step 3: Run AUDIT C File/Proof Economy.
 Step 4: Run AUDIT D Continuous Safety/Immune System.
-Step 5: Run AUDIT F Continuous Runtime Lab Design for an operator-supervised RAM lab.\nStep 6: Build CONTINUOUS_AGENT_RUNTIME_V1_LAB as bounded supervised lab only.\nStep 7: Run bounded lab and compare against process-per-cycle life.\nStep 8: Decide whether canonical life remains dual-mode.\nStep 9: Keep AUDIT E Orientation Card/Drift Sensor for future unattended autonomy, not as a blocker for supervised lab.
+Step 5: Run AUDIT F Continuous Runtime Lab Design for an operator-supervised RAM lab.
+Step 6: Build CONTINUOUS_AGENT_RUNTIME_V1_LAB as bounded supervised lab only.
+Step 7: Run bounded lab and compare against process-per-cycle life.
+Step 8: Decide whether canonical life remains dual-mode.
+Step 9: Keep AUDIT E Orientation Card/Drift Sensor for future unattended autonomy, not as a blocker for supervised lab.
 ```
 
 ## 6. Gate before continuous runtime implementation
 
-Operator-supervised continuous RAM lab implementation is blocked until all are true:\n\n```text\nAUDIT_A_PASS\nAUDIT_B_PASS\nAUDIT_C_PASS\nAUDIT_D_PASS\nAUDIT_F_PASS\nMINIMAL_SUPERVISED_LIFE_CONTEXT_AVAILABLE\n```\n\nUnattended or longer autonomy runtime is blocked until all are true:\n\n```text\nAUDIT_E_PASS\nIMMUTABLE_LIFE_ORIENTATION_CARD_V1_PROVEN_LAB\nORIENTATION_DRIFT_SENSOR_V1_PROVEN_LAB\n```
+Operator-supervised continuous RAM lab implementation is blocked until all are true:
+
+```text
+AUDIT_A_PASS
+AUDIT_B_PASS
+AUDIT_C_PASS
+AUDIT_D_PASS
+AUDIT_F_PASS
+MINIMAL_SUPERVISED_LIFE_CONTEXT_AVAILABLE
+```
+
+Unattended or longer autonomy runtime is blocked until all are true:
+
+```text
+AUDIT_E_PASS
+IMMUTABLE_LIFE_ORIENTATION_CARD_V1_PROVEN_LAB
+ORIENTATION_DRIFT_SENSOR_V1_PROVEN_LAB
+```
 
 ## 7. RAM-life target model
 
@@ -609,3 +630,233 @@ AUDIT_F_CONTINUOUS_RUNTIME_LAB_DESIGN_V1
 ```
 
 AUDIT_E remains in the plan as future autonomy preparation, not immediate blocker.
+## 12. AUDIT_F_CONTINUOUS_RUNTIME_LAB_DESIGN_V1 detailed design
+
+Status: WRITTEN_IN_PLAN / IMPLEMENTATION_NOT_STARTED
+
+Purpose:
+
+```text
+Design the smallest operator-supervised RAM-life lab proving that an agent can keep live state inside one long-running process across multiple cycles.
+```
+
+This lab is not a new full agent life. It is a proof slice for one principle:
+
+```text
+same process + RAM state persistence + safety boundary
+```
+
+### 12.1 Lab name
+
+```text
+CONTINUOUS_AGENT_RUNTIME_V1_LAB
+```
+
+### 12.2 Scope
+
+Allowed:
+
+```text
+single PowerShell process
+2-5 minute duration cap
+SandboxExploration only
+QueueOnly only
+minimal supervised life context
+RAM state object
+cycle loop inside same process
+heartbeat
+runtime lock
+stop signal support
+checkpoint latest only / bounded latest 3
+compact final proof
+```
+
+Forbidden:
+
+```text
+replace canonical launcher
+run unattended
+mutate repo
+write active memory directly
+launch Codex
+use web
+run git mutation
+repair body
+cleanup runtime
+load full compact memory
+keep raw cycle transcript
+create per-cycle JSON bridge for RAM state
+```
+
+### 12.3 Minimal supervised life context
+
+Because Owner/GPT supervise short runs, the lab does not need full immutable orientation card.
+
+Minimal context must include:
+
+```text
+runtime_id
+mode
+repo_root
+repo_head
+active_memory_root_exists
+compact_memory_queue_exists
+allowed_actions = none
+memory_mode = QueueOnly
+safety_mode = supervised_lab
+current_goal = prove RAM state persists across cycles
+forbidden = git/codex/web/repair/cleanup/active_memory_direct_write
+```
+
+### 12.4 RAM state object
+
+The process must create one in-memory object, for example:
+
+```text
+$AgentState = @{
+  runtime_id = ...
+  pid = $PID
+  started_at = ...
+  cycle_count = 0
+  ram_counter = 0
+  recent_cycles = @()
+  current_goal = 'prove_ram_state_persistence'
+  last_checkpoint_ref = $null
+}
+```
+
+Required proof:
+
+```text
+same pid across all cycles
+ram_counter increases across cycles without reading per-cycle JSON bridge
+recent_cycles lives in RAM during run
+cycle_scratch is created and cleared in RAM
+```
+
+### 12.5 Cycle design
+
+Each cycle:
+
+```text
+check stop signal
+increment cycle_count
+increment ram_counter
+create cycle_scratch in RAM
+perform minimal no-op/safe decision step
+append compact cycle summary to AgentState.recent_cycles ring buffer
+clear cycle_scratch
+write heartbeat
+optionally write bounded checkpoint
+sleep small interval
+```
+
+Cycle must not call canonical runner in first lab, because calling the old runner would reintroduce process-per-cycle behavior.
+
+### 12.6 Disk output policy
+
+Allowed files:
+
+```text
+runtime.lock.json
+heartbeat.json
+checkpoints/latest.json
+CONTINUOUS_AGENT_RUNTIME_V1_LAB_PROOF.json
+CONTINUOUS_AGENT_RUNTIME_V1_LAB_SUMMARY.json
+```
+
+Not allowed:
+
+```text
+per-cycle mind_logic_frame.json
+per-cycle action_decision_packet.json
+per-cycle wake_body_audit
+per-cycle default_wake_reflexes.json
+per-cycle RAM bridge JSON
+raw reasoning transcript
+```
+
+### 12.7 Start command proposal
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File operations/autonomous_inner_motor/run_continuous_agent_runtime_v1_lab.ps1 -DurationMinutes 2
+```
+
+Owner-facing parameters for lab:
+
+```text
+DurationMinutes only
+```
+
+Internal defaults:
+
+```text
+Mode = SandboxExploration
+MemoryMode = QueueOnly
+NoGit = true
+NoCodex = true
+NoWeb = true
+NoRepair = true
+NoCleanup = true
+```
+
+### 12.8 Validator expectations
+
+Validator must prove:
+
+```text
+status = PASS_CONTINUOUS_AGENT_RUNTIME_V1_LAB
+same_pid_across_cycles = true
+cycle_count >= 2
+ram_counter_final >= 2
+ram_state_persisted = true
+per_cycle_json_bridge_used_for_ram_state = false
+lock_created = true
+heartbeat_written = true
+stop_signal_supported = true
+checkpoint_written = true
+final_proof_written = true
+repo_mutated = false
+active_memory_direct_mutated = false
+codex_launched = false
+web_launched = false
+school_launched = false
+raw_debug_retained = false
+```
+
+### 12.9 Acceptance boundary
+
+This lab may claim only:
+
+```text
+PROVEN_LAB: one process can keep RAM state across multiple cycles under supervised safety gates
+```
+
+It may not claim:
+
+```text
+canonical life replaced
+agent became autonomous
+mind quality improved
+compact memory integration solved
+live/unattended runtime ready
+```
+
+### 12.10 Next implementation slice after this audit
+
+If AUDIT_F validates, next slice is:
+
+```text
+CODEX_TASK_CONTINUOUS_AGENT_RUNTIME_V1_LAB_SLICE_A
+```
+
+But Codex task must be narrow:
+
+```text
+create lab script + validator + proof only
+no canonical launcher mutation
+no runner mutation
+no compact memory mutation
+no active memory mutation
+no runtime cleanup
+```

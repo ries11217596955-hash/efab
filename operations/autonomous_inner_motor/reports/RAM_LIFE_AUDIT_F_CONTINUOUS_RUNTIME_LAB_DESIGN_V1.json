@@ -1,0 +1,130 @@
+{
+    "schema":  "ram_life_audit_f_continuous_runtime_lab_design_v1",
+    "status":  "PASS_RAM_LIFE_AUDIT_F_CONTINUOUS_RUNTIME_LAB_DESIGN_V1",
+    "checked_at":  "2026-07-17T18:09:29.3350804Z",
+    "purpose":  "Design smallest operator-supervised RAM-life lab proving same process plus RAM state persistence across cycles.",
+    "plan_section":  "AGENT_BUILDER_RAM_LIFE_TRANSITION_MASTER_PLAN_V1.md#12-audit_f_continuous_runtime_lab_design_v1-detailed-design",
+    "lab_id":  "CONTINUOUS_AGENT_RUNTIME_V1_LAB",
+    "lab_principle":  "same_process_ram_state_persistence_under_safety_boundary",
+    "allowed":  [
+                    "single PowerShell process",
+                    "2-5 minute duration cap",
+                    "SandboxExploration only",
+                    "QueueOnly only",
+                    "minimal supervised life context",
+                    "RAM state object",
+                    "cycle loop inside same process",
+                    "heartbeat",
+                    "runtime lock",
+                    "stop signal support",
+                    "bounded checkpoints",
+                    "compact final proof"
+                ],
+    "forbidden":  [
+                      "replace canonical launcher",
+                      "run unattended",
+                      "mutate repo",
+                      "write active memory directly",
+                      "launch Codex",
+                      "use web",
+                      "run git mutation",
+                      "repair body",
+                      "cleanup runtime",
+                      "load full compact memory",
+                      "keep raw cycle transcript",
+                      "create per-cycle JSON bridge for RAM state"
+                  ],
+    "minimal_supervised_life_context_fields":  [
+                                                   "runtime_id",
+                                                   "mode",
+                                                   "repo_root",
+                                                   "repo_head",
+                                                   "active_memory_root_exists",
+                                                   "compact_memory_queue_exists",
+                                                   "allowed_actions",
+                                                   "memory_mode",
+                                                   "safety_mode",
+                                                   "current_goal",
+                                                   "forbidden"
+                                               ],
+    "ram_state_required_fields":  [
+                                      "runtime_id",
+                                      "pid",
+                                      "started_at",
+                                      "cycle_count",
+                                      "ram_counter",
+                                      "recent_cycles",
+                                      "current_goal",
+                                      "last_checkpoint_ref"
+                                  ],
+    "disk_outputs_allowed":  [
+                                 "runtime.lock.json",
+                                 "heartbeat.json",
+                                 "checkpoints/latest.json",
+                                 "CONTINUOUS_AGENT_RUNTIME_V1_LAB_PROOF.json",
+                                 "CONTINUOUS_AGENT_RUNTIME_V1_LAB_SUMMARY.json"
+                             ],
+    "disk_outputs_forbidden":  [
+                                   "per-cycle mind_logic_frame.json",
+                                   "per-cycle action_decision_packet.json",
+                                   "per-cycle wake_body_audit",
+                                   "per-cycle default_wake_reflexes.json",
+                                   "per-cycle RAM bridge JSON",
+                                   "raw reasoning transcript"
+                               ],
+    "proposed_command":  "powershell -NoProfile -ExecutionPolicy Bypass -File operations/autonomous_inner_motor/run_continuous_agent_runtime_v1_lab.ps1 -DurationMinutes 2",
+    "owner_facing_parameters":  [
+                                    "DurationMinutes"
+                                ],
+    "internal_defaults":  {
+                              "Mode":  "SandboxExploration",
+                              "MemoryMode":  "QueueOnly",
+                              "NoGit":  true,
+                              "NoCodex":  true,
+                              "NoWeb":  true,
+                              "NoRepair":  true,
+                              "NoCleanup":  true
+                          },
+    "validator_expectations":  {
+                                   "status":  "PASS_CONTINUOUS_AGENT_RUNTIME_V1_LAB",
+                                   "same_pid_across_cycles":  true,
+                                   "cycle_count_min":  2,
+                                   "ram_counter_final_min":  2,
+                                   "ram_state_persisted":  true,
+                                   "per_cycle_json_bridge_used_for_ram_state":  false,
+                                   "lock_created":  true,
+                                   "heartbeat_written":  true,
+                                   "stop_signal_supported":  true,
+                                   "checkpoint_written":  true,
+                                   "final_proof_written":  true,
+                                   "repo_mutated":  false,
+                                   "active_memory_direct_mutated":  false,
+                                   "codex_launched":  false,
+                                   "web_launched":  false,
+                                   "school_launched":  false,
+                                   "raw_debug_retained":  false
+                               },
+    "acceptance_boundary":  {
+                                "may_claim":  "PROVEN_LAB: one process can keep RAM state across multiple cycles under supervised safety gates",
+                                "may_not_claim":  [
+                                                      "canonical life replaced",
+                                                      "agent became autonomous",
+                                                      "mind quality improved",
+                                                      "compact memory integration solved",
+                                                      "live/unattended runtime ready"
+                                                  ]
+                            },
+    "next_slice":  "CODEX_TASK_CONTINUOUS_AGENT_RUNTIME_V1_LAB_SLICE_A",
+    "boundary":  {
+                     "audit_only":  true,
+                     "continuous_runtime_launched":  false,
+                     "runtime_root_created":  false,
+                     "canonical_launcher_mutated":  false,
+                     "cycle_runner_mutated":  false,
+                     "active_memory_mutated":  false,
+                     "repo_runtime_mutated":  false,
+                     "codex_launched":  false,
+                     "web_launched":  false,
+                     "school_launched":  false
+                 }
+}
