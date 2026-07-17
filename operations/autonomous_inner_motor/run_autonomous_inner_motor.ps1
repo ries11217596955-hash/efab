@@ -552,7 +552,9 @@ $actionSelector='operations/autonomous_inner_motor/select_agent_next_action_cand
 if(Test-Path $actionSelector){
   $actionGoal=if($mindLogic.frame -and $mindLogic.frame.selected_next_logical_step){ ('MindLogicNextStep=' + [string]$mindLogic.frame.selected_next_logical_step.step_id + '; Reason=' + [string]$mindLogic.frame.selected_next_logical_step.reason) } elseif($internalGoal -and $internalGoal.goal){ [string]$internalGoal.goal } else { [string]$Question }
   if([string]::IsNullOrWhiteSpace($actionGoal)){ $actionGoal='Select the next safe self-build action candidate without execution authority.' }
-  $actionOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File $actionSelector -Mode LabOnly -Goal $actionGoal -OutputPath $actionDecisionPath -AvoidActionIds $avoidActionIds *>&1 | ForEach-Object { [string]$_ })
+    $selectorArgs=@('-NoProfile','-ExecutionPolicy','Bypass','-File',$actionSelector,'-Mode','LabOnly','-Goal',$actionGoal,'-OutputPath',$actionDecisionPath)
+  if(@($avoidActionIds).Count -gt 0){ $selectorArgs += @('-AvoidActionIds'); $selectorArgs += @($avoidActionIds) }
+  $actionOut=@(& powershell @selectorArgs *>&1 | ForEach-Object { [string]$_ })
   $actionDecision.selector_stdout=@($actionOut)
   $actionDecision.selector_exit_code=$LASTEXITCODE
   $actionDecision.packet_path=$actionDecisionPath
