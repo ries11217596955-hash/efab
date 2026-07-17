@@ -692,6 +692,75 @@ function New-WebResearchRequest([string]$Need,[string]$Why){
 function New-CodexQuestionRequest([string]$Need,[string]$Why){
   return [ordered]@{ port='CODEX_QUESTION_PORT'; mode='request_only'; launched=$false; need=$Need; why=$Why; constraints=@('bounded question','no file writes before PREFLIGHT_PASS','Codex is not brain','answer returns as CODEX_DRAFT') }
 }
+function New-NextBuildTaskDecisionSpine($RunId,$InternalGoal,$MindLogic,$ActionDecision,$MentalFrontierRouter,$MemoryRecalls,$AntiRepeatGuard,$MemoryToNextPathReuseGate,[string]$MemoryIngestionMode,[bool]$EnableMemoryLearning){
+  $selectedFrontier = $null
+  if($MentalFrontierRouter){
+    foreach($field in @('selected_frontier','frontier_id','route','selected_route','next_frontier')){
+      $value=Get-ObjectField $MentalFrontierRouter $field
+      if($value){ $selectedFrontier=$value; break }
+    }
+  }
+  $selectedActionId = $null
+  if($ActionDecision){
+    $packet=Get-ObjectField $ActionDecision 'packet'
+    if($packet){ $selectedActionId=Get-ObjectField $packet 'selected_action_id' }
+    if(-not $selectedActionId){ $selectedActionId=Get-ObjectField $ActionDecision 'selected_action_id' }
+  }
+  $recallRefs=@()
+  foreach($r in @($MemoryRecalls)){
+    if($null -ne $r){
+      $recallRefs += [ordered]@{
+        id=if(Get-ObjectField $r 'id'){ Get-ObjectField $r 'id' } elseif(Get-ObjectField $r 'path'){ Get-ObjectField $r 'path' } else { $null }
+        topic=if(Get-ObjectField $r 'topic'){ Get-ObjectField $r 'topic' } elseif(Get-ObjectField $r 'title'){ Get-ObjectField $r 'title' } else { $null }
+        source=if(Get-ObjectField $r 'source'){ Get-ObjectField $r 'source' } else { $null }
+      }
+    }
+  }
+  $observedGap='FRONTIER_NOT_YET_CONVERTED_TO_VALIDATED_BUILD_TASK'
+  $candidateBuildTask=$null
+  $blockedReason='no selected_action_id available; selective compact memory retrieval and build-task routing must run before execution'
+  $nextActionType='BLOCKED_NEEDS_MEMORY_RETRIEVAL'
+  $utilityScore=0.35
+  if($selectedActionId){
+    $observedGap='ACTION_CANDIDATE_EXISTS_BUT_BUILD_TASK_CONTRACT_MISSING'
+    $blockedReason='selected_action_id exists, but no candidate_files_in/files_out/validator_target/proof_target contract is proven yet'
+    $nextActionType='BLOCKED_NEEDS_PROOF'
+    $utilityScore=0.45
+  }
+  if($AntiRepeatGuard -and $AntiRepeatGuard.status -eq 'REPEAT_PRESSURE_DETECTED'){
+    $observedGap='REPEAT_PRESSURE_REQUIRES_DIFFERENT_BUILD_TASK_OR_OPERATOR_REVIEW'
+    $blockedReason='anti_repeat_guard detected repeated candidate; queue packet is not allowed to count as progress by itself'
+    $nextActionType='BLOCKED_NEEDS_OWNER_DECISION'
+    $utilityScore=0.25
+  }
+  return [ordered]@{
+    schema='next_build_task_decision_spine_v1'
+    status='PASS_NEXT_BUILD_TASK_DECISION_SPINE_V1'
+    run_id=$RunId
+    current_parent_goal='Build Agent Builder as an independent action machine; repair mind logic before memory/RAM expansion.'
+    current_cycle_goal=if($InternalGoal -and $InternalGoal.goal){ [string]$InternalGoal.goal } else { $null }
+    selected_frontier=$selectedFrontier
+    selected_action_id=$selectedActionId
+    relevant_memory_refs=@($recallRefs)
+    relevant_memory_ref_count=@($recallRefs).Count
+    observed_gap=$observedGap
+    candidate_build_task=$candidateBuildTask
+    candidate_files_in=@()
+    candidate_files_out=@()
+    validator_target='validators/validate_next_build_task_decision_spine_v1.ps1'
+    proof_target='tests/self_development/NEXT_BUILD_TASK_DECISION_SPINE_V1_PROOF.json'
+    risk_boundary=[ordered]@{ action_execution_allowed=$false; repo_mutation_allowed=$false; active_memory_direct_write_allowed=$false; codex_launch_allowed=$false; web_launch_allowed=$false; school_launch_allowed=$false; ram_migration_allowed=$false }
+    blocked_reason=$blockedReason
+    parent_goal_delta='Decision spine makes the stop point explicit: not queue packet, but build task candidate or blocked reason.'
+    utility_score=$utilityScore
+    next_action_type=$nextActionType
+    queue_packet_is_final_action=$false
+    memory_ingestion_mode=$MemoryIngestionMode
+    governed_memory_learning_enabled=[bool]$EnableMemoryLearning
+    memory_to_next_path_reuse_gate_status=if($MemoryToNextPathReuseGate){ $MemoryToNextPathReuseGate.status } else { $null }
+    acceptance_boundary='Slice A creates the spine and proof field only; it does not execute the task.'
+  }
+}
 $repo=Get-RepoState
 $memoryBefore=Get-ActiveMemoryState
 $school=Get-SchoolState
@@ -935,9 +1004,12 @@ $memoryToNextPathReuseGate = [ordered]@{
   gate_ref=$memoryToNextPathReuseGatePath
 }
 Write-CleanJson $memoryToNextPathReuseGatePath $memoryToNextPathReuseGate 20
+$decisionSpinePath = Join-Path $runRoot 'next_build_task_decision_spine.json'
+$decisionSpine = New-NextBuildTaskDecisionSpine $runId $internalGoal $mindLogic $actionDecision $mentalFrontierRouter $deepThinking.memory_recalls $antiRepeatGuard $memoryToNextPathReuseGate $MemoryIngestionMode ([bool]$EnableMemoryLearning)
+Write-CleanJson $decisionSpinePath $decisionSpine 30
 $proofPackManifestPath = Join-Path $runRoot 'sandbox_proof_pack_manifest.json'
 
-$filesWritten=@($proofPath,$mindLogicPath,$actionDecisionPath,$antiRepeatGuardPath,$memoryToNextPathReuseGatePath,$mentalFrontierExpansionGatePath,$mentalFrontierRouterPath,$proofPackManifestPath)
+$filesWritten=@($proofPath,$mindLogicPath,$actionDecisionPath,$antiRepeatGuardPath,$memoryToNextPathReuseGatePath,$mentalFrontierExpansionGatePath,$mentalFrontierRouterPath,$decisionSpinePath,$proofPackManifestPath)
 if($cycleWakeArtifactsWritten){ $filesWritten += @($innateReflexBootloadPath,$defaultWakeReflexesPath) }
 if($lifeWorkingMemoryCreated){ $filesWritten += $lifeWorkingMemoryPath }
 $proof=[ordered]@{
@@ -969,6 +1041,7 @@ $proof=[ordered]@{
   memory_to_next_path_reuse_gate=$memoryToNextPathReuseGate
   mental_frontier_expansion_gate=$mentalFrontierExpansionGate
   mental_frontier_router=$mentalFrontierRouter
+  decision_spine=$decisionSpine
   policy_snapshot=[ordered]@{ allowed_modes=$policy.allowed_modes; disabled_modes=$policy.disabled_modes; source_ladder=$policy.source_ladder; ports=$policy.ports }
   self_question_trace=$cycles
   cycles=$cycles
@@ -986,6 +1059,7 @@ $proof=[ordered]@{
     [ordered]@{ step='life_working_memory'; result=$lifeWorkingMemory.status; proof='Life working memory keeps wake context once per life and cycles reuse it instead of re-scanning body every breath.' },
     [ordered]@{ step='mind_logic_frame'; result=$mindLogic.status; proof='Mind Logic Kernel separates known/unknown, contradiction, hypotheses, source ladder, and next logical step before action candidate.' },
     [ordered]@{ step='action_candidate_contract'; result=$actionDecision.status; proof='Action Decision Contract selects a next action candidate from the mind logic frame but keeps execution_allowed=false.' },
+    [ordered]@{ step='decision_spine'; result=$decisionSpine.next_action_type; proof='Cycle must end with candidate build task or explicit blocked reason, not just queue packet.' },
     [ordered]@{ step='select_next'; result=$selected.path; proof='deep recursive thinking and self-learning atom loop are the next bottleneck for thinking quality.' }
   )
   selected_next_path=$selected
@@ -998,7 +1072,7 @@ $proof=[ordered]@{
   validator_result=[ordered]@{ runner_self_check='PASS_RUNNER_GENERATED_SINGLE_SANDBOX_PROOF'; external_validator_expected='validators/validate_autonomous_inner_motor_organ_contract.ps1 -SandboxProofPath <proof>; validators/validate_autonomous_inner_motor_mind_logic_wiring_v1.ps1 -ProofPath <proof>; validators/validate_autonomous_inner_motor_action_decision_wiring_v1.ps1 -ProofPath <proof>' }
 }
 Write-CleanJson $proofPath $proof 80
-$proofPackRequiredFiles=@('SANDBOX_EXPLORATION_PROOF.json','mind_logic_frame.json','action_decision_packet.json','anti_repeat_guard.json','memory_to_next_path_reuse_gate.json','mental_frontier_expansion_gate.json','mental_frontier_router.json')
+$proofPackRequiredFiles=@('SANDBOX_EXPLORATION_PROOF.json','mind_logic_frame.json','action_decision_packet.json','anti_repeat_guard.json','memory_to_next_path_reuse_gate.json','mental_frontier_expansion_gate.json','mental_frontier_router.json','next_build_task_decision_spine.json')
 if($cycleWakeArtifactsWritten){ $proofPackRequiredFiles += @('innate_reflex_bootload.json','default_wake_reflexes.json') }
 $proofPackOptionalSidecars=@('memory_recall_filter.json','contradiction_resolution.json','hypothesis_test_result.json','deep_source_answer_request.json','memory_filter_for_answer.json','route_request_packet.json','source_authority_route_decision.json','deep_source_answer_assimilation.json','mind_delta_acceptance_decision.json')
 $proofPackFiles=@()
@@ -1046,5 +1120,7 @@ Write-Host "DEFAULT_WAKE_REFLEXES_REF=$($proof.default_wake_reflexes_path)"
 Write-Host "INNATE_REFLEX_BOOTLOAD_STATUS=$($proof.innate_reflex_bootload.status)"
 Write-Host "INNATE_REFLEX_BOOTLOAD_REF=$($proof.innate_reflex_bootload_path)"
 Write-Host "ACTION_DECISION_STATUS=$($proof.next_action_candidate.status)"
+Write-Host "DECISION_SPINE_STATUS=$($proof.decision_spine.status)"
+Write-Host "DECISION_SPINE_NEXT_ACTION_TYPE=$($proof.decision_spine.next_action_type)"
 Write-Host "ACTION_EXECUTION_ALLOWED=$($proof.boundary.action_execution_allowed)"
 if($EnableMemoryLearning){ Write-Host "LEARNING_ATOM_MEMORY_CHANGED=$($proof.deep_thinking.absorption.memory_changed)" } else { Write-Host "No active memory mutation" }

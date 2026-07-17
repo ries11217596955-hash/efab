@@ -1,0 +1,27 @@
+{
+    "schema":  "next_build_task_decision_spine_v1_acceptance",
+    "status":  "ACCEPTED_NEXT_BUILD_TASK_DECISION_SPINE_V1_SLICE_A",
+    "accepted_at":  "2026-07-17T20:09:14.4685724Z",
+    "proof":  "tests/self_development/NEXT_BUILD_TASK_DECISION_SPINE_V1_PROOF.json",
+    "runtime_proof_path":  ".runtime\\next_build_task_decision_spine_v1_validation\\aimo_20260718_000643\\SANDBOX_EXPLORATION_PROOF.json",
+    "spine_path":  ".runtime\\next_build_task_decision_spine_v1_validation\\aimo_20260718_000643\\next_build_task_decision_spine.json",
+    "may_claim":  "Slice A adds decision_spine to canonical runner proof/manifest; each cycle now exposes explicit next_action_type and blocked_reason/candidate boundary.",
+    "may_not_claim":  [
+                          "build task router complete",
+                          "short-term memory repaired",
+                          "compact retrieval repaired",
+                          "RAM canonical migration complete",
+                          "external actions executed"
+                      ],
+    "boundary":  {
+                     "runtime_launched_by_validator":  true,
+                     "action_execution_allowed":  false,
+                     "active_memory_mutated":  false,
+                     "canonical_launcher_mutated":  false,
+                     "direct_active_memory_write":  false,
+                     "codex_launched":  false,
+                     "web_launched":  false,
+                     "school_launched":  false,
+                     "ram_migration":  false
+                 }
+}
