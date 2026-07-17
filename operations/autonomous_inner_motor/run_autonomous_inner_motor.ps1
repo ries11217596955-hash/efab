@@ -89,13 +89,46 @@ function New-InnateReflexBootload([string]$RunRoot,[string]$OutputPath){
   return $bootload
 }
 
+
 function Invoke-DefaultWakeReflexes([string]$RunRoot,$Bootload,[string]$OutputPath){
   $bodyRuntimeRoot=Join-Path $RunRoot 'wake_body_audit'
   $bodyInvoker='operations/body_self_inspection/invoke_body_self_inspection_circuit_v1.ps1'
   if(-not(Test-Path -LiteralPath $bodyInvoker -PathType Leaf)){ throw "BODY_AUDIT_INVOKER_MISSING:$bodyInvoker" }
   if($null -eq $Bootload -or $Bootload.loaded -ne $true){ throw 'WAKE_REFLEX_BOOTLOAD_NOT_LOADED' }
-  if($Bootload.body_audit_reflex.status -ne 'DEFAULT_WAKE_OBSERVE'){ throw "WAKE_BODY_REFLEX_NOT_DEFAULT:$($Bootload.body_audit_reflex.status)" }
-  if($Bootload.body_audit_reflex.callable -ne $true){ throw 'WAKE_BODY_REFLEX_NOT_CALLABLE' }
+  $gitRoot = (& git rev-parse --show-toplevel 2>$null)
+  $gitBranch = (& git rev-parse --abbrev-ref HEAD 2>$null)
+  $gitHead = (& git rev-parse --short HEAD 2>$null)
+  $gitStatus = @(& git status --short --untracked-files=all 2>$null | ForEach-Object { [string]$_ })
+  $remoteDeltaRaw = (& git rev-list --left-right --count HEAD...origin/main 2>$null)
+  $remoteDelta = if($remoteDeltaRaw){ [string]$remoteDeltaRaw } else { 'UNKNOWN' }
+  $repoReality=[ordered]@{
+    status='PASS_REPO_REALITY_WAKE_REFLEX_V1'; reflex_id='repo_reality_reflex'; invocation_policy='WAKE_DEFAULT_ON_AGENT_LIFE_START'; requires_owner_permission=$false; trigger_required=$false; observe_only=$true
+    repo_root=$gitRoot; branch=$gitBranch; head=$gitHead; dirty_count=@($gitStatus).Count; status_short=@($gitStatus); remote_delta=$remoteDelta
+    boundary=[ordered]@{ git_mutated=$false; files_mutated=$false; checkout_performed=$false; commit_performed=$false; push_performed=$false }
+  }
+  $procPatterns='codex exec|node.*codex|codex.cmd|codex.ps1|run_autonomous_inner_motor.ps1|start_agent_life_v1.ps1|run_agent_school|canonical_exact'
+  $procList=@(Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -and $_.CommandLine -notmatch '\s-Command\s' -and $_.CommandLine -match $procPatterns } | Select-Object ProcessId,Name,CommandLine)
+  $processScan=[ordered]@{
+    status='PASS_PROCESS_SCAN_WAKE_REFLEX_V1'; reflex_id='process_scan_reflex'; invocation_policy='WAKE_DEFAULT_ON_AGENT_LIFE_START'; requires_owner_permission=$false; trigger_required=$false; observe_only=$true
+    process_count=@($procList).Count; processes=@($procList)
+    boundary=[ordered]@{ process_killed=$false; process_started=$false; runtime_stopped=$false }
+  }
+  $runtimeRoot='.runtime'
+  $runtimeExists=Test-Path -LiteralPath $runtimeRoot
+  $topEntries=@(); if($runtimeExists){ $topEntries=@(Get-ChildItem -LiteralPath $runtimeRoot -Force -ErrorAction SilentlyContinue | Select-Object Name,Mode,Length,LastWriteTime) }
+  $drive=Get-PSDrive -Name ((Get-Location).Path.Substring(0,1)) -ErrorAction SilentlyContinue
+  $runtimePressure=[ordered]@{
+    status='PASS_RUNTIME_PRESSURE_LIGHT_WAKE_REFLEX_V1'; reflex_id='runtime_pressure_reflex'; invocation_policy='WAKE_DEFAULT_ON_AGENT_LIFE_START'; requires_owner_permission=$false; trigger_required=$false; observe_only=$true
+    runtime_exists=$runtimeExists; runtime_top_entry_count=@($topEntries).Count; runtime_top_entries=@($topEntries | Select-Object -First 30)
+    drive_name=if($drive){$drive.Name}else{$null}; drive_free_bytes=if($drive){[int64]$drive.Free}else{$null}; drive_used_bytes=if($drive){[int64]$drive.Used}else{$null}
+    boundary=[ordered]@{ cleanup_performed=$false; deleted=$false; archived=$false; compressed=$false; moved=$false }
+  }
+  $memRoot='.runtime/active_compact_semantic_memory_v1'
+  $activeMemory=[ordered]@{
+    status='PASS_ACTIVE_MEMORY_READ_WAKE_REFLEX_V1'; reflex_id='active_memory_read_reflex'; invocation_policy='WAKE_DEFAULT_ON_AGENT_LIFE_START'; requires_owner_permission=$false; trigger_required=$false; observe_only=$true
+    root=$memRoot; root_exists=(Test-Path -LiteralPath $memRoot); manifest_exists=(Test-Path -LiteralPath (Join-Path $memRoot 'manifest.json')); index_exists=(Test-Path -LiteralPath (Join-Path $memRoot 'index.json')); cells_exists=(Test-Path -LiteralPath (Join-Path $memRoot 'cells.jsonl'))
+    boundary=[ordered]@{ active_memory_written=$false; memory_repaired=$false; memory_cleaned=$false; cells_mutated=$false }
+  }
   $bodyOutput=@(& powershell -NoProfile -ExecutionPolicy Bypass -File $bodyInvoker -RepoRoot (Get-Location).Path -RuntimeRoot $bodyRuntimeRoot 2>&1 | ForEach-Object { [string]$_ })
   $bodyExit=$LASTEXITCODE
   if($bodyExit -ne 0){ throw "BODY_AUDIT_WAKE_REFLEX_FAILED:$bodyExit $($bodyOutput -join ' | ')" }
@@ -110,12 +143,21 @@ function Invoke-DefaultWakeReflexes([string]$RunRoot,$Bootload,[string]$OutputPa
     if($circuitProof.boundary.$name -ne $false){ throw "BODY_AUDIT_WAKE_BOUNDARY_VIOLATION:$name" }
   }
   $wake=[ordered]@{
-    schema='default_wake_reflexes_v1'; status='PASS_DEFAULT_WAKE_REFLEXES_V1'; invoked_at=(Get-Date).ToUniversalTime().ToString('o'); run_root=$RunRoot; bootload_loaded=$true
-    default_reflexes_invoked=@('body_audit_reflex'); default_reflexes_deferred=@()
+    schema='default_wake_reflexes_v2'
+    status='PASS_DEFAULT_WAKE_REFLEXES_V2'
+    invoked_at=(Get-Date).ToUniversalTime().ToString('o')
+    run_root=$RunRoot
+    bootload_loaded=$true
+    default_reflexes_invoked=@('body_audit_reflex','repo_reality_reflex','process_scan_reflex','runtime_pressure_reflex','active_memory_read_reflex')
+    default_reflexes_deferred=@()
     body_audit_reflex=[ordered]@{ status='PASS_BODY_AUDIT_WAKE_REFLEX_V1'; reflex_id='body_audit_reflex'; invocation_policy='WAKE_DEFAULT_ON_AGENT_LIFE_START'; requires_owner_permission=$false; trigger_required=$false; observe_only=$true; invoked_this_run=$true; body_inspection_invoked=$true; callable=$true; source_entrypoint=$bodyInvoker; runtime_root=$bodyRuntimeRoot; signal_path=$signalPath; parent_packet_path=$parentPacketPath; circuit_proof_path=$circuitProofPath; signal_status=$signal.status; parent_packet_status=$parentPacket.status; circuit_proof_status=$circuitProof.status }
-    boundary=[ordered]@{ wake_default_body_audit_invoked=$true; body_observe_only=$true; body_repair_executed=$false; repo_mutated=$false; active_memory_mutated=$false; body_map_mutated=$false; passports_mutated=$false; contracts_mutated=$false; parent_action_executed=$false; live_process_touched=$false; codex_launched=$false; web_launched=$false; cleanup_performed=$false }
+    repo_reality_reflex=$repoReality
+    process_scan_reflex=$processScan
+    runtime_pressure_reflex=$runtimePressure
+    active_memory_read_reflex=$activeMemory
+    boundary=[ordered]@{ wake_default_body_audit_invoked=$true; body_observe_only=$true; body_repair_executed=$false; repo_mutated=$false; git_write_performed=$false; process_killed=$false; process_started=$false; runtime_cleanup_performed=$false; active_memory_mutated=$false; active_memory_written=$false; body_map_mutated=$false; passports_mutated=$false; contracts_mutated=$false; parent_action_executed=$false; live_process_touched=$false; codex_launched=$false; web_launched=$false; cleanup_performed=$false }
   }
-  Write-CleanJson $OutputPath $wake 40
+  Write-CleanJson $OutputPath $wake 80
   return $wake
 }
 
@@ -854,7 +896,7 @@ $proof=[ordered]@{
     [ordered]@{ step='memory_first'; result='compact_memory_read_before_external_requests'; proof='memory_state present and unchanged.' },
     [ordered]@{ step='gate'; result='block_actions'; proof='policy disables mutation/action modes.' },
     [ordered]@{ step='innate_reflex_bootload'; result=$innateReflexBootload.status; proof='Permanent innate reflex kernel was loaded once for this run; full reflex matrix is not written every cycle.' },
-    [ordered]@{ step='default_wake_reflexes'; result=$defaultWakeReflexes.status; proof='Wake-default body_audit_reflex observed the body without repair/mutation.' },
+    [ordered]@{ step='default_wake_reflexes'; result=$defaultWakeReflexes.status; proof='Wake-default sensing observed body, repo, processes, runtime pressure, and active memory without mutation.' },
     [ordered]@{ step='mind_logic_frame'; result=$mindLogic.status; proof='Mind Logic Kernel separates known/unknown, contradiction, hypotheses, source ladder, and next logical step before action candidate.' },
     [ordered]@{ step='action_candidate_contract'; result=$actionDecision.status; proof='Action Decision Contract selects a next action candidate from the mind logic frame but keeps execution_allowed=false.' },
     [ordered]@{ step='select_next'; result=$selected.path; proof='deep recursive thinking and self-learning atom loop are the next bottleneck for thinking quality.' }

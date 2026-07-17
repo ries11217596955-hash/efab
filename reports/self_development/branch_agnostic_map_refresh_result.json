@@ -1,29 +1,40 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-17T18:51:02.3336731+04:00",
+    "checked_at":  "2026-07-17T19:08:00.9837048+04:00",
     "branch":  "main",
-    "observed_head":  "c31c386175755b618c60dd9b14a3230c243fa842",
-    "subject_head":  "c31c386175755b618c60dd9b14a3230c243fa842",
+    "observed_head":  "dd0aae55f7f475f5499b7dcab1ffc50ba6b485a2",
+    "subject_head":  "dd0aae55f7f475f5499b7dcab1ffc50ba6b485a2",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "operations/autonomous_inner_motor/reports/CODEX_INNATE_REFLEX_BOOTLOAD_V1_HUNG_NO_EDITS_REPORT.json",
-                          "operations/autonomous_inner_motor/reports/INNATE_REFLEX_BOOTLOAD_V1_ACCEPTANCE.json",
+                          "AGENT_BUILDER_INNATE_REFLEX_KERNEL_V1_PLAN.md",
+                          "operations/autonomous_inner_motor/build_innate_reflex_kernel_v1.ps1",
+                          "operations/autonomous_inner_motor/innate_reflex_kernel_v1.json",
+                          "operations/autonomous_inner_motor/reports/DEFAULT_WAKE_REFLEXES_V1_ACCEPTANCE.json",
                           "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
+                          "tests/self_development/CALLABLE_INNATE_REFLEX_KERNEL_V1_PROOF.json",
+                          "tests/self_development/DEFAULT_WAKE_REFLEXES_V1_PROOF.json",
                           "tests/self_development/INNATE_REFLEX_BOOTLOAD_V1_PROOF.json",
+                          "validators/validate_callable_innate_reflex_kernel_v1.ps1",
+                          "validators/validate_default_wake_reflexes_v1.ps1",
                           "validators/validate_innate_reflex_bootload_v1.ps1"
                       ],
     "structural_paths":  [
-                             "operations/autonomous_inner_motor/reports/CODEX_INNATE_REFLEX_BOOTLOAD_V1_HUNG_NO_EDITS_REPORT.json",
-                             "operations/autonomous_inner_motor/reports/INNATE_REFLEX_BOOTLOAD_V1_ACCEPTANCE.json",
+                             "operations/autonomous_inner_motor/build_innate_reflex_kernel_v1.ps1",
+                             "operations/autonomous_inner_motor/innate_reflex_kernel_v1.json",
+                             "operations/autonomous_inner_motor/reports/DEFAULT_WAKE_REFLEXES_V1_ACCEPTANCE.json",
                              "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+                             "tests/self_development/CALLABLE_INNATE_REFLEX_KERNEL_V1_PROOF.json",
+                             "tests/self_development/DEFAULT_WAKE_REFLEXES_V1_PROOF.json",
                              "tests/self_development/INNATE_REFLEX_BOOTLOAD_V1_PROOF.json",
+                             "validators/validate_callable_innate_reflex_kernel_v1.ps1",
+                             "validators/validate_default_wake_reflexes_v1.ps1",
                              "validators/validate_innate_reflex_bootload_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
@@ -36,8 +47,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2164,
-                                    "sha256":  "e8bfd912bb37c15ba49c8599ff4224a987c059748828f54b262610b5e73931cf"
+                                    "structural_file_count":  2165,
+                                    "sha256":  "29c2ae921bc9a1fa03ed4ab076b96bf1c054c52d994893f566d895389d37d737"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -63,12 +74,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  152,
-                         "structural_path_count":  2164,
+                         "structural_path_count":  2165,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-17T18:51:37.5395040+04:00"
+    "refreshed_at":  "2026-07-17T19:08:36.2305091+04:00"
 }

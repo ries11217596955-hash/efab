@@ -1,14 +1,293 @@
 {
-    "schema":  "default_wake_reflexes_v1_validation",
-    "status":  "PASS_DEFAULT_WAKE_REFLEXES_V1",
-    "checked_at":  "2026-07-17T14:49:40.5522547Z",
+    "schema":  "default_wake_reflexes_v2_validation",
+    "status":  "PASS_DEFAULT_WAKE_REFLEXES_V2",
+    "checked_at":  "2026-07-17T15:04:20.6102489Z",
     "runner":  "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
     "validator":  "validators/validate_default_wake_reflexes_v1.ps1",
     "runner_smoke_exit_code":  0,
-    "runner_smoke_output_root":  ".runtime/self_development/default_wake_reflexes_v1_runner_test",
-    "runtime_run_dir":  "H:\\efab\\.runtime\\self_development\\default_wake_reflexes_v1_runner_test\\aimo_20260717_184734",
+    "runner_smoke_output_root":  ".runtime/self_development/default_wake_reflexes_v2_runner_test",
+    "runtime_run_dir":  "H:\\efab\\.runtime\\self_development\\default_wake_reflexes_v2_runner_test\\aimo_20260717_190213",
     "wake_summary":  {
-                         "status":  "PASS_DEFAULT_WAKE_REFLEXES_V1",
+                         "status":  "PASS_DEFAULT_WAKE_REFLEXES_V2",
+                         "invoked":  [
+                                         "body_audit_reflex",
+                                         "repo_reality_reflex",
+                                         "process_scan_reflex",
+                                         "runtime_pressure_reflex",
+                                         "active_memory_read_reflex"
+                                     ],
+                         "repo_reality_reflex":  {
+                                                     "status":  "PASS_REPO_REALITY_WAKE_REFLEX_V1",
+                                                     "reflex_id":  "repo_reality_reflex",
+                                                     "invocation_policy":  "WAKE_DEFAULT_ON_AGENT_LIFE_START",
+                                                     "requires_owner_permission":  false,
+                                                     "trigger_required":  false,
+                                                     "observe_only":  true,
+                                                     "repo_root":  "H:/efab",
+                                                     "branch":  "main",
+                                                     "head":  "dd0aae5",
+                                                     "dirty_count":  8,
+                                                     "status_short":  [
+                                                                          " M AGENT_BUILDER_INNATE_REFLEX_KERNEL_V1_PLAN.md",
+                                                                          " M AGENT_BUILDER_SELF_NOTEBOOK.md",
+                                                                          " M operations/autonomous_inner_motor/build_innate_reflex_kernel_v1.ps1",
+                                                                          " M operations/autonomous_inner_motor/innate_reflex_kernel_v1.json",
+                                                                          " M operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+                                                                          " M tests/self_development/CALLABLE_INNATE_REFLEX_KERNEL_V1_PROOF.json",
+                                                                          " M validators/validate_callable_innate_reflex_kernel_v1.ps1",
+                                                                          " M validators/validate_default_wake_reflexes_v1.ps1"
+                                                                      ],
+                                                     "remote_delta":  "0\t0",
+                                                     "boundary":  {
+                                                                      "git_mutated":  false,
+                                                                      "files_mutated":  false,
+                                                                      "checkout_performed":  false,
+                                                                      "commit_performed":  false,
+                                                                      "push_performed":  false
+                                                                  }
+                                                 },
+                         "process_scan_reflex":  {
+                                                     "status":  "PASS_PROCESS_SCAN_WAKE_REFLEX_V1",
+                                                     "reflex_id":  "process_scan_reflex",
+                                                     "invocation_policy":  "WAKE_DEFAULT_ON_AGENT_LIFE_START",
+                                                     "requires_owner_permission":  false,
+                                                     "trigger_required":  false,
+                                                     "observe_only":  true,
+                                                     "process_count":  1,
+                                                     "processes":  [
+                                                                       {
+                                                                           "ProcessId":  2016820,
+                                                                           "Name":  "powershell.exe",
+                                                                           "CommandLine":  "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -NoProfile -ExecutionPolicy Bypass -File operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1 -Mode SandboxExploration -Question \"default wake reflex v2 validator\" -OutputRoot .runtime/self_development/default_wake_reflexes_v2_runner_test"
+                                                                       }
+                                                                   ],
+                                                     "boundary":  {
+                                                                      "process_killed":  false,
+                                                                      "process_started":  false,
+                                                                      "runtime_stopped":  false
+                                                                  }
+                                                 },
+                         "runtime_pressure_reflex":  {
+                                                         "status":  "PASS_RUNTIME_PRESSURE_LIGHT_WAKE_REFLEX_V1",
+                                                         "reflex_id":  "runtime_pressure_reflex",
+                                                         "invocation_policy":  "WAKE_DEFAULT_ON_AGENT_LIFE_START",
+                                                         "requires_owner_permission":  false,
+                                                         "trigger_required":  false,
+                                                         "observe_only":  true,
+                                                         "runtime_exists":  true,
+                                                         "runtime_top_entry_count":  71,
+                                                         "runtime_top_entries":  [
+                                                                                     {
+                                                                                         "Name":  "active_compact_semantic_memory_v1",
+                                                                                         "Mode":  "d-----",
+                                                                                         "Length":  null,
+                                                                                         "LastWriteTime":  "\/Date(1784212744544)\/"
+                                                                                     },
+                                                                                     {
+                                                                                         "Name":  "active_compact_semantic_memory_v1_backups",
+                                                                                         "Mode":  "d-----",
+                                                                                         "Length":  null,
+                                                                                         "LastWriteTime":  "\/Date(1784050248832)\/"
+                                                                                     },
+                                                                                     {
+                                                                                         "Name":  "active_compact_semantic_memory_v1_compaction_work_20260714",
+                                                                                         "Mode":  "d-----",
+                                                                                         "Length":  null,
+                                                                                         "LastWriteTime":  "\/Date(1784032521576)\/"
+                                                                                     },
+                                                                                     {
+                                                                                         "Name":  "agent_action_decision_contract_v1",
+                                                                                         "Mode":  "d-----",
+                                                                                         "Length":  null,
+                                                                                         "LastWriteTime":  "\/Date(1784192430285)\/"
+                                                                                     },
+                                                                                     {
+                                                                                         "Name":  "agent_mind_logic_kernel_v1",
+                                                                                         "Mode":  "d-----",
+                                                                                         "Length":  null,
+                                                                                         "LastWriteTime":  "\/Date(1784211466719)\/"
+                                                                                     },
+                                                                                     {
+                                                                                         "Name":  "autonomous_inner_motor",
+                                                                                         "Mode":  "d-----",
+                                                                                         "Length":  null,
+                                                                                         "LastWriteTime":  "\/Date(1784282292385)\/"
+                                                                                     },
+                                                                                     {
+                                                                                         "Name":  "autonomous_inner_motor_gate_validator",
+                                                                                         "Mode":  "d-----",
+                                                                                         "Length":  null,
+                                                                                         "LastWriteTime":  "\/Date(1784133068239)\/"
+                                                                                     },
+                                                                                     {
+                                                                                         "Name":  "body_self_inspection_v1",
+                                                                                         "Mode":  "d-----",
+                                                                                         "Length":  null,
+                                                                                         "LastWriteTime":  "\/Date(1784260843117)\/"
+                                                                                     },
+                                                                                     {
+                                                                                         "Name":  "canonical_exact_count_cycle",
+                                                                                         "Mode":  "d-----",
+                                                                                         "Length":  null,
+                                                                                         "LastWriteTime":  "\/Date(1784188005155)\/"
+                                                                                     },
+                                                                                     {
+                                                                                         "Name":  "codex_drafts",
+                                                                                         "Mode":  "d-----",
+                                                                                         "Length":  null,
+                                                                                         "LastWriteTime":  "\/Date(1784290627011)\/"
+                                                                                     },
+                                                                                     {
+                                                                                         "Name":  "codex_reports",
+                                                                                         "Mode":  "d-----",
+                                                                                         "Length":  null,
+                                                                                         "LastWriteTime":  "\/Date(1784290002339)\/"
+                                                                                     },
+                                                                                     {
+                                                                                         "Name":  "codex_runs",
+                                                                                         "Mode":  "d-----",
+                                                                                         "Length":  null,
+                                                                                         "LastWriteTime":  "\/Date(1784260192414)\/"
+                                                                                     },
+                                                                                     {
+                                                                                         "Name":  "compact_memory_growth_signal_v1",
+                                                                                         "Mode":  "d-----",
+                                                                                         "Length":  null,
+                                                                                         "LastWriteTime":  "\/Date(1783970130575)\/"
+                                                                                     },
+                                                                                     {
+                                                                                         "Name":  "compact_memory_intake_v1",
+                                                                                         "Mode":  "d-----",
+                                                                                         "Length":  null,
+                                                                                         "LastWriteTime":  "\/Date(1784212744944)\/"
+                                                                                     },
+                                                                                     {
+                                                                                         "Name":  "contradiction_resolver_v1",
+                                                                                         "Mode":  "d-----",
+                                                                                         "Length":  null,
+                                                                                         "LastWriteTime":  "\/Date(1784196802281)\/"
+                                                                                     },
+                                                                                     {
+                                                                                         "Name":  "control",
+                                                                                         "Mode":  "d-----",
+                                                                                         "Length":  null,
+                                                                                         "LastWriteTime":  "\/Date(1784019681814)\/"
+                                                                                     },
+                                                                                     {
+                                                                                         "Name":  "deep_source_answer_assimilation_v1",
+                                                                                         "Mode":  "d-----",
+                                                                                         "Length":  null,
+                                                                                         "LastWriteTime":  "\/Date(1784207379140)\/"
+                                                                                     },
+                                                                                     {
+                                                                                         "Name":  "deep_source_answer_request_v1",
+                                                                                         "Mode":  "d-----",
+                                                                                         "Length":  null,
+                                                                                         "LastWriteTime":  "\/Date(1784202117053)\/"
+                                                                                     },
+                                                                                     {
+                                                                                         "Name":  "digestion_policy",
+                                                                                         "Mode":  "d-----",
+                                                                                         "Length":  null,
+                                                                                         "LastWriteTime":  "\/Date(1784018778082)\/"
+                                                                                     },
+                                                                                     {
+                                                                                         "Name":  "digestion_reports",
+                                                                                         "Mode":  "d-----",
+                                                                                         "Length":  null,
+                                                                                         "LastWriteTime":  "\/Date(1784212742470)\/"
+                                                                                     },
+                                                                                     {
+                                                                                         "Name":  "execution_authority_passport_v1",
+                                                                                         "Mode":  "d-----",
+                                                                                         "Length":  null,
+                                                                                         "LastWriteTime":  "\/Date(1784194006746)\/"
+                                                                                     },
+                                                                                     {
+                                                                                         "Name":  "file_atom_absorption",
+                                                                                         "Mode":  "d-----",
+                                                                                         "Length":  null,
+                                                                                         "LastWriteTime":  "\/Date(1784212719043)\/"
+                                                                                     },
+                                                                                     {
+                                                                                         "Name":  "hypothesis_tester_v1",
+                                                                                         "Mode":  "d-----",
+                                                                                         "Length":  null,
+                                                                                         "LastWriteTime":  "\/Date(1784197439820)\/"
+                                                                                     },
+                                                                                     {
+                                                                                         "Name":  "live_trials",
+                                                                                         "Mode":  "d-----",
+                                                                                         "Length":  null,
+                                                                                         "LastWriteTime":  "\/Date(1784282235603)\/"
+                                                                                     },
+                                                                                     {
+                                                                                         "Name":  "manual_probe",
+                                                                                         "Mode":  "d-----",
+                                                                                         "Length":  null,
+                                                                                         "LastWriteTime":  "\/Date(1784211500398)\/"
+                                                                                     },
+                                                                                     {
+                                                                                         "Name":  "map_control",
+                                                                                         "Mode":  "d-----",
+                                                                                         "Length":  null,
+                                                                                         "LastWriteTime":  "\/Date(1783967587476)\/"
+                                                                                     },
+                                                                                     {
+                                                                                         "Name":  "memory_commit_organ_v1",
+                                                                                         "Mode":  "d-----",
+                                                                                         "Length":  null,
+                                                                                         "LastWriteTime":  "\/Date(1784142358585)\/"
+                                                                                     },
+                                                                                     {
+                                                                                         "Name":  "memory_recall_relevance_filter_v1",
+                                                                                         "Mode":  "d-----",
+                                                                                         "Length":  null,
+                                                                                         "LastWriteTime":  "\/Date(1784195804624)\/"
+                                                                                     },
+                                                                                     {
+                                                                                         "Name":  "memory_to_next_path_reuse_gate_v1",
+                                                                                         "Mode":  "d-----",
+                                                                                         "Length":  null,
+                                                                                         "LastWriteTime":  "\/Date(1784273467708)\/"
+                                                                                     },
+                                                                                     {
+                                                                                         "Name":  "memory_use_probes",
+                                                                                         "Mode":  "d-----",
+                                                                                         "Length":  null,
+                                                                                         "LastWriteTime":  "\/Date(1784036483928)\/"
+                                                                                     }
+                                                                                 ],
+                                                         "drive_name":  "H",
+                                                         "drive_free_bytes":  996284928000,
+                                                         "drive_used_bytes":  3917111296,
+                                                         "boundary":  {
+                                                                          "cleanup_performed":  false,
+                                                                          "deleted":  false,
+                                                                          "archived":  false,
+                                                                          "compressed":  false,
+                                                                          "moved":  false
+                                                                      }
+                                                     },
+                         "active_memory_read_reflex":  {
+                                                           "status":  "PASS_ACTIVE_MEMORY_READ_WAKE_REFLEX_V1",
+                                                           "reflex_id":  "active_memory_read_reflex",
+                                                           "invocation_policy":  "WAKE_DEFAULT_ON_AGENT_LIFE_START",
+                                                           "requires_owner_permission":  false,
+                                                           "trigger_required":  false,
+                                                           "observe_only":  true,
+                                                           "root":  ".runtime/active_compact_semantic_memory_v1",
+                                                           "root_exists":  true,
+                                                           "manifest_exists":  true,
+                                                           "index_exists":  true,
+                                                           "cells_exists":  true,
+                                                           "boundary":  {
+                                                                            "active_memory_written":  false,
+                                                                            "memory_repaired":  false,
+                                                                            "memory_cleaned":  false,
+                                                                            "cells_mutated":  false
+                                                                        }
+                                                       },
                          "body_audit_reflex":  {
                                                    "status":  "PASS_BODY_AUDIT_WAKE_REFLEX_V1",
                                                    "reflex_id":  "body_audit_reflex",
@@ -20,10 +299,10 @@
                                                    "body_inspection_invoked":  true,
                                                    "callable":  true,
                                                    "source_entrypoint":  "operations/body_self_inspection/invoke_body_self_inspection_circuit_v1.ps1",
-                                                   "runtime_root":  ".runtime\\self_development\\default_wake_reflexes_v1_runner_test\\aimo_20260717_184734\\wake_body_audit",
-                                                   "signal_path":  ".runtime\\self_development\\default_wake_reflexes_v1_runner_test\\aimo_20260717_184734\\wake_body_audit\\body_self_inspection_signal.json",
-                                                   "parent_packet_path":  ".runtime\\self_development\\default_wake_reflexes_v1_runner_test\\aimo_20260717_184734\\wake_body_audit\\body_self_inspection_parent_packet.json",
-                                                   "circuit_proof_path":  ".runtime\\self_development\\default_wake_reflexes_v1_runner_test\\aimo_20260717_184734\\wake_body_audit\\BODY_SELF_INSPECTION_CIRCUIT_PROOF.json",
+                                                   "runtime_root":  ".runtime\\self_development\\default_wake_reflexes_v2_runner_test\\aimo_20260717_190213\\wake_body_audit",
+                                                   "signal_path":  ".runtime\\self_development\\default_wake_reflexes_v2_runner_test\\aimo_20260717_190213\\wake_body_audit\\body_self_inspection_signal.json",
+                                                   "parent_packet_path":  ".runtime\\self_development\\default_wake_reflexes_v2_runner_test\\aimo_20260717_190213\\wake_body_audit\\body_self_inspection_parent_packet.json",
+                                                   "circuit_proof_path":  ".runtime\\self_development\\default_wake_reflexes_v2_runner_test\\aimo_20260717_190213\\wake_body_audit\\BODY_SELF_INSPECTION_CIRCUIT_PROOF.json",
                                                    "signal_status":  "PASS_BODY_SELF_INSPECTION_SIGNAL_V1",
                                                    "parent_packet_status":  "PASS_BODY_SELF_INSPECTION_PARENT_PACKET_V1",
                                                    "circuit_proof_status":  "PASS_BODY_SELF_INSPECTION_CIRCUIT_RUNTIME_V1"
@@ -33,7 +312,12 @@
                                           "body_observe_only":  true,
                                           "body_repair_executed":  false,
                                           "repo_mutated":  false,
+                                          "git_write_performed":  false,
+                                          "process_killed":  false,
+                                          "process_started":  false,
+                                          "runtime_cleanup_performed":  false,
                                           "active_memory_mutated":  false,
+                                          "active_memory_written":  false,
                                           "body_map_mutated":  false,
                                           "passports_mutated":  false,
                                           "contracts_mutated":  false,
@@ -49,12 +333,17 @@
                ],
     "boundary":  {
                      "wake_default_reflexes_integrated":  true,
-                     "body_audit_reflex_wake_default":  true,
+                     "wake_default_count":  5,
                      "requires_owner_permission":  false,
                      "trigger_required":  false,
                      "observe_only":  true,
                      "body_inspection_invoked":  true,
                      "repair_executed":  false,
+                     "repo_mutated":  false,
+                     "git_write_performed":  false,
+                     "process_killed":  false,
+                     "runtime_cleanup_performed":  false,
+                     "active_memory_written":  false,
                      "active_memory_mutated":  false,
                      "live_process_touched":  false,
                      "codex_launched":  false,

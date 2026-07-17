@@ -1,63 +1,30 @@
 {
     "schema":  "callable_innate_reflex_kernel_v1_validation",
     "status":  "PASS_CALLABLE_INNATE_REFLEX_KERNEL_V1_SLICE_A",
-    "checked_at":  "2026-07-17T14:45:21.4708197Z",
+    "checked_at":  "2026-07-17T15:02:09.4438094Z",
     "manifest":  "operations/autonomous_inner_motor/innate_reflex_kernel_v1.json",
     "builder":  "operations/autonomous_inner_motor/build_innate_reflex_kernel_v1.ps1",
     "reflex_count":  25,
-    "body_audit_reflex":  {
-                              "reflex_id":  "body_audit_reflex",
-                              "built_in":  true,
-                              "organ_id":  "BODY_SELF_INSPECTION_CIRCUIT_V1",
-                              "entrypoint":  "operations/body_self_inspection/invoke_body_self_inspection_circuit_v1.ps1",
-                              "can_hear_body":  true,
-                              "validator":  "validators/validate_body_self_inspection_circuit_v1.ps1",
-                              "callable":  true,
-                              "status":  "DEFAULT_WAKE_OBSERVE",
-                              "organ_status":  "KNOWN_ORGAN_AVAILABLE_WAKE_DEFAULT",
-                              "body_inspection_invoked":  false,
-                              "invoked_this_cycle":  false,
-                              "input_contract":  "wake_default_observe_only_no_owner_permission_required",
-                              "output_contract":  "body_self_inspection_signal_parent_packet_and_circuit_proof",
-                              "allowed_surfaces":  [
-                                                       "innate_reflex_kernel_registry",
-                                                       "canonical_wake_default_observe",
-                                                       "runtime_body_self_inspection_outputs",
-                                                       "runtime_default_wake_reflexes_proof"
-                                                   ],
-                              "forbidden_surfaces":  [
-                                                         "repair_execution",
-                                                         "map_mutation",
-                                                         "passport_mutation",
-                                                         "contract_mutation",
-                                                         "live_action",
-                                                         "direct_active_memory_write",
-                                                         "running_every_cycle",
-                                                         "legacy_launch_usage",
-                                                         "cleanup_performed"
-                                                     ],
-                              "proof_expectation":  "Wake-default observe-only body audit must prove body_self_inspection_signal, parent packet, circuit proof, and no repair/mutation.",
-                              "maturity":  "DEFAULT_WAKE_OBSERVE_READY",
-                              "invocation_policy":  "WAKE_DEFAULT_ON_AGENT_LIFE_START",
-                              "requires_owner_permission":  false,
-                              "trigger_required":  false,
-                              "wake_default":  true,
-                              "boundary":  {
-                                               "observe_only_wake_default":  true,
-                                               "body_inspection_invoked":  false,
-                                               "active_memory_mutated":  false,
-                                               "live_process_touched":  false,
-                                               "repair_executed":  false,
-                                               "legacy_launch_used":  false,
-                                               "runner_integrated":  true
-                                           }
-                          },
+    "wake_default_ids":  [
+                             "body_audit_reflex",
+                             "repo_reality_reflex",
+                             "process_scan_reflex",
+                             "runtime_pressure_reflex",
+                             "active_memory_read_reflex"
+                         ],
     "runtime_summary":  {
                             "status":  "PASS_CALLABLE_INNATE_REFLEX_KERNEL_V1_SLICE_A",
                             "reflex_count":  25,
-                            "callable_count":  1,
-                            "wake_default_count":  1,
-                            "reserved_count":  24,
+                            "callable_count":  5,
+                            "wake_default_count":  5,
+                            "reserved_count":  20,
+                            "wake_default_ids":  [
+                                                     "body_audit_reflex",
+                                                     "repo_reality_reflex",
+                                                     "process_scan_reflex",
+                                                     "runtime_pressure_reflex",
+                                                     "active_memory_read_reflex"
+                                                 ],
                             "body_audit_reflex":  {
                                                       "reflex_id":  "body_audit_reflex",
                                                       "built_in":  true,
@@ -80,7 +47,7 @@
                ],
     "boundary":  {
                      "manifest_only":  true,
-                     "body_audit_reflex_wake_default":  true,
+                     "wake_default_reflexes":  5,
                      "body_inspection_invoked":  false,
                      "active_memory_mutated":  false,
                      "live_process_touched":  false,

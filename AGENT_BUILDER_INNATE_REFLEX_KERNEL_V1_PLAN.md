@@ -744,3 +744,62 @@ Do not write active memory directly.
 Do not treat body sensing as Owner-authorized live action.
 Do not run all reflexes by default.
 ```
+
+## 19. DEFAULT_WAKE_REFLEXES_V2
+
+Owner decision:
+
+```text
+Wake-default should include more read-only sensing reflexes, not only body sensing.
+```
+
+Default wake set V2:
+
+```text
+body_audit_reflex = observe body
+repo_reality_reflex = observe repo root/branch/HEAD/dirty/remote delta
+process_scan_reflex = observe duplicate life/codex/school processes
+runtime_pressure_reflex = observe runtime/drive pressure light, no cleanup
+active_memory_read_reflex = observe active memory root/manifest/index/cells availability
+```
+
+Allowed by wake-default:
+
+```text
+read
+observe
+sense
+emit signal
+write runtime proof
+```
+
+Forbidden by wake-default:
+
+```text
+repair
+mutate repo
+kill process
+cleanup runtime
+archive/compress/delete
+write active memory
+launch Codex
+browse web
+start child agent
+```
+
+Codex/Web remain triggered, not wake-default:
+
+```text
+codex_consult_reflex = triggered
+web_source_search_reflex = triggered
+```
+
+Acceptance for V2:
+
+```text
+default_wake_reflexes.status = PASS_DEFAULT_WAKE_REFLEXES_V2
+invoked includes body_audit_reflex, repo_reality_reflex, process_scan_reflex, runtime_pressure_reflex, active_memory_read_reflex
+all V2 reflexes require_owner_permission=false and trigger_required=false
+all V2 reflexes are observe-only/read-only
+boundary has no repair/mutation/cleanup/process kill/git write/active memory write
+```
