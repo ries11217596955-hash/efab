@@ -1,3 +1,8 @@
+<!--
+Current status as of 2026-07-17: ARCHIVE_REFERENCE.
+Superseded by AGENT_BUILDER_INNATE_REFLEX_KERNEL_V1_PLAN.md as current root growth plan.
+Do not delete without explicit Owner decision; keep as historical route-lock reference.
+-->
 # AGENT_BUILDER_NEXT_15_STEPS_LOCK_V2_R2
 
 # Agent Builder Next 15 Steps Lock V2_R2

@@ -1,33 +1,33 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-17T13:56:09.2287117+04:00",
+    "checked_at":  "2026-07-17T14:14:09.1105691+04:00",
     "branch":  "main",
-    "observed_head":  "cd0357ca6db071cca5412cdbf178d3232bd239aa",
-    "subject_head":  "cd0357ca6db071cca5412cdbf178d3232bd239aa",
+    "observed_head":  "1310097a00f895ad9fd3cac96269477c2d17ed45",
+    "subject_head":  "1310097a00f895ad9fd3cac96269477c2d17ed45",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
                           "AGENT_BUILDER_SELF_NOTEBOOK.md",
-                          "operations/autonomous_inner_motor/AGENT_LIFE_LEGACY_LAUNCH_QUARANTINE_V1.json",
-                          "operations/autonomous_inner_motor/BODY_SELF_INSPECTION_CANONICAL_INTEGRATION_PLAN_V1.md",
-                          "operations/autonomous_inner_motor/reports/AGENT_LIFE_SINGLE_LAUNCH_WIRING_AUDIT_V1.json",
+                          "operations/autonomous_inner_motor/organ_knowledge/BODY_SELF_INSPECTION_CIRCUIT_V1_KNOWLEDGE.json",
+                          "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
                           "tests/self_development/AGENT_LIFE_QUARANTINE_AND_BODY_INTEGRATION_V1_PROOF.json",
-                          "tests/self_development/AGENT_LIFE_SINGLE_LAUNCH_WIRING_AUDIT_V1_PROOF.json",
-                          "validators/validate_agent_life_quarantine_and_body_integration_v1.ps1"
+                          "tests/self_development/BODY_SELF_INSPECTION_ORGAN_KNOWLEDGE_V1_PROOF.json",
+                          "tests/self_development/MENTAL_FRONTIER_ROUTER_V1_PROOF.json",
+                          "validators/validate_body_self_inspection_organ_knowledge_v1.ps1"
                       ],
     "structural_paths":  [
-                             "operations/autonomous_inner_motor/AGENT_LIFE_LEGACY_LAUNCH_QUARANTINE_V1.json",
-                             "operations/autonomous_inner_motor/BODY_SELF_INSPECTION_CANONICAL_INTEGRATION_PLAN_V1.md",
-                             "operations/autonomous_inner_motor/reports/AGENT_LIFE_SINGLE_LAUNCH_WIRING_AUDIT_V1.json",
+                             "operations/autonomous_inner_motor/organ_knowledge/BODY_SELF_INSPECTION_CIRCUIT_V1_KNOWLEDGE.json",
+                             "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
                              "tests/self_development/AGENT_LIFE_QUARANTINE_AND_BODY_INTEGRATION_V1_PROOF.json",
-                             "tests/self_development/AGENT_LIFE_SINGLE_LAUNCH_WIRING_AUDIT_V1_PROOF.json",
-                             "validators/validate_agent_life_quarantine_and_body_integration_v1.ps1"
+                             "tests/self_development/BODY_SELF_INSPECTION_ORGAN_KNOWLEDGE_V1_PROOF.json",
+                             "tests/self_development/MENTAL_FRONTIER_ROUTER_V1_PROOF.json",
+                             "validators/validate_body_self_inspection_organ_knowledge_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -39,8 +39,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2137,
-                                    "sha256":  "3559e42fee95a574db4dd23d0fb0b7ae1af572cc8333d6761797e597f053cc59"
+                                    "structural_file_count":  2140,
+                                    "sha256":  "02a388e38ac92a2b1a84eafa152c506831388fabba4eec90734cc8feabbaec1e"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -66,12 +66,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  152,
-                         "structural_path_count":  2137,
+                         "structural_path_count":  2140,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-17T13:56:44.0931975+04:00"
+    "refreshed_at":  "2026-07-17T14:14:43.9268071+04:00"
 }
