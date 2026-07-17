@@ -1,0 +1,50 @@
+{
+    "schema":  "mind_repair_priority_decision_v1",
+    "status":  "PASS_MIND_REPAIR_PRIORITY_DECISION_V1",
+    "checked_at":  "2026-07-17T19:54:31.6303968Z",
+    "decision":  "LOGIC_FIRST",
+    "first_repair_target":  "NEXT_BUILD_TASK_DECISION_SPINE_V1",
+    "evidence_from":  "operations/autonomous_inner_motor/reports/MIND_AUDIT_M1_CURRENT_MIND_TOPOLOGY_V1.json",
+    "severity_basis":  [
+                           {
+                               "finding":  "DECISION_CHAIN_ENDS_AT_QUEUE_PACKET",
+                               "severity":  "HIGH",
+                               "priority_effect":  "forces logic first"
+                           },
+                           {
+                               "finding":  "FRONTIER_TO_BUILD_TASK_MISSING",
+                               "severity":  "HIGH",
+                               "priority_effect":  "forces decision-to-task spine"
+                           },
+                           {
+                               "finding":  "SHORT_TERM_MEMORY_IS_WAKE_CONTEXT_NOT_MIND_STATE",
+                               "severity":  "MEDIUM",
+                               "priority_effect":  "important but after decision spine"
+                           }
+                       ],
+    "priority_order":  [
+                           "NEXT_BUILD_TASK_DECISION_SPINE_V1",
+                           "SELECTIVE_COMPACT_MEMORY_RETRIEVAL_V1",
+                           "SHORT_TERM_MIND_STATE_V1",
+                           "FRONTIER_TO_BUILD_TASK_ROUTER_V1",
+                           "AUDIT_RX1_REFLEX_MATRIX_CURRENT_STATE_V1",
+                           "AUDIT_R1_RAM_CANONICAL_MIGRATION_GAP_V1"
+                       ],
+    "acceptance_for_first_repair":  [
+                                        "decision_spine field exists in proof/summary",
+                                        "candidate_build_task or blocked_reason is non-empty",
+                                        "next_action_type is explicit",
+                                        "queue packet creation is not counted as final action",
+                                        "validator proves boundary"
+                                    ],
+    "boundary":  {
+                     "plan_only":  true,
+                     "runtime_launched":  false,
+                     "active_memory_mutated":  false,
+                     "canonical_launcher_mutated":  false,
+                     "cycle_runner_mutated":  false,
+                     "codex_launched":  false,
+                     "web_launched":  false,
+                     "school_launched":  false
+                 }
+}

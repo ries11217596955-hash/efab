@@ -535,3 +535,41 @@ Needed audit:
 ```text
 AUDIT_RX1_REFLEX_MATRIX_CURRENT_STATE_V1
 ```
+## 10. Repair priority decision after M1
+
+Status: ACTIVE_PRIORITY
+
+Decision:
+
+```text
+LOGIC FIRST
+```
+
+Source:
+
+```text
+AGENT_BUILDER_MIND_REPAIR_PRIORITY_PLAN_V1.md
+```
+
+Reason:
+
+```text
+M1 showed HIGH severity gaps in decision chain and frontier-to-build-task conversion.
+Short-term memory is important, but building it before the decision spine would preserve bad/unfinished decisions.
+```
+
+First repair target:
+
+```text
+NEXT_BUILD_TASK_DECISION_SPINE_V1
+```
+
+Then:
+
+```text
+SELECTIVE_COMPACT_MEMORY_RETRIEVAL_V1
+SHORT_TERM_MIND_STATE_V1
+FRONTIER_TO_BUILD_TASK_ROUTER_V1
+AUDIT_RX1_REFLEX_MATRIX_CURRENT_STATE_V1
+AUDIT_R1_RAM_CANONICAL_MIGRATION_GAP_V1
+```
