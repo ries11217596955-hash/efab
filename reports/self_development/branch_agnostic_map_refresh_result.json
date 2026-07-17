@@ -1,21 +1,23 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-17T09:54:25.4850404+04:00",
+    "checked_at":  "2026-07-17T10:47:37.1675578+04:00",
     "branch":  "main",
-    "observed_head":  "a2e03bd753006f4cfeaaa93a440713936ab67e90",
-    "subject_head":  "a2e03bd753006f4cfeaaa93a440713936ab67e90",
+    "observed_head":  "121704de0b255c9160e5b36d1dfea0412bf0f172",
+    "subject_head":  "121704de0b255c9160e5b36d1dfea0412bf0f172",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
+                          "AGENT_BUILDER_SELF_NOTEBOOK.md",
+                          "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json"
                       ],
     "structural_paths":  [
-
+                             "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -28,7 +30,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  2117,
-                                    "sha256":  "f0eee49a6caa019901be8540f50148077bd6ec488825fa090ed3ea1321fe91f6"
+                                    "sha256":  "fe81d4469f0273de6226c3943eedcdb3260939a194ebab42347c9936fe109abc"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -61,5 +63,5 @@
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-17T09:55:00.0024954+04:00"
+    "refreshed_at":  "2026-07-17T10:48:11.1989630+04:00"
 }
