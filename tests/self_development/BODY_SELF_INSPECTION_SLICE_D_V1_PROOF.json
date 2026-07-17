@@ -1,0 +1,543 @@
+{
+    "circuit_ref":  "BODY_SELF_INSPECTION_CIRCUIT_V1",
+    "boundary":  {
+                     "passports_mutated":  false,
+                     "web_launched":  false,
+                     "accepted_core_mutated":  false,
+                     "body_map_mutated":  false,
+                     "live_process_touched":  false,
+                     "active_memory_mutated":  false,
+                     "capability_map_mutated":  false,
+                     "codex_launched":  false,
+                     "contracts_mutated":  false,
+                     "repo_mutated":  false,
+                     "cleanup_performed":  false
+                 },
+    "validator_ref":  "validators/validate_body_self_inspection_slice_d_v1.ps1",
+    "aggregate_counts":  {
+                             "body_reconciliation":  {
+                                                         "total_reconciliation_records":  1742,
+                                                         "total_discrepancy_records":  1514,
+                                                         "reference_status_counts":  {
+                                                                                         "REF_PRESENT":  3993,
+                                                                                         "REF_DECLARED_ONLY":  7
+                                                                                     },
+                                                         "discrepancy_type_counts":  {
+                                                                                         "CANDIDATE_WITHOUT_CONTRACT":  334,
+                                                                                         "CANDIDATE_WITHOUT_VALIDATOR":  99,
+                                                                                         "CANDIDATE_WITHOUT_PASSPORT":  428,
+                                                                                         "CANDIDATE_WITHOUT_SIGNAL":  290,
+                                                                                         "FUNCTIONAL_OVERLAP_NEEDS_REVIEW":  14,
+                                                                                         "SIGNAL_CONTRACT_WITHOUT_VALIDATOR":  2,
+                                                                                         "CANDIDATE_WITHOUT_PROOF":  347
+                                                                                     },
+                                                         "severity_counts":  {
+                                                                                 "LOW":  290,
+                                                                                 "MEDIUM":  1224
+                                                                             },
+                                                         "boundary_note":  "DECLARED != PRESENT; PRESENT != VALIDATED; VALIDATED != MATURE; SIMILAR != DUPLICATE_PROVEN; DISCREPANCY != REPAIR_DRAFT"
+                                                     }
+                         },
+    "errors":  [
+
+               ],
+    "schema":  "body_self_inspection_slice_d_validator_proof_v1",
+    "negative_test_results":  [
+                                  {
+                                      "evidence":  "candidate_detected records checked for subject_kind ORGAN",
+                                      "name":  "candidate_is_not_promoted_to_organ",
+                                      "passed":  true
+                                  },
+                                  {
+                                      "evidence":  "boundary_claims.declared_treated_as_present",
+                                      "name":  "declared_not_treated_as_present",
+                                      "passed":  true
+                                  },
+                                  {
+                                      "evidence":  "boundary_claims.present_treated_as_validated",
+                                      "name":  "present_not_treated_as_validated",
+                                      "passed":  true
+                                  },
+                                  {
+                                      "evidence":  "boundary_claims.validated_treated_as_mature",
+                                      "name":  "validated_not_treated_as_mature",
+                                      "passed":  true
+                                  },
+                                  {
+                                      "evidence":  "boundary_claims.similarity_treated_as_duplicate_proof",
+                                      "name":  "similarity_not_duplicate_proof",
+                                      "passed":  true
+                                  },
+                                  {
+                                      "evidence":  "boundary_claims.discrepancy_treated_as_repair_draft",
+                                      "name":  "discrepancy_not_repair_draft",
+                                      "passed":  true
+                                  }
+                              ],
+    "generated_at":  "2026-07-17T02:52:08.4829977Z",
+    "status":  "PASS_BODY_SELF_INSPECTION_SLICE_D_V1",
+    "git_status_before_invoker":  [
+                                      "?? operations/body_self_inspection/invoke_body_self_inspection_slice_d_v1.ps1",
+                                      "?? operations/body_self_inspection/reconcile_body_state_v1.ps1",
+                                      "?? tests/self_development/BODY_SELF_INSPECTION_SLICE_D_V1_PROOF.json",
+                                      "?? validators/validate_body_self_inspection_slice_d_v1.ps1"
+                                  ],
+    "output_refs":  {
+                        "body_reconciliation":  "H:\\efab\\.runtime\\body_self_inspection_v1\\body_reconciliation.json",
+                        "capability_map_read":  "H:\\efab\\.runtime\\body_self_inspection_v1\\capability_map_read.json",
+                        "organ_similarity_index":  "H:\\efab\\.runtime\\body_self_inspection_v1\\organ_similarity_index.json",
+                        "body_map_read":  "H:\\efab\\.runtime\\body_self_inspection_v1\\body_map_read.json",
+                        "repo_inventory":  "H:\\efab\\.runtime\\body_self_inspection_v1\\repo_inventory.json",
+                        "passport_audit":  "H:\\efab\\.runtime\\body_self_inspection_v1\\passport_audit.json",
+                        "runtime_proof":  "H:\\efab\\.runtime\\body_self_inspection_v1\\BODY_SELF_INSPECTION_SLICE_D_PROOF.json",
+                        "slice_b_runtime_proof":  "H:\\efab\\.runtime\\body_self_inspection_v1\\BODY_SELF_INSPECTION_SLICE_B_PROOF.json",
+                        "slice_c_runtime_proof":  "H:\\efab\\.runtime\\body_self_inspection_v1\\BODY_SELF_INSPECTION_SLICE_C_PROOF.json",
+                        "signal_readiness_audit":  "H:\\efab\\.runtime\\body_self_inspection_v1\\signal_readiness_audit.json",
+                        "organ_candidates":  "H:\\efab\\.runtime\\body_self_inspection_v1\\organ_candidates.json",
+                        "slice_a_runtime_proof":  "H:\\efab\\.runtime\\body_self_inspection_v1\\BODY_SELF_INSPECTION_SLICE_A_PROOF.json"
+                    },
+    "git_status_after_invoker":  [
+                                     "?? operations/body_self_inspection/invoke_body_self_inspection_slice_d_v1.ps1",
+                                     "?? operations/body_self_inspection/reconcile_body_state_v1.ps1",
+                                     "?? tests/self_development/BODY_SELF_INSPECTION_SLICE_D_V1_PROOF.json",
+                                     "?? validators/validate_body_self_inspection_slice_d_v1.ps1"
+                                 ],
+    "validator_checks":  [
+                             {
+                                 "message":  "repo_inventory exists and parses",
+                                 "name":  "repo_inventory_parses",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "body_map_read exists and parses",
+                                 "name":  "body_map_read_parses",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "capability_map_read exists and parses",
+                                 "name":  "capability_map_read_parses",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "organ_candidates exists and parses",
+                                 "name":  "organ_candidates_parses",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "organ_similarity_index exists and parses",
+                                 "name":  "organ_similarity_index_parses",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "passport_audit exists and parses",
+                                 "name":  "passport_audit_parses",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "signal_readiness_audit exists and parses",
+                                 "name":  "signal_readiness_audit_parses",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "slice_a_runtime_proof exists and parses",
+                                 "name":  "slice_a_runtime_proof_parses",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "slice_b_runtime_proof exists and parses",
+                                 "name":  "slice_b_runtime_proof_parses",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "slice_c_runtime_proof exists and parses",
+                                 "name":  "slice_c_runtime_proof_parses",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "body_reconciliation exists and parses",
+                                 "name":  "body_reconciliation_parses",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof exists and parses",
+                                 "name":  "runtime_proof_parses",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "Slice A runtime proof status must be PASS",
+                                 "name":  "slice_a_runtime_status_pass",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "Slice B runtime proof status must be PASS",
+                                 "name":  "slice_b_runtime_status_pass",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "Slice C runtime proof status must be PASS",
+                                 "name":  "slice_c_runtime_status_pass",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "Slice D runtime proof status must be PASS",
+                                 "name":  "slice_d_runtime_status_pass",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "body reconciliation status must be PASS_BODY_RECONCILIATION_V1",
+                                 "name":  "reconciliation_status_pass",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "body_reconciliation top-level field exists: schema",
+                                 "name":  "top_field_schema",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "body_reconciliation top-level field exists: status",
+                                 "name":  "top_field_status",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "body_reconciliation top-level field exists: version",
+                                 "name":  "top_field_version",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "body_reconciliation top-level field exists: generated_at",
+                                 "name":  "top_field_generated_at",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "body_reconciliation top-level field exists: repo_root",
+                                 "name":  "top_field_repo_root",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "body_reconciliation top-level field exists: input_refs",
+                                 "name":  "top_field_input_refs",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "body_reconciliation top-level field exists: reconciliation_records",
+                                 "name":  "top_field_reconciliation_records",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "body_reconciliation top-level field exists: discrepancy_records",
+                                 "name":  "top_field_discrepancy_records",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "body_reconciliation top-level field exists: reference_status_index",
+                                 "name":  "top_field_reference_status_index",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "body_reconciliation top-level field exists: aggregates",
+                                 "name":  "top_field_aggregates",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "body_reconciliation top-level field exists: boundary_claims",
+                                 "name":  "top_field_boundary_claims",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "body_reconciliation top-level field exists: boundary",
+                                 "name":  "top_field_boundary",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "reconciliation records exist",
+                                 "name":  "reconciliation_records_exist",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "reference status index exists",
+                                 "name":  "reference_status_index_exists",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "discrepancy records exist when prior audits provide missing evidence",
+                                 "name":  "discrepancy_records_exist_when_audits_report_gaps",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "reconciliation records include required fields",
+                                 "name":  "reconciliation_record_required_fields",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "reconciliation records include source_refs and evidence_refs",
+                                 "name":  "reconciliation_records_have_source_and_evidence_refs",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "reconciliation records include forbidden_now",
+                                 "name":  "reconciliation_records_have_forbidden_now",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "Slice D does not promote candidates to organs",
+                                 "name":  "candidate_not_promoted_to_organ",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "maturity boundary does not claim mature organ",
+                                 "name":  "validated_not_treated_as_mature",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "discrepancy records include required fields",
+                                 "name":  "discrepancy_record_required_fields",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "discrepancy records include source_refs and evidence_refs",
+                                 "name":  "discrepancy_records_have_source_and_evidence_refs",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "discrepancy records include forbidden_now",
+                                 "name":  "discrepancy_records_have_forbidden_now",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "discrepancy_type values are allowed",
+                                 "name":  "discrepancy_types_allowed",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "severity values are allowed",
+                                 "name":  "discrepancy_severity_allowed",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "recommended next cells only point to allowed cells",
+                                 "name":  "recommended_next_cells_allowed",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "discrepancy records are not repair drafts",
+                                 "name":  "discrepancies_not_repair_drafts",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "reference status index entries include required fields",
+                                 "name":  "reference_status_index_required_fields",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "reference status values are allowed",
+                                 "name":  "reference_status_values_allowed",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "reference status entries include evidence_refs",
+                                 "name":  "reference_status_entries_have_evidence_refs",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "boundary claim is false: declared_treated_as_present",
+                                 "name":  "boundary_claim_false_declared_treated_as_present",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "boundary claim is false: present_treated_as_validated",
+                                 "name":  "boundary_claim_false_present_treated_as_validated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "boundary claim is false: validated_treated_as_mature",
+                                 "name":  "boundary_claim_false_validated_treated_as_mature",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "boundary claim is false: similarity_treated_as_duplicate_proof",
+                                 "name":  "boundary_claim_false_similarity_treated_as_duplicate_proof",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "boundary claim is false: audit_record_treated_as_pain_register",
+                                 "name":  "boundary_claim_false_audit_record_treated_as_pain_register",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "boundary claim is false: discrepancy_treated_as_repair_draft",
+                                 "name":  "boundary_claim_false_discrepancy_treated_as_repair_draft",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "boundary claim is false: candidate_promoted_to_organ",
+                                 "name":  "boundary_claim_false_candidate_promoted_to_organ",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "boundary claim is false: body_pain_register_implemented",
+                                 "name":  "boundary_claim_false_body_pain_register_implemented",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "boundary claim is false: repair_draft_board_implemented",
+                                 "name":  "boundary_claim_false_repair_draft_board_implemented",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "boundary claim is false: next_logic_queue_implemented",
+                                 "name":  "boundary_claim_false_next_logic_queue_implemented",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime proof boundary claim is false: declared_treated_as_present",
+                                 "name":  "runtime_boundary_claim_false_declared_treated_as_present",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime proof boundary claim is false: present_treated_as_validated",
+                                 "name":  "runtime_boundary_claim_false_present_treated_as_validated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime proof boundary claim is false: validated_treated_as_mature",
+                                 "name":  "runtime_boundary_claim_false_validated_treated_as_mature",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime proof boundary claim is false: similarity_treated_as_duplicate_proof",
+                                 "name":  "runtime_boundary_claim_false_similarity_treated_as_duplicate_proof",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime proof boundary claim is false: audit_record_treated_as_pain_register",
+                                 "name":  "runtime_boundary_claim_false_audit_record_treated_as_pain_register",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime proof boundary claim is false: discrepancy_treated_as_repair_draft",
+                                 "name":  "runtime_boundary_claim_false_discrepancy_treated_as_repair_draft",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime proof boundary claim is false: candidate_promoted_to_organ",
+                                 "name":  "runtime_boundary_claim_false_candidate_promoted_to_organ",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "no tracked map/passport/contract/active-memory/accepted-core/live-script mutation observed",
+                                 "name":  "no_tracked_map_passport_contract_mutation",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "body_reconciliation boundary flag is false: repo_mutated",
+                                 "name":  "boundary_body_reconciliation_repo_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "body_reconciliation boundary flag is false: active_memory_mutated",
+                                 "name":  "boundary_body_reconciliation_active_memory_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "body_reconciliation boundary flag is false: accepted_core_mutated",
+                                 "name":  "boundary_body_reconciliation_accepted_core_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "body_reconciliation boundary flag is false: body_map_mutated",
+                                 "name":  "boundary_body_reconciliation_body_map_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "body_reconciliation boundary flag is false: capability_map_mutated",
+                                 "name":  "boundary_body_reconciliation_capability_map_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "body_reconciliation boundary flag is false: passports_mutated",
+                                 "name":  "boundary_body_reconciliation_passports_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "body_reconciliation boundary flag is false: contracts_mutated",
+                                 "name":  "boundary_body_reconciliation_contracts_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "body_reconciliation boundary flag is false: live_process_touched",
+                                 "name":  "boundary_body_reconciliation_live_process_touched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "body_reconciliation boundary flag is false: codex_launched",
+                                 "name":  "boundary_body_reconciliation_codex_launched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "body_reconciliation boundary flag is false: web_launched",
+                                 "name":  "boundary_body_reconciliation_web_launched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "body_reconciliation boundary flag is false: cleanup_performed",
+                                 "name":  "boundary_body_reconciliation_cleanup_performed",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: repo_mutated",
+                                 "name":  "boundary_runtime_proof_repo_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: active_memory_mutated",
+                                 "name":  "boundary_runtime_proof_active_memory_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: accepted_core_mutated",
+                                 "name":  "boundary_runtime_proof_accepted_core_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: body_map_mutated",
+                                 "name":  "boundary_runtime_proof_body_map_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: capability_map_mutated",
+                                 "name":  "boundary_runtime_proof_capability_map_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: passports_mutated",
+                                 "name":  "boundary_runtime_proof_passports_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: contracts_mutated",
+                                 "name":  "boundary_runtime_proof_contracts_mutated",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: live_process_touched",
+                                 "name":  "boundary_runtime_proof_live_process_touched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: codex_launched",
+                                 "name":  "boundary_runtime_proof_codex_launched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: web_launched",
+                                 "name":  "boundary_runtime_proof_web_launched",
+                                 "passed":  true
+                             },
+                             {
+                                 "message":  "runtime_proof boundary flag is false: cleanup_performed",
+                                 "name":  "boundary_runtime_proof_cleanup_performed",
+                                 "passed":  true
+                             }
+                         ],
+    "slice":  "D"
+}
