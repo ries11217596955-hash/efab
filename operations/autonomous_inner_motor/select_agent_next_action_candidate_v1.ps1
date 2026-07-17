@@ -43,6 +43,9 @@ $unknown=@(
 )
 $gap='Agent has thinking and memory learning, but lacks a governed action-candidate contract between thought and execution.'
 $candidateActions=@()
+if(($AvoidActionIds -contains 'ACTION_CONTRACT_V1') -and ($AvoidActionIds -contains 'MEMORY_TO_NEXT_PATH_REUSE_GATE_V1') -and ($AvoidActionIds -contains 'MENTAL_FRONTIER_EXPANSION_GATE_V1')){
+  $candidateActions += [ordered]@{action_id='MENTAL_FRONTIER_ROUTER_V1'; action_type='write_install_ready_artifact'; target_surface='operations/autonomous_inner_motor'; required_authority='LAB_FILE_WRITE'; validator_required=$true; validator_refs=@('validators/validate_mental_frontier_router_v1.ps1'); proof_required=$true; rollback_plan='git restore changed files before commit; no active memory mutation'; execution_allowed=($Mode -eq 'LabOnly'); why_candidate='Mental frontier expansion was already selected/absorbed; next safe step is to route to a concrete frontier, not keep saying frontier is needed.'}
+}
 if(($AvoidActionIds -contains 'ACTION_CONTRACT_V1') -and ($AvoidActionIds -contains 'MEMORY_TO_NEXT_PATH_REUSE_GATE_V1')){
   $candidateActions += [ordered]@{action_id='MENTAL_FRONTIER_EXPANSION_GATE_V1'; action_type='write_install_ready_artifact'; target_surface='operations/autonomous_inner_motor'; required_authority='LAB_FILE_WRITE'; validator_required=$true; validator_refs=@('validators/validate_mental_frontier_expansion_gate_v1.ps1'); proof_required=$true; rollback_plan='git restore changed files before commit; no active memory mutation'; execution_allowed=($Mode -eq 'LabOnly'); why_candidate='Recent governed memory packets saturated one knowledge topic; next safe mental-growth step is to open a new frontier instead of alternating consumed paths.'}
 }

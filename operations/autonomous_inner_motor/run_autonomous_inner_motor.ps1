@@ -463,6 +463,43 @@ function Get-MentalFrontierExpansionGate([string]$QueueRoot,[int]$WindowSize=12,
     boundary=[ordered]@{ action_execution_allowed=$false; direct_active_memory_write=$false; queue_scan_only=$true; no_codex_launch=$true; no_web_research=$true }
   }
 }
+function Get-MentalFrontierRouter($ExpansionGate){
+  $candidates=@($ExpansionGate.next_frontier_candidates)
+  $scores=@()
+  foreach($candidate in $candidates){
+    $score=1
+    $reason='fallback_available_frontier'
+    if($candidate -eq 'body_self_inspection_signal'){
+      $score=5
+      $reason='body_self_inspection_circuit_exists_and_can_feed_self_observation'
+    } elseif($candidate -eq 'memory_quality_frontier'){
+      $score=4
+      $reason='recent_memory_topic_saturation_requires_quality_diversity'
+    } elseif($candidate -eq 'knowledge_source_gap'){
+      $score=3
+      $reason='new_knowledge_frontier_requires_source_gap_detection'
+    } elseif($candidate -eq 'validator_proof_gap'){
+      $score=2
+      $reason='proof_layer_can_strengthen_reuse_claims'
+    }
+    $scores += [ordered]@{ frontier=[string]$candidate; score=$score; reason=$reason }
+  }
+  $ordered=@($scores | Sort-Object score -Descending)
+  $selected=$ordered | Select-Object -First 1
+  return [ordered]@{
+    schema='mental_frontier_router_v1'
+    status=if($selected){'PASS_MENTAL_FRONTIER_ROUTER_V1'}else{'BLOCKED_MENTAL_FRONTIER_ROUTER_NO_CANDIDATES'}
+    routed_at=(Get-Date).ToUniversalTime().ToString('o')
+    expansion_gate_status=$ExpansionGate.status
+    saturated_topic=$ExpansionGate.saturated_topic
+    saturated_topic_count=$ExpansionGate.saturated_topic_count
+    candidates=@($ordered)
+    selected_frontier=if($selected){$selected.frontier}else{$null}
+    selected_reason=if($selected){$selected.reason}else{$null}
+    route_instruction=if($selected){'Next mental-growth cycle should generate knowledge/atom candidates for selected_frontier and avoid returning to saturated topic unless new evidence appears.'}else{'No frontier route available.'}
+    boundary=[ordered]@{ action_execution_allowed=$false; direct_active_memory_write=$false; router_only=$true; no_codex_launch=$true; no_web_research=$true; no_repo_repair_execution=$true }
+  }
+}
 function Get-LatestMemoryToNextPathReuseGate([string]$OutputRoot,[string]$CurrentRunRoot){
   if(-not(Test-Path -LiteralPath $OutputRoot)){ return $null }
   $currentPath=$null
@@ -579,6 +616,9 @@ foreach($id in @($mentalFrontierExpansionGate.next_action_avoid_ids)){
   if(-not [string]::IsNullOrWhiteSpace([string]$id) -and $avoidActionIds -notcontains [string]$id){ $avoidActionIds += [string]$id }
 }
 Write-CleanJson $mentalFrontierExpansionGatePath $mentalFrontierExpansionGate 20
+$mentalFrontierRouterPath = Join-Path $runRoot 'mental_frontier_router.json'
+$mentalFrontierRouter = Get-MentalFrontierRouter $mentalFrontierExpansionGate
+Write-CleanJson $mentalFrontierRouterPath $mentalFrontierRouter 20
 
 $actionDecision=[ordered]@{
   status='NOT_RUN'
@@ -691,6 +731,7 @@ $proof=[ordered]@{
   anti_repeat_guard=$antiRepeatGuard
   memory_to_next_path_reuse_gate=$memoryToNextPathReuseGate
   mental_frontier_expansion_gate=$mentalFrontierExpansionGate
+  mental_frontier_router=$mentalFrontierRouter
   policy_snapshot=[ordered]@{ allowed_modes=$policy.allowed_modes; disabled_modes=$policy.disabled_modes; source_ladder=$policy.source_ladder; ports=$policy.ports }
   self_question_trace=$cycles
   cycles=$cycles
@@ -713,11 +754,11 @@ $proof=[ordered]@{
   heartbeat=[ordered]@{ cycle_count=@($cycles).Count; alive='one_shot_sandbox'; background_process_started=$false }
   final_self_diagnosis='The motor can self-seed a thinking cycle, build a Mind Logic Frame, decompose a root question into ThoughtFrames, use memory recall, and return a next_action_candidate with execution disabled. Memory learning remains governed and optional.'
   stop_reason='PROTECTIVE_CHECKPOINT_THINKING_ONLY'
-  mutation_audit=[ordered]@{ active_memory_mutated=[bool]$EnableMemoryLearning; direct_active_memory_write=$false; governed_absorption_used=[bool]($EnableMemoryLearning -and $deepThinking.absorption); memory_ingestion_mode=if($deepThinking.absorption){$deepThinking.absorption.mode}else{$MemoryIngestionMode}; git_mutated=$false; codex_launched=$false; web_research_performed=$false; school_started=$false; background_process_started=$false; files_written=@($proofPath,$mindLogicPath,$actionDecisionPath,$antiRepeatGuardPath,$memoryToNextPathReuseGatePath,$mentalFrontierExpansionGatePath,$proofPackManifestPath) }
+  mutation_audit=[ordered]@{ active_memory_mutated=[bool]$EnableMemoryLearning; direct_active_memory_write=$false; governed_absorption_used=[bool]($EnableMemoryLearning -and $deepThinking.absorption); memory_ingestion_mode=if($deepThinking.absorption){$deepThinking.absorption.mode}else{$MemoryIngestionMode}; git_mutated=$false; codex_launched=$false; web_research_performed=$false; school_started=$false; background_process_started=$false; files_written=@($proofPath,$mindLogicPath,$actionDecisionPath,$antiRepeatGuardPath,$memoryToNextPathReuseGatePath,$mentalFrontierExpansionGatePath,$mentalFrontierRouterPath,$proofPackManifestPath) }
   validator_result=[ordered]@{ runner_self_check='PASS_RUNNER_GENERATED_SINGLE_SANDBOX_PROOF'; external_validator_expected='validators/validate_autonomous_inner_motor_organ_contract.ps1 -SandboxProofPath <proof>; validators/validate_autonomous_inner_motor_mind_logic_wiring_v1.ps1 -ProofPath <proof>; validators/validate_autonomous_inner_motor_action_decision_wiring_v1.ps1 -ProofPath <proof>' }
 }
 Write-CleanJson $proofPath $proof 80
-$proofPackRequiredFiles=@('SANDBOX_EXPLORATION_PROOF.json','mind_logic_frame.json','action_decision_packet.json','anti_repeat_guard.json','memory_to_next_path_reuse_gate.json','mental_frontier_expansion_gate.json')
+$proofPackRequiredFiles=@('SANDBOX_EXPLORATION_PROOF.json','mind_logic_frame.json','action_decision_packet.json','anti_repeat_guard.json','memory_to_next_path_reuse_gate.json','mental_frontier_expansion_gate.json','mental_frontier_router.json')
 $proofPackOptionalSidecars=@('memory_recall_filter.json','contradiction_resolution.json','hypothesis_test_result.json','deep_source_answer_request.json','memory_filter_for_answer.json','route_request_packet.json','source_authority_route_decision.json','deep_source_answer_assimilation.json','mind_delta_acceptance_decision.json')
 $proofPackFiles=@()
 foreach($name in @($proofPackRequiredFiles + $proofPackOptionalSidecars)){

@@ -333,7 +333,7 @@ If Owner asks what is next from current state:
     verify memory QueueOnly effect
     then choose Answer Assimilator V1 or action contract formalization based on proof
 
-## 2026-07-17 Ã¢â‚¬â€ AIMO memory-to-next-path reuse gate
+## 2026-07-17 ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â AIMO memory-to-next-path reuse gate
 
 STATUS: IMPLEMENTED_CANDIDATE / VALIDATOR_PASS
 
@@ -363,7 +363,7 @@ Next proof:
 - Validator must pass.
 - Next canonical agent life run should show consumed repeat candidate is not selected again after reuse gate.
 
-## 2026-07-17 â€” AIMO mental frontier expansion gate
+## 2026-07-17 Ã¢â‚¬â€ AIMO mental frontier expansion gate
 
 STATUS: IMPLEMENTED_CANDIDATE / VALIDATOR_PASS
 
@@ -392,3 +392,32 @@ Boundary:
 Next proof:
 - Validator PASS.
 - Next canonical smoke should show saturated old paths avoided and `MENTAL_FRONTIER_EXPANSION_GATE_V1` selected.
+
+## 2026-07-17 â€” AIMO mental frontier router
+
+STATUS: IMPLEMENTED_CANDIDATE / VALIDATOR_PASS
+
+Context:
+- `MENTAL_FRONTIER_EXPANSION_GATE_V1` proved topic saturation detection and old-path avoidance.
+- Remaining gap: expansion selected a generic frontier need, not a concrete next frontier.
+
+Decision:
+- Add `MENTAL_FRONTIER_ROUTER_V1`.
+- Router turns expansion candidates into a concrete selected frontier, currently prioritizing `body_self_inspection_signal` because the body self-inspection circuit exists and can feed self-observation.
+
+Files:
+- `operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1`
+- `operations/autonomous_inner_motor/select_agent_next_action_candidate_v1.ps1`
+- `validators/validate_mental_frontier_router_v1.ps1`
+- `tests/self_development/MENTAL_FRONTIER_ROUTER_V1_PROOF.json`
+
+Boundary:
+- Router only.
+- No live action.
+- No Codex/web from agent.
+- No repo repair execution by agent.
+- Memory growth remains governed QueueOnly through canonical launcher.
+
+Next proof:
+- Validator PASS.
+- Canonical smoke should show `mental_frontier_router.json` with selected concrete frontier.
