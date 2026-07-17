@@ -1,0 +1,21 @@
+{
+    "schema":  "compact_memory_intake_checkpoint_retention_v1_validation",
+    "status":  "PASS_COMPACT_MEMORY_INTAKE_CHECKPOINT_RETENTION_V1",
+    "checked_at":  "2026-07-17T17:46:44.9176005Z",
+    "script":  "operations/autonomous_inner_motor/cleanup_compact_memory_intake_checkpoints_v1.ps1",
+    "proof":  "tests/self_development/COMPACT_MEMORY_INTAKE_CHECKPOINT_RETENTION_V1_PROOF.json",
+    "checkpoint_dir_count_after":  3,
+    "process_count":  0,
+    "errors":  [
+
+               ],
+    "boundary":  {
+                     "validation_only":  true,
+                     "active_memory_deleted":  false,
+                     "queue_deleted":  false,
+                     "repo_tracked_files_deleted":  false,
+                     "codex_launched":  false,
+                     "web_launched":  false,
+                     "school_launched":  false
+                 }
+}

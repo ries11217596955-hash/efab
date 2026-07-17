@@ -1,0 +1,54 @@
+{
+    "schema":  "compact_memory_intake_checkpoint_retention_v1_acceptance",
+    "status":  "ACCEPTED_PROVEN_LAB_COMPACT_MEMORY_INTAKE_CHECKPOINT_RETENTION_V1",
+    "accepted_at":  "2026-07-17T17:46:45.0496234Z",
+    "reason":  "Owner authorized cleanup of compact_memory_intake checkpoint tail after AUDIT_C classified it as retention candidate.",
+    "script":  "operations/autonomous_inner_motor/cleanup_compact_memory_intake_checkpoints_v1.ps1",
+    "validator":  "validators/validate_compact_memory_intake_checkpoint_retention_v1.ps1",
+    "proof":  "tests/self_development/COMPACT_MEMORY_INTAKE_CHECKPOINT_RETENTION_V1_PROOF.json",
+    "validation":  "tests/self_development/COMPACT_MEMORY_INTAKE_CHECKPOINT_RETENTION_V1_VALIDATION.json",
+    "before_intake_mb":  711.66,
+    "after_intake_mb":  37.72,
+    "deleted_count":  56,
+    "reclaimed_mb":  673.95,
+    "kept_checkpoints":  [
+                             {
+                                 "name":  "merge_queue_20260716_183838",
+                                 "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_183838",
+                                 "files":  3,
+                                 "bytes":  13079017,
+                                 "mb":  12.47,
+                                 "last":  "2026-07-16T14:38:38.2256987Z"
+                             },
+                             {
+                                 "name":  "merge_queue_20260716_183743",
+                                 "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_183743",
+                                 "files":  3,
+                                 "bytes":  13078950,
+                                 "mb":  12.47,
+                                 "last":  "2026-07-16T14:37:44.0428247Z"
+                             },
+                             {
+                                 "name":  "merge_queue_20260716_183649",
+                                 "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_183649",
+                                 "files":  3,
+                                 "bytes":  13078883,
+                                 "mb":  12.47,
+                                 "last":  "2026-07-16T14:36:50.0414778Z"
+                             }
+                         ],
+    "validation_status":  "PASS_COMPACT_MEMORY_INTAKE_CHECKPOINT_RETENTION_V1",
+    "boundary":  {
+                     "process_count":  0,
+                     "active_memory_deleted":  false,
+                     "active_memory_mutated":  false,
+                     "queue_deleted":  false,
+                     "latest_checkpoints_kept":  true,
+                     "older_checkpoints_deleted":  true,
+                     "repo_tracked_files_deleted":  false,
+                     "codex_launched":  false,
+                     "web_launched":  false,
+                     "school_launched":  false
+                 },
+    "next_slice":  "AUDIT_D_CONTINUOUS_SAFETY_V1"
+}

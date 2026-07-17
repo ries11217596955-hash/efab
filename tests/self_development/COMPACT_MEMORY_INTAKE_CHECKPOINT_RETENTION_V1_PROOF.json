@@ -1,0 +1,552 @@
+{
+    "schema":  "compact_memory_intake_checkpoint_retention_v1",
+    "status":  "PASS_COMPACT_MEMORY_INTAKE_CHECKPOINT_RETENTION_V1",
+    "checked_at":  "2026-07-17T17:45:57.6562699Z",
+    "keep_latest":  3,
+    "intake_root":  ".runtime/compact_memory_intake_v1",
+    "checkpoint_root":  ".runtime\\compact_memory_intake_v1\\checkpoints",
+    "active_memory_root":  ".runtime/active_compact_semantic_memory_v1",
+    "before":  {
+                   "active_memory":  {
+                                         "exists":  true,
+                                         "files":  3,
+                                         "bytes":  13079084,
+                                         "mb":  12.47
+                                     },
+                   "intake":  {
+                                  "exists":  true,
+                                  "files":  305,
+                                  "bytes":  746234038,
+                                  "mb":  711.66
+                              },
+                   "queue":  {
+                                 "exists":  true,
+                                 "files":  50,
+                                 "bytes":  95750,
+                                 "mb":  0.09
+                             },
+                   "checkpoints":  {
+                                       "exists":  true,
+                                       "files":  177,
+                                       "bytes":  745922166,
+                                       "mb":  711.37
+                                   }
+               },
+    "after":  {
+                  "active_memory":  {
+                                        "exists":  true,
+                                        "files":  3,
+                                        "bytes":  13079084,
+                                        "mb":  12.47
+                                    },
+                  "intake":  {
+                                 "exists":  true,
+                                 "files":  137,
+                                 "bytes":  39548722,
+                                 "mb":  37.72
+                             },
+                  "queue":  {
+                                "exists":  true,
+                                "files":  50,
+                                "bytes":  95750,
+                                "mb":  0.09
+                            },
+                  "checkpoints":  {
+                                      "exists":  true,
+                                      "files":  9,
+                                      "bytes":  39236850,
+                                      "mb":  37.42
+                                  }
+              },
+    "kept_checkpoints":  [
+                             {
+                                 "name":  "merge_queue_20260716_183838",
+                                 "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_183838",
+                                 "files":  3,
+                                 "bytes":  13079017,
+                                 "mb":  12.47,
+                                 "last":  "2026-07-16T14:38:38.2256987Z"
+                             },
+                             {
+                                 "name":  "merge_queue_20260716_183743",
+                                 "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_183743",
+                                 "files":  3,
+                                 "bytes":  13078950,
+                                 "mb":  12.47,
+                                 "last":  "2026-07-16T14:37:44.0428247Z"
+                             },
+                             {
+                                 "name":  "merge_queue_20260716_183649",
+                                 "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_183649",
+                                 "files":  3,
+                                 "bytes":  13078883,
+                                 "mb":  12.47,
+                                 "last":  "2026-07-16T14:36:50.0414778Z"
+                             }
+                         ],
+    "deleted_checkpoints":  [
+                                {
+                                    "name":  "merge_queue_20260716_183555",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_183555",
+                                    "files":  3,
+                                    "bytes":  13078816,
+                                    "mb":  12.47,
+                                    "last":  "2026-07-16T14:35:55.9720411Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260716_183501",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_183501",
+                                    "files":  3,
+                                    "bytes":  13078749,
+                                    "mb":  12.47,
+                                    "last":  "2026-07-16T14:35:01.5894433Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260716_183406",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_183406",
+                                    "files":  3,
+                                    "bytes":  13078682,
+                                    "mb":  12.47,
+                                    "last":  "2026-07-16T14:34:06.8886064Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260716_183312",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_183312",
+                                    "files":  3,
+                                    "bytes":  13078615,
+                                    "mb":  12.47,
+                                    "last":  "2026-07-16T14:33:12.3874456Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260716_183218",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_183218",
+                                    "files":  3,
+                                    "bytes":  13078548,
+                                    "mb":  12.47,
+                                    "last":  "2026-07-16T14:32:18.1867427Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260716_183123",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_183123",
+                                    "files":  3,
+                                    "bytes":  13078481,
+                                    "mb":  12.47,
+                                    "last":  "2026-07-16T14:31:24.1113679Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260716_183029",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_183029",
+                                    "files":  3,
+                                    "bytes":  13078414,
+                                    "mb":  12.47,
+                                    "last":  "2026-07-16T14:30:29.8260683Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260716_182935",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_182935",
+                                    "files":  3,
+                                    "bytes":  13078347,
+                                    "mb":  12.47,
+                                    "last":  "2026-07-16T14:29:35.5332774Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260716_182840",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_182840",
+                                    "files":  3,
+                                    "bytes":  13078280,
+                                    "mb":  12.47,
+                                    "last":  "2026-07-16T14:28:40.9081212Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260716_182746",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_182746",
+                                    "files":  3,
+                                    "bytes":  13078213,
+                                    "mb":  12.47,
+                                    "last":  "2026-07-16T14:27:46.8632693Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260716_182652",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_182652",
+                                    "files":  3,
+                                    "bytes":  13078146,
+                                    "mb":  12.47,
+                                    "last":  "2026-07-16T14:26:52.8803900Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260716_182557",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_182557",
+                                    "files":  3,
+                                    "bytes":  13078079,
+                                    "mb":  12.47,
+                                    "last":  "2026-07-16T14:25:58.1300742Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260716_182503",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_182503",
+                                    "files":  3,
+                                    "bytes":  13078012,
+                                    "mb":  12.47,
+                                    "last":  "2026-07-16T14:25:04.0936354Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260716_182408",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_182408",
+                                    "files":  3,
+                                    "bytes":  13079071,
+                                    "mb":  12.47,
+                                    "last":  "2026-07-16T14:24:08.9588979Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_230039",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_230039",
+                                    "files":  3,
+                                    "bytes":  12991239,
+                                    "mb":  12.39,
+                                    "last":  "2026-07-15T19:00:39.3514299Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_224232",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_224232",
+                                    "files":  3,
+                                    "bytes":  12991172,
+                                    "mb":  12.39,
+                                    "last":  "2026-07-15T18:42:32.3855262Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_224204",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_224204",
+                                    "files":  3,
+                                    "bytes":  12991105,
+                                    "mb":  12.39,
+                                    "last":  "2026-07-15T18:42:04.5483379Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_224136",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_224136",
+                                    "files":  3,
+                                    "bytes":  12991038,
+                                    "mb":  12.39,
+                                    "last":  "2026-07-15T18:41:36.6435467Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_224108",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_224108",
+                                    "files":  3,
+                                    "bytes":  12990971,
+                                    "mb":  12.39,
+                                    "last":  "2026-07-15T18:41:08.8690154Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_224040",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_224040",
+                                    "files":  3,
+                                    "bytes":  12990904,
+                                    "mb":  12.39,
+                                    "last":  "2026-07-15T18:40:40.8744436Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_224013",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_224013",
+                                    "files":  3,
+                                    "bytes":  12990837,
+                                    "mb":  12.39,
+                                    "last":  "2026-07-15T18:40:13.2188253Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_223945",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_223945",
+                                    "files":  3,
+                                    "bytes":  12990770,
+                                    "mb":  12.39,
+                                    "last":  "2026-07-15T18:39:45.4896823Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_223917",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_223917",
+                                    "files":  3,
+                                    "bytes":  12990703,
+                                    "mb":  12.39,
+                                    "last":  "2026-07-15T18:39:17.7583500Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_223850",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_223850",
+                                    "files":  3,
+                                    "bytes":  12990636,
+                                    "mb":  12.39,
+                                    "last":  "2026-07-15T18:38:50.2083768Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_223822",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_223822",
+                                    "files":  3,
+                                    "bytes":  12990569,
+                                    "mb":  12.39,
+                                    "last":  "2026-07-15T18:38:22.6337506Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_223754",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_223754",
+                                    "files":  3,
+                                    "bytes":  12990502,
+                                    "mb":  12.39,
+                                    "last":  "2026-07-15T18:37:54.3393930Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_223726",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_223726",
+                                    "files":  3,
+                                    "bytes":  12990435,
+                                    "mb":  12.39,
+                                    "last":  "2026-07-15T18:37:26.7417272Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_223659",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_223659",
+                                    "files":  3,
+                                    "bytes":  12990368,
+                                    "mb":  12.39,
+                                    "last":  "2026-07-15T18:36:59.3075593Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_223631",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_223631",
+                                    "files":  3,
+                                    "bytes":  12990301,
+                                    "mb":  12.39,
+                                    "last":  "2026-07-15T18:36:31.4417932Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_223603",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_223603",
+                                    "files":  3,
+                                    "bytes":  12990234,
+                                    "mb":  12.39,
+                                    "last":  "2026-07-15T18:36:04.1574560Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_223536",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_223536",
+                                    "files":  3,
+                                    "bytes":  12990167,
+                                    "mb":  12.39,
+                                    "last":  "2026-07-15T18:35:36.2230210Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_223508",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_223508",
+                                    "files":  3,
+                                    "bytes":  12990100,
+                                    "mb":  12.39,
+                                    "last":  "2026-07-15T18:35:08.3067653Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_223440",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_223440",
+                                    "files":  3,
+                                    "bytes":  12990033,
+                                    "mb":  12.39,
+                                    "last":  "2026-07-15T18:34:40.5664752Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_223412",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_223412",
+                                    "files":  3,
+                                    "bytes":  12989966,
+                                    "mb":  12.39,
+                                    "last":  "2026-07-15T18:34:12.8661002Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_223345",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_223345",
+                                    "files":  3,
+                                    "bytes":  12989899,
+                                    "mb":  12.39,
+                                    "last":  "2026-07-15T18:33:45.4400492Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_223317",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_223317",
+                                    "files":  3,
+                                    "bytes":  12989832,
+                                    "mb":  12.39,
+                                    "last":  "2026-07-15T18:33:17.8660203Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_223249",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_223249",
+                                    "files":  3,
+                                    "bytes":  12989765,
+                                    "mb":  12.39,
+                                    "last":  "2026-07-15T18:32:50.0813189Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_223221",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_223221",
+                                    "files":  3,
+                                    "bytes":  12989698,
+                                    "mb":  12.39,
+                                    "last":  "2026-07-15T18:32:22.1399396Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_223154",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_223154",
+                                    "files":  3,
+                                    "bytes":  12989631,
+                                    "mb":  12.39,
+                                    "last":  "2026-07-15T18:31:54.5714459Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_223126",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_223126",
+                                    "files":  3,
+                                    "bytes":  12989564,
+                                    "mb":  12.39,
+                                    "last":  "2026-07-15T18:31:26.9212885Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_223059",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_223059",
+                                    "files":  3,
+                                    "bytes":  12989497,
+                                    "mb":  12.39,
+                                    "last":  "2026-07-15T18:30:59.3650370Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_223031",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_223031",
+                                    "files":  3,
+                                    "bytes":  12989430,
+                                    "mb":  12.39,
+                                    "last":  "2026-07-15T18:30:31.9047972Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_223003",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_223003",
+                                    "files":  3,
+                                    "bytes":  12989363,
+                                    "mb":  12.39,
+                                    "last":  "2026-07-15T18:30:03.7550892Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_222935",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_222935",
+                                    "files":  3,
+                                    "bytes":  12989296,
+                                    "mb":  12.39,
+                                    "last":  "2026-07-15T18:29:36.1041976Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_222908",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_222908",
+                                    "files":  3,
+                                    "bytes":  12989227,
+                                    "mb":  12.39,
+                                    "last":  "2026-07-15T18:29:08.6259955Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_222840",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_222840",
+                                    "files":  3,
+                                    "bytes":  12989160,
+                                    "mb":  12.39,
+                                    "last":  "2026-07-15T18:28:40.9031559Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_222813",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_222813",
+                                    "files":  3,
+                                    "bytes":  12989093,
+                                    "mb":  12.39,
+                                    "last":  "2026-07-15T18:28:13.3038574Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_222745",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_222745",
+                                    "files":  3,
+                                    "bytes":  12989026,
+                                    "mb":  12.39,
+                                    "last":  "2026-07-15T18:27:45.6346293Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_222717",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_222717",
+                                    "files":  3,
+                                    "bytes":  12988959,
+                                    "mb":  12.39,
+                                    "last":  "2026-07-15T18:27:17.3790980Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_222648",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_222648",
+                                    "files":  3,
+                                    "bytes":  12988892,
+                                    "mb":  12.39,
+                                    "last":  "2026-07-15T18:26:49.1370848Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_222620",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_222620",
+                                    "files":  3,
+                                    "bytes":  12988825,
+                                    "mb":  12.39,
+                                    "last":  "2026-07-15T18:26:20.9535063Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_222552",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_222552",
+                                    "files":  3,
+                                    "bytes":  12989942,
+                                    "mb":  12.39,
+                                    "last":  "2026-07-15T18:25:53.0782032Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_210013",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_210013",
+                                    "files":  3,
+                                    "bytes":  12926487,
+                                    "mb":  12.33,
+                                    "last":  "2026-07-15T17:00:13.7512794Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260715_205835",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260715_205835",
+                                    "files":  3,
+                                    "bytes":  12925627,
+                                    "mb":  12.33,
+                                    "last":  "2026-07-15T16:58:35.4167398Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260713_232222",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260713_232222",
+                                    "files":  3,
+                                    "bytes":  4098625,
+                                    "mb":  3.91,
+                                    "last":  "2026-07-13T19:22:22.6956618Z"
+                                },
+                                {
+                                    "name":  "merge_queue_20260713_231531",
+                                    "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260713_231531",
+                                    "files":  3,
+                                    "bytes":  14975,
+                                    "mb":  0.01,
+                                    "last":  "2026-07-13T19:15:31.1932057Z"
+                                }
+                            ],
+    "deleted_count":  56,
+    "reclaimed_bytes":  706685316,
+    "reclaimed_mb":  673.95,
+    "boundary":  {
+                     "process_count":  0,
+                     "active_memory_deleted":  false,
+                     "active_memory_mutated":  false,
+                     "queue_deleted":  false,
+                     "latest_checkpoints_kept":  true,
+                     "older_checkpoints_deleted":  true,
+                     "repo_tracked_files_deleted":  false,
+                     "codex_launched":  false,
+                     "web_launched":  false,
+                     "school_launched":  false
+                 }
+}

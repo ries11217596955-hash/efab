@@ -1,27 +1,27 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-17T21:38:40.8937482+04:00",
+    "checked_at":  "2026-07-17T21:47:08.2244191+04:00",
     "branch":  "main",
-    "observed_head":  "099c8035f7b536d2751068f13ad1e453cc78b23b",
-    "subject_head":  "099c8035f7b536d2751068f13ad1e453cc78b23b",
+    "observed_head":  "766b01a22f34eb4a09290c340a0d11e9d7445ca8",
+    "subject_head":  "766b01a22f34eb4a09290c340a0d11e9d7445ca8",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
                           "AGENT_BUILDER_SELF_NOTEBOOK.md",
-                          "operations/autonomous_inner_motor/reports/RAM_LIFE_AUDIT_B_STATE_MEMORY_LAYERS_V1.json",
+                          "operations/autonomous_inner_motor/reports/RAM_LIFE_AUDIT_C_FILE_PROOF_ECONOMY_V1.json",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "tests/self_development/RAM_LIFE_AUDIT_B_STATE_MEMORY_LAYERS_V1_PROOF.json",
-                          "validators/validate_ram_life_audit_b_state_memory_layers_v1.ps1"
+                          "tests/self_development/RAM_LIFE_AUDIT_C_FILE_PROOF_ECONOMY_V1_PROOF.json",
+                          "validators/validate_ram_life_audit_c_file_proof_economy_v1.ps1"
                       ],
     "structural_paths":  [
-                             "operations/autonomous_inner_motor/reports/RAM_LIFE_AUDIT_B_STATE_MEMORY_LAYERS_V1.json",
-                             "tests/self_development/RAM_LIFE_AUDIT_B_STATE_MEMORY_LAYERS_V1_PROOF.json",
-                             "validators/validate_ram_life_audit_b_state_memory_layers_v1.ps1"
+                             "operations/autonomous_inner_motor/reports/RAM_LIFE_AUDIT_C_FILE_PROOF_ECONOMY_V1.json",
+                             "tests/self_development/RAM_LIFE_AUDIT_C_FILE_PROOF_ECONOMY_V1_PROOF.json",
+                             "validators/validate_ram_life_audit_c_file_proof_economy_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -33,8 +33,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2183,
-                                    "sha256":  "1ff821efb1ab7c666bec82887b3d25a59cb0940ccb9d0ee6a23aca053f26cb1b"
+                                    "structural_file_count":  2188,
+                                    "sha256":  "84929d16a75c47ff0f7b1cf3771a86499961d2010b763e419b112a204dec807b"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -60,12 +60,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  152,
-                         "structural_path_count":  2183,
+                         "structural_path_count":  2188,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-17T21:39:16.0010957+04:00"
+    "refreshed_at":  "2026-07-17T21:47:43.4844284+04:00"
 }
