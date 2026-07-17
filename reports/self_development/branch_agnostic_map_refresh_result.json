@@ -1,28 +1,26 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-17T22:14:23.1880729+04:00",
+    "checked_at":  "2026-07-17T22:19:48.6165305+04:00",
     "branch":  "main",
-    "observed_head":  "2e0a572f403c4924d79d7049e60fa2e9be574c01",
-    "subject_head":  "2e0a572f403c4924d79d7049e60fa2e9be574c01",
+    "observed_head":  "90cc11c753e91b7a5cdb8d026a561f30c7a3ebf4",
+    "subject_head":  "90cc11c753e91b7a5cdb8d026a561f30c7a3ebf4",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "AGENT_BUILDER_RAM_LIFE_TRANSITION_MASTER_PLAN_V1.md",
-                          "AGENT_BUILDER_SELF_NOTEBOOK.md",
-                          "operations/autonomous_inner_motor/reports/RAM_LIFE_AUDIT_F_CONTINUOUS_RUNTIME_LAB_DESIGN_V1.json",
+                          "operations/autonomous_inner_motor/CODEX_TASK_CONTINUOUS_AGENT_RUNTIME_V1_LAB_SLICE_A.md",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "tests/self_development/RAM_LIFE_AUDIT_F_CONTINUOUS_RUNTIME_LAB_DESIGN_V1_PROOF.json",
-                          "validators/validate_ram_life_audit_f_continuous_runtime_lab_design_v1.ps1"
+                          "tests/self_development/CODEX_TASK_CONTINUOUS_AGENT_RUNTIME_V1_LAB_SLICE_A_PROOF.json",
+                          "validators/validate_codex_task_continuous_agent_runtime_lab_slice_a_v1.ps1"
                       ],
     "structural_paths":  [
-                             "operations/autonomous_inner_motor/reports/RAM_LIFE_AUDIT_F_CONTINUOUS_RUNTIME_LAB_DESIGN_V1.json",
-                             "tests/self_development/RAM_LIFE_AUDIT_F_CONTINUOUS_RUNTIME_LAB_DESIGN_V1_PROOF.json",
-                             "validators/validate_ram_life_audit_f_continuous_runtime_lab_design_v1.ps1"
+                             "operations/autonomous_inner_motor/CODEX_TASK_CONTINUOUS_AGENT_RUNTIME_V1_LAB_SLICE_A.md",
+                             "tests/self_development/CODEX_TASK_CONTINUOUS_AGENT_RUNTIME_V1_LAB_SLICE_A_PROOF.json",
+                             "validators/validate_codex_task_continuous_agent_runtime_lab_slice_a_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -34,8 +32,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2197,
-                                    "sha256":  "779452399c8587a5457f001e60559f51e5dd459ea16bb23d2d400029e2a22c02"
+                                    "structural_file_count":  2198,
+                                    "sha256":  "855519a2fa73c0a3e2095f41369621e9ae6c29e12db283ef63a85836eb410c91"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -61,12 +59,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  152,
-                         "structural_path_count":  2197,
+                         "structural_path_count":  2198,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-17T22:14:58.6075688+04:00"
+    "refreshed_at":  "2026-07-17T22:20:24.5229243+04:00"
 }
