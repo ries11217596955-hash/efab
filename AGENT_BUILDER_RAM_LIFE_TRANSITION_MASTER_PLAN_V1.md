@@ -279,36 +279,19 @@ Step 1: Run AUDIT A Runtime Topology.
 Step 2: Run AUDIT B State/Memory Layer Separation.
 Step 3: Run AUDIT C File/Proof Economy.
 Step 4: Run AUDIT D Continuous Safety/Immune System.
-Step 5: Run AUDIT E Orientation Card/Drift Sensor.
-Step 6: Run AUDIT F Continuous Runtime Lab Design.
-Step 7: Build IMMUTABLE_LIFE_ORIENTATION_CARD_V1.
-Step 8: Build ORIENTATION_DRIFT_SENSOR_V1.
-Step 9: Build CONTINUOUS_AGENT_RUNTIME_V1_LAB.
-Step 10: Run bounded lab and compare against process-per-cycle life.
-Step 11: Decide whether canonical life migrates or remains dual-mode.
+Step 5: Run AUDIT F Continuous Runtime Lab Design for an operator-supervised RAM lab.\nStep 6: Build CONTINUOUS_AGENT_RUNTIME_V1_LAB as bounded supervised lab only.\nStep 7: Run bounded lab and compare against process-per-cycle life.\nStep 8: Decide whether canonical life remains dual-mode.\nStep 9: Keep AUDIT E Orientation Card/Drift Sensor for future unattended autonomy, not as a blocker for supervised lab.
 ```
 
 ## 6. Gate before continuous runtime implementation
 
-Continuous runtime implementation is blocked until all are true:
-
-```text
-AUDIT_A_PASS
-AUDIT_B_PASS
-AUDIT_C_PASS
-AUDIT_D_PASS
-AUDIT_E_PASS
-AUDIT_F_PASS
-IMMUTABLE_LIFE_ORIENTATION_CARD_V1_PROVEN_LAB
-ORIENTATION_DRIFT_SENSOR_V1_PROVEN_LAB
-```
+Operator-supervised continuous RAM lab implementation is blocked until all are true:\n\n```text\nAUDIT_A_PASS\nAUDIT_B_PASS\nAUDIT_C_PASS\nAUDIT_D_PASS\nAUDIT_F_PASS\nMINIMAL_SUPERVISED_LIFE_CONTEXT_AVAILABLE\n```\n\nUnattended or longer autonomy runtime is blocked until all are true:\n\n```text\nAUDIT_E_PASS\nIMMUTABLE_LIFE_ORIENTATION_CARD_V1_PROVEN_LAB\nORIENTATION_DRIFT_SENSOR_V1_PROVEN_LAB\n```
 
 ## 7. RAM-life target model
 
 ```text
 one long-running process
 agent state lives in RAM during life
-orientation card loaded once
+minimal supervised life context loaded once
 wake context loaded once
 cycle scratch stays local to RAM
 compact memory retrieval is selective
@@ -350,10 +333,10 @@ Status: WRITTEN_IN_PLAN / IMPLEMENTATION_BLOCKED_UNTIL_VALIDATED
 Purpose:
 
 ```text
-Define the immune system required before any continuous RAM-life runtime is allowed to exist.
+Define the immune system required before any operator-supervised continuous RAM-life lab is allowed to exist.
 ```
 
-Continuous runtime is more dangerous than process-per-cycle life because mistakes can persist across cycles inside RAM. The safety layer must exist before the first continuous lab.
+Continuous runtime is more dangerous than process-per-cycle life because mistakes can persist across cycles inside RAM. The safety layer must exist before the first supervised continuous lab. A full immutable orientation card is useful later, but not required while Owner/GPT are watching every short run.
 
 ### 10.1 Required safety organs
 
@@ -565,7 +548,7 @@ repo clean
 remote delta 0/0
 process_count 0
 active memory root exists
-orientation card exists and validates
+minimal supervised life context exists or is generated from current canonical launch context
 runtime lock absent or proven stale
 heartbeat path writable
 checkpoint path writable
@@ -596,3 +579,33 @@ codex_launched=false
 web_launched=false
 school_launched=false
 ```
+## 11. Operator correction — orientation card is future autonomy, not supervised lab blocker
+
+Status: ACTIVE_PLAN_CORRECTION
+
+Owner correction:
+
+```text
+At the current stage, Owner/GPT inspect the agent every 5-10 minutes. The agent is not being launched unattended for days. Therefore a powerful immutable orientation card and drift sensor are useful future organs, but they should not block the first supervised RAM-life lab.
+```
+
+Corrected rule:
+
+```text
+short supervised RAM lab -> needs safety gates + minimal supervised life context
+longer/unattended autonomy -> needs immutable orientation card + drift sensor
+```
+
+Reason:
+
+```text
+A full orientation card is a self-orientation/autonomy organ. It prevents an agent from drifting when it is less supervised. Right now the operator loop is still the primary orientation and correction system.
+```
+
+Current next step after AUDIT_D:
+
+```text
+AUDIT_F_CONTINUOUS_RUNTIME_LAB_DESIGN_V1
+```
+
+AUDIT_E remains in the plan as future autonomy preparation, not immediate blocker.

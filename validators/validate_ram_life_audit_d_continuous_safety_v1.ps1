@@ -12,7 +12,7 @@ if(Test-Path $reportPath){ $r=Get-Content $reportPath -Raw | ConvertFrom-Json }
 if($r){
   if($r.status -ne 'PASS_RAM_LIFE_AUDIT_D_CONTINUOUS_SAFETY_V1'){ Add-Err "status_mismatch:$($r.status)" }
   foreach($organ in @('runtime_lock','pid_file','heartbeat','stop_signal','watchdog','bounded_duration','memory_budget','cpu_budget','disk_budget','checkpoint_writer','crash_recovery_reader','quarantine_on_fault','duplicate_runtime_prevention','safe_shutdown','final_proof_writer')){ if(@($r.safety_organs) -notcontains $organ){ Add-Err "missing_organ:$organ" } }
-  foreach($gate in @('repo clean','remote delta 0/0','process_count 0','active memory root exists','orientation card exists and validates','runtime lock absent or proven stale','heartbeat path writable','checkpoint path writable','duration cap provided','SandboxExploration only','QueueOnly only','git/codex/web/repair disabled','proof path writable')){ if(@($r.start_gate) -notcontains $gate){ Add-Err "missing_start_gate:$gate" } }
+  foreach($gate in @('repo clean','remote delta 0/0','process_count 0','active memory root exists','minimal supervised life context exists or is generated from current canonical launch context','runtime lock absent or proven stale','heartbeat path writable','checkpoint path writable','duration cap provided','SandboxExploration only','QueueOnly only','git/codex/web/repair disabled','proof path writable')){ if(@($r.start_gate) -notcontains $gate){ Add-Err "missing_start_gate:$gate" } }
   if($r.lab_limits.duration_minutes_max -gt 5){ Add-Err 'duration_limit_too_high' }
   if($r.lab_limits.mode -ne 'SandboxExploration'){ Add-Err 'mode_not_sandbox' }
   if($r.lab_limits.memory_ingestion -ne 'QueueOnly'){ Add-Err 'memory_ingestion_not_queueonly' }
@@ -21,8 +21,8 @@ if($r){
   if($r.proof_expectations.ram_state_counter_persisted -ne $true){ Add-Err 'ram_state_counter_expectation_missing' }
   if($r.proof_expectations.per_cycle_json_bridge_used_for_ram_state -ne $false){ Add-Err 'json_bridge_expectation_wrong' }
   foreach($flag in @('repo_mutated','active_memory_direct_mutated','codex_launched','web_launched','school_launched')){ if($r.proof_expectations.$flag -ne $false){ Add-Err "proof_expectation_not_false:$flag" } }
-  if($r.implementation_decision -notlike 'DO_NOT_BUILD_CONTINUOUS_RUNTIME*'){ Add-Err 'implementation_gate_missing' }
-  if($r.next_audit -ne 'AUDIT_E_ORIENTATION_DRIFT_V1'){ Add-Err 'next_audit_mismatch' }
+  if($r.implementation_decision -notlike '*SUPERVISED_RAM_LAB_CAN_PROCEED_AFTER_AUDIT_F*'){ Add-Err 'implementation_gate_missing' }
+  if($r.next_audit -ne 'AUDIT_F_CONTINUOUS_RUNTIME_LAB_DESIGN_V1'){ Add-Err 'next_audit_mismatch' }
   if($r.boundary.audit_only -ne $true){ Add-Err 'audit_only_not_true' }
   if($r.boundary.continuous_runtime_launched -ne $false){ Add-Err 'continuous_runtime_launched_not_false' }
   if($r.boundary.runtime_root_created -ne $false){ Add-Err 'runtime_root_created_not_false' }

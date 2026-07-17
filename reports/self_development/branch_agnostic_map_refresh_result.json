@@ -1,31 +1,28 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-17T21:56:17.2961308+04:00",
+    "checked_at":  "2026-07-17T22:05:16.3276963+04:00",
     "branch":  "main",
-    "observed_head":  "6480fdd1a2d21a76e2eafb8a0c77c14930d1c42f",
-    "subject_head":  "6480fdd1a2d21a76e2eafb8a0c77c14930d1c42f",
+    "observed_head":  "7578d2eda3e7fae4f56b55673810029e4fd7411d",
+    "subject_head":  "7578d2eda3e7fae4f56b55673810029e4fd7411d",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
+                          "AGENT_BUILDER_RAM_LIFE_TRANSITION_MASTER_PLAN_V1.md",
                           "AGENT_BUILDER_SELF_NOTEBOOK.md",
-                          "operations/autonomous_inner_motor/cleanup_compact_memory_intake_checkpoints_v1.ps1",
-                          "operations/autonomous_inner_motor/reports/COMPACT_MEMORY_INTAKE_CHECKPOINT_RETENTION_V1_ACCEPTANCE.json",
+                          "operations/autonomous_inner_motor/reports/RAM_LIFE_AUDIT_D_CONTINUOUS_SAFETY_V1.json",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "tests/self_development/COMPACT_MEMORY_INTAKE_CHECKPOINT_RETENTION_V1_PROOF.json",
-                          "tests/self_development/COMPACT_MEMORY_INTAKE_CHECKPOINT_RETENTION_V1_VALIDATION.json",
-                          "validators/validate_compact_memory_intake_checkpoint_retention_v1.ps1"
+                          "tests/self_development/RAM_LIFE_AUDIT_D_CONTINUOUS_SAFETY_V1_PROOF.json",
+                          "validators/validate_ram_life_audit_d_continuous_safety_v1.ps1"
                       ],
     "structural_paths":  [
-                             "operations/autonomous_inner_motor/cleanup_compact_memory_intake_checkpoints_v1.ps1",
-                             "operations/autonomous_inner_motor/reports/COMPACT_MEMORY_INTAKE_CHECKPOINT_RETENTION_V1_ACCEPTANCE.json",
-                             "tests/self_development/COMPACT_MEMORY_INTAKE_CHECKPOINT_RETENTION_V1_PROOF.json",
-                             "tests/self_development/COMPACT_MEMORY_INTAKE_CHECKPOINT_RETENTION_V1_VALIDATION.json",
-                             "validators/validate_compact_memory_intake_checkpoint_retention_v1.ps1"
+                             "operations/autonomous_inner_motor/reports/RAM_LIFE_AUDIT_D_CONTINUOUS_SAFETY_V1.json",
+                             "tests/self_development/RAM_LIFE_AUDIT_D_CONTINUOUS_SAFETY_V1_PROOF.json",
+                             "validators/validate_ram_life_audit_d_continuous_safety_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -38,7 +35,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  2191,
-                                    "sha256":  "e4dd2588b292a78630c83963e9bfc73f307f8cef760abb556ddc2e29ba8865be"
+                                    "sha256":  "76115743ba5280594af9c09b6cc0cbc40254ce4c78ffd5f4452fedba4f99b374"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -71,5 +68,5 @@
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-17T21:56:52.6844075+04:00"
+    "refreshed_at":  "2026-07-17T22:05:51.6259167+04:00"
 }
