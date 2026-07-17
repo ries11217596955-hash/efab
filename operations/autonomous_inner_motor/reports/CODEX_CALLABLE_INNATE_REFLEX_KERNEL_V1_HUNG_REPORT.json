@@ -1,0 +1,46 @@
+{
+    "schema":  "codex_callable_innate_reflex_kernel_v1_hung_report",
+    "status":  "CODEX_HUNG_DRAFT_NOT_ACCEPTED",
+    "checked_at":  "2026-07-17T12:17:07.0423741Z",
+    "task":  "operations/autonomous_inner_motor/CODEX_TASK_CALLABLE_INNATE_REFLEX_KERNEL_V1.md",
+    "task_commit":  "179ebcc",
+    "codex_preflight":  {
+                            "observed_prefight_pass":  true,
+                            "files_changed_before_preflight":  "NO"
+                        },
+    "codex_final_report_exists":  false,
+    "codex_process_stopped":  true,
+    "accepted_as_implementation":  false,
+    "reason":  "Codex reached PREFLIGHT_PASS and began edits, but hung without final report, validator, proof, or runner integration.",
+    "partial_drafts_preserved":  [
+                                     {
+                                         "source":  "operations/autonomous_inner_motor/innate_reflex_kernel_v1.json",
+                                         "preserved_to":  ".runtime\\codex_drafts\\callable_innate_reflex_kernel_v1_hung_20260717_161706\\innate_reflex_kernel_v1.json",
+                                         "bytes":  25144
+                                     },
+                                     {
+                                         "source":  "operations/autonomous_inner_motor/build_innate_reflex_kernel_v1.ps1",
+                                         "preserved_to":  ".runtime\\codex_drafts\\callable_innate_reflex_kernel_v1_hung_20260717_161706\\build_innate_reflex_kernel_v1.ps1",
+                                         "bytes":  4954
+                                     }
+                                 ],
+    "missing_required_files":  [
+                                   "validators/validate_callable_innate_reflex_kernel_v1.ps1",
+                                   "tests/self_development/CALLABLE_INNATE_REFLEX_KERNEL_V1_PROOF.json"
+                               ],
+    "missing_required_work":  [
+                                  "runner integration not proven",
+                                  "validator not created",
+                                  "proof not created",
+                                  "final Codex report not produced"
+                              ],
+    "boundary":  {
+                     "body_inspection_invoked":  false,
+                     "canonical_launcher_changed":  false,
+                     "active_memory_mutated":  false,
+                     "legacy_launch_used":  false,
+                     "long_life_run_started":  false,
+                     "codex_process_left_running":  false,
+                     "repo_partial_drafts_moved_to_runtime":  true
+                 }
+}
