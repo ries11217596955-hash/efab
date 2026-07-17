@@ -1,0 +1,89 @@
+{
+    "schema":  "reflection_debt_source_map_v1",
+    "status":  "PASS_REFLECTION_DEBT_SOURCE_MAP_V1",
+    "checked_at":  "2026-07-17T19:20:46.8668313Z",
+    "distinction":  {
+                        "reflexes":  "callable built-in sensing/action capabilities",
+                        "reflection":  "mind ability to inspect own cycle, detect loops/stalls/fake progress, score utility, return to parent, and alter next action"
+                    },
+    "reflex_sources":  [
+                           {
+                               "path":  "AGENT_BUILDER_INNATE_REFLEX_KERNEL_V1_PLAN.md",
+                               "status":  "REFLEX_TRACK_PARTIAL_PROVEN",
+                               "known_items":  [
+                                                   "INNATE_REFLEX_KERNEL_V1",
+                                                   "INNATE_REFLEX_BOOTLOAD_V1",
+                                                   "DEFAULT_WAKE_REFLEXES_V2",
+                                                   "body_audit_reflex",
+                                                   "repo_reality_reflex",
+                                                   "process_scan_reflex",
+                                                   "runtime_pressure_reflex",
+                                                   "active_memory_read_reflex"
+                                               ]
+                           }
+                       ],
+    "reflection_sources":  [
+                               {
+                                   "path":  "AGENT_BUILDER_MIND_LOGIC_DEEP_AUDIT_PLAN_V1.md",
+                                   "items":  [
+                                                 "loop/stall pattern analysis",
+                                                 "decision quality / utility",
+                                                 "frontier-to-build-task gap",
+                                                 "parent-goal return gate"
+                                             ]
+                               },
+                               {
+                                   "path":  "AGENT_BUILDER_SELF_NOTEBOOK.md",
+                                   "items":  [
+                                                 "reflex history",
+                                                 "mind debt notes",
+                                                 "current reality notes"
+                                             ]
+                               },
+                               {
+                                   "path":  "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+                                   "items":  [
+                                                 "mind_logic_frame",
+                                                 "action_decision_packet",
+                                                 "proof fields"
+                                             ]
+                               },
+                               {
+                                   "path":  "recent SANDBOX_EXPLORATION_PROOF.json",
+                                   "items":  [
+                                                 "return_to_parent lens",
+                                                 "selected_action",
+                                                 "memory queue packet evidence"
+                                             ]
+                               }
+                           ],
+    "reflection_status":  "REFLECTION_TRACK_NOT_FULL_ORGAN",
+    "needed_audit":  "AUDIT_REF1_REFLECTION_CURRENT_STATE_V1",
+    "candidate_organs":  [
+                             "SELF_REFLECTION_FRAME_V1",
+                             "LOOP_STALL_DETECTOR_V1",
+                             "DECISION_UTILITY_SCORE_V1",
+                             "PARENT_GOAL_RETURN_GATE_V1",
+                             "LAST_ACTION_POSTMORTEM_V1",
+                             "FAKE_PROGRESS_DETECTOR_V1",
+                             "NEXT_STEP_SHARPENER_V1"
+                         ],
+    "acceptance_condition":  {
+                                 "last_cycle_observed":  true,
+                                 "loop_or_stall_checked":  true,
+                                 "utility_score_computed":  true,
+                                 "parent_goal_delta_computed":  true,
+                                 "fake_progress_checked":  true,
+                                 "next_step_changed_by_reflection":  true,
+                                 "reflection_output_used_by_action_decision":  true
+                             },
+    "boundary":  {
+                     "source_map_only":  true,
+                     "runtime_launched":  false,
+                     "active_memory_mutated":  false,
+                     "reflex_plan_deleted":  false,
+                     "reflection_organ_built":  false,
+                     "canonical_launcher_mutated":  false,
+                     "cycle_runner_mutated":  false
+                 }
+}

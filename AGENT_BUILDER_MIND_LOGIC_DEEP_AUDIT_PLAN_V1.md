@@ -308,3 +308,152 @@ Reason:
 ```text
 RAM gives a different body. Compact memory and short-term memory give the mind usable context. A better body without a better mind only loops faster.
 ```
+## 8. Reflection / reflexion debt source
+
+Status: ACTIVE_DEBT / DO_NOT_FORGET
+
+Owner reminder:
+
+```text
+We discussed reflection/reflexion before RAM work accelerated. The debt must not be lost.
+```
+
+Important distinction:
+
+```text
+Reflexes = callable built-in sensing/action capabilities.
+Reflection = the mind's ability to inspect its own thinking, detect loops/stalls/errors, score utility, and return to parent goal with a stronger next step.
+```
+
+### 8.1 Where reflexes are already written
+
+Source:
+
+```text
+AGENT_BUILDER_INNATE_REFLEX_KERNEL_V1_PLAN.md
+```
+
+Implemented/proven parts include:
+
+```text
+INNATE_REFLEX_KERNEL_V1
+INNATE_REFLEX_BOOTLOAD_V1
+DEFAULT_WAKE_REFLEXES_V2
+body_audit_reflex
+repo_reality_reflex
+process_scan_reflex
+runtime_pressure_reflex
+active_memory_read_reflex
+```
+
+Status:
+
+```text
+REFLEX_TRACK_PARTIAL_PROVEN
+```
+
+Do not confuse this with reflection.
+
+### 8.2 Where reflection is currently scattered
+
+Reflection-like concepts are currently spread across:
+
+```text
+AGENT_BUILDER_MIND_LOGIC_DEEP_AUDIT_PLAN_V1.md
+AGENT_BUILDER_SELF_NOTEBOOK.md
+operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1 proof fields
+recent SANDBOX_EXPLORATION_PROOF.json cycle proofs
+```
+
+Known scattered pieces:
+
+```text
+loop/stall pattern analysis
+mind_logic_frame
+action_decision_packet
+return_to_parent lens
+decision quality / utility scoring
+frontier-to-build-task gap
+parent-goal return gate
+```
+
+Status:
+
+```text
+REFLECTION_TRACK_NOT_FULL_ORGAN
+```
+
+### 8.3 Reflection organ debt
+
+Needed audit:
+
+```text
+AUDIT_REF1_REFLECTION_CURRENT_STATE_V1
+```
+
+Questions:
+
+```text
+Does the agent inspect the last cycle before choosing the next one?
+Does it detect repeated topics/actions?
+Does it detect when queue packet creation is fake progress?
+Does it explain why the last action did or did not advance the parent goal?
+Does it produce a sharper next step instead of looping?
+Does it distinguish body/runtime issue from mind/logic issue?
+Does it know when to stop and ask for operator decision?
+```
+
+Candidate organs:
+
+```text
+SELF_REFLECTION_FRAME_V1
+LOOP_STALL_DETECTOR_V1
+DECISION_UTILITY_SCORE_V1
+PARENT_GOAL_RETURN_GATE_V1
+LAST_ACTION_POSTMORTEM_V1
+FAKE_PROGRESS_DETECTOR_V1
+NEXT_STEP_SHARPENER_V1
+```
+
+### 8.4 Acceptance condition for reflection
+
+Reflection is accepted only when proof shows:
+
+```text
+last_cycle_observed = true
+loop_or_stall_checked = true
+utility_score_computed = true
+parent_goal_delta_computed = true
+fake_progress_checked = true
+next_step_changed_by_reflection = true
+reflection_output_used_by_action_decision = true
+```
+
+Not accepted:
+
+```text
+agent merely writes a summary
+agent writes another queue packet without changed next action
+agent repeats the same frontier
+agent says it reflected but proof does not show decision effect
+```
+
+### 8.5 Updated sequencing with reflection
+
+Default order now:
+
+```text
+1. AUDIT_M1_CURRENT_MIND_TOPOLOGY_V1
+2. AUDIT_REF1_REFLECTION_CURRENT_STATE_V1
+3. AUDIT_M3_COMPACT_MEMORY_READ_PATH_V1
+4. AUDIT_S1_SHORT_TERM_MEMORY_CURRENT_STATE_V1
+5. AUDIT_M4_FRONTIER_TO_BUILD_TASK_GAP_V1
+6. AUDIT_M5_DECISION_QUALITY_AND_UTILITY_V1
+7. AUDIT_R1_RAM_CANONICAL_MIGRATION_GAP_V1 when owner decides migration timing
+```
+
+Reason:
+
+```text
+Without reflection, compact memory and short-term memory can still feed a looping mind. Reflection is the circuit that notices the loop and changes the next decision.
+```
