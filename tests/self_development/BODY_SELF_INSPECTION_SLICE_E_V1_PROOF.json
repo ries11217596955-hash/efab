@@ -1,0 +1,477 @@
+{
+    "schema":  "body_self_inspection_slice_e_validator_proof_v1",
+    "status":  "PASS_BODY_SELF_INSPECTION_SLICE_E_V1",
+    "generated_at":  "2026-07-17T03:46:42.5643434Z",
+    "validator_ref":  "validators/validate_body_self_inspection_slice_e_v1.ps1",
+    "circuit_ref":  "BODY_SELF_INSPECTION_CIRCUIT_V1",
+    "slice":  "E",
+    "output_refs":  {
+                        "repo_inventory":  "H:\\efab\\.runtime\\body_self_inspection_v1\\repo_inventory.json",
+                        "body_map_read":  "H:\\efab\\.runtime\\body_self_inspection_v1\\body_map_read.json",
+                        "capability_map_read":  "H:\\efab\\.runtime\\body_self_inspection_v1\\capability_map_read.json",
+                        "organ_candidates":  "H:\\efab\\.runtime\\body_self_inspection_v1\\organ_candidates.json",
+                        "organ_similarity_index":  "H:\\efab\\.runtime\\body_self_inspection_v1\\organ_similarity_index.json",
+                        "passport_audit":  "H:\\efab\\.runtime\\body_self_inspection_v1\\passport_audit.json",
+                        "signal_readiness_audit":  "H:\\efab\\.runtime\\body_self_inspection_v1\\signal_readiness_audit.json",
+                        "body_reconciliation":  "H:\\efab\\.runtime\\body_self_inspection_v1\\body_reconciliation.json",
+                        "slice_d_runtime_proof":  "H:\\efab\\.runtime\\body_self_inspection_v1\\BODY_SELF_INSPECTION_SLICE_D_PROOF.json",
+                        "body_pain_register":  "H:\\efab\\.runtime\\body_self_inspection_v1\\body_pain_register.json",
+                        "repair_draft_board":  "H:\\efab\\.runtime\\body_self_inspection_v1\\repair_draft_board.json",
+                        "next_logic_queue":  "H:\\efab\\.runtime\\body_self_inspection_v1\\next_logic_queue.json",
+                        "slice_e_runtime_proof":  "H:\\efab\\.runtime\\body_self_inspection_v1\\BODY_SELF_INSPECTION_SLICE_E_PROOF.json",
+                        "tracked_proof":  "H:\\efab\\tests\\self_development\\BODY_SELF_INSPECTION_SLICE_E_V1_PROOF.json"
+                    },
+    "validator_checks":  [
+                             {
+                                 "name":  "repo_inventory_parses",
+                                 "passed":  true,
+                                 "message":  "repo_inventory exists and parses"
+                             },
+                             {
+                                 "name":  "body_map_read_parses",
+                                 "passed":  true,
+                                 "message":  "body_map_read exists and parses"
+                             },
+                             {
+                                 "name":  "capability_map_read_parses",
+                                 "passed":  true,
+                                 "message":  "capability_map_read exists and parses"
+                             },
+                             {
+                                 "name":  "organ_candidates_parses",
+                                 "passed":  true,
+                                 "message":  "organ_candidates exists and parses"
+                             },
+                             {
+                                 "name":  "organ_similarity_index_parses",
+                                 "passed":  true,
+                                 "message":  "organ_similarity_index exists and parses"
+                             },
+                             {
+                                 "name":  "passport_audit_parses",
+                                 "passed":  true,
+                                 "message":  "passport_audit exists and parses"
+                             },
+                             {
+                                 "name":  "signal_readiness_audit_parses",
+                                 "passed":  true,
+                                 "message":  "signal_readiness_audit exists and parses"
+                             },
+                             {
+                                 "name":  "body_reconciliation_parses",
+                                 "passed":  true,
+                                 "message":  "body_reconciliation exists and parses"
+                             },
+                             {
+                                 "name":  "slice_d_runtime_proof_parses",
+                                 "passed":  true,
+                                 "message":  "slice_d_runtime_proof exists and parses"
+                             },
+                             {
+                                 "name":  "body_pain_register_parses",
+                                 "passed":  true,
+                                 "message":  "body_pain_register exists and parses"
+                             },
+                             {
+                                 "name":  "repair_draft_board_parses",
+                                 "passed":  true,
+                                 "message":  "repair_draft_board exists and parses"
+                             },
+                             {
+                                 "name":  "next_logic_queue_parses",
+                                 "passed":  true,
+                                 "message":  "next_logic_queue exists and parses"
+                             },
+                             {
+                                 "name":  "slice_e_runtime_proof_parses",
+                                 "passed":  true,
+                                 "message":  "slice_e_runtime_proof exists and parses"
+                             },
+                             {
+                                 "name":  "slice_d_runtime_status_pass",
+                                 "passed":  true,
+                                 "message":  "Slice D runtime proof status must be PASS"
+                             },
+                             {
+                                 "name":  "slice_e_runtime_status_pass",
+                                 "passed":  true,
+                                 "message":  "Slice E runtime proof status must be PASS"
+                             },
+                             {
+                                 "name":  "pain_records_exist_when_discrepancies_exist",
+                                 "passed":  true,
+                                 "message":  "pain records exist when reconciliation discrepancies exist"
+                             },
+                             {
+                                 "name":  "repair_drafts_exist_when_pains_exist",
+                                 "passed":  true,
+                                 "message":  "repair drafts exist when pain records exist"
+                             },
+                             {
+                                 "name":  "queue_items_exist_when_drafts_exist",
+                                 "passed":  true,
+                                 "message":  "next logic queue items exist when repair drafts exist"
+                             },
+                             {
+                                 "name":  "pain_record_required_fields",
+                                 "passed":  true,
+                                 "message":  "pain records include required fields"
+                             },
+                             {
+                                 "name":  "pain_type_values_allowed",
+                                 "passed":  true,
+                                 "message":  "pain_type values are allowed"
+                             },
+                             {
+                                 "name":  "pain_records_have_refs",
+                                 "passed":  true,
+                                 "message":  "pain records include evidence_refs and source_refs"
+                             },
+                             {
+                                 "name":  "repair_draft_required_fields",
+                                 "passed":  true,
+                                 "message":  "repair draft records include required fields"
+                             },
+                             {
+                                 "name":  "repair_class_values_allowed",
+                                 "passed":  true,
+                                 "message":  "repair_class values are allowed"
+                             },
+                             {
+                                 "name":  "repair_draft_execution_disallowed",
+                                 "passed":  true,
+                                 "message":  "execution_allowed is false on all repair drafts"
+                             },
+                             {
+                                 "name":  "next_logic_queue_required_fields",
+                                 "passed":  true,
+                                 "message":  "next logic queue items include required fields"
+                             },
+                             {
+                                 "name":  "queue_type_values_allowed",
+                                 "passed":  true,
+                                 "message":  "queue_type values are allowed"
+                             },
+                             {
+                                 "name":  "queue_execution_disallowed",
+                                 "passed":  true,
+                                 "message":  "execution_allowed is false on all queue items"
+                             },
+                             {
+                                 "name":  "no_tracked_map_passport_contract_mutation",
+                                 "passed":  true,
+                                 "message":  "no tracked map/passport/contract/active-memory/accepted-core/live-script mutation observed"
+                             },
+                             {
+                                 "name":  "boundary_body_pain_register_repo_mutated",
+                                 "passed":  true,
+                                 "message":  "body_pain_register boundary flag is false: repo_mutated"
+                             },
+                             {
+                                 "name":  "boundary_body_pain_register_active_memory_mutated",
+                                 "passed":  true,
+                                 "message":  "body_pain_register boundary flag is false: active_memory_mutated"
+                             },
+                             {
+                                 "name":  "boundary_body_pain_register_accepted_core_mutated",
+                                 "passed":  true,
+                                 "message":  "body_pain_register boundary flag is false: accepted_core_mutated"
+                             },
+                             {
+                                 "name":  "boundary_body_pain_register_body_map_mutated",
+                                 "passed":  true,
+                                 "message":  "body_pain_register boundary flag is false: body_map_mutated"
+                             },
+                             {
+                                 "name":  "boundary_body_pain_register_capability_map_mutated",
+                                 "passed":  true,
+                                 "message":  "body_pain_register boundary flag is false: capability_map_mutated"
+                             },
+                             {
+                                 "name":  "boundary_body_pain_register_passports_mutated",
+                                 "passed":  true,
+                                 "message":  "body_pain_register boundary flag is false: passports_mutated"
+                             },
+                             {
+                                 "name":  "boundary_body_pain_register_contracts_mutated",
+                                 "passed":  true,
+                                 "message":  "body_pain_register boundary flag is false: contracts_mutated"
+                             },
+                             {
+                                 "name":  "boundary_body_pain_register_repair_executed",
+                                 "passed":  true,
+                                 "message":  "body_pain_register boundary flag is false: repair_executed"
+                             },
+                             {
+                                 "name":  "boundary_body_pain_register_live_process_touched",
+                                 "passed":  true,
+                                 "message":  "body_pain_register boundary flag is false: live_process_touched"
+                             },
+                             {
+                                 "name":  "boundary_body_pain_register_codex_launched",
+                                 "passed":  true,
+                                 "message":  "body_pain_register boundary flag is false: codex_launched"
+                             },
+                             {
+                                 "name":  "boundary_body_pain_register_web_launched",
+                                 "passed":  true,
+                                 "message":  "body_pain_register boundary flag is false: web_launched"
+                             },
+                             {
+                                 "name":  "boundary_body_pain_register_cleanup_performed",
+                                 "passed":  true,
+                                 "message":  "body_pain_register boundary flag is false: cleanup_performed"
+                             },
+                             {
+                                 "name":  "boundary_repair_draft_board_repo_mutated",
+                                 "passed":  true,
+                                 "message":  "repair_draft_board boundary flag is false: repo_mutated"
+                             },
+                             {
+                                 "name":  "boundary_repair_draft_board_active_memory_mutated",
+                                 "passed":  true,
+                                 "message":  "repair_draft_board boundary flag is false: active_memory_mutated"
+                             },
+                             {
+                                 "name":  "boundary_repair_draft_board_accepted_core_mutated",
+                                 "passed":  true,
+                                 "message":  "repair_draft_board boundary flag is false: accepted_core_mutated"
+                             },
+                             {
+                                 "name":  "boundary_repair_draft_board_body_map_mutated",
+                                 "passed":  true,
+                                 "message":  "repair_draft_board boundary flag is false: body_map_mutated"
+                             },
+                             {
+                                 "name":  "boundary_repair_draft_board_capability_map_mutated",
+                                 "passed":  true,
+                                 "message":  "repair_draft_board boundary flag is false: capability_map_mutated"
+                             },
+                             {
+                                 "name":  "boundary_repair_draft_board_passports_mutated",
+                                 "passed":  true,
+                                 "message":  "repair_draft_board boundary flag is false: passports_mutated"
+                             },
+                             {
+                                 "name":  "boundary_repair_draft_board_contracts_mutated",
+                                 "passed":  true,
+                                 "message":  "repair_draft_board boundary flag is false: contracts_mutated"
+                             },
+                             {
+                                 "name":  "boundary_repair_draft_board_repair_executed",
+                                 "passed":  true,
+                                 "message":  "repair_draft_board boundary flag is false: repair_executed"
+                             },
+                             {
+                                 "name":  "boundary_repair_draft_board_live_process_touched",
+                                 "passed":  true,
+                                 "message":  "repair_draft_board boundary flag is false: live_process_touched"
+                             },
+                             {
+                                 "name":  "boundary_repair_draft_board_codex_launched",
+                                 "passed":  true,
+                                 "message":  "repair_draft_board boundary flag is false: codex_launched"
+                             },
+                             {
+                                 "name":  "boundary_repair_draft_board_web_launched",
+                                 "passed":  true,
+                                 "message":  "repair_draft_board boundary flag is false: web_launched"
+                             },
+                             {
+                                 "name":  "boundary_repair_draft_board_cleanup_performed",
+                                 "passed":  true,
+                                 "message":  "repair_draft_board boundary flag is false: cleanup_performed"
+                             },
+                             {
+                                 "name":  "boundary_next_logic_queue_repo_mutated",
+                                 "passed":  true,
+                                 "message":  "next_logic_queue boundary flag is false: repo_mutated"
+                             },
+                             {
+                                 "name":  "boundary_next_logic_queue_active_memory_mutated",
+                                 "passed":  true,
+                                 "message":  "next_logic_queue boundary flag is false: active_memory_mutated"
+                             },
+                             {
+                                 "name":  "boundary_next_logic_queue_accepted_core_mutated",
+                                 "passed":  true,
+                                 "message":  "next_logic_queue boundary flag is false: accepted_core_mutated"
+                             },
+                             {
+                                 "name":  "boundary_next_logic_queue_body_map_mutated",
+                                 "passed":  true,
+                                 "message":  "next_logic_queue boundary flag is false: body_map_mutated"
+                             },
+                             {
+                                 "name":  "boundary_next_logic_queue_capability_map_mutated",
+                                 "passed":  true,
+                                 "message":  "next_logic_queue boundary flag is false: capability_map_mutated"
+                             },
+                             {
+                                 "name":  "boundary_next_logic_queue_passports_mutated",
+                                 "passed":  true,
+                                 "message":  "next_logic_queue boundary flag is false: passports_mutated"
+                             },
+                             {
+                                 "name":  "boundary_next_logic_queue_contracts_mutated",
+                                 "passed":  true,
+                                 "message":  "next_logic_queue boundary flag is false: contracts_mutated"
+                             },
+                             {
+                                 "name":  "boundary_next_logic_queue_repair_executed",
+                                 "passed":  true,
+                                 "message":  "next_logic_queue boundary flag is false: repair_executed"
+                             },
+                             {
+                                 "name":  "boundary_next_logic_queue_live_process_touched",
+                                 "passed":  true,
+                                 "message":  "next_logic_queue boundary flag is false: live_process_touched"
+                             },
+                             {
+                                 "name":  "boundary_next_logic_queue_codex_launched",
+                                 "passed":  true,
+                                 "message":  "next_logic_queue boundary flag is false: codex_launched"
+                             },
+                             {
+                                 "name":  "boundary_next_logic_queue_web_launched",
+                                 "passed":  true,
+                                 "message":  "next_logic_queue boundary flag is false: web_launched"
+                             },
+                             {
+                                 "name":  "boundary_next_logic_queue_cleanup_performed",
+                                 "passed":  true,
+                                 "message":  "next_logic_queue boundary flag is false: cleanup_performed"
+                             },
+                             {
+                                 "name":  "boundary_slice_e_runtime_proof_repo_mutated",
+                                 "passed":  true,
+                                 "message":  "slice_e_runtime_proof boundary flag is false: repo_mutated"
+                             },
+                             {
+                                 "name":  "boundary_slice_e_runtime_proof_active_memory_mutated",
+                                 "passed":  true,
+                                 "message":  "slice_e_runtime_proof boundary flag is false: active_memory_mutated"
+                             },
+                             {
+                                 "name":  "boundary_slice_e_runtime_proof_accepted_core_mutated",
+                                 "passed":  true,
+                                 "message":  "slice_e_runtime_proof boundary flag is false: accepted_core_mutated"
+                             },
+                             {
+                                 "name":  "boundary_slice_e_runtime_proof_body_map_mutated",
+                                 "passed":  true,
+                                 "message":  "slice_e_runtime_proof boundary flag is false: body_map_mutated"
+                             },
+                             {
+                                 "name":  "boundary_slice_e_runtime_proof_capability_map_mutated",
+                                 "passed":  true,
+                                 "message":  "slice_e_runtime_proof boundary flag is false: capability_map_mutated"
+                             },
+                             {
+                                 "name":  "boundary_slice_e_runtime_proof_passports_mutated",
+                                 "passed":  true,
+                                 "message":  "slice_e_runtime_proof boundary flag is false: passports_mutated"
+                             },
+                             {
+                                 "name":  "boundary_slice_e_runtime_proof_contracts_mutated",
+                                 "passed":  true,
+                                 "message":  "slice_e_runtime_proof boundary flag is false: contracts_mutated"
+                             },
+                             {
+                                 "name":  "boundary_slice_e_runtime_proof_repair_executed",
+                                 "passed":  true,
+                                 "message":  "slice_e_runtime_proof boundary flag is false: repair_executed"
+                             },
+                             {
+                                 "name":  "boundary_slice_e_runtime_proof_live_process_touched",
+                                 "passed":  true,
+                                 "message":  "slice_e_runtime_proof boundary flag is false: live_process_touched"
+                             },
+                             {
+                                 "name":  "boundary_slice_e_runtime_proof_codex_launched",
+                                 "passed":  true,
+                                 "message":  "slice_e_runtime_proof boundary flag is false: codex_launched"
+                             },
+                             {
+                                 "name":  "boundary_slice_e_runtime_proof_web_launched",
+                                 "passed":  true,
+                                 "message":  "slice_e_runtime_proof boundary flag is false: web_launched"
+                             },
+                             {
+                                 "name":  "boundary_slice_e_runtime_proof_cleanup_performed",
+                                 "passed":  true,
+                                 "message":  "slice_e_runtime_proof boundary flag is false: cleanup_performed"
+                             },
+                             {
+                                 "name":  "tracked_proof_parses",
+                                 "passed":  true,
+                                 "message":  "tracked Slice E proof exists and parses"
+                             }
+                         ],
+    "negative_test_results":  [
+                                  {
+                                      "name":  "repair_drafts_do_not_execute",
+                                      "passed":  true,
+                                      "evidence":  "execution_allowed on all repair drafts"
+                                  },
+                                  {
+                                      "name":  "queue_items_do_not_execute",
+                                      "passed":  true,
+                                      "evidence":  "execution_allowed on all queue items"
+                                  },
+                                  {
+                                      "name":  "no_repair_execution_boundary",
+                                      "passed":  true,
+                                      "evidence":  "slice_e_runtime_proof.boundary.repair_executed"
+                                  },
+                                  {
+                                      "name":  "codex_not_launched_boundary",
+                                      "passed":  true,
+                                      "evidence":  "slice_e_runtime_proof.boundary.codex_launched"
+                                  },
+                                  {
+                                      "name":  "web_not_launched_boundary",
+                                      "passed":  true,
+                                      "evidence":  "slice_e_runtime_proof.boundary.web_launched"
+                                  }
+                              ],
+    "git_status_before_invoker":  [
+                                      "?? operations/body_self_inspection/build_body_pain_register_v1.ps1",
+                                      "?? operations/body_self_inspection/build_next_logic_queue_v1.ps1",
+                                      "?? operations/body_self_inspection/build_repair_draft_board_v1.ps1",
+                                      "?? operations/body_self_inspection/invoke_body_self_inspection_slice_e_v1.ps1",
+                                      "?? tests/self_development/BODY_SELF_INSPECTION_SLICE_E_V1_PROOF.json",
+                                      "?? validators/validate_body_self_inspection_slice_e_v1.ps1"
+                                  ],
+    "git_status_after_invoker":  [
+                                     "?? operations/body_self_inspection/build_body_pain_register_v1.ps1",
+                                     "?? operations/body_self_inspection/build_next_logic_queue_v1.ps1",
+                                     "?? operations/body_self_inspection/build_repair_draft_board_v1.ps1",
+                                     "?? operations/body_self_inspection/invoke_body_self_inspection_slice_e_v1.ps1",
+                                     "?? tests/self_development/BODY_SELF_INSPECTION_SLICE_E_V1_PROOF.json",
+                                     "?? validators/validate_body_self_inspection_slice_e_v1.ps1"
+                                 ],
+    "aggregate_counts":  {
+                             "source_discrepancy_records":  1514,
+                             "pain_records":  1510,
+                             "repair_drafts":  1510,
+                             "queue_items":  1510
+                         },
+    "boundary":  {
+                     "repo_mutated":  false,
+                     "active_memory_mutated":  false,
+                     "accepted_core_mutated":  false,
+                     "body_map_mutated":  false,
+                     "capability_map_mutated":  false,
+                     "passports_mutated":  false,
+                     "contracts_mutated":  false,
+                     "repair_executed":  false,
+                     "live_process_touched":  false,
+                     "codex_launched":  false,
+                     "web_launched":  false,
+                     "cleanup_performed":  false
+                 },
+    "errors":  [
+
+               ]
+}
