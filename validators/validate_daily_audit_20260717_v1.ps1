@@ -15,6 +15,9 @@ if($r){
   if($r.recommended_next_action -ne 'AUDIT_M1_CURRENT_MIND_TOPOLOGY_V1'){ Add-Err 'next_action_mismatch' }
   if($r.boundary.runtime_launched -ne $false){ Add-Err 'runtime_launched_not_false' }
   if($r.boundary.active_memory_mutated -ne $false){ Add-Err 'active_memory_mutated_not_false' }
+  $runtime_size_paths_required=@('.runtime/active_compact_semantic_memory_v1','.runtime/compact_memory_intake_v1','.runtime/compact_memory_intake_v1/queue','.runtime/compact_memory_intake_v1/checkpoints','.runtime/live_trials','.runtime/continuous_agent_runtime_v1_lab')
+  foreach($p in $runtime_size_paths_required){ if(@($r.runtime_sizes | Where-Object { $_.path -eq $p }).Count -ne 1){ Add-Err "runtime_size_missing:$p" } }
+  if(@($r.runtime_sizes).Count -lt 6){ Add-Err "runtime_sizes_too_few:$(@($r.runtime_sizes).Count)" }
   if(@($r.key_proofs).Count -lt 7){ Add-Err 'key_proofs_too_few' }
   foreach($status in @($r.key_proofs | ForEach-Object {$_.status})){ if($status -like 'MISSING*' -or $status -eq 'UNREADABLE'){ Add-Err "bad_key_proof_status:$status" } }
 }

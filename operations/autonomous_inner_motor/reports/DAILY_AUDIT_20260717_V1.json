@@ -21,14 +21,46 @@
                 },
     "runtime_sizes":  [
                           {
-                              "path":  [
-                                           ".runtime/active_compact_semantic_memory_v1",
-                                           "SizeInfo"
-                                       ],
+                              "path":  ".runtime/active_compact_semantic_memory_v1",
                               "exists":  true,
                               "files":  3,
                               "bytes":  13079084,
                               "mb":  12.47
+                          },
+                          {
+                              "path":  ".runtime/compact_memory_intake_v1",
+                              "exists":  true,
+                              "files":  141,
+                              "bytes":  39556382,
+                              "mb":  37.72
+                          },
+                          {
+                              "path":  ".runtime/compact_memory_intake_v1/queue",
+                              "exists":  true,
+                              "files":  54,
+                              "bytes":  103410,
+                              "mb":  0.1
+                          },
+                          {
+                              "path":  ".runtime/compact_memory_intake_v1/checkpoints",
+                              "exists":  true,
+                              "files":  9,
+                              "bytes":  39236850,
+                              "mb":  37.42
+                          },
+                          {
+                              "path":  ".runtime/live_trials",
+                              "exists":  true,
+                              "files":  79,
+                              "bytes":  434457,
+                              "mb":  0.41
+                          },
+                          {
+                              "path":  ".runtime/continuous_agent_runtime_v1_lab",
+                              "exists":  true,
+                              "files":  16,
+                              "bytes":  102276,
+                              "mb":  0.1
                           }
                       ],
     "key_proofs":  [
