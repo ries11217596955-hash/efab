@@ -1,33 +1,29 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-17T14:14:09.1105691+04:00",
+    "checked_at":  "2026-07-17T14:30:03.7535354+04:00",
     "branch":  "main",
-    "observed_head":  "1310097a00f895ad9fd3cac96269477c2d17ed45",
-    "subject_head":  "1310097a00f895ad9fd3cac96269477c2d17ed45",
+    "observed_head":  "84cf2ed7ceb7aa375d38eabbfbe801a62a30c88d",
+    "subject_head":  "84cf2ed7ceb7aa375d38eabbfbe801a62a30c88d",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
+                          "AGENT_BUILDER_INNATE_REFLEX_KERNEL_V1_PLAN.md",
+                          "AGENT_BUILDER_NEXT_15_STEPS_LOCK_V2_R2.md",
                           "AGENT_BUILDER_SELF_NOTEBOOK.md",
-                          "operations/autonomous_inner_motor/organ_knowledge/BODY_SELF_INSPECTION_CIRCUIT_V1_KNOWLEDGE.json",
-                          "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+                          "operations/autonomous_inner_motor/CODEX_TASK_INNATE_REFLEX_KERNEL_V1.md",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "tests/self_development/AGENT_LIFE_QUARANTINE_AND_BODY_INTEGRATION_V1_PROOF.json",
-                          "tests/self_development/BODY_SELF_INSPECTION_ORGAN_KNOWLEDGE_V1_PROOF.json",
-                          "tests/self_development/MENTAL_FRONTIER_ROUTER_V1_PROOF.json",
-                          "validators/validate_body_self_inspection_organ_knowledge_v1.ps1"
+                          "tests/self_development/INNATE_REFLEX_KERNEL_PLAN_AND_CODEX_TASK_V1_PROOF.json",
+                          "validators/validate_innate_reflex_kernel_plan_and_codex_task_v1.ps1"
                       ],
     "structural_paths":  [
-                             "operations/autonomous_inner_motor/organ_knowledge/BODY_SELF_INSPECTION_CIRCUIT_V1_KNOWLEDGE.json",
-                             "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
-                             "tests/self_development/AGENT_LIFE_QUARANTINE_AND_BODY_INTEGRATION_V1_PROOF.json",
-                             "tests/self_development/BODY_SELF_INSPECTION_ORGAN_KNOWLEDGE_V1_PROOF.json",
-                             "tests/self_development/MENTAL_FRONTIER_ROUTER_V1_PROOF.json",
-                             "validators/validate_body_self_inspection_organ_knowledge_v1.ps1"
+                             "operations/autonomous_inner_motor/CODEX_TASK_INNATE_REFLEX_KERNEL_V1.md",
+                             "tests/self_development/INNATE_REFLEX_KERNEL_PLAN_AND_CODEX_TASK_V1_PROOF.json",
+                             "validators/validate_innate_reflex_kernel_plan_and_codex_task_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -40,7 +36,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  2140,
-                                    "sha256":  "02a388e38ac92a2b1a84eafa152c506831388fabba4eec90734cc8feabbaec1e"
+                                    "sha256":  "49c2383f734a663aea4f29c84bc7a09597076e33e8ff680e5b853938bc0c475b"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -73,5 +69,5 @@
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-17T14:14:43.9268071+04:00"
+    "refreshed_at":  "2026-07-17T14:30:38.8512835+04:00"
 }

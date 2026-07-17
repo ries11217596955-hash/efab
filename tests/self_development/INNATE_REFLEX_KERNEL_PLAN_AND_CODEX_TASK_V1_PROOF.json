@@ -1,11 +1,13 @@
 {
-    "schema":  "innate_reflex_kernel_plan_and_codex_task_v1_validation",
-    "status":  "PASS_INNATE_REFLEX_KERNEL_PLAN_AND_CODEX_TASK_V1",
-    "checked_at":  "2026-07-17T10:14:01.7269032Z",
+    "schema":  "callable_innate_reflex_plan_v1_validation",
+    "status":  "PASS_CALLABLE_INNATE_REFLEX_PLAN_V1",
+    "checked_at":  "2026-07-17T10:29:55.8668576Z",
     "plan":  "AGENT_BUILDER_INNATE_REFLEX_KERNEL_V1_PLAN.md",
-    "codex_task":  "operations/autonomous_inner_motor/CODEX_TASK_INNATE_REFLEX_KERNEL_V1.md",
-    "old_plan":  "AGENT_BUILDER_NEXT_15_STEPS_LOCK_V2_R2.md",
-    "reflex_count":  18,
+    "blocked_old_codex_task":  "operations/autonomous_inner_motor/CODEX_TASK_INNATE_REFLEX_KERNEL_V1.md",
+    "old_root_plan":  "AGENT_BUILDER_NEXT_15_STEPS_LOCK_V2_R2.md",
+    "reflex_count":  25,
+    "first_real_reflex":  "body_audit_reflex",
+    "first_real_organ":  "BODY_SELF_INSPECTION_CIRCUIT_V1",
     "errors":  [
 
                ],
@@ -16,6 +18,6 @@
                      "body_inspection_invoked":  false,
                      "active_memory_mutated":  false,
                      "live_process_touched":  false,
-                     "old_plan_deleted":  false
+                     "old_task_blocked":  true
                  }
 }
