@@ -854,3 +854,39 @@ LIFE_WORKING_MEMORY_V1
 one compact wake context per life
 cycle reads in-process context/ref, not raw files
 ```
+
+## 21. LIFE_WORKING_MEMORY_V1
+
+Owner correction:
+
+```text
+Agent must not rebuild/read/write wake files on every breath.
+Wake context belongs to life-level working memory.
+```
+
+Implementation boundary:
+
+```text
+canonical launcher passes one WakeContextPath for the whole life
+first cycle creates life_working_memory_context.json
+later cycles reuse it and skip body wake scan
+per-cycle proof references working memory context
+```
+
+Allowed:
+
+```text
+one compact life working memory context per life
+per-cycle compact proof reference
+```
+
+Forbidden:
+
+```text
+full body scan every cycle
+raw wake debug retention
+active memory write
+repo mutation
+process kill
+cleanup outside scoped runtime scratch
+```

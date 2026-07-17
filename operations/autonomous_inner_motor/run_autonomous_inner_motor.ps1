@@ -6,6 +6,7 @@ param(
   [switch]$EnableMemoryLearning,
   [ValidateSet('Auto','QueueOnly','QueueAndMerge','DirectAbsorb')][string]$MemoryIngestionMode='Auto',
   [string]$OutputRoot='.runtime/autonomous_inner_motor',
+  [string]$WakeContextPath='',
   [int]$MaxMemorySamples=6
 )
 $ErrorActionPreference='Stop'
@@ -705,9 +706,62 @@ $runRoot=Join-Path $OutputRoot $runId
 $proofName=if($Mode -eq 'SandboxTestLife'){ 'TEST_LIFE_PROOF.json' } else { 'SANDBOX_EXPLORATION_PROOF.json' }
 $proofPath=Join-Path $runRoot $proofName
 $innateReflexBootloadPath=Join-Path $runRoot 'innate_reflex_bootload.json'
-$innateReflexBootload=New-InnateReflexBootload $runRoot $innateReflexBootloadPath
 $defaultWakeReflexesPath=Join-Path $runRoot 'default_wake_reflexes.json'
-$defaultWakeReflexes=Invoke-DefaultWakeReflexes $runRoot $innateReflexBootload $defaultWakeReflexesPath
+$lifeWorkingMemoryPath=$WakeContextPath
+$lifeWorkingMemoryMode='cycle_local_wake'
+$lifeWorkingMemoryCreated=$false
+$lifeWorkingMemory=$null
+if(-not [string]::IsNullOrWhiteSpace($WakeContextPath) -and (Test-Path -LiteralPath $WakeContextPath -PathType Leaf)){
+  $lifeWorkingMemory=Get-Content -Raw -LiteralPath $WakeContextPath | ConvertFrom-Json
+  if($lifeWorkingMemory.status -ne 'PASS_LIFE_WORKING_MEMORY_V1'){ throw "LIFE_WORKING_MEMORY_STATUS_MISMATCH:$($lifeWorkingMemory.status)" }
+  $innateReflexBootload=$lifeWorkingMemory.innate_reflex_bootload
+  $defaultWakeReflexes=$lifeWorkingMemory.default_wake_reflexes
+  $innateReflexBootloadPath=$lifeWorkingMemory.innate_reflex_bootload_path
+  $defaultWakeReflexesPath=$lifeWorkingMemory.default_wake_reflexes_path
+  $lifeWorkingMemoryMode='reused_life_working_memory'
+} else {
+  $innateReflexBootload=New-InnateReflexBootload $runRoot $innateReflexBootloadPath
+  $defaultWakeReflexes=Invoke-DefaultWakeReflexes $runRoot $innateReflexBootload $defaultWakeReflexesPath
+  if([string]::IsNullOrWhiteSpace($lifeWorkingMemoryPath)){ $lifeWorkingMemoryPath=Join-Path $runRoot 'life_working_memory_context.json' }
+  $lifeWorkingMemory=[ordered]@{
+    schema='life_working_memory_v1'
+    status='PASS_LIFE_WORKING_MEMORY_V1'
+    created_at=(Get-Date).ToUniversalTime().ToString('o')
+    created_by_run_id=$runId
+    created_by_run_root=$runRoot
+    mode='created_once_for_life'
+    wake_context_reused=$false
+    innate_reflex_bootload_path=$innateReflexBootloadPath
+    default_wake_reflexes_path=$defaultWakeReflexesPath
+    innate_reflex_bootload=$innateReflexBootload
+    default_wake_reflexes=$defaultWakeReflexes
+    compact_context=[ordered]@{
+      wake_default_status=$defaultWakeReflexes.status
+      wake_default_reflexes=$defaultWakeReflexes.default_reflexes_invoked
+      body_status=$defaultWakeReflexes.body_audit_reflex.status
+      repo_dirty_count=$defaultWakeReflexes.repo_reality_reflex.dirty_count
+      process_count=$defaultWakeReflexes.process_scan_reflex.process_count
+      runtime_top_entry_count=$defaultWakeReflexes.runtime_pressure_reflex.runtime_top_entry_count
+      active_memory_root_exists=$defaultWakeReflexes.active_memory_read_reflex.root_exists
+      active_memory_cells_exists=$defaultWakeReflexes.active_memory_read_reflex.cells_exists
+    }
+    boundary=[ordered]@{
+      life_scope='one_per_canonical_life_when_launcher_passes_WakeContextPath'
+      in_process_context_expected=$true
+      reused_by_cycles=$true
+      raw_debug_retained=$false
+      active_memory_mutated=$false
+      repo_mutated=$false
+      repair_executed=$false
+      codex_launched=$false
+      web_launched=$false
+    }
+  }
+  Write-CleanJson $lifeWorkingMemoryPath $lifeWorkingMemory 100
+  $lifeWorkingMemoryCreated=$true
+  $lifeWorkingMemoryMode='created_life_working_memory'
+}
+$cycleWakeArtifactsWritten=($lifeWorkingMemoryMode -ne 'reused_life_working_memory')
 $cycles=@(
   [ordered]@{ n=1; lens='self_seed'; question='What should I think about without waiting for Owner?'; memory_used=$true; answer='Derive internal goal from self-build direction: improve thinking capacity first, then governed self-build action, then child-agent production.' },
   [ordered]@{ n=2; lens='body_memory_orientation'; question='What body and memory do I already have?'; memory_used=$true; answer='Read body inventory, active compact memory state, living loop state, School proof state, and self-build artifacts before external requests.' },
@@ -883,6 +937,9 @@ $memoryToNextPathReuseGate = [ordered]@{
 Write-CleanJson $memoryToNextPathReuseGatePath $memoryToNextPathReuseGate 20
 $proofPackManifestPath = Join-Path $runRoot 'sandbox_proof_pack_manifest.json'
 
+$filesWritten=@($proofPath,$mindLogicPath,$actionDecisionPath,$antiRepeatGuardPath,$memoryToNextPathReuseGatePath,$mentalFrontierExpansionGatePath,$mentalFrontierRouterPath,$proofPackManifestPath)
+if($cycleWakeArtifactsWritten){ $filesWritten += @($innateReflexBootloadPath,$defaultWakeReflexesPath) }
+if($lifeWorkingMemoryCreated){ $filesWritten += $lifeWorkingMemoryPath }
 $proof=[ordered]@{
   schema='AUTONOMOUS_INNER_MOTOR_SANDBOX_EXPLORATION_PROOF'
   organ_id='AUTONOMOUS_INNER_MOTOR_ORGAN'
@@ -905,6 +962,9 @@ $proof=[ordered]@{
   innate_reflex_bootload=$innateReflexBootload
   default_wake_reflexes_path=$defaultWakeReflexesPath
   default_wake_reflexes=$defaultWakeReflexes
+  life_working_memory_path=$lifeWorkingMemoryPath
+  life_working_memory_mode=$lifeWorkingMemoryMode
+  life_working_memory=$lifeWorkingMemory
   anti_repeat_guard=$antiRepeatGuard
   memory_to_next_path_reuse_gate=$memoryToNextPathReuseGate
   mental_frontier_expansion_gate=$mentalFrontierExpansionGate
@@ -923,6 +983,7 @@ $proof=[ordered]@{
     [ordered]@{ step='gate'; result='block_actions'; proof='policy disables mutation/action modes.' },
     [ordered]@{ step='innate_reflex_bootload'; result=$innateReflexBootload.status; proof='Permanent innate reflex kernel was loaded once for this run; full reflex matrix is not written every cycle.' },
     [ordered]@{ step='default_wake_reflexes'; result=$defaultWakeReflexes.status; proof='Wake-default sensing observed body, repo, processes, runtime pressure, and active memory without mutation.' },
+    [ordered]@{ step='life_working_memory'; result=$lifeWorkingMemory.status; proof='Life working memory keeps wake context once per life and cycles reuse it instead of re-scanning body every breath.' },
     [ordered]@{ step='mind_logic_frame'; result=$mindLogic.status; proof='Mind Logic Kernel separates known/unknown, contradiction, hypotheses, source ladder, and next logical step before action candidate.' },
     [ordered]@{ step='action_candidate_contract'; result=$actionDecision.status; proof='Action Decision Contract selects a next action candidate from the mind logic frame but keeps execution_allowed=false.' },
     [ordered]@{ step='select_next'; result=$selected.path; proof='deep recursive thinking and self-learning atom loop are the next bottleneck for thinking quality.' }
@@ -933,11 +994,12 @@ $proof=[ordered]@{
   heartbeat=[ordered]@{ cycle_count=@($cycles).Count; alive='one_shot_sandbox'; background_process_started=$false }
   final_self_diagnosis='The motor can self-seed a thinking cycle, build a Mind Logic Frame, decompose a root question into ThoughtFrames, use memory recall, and return a next_action_candidate with execution disabled. Memory learning remains governed and optional.'
   stop_reason='PROTECTIVE_CHECKPOINT_THINKING_ONLY'
-  mutation_audit=[ordered]@{ active_memory_mutated=[bool]$EnableMemoryLearning; direct_active_memory_write=$false; governed_absorption_used=[bool]($EnableMemoryLearning -and $deepThinking.absorption); memory_ingestion_mode=if($deepThinking.absorption){$deepThinking.absorption.mode}else{$MemoryIngestionMode}; git_mutated=$false; codex_launched=$false; web_research_performed=$false; school_started=$false; background_process_started=$false; files_written=@($proofPath,$mindLogicPath,$actionDecisionPath,$antiRepeatGuardPath,$memoryToNextPathReuseGatePath,$mentalFrontierExpansionGatePath,$mentalFrontierRouterPath,$proofPackManifestPath,$innateReflexBootloadPath,$defaultWakeReflexesPath) }
+  mutation_audit=[ordered]@{ active_memory_mutated=[bool]$EnableMemoryLearning; direct_active_memory_write=$false; governed_absorption_used=[bool]($EnableMemoryLearning -and $deepThinking.absorption); memory_ingestion_mode=if($deepThinking.absorption){$deepThinking.absorption.mode}else{$MemoryIngestionMode}; git_mutated=$false; codex_launched=$false; web_research_performed=$false; school_started=$false; background_process_started=$false; files_written=$filesWritten }
   validator_result=[ordered]@{ runner_self_check='PASS_RUNNER_GENERATED_SINGLE_SANDBOX_PROOF'; external_validator_expected='validators/validate_autonomous_inner_motor_organ_contract.ps1 -SandboxProofPath <proof>; validators/validate_autonomous_inner_motor_mind_logic_wiring_v1.ps1 -ProofPath <proof>; validators/validate_autonomous_inner_motor_action_decision_wiring_v1.ps1 -ProofPath <proof>' }
 }
 Write-CleanJson $proofPath $proof 80
-$proofPackRequiredFiles=@('SANDBOX_EXPLORATION_PROOF.json','mind_logic_frame.json','action_decision_packet.json','anti_repeat_guard.json','memory_to_next_path_reuse_gate.json','mental_frontier_expansion_gate.json','mental_frontier_router.json','innate_reflex_bootload.json','default_wake_reflexes.json')
+$proofPackRequiredFiles=@('SANDBOX_EXPLORATION_PROOF.json','mind_logic_frame.json','action_decision_packet.json','anti_repeat_guard.json','memory_to_next_path_reuse_gate.json','mental_frontier_expansion_gate.json','mental_frontier_router.json')
+if($cycleWakeArtifactsWritten){ $proofPackRequiredFiles += @('innate_reflex_bootload.json','default_wake_reflexes.json') }
 $proofPackOptionalSidecars=@('memory_recall_filter.json','contradiction_resolution.json','hypothesis_test_result.json','deep_source_answer_request.json','memory_filter_for_answer.json','route_request_packet.json','source_authority_route_decision.json','deep_source_answer_assimilation.json','mind_delta_acceptance_decision.json')
 $proofPackFiles=@()
 foreach($name in @($proofPackRequiredFiles + $proofPackOptionalSidecars)){

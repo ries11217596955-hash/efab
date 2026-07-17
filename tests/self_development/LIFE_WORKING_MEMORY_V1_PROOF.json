@@ -1,0 +1,38 @@
+{
+    "schema":  "life_working_memory_v1_validation",
+    "status":  "PASS_LIFE_WORKING_MEMORY_V1",
+    "checked_at":  "2026-07-17T16:23:12.7321699Z",
+    "runner":  "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+    "launcher":  "operations/autonomous_inner_motor/start_agent_life_v1.ps1",
+    "validator":  "validators/validate_life_working_memory_v1.ps1",
+    "test_root":  ".runtime/self_development/life_working_memory_v1_runner_test",
+    "wake_context_path":  ".runtime\\self_development\\life_working_memory_v1_runner_test\\life_working_memory_context.json",
+    "first":  {
+                  "exit_code":  0,
+                  "run_dir":  "H:\\efab\\.runtime\\self_development\\life_working_memory_v1_runner_test\\cycles_first\\aimo_20260717_202044",
+                  "mode":  "created_life_working_memory",
+                  "wake_body_audit_exists":  true,
+                  "default_wake_exists":  true
+              },
+    "second":  {
+                   "exit_code":  0,
+                   "run_dir":  "H:\\efab\\.runtime\\self_development\\life_working_memory_v1_runner_test\\cycles_second\\aimo_20260717_202254",
+                   "mode":  "reused_life_working_memory",
+                   "wake_body_audit_exists":  false,
+                   "default_wake_exists":  false,
+                   "bootload_exists":  false
+               },
+    "errors":  [
+
+               ],
+    "boundary":  {
+                     "first_cycle_creates_life_working_memory":  true,
+                     "later_cycle_reuses_life_working_memory":  true,
+                     "repeated_body_wake_scan_after_context_exists":  false,
+                     "per_cycle_wake_files_after_context_exists":  false,
+                     "active_memory_mutated":  false,
+                     "repo_mutated":  false,
+                     "codex_launched":  false,
+                     "web_launched":  false
+                 }
+}

@@ -1,0 +1,42 @@
+{
+    "schema":  "life_working_memory_v1_acceptance",
+    "status":  "ACCEPTED_PROVEN_LAB_LIFE_WORKING_MEMORY_V1",
+    "accepted_at":  "2026-07-17T16:27:10.1609716Z",
+    "reason":  "Owner corrected file-per-breath pattern. Wake context is created once per life and reused by later cycles.",
+    "validator":  "validators/validate_life_working_memory_v1.ps1",
+    "proof":  "tests/self_development/LIFE_WORKING_MEMORY_V1_PROOF.json",
+    "first":  {
+                  "exit_code":  0,
+                  "run_dir":  "H:\\efab\\.runtime\\self_development\\life_working_memory_v1_runner_test\\cycles_first\\aimo_20260717_202044",
+                  "mode":  "created_life_working_memory",
+                  "wake_body_audit_exists":  true,
+                  "default_wake_exists":  true
+              },
+    "second":  {
+                   "exit_code":  0,
+                   "run_dir":  "H:\\efab\\.runtime\\self_development\\life_working_memory_v1_runner_test\\cycles_second\\aimo_20260717_202254",
+                   "mode":  "reused_life_working_memory",
+                   "wake_body_audit_exists":  false,
+                   "default_wake_exists":  false,
+                   "bootload_exists":  false
+               },
+    "boundary":  {
+                     "first_cycle_creates_life_working_memory":  true,
+                     "later_cycle_reuses_life_working_memory":  true,
+                     "repeated_body_wake_scan_after_context_exists":  false,
+                     "per_cycle_wake_files_after_context_exists":  false,
+                     "active_memory_mutated":  false,
+                     "repo_mutated":  false,
+                     "codex_launched":  false,
+                     "web_launched":  false
+                 },
+    "implementation_files":  [
+                                 "AGENT_BUILDER_INNATE_REFLEX_KERNEL_V1_PLAN.md",
+                                 "AGENT_BUILDER_SELF_NOTEBOOK.md",
+                                 "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+                                 "operations/autonomous_inner_motor/start_agent_life_v1.ps1",
+                                 "validators/validate_life_working_memory_v1.ps1",
+                                 "tests/self_development/LIFE_WORKING_MEMORY_V1_PROOF.json"
+                             ],
+    "next_slice":  "COMPACT_CYCLE_PROOF_V1_OR_DECISION_ROUTER_LISTENS_TO_WORKING_MEMORY"
+}

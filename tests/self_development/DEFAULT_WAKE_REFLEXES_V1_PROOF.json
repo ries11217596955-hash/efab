@@ -1,12 +1,12 @@
 {
     "schema":  "default_wake_reflexes_v2_validation",
     "status":  "PASS_DEFAULT_WAKE_REFLEXES_V2",
-    "checked_at":  "2026-07-17T15:55:37.1752771Z",
+    "checked_at":  "2026-07-17T16:25:24.5124471Z",
     "runner":  "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
     "validator":  "validators/validate_default_wake_reflexes_v1.ps1",
     "runner_smoke_exit_code":  0,
     "runner_smoke_output_root":  ".runtime/self_development/default_wake_reflexes_v2_runner_test",
-    "runtime_run_dir":  "H:\\efab\\.runtime\\self_development\\default_wake_reflexes_v2_runner_test\\aimo_20260717_195331",
+    "runtime_run_dir":  "H:\\efab\\.runtime\\self_development\\default_wake_reflexes_v2_runner_test\\aimo_20260717_202316",
     "wake_summary":  {
                          "status":  "PASS_DEFAULT_WAKE_REFLEXES_V2",
                          "invoked":  [
@@ -25,14 +25,15 @@
                                                      "observe_only":  true,
                                                      "repo_root":  "H:/efab",
                                                      "branch":  "main",
-                                                     "head":  "b7c4f0e",
-                                                     "dirty_count":  5,
+                                                     "head":  "ab9a7cb",
+                                                     "dirty_count":  6,
                                                      "status_short":  [
-                                                                          " M AGENT_BUILDER_INNATE_REFLEX_KERNEL_V1_PLAN.md",
                                                                           " M AGENT_BUILDER_SELF_NOTEBOOK.md",
                                                                           " M operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
-                                                                          "?? tests/self_development/BODY_WAKE_RAW_RETENTION_V1_PROOF.json",
-                                                                          "?? validators/validate_body_wake_raw_retention_v1.ps1"
+                                                                          " M operations/autonomous_inner_motor/start_agent_life_v1.ps1",
+                                                                          "?? operations/autonomous_inner_motor/reports/LIFE_WORKING_MEMORY_V1_ACCEPTANCE.json",
+                                                                          "?? tests/self_development/LIFE_WORKING_MEMORY_V1_PROOF.json",
+                                                                          "?? validators/validate_life_working_memory_v1.ps1"
                                                                       ],
                                                      "remote_delta":  "0\t0",
                                                      "boundary":  {
@@ -53,7 +54,7 @@
                                                      "process_count":  1,
                                                      "processes":  [
                                                                        {
-                                                                           "ProcessId":  1906912,
+                                                                           "ProcessId":  891140,
                                                                            "Name":  "powershell.exe",
                                                                            "CommandLine":  "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -NoProfile -ExecutionPolicy Bypass -File operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1 -Mode SandboxExploration -Question \"default wake reflex v2 validator\" -OutputRoot .runtime/self_development/default_wake_reflexes_v2_runner_test"
                                                                        }
@@ -72,7 +73,7 @@
                                                          "trigger_required":  false,
                                                          "observe_only":  true,
                                                          "runtime_exists":  true,
-                                                         "runtime_top_entry_count":  73,
+                                                         "runtime_top_entry_count":  77,
                                                          "runtime_top_entries":  [
                                                                                      {
                                                                                          "Name":  "active_compact_semantic_memory_v1",
@@ -256,8 +257,8 @@
                                                                                      }
                                                                                  ],
                                                          "drive_name":  "H",
-                                                         "drive_free_bytes":  996139003904,
-                                                         "drive_used_bytes":  4063035392,
+                                                         "drive_free_bytes":  996134592512,
+                                                         "drive_used_bytes":  4067446784,
                                                          "boundary":  {
                                                                           "cleanup_performed":  false,
                                                                           "deleted":  false,
@@ -296,10 +297,10 @@
                                                    "body_inspection_invoked":  true,
                                                    "callable":  true,
                                                    "source_entrypoint":  "operations/body_self_inspection/invoke_body_self_inspection_circuit_v1.ps1",
-                                                   "runtime_root":  ".runtime\\self_development\\default_wake_reflexes_v2_runner_test\\aimo_20260717_195331\\wake_body_audit",
-                                                   "signal_path":  ".runtime\\self_development\\default_wake_reflexes_v2_runner_test\\aimo_20260717_195331\\wake_body_audit\\body_self_inspection_signal.json",
-                                                   "parent_packet_path":  ".runtime\\self_development\\default_wake_reflexes_v2_runner_test\\aimo_20260717_195331\\wake_body_audit\\body_self_inspection_parent_packet.json",
-                                                   "circuit_proof_path":  ".runtime\\self_development\\default_wake_reflexes_v2_runner_test\\aimo_20260717_195331\\wake_body_audit\\BODY_SELF_INSPECTION_CIRCUIT_PROOF.json",
+                                                   "runtime_root":  ".runtime\\self_development\\default_wake_reflexes_v2_runner_test\\aimo_20260717_202316\\wake_body_audit",
+                                                   "signal_path":  ".runtime\\self_development\\default_wake_reflexes_v2_runner_test\\aimo_20260717_202316\\wake_body_audit\\body_self_inspection_signal.json",
+                                                   "parent_packet_path":  ".runtime\\self_development\\default_wake_reflexes_v2_runner_test\\aimo_20260717_202316\\wake_body_audit\\body_self_inspection_parent_packet.json",
+                                                   "circuit_proof_path":  ".runtime\\self_development\\default_wake_reflexes_v2_runner_test\\aimo_20260717_202316\\wake_body_audit\\BODY_SELF_INSPECTION_CIRCUIT_PROOF.json",
                                                    "signal_status":  "PASS_BODY_SELF_INSPECTION_SIGNAL_V1",
                                                    "parent_packet_status":  "PASS_BODY_SELF_INSPECTION_PARENT_PACKET_V1",
                                                    "circuit_proof_status":  "PASS_BODY_SELF_INSPECTION_CIRCUIT_RUNTIME_V1"

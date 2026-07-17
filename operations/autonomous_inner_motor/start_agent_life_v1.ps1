@@ -83,6 +83,7 @@ New-Item -ItemType Directory -Force -Path $trialRoot | Out-Null
 
 $preflightPath = Join-Path $trialRoot "PREFLIGHT.json"
 $summaryPath = Join-Path $trialRoot "LIVE_TRIAL_SUMMARY.json"
+$lifeWorkingMemoryPath = Join-Path $trialRoot "life_working_memory_context.json"
 
 $head = (git rev-parse --short HEAD).Trim()
 $delta = (git rev-list --left-right --count HEAD...origin/main 2>$null).Trim()
@@ -139,6 +140,7 @@ if ($preflight.status -ne "PREFLIGHT_PASS") {
         preflight_ref = $preflightPath
         duration_minutes = $DurationMinutes
         cycles = 0
+        life_working_memory_path = $lifeWorkingMemoryPath
         boundary = $preflight.boundary
     })
     throw "BLOCKED_AGENT_LIFE_PREFLIGHT: see $preflightPath"
@@ -152,7 +154,7 @@ $cycle = 0
 while ((Get-Date) -lt $end) {
     $cycle++
     $cycleStart = Get-Date
-    powershell -NoProfile -ExecutionPolicy Bypass -File "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1" -Mode SandboxExploration -EnableDeepThinking -EnableMemoryLearning -MemoryIngestionMode QueueOnly
+    powershell -NoProfile -ExecutionPolicy Bypass -File "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1" -Mode SandboxExploration -EnableDeepThinking -EnableMemoryLearning -MemoryIngestionMode QueueOnly -WakeContextPath $lifeWorkingMemoryPath
     $exit = $LASTEXITCODE
 
     $latest = Get-ChildItem ".runtime/autonomous_inner_motor" -Directory -ErrorAction SilentlyContinue | Sort-Object LastWriteTime -Descending | Select-Object -First 1
@@ -202,6 +204,8 @@ $summary = [ordered]@{
     finished_at = $finish.ToUniversalTime().ToString("o")
     duration_minutes_requested = $DurationMinutes
     duration_seconds = [int]($finish - $start).TotalSeconds
+    life_working_memory_path = $lifeWorkingMemoryPath
+    life_working_memory_exists = (Test-Path $lifeWorkingMemoryPath)
     cycles = @($cycles).Count
     launcher = "operations/autonomous_inner_motor/start_agent_life_v1.ps1"
     launch_contract = $preflight.canonical_launch_contract
