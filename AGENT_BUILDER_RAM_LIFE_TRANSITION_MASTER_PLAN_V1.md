@@ -343,3 +343,256 @@ Next slice after this commit:
 ```text
 AUDIT_A_RUNTIME_TOPOLOGY_V1
 ```
+## 10. AUDIT_D_CONTINUOUS_SAFETY_V1 detailed design
+
+Status: WRITTEN_IN_PLAN / IMPLEMENTATION_BLOCKED_UNTIL_VALIDATED
+
+Purpose:
+
+```text
+Define the immune system required before any continuous RAM-life runtime is allowed to exist.
+```
+
+Continuous runtime is more dangerous than process-per-cycle life because mistakes can persist across cycles inside RAM. The safety layer must exist before the first continuous lab.
+
+### 10.1 Required safety organs
+
+```text
+runtime_lock
+pid_file
+heartbeat
+stop_signal
+watchdog
+bounded_duration
+memory_budget
+cpu_budget
+disk_budget
+checkpoint_writer
+crash_recovery_reader
+quarantine_on_fault
+duplicate_runtime_prevention
+safe_shutdown
+final_proof_writer
+```
+
+### 10.2 Runtime lock
+
+Required file:
+
+```text
+.runtime/continuous_agent_runtime_v1/runtime.lock.json
+```
+
+Must include:
+
+```text
+runtime_id
+pid
+started_at
+mode
+owner
+repo_head
+heartbeat_path
+stop_signal_path
+checkpoint_path
+```
+
+Rules:
+
+```text
+no lock -> runtime may start
+valid live lock -> runtime must refuse to start
+stale lock -> runtime may quarantine stale lock only after process proof
+```
+
+### 10.3 Heartbeat
+
+Required file:
+
+```text
+.runtime/continuous_agent_runtime_v1/heartbeat.json
+```
+
+Must update periodically with:
+
+```text
+runtime_id
+pid
+cycle_count
+last_cycle_started_at
+last_cycle_finished_at
+last_safe_checkpoint
+memory_mb
+status
+```
+
+Rules:
+
+```text
+heartbeat proves the runtime is alive
+watchdog reads heartbeat
+missing/stale heartbeat triggers quarantine/stop recommendation
+```
+
+### 10.4 Stop signal
+
+Required file:
+
+```text
+.runtime/continuous_agent_runtime_v1/STOP.json
+```
+
+Rules:
+
+```text
+runtime checks stop signal between cycles
+runtime must stop safely if present
+stop signal does not kill process violently
+final proof must say stop_requested=true
+```
+
+### 10.5 Watchdog
+
+Watchdog is observe-only in first lab.
+
+Responsibilities:
+
+```text
+read lock
+read heartbeat
+check process exists
+check duration cap
+check memory/disk/cpu pressure
+emit watchdog report
+```
+
+Forbidden in first lab:
+
+```text
+kill process automatically
+clean runtime automatically
+mutate active memory
+mutate repo
+launch codex/web/school
+```
+
+### 10.6 Budgets
+
+First lab budget proposal:
+
+```text
+duration <= 5 minutes
+mode = SandboxExploration
+memory = measured and capped by policy before live use
+cpu = observed, not optimized
+repo mutation = false
+active memory direct mutation = false
+codex/web/git/repair = false
+checkpoint count <= latest 3
+raw debug retained = false by default
+```
+
+### 10.7 Checkpoint policy
+
+Checkpoint is not memory diary.
+
+Allowed:
+
+```text
+runtime_id
+pid
+cycle_count
+orientation_card_ref/hash
+wake_context_ref/hash
+ram_state_compact
+last_decision_summary
+last_error_summary
+last_safe_boundary
+```
+
+Forbidden:
+
+```text
+full compact memory dump
+raw reasoning transcript
+raw proof bodies
+large repo inventory
+unbounded cycle history
+```
+
+### 10.8 Crash recovery
+
+First lab crash recovery can be proof-only.
+
+Required:
+
+```text
+if runtime exits unexpectedly, final/error proof must preserve last checkpoint ref
+restart must not auto-resume without operator authority
+stale lock must not be blindly deleted
+```
+
+### 10.9 Quarantine on fault
+
+Faults:
+
+```text
+duplicate runtime detected
+heartbeat stale
+memory budget exceeded
+duration cap exceeded
+checkpoint write failed
+proof write failed
+unexpected repo dirty state
+active memory mutation detected
+```
+
+Response:
+
+```text
+stop after current cycle if safe
+write fault proof
+mark runtime QUARANTINED
+no cleanup unless separate retention authority exists
+```
+
+### 10.10 Start gate for CONTINUOUS_AGENT_RUNTIME_V1_LAB
+
+Lab cannot start unless all are true:
+
+```text
+repo clean
+remote delta 0/0
+process_count 0
+active memory root exists
+orientation card exists and validates
+runtime lock absent or proven stale
+heartbeat path writable
+checkpoint path writable
+duration cap provided
+SandboxExploration only
+QueueOnly only
+git/codex/web/repair disabled
+proof path writable
+```
+
+### 10.11 Proof expectations
+
+Lab proof must include:
+
+```text
+same_pid_across_cycles=true
+cycle_count > 1
+ram_state_counter_persisted=true
+per_cycle_json_bridge_used_for_ram_state=false
+lock_created=true
+heartbeat_written=true
+stop_signal_supported=true
+checkpoint_written=true
+final_proof_written=true
+repo_mutated=false
+active_memory_direct_mutated=false
+codex_launched=false
+web_launched=false
+school_launched=false
+```

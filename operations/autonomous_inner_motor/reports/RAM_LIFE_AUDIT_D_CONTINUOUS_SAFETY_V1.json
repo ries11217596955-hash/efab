@@ -1,0 +1,103 @@
+{
+    "schema":  "ram_life_audit_d_continuous_safety_v1",
+    "status":  "PASS_RAM_LIFE_AUDIT_D_CONTINUOUS_SAFETY_V1",
+    "checked_at":  "2026-07-17T17:54:45.4556553Z",
+    "purpose":  "Define required immune system before a continuous RAM-life runtime may be built or launched.",
+    "plan_section":  "AGENT_BUILDER_RAM_LIFE_TRANSITION_MASTER_PLAN_V1.md#10-audit_d_continuous_safety_v1-detailed-design",
+    "safety_organs":  [
+                          "runtime_lock",
+                          "pid_file",
+                          "heartbeat",
+                          "stop_signal",
+                          "watchdog",
+                          "bounded_duration",
+                          "memory_budget",
+                          "cpu_budget",
+                          "disk_budget",
+                          "checkpoint_writer",
+                          "crash_recovery_reader",
+                          "quarantine_on_fault",
+                          "duplicate_runtime_prevention",
+                          "safe_shutdown",
+                          "final_proof_writer"
+                      ],
+    "required_files":  {
+                           "runtime_root":  ".runtime/continuous_agent_runtime_v1",
+                           "lock":  ".runtime/continuous_agent_runtime_v1/runtime.lock.json",
+                           "heartbeat":  ".runtime/continuous_agent_runtime_v1/heartbeat.json",
+                           "stop_signal":  ".runtime/continuous_agent_runtime_v1/STOP.json",
+                           "checkpoint":  ".runtime/continuous_agent_runtime_v1/checkpoints/latest.json",
+                           "final_proof":  "tests/self_development/CONTINUOUS_AGENT_RUNTIME_V1_LAB_PROOF.json"
+                       },
+    "start_gate":  [
+                       "repo clean",
+                       "remote delta 0/0",
+                       "process_count 0",
+                       "active memory root exists",
+                       "orientation card exists and validates",
+                       "runtime lock absent or proven stale",
+                       "heartbeat path writable",
+                       "checkpoint path writable",
+                       "duration cap provided",
+                       "SandboxExploration only",
+                       "QueueOnly only",
+                       "git/codex/web/repair disabled",
+                       "proof path writable"
+                   ],
+    "lab_limits":  {
+                       "duration_minutes_max":  5,
+                       "mode":  "SandboxExploration",
+                       "memory_ingestion":  "QueueOnly",
+                       "git_enabled":  false,
+                       "codex_enabled":  false,
+                       "web_enabled":  false,
+                       "repair_enabled":  false,
+                       "active_memory_direct_write":  false,
+                       "raw_debug_retained_default":  false,
+                       "checkpoint_keep_latest":  3
+                   },
+    "fault_conditions":  [
+                             "duplicate runtime detected",
+                             "heartbeat stale",
+                             "memory budget exceeded",
+                             "duration cap exceeded",
+                             "checkpoint write failed",
+                             "proof write failed",
+                             "unexpected repo dirty state",
+                             "active memory mutation detected"
+                         ],
+    "fault_response":  [
+                           "stop after current cycle if safe",
+                           "write fault proof",
+                           "mark runtime QUARANTINED",
+                           "no cleanup unless separate retention authority exists"
+                       ],
+    "proof_expectations":  {
+                               "same_pid_across_cycles":  true,
+                               "cycle_count_gt_1":  true,
+                               "ram_state_counter_persisted":  true,
+                               "per_cycle_json_bridge_used_for_ram_state":  false,
+                               "lock_created":  true,
+                               "heartbeat_written":  true,
+                               "stop_signal_supported":  true,
+                               "checkpoint_written":  true,
+                               "final_proof_written":  true,
+                               "repo_mutated":  false,
+                               "active_memory_direct_mutated":  false,
+                               "codex_launched":  false,
+                               "web_launched":  false,
+                               "school_launched":  false
+                           },
+    "implementation_decision":  "DO_NOT_BUILD_CONTINUOUS_RUNTIME_UNTIL_ORIENTATION_CARD_AND_DRIFT_SENSOR_GATES_PASS",
+    "next_audit":  "AUDIT_E_ORIENTATION_DRIFT_V1",
+    "boundary":  {
+                     "audit_only":  true,
+                     "continuous_runtime_launched":  false,
+                     "runtime_root_created":  false,
+                     "active_memory_mutated":  false,
+                     "repo_runtime_mutated":  false,
+                     "codex_launched":  false,
+                     "web_launched":  false,
+                     "school_launched":  false
+                 }
+}
