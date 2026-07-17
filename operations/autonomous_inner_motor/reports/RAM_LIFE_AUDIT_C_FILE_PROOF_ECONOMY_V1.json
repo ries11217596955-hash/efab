@@ -1,0 +1,207 @@
+{
+    "schema":  "ram_life_audit_c_file_proof_economy_v1",
+    "status":  "PASS_RAM_LIFE_AUDIT_C_FILE_PROOF_ECONOMY_V1",
+    "checked_at":  "2026-07-17T17:37:47.6431945Z",
+    "purpose":  "Measure per-cycle/file-growth surfaces and classify what is proof, bridge, queue, checkpoint, raw/debug, keep, or cleanup candidate.",
+    "inspected_surfaces":  [
+                               ".runtime/compact_memory_intake_v1",
+                               "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+                               "operations/autonomous_inner_motor/start_agent_life_v1.ps1"
+                           ],
+    "compact_memory_intake":  {
+                                  "root":  ".runtime/compact_memory_intake_v1",
+                                  "exists":  true,
+                                  "total_files":  305,
+                                  "total_mb":  711.66,
+                                  "queue_file_count":  50,
+                                  "queue_total_mb":  0.0913,
+                                  "checkpoint_dir_count":  59,
+                                  "checkpoint_total_mb":  711.39,
+                                  "checkpoint_keep_latest_count":  3,
+                                  "checkpoint_keep_latest_mb":  37.41,
+                                  "checkpoint_delete_candidate_count":  56,
+                                  "checkpoint_delete_candidate_mb":  673.98,
+                                  "keep_latest_checkpoint_dirs":  [
+                                                                      {
+                                                                          "name":  "merge_queue_20260716_183838",
+                                                                          "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_183838",
+                                                                          "files":  3,
+                                                                          "mb":  12.47,
+                                                                          "last":  "2026-07-16T18:38:38.2256987+04:00",
+                                                                          "has_active_before":  true,
+                                                                          "has_active_after":  false
+                                                                      },
+                                                                      {
+                                                                          "name":  "merge_queue_20260716_183743",
+                                                                          "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_183743",
+                                                                          "files":  3,
+                                                                          "mb":  12.47,
+                                                                          "last":  "2026-07-16T18:37:44.0428247+04:00",
+                                                                          "has_active_before":  true,
+                                                                          "has_active_after":  false
+                                                                      },
+                                                                      {
+                                                                          "name":  "merge_queue_20260716_183649",
+                                                                          "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_183649",
+                                                                          "files":  3,
+                                                                          "mb":  12.47,
+                                                                          "last":  "2026-07-16T18:36:50.0414778+04:00",
+                                                                          "has_active_before":  true,
+                                                                          "has_active_after":  false
+                                                                      }
+                                                                  ],
+                                  "delete_candidate_sample":  [
+                                                                  {
+                                                                      "name":  "merge_queue_20260716_183555",
+                                                                      "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_183555",
+                                                                      "files":  3,
+                                                                      "mb":  12.47,
+                                                                      "last":  "2026-07-16T18:35:55.9720411+04:00",
+                                                                      "has_active_before":  true,
+                                                                      "has_active_after":  false
+                                                                  },
+                                                                  {
+                                                                      "name":  "merge_queue_20260716_183501",
+                                                                      "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_183501",
+                                                                      "files":  3,
+                                                                      "mb":  12.47,
+                                                                      "last":  "2026-07-16T18:35:01.5894433+04:00",
+                                                                      "has_active_before":  true,
+                                                                      "has_active_after":  false
+                                                                  },
+                                                                  {
+                                                                      "name":  "merge_queue_20260716_183406",
+                                                                      "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_183406",
+                                                                      "files":  3,
+                                                                      "mb":  12.47,
+                                                                      "last":  "2026-07-16T18:34:06.8886064+04:00",
+                                                                      "has_active_before":  true,
+                                                                      "has_active_after":  false
+                                                                  },
+                                                                  {
+                                                                      "name":  "merge_queue_20260716_183312",
+                                                                      "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_183312",
+                                                                      "files":  3,
+                                                                      "mb":  12.47,
+                                                                      "last":  "2026-07-16T18:33:12.3874456+04:00",
+                                                                      "has_active_before":  true,
+                                                                      "has_active_after":  false
+                                                                  },
+                                                                  {
+                                                                      "name":  "merge_queue_20260716_183218",
+                                                                      "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_183218",
+                                                                      "files":  3,
+                                                                      "mb":  12.47,
+                                                                      "last":  "2026-07-16T18:32:18.1867427+04:00",
+                                                                      "has_active_before":  true,
+                                                                      "has_active_after":  false
+                                                                  },
+                                                                  {
+                                                                      "name":  "merge_queue_20260716_183123",
+                                                                      "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_183123",
+                                                                      "files":  3,
+                                                                      "mb":  12.47,
+                                                                      "last":  "2026-07-16T18:31:24.1113679+04:00",
+                                                                      "has_active_before":  true,
+                                                                      "has_active_after":  false
+                                                                  },
+                                                                  {
+                                                                      "name":  "merge_queue_20260716_183029",
+                                                                      "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_183029",
+                                                                      "files":  3,
+                                                                      "mb":  12.47,
+                                                                      "last":  "2026-07-16T18:30:29.8260683+04:00",
+                                                                      "has_active_before":  true,
+                                                                      "has_active_after":  false
+                                                                  },
+                                                                  {
+                                                                      "name":  "merge_queue_20260716_182935",
+                                                                      "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_182935",
+                                                                      "files":  3,
+                                                                      "mb":  12.47,
+                                                                      "last":  "2026-07-16T18:29:35.5332774+04:00",
+                                                                      "has_active_before":  true,
+                                                                      "has_active_after":  false
+                                                                  },
+                                                                  {
+                                                                      "name":  "merge_queue_20260716_182840",
+                                                                      "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_182840",
+                                                                      "files":  3,
+                                                                      "mb":  12.47,
+                                                                      "last":  "2026-07-16T18:28:40.9081212+04:00",
+                                                                      "has_active_before":  true,
+                                                                      "has_active_after":  false
+                                                                  },
+                                                                  {
+                                                                      "name":  "merge_queue_20260716_182746",
+                                                                      "path":  ".runtime\\compact_memory_intake_v1\\checkpoints\\merge_queue_20260716_182746",
+                                                                      "files":  3,
+                                                                      "mb":  12.47,
+                                                                      "last":  "2026-07-16T18:27:46.8632693+04:00",
+                                                                      "has_active_before":  true,
+                                                                      "has_active_after":  false
+                                                                  }
+                                                              ]
+                              },
+    "classification":  {
+                           "keep_now":  [
+                                            {
+                                                "surface":  "active_compact_memory_root",
+                                                "reason":  "protected active memory; never delete as cleanup"
+                                            },
+                                            {
+                                                "surface":  "compact_memory_intake_v1/queue",
+                                                "reason":  "queue packets are tiny and may represent pending intake; do not delete blindly"
+                                            },
+                                            {
+                                                "surface":  "latest 3 compact_memory_intake checkpoints",
+                                                "reason":  "bounded rollback/debug safety until retention policy is implemented"
+                                            }
+                                        ],
+                           "delete_candidates":  [
+                                                     {
+                                                         "surface":  "compact_memory_intake_v1/checkpoints older than latest 3",
+                                                         "estimated_mb":  673.98,
+                                                         "reason":  "repeated active_memory_before snapshots around 12MB each; staging/rollback tail, not active memory"
+                                                     }
+                                                 ],
+                           "move_to_ram_candidates":  [
+                                                          "cycle sidecars that only feed the next decision inside continuous runtime",
+                                                          "per-cycle router packets after compact final proof exists",
+                                                          "cycle scratch and temporary reasoning objects"
+                                                      ],
+                           "must_remain_compact_proof":  [
+                                                             "final trial summary",
+                                                             "validator proof JSON",
+                                                             "acceptance reports",
+                                                             "compact boundary booleans and refs",
+                                                             "accepted atom proof refs"
+                                                         ]
+                       },
+    "proposed_retention_rule":  {
+                                    "status":  "PROPOSED_NOT_EXECUTED",
+                                    "rule":  "Keep queue, keep active memory, keep latest 3 intake checkpoints, delete/archive older intake checkpoints only when no life/school/codex process is running.",
+                                    "backup_required_before_delete":  false,
+                                    "reason_backup_not_required":  "delete candidates are runtime checkpoint staging, not tracked repo and not active memory; however operator may request zip/archive before delete",
+                                    "deletion_requires_operator_command":  true,
+                                    "suggested_delete_mb":  673.98
+                                },
+    "answer_to_owner_question":  {
+                                     "can_delete_all_711mb":  "NO_NOT_BLINDLY",
+                                     "can_delete_large_tail":  "YES_AFTER_RETENTION_GATE",
+                                     "safe_candidate_now":  "older compact_memory_intake_v1/checkpoints except latest 3",
+                                     "estimated_reclaim_mb":  673.98,
+                                     "queue_should_not_be_deleted_blindly":  true,
+                                     "active_memory_must_not_be_touched":  true
+                                 },
+    "boundary":  {
+                     "audit_only":  true,
+                     "files_deleted":  false,
+                     "runtime_mutated":  false,
+                     "active_memory_mutated":  false,
+                     "continuous_runtime_launched":  false,
+                     "codex_launched":  false,
+                     "web_launched":  false,
+                     "school_launched":  false
+                 }
+}
