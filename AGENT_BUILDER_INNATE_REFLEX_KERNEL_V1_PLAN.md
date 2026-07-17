@@ -17,7 +17,7 @@ right layer: innate callable reflexes / built-in executable capabilities
 Owner correction:
 
 ```text
-A reflex is not merely â€œthe agent should notice Xâ€.
+A reflex is not merely Ã¢â‚¬Å“the agent should notice XÃ¢â‚¬Â.
 A reflex is a built-in callable mechanism, script, tool, or bounded procedure that the agent has from birth and can invoke under a contract.
 ```
 
@@ -79,7 +79,7 @@ A trigger law decides when a reflex should be considered.
 Example:
 
 ```text
-body_state_unknown â†’ consider body_audit_reflex
+body_state_unknown Ã¢â€ â€™ consider body_audit_reflex
 ```
 
 Trigger law is not the reflex itself.
@@ -97,10 +97,10 @@ It may help select a reflex, but it does not create the reflex.
 ## 3. Correct layer split
 
 ```text
-logic/trigger: â€œbody state is unknownâ€
-reflex:       â€œcall observe-only body audit procedureâ€
-organ:        â€œBODY_SELF_INSPECTION_CIRCUIT_V1â€
-proof:        â€œbody audit signal/proof exists, no repair executedâ€
+logic/trigger: Ã¢â‚¬Å“body state is unknownÃ¢â‚¬Â
+reflex:       Ã¢â‚¬Å“call observe-only body audit procedureÃ¢â‚¬Â
+organ:        Ã¢â‚¬Å“BODY_SELF_INSPECTION_CIRCUIT_V1Ã¢â‚¬Â
+proof:        Ã¢â‚¬Å“body audit signal/proof exists, no repair executedÃ¢â‚¬Â
 ```
 
 Explicit rule:
@@ -160,7 +160,7 @@ DEPRECATED           old reflex replaced by newer one
 The first kernel should reserve about 25 reflex slots.
 Not all are implemented now.
 
-### Group A â€” body / self / repo awareness
+### Group A Ã¢â‚¬â€ body / self / repo awareness
 
 #### 1. body_audit_reflex
 
@@ -223,7 +223,7 @@ Current status: RESERVED_NOT_BUILT
 Expected output: runtime pressure snapshot.
 ```
 
-### Group B â€” proof / safety / control
+### Group B Ã¢â‚¬â€ proof / safety / control
 
 #### 7. preflight_reflex
 
@@ -277,7 +277,7 @@ Expected output: freeze/stop decision with proof.
 Forbidden: killing unknown processes without authority.
 ```
 
-### Group C â€” memory / learning / continuity
+### Group C Ã¢â‚¬â€ memory / learning / continuity
 
 #### 13. memory_queue_reflex
 
@@ -322,7 +322,7 @@ Expected output: notebook checkpoint.
 Forbidden: claiming proof without proof refs.
 ```
 
-### Group D â€” file / artifact / environment manipulation
+### Group D Ã¢â‚¬â€ file / artifact / environment manipulation
 
 #### 18. directory_create_reflex
 
@@ -360,7 +360,7 @@ Expected output: converted artifact + validator/proof.
 Forbidden: using unapproved conversion path or leaking font files.
 ```
 
-### Group E â€” external help / external knowledge
+### Group E Ã¢â‚¬â€ external help / external knowledge
 
 #### 22. codex_consult_reflex
 
@@ -499,9 +499,15 @@ Codex must not invoke body self-inspection yet.
 Codex must not implement all reflexes.
 Codex must not alter canonical launcher.
 
-## 11. Expected implementation files
+## 11. Current implementation status
 
-Expected future files may include:
+Slice A is already proven:
+
+```text
+CALLABLE_INNATE_REFLEX_KERNEL_V1_SLICE_A = PROVEN_LAB
+```
+
+Permanent kernel files now exist:
 
 ```text
 operations/autonomous_inner_motor/innate_reflex_kernel_v1.json
@@ -510,51 +516,168 @@ validators/validate_callable_innate_reflex_kernel_v1.ps1
 tests/self_development/CALLABLE_INNATE_REFLEX_KERNEL_V1_PROOF.json
 ```
 
-Runtime output:
+Important boundary:
 
 ```text
-.runtime/autonomous_inner_motor/<run>/innate_reflex_kernel.json
+The permanent reflex kernel exists once in repo.
+It is not recreated on every agent launch.
 ```
 
-## 12. Acceptance criteria for future implementation
+## 12. Bootload correction
+
+Owner correction:
+
+```text
+Do not write/recreate reflexes every run.
+Reflexes are permanent built-in birth layer.
+A launch must only load them and prove that they were loaded.
+```
+
+Correct model:
+
+```text
+permanent DNA:
+  operations/autonomous_inner_motor/innate_reflex_kernel_v1.json
+
+bootload mechanism:
+  canonical life startup reads permanent DNA
+  validates/loads runtime-safe object
+  stores compact bootload proof for that run
+
+runtime proof:
+  reflex_kernel_loaded = true
+  reflex_kernel_source = operations/autonomous_inner_motor/innate_reflex_kernel_v1.json
+  reflex_count = 25
+  body_audit_reflex.status = AVAILABLE_NOT_WIRED
+  body_audit_reflex.can_hear_body = true
+```
+
+Wrong model:
+
+```text
+create reflexes every cycle
+rewrite the full reflex matrix every cycle
+claim body audit is callable before hook exists
+```
+
+## 13. INNATE_REFLEX_BOOTLOAD_V1
+
+The next slice is:
+
+```text
+INNATE_REFLEX_BOOTLOAD_V1
+```
+
+Purpose:
+
+```text
+When canonical agent life starts, the runner loads the permanent innate reflex kernel once for that run and records a compact bootload proof.
+```
+
+It must not:
+
+```text
+recreate the kernel
+modify the permanent kernel during life
+invoke body inspection
+make body_audit_reflex callable
+write active memory directly
+change Owner-facing launch command
+```
+
+Expected runtime output per run:
+
+```text
+.runtime/<current canonical run>/innate_reflex_bootload.json
+```
+
+Expected compact proof fields:
+
+```text
+innate_reflex_bootload.status = PASS_INNATE_REFLEX_BOOTLOAD_V1
+innate_reflex_bootload.loaded = true
+innate_reflex_bootload.source = operations/autonomous_inner_motor/innate_reflex_kernel_v1.json
+innate_reflex_bootload.reflex_count = 25
+innate_reflex_bootload.body_audit_reflex.status = AVAILABLE_NOT_WIRED
+innate_reflex_bootload.body_audit_reflex.can_hear_body = true
+innate_reflex_bootload.body_audit_reflex.callable = false
+innate_reflex_bootload.body_inspection_invoked = false
+```
+
+The run proof may reference the bootload proof by path/ref.
+It should not duplicate the full 25-reflex matrix into every cycle unless a validator explicitly requires a sample.
+
+## 14. Canonical life integration requirement
+
+The canonical runner should expose that reflexes were loaded, not created.
+
+Minimum acceptable integration:
+
+```text
+at run/start:
+  call build_innate_reflex_kernel_v1.ps1
+  write innate_reflex_bootload.json once for the run
+
+in SANDBOX_EXPLORATION_PROOF or run summary:
+  include innate_reflex_bootload compact object or reference
+
+in proof pack manifest:
+  require innate_reflex_bootload.json
+```
+
+Cycle-level output may include only a compact reference:
+
+```text
+innate_reflex_bootload_loaded = true
+innate_reflex_bootload_ref = <path>
+```
+
+Do not write the full kernel every cycle.
+
+## 15. Acceptance criteria for INNATE_REFLEX_BOOTLOAD_V1
 
 PASS requires:
 
 ```text
-25 reflex slots exist or an explicit Owner-approved subset exists
-body_audit_reflex exists
-body_audit_reflex references BODY_SELF_INSPECTION_CIRCUIT_V1
-body_audit_reflex status is AVAILABLE_NOT_WIRED
-body_audit_reflex can_hear_body = true
-all other reflexes are RESERVED_NOT_BUILT unless explicitly implemented
-reserved reflexes are not falsely callable
-kernel appears in canonical life proof pack
-body inspection is not invoked by default
-legacy launch is not used
+permanent kernel remains unchanged by launch
 canonical launcher remains DurationMinutes-only
-no direct active memory write
-no repair execution
+runner loads permanent kernel once per run
+runtime bootload proof exists
+run proof/summary references bootload proof
+proof pack manifest requires bootload proof
+body_audit_reflex remains AVAILABLE_NOT_WIRED
+body_audit_reflex.callable = false
+body inspection is not invoked
+active memory is not directly written
+legacy launch is not used
+no full reflex matrix rewrite per cycle
 ```
 
-## 13. Non-goals
+## 16. Non-goals
 
 ```text
-Do not implement all reflexes now.
-Do not treat behavioral laws as callable reflexes.
-Do not invoke body inspection yet.
-Do not delete old plans.
-Do not use legacy launch surfaces.
-Do not create child agents.
+Do not implement body audit observe hook yet.
+Do not make body_audit_reflex callable from canonical life yet.
+Do not invoke BODY_SELF_INSPECTION_CIRCUIT_V1.
+Do not implement all reserved reflexes.
 Do not create a second life launcher.
+Do not write active memory directly.
 ```
 
-## 14. Next action
+## 17. Next action
 
-Next correct step:
+Create and run a narrow Codex task:
 
 ```text
-rewrite Codex task under callable-reflex model
-then run Codex as bounded implementation tool
+CODEX_TASK_INNATE_REFLEX_BOOTLOAD_V1.md
 ```
 
-Do not run the old Codex task.
+Scope:
+
+```text
+runner bootload integration only
+bootload validator/proof
+no body inspection invocation
+no observe hook
+no permanent kernel mutation
+```
