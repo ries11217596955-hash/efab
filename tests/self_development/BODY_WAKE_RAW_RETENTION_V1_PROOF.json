@@ -1,0 +1,169 @@
+{
+    "schema":  "body_wake_raw_retention_v1_validation",
+    "status":  "PASS_BODY_WAKE_RAW_RETENTION_V1",
+    "checked_at":  "2026-07-17T15:58:29.4727695Z",
+    "runner":  "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+    "validator":  "validators/validate_body_wake_raw_retention_v1.ps1",
+    "runner_smoke_exit_code":  0,
+    "runner_smoke_output_root":  ".runtime/self_development/body_wake_raw_retention_v1_runner_test",
+    "runtime_run_dir":  "H:\\efab\\.runtime\\self_development\\body_wake_raw_retention_v1_runner_test\\aimo_20260717_195622",
+    "retained_files":  [
+                           {
+                               "name":  "BODY_SELF_INSPECTION_CIRCUIT_PROOF.json",
+                               "bytes":  5660,
+                               "path":  "H:\\efab\\.runtime\\self_development\\body_wake_raw_retention_v1_runner_test\\aimo_20260717_195622\\wake_body_audit\\BODY_SELF_INSPECTION_CIRCUIT_PROOF.json"
+                           },
+                           {
+                               "name":  "body_self_inspection_parent_packet.json",
+                               "bytes":  3335,
+                               "path":  "H:\\efab\\.runtime\\self_development\\body_wake_raw_retention_v1_runner_test\\aimo_20260717_195622\\wake_body_audit\\body_self_inspection_parent_packet.json"
+                           },
+                           {
+                               "name":  "body_self_inspection_signal.json",
+                               "bytes":  30663,
+                               "path":  "H:\\efab\\.runtime\\self_development\\body_wake_raw_retention_v1_runner_test\\aimo_20260717_195622\\wake_body_audit\\body_self_inspection_signal.json"
+                           }
+                       ],
+    "retention_summary":  {
+                              "schema":  "body_wake_raw_retention_v1",
+                              "status":  "PASS_BODY_WAKE_RAW_RETENTION_V1",
+                              "mode":  "compact_outputs_only",
+                              "raw_debug_retained":  false,
+                              "compact_outputs_retained":  true,
+                              "keep_files":  [
+                                                 "body_self_inspection_signal.json",
+                                                 "body_self_inspection_parent_packet.json",
+                                                 "BODY_SELF_INSPECTION_CIRCUIT_PROOF.json"
+                                             ],
+                              "kept_files":  [
+                                                 {
+                                                     "path":  "H:\\efab\\.runtime\\self_development\\body_wake_raw_retention_v1_runner_test\\aimo_20260717_195622\\wake_body_audit\\BODY_SELF_INSPECTION_CIRCUIT_PROOF.json",
+                                                     "name":  "BODY_SELF_INSPECTION_CIRCUIT_PROOF.json",
+                                                     "bytes":  5660
+                                                 },
+                                                 {
+                                                     "path":  "H:\\efab\\.runtime\\self_development\\body_wake_raw_retention_v1_runner_test\\aimo_20260717_195622\\wake_body_audit\\body_self_inspection_parent_packet.json",
+                                                     "name":  "body_self_inspection_parent_packet.json",
+                                                     "bytes":  3335
+                                                 },
+                                                 {
+                                                     "path":  "H:\\efab\\.runtime\\self_development\\body_wake_raw_retention_v1_runner_test\\aimo_20260717_195622\\wake_body_audit\\body_self_inspection_signal.json",
+                                                     "name":  "body_self_inspection_signal.json",
+                                                     "bytes":  30663
+                                                 }
+                                             ],
+                              "removed_files":  [
+                                                    {
+                                                        "path":  "H:\\efab\\.runtime\\self_development\\body_wake_raw_retention_v1_runner_test\\aimo_20260717_195622\\wake_body_audit\\body_map_read.json",
+                                                        "name":  "body_map_read.json",
+                                                        "bytes":  158054
+                                                    },
+                                                    {
+                                                        "path":  "H:\\efab\\.runtime\\self_development\\body_wake_raw_retention_v1_runner_test\\aimo_20260717_195622\\wake_body_audit\\body_pain_register.json",
+                                                        "name":  "body_pain_register.json",
+                                                        "bytes":  4781350
+                                                    },
+                                                    {
+                                                        "path":  "H:\\efab\\.runtime\\self_development\\body_wake_raw_retention_v1_runner_test\\aimo_20260717_195622\\wake_body_audit\\body_reconciliation.json",
+                                                        "name":  "body_reconciliation.json",
+                                                        "bytes":  13096531
+                                                    },
+                                                    {
+                                                        "path":  "H:\\efab\\.runtime\\self_development\\body_wake_raw_retention_v1_runner_test\\aimo_20260717_195622\\wake_body_audit\\BODY_SELF_INSPECTION_SLICE_A_PROOF.json",
+                                                        "name":  "BODY_SELF_INSPECTION_SLICE_A_PROOF.json",
+                                                        "bytes":  4495
+                                                    },
+                                                    {
+                                                        "path":  "H:\\efab\\.runtime\\self_development\\body_wake_raw_retention_v1_runner_test\\aimo_20260717_195622\\wake_body_audit\\BODY_SELF_INSPECTION_SLICE_B_PROOF.json",
+                                                        "name":  "BODY_SELF_INSPECTION_SLICE_B_PROOF.json",
+                                                        "bytes":  9526
+                                                    },
+                                                    {
+                                                        "path":  "H:\\efab\\.runtime\\self_development\\body_wake_raw_retention_v1_runner_test\\aimo_20260717_195622\\wake_body_audit\\BODY_SELF_INSPECTION_SLICE_C_PROOF.json",
+                                                        "name":  "BODY_SELF_INSPECTION_SLICE_C_PROOF.json",
+                                                        "bytes":  7008
+                                                    },
+                                                    {
+                                                        "path":  "H:\\efab\\.runtime\\self_development\\body_wake_raw_retention_v1_runner_test\\aimo_20260717_195622\\wake_body_audit\\BODY_SELF_INSPECTION_SLICE_D_PROOF.json",
+                                                        "name":  "BODY_SELF_INSPECTION_SLICE_D_PROOF.json",
+                                                        "bytes":  5855
+                                                    },
+                                                    {
+                                                        "path":  "H:\\efab\\.runtime\\self_development\\body_wake_raw_retention_v1_runner_test\\aimo_20260717_195622\\wake_body_audit\\BODY_SELF_INSPECTION_SLICE_E_PROOF.json",
+                                                        "name":  "BODY_SELF_INSPECTION_SLICE_E_PROOF.json",
+                                                        "bytes":  2683
+                                                    },
+                                                    {
+                                                        "path":  "H:\\efab\\.runtime\\self_development\\body_wake_raw_retention_v1_runner_test\\aimo_20260717_195622\\wake_body_audit\\capability_map_read.json",
+                                                        "name":  "capability_map_read.json",
+                                                        "bytes":  19171
+                                                    },
+                                                    {
+                                                        "path":  "H:\\efab\\.runtime\\self_development\\body_wake_raw_retention_v1_runner_test\\aimo_20260717_195622\\wake_body_audit\\next_logic_queue.json",
+                                                        "name":  "next_logic_queue.json",
+                                                        "bytes":  5176421
+                                                    },
+                                                    {
+                                                        "path":  "H:\\efab\\.runtime\\self_development\\body_wake_raw_retention_v1_runner_test\\aimo_20260717_195622\\wake_body_audit\\organ_candidates.json",
+                                                        "name":  "organ_candidates.json",
+                                                        "bytes":  1991446
+                                                    },
+                                                    {
+                                                        "path":  "H:\\efab\\.runtime\\self_development\\body_wake_raw_retention_v1_runner_test\\aimo_20260717_195622\\wake_body_audit\\organ_similarity_index.json",
+                                                        "name":  "organ_similarity_index.json",
+                                                        "bytes":  2083309
+                                                    },
+                                                    {
+                                                        "path":  "H:\\efab\\.runtime\\self_development\\body_wake_raw_retention_v1_runner_test\\aimo_20260717_195622\\wake_body_audit\\passport_audit.json",
+                                                        "name":  "passport_audit.json",
+                                                        "bytes":  4305910
+                                                    },
+                                                    {
+                                                        "path":  "H:\\efab\\.runtime\\self_development\\body_wake_raw_retention_v1_runner_test\\aimo_20260717_195622\\wake_body_audit\\repair_draft_board.json",
+                                                        "name":  "repair_draft_board.json",
+                                                        "bytes":  6974769
+                                                    },
+                                                    {
+                                                        "path":  "H:\\efab\\.runtime\\self_development\\body_wake_raw_retention_v1_runner_test\\aimo_20260717_195622\\wake_body_audit\\repo_inventory.json",
+                                                        "name":  "repo_inventory.json",
+                                                        "bytes":  3829456
+                                                    },
+                                                    {
+                                                        "path":  "H:\\efab\\.runtime\\self_development\\body_wake_raw_retention_v1_runner_test\\aimo_20260717_195622\\wake_body_audit\\scan_policy_effective.json",
+                                                        "name":  "scan_policy_effective.json",
+                                                        "bytes":  6840
+                                                    },
+                                                    {
+                                                        "path":  "H:\\efab\\.runtime\\self_development\\body_wake_raw_retention_v1_runner_test\\aimo_20260717_195622\\wake_body_audit\\scan_skipped_surfaces.json",
+                                                        "name":  "scan_skipped_surfaces.json",
+                                                        "bytes":  20589
+                                                    },
+                                                    {
+                                                        "path":  "H:\\efab\\.runtime\\self_development\\body_wake_raw_retention_v1_runner_test\\aimo_20260717_195622\\wake_body_audit\\signal_readiness_audit.json",
+                                                        "name":  "signal_readiness_audit.json",
+                                                        "bytes":  3927320
+                                                    }
+                                                ],
+                              "removed_count":  18,
+                              "removed_bytes":  46400733,
+                              "boundary":  {
+                                               "compact_proof_preserved":  true,
+                                               "raw_debug_deleted":  true,
+                                               "active_memory_mutated":  false,
+                                               "repo_mutated":  false,
+                                               "repair_executed":  false
+                                           }
+                          },
+    "errors":  [
+
+               ],
+    "boundary":  {
+                     "compact_outputs_retained":  true,
+                     "raw_debug_retained":  false,
+                     "raw_debug_deleted":  true,
+                     "active_memory_mutated":  false,
+                     "repo_mutated":  false,
+                     "repair_executed":  false,
+                     "tracked_repo_files_deleted":  false
+                 }
+}

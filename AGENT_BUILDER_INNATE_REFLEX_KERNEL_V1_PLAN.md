@@ -803,3 +803,54 @@ all V2 reflexes require_owner_permission=false and trigger_required=false
 all V2 reflexes are observe-only/read-only
 boundary has no repair/mutation/cleanup/process kill/git write/active memory write
 ```
+
+## 20. NO_FILE_PER_BREATH_RUNTIME_LAW_V1
+
+Owner correction:
+
+```text
+Do not turn every breath/reflex/cycle into durable files.
+Agent life needs working memory and compact proof, not JSON garbage.
+```
+
+Runtime memory classes:
+
+```text
+working_memory = in-process life context, not a file per thought
+runtime_scratch = temporary files, deleted/compacted after proof
+durable_proof = compact boundary proof only
+```
+
+Immediate retention rule:
+
+```text
+body wake audit keeps only compact outputs:
+  body_self_inspection_signal.json
+  body_self_inspection_parent_packet.json
+  BODY_SELF_INSPECTION_CIRCUIT_PROOF.json
+
+body wake audit deletes raw/debug scan outputs after compact proof:
+  repo_inventory.json
+  organ_candidates.json
+  body_reconciliation.json
+  repair_draft_board.json
+  next_logic_queue.json
+  and similar raw slice files
+```
+
+Boundary:
+
+```text
+retention may delete transient runtime scratch after compact proof
+retention must not touch repo tracked files
+retention must not touch active memory
+retention must not delete compact final proof files
+```
+
+Next architecture target:
+
+```text
+LIFE_WORKING_MEMORY_V1
+one compact wake context per life
+cycle reads in-process context/ref, not raw files
+```

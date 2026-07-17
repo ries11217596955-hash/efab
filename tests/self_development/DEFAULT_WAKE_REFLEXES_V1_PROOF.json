@@ -1,12 +1,12 @@
 {
     "schema":  "default_wake_reflexes_v2_validation",
     "status":  "PASS_DEFAULT_WAKE_REFLEXES_V2",
-    "checked_at":  "2026-07-17T15:04:20.6102489Z",
+    "checked_at":  "2026-07-17T15:55:37.1752771Z",
     "runner":  "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
     "validator":  "validators/validate_default_wake_reflexes_v1.ps1",
     "runner_smoke_exit_code":  0,
     "runner_smoke_output_root":  ".runtime/self_development/default_wake_reflexes_v2_runner_test",
-    "runtime_run_dir":  "H:\\efab\\.runtime\\self_development\\default_wake_reflexes_v2_runner_test\\aimo_20260717_190213",
+    "runtime_run_dir":  "H:\\efab\\.runtime\\self_development\\default_wake_reflexes_v2_runner_test\\aimo_20260717_195331",
     "wake_summary":  {
                          "status":  "PASS_DEFAULT_WAKE_REFLEXES_V2",
                          "invoked":  [
@@ -25,17 +25,14 @@
                                                      "observe_only":  true,
                                                      "repo_root":  "H:/efab",
                                                      "branch":  "main",
-                                                     "head":  "dd0aae5",
-                                                     "dirty_count":  8,
+                                                     "head":  "b7c4f0e",
+                                                     "dirty_count":  5,
                                                      "status_short":  [
                                                                           " M AGENT_BUILDER_INNATE_REFLEX_KERNEL_V1_PLAN.md",
                                                                           " M AGENT_BUILDER_SELF_NOTEBOOK.md",
-                                                                          " M operations/autonomous_inner_motor/build_innate_reflex_kernel_v1.ps1",
-                                                                          " M operations/autonomous_inner_motor/innate_reflex_kernel_v1.json",
                                                                           " M operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
-                                                                          " M tests/self_development/CALLABLE_INNATE_REFLEX_KERNEL_V1_PROOF.json",
-                                                                          " M validators/validate_callable_innate_reflex_kernel_v1.ps1",
-                                                                          " M validators/validate_default_wake_reflexes_v1.ps1"
+                                                                          "?? tests/self_development/BODY_WAKE_RAW_RETENTION_V1_PROOF.json",
+                                                                          "?? validators/validate_body_wake_raw_retention_v1.ps1"
                                                                       ],
                                                      "remote_delta":  "0\t0",
                                                      "boundary":  {
@@ -56,7 +53,7 @@
                                                      "process_count":  1,
                                                      "processes":  [
                                                                        {
-                                                                           "ProcessId":  2016820,
+                                                                           "ProcessId":  1906912,
                                                                            "Name":  "powershell.exe",
                                                                            "CommandLine":  "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -NoProfile -ExecutionPolicy Bypass -File operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1 -Mode SandboxExploration -Question \"default wake reflex v2 validator\" -OutputRoot .runtime/self_development/default_wake_reflexes_v2_runner_test"
                                                                        }
@@ -75,7 +72,7 @@
                                                          "trigger_required":  false,
                                                          "observe_only":  true,
                                                          "runtime_exists":  true,
-                                                         "runtime_top_entry_count":  71,
+                                                         "runtime_top_entry_count":  73,
                                                          "runtime_top_entries":  [
                                                                                      {
                                                                                          "Name":  "active_compact_semantic_memory_v1",
@@ -111,7 +108,7 @@
                                                                                          "Name":  "autonomous_inner_motor",
                                                                                          "Mode":  "d-----",
                                                                                          "Length":  null,
-                                                                                         "LastWriteTime":  "\/Date(1784282292385)\/"
+                                                                                         "LastWriteTime":  "\/Date(1784301373383)\/"
                                                                                      },
                                                                                      {
                                                                                          "Name":  "autonomous_inner_motor_gate_validator",
@@ -141,7 +138,7 @@
                                                                                          "Name":  "codex_reports",
                                                                                          "Mode":  "d-----",
                                                                                          "Length":  null,
-                                                                                         "LastWriteTime":  "\/Date(1784290002339)\/"
+                                                                                         "LastWriteTime":  "\/Date(1784296442099)\/"
                                                                                      },
                                                                                      {
                                                                                          "Name":  "codex_runs",
@@ -219,7 +216,7 @@
                                                                                          "Name":  "live_trials",
                                                                                          "Mode":  "d-----",
                                                                                          "Length":  null,
-                                                                                         "LastWriteTime":  "\/Date(1784282235603)\/"
+                                                                                         "LastWriteTime":  "\/Date(1784301072013)\/"
                                                                                      },
                                                                                      {
                                                                                          "Name":  "manual_probe",
@@ -259,8 +256,8 @@
                                                                                      }
                                                                                  ],
                                                          "drive_name":  "H",
-                                                         "drive_free_bytes":  996284928000,
-                                                         "drive_used_bytes":  3917111296,
+                                                         "drive_free_bytes":  996139003904,
+                                                         "drive_used_bytes":  4063035392,
                                                          "boundary":  {
                                                                           "cleanup_performed":  false,
                                                                           "deleted":  false,
@@ -299,10 +296,10 @@
                                                    "body_inspection_invoked":  true,
                                                    "callable":  true,
                                                    "source_entrypoint":  "operations/body_self_inspection/invoke_body_self_inspection_circuit_v1.ps1",
-                                                   "runtime_root":  ".runtime\\self_development\\default_wake_reflexes_v2_runner_test\\aimo_20260717_190213\\wake_body_audit",
-                                                   "signal_path":  ".runtime\\self_development\\default_wake_reflexes_v2_runner_test\\aimo_20260717_190213\\wake_body_audit\\body_self_inspection_signal.json",
-                                                   "parent_packet_path":  ".runtime\\self_development\\default_wake_reflexes_v2_runner_test\\aimo_20260717_190213\\wake_body_audit\\body_self_inspection_parent_packet.json",
-                                                   "circuit_proof_path":  ".runtime\\self_development\\default_wake_reflexes_v2_runner_test\\aimo_20260717_190213\\wake_body_audit\\BODY_SELF_INSPECTION_CIRCUIT_PROOF.json",
+                                                   "runtime_root":  ".runtime\\self_development\\default_wake_reflexes_v2_runner_test\\aimo_20260717_195331\\wake_body_audit",
+                                                   "signal_path":  ".runtime\\self_development\\default_wake_reflexes_v2_runner_test\\aimo_20260717_195331\\wake_body_audit\\body_self_inspection_signal.json",
+                                                   "parent_packet_path":  ".runtime\\self_development\\default_wake_reflexes_v2_runner_test\\aimo_20260717_195331\\wake_body_audit\\body_self_inspection_parent_packet.json",
+                                                   "circuit_proof_path":  ".runtime\\self_development\\default_wake_reflexes_v2_runner_test\\aimo_20260717_195331\\wake_body_audit\\BODY_SELF_INSPECTION_CIRCUIT_PROOF.json",
                                                    "signal_status":  "PASS_BODY_SELF_INSPECTION_SIGNAL_V1",
                                                    "parent_packet_status":  "PASS_BODY_SELF_INSPECTION_PARENT_PACKET_V1",
                                                    "circuit_proof_status":  "PASS_BODY_SELF_INSPECTION_CIRCUIT_RUNTIME_V1"
@@ -325,7 +322,9 @@
                                           "live_process_touched":  false,
                                           "codex_launched":  false,
                                           "web_launched":  false,
-                                          "cleanup_performed":  false
+                                          "cleanup_performed":  false,
+                                          "raw_debug_retained":  false,
+                                          "compact_outputs_retained":  true
                                       }
                      },
     "errors":  [

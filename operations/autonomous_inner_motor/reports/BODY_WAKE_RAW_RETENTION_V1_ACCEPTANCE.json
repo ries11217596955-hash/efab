@@ -1,0 +1,40 @@
+{
+    "schema":  "body_wake_raw_retention_v1_acceptance",
+    "status":  "ACCEPTED_PROVEN_LAB_BODY_WAKE_RAW_RETENTION_V1",
+    "accepted_at":  "2026-07-17T15:58:29.7006712Z",
+    "reason":  "Owner corrected file-per-breath runtime growth. Body wake audit deletes raw/debug scratch after compact proof.",
+    "validator":  "validators/validate_body_wake_raw_retention_v1.ps1",
+    "proof":  "tests/self_development/BODY_WAKE_RAW_RETENTION_V1_PROOF.json",
+    "retained_files":  [
+                           {
+                               "name":  "BODY_SELF_INSPECTION_CIRCUIT_PROOF.json",
+                               "bytes":  5660,
+                               "path":  "H:\\efab\\.runtime\\self_development\\body_wake_raw_retention_v1_runner_test\\aimo_20260717_195622\\wake_body_audit\\BODY_SELF_INSPECTION_CIRCUIT_PROOF.json"
+                           },
+                           {
+                               "name":  "body_self_inspection_parent_packet.json",
+                               "bytes":  3335,
+                               "path":  "H:\\efab\\.runtime\\self_development\\body_wake_raw_retention_v1_runner_test\\aimo_20260717_195622\\wake_body_audit\\body_self_inspection_parent_packet.json"
+                           },
+                           {
+                               "name":  "body_self_inspection_signal.json",
+                               "bytes":  30663,
+                               "path":  "H:\\efab\\.runtime\\self_development\\body_wake_raw_retention_v1_runner_test\\aimo_20260717_195622\\wake_body_audit\\body_self_inspection_signal.json"
+                           }
+                       ],
+    "removed_count":  18,
+    "removed_bytes":  46400733,
+    "removed_mb":  44.25,
+    "default_wake_status":  "PASS_DEFAULT_WAKE_REFLEXES_V2",
+    "retention_status":  "PASS_BODY_WAKE_RAW_RETENTION_V1",
+    "boundary":  {
+                     "compact_outputs_retained":  true,
+                     "raw_debug_retained":  false,
+                     "raw_debug_deleted":  true,
+                     "active_memory_mutated":  false,
+                     "repo_mutated":  false,
+                     "repair_executed":  false,
+                     "tracked_repo_files_deleted":  false
+                 },
+    "next_slice":  "LIFE_WORKING_MEMORY_V1"
+}

@@ -142,6 +142,31 @@ function Invoke-DefaultWakeReflexes([string]$RunRoot,$Bootload,[string]$OutputPa
   foreach($name in @('repo_mutated','active_memory_mutated','repair_executed','parent_action_executed','live_process_touched','codex_launched','web_launched','cleanup_performed')){
     if($circuitProof.boundary.$name -ne $false){ throw "BODY_AUDIT_WAKE_BOUNDARY_VIOLATION:$name" }
   }
+  $retentionKeep=@('body_self_inspection_signal.json','body_self_inspection_parent_packet.json','BODY_SELF_INSPECTION_CIRCUIT_PROOF.json')
+  $retentionRemoved=@()
+  $retentionKept=@()
+  foreach($f in @(Get-ChildItem -LiteralPath $bodyRuntimeRoot -File -Force -ErrorAction SilentlyContinue)){
+    if($retentionKeep -contains $f.Name){
+      $retentionKept += [ordered]@{ path=$f.FullName; name=$f.Name; bytes=[int64]$f.Length }
+    } else {
+      $retentionRemoved += [ordered]@{ path=$f.FullName; name=$f.Name; bytes=[int64]$f.Length }
+      Remove-Item -LiteralPath $f.FullName -Force -ErrorAction Stop
+    }
+  }
+  $retentionRemovedBytes=[int64](@($retentionRemoved | ForEach-Object { [int64]$_['bytes'] } | Measure-Object -Sum).Sum)
+  $retentionPolicy=[ordered]@{
+    schema='body_wake_raw_retention_v1'
+    status='PASS_BODY_WAKE_RAW_RETENTION_V1'
+    mode='compact_outputs_only'
+    raw_debug_retained=$false
+    compact_outputs_retained=$true
+    keep_files=$retentionKeep
+    kept_files=$retentionKept
+    removed_files=$retentionRemoved
+    removed_count=@($retentionRemoved).Count
+    removed_bytes=$retentionRemovedBytes
+    boundary=[ordered]@{ compact_proof_preserved=$true; raw_debug_deleted=$true; active_memory_mutated=$false; repo_mutated=$false; repair_executed=$false }
+  }
   $wake=[ordered]@{
     schema='default_wake_reflexes_v2'
     status='PASS_DEFAULT_WAKE_REFLEXES_V2'
@@ -150,12 +175,13 @@ function Invoke-DefaultWakeReflexes([string]$RunRoot,$Bootload,[string]$OutputPa
     bootload_loaded=$true
     default_reflexes_invoked=@('body_audit_reflex','repo_reality_reflex','process_scan_reflex','runtime_pressure_reflex','active_memory_read_reflex')
     default_reflexes_deferred=@()
+    body_wake_raw_retention=$retentionPolicy
     body_audit_reflex=[ordered]@{ status='PASS_BODY_AUDIT_WAKE_REFLEX_V1'; reflex_id='body_audit_reflex'; invocation_policy='WAKE_DEFAULT_ON_AGENT_LIFE_START'; requires_owner_permission=$false; trigger_required=$false; observe_only=$true; invoked_this_run=$true; body_inspection_invoked=$true; callable=$true; source_entrypoint=$bodyInvoker; runtime_root=$bodyRuntimeRoot; signal_path=$signalPath; parent_packet_path=$parentPacketPath; circuit_proof_path=$circuitProofPath; signal_status=$signal.status; parent_packet_status=$parentPacket.status; circuit_proof_status=$circuitProof.status }
     repo_reality_reflex=$repoReality
     process_scan_reflex=$processScan
     runtime_pressure_reflex=$runtimePressure
     active_memory_read_reflex=$activeMemory
-    boundary=[ordered]@{ wake_default_body_audit_invoked=$true; body_observe_only=$true; body_repair_executed=$false; repo_mutated=$false; git_write_performed=$false; process_killed=$false; process_started=$false; runtime_cleanup_performed=$false; active_memory_mutated=$false; active_memory_written=$false; body_map_mutated=$false; passports_mutated=$false; contracts_mutated=$false; parent_action_executed=$false; live_process_touched=$false; codex_launched=$false; web_launched=$false; cleanup_performed=$false }
+    boundary=[ordered]@{ wake_default_body_audit_invoked=$true; body_observe_only=$true; body_repair_executed=$false; repo_mutated=$false; git_write_performed=$false; process_killed=$false; process_started=$false; runtime_cleanup_performed=$false; active_memory_mutated=$false; active_memory_written=$false; body_map_mutated=$false; passports_mutated=$false; contracts_mutated=$false; parent_action_executed=$false; live_process_touched=$false; codex_launched=$false; web_launched=$false; cleanup_performed=$false; raw_debug_retained=$false; compact_outputs_retained=$true }
   }
   Write-CleanJson $OutputPath $wake 80
   return $wake
