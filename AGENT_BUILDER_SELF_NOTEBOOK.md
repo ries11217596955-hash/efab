@@ -421,3 +421,19 @@ Boundary:
 Next proof:
 - Validator PASS.
 - Canonical smoke should show `mental_frontier_router.json` with selected concrete frontier.
+
+## 2026-07-17 — Single-launch wiring audit pause
+
+STATUS: AUDIT_IN_PROGRESS
+
+Owner concern:
+- Multiple historical life-launch variants may have caused organs to be wired to different launch paths.
+- Before continuing with `SELF_MAP_GAP_FRONTIER_TASK_V1`, audit whether current organs are connected to one canonical launch path.
+
+Deferred proposal:
+- `SELF_MAP_GAP_FRONTIER_TASK_V1` remains the next mental-growth proposal, but is paused until launch/wiring audit is proven.
+
+Audit target:
+- Canonical Owner launch must be `operations/autonomous_inner_motor/start_agent_life_v1.ps1 -DurationMinutes <minutes>`.
+- Raw runner and historical `.runtime/live_trials` wrappers must not be treated as current Owner launch paths.
+- Current mental organs must be wired into canonical runner/selector/proof pack.

@@ -1,0 +1,615 @@
+{
+    "schema":  "agent_life_single_launch_wiring_audit_v1",
+    "status":  "PASS_AGENT_LIFE_SINGLE_LAUNCH_WIRING_AUDIT_V1",
+    "generated_at":  "2026-07-17T09:08:20.6331779Z",
+    "repo":  {
+                 "branch":  "main",
+                 "head":  "0d2fb3c",
+                 "delta":  "0\t0",
+                 "dirty":  [
+                               " M AGENT_BUILDER_SELF_NOTEBOOK.md",
+                               " A operations/autonomous_inner_motor/audit_agent_life_single_launch_wiring_v1.ps1",
+                               " A operations/autonomous_inner_motor/reports/AGENT_LIFE_SINGLE_LAUNCH_WIRING_AUDIT_V1.json",
+                               " A tests/self_development/AGENT_LIFE_SINGLE_LAUNCH_WIRING_AUDIT_V1_PROOF.json",
+                               " A validators/validate_agent_life_single_launch_wiring_audit_v1.ps1"
+                           ]
+             },
+    "canonical_launcher":  {
+                               "path":  "operations/autonomous_inner_motor/start_agent_life_v1.ps1",
+                               "exists":  true,
+                               "owner_parameters":  {
+                                                        "exactly_one_owner_parameter":  true,
+                                                        "parameter_name":  "DurationMinutes",
+                                                        "parse_errors":  [
+
+                                                                         ]
+                                                    },
+                               "contract_checks":  [
+                                                       {
+                                                           "needle":  "DurationMinutes",
+                                                           "present":  true
+                                                       },
+                                                       {
+                                                           "needle":  "SandboxExploration",
+                                                           "present":  true
+                                                       },
+                                                       {
+                                                           "needle":  "EnableDeepThinking",
+                                                           "present":  true
+                                                       },
+                                                       {
+                                                           "needle":  "EnableMemoryLearning",
+                                                           "present":  true
+                                                       },
+                                                       {
+                                                           "needle":  "MemoryIngestionMode",
+                                                           "present":  true
+                                                       },
+                                                       {
+                                                           "needle":  "QueueOnly",
+                                                           "present":  true
+                                                       },
+                                                       {
+                                                           "needle":  "action_execution_allowed = $false",
+                                                           "present":  true
+                                                       },
+                                                       {
+                                                           "needle":  "codex_allowed = $false",
+                                                           "present":  true
+                                                       },
+                                                       {
+                                                           "needle":  "web_allowed = $false",
+                                                           "present":  true
+                                                       },
+                                                       {
+                                                           "needle":  "git_mutation_allowed = $false",
+                                                           "present":  true
+                                                       },
+                                                       {
+                                                           "needle":  "repair_execution_allowed = $false",
+                                                           "present":  true
+                                                       }
+                                                   ],
+                               "contract_pass":  true
+                           },
+    "internal_runner":  {
+                            "path":  "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+                            "exists":  true,
+                            "wiring_checks":  [
+                                                  {
+                                                      "needle":  "select_agent_next_action_candidate_v1.ps1",
+                                                      "present":  true
+                                                  },
+                                                  {
+                                                      "needle":  "memory_to_next_path_reuse_gate.json",
+                                                      "present":  true
+                                                  },
+                                                  {
+                                                      "needle":  "mental_frontier_expansion_gate.json",
+                                                      "present":  true
+                                                  },
+                                                  {
+                                                      "needle":  "mental_frontier_router.json",
+                                                      "present":  true
+                                                  },
+                                                  {
+                                                      "needle":  "sandbox_proof_pack_manifest.json",
+                                                      "present":  true
+                                                  },
+                                                  {
+                                                      "needle":  "PASS_COMPACT_MEMORY_KNOWLEDGE_PACKET_V1",
+                                                      "present":  true
+                                                  },
+                                                  {
+                                                      "needle":  "Get-MentalFrontierExpansionGate",
+                                                      "present":  true
+                                                  },
+                                                  {
+                                                      "needle":  "Get-MentalFrontierRouter",
+                                                      "present":  true
+                                                  }
+                                              ],
+                            "wiring_pass":  true
+                        },
+    "selector":  {
+                     "path":  "operations/autonomous_inner_motor/select_agent_next_action_candidate_v1.ps1",
+                     "exists":  true,
+                     "action_checks":  [
+                                           {
+                                               "needle":  "ACTION_CONTRACT_V1",
+                                               "present":  true
+                                           },
+                                           {
+                                               "needle":  "MEMORY_TO_NEXT_PATH_REUSE_GATE_V1",
+                                               "present":  true
+                                           },
+                                           {
+                                               "needle":  "MENTAL_FRONTIER_EXPANSION_GATE_V1",
+                                               "present":  true
+                                           },
+                                           {
+                                               "needle":  "MENTAL_FRONTIER_ROUTER_V1",
+                                               "present":  true
+                                           },
+                                           {
+                                               "needle":  "WIRE_AIMO_TO_EXECUTION",
+                                               "present":  true
+                                           },
+                                           {
+                                               "needle":  "RUN_BIG_LIVE_AGENT",
+                                               "present":  true
+                                           },
+                                           {
+                                               "needle":  "already_absorbed_repeat_candidate",
+                                               "present":  true
+                                           }
+                                       ],
+                     "action_checks_pass":  true
+                 },
+    "launch_reference_audit":  {
+                                   "tracked_runner_reference_count":  37,
+                                   "tracked_runner_references":  [
+                                                                     {
+                                                                         "path":  "operations/autonomous_inner_motor/audit_agent_life_single_launch_wiring_v1.ps1",
+                                                                         "classification":  "AUDIT_REFERENCE",
+                                                                         "contains_enable_memory_learning":  true,
+                                                                         "contains_queueonly":  true,
+                                                                         "contains_duration_minutes":  true
+                                                                     },
+                                                                     {
+                                                                         "path":  "operations/autonomous_inner_motor/select_agent_next_action_candidate_v1.ps1",
+                                                                         "classification":  "ACTION_CANDIDATE_TEXT_REFERENCE_NOT_LAUNCH",
+                                                                         "contains_enable_memory_learning":  false,
+                                                                         "contains_queueonly":  false,
+                                                                         "contains_duration_minutes":  false
+                                                                     },
+                                                                     {
+                                                                         "path":  "operations/autonomous_inner_motor/start_agent_life_v1.ps1",
+                                                                         "classification":  "CANONICAL_LAUNCHER_TO_INTERNAL_RUNNER",
+                                                                         "contains_enable_memory_learning":  true,
+                                                                         "contains_queueonly":  true,
+                                                                         "contains_duration_minutes":  true
+                                                                     },
+                                                                     {
+                                                                         "path":  "operations/live_like/run_school_aimo_live_like_observation_gate_v1.ps1",
+                                                                         "classification":  "LEGACY_NON_CANONICAL_LAUNCH_SURFACE",
+                                                                         "contains_enable_memory_learning":  false,
+                                                                         "contains_queueonly":  false,
+                                                                         "contains_duration_minutes":  false
+                                                                     },
+                                                                     {
+                                                                         "path":  "operations/live_readiness/run_school_aimo_continuous_runtime_proof_v1.ps1",
+                                                                         "classification":  "LEGACY_NON_CANONICAL_LAUNCH_SURFACE",
+                                                                         "contains_enable_memory_learning":  false,
+                                                                         "contains_queueonly":  false,
+                                                                         "contains_duration_minutes":  false
+                                                                     },
+                                                                     {
+                                                                         "path":  "operations/live_readiness/run_school_aimo_live_readiness_gate_v1.ps1",
+                                                                         "classification":  "LEGACY_NON_CANONICAL_LAUNCH_SURFACE",
+                                                                         "contains_enable_memory_learning":  false,
+                                                                         "contains_queueonly":  false,
+                                                                         "contains_duration_minutes":  false
+                                                                     },
+                                                                     {
+                                                                         "path":  "operations/live_start/restart_aimo_agent_only_v1.ps1",
+                                                                         "classification":  "LEGACY_NON_CANONICAL_LAUNCH_SURFACE",
+                                                                         "contains_enable_memory_learning":  false,
+                                                                         "contains_queueonly":  false,
+                                                                         "contains_duration_minutes":  false
+                                                                     },
+                                                                     {
+                                                                         "path":  "operations/live_start/start_school_aimo_controlled_live_v1.ps1",
+                                                                         "classification":  "LEGACY_NON_CANONICAL_LAUNCH_SURFACE",
+                                                                         "contains_enable_memory_learning":  false,
+                                                                         "contains_queueonly":  false,
+                                                                         "contains_duration_minutes":  false
+                                                                     },
+                                                                     {
+                                                                         "path":  "operations/memory/episodic/validate_episode_recall_v1.ps1",
+                                                                         "classification":  "VALIDATOR_OR_STATIC_CHECK_REFERENCE",
+                                                                         "contains_enable_memory_learning":  false,
+                                                                         "contains_queueonly":  false,
+                                                                         "contains_duration_minutes":  false
+                                                                     },
+                                                                     {
+                                                                         "path":  "operations/parallel_life/run_school_aimo_parallel_lab_v1.ps1",
+                                                                         "classification":  "LEGACY_NON_CANONICAL_LAUNCH_SURFACE",
+                                                                         "contains_enable_memory_learning":  false,
+                                                                         "contains_queueonly":  false,
+                                                                         "contains_duration_minutes":  false
+                                                                     },
+                                                                     {
+                                                                         "path":  "operations/reasoning/build_agent_mind_logic_frame_v1.ps1",
+                                                                         "classification":  "MIND_LOGIC_REFERENCE_NOT_LAUNCH",
+                                                                         "contains_enable_memory_learning":  false,
+                                                                         "contains_queueonly":  false,
+                                                                         "contains_duration_minutes":  false
+                                                                     },
+                                                                     {
+                                                                         "path":  "operations/reasoning/validate_episodic_decision_task_fork_v1.ps1",
+                                                                         "classification":  "MIND_LOGIC_REFERENCE_NOT_LAUNCH",
+                                                                         "contains_enable_memory_learning":  false,
+                                                                         "contains_queueonly":  false,
+                                                                         "contains_duration_minutes":  false
+                                                                     },
+                                                                     {
+                                                                         "path":  "operations/reasoning/validate_episodic_recall_decision_v1.ps1",
+                                                                         "classification":  "MIND_LOGIC_REFERENCE_NOT_LAUNCH",
+                                                                         "contains_enable_memory_learning":  false,
+                                                                         "contains_queueonly":  false,
+                                                                         "contains_duration_minutes":  false
+                                                                     },
+                                                                     {
+                                                                         "path":  "operations/self_model/build_operations_live_start_controlled_live_cycle_v1.ps1",
+                                                                         "classification":  "SELF_MODEL_REFERENCE_NOT_CURRENT_LAUNCH",
+                                                                         "contains_enable_memory_learning":  false,
+                                                                         "contains_queueonly":  false,
+                                                                         "contains_duration_minutes":  false
+                                                                     },
+                                                                     {
+                                                                         "path":  "operations/self_model/export_current_body_capability_snapshot_v1.ps1",
+                                                                         "classification":  "SELF_MODEL_REFERENCE_NOT_CURRENT_LAUNCH",
+                                                                         "contains_enable_memory_learning":  false,
+                                                                         "contains_queueonly":  false,
+                                                                         "contains_duration_minutes":  false
+                                                                     },
+                                                                     {
+                                                                         "path":  "operations/self_model/validate_aimo_default_route_execution_report_v1.ps1",
+                                                                         "classification":  "SELF_MODEL_REFERENCE_NOT_CURRENT_LAUNCH",
+                                                                         "contains_enable_memory_learning":  false,
+                                                                         "contains_queueonly":  false,
+                                                                         "contains_duration_minutes":  false
+                                                                     },
+                                                                     {
+                                                                         "path":  "operations/self_model/validate_aimo_default_source_agnostic_selector_contract_v1.ps1",
+                                                                         "classification":  "SELF_MODEL_REFERENCE_NOT_CURRENT_LAUNCH",
+                                                                         "contains_enable_memory_learning":  false,
+                                                                         "contains_queueonly":  false,
+                                                                         "contains_duration_minutes":  false
+                                                                     },
+                                                                     {
+                                                                         "path":  "operations/self_model/validate_capability_invocation_map_v1_contract.ps1",
+                                                                         "classification":  "SELF_MODEL_REFERENCE_NOT_CURRENT_LAUNCH",
+                                                                         "contains_enable_memory_learning":  false,
+                                                                         "contains_queueonly":  false,
+                                                                         "contains_duration_minutes":  false
+                                                                     },
+                                                                     {
+                                                                         "path":  "operations/self_model/validate_deep_self_model_map_diagnostic_v1.ps1",
+                                                                         "classification":  "SELF_MODEL_REFERENCE_NOT_CURRENT_LAUNCH",
+                                                                         "contains_enable_memory_learning":  false,
+                                                                         "contains_queueonly":  false,
+                                                                         "contains_duration_minutes":  false
+                                                                     },
+                                                                     {
+                                                                         "path":  "operations/self_model/validate_expanded_organ_candidate_inventory_audit_v1.ps1",
+                                                                         "classification":  "SELF_MODEL_REFERENCE_NOT_CURRENT_LAUNCH",
+                                                                         "contains_enable_memory_learning":  false,
+                                                                         "contains_queueonly":  false,
+                                                                         "contains_duration_minutes":  false
+                                                                     },
+                                                                     {
+                                                                         "path":  "operations/self_model/validate_map_authority_duplicate_audit_v1.ps1",
+                                                                         "classification":  "SELF_MODEL_REFERENCE_NOT_CURRENT_LAUNCH",
+                                                                         "contains_enable_memory_learning":  false,
+                                                                         "contains_queueonly":  false,
+                                                                         "contains_duration_minutes":  false
+                                                                     },
+                                                                     {
+                                                                         "path":  "operations/self_model/validate_map_authority_repair_v1.ps1",
+                                                                         "classification":  "SELF_MODEL_REFERENCE_NOT_CURRENT_LAUNCH",
+                                                                         "contains_enable_memory_learning":  false,
+                                                                         "contains_queueonly":  false,
+                                                                         "contains_duration_minutes":  false
+                                                                     },
+                                                                     {
+                                                                         "path":  "operations/self_model/validate_next_route_lock_and_health_audit_v1.ps1",
+                                                                         "classification":  "SELF_MODEL_REFERENCE_NOT_CURRENT_LAUNCH",
+                                                                         "contains_enable_memory_learning":  false,
+                                                                         "contains_queueonly":  false,
+                                                                         "contains_duration_minutes":  false
+                                                                     },
+                                                                     {
+                                                                         "path":  "operations/self_model/validate_operations_live_start_controlled_live_cycle_v1.ps1",
+                                                                         "classification":  "SELF_MODEL_REFERENCE_NOT_CURRENT_LAUNCH",
+                                                                         "contains_enable_memory_learning":  false,
+                                                                         "contains_queueonly":  false,
+                                                                         "contains_duration_minutes":  false
+                                                                     },
+                                                                     {
+                                                                         "path":  "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
+                                                                         "classification":  "SELF_MODEL_REFERENCE_NOT_CURRENT_LAUNCH",
+                                                                         "contains_enable_memory_learning":  false,
+                                                                         "contains_queueonly":  false,
+                                                                         "contains_duration_minutes":  false
+                                                                     },
+                                                                     {
+                                                                         "path":  "operations/self_model/validate_route_v4_execution_report_phase_m_v1.ps1",
+                                                                         "classification":  "SELF_MODEL_REFERENCE_NOT_CURRENT_LAUNCH",
+                                                                         "contains_enable_memory_learning":  false,
+                                                                         "contains_queueonly":  false,
+                                                                         "contains_duration_minutes":  false
+                                                                     },
+                                                                     {
+                                                                         "path":  "operations/self_model/validate_runtime_cleanup_v1.ps1",
+                                                                         "classification":  "SELF_MODEL_REFERENCE_NOT_CURRENT_LAUNCH",
+                                                                         "contains_enable_memory_learning":  false,
+                                                                         "contains_queueonly":  false,
+                                                                         "contains_duration_minutes":  false
+                                                                     },
+                                                                     {
+                                                                         "path":  "operations/self_model/validate_school_runtime_hygiene_gap_v1.ps1",
+                                                                         "classification":  "SELF_MODEL_REFERENCE_NOT_CURRENT_LAUNCH",
+                                                                         "contains_enable_memory_learning":  false,
+                                                                         "contains_queueonly":  false,
+                                                                         "contains_duration_minutes":  false
+                                                                     },
+                                                                     {
+                                                                         "path":  "validators/validate_agent_life_launcher_v1.ps1",
+                                                                         "classification":  "VALIDATOR_OR_STATIC_CHECK_REFERENCE",
+                                                                         "contains_enable_memory_learning":  true,
+                                                                         "contains_queueonly":  true,
+                                                                         "contains_duration_minutes":  true
+                                                                     },
+                                                                     {
+                                                                         "path":  "validators/validate_autonomous_inner_motor_deep_thinking_memory_learning_v1.ps1",
+                                                                         "classification":  "VALIDATOR_OR_STATIC_CHECK_REFERENCE",
+                                                                         "contains_enable_memory_learning":  false,
+                                                                         "contains_queueonly":  false,
+                                                                         "contains_duration_minutes":  false
+                                                                     },
+                                                                     {
+                                                                         "path":  "validators/validate_autonomous_inner_motor_dual_pipe_memory_ingestion_v1.ps1",
+                                                                         "classification":  "VALIDATOR_OR_STATIC_CHECK_REFERENCE",
+                                                                         "contains_enable_memory_learning":  false,
+                                                                         "contains_queueonly":  true,
+                                                                         "contains_duration_minutes":  false
+                                                                     },
+                                                                     {
+                                                                         "path":  "validators/validate_autonomous_inner_motor_memory_atom_acceptance_gate_v1.ps1",
+                                                                         "classification":  "VALIDATOR_OR_STATIC_CHECK_REFERENCE",
+                                                                         "contains_enable_memory_learning":  false,
+                                                                         "contains_queueonly":  false,
+                                                                         "contains_duration_minutes":  false
+                                                                     },
+                                                                     {
+                                                                         "path":  "validators/validate_autonomous_inner_motor_organ_contract.ps1",
+                                                                         "classification":  "VALIDATOR_OR_STATIC_CHECK_REFERENCE",
+                                                                         "contains_enable_memory_learning":  false,
+                                                                         "contains_queueonly":  false,
+                                                                         "contains_duration_minutes":  false
+                                                                     },
+                                                                     {
+                                                                         "path":  "validators/validate_autonomous_inner_motor_self_directed_thinking_v1.ps1",
+                                                                         "classification":  "VALIDATOR_OR_STATIC_CHECK_REFERENCE",
+                                                                         "contains_enable_memory_learning":  false,
+                                                                         "contains_queueonly":  false,
+                                                                         "contains_duration_minutes":  false
+                                                                     },
+                                                                     {
+                                                                         "path":  "validators/validate_memory_to_next_path_reuse_gate_v1.ps1",
+                                                                         "classification":  "VALIDATOR_OR_STATIC_CHECK_REFERENCE",
+                                                                         "contains_enable_memory_learning":  false,
+                                                                         "contains_queueonly":  false,
+                                                                         "contains_duration_minutes":  false
+                                                                     },
+                                                                     {
+                                                                         "path":  "validators/validate_mental_frontier_expansion_gate_v1.ps1",
+                                                                         "classification":  "VALIDATOR_OR_STATIC_CHECK_REFERENCE",
+                                                                         "contains_enable_memory_learning":  false,
+                                                                         "contains_queueonly":  false,
+                                                                         "contains_duration_minutes":  false
+                                                                     },
+                                                                     {
+                                                                         "path":  "validators/validate_mental_frontier_router_v1.ps1",
+                                                                         "classification":  "VALIDATOR_OR_STATIC_CHECK_REFERENCE",
+                                                                         "contains_enable_memory_learning":  false,
+                                                                         "contains_queueonly":  false,
+                                                                         "contains_duration_minutes":  false
+                                                                     }
+                                                                 ],
+                                   "unknown_runner_reference_count":  0,
+                                   "runtime_wrapper_count":  4,
+                                   "runtime_wrappers":  [
+                                                            {
+                                                                "path":  ".runtime/live_trials/canonical_10min_launch_20260717_1159/run_canonical_10min.ps1",
+                                                                "classification":  "HISTORICAL_RUNTIME_WRAPPER_NOT_CANONICAL",
+                                                                "last_write":  "2026-07-17T07:59:23.6567214Z",
+                                                                "bytes":  317
+                                                            },
+                                                            {
+                                                                "path":  ".runtime/live_trials/aimo_10min_queueonly_20260717_0909/run_aimo_10min_queueonly_trial.ps1",
+                                                                "classification":  "HISTORICAL_RUNTIME_WRAPPER_NOT_CANONICAL",
+                                                                "last_write":  "2026-07-17T05:09:29.4660749Z",
+                                                                "bytes":  4542
+                                                            },
+                                                            {
+                                                                "path":  ".runtime/live_trials/aimo_10min_20260717_0809/run_aimo_10min_trial.ps1",
+                                                                "classification":  "HISTORICAL_RUNTIME_WRAPPER_NOT_CANONICAL",
+                                                                "last_write":  "2026-07-17T04:09:37.3746012Z",
+                                                                "bytes":  3320
+                                                            },
+                                                            {
+                                                                "path":  ".runtime/live_trials/aimo_15min_20260716/run_aimo_15min_live_trial.ps1",
+                                                                "classification":  "HISTORICAL_RUNTIME_WRAPPER_NOT_CANONICAL",
+                                                                "last_write":  "2026-07-16T14:23:57.0092499Z",
+                                                                "bytes":  4420
+                                                            }
+                                                        ],
+                                   "legacy_noncanonical_launch_surface_count":  6,
+                                   "legacy_noncanonical_launch_surfaces":  [
+                                                                               {
+                                                                                   "path":  "operations/live_like/run_school_aimo_live_like_observation_gate_v1.ps1",
+                                                                                   "classification":  "LEGACY_NON_CANONICAL_LAUNCH_SURFACE",
+                                                                                   "contains_enable_memory_learning":  false,
+                                                                                   "contains_queueonly":  false,
+                                                                                   "contains_duration_minutes":  false
+                                                                               },
+                                                                               {
+                                                                                   "path":  "operations/live_readiness/run_school_aimo_continuous_runtime_proof_v1.ps1",
+                                                                                   "classification":  "LEGACY_NON_CANONICAL_LAUNCH_SURFACE",
+                                                                                   "contains_enable_memory_learning":  false,
+                                                                                   "contains_queueonly":  false,
+                                                                                   "contains_duration_minutes":  false
+                                                                               },
+                                                                               {
+                                                                                   "path":  "operations/live_readiness/run_school_aimo_live_readiness_gate_v1.ps1",
+                                                                                   "classification":  "LEGACY_NON_CANONICAL_LAUNCH_SURFACE",
+                                                                                   "contains_enable_memory_learning":  false,
+                                                                                   "contains_queueonly":  false,
+                                                                                   "contains_duration_minutes":  false
+                                                                               },
+                                                                               {
+                                                                                   "path":  "operations/live_start/restart_aimo_agent_only_v1.ps1",
+                                                                                   "classification":  "LEGACY_NON_CANONICAL_LAUNCH_SURFACE",
+                                                                                   "contains_enable_memory_learning":  false,
+                                                                                   "contains_queueonly":  false,
+                                                                                   "contains_duration_minutes":  false
+                                                                               },
+                                                                               {
+                                                                                   "path":  "operations/live_start/start_school_aimo_controlled_live_v1.ps1",
+                                                                                   "classification":  "LEGACY_NON_CANONICAL_LAUNCH_SURFACE",
+                                                                                   "contains_enable_memory_learning":  false,
+                                                                                   "contains_queueonly":  false,
+                                                                                   "contains_duration_minutes":  false
+                                                                               },
+                                                                               {
+                                                                                   "path":  "operations/parallel_life/run_school_aimo_parallel_lab_v1.ps1",
+                                                                                   "classification":  "LEGACY_NON_CANONICAL_LAUNCH_SURFACE",
+                                                                                   "contains_enable_memory_learning":  false,
+                                                                                   "contains_queueonly":  false,
+                                                                                   "contains_duration_minutes":  false
+                                                                               }
+                                                                           ]
+                               },
+    "organ_wiring":  [
+                         {
+                             "name":  "AGENT_LIFE_LAUNCHER_V1",
+                             "expected_entry":  "operations/autonomous_inner_motor/start_agent_life_v1.ps1",
+                             "validator":  "validators/validate_agent_life_launcher_v1.ps1",
+                             "proof":  "tests/self_development/AGENT_LIFE_LAUNCHER_V1_PROOF.json",
+                             "wired_to_canonical":  true,
+                             "notes":  "Owner-facing canonical launch; only DurationMinutes should be required.",
+                             "current_life_required":  true,
+                             "connection_status":  "WIRED_TO_CANONICAL_LIFE",
+                             "validator_exists":  true,
+                             "proof_exists":  true
+                         },
+                         {
+                             "name":  "AUTONOMOUS_INNER_MOTOR_RUNNER",
+                             "expected_entry":  "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+                             "validator":  "validators/validate_autonomous_inner_motor_organ_contract.ps1",
+                             "proof":  "operations/autonomous_inner_motor/validation/AUTONOMOUS_INNER_MOTOR_ORGAN_CONTRACT_VALIDATION.json",
+                             "wired_to_canonical":  true,
+                             "notes":  "Internal runner only; should be invoked by canonical launcher, not by Owner directly.",
+                             "current_life_required":  true,
+                             "connection_status":  "WIRED_TO_CANONICAL_LIFE",
+                             "validator_exists":  true,
+                             "proof_exists":  true
+                         },
+                         {
+                             "name":  "ACTION_DECISION_SELECTOR",
+                             "expected_entry":  "operations/autonomous_inner_motor/select_agent_next_action_candidate_v1.ps1",
+                             "validator":  "validators/validate_autonomous_inner_motor_action_decision_wiring_v1.ps1",
+                             "proof":  "tests/self_development/AUTONOMOUS_INNER_MOTOR_ACTION_DECISION_WIRING_V1_PROOF.json",
+                             "wired_to_canonical":  true,
+                             "notes":  "Selector is called by runner and controls candidate path selection.",
+                             "current_life_required":  true,
+                             "connection_status":  "WIRED_TO_CANONICAL_LIFE",
+                             "validator_exists":  true,
+                             "proof_exists":  true
+                         },
+                         {
+                             "name":  "MEMORY_TO_NEXT_PATH_REUSE_GATE_V1",
+                             "expected_entry":  "memory_to_next_path_reuse_gate.json",
+                             "validator":  "validators/validate_memory_to_next_path_reuse_gate_v1.ps1",
+                             "proof":  "tests/self_development/MEMORY_TO_NEXT_PATH_REUSE_GATE_V1_PROOF.json",
+                             "wired_to_canonical":  true,
+                             "notes":  "Wired through runner proof pack and selector action candidate.",
+                             "current_life_required":  true,
+                             "connection_status":  "WIRED_TO_CANONICAL_LIFE",
+                             "validator_exists":  true,
+                             "proof_exists":  true
+                         },
+                         {
+                             "name":  "MENTAL_FRONTIER_EXPANSION_GATE_V1",
+                             "expected_entry":  "mental_frontier_expansion_gate.json",
+                             "validator":  "validators/validate_mental_frontier_expansion_gate_v1.ps1",
+                             "proof":  "tests/self_development/MENTAL_FRONTIER_EXPANSION_GATE_V1_PROOF.json",
+                             "wired_to_canonical":  true,
+                             "notes":  "Wired through runner proof pack and selector action candidate.",
+                             "current_life_required":  true,
+                             "connection_status":  "WIRED_TO_CANONICAL_LIFE",
+                             "validator_exists":  true,
+                             "proof_exists":  true
+                         },
+                         {
+                             "name":  "MENTAL_FRONTIER_ROUTER_V1",
+                             "expected_entry":  "mental_frontier_router.json",
+                             "validator":  "validators/validate_mental_frontier_router_v1.ps1",
+                             "proof":  "tests/self_development/MENTAL_FRONTIER_ROUTER_V1_PROOF.json",
+                             "wired_to_canonical":  true,
+                             "notes":  "Wired through runner proof pack and selector action candidate.",
+                             "current_life_required":  true,
+                             "connection_status":  "WIRED_TO_CANONICAL_LIFE",
+                             "validator_exists":  true,
+                             "proof_exists":  true
+                         },
+                         {
+                             "name":  "BODY_SELF_INSPECTION_CIRCUIT_V1",
+                             "expected_entry":  "operations/body_self_inspection/invoke_body_self_inspection_circuit_v1.ps1",
+                             "validator":  "validators/validate_body_self_inspection_circuit_v1.ps1",
+                             "proof":  "tests/self_development/BODY_SELF_INSPECTION_CIRCUIT_V1_PROOF.json",
+                             "wired_to_canonical":  false,
+                             "connection_status":  "FRONTIER_REFERENCED_NOT_INVOKED",
+                             "current_life_required":  false,
+                             "notes":  "Built/proven separately; router may reference body_self_inspection_signal, but circuit is not invoked by canonical agent life yet.",
+                             "validator_exists":  true,
+                             "proof_exists":  true
+                         }
+                     ],
+    "findings":  {
+                     "canonical_owner_launch_is_single":  true,
+                     "canonical_launcher_controls_modes":  true,
+                     "runner_contains_current_mental_organs":  true,
+                     "selector_contains_current_action_candidates":  true,
+                     "historical_runtime_wrappers_exist":  true,
+                     "historical_wrappers_are_not_canonical":  true,
+                     "unwired_current_life_organ_count":  0,
+                     "unwired_current_life_organs":  [
+
+                                                     ],
+                     "frontier_referenced_not_invoked_count":  1,
+                     "frontier_referenced_not_invoked":  [
+                                                             "BODY_SELF_INSPECTION_CIRCUIT_V1"
+                                                         ],
+                     "unknown_tracked_runner_references":  [
+
+                                                           ],
+                     "legacy_noncanonical_launch_surface_count":  6,
+                     "legacy_noncanonical_launch_surfaces":  [
+                                                                 "operations/live_like/run_school_aimo_live_like_observation_gate_v1.ps1",
+                                                                 "operations/live_readiness/run_school_aimo_continuous_runtime_proof_v1.ps1",
+                                                                 "operations/live_readiness/run_school_aimo_live_readiness_gate_v1.ps1",
+                                                                 "operations/live_start/restart_aimo_agent_only_v1.ps1",
+                                                                 "operations/live_start/start_school_aimo_controlled_live_v1.ps1",
+                                                                 "operations/parallel_life/run_school_aimo_parallel_lab_v1.ps1"
+                                                             ]
+                 },
+    "conclusion":  {
+                       "current_owner_launch":  "operations/autonomous_inner_motor/start_agent_life_v1.ps1 -DurationMinutes \u003cminutes\u003e",
+                       "current_owner_launch_status":  "CANONICAL_SINGLE_LAUNCH_PATH_OK",
+                       "strongest_risk":  "Historical runtime wrappers exist and can confuse humans, but tracked code has a canonical launcher path. BODY_SELF_INSPECTION_CIRCUIT_V1 is proven separately and currently frontier-referenced, not invoked by canonical AIMO life.",
+                       "do_not_use":  "Do not manually launch old .runtime/live_trials wrappers or raw run_autonomous_inner_motor variants as Owner-facing life runs."
+                   },
+    "boundary":  {
+                     "audit_only":  true,
+                     "no_runtime_started":  true,
+                     "active_memory_mutated":  false,
+                     "live_process_touched":  false,
+                     "codex_launched":  false,
+                     "web_launched":  false,
+                     "repair_executed":  false
+                 }
+}

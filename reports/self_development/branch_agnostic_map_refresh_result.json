@@ -1,30 +1,35 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-17T12:51:01.8143610+04:00",
+    "checked_at":  "2026-07-17T13:08:27.9493872+04:00",
     "branch":  "main",
-    "observed_head":  "c0d9ab87e77fa46a07eac01a417cedbcbb520171",
-    "subject_head":  "c0d9ab87e77fa46a07eac01a417cedbcbb520171",
+    "observed_head":  "0d2fb3c93361f02cdd748a83a29966ccd3864ae3",
+    "subject_head":  "0d2fb3c93361f02cdd748a83a29966ccd3864ae3",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
+                          "AGENT_BUILDER_SELF_NOTEBOOK.md",
                           "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
-                          "operations/autonomous_inner_motor/start_agent_life_v1.ps1",
+                          "operations/autonomous_inner_motor/select_agent_next_action_candidate_v1.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
                           "tests/self_development/AGENT_LIFE_LAUNCHER_V1_PROOF.json",
+                          "tests/self_development/MEMORY_TO_NEXT_PATH_REUSE_GATE_V1_PROOF.json",
                           "tests/self_development/MENTAL_FRONTIER_EXPANSION_GATE_V1_PROOF.json",
-                          "validators/validate_mental_frontier_expansion_gate_v1.ps1"
+                          "tests/self_development/MENTAL_FRONTIER_ROUTER_V1_PROOF.json",
+                          "validators/validate_mental_frontier_router_v1.ps1"
                       ],
     "structural_paths":  [
                              "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
-                             "operations/autonomous_inner_motor/start_agent_life_v1.ps1",
+                             "operations/autonomous_inner_motor/select_agent_next_action_candidate_v1.ps1",
                              "tests/self_development/AGENT_LIFE_LAUNCHER_V1_PROOF.json",
+                             "tests/self_development/MEMORY_TO_NEXT_PATH_REUSE_GATE_V1_PROOF.json",
                              "tests/self_development/MENTAL_FRONTIER_EXPANSION_GATE_V1_PROOF.json",
-                             "validators/validate_mental_frontier_expansion_gate_v1.ps1"
+                             "tests/self_development/MENTAL_FRONTIER_ROUTER_V1_PROOF.json",
+                             "validators/validate_mental_frontier_router_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -36,8 +41,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2126,
-                                    "sha256":  "14ff9f00e2c10a85153f0fab79ec65160522cc81a49fd3bac31b959b35d60af0"
+                                    "structural_file_count":  2130,
+                                    "sha256":  "0bd45422cfd47af1f2d97e66d04e79f00eeb62e39f7afe5a3c1edb67948aef87"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -63,12 +68,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  152,
-                         "structural_path_count":  2126,
+                         "structural_path_count":  2130,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-17T12:51:36.4196572+04:00"
+    "refreshed_at":  "2026-07-17T13:09:02.4208780+04:00"
 }
