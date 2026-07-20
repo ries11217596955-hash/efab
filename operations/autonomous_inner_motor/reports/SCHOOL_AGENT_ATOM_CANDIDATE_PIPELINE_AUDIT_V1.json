@@ -1,0 +1,162 @@
+{
+    "schema":  "school_agent_atom_candidate_pipeline_audit_v1",
+    "status":  "PASS_SCHOOL_AGENT_ATOM_CANDIDATE_PIPELINE_AUDIT_V1",
+    "checked_at":  "2026-07-20T15:38:23.4397331Z",
+    "preflight":  {
+                      "repo_clean":  true,
+                      "process_count":  0,
+                      "runtime_launched":  false,
+                      "school_launched":  false,
+                      "active_memory_mutated":  false
+                  },
+    "audit_order":  [
+                        "school_first",
+                        "agent_second",
+                        "unified_throat_assessment_third"
+                    ],
+    "school_audit":  {
+                         "status":  "PARTIAL_PIPE_EXISTS_NOT_PROVEN_AS_CURRENT_UNIFIED_QUEUE_SOURCE",
+                         "candidate_factory_exists":  true,
+                         "candidate_factory_validator_exists":  true,
+                         "campaign_pack_validation_report":  "operations/school/curriculum/candidate_factory/reports/CAMPAIGN_PACK_CANDIDATE_FACTORY_VALIDATION_V1.json",
+                         "campaign_pack_validation_status":  "PASS_CAMPAIGN_PACK_CANDIDATE_FACTORY_V1",
+                         "campaign_stream_ready_atoms":  0,
+                         "campaign_stream_quarantined":  0,
+                         "campaign_active_memory_mutated":  false,
+                         "digest_absorption_script_exists":  true,
+                         "digest_absorption_role":  "accepts atom file, stages raw/digestible atoms, builds candidate memory root, then promotes through governed copy/lock-style boundary",
+                         "observed_school_packets_in_current_queue":  0,
+                         "conclusion":  "School has candidate_factory and digest/absorption machinery, but current compact_memory_intake queue snapshot contains no source_kind=School packets."
+                     },
+    "agent_audit":  {
+                        "status":  "AGENTLIFE_QUEUE_PACKET_PATH_PROVEN_IN_CURRENT_RUNTIME_SNAPSHOT",
+                        "deep_thinking_policy":  "operations/autonomous_inner_motor/deep_thinking_policy.json",
+                        "dual_pipe_policy":  "operations/autonomous_inner_motor/dual_pipe_memory_policy.json",
+                        "acceptance_gate":  "operations/autonomous_inner_motor/invoke_memory_atom_acceptance_gate_v1.ps1",
+                        "runner":  "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+                        "observed_queue_root":  ".runtime/compact_memory_intake_v1/queue",
+                        "observed_queue_file_count":  54,
+                        "parsed_queue_packet_count":  54,
+                        "queue_groups":  [
+                                             {
+                                                 "source_kind":  "AgentLife",
+                                                 "packet_count":  54,
+                                                 "atom_count":  54
+                                             }
+                                         ],
+                        "latest_packets":  [
+                                               {
+                                                   "file":  "agentlife_aimo_aimo_20260717_225715.json",
+                                                   "schema":  "compact_memory_knowledge_packet_v1",
+                                                   "source_kind":  "AgentLife",
+                                                   "atom_count":  1,
+                                                   "source_id":  "AIMO:aimo_20260717_225715"
+                                               },
+                                               {
+                                                   "file":  "agentlife_aimo_aimo_20260717_225628.json",
+                                                   "schema":  "compact_memory_knowledge_packet_v1",
+                                                   "source_kind":  "AgentLife",
+                                                   "atom_count":  1,
+                                                   "source_id":  "AIMO:aimo_20260717_225628"
+                                               },
+                                               {
+                                                   "file":  "agentlife_aimo_aimo_20260717_225540.json",
+                                                   "schema":  "compact_memory_knowledge_packet_v1",
+                                                   "source_kind":  "AgentLife",
+                                                   "atom_count":  1,
+                                                   "source_id":  "AIMO:aimo_20260717_225540"
+                                               },
+                                               {
+                                                   "file":  "agentlife_aimo_aimo_20260717_225301.json",
+                                                   "schema":  "compact_memory_knowledge_packet_v1",
+                                                   "source_kind":  "AgentLife",
+                                                   "atom_count":  1,
+                                                   "source_id":  "AIMO:aimo_20260717_225301"
+                                               },
+                                               {
+                                                   "file":  "agentlife_aimo_aimo_20260717_191613.json",
+                                                   "schema":  "compact_memory_knowledge_packet_v1",
+                                                   "source_kind":  "AgentLife",
+                                                   "atom_count":  1,
+                                                   "source_id":  "AIMO:aimo_20260717_191613"
+                                               },
+                                               {
+                                                   "file":  "agentlife_aimo_aimo_20260717_191353.json",
+                                                   "schema":  "compact_memory_knowledge_packet_v1",
+                                                   "source_kind":  "AgentLife",
+                                                   "atom_count":  1,
+                                                   "source_id":  "AIMO:aimo_20260717_191353"
+                                               },
+                                               {
+                                                   "file":  "agentlife_aimo_aimo_20260717_191116.json",
+                                                   "schema":  "compact_memory_knowledge_packet_v1",
+                                                   "source_kind":  "AgentLife",
+                                                   "atom_count":  1,
+                                                   "source_id":  "AIMO:aimo_20260717_191116"
+                                               },
+                                               {
+                                                   "file":  "agentlife_aimo_aimo_20260717_135804.json",
+                                                   "schema":  "compact_memory_knowledge_packet_v1",
+                                                   "source_kind":  "AgentLife",
+                                                   "atom_count":  1,
+                                                   "source_id":  "AIMO:aimo_20260717_135804"
+                                               }
+                                           ],
+                        "sample_packet_schema":  "compact_memory_knowledge_packet_v1",
+                        "sample_source_kind":  "AgentLife",
+                        "boundary":  {
+                                         "queue_first":  true,
+                                         "direct_active_memory_write":  false,
+                                         "active_memory_merge_requires_lock":  true
+                                     },
+                        "conclusion":  "Agent already creates accepted atom candidates as compact_memory_knowledge_packet_v1 packets and places them into compact_memory_intake queue."
+                    },
+    "unified_throat_assessment":  {
+                                      "existing_throat":  ".runtime/compact_memory_intake_v1 plus governed School digest/absorption path",
+                                      "active_compact_memory_root":  ".runtime/active_compact_semantic_memory_v1",
+                                      "active_compact_memory_files":  3,
+                                      "active_compact_memory_bytes":  13079084,
+                                      "compact_memory_intake_files":  141,
+                                      "compact_memory_intake_bytes":  39556382,
+                                      "current_gap":  "Queue is real for AgentLife, but School and Agent are not yet proven to submit through one normalized source-agnostic candidate packet contract in the current snapshot.",
+                                      "owner_hypothesis_result":  "mostly_right_but_needs_normalization",
+                                      "do_not_build_new_warehouse_from_zero":  true,
+                                      "required_next_contract":  "ATOM_CANDIDATE_UNIFIED_INTAKE_CONTRACT_V1"
+                                  },
+    "findings":  [
+                     {
+                         "id":  "S1",
+                         "severity":  "MEDIUM",
+                         "label":  "SCHOOL_FACTORY_EXISTS_BUT_CURRENT_QUEUE_HAS_NO_SCHOOL_PACKETS",
+                         "meaning":  "School can prepare/validate candidate material, but current observed candidate queue contains only AgentLife packets."
+                     },
+                     {
+                         "id":  "A1",
+                         "severity":  "LOW",
+                         "label":  "AGENTLIFE_OUTBOX_ALREADY_EXISTS",
+                         "meaning":  "Agent creates one-atom compact_memory_knowledge_packet_v1 packets in compact_memory_intake queue."
+                     },
+                     {
+                         "id":  "U1",
+                         "severity":  "HIGH",
+                         "label":  "UNIFIED_INTAKE_CONTRACT_NOT_EXPLICITLY_PROVEN",
+                         "meaning":  "The physical/conceptual throat exists, but both sources need one explicit normalized envelope and validator."
+                     },
+                     {
+                         "id":  "N1",
+                         "severity":  "HIGH",
+                         "label":  "NEXT_REPAIR_SHOULD_NOT_CREATE_NEW_STORE",
+                         "meaning":  "Next repair should connect/normalize existing queue/intake, not create duplicate outbox."
+                     }
+                 ],
+    "recommended_next_human":  "Не строить новый склад. Сделать единый входной контракт для кандидатов: агент и школа кладут завершённые выводы в один формат, с source_kind, topic, quality, proof_ref, validation_status; дальше школа/ingestion решает, что продвигать в compact memory.",
+    "recommended_next_technical":  "ATOM_CANDIDATE_UNIFIED_INTAKE_CONTRACT_V1_SLICE_A before/inside SHORT_TERM_MIND_STATE_V1_SLICE_A",
+    "boundary":  {
+                     "audit_only":  true,
+                     "runtime_launched":  false,
+                     "school_launched":  false,
+                     "active_memory_mutated":  false,
+                     "direct_active_memory_write":  false,
+                     "files_read_only_except_report_notebook_validator_proof":  true
+                 }
+}
