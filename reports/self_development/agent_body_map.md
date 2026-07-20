@@ -2,9 +2,9 @@
 
 Status: ACTIVE_DERIVED_VIEW
 Branch: main
-Observed head at generation: 695dcdaae69b0e7ca1926d626e8bce43ce1f90fb
-Generated: 2026-07-20T17:50:19.1155901+04:00
-Body source fingerprint: 1bfa77ae5bae11e43c7d1a20cc8e3965a013c232adf4fea4de377c1e6b7de6ca
+Observed head at generation: c31c6387764cd6707ba11ac129efd6e2a1d42e20
+Generated: 2026-07-20T18:24:25.8089999+04:00
+Body source fingerprint: 7710b6a98b1a41590588e69ecc0ab91b4df72e23f747edea760890bb4da6a94c
 
 Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
@@ -50,7 +50,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `operations_autonomous_inner_motor` - root `operations/autonomous_inner_motor`, files=64, scripts=9, validators=1, proofs=8, needs_triage=True
 - `operations_body_self_inspection` - root `operations/body_self_inspection`, files=25, scripts=18, validators=0, proofs=0, needs_triage=True
 - `operations_bridge_diagnostics` - root `operations/bridge_diagnostics`, files=2, scripts=0, validators=0, proofs=2, needs_triage=True
-- `operations_bridge_recovery` - root `operations/bridge_recovery`, files=51, scripts=5, validators=1, proofs=3, needs_triage=True
+- `operations_bridge_recovery` - root `operations/bridge_recovery`, files=53, scripts=5, validators=1, proofs=4, needs_triage=True
 - `operations_live_like` - root `operations/live_like`, files=5, scripts=5, validators=3, proofs=0, needs_triage=True
 - `operations_live_readiness` - root `operations/live_readiness`, files=11, scripts=11, validators=5, proofs=2, needs_triage=True
 - `operations_live_start` - root `operations/live_start`, files=5, scripts=5, validators=2, proofs=0, needs_triage=True

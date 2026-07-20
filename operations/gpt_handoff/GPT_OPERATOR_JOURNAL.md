@@ -597,3 +597,13 @@ startup_mutated = false
 live_bridge_mutated = false
 second_pc_restore = NOT_PROVEN
 ```
+
+## 2026-07-20 - Bridge sanitized chat handoff
+
+```text
+status = READY_FOR_VALIDATION
+handoff = operations/bridge_recovery/chat_context/BRIDGE_BUILD_CHAT_HANDOFF_20260720.md
+raw_chat = not committed
+secrets = excluded
+live_bridge_mutation = false
+```

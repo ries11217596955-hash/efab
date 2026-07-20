@@ -6,19 +6,19 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "695dcdaae69b0e7ca1926d626e8bce43ce1f90fb",
-    "subject_head":  "695dcdaae69b0e7ca1926d626e8bce43ce1f90fb",
-    "generated_at":  "2026-07-20T17:50:19.1155901+04:00",
+    "observed_head_at_generation":  "c31c6387764cd6707ba11ac129efd6e2a1d42e20",
+    "subject_head":  "c31c6387764cd6707ba11ac129efd6e2a1d42e20",
+    "generated_at":  "2026-07-20T18:24:25.8089999+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  2244,
+    "structural_path_count":  2246,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2244,
-                                    "sha256":  "1bfa77ae5bae11e43c7d1a20cc8e3965a013c232adf4fea4de377c1e6b7de6ca"
+                                    "structural_file_count":  2246,
+                                    "sha256":  "7710b6a98b1a41590588e69ecc0ab91b4df72e23f747edea760890bb4da6a94c"
                                 },
     "module_count":  203,
     "validator_count":  237,
@@ -630,8 +630,8 @@
 
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "695dcdaae69b0e7ca1926d626e8bce43ce1f90fb",
-                                                               "committed_at":  "2026-07-20T17:48:20+04:00",
+                                                               "head":  "c31c6387764cd6707ba11ac129efd6e2a1d42e20",
+                                                               "committed_at":  "2026-07-20T17:49:43+04:00",
                                                                "subject":  "Add portable Bridge recovery pack v1"
                                                            },
                                      "latest_runtime_artifact":  null,
@@ -1659,24 +1659,25 @@
                                             "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                                             "discovery_method":  "bounded_git_ls_files_path_discovery",
                                             "evidence_counts":  {
-                                                                    "files":  51,
+                                                                    "files":  53,
                                                                     "scripts":  5,
                                                                     "validators":  1,
-                                                                    "proofs":  3,
+                                                                    "proofs":  4,
                                                                     "contracts_or_policies":  0,
-                                                                    "docs":  4
+                                                                    "docs":  5
                                                                 },
-                                            "file_count":  51,
+                                            "file_count":  53,
                                             "script_count":  5,
                                             "validator_count":  1,
-                                            "proof_file_count":  3,
+                                            "proof_file_count":  4,
                                             "contract_or_policy_count":  0,
-                                            "doc_count":  4,
+                                            "doc_count":  5,
                                             "validator_refs":  [
                                                                    "operations/bridge_recovery/scripts/validate_bridge.ps1"
                                                                ],
                                             "proof_refs":  [
                                                                "operations/bridge_recovery/proofs/archive_proof_v1.json",
+                                                               "operations/bridge_recovery/proofs/chat_handoff_proof_v1.json",
                                                                "operations/bridge_recovery/proofs/lab_restore_proof_v1.json",
                                                                "operations/bridge_recovery/proofs/pack_build_proof_v1.json"
                                                            ],
@@ -1688,6 +1689,7 @@
                                                                   "operations/bridge_recovery/DO_NOT_DELETE.md",
                                                                   "operations/bridge_recovery/VERSION",
                                                                   "operations/bridge_recovery/active_manifest.json",
+                                                                  "operations/bridge_recovery/chat_context/BRIDGE_BUILD_CHAT_HANDOFF_20260720.md",
                                                                   "operations/bridge_recovery/checksums/SHA256SUMS",
                                                                   "operations/bridge_recovery/config/bridge.config.example.json",
                                                                   "operations/bridge_recovery/config/secrets.required.json",
@@ -1707,13 +1709,13 @@
                                                                   "operations/bridge_recovery/payload/src/bridge_app/api/routes/context.py",
                                                                   "operations/bridge_recovery/payload/src/bridge_app/api/routes/health.py",
                                                                   "operations/bridge_recovery/payload/src/bridge_app/api/routes/repo.py",
-                                                                  "operations/bridge_recovery/payload/src/bridge_app/api/routes/reports.py",
-                                                                  "operations/bridge_recovery/payload/src/bridge_app/api/routes/runs.py"
+                                                                  "operations/bridge_recovery/payload/src/bridge_app/api/routes/reports.py"
                                                               ],
                                             "primary_evidence_refs":  [
                                                                           "operations/bridge_recovery/payload/efab_resilience_supervisor_v3.template.ps1",
                                                                           "operations/bridge_recovery/payload/efab_supervisor_keeper_v1.template.ps1",
                                                                           "operations/bridge_recovery/proofs/archive_proof_v1.json",
+                                                                          "operations/bridge_recovery/proofs/chat_handoff_proof_v1.json",
                                                                           "operations/bridge_recovery/proofs/lab_restore_proof_v1.json",
                                                                           "operations/bridge_recovery/proofs/pack_build_proof_v1.json",
                                                                           "operations/bridge_recovery/scripts/install_bridge.ps1",
@@ -8680,8 +8682,8 @@
 
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "695dcdaae69b0e7ca1926d626e8bce43ce1f90fb",
-                                                     "committed_at":  "2026-07-20T17:48:20+04:00",
+                                                     "head":  "c31c6387764cd6707ba11ac129efd6e2a1d42e20",
+                                                     "committed_at":  "2026-07-20T17:49:43+04:00",
                                                      "subject":  "Add portable Bridge recovery pack v1"
                                                  },
                            "latest_runtime_artifact":  null,
@@ -9707,24 +9709,25 @@
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                            "discovery_method":  "bounded_git_ls_files_path_discovery",
                            "evidence_counts":  {
-                                                   "files":  51,
+                                                   "files":  53,
                                                    "scripts":  5,
                                                    "validators":  1,
-                                                   "proofs":  3,
+                                                   "proofs":  4,
                                                    "contracts_or_policies":  0,
-                                                   "docs":  4
+                                                   "docs":  5
                                                },
-                           "file_count":  51,
+                           "file_count":  53,
                            "script_count":  5,
                            "validator_count":  1,
-                           "proof_file_count":  3,
+                           "proof_file_count":  4,
                            "contract_or_policy_count":  0,
-                           "doc_count":  4,
+                           "doc_count":  5,
                            "validator_refs":  [
                                                   "operations/bridge_recovery/scripts/validate_bridge.ps1"
                                               ],
                            "proof_refs":  [
                                               "operations/bridge_recovery/proofs/archive_proof_v1.json",
+                                              "operations/bridge_recovery/proofs/chat_handoff_proof_v1.json",
                                               "operations/bridge_recovery/proofs/lab_restore_proof_v1.json",
                                               "operations/bridge_recovery/proofs/pack_build_proof_v1.json"
                                           ],
@@ -9736,6 +9739,7 @@
                                                  "operations/bridge_recovery/DO_NOT_DELETE.md",
                                                  "operations/bridge_recovery/VERSION",
                                                  "operations/bridge_recovery/active_manifest.json",
+                                                 "operations/bridge_recovery/chat_context/BRIDGE_BUILD_CHAT_HANDOFF_20260720.md",
                                                  "operations/bridge_recovery/checksums/SHA256SUMS",
                                                  "operations/bridge_recovery/config/bridge.config.example.json",
                                                  "operations/bridge_recovery/config/secrets.required.json",
@@ -9755,13 +9759,13 @@
                                                  "operations/bridge_recovery/payload/src/bridge_app/api/routes/context.py",
                                                  "operations/bridge_recovery/payload/src/bridge_app/api/routes/health.py",
                                                  "operations/bridge_recovery/payload/src/bridge_app/api/routes/repo.py",
-                                                 "operations/bridge_recovery/payload/src/bridge_app/api/routes/reports.py",
-                                                 "operations/bridge_recovery/payload/src/bridge_app/api/routes/runs.py"
+                                                 "operations/bridge_recovery/payload/src/bridge_app/api/routes/reports.py"
                                              ],
                            "primary_evidence_refs":  [
                                                          "operations/bridge_recovery/payload/efab_resilience_supervisor_v3.template.ps1",
                                                          "operations/bridge_recovery/payload/efab_supervisor_keeper_v1.template.ps1",
                                                          "operations/bridge_recovery/proofs/archive_proof_v1.json",
+                                                         "operations/bridge_recovery/proofs/chat_handoff_proof_v1.json",
                                                          "operations/bridge_recovery/proofs/lab_restore_proof_v1.json",
                                                          "operations/bridge_recovery/proofs/pack_build_proof_v1.json",
                                                          "operations/bridge_recovery/scripts/install_bridge.ps1",
