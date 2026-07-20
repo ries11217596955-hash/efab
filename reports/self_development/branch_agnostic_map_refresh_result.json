@@ -1,30 +1,30 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-18T00:37:20.4082583+04:00",
+    "checked_at":  "2026-07-20T17:48:36.8656401+04:00",
     "branch":  "main",
-    "observed_head":  "7ca2cce88c15d40296dd14154a1ed4e9e4667afe",
-    "subject_head":  "7ca2cce88c15d40296dd14154a1ed4e9e4667afe",
+    "observed_head":  "dff3e3dd89d49d5dc5af7e3da1a79363143e4ec0",
+    "subject_head":  "dff3e3dd89d49d5dc5af7e3da1a79363143e4ec0",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
                           "AGENT_BUILDER_MIND_REPAIR_PRIORITY_PLAN_V1.md",
                           "AGENT_BUILDER_SELF_NOTEBOOK.md",
-                          "operations/autonomous_inner_motor/reports/NEXT_BUILD_TASK_DECISION_SPINE_V1_ACCEPTANCE.json",
+                          "operations/autonomous_inner_motor/reports/SELECTIVE_COMPACT_MEMORY_RETRIEVAL_V1_ACCEPTANCE.json",
                           "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "tests/self_development/NEXT_BUILD_TASK_DECISION_SPINE_V1_PROOF.json",
-                          "validators/validate_next_build_task_decision_spine_v1.ps1"
+                          "tests/self_development/SELECTIVE_COMPACT_MEMORY_RETRIEVAL_V1_PROOF.json",
+                          "validators/validate_selective_compact_memory_retrieval_v1.ps1"
                       ],
     "structural_paths":  [
-                             "operations/autonomous_inner_motor/reports/NEXT_BUILD_TASK_DECISION_SPINE_V1_ACCEPTANCE.json",
+                             "operations/autonomous_inner_motor/reports/SELECTIVE_COMPACT_MEMORY_RETRIEVAL_V1_ACCEPTANCE.json",
                              "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
-                             "tests/self_development/NEXT_BUILD_TASK_DECISION_SPINE_V1_PROOF.json",
-                             "validators/validate_next_build_task_decision_spine_v1.ps1"
+                             "tests/self_development/SELECTIVE_COMPACT_MEMORY_RETRIEVAL_V1_PROOF.json",
+                             "validators/validate_selective_compact_memory_retrieval_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -36,8 +36,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2229,
-                                    "sha256":  "fab766e03bedb9f8d96cad1e060342c11dcb7c30618a12bc52f9031c0a0e780b"
+                                    "structural_file_count":  2244,
+                                    "sha256":  "e43642f6ecffef150590c2a14f9c25742f6d7eb8f29e3bed3ac0e7304b0ce26c"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -59,16 +59,16 @@
                          "builder":  "AGENT_BODY_COMPOSITION_MAP_PRIMARY_EVIDENCE_V1",
                          "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                          "confirmed_component_count":  7,
-                         "primary_evidence_candidate_count":  145,
+                         "primary_evidence_candidate_count":  146,
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
-                         "total_component_count":  152,
-                         "structural_path_count":  2229,
+                         "total_component_count":  153,
+                         "structural_path_count":  2244,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-18T00:37:58.3188236+04:00"
+    "refreshed_at":  "2026-07-20T17:49:11.6897759+04:00"
 }

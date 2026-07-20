@@ -579,3 +579,21 @@ reason = Owner saw broken mojibake characters in AGENT_BUILDER_SELF_NOTEBOOK.md
 fix = rewrite notebook as English ASCII only, UTF-8 without BOM, no Cyrillic/smart punctuation
 boundary = notebook only; no runtime mutation
 ```
+
+## 2026-07-20 - Bridge portability pack v1
+
+```text
+status = PROVEN_LAB
+repo_before = dff3e3dd89d49d5dc5af7e3da1a79363143e4ec0
+repo_delta_before = 0 0
+pack = operations/bridge_recovery
+lab_root = H:\bridge_portability_lab_v1
+lab_restore = PASS
+syntax = PASS
+unresolved_live_hardcodes = 0
+secret_files = 0
+secret_value_embedded = 0
+startup_mutated = false
+live_bridge_mutated = false
+second_pc_restore = NOT_PROVEN
+```
