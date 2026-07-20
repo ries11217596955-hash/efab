@@ -1,4 +1,4 @@
-﻿# DO NOT DELETE - EFAB Bridge Recovery Pack
+# DO NOT DELETE - EFAB Bridge Recovery Pack
 
 Source of truth for restoring the GPT Action Bridge on another Windows PC.
 

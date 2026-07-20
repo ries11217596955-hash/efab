@@ -1,4 +1,4 @@
-﻿# Local Bridge
+# Local Bridge
 
 Local Bridge is a local FastAPI service for structured local operations, reports, and GPT Action compatible OpenAPI access.
 

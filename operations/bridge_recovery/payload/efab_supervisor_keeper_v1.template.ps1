@@ -1,4 +1,4 @@
-﻿param([int]$IntervalSeconds=120)
+param([int]$IntervalSeconds=120)
 $ErrorActionPreference='Continue'
 $Root='__BRIDGE_ROOT__'
 $Supervisor=Join-Path $Root 'efab_resilience_supervisor_v3.ps1'

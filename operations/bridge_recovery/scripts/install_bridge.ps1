@@ -1,4 +1,4 @@
-﻿param(
+param(
   [string]$BridgeRoot = 'C:\EFAB\bridge',
   [string]$RepoRoot = 'C:\EFAB\efab',
   [string]$PublicDomain = 'scabbed-corner-gap.ngrok-free.dev',

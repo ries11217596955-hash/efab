@@ -1,6 +1,11 @@
-﻿{
+{
     "file":  "releases/EFAB_BRIDGE_MIGRATION_PACK_v1.zip",
-    "sha256":  "7D8700E53AAF2476ECEDF59A9CD6A162F6678B74B9329E5A2B04BC3E91B35DC8",
+    "sha256":  "F23C45A0A90A0AD3D201325770BE7F1AC0A7F8E1FF6A1432E94BF4FD9DACCEC9",
     "contains_secrets":  false,
-    "status":  "PROVEN_LAB"
+    "status":  "PROVEN_LAB",
+    "archive_excludes":  [
+                             "releases/",
+                             "checksums/SHA256SUMS",
+                             "proofs/archive_proof_v1.json"
+                         ]
 }

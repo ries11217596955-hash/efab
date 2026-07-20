@@ -1,4 +1,4 @@
-﻿param(
+param(
   [int]$IntervalSeconds=60,
   [int]$FailureThreshold=2,
   [int]$NetworkRetrySeconds=60

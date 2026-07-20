@@ -1,4 +1,4 @@
-﻿# Bridge Operator Notebook
+# Bridge Operator Notebook
 
 First read after chat migration or PC replacement.
 

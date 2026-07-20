@@ -1,4 +1,4 @@
-﻿param([string]$BridgeRoot='C:\EFAB\bridge',[string]$PublicDomain='scabbed-corner-gap.ngrok-free.dev')
+param([string]$BridgeRoot='C:\EFAB\bridge',[string]$PublicDomain='scabbed-corner-gap.ngrok-free.dev')
 $ErrorActionPreference='SilentlyContinue'
 $local=$false;$public=$false;$super=$false;$keeper=$false
 try{$h=Invoke-RestMethod 'http://127.0.0.1:18787/health' -TimeoutSec 5;$local=($h.ok -eq $true)}catch{}
