@@ -1,33 +1,22 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-20T18:53:19.7397654+04:00",
+    "checked_at":  "2026-07-20T19:20:38.0061642+04:00",
     "branch":  "main",
-    "observed_head":  "696831ed0f9fbf53b665ffebc45a72bd915775fd",
-    "subject_head":  "696831ed0f9fbf53b665ffebc45a72bd915775fd",
+    "observed_head":  "0b1430a7850c88130c29d3b4fb1c224c07dc5004",
+    "subject_head":  "0b1430a7850c88130c29d3b4fb1c224c07dc5004",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
                           "AGENT_BUILDER_SELF_NOTEBOOK.md",
-                          "operations/bridge_recovery/BRIDGE_OPERATOR_NOTEBOOK.md",
-                          "operations/bridge_recovery/chat_context/BRIDGE_BUILD_CHAT_HANDOFF_20260720.md",
-                          "operations/bridge_recovery/checksums/SHA256SUMS",
-                          "operations/bridge_recovery/proofs/archive_proof_v1.json",
-                          "operations/bridge_recovery/proofs/chat_handoff_proof_v1.json",
-                          "operations/bridge_recovery/releases/EFAB_BRIDGE_MIGRATION_PACK_v1.zip",
-                          "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json"
                       ],
     "structural_paths":  [
-                             "operations/bridge_recovery/BRIDGE_OPERATOR_NOTEBOOK.md",
-                             "operations/bridge_recovery/chat_context/BRIDGE_BUILD_CHAT_HANDOFF_20260720.md",
-                             "operations/bridge_recovery/proofs/archive_proof_v1.json",
-                             "operations/bridge_recovery/proofs/chat_handoff_proof_v1.json",
-                             "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
+
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -39,8 +28,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2246,
-                                    "sha256":  "7710b6a98b1a41590588e69ecc0ab91b4df72e23f747edea760890bb4da6a94c"
+                                    "structural_file_count":  2249,
+                                    "sha256":  "b5b92b9276be7b3243d27b30c7388ad6535cb93908b1355320847f4e4e8c50af"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -66,12 +55,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  153,
-                         "structural_path_count":  2246,
+                         "structural_path_count":  2249,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-20T18:53:51.5048943+04:00"
+    "refreshed_at":  "2026-07-20T19:21:08.9282516+04:00"
 }
