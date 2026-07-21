@@ -1,0 +1,24 @@
+{
+    "schema":  "dynamic_memory_retrieval_budget_v1_acceptance",
+    "status":  "ACCEPTED_DYNAMIC_MEMORY_RETRIEVAL_BUDGET_V1",
+    "accepted_at":  "2026-07-21T16:29:40.8021512Z",
+    "proof":  "tests/self_development/DYNAMIC_MEMORY_RETRIEVAL_BUDGET_V1_PROOF.json",
+    "may_claim":  "Memory retrieval now uses a dynamic budget derived from active goal/refocus seed and wake reflex context; refocus seed path uses target_count=5 instead of fixed 7.",
+    "may_not_claim":  [
+                          "full adaptive relevance model implemented",
+                          "dynamic budget influences all future topics perfectly",
+                          "action execution allowed",
+                          "active compact memory updated"
+                      ],
+    "boundary":  {
+                     "runtime_launched_by_validator":  true,
+                     "thinking_only":  true,
+                     "action_execution_allowed":  false,
+                     "memory_learning_enabled":  false,
+                     "active_memory_mutated":  false,
+                     "direct_active_memory_write":  false,
+                     "no_new_store_created":  true,
+                     "codex_launched":  false,
+                     "web_launched":  false
+                 }
+}

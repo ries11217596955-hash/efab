@@ -674,3 +674,43 @@ Next repair:
 ```text
 DYNAMIC_MEMORY_RETRIEVAL_BUDGET_V1
 ```
+## 18. Dynamic Memory Retrieval Budget acceptance
+
+Status: PROVEN_LAB / ACCEPTED
+
+```text
+DYNAMIC_MEMORY_RETRIEVAL_BUDGET_V1 = PASS
+```
+
+Proof:
+
+```text
+tests/self_development/DYNAMIC_MEMORY_RETRIEVAL_BUDGET_V1_PROOF.json
+operations/autonomous_inner_motor/reports/DYNAMIC_MEMORY_RETRIEVAL_BUDGET_V1_ACCEPTANCE.json
+```
+
+Validated result:
+
+```text
+seed_consumed = true
+base_limit = 7
+budget_target_count = 5
+selected_count = 5
+queue_before = 88
+queue_after = 88
+active_memory_mutated = false
+direct_active_memory_write = false
+process_count = 0
+```
+
+Interpretation:
+
+```text
+The retrieval count is no longer hard-wired to 7 on the refocus-seed path. Budget is selected before retrieval and uses active goal plus wake reflex context.
+```
+
+Next repair / observation:
+
+```text
+LIVE_OBSERVATION_5MIN_THOUGHT_AUDIT_V2_AFTER_REFOCUS_AND_DYNAMIC_BUDGET
+```
