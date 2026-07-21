@@ -1,0 +1,26 @@
+{
+    "schema":  "diversified_lens_rotation_v1_acceptance",
+    "status":  "ACCEPTED_DIVERSIFIED_LENS_ROTATION_V1",
+    "accepted_at":  "2026-07-21T18:47:09.3709265Z",
+    "proof":  "tests/self_development/DIVERSIFIED_LENS_ROTATION_V1_PROOF.json",
+    "may_claim":  "Agent can avoid the latest repeated diversified lens and select a different lens branch.",
+    "may_not_claim":  [
+                          "long live run proves lens keeps rotating over hours",
+                          "external access enabled",
+                          "actions allowed",
+                          "active compact memory updated"
+                      ],
+    "boundary":  {
+                     "runtime_launched_by_validator":  true,
+                     "cycles":  1,
+                     "thinking_only":  true,
+                     "memory_learning_enabled":  false,
+                     "action_execution_allowed":  false,
+                     "active_memory_mutated":  false,
+                     "direct_active_memory_write":  false,
+                     "no_external_access":  true,
+                     "no_new_store_created":  true,
+                     "codex_launched":  false,
+                     "web_launched":  false
+                 }
+}

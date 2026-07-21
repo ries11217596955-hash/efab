@@ -1256,11 +1256,35 @@ function New-RefocusToNewThoughtSeed($RunId,$ShortTermStateToNextTaskRouter,$Rec
     }
   }
 }
-function New-RefocusSeedDiversification($RunId,$RefocusToNewThoughtSeed,$RecentThoughtRepetitionPattern,$NewThoughtSeedToActiveGoal){
+function Get-RecentDiversifiedLensRotation([string]$OutputRoot,[string]$CurrentRunRoot,[int]$WindowSize=8){
+  if([string]::IsNullOrWhiteSpace($OutputRoot) -or -not(Test-Path -LiteralPath $OutputRoot)){ return [ordered]@{ schema='diversified_lens_rotation_v1'; status='NO_OUTPUT_ROOT'; recent_lenses=@(); avoid_lenses=@(); rotate_needed=$false } }
+  $currentFull=$null
+  try{ $currentFull=(Resolve-Path -LiteralPath $CurrentRunRoot -ErrorAction SilentlyContinue).Path }catch{}
+  $dirs=@(Get-ChildItem -LiteralPath $OutputRoot -Directory -ErrorAction SilentlyContinue | Sort-Object LastWriteTimeUtc -Descending | Select-Object -First $WindowSize)
+  $recent=@()
+  foreach($d in $dirs){
+    if($currentFull -and $d.FullName -eq $currentFull){ continue }
+    $path=Join-Path $d.FullName 'refocus_seed_diversification.json'
+    $j=Read-JsonSafe $path
+    if($j -and -not [string]::IsNullOrWhiteSpace([string]$j.selected_lens)){
+      $recent += [pscustomobject][ordered]@{ run=$d.Name; selected_lens=[string]$j.selected_lens; selected_question=[string]$j.selected_question }
+    }
+  }
+  $avoid=@()
+  if($recent.Count -gt 0){ $avoid += [string]$recent[0].selected_lens }
+  if($recent.Count -gt 1 -and $recent[1].selected_lens -eq $recent[0].selected_lens){ $avoid += [string]$recent[1].selected_lens }
+  $avoid=@($avoid|Where-Object{ -not [string]::IsNullOrWhiteSpace($_) }|Select-Object -Unique)
+  return [ordered]@{ schema='diversified_lens_rotation_v1'; status='PASS_DIVERSIFIED_LENS_ROTATION_V1'; window_size=$WindowSize; recent_count=$recent.Count; recent_lenses=@($recent); avoid_lenses=@($avoid); rotate_needed=($avoid.Count -gt 0); boundary=[ordered]@{ scan_only=$true; thinking_only=$true; no_action_execution=$true; no_repo_mutation=$true; no_active_memory_write=$true; no_external_access=$true } }
+}
+function New-RefocusSeedDiversification($RunId,$RefocusToNewThoughtSeed,$RecentThoughtRepetitionPattern,$NewThoughtSeedToActiveGoal,$DiversifiedLensRotation){
   $needsDiversification=($RefocusToNewThoughtSeed -and $RefocusToNewThoughtSeed.status -eq 'PASS_REFOCUS_TO_NEW_THOUGHT_SEED_V1' -and $RefocusToNewThoughtSeed.refocus_needed -eq $true)
   $sourceSeed=if($needsDiversification){$RefocusToNewThoughtSeed.new_thought_seed}else{$null}
   $sourceQuestion=if($sourceSeed){[string]$sourceSeed.question}else{$null}
   $sourceLens=if($sourceSeed){[string]$sourceSeed.lens}else{$null}
+  $avoid=@()
+  if(-not [string]::IsNullOrWhiteSpace($sourceLens)){ $avoid += $sourceLens }
+  if($DiversifiedLensRotation -and $DiversifiedLensRotation.avoid_lenses){ $avoid += @($DiversifiedLensRotation.avoid_lenses|ForEach-Object{[string]$_}) }
+  $avoid=@($avoid|Where-Object{ -not [string]::IsNullOrWhiteSpace($_) }|Select-Object -Unique)
   $branches=@(
     [ordered]@{ lens='counterexample'; question='What counterexample would break the repeated assumption, and what would it reveal about the next thought?'; depth_level=2; novelty=0.82 },
     [ordered]@{ lens='boundary_condition'; question='At what boundary does this repeated reasoning stop being useful, and what changes beyond that boundary?'; depth_level=2; novelty=0.78 },
@@ -1269,7 +1293,7 @@ function New-RefocusSeedDiversification($RunId,$RefocusToNewThoughtSeed,$RecentT
     [ordered]@{ lens='source_gap'; question='What exact missing source or evidence would be needed later, without granting external access now?'; depth_level=4; novelty=0.66 }
   )
   $selected=$null
-  foreach($b in $branches){ if($b.lens -ne $sourceLens){ $selected=$b; break } }
+  foreach($b in $branches){ if($avoid -notcontains $b.lens){ $selected=$b; break } }
   if(-not $selected){ $selected=$branches[0] }
   $status=if($needsDiversification){'PASS_REFOCUS_SEED_DIVERSIFICATION_V1'}else{'NO_REFOCUS_SEED_TO_DIVERSIFY'}
   return [ordered]@{
@@ -1279,13 +1303,16 @@ function New-RefocusSeedDiversification($RunId,$RefocusToNewThoughtSeed,$RecentT
     diversification_needed=[bool]$needsDiversification
     source_question=$sourceQuestion
     source_lens=$sourceLens
+    lens_rotation=$DiversifiedLensRotation
+    avoid_lenses=@($avoid)
     branch_count=@($branches).Count
     branches=@($branches)
     selected_branch=$selected
     selected_lens=if($selected){$selected.lens}else{$null}
     selected_question=if($selected){$selected.question}else{$null}
-    new_thought_seed=if($needsDiversification){[ordered]@{ seed_id='DIVERSIFIED_SEED_' + $RunId; seed_type='DIVERSIFIED_THOUGHT_QUESTION'; question=$selected.question; lens=$selected.lens; goal='Continue thought through diversified branch, not repeated seed.'; must_not_repeat_lens=$sourceLens; must_not_repeat_question=$sourceQuestion; success_condition='Next cycle active goal should use this diversified question, not the source repeated question.' }}else{$null}
-    boundary=[ordered]@{ thinking_only=$true; diversification_only=$true; no_action_execution=$true; no_repo_mutation=$true; no_active_memory_write=$true; no_external_access=$true; no_new_store_created=$true }
+    rotation_applied=($DiversifiedLensRotation -and $DiversifiedLensRotation.rotate_needed -eq $true)
+    new_thought_seed=if($needsDiversification){[ordered]@{ seed_id='DIVERSIFIED_SEED_' + $RunId; seed_type='DIVERSIFIED_THOUGHT_QUESTION'; question=$selected.question; lens=$selected.lens; goal='Continue thought through diversified branch, not repeated seed.'; must_not_repeat_lens=$sourceLens; must_not_repeat_recent_lenses=@($avoid); must_not_repeat_question=$sourceQuestion; success_condition='Next cycle active goal should use this diversified question, not the source or recent repeated question.' }}else{$null}
+    boundary=[ordered]@{ thinking_only=$true; diversification_only=$true; rotation_aware=$true; no_action_execution=$true; no_repo_mutation=$true; no_active_memory_write=$true; no_external_access=$true; no_new_store_created=$true }
   }
 }
 function New-ThoughtDepthLadder($RunId,$RefocusSeedDiversification,$DynamicMemoryRetrievalBudget){
@@ -1617,8 +1644,11 @@ Write-CleanJson $shortTermStateToNextTaskRouterPath $shortTermStateToNextTaskRou
 $refocusToNewThoughtSeedPath = Join-Path $runRoot 'refocus_to_new_thought_seed.json'
 $refocusToNewThoughtSeed = New-RefocusToNewThoughtSeed $runId $shortTermStateToNextTaskRouter $recentThoughtRepetitionPattern $shortTermMindState $selectiveCompactMemoryRetrieval
 Write-CleanJson $refocusToNewThoughtSeedPath $refocusToNewThoughtSeed 50
+$diversifiedLensRotationPath = Join-Path $runRoot 'diversified_lens_rotation.json'
+$diversifiedLensRotation = Get-RecentDiversifiedLensRotation $OutputRoot $runRoot 8
+Write-CleanJson $diversifiedLensRotationPath $diversifiedLensRotation 40
 $refocusSeedDiversificationPath = Join-Path $runRoot 'refocus_seed_diversification.json'
-$refocusSeedDiversification = New-RefocusSeedDiversification $runId $refocusToNewThoughtSeed $recentThoughtRepetitionPattern $newThoughtSeedToActiveGoal
+$refocusSeedDiversification = New-RefocusSeedDiversification $runId $refocusToNewThoughtSeed $recentThoughtRepetitionPattern $newThoughtSeedToActiveGoal $diversifiedLensRotation
 Write-CleanJson $refocusSeedDiversificationPath $refocusSeedDiversification 60
 $thoughtDepthLadderPath = Join-Path $runRoot 'thought_depth_ladder.json'
 $thoughtDepthLadder = New-ThoughtDepthLadder $runId $refocusSeedDiversification $dynamicMemoryRetrievalBudget
@@ -1634,7 +1664,7 @@ $buildTaskBoundedExecutor = New-BuildTaskBoundedExecutor $runId $buildTaskContra
 Write-CleanJson $buildTaskBoundedExecutorPath $buildTaskBoundedExecutor 50
 $proofPackManifestPath = Join-Path $runRoot 'sandbox_proof_pack_manifest.json'
 
-$filesWritten=@($proofPath,$mindLogicPath,$actionDecisionPath,$antiRepeatGuardPath,$memoryToNextPathReuseGatePath,$mentalFrontierExpansionGatePath,$mentalFrontierRouterPath,$dynamicMemoryRetrievalBudgetPath,$selectiveCompactMemoryRetrievalPath,$decisionSpinePath,$newThoughtSeedToActiveGoalPath,$recentThoughtRepetitionPatternPath,$shortTermMindStatePath,$shortTermStateToNextTaskRouterPath,$refocusToNewThoughtSeedPath,$refocusSeedDiversificationPath,$thoughtDepthLadderPath,$frontierToBuildTaskRouterPath,$buildTaskContractExecutionGatePath,$buildTaskBoundedExecutorPath,$proofPackManifestPath)
+$filesWritten=@($proofPath,$mindLogicPath,$actionDecisionPath,$antiRepeatGuardPath,$memoryToNextPathReuseGatePath,$mentalFrontierExpansionGatePath,$mentalFrontierRouterPath,$dynamicMemoryRetrievalBudgetPath,$selectiveCompactMemoryRetrievalPath,$decisionSpinePath,$newThoughtSeedToActiveGoalPath,$recentThoughtRepetitionPatternPath,$shortTermMindStatePath,$shortTermStateToNextTaskRouterPath,$refocusToNewThoughtSeedPath,$diversifiedLensRotationPath,$refocusSeedDiversificationPath,$thoughtDepthLadderPath,$frontierToBuildTaskRouterPath,$buildTaskContractExecutionGatePath,$buildTaskBoundedExecutorPath,$proofPackManifestPath)
 if($cycleWakeArtifactsWritten){ $filesWritten += @($innateReflexBootloadPath,$defaultWakeReflexesPath) }
 if($lifeWorkingMemoryCreated){ $filesWritten += $lifeWorkingMemoryPath }
 $proof=[ordered]@{
@@ -1674,6 +1704,7 @@ $proof=[ordered]@{
   short_term_mind_state=$shortTermMindState
   short_term_state_to_next_task_router=$shortTermStateToNextTaskRouter
   refocus_to_new_thought_seed=$refocusToNewThoughtSeed
+  diversified_lens_rotation=$diversifiedLensRotation
   refocus_seed_diversification=$refocusSeedDiversification
   thought_depth_ladder=$thoughtDepthLadder
   frontier_to_build_task_router=$frontierToBuildTaskRouter
@@ -1704,6 +1735,7 @@ $proof=[ordered]@{
     [ordered]@{ step='short_term_mind_state'; result=$shortTermMindState.status; proof='Active thought is kept as short-term mind state; completed candidate routes to existing multi-source warehouse/throat when available.' },
     [ordered]@{ step='short_term_state_to_next_task_router'; result=$shortTermStateToNextTaskRouter.selected_next_task; proof='Next useful task is selected from short-term state, compact memory signal, and existing warehouse route.' },
     [ordered]@{ step='refocus_to_new_thought_seed'; result=$refocusToNewThoughtSeed.status; proof='Repeated topic/task is converted into a new thought seed before any action routing.' },
+    [ordered]@{ step='diversified_lens_rotation'; result=$diversifiedLensRotation.avoid_lenses; proof='Recent diversified lenses are scanned so the same lens is not selected forever.' },
     [ordered]@{ step='refocus_seed_diversification'; result=$refocusSeedDiversification.selected_lens; proof='Repeated seed is split into multiple non-repeating thought branches.' },
     [ordered]@{ step='thought_depth_ladder'; result=$thoughtDepthLadder.depth_level; proof='Thought depth is measured after diversification.' },
     [ordered]@{ step='frontier_to_build_task_router'; result=$frontierToBuildTaskRouter.contract.task_id; proof='Selected frontier is converted into a bounded build task contract with files, validator, proof, and execution disabled.' },
@@ -1721,7 +1753,7 @@ $proof=[ordered]@{
   validator_result=[ordered]@{ runner_self_check='PASS_RUNNER_GENERATED_SINGLE_SANDBOX_PROOF'; external_validator_expected='validators/validate_autonomous_inner_motor_organ_contract.ps1 -SandboxProofPath <proof>; validators/validate_autonomous_inner_motor_mind_logic_wiring_v1.ps1 -ProofPath <proof>; validators/validate_autonomous_inner_motor_action_decision_wiring_v1.ps1 -ProofPath <proof>' }
 }
 Write-CleanJson $proofPath $proof 80
-$proofPackRequiredFiles=@('SANDBOX_EXPLORATION_PROOF.json','mind_logic_frame.json','action_decision_packet.json','anti_repeat_guard.json','memory_to_next_path_reuse_gate.json','mental_frontier_expansion_gate.json','mental_frontier_router.json','dynamic_memory_retrieval_budget.json','selective_compact_memory_retrieval.json','next_build_task_decision_spine.json','new_thought_seed_to_active_goal.json','recent_thought_repetition_pattern.json','short_term_mind_state.json','short_term_state_to_next_task_router.json','refocus_to_new_thought_seed.json','refocus_seed_diversification.json','thought_depth_ladder.json','frontier_to_build_task_router.json','build_task_contract_execution_gate.json','build_task_bounded_executor.json')
+$proofPackRequiredFiles=@('SANDBOX_EXPLORATION_PROOF.json','mind_logic_frame.json','action_decision_packet.json','anti_repeat_guard.json','memory_to_next_path_reuse_gate.json','mental_frontier_expansion_gate.json','mental_frontier_router.json','dynamic_memory_retrieval_budget.json','selective_compact_memory_retrieval.json','next_build_task_decision_spine.json','new_thought_seed_to_active_goal.json','recent_thought_repetition_pattern.json','short_term_mind_state.json','short_term_state_to_next_task_router.json','refocus_to_new_thought_seed.json','diversified_lens_rotation.json','refocus_seed_diversification.json','thought_depth_ladder.json','frontier_to_build_task_router.json','build_task_contract_execution_gate.json','build_task_bounded_executor.json')
 if($cycleWakeArtifactsWritten){ $proofPackRequiredFiles += @('innate_reflex_bootload.json','default_wake_reflexes.json') }
 $proofPackOptionalSidecars=@('memory_recall_filter.json','contradiction_resolution.json','hypothesis_test_result.json','deep_source_answer_request.json','memory_filter_for_answer.json','route_request_packet.json','source_authority_route_decision.json','deep_source_answer_assimilation.json','mind_delta_acceptance_decision.json')
 $proofPackFiles=@()
