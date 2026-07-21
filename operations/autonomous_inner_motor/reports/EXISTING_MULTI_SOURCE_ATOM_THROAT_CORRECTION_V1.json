@@ -1,0 +1,337 @@
+{
+    "schema":  "existing_multi_source_atom_throat_correction_v1",
+    "status":  "PASS_EXISTING_MULTI_SOURCE_ATOM_THROAT_CORRECTION_V1",
+    "checked_at":  "2026-07-21T05:46:59.4396140Z",
+    "owner_correction":  "Do not create duplicate throat/store; school and agent have already been run through common memory path.",
+    "correction_result":  "OWNER_CORRECT_PREVIOUS_NEXT_ACTION_WAS_TOO_DUPLICATIVE",
+    "existing_throat":  {
+                            "name":  "MULTI_SOURCE_COMPACT_MEMORY_MERGE_QUEUE_V1 + MEMORY_COMMIT_ORGAN_V1",
+                            "queue_root":  ".runtime/compact_memory_intake_v1/queue",
+                            "merge_root":  ".runtime/compact_memory_intake_v1/merge_runs",
+                            "processed_root":  ".runtime/compact_memory_intake_v1/processed",
+                            "submit_script":  "operations/compact_memory_intake/submit_compact_memory_packet_v1.ps1",
+                            "submit_and_merge_script":  "operations/compact_memory_intake/submit_and_merge_compact_memory_packet_v1.ps1",
+                            "merge_script":  "operations/compact_memory_intake/merge_compact_memory_intake_queue_v1.ps1",
+                            "memory_commit_controller":  "operations/memory_commit/memory_commit_controller_v1.ps1",
+                            "policy":  "operations/compact_memory_intake/multi_source_compact_memory_intake_policy.json",
+                            "doc":  "docs/operations/MULTI_SOURCE_COMPACT_MEMORY_MERGE_QUEUE_V1.md"
+                        },
+    "evidence":  {
+                     "tracked_proofs":  [
+                                            {
+                                                "path":  "operations/compact_memory_intake/proofs/MERGE_QUEUE_PROOF_20260706_085251.json",
+                                                "schema":  "tracked_merge_queue_probe_v1",
+                                                "status":  "PASS_MULTI_SOURCE_COMPACT_MEMORY_MERGE_QUEUE_V1",
+                                                "source_kind":  null,
+                                                "boundary":  "Tracked compact proof only; full runtime proof remains under .runtime.",
+                                                "props":  [
+                                                              "schema",
+                                                              "status",
+                                                              "created_at",
+                                                              "runtime_proof",
+                                                              "packet_count",
+                                                              "digest_atom_count",
+                                                              "memory_cells_before",
+                                                              "memory_cells_after",
+                                                              "memory_hash_changed",
+                                                              "checkpoint_path",
+                                                              "rollback_performed",
+                                                              "query_status",
+                                                              "boundary"
+                                                          ]
+                                            },
+                                            {
+                                                "path":  "operations/compact_memory_intake/proofs/SUBMIT_AND_MERGE_PROOF_20260706_094739.json",
+                                                "schema":  "tracked_submit_and_merge_probe_v1",
+                                                "status":  "PASS_SUBMIT_AND_MERGE_COMPACT_MEMORY_PACKET_V1",
+                                                "source_kind":  "AgentLife",
+                                                "boundary":  "Proves generic packet can submit+merge; school finalizer auto-merge skips while repo dirty.",
+                                                "props":  [
+                                                              "schema",
+                                                              "status",
+                                                              "created_at",
+                                                              "source_kind",
+                                                              "packet_path",
+                                                              "query_status",
+                                                              "topic",
+                                                              "finalizer_dirty_skip_status",
+                                                              "boundary"
+                                                          ]
+                                            },
+                                            {
+                                                "path":  "operations/compact_memory_intake/proofs/FINALIZER_AUTO_MERGE_PROOF_20260706_094805.json",
+                                                "schema":  "tracked_finalizer_auto_merge_probe_v1",
+                                                "status":  "PASS_FINALIZER_AUTO_MERGE_QUEUE_V1",
+                                                "source_kind":  null,
+                                                "boundary":  "On clean repo, Test school finalizer submits packet and auto-merges through merge queue without tracked summary commit.",
+                                                "props":  [
+                                                              "schema",
+                                                              "status",
+                                                              "created_at",
+                                                              "proof_path",
+                                                              "finalizer_status",
+                                                              "intake_status",
+                                                              "merge_status",
+                                                              "merge_runtime_proof",
+                                                              "packet_count",
+                                                              "memory_cells_before",
+                                                              "memory_cells_after",
+                                                              "memory_hash_changed",
+                                                              "rollback_performed",
+                                                              "boundary"
+                                                          ]
+                                            },
+                                            {
+                                                "path":  "operations/memory_commit/proofs/MEMORY_COMMIT_AGENTLIFE_POST_SCHOOL_DRAIN_PROOF_20260715.json",
+                                                "schema":  "memory_commit_controller_v1_proof",
+                                                "status":  "PASS_MEMORY_COMMIT_DRAIN_AGENTLIFE_V1",
+                                                "source_kind":  null,
+                                                "boundary":  null,
+                                                "props":  [
+                                                              "schema",
+                                                              "status",
+                                                              "action",
+                                                              "reason",
+                                                              "run_id",
+                                                              "queue_root",
+                                                              "queue_before",
+                                                              "queue_after",
+                                                              "accepted_count",
+                                                              "rejected_count",
+                                                              "deleted_rejected_count",
+                                                              "processed_count",
+                                                              "merge_proofs",
+                                                              "active_memory_before",
+                                                              "active_memory_after",
+                                                              "active_memory_changed",
+                                                              "events",
+                                                              "created_at",
+                                                              "retention"
+                                                          ]
+                                            },
+                                            {
+                                                "path":  "operations/memory_commit/proofs/MEMORY_COMMIT_ORGAN_V1_IMPLEMENTATION_REPORT_20260715.json",
+                                                "schema":  "memory_commit_organ_v1_implementation_report",
+                                                "status":  "PASS_MEMORY_COMMIT_ORGAN_V1_BATCH_DRAIN_REJECT_DELETE_PARTIAL_FRESH_SIGNAL",
+                                                "source_kind":  null,
+                                                "boundary":  null,
+                                                "props":  [
+                                                              "schema",
+                                                              "status",
+                                                              "created_at",
+                                                              "branch",
+                                                              "head",
+                                                              "school_quality",
+                                                              "drain",
+                                                              "active_memory_after",
+                                                              "queue_after",
+                                                              "known_gap",
+                                                              "retention",
+                                                              "updated_at",
+                                                              "head_at_update",
+                                                              "batch_drain",
+                                                              "reject_delete",
+                                                              "batch_retention",
+                                                              "fresh_memory_signal",
+                                                              "active_memory_after_current_slice",
+                                                              "runtime_after_current_slice"
+                                                          ]
+                                            },
+                                            {
+                                                "path":  "operations/memory_commit/proofs/SCHOOL_ATOM_QUALITY_AUDIT_20260715.json",
+                                                "schema":  "school_atom_quality_audit_v1",
+                                                "status":  "PASS_SCHOOL_ATOM_QUALITY_AUDIT_V1",
+                                                "source_kind":  null,
+                                                "boundary":  null,
+                                                "props":  [
+                                                              "schema",
+                                                              "status",
+                                                              "quality_classification",
+                                                              "school_run_dir",
+                                                              "ready_file_count",
+                                                              "candidate_count",
+                                                              "topic_distribution",
+                                                              "depth_distribution",
+                                                              "duplicate_claim_instances",
+                                                              "unique_claims",
+                                                              "source_missing_count",
+                                                              "sample",
+                                                              "conclusion",
+                                                              "created_at"
+                                                          ]
+                                            }
+                                        ],
+                     "merge_pass_count":  59,
+                     "latest_merge_passes":  [
+                                                 {
+                                                     "path":  ".runtime\\compact_memory_intake_v1\\merge_runs\\merge_queue_20260716_183838\\COMPACT_MEMORY_MERGE_QUEUE_RESULT_V1.json",
+                                                     "run_id":  "merge_queue_20260716_183838",
+                                                     "packet_count":  1,
+                                                     "digest_atom_count":  1,
+                                                     "packet_summaries":  [
+                                                                              {
+                                                                                  "path":  "H:\\efab\\.runtime\\compact_memory_intake_v1\\queue\\agentlife_aimo_aimo_20260716_183828.json",
+                                                                                  "source_kind":  "AgentLife",
+                                                                                  "source_id":  "AIMO:aimo_20260716_183828",
+                                                                                  "packet_atoms":  1,
+                                                                                  "digest_atoms":  1
+                                                                              }
+                                                                          ],
+                                                     "absorption_status":  "PASS_FILE_ATOM_ABSORPTION_PIPELINE_V1",
+                                                     "boundary":  "Multi-source packets merge through lock, checkpoint, existing file atom absorption pipeline, and proof. Sources do not mutate active memory directly.",
+                                                     "created_at":  "2026-07-16T18:39:04.8945139+04:00"
+                                                 },
+                                                 {
+                                                     "path":  ".runtime\\compact_memory_intake_v1\\merge_runs\\merge_queue_20260716_183743\\COMPACT_MEMORY_MERGE_QUEUE_RESULT_V1.json",
+                                                     "run_id":  "merge_queue_20260716_183743",
+                                                     "packet_count":  1,
+                                                     "digest_atom_count":  1,
+                                                     "packet_summaries":  [
+                                                                              {
+                                                                                  "path":  "H:\\efab\\.runtime\\compact_memory_intake_v1\\queue\\agentlife_aimo_aimo_20260716_183734.json",
+                                                                                  "source_kind":  "AgentLife",
+                                                                                  "source_id":  "AIMO:aimo_20260716_183734",
+                                                                                  "packet_atoms":  1,
+                                                                                  "digest_atoms":  1
+                                                                              }
+                                                                          ],
+                                                     "absorption_status":  "PASS_FILE_ATOM_ABSORPTION_PIPELINE_V1",
+                                                     "boundary":  "Multi-source packets merge through lock, checkpoint, existing file atom absorption pipeline, and proof. Sources do not mutate active memory directly.",
+                                                     "created_at":  "2026-07-16T18:38:10.7347654+04:00"
+                                                 },
+                                                 {
+                                                     "path":  ".runtime\\compact_memory_intake_v1\\merge_runs\\merge_queue_20260716_183649\\COMPACT_MEMORY_MERGE_QUEUE_RESULT_V1.json",
+                                                     "run_id":  "merge_queue_20260716_183649",
+                                                     "packet_count":  1,
+                                                     "digest_atom_count":  1,
+                                                     "packet_summaries":  [
+                                                                              {
+                                                                                  "path":  "H:\\efab\\.runtime\\compact_memory_intake_v1\\queue\\agentlife_aimo_aimo_20260716_183640.json",
+                                                                                  "source_kind":  "AgentLife",
+                                                                                  "source_id":  "AIMO:aimo_20260716_183640",
+                                                                                  "packet_atoms":  1,
+                                                                                  "digest_atoms":  1
+                                                                              }
+                                                                          ],
+                                                     "absorption_status":  "PASS_FILE_ATOM_ABSORPTION_PIPELINE_V1",
+                                                     "boundary":  "Multi-source packets merge through lock, checkpoint, existing file atom absorption pipeline, and proof. Sources do not mutate active memory directly.",
+                                                     "created_at":  "2026-07-16T18:37:16.4082029+04:00"
+                                                 },
+                                                 {
+                                                     "path":  ".runtime\\compact_memory_intake_v1\\merge_runs\\merge_queue_20260716_183555\\COMPACT_MEMORY_MERGE_QUEUE_RESULT_V1.json",
+                                                     "run_id":  "merge_queue_20260716_183555",
+                                                     "packet_count":  1,
+                                                     "digest_atom_count":  1,
+                                                     "packet_summaries":  [
+                                                                              {
+                                                                                  "path":  "H:\\efab\\.runtime\\compact_memory_intake_v1\\queue\\agentlife_aimo_aimo_20260716_183546.json",
+                                                                                  "source_kind":  "AgentLife",
+                                                                                  "source_id":  "AIMO:aimo_20260716_183546",
+                                                                                  "packet_atoms":  1,
+                                                                                  "digest_atoms":  1
+                                                                              }
+                                                                          ],
+                                                     "absorption_status":  "PASS_FILE_ATOM_ABSORPTION_PIPELINE_V1",
+                                                     "boundary":  "Multi-source packets merge through lock, checkpoint, existing file atom absorption pipeline, and proof. Sources do not mutate active memory directly.",
+                                                     "created_at":  "2026-07-16T18:36:22.3325705+04:00"
+                                                 },
+                                                 {
+                                                     "path":  ".runtime\\compact_memory_intake_v1\\merge_runs\\merge_queue_20260716_183501\\COMPACT_MEMORY_MERGE_QUEUE_RESULT_V1.json",
+                                                     "run_id":  "merge_queue_20260716_183501",
+                                                     "packet_count":  1,
+                                                     "digest_atom_count":  1,
+                                                     "packet_summaries":  [
+                                                                              {
+                                                                                  "path":  "H:\\efab\\.runtime\\compact_memory_intake_v1\\queue\\agentlife_aimo_aimo_20260716_183451.json",
+                                                                                  "source_kind":  "AgentLife",
+                                                                                  "source_id":  "AIMO:aimo_20260716_183451",
+                                                                                  "packet_atoms":  1,
+                                                                                  "digest_atoms":  1
+                                                                              }
+                                                                          ],
+                                                     "absorption_status":  "PASS_FILE_ATOM_ABSORPTION_PIPELINE_V1",
+                                                     "boundary":  "Multi-source packets merge through lock, checkpoint, existing file atom absorption pipeline, and proof. Sources do not mutate active memory directly.",
+                                                     "created_at":  "2026-07-16T18:35:28.2574696+04:00"
+                                                 },
+                                                 {
+                                                     "path":  ".runtime\\compact_memory_intake_v1\\merge_runs\\merge_queue_20260716_183406\\COMPACT_MEMORY_MERGE_QUEUE_RESULT_V1.json",
+                                                     "run_id":  "merge_queue_20260716_183406",
+                                                     "packet_count":  1,
+                                                     "digest_atom_count":  1,
+                                                     "packet_summaries":  [
+                                                                              {
+                                                                                  "path":  "H:\\efab\\.runtime\\compact_memory_intake_v1\\queue\\agentlife_aimo_aimo_20260716_183356.json",
+                                                                                  "source_kind":  "AgentLife",
+                                                                                  "source_id":  "AIMO:aimo_20260716_183356",
+                                                                                  "packet_atoms":  1,
+                                                                                  "digest_atoms":  1
+                                                                              }
+                                                                          ],
+                                                     "absorption_status":  "PASS_FILE_ATOM_ABSORPTION_PIPELINE_V1",
+                                                     "boundary":  "Multi-source packets merge through lock, checkpoint, existing file atom absorption pipeline, and proof. Sources do not mutate active memory directly.",
+                                                     "created_at":  "2026-07-16T18:34:33.8648179+04:00"
+                                                 },
+                                                 {
+                                                     "path":  ".runtime\\compact_memory_intake_v1\\merge_runs\\merge_queue_20260716_183312\\COMPACT_MEMORY_MERGE_QUEUE_RESULT_V1.json",
+                                                     "run_id":  "merge_queue_20260716_183312",
+                                                     "packet_count":  1,
+                                                     "digest_atom_count":  1,
+                                                     "packet_summaries":  [
+                                                                              {
+                                                                                  "path":  "H:\\efab\\.runtime\\compact_memory_intake_v1\\queue\\agentlife_aimo_aimo_20260716_183302.json",
+                                                                                  "source_kind":  "AgentLife",
+                                                                                  "source_id":  "AIMO:aimo_20260716_183302",
+                                                                                  "packet_atoms":  1,
+                                                                                  "digest_atoms":  1
+                                                                              }
+                                                                          ],
+                                                     "absorption_status":  "PASS_FILE_ATOM_ABSORPTION_PIPELINE_V1",
+                                                     "boundary":  "Multi-source packets merge through lock, checkpoint, existing file atom absorption pipeline, and proof. Sources do not mutate active memory directly.",
+                                                     "created_at":  "2026-07-16T18:33:38.9539652+04:00"
+                                                 },
+                                                 {
+                                                     "path":  ".runtime\\compact_memory_intake_v1\\merge_runs\\merge_queue_20260716_183218\\COMPACT_MEMORY_MERGE_QUEUE_RESULT_V1.json",
+                                                     "run_id":  "merge_queue_20260716_183218",
+                                                     "packet_count":  1,
+                                                     "digest_atom_count":  1,
+                                                     "packet_summaries":  [
+                                                                              {
+                                                                                  "path":  "H:\\efab\\.runtime\\compact_memory_intake_v1\\queue\\agentlife_aimo_aimo_20260716_183208.json",
+                                                                                  "source_kind":  "AgentLife",
+                                                                                  "source_id":  "AIMO:aimo_20260716_183208",
+                                                                                  "packet_atoms":  1,
+                                                                                  "digest_atoms":  1
+                                                                              }
+                                                                          ],
+                                                     "absorption_status":  "PASS_FILE_ATOM_ABSORPTION_PIPELINE_V1",
+                                                     "boundary":  "Multi-source packets merge through lock, checkpoint, existing file atom absorption pipeline, and proof. Sources do not mutate active memory directly.",
+                                                     "created_at":  "2026-07-16T18:32:44.6530427+04:00"
+                                                 }
+                                             ],
+                     "key_statuses":  [
+                                          "PASS_MULTI_SOURCE_COMPACT_MEMORY_MERGE_QUEUE_V1",
+                                          "PASS_SUBMIT_AND_MERGE_COMPACT_MEMORY_PACKET_V1",
+                                          "PASS_FINALIZER_AUTO_MERGE_QUEUE_V1"
+                                      ]
+                 },
+    "corrected_interpretation":  {
+                                     "do_not_build":  "ATOM_CANDIDATE_UNIFIED_INTAKE_CONTRACT_AS_NEW_STORE",
+                                     "do_use_existing":  "MULTI_SOURCE_COMPACT_MEMORY_MERGE_QUEUE_V1",
+                                     "do_verify_before_patch":  "exact invocation contract and source_kind expectations for short-term live atom candidates",
+                                     "next_repair_human":  "подключить завершённые мысли кратковременной памяти к уже существующему общему горлу, а не строить новый склад",
+                                     "next_repair_technical":  "SHORT_TERM_MIND_STATE_V1_SLICE_A_WITH_EXISTING_MULTI_SOURCE_INTAKE_ROUTE"
+                                 },
+    "supersedes":  {
+                       "previous_report":  "operations/autonomous_inner_motor/reports/SCHOOL_AGENT_ATOM_CANDIDATE_PIPELINE_AUDIT_V1.json",
+                       "superseded_recommendation":  "ATOM_CANDIDATE_UNIFIED_INTAKE_CONTRACT_V1_SLICE_A as if new contract/store was needed",
+                       "replacement":  "Reuse existing submit/merge/memory_commit throat; only add adapter/route if missing for short-term mind state output."
+                   },
+    "boundary":  {
+                     "audit_correction_only":  true,
+                     "runtime_launched":  false,
+                     "school_launched":  false,
+                     "active_memory_mutated":  false,
+                     "direct_active_memory_write":  false,
+                     "no_new_store_created":  true
+                 }
+}
