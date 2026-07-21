@@ -1178,6 +1178,58 @@ function Get-RecentThoughtRepetitionPattern([string]$OutputRoot,[string]$Current
   $repeatDetected=(($topTask -and $topTask.Count -ge $RepeatThreshold) -or ($topTopic -and $topTopic.Count -ge $RepeatThreshold))
   return [ordered]@{ schema='recent_thought_repetition_pattern_v1'; status='PASS_RECENT_THOUGHT_REPETITION_PATTERN_V1'; window_size=$WindowSize; repeat_threshold=$RepeatThreshold; sample_count=$samples.Count; repeat_detected=[bool]$repeatDetected; repeated_task=if($topTask -and $topTask.Count -ge $RepeatThreshold){[string]$topTask.Name}else{$null}; repeated_task_count=if($topTask){[int]$topTask.Count}else{0}; repeated_topic=if($topTopic -and $topTopic.Count -ge $RepeatThreshold){[string]$topTopic.Name}else{$null}; repeated_topic_count=if($topTopic){[int]$topTopic.Count}else{0}; samples=@($samples); boundary=[ordered]@{scan_only=$true; no_active_memory_write=$true; no_repo_mutation=$true; no_action_execution=$true} }
 }
+function New-RefocusToNewThoughtSeed($RunId,$ShortTermStateToNextTaskRouter,$RecentThoughtRepetitionPattern,$ShortTermMindState,$SelectiveCompactMemoryRetrieval){
+  $refocusNeeded=($ShortTermStateToNextTaskRouter -and $ShortTermStateToNextTaskRouter.selected_next_task -eq 'REPEAT_TO_REFOCUS_ROUTER_V1')
+  $repeatedTask=if($RecentThoughtRepetitionPattern){ [string]$RecentThoughtRepetitionPattern.repeated_task } else { $null }
+  $repeatedTopic=if($RecentThoughtRepetitionPattern){ [string]$RecentThoughtRepetitionPattern.repeated_topic } else { $null }
+  $seedQuestion='What is the smallest new question that breaks the repeated loop and improves the next thought?'
+  $seedLens='repeat_breaker'
+  $seedGoal='Break repeated thought loop before continuing technical routing.'
+  if($refocusNeeded){
+    if(-not [string]::IsNullOrWhiteSpace($repeatedTopic)){
+      $seedQuestion='What assumption under the repeated topic has not been examined yet, and what different angle would make the next cycle stronger?'
+      $seedLens='unexamined_assumption'
+      $seedGoal='Move from repeated topic to a new question about hidden assumption, missing edge, or higher-level purpose.'
+    } elseif(-not [string]::IsNullOrWhiteSpace($repeatedTask)){
+      $seedQuestion='Why does the mind keep selecting the same technical task, and what upstream thought question should replace it?'
+      $seedLens='upstream_reason'
+      $seedGoal='Replace repeated technical task selection with upstream semantic reasoning.'
+    }
+  }
+  $memoryBudget=[ordered]@{ mode='fixed_current_limit'; current_limit=7; dynamic_budget_not_built=$true; note='Different seed should change which refs are retrieved, but count can remain 7 until dynamic retrieval budget exists.' }
+  return [ordered]@{
+    schema='refocus_to_new_thought_seed_v1'
+    status=if($refocusNeeded){'PASS_REFOCUS_TO_NEW_THOUGHT_SEED_V1'}else{'NO_REFOCUS_NEEDED'}
+    run_id=$RunId
+    refocus_needed=[bool]$refocusNeeded
+    repeated_task=$repeatedTask
+    repeated_topic=$repeatedTopic
+    new_thought_seed=[ordered]@{
+      seed_id='REFOCUS_SEED_' + $RunId
+      seed_type='NEW_THOUGHT_QUESTION'
+      question=$seedQuestion
+      lens=$seedLens
+      goal=$seedGoal
+      must_not_repeat_task=$repeatedTask
+      must_not_repeat_topic=$repeatedTopic
+      success_condition='Next cycle should select a different semantic question or explicitly justify why the repeated route is still necessary.'
+    }
+    memory_retrieval_guidance=$memoryBudget
+    next_cycle_instruction=if($refocusNeeded){'Use new_thought_seed.question as the next active thought before any build-task routing.'}else{'Continue normal next-task routing.'}
+    boundary=[ordered]@{
+      thinking_only=$true
+      seed_only=$true
+      no_action_execution=$true
+      no_repo_mutation=$true
+      no_active_memory_write=$true
+      no_new_store_created=$true
+      dynamic_memory_budget_built=$false
+      school_launch_allowed=$false
+      codex_launch_allowed=$false
+      web_launch_allowed=$false
+    }
+  }
+}
 $repo=Get-RepoState
 $memoryBefore=Get-ActiveMemoryState
 $school=Get-SchoolState
@@ -1437,6 +1489,9 @@ Write-CleanJson $shortTermMindStatePath $shortTermMindState 70
 $shortTermStateToNextTaskRouterPath = Join-Path $runRoot 'short_term_state_to_next_task_router.json'
 $shortTermStateToNextTaskRouter = New-ShortTermStateToNextTaskRouter $runId $shortTermMindState $decisionSpine $selectiveCompactMemoryRetrieval $previousShortTermMindState $recentThoughtRepetitionPattern
 Write-CleanJson $shortTermStateToNextTaskRouterPath $shortTermStateToNextTaskRouter 50
+$refocusToNewThoughtSeedPath = Join-Path $runRoot 'refocus_to_new_thought_seed.json'
+$refocusToNewThoughtSeed = New-RefocusToNewThoughtSeed $runId $shortTermStateToNextTaskRouter $recentThoughtRepetitionPattern $shortTermMindState $selectiveCompactMemoryRetrieval
+Write-CleanJson $refocusToNewThoughtSeedPath $refocusToNewThoughtSeed 50
 $frontierToBuildTaskRouterPath = Join-Path $runRoot 'frontier_to_build_task_router.json'
 $frontierToBuildTaskRouter = New-FrontierToBuildTaskRouter $runId $shortTermStateToNextTaskRouter $shortTermMindState $decisionSpine $selectiveCompactMemoryRetrieval $mentalFrontierRouter ([bool]$EnableBuildTaskExecutorDryRun)
 Write-CleanJson $frontierToBuildTaskRouterPath $frontierToBuildTaskRouter 60
@@ -1448,7 +1503,7 @@ $buildTaskBoundedExecutor = New-BuildTaskBoundedExecutor $runId $buildTaskContra
 Write-CleanJson $buildTaskBoundedExecutorPath $buildTaskBoundedExecutor 50
 $proofPackManifestPath = Join-Path $runRoot 'sandbox_proof_pack_manifest.json'
 
-$filesWritten=@($proofPath,$mindLogicPath,$actionDecisionPath,$antiRepeatGuardPath,$memoryToNextPathReuseGatePath,$mentalFrontierExpansionGatePath,$mentalFrontierRouterPath,$selectiveCompactMemoryRetrievalPath,$decisionSpinePath,$recentThoughtRepetitionPatternPath,$shortTermMindStatePath,$shortTermStateToNextTaskRouterPath,$frontierToBuildTaskRouterPath,$buildTaskContractExecutionGatePath,$buildTaskBoundedExecutorPath,$proofPackManifestPath)
+$filesWritten=@($proofPath,$mindLogicPath,$actionDecisionPath,$antiRepeatGuardPath,$memoryToNextPathReuseGatePath,$mentalFrontierExpansionGatePath,$mentalFrontierRouterPath,$selectiveCompactMemoryRetrievalPath,$decisionSpinePath,$recentThoughtRepetitionPatternPath,$shortTermMindStatePath,$shortTermStateToNextTaskRouterPath,$refocusToNewThoughtSeedPath,$frontierToBuildTaskRouterPath,$buildTaskContractExecutionGatePath,$buildTaskBoundedExecutorPath,$proofPackManifestPath)
 if($cycleWakeArtifactsWritten){ $filesWritten += @($innateReflexBootloadPath,$defaultWakeReflexesPath) }
 if($lifeWorkingMemoryCreated){ $filesWritten += $lifeWorkingMemoryPath }
 $proof=[ordered]@{
@@ -1485,6 +1540,7 @@ $proof=[ordered]@{
   recent_thought_repetition_pattern=$recentThoughtRepetitionPattern
   short_term_mind_state=$shortTermMindState
   short_term_state_to_next_task_router=$shortTermStateToNextTaskRouter
+  refocus_to_new_thought_seed=$refocusToNewThoughtSeed
   frontier_to_build_task_router=$frontierToBuildTaskRouter
   build_task_contract_execution_gate=$buildTaskContractExecutionGate
   build_task_bounded_executor=$buildTaskBoundedExecutor
@@ -1510,6 +1566,7 @@ $proof=[ordered]@{
     [ordered]@{ step='recent_thought_repetition_pattern'; result=$recentThoughtRepetitionPattern.repeat_detected; proof='Recent cycles are scanned for repeated topic/task before next-task selection.' },
     [ordered]@{ step='short_term_mind_state'; result=$shortTermMindState.status; proof='Active thought is kept as short-term mind state; completed candidate routes to existing multi-source warehouse/throat when available.' },
     [ordered]@{ step='short_term_state_to_next_task_router'; result=$shortTermStateToNextTaskRouter.selected_next_task; proof='Next useful task is selected from short-term state, compact memory signal, and existing warehouse route.' },
+    [ordered]@{ step='refocus_to_new_thought_seed'; result=$refocusToNewThoughtSeed.status; proof='Repeated topic/task is converted into a new thought seed before any action routing.' },
     [ordered]@{ step='frontier_to_build_task_router'; result=$frontierToBuildTaskRouter.contract.task_id; proof='Selected frontier is converted into a bounded build task contract with files, validator, proof, and execution disabled.' },
     [ordered]@{ step='build_task_contract_execution_gate'; result=$buildTaskContractExecutionGate.gate_decision; proof='Build-task contract passed through static execution gate; no execution is performed in this slice.' },
     [ordered]@{ step='build_task_bounded_executor'; result=$buildTaskBoundedExecutor.execution_status; proof='Bounded executor respects execution gate and performs no repo mutation when gate blocks.' },
@@ -1525,7 +1582,7 @@ $proof=[ordered]@{
   validator_result=[ordered]@{ runner_self_check='PASS_RUNNER_GENERATED_SINGLE_SANDBOX_PROOF'; external_validator_expected='validators/validate_autonomous_inner_motor_organ_contract.ps1 -SandboxProofPath <proof>; validators/validate_autonomous_inner_motor_mind_logic_wiring_v1.ps1 -ProofPath <proof>; validators/validate_autonomous_inner_motor_action_decision_wiring_v1.ps1 -ProofPath <proof>' }
 }
 Write-CleanJson $proofPath $proof 80
-$proofPackRequiredFiles=@('SANDBOX_EXPLORATION_PROOF.json','mind_logic_frame.json','action_decision_packet.json','anti_repeat_guard.json','memory_to_next_path_reuse_gate.json','mental_frontier_expansion_gate.json','mental_frontier_router.json','selective_compact_memory_retrieval.json','next_build_task_decision_spine.json','recent_thought_repetition_pattern.json','short_term_mind_state.json','short_term_state_to_next_task_router.json','frontier_to_build_task_router.json','build_task_contract_execution_gate.json','build_task_bounded_executor.json')
+$proofPackRequiredFiles=@('SANDBOX_EXPLORATION_PROOF.json','mind_logic_frame.json','action_decision_packet.json','anti_repeat_guard.json','memory_to_next_path_reuse_gate.json','mental_frontier_expansion_gate.json','mental_frontier_router.json','selective_compact_memory_retrieval.json','next_build_task_decision_spine.json','recent_thought_repetition_pattern.json','short_term_mind_state.json','short_term_state_to_next_task_router.json','refocus_to_new_thought_seed.json','frontier_to_build_task_router.json','build_task_contract_execution_gate.json','build_task_bounded_executor.json')
 if($cycleWakeArtifactsWritten){ $proofPackRequiredFiles += @('innate_reflex_bootload.json','default_wake_reflexes.json') }
 $proofPackOptionalSidecars=@('memory_recall_filter.json','contradiction_resolution.json','hypothesis_test_result.json','deep_source_answer_request.json','memory_filter_for_answer.json','route_request_packet.json','source_authority_route_decision.json','deep_source_answer_assimilation.json','mind_delta_acceptance_decision.json')
 $proofPackFiles=@()
