@@ -2,9 +2,9 @@
 
 Status: ACTIVE_DERIVED_VIEW
 Branch: main
-Observed head at generation: cfd0474c981f324f5b27a0f326485bbc8d0bbac1
-Generated: 2026-07-21T20:19:58.0290484+04:00
-Body source fingerprint: 90dc4acfdc13264bb1e794f56d506cbee7ee72795b98fe4d2a9e0fe846e0c0a8
+Observed head at generation: da28de0fa883fca7cb60691278f807b5e403c17e
+Generated: 2026-07-21T20:24:58.0843736+04:00
+Body source fingerprint: db808e947a6f3cc75e25d3b1ac2c4c70a0a98f7cd5ae061c242c1d25dd9881b5
 
 Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
@@ -47,7 +47,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `modules_self_development` - root `modules/self_development`, files=20, scripts=20, validators=0, proofs=1, needs_triage=True
 - `operations_accepted_atom_retention_calibration` - root `operations/accepted_atom_retention_calibration`, files=2, scripts=2, validators=1, proofs=0, needs_triage=True
 - `operations_active_behavior` - root `operations/active_behavior`, files=22, scripts=12, validators=5, proofs=0, needs_triage=True
-- `operations_autonomous_inner_motor` - root `operations/autonomous_inner_motor`, files=78, scripts=9, validators=1, proofs=8, needs_triage=True
+- `operations_autonomous_inner_motor` - root `operations/autonomous_inner_motor`, files=79, scripts=9, validators=1, proofs=8, needs_triage=True
 - `operations_body_self_inspection` - root `operations/body_self_inspection`, files=25, scripts=18, validators=0, proofs=0, needs_triage=True
 - `operations_bridge_diagnostics` - root `operations/bridge_diagnostics`, files=2, scripts=0, validators=0, proofs=2, needs_triage=True
 - `operations_bridge_recovery` - root `operations/bridge_recovery`, files=53, scripts=5, validators=1, proofs=4, needs_triage=True

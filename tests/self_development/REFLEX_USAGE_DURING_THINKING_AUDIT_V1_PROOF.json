@@ -1,0 +1,25 @@
+{
+    "schema":  "reflex_usage_during_thinking_audit_v1_validation",
+    "status":  "PASS_REFLEX_USAGE_DURING_THINKING_AUDIT_V1",
+    "checked_at":  "2026-07-21T16:24:05.3108683Z",
+    "report":  "operations/autonomous_inner_motor/reports/REFLEX_USAGE_DURING_THINKING_AUDIT_V1.json",
+    "reserved_reflex_slots":  25,
+    "active_in_latest_thinking_cycle":  5,
+    "active_reflexes":  [
+                            "body_audit_reflex",
+                            "repo_reality_reflex",
+                            "process_scan_reflex",
+                            "runtime_pressure_reflex",
+                            "active_memory_read_reflex"
+                        ],
+    "process_count":  0,
+    "errors":  [
+
+               ],
+    "boundary":  {
+                     "audit_only":  true,
+                     "runtime_launched_by_validator":  false,
+                     "active_memory_mutated_by_validator":  false,
+                     "repo_mutation_by_validator":  false
+                 }
+}
