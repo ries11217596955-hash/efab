@@ -1,0 +1,50 @@
+{
+    "schema":  "atom_candidate_warehouse_terminology_v1",
+    "status":  "PASS_ATOM_CANDIDATE_WAREHOUSE_TERMINOLOGY_V1",
+    "checked_at":  "2026-07-21T05:57:14.0941378Z",
+    "owner_definition":  "Warehouse means temporary holding/staging for candidates produced by agent life while school/merge/digest/commit path is busy or pending.",
+    "shared_understanding":  {
+                                 "throat":  "Existing multi-source pipeline that accepts candidates from School and AgentLife and moves them toward compact memory.",
+                                 "warehouse":  "Temporary queue/staging/backlog inside that existing throat; not a new store and not active compact memory.",
+                                 "school_role":  "Producer of candidates and/or processor/quality/digest path depending on run mode.",
+                                 "agent_role":  "Producer of live atom candidates from solved thoughts/tasks.",
+                                 "compact_memory":  "Accepted/promoted memory atoms after validation/merge/commit; not the candidate warehouse."
+                             },
+    "existing_mapping":  {
+                             "throat_name":  "MULTI_SOURCE_COMPACT_MEMORY_MERGE_QUEUE_V1 + MEMORY_COMMIT_ORGAN_V1",
+                             "queue_root":  ".runtime/compact_memory_intake_v1/queue",
+                             "merge_root":  ".runtime/compact_memory_intake_v1/merge_runs",
+                             "processed_root":  ".runtime/compact_memory_intake_v1/processed",
+                             "active_compact_memory_root":  ".runtime/active_compact_semantic_memory_v1",
+                             "submit_script":  "operations/compact_memory_intake/submit_compact_memory_packet_v1.ps1",
+                             "submit_and_merge_script":  "operations/compact_memory_intake/submit_and_merge_compact_memory_packet_v1.ps1",
+                             "merge_script":  "operations/compact_memory_intake/merge_compact_memory_intake_queue_v1.ps1",
+                             "memory_commit_controller":  "operations/memory_commit/memory_commit_controller_v1.ps1"
+                         },
+    "observed_state":  {
+                           "queue_file_count":  54,
+                           "merge_result_file_count":  59,
+                           "processed_file_count":  17,
+                           "existing_throat_proof":  "tests/self_development/EXISTING_MULTI_SOURCE_ATOM_THROAT_CORRECTION_V1_PROOF.json",
+                           "existing_throat_merge_pass_count":  59
+                       },
+    "rules":  [
+                  "do_not_create_duplicate_candidate_store",
+                  "short_term_mind_state_holds_active_thought_only",
+                  "completed_thought_becomes_live_atom_candidate",
+                  "live_atom_candidate_goes_to_existing_queue_or_submit_route",
+                  "school_or_merge_can_process_when_available",
+                  "accepted_atom_enters_compact_memory_only_after validation/merge/commit proof",
+                  "no_direct_active_memory_write"
+              ],
+    "corrected_next_human":  "Build short-term mind state; when a thought is complete, release it from the head into the existing warehouse/queue of the multi-source throat, so the agent can move to the next thought without carrying noise.",
+    "corrected_next_technical":  "SHORT_TERM_MIND_STATE_V1_SLICE_A_WITH_EXISTING_MULTI_SOURCE_INTAKE_ROUTE",
+    "boundary":  {
+                     "terminology_update_only":  true,
+                     "runtime_launched":  false,
+                     "school_launched":  false,
+                     "active_memory_mutated":  false,
+                     "direct_active_memory_write":  false,
+                     "no_new_store_created":  true
+                 }
+}
