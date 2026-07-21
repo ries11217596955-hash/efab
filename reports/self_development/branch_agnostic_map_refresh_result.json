@@ -1,27 +1,27 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-21T09:58:06.5944419+04:00",
+    "checked_at":  "2026-07-21T10:28:01.0969473+04:00",
     "branch":  "main",
-    "observed_head":  "0b642e1897fc0a14dca38380dcd2118e3d1bb590",
-    "subject_head":  "0b642e1897fc0a14dca38380dcd2118e3d1bb590",
+    "observed_head":  "218aeb270c6d870eb32838971adb9d16e734d764",
+    "subject_head":  "218aeb270c6d870eb32838971adb9d16e734d764",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
                           "AGENT_BUILDER_SELF_NOTEBOOK.md",
-                          "operations/autonomous_inner_motor/reports/EXISTING_MULTI_SOURCE_ATOM_THROAT_CORRECTION_V1.json",
+                          "operations/autonomous_inner_motor/reports/ATOM_CANDIDATE_WAREHOUSE_TERMINOLOGY_V1.json",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "tests/self_development/EXISTING_MULTI_SOURCE_ATOM_THROAT_CORRECTION_V1_PROOF.json",
-                          "validators/validate_existing_multi_source_atom_throat_correction_v1.ps1"
+                          "tests/self_development/ATOM_CANDIDATE_WAREHOUSE_TERMINOLOGY_V1_PROOF.json",
+                          "validators/validate_atom_candidate_warehouse_terminology_v1.ps1"
                       ],
     "structural_paths":  [
-                             "operations/autonomous_inner_motor/reports/EXISTING_MULTI_SOURCE_ATOM_THROAT_CORRECTION_V1.json",
-                             "tests/self_development/EXISTING_MULTI_SOURCE_ATOM_THROAT_CORRECTION_V1_PROOF.json",
-                             "validators/validate_existing_multi_source_atom_throat_correction_v1.ps1"
+                             "operations/autonomous_inner_motor/reports/ATOM_CANDIDATE_WAREHOUSE_TERMINOLOGY_V1.json",
+                             "tests/self_development/ATOM_CANDIDATE_WAREHOUSE_TERMINOLOGY_V1_PROOF.json",
+                             "validators/validate_atom_candidate_warehouse_terminology_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -33,8 +33,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2258,
-                                    "sha256":  "0967ac4195fc79e2e7445eba64d5e3af407678b60514df64b42ff1d9e66178d3"
+                                    "structural_file_count":  2261,
+                                    "sha256":  "855c9997532a565ce40cf577b90b1a7f394d7cfcacd378b819eab80bcf8ff4d7"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -60,12 +60,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  153,
-                         "structural_path_count":  2258,
+                         "structural_path_count":  2261,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-21T09:58:37.7104438+04:00"
+    "refreshed_at":  "2026-07-21T10:28:32.1714408+04:00"
 }

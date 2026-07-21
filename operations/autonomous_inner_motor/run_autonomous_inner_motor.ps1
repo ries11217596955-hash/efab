@@ -795,6 +795,55 @@ function New-NextBuildTaskDecisionSpine($RunId,$InternalGoal,$MindLogic,$ActionD
     acceptance_boundary='Slice A creates the spine and proof field only; it does not execute the task.'
   }
 }
+function Get-LatestShortTermMindState([string]$OutputRoot,[string]$CurrentRunRoot){
+  if([string]::IsNullOrWhiteSpace($OutputRoot) -or -not(Test-Path -LiteralPath $OutputRoot)){ return [ordered]@{ found=$false; state_ref=$null; state=$null; reason='OUTPUT_ROOT_MISSING' } }
+  $currentFull=$null
+  try{ $currentFull=(Resolve-Path -LiteralPath $CurrentRunRoot -ErrorAction SilentlyContinue).Path }catch{}
+  $files=@(Get-ChildItem -LiteralPath $OutputRoot -Recurse -File -Filter 'short_term_mind_state.json' -ErrorAction SilentlyContinue | Sort-Object LastWriteTimeUtc -Descending)
+  foreach($f in $files){
+    if($currentFull -and $f.FullName -like ($currentFull + '*')){ continue }
+    $state=Read-JsonSafe $f.FullName
+    if($state -and $state.status -eq 'PASS_SHORT_TERM_MIND_STATE_V1'){
+      return [ordered]@{ found=$true; state_ref=$f.FullName.Replace((Get-Location).Path+'\',''); state=$state; run_id=$state.run_id; next_cycle_hint=$state.next_cycle_hint; candidate_route_status=$state.completed_candidate.route_status }
+    }
+  }
+  return [ordered]@{ found=$false; state_ref=$null; state=$null; reason='NO_PRIOR_SHORT_TERM_STATE' }
+}
+function New-ShortTermMindState($RunId,$InternalGoal,$DeepThinking,$MindLogic,$SelectiveCompactMemoryRetrieval,$DecisionSpine,$Absorption,$PreviousShortTermMindState,[string]$MemoryIngestionMode,[bool]$EnableMemoryLearning){
+  $frames=@()
+  if($DeepThinking -and $DeepThinking.frames){ $frames=@($DeepThinking.frames) }
+  $learningAtom=$null
+  if($DeepThinking -and $DeepThinking.learning_atom){ $learningAtom=$DeepThinking.learning_atom }
+  $queuePacketPath=$null; $packetValidationStatus=$null; $mergeStatus=$null; $absorptionMode=$null
+  if($Absorption){
+    $absorptionMode=$Absorption.mode
+    $packetValidationStatus=$Absorption.packet_validation_status
+    if($Absorption.queue_packet -and $Absorption.queue_packet.packet_path){ $queuePacketPath=$Absorption.queue_packet.packet_path }
+    elseif($Absorption.atom_path){ $queuePacketPath=$Absorption.atom_path }
+    if($Absorption.merge){ $mergeStatus=$Absorption.merge.status }
+  }
+  $candidateId=$null; $candidateTopic=$null; $candidateSummary=$null
+  if($learningAtom){ $candidateId=$learningAtom.candidate_id; $candidateTopic=$learningAtom.concept_key; $candidateSummary=$learningAtom.summary }
+  $routeStatus='NO_COMPLETED_CANDIDATE'
+  if($queuePacketPath){ $routeStatus='RELEASED_TO_EXISTING_MULTI_SOURCE_WAREHOUSE' } elseif($learningAtom){ $routeStatus='LIVE_CANDIDATE_HELD_IN_ACTIVE_STATE_NOT_RELEASED' }
+  $threadState=if($queuePacketPath){'COMPLETED_THOUGHT_RELEASED'}elseif($frames.Count -gt 0){'ACTIVE_THOUGHT_OPEN'}else{'NO_DEEP_THOUGHT'}
+  $subQuestions=@()
+  foreach($f in @($frames | Select-Object -First 12)){ $subQuestions += [ordered]@{ id=$f.id; parent_id=$f.parent_id; question=$f.question; answer=$f.answer; evidence=$f.evidence } }
+  $previousFound=($PreviousShortTermMindState -and $PreviousShortTermMindState.found)
+  return [ordered]@{
+    schema='short_term_mind_state_v1'
+    status='PASS_SHORT_TERM_MIND_STATE_V1'
+    run_id=$RunId
+    created_at=(Get-Date).ToString('o')
+    purpose='Keep active thought in the head; release completed candidates to the existing multi-source compact memory throat instead of creating a duplicate warehouse.'
+    active_thread=[ordered]@{ state=$threadState; current_goal=if($InternalGoal -and $InternalGoal.goal){ [string]$InternalGoal.goal } else { $null }; decomposition_node_count=$frames.Count; sub_questions=@($subQuestions); selected_memory_ref_count=if($SelectiveCompactMemoryRetrieval){ [int]$SelectiveCompactMemoryRetrieval.selected_count } else { 0 }; selected_memory_refs=if($SelectiveCompactMemoryRetrieval){ @($SelectiveCompactMemoryRetrieval.selected_memory_refs | Select-Object -First 7) } else { @() }; latest_conclusion=$candidateSummary; blocker=if($DecisionSpine -and $DecisionSpine.blocked_reason){ $DecisionSpine.blocked_reason } else { $null }; next_action_type=if($DecisionSpine){ $DecisionSpine.next_action_type } else { $null }; next_repair_candidate=if($DecisionSpine){ $DecisionSpine.candidate_build_task } else { $null } }
+    completed_candidate=[ordered]@{ candidate_id=$candidateId; topic=$candidateTopic; summary=$candidateSummary; route_status=$routeStatus; released_to_existing_warehouse=[bool]$queuePacketPath; existing_throat='MULTI_SOURCE_COMPACT_MEMORY_MERGE_QUEUE_V1 + MEMORY_COMMIT_ORGAN_V1'; warehouse_definition='temporary queue/staging/backlog inside .runtime/compact_memory_intake_v1; not a second memory root'; queue_packet_path=$queuePacketPath; packet_validation_status=$packetValidationStatus; absorption_mode=$absorptionMode; merge_status=$mergeStatus; no_new_store_created=$true }
+    continuity=[ordered]@{ previous_state_found=[bool]$previousFound; previous_state_ref=if($previousFound){ $PreviousShortTermMindState.state_ref } else { $null }; previous_run_id=if($previousFound){ $PreviousShortTermMindState.run_id } else { $null }; previous_candidate_route_status=if($previousFound){ $PreviousShortTermMindState.candidate_route_status } else { $null } }
+    head_cleanup_policy=[ordered]@{ keep_in_head=@('current_goal','active_subquestions','partial_conclusion','blocker','next_action'); release_from_head=@('completed_candidate','raw_completed_thought_noise'); release_target='existing_multi_source_warehouse'; compact_memory_promotion='only after validation/merge/commit proof' }
+    next_cycle_hint=if($DecisionSpine -and $DecisionSpine.candidate_build_task){ $DecisionSpine.candidate_build_task } elseif($DecisionSpine -and $DecisionSpine.blocked_reason){ $DecisionSpine.blocked_reason } else { 'continue active thought with memory-first reasoning' }
+    boundary=[ordered]@{ short_term_state_only=$true; not_a_warehouse=$true; no_duplicate_store=$true; direct_active_memory_write=$false; active_memory_mutation_allowed=$false; queue_route_allowed=[bool]$EnableMemoryLearning; memory_ingestion_mode=$MemoryIngestionMode; school_launch_allowed=$false }
+  }
+}
 $repo=Get-RepoState
 $memoryBefore=Get-ActiveMemoryState
 $school=Get-SchoolState
@@ -806,6 +855,7 @@ if([string]::IsNullOrWhiteSpace($Question)){ $Question=$internalGoal.goal }
 $policy=Read-JsonSafe 'operations/autonomous_inner_motor/motor_policy.json'
 $runId='aimo_'+(Get-Date -Format 'yyyyMMdd_HHmmss')
 $runRoot=Join-Path $OutputRoot $runId
+$previousShortTermMindState=Get-LatestShortTermMindState $OutputRoot $runRoot
 $proofName=if($Mode -eq 'SandboxTestLife'){ 'TEST_LIFE_PROOF.json' } else { 'SANDBOX_EXPLORATION_PROOF.json' }
 $proofPath=Join-Path $runRoot $proofName
 $innateReflexBootloadPath=Join-Path $runRoot 'innate_reflex_bootload.json'
@@ -1044,9 +1094,12 @@ Write-CleanJson $selectiveCompactMemoryRetrievalPath $selectiveCompactMemoryRetr
 $decisionSpinePath = Join-Path $runRoot 'next_build_task_decision_spine.json'
 $decisionSpine = New-NextBuildTaskDecisionSpine $runId $internalGoal $mindLogic $actionDecision $mentalFrontierRouter $selectiveCompactMemoryRetrieval.selected_memory_refs $antiRepeatGuard $memoryToNextPathReuseGate $MemoryIngestionMode ([bool]$EnableMemoryLearning)
 Write-CleanJson $decisionSpinePath $decisionSpine 30
+$shortTermMindStatePath = Join-Path $runRoot 'short_term_mind_state.json'
+$shortTermMindState = New-ShortTermMindState $runId $internalGoal $deepThinking $mindLogic $selectiveCompactMemoryRetrieval $decisionSpine $deepThinking.absorption $previousShortTermMindState $MemoryIngestionMode ([bool]$EnableMemoryLearning)
+Write-CleanJson $shortTermMindStatePath $shortTermMindState 70
 $proofPackManifestPath = Join-Path $runRoot 'sandbox_proof_pack_manifest.json'
 
-$filesWritten=@($proofPath,$mindLogicPath,$actionDecisionPath,$antiRepeatGuardPath,$memoryToNextPathReuseGatePath,$mentalFrontierExpansionGatePath,$mentalFrontierRouterPath,$selectiveCompactMemoryRetrievalPath,$decisionSpinePath,$proofPackManifestPath)
+$filesWritten=@($proofPath,$mindLogicPath,$actionDecisionPath,$antiRepeatGuardPath,$memoryToNextPathReuseGatePath,$mentalFrontierExpansionGatePath,$mentalFrontierRouterPath,$selectiveCompactMemoryRetrievalPath,$decisionSpinePath,$shortTermMindStatePath,$proofPackManifestPath)
 if($cycleWakeArtifactsWritten){ $filesWritten += @($innateReflexBootloadPath,$defaultWakeReflexesPath) }
 if($lifeWorkingMemoryCreated){ $filesWritten += $lifeWorkingMemoryPath }
 $proof=[ordered]@{
@@ -1080,6 +1133,7 @@ $proof=[ordered]@{
   mental_frontier_router=$mentalFrontierRouter
   selective_compact_memory_retrieval=$selectiveCompactMemoryRetrieval
   decision_spine=$decisionSpine
+  short_term_mind_state=$shortTermMindState
   policy_snapshot=[ordered]@{ allowed_modes=$policy.allowed_modes; disabled_modes=$policy.disabled_modes; source_ladder=$policy.source_ladder; ports=$policy.ports }
   self_question_trace=$cycles
   cycles=$cycles
@@ -1099,6 +1153,7 @@ $proof=[ordered]@{
     [ordered]@{ step='action_candidate_contract'; result=$actionDecision.status; proof='Action Decision Contract selects a next action candidate from the mind logic frame but keeps execution_allowed=false.' },
     [ordered]@{ step='selective_compact_memory_retrieval'; result=$selectiveCompactMemoryRetrieval.status; proof='Active compact memory refs are retrieved before decision_spine chooses next action type.' },
     [ordered]@{ step='decision_spine'; result=$decisionSpine.next_action_type; proof='Cycle must end with candidate build task or explicit blocked reason, not just queue packet.' },
+    [ordered]@{ step='short_term_mind_state'; result=$shortTermMindState.status; proof='Active thought is kept as short-term mind state; completed candidate routes to existing multi-source warehouse/throat when available.' },
     [ordered]@{ step='select_next'; result=$selected.path; proof='deep recursive thinking and self-learning atom loop are the next bottleneck for thinking quality.' }
   )
   selected_next_path=$selected
@@ -1111,7 +1166,7 @@ $proof=[ordered]@{
   validator_result=[ordered]@{ runner_self_check='PASS_RUNNER_GENERATED_SINGLE_SANDBOX_PROOF'; external_validator_expected='validators/validate_autonomous_inner_motor_organ_contract.ps1 -SandboxProofPath <proof>; validators/validate_autonomous_inner_motor_mind_logic_wiring_v1.ps1 -ProofPath <proof>; validators/validate_autonomous_inner_motor_action_decision_wiring_v1.ps1 -ProofPath <proof>' }
 }
 Write-CleanJson $proofPath $proof 80
-$proofPackRequiredFiles=@('SANDBOX_EXPLORATION_PROOF.json','mind_logic_frame.json','action_decision_packet.json','anti_repeat_guard.json','memory_to_next_path_reuse_gate.json','mental_frontier_expansion_gate.json','mental_frontier_router.json','selective_compact_memory_retrieval.json','next_build_task_decision_spine.json')
+$proofPackRequiredFiles=@('SANDBOX_EXPLORATION_PROOF.json','mind_logic_frame.json','action_decision_packet.json','anti_repeat_guard.json','memory_to_next_path_reuse_gate.json','mental_frontier_expansion_gate.json','mental_frontier_router.json','selective_compact_memory_retrieval.json','next_build_task_decision_spine.json','short_term_mind_state.json')
 if($cycleWakeArtifactsWritten){ $proofPackRequiredFiles += @('innate_reflex_bootload.json','default_wake_reflexes.json') }
 $proofPackOptionalSidecars=@('memory_recall_filter.json','contradiction_resolution.json','hypothesis_test_result.json','deep_source_answer_request.json','memory_filter_for_answer.json','route_request_packet.json','source_authority_route_decision.json','deep_source_answer_assimilation.json','mind_delta_acceptance_decision.json')
 $proofPackFiles=@()

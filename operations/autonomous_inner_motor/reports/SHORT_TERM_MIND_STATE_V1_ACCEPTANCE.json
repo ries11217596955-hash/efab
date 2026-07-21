@@ -1,0 +1,26 @@
+{
+    "schema":  "short_term_mind_state_v1_acceptance",
+    "status":  "ACCEPTED_SHORT_TERM_MIND_STATE_V1_SLICE_A_WITH_EXISTING_MULTI_SOURCE_INTAKE_ROUTE",
+    "accepted_at":  "2026-07-21T06:26:44.9050178Z",
+    "proof":  "tests/self_development/SHORT_TERM_MIND_STATE_V1_PROOF.json",
+    "may_claim":  "Short-term mind state sidecar exists, carries active thought, releases completed candidates to existing multi-source warehouse, and second cycle reads previous short-term state.",
+    "may_not_claim":  [
+                          "RAM canonical migration complete",
+                          "true infinite single-process life",
+                          "school launched",
+                          "active compact memory updated",
+                          "new warehouse created"
+                      ],
+    "boundary":  {
+                     "runtime_launched_by_validator":  true,
+                     "cycles":  2,
+                     "memory_ingestion_mode":  "QueueOnly",
+                     "active_memory_mutated":  false,
+                     "direct_active_memory_write":  false,
+                     "queue_packets_added_expected":  true,
+                     "no_new_store_created":  true,
+                     "school_launched":  false,
+                     "codex_launched":  false,
+                     "web_launched":  false
+                 }
+}
