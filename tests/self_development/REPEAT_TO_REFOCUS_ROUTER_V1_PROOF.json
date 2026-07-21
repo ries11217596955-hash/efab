@@ -1,0 +1,47 @@
+{
+    "schema":  "repeat_to_refocus_router_v1_validation",
+    "status":  "PASS_REPEAT_TO_REFOCUS_ROUTER_V1",
+    "checked_at":  "2026-07-21T15:33:53.7293308Z",
+    "run":  {
+                "run_root":  ".runtime\\repeat_to_refocus_router_v1_validation\\20260721_153154\\aimo_20260721_193156",
+                "run_root_full":  "H:\\efab\\.runtime\\repeat_to_refocus_router_v1_validation\\20260721_153154\\aimo_20260721_193156"
+            },
+    "repeated_task":  "FRONTIER_TO_BUILD_TASK_ROUTER_V1",
+    "repeated_topic":  "aimo.deep_thinking.recursive_thought_frame.memory_learning",
+    "selected_next_task":  "REPEAT_TO_REFOCUS_ROUTER_V1",
+    "repeat_refocus_selected":  true,
+    "queue_before":  {
+                         "exists":  true,
+                         "files":  86,
+                         "bytes":  165498
+                     },
+    "queue_after":  {
+                        "exists":  true,
+                        "files":  87,
+                        "bytes":  167446
+                    },
+    "active_memory_before":  {
+                                 "exists":  true,
+                                 "files":  3,
+                                 "bytes":  13079084
+                             },
+    "active_memory_after":  {
+                                "exists":  true,
+                                "files":  3,
+                                "bytes":  13079084
+                            },
+    "process_count":  0,
+    "errors":  [
+
+               ],
+    "boundary":  {
+                     "runtime_launched_by_validator":  true,
+                     "action_execution_allowed":  false,
+                     "memory_ingestion_mode":  "QueueOnly",
+                     "active_memory_mutated":  false,
+                     "direct_active_memory_write":  false,
+                     "no_new_store_created":  true,
+                     "codex_launched":  false,
+                     "web_launched":  false
+                 }
+}

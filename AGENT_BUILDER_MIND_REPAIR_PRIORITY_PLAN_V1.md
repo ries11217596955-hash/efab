@@ -547,3 +547,50 @@ Next repair:
 ```text
 BUILD_TASK_BOUNDED_EXECUTOR_V3_MINIMAL_ALLOWED_WRITE_WITH_ROLLBACK
 ```
+## 15. Repeat To Refocus Router acceptance
+
+Status: PROVEN_LAB / ACCEPTED
+
+```text
+REPEAT_TO_REFOCUS_ROUTER_V1 = PASS
+```
+
+Proof:
+
+```text
+tests/self_development/REPEAT_TO_REFOCUS_ROUTER_V1_PROOF.json
+operations/autonomous_inner_motor/reports/REPEAT_TO_REFOCUS_ROUTER_V1_ACCEPTANCE.json
+```
+
+Validated result:
+
+```text
+repeated_task = FRONTIER_TO_BUILD_TASK_ROUTER_V1
+repeated_topic = aimo.deep_thinking.recursive_thought_frame.memory_learning
+selected_next_task = REPEAT_TO_REFOCUS_ROUTER_V1
+repeat_refocus_selected = true
+queue_before = 86
+queue_after = 87
+active_memory_mutated = false
+direct_active_memory_write = false
+process_count = 0
+```
+
+Interpretation:
+
+```text
+The mind can now detect repeated recent topic/task and route to refocus instead of repeating the same technical frontier.
+```
+
+Open memory retrieval note:
+
+```text
+The count of 7 memory refs is currently a hard top-window/projection. A different topic changes which refs are selected, but not necessarily how many. Dynamic retrieval budget remains unbuilt.
+```
+
+Next repair:
+
+```text
+REFOCUS_TO_NEW_THOUGHT_SEED_V1
+DYNAMIC_MEMORY_RETRIEVAL_BUDGET_V1
+```
