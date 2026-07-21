@@ -4,6 +4,7 @@ param(
   [ValidateSet('SelfBuild','OwnerHint','Recovery')][string]$SeedSource='SelfBuild',
   [switch]$EnableDeepThinking,
   [switch]$EnableMemoryLearning,
+  [switch]$EnableBuildTaskExecutorDryRun,
   [ValidateSet('Auto','QueueOnly','QueueAndMerge','DirectAbsorb')][string]$MemoryIngestionMode='Auto',
   [string]$OutputRoot='.runtime/autonomous_inner_motor',
   [string]$WakeContextPath='',
@@ -909,7 +910,7 @@ function New-ShortTermStateToNextTaskRouter($RunId,$ShortTermMindState,$Decision
     boundary=[ordered]@{ selector_only=$true; execution_allowed=$false; no_repo_mutation_by_router=$true; no_new_store_created=$true; direct_active_memory_write=$false; school_launch_allowed=$false }
   }
 }
-function New-FrontierToBuildTaskRouter($RunId,$ShortTermStateToNextTaskRouter,$ShortTermMindState,$DecisionSpine,$SelectiveCompactMemoryRetrieval,$MentalFrontierRouter){
+function New-FrontierToBuildTaskRouter($RunId,$ShortTermStateToNextTaskRouter,$ShortTermMindState,$DecisionSpine,$SelectiveCompactMemoryRetrieval,$MentalFrontierRouter,[bool]$DryRunAuthority=$false){
   $selectedTask=$null
   if($ShortTermStateToNextTaskRouter -and $ShortTermStateToNextTaskRouter.selected_next_task){ $selectedTask=[string]$ShortTermStateToNextTaskRouter.selected_next_task }
   if([string]::IsNullOrWhiteSpace($selectedTask)){ $selectedTask='FRONTIER_TO_BUILD_TASK_ROUTER_V1' }
@@ -955,8 +956,9 @@ function New-FrontierToBuildTaskRouter($RunId,$ShortTermStateToNextTaskRouter,$S
       proof='tests/self_development/FRONTIER_TO_BUILD_TASK_ROUTER_V1_PROOF.json'
       acceptance_report='operations/autonomous_inner_motor/reports/FRONTIER_TO_BUILD_TASK_ROUTER_V1_ACCEPTANCE.json'
       execution_allowed=$false
+      dry_run_allowed=[bool]$DryRunAuthority
       implementation_allowed_after_validator=$false
-      expected_proof_fields=@('status','selected_next_task','contract.files_to_read','contract.files_allowed_to_write','contract.validator','contract.proof','execution_allowed=false','active_memory_mutated=false')
+      expected_proof_fields=@('status','selected_next_task','contract.files_to_read','contract.files_allowed_to_write','contract.validator','contract.proof','execution_allowed=false,dry_run_allowed=optional','active_memory_mutated=false')
     }
     input_summary=[ordered]@{
       used_short_term_state=($null -ne $ShortTermMindState)
@@ -1014,9 +1016,17 @@ function New-BuildTaskContractExecutionGate($RunId,$FrontierToBuildTaskRouter,$R
   $repoClean=$false
   if($Repo -and $Repo.status_count -eq 0 -and $Repo.ahead -eq 0 -and $Repo.behind -eq 0){ $repoClean=$true }
   if(-not $repoClean){ if($contract -and $contract.execution_allowed -eq $true){ $errors += 'REPO_NOT_CLEAN_OR_REMOTE_DELTA' } else { $warnings += 'REPO_NOT_CLEAN_BUT_CONTRACT_NOT_AUTHORIZED' } }
+  $dryRunRaw=$null
+  if($contract){
+    if($contract -is [System.Collections.IDictionary] -and $contract.Contains('dry_run_allowed')){ $dryRunRaw=$contract['dry_run_allowed'] }
+    elseif($contract.PSObject.Properties['dry_run_allowed']){ $dryRunRaw=$contract.dry_run_allowed }
+  }
+  $dryRunAllowed=($dryRunRaw -eq $true -or [string]$dryRunRaw -eq 'true')
   $decision='BLOCKED_CONTRACT_EXECUTION_NOT_AUTHORIZED'
   if($errors.Count -gt 0){ $decision='BLOCKED_EXECUTION_GATE_ERRORS' }
+  elseif($dryRunAllowed){ $decision='READY_FOR_BOUNDED_EXECUTOR_DRY_RUN' }
   elseif($contract -and $contract.execution_allowed -eq $true){ $decision='READY_FOR_BOUNDED_EXECUTION_PREFLIGHT_ONLY' }
+  $effectiveDryRunAllowed=($decision -eq 'READY_FOR_BOUNDED_EXECUTOR_DRY_RUN')
   $effectiveAllowed=($decision -eq 'READY_FOR_BOUNDED_EXECUTION_PREFLIGHT_ONLY')
   return [ordered]@{
     schema='build_task_contract_execution_gate_v1'
@@ -1024,8 +1034,9 @@ function New-BuildTaskContractExecutionGate($RunId,$FrontierToBuildTaskRouter,$R
     run_id=$RunId
     gate_decision=$decision
     effective_execution_allowed=[bool]$effectiveAllowed
+    effective_dry_run_allowed=[bool]$effectiveDryRunAllowed
     auto_execution_performed=$false
-    reason=if($decision -eq 'BLOCKED_CONTRACT_EXECUTION_NOT_AUTHORIZED'){ 'contract.execution_allowed is false; gate proves safe block, not execution' } elseif($decision -eq 'BLOCKED_EXECUTION_GATE_ERRORS'){ 'contract or preflight errors block execution' } else { 'contract passed static gate; bounded execution would still require explicit executor slice' }
+    reason=if($decision -eq 'BLOCKED_CONTRACT_EXECUTION_NOT_AUTHORIZED'){ 'contract.execution_allowed is false; gate proves safe block, not execution' } elseif($decision -eq 'READY_FOR_BOUNDED_EXECUTOR_DRY_RUN'){ 'dry-run authority present; gate allows planning only, not file mutation' } elseif($decision -eq 'BLOCKED_EXECUTION_GATE_ERRORS'){ 'contract or preflight errors block execution' } else { 'contract passed static gate; bounded execution would still require explicit executor slice' }
     contract_task_id=if($contract){$contract.task_id}else{$null}
     contract_validator=if($contract){$contract.validator}else{$null}
     contract_proof=if($contract){$contract.proof}else{$null}
@@ -1046,6 +1057,7 @@ function New-BuildTaskContractExecutionGate($RunId,$FrontierToBuildTaskRouter,$R
       gate_only=$true
       static_validation_only=$true
       execution_allowed=[bool]$effectiveAllowed
+      dry_run_allowed=[bool]$effectiveDryRunAllowed
       auto_execution_performed=$false
       no_file_write_by_gate=$true
       no_repo_mutation_by_gate=$true
@@ -1061,10 +1073,24 @@ function New-BuildTaskBoundedExecutor($RunId,$BuildTaskContractExecutionGate,$Fr
   $contract=$null
   if($FrontierToBuildTaskRouter -and $FrontierToBuildTaskRouter.contract){ $contract=$FrontierToBuildTaskRouter.contract }
   $gateAllows=($BuildTaskContractExecutionGate -and $BuildTaskContractExecutionGate.effective_execution_allowed -eq $true)
+  $gateDryRunRaw=$null
+  if($BuildTaskContractExecutionGate){
+    if($BuildTaskContractExecutionGate -is [System.Collections.IDictionary] -and $BuildTaskContractExecutionGate.Contains('effective_dry_run_allowed')){ $gateDryRunRaw=$BuildTaskContractExecutionGate['effective_dry_run_allowed'] }
+    elseif($BuildTaskContractExecutionGate.PSObject.Properties['effective_dry_run_allowed']){ $gateDryRunRaw=$BuildTaskContractExecutionGate.effective_dry_run_allowed }
+  }
+  $gateAllowsDryRun=($gateDryRunRaw -eq $true -or [string]$gateDryRunRaw -eq 'true')
   $executionStatus='NOT_EXECUTED_GATE_BLOCKED'
   $reason='execution gate did not allow execution; executor must not mutate repo'
   $plannedOperations=@()
-  if($gateAllows){
+  if($gateAllowsDryRun){
+    $executionStatus='DRY_RUN_PLAN_READY_NO_WRITES'
+    $reason='dry-run authority present; executor builds plan over allowed files and performs no writes'
+    if($contract){
+      foreach($w in @($contract.files_allowed_to_write)){
+        $plannedOperations += [ordered]@{ operation='WOULD_TOUCH_ALLOWED_FILE'; path=[string]$w; executed=$false; protected_surface=$false }
+      }
+    }
+  } elseif($gateAllows){
     $executionStatus='NOT_EXECUTED_EXECUTOR_DRY_RUN_ONLY'
     $reason='gate allows only preflight signal; executor slice is dry-run and does not write contract files yet'
     if($contract){
@@ -1081,6 +1107,8 @@ function New-BuildTaskBoundedExecutor($RunId,$BuildTaskContractExecutionGate,$Fr
     reason=$reason
     gate_decision=if($BuildTaskContractExecutionGate){$BuildTaskContractExecutionGate.gate_decision}else{$null}
     gate_effective_execution_allowed=[bool]$gateAllows
+    gate_effective_dry_run_allowed=[bool]$gateAllowsDryRun
+    dry_run_plan_ready=($executionStatus -eq 'DRY_RUN_PLAN_READY_NO_WRITES')
     contract_task_id=if($contract){$contract.task_id}else{$null}
     contract_validator=if($contract){$contract.validator}else{$null}
     contract_proof=if($contract){$contract.proof}else{$null}
@@ -1103,6 +1131,7 @@ function New-BuildTaskBoundedExecutor($RunId,$BuildTaskContractExecutionGate,$Fr
       bounded_executor_exists=$true
       respects_gate=$true
       execution_performed=$false
+      dry_run_plan_allowed=[bool]$gateAllowsDryRun
       no_repo_mutation_by_executor=$true
       no_contract_file_write=$true
       validator_ran=$false
@@ -1373,7 +1402,7 @@ $shortTermStateToNextTaskRouterPath = Join-Path $runRoot 'short_term_state_to_ne
 $shortTermStateToNextTaskRouter = New-ShortTermStateToNextTaskRouter $runId $shortTermMindState $decisionSpine $selectiveCompactMemoryRetrieval $previousShortTermMindState
 Write-CleanJson $shortTermStateToNextTaskRouterPath $shortTermStateToNextTaskRouter 50
 $frontierToBuildTaskRouterPath = Join-Path $runRoot 'frontier_to_build_task_router.json'
-$frontierToBuildTaskRouter = New-FrontierToBuildTaskRouter $runId $shortTermStateToNextTaskRouter $shortTermMindState $decisionSpine $selectiveCompactMemoryRetrieval $mentalFrontierRouter
+$frontierToBuildTaskRouter = New-FrontierToBuildTaskRouter $runId $shortTermStateToNextTaskRouter $shortTermMindState $decisionSpine $selectiveCompactMemoryRetrieval $mentalFrontierRouter ([bool]$EnableBuildTaskExecutorDryRun)
 Write-CleanJson $frontierToBuildTaskRouterPath $frontierToBuildTaskRouter 60
 $buildTaskContractExecutionGatePath = Join-Path $runRoot 'build_task_contract_execution_gate.json'
 $buildTaskContractExecutionGate = New-BuildTaskContractExecutionGate $runId $frontierToBuildTaskRouter $repo 0
@@ -1438,7 +1467,7 @@ $proof=[ordered]@{
     [ordered]@{ step='default_wake_reflexes'; result=$defaultWakeReflexes.status; proof='Wake-default sensing observed body, repo, processes, runtime pressure, and active memory without mutation.' },
     [ordered]@{ step='life_working_memory'; result=$lifeWorkingMemory.status; proof='Life working memory keeps wake context once per life and cycles reuse it instead of re-scanning body every breath.' },
     [ordered]@{ step='mind_logic_frame'; result=$mindLogic.status; proof='Mind Logic Kernel separates known/unknown, contradiction, hypotheses, source ladder, and next logical step before action candidate.' },
-    [ordered]@{ step='action_candidate_contract'; result=$actionDecision.status; proof='Action Decision Contract selects a next action candidate from the mind logic frame but keeps execution_allowed=false.' },
+    [ordered]@{ step='action_candidate_contract'; result=$actionDecision.status; proof='Action Decision Contract selects a next action candidate from the mind logic frame but keeps execution_allowed=false,dry_run_allowed=optional.' },
     [ordered]@{ step='selective_compact_memory_retrieval'; result=$selectiveCompactMemoryRetrieval.status; proof='Active compact memory refs are retrieved before decision_spine chooses next action type.' },
     [ordered]@{ step='decision_spine'; result=$decisionSpine.next_action_type; proof='Cycle must end with candidate build task or explicit blocked reason, not just queue packet.' },
     [ordered]@{ step='short_term_mind_state'; result=$shortTermMindState.status; proof='Active thought is kept as short-term mind state; completed candidate routes to existing multi-source warehouse/throat when available.' },

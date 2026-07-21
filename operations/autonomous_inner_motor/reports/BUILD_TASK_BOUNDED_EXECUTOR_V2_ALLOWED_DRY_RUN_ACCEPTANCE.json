@@ -1,0 +1,36 @@
+{
+    "schema":  "build_task_bounded_executor_v2_allowed_dry_run_acceptance",
+    "status":  "ACCEPTED_BUILD_TASK_BOUNDED_EXECUTOR_V2_ALLOWED_DRY_RUN",
+    "accepted_at":  "2026-07-21T10:07:47.8432789Z",
+    "proof":  "tests/self_development/BUILD_TASK_BOUNDED_EXECUTOR_V2_ALLOWED_DRY_RUN_PROOF.json",
+    "gate_decision":  "READY_FOR_BOUNDED_EXECUTOR_DRY_RUN",
+    "execution_status":  "DRY_RUN_PLAN_READY_NO_WRITES",
+    "planned_operations_count":  6,
+    "executed_files_count":  0,
+    "validator_ran":  false,
+    "may_claim":  "Agent can produce an authorized dry-run plan over allowed files while performing no writes and no validator execution.",
+    "may_not_claim":  [
+                          "authorized write execution implemented",
+                          "validator execution implemented",
+                          "repo patch executed by agent",
+                          "auto-patching allowed",
+                          "RAM infinite life complete",
+                          "school launched",
+                          "active compact memory updated"
+                      ],
+    "boundary":  {
+                     "runtime_launched_by_validator":  true,
+                     "cycles":  2,
+                     "dry_run_authority_used":  true,
+                     "dry_run_plan_ready":  true,
+                     "execution_performed":  false,
+                     "validator_ran":  false,
+                     "memory_ingestion_mode":  "QueueOnly",
+                     "active_memory_mutated":  false,
+                     "direct_active_memory_write":  false,
+                     "no_new_store_created":  true,
+                     "school_launched":  false,
+                     "codex_launched":  false,
+                     "web_launched":  false
+                 }
+}
