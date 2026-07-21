@@ -330,3 +330,44 @@ FRONTIER_TO_BUILD_TASK_ROUTER_V1
 or
 SHORT_TERM_STATE_TO_NEXT_TASK_ROUTER_V1
 ```
+## 10. Short-Term State To Next Task Router acceptance
+
+Status: PROVEN_LAB / ACCEPTED
+
+```text
+SHORT_TERM_STATE_TO_NEXT_TASK_ROUTER_V1 = PASS
+```
+
+Proof:
+
+```text
+tests/self_development/SHORT_TERM_STATE_TO_NEXT_TASK_ROUTER_V1_PROOF.json
+operations/autonomous_inner_motor/reports/SHORT_TERM_STATE_TO_NEXT_TASK_ROUTER_V1_ACCEPTANCE.json
+```
+
+Validated result:
+
+```text
+cycles = 2
+run2_previous_state_found = true
+selected_next_task = FRONTIER_TO_BUILD_TASK_ROUTER_V1
+selector_only = true
+execution_allowed = false
+queue_before = 61
+queue_after = 63
+active_memory_mutated = false
+direct_active_memory_write = false
+no_new_store_created = true
+```
+
+Interpretation:
+
+```text
+Short-term state now feeds next-task selection. The agent can choose the next repair direction, but cannot yet turn it into a full build task contract.
+```
+
+Next repair:
+
+```text
+FRONTIER_TO_BUILD_TASK_ROUTER_V1
+```

@@ -1,0 +1,29 @@
+{
+    "schema":  "short_term_state_to_next_task_router_v1_acceptance",
+    "status":  "ACCEPTED_SHORT_TERM_STATE_TO_NEXT_TASK_ROUTER_V1",
+    "accepted_at":  "2026-07-21T06:40:29.3753422Z",
+    "proof":  "tests/self_development/SHORT_TERM_STATE_TO_NEXT_TASK_ROUTER_V1_PROOF.json",
+    "selected_next_task":  "FRONTIER_TO_BUILD_TASK_ROUTER_V1",
+    "selected_next_task_human":  "Turn selected thought or frontier into a concrete build task with files, validator, and proof.",
+    "may_claim":  "Agent can select the next repair task from short-term state, compact memory signal, and existing warehouse route.",
+    "may_not_claim":  [
+                          "task execution implemented",
+                          "frontier-to-build-task router complete",
+                          "RAM infinite life complete",
+                          "school launched",
+                          "active compact memory updated"
+                      ],
+    "boundary":  {
+                     "runtime_launched_by_validator":  true,
+                     "cycles":  2,
+                     "selector_only":  true,
+                     "execution_allowed":  false,
+                     "memory_ingestion_mode":  "QueueOnly",
+                     "active_memory_mutated":  false,
+                     "direct_active_memory_write":  false,
+                     "no_new_store_created":  true,
+                     "school_launched":  false,
+                     "codex_launched":  false,
+                     "web_launched":  false
+                 }
+}
