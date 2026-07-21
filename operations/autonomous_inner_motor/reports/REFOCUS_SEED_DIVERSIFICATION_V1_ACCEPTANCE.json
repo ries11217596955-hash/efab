@@ -1,0 +1,26 @@
+{
+    "schema":  "refocus_seed_diversification_v1_acceptance",
+    "status":  "ACCEPTED_REFOCUS_SEED_DIVERSIFICATION_V1",
+    "accepted_at":  "2026-07-21T17:41:14.7289414Z",
+    "proof":  "tests/self_development/REFOCUS_SEED_DIVERSIFICATION_V1_PROOF.json",
+    "may_claim":  "Agent can split a repeated refocus seed into multiple branches, select a non-repeating lens, and the next cycle can consume the diversified seed as active goal.",
+    "may_not_claim":  [
+                          "external access enabled",
+                          "full autonomous research depth solved",
+                          "actions allowed",
+                          "active compact memory updated"
+                      ],
+    "boundary":  {
+                     "runtime_launched_by_validator":  true,
+                     "cycles":  2,
+                     "thinking_only":  true,
+                     "memory_learning_enabled":  false,
+                     "action_execution_allowed":  false,
+                     "active_memory_mutated":  false,
+                     "direct_active_memory_write":  false,
+                     "no_external_access":  true,
+                     "no_new_store_created":  true,
+                     "codex_launched":  false,
+                     "web_launched":  false
+                 }
+}
