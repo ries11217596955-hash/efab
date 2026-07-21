@@ -909,6 +909,78 @@ function New-ShortTermStateToNextTaskRouter($RunId,$ShortTermMindState,$Decision
     boundary=[ordered]@{ selector_only=$true; execution_allowed=$false; no_repo_mutation_by_router=$true; no_new_store_created=$true; direct_active_memory_write=$false; school_launch_allowed=$false }
   }
 }
+function New-FrontierToBuildTaskRouter($RunId,$ShortTermStateToNextTaskRouter,$ShortTermMindState,$DecisionSpine,$SelectiveCompactMemoryRetrieval,$MentalFrontierRouter){
+  $selectedTask=$null
+  if($ShortTermStateToNextTaskRouter -and $ShortTermStateToNextTaskRouter.selected_next_task){ $selectedTask=[string]$ShortTermStateToNextTaskRouter.selected_next_task }
+  if([string]::IsNullOrWhiteSpace($selectedTask)){ $selectedTask='FRONTIER_TO_BUILD_TASK_ROUTER_V1' }
+  $readSet=[System.Collections.Generic.List[string]]::new()
+  foreach($p in @(
+    'operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1',
+    'AGENT_BUILDER_MIND_REPAIR_PRIORITY_PLAN_V1.md',
+    'AGENT_BUILDER_SELF_NOTEBOOK.md',
+    'tests/self_development/SHORT_TERM_STATE_TO_NEXT_TASK_ROUTER_V1_PROOF.json',
+    'tests/self_development/SHORT_TERM_MIND_STATE_V1_PROOF.json',
+    'operations/compact_memory_intake/multi_source_compact_memory_intake_policy.json',
+    'docs/operations/MULTI_SOURCE_COMPACT_MEMORY_MERGE_QUEUE_V1.md'
+  )){ if(-not $readSet.Contains($p)){ $readSet.Add($p) } }
+  $writeSet=[System.Collections.Generic.List[string]]::new()
+  foreach($p in @(
+    'operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1',
+    'validators/validate_frontier_to_build_task_router_v1.ps1',
+    'tests/self_development/FRONTIER_TO_BUILD_TASK_ROUTER_V1_PROOF.json',
+    'operations/autonomous_inner_motor/reports/FRONTIER_TO_BUILD_TASK_ROUTER_V1_ACCEPTANCE.json',
+    'AGENT_BUILDER_MIND_REPAIR_PRIORITY_PLAN_V1.md',
+    'AGENT_BUILDER_SELF_NOTEBOOK.md'
+  )){ if(-not $writeSet.Contains($p)){ $writeSet.Add($p) } }
+  $selectedFrontier=$null
+  if($MentalFrontierRouter -and $MentalFrontierRouter.PSObject.Properties['selected_frontier']){ $selectedFrontier=$MentalFrontierRouter.selected_frontier }
+  elseif($DecisionSpine -and $DecisionSpine.candidate_build_task){ $selectedFrontier=$DecisionSpine.candidate_build_task }
+  $taskHuman='Build a task-contract router that turns the selected frontier into exact files, validator, proof, and acceptance boundary.'
+  if($ShortTermStateToNextTaskRouter -and $ShortTermStateToNextTaskRouter.selected_next_task_human){ $taskHuman=$ShortTermStateToNextTaskRouter.selected_next_task_human }
+  return [ordered]@{
+    schema='frontier_to_build_task_router_v1'
+    status='PASS_FRONTIER_TO_BUILD_TASK_ROUTER_V1'
+    run_id=$RunId
+    selected_frontier=$selectedFrontier
+    selected_next_task=$selectedTask
+    selected_next_task_human=$taskHuman
+    contract=[ordered]@{
+      task_id=$selectedTask
+      task_type='BUILD_TASK_CONTRACT'
+      goal='Convert selected frontier or repair direction into a bounded implementation task contract.'
+      files_to_read=@($readSet)
+      files_allowed_to_write=@($writeSet)
+      files_forbidden_to_write=@('.runtime/active_compact_semantic_memory_v1','operations/autonomous_inner_motor/start_agent_life_v1.ps1','operations/autonomous_inner_motor/run_continuous_agent_runtime_v1_lab.ps1')
+      validator='validators/validate_frontier_to_build_task_router_v1.ps1'
+      proof='tests/self_development/FRONTIER_TO_BUILD_TASK_ROUTER_V1_PROOF.json'
+      acceptance_report='operations/autonomous_inner_motor/reports/FRONTIER_TO_BUILD_TASK_ROUTER_V1_ACCEPTANCE.json'
+      execution_allowed=$false
+      implementation_allowed_after_validator=$false
+      expected_proof_fields=@('status','selected_next_task','contract.files_to_read','contract.files_allowed_to_write','contract.validator','contract.proof','execution_allowed=false','active_memory_mutated=false')
+    }
+    input_summary=[ordered]@{
+      used_short_term_state=($null -ne $ShortTermMindState)
+      used_next_task_router=($null -ne $ShortTermStateToNextTaskRouter)
+      used_decision_spine=($null -ne $DecisionSpine)
+      used_compact_memory_retrieval=($null -ne $SelectiveCompactMemoryRetrieval)
+      compact_memory_selected_count=if($SelectiveCompactMemoryRetrieval){ [int]$SelectiveCompactMemoryRetrieval.selected_count } else { 0 }
+      short_term_route_status=if($ShortTermMindState){ $ShortTermMindState.completed_candidate.route_status } else { $null }
+      next_task_router_selected=if($ShortTermStateToNextTaskRouter){ $ShortTermStateToNextTaskRouter.selected_next_task } else { $null }
+    }
+    boundary=[ordered]@{
+      router_only=$true
+      contract_only=$true
+      execution_allowed=$false
+      no_repo_mutation_by_contract=$true
+      no_new_store_created=$true
+      direct_active_memory_write=$false
+      active_memory_mutation_allowed=$false
+      school_launch_allowed=$false
+      codex_launch_allowed=$false
+      web_launch_allowed=$false
+    }
+  }
+}
 $repo=Get-RepoState
 $memoryBefore=Get-ActiveMemoryState
 $school=Get-SchoolState
@@ -1165,9 +1237,12 @@ Write-CleanJson $shortTermMindStatePath $shortTermMindState 70
 $shortTermStateToNextTaskRouterPath = Join-Path $runRoot 'short_term_state_to_next_task_router.json'
 $shortTermStateToNextTaskRouter = New-ShortTermStateToNextTaskRouter $runId $shortTermMindState $decisionSpine $selectiveCompactMemoryRetrieval $previousShortTermMindState
 Write-CleanJson $shortTermStateToNextTaskRouterPath $shortTermStateToNextTaskRouter 50
+$frontierToBuildTaskRouterPath = Join-Path $runRoot 'frontier_to_build_task_router.json'
+$frontierToBuildTaskRouter = New-FrontierToBuildTaskRouter $runId $shortTermStateToNextTaskRouter $shortTermMindState $decisionSpine $selectiveCompactMemoryRetrieval $mentalFrontierRouter
+Write-CleanJson $frontierToBuildTaskRouterPath $frontierToBuildTaskRouter 60
 $proofPackManifestPath = Join-Path $runRoot 'sandbox_proof_pack_manifest.json'
 
-$filesWritten=@($proofPath,$mindLogicPath,$actionDecisionPath,$antiRepeatGuardPath,$memoryToNextPathReuseGatePath,$mentalFrontierExpansionGatePath,$mentalFrontierRouterPath,$selectiveCompactMemoryRetrievalPath,$decisionSpinePath,$shortTermMindStatePath,$shortTermStateToNextTaskRouterPath,$proofPackManifestPath)
+$filesWritten=@($proofPath,$mindLogicPath,$actionDecisionPath,$antiRepeatGuardPath,$memoryToNextPathReuseGatePath,$mentalFrontierExpansionGatePath,$mentalFrontierRouterPath,$selectiveCompactMemoryRetrievalPath,$decisionSpinePath,$shortTermMindStatePath,$shortTermStateToNextTaskRouterPath,$frontierToBuildTaskRouterPath,$proofPackManifestPath)
 if($cycleWakeArtifactsWritten){ $filesWritten += @($innateReflexBootloadPath,$defaultWakeReflexesPath) }
 if($lifeWorkingMemoryCreated){ $filesWritten += $lifeWorkingMemoryPath }
 $proof=[ordered]@{
@@ -1203,6 +1278,7 @@ $proof=[ordered]@{
   decision_spine=$decisionSpine
   short_term_mind_state=$shortTermMindState
   short_term_state_to_next_task_router=$shortTermStateToNextTaskRouter
+  frontier_to_build_task_router=$frontierToBuildTaskRouter
   policy_snapshot=[ordered]@{ allowed_modes=$policy.allowed_modes; disabled_modes=$policy.disabled_modes; source_ladder=$policy.source_ladder; ports=$policy.ports }
   self_question_trace=$cycles
   cycles=$cycles
@@ -1224,6 +1300,7 @@ $proof=[ordered]@{
     [ordered]@{ step='decision_spine'; result=$decisionSpine.next_action_type; proof='Cycle must end with candidate build task or explicit blocked reason, not just queue packet.' },
     [ordered]@{ step='short_term_mind_state'; result=$shortTermMindState.status; proof='Active thought is kept as short-term mind state; completed candidate routes to existing multi-source warehouse/throat when available.' },
     [ordered]@{ step='short_term_state_to_next_task_router'; result=$shortTermStateToNextTaskRouter.selected_next_task; proof='Next useful task is selected from short-term state, compact memory signal, and existing warehouse route.' },
+    [ordered]@{ step='frontier_to_build_task_router'; result=$frontierToBuildTaskRouter.contract.task_id; proof='Selected frontier is converted into a bounded build task contract with files, validator, proof, and execution disabled.' },
     [ordered]@{ step='select_next'; result=$selected.path; proof='deep recursive thinking and self-learning atom loop are the next bottleneck for thinking quality.' }
   )
   selected_next_path=$selected
@@ -1236,7 +1313,7 @@ $proof=[ordered]@{
   validator_result=[ordered]@{ runner_self_check='PASS_RUNNER_GENERATED_SINGLE_SANDBOX_PROOF'; external_validator_expected='validators/validate_autonomous_inner_motor_organ_contract.ps1 -SandboxProofPath <proof>; validators/validate_autonomous_inner_motor_mind_logic_wiring_v1.ps1 -ProofPath <proof>; validators/validate_autonomous_inner_motor_action_decision_wiring_v1.ps1 -ProofPath <proof>' }
 }
 Write-CleanJson $proofPath $proof 80
-$proofPackRequiredFiles=@('SANDBOX_EXPLORATION_PROOF.json','mind_logic_frame.json','action_decision_packet.json','anti_repeat_guard.json','memory_to_next_path_reuse_gate.json','mental_frontier_expansion_gate.json','mental_frontier_router.json','selective_compact_memory_retrieval.json','next_build_task_decision_spine.json','short_term_mind_state.json','short_term_state_to_next_task_router.json')
+$proofPackRequiredFiles=@('SANDBOX_EXPLORATION_PROOF.json','mind_logic_frame.json','action_decision_packet.json','anti_repeat_guard.json','memory_to_next_path_reuse_gate.json','mental_frontier_expansion_gate.json','mental_frontier_router.json','selective_compact_memory_retrieval.json','next_build_task_decision_spine.json','short_term_mind_state.json','short_term_state_to_next_task_router.json','frontier_to_build_task_router.json')
 if($cycleWakeArtifactsWritten){ $proofPackRequiredFiles += @('innate_reflex_bootload.json','default_wake_reflexes.json') }
 $proofPackOptionalSidecars=@('memory_recall_filter.json','contradiction_resolution.json','hypothesis_test_result.json','deep_source_answer_request.json','memory_filter_for_answer.json','route_request_packet.json','source_authority_route_decision.json','deep_source_answer_assimilation.json','mind_delta_acceptance_decision.json')
 $proofPackFiles=@()

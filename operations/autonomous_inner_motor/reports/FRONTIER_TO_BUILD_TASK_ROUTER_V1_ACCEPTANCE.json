@@ -1,0 +1,71 @@
+{
+    "schema":  "frontier_to_build_task_router_v1_acceptance",
+    "status":  "ACCEPTED_FRONTIER_TO_BUILD_TASK_ROUTER_V1",
+    "accepted_at":  "2026-07-21T07:05:13.4324407Z",
+    "proof":  "tests/self_development/FRONTIER_TO_BUILD_TASK_ROUTER_V1_PROOF.json",
+    "selected_next_task":  "FRONTIER_TO_BUILD_TASK_ROUTER_V1",
+    "contract":  {
+                     "task_id":  "FRONTIER_TO_BUILD_TASK_ROUTER_V1",
+                     "task_type":  "BUILD_TASK_CONTRACT",
+                     "goal":  "Convert selected frontier or repair direction into a bounded implementation task contract.",
+                     "files_to_read":  [
+                                           "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+                                           "AGENT_BUILDER_MIND_REPAIR_PRIORITY_PLAN_V1.md",
+                                           "AGENT_BUILDER_SELF_NOTEBOOK.md",
+                                           "tests/self_development/SHORT_TERM_STATE_TO_NEXT_TASK_ROUTER_V1_PROOF.json",
+                                           "tests/self_development/SHORT_TERM_MIND_STATE_V1_PROOF.json",
+                                           "operations/compact_memory_intake/multi_source_compact_memory_intake_policy.json",
+                                           "docs/operations/MULTI_SOURCE_COMPACT_MEMORY_MERGE_QUEUE_V1.md"
+                                       ],
+                     "files_allowed_to_write":  [
+                                                    "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+                                                    "validators/validate_frontier_to_build_task_router_v1.ps1",
+                                                    "tests/self_development/FRONTIER_TO_BUILD_TASK_ROUTER_V1_PROOF.json",
+                                                    "operations/autonomous_inner_motor/reports/FRONTIER_TO_BUILD_TASK_ROUTER_V1_ACCEPTANCE.json",
+                                                    "AGENT_BUILDER_MIND_REPAIR_PRIORITY_PLAN_V1.md",
+                                                    "AGENT_BUILDER_SELF_NOTEBOOK.md"
+                                                ],
+                     "files_forbidden_to_write":  [
+                                                      ".runtime/active_compact_semantic_memory_v1",
+                                                      "operations/autonomous_inner_motor/start_agent_life_v1.ps1",
+                                                      "operations/autonomous_inner_motor/run_continuous_agent_runtime_v1_lab.ps1"
+                                                  ],
+                     "validator":  "validators/validate_frontier_to_build_task_router_v1.ps1",
+                     "proof":  "tests/self_development/FRONTIER_TO_BUILD_TASK_ROUTER_V1_PROOF.json",
+                     "acceptance_report":  "operations/autonomous_inner_motor/reports/FRONTIER_TO_BUILD_TASK_ROUTER_V1_ACCEPTANCE.json",
+                     "execution_allowed":  false,
+                     "implementation_allowed_after_validator":  false,
+                     "expected_proof_fields":  [
+                                                   "status",
+                                                   "selected_next_task",
+                                                   "contract.files_to_read",
+                                                   "contract.files_allowed_to_write",
+                                                   "contract.validator",
+                                                   "contract.proof",
+                                                   "execution_allowed=false",
+                                                   "active_memory_mutated=false"
+                                               ]
+                 },
+    "may_claim":  "Agent can turn selected next frontier into a bounded build task contract with files, validator, proof, forbidden surfaces, and execution disabled.",
+    "may_not_claim":  [
+                          "task execution implemented",
+                          "auto patching allowed",
+                          "RAM infinite life complete",
+                          "school launched",
+                          "active compact memory updated"
+                      ],
+    "boundary":  {
+                     "runtime_launched_by_validator":  true,
+                     "cycles":  2,
+                     "router_only":  true,
+                     "contract_only":  true,
+                     "execution_allowed":  false,
+                     "memory_ingestion_mode":  "QueueOnly",
+                     "active_memory_mutated":  false,
+                     "direct_active_memory_write":  false,
+                     "no_new_store_created":  true,
+                     "school_launched":  false,
+                     "codex_launched":  false,
+                     "web_launched":  false
+                 }
+}
