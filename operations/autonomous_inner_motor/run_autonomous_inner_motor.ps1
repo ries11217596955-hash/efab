@@ -1230,12 +1230,45 @@ function New-RefocusToNewThoughtSeed($RunId,$ShortTermStateToNextTaskRouter,$Rec
     }
   }
 }
+function Get-LatestRefocusToNewThoughtSeed([string]$OutputRoot,[string]$CurrentRunRoot){
+  if([string]::IsNullOrWhiteSpace($OutputRoot) -or -not(Test-Path -LiteralPath $OutputRoot)){ return [ordered]@{ status='NOT_FOUND'; seed=$null; source_run=$null } }
+  $currentFull=$null
+  try{ $currentFull=(Resolve-Path -LiteralPath $CurrentRunRoot -ErrorAction SilentlyContinue).Path }catch{}
+  $dirs=@(Get-ChildItem -LiteralPath $OutputRoot -Directory -ErrorAction SilentlyContinue | Sort-Object LastWriteTimeUtc -Descending | Select-Object -First 12)
+  foreach($d in $dirs){
+    if($currentFull -and $d.FullName -eq $currentFull){ continue }
+    $seedPath=Join-Path $d.FullName 'refocus_to_new_thought_seed.json'
+    $seed=Read-JsonSafe $seedPath
+    if($seed -and $seed.status -eq 'PASS_REFOCUS_TO_NEW_THOUGHT_SEED_V1' -and $seed.refocus_needed -eq $true -and $seed.new_thought_seed -and -not [string]::IsNullOrWhiteSpace([string]$seed.new_thought_seed.question)){
+      return [ordered]@{ status='FOUND_REFOCUS_THOUGHT_SEED'; seed=$seed; source_run=$d.Name; source_path=$seedPath }
+    }
+  }
+  return [ordered]@{ status='NOT_FOUND'; seed=$null; source_run=$null }
+}
+function New-NewThoughtSeedToActiveGoal($RunId,$LatestRefocusSeed,$InternalGoal,[bool]$OwnerQuestionProvided){
+  $hasSeed=($LatestRefocusSeed -and $LatestRefocusSeed.status -eq 'FOUND_REFOCUS_THOUGHT_SEED' -and $LatestRefocusSeed.seed -and $LatestRefocusSeed.seed.new_thought_seed)
+  $consumed=($hasSeed -and -not $OwnerQuestionProvided)
+  $seedQuestion=if($hasSeed){ [string]$LatestRefocusSeed.seed.new_thought_seed.question } else { $null }
+  $seedLens=if($hasSeed){ [string]$LatestRefocusSeed.seed.new_thought_seed.lens } else { $null }
+  return [ordered]@{
+    schema='new_thought_seed_to_active_goal_v1'
+    status=if($consumed){'PASS_NEW_THOUGHT_SEED_TO_ACTIVE_GOAL_V1'}elseif($hasSeed){'OWNER_QUESTION_PRESERVED_SEED_NOT_CONSUMED'}else{'NO_REFOCUS_SEED_FOUND'}
+    run_id=$RunId
+    seed_found=[bool]$hasSeed
+    seed_consumed=[bool]$consumed
+    source_run=if($hasSeed){$LatestRefocusSeed.source_run}else{$null}
+    source_path=if($hasSeed){$LatestRefocusSeed.source_path}else{$null}
+    active_goal=if($consumed){[ordered]@{ source='REFOCUS_THOUGHT_SEED'; question=$seedQuestion; lens=$seedLens; replaces_default_internal_goal=$true; original_goal=$InternalGoal.goal }}else{[ordered]@{ source='DEFAULT_OR_OWNER_QUESTION'; question=$InternalGoal.goal; lens='default'; replaces_default_internal_goal=$false }}
+    boundary=[ordered]@{ thinking_only=$true; goal_override_only=$true; no_action_execution=$true; no_repo_mutation=$true; no_active_memory_write=$true; no_new_store_created=$true; owner_question_preserved=[bool]$OwnerQuestionProvided }
+  }
+}
 $repo=Get-RepoState
 $memoryBefore=Get-ActiveMemoryState
 $school=Get-SchoolState
 $body=Get-BodyMapState
 $living=Get-LivingLoopState
 $selfBuild=Get-SelfBuildState
+$ownerQuestionProvided=(-not [string]::IsNullOrWhiteSpace($Question))
 $internalGoal=New-InternalSelfGoal $selfBuild $body $memoryBefore
 if([string]::IsNullOrWhiteSpace($Question)){ $Question=$internalGoal.goal }
 $policy=Read-JsonSafe 'operations/autonomous_inner_motor/motor_policy.json'
@@ -1243,6 +1276,18 @@ $runId='aimo_'+(Get-Date -Format 'yyyyMMdd_HHmmss')
 $runRoot=Join-Path $OutputRoot $runId
 $previousShortTermMindState=Get-LatestShortTermMindState $OutputRoot $runRoot
 $recentThoughtRepetitionPattern=Get-RecentThoughtRepetitionPattern $OutputRoot $runRoot 8 3
+$latestRefocusThoughtSeed=Get-LatestRefocusToNewThoughtSeed $OutputRoot $runRoot
+$newThoughtSeedToActiveGoal=New-NewThoughtSeedToActiveGoal $runId $latestRefocusThoughtSeed $internalGoal ([bool]$ownerQuestionProvided)
+if($newThoughtSeedToActiveGoal.seed_consumed){
+  $Question=[string]$newThoughtSeedToActiveGoal.active_goal.question
+  if($internalGoal -is [System.Collections.IDictionary]){
+    $internalGoal['source']='REFOCUS_THOUGHT_SEED_ACTIVE_GOAL'
+    $internalGoal['goal']=$Question
+    $internalGoal['refocus_seed_consumed']=$true
+    $internalGoal['refocus_seed_source_run']=$newThoughtSeedToActiveGoal.source_run
+    $internalGoal['refocus_lens']=$newThoughtSeedToActiveGoal.active_goal.lens
+  }
+}
 $proofName=if($Mode -eq 'SandboxTestLife'){ 'TEST_LIFE_PROOF.json' } else { 'SANDBOX_EXPLORATION_PROOF.json' }
 $proofPath=Join-Path $runRoot $proofName
 $innateReflexBootloadPath=Join-Path $runRoot 'innate_reflex_bootload.json'
@@ -1481,6 +1526,8 @@ Write-CleanJson $selectiveCompactMemoryRetrievalPath $selectiveCompactMemoryRetr
 $decisionSpinePath = Join-Path $runRoot 'next_build_task_decision_spine.json'
 $decisionSpine = New-NextBuildTaskDecisionSpine $runId $internalGoal $mindLogic $actionDecision $mentalFrontierRouter $selectiveCompactMemoryRetrieval.selected_memory_refs $antiRepeatGuard $memoryToNextPathReuseGate $MemoryIngestionMode ([bool]$EnableMemoryLearning)
 Write-CleanJson $decisionSpinePath $decisionSpine 30
+$newThoughtSeedToActiveGoalPath = Join-Path $runRoot 'new_thought_seed_to_active_goal.json'
+Write-CleanJson $newThoughtSeedToActiveGoalPath $newThoughtSeedToActiveGoal 50
 $recentThoughtRepetitionPatternPath = Join-Path $runRoot 'recent_thought_repetition_pattern.json'
 Write-CleanJson $recentThoughtRepetitionPatternPath $recentThoughtRepetitionPattern 40
 $shortTermMindStatePath = Join-Path $runRoot 'short_term_mind_state.json'
@@ -1503,7 +1550,7 @@ $buildTaskBoundedExecutor = New-BuildTaskBoundedExecutor $runId $buildTaskContra
 Write-CleanJson $buildTaskBoundedExecutorPath $buildTaskBoundedExecutor 50
 $proofPackManifestPath = Join-Path $runRoot 'sandbox_proof_pack_manifest.json'
 
-$filesWritten=@($proofPath,$mindLogicPath,$actionDecisionPath,$antiRepeatGuardPath,$memoryToNextPathReuseGatePath,$mentalFrontierExpansionGatePath,$mentalFrontierRouterPath,$selectiveCompactMemoryRetrievalPath,$decisionSpinePath,$recentThoughtRepetitionPatternPath,$shortTermMindStatePath,$shortTermStateToNextTaskRouterPath,$refocusToNewThoughtSeedPath,$frontierToBuildTaskRouterPath,$buildTaskContractExecutionGatePath,$buildTaskBoundedExecutorPath,$proofPackManifestPath)
+$filesWritten=@($proofPath,$mindLogicPath,$actionDecisionPath,$antiRepeatGuardPath,$memoryToNextPathReuseGatePath,$mentalFrontierExpansionGatePath,$mentalFrontierRouterPath,$selectiveCompactMemoryRetrievalPath,$decisionSpinePath,$newThoughtSeedToActiveGoalPath,$recentThoughtRepetitionPatternPath,$shortTermMindStatePath,$shortTermStateToNextTaskRouterPath,$refocusToNewThoughtSeedPath,$frontierToBuildTaskRouterPath,$buildTaskContractExecutionGatePath,$buildTaskBoundedExecutorPath,$proofPackManifestPath)
 if($cycleWakeArtifactsWritten){ $filesWritten += @($innateReflexBootloadPath,$defaultWakeReflexesPath) }
 if($lifeWorkingMemoryCreated){ $filesWritten += $lifeWorkingMemoryPath }
 $proof=[ordered]@{
@@ -1522,6 +1569,7 @@ $proof=[ordered]@{
   living_loop_state=$living
   self_build_state=$selfBuild
   internal_goal=$internalGoal
+  new_thought_seed_to_active_goal=$newThoughtSeedToActiveGoal
   owner_query_required=$false
   proof_pack_manifest_path=$proofPackManifestPath
   innate_reflex_bootload_path=$innateReflexBootloadPath
@@ -1563,6 +1611,7 @@ $proof=[ordered]@{
     [ordered]@{ step='action_candidate_contract'; result=$actionDecision.status; proof='Action Decision Contract selects a next action candidate from the mind logic frame but keeps execution_allowed=false,dry_run_allowed=optional.' },
     [ordered]@{ step='selective_compact_memory_retrieval'; result=$selectiveCompactMemoryRetrieval.status; proof='Active compact memory refs are retrieved before decision_spine chooses next action type.' },
     [ordered]@{ step='decision_spine'; result=$decisionSpine.next_action_type; proof='Cycle must end with candidate build task or explicit blocked reason, not just queue packet.' },
+    [ordered]@{ step='new_thought_seed_to_active_goal'; result=$newThoughtSeedToActiveGoal.status; proof='Latest refocus seed can become the next active goal before deep thinking.' },
     [ordered]@{ step='recent_thought_repetition_pattern'; result=$recentThoughtRepetitionPattern.repeat_detected; proof='Recent cycles are scanned for repeated topic/task before next-task selection.' },
     [ordered]@{ step='short_term_mind_state'; result=$shortTermMindState.status; proof='Active thought is kept as short-term mind state; completed candidate routes to existing multi-source warehouse/throat when available.' },
     [ordered]@{ step='short_term_state_to_next_task_router'; result=$shortTermStateToNextTaskRouter.selected_next_task; proof='Next useful task is selected from short-term state, compact memory signal, and existing warehouse route.' },
@@ -1582,7 +1631,7 @@ $proof=[ordered]@{
   validator_result=[ordered]@{ runner_self_check='PASS_RUNNER_GENERATED_SINGLE_SANDBOX_PROOF'; external_validator_expected='validators/validate_autonomous_inner_motor_organ_contract.ps1 -SandboxProofPath <proof>; validators/validate_autonomous_inner_motor_mind_logic_wiring_v1.ps1 -ProofPath <proof>; validators/validate_autonomous_inner_motor_action_decision_wiring_v1.ps1 -ProofPath <proof>' }
 }
 Write-CleanJson $proofPath $proof 80
-$proofPackRequiredFiles=@('SANDBOX_EXPLORATION_PROOF.json','mind_logic_frame.json','action_decision_packet.json','anti_repeat_guard.json','memory_to_next_path_reuse_gate.json','mental_frontier_expansion_gate.json','mental_frontier_router.json','selective_compact_memory_retrieval.json','next_build_task_decision_spine.json','recent_thought_repetition_pattern.json','short_term_mind_state.json','short_term_state_to_next_task_router.json','refocus_to_new_thought_seed.json','frontier_to_build_task_router.json','build_task_contract_execution_gate.json','build_task_bounded_executor.json')
+$proofPackRequiredFiles=@('SANDBOX_EXPLORATION_PROOF.json','mind_logic_frame.json','action_decision_packet.json','anti_repeat_guard.json','memory_to_next_path_reuse_gate.json','mental_frontier_expansion_gate.json','mental_frontier_router.json','selective_compact_memory_retrieval.json','next_build_task_decision_spine.json','new_thought_seed_to_active_goal.json','recent_thought_repetition_pattern.json','short_term_mind_state.json','short_term_state_to_next_task_router.json','refocus_to_new_thought_seed.json','frontier_to_build_task_router.json','build_task_contract_execution_gate.json','build_task_bounded_executor.json')
 if($cycleWakeArtifactsWritten){ $proofPackRequiredFiles += @('innate_reflex_bootload.json','default_wake_reflexes.json') }
 $proofPackOptionalSidecars=@('memory_recall_filter.json','contradiction_resolution.json','hypothesis_test_result.json','deep_source_answer_request.json','memory_filter_for_answer.json','route_request_packet.json','source_authority_route_decision.json','deep_source_answer_assimilation.json','mind_delta_acceptance_decision.json')
 $proofPackFiles=@()

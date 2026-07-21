@@ -1,30 +1,30 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-21T20:07:51.7774117+04:00",
+    "checked_at":  "2026-07-21T20:19:26.9589657+04:00",
     "branch":  "main",
-    "observed_head":  "832f2e8e7c0597ff6fb69b92ff94338e5d62be95",
-    "subject_head":  "832f2e8e7c0597ff6fb69b92ff94338e5d62be95",
+    "observed_head":  "cfd0474c981f324f5b27a0f326485bbc8d0bbac1",
+    "subject_head":  "cfd0474c981f324f5b27a0f326485bbc8d0bbac1",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
                           "AGENT_BUILDER_MIND_REPAIR_PRIORITY_PLAN_V1.md",
                           "AGENT_BUILDER_SELF_NOTEBOOK.md",
-                          "operations/autonomous_inner_motor/reports/REPEAT_TO_REFOCUS_ROUTER_V1_ACCEPTANCE.json",
+                          "operations/autonomous_inner_motor/reports/REFOCUS_TO_NEW_THOUGHT_SEED_V1_ACCEPTANCE.json",
                           "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "tests/self_development/REPEAT_TO_REFOCUS_ROUTER_V1_PROOF.json",
-                          "validators/validate_repeat_to_refocus_router_v1.ps1"
+                          "tests/self_development/REFOCUS_TO_NEW_THOUGHT_SEED_V1_PROOF.json",
+                          "validators/validate_refocus_to_new_thought_seed_v1.ps1"
                       ],
     "structural_paths":  [
-                             "operations/autonomous_inner_motor/reports/REPEAT_TO_REFOCUS_ROUTER_V1_ACCEPTANCE.json",
+                             "operations/autonomous_inner_motor/reports/REFOCUS_TO_NEW_THOUGHT_SEED_V1_ACCEPTANCE.json",
                              "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
-                             "tests/self_development/REPEAT_TO_REFOCUS_ROUTER_V1_PROOF.json",
-                             "validators/validate_repeat_to_refocus_router_v1.ps1"
+                             "tests/self_development/REFOCUS_TO_NEW_THOUGHT_SEED_V1_PROOF.json",
+                             "validators/validate_refocus_to_new_thought_seed_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -36,8 +36,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2285,
-                                    "sha256":  "5428c716d3ec844e5b9d57be54eeceed8d47c0c71ff037a46ec66a0ac3f50d3c"
+                                    "structural_file_count":  2288,
+                                    "sha256":  "90dc4acfdc13264bb1e794f56d506cbee7ee72795b98fe4d2a9e0fe846e0c0a8"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -63,12 +63,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  153,
-                         "structural_path_count":  2285,
+                         "structural_path_count":  2288,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-21T20:08:23.2945991+04:00"
+    "refreshed_at":  "2026-07-21T20:19:58.4675674+04:00"
 }
