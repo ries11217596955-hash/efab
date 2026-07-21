@@ -1,0 +1,120 @@
+{
+    "schema":  "live_observation_5min_thought_audit_v2_after_refocus_and_dynamic_budget",
+    "status":  "PASS_LIVE_OBSERVATION_5MIN_THOUGHT_AUDIT_V2_AFTER_REFOCUS_AND_DYNAMIC_BUDGET",
+    "checked_at":  "2026-07-21T17:17:48.6705647Z",
+    "launch":  {
+                   "observation_root":  ".runtime/live_observation_runs/live_observation_v2_5min_20260721_171043",
+                   "live_trial_summary":  ".runtime/live_trials/agent_life_5min_20260721_211043/LIVE_TRIAL_SUMMARY.json",
+                   "cycles":  [
+                                  "aimo_20260721_211045",
+                                  "aimo_20260721_211252",
+                                  "aimo_20260721_211320",
+                                  "aimo_20260721_211348",
+                                  "aimo_20260721_211417",
+                                  "aimo_20260721_211445",
+                                  "aimo_20260721_211513",
+                                  "aimo_20260721_211542"
+                              ],
+                   "duration_seconds":  325,
+                   "boundary":  {
+                                    "sandbox_exploration":  true,
+                                    "memory_ingestion_mode":  "QueueOnly",
+                                    "action_execution_allowed":  false,
+                                    "external_access_allowed":  false,
+                                    "codex_allowed":  false,
+                                    "web_allowed":  false,
+                                    "git_mutation_allowed":  false,
+                                    "repair_execution_allowed":  false
+                                }
+               },
+    "observations":  {
+                         "cycle_count":  8,
+                         "active_goal_sources":  [
+                                                     {
+                                                         "source":  "SELF_BUILD_INTERNAL_SEED",
+                                                         "count":  1
+                                                     },
+                                                     {
+                                                         "source":  "REFOCUS_THOUGHT_SEED_ACTIVE_GOAL",
+                                                         "count":  7
+                                                     }
+                                                 ],
+                         "unique_goal_count":  2,
+                         "budgets":  [
+                                         {
+                                             "budget":  "4",
+                                             "count":  1
+                                         },
+                                         {
+                                             "budget":  "5",
+                                             "count":  7
+                                         }
+                                     ],
+                         "selected_counts":  [
+                                                 {
+                                                     "selected":  "4",
+                                                     "count":  1
+                                                 },
+                                                 {
+                                                     "selected":  "5",
+                                                     "count":  7
+                                                 }
+                                             ],
+                         "next_tasks":  [
+                                            {
+                                                "next":  "REPEAT_TO_REFOCUS_ROUTER_V1",
+                                                "count":  8
+                                            }
+                                        ],
+                         "ref_set_count":  2,
+                         "repeat_count":  8,
+                         "active_reflex_counts":  [
+                                                      {
+                                                          "count":  "5",
+                                                          "cycles":  8
+                                                      }
+                                                  ],
+                         "trace_steps":  [
+                                             {
+                                                 "steps":  "20",
+                                                 "cycles":  8
+                                             }
+                                         ],
+                         "safety":  {
+                                        "any_executed":  false,
+                                        "any_validator_ran":  false,
+                                        "any_git":  false,
+                                        "any_codex":  false,
+                                        "any_web":  false
+                                    }
+                     },
+    "interpretation":  {
+                           "improvements":  [
+                                                "Refocus seed was consumed as active goal in 7 of 8 cycles.",
+                                                "Dynamic memory retrieval budget changed count from fixed 7 to 4/5 depending on path.",
+                                                "Each cycle used 5 wake reflexes.",
+                                                "Each cycle had 20 decision trace steps.",
+                                                "Actions/external access remained blocked."
+                                            ],
+                           "remaining_loop":  "Agent still selected REPEAT_TO_REFOCUS_ROUTER_V1 in all 8 cycles and only produced 2 unique active goals / 2 ref sets.",
+                           "root_cause":  "Refocus mechanism changes route and memory count, but does not yet diversify the actual seed question enough. It keeps regenerating the same unexamined-assumption seed instead of decomposing into deeper subquestions or alternative lenses.",
+                           "depth_assessment":  "Mechanical depth improved to 20 trace steps and dynamic retrieval. Semantic depth remains shallow/repetitive."
+                       },
+    "external_access_decision":  {
+                                     "decision":  "NOT_YET",
+                                     "reason":  "The current bottleneck is internal seed diversification and question decomposition, not lack of external sources.",
+                                     "risk":  "If web/source access is enabled now, the agent may repeatedly search around the same weak question and create noisy intake instead of deeper thinking.",
+                                     "future_condition":  "Allow read-only external source search only after the agent can produce varied subquestions/lenses and explicitly mark source gaps.",
+                                     "future_shape":  "SOURCE_GAP_TO_READ_ONLY_WEB_QUERY_GATE_V1, not free web access and not action execution."
+                                 },
+    "recommended_next":  {
+                             "human":  "Teach the agent to split a repeated seed into several different subquestions/lenses and choose one that is not the previous seed.",
+                             "technical":  "REFOCUS_SEED_DIVERSIFICATION_V1 + THOUGHT_DEPTH_LADDER_V1"
+                         },
+    "boundary":  {
+                     "audit_only":  true,
+                     "runtime_launched_by_audit":  false,
+                     "active_memory_mutated_by_audit":  false,
+                     "no_repo_mutation_except_report_notebook_validator_proof":  true
+                 }
+}
