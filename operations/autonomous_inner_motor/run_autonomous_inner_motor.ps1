@@ -981,6 +981,82 @@ function New-FrontierToBuildTaskRouter($RunId,$ShortTermStateToNextTaskRouter,$S
     }
   }
 }
+function New-BuildTaskContractExecutionGate($RunId,$FrontierToBuildTaskRouter,$Repo,$ProcessCount){
+  $contract=$null
+  if($FrontierToBuildTaskRouter -and $FrontierToBuildTaskRouter.contract){ $contract=$FrontierToBuildTaskRouter.contract }
+  $errors=@()
+  $warnings=@()
+  if(-not $contract){ $errors += 'CONTRACT_MISSING' }
+  if($contract){
+    if([string]::IsNullOrWhiteSpace([string]$contract.task_id)){ $errors += 'TASK_ID_MISSING' }
+    if($contract.task_type -ne 'BUILD_TASK_CONTRACT'){ $errors += 'TASK_TYPE_NOT_BUILD_TASK_CONTRACT' }
+    if([string]::IsNullOrWhiteSpace([string]$contract.validator)){ $errors += 'VALIDATOR_MISSING' }
+    elseif($contract.validator -notlike 'validators/*'){ $errors += 'VALIDATOR_OUTSIDE_VALIDATORS_DIR' }
+    if([string]::IsNullOrWhiteSpace([string]$contract.proof)){ $errors += 'PROOF_MISSING' }
+    elseif($contract.proof -notlike 'tests/self_development/*'){ $errors += 'PROOF_OUTSIDE_SELF_DEVELOPMENT_TESTS' }
+    if([string]::IsNullOrWhiteSpace([string]$contract.acceptance_report)){ $errors += 'ACCEPTANCE_REPORT_MISSING' }
+    elseif($contract.acceptance_report -notlike 'operations/autonomous_inner_motor/reports/*'){ $errors += 'ACCEPTANCE_REPORT_OUTSIDE_AUTONOMOUS_REPORTS' }
+    foreach($p in @($contract.files_forbidden_to_write)){
+      foreach($w in @($contract.files_allowed_to_write)){
+        if(-not [string]::IsNullOrWhiteSpace([string]$p) -and [string]$w -like ([string]$p + '*')){ $errors += ('FORBIDDEN_WRITE_OVERLAP:' + [string]$w) }
+      }
+    }
+    foreach($w in @($contract.files_allowed_to_write)){
+      if([string]$w -like '.runtime/active_compact_semantic_memory_v1*'){ $errors += ('ACTIVE_MEMORY_WRITE_FORBIDDEN:' + [string]$w) }
+      if([string]$w -like 'operations/autonomous_inner_motor/start_agent_life_v1.ps1'){ $errors += 'CANONICAL_LAUNCHER_WRITE_FORBIDDEN' }
+      if([string]$w -like 'operations/autonomous_inner_motor/run_continuous_agent_runtime_v1_lab.ps1'){ $errors += 'RAM_LAB_RUNNER_WRITE_FORBIDDEN' }
+    }
+    foreach($r in @($contract.files_to_read)){
+      if(-not [string]::IsNullOrWhiteSpace([string]$r) -and -not(Test-Path -LiteralPath ([string]$r))){ $warnings += ('READ_FILE_NOT_FOUND:' + [string]$r) }
+    }
+  }
+  if($ProcessCount -ne 0){ $errors += ('PROCESS_COUNT_NOT_ZERO:' + [string]$ProcessCount) }
+  $repoClean=$false
+  if($Repo -and $Repo.status_count -eq 0 -and $Repo.ahead -eq 0 -and $Repo.behind -eq 0){ $repoClean=$true }
+  if(-not $repoClean){ if($contract -and $contract.execution_allowed -eq $true){ $errors += 'REPO_NOT_CLEAN_OR_REMOTE_DELTA' } else { $warnings += 'REPO_NOT_CLEAN_BUT_CONTRACT_NOT_AUTHORIZED' } }
+  $decision='BLOCKED_CONTRACT_EXECUTION_NOT_AUTHORIZED'
+  if($errors.Count -gt 0){ $decision='BLOCKED_EXECUTION_GATE_ERRORS' }
+  elseif($contract -and $contract.execution_allowed -eq $true){ $decision='READY_FOR_BOUNDED_EXECUTION_PREFLIGHT_ONLY' }
+  $effectiveAllowed=($decision -eq 'READY_FOR_BOUNDED_EXECUTION_PREFLIGHT_ONLY')
+  return [ordered]@{
+    schema='build_task_contract_execution_gate_v1'
+    status='PASS_BUILD_TASK_CONTRACT_EXECUTION_GATE_V1'
+    run_id=$RunId
+    gate_decision=$decision
+    effective_execution_allowed=[bool]$effectiveAllowed
+    auto_execution_performed=$false
+    reason=if($decision -eq 'BLOCKED_CONTRACT_EXECUTION_NOT_AUTHORIZED'){ 'contract.execution_allowed is false; gate proves safe block, not execution' } elseif($decision -eq 'BLOCKED_EXECUTION_GATE_ERRORS'){ 'contract or preflight errors block execution' } else { 'contract passed static gate; bounded execution would still require explicit executor slice' }
+    contract_task_id=if($contract){$contract.task_id}else{$null}
+    contract_validator=if($contract){$contract.validator}else{$null}
+    contract_proof=if($contract){$contract.proof}else{$null}
+    contract_acceptance_report=if($contract){$contract.acceptance_report}else{$null}
+    checked_surfaces=[ordered]@{
+      repo_clean=$repoClean
+      process_count=$ProcessCount
+      forbidden_write_overlap_count=@($errors | Where-Object { $_ -like 'FORBIDDEN_WRITE_OVERLAP:*' }).Count
+      read_warnings=@($warnings)
+      error_count=$errors.Count
+    }
+    allowed_files_snapshot=if($contract){@($contract.files_allowed_to_write)}else{@()}
+    forbidden_files_snapshot=if($contract){@($contract.files_forbidden_to_write)}else{@()}
+    errors=@($errors)
+    warnings=@($warnings)
+    next_required_step=if($effectiveAllowed){'BUILD_TASK_BOUNDED_EXECUTOR_V1'}else{'KEEP_CONTRACT_PENDING_UNTIL_EXECUTION_AUTHORITY_EXISTS'}
+    boundary=[ordered]@{
+      gate_only=$true
+      static_validation_only=$true
+      execution_allowed=[bool]$effectiveAllowed
+      auto_execution_performed=$false
+      no_file_write_by_gate=$true
+      no_repo_mutation_by_gate=$true
+      no_new_store_created=$true
+      direct_active_memory_write=$false
+      school_launch_allowed=$false
+      codex_launch_allowed=$false
+      web_launch_allowed=$false
+    }
+  }
+}
 $repo=Get-RepoState
 $memoryBefore=Get-ActiveMemoryState
 $school=Get-SchoolState
@@ -1240,9 +1316,12 @@ Write-CleanJson $shortTermStateToNextTaskRouterPath $shortTermStateToNextTaskRou
 $frontierToBuildTaskRouterPath = Join-Path $runRoot 'frontier_to_build_task_router.json'
 $frontierToBuildTaskRouter = New-FrontierToBuildTaskRouter $runId $shortTermStateToNextTaskRouter $shortTermMindState $decisionSpine $selectiveCompactMemoryRetrieval $mentalFrontierRouter
 Write-CleanJson $frontierToBuildTaskRouterPath $frontierToBuildTaskRouter 60
+$buildTaskContractExecutionGatePath = Join-Path $runRoot 'build_task_contract_execution_gate.json'
+$buildTaskContractExecutionGate = New-BuildTaskContractExecutionGate $runId $frontierToBuildTaskRouter $repo 0
+Write-CleanJson $buildTaskContractExecutionGatePath $buildTaskContractExecutionGate 50
 $proofPackManifestPath = Join-Path $runRoot 'sandbox_proof_pack_manifest.json'
 
-$filesWritten=@($proofPath,$mindLogicPath,$actionDecisionPath,$antiRepeatGuardPath,$memoryToNextPathReuseGatePath,$mentalFrontierExpansionGatePath,$mentalFrontierRouterPath,$selectiveCompactMemoryRetrievalPath,$decisionSpinePath,$shortTermMindStatePath,$shortTermStateToNextTaskRouterPath,$frontierToBuildTaskRouterPath,$proofPackManifestPath)
+$filesWritten=@($proofPath,$mindLogicPath,$actionDecisionPath,$antiRepeatGuardPath,$memoryToNextPathReuseGatePath,$mentalFrontierExpansionGatePath,$mentalFrontierRouterPath,$selectiveCompactMemoryRetrievalPath,$decisionSpinePath,$shortTermMindStatePath,$shortTermStateToNextTaskRouterPath,$frontierToBuildTaskRouterPath,$buildTaskContractExecutionGatePath,$proofPackManifestPath)
 if($cycleWakeArtifactsWritten){ $filesWritten += @($innateReflexBootloadPath,$defaultWakeReflexesPath) }
 if($lifeWorkingMemoryCreated){ $filesWritten += $lifeWorkingMemoryPath }
 $proof=[ordered]@{
@@ -1279,6 +1358,7 @@ $proof=[ordered]@{
   short_term_mind_state=$shortTermMindState
   short_term_state_to_next_task_router=$shortTermStateToNextTaskRouter
   frontier_to_build_task_router=$frontierToBuildTaskRouter
+  build_task_contract_execution_gate=$buildTaskContractExecutionGate
   policy_snapshot=[ordered]@{ allowed_modes=$policy.allowed_modes; disabled_modes=$policy.disabled_modes; source_ladder=$policy.source_ladder; ports=$policy.ports }
   self_question_trace=$cycles
   cycles=$cycles
@@ -1301,6 +1381,7 @@ $proof=[ordered]@{
     [ordered]@{ step='short_term_mind_state'; result=$shortTermMindState.status; proof='Active thought is kept as short-term mind state; completed candidate routes to existing multi-source warehouse/throat when available.' },
     [ordered]@{ step='short_term_state_to_next_task_router'; result=$shortTermStateToNextTaskRouter.selected_next_task; proof='Next useful task is selected from short-term state, compact memory signal, and existing warehouse route.' },
     [ordered]@{ step='frontier_to_build_task_router'; result=$frontierToBuildTaskRouter.contract.task_id; proof='Selected frontier is converted into a bounded build task contract with files, validator, proof, and execution disabled.' },
+    [ordered]@{ step='build_task_contract_execution_gate'; result=$buildTaskContractExecutionGate.gate_decision; proof='Build-task contract passed through static execution gate; no execution is performed in this slice.' },
     [ordered]@{ step='select_next'; result=$selected.path; proof='deep recursive thinking and self-learning atom loop are the next bottleneck for thinking quality.' }
   )
   selected_next_path=$selected
@@ -1313,7 +1394,7 @@ $proof=[ordered]@{
   validator_result=[ordered]@{ runner_self_check='PASS_RUNNER_GENERATED_SINGLE_SANDBOX_PROOF'; external_validator_expected='validators/validate_autonomous_inner_motor_organ_contract.ps1 -SandboxProofPath <proof>; validators/validate_autonomous_inner_motor_mind_logic_wiring_v1.ps1 -ProofPath <proof>; validators/validate_autonomous_inner_motor_action_decision_wiring_v1.ps1 -ProofPath <proof>' }
 }
 Write-CleanJson $proofPath $proof 80
-$proofPackRequiredFiles=@('SANDBOX_EXPLORATION_PROOF.json','mind_logic_frame.json','action_decision_packet.json','anti_repeat_guard.json','memory_to_next_path_reuse_gate.json','mental_frontier_expansion_gate.json','mental_frontier_router.json','selective_compact_memory_retrieval.json','next_build_task_decision_spine.json','short_term_mind_state.json','short_term_state_to_next_task_router.json','frontier_to_build_task_router.json')
+$proofPackRequiredFiles=@('SANDBOX_EXPLORATION_PROOF.json','mind_logic_frame.json','action_decision_packet.json','anti_repeat_guard.json','memory_to_next_path_reuse_gate.json','mental_frontier_expansion_gate.json','mental_frontier_router.json','selective_compact_memory_retrieval.json','next_build_task_decision_spine.json','short_term_mind_state.json','short_term_state_to_next_task_router.json','frontier_to_build_task_router.json','build_task_contract_execution_gate.json')
 if($cycleWakeArtifactsWritten){ $proofPackRequiredFiles += @('innate_reflex_bootload.json','default_wake_reflexes.json') }
 $proofPackOptionalSidecars=@('memory_recall_filter.json','contradiction_resolution.json','hypothesis_test_result.json','deep_source_answer_request.json','memory_filter_for_answer.json','route_request_packet.json','source_authority_route_decision.json','deep_source_answer_assimilation.json','mind_delta_acceptance_decision.json')
 $proofPackFiles=@()

@@ -1,0 +1,33 @@
+{
+    "schema":  "build_task_contract_execution_gate_v1_acceptance",
+    "status":  "ACCEPTED_BUILD_TASK_CONTRACT_EXECUTION_GATE_V1",
+    "accepted_at":  "2026-07-21T09:24:39.8511095Z",
+    "proof":  "tests/self_development/BUILD_TASK_CONTRACT_EXECUTION_GATE_V1_PROOF.json",
+    "gate_decision":  "BLOCKED_CONTRACT_EXECUTION_NOT_AUTHORIZED",
+    "effective_execution_allowed":  false,
+    "auto_execution_performed":  false,
+    "may_claim":  "Agent can pass a build-task contract through a static execution gate and safely block execution when authority is absent.",
+    "may_not_claim":  [
+                          "bounded executor implemented",
+                          "repo patch executed by agent",
+                          "auto-patching allowed",
+                          "RAM infinite life complete",
+                          "school launched",
+                          "active compact memory updated"
+                      ],
+    "boundary":  {
+                     "runtime_launched_by_validator":  true,
+                     "cycles":  2,
+                     "gate_only":  true,
+                     "static_validation_only":  true,
+                     "execution_allowed":  false,
+                     "auto_execution_performed":  false,
+                     "memory_ingestion_mode":  "QueueOnly",
+                     "active_memory_mutated":  false,
+                     "direct_active_memory_write":  false,
+                     "no_new_store_created":  true,
+                     "school_launched":  false,
+                     "codex_launched":  false,
+                     "web_launched":  false
+                 }
+}
