@@ -1,0 +1,34 @@
+{
+    "schema":  "build_task_bounded_executor_v1_acceptance",
+    "status":  "ACCEPTED_BUILD_TASK_BOUNDED_EXECUTOR_V1",
+    "accepted_at":  "2026-07-21T09:36:43.7255489Z",
+    "proof":  "tests/self_development/BUILD_TASK_BOUNDED_EXECUTOR_V1_PROOF.json",
+    "execution_status":  "NOT_EXECUTED_GATE_BLOCKED",
+    "gate_decision":  "BLOCKED_CONTRACT_EXECUTION_NOT_AUTHORIZED",
+    "executed_files_count":  0,
+    "validator_ran":  false,
+    "may_claim":  "Agent has a bounded executor shell that respects the execution gate and performs no repo mutation when gate blocks.",
+    "may_not_claim":  [
+                          "authorized write execution implemented",
+                          "validator execution implemented",
+                          "repo patch executed by agent",
+                          "auto-patching allowed",
+                          "RAM infinite life complete",
+                          "school launched",
+                          "active compact memory updated"
+                      ],
+    "boundary":  {
+                     "runtime_launched_by_validator":  true,
+                     "cycles":  2,
+                     "executor_only":  true,
+                     "respects_gate":  true,
+                     "execution_performed":  false,
+                     "memory_ingestion_mode":  "QueueOnly",
+                     "active_memory_mutated":  false,
+                     "direct_active_memory_write":  false,
+                     "no_new_store_created":  true,
+                     "school_launched":  false,
+                     "codex_launched":  false,
+                     "web_launched":  false
+                 }
+}
