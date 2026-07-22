@@ -1,22 +1,27 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-22T10:46:06.2748750+04:00",
+    "checked_at":  "2026-07-22T11:26:59.8600279+04:00",
     "branch":  "main",
-    "observed_head":  "4cf5fd79475dddb13fe109c29e3c6cc78c2d27fa",
-    "subject_head":  "4cf5fd79475dddb13fe109c29e3c6cc78c2d27fa",
+    "observed_head":  "118eed424edaf00074fa9254e335fe10c73e6b3e",
+    "subject_head":  "118eed424edaf00074fa9254e335fe10c73e6b3e",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
                           "AGENT_BUILDER_SELF_NOTEBOOK.md",
+                          "operations/school/run_agent_school.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
-                          "reports/self_development/branch_agnostic_map_refresh_result.json"
+                          "reports/self_development/branch_agnostic_map_refresh_result.json",
+                          "tests/self_development/SCHOOL_CANONICAL_ENTRYPOINT_CONTRACT_REPAIR_V1_PROOF.json",
+                          "validators/validate_school_canonical_entrypoint_contract_repair_v1.ps1"
                       ],
     "structural_paths":  [
-
+                             "operations/school/run_agent_school.ps1",
+                             "tests/self_development/SCHOOL_CANONICAL_ENTRYPOINT_CONTRACT_REPAIR_V1_PROOF.json",
+                             "validators/validate_school_canonical_entrypoint_contract_repair_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -29,7 +34,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  2311,
-                                    "sha256":  "d4506296925cb3dce2e61b7d8aefaa92cf6336f6a3cc17be8d180fec50e61280"
+                                    "sha256":  "927d10ea17ac25ad3e3f395ca361d4f35c4ad91c650e7942525b1ab0220c0632"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -62,5 +67,5 @@
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-22T10:46:38.3511773+04:00"
+    "refreshed_at":  "2026-07-22T11:27:31.8594691+04:00"
 }

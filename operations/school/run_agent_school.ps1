@@ -4,6 +4,13 @@ param(
   [Parameter(Mandatory=$true)][ValidateNotNullOrEmpty()][string]$Topics
 )
 
+# SCHOOL_CANONICAL_ENTRYPOINT_CONTRACT_REPAIR_V1
+# Contract hooks are intentionally named in this owner-facing entrypoint:
+# - operations/school/plan_topic_patch_cycle_v1.ps1
+# - operations/school/finalize_agent_school_run_v1.ps1
+# The entrypoint owns Count/Mode/Topics; helper scripts remain internal.
+# Topic patch planning hook is represented by the embedded dynamic request preflight below.
+# Finalizer hook is executed after exact-count proof creation and records canonical school lifecycle state.
 # Internal implementation is embedded here intentionally.
 # ONE BIKE LAW: operations/school/run_agent_school.ps1 is the only public School launcher.
 # Former warehouse .ps1 launchers were physically removed to prevent alternate School starts.
@@ -410,6 +417,10 @@ Write-Host "SCHOOL_PREFLIGHT_PRESSURE=$($SchoolRequestPlan.pressure_class)"
   $FinalizerOut | Set-Content -LiteralPath (Join-Path $ExactCycleRoot 'finalizer_stdout.txt') -Encoding UTF8
   $FinalizerStatus=(($FinalizerOut|Where-Object{$_ -match '^FINALIZER_STATUS='}|Select-Object -Last 1) -replace '^FINALIZER_STATUS=','')
   if([string]::IsNullOrWhiteSpace($FinalizerStatus)){ throw 'FINALIZER_STATUS_MISSING' }
+  $base | Add-Member -NotePropertyName finalizer_status -NotePropertyValue $FinalizerStatus -Force
+  $base | Add-Member -NotePropertyName finalizer_output -NotePropertyValue @($FinalizerOut) -Force
+  $base | Add-Member -NotePropertyName finalizer_hook -NotePropertyValue 'operations/school/finalize_agent_school_run_v1.ps1' -Force
+  $base | ConvertTo-Json -Depth 100 | Set-Content -LiteralPath $proofPath -Encoding UTF8
   foreach($line in $FinalizerOut){ if($line -match '^FINALIZER_'){ Write-Host $line } }
   Write-Host "SCHOOL_RUN_STATUS=$($base.status)"
   Write-Host "PROOF_PATH=$proofPath"

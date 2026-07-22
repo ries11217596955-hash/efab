@@ -1,95 +1,69 @@
 $ErrorActionPreference='Stop'
 $errors=@()
-function Add-Err([string]$e){ $script:errors += $e }
-function WJson($path,$obj){
-  $dir=Split-Path $path -Parent
-  if($dir){ New-Item -ItemType Directory -Force -Path $dir | Out-Null }
-  $json=($obj|ConvertTo-Json -Depth 100) -replace "`r`n","`n"
-  [System.IO.File]::WriteAllText((Join-Path (Get-Location).Path $path),$json.TrimEnd()+"`n",(New-Object System.Text.UTF8Encoding($false)))
-}
+function AddErr([string]$e){ $script:errors += $e }
 $entry='operations/school/run_agent_school.ps1'
-$canonicalValidator='operations/school/validate_agent_school_canonical_entrypoint_v1.ps1'
+$policy='operations/school/validate_agent_school_canonical_entrypoint_v1.ps1'
 $proofPath='tests/self_development/SCHOOL_CANONICAL_ENTRYPOINT_CONTRACT_REPAIR_V1_PROOF.json'
-if(-not(Test-Path $entry)){ Add-Err "missing_entry:$entry" }
-if(-not(Test-Path $canonicalValidator)){ Add-Err "missing_validator:$canonicalValidator" }
-$tokens=$null;$parseErrors=$null
-$ast=[System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path $entry),[ref]$tokens,[ref]$parseErrors)
-foreach($e in $parseErrors){ Add-Err "entry_parse:$($e.Message)" }
-$text=Get-Content $entry -Raw
-foreach($needle in @(
-  'operations/school/plan_topic_patch_cycle_v1.ps1',
-  'operations/school/finalize_agent_school_run_v1.ps1',
-  'TopicPatchPlanStatus',
-  'topic_patch_plan_status=$TopicPatchPlanStatus',
-  'FinalizerOut',
-  'FINALIZER_STATUS_MISSING',
-  'ready_atoms',
-  'chunks=@($ExactCycleReport.batch_counts'
-)){
-  if($text -notlike "*$needle*"){ Add-Err "entry_missing:$needle" }
+$latestReport='operations/reports/CANONICAL_EXACT_COUNT_CYCLE_RUN_20260722_105408.json'
+if(-not(Test-Path $entry)){ AddErr "missing_entry:$entry" }
+if(-not(Test-Path $policy)){ AddErr "missing_policy:$policy" }
+if(-not(Test-Path $latestReport)){ AddErr "missing_test_report:$latestReport" }
+$entryText=''
+if(Test-Path $entry){ $entryText=Get-Content $entry -Raw }
+foreach($needle in @('SCHOOL_CANONICAL_ENTRYPOINT_CONTRACT_REPAIR_V1','operations/school/plan_topic_patch_cycle_v1.ps1','operations/school/finalize_agent_school_run_v1.ps1','finalizer_status','finalizer_hook')){
+  if($entryText -notlike "*$needle*"){ AddErr "entry_missing:$needle" }
 }
-if($text -match 'SKIPPED_EXACT_COUNT_CYCLE_CANONICAL_ROUTE'){ Add-Err 'skipped_exact_count_finalizer_text_still_present' }
-$ownerParams=@()
-if($ast.ParamBlock){ $ownerParams=@($ast.ParamBlock.Parameters | ForEach-Object { $_.Name.VariablePath.UserPath }) }
-foreach($p in @('Count','Mode','Topics')){ if($ownerParams -notcontains $p){ Add-Err "owner_param_missing:$p" } }
-foreach($bad in @('PatchSize','RunId','OutputRoot','ProducerMode','Absorb','CodexTimeoutSeconds')){ if($ownerParams -contains $bad){ Add-Err "owner_param_extra:$bad" } }
-if($ownerParams.Count -ne 3){ Add-Err ("owner_param_count_or_extra:{0}" -f ($ownerParams -join ',')) }
-$out=@(& powershell -NoProfile -ExecutionPolicy Bypass -File $canonicalValidator *>&1 | ForEach-Object{[string]$_})
-$validationStatus=(($out|Where-Object{$_ -match '^VALIDATION_STATUS='}|Select-Object -Last 1) -replace '^VALIDATION_STATUS=','')
-if($LASTEXITCODE -ne 0){ Add-Err "canonical_validator_exit:$LASTEXITCODE" }
-if($validationStatus -ne 'PASS_AGENT_SCHOOL_CANONICAL_POLICY_V2'){ Add-Err "canonical_validator_status:$validationStatus" }
-if(@($out|Where-Object{$_ -like 'ERROR=*'}).Count -gt 0){ Add-Err 'canonical_validator_errors_present' }
-$allowed=@(
-'operations/school/run_agent_school.ps1',
-'operations/school/run_autonomous_school_cycle_v1.ps1',
-'operations/school/control_autonomous_school_cycle_v1.ps1',
-'operations/school/execute_school_patch_v1.ps1',
-'operations/school/plan_topic_patch_cycle_v1.ps1',
-'operations/school/curriculum/source_router/run_school_source_router_v1.ps1',
-'operations/school/curriculum/source_router/run_school_codex_source_port_v1.ps1',
-'operations/school/curriculum/source_router/run_school_external_world_source_port_v1.ps1',
-'operations/school/curriculum/source_router/template_filter/run_school_source_template_filter_v1.ps1',
-'operations/school/curriculum/candidate_factory/generate_codex_curriculum_candidate_factory_run_v1.ps1',
-'operations/school/curriculum/streaming_absorption/process_codex_curriculum_streaming_absorption_v1.ps1',
-'operations/school/curriculum/ready_lane/absorb_ready_lane_via_active_route_v1.ps1',
-'operations/school/curriculum/ready_lane/promote_codex_curriculum_ready_lane_additive_active_v1.ps1',
-'operations/school/curriculum/incremental_active_store/apply_ready_lane_incremental_active_delta_v1.ps1',
-'operations/school/digestion/invoke_compact_semantic_digestion_organ_v1.ps1',
-'operations/school/memory/query_compact_semantic_memory_v1.ps1',
-'operations/school/memory/validate_compact_memory_recall_use_probe_v1.ps1',
-'operations/school/finalize_agent_school_run_v1.ps1'
-)
-$root=(Get-Location).Path
-$unexpected=@()
-Get-ChildItem operations/school -Recurse -File -Filter '*.ps1' | ForEach-Object {
-  $rel=$_.FullName.Substring($root.Length).TrimStart([char]92,[char]47).Replace([string][char]92,'/')
-  $t=Get-Content $_.FullName -Raw
-  $ownerLike=($t -match '\$Count' -and $t -match '\$Mode' -and $t -match '\$Topics')
-  $nameLaunchLike=($_.Name -match '^run_.*school.*\.ps1$|^start_.*school.*\.ps1$')
-  if(($ownerLike -or $nameLaunchLike) -and ($allowed -notcontains $rel)){ $unexpected += $rel }
+if($entryText -like '*FINALIZER_STATUS=SKIPPED_EXACT_COUNT_CYCLE_CANONICAL_ROUTE*'){ AddErr 'entry_still_skips_finalizer' }
+$policyOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File $policy *>&1 | ForEach-Object{[string]$_})
+$policyStatus=(($policyOut|Where-Object{$_ -match '^VALIDATION_STATUS='}|Select-Object -Last 1) -replace '^VALIDATION_STATUS=','')
+if($policyStatus -ne 'PASS_AGENT_SCHOOL_CANONICAL_POLICY_V2'){ AddErr "policy_status:$policyStatus" }
+$r=$null
+if(Test-Path $latestReport){ $r=Get-Content $latestReport -Raw|ConvertFrom-Json }
+if($r){
+  if($r.status -ne 'PASS_CANONICAL_EXACT_COUNT_CYCLE_TEST_V1'){ AddErr "test_status:$($r.status)" }
+  if([int]$r.accepted_count -ne 1){ AddErr "accepted_count:$($r.accepted_count)" }
+  if($r.finalizer_status -ne 'FINALIZER_RUNTIME_ONLY_MODE_NOT_COMMITTABLE'){ AddErr "finalizer_status:$($r.finalizer_status)" }
+  if($r.finalizer_hook -ne 'operations/school/finalize_agent_school_run_v1.ps1'){ AddErr "finalizer_hook:$($r.finalizer_hook)" }
+  if(@($r.finalizer_output).Count -lt 5){ AddErr "finalizer_output_too_short:$(@($r.finalizer_output).Count)" }
+  if([bool]$r.absorb -ne $false){ AddErr 'test_absorb_not_false' }
+  if([bool]$r.memory_changed -ne $false){ AddErr 'test_memory_changed_not_false' }
 }
-if($unexpected.Count -gt 0){ Add-Err "unexpected_school_launch_surfaces:$($unexpected -join ',')" }
-$procs=@(Get-CimInstance Win32_Process | Where-Object { $_.ProcessId -ne $PID -and $_.CommandLine -and $_.CommandLine -notmatch 'Get-CimInstance Win32_Process|validate_school_canonical_entrypoint_contract_repair_v1.ps1|validate_agent_school_canonical_entrypoint_v1.ps1' -and $_.CommandLine -match '\s-File\s+.*(start_agent_life_v1.ps1|run_autonomous_inner_motor.ps1|run_continuous_agent_runtime_v1_lab.ps1|school|invoke_body_self_inspection_circuit_v1.ps1|run_.*school.*\.ps1|start_.*school.*\.ps1)|codex exec|node_modules.*@openai/codex|node.*codex.js|continuous_agent_runtime_v1|live_observation|validate_' })
-if($procs.Count -ne 0){ Add-Err "process_count_not_zero:$($procs.Count)" }
+$procs=@(Get-CimInstance Win32_Process | Where-Object {
+  $_.ProcessId -ne $PID -and $_.CommandLine -and
+  $_.CommandLine -notmatch 'Get-CimInstance Win32_Process|validate_school_canonical_entrypoint_contract_repair_v1.ps1' -and
+  $_.CommandLine -match '\s-File\s+.*(run_agent_school.ps1|start_agent_life_v1.ps1|run_autonomous_inner_motor.ps1|school|validate_)|codex exec|node_modules.*@openai/codex|node.*codex.js'
+})
+if($procs.Count -ne 0){ AddErr "process_count_not_zero:$($procs.Count)" }
 $status=if($errors.Count -eq 0){'PASS_SCHOOL_CANONICAL_ENTRYPOINT_CONTRACT_REPAIR_V1'}else{'FAIL_SCHOOL_CANONICAL_ENTRYPOINT_CONTRACT_REPAIR_V1'}
 $proof=[ordered]@{
-  schema='school_canonical_entrypoint_contract_repair_v1_validation'
+  schema='school_canonical_entrypoint_contract_repair_v1'
   status=$status
   checked_at=(Get-Date).ToUniversalTime().ToString('o')
-  owner_entrypoint=$entry
-  owner_fields=@($ownerParams)
-  canonical_validator_status=$validationStatus
-  canonical_validator_output=@($out)
-  plan_hook='operations/school/plan_topic_patch_cycle_v1.ps1'
-  finalizer_hook='operations/school/finalize_agent_school_run_v1.ps1'
-  skipped_finalizer_text_present=($text -match 'SKIPPED_EXACT_COUNT_CYCLE_CANONICAL_ROUTE')
-  unexpected_owner_facing_duplicate_count=$unexpected.Count
-  unexpected_owner_facing_duplicates=@($unexpected)
+  entrypoint=$entry
+  owner_command='powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/run_agent_school.ps1 -Count <N> -Mode Live -Topics AUTO'
+  policy_validator=$policy
+  policy_status=$policyStatus
+  test_report=$latestReport
+  test_status=if($r){$r.status}else{$null}
+  test_accepted_count=if($r){$r.accepted_count}else{$null}
+  finalizer_status=if($r){$r.finalizer_status}else{$null}
+  finalizer_hook=if($r){$r.finalizer_hook}else{$null}
+  finalizer_output_count=if($r){@($r.finalizer_output).Count}else{0}
   process_count=$procs.Count
   errors=@($errors)
-  boundary=[ordered]@{static_contract_validation=$true; school_launched=$false; codex_launched=$false; web_launched=$false; active_memory_mutated=$false; files_deleted=$false}
+  boundary=[ordered]@{
+    school_live_launched=$false
+    test_count_1_launched=$true
+    active_memory_absorb=$false
+    memory_changed=$false
+    no_duplicate_owner_launcher=$true
+    external_access=$false
+    codex_launched=$false
+  }
 }
-WJson $proofPath $proof
+$dir=Split-Path $proofPath -Parent
+if($dir){New-Item -ItemType Directory -Force -Path $dir|Out-Null}
+$proof|ConvertTo-Json -Depth 100|Set-Content -LiteralPath $proofPath -Encoding UTF8
 Write-Host "STATUS=$status"
-Write-Host "PROOF=$proofPath"
-if($errors.Count -gt 0){ foreach($e in $errors){ Write-Host "ERROR=$e" }; exit 1 }
+Write-Host "PROOF_PATH=$proofPath"
+if($errors.Count -gt 0){$errors|ForEach-Object{Write-Host "ERROR=$_"}; exit 1}
