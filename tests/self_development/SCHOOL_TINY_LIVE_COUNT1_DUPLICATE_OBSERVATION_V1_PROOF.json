@@ -1,0 +1,20 @@
+﻿{
+  "schema": "school_tiny_live_count1_duplicate_observation_v1",
+  "status": "BLOCKED_TINY_LIVE_PROOF_DUPLICATE_AND_REPO_DIRTY_FINALIZER",
+  "reports": [
+    "operations/reports/CANONICAL_EXACT_COUNT_CYCLE_RUN_20260722_114013.json",
+    "operations/reports/CANONICAL_EXACT_COUNT_CYCLE_RUN_20260722_114030.json"
+  ],
+  "observed_run_count": 2,
+  "accepted_count_each": 1,
+  "absorb": true,
+  "memory_changed": true,
+  "finalizer_hook": "operations/school/finalize_agent_school_run_v1.ps1",
+  "finalizer_status": "FINALIZER_RUNTIME_ONLY_REPO_DIRTY_BEFORE_SUMMARY",
+  "finalizer_blocker": "REPO_DIRTY_BEFORE_FINALIZER",
+  "root_cause": "repair validator process scan matched bridge/current validation too broadly and dirtied the repo before Live finalizer",
+  "validator_fix_applied_after_observation": true,
+  "launch_5000_allowed": false,
+  "next_required": "commit validator fix and rerun exactly one clean Count=1 Mode=Live proof"
+}
+
