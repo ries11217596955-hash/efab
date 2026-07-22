@@ -341,6 +341,14 @@ Write-Host "SCHOOL_PREFLIGHT_PRESSURE=$($SchoolRequestPlan.pressure_class)"
 # Single public School route: dynamic coverage/depth preflight, then embedded exact-count engine.
   $ExactCycleRunId="canonical_exact_count_cycle_{0}_{1}_{2}" -f $RunKind.ToLowerInvariant(),$TargetAccepted,(Get-Date -Format 'yyyyMMdd_HHmmss')
   $ExactCycleRoot=".runtime/canonical_exact_count_cycle/$ExactCycleRunId"
+  # Canonical contract hook: plan_topic_patch_cycle_v1.ps1 records the patch/ledger recovery contract.
+  # It does not change the owner-facing fields; Count/Mode/Topics remain the only public School inputs.
+  $TopicPatchPlanPath=Join-Path $ExactCycleRoot 'topic_patch_plan.json'
+  $TopicPatchLedgerPath=Join-Path $ExactCycleRoot 'patch_ledger.jsonl'
+  $TopicPatchPlanOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/plan_topic_patch_cycle_v1.ps1 -Count $TargetAccepted -Mode $Mode -Topics $RequestedTopics -RunId $ExactCycleRunId -DynamicSelectionPath $SchoolSelectionPath -OutputPath $TopicPatchPlanPath -LedgerPath $TopicPatchLedgerPath *>&1 | ForEach-Object{[string]$_})
+  $TopicPatchPlanOut | Set-Content -LiteralPath (Join-Path $ExactCycleRoot 'topic_patch_plan_stdout.txt') -Encoding UTF8
+  $TopicPatchPlanStatus=(($TopicPatchPlanOut|Where-Object{$_ -match '^TOPIC_PATCH_PLAN_STATUS='}|Select-Object -Last 1) -replace '^TOPIC_PATCH_PLAN_STATUS=','')
+  if($TopicPatchPlanStatus -notmatch '^PASS_'){ throw "TOPIC_PATCH_PLAN_FAILED:$TopicPatchPlanStatus" }
   $ExactCycleProducerMode=if($RunKind -eq 'Real'){'RunCodex'}else{'MockProducer'}
   $ExactCycleArgs=[ordered]@{ ProducerMode=$ExactCycleProducerMode; Count=$TargetAccepted; MicroBatchSize=100; Topics=$RequestedTopics; OutputRoot=$ExactCycleRoot; CodexTimeoutSeconds=300 }
   if($RunKind -eq 'Real'){
@@ -364,6 +372,8 @@ Write-Host "SCHOOL_PREFLIGHT_PRESSURE=$($SchoolRequestPlan.pressure_class)"
     run_kind=$RunKind
     public_mode=$Mode
     target_accepted=[int]$TargetAccepted
+    ready_atoms=[int]$ExactCycleReport.accepted_count
+    chunks=@($ExactCycleReport.batch_counts | ForEach-Object { [ordered]@{ candidate_count=[int]$_ } })
     requested_topics=$RequestedTopics
     owner_fields='Count,Mode,Topics; dynamic selection/request plan is internal and mandatory'
     route='ONE_PUBLIC_SCHOOL_LAUNCHER_EMBEDDED_ENGINE_V1'
@@ -388,17 +398,19 @@ Write-Host "SCHOOL_PREFLIGHT_PRESSURE=$($SchoolRequestPlan.pressure_class)"
     producer_exit_code=$ExactCycleReport.producer_exit_code
     api_invoked=$false
     runtime_ready=$false
-    school_preflight=[ordered]@{status='PASS_SCHOOL_DYNAMIC_REQUEST_PREFLIGHT_V1'; selection_status=$SchoolSelectionStatus; selection_path=$SchoolSelectionPath; request_plan_status=$SchoolPlanStatus; request_plan_path=$SchoolRequestPlanPath; topic_key=$SchoolRequestPlan.topic_key; current_depth=[int]$SchoolRequestPlan.current_depth; target_depth=[int]$SchoolRequestPlan.target_depth; depth_gap=[int]$SchoolRequestPlan.depth_gap; pressure_class=$SchoolRequestPlan.pressure_class}
+    school_preflight=[ordered]@{status='PASS_SCHOOL_DYNAMIC_REQUEST_PREFLIGHT_V1'; selection_status=$SchoolSelectionStatus; selection_path=$SchoolSelectionPath; request_plan_status=$SchoolPlanStatus; request_plan_path=$SchoolRequestPlanPath; topic_patch_plan_status=$TopicPatchPlanStatus; topic_patch_plan_path=$TopicPatchPlanPath; topic_patch_ledger_path=$TopicPatchLedgerPath; topic_key=$SchoolRequestPlan.topic_key; current_depth=[int]$SchoolRequestPlan.current_depth; target_depth=[int]$SchoolRequestPlan.target_depth; depth_gap=[int]$SchoolRequestPlan.depth_gap; pressure_class=$SchoolRequestPlan.pressure_class}
     boundary=if($RunKind -eq 'Real'){'Canonical Live uses the single public School launcher with embedded real Codex warehouse engine and absorption.'}else{'Canonical Test uses the single public School launcher with embedded mock warehouse engine and no absorption.'}
     no_fake_pass=$true
     no_hidden_failures=$true
     law='Owner launch uses one public School launcher with Count + Mode + Topics. Dynamic request preflight is mandatory. Count is exact and may be non-rounded. Embedded engine splits Count into micro-batches of 100 with partial final batch.'
   }
   $base | ConvertTo-Json -Depth 100 | Set-Content -LiteralPath $proofPath -Encoding UTF8
-  Write-Host 'FINALIZER_STATUS=SKIPPED_EXACT_COUNT_CYCLE_CANONICAL_ROUTE'
-  Write-Host 'FINALIZER_INTAKE_STATUS=SKIPPED_EXACT_COUNT_CYCLE_CANONICAL_ROUTE'
-  Write-Host 'FINALIZER_MERGE_QUEUE_STATUS=SKIPPED_EXACT_COUNT_CYCLE_CANONICAL_ROUTE'
-  Write-Host 'FINALIZER_MERGE_QUEUE_PROOF=SKIPPED_EXACT_COUNT_CYCLE_CANONICAL_ROUTE'
+  # Canonical contract hook: finalize_agent_school_run_v1.ps1 handles compact finalizer evidence/intake/merge policy.
+  $FinalizerOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/finalize_agent_school_run_v1.ps1 -ProofPath $proofPath *>&1 | ForEach-Object{[string]$_})
+  $FinalizerOut | Set-Content -LiteralPath (Join-Path $ExactCycleRoot 'finalizer_stdout.txt') -Encoding UTF8
+  $FinalizerStatus=(($FinalizerOut|Where-Object{$_ -match '^FINALIZER_STATUS='}|Select-Object -Last 1) -replace '^FINALIZER_STATUS=','')
+  if([string]::IsNullOrWhiteSpace($FinalizerStatus)){ throw 'FINALIZER_STATUS_MISSING' }
+  foreach($line in $FinalizerOut){ if($line -match '^FINALIZER_'){ Write-Host $line } }
   Write-Host "SCHOOL_RUN_STATUS=$($base.status)"
   Write-Host "PROOF_PATH=$proofPath"
 Write-Host "SCHOOL_RUN_REPORT=$proofPath"

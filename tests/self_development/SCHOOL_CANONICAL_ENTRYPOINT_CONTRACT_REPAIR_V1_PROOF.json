@@ -1,0 +1,43 @@
+{
+    "schema":  "school_canonical_entrypoint_contract_repair_v1_validation",
+    "status":  "PASS_SCHOOL_CANONICAL_ENTRYPOINT_CONTRACT_REPAIR_V1",
+    "checked_at":  "2026-07-22T06:46:00.5197836Z",
+    "owner_entrypoint":  "operations/school/run_agent_school.ps1",
+    "owner_fields":  [
+                         "Count",
+                         "Mode",
+                         "Topics"
+                     ],
+    "canonical_validator_status":  "PASS_AGENT_SCHOOL_CANONICAL_POLICY_V2",
+    "canonical_validator_output":  [
+                                       "VALIDATION_STATUS=PASS_AGENT_SCHOOL_CANONICAL_POLICY_V2",
+                                       "OWNER_FACING_ENTRYPOINT_COUNT=1",
+                                       "OWNER_ENTRYPOINT=operations/school/run_agent_school.ps1",
+                                       "OWNER_FIELDS=Count,Mode,Topics",
+                                       "MODE_VALUES=Test,Live",
+                                       "TOPICS_VALUES=AUTO_OR_COMMA_SEPARATED_TOPIC_KEYS",
+                                       "PATCH_SIZE_INTERNAL=1000",
+                                       "INTERNAL_HELPER_SURFACES_ALLOWED=14",
+                                       "SCHOOL_LIVE_MODE_IS_MEMORY_DIGEST_MODE_NOT_AGENT_RUNTIME=true",
+                                       "RUNTIME_READY=false"
+                                   ],
+    "plan_hook":  "operations/school/plan_topic_patch_cycle_v1.ps1",
+    "finalizer_hook":  "operations/school/finalize_agent_school_run_v1.ps1",
+    "skipped_finalizer_text_present":  false,
+    "unexpected_owner_facing_duplicate_count":  0,
+    "unexpected_owner_facing_duplicates":  [
+
+                                           ],
+    "process_count":  0,
+    "errors":  [
+
+               ],
+    "boundary":  {
+                     "static_contract_validation":  true,
+                     "school_launched":  false,
+                     "codex_launched":  false,
+                     "web_launched":  false,
+                     "active_memory_mutated":  false,
+                     "files_deleted":  false
+                 }
+}
