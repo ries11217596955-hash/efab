@@ -622,3 +622,7 @@ Added StageOnly installer path. Parser PASS; staging completed with all required
 ## 2026-07-26 — Bridge V2 StageOnly proof
 Added StageOnly installer path. Parser PASS; staging completed with all required files, token generation, path rewrite, and no live task/port mutation. Lab staging removed after proof capture. Clean-PC/VM proof blocked by unavailable hardware virtualization.
 
+
+## 2026-07-26 — Bridge priority and operator docs refresh
+Updated BRIDGE_OPERATOR_NOTEBOOK.md and bridge.config.example.json to current two-channel topology. Accepted order: Primary production channel first, independent Rescue second. Rescue is not compensation for an unstable Primary. Added hardening plan and current proof boundaries.
+
