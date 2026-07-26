@@ -2,12 +2,19 @@
     "status":  "ARTIFACT_VALIDATED",
     "created_at":  "2026-07-26T19:08:11.7111281Z",
     "archive":  "operations/bridge_recovery/releases/EFAB_BRIDGE_MIGRATION_PACK_v2_20260726.zip",
-    "archive_sha256":  "37DF0981B7355BB421C09F67A2AF2FB75E39AED2E169CE208E4B4F08C613B68D",
-    "file_count":  90,
+    "archive_sha256":  "F11BE5E8BD5BF70B929C9E72FC4D96A37CEED31CCA45FE1861CED0304934873E",
+    "file_count":  93,
     "contains_tokens":  false,
     "contains_primary_filesystem_api":  true,
     "contains_rescue":  true,
     "contains_ngrok_lifecycle":  true,
     "contains_reboot_proof":  true,
-    "new_pc_install":  "NOT_PROVEN"
+    "new_pc_install":  "NOT_PROVEN",
+    "contains_install_v2":  true,
+    "contains_validate_v2":  true,
+    "contains_recover_v2":  true,
+    "preflight_status":  "PREFLIGHT_PASS",
+    "files_changed_before_preflight_pass":  "NO",
+    "validator_current_live":  "PASS",
+    "validator_current_live_proof":  "operations/bridge_recovery/proofs/migration_validation_v2_current_20260726.json"
 }

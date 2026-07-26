@@ -610,3 +610,7 @@ live_bridge_mutation = false
 ## 2026-07-26 — Bridge two-channel recovery
 Primary ngrok lifecycle stabilized with singleton SYSTEM launcher/watchdog; kill recovery proven in 7 seconds. Full Windows reboot restored Primary, Recovery, Rescue, ngrok and Tailscale in 19 seconds. Migration pack V2 created and validated without secrets. Clean-PC install remains NOT_PROVEN.
 
+
+## 2026-07-26 — Bridge V2 installer lane
+Added install_bridge_v2.ps1, recover_bridge_v2.ps1, validate_bridge_v2.ps1. Preflight-only PASS with no mutation. Live validator PASS. Archive repacked with scripts; clean-PC install still NOT_PROVEN.
+
