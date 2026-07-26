@@ -6,19 +6,19 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "df706b1950c63d736a91662878932e794ea6f6f4",
-    "subject_head":  "df706b1950c63d736a91662878932e794ea6f6f4",
-    "generated_at":  "2026-07-22T12:12:51.3169321+04:00",
+    "observed_head_at_generation":  "c6e932da9a8ac2f1b7df8f47f878384ef5de381e",
+    "subject_head":  "c6e932da9a8ac2f1b7df8f47f878384ef5de381e",
+    "generated_at":  "2026-07-26T23:10:25.3773548+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  2314,
+    "structural_path_count":  2315,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2314,
-                                    "sha256":  "0ed7486bfad652b55ff41664f98dbbc1ab95e3cf8cc469ae4a06ccaa2a093701"
+                                    "structural_file_count":  2315,
+                                    "sha256":  "8c8dd3495090308f3cf76a80378149804a9577acff6a7f6a7d4e99822c94eb51"
                                 },
     "module_count":  203,
     "validator_count":  259,
@@ -33,7 +33,7 @@
                                      "script_count":  78,
                                      "validator_count":  30,
                                      "proof_file_count":  12,
-                                     "contract_or_policy_count":  15,
+                                     "contract_or_policy_count":  17,
                                      "doc_count":  19,
                                      "required_files":  [
                                                             "operations/school/run_agent_school.ps1",
@@ -47,6 +47,8 @@
                                      "validator_refs":  [
                                                             "operations/school/codex/validate_and_normalize_codex_school_patch_candidates_v1.ps1",
                                                             "operations/school/codex/validate_codex_school_patch_task_template_v1.ps1",
+                                                            "operations/school/curriculum/candidate_factory/reports/CAMPAIGN_PACK_CANDIDATE_FACTORY_VALIDATION_V1.json",
+                                                            "operations/school/curriculum/candidate_factory/reports/CAMPAIGN_PACK_CANDIDATE_FACTORY_VALIDATION_V1.md",
                                                             "operations/school/curriculum/candidate_factory/validate_campaign_pack_candidate_factory_v1.ps1",
                                                             "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_batch_delta_v1.ps1",
                                                             "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_hot_path_invariants_v1.ps1",
@@ -72,9 +74,7 @@
                                                             "operations/school/curriculum/streaming_absorption/validate_codex_curriculum_streaming_absorption_v1.ps1",
                                                             "operations/school/curriculum/validate_curriculum_school_v1.ps1",
                                                             "operations/school/digestion/select_compact_semantic_digest_validation_budget_v1.ps1",
-                                                            "operations/school/digestion/validate_active_memory_publish_retry_v1.ps1",
-                                                            "operations/school/digestion/validate_compact_semantic_digestion_organ_v1.ps1",
-                                                            "operations/school/memory/validate_compact_memory_recall_use_probe_v1.ps1"
+                                                            "operations/school/digestion/validate_active_memory_publish_retry_v1.ps1"
                                                         ],
                                      "proof_refs":  [
                                                         "operations/school/proofs/AUTONOMOUS_SCHOOL_CONTROL_PROOF_20260706_100215.json",
@@ -97,6 +97,8 @@
                                                                      "operations/school/curriculum/codex_contract/samples/mixed_codex_curriculum_batch_canary_v1.jsonl",
                                                                      "operations/school/curriculum/codex_contract/validate_codex_curriculum_batch_v1.ps1",
                                                                      "operations/school/curriculum/codex_contract/validate_codex_curriculum_contract_consistency_v1.ps1",
+                                                                     "operations/school/curriculum/incremental_active_store/ACTIVE_REPO_BODY_REPLAY_AUDIT_POLICY_V1.json",
+                                                                     "operations/school/curriculum/incremental_active_store/REPLAY_AUDIT_POLICY_V1.md",
                                                                      "operations/school/curriculum/incremental_active_store/select_replay_audit_policy_v1.ps1",
                                                                      "operations/school/curriculum/incremental_active_store/validate_replay_audit_policy_entrypoint_wiring_v1.ps1",
                                                                      "operations/school/curriculum/incremental_active_store/validate_replay_audit_policy_v1.ps1",
@@ -111,23 +113,23 @@
                                                                    "operations/school/autonomous_school_cycle_policy.json",
                                                                    "operations/school/codex/validate_and_normalize_codex_school_patch_candidates_v1.ps1",
                                                                    "operations/school/codex/validate_codex_school_patch_task_template_v1.ps1",
+                                                                   "operations/school/curriculum/candidate_factory/reports/CAMPAIGN_PACK_CANDIDATE_FACTORY_VALIDATION_V1.json",
+                                                                   "operations/school/curriculum/candidate_factory/reports/CAMPAIGN_PACK_CANDIDATE_FACTORY_VALIDATION_V1.md",
                                                                    "operations/school/curriculum/candidate_factory/validate_campaign_pack_candidate_factory_v1.ps1",
                                                                    "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_batch_delta_v1.ps1",
                                                                    "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_hot_path_invariants_v1.ps1",
                                                                    "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_memory_ladder_v1.ps1",
                                                                    "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_topic_cursor_ledger_v1.ps1",
                                                                    "operations/school/curriculum/candidate_factory/validate_codex_curriculum_candidate_factory_v1.ps1",
-                                                                   "operations/school/curriculum/candidate_factory/validate_theme_cursor_ledger_v1.ps1",
-                                                                   "operations/school/curriculum/codex_active/validate_codex_curriculum_active_decision_v1.ps1",
                                                                    "operations/school/curriculum/codex_contract/CODEX_CURRICULUM_CANARY_TASK_V1.md",
                                                                    "operations/school/curriculum/codex_contract/CODEX_CURRICULUM_CONTRACT_V1.md",
                                                                    "operations/school/curriculum/codex_contract/samples/mixed_codex_curriculum_batch_canary_v1.jsonl",
                                                                    "operations/school/curriculum/codex_contract/validate_codex_curriculum_batch_v1.ps1",
                                                                    "operations/school/curriculum/codex_contract/validate_codex_curriculum_contract_consistency_v1.ps1",
+                                                                   "operations/school/curriculum/incremental_active_store/ACTIVE_REPO_BODY_REPLAY_AUDIT_POLICY_V1.json",
+                                                                   "operations/school/curriculum/incremental_active_store/REPLAY_AUDIT_POLICY_V1.md",
                                                                    "operations/school/curriculum/incremental_active_store/select_replay_audit_policy_v1.ps1",
                                                                    "operations/school/curriculum/incremental_active_store/validate_replay_audit_policy_entrypoint_wiring_v1.ps1",
-                                                                   "operations/school/curriculum/incremental_active_store/validate_replay_audit_policy_v1.ps1",
-                                                                   "operations/school/curriculum/source_router/school_source_router_policy.json",
                                                                    "operations/school/finalize_agent_school_run_v1.ps1",
                                                                    "operations/school/proofs/AUTONOMOUS_SCHOOL_CONTROL_PROOF_20260706_100215.json",
                                                                    "operations/school/proofs/AUTONOMOUS_SCHOOL_CYCLE_LIMITS_PROOF_20260706_095723.json",
@@ -335,7 +337,7 @@
                                      "script_count":  2,
                                      "validator_count":  0,
                                      "proof_file_count":  22,
-                                     "contract_or_policy_count":  2,
+                                     "contract_or_policy_count":  3,
                                      "doc_count":  4,
                                      "required_files":  [
                                                             "operations/knowledge_acquisition_port/ask_codex_knowledge_source.ps1",
@@ -374,7 +376,8 @@
                                                     ],
                                      "contract_or_policy_refs":  [
                                                                      "operations/knowledge_acquisition_port/codex_readonly_source_policy.json",
-                                                                     "operations/knowledge_acquisition_port/KNOWLEDGE_ACQUISITION_PORT_CONTRACT.md"
+                                                                     "operations/knowledge_acquisition_port/KNOWLEDGE_ACQUISITION_PORT_CONTRACT.md",
+                                                                     "operations/knowledge_acquisition_port/SOURCE_DIGEST_RETENTION_POLICY.md"
                                                                  ],
                                      "primary_evidence_refs":  [
                                                                    "operations/knowledge_acquisition_port/ask_codex_batch_knowledge_source.ps1",
@@ -390,7 +393,8 @@
                                                                    "operations/knowledge_acquisition_port/runs/learning_atom_candidate_route_fixture_20260705_01_cycle1_atom_candidate_fixture/BATCH_KNOWLEDGE_ACQUISITION_PROOF.json",
                                                                    "operations/knowledge_acquisition_port/runs/sandbox_study_episode_manager_20260705_01_cycle2_attempt1_study_batch/BATCH_KNOWLEDGE_ACQUISITION_PROOF.json",
                                                                    "operations/knowledge_acquisition_port/runs/sandbox_study_episode_manager_20260705_01_cycle3_attempt1_study_batch/BATCH_KNOWLEDGE_ACQUISITION_PROOF.json",
-                                                                   "operations/knowledge_acquisition_port/runs/sandbox_study_episode_manager_20260705_01_cycle4_attempt1_study_batch/BATCH_KNOWLEDGE_ACQUISITION_PROOF.json"
+                                                                   "operations/knowledge_acquisition_port/runs/sandbox_study_episode_manager_20260705_01_cycle4_attempt1_study_batch/BATCH_KNOWLEDGE_ACQUISITION_PROOF.json",
+                                                                   "operations/knowledge_acquisition_port/SOURCE_DIGEST_RETENTION_POLICY.md"
                                                                ],
                                      "entrypoint_scripts":  [
                                                                 "operations/knowledge_acquisition_port/ask_codex_batch_knowledge_source.ps1",
@@ -605,7 +609,7 @@
                                      "script_count":  0,
                                      "validator_count":  0,
                                      "proof_file_count":  0,
-                                     "contract_or_policy_count":  0,
+                                     "contract_or_policy_count":  1,
                                      "doc_count":  13,
                                      "required_files":  [
                                                             "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
@@ -621,10 +625,11 @@
 
                                                     ],
                                      "contract_or_policy_refs":  [
-
+                                                                     "operations/gpt_handoff/GPT_OPERATOR_JOURNAL_ROTATION_POLICY.md"
                                                                  ],
                                      "primary_evidence_refs":  [
-                                                                   "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
+                                                                   "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
+                                                                   "operations/gpt_handoff/GPT_OPERATOR_JOURNAL_ROTATION_POLICY.md"
                                                                ],
                                      "entrypoint_scripts":  [
 
@@ -886,8 +891,8 @@
                                                                             "contracts/materials/manual_scout_pass.schema.json",
                                                                             "contracts/materials/material_candidate.schema.json",
                                                                             "contracts/materials/material_catalog.schema.json",
-                                                                            "contracts/materials/material_quarantine_card.schema.json",
                                                                             "contracts/materials/material_policy.schema.json",
+                                                                            "contracts/materials/material_quarantine_card.schema.json",
                                                                             "contracts/materials/material_request.schema.json"
                                                                         ],
                                             "notable_files":  [
@@ -902,8 +907,8 @@
                                                                           "contracts/materials/manual_scout_pass.schema.json",
                                                                           "contracts/materials/material_candidate.schema.json",
                                                                           "contracts/materials/material_catalog.schema.json",
-                                                                          "contracts/materials/material_quarantine_card.schema.json",
                                                                           "contracts/materials/material_policy.schema.json",
+                                                                          "contracts/materials/material_quarantine_card.schema.json",
                                                                           "contracts/materials/material_request.schema.json"
                                                                       ],
                                             "needs_triage":  true,
@@ -1005,10 +1010,10 @@
                                                                             "contracts/self_development/generated_program_admission.schema.json",
                                                                             "contracts/self_development/generated_self_build_execution.schema.json",
                                                                             "contracts/self_development/item_level_execution_ledger_v1.schema.json",
-                                                                            "contracts/self_development/quarantine_and_blocker_registry_v1.schema.json",
                                                                             "contracts/self_development/law_kernel_matrix_cell_proof_energy_record_v1.schema.json",
                                                                             "contracts/self_development/live_self_growth_macro_cycle.schema.json",
                                                                             "contracts/self_development/owner_order_to_gap_map_v1.schema.json",
+                                                                            "contracts/self_development/quarantine_and_blocker_registry_v1.schema.json",
                                                                             "contracts/self_development/repair_loop_generator_v1.schema.json",
                                                                             "contracts/self_development/scale_trial_10_30_100_item_simulation_v1.schema.json",
                                                                             "contracts/self_development/scale_trial_promotion_gate_and_route_lock_refresh_v1.schema.json",
@@ -1051,10 +1056,10 @@
                                                                           "contracts/self_development/generated_program_admission.schema.json",
                                                                           "contracts/self_development/generated_self_build_execution.schema.json",
                                                                           "contracts/self_development/item_level_execution_ledger_v1.schema.json",
-                                                                          "contracts/self_development/quarantine_and_blocker_registry_v1.schema.json",
                                                                           "contracts/self_development/law_kernel_matrix_cell_proof_energy_record_v1.schema.json",
                                                                           "contracts/self_development/live_self_growth_macro_cycle.schema.json",
                                                                           "contracts/self_development/owner_order_to_gap_map_v1.schema.json",
+                                                                          "contracts/self_development/quarantine_and_blocker_registry_v1.schema.json",
                                                                           "contracts/self_development/repair_loop_generator_v1.schema.json",
                                                                           "contracts/self_development/scale_trial_10_30_100_item_simulation_v1.schema.json",
                                                                           "contracts/self_development/scale_trial_promotion_gate_and_route_lock_refresh_v1.schema.json",
@@ -1300,8 +1305,8 @@
                                                                   "modules/self_development/write_self_development_decision_kernel_report.ps1"
                                                               ],
                                             "primary_evidence_refs":  [
-                                                                          "modules/self_development/execute_admitted_self_build_program.ps1",
                                                                           "modules/self_development/evaluate_generated_program_admission.ps1",
+                                                                          "modules/self_development/execute_admitted_self_build_program.ps1",
                                                                           "modules/self_development/write_auto_next_gap_decision_v1.ps1",
                                                                           "modules/self_development/write_batch_admission_policy_v1.ps1",
                                                                           "modules/self_development/write_batch_planner_v1.ps1",
@@ -1661,17 +1666,17 @@
                                             "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                                             "discovery_method":  "bounded_git_ls_files_path_discovery",
                                             "evidence_counts":  {
-                                                                    "files":  53,
+                                                                    "files":  55,
                                                                     "scripts":  5,
                                                                     "validators":  1,
-                                                                    "proofs":  4,
+                                                                    "proofs":  5,
                                                                     "contracts_or_policies":  0,
                                                                     "docs":  5
                                                                 },
-                                            "file_count":  53,
+                                            "file_count":  55,
                                             "script_count":  5,
                                             "validator_count":  1,
-                                            "proof_file_count":  4,
+                                            "proof_file_count":  5,
                                             "contract_or_policy_count":  0,
                                             "doc_count":  5,
                                             "validator_refs":  [
@@ -1681,6 +1686,7 @@
                                                                "operations/bridge_recovery/proofs/archive_proof_v1.json",
                                                                "operations/bridge_recovery/proofs/chat_handoff_proof_v1.json",
                                                                "operations/bridge_recovery/proofs/lab_restore_proof_v1.json",
+                                                               "operations/bridge_recovery/proofs/migration_pack_v2_proof_20260726.json",
                                                                "operations/bridge_recovery/proofs/pack_build_proof_v1.json"
                                                            ],
                                             "contract_or_policy_refs":  [
@@ -1719,6 +1725,7 @@
                                                                           "operations/bridge_recovery/proofs/archive_proof_v1.json",
                                                                           "operations/bridge_recovery/proofs/chat_handoff_proof_v1.json",
                                                                           "operations/bridge_recovery/proofs/lab_restore_proof_v1.json",
+                                                                          "operations/bridge_recovery/proofs/migration_pack_v2_proof_20260726.json",
                                                                           "operations/bridge_recovery/proofs/pack_build_proof_v1.json",
                                                                           "operations/bridge_recovery/scripts/install_bridge.ps1",
                                                                           "operations/bridge_recovery/scripts/recover_bridge.ps1",
@@ -2407,19 +2414,30 @@
                                             "evidence_counts":  {
                                                                     "files":  115,
                                                                     "scripts":  0,
-                                                                    "validators":  0,
+                                                                    "validators":  12,
                                                                     "proofs":  2,
                                                                     "contracts_or_policies":  0,
                                                                     "docs":  28
                                                                 },
                                             "file_count":  115,
                                             "script_count":  0,
-                                            "validator_count":  0,
+                                            "validator_count":  12,
                                             "proof_file_count":  2,
                                             "contract_or_policy_count":  0,
                                             "doc_count":  28,
                                             "validator_refs":  [
-
+                                                                   "operations/reports/CODEX_SCHOOL_PATCH_TASK_TEMPLATE_VALIDATION_20260714.json",
+                                                                   "operations/reports/CODEX_WAREHOUSE_PIPELINE_VALIDATION_20260714.json",
+                                                                   "operations/reports/CODEX_WAREHOUSE_PRODUCER_SMOKE_VALIDATION_20260715.json",
+                                                                   "operations/reports/COMPACT_MEMORY_COMPACTION_CANDIDATE_VALIDATION_20260714.json",
+                                                                   "operations/reports/DEVELOPMENT_VECTOR_THEME_SELECTOR_VALIDATION_20260714.json",
+                                                                   "operations/reports/DYNAMIC_SCHOOL_REQUEST_PLANNER_VALIDATION_20260715.json",
+                                                                   "operations/reports/DYNAMIC_THEME_CELL_SELECTOR_VALIDATION_20260714.json",
+                                                                   "operations/reports/EXACT_678_DYNAMIC_REQUEST_VALIDATION_20260715.json",
+                                                                   "operations/reports/GENERIC_EXACT_COUNT_CYCLE_VALIDATION_20260715.json",
+                                                                   "operations/reports/GENERIC_EXACT_REQUEST_ENGINE_VALIDATION_20260715.json",
+                                                                   "operations/reports/SCHOOL_PATCH_EXECUTOR_VALIDATION_20260714.json",
+                                                                   "operations/reports/SCHOOL_TOPIC_PATCH_PLAN_VALIDATION_20260714.json"
                                                                ],
                                             "proof_refs":  [
                                                                "operations/reports/canonical_exact_count_cycle_live_1_20260715/canonical_run_proof.json",
@@ -2457,7 +2475,19 @@
                                                               ],
                                             "primary_evidence_refs":  [
                                                                           "operations/reports/canonical_exact_count_cycle_live_1_20260715/canonical_run_proof.json",
-                                                                          "operations/reports/canonical_exact_count_cycle_test_101_20260715/canonical_run_proof.json"
+                                                                          "operations/reports/canonical_exact_count_cycle_test_101_20260715/canonical_run_proof.json",
+                                                                          "operations/reports/CODEX_SCHOOL_PATCH_TASK_TEMPLATE_VALIDATION_20260714.json",
+                                                                          "operations/reports/CODEX_WAREHOUSE_PIPELINE_VALIDATION_20260714.json",
+                                                                          "operations/reports/CODEX_WAREHOUSE_PRODUCER_SMOKE_VALIDATION_20260715.json",
+                                                                          "operations/reports/COMPACT_MEMORY_COMPACTION_CANDIDATE_VALIDATION_20260714.json",
+                                                                          "operations/reports/DEVELOPMENT_VECTOR_THEME_SELECTOR_VALIDATION_20260714.json",
+                                                                          "operations/reports/DYNAMIC_SCHOOL_REQUEST_PLANNER_VALIDATION_20260715.json",
+                                                                          "operations/reports/DYNAMIC_THEME_CELL_SELECTOR_VALIDATION_20260714.json",
+                                                                          "operations/reports/EXACT_678_DYNAMIC_REQUEST_VALIDATION_20260715.json",
+                                                                          "operations/reports/GENERIC_EXACT_COUNT_CYCLE_VALIDATION_20260715.json",
+                                                                          "operations/reports/GENERIC_EXACT_REQUEST_ENGINE_VALIDATION_20260715.json",
+                                                                          "operations/reports/SCHOOL_PATCH_EXECUTOR_VALIDATION_20260714.json",
+                                                                          "operations/reports/SCHOOL_TOPIC_PATCH_PLAN_VALIDATION_20260714.json"
                                                                       ],
                                             "needs_triage":  true,
                                             "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
@@ -2515,19 +2545,23 @@
                                             "evidence_counts":  {
                                                                     "files":  6,
                                                                     "scripts":  3,
-                                                                    "validators":  2,
+                                                                    "validators":  6,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  1,
                                                                     "docs":  0
                                                                 },
                                             "file_count":  6,
                                             "script_count":  3,
-                                            "validator_count":  2,
+                                            "validator_count":  6,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  1,
                                             "doc_count":  0,
                                             "validator_refs":  [
+                                                                   "packs/PHASE10_GENERATED_AGENT_VALIDATION_HARNESS_V1/APPLY.ps1",
+                                                                   "packs/PHASE10_GENERATED_AGENT_VALIDATION_HARNESS_V1/PACK.json",
                                                                    "packs/PHASE10_GENERATED_AGENT_VALIDATION_HARNESS_V1/payload/contracts/generated_agent_validation_report.schema.json",
+                                                                   "packs/PHASE10_GENERATED_AGENT_VALIDATION_HARNESS_V1/payload/modules/test_generated_agent_package.ps1",
+                                                                   "packs/PHASE10_GENERATED_AGENT_VALIDATION_HARNESS_V1/payload/tasks/TASK_FACTORY_BUILD_EXTERNAL_AGENT_MODE_V1_001.json",
                                                                    "packs/PHASE10_GENERATED_AGENT_VALIDATION_HARNESS_V1/payload/validators/validate_generated_agent_validation_harness_v1.ps1"
                                                                ],
                                             "proof_refs":  [
@@ -2546,8 +2580,10 @@
                                                               ],
                                             "primary_evidence_refs":  [
                                                                           "packs/PHASE10_GENERATED_AGENT_VALIDATION_HARNESS_V1/APPLY.ps1",
+                                                                          "packs/PHASE10_GENERATED_AGENT_VALIDATION_HARNESS_V1/PACK.json",
                                                                           "packs/PHASE10_GENERATED_AGENT_VALIDATION_HARNESS_V1/payload/contracts/generated_agent_validation_report.schema.json",
                                                                           "packs/PHASE10_GENERATED_AGENT_VALIDATION_HARNESS_V1/payload/modules/test_generated_agent_package.ps1",
+                                                                          "packs/PHASE10_GENERATED_AGENT_VALIDATION_HARNESS_V1/payload/tasks/TASK_FACTORY_BUILD_EXTERNAL_AGENT_MODE_V1_001.json",
                                                                           "packs/PHASE10_GENERATED_AGENT_VALIDATION_HARNESS_V1/payload/validators/validate_generated_agent_validation_harness_v1.ps1"
                                                                       ],
                                             "needs_triage":  true,
@@ -2564,19 +2600,19 @@
                                             "evidence_counts":  {
                                                                     "files":  3,
                                                                     "scripts":  2,
-                                                                    "validators":  0,
+                                                                    "validators":  1,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  0,
                                                                     "docs":  0
                                                                 },
                                             "file_count":  3,
                                             "script_count":  2,
-                                            "validator_count":  0,
+                                            "validator_count":  1,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  0,
                                             "doc_count":  0,
                                             "validator_refs":  [
-
+                                                                   "packs/PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1/VALIDATE.ps1"
                                                                ],
                                             "proof_refs":  [
 
@@ -2607,19 +2643,19 @@
                                             "evidence_counts":  {
                                                                     "files":  3,
                                                                     "scripts":  2,
-                                                                    "validators":  0,
+                                                                    "validators":  1,
                                                                     "proofs":  3,
                                                                     "contracts_or_policies":  0,
                                                                     "docs":  0
                                                                 },
                                             "file_count":  3,
                                             "script_count":  2,
-                                            "validator_count":  0,
+                                            "validator_count":  1,
                                             "proof_file_count":  3,
                                             "contract_or_policy_count":  0,
                                             "doc_count":  0,
                                             "validator_refs":  [
-
+                                                                   "packs/PHASE101_BATCH_PROOF_AGGREGATOR_V1/VALIDATE.ps1"
                                                                ],
                                             "proof_refs":  [
                                                                "packs/PHASE101_BATCH_PROOF_AGGREGATOR_V1/APPLY.ps1",
@@ -2653,19 +2689,19 @@
                                             "evidence_counts":  {
                                                                     "files":  3,
                                                                     "scripts":  2,
-                                                                    "validators":  0,
+                                                                    "validators":  1,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  0,
                                                                     "docs":  0
                                                                 },
                                             "file_count":  3,
                                             "script_count":  2,
-                                            "validator_count":  0,
+                                            "validator_count":  1,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  0,
                                             "doc_count":  0,
                                             "validator_refs":  [
-
+                                                                   "packs/PHASE102_AUTO_NEXT_GAP_DECISION_V1/VALIDATE.ps1"
                                                                ],
                                             "proof_refs":  [
 
@@ -2696,19 +2732,19 @@
                                             "evidence_counts":  {
                                                                     "files":  3,
                                                                     "scripts":  2,
-                                                                    "validators":  0,
+                                                                    "validators":  1,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  0,
                                                                     "docs":  0
                                                                 },
                                             "file_count":  3,
                                             "script_count":  2,
-                                            "validator_count":  0,
+                                            "validator_count":  1,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  0,
                                             "doc_count":  0,
                                             "validator_refs":  [
-
+                                                                   "packs/PHASE103_REPAIR_LOOP_GENERATOR_V1/VALIDATE.ps1"
                                                                ],
                                             "proof_refs":  [
 
@@ -2739,19 +2775,19 @@
                                             "evidence_counts":  {
                                                                     "files":  3,
                                                                     "scripts":  2,
-                                                                    "validators":  0,
+                                                                    "validators":  1,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  0,
                                                                     "docs":  0
                                                                 },
                                             "file_count":  3,
                                             "script_count":  2,
-                                            "validator_count":  0,
+                                            "validator_count":  1,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  0,
                                             "doc_count":  0,
                                             "validator_refs":  [
-
+                                                                   "packs/PHASE104_CONTROLLED_MULTI_CYCLE_SELF_BUILD_RUN_V1/VALIDATE.ps1"
                                                                ],
                                             "proof_refs":  [
 
@@ -2782,19 +2818,19 @@
                                             "evidence_counts":  {
                                                                     "files":  3,
                                                                     "scripts":  2,
-                                                                    "validators":  0,
+                                                                    "validators":  1,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  0,
                                                                     "docs":  0
                                                                 },
                                             "file_count":  3,
                                             "script_count":  2,
-                                            "validator_count":  0,
+                                            "validator_count":  1,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  0,
                                             "doc_count":  0,
                                             "validator_refs":  [
-
+                                                                   "packs/PHASE105_SCALE_TRIAL_10_30_100_ITEM_SIMULATION_V1/VALIDATE.ps1"
                                                                ],
                                             "proof_refs":  [
 
@@ -2825,19 +2861,19 @@
                                             "evidence_counts":  {
                                                                     "files":  3,
                                                                     "scripts":  2,
-                                                                    "validators":  0,
+                                                                    "validators":  1,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  0,
                                                                     "docs":  0
                                                                 },
                                             "file_count":  3,
                                             "script_count":  2,
-                                            "validator_count":  0,
+                                            "validator_count":  1,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  0,
                                             "doc_count":  0,
                                             "validator_refs":  [
-
+                                                                   "packs/PHASE106_SCALE_TRIAL_PROMOTION_GATE_AND_ROUTE_LOCK_REFRESH_V1/VALIDATE.ps1"
                                                                ],
                                             "proof_refs":  [
 
@@ -2868,19 +2904,19 @@
                                             "evidence_counts":  {
                                                                     "files":  3,
                                                                     "scripts":  2,
-                                                                    "validators":  0,
+                                                                    "validators":  1,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  0,
                                                                     "docs":  0
                                                                 },
                                             "file_count":  3,
                                             "script_count":  2,
-                                            "validator_count":  0,
+                                            "validator_count":  1,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  0,
                                             "doc_count":  0,
                                             "validator_refs":  [
-
+                                                                   "packs/PHASE107_BUILDER_SELF_PACK_AUTHOR_V1/VALIDATE.ps1"
                                                                ],
                                             "proof_refs":  [
 
@@ -3053,18 +3089,19 @@
                                             "evidence_counts":  {
                                                                     "files":  7,
                                                                     "scripts":  3,
-                                                                    "validators":  1,
+                                                                    "validators":  2,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  2,
                                                                     "docs":  0
                                                                 },
                                             "file_count":  7,
                                             "script_count":  3,
-                                            "validator_count":  1,
+                                            "validator_count":  2,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  2,
                                             "doc_count":  0,
                                             "validator_refs":  [
+                                                                   "packs/PHASE14_REAL_GENERATED_AGENT_RUNTIME_V2/payload/tasks/TASK_OPERATIONAL_VALIDATION_HARNESS_V2_001.json",
                                                                    "packs/PHASE14_REAL_GENERATED_AGENT_RUNTIME_V2/payload/validators/validate_real_generated_agent_runtime_v2.ps1"
                                                                ],
                                             "proof_refs":  [
@@ -3088,6 +3125,7 @@
                                                                           "packs/PHASE14_REAL_GENERATED_AGENT_RUNTIME_V2/payload/contracts/generated_agent_request.schema.json",
                                                                           "packs/PHASE14_REAL_GENERATED_AGENT_RUNTIME_V2/payload/contracts/generated_agent_result.schema.json",
                                                                           "packs/PHASE14_REAL_GENERATED_AGENT_RUNTIME_V2/payload/modules/new_external_agent_package.ps1",
+                                                                          "packs/PHASE14_REAL_GENERATED_AGENT_RUNTIME_V2/payload/tasks/TASK_OPERATIONAL_VALIDATION_HARNESS_V2_001.json",
                                                                           "packs/PHASE14_REAL_GENERATED_AGENT_RUNTIME_V2/payload/validators/validate_real_generated_agent_runtime_v2.ps1"
                                                                       ],
                                             "needs_triage":  true,
@@ -3104,19 +3142,23 @@
                                             "evidence_counts":  {
                                                                     "files":  6,
                                                                     "scripts":  3,
-                                                                    "validators":  2,
+                                                                    "validators":  6,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  1,
                                                                     "docs":  0
                                                                 },
                                             "file_count":  6,
                                             "script_count":  3,
-                                            "validator_count":  2,
+                                            "validator_count":  6,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  1,
                                             "doc_count":  0,
                                             "validator_refs":  [
+                                                                   "packs/PHASE15_OPERATIONAL_VALIDATION_HARNESS_V2/APPLY.ps1",
+                                                                   "packs/PHASE15_OPERATIONAL_VALIDATION_HARNESS_V2/PACK.json",
                                                                    "packs/PHASE15_OPERATIONAL_VALIDATION_HARNESS_V2/payload/contracts/operational_generated_agent_validation_report.schema.json",
+                                                                   "packs/PHASE15_OPERATIONAL_VALIDATION_HARNESS_V2/payload/modules/test_generated_agent_package_operational.ps1",
+                                                                   "packs/PHASE15_OPERATIONAL_VALIDATION_HARNESS_V2/payload/tasks/TASK_FACTORY_BUILD_EXTERNAL_AGENT_MODE_V2_001.json",
                                                                    "packs/PHASE15_OPERATIONAL_VALIDATION_HARNESS_V2/payload/validators/validate_operational_validation_harness_v2.ps1"
                                                                ],
                                             "proof_refs":  [
@@ -3135,8 +3177,10 @@
                                                               ],
                                             "primary_evidence_refs":  [
                                                                           "packs/PHASE15_OPERATIONAL_VALIDATION_HARNESS_V2/APPLY.ps1",
+                                                                          "packs/PHASE15_OPERATIONAL_VALIDATION_HARNESS_V2/PACK.json",
                                                                           "packs/PHASE15_OPERATIONAL_VALIDATION_HARNESS_V2/payload/contracts/operational_generated_agent_validation_report.schema.json",
                                                                           "packs/PHASE15_OPERATIONAL_VALIDATION_HARNESS_V2/payload/modules/test_generated_agent_package_operational.ps1",
+                                                                          "packs/PHASE15_OPERATIONAL_VALIDATION_HARNESS_V2/payload/tasks/TASK_FACTORY_BUILD_EXTERNAL_AGENT_MODE_V2_001.json",
                                                                           "packs/PHASE15_OPERATIONAL_VALIDATION_HARNESS_V2/payload/validators/validate_operational_validation_harness_v2.ps1"
                                                                       ],
                                             "needs_triage":  true,
@@ -3202,19 +3246,19 @@
                                             "evidence_counts":  {
                                                                     "files":  2,
                                                                     "scripts":  2,
-                                                                    "validators":  0,
+                                                                    "validators":  1,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  0,
                                                                     "docs":  0
                                                                 },
                                             "file_count":  2,
                                             "script_count":  2,
-                                            "validator_count":  0,
+                                            "validator_count":  1,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  0,
                                             "doc_count":  0,
                                             "validator_refs":  [
-
+                                                                   "packs/PHASE164K_OWNER_CANDIDATE_SELF_GROWTH_ADAPTER_V1/VALIDATE.ps1"
                                                                ],
                                             "proof_refs":  [
 
@@ -4382,19 +4426,24 @@
                                             "evidence_counts":  {
                                                                     "files":  7,
                                                                     "scripts":  4,
-                                                                    "validators":  2,
+                                                                    "validators":  7,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  1,
                                                                     "docs":  0
                                                                 },
                                             "file_count":  7,
                                             "script_count":  4,
-                                            "validator_count":  2,
+                                            "validator_count":  7,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  1,
                                             "doc_count":  0,
                                             "validator_refs":  [
+                                                                   "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/APPLY.ps1",
+                                                                   "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/PACK.json",
+                                                                   "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/payload/contracts/failure_diagnostic.schema.json",
+                                                                   "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/payload/modules/emit_failure_diagnostic.ps1",
                                                                    "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/payload/modules/validate_truth_alignment.ps1",
+                                                                   "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/payload/tasks/TASK_EXTERNAL_AGENT_SPEC_INTAKE_001.json",
                                                                    "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/payload/validators/validate_self_validation_release_gates.ps1"
                                                                ],
                                             "proof_refs":  [
@@ -4414,9 +4463,11 @@
                                                               ],
                                             "primary_evidence_refs":  [
                                                                           "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/APPLY.ps1",
+                                                                          "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/PACK.json",
                                                                           "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/payload/contracts/failure_diagnostic.schema.json",
                                                                           "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/payload/modules/emit_failure_diagnostic.ps1",
                                                                           "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/payload/modules/validate_truth_alignment.ps1",
+                                                                          "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/payload/tasks/TASK_EXTERNAL_AGENT_SPEC_INTAKE_001.json",
                                                                           "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/payload/validators/validate_self_validation_release_gates.ps1"
                                                                       ],
                                             "needs_triage":  true,
@@ -6354,19 +6405,19 @@
                                             "evidence_counts":  {
                                                                     "files":  4,
                                                                     "scripts":  2,
-                                                                    "validators":  0,
+                                                                    "validators":  1,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  4,
                                                                     "docs":  1
                                                                 },
                                             "file_count":  4,
                                             "script_count":  2,
-                                            "validator_count":  0,
+                                            "validator_count":  1,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  4,
                                             "doc_count":  1,
                                             "validator_refs":  [
-
+                                                                   "packs/PHASE78_AGENT_BUILDER_SELF_KNOWLEDGE_SYSTEM_FULL_CONTRACT_V1/VALIDATE.ps1"
                                                                ],
                                             "proof_refs":  [
 
@@ -6403,19 +6454,19 @@
                                             "evidence_counts":  {
                                                                     "files":  3,
                                                                     "scripts":  2,
-                                                                    "validators":  0,
+                                                                    "validators":  1,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  0,
                                                                     "docs":  0
                                                                 },
                                             "file_count":  3,
                                             "script_count":  2,
-                                            "validator_count":  0,
+                                            "validator_count":  1,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  0,
                                             "doc_count":  0,
                                             "validator_refs":  [
-
+                                                                   "packs/PHASE79_MATERIAL_ACQUISITION_BOOTSTRAP_V1/VALIDATE.ps1"
                                                                ],
                                             "proof_refs":  [
 
@@ -6505,19 +6556,19 @@
                                             "evidence_counts":  {
                                                                     "files":  3,
                                                                     "scripts":  2,
-                                                                    "validators":  0,
+                                                                    "validators":  1,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  0,
                                                                     "docs":  0
                                                                 },
                                             "file_count":  3,
                                             "script_count":  2,
-                                            "validator_count":  0,
+                                            "validator_count":  1,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  0,
                                             "doc_count":  0,
                                             "validator_refs":  [
-
+                                                                   "packs/PHASE80_MANUAL_SCOUT_PASS_IMPORT_V1/VALIDATE.ps1"
                                                                ],
                                             "proof_refs":  [
 
@@ -6548,25 +6599,27 @@
                                             "evidence_counts":  {
                                                                     "files":  3,
                                                                     "scripts":  2,
-                                                                    "validators":  0,
+                                                                    "validators":  1,
                                                                     "proofs":  0,
-                                                                    "contracts_or_policies":  0,
+                                                                    "contracts_or_policies":  3,
                                                                     "docs":  0
                                                                 },
                                             "file_count":  3,
                                             "script_count":  2,
-                                            "validator_count":  0,
+                                            "validator_count":  1,
                                             "proof_file_count":  0,
-                                            "contract_or_policy_count":  0,
+                                            "contract_or_policy_count":  3,
                                             "doc_count":  0,
                                             "validator_refs":  [
-
+                                                                   "packs/PHASE81_MATERIAL_ADMISSION_POLICY_V1/VALIDATE.ps1"
                                                                ],
                                             "proof_refs":  [
 
                                                            ],
                                             "contract_or_policy_refs":  [
-
+                                                                            "packs/PHASE81_MATERIAL_ADMISSION_POLICY_V1/APPLY.ps1",
+                                                                            "packs/PHASE81_MATERIAL_ADMISSION_POLICY_V1/PACK.json",
+                                                                            "packs/PHASE81_MATERIAL_ADMISSION_POLICY_V1/VALIDATE.ps1"
                                                                         ],
                                             "notable_files":  [
                                                                   "packs/PHASE81_MATERIAL_ADMISSION_POLICY_V1/APPLY.ps1",
@@ -6575,6 +6628,7 @@
                                                               ],
                                             "primary_evidence_refs":  [
                                                                           "packs/PHASE81_MATERIAL_ADMISSION_POLICY_V1/APPLY.ps1",
+                                                                          "packs/PHASE81_MATERIAL_ADMISSION_POLICY_V1/PACK.json",
                                                                           "packs/PHASE81_MATERIAL_ADMISSION_POLICY_V1/VALIDATE.ps1"
                                                                       ],
                                             "needs_triage":  true,
@@ -6591,19 +6645,19 @@
                                             "evidence_counts":  {
                                                                     "files":  3,
                                                                     "scripts":  2,
-                                                                    "validators":  0,
+                                                                    "validators":  1,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  0,
                                                                     "docs":  0
                                                                 },
                                             "file_count":  3,
                                             "script_count":  2,
-                                            "validator_count":  0,
+                                            "validator_count":  1,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  0,
                                             "doc_count":  0,
                                             "validator_refs":  [
-
+                                                                   "packs/PHASE82_FIRST_MATERIAL_QUARANTINE_TRIAL_V1/VALIDATE.ps1"
                                                                ],
                                             "proof_refs":  [
 
@@ -6634,19 +6688,19 @@
                                             "evidence_counts":  {
                                                                     "files":  3,
                                                                     "scripts":  2,
-                                                                    "validators":  0,
+                                                                    "validators":  1,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  3,
                                                                     "docs":  0
                                                                 },
                                             "file_count":  3,
                                             "script_count":  2,
-                                            "validator_count":  0,
+                                            "validator_count":  1,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  3,
                                             "doc_count":  0,
                                             "validator_refs":  [
-
+                                                                   "packs/PHASE83_OPERATION_CONTRACT_SKELETON_V1/VALIDATE.ps1"
                                                                ],
                                             "proof_refs":  [
 
@@ -6680,19 +6734,19 @@
                                             "evidence_counts":  {
                                                                     "files":  3,
                                                                     "scripts":  2,
-                                                                    "validators":  0,
+                                                                    "validators":  1,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  0,
                                                                     "docs":  0
                                                                 },
                                             "file_count":  3,
                                             "script_count":  2,
-                                            "validator_count":  0,
+                                            "validator_count":  1,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  0,
                                             "doc_count":  0,
                                             "validator_refs":  [
-
+                                                                   "packs/PHASE87_SELF_DEVELOPMENT_DECISION_KERNEL_V1/VALIDATE.ps1"
                                                                ],
                                             "proof_refs":  [
 
@@ -6723,19 +6777,19 @@
                                             "evidence_counts":  {
                                                                     "files":  3,
                                                                     "scripts":  2,
-                                                                    "validators":  0,
+                                                                    "validators":  1,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  0,
                                                                     "docs":  0
                                                                 },
                                             "file_count":  3,
                                             "script_count":  2,
-                                            "validator_count":  0,
+                                            "validator_count":  1,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  0,
                                             "doc_count":  0,
                                             "validator_refs":  [
-
+                                                                   "packs/PHASE88_SELF_BUILD_PROGRAM_GENERATOR_V1/VALIDATE.ps1"
                                                                ],
                                             "proof_refs":  [
 
@@ -6766,19 +6820,19 @@
                                             "evidence_counts":  {
                                                                     "files":  3,
                                                                     "scripts":  2,
-                                                                    "validators":  0,
+                                                                    "validators":  1,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  0,
                                                                     "docs":  0
                                                                 },
                                             "file_count":  3,
                                             "script_count":  2,
-                                            "validator_count":  0,
+                                            "validator_count":  1,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  0,
                                             "doc_count":  0,
                                             "validator_refs":  [
-
+                                                                   "packs/PHASE89_GENERATED_PROGRAM_ADMISSION_V1/VALIDATE.ps1"
                                                                ],
                                             "proof_refs":  [
 
@@ -6809,18 +6863,19 @@
                                             "evidence_counts":  {
                                                                     "files":  6,
                                                                     "scripts":  3,
-                                                                    "validators":  1,
+                                                                    "validators":  2,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  1,
                                                                     "docs":  0
                                                                 },
                                             "file_count":  6,
                                             "script_count":  3,
-                                            "validator_count":  1,
+                                            "validator_count":  2,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  1,
                                             "doc_count":  0,
                                             "validator_refs":  [
+                                                                   "packs/PHASE9_PRODUCTION_PACKAGE_BLUEPRINT_V1/payload/tasks/TASK_GENERATED_AGENT_VALIDATION_HARNESS_V1_001.json",
                                                                    "packs/PHASE9_PRODUCTION_PACKAGE_BLUEPRINT_V1/payload/validators/validate_production_package_blueprint_v1.ps1"
                                                                ],
                                             "proof_refs":  [
@@ -6841,6 +6896,7 @@
                                                                           "packs/PHASE9_PRODUCTION_PACKAGE_BLUEPRINT_V1/APPLY.ps1",
                                                                           "packs/PHASE9_PRODUCTION_PACKAGE_BLUEPRINT_V1/payload/contracts/agent_package_blueprint.schema.json",
                                                                           "packs/PHASE9_PRODUCTION_PACKAGE_BLUEPRINT_V1/payload/modules/new_external_agent_package.ps1",
+                                                                          "packs/PHASE9_PRODUCTION_PACKAGE_BLUEPRINT_V1/payload/tasks/TASK_GENERATED_AGENT_VALIDATION_HARNESS_V1_001.json",
                                                                           "packs/PHASE9_PRODUCTION_PACKAGE_BLUEPRINT_V1/payload/validators/validate_production_package_blueprint_v1.ps1"
                                                                       ],
                                             "needs_triage":  true,
@@ -6857,19 +6913,19 @@
                                             "evidence_counts":  {
                                                                     "files":  3,
                                                                     "scripts":  2,
-                                                                    "validators":  0,
+                                                                    "validators":  1,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  0,
                                                                     "docs":  0
                                                                 },
                                             "file_count":  3,
                                             "script_count":  2,
-                                            "validator_count":  0,
+                                            "validator_count":  1,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  0,
                                             "doc_count":  0,
                                             "validator_refs":  [
-
+                                                                   "packs/PHASE90_BUILDER_EXECUTES_OWN_GENERATED_SELF_BUILD_PROGRAM_V1/VALIDATE.ps1"
                                                                ],
                                             "proof_refs":  [
 
@@ -6900,19 +6956,19 @@
                                             "evidence_counts":  {
                                                                     "files":  3,
                                                                     "scripts":  2,
-                                                                    "validators":  0,
+                                                                    "validators":  1,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  0,
                                                                     "docs":  0
                                                                 },
                                             "file_count":  3,
                                             "script_count":  2,
-                                            "validator_count":  0,
+                                            "validator_count":  1,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  0,
                                             "doc_count":  0,
                                             "validator_refs":  [
-
+                                                                   "packs/PHASE91_ROUTE_V1_CLOSURE_AND_V2_R2_ACTIVATION/VALIDATE.ps1"
                                                                ],
                                             "proof_refs":  [
 
@@ -6943,19 +6999,19 @@
                                             "evidence_counts":  {
                                                                     "files":  3,
                                                                     "scripts":  2,
-                                                                    "validators":  0,
+                                                                    "validators":  1,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  3,
                                                                     "docs":  0
                                                                 },
                                             "file_count":  3,
                                             "script_count":  2,
-                                            "validator_count":  0,
+                                            "validator_count":  1,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  3,
                                             "doc_count":  0,
                                             "validator_refs":  [
-
+                                                                   "packs/PHASE92_SELF_BUILD_BACKLOG_CONTRACT_V1/VALIDATE.ps1"
                                                                ],
                                             "proof_refs":  [
 
@@ -6989,19 +7045,19 @@
                                             "evidence_counts":  {
                                                                     "files":  3,
                                                                     "scripts":  2,
-                                                                    "validators":  0,
+                                                                    "validators":  1,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  0,
                                                                     "docs":  0
                                                                 },
                                             "file_count":  3,
                                             "script_count":  2,
-                                            "validator_count":  0,
+                                            "validator_count":  1,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  0,
                                             "doc_count":  0,
                                             "validator_refs":  [
-
+                                                                   "packs/PHASE93_CAPABILITY_GAP_DETECTOR_V1/VALIDATE.ps1"
                                                                ],
                                             "proof_refs":  [
 
@@ -7032,19 +7088,19 @@
                                             "evidence_counts":  {
                                                                     "files":  3,
                                                                     "scripts":  2,
-                                                                    "validators":  0,
+                                                                    "validators":  1,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  0,
                                                                     "docs":  0
                                                                 },
                                             "file_count":  3,
                                             "script_count":  2,
-                                            "validator_count":  0,
+                                            "validator_count":  1,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  0,
                                             "doc_count":  0,
                                             "validator_refs":  [
-
+                                                                   "packs/PHASE94_OWNER_ORDER_TO_GAP_MAP_V1/VALIDATE.ps1"
                                                                ],
                                             "proof_refs":  [
 
@@ -7075,19 +7131,19 @@
                                             "evidence_counts":  {
                                                                     "files":  3,
                                                                     "scripts":  2,
-                                                                    "validators":  0,
+                                                                    "validators":  1,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  0,
                                                                     "docs":  0
                                                                 },
                                             "file_count":  3,
                                             "script_count":  2,
-                                            "validator_count":  0,
+                                            "validator_count":  1,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  0,
                                             "doc_count":  0,
                                             "validator_refs":  [
-
+                                                                   "packs/PHASE95_SELF_BUILD_PROGRAM_GENERATOR_V2/VALIDATE.ps1"
                                                                ],
                                             "proof_refs":  [
 
@@ -7118,19 +7174,19 @@
                                             "evidence_counts":  {
                                                                     "files":  3,
                                                                     "scripts":  2,
-                                                                    "validators":  0,
+                                                                    "validators":  1,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  0,
                                                                     "docs":  0
                                                                 },
                                             "file_count":  3,
                                             "script_count":  2,
-                                            "validator_count":  0,
+                                            "validator_count":  1,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  0,
                                             "doc_count":  0,
                                             "validator_refs":  [
-
+                                                                   "packs/PHASE96_BATCH_PLANNER_V1/VALIDATE.ps1"
                                                                ],
                                             "proof_refs":  [
 
@@ -7161,25 +7217,27 @@
                                             "evidence_counts":  {
                                                                     "files":  3,
                                                                     "scripts":  2,
-                                                                    "validators":  0,
+                                                                    "validators":  1,
                                                                     "proofs":  0,
-                                                                    "contracts_or_policies":  0,
+                                                                    "contracts_or_policies":  3,
                                                                     "docs":  0
                                                                 },
                                             "file_count":  3,
                                             "script_count":  2,
-                                            "validator_count":  0,
+                                            "validator_count":  1,
                                             "proof_file_count":  0,
-                                            "contract_or_policy_count":  0,
+                                            "contract_or_policy_count":  3,
                                             "doc_count":  0,
                                             "validator_refs":  [
-
+                                                                   "packs/PHASE97_BATCH_ADMISSION_POLICY_V1/VALIDATE.ps1"
                                                                ],
                                             "proof_refs":  [
 
                                                            ],
                                             "contract_or_policy_refs":  [
-
+                                                                            "packs/PHASE97_BATCH_ADMISSION_POLICY_V1/APPLY.ps1",
+                                                                            "packs/PHASE97_BATCH_ADMISSION_POLICY_V1/PACK.json",
+                                                                            "packs/PHASE97_BATCH_ADMISSION_POLICY_V1/VALIDATE.ps1"
                                                                         ],
                                             "notable_files":  [
                                                                   "packs/PHASE97_BATCH_ADMISSION_POLICY_V1/APPLY.ps1",
@@ -7188,6 +7246,7 @@
                                                               ],
                                             "primary_evidence_refs":  [
                                                                           "packs/PHASE97_BATCH_ADMISSION_POLICY_V1/APPLY.ps1",
+                                                                          "packs/PHASE97_BATCH_ADMISSION_POLICY_V1/PACK.json",
                                                                           "packs/PHASE97_BATCH_ADMISSION_POLICY_V1/VALIDATE.ps1"
                                                                       ],
                                             "needs_triage":  true,
@@ -7204,19 +7263,19 @@
                                             "evidence_counts":  {
                                                                     "files":  3,
                                                                     "scripts":  2,
-                                                                    "validators":  0,
+                                                                    "validators":  1,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  0,
                                                                     "docs":  0
                                                                 },
                                             "file_count":  3,
                                             "script_count":  2,
-                                            "validator_count":  0,
+                                            "validator_count":  1,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  0,
                                             "doc_count":  0,
                                             "validator_refs":  [
-
+                                                                   "packs/PHASE98_ITEM_LEVEL_EXECUTION_LEDGER_V1/VALIDATE.ps1"
                                                                ],
                                             "proof_refs":  [
 
@@ -7247,19 +7306,19 @@
                                             "evidence_counts":  {
                                                                     "files":  3,
                                                                     "scripts":  2,
-                                                                    "validators":  0,
+                                                                    "validators":  1,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  0,
                                                                     "docs":  0
                                                                 },
                                             "file_count":  3,
                                             "script_count":  2,
-                                            "validator_count":  0,
+                                            "validator_count":  1,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  0,
                                             "doc_count":  0,
                                             "validator_refs":  [
-
+                                                                   "packs/PHASE99_CONTINUE_ON_FAILURE_RUNTIME_V1/VALIDATE.ps1"
                                                                ],
                                             "proof_refs":  [
 
@@ -7730,6 +7789,47 @@
                                             "is_required_component":  false
                                         },
                                         {
+                                            "id":  "self_build_programs_memory",
+                                            "path":  "self_build_programs/memory",
+                                            "root":  "self_build_programs/memory",
+                                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
+                                            "discovery_method":  "bounded_git_ls_files_path_discovery",
+                                            "evidence_counts":  {
+                                                                    "files":  2,
+                                                                    "scripts":  1,
+                                                                    "validators":  0,
+                                                                    "proofs":  0,
+                                                                    "contracts_or_policies":  0,
+                                                                    "docs":  0
+                                                                },
+                                            "file_count":  2,
+                                            "script_count":  1,
+                                            "validator_count":  0,
+                                            "proof_file_count":  0,
+                                            "contract_or_policy_count":  0,
+                                            "doc_count":  0,
+                                            "validator_refs":  [
+
+                                                               ],
+                                            "proof_refs":  [
+
+                                                           ],
+                                            "contract_or_policy_refs":  [
+
+                                                                        ],
+                                            "notable_files":  [
+                                                                  "self_build_programs/memory/CONNECT_ABSORPTION_TO_BUILDER_MEMORY_V1.ps1",
+                                                                  "self_build_programs/memory/SELF_BUILD_PROGRAM_OWNER_MATERIAL_INPUT_BOOTSTRAP_001_V1_001_MEMORY_ABSORPTION.json"
+                                                              ],
+                                            "primary_evidence_refs":  [
+                                                                          "self_build_programs/memory/CONNECT_ABSORPTION_TO_BUILDER_MEMORY_V1.ps1"
+                                                                      ],
+                                            "needs_triage":  true,
+                                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
+                                            "source_ref":  "bounded_tracked_file_discovery_v1",
+                                            "is_required_component":  false
+                                        },
+                                        {
                                             "id":  "self_build_programs_quarantine",
                                             "path":  "self_build_programs/quarantine",
                                             "root":  "self_build_programs/quarantine",
@@ -7772,47 +7872,6 @@
                                             "is_required_component":  false
                                         },
                                         {
-                                            "id":  "self_build_programs_memory",
-                                            "path":  "self_build_programs/memory",
-                                            "root":  "self_build_programs/memory",
-                                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                                            "discovery_method":  "bounded_git_ls_files_path_discovery",
-                                            "evidence_counts":  {
-                                                                    "files":  2,
-                                                                    "scripts":  1,
-                                                                    "validators":  0,
-                                                                    "proofs":  0,
-                                                                    "contracts_or_policies":  0,
-                                                                    "docs":  0
-                                                                },
-                                            "file_count":  2,
-                                            "script_count":  1,
-                                            "validator_count":  0,
-                                            "proof_file_count":  0,
-                                            "contract_or_policy_count":  0,
-                                            "doc_count":  0,
-                                            "validator_refs":  [
-
-                                                               ],
-                                            "proof_refs":  [
-
-                                                           ],
-                                            "contract_or_policy_refs":  [
-
-                                                                        ],
-                                            "notable_files":  [
-                                                                  "self_build_programs/memory/CONNECT_ABSORPTION_TO_BUILDER_MEMORY_V1.ps1",
-                                                                  "self_build_programs/memory/SELF_BUILD_PROGRAM_OWNER_MATERIAL_INPUT_BOOTSTRAP_001_V1_001_MEMORY_ABSORPTION.json"
-                                                              ],
-                                            "primary_evidence_refs":  [
-                                                                          "self_build_programs/memory/CONNECT_ABSORPTION_TO_BUILDER_MEMORY_V1.ps1"
-                                                                      ],
-                                            "needs_triage":  true,
-                                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                                            "source_ref":  "bounded_tracked_file_discovery_v1",
-                                            "is_required_component":  false
-                                        },
-                                        {
                                             "id":  "self_build_programs_regression",
                                             "path":  "self_build_programs/regression",
                                             "root":  "self_build_programs/regression",
@@ -7821,19 +7880,19 @@
                                             "evidence_counts":  {
                                                                     "files":  1,
                                                                     "scripts":  1,
-                                                                    "validators":  0,
+                                                                    "validators":  1,
                                                                     "proofs":  0,
                                                                     "contracts_or_policies":  0,
                                                                     "docs":  0
                                                                 },
                                             "file_count":  1,
                                             "script_count":  1,
-                                            "validator_count":  0,
+                                            "validator_count":  1,
                                             "proof_file_count":  0,
                                             "contract_or_policy_count":  0,
                                             "doc_count":  0,
                                             "validator_refs":  [
-
+                                                                   "self_build_programs/regression/VALIDATE_PHASE165_SELF_BUILD_LOOP_REGRESSION_V1.ps1"
                                                                ],
                                             "proof_refs":  [
 
@@ -8087,7 +8146,7 @@
                            "script_count":  78,
                            "validator_count":  30,
                            "proof_file_count":  12,
-                           "contract_or_policy_count":  15,
+                           "contract_or_policy_count":  17,
                            "doc_count":  19,
                            "required_files":  [
                                                   "operations/school/run_agent_school.ps1",
@@ -8101,6 +8160,8 @@
                            "validator_refs":  [
                                                   "operations/school/codex/validate_and_normalize_codex_school_patch_candidates_v1.ps1",
                                                   "operations/school/codex/validate_codex_school_patch_task_template_v1.ps1",
+                                                  "operations/school/curriculum/candidate_factory/reports/CAMPAIGN_PACK_CANDIDATE_FACTORY_VALIDATION_V1.json",
+                                                  "operations/school/curriculum/candidate_factory/reports/CAMPAIGN_PACK_CANDIDATE_FACTORY_VALIDATION_V1.md",
                                                   "operations/school/curriculum/candidate_factory/validate_campaign_pack_candidate_factory_v1.ps1",
                                                   "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_batch_delta_v1.ps1",
                                                   "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_hot_path_invariants_v1.ps1",
@@ -8126,9 +8187,7 @@
                                                   "operations/school/curriculum/streaming_absorption/validate_codex_curriculum_streaming_absorption_v1.ps1",
                                                   "operations/school/curriculum/validate_curriculum_school_v1.ps1",
                                                   "operations/school/digestion/select_compact_semantic_digest_validation_budget_v1.ps1",
-                                                  "operations/school/digestion/validate_active_memory_publish_retry_v1.ps1",
-                                                  "operations/school/digestion/validate_compact_semantic_digestion_organ_v1.ps1",
-                                                  "operations/school/memory/validate_compact_memory_recall_use_probe_v1.ps1"
+                                                  "operations/school/digestion/validate_active_memory_publish_retry_v1.ps1"
                                               ],
                            "proof_refs":  [
                                               "operations/school/proofs/AUTONOMOUS_SCHOOL_CONTROL_PROOF_20260706_100215.json",
@@ -8151,6 +8210,8 @@
                                                            "operations/school/curriculum/codex_contract/samples/mixed_codex_curriculum_batch_canary_v1.jsonl",
                                                            "operations/school/curriculum/codex_contract/validate_codex_curriculum_batch_v1.ps1",
                                                            "operations/school/curriculum/codex_contract/validate_codex_curriculum_contract_consistency_v1.ps1",
+                                                           "operations/school/curriculum/incremental_active_store/ACTIVE_REPO_BODY_REPLAY_AUDIT_POLICY_V1.json",
+                                                           "operations/school/curriculum/incremental_active_store/REPLAY_AUDIT_POLICY_V1.md",
                                                            "operations/school/curriculum/incremental_active_store/select_replay_audit_policy_v1.ps1",
                                                            "operations/school/curriculum/incremental_active_store/validate_replay_audit_policy_entrypoint_wiring_v1.ps1",
                                                            "operations/school/curriculum/incremental_active_store/validate_replay_audit_policy_v1.ps1",
@@ -8165,23 +8226,23 @@
                                                          "operations/school/autonomous_school_cycle_policy.json",
                                                          "operations/school/codex/validate_and_normalize_codex_school_patch_candidates_v1.ps1",
                                                          "operations/school/codex/validate_codex_school_patch_task_template_v1.ps1",
+                                                         "operations/school/curriculum/candidate_factory/reports/CAMPAIGN_PACK_CANDIDATE_FACTORY_VALIDATION_V1.json",
+                                                         "operations/school/curriculum/candidate_factory/reports/CAMPAIGN_PACK_CANDIDATE_FACTORY_VALIDATION_V1.md",
                                                          "operations/school/curriculum/candidate_factory/validate_campaign_pack_candidate_factory_v1.ps1",
                                                          "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_batch_delta_v1.ps1",
                                                          "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_hot_path_invariants_v1.ps1",
                                                          "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_memory_ladder_v1.ps1",
                                                          "operations/school/curriculum/candidate_factory/validate_codex_candidate_factory_topic_cursor_ledger_v1.ps1",
                                                          "operations/school/curriculum/candidate_factory/validate_codex_curriculum_candidate_factory_v1.ps1",
-                                                         "operations/school/curriculum/candidate_factory/validate_theme_cursor_ledger_v1.ps1",
-                                                         "operations/school/curriculum/codex_active/validate_codex_curriculum_active_decision_v1.ps1",
                                                          "operations/school/curriculum/codex_contract/CODEX_CURRICULUM_CANARY_TASK_V1.md",
                                                          "operations/school/curriculum/codex_contract/CODEX_CURRICULUM_CONTRACT_V1.md",
                                                          "operations/school/curriculum/codex_contract/samples/mixed_codex_curriculum_batch_canary_v1.jsonl",
                                                          "operations/school/curriculum/codex_contract/validate_codex_curriculum_batch_v1.ps1",
                                                          "operations/school/curriculum/codex_contract/validate_codex_curriculum_contract_consistency_v1.ps1",
+                                                         "operations/school/curriculum/incremental_active_store/ACTIVE_REPO_BODY_REPLAY_AUDIT_POLICY_V1.json",
+                                                         "operations/school/curriculum/incremental_active_store/REPLAY_AUDIT_POLICY_V1.md",
                                                          "operations/school/curriculum/incremental_active_store/select_replay_audit_policy_v1.ps1",
                                                          "operations/school/curriculum/incremental_active_store/validate_replay_audit_policy_entrypoint_wiring_v1.ps1",
-                                                         "operations/school/curriculum/incremental_active_store/validate_replay_audit_policy_v1.ps1",
-                                                         "operations/school/curriculum/source_router/school_source_router_policy.json",
                                                          "operations/school/finalize_agent_school_run_v1.ps1",
                                                          "operations/school/proofs/AUTONOMOUS_SCHOOL_CONTROL_PROOF_20260706_100215.json",
                                                          "operations/school/proofs/AUTONOMOUS_SCHOOL_CYCLE_LIMITS_PROOF_20260706_095723.json",
@@ -8389,7 +8450,7 @@
                            "script_count":  2,
                            "validator_count":  0,
                            "proof_file_count":  22,
-                           "contract_or_policy_count":  2,
+                           "contract_or_policy_count":  3,
                            "doc_count":  4,
                            "required_files":  [
                                                   "operations/knowledge_acquisition_port/ask_codex_knowledge_source.ps1",
@@ -8428,7 +8489,8 @@
                                           ],
                            "contract_or_policy_refs":  [
                                                            "operations/knowledge_acquisition_port/codex_readonly_source_policy.json",
-                                                           "operations/knowledge_acquisition_port/KNOWLEDGE_ACQUISITION_PORT_CONTRACT.md"
+                                                           "operations/knowledge_acquisition_port/KNOWLEDGE_ACQUISITION_PORT_CONTRACT.md",
+                                                           "operations/knowledge_acquisition_port/SOURCE_DIGEST_RETENTION_POLICY.md"
                                                        ],
                            "primary_evidence_refs":  [
                                                          "operations/knowledge_acquisition_port/ask_codex_batch_knowledge_source.ps1",
@@ -8444,7 +8506,8 @@
                                                          "operations/knowledge_acquisition_port/runs/learning_atom_candidate_route_fixture_20260705_01_cycle1_atom_candidate_fixture/BATCH_KNOWLEDGE_ACQUISITION_PROOF.json",
                                                          "operations/knowledge_acquisition_port/runs/sandbox_study_episode_manager_20260705_01_cycle2_attempt1_study_batch/BATCH_KNOWLEDGE_ACQUISITION_PROOF.json",
                                                          "operations/knowledge_acquisition_port/runs/sandbox_study_episode_manager_20260705_01_cycle3_attempt1_study_batch/BATCH_KNOWLEDGE_ACQUISITION_PROOF.json",
-                                                         "operations/knowledge_acquisition_port/runs/sandbox_study_episode_manager_20260705_01_cycle4_attempt1_study_batch/BATCH_KNOWLEDGE_ACQUISITION_PROOF.json"
+                                                         "operations/knowledge_acquisition_port/runs/sandbox_study_episode_manager_20260705_01_cycle4_attempt1_study_batch/BATCH_KNOWLEDGE_ACQUISITION_PROOF.json",
+                                                         "operations/knowledge_acquisition_port/SOURCE_DIGEST_RETENTION_POLICY.md"
                                                      ],
                            "entrypoint_scripts":  [
                                                       "operations/knowledge_acquisition_port/ask_codex_batch_knowledge_source.ps1",
@@ -8659,7 +8722,7 @@
                            "script_count":  0,
                            "validator_count":  0,
                            "proof_file_count":  0,
-                           "contract_or_policy_count":  0,
+                           "contract_or_policy_count":  1,
                            "doc_count":  13,
                            "required_files":  [
                                                   "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
@@ -8675,10 +8738,11 @@
 
                                           ],
                            "contract_or_policy_refs":  [
-
+                                                           "operations/gpt_handoff/GPT_OPERATOR_JOURNAL_ROTATION_POLICY.md"
                                                        ],
                            "primary_evidence_refs":  [
-                                                         "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
+                                                         "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
+                                                         "operations/gpt_handoff/GPT_OPERATOR_JOURNAL_ROTATION_POLICY.md"
                                                      ],
                            "entrypoint_scripts":  [
 
@@ -8938,8 +9002,8 @@
                                                            "contracts/materials/manual_scout_pass.schema.json",
                                                            "contracts/materials/material_candidate.schema.json",
                                                            "contracts/materials/material_catalog.schema.json",
-                                                           "contracts/materials/material_quarantine_card.schema.json",
                                                            "contracts/materials/material_policy.schema.json",
+                                                           "contracts/materials/material_quarantine_card.schema.json",
                                                            "contracts/materials/material_request.schema.json"
                                                        ],
                            "notable_files":  [
@@ -8954,8 +9018,8 @@
                                                          "contracts/materials/manual_scout_pass.schema.json",
                                                          "contracts/materials/material_candidate.schema.json",
                                                          "contracts/materials/material_catalog.schema.json",
-                                                         "contracts/materials/material_quarantine_card.schema.json",
                                                          "contracts/materials/material_policy.schema.json",
+                                                         "contracts/materials/material_quarantine_card.schema.json",
                                                          "contracts/materials/material_request.schema.json"
                                                      ],
                            "needs_triage":  true,
@@ -9057,10 +9121,10 @@
                                                            "contracts/self_development/generated_program_admission.schema.json",
                                                            "contracts/self_development/generated_self_build_execution.schema.json",
                                                            "contracts/self_development/item_level_execution_ledger_v1.schema.json",
-                                                           "contracts/self_development/quarantine_and_blocker_registry_v1.schema.json",
                                                            "contracts/self_development/law_kernel_matrix_cell_proof_energy_record_v1.schema.json",
                                                            "contracts/self_development/live_self_growth_macro_cycle.schema.json",
                                                            "contracts/self_development/owner_order_to_gap_map_v1.schema.json",
+                                                           "contracts/self_development/quarantine_and_blocker_registry_v1.schema.json",
                                                            "contracts/self_development/repair_loop_generator_v1.schema.json",
                                                            "contracts/self_development/scale_trial_10_30_100_item_simulation_v1.schema.json",
                                                            "contracts/self_development/scale_trial_promotion_gate_and_route_lock_refresh_v1.schema.json",
@@ -9103,10 +9167,10 @@
                                                          "contracts/self_development/generated_program_admission.schema.json",
                                                          "contracts/self_development/generated_self_build_execution.schema.json",
                                                          "contracts/self_development/item_level_execution_ledger_v1.schema.json",
-                                                         "contracts/self_development/quarantine_and_blocker_registry_v1.schema.json",
                                                          "contracts/self_development/law_kernel_matrix_cell_proof_energy_record_v1.schema.json",
                                                          "contracts/self_development/live_self_growth_macro_cycle.schema.json",
                                                          "contracts/self_development/owner_order_to_gap_map_v1.schema.json",
+                                                         "contracts/self_development/quarantine_and_blocker_registry_v1.schema.json",
                                                          "contracts/self_development/repair_loop_generator_v1.schema.json",
                                                          "contracts/self_development/scale_trial_10_30_100_item_simulation_v1.schema.json",
                                                          "contracts/self_development/scale_trial_promotion_gate_and_route_lock_refresh_v1.schema.json",
@@ -9352,8 +9416,8 @@
                                                  "modules/self_development/write_self_development_decision_kernel_report.ps1"
                                              ],
                            "primary_evidence_refs":  [
-                                                         "modules/self_development/execute_admitted_self_build_program.ps1",
                                                          "modules/self_development/evaluate_generated_program_admission.ps1",
+                                                         "modules/self_development/execute_admitted_self_build_program.ps1",
                                                          "modules/self_development/write_auto_next_gap_decision_v1.ps1",
                                                          "modules/self_development/write_batch_admission_policy_v1.ps1",
                                                          "modules/self_development/write_batch_planner_v1.ps1",
@@ -9713,17 +9777,17 @@
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                            "discovery_method":  "bounded_git_ls_files_path_discovery",
                            "evidence_counts":  {
-                                                   "files":  53,
+                                                   "files":  55,
                                                    "scripts":  5,
                                                    "validators":  1,
-                                                   "proofs":  4,
+                                                   "proofs":  5,
                                                    "contracts_or_policies":  0,
                                                    "docs":  5
                                                },
-                           "file_count":  53,
+                           "file_count":  55,
                            "script_count":  5,
                            "validator_count":  1,
-                           "proof_file_count":  4,
+                           "proof_file_count":  5,
                            "contract_or_policy_count":  0,
                            "doc_count":  5,
                            "validator_refs":  [
@@ -9733,6 +9797,7 @@
                                               "operations/bridge_recovery/proofs/archive_proof_v1.json",
                                               "operations/bridge_recovery/proofs/chat_handoff_proof_v1.json",
                                               "operations/bridge_recovery/proofs/lab_restore_proof_v1.json",
+                                              "operations/bridge_recovery/proofs/migration_pack_v2_proof_20260726.json",
                                               "operations/bridge_recovery/proofs/pack_build_proof_v1.json"
                                           ],
                            "contract_or_policy_refs":  [
@@ -9771,6 +9836,7 @@
                                                          "operations/bridge_recovery/proofs/archive_proof_v1.json",
                                                          "operations/bridge_recovery/proofs/chat_handoff_proof_v1.json",
                                                          "operations/bridge_recovery/proofs/lab_restore_proof_v1.json",
+                                                         "operations/bridge_recovery/proofs/migration_pack_v2_proof_20260726.json",
                                                          "operations/bridge_recovery/proofs/pack_build_proof_v1.json",
                                                          "operations/bridge_recovery/scripts/install_bridge.ps1",
                                                          "operations/bridge_recovery/scripts/recover_bridge.ps1",
@@ -10459,19 +10525,30 @@
                            "evidence_counts":  {
                                                    "files":  115,
                                                    "scripts":  0,
-                                                   "validators":  0,
+                                                   "validators":  12,
                                                    "proofs":  2,
                                                    "contracts_or_policies":  0,
                                                    "docs":  28
                                                },
                            "file_count":  115,
                            "script_count":  0,
-                           "validator_count":  0,
+                           "validator_count":  12,
                            "proof_file_count":  2,
                            "contract_or_policy_count":  0,
                            "doc_count":  28,
                            "validator_refs":  [
-
+                                                  "operations/reports/CODEX_SCHOOL_PATCH_TASK_TEMPLATE_VALIDATION_20260714.json",
+                                                  "operations/reports/CODEX_WAREHOUSE_PIPELINE_VALIDATION_20260714.json",
+                                                  "operations/reports/CODEX_WAREHOUSE_PRODUCER_SMOKE_VALIDATION_20260715.json",
+                                                  "operations/reports/COMPACT_MEMORY_COMPACTION_CANDIDATE_VALIDATION_20260714.json",
+                                                  "operations/reports/DEVELOPMENT_VECTOR_THEME_SELECTOR_VALIDATION_20260714.json",
+                                                  "operations/reports/DYNAMIC_SCHOOL_REQUEST_PLANNER_VALIDATION_20260715.json",
+                                                  "operations/reports/DYNAMIC_THEME_CELL_SELECTOR_VALIDATION_20260714.json",
+                                                  "operations/reports/EXACT_678_DYNAMIC_REQUEST_VALIDATION_20260715.json",
+                                                  "operations/reports/GENERIC_EXACT_COUNT_CYCLE_VALIDATION_20260715.json",
+                                                  "operations/reports/GENERIC_EXACT_REQUEST_ENGINE_VALIDATION_20260715.json",
+                                                  "operations/reports/SCHOOL_PATCH_EXECUTOR_VALIDATION_20260714.json",
+                                                  "operations/reports/SCHOOL_TOPIC_PATCH_PLAN_VALIDATION_20260714.json"
                                               ],
                            "proof_refs":  [
                                               "operations/reports/canonical_exact_count_cycle_live_1_20260715/canonical_run_proof.json",
@@ -10509,7 +10586,19 @@
                                              ],
                            "primary_evidence_refs":  [
                                                          "operations/reports/canonical_exact_count_cycle_live_1_20260715/canonical_run_proof.json",
-                                                         "operations/reports/canonical_exact_count_cycle_test_101_20260715/canonical_run_proof.json"
+                                                         "operations/reports/canonical_exact_count_cycle_test_101_20260715/canonical_run_proof.json",
+                                                         "operations/reports/CODEX_SCHOOL_PATCH_TASK_TEMPLATE_VALIDATION_20260714.json",
+                                                         "operations/reports/CODEX_WAREHOUSE_PIPELINE_VALIDATION_20260714.json",
+                                                         "operations/reports/CODEX_WAREHOUSE_PRODUCER_SMOKE_VALIDATION_20260715.json",
+                                                         "operations/reports/COMPACT_MEMORY_COMPACTION_CANDIDATE_VALIDATION_20260714.json",
+                                                         "operations/reports/DEVELOPMENT_VECTOR_THEME_SELECTOR_VALIDATION_20260714.json",
+                                                         "operations/reports/DYNAMIC_SCHOOL_REQUEST_PLANNER_VALIDATION_20260715.json",
+                                                         "operations/reports/DYNAMIC_THEME_CELL_SELECTOR_VALIDATION_20260714.json",
+                                                         "operations/reports/EXACT_678_DYNAMIC_REQUEST_VALIDATION_20260715.json",
+                                                         "operations/reports/GENERIC_EXACT_COUNT_CYCLE_VALIDATION_20260715.json",
+                                                         "operations/reports/GENERIC_EXACT_REQUEST_ENGINE_VALIDATION_20260715.json",
+                                                         "operations/reports/SCHOOL_PATCH_EXECUTOR_VALIDATION_20260714.json",
+                                                         "operations/reports/SCHOOL_TOPIC_PATCH_PLAN_VALIDATION_20260714.json"
                                                      ],
                            "needs_triage":  true,
                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
@@ -10567,19 +10656,23 @@
                            "evidence_counts":  {
                                                    "files":  6,
                                                    "scripts":  3,
-                                                   "validators":  2,
+                                                   "validators":  6,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  1,
                                                    "docs":  0
                                                },
                            "file_count":  6,
                            "script_count":  3,
-                           "validator_count":  2,
+                           "validator_count":  6,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  1,
                            "doc_count":  0,
                            "validator_refs":  [
+                                                  "packs/PHASE10_GENERATED_AGENT_VALIDATION_HARNESS_V1/APPLY.ps1",
+                                                  "packs/PHASE10_GENERATED_AGENT_VALIDATION_HARNESS_V1/PACK.json",
                                                   "packs/PHASE10_GENERATED_AGENT_VALIDATION_HARNESS_V1/payload/contracts/generated_agent_validation_report.schema.json",
+                                                  "packs/PHASE10_GENERATED_AGENT_VALIDATION_HARNESS_V1/payload/modules/test_generated_agent_package.ps1",
+                                                  "packs/PHASE10_GENERATED_AGENT_VALIDATION_HARNESS_V1/payload/tasks/TASK_FACTORY_BUILD_EXTERNAL_AGENT_MODE_V1_001.json",
                                                   "packs/PHASE10_GENERATED_AGENT_VALIDATION_HARNESS_V1/payload/validators/validate_generated_agent_validation_harness_v1.ps1"
                                               ],
                            "proof_refs":  [
@@ -10598,8 +10691,10 @@
                                              ],
                            "primary_evidence_refs":  [
                                                          "packs/PHASE10_GENERATED_AGENT_VALIDATION_HARNESS_V1/APPLY.ps1",
+                                                         "packs/PHASE10_GENERATED_AGENT_VALIDATION_HARNESS_V1/PACK.json",
                                                          "packs/PHASE10_GENERATED_AGENT_VALIDATION_HARNESS_V1/payload/contracts/generated_agent_validation_report.schema.json",
                                                          "packs/PHASE10_GENERATED_AGENT_VALIDATION_HARNESS_V1/payload/modules/test_generated_agent_package.ps1",
+                                                         "packs/PHASE10_GENERATED_AGENT_VALIDATION_HARNESS_V1/payload/tasks/TASK_FACTORY_BUILD_EXTERNAL_AGENT_MODE_V1_001.json",
                                                          "packs/PHASE10_GENERATED_AGENT_VALIDATION_HARNESS_V1/payload/validators/validate_generated_agent_validation_harness_v1.ps1"
                                                      ],
                            "needs_triage":  true,
@@ -10616,19 +10711,19 @@
                            "evidence_counts":  {
                                                    "files":  3,
                                                    "scripts":  2,
-                                                   "validators":  0,
+                                                   "validators":  1,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  0,
                                                    "docs":  0
                                                },
                            "file_count":  3,
                            "script_count":  2,
-                           "validator_count":  0,
+                           "validator_count":  1,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  0,
                            "doc_count":  0,
                            "validator_refs":  [
-
+                                                  "packs/PHASE100_QUARANTINE_AND_BLOCKER_REGISTRY_V1/VALIDATE.ps1"
                                               ],
                            "proof_refs":  [
 
@@ -10659,19 +10754,19 @@
                            "evidence_counts":  {
                                                    "files":  3,
                                                    "scripts":  2,
-                                                   "validators":  0,
+                                                   "validators":  1,
                                                    "proofs":  3,
                                                    "contracts_or_policies":  0,
                                                    "docs":  0
                                                },
                            "file_count":  3,
                            "script_count":  2,
-                           "validator_count":  0,
+                           "validator_count":  1,
                            "proof_file_count":  3,
                            "contract_or_policy_count":  0,
                            "doc_count":  0,
                            "validator_refs":  [
-
+                                                  "packs/PHASE101_BATCH_PROOF_AGGREGATOR_V1/VALIDATE.ps1"
                                               ],
                            "proof_refs":  [
                                               "packs/PHASE101_BATCH_PROOF_AGGREGATOR_V1/APPLY.ps1",
@@ -10705,19 +10800,19 @@
                            "evidence_counts":  {
                                                    "files":  3,
                                                    "scripts":  2,
-                                                   "validators":  0,
+                                                   "validators":  1,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  0,
                                                    "docs":  0
                                                },
                            "file_count":  3,
                            "script_count":  2,
-                           "validator_count":  0,
+                           "validator_count":  1,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  0,
                            "doc_count":  0,
                            "validator_refs":  [
-
+                                                  "packs/PHASE102_AUTO_NEXT_GAP_DECISION_V1/VALIDATE.ps1"
                                               ],
                            "proof_refs":  [
 
@@ -10748,19 +10843,19 @@
                            "evidence_counts":  {
                                                    "files":  3,
                                                    "scripts":  2,
-                                                   "validators":  0,
+                                                   "validators":  1,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  0,
                                                    "docs":  0
                                                },
                            "file_count":  3,
                            "script_count":  2,
-                           "validator_count":  0,
+                           "validator_count":  1,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  0,
                            "doc_count":  0,
                            "validator_refs":  [
-
+                                                  "packs/PHASE103_REPAIR_LOOP_GENERATOR_V1/VALIDATE.ps1"
                                               ],
                            "proof_refs":  [
 
@@ -10791,19 +10886,19 @@
                            "evidence_counts":  {
                                                    "files":  3,
                                                    "scripts":  2,
-                                                   "validators":  0,
+                                                   "validators":  1,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  0,
                                                    "docs":  0
                                                },
                            "file_count":  3,
                            "script_count":  2,
-                           "validator_count":  0,
+                           "validator_count":  1,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  0,
                            "doc_count":  0,
                            "validator_refs":  [
-
+                                                  "packs/PHASE104_CONTROLLED_MULTI_CYCLE_SELF_BUILD_RUN_V1/VALIDATE.ps1"
                                               ],
                            "proof_refs":  [
 
@@ -10834,19 +10929,19 @@
                            "evidence_counts":  {
                                                    "files":  3,
                                                    "scripts":  2,
-                                                   "validators":  0,
+                                                   "validators":  1,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  0,
                                                    "docs":  0
                                                },
                            "file_count":  3,
                            "script_count":  2,
-                           "validator_count":  0,
+                           "validator_count":  1,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  0,
                            "doc_count":  0,
                            "validator_refs":  [
-
+                                                  "packs/PHASE105_SCALE_TRIAL_10_30_100_ITEM_SIMULATION_V1/VALIDATE.ps1"
                                               ],
                            "proof_refs":  [
 
@@ -10877,19 +10972,19 @@
                            "evidence_counts":  {
                                                    "files":  3,
                                                    "scripts":  2,
-                                                   "validators":  0,
+                                                   "validators":  1,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  0,
                                                    "docs":  0
                                                },
                            "file_count":  3,
                            "script_count":  2,
-                           "validator_count":  0,
+                           "validator_count":  1,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  0,
                            "doc_count":  0,
                            "validator_refs":  [
-
+                                                  "packs/PHASE106_SCALE_TRIAL_PROMOTION_GATE_AND_ROUTE_LOCK_REFRESH_V1/VALIDATE.ps1"
                                               ],
                            "proof_refs":  [
 
@@ -10920,19 +11015,19 @@
                            "evidence_counts":  {
                                                    "files":  3,
                                                    "scripts":  2,
-                                                   "validators":  0,
+                                                   "validators":  1,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  0,
                                                    "docs":  0
                                                },
                            "file_count":  3,
                            "script_count":  2,
-                           "validator_count":  0,
+                           "validator_count":  1,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  0,
                            "doc_count":  0,
                            "validator_refs":  [
-
+                                                  "packs/PHASE107_BUILDER_SELF_PACK_AUTHOR_V1/VALIDATE.ps1"
                                               ],
                            "proof_refs":  [
 
@@ -11105,18 +11200,19 @@
                            "evidence_counts":  {
                                                    "files":  7,
                                                    "scripts":  3,
-                                                   "validators":  1,
+                                                   "validators":  2,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  2,
                                                    "docs":  0
                                                },
                            "file_count":  7,
                            "script_count":  3,
-                           "validator_count":  1,
+                           "validator_count":  2,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  2,
                            "doc_count":  0,
                            "validator_refs":  [
+                                                  "packs/PHASE14_REAL_GENERATED_AGENT_RUNTIME_V2/payload/tasks/TASK_OPERATIONAL_VALIDATION_HARNESS_V2_001.json",
                                                   "packs/PHASE14_REAL_GENERATED_AGENT_RUNTIME_V2/payload/validators/validate_real_generated_agent_runtime_v2.ps1"
                                               ],
                            "proof_refs":  [
@@ -11140,6 +11236,7 @@
                                                          "packs/PHASE14_REAL_GENERATED_AGENT_RUNTIME_V2/payload/contracts/generated_agent_request.schema.json",
                                                          "packs/PHASE14_REAL_GENERATED_AGENT_RUNTIME_V2/payload/contracts/generated_agent_result.schema.json",
                                                          "packs/PHASE14_REAL_GENERATED_AGENT_RUNTIME_V2/payload/modules/new_external_agent_package.ps1",
+                                                         "packs/PHASE14_REAL_GENERATED_AGENT_RUNTIME_V2/payload/tasks/TASK_OPERATIONAL_VALIDATION_HARNESS_V2_001.json",
                                                          "packs/PHASE14_REAL_GENERATED_AGENT_RUNTIME_V2/payload/validators/validate_real_generated_agent_runtime_v2.ps1"
                                                      ],
                            "needs_triage":  true,
@@ -11156,19 +11253,23 @@
                            "evidence_counts":  {
                                                    "files":  6,
                                                    "scripts":  3,
-                                                   "validators":  2,
+                                                   "validators":  6,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  1,
                                                    "docs":  0
                                                },
                            "file_count":  6,
                            "script_count":  3,
-                           "validator_count":  2,
+                           "validator_count":  6,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  1,
                            "doc_count":  0,
                            "validator_refs":  [
+                                                  "packs/PHASE15_OPERATIONAL_VALIDATION_HARNESS_V2/APPLY.ps1",
+                                                  "packs/PHASE15_OPERATIONAL_VALIDATION_HARNESS_V2/PACK.json",
                                                   "packs/PHASE15_OPERATIONAL_VALIDATION_HARNESS_V2/payload/contracts/operational_generated_agent_validation_report.schema.json",
+                                                  "packs/PHASE15_OPERATIONAL_VALIDATION_HARNESS_V2/payload/modules/test_generated_agent_package_operational.ps1",
+                                                  "packs/PHASE15_OPERATIONAL_VALIDATION_HARNESS_V2/payload/tasks/TASK_FACTORY_BUILD_EXTERNAL_AGENT_MODE_V2_001.json",
                                                   "packs/PHASE15_OPERATIONAL_VALIDATION_HARNESS_V2/payload/validators/validate_operational_validation_harness_v2.ps1"
                                               ],
                            "proof_refs":  [
@@ -11187,8 +11288,10 @@
                                              ],
                            "primary_evidence_refs":  [
                                                          "packs/PHASE15_OPERATIONAL_VALIDATION_HARNESS_V2/APPLY.ps1",
+                                                         "packs/PHASE15_OPERATIONAL_VALIDATION_HARNESS_V2/PACK.json",
                                                          "packs/PHASE15_OPERATIONAL_VALIDATION_HARNESS_V2/payload/contracts/operational_generated_agent_validation_report.schema.json",
                                                          "packs/PHASE15_OPERATIONAL_VALIDATION_HARNESS_V2/payload/modules/test_generated_agent_package_operational.ps1",
+                                                         "packs/PHASE15_OPERATIONAL_VALIDATION_HARNESS_V2/payload/tasks/TASK_FACTORY_BUILD_EXTERNAL_AGENT_MODE_V2_001.json",
                                                          "packs/PHASE15_OPERATIONAL_VALIDATION_HARNESS_V2/payload/validators/validate_operational_validation_harness_v2.ps1"
                                                      ],
                            "needs_triage":  true,
@@ -11254,19 +11357,19 @@
                            "evidence_counts":  {
                                                    "files":  2,
                                                    "scripts":  2,
-                                                   "validators":  0,
+                                                   "validators":  1,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  0,
                                                    "docs":  0
                                                },
                            "file_count":  2,
                            "script_count":  2,
-                           "validator_count":  0,
+                           "validator_count":  1,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  0,
                            "doc_count":  0,
                            "validator_refs":  [
-
+                                                  "packs/PHASE164K_OWNER_CANDIDATE_SELF_GROWTH_ADAPTER_V1/VALIDATE.ps1"
                                               ],
                            "proof_refs":  [
 
@@ -12434,19 +12537,24 @@
                            "evidence_counts":  {
                                                    "files":  7,
                                                    "scripts":  4,
-                                                   "validators":  2,
+                                                   "validators":  7,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  1,
                                                    "docs":  0
                                                },
                            "file_count":  7,
                            "script_count":  4,
-                           "validator_count":  2,
+                           "validator_count":  7,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  1,
                            "doc_count":  0,
                            "validator_refs":  [
+                                                  "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/APPLY.ps1",
+                                                  "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/PACK.json",
+                                                  "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/payload/contracts/failure_diagnostic.schema.json",
+                                                  "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/payload/modules/emit_failure_diagnostic.ps1",
                                                   "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/payload/modules/validate_truth_alignment.ps1",
+                                                  "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/payload/tasks/TASK_EXTERNAL_AGENT_SPEC_INTAKE_001.json",
                                                   "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/payload/validators/validate_self_validation_release_gates.ps1"
                                               ],
                            "proof_refs":  [
@@ -12466,9 +12574,11 @@
                                              ],
                            "primary_evidence_refs":  [
                                                          "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/APPLY.ps1",
+                                                         "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/PACK.json",
                                                          "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/payload/contracts/failure_diagnostic.schema.json",
                                                          "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/payload/modules/emit_failure_diagnostic.ps1",
                                                          "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/payload/modules/validate_truth_alignment.ps1",
+                                                         "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/payload/tasks/TASK_EXTERNAL_AGENT_SPEC_INTAKE_001.json",
                                                          "packs/PHASE4_SELF_VALIDATION_RELEASE_GATES/payload/validators/validate_self_validation_release_gates.ps1"
                                                      ],
                            "needs_triage":  true,
@@ -14406,19 +14516,19 @@
                            "evidence_counts":  {
                                                    "files":  4,
                                                    "scripts":  2,
-                                                   "validators":  0,
+                                                   "validators":  1,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  4,
                                                    "docs":  1
                                                },
                            "file_count":  4,
                            "script_count":  2,
-                           "validator_count":  0,
+                           "validator_count":  1,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  4,
                            "doc_count":  1,
                            "validator_refs":  [
-
+                                                  "packs/PHASE78_AGENT_BUILDER_SELF_KNOWLEDGE_SYSTEM_FULL_CONTRACT_V1/VALIDATE.ps1"
                                               ],
                            "proof_refs":  [
 
@@ -14455,19 +14565,19 @@
                            "evidence_counts":  {
                                                    "files":  3,
                                                    "scripts":  2,
-                                                   "validators":  0,
+                                                   "validators":  1,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  0,
                                                    "docs":  0
                                                },
                            "file_count":  3,
                            "script_count":  2,
-                           "validator_count":  0,
+                           "validator_count":  1,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  0,
                            "doc_count":  0,
                            "validator_refs":  [
-
+                                                  "packs/PHASE79_MATERIAL_ACQUISITION_BOOTSTRAP_V1/VALIDATE.ps1"
                                               ],
                            "proof_refs":  [
 
@@ -14557,19 +14667,19 @@
                            "evidence_counts":  {
                                                    "files":  3,
                                                    "scripts":  2,
-                                                   "validators":  0,
+                                                   "validators":  1,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  0,
                                                    "docs":  0
                                                },
                            "file_count":  3,
                            "script_count":  2,
-                           "validator_count":  0,
+                           "validator_count":  1,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  0,
                            "doc_count":  0,
                            "validator_refs":  [
-
+                                                  "packs/PHASE80_MANUAL_SCOUT_PASS_IMPORT_V1/VALIDATE.ps1"
                                               ],
                            "proof_refs":  [
 
@@ -14600,25 +14710,27 @@
                            "evidence_counts":  {
                                                    "files":  3,
                                                    "scripts":  2,
-                                                   "validators":  0,
+                                                   "validators":  1,
                                                    "proofs":  0,
-                                                   "contracts_or_policies":  0,
+                                                   "contracts_or_policies":  3,
                                                    "docs":  0
                                                },
                            "file_count":  3,
                            "script_count":  2,
-                           "validator_count":  0,
+                           "validator_count":  1,
                            "proof_file_count":  0,
-                           "contract_or_policy_count":  0,
+                           "contract_or_policy_count":  3,
                            "doc_count":  0,
                            "validator_refs":  [
-
+                                                  "packs/PHASE81_MATERIAL_ADMISSION_POLICY_V1/VALIDATE.ps1"
                                               ],
                            "proof_refs":  [
 
                                           ],
                            "contract_or_policy_refs":  [
-
+                                                           "packs/PHASE81_MATERIAL_ADMISSION_POLICY_V1/APPLY.ps1",
+                                                           "packs/PHASE81_MATERIAL_ADMISSION_POLICY_V1/PACK.json",
+                                                           "packs/PHASE81_MATERIAL_ADMISSION_POLICY_V1/VALIDATE.ps1"
                                                        ],
                            "notable_files":  [
                                                  "packs/PHASE81_MATERIAL_ADMISSION_POLICY_V1/APPLY.ps1",
@@ -14627,6 +14739,7 @@
                                              ],
                            "primary_evidence_refs":  [
                                                          "packs/PHASE81_MATERIAL_ADMISSION_POLICY_V1/APPLY.ps1",
+                                                         "packs/PHASE81_MATERIAL_ADMISSION_POLICY_V1/PACK.json",
                                                          "packs/PHASE81_MATERIAL_ADMISSION_POLICY_V1/VALIDATE.ps1"
                                                      ],
                            "needs_triage":  true,
@@ -14643,19 +14756,19 @@
                            "evidence_counts":  {
                                                    "files":  3,
                                                    "scripts":  2,
-                                                   "validators":  0,
+                                                   "validators":  1,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  0,
                                                    "docs":  0
                                                },
                            "file_count":  3,
                            "script_count":  2,
-                           "validator_count":  0,
+                           "validator_count":  1,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  0,
                            "doc_count":  0,
                            "validator_refs":  [
-
+                                                  "packs/PHASE82_FIRST_MATERIAL_QUARANTINE_TRIAL_V1/VALIDATE.ps1"
                                               ],
                            "proof_refs":  [
 
@@ -14686,19 +14799,19 @@
                            "evidence_counts":  {
                                                    "files":  3,
                                                    "scripts":  2,
-                                                   "validators":  0,
+                                                   "validators":  1,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  3,
                                                    "docs":  0
                                                },
                            "file_count":  3,
                            "script_count":  2,
-                           "validator_count":  0,
+                           "validator_count":  1,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  3,
                            "doc_count":  0,
                            "validator_refs":  [
-
+                                                  "packs/PHASE83_OPERATION_CONTRACT_SKELETON_V1/VALIDATE.ps1"
                                               ],
                            "proof_refs":  [
 
@@ -14732,19 +14845,19 @@
                            "evidence_counts":  {
                                                    "files":  3,
                                                    "scripts":  2,
-                                                   "validators":  0,
+                                                   "validators":  1,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  0,
                                                    "docs":  0
                                                },
                            "file_count":  3,
                            "script_count":  2,
-                           "validator_count":  0,
+                           "validator_count":  1,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  0,
                            "doc_count":  0,
                            "validator_refs":  [
-
+                                                  "packs/PHASE87_SELF_DEVELOPMENT_DECISION_KERNEL_V1/VALIDATE.ps1"
                                               ],
                            "proof_refs":  [
 
@@ -14775,19 +14888,19 @@
                            "evidence_counts":  {
                                                    "files":  3,
                                                    "scripts":  2,
-                                                   "validators":  0,
+                                                   "validators":  1,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  0,
                                                    "docs":  0
                                                },
                            "file_count":  3,
                            "script_count":  2,
-                           "validator_count":  0,
+                           "validator_count":  1,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  0,
                            "doc_count":  0,
                            "validator_refs":  [
-
+                                                  "packs/PHASE88_SELF_BUILD_PROGRAM_GENERATOR_V1/VALIDATE.ps1"
                                               ],
                            "proof_refs":  [
 
@@ -14818,19 +14931,19 @@
                            "evidence_counts":  {
                                                    "files":  3,
                                                    "scripts":  2,
-                                                   "validators":  0,
+                                                   "validators":  1,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  0,
                                                    "docs":  0
                                                },
                            "file_count":  3,
                            "script_count":  2,
-                           "validator_count":  0,
+                           "validator_count":  1,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  0,
                            "doc_count":  0,
                            "validator_refs":  [
-
+                                                  "packs/PHASE89_GENERATED_PROGRAM_ADMISSION_V1/VALIDATE.ps1"
                                               ],
                            "proof_refs":  [
 
@@ -14861,18 +14974,19 @@
                            "evidence_counts":  {
                                                    "files":  6,
                                                    "scripts":  3,
-                                                   "validators":  1,
+                                                   "validators":  2,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  1,
                                                    "docs":  0
                                                },
                            "file_count":  6,
                            "script_count":  3,
-                           "validator_count":  1,
+                           "validator_count":  2,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  1,
                            "doc_count":  0,
                            "validator_refs":  [
+                                                  "packs/PHASE9_PRODUCTION_PACKAGE_BLUEPRINT_V1/payload/tasks/TASK_GENERATED_AGENT_VALIDATION_HARNESS_V1_001.json",
                                                   "packs/PHASE9_PRODUCTION_PACKAGE_BLUEPRINT_V1/payload/validators/validate_production_package_blueprint_v1.ps1"
                                               ],
                            "proof_refs":  [
@@ -14893,6 +15007,7 @@
                                                          "packs/PHASE9_PRODUCTION_PACKAGE_BLUEPRINT_V1/APPLY.ps1",
                                                          "packs/PHASE9_PRODUCTION_PACKAGE_BLUEPRINT_V1/payload/contracts/agent_package_blueprint.schema.json",
                                                          "packs/PHASE9_PRODUCTION_PACKAGE_BLUEPRINT_V1/payload/modules/new_external_agent_package.ps1",
+                                                         "packs/PHASE9_PRODUCTION_PACKAGE_BLUEPRINT_V1/payload/tasks/TASK_GENERATED_AGENT_VALIDATION_HARNESS_V1_001.json",
                                                          "packs/PHASE9_PRODUCTION_PACKAGE_BLUEPRINT_V1/payload/validators/validate_production_package_blueprint_v1.ps1"
                                                      ],
                            "needs_triage":  true,
@@ -14909,19 +15024,19 @@
                            "evidence_counts":  {
                                                    "files":  3,
                                                    "scripts":  2,
-                                                   "validators":  0,
+                                                   "validators":  1,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  0,
                                                    "docs":  0
                                                },
                            "file_count":  3,
                            "script_count":  2,
-                           "validator_count":  0,
+                           "validator_count":  1,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  0,
                            "doc_count":  0,
                            "validator_refs":  [
-
+                                                  "packs/PHASE90_BUILDER_EXECUTES_OWN_GENERATED_SELF_BUILD_PROGRAM_V1/VALIDATE.ps1"
                                               ],
                            "proof_refs":  [
 
@@ -14952,19 +15067,19 @@
                            "evidence_counts":  {
                                                    "files":  3,
                                                    "scripts":  2,
-                                                   "validators":  0,
+                                                   "validators":  1,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  0,
                                                    "docs":  0
                                                },
                            "file_count":  3,
                            "script_count":  2,
-                           "validator_count":  0,
+                           "validator_count":  1,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  0,
                            "doc_count":  0,
                            "validator_refs":  [
-
+                                                  "packs/PHASE91_ROUTE_V1_CLOSURE_AND_V2_R2_ACTIVATION/VALIDATE.ps1"
                                               ],
                            "proof_refs":  [
 
@@ -14995,19 +15110,19 @@
                            "evidence_counts":  {
                                                    "files":  3,
                                                    "scripts":  2,
-                                                   "validators":  0,
+                                                   "validators":  1,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  3,
                                                    "docs":  0
                                                },
                            "file_count":  3,
                            "script_count":  2,
-                           "validator_count":  0,
+                           "validator_count":  1,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  3,
                            "doc_count":  0,
                            "validator_refs":  [
-
+                                                  "packs/PHASE92_SELF_BUILD_BACKLOG_CONTRACT_V1/VALIDATE.ps1"
                                               ],
                            "proof_refs":  [
 
@@ -15041,19 +15156,19 @@
                            "evidence_counts":  {
                                                    "files":  3,
                                                    "scripts":  2,
-                                                   "validators":  0,
+                                                   "validators":  1,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  0,
                                                    "docs":  0
                                                },
                            "file_count":  3,
                            "script_count":  2,
-                           "validator_count":  0,
+                           "validator_count":  1,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  0,
                            "doc_count":  0,
                            "validator_refs":  [
-
+                                                  "packs/PHASE93_CAPABILITY_GAP_DETECTOR_V1/VALIDATE.ps1"
                                               ],
                            "proof_refs":  [
 
@@ -15084,19 +15199,19 @@
                            "evidence_counts":  {
                                                    "files":  3,
                                                    "scripts":  2,
-                                                   "validators":  0,
+                                                   "validators":  1,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  0,
                                                    "docs":  0
                                                },
                            "file_count":  3,
                            "script_count":  2,
-                           "validator_count":  0,
+                           "validator_count":  1,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  0,
                            "doc_count":  0,
                            "validator_refs":  [
-
+                                                  "packs/PHASE94_OWNER_ORDER_TO_GAP_MAP_V1/VALIDATE.ps1"
                                               ],
                            "proof_refs":  [
 
@@ -15127,19 +15242,19 @@
                            "evidence_counts":  {
                                                    "files":  3,
                                                    "scripts":  2,
-                                                   "validators":  0,
+                                                   "validators":  1,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  0,
                                                    "docs":  0
                                                },
                            "file_count":  3,
                            "script_count":  2,
-                           "validator_count":  0,
+                           "validator_count":  1,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  0,
                            "doc_count":  0,
                            "validator_refs":  [
-
+                                                  "packs/PHASE95_SELF_BUILD_PROGRAM_GENERATOR_V2/VALIDATE.ps1"
                                               ],
                            "proof_refs":  [
 
@@ -15170,19 +15285,19 @@
                            "evidence_counts":  {
                                                    "files":  3,
                                                    "scripts":  2,
-                                                   "validators":  0,
+                                                   "validators":  1,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  0,
                                                    "docs":  0
                                                },
                            "file_count":  3,
                            "script_count":  2,
-                           "validator_count":  0,
+                           "validator_count":  1,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  0,
                            "doc_count":  0,
                            "validator_refs":  [
-
+                                                  "packs/PHASE96_BATCH_PLANNER_V1/VALIDATE.ps1"
                                               ],
                            "proof_refs":  [
 
@@ -15213,25 +15328,27 @@
                            "evidence_counts":  {
                                                    "files":  3,
                                                    "scripts":  2,
-                                                   "validators":  0,
+                                                   "validators":  1,
                                                    "proofs":  0,
-                                                   "contracts_or_policies":  0,
+                                                   "contracts_or_policies":  3,
                                                    "docs":  0
                                                },
                            "file_count":  3,
                            "script_count":  2,
-                           "validator_count":  0,
+                           "validator_count":  1,
                            "proof_file_count":  0,
-                           "contract_or_policy_count":  0,
+                           "contract_or_policy_count":  3,
                            "doc_count":  0,
                            "validator_refs":  [
-
+                                                  "packs/PHASE97_BATCH_ADMISSION_POLICY_V1/VALIDATE.ps1"
                                               ],
                            "proof_refs":  [
 
                                           ],
                            "contract_or_policy_refs":  [
-
+                                                           "packs/PHASE97_BATCH_ADMISSION_POLICY_V1/APPLY.ps1",
+                                                           "packs/PHASE97_BATCH_ADMISSION_POLICY_V1/PACK.json",
+                                                           "packs/PHASE97_BATCH_ADMISSION_POLICY_V1/VALIDATE.ps1"
                                                        ],
                            "notable_files":  [
                                                  "packs/PHASE97_BATCH_ADMISSION_POLICY_V1/APPLY.ps1",
@@ -15240,6 +15357,7 @@
                                              ],
                            "primary_evidence_refs":  [
                                                          "packs/PHASE97_BATCH_ADMISSION_POLICY_V1/APPLY.ps1",
+                                                         "packs/PHASE97_BATCH_ADMISSION_POLICY_V1/PACK.json",
                                                          "packs/PHASE97_BATCH_ADMISSION_POLICY_V1/VALIDATE.ps1"
                                                      ],
                            "needs_triage":  true,
@@ -15256,19 +15374,19 @@
                            "evidence_counts":  {
                                                    "files":  3,
                                                    "scripts":  2,
-                                                   "validators":  0,
+                                                   "validators":  1,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  0,
                                                    "docs":  0
                                                },
                            "file_count":  3,
                            "script_count":  2,
-                           "validator_count":  0,
+                           "validator_count":  1,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  0,
                            "doc_count":  0,
                            "validator_refs":  [
-
+                                                  "packs/PHASE98_ITEM_LEVEL_EXECUTION_LEDGER_V1/VALIDATE.ps1"
                                               ],
                            "proof_refs":  [
 
@@ -15299,19 +15417,19 @@
                            "evidence_counts":  {
                                                    "files":  3,
                                                    "scripts":  2,
-                                                   "validators":  0,
+                                                   "validators":  1,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  0,
                                                    "docs":  0
                                                },
                            "file_count":  3,
                            "script_count":  2,
-                           "validator_count":  0,
+                           "validator_count":  1,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  0,
                            "doc_count":  0,
                            "validator_refs":  [
-
+                                                  "packs/PHASE99_CONTINUE_ON_FAILURE_RUNTIME_V1/VALIDATE.ps1"
                                               ],
                            "proof_refs":  [
 
@@ -15782,6 +15900,47 @@
                            "is_required_component":  false
                        },
                        {
+                           "id":  "self_build_programs_memory",
+                           "path":  "self_build_programs/memory",
+                           "root":  "self_build_programs/memory",
+                           "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
+                           "discovery_method":  "bounded_git_ls_files_path_discovery",
+                           "evidence_counts":  {
+                                                   "files":  2,
+                                                   "scripts":  1,
+                                                   "validators":  0,
+                                                   "proofs":  0,
+                                                   "contracts_or_policies":  0,
+                                                   "docs":  0
+                                               },
+                           "file_count":  2,
+                           "script_count":  1,
+                           "validator_count":  0,
+                           "proof_file_count":  0,
+                           "contract_or_policy_count":  0,
+                           "doc_count":  0,
+                           "validator_refs":  [
+
+                                              ],
+                           "proof_refs":  [
+
+                                          ],
+                           "contract_or_policy_refs":  [
+
+                                                       ],
+                           "notable_files":  [
+                                                 "self_build_programs/memory/CONNECT_ABSORPTION_TO_BUILDER_MEMORY_V1.ps1",
+                                                 "self_build_programs/memory/SELF_BUILD_PROGRAM_OWNER_MATERIAL_INPUT_BOOTSTRAP_001_V1_001_MEMORY_ABSORPTION.json"
+                                             ],
+                           "primary_evidence_refs":  [
+                                                         "self_build_programs/memory/CONNECT_ABSORPTION_TO_BUILDER_MEMORY_V1.ps1"
+                                                     ],
+                           "needs_triage":  true,
+                           "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
+                           "source_ref":  "bounded_tracked_file_discovery_v1",
+                           "is_required_component":  false
+                       },
+                       {
                            "id":  "self_build_programs_quarantine",
                            "path":  "self_build_programs/quarantine",
                            "root":  "self_build_programs/quarantine",
@@ -15824,47 +15983,6 @@
                            "is_required_component":  false
                        },
                        {
-                           "id":  "self_build_programs_memory",
-                           "path":  "self_build_programs/memory",
-                           "root":  "self_build_programs/memory",
-                           "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                           "discovery_method":  "bounded_git_ls_files_path_discovery",
-                           "evidence_counts":  {
-                                                   "files":  2,
-                                                   "scripts":  1,
-                                                   "validators":  0,
-                                                   "proofs":  0,
-                                                   "contracts_or_policies":  0,
-                                                   "docs":  0
-                                               },
-                           "file_count":  2,
-                           "script_count":  1,
-                           "validator_count":  0,
-                           "proof_file_count":  0,
-                           "contract_or_policy_count":  0,
-                           "doc_count":  0,
-                           "validator_refs":  [
-
-                                              ],
-                           "proof_refs":  [
-
-                                          ],
-                           "contract_or_policy_refs":  [
-
-                                                       ],
-                           "notable_files":  [
-                                                 "self_build_programs/memory/CONNECT_ABSORPTION_TO_BUILDER_MEMORY_V1.ps1",
-                                                 "self_build_programs/memory/SELF_BUILD_PROGRAM_OWNER_MATERIAL_INPUT_BOOTSTRAP_001_V1_001_MEMORY_ABSORPTION.json"
-                                             ],
-                           "primary_evidence_refs":  [
-                                                         "self_build_programs/memory/CONNECT_ABSORPTION_TO_BUILDER_MEMORY_V1.ps1"
-                                                     ],
-                           "needs_triage":  true,
-                           "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
-                           "source_ref":  "bounded_tracked_file_discovery_v1",
-                           "is_required_component":  false
-                       },
-                       {
                            "id":  "self_build_programs_regression",
                            "path":  "self_build_programs/regression",
                            "root":  "self_build_programs/regression",
@@ -15873,19 +15991,19 @@
                            "evidence_counts":  {
                                                    "files":  1,
                                                    "scripts":  1,
-                                                   "validators":  0,
+                                                   "validators":  1,
                                                    "proofs":  0,
                                                    "contracts_or_policies":  0,
                                                    "docs":  0
                                                },
                            "file_count":  1,
                            "script_count":  1,
-                           "validator_count":  0,
+                           "validator_count":  1,
                            "proof_file_count":  0,
                            "contract_or_policy_count":  0,
                            "doc_count":  0,
                            "validator_refs":  [
-
+                                                  "self_build_programs/regression/VALIDATE_PHASE165_SELF_BUILD_LOOP_REGRESSION_V1.ps1"
                                               ],
                            "proof_refs":  [
 

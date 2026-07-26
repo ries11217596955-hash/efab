@@ -607,3 +607,6 @@ raw_chat = not committed
 secrets = excluded
 live_bridge_mutation = false
 ```
+## 2026-07-26 — Bridge two-channel recovery
+Primary ngrok lifecycle stabilized with singleton SYSTEM launcher/watchdog; kill recovery proven in 7 seconds. Full Windows reboot restored Primary, Recovery, Rescue, ngrok and Tailscale in 19 seconds. Migration pack V2 created and validated without secrets. Clean-PC install remains NOT_PROVEN.
+
