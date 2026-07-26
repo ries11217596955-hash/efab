@@ -6,19 +6,19 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "a0ad91a4215b47e86c7b109c992fe6187ac99811",
-    "subject_head":  "a0ad91a4215b47e86c7b109c992fe6187ac99811",
-    "generated_at":  "2026-07-26T23:40:45.9798521+04:00",
+    "observed_head_at_generation":  "0857096d3b8dfd871869b51d5e5254814a649dda",
+    "subject_head":  "0857096d3b8dfd871869b51d5e5254814a649dda",
+    "generated_at":  "2026-07-26T23:49:41.6795679+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  2319,
+    "structural_path_count":  2320,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2319,
-                                    "sha256":  "4b2d7b0af5784e3233babc08ee9e7fdb16eeb6f668ba36bc06154701b24c6955"
+                                    "structural_file_count":  2320,
+                                    "sha256":  "00e861ffe963564dc335120b002ec684eb3d2f914777d36b55d36bc3a2be2f11"
                                 },
     "module_count":  203,
     "validator_count":  259,
@@ -635,9 +635,9 @@
 
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "a0ad91a4215b47e86c7b109c992fe6187ac99811",
-                                                               "committed_at":  "2026-07-26T23:08:48+04:00",
-                                                               "subject":  "bridge: capture proven two-channel recovery pack v2"
+                                                               "head":  "0857096d3b8dfd871869b51d5e5254814a649dda",
+                                                               "committed_at":  "2026-07-26T23:39:39+04:00",
+                                                               "subject":  "bridge: add v2 migration install and validation lane"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -1666,17 +1666,17 @@
                                             "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                                             "discovery_method":  "bounded_git_ls_files_path_discovery",
                                             "evidence_counts":  {
-                                                                    "files":  59,
+                                                                    "files":  60,
                                                                     "scripts":  8,
                                                                     "validators":  3,
-                                                                    "proofs":  6,
+                                                                    "proofs":  7,
                                                                     "contracts_or_policies":  0,
                                                                     "docs":  5
                                                                 },
-                                            "file_count":  59,
+                                            "file_count":  60,
                                             "script_count":  8,
                                             "validator_count":  3,
-                                            "proof_file_count":  6,
+                                            "proof_file_count":  7,
                                             "contract_or_policy_count":  0,
                                             "doc_count":  5,
                                             "validator_refs":  [
@@ -1690,7 +1690,8 @@
                                                                "operations/bridge_recovery/proofs/lab_restore_proof_v1.json",
                                                                "operations/bridge_recovery/proofs/migration_pack_v2_proof_20260726.json",
                                                                "operations/bridge_recovery/proofs/migration_validation_v2_current_20260726.json",
-                                                               "operations/bridge_recovery/proofs/pack_build_proof_v1.json"
+                                                               "operations/bridge_recovery/proofs/pack_build_proof_v1.json",
+                                                               "operations/bridge_recovery/proofs/stage_only_install_proof_20260726.json"
                                                            ],
                                             "contract_or_policy_refs":  [
 
@@ -1731,6 +1732,7 @@
                                                                           "operations/bridge_recovery/proofs/migration_pack_v2_proof_20260726.json",
                                                                           "operations/bridge_recovery/proofs/migration_validation_v2_current_20260726.json",
                                                                           "operations/bridge_recovery/proofs/pack_build_proof_v1.json",
+                                                                          "operations/bridge_recovery/proofs/stage_only_install_proof_20260726.json",
                                                                           "operations/bridge_recovery/scripts/install_bridge.ps1",
                                                                           "operations/bridge_recovery/scripts/install_bridge_v2.ps1",
                                                                           "operations/bridge_recovery/scripts/recover_bridge.ps1",
@@ -8755,9 +8757,9 @@
 
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "a0ad91a4215b47e86c7b109c992fe6187ac99811",
-                                                     "committed_at":  "2026-07-26T23:08:48+04:00",
-                                                     "subject":  "bridge: capture proven two-channel recovery pack v2"
+                                                     "head":  "0857096d3b8dfd871869b51d5e5254814a649dda",
+                                                     "committed_at":  "2026-07-26T23:39:39+04:00",
+                                                     "subject":  "bridge: add v2 migration install and validation lane"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -9784,17 +9786,17 @@
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                            "discovery_method":  "bounded_git_ls_files_path_discovery",
                            "evidence_counts":  {
-                                                   "files":  59,
+                                                   "files":  60,
                                                    "scripts":  8,
                                                    "validators":  3,
-                                                   "proofs":  6,
+                                                   "proofs":  7,
                                                    "contracts_or_policies":  0,
                                                    "docs":  5
                                                },
-                           "file_count":  59,
+                           "file_count":  60,
                            "script_count":  8,
                            "validator_count":  3,
-                           "proof_file_count":  6,
+                           "proof_file_count":  7,
                            "contract_or_policy_count":  0,
                            "doc_count":  5,
                            "validator_refs":  [
@@ -9808,7 +9810,8 @@
                                               "operations/bridge_recovery/proofs/lab_restore_proof_v1.json",
                                               "operations/bridge_recovery/proofs/migration_pack_v2_proof_20260726.json",
                                               "operations/bridge_recovery/proofs/migration_validation_v2_current_20260726.json",
-                                              "operations/bridge_recovery/proofs/pack_build_proof_v1.json"
+                                              "operations/bridge_recovery/proofs/pack_build_proof_v1.json",
+                                              "operations/bridge_recovery/proofs/stage_only_install_proof_20260726.json"
                                           ],
                            "contract_or_policy_refs":  [
 
@@ -9849,6 +9852,7 @@
                                                          "operations/bridge_recovery/proofs/migration_pack_v2_proof_20260726.json",
                                                          "operations/bridge_recovery/proofs/migration_validation_v2_current_20260726.json",
                                                          "operations/bridge_recovery/proofs/pack_build_proof_v1.json",
+                                                         "operations/bridge_recovery/proofs/stage_only_install_proof_20260726.json",
                                                          "operations/bridge_recovery/scripts/install_bridge.ps1",
                                                          "operations/bridge_recovery/scripts/install_bridge_v2.ps1",
                                                          "operations/bridge_recovery/scripts/recover_bridge.ps1",

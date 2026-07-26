@@ -1,0 +1,57 @@
+﻿{
+    "status":  "PROVEN_LAB_STAGE_ONLY",
+    "exit_code":  0,
+    "installer_output":  "{\r\n    \"status\":  \"PREFLIGHT_PASS\",\r\n    \"pack_root\":  \"C:\\\\ProgramData\\\\EFAB-Migration-Lab\\\\pack\",\r\n    \"bridge_root\":  \"C:\\\\ProgramData\\\\EFAB-Migration-Lab\\\\bridge\",\r\n    \"python\":  \"C:\\\\Users\\\\Azerbaijan\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python314\\\\python.exe\",\r\n    \"ngrok\":  \"C:\\\\Windows\\\\ngrok.exe\",\r\n    \"blockers\":  [\r\n\r\n                 ],\r\n    \"files_changed_before_preflight_pass\":  \"NO\"\r\n}\n{\r\n    \"status\":  \"STAGE_ONLY_PASS\",\r\n    \"bridge_root\":  \"C:\\\\ProgramData\\\\EFAB-Migration-Lab\\\\bridge\",\r\n    \"rescue_root\":  \"C:\\\\ProgramData\\\\EFAB-Migration-Lab\\\\rescue\",\r\n    \"ngrok_root\":  \"C:\\\\ProgramData\\\\EFAB-Migration-Lab\\\\ngrok\",\r\n    \"primary_root\":  \"C:\\\\ProgramData\\\\EFAB-Migration-Lab\\\\primary\",\r\n    \"reboot_proof_root\":  \"C:\\\\ProgramData\\\\EFAB-Migration-Lab\\\\reboot_proof\",\r\n    \"primary_token_exists\":  true,\r\n    \"rescue_token_exists\":  true,\r\n    \"task_registration\":  \"SKIPPED\",\r\n    \"process_start\":  \"SKIPPED\",\r\n    \"dependency_install\":  \"SKIPPED\"\r\n}",
+    "required_files":  [
+                           {
+                               "path":  "bridge\\src\\bridge_app\\main.py",
+                               "exists":  true,
+                               "length":  1480
+                           },
+                           {
+                               "path":  "bridge\\src\\bridge_app\\api\\routes\\filesystem.py",
+                               "exists":  true,
+                               "length":  4938
+                           },
+                           {
+                               "path":  "bridge\\recovery_gateway_v1\\recovery_gateway.py",
+                               "exists":  true,
+                               "length":  12679
+                           },
+                           {
+                               "path":  "rescue\\rescue_gateway.ps1",
+                               "exists":  true,
+                               "length":  5307
+                           },
+                           {
+                               "path":  "ngrok\\ngrok_launcher.ps1",
+                               "exists":  true,
+                               "length":  1382
+                           },
+                           {
+                               "path":  "primary\\primary_boot.ps1",
+                               "exists":  true,
+                               "length":  1374
+                           },
+                           {
+                               "path":  "reboot_proof\\post_reboot_validator.ps1",
+                               "exists":  true,
+                               "length":  2282
+                           },
+                           {
+                               "path":  "tokens\\bridge_action_token.txt",
+                               "exists":  true,
+                               "length":  64
+                           },
+                           {
+                               "path":  "rescue\\rescue_token.txt",
+                               "exists":  true,
+                               "length":  64
+                           }
+                       ],
+    "path_rewrite":  true,
+    "tasks_unchanged":  true,
+    "ports_unchanged":  true,
+    "before_tasks":  10,
+    "after_tasks":  10
+}

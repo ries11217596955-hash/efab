@@ -1,4 +1,4 @@
-﻿param(
+param(
   [Parameter(Mandatory=$true)][string]$PackRoot,
   [string]$BridgeRoot='C:\EFAB\bridge',
   [string]$RepoRoot='C:\EFAB\efab',
@@ -11,7 +11,8 @@
   [string]$PythonExe,
   [string]$NgrokExe,
   [switch]$SkipDependencyInstall,
-  [switch]$PreflightOnly
+  [switch]$PreflightOnly,
+  [switch]$StageOnly
 )
 $ErrorActionPreference='Stop'
 function Resolve-Executable([string]$Explicit,[string[]]$Names){if($Explicit){if(Test-Path $Explicit){return (Resolve-Path $Explicit).Path};throw "EXECUTABLE_NOT_FOUND: $Explicit"};foreach($n in $Names){$c=Get-Command $n -ErrorAction SilentlyContinue;if($c){return $c.Source}};return $null}
@@ -44,6 +45,11 @@ if(-not(Test-Path $PrimaryTokenPath)){New-Token $PrimaryTokenPath}
 $rescueToken=Join-Path $RescueRoot 'rescue_token.txt';if(-not(Test-Path $rescueToken)){New-Token $rescueToken}
 Copy-Item $PrimaryTokenPath (Join-Path $BridgeRoot 'recovery_gateway_v1\bridge_token.txt') -Force
 foreach($f in @((Join-Path $BridgeRoot 'recovery_gateway_v1\recovery_supervisor.ps1'),(Join-Path $PrimaryRoot 'primary_boot.ps1'))){$text=[IO.File]::ReadAllText($f);$text=$text.Replace('H:\bridge',$BridgeRoot);[IO.File]::WriteAllText($f,$text,[Text.UTF8Encoding]::new($false))}
+if($StageOnly){
+  $stageProof=[ordered]@{status='STAGE_ONLY_PASS';bridge_root=$BridgeRoot;rescue_root=$RescueRoot;ngrok_root=$NgrokRoot;primary_root=$PrimaryRoot;reboot_proof_root=$RebootProofRoot;primary_token_exists=(Test-Path $PrimaryTokenPath);rescue_token_exists=(Test-Path $rescueToken);task_registration='SKIPPED';process_start='SKIPPED';dependency_install='SKIPPED'}
+  $stageProof|ConvertTo-Json -Depth 5
+  exit 0
+}
 if(-not $SkipDependencyInstall){& $python -m pip install -e $BridgeRoot;if($LASTEXITCODE -ne 0){throw 'PIP_INSTALL_FAILED'}}
 $principal=New-ScheduledTaskPrincipal -UserId 'SYSTEM' -LogonType ServiceAccount -RunLevel Highest
 function Register-EfabTask($Name,$Script,$Working,$Triggers,$Arguments=''){$arg='-NoProfile -NonInteractive -ExecutionPolicy Bypass -File "'+$Script+'" '+$Arguments;$a=New-ScheduledTaskAction -Execute 'powershell.exe' -Argument $arg -WorkingDirectory $Working;$s=New-ScheduledTaskSettingsSet -StartWhenAvailable -RestartCount 999 -RestartInterval (New-TimeSpan -Minutes 1) -ExecutionTimeLimit ([TimeSpan]::Zero);Register-ScheduledTask -TaskName $Name -Action $a -Trigger $Triggers -Settings $s -Principal $principal -Force|Out-Null}

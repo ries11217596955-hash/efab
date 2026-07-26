@@ -614,3 +614,11 @@ Primary ngrok lifecycle stabilized with singleton SYSTEM launcher/watchdog; kill
 ## 2026-07-26 — Bridge V2 installer lane
 Added install_bridge_v2.ps1, recover_bridge_v2.ps1, validate_bridge_v2.ps1. Preflight-only PASS with no mutation. Live validator PASS. Archive repacked with scripts; clean-PC install still NOT_PROVEN.
 
+
+## 2026-07-26 — Bridge V2 StageOnly proof
+Added StageOnly installer path. Parser PASS; staging completed with all required files, token generation, path rewrite, and no live task/port mutation. Lab staging removed after proof capture. Clean-PC/VM proof blocked by unavailable hardware virtualization.
+
+
+## 2026-07-26 — Bridge V2 StageOnly proof
+Added StageOnly installer path. Parser PASS; staging completed with all required files, token generation, path rewrite, and no live task/port mutation. Lab staging removed after proof capture. Clean-PC/VM proof blocked by unavailable hardware virtualization.
+

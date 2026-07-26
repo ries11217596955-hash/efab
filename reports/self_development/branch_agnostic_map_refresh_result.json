@@ -1,17 +1,21 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-26T23:39:44.9959425+04:00",
+    "checked_at":  "2026-07-26T23:48:40.5457090+04:00",
     "branch":  "main",
-    "observed_head":  "a0ad91a4215b47e86c7b109c992fe6187ac99811",
-    "subject_head":  "a0ad91a4215b47e86c7b109c992fe6187ac99811",
+    "observed_head":  "0857096d3b8dfd871869b51d5e5254814a649dda",
+    "subject_head":  "0857096d3b8dfd871869b51d5e5254814a649dda",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
                           "AGENT_BUILDER_SELF_NOTEBOOK.md",
                           "operations/bridge_recovery/proofs/migration_pack_v2_proof_20260726.json",
+                          "operations/bridge_recovery/proofs/migration_validation_v2_current_20260726.json",
                           "operations/bridge_recovery/releases/EFAB_BRIDGE_MIGRATION_PACK_v2_20260726.zip",
+                          "operations/bridge_recovery/scripts/install_bridge_v2.ps1",
+                          "operations/bridge_recovery/scripts/recover_bridge_v2.ps1",
+                          "operations/bridge_recovery/scripts/validate_bridge_v2.ps1",
                           "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
@@ -20,6 +24,10 @@
                       ],
     "structural_paths":  [
                              "operations/bridge_recovery/proofs/migration_pack_v2_proof_20260726.json",
+                             "operations/bridge_recovery/proofs/migration_validation_v2_current_20260726.json",
+                             "operations/bridge_recovery/scripts/install_bridge_v2.ps1",
+                             "operations/bridge_recovery/scripts/recover_bridge_v2.ps1",
+                             "operations/bridge_recovery/scripts/validate_bridge_v2.ps1",
                              "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
                          ],
     "output_root":  "reports/self_development",
@@ -32,8 +40,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2319,
-                                    "sha256":  "4b2d7b0af5784e3233babc08ee9e7fdb16eeb6f668ba36bc06154701b24c6955"
+                                    "structural_file_count":  2320,
+                                    "sha256":  "00e861ffe963564dc335120b002ec684eb3d2f914777d36b55d36bc3a2be2f11"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -59,12 +67,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  153,
-                         "structural_path_count":  2319,
+                         "structural_path_count":  2320,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-26T23:40:46.3616157+04:00"
+    "refreshed_at":  "2026-07-26T23:49:42.0295088+04:00"
 }
