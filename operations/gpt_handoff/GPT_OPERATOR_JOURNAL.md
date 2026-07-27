@@ -630,3 +630,7 @@ Updated BRIDGE_OPERATOR_NOTEBOOK.md and bridge.config.example.json to current tw
 ## 2026-07-27 — Primary channel monitor
 Installed observe-only one-minute SYSTEM monitor for Channel A with rolling 7-day summary. Initial sample healthy; no duplicate process or task-failure events. Seven-day maturity still ACCUMULATING.
 
+
+## 2026-07-27 — ngrok production hardening
+Traffic Policy rollout PASS; deprecated header flag removed. Post-policy kill recovery PASS in 7s. Circuit breaker threshold logic PASS in LAB. ngrok binary version unchanged at 3.39.8; upgrade deferred to separate controlled slice.
+

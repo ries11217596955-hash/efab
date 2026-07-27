@@ -6,19 +6,19 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "21986bd389b50a08b91a1f122c3e01d7f0bce57c",
-    "subject_head":  "21986bd389b50a08b91a1f122c3e01d7f0bce57c",
-    "generated_at":  "2026-07-27T07:44:10.2074130+04:00",
+    "observed_head_at_generation":  "d78e5faa5f8f6b5a0033a3ebfb72f78796e3d5c0",
+    "subject_head":  "d78e5faa5f8f6b5a0033a3ebfb72f78796e3d5c0",
+    "generated_at":  "2026-07-27T08:07:09.0319241+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  2322,
+    "structural_path_count":  2326,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2322,
-                                    "sha256":  "c5c95215b31b5bc9ccefc0c08950e61e90613e942cb7b574529475476a1011be"
+                                    "structural_file_count":  2326,
+                                    "sha256":  "0300ccdb4c37af458b3202b383dbad4deae96e963f452a2f13ebddb9de9cd26b"
                                 },
     "module_count":  203,
     "validator_count":  259,
@@ -635,9 +635,9 @@
 
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "21986bd389b50a08b91a1f122c3e01d7f0bce57c",
-                                                               "committed_at":  "2026-07-27T00:12:19+04:00",
-                                                               "subject":  "bridge: clarify primary-first dual-channel operations"
+                                                               "head":  "d78e5faa5f8f6b5a0033a3ebfb72f78796e3d5c0",
+                                                               "committed_at":  "2026-07-27T07:42:56+04:00",
+                                                               "subject":  "bridge: add continuous primary availability monitor"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -1666,18 +1666,18 @@
                                             "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                                             "discovery_method":  "bounded_git_ls_files_path_discovery",
                                             "evidence_counts":  {
-                                                                    "files":  63,
-                                                                    "scripts":  9,
+                                                                    "files":  67,
+                                                                    "scripts":  10,
                                                                     "validators":  3,
-                                                                    "proofs":  8,
-                                                                    "contracts_or_policies":  0,
+                                                                    "proofs":  11,
+                                                                    "contracts_or_policies":  2,
                                                                     "docs":  5
                                                                 },
-                                            "file_count":  63,
-                                            "script_count":  9,
+                                            "file_count":  67,
+                                            "script_count":  10,
                                             "validator_count":  3,
-                                            "proof_file_count":  8,
-                                            "contract_or_policy_count":  0,
+                                            "proof_file_count":  11,
+                                            "contract_or_policy_count":  2,
                                             "doc_count":  5,
                                             "validator_refs":  [
                                                                    "operations/bridge_recovery/proofs/migration_validation_v2_current_20260726.json",
@@ -1690,12 +1690,16 @@
                                                                "operations/bridge_recovery/proofs/lab_restore_proof_v1.json",
                                                                "operations/bridge_recovery/proofs/migration_pack_v2_proof_20260726.json",
                                                                "operations/bridge_recovery/proofs/migration_validation_v2_current_20260726.json",
+                                                               "operations/bridge_recovery/proofs/ngrok_circuit_breaker_lab_proof_20260727.json",
+                                                               "operations/bridge_recovery/proofs/ngrok_post_policy_kill_recovery_proof_20260727.json",
+                                                               "operations/bridge_recovery/proofs/ngrok_traffic_policy_rollout_proof_20260727.json",
                                                                "operations/bridge_recovery/proofs/pack_build_proof_v1.json",
                                                                "operations/bridge_recovery/proofs/primary_channel_monitor_install_proof_20260727.json",
                                                                "operations/bridge_recovery/proofs/stage_only_install_proof_20260726.json"
                                                            ],
                                             "contract_or_policy_refs":  [
-
+                                                                            "operations/bridge_recovery/proofs/ngrok_post_policy_kill_recovery_proof_20260727.json",
+                                                                            "operations/bridge_recovery/proofs/ngrok_traffic_policy_rollout_proof_20260727.json"
                                                                         ],
                                             "notable_files":  [
                                                                   "operations/bridge_recovery/BRIDGE_OPERATOR_NOTEBOOK.md",
@@ -1708,6 +1712,7 @@
                                                                   "operations/bridge_recovery/config/secrets.required.json",
                                                                   "operations/bridge_recovery/monitoring/EFAB_Primary_Channel_Availability_Monitor_SYSTEM.xml",
                                                                   "operations/bridge_recovery/monitoring/sample_primary_channel.ps1",
+                                                                  "operations/bridge_recovery/ngrok/ngrok_launcher.ps1",
                                                                   "operations/bridge_recovery/payload/README.md",
                                                                   "operations/bridge_recovery/payload/efab_resilience_supervisor_v3.template.ps1",
                                                                   "operations/bridge_recovery/payload/efab_supervisor_keeper_v1.template.ps1",
@@ -1721,11 +1726,11 @@
                                                                   "operations/bridge_recovery/payload/src/bridge_app/api/__init__.py",
                                                                   "operations/bridge_recovery/payload/src/bridge_app/api/routes/__init__.py",
                                                                   "operations/bridge_recovery/payload/src/bridge_app/api/routes/codex.py",
-                                                                  "operations/bridge_recovery/payload/src/bridge_app/api/routes/context.py",
-                                                                  "operations/bridge_recovery/payload/src/bridge_app/api/routes/health.py"
+                                                                  "operations/bridge_recovery/payload/src/bridge_app/api/routes/context.py"
                                                               ],
                                             "primary_evidence_refs":  [
                                                                           "operations/bridge_recovery/monitoring/sample_primary_channel.ps1",
+                                                                          "operations/bridge_recovery/ngrok/ngrok_launcher.ps1",
                                                                           "operations/bridge_recovery/payload/efab_resilience_supervisor_v3.template.ps1",
                                                                           "operations/bridge_recovery/payload/efab_supervisor_keeper_v1.template.ps1",
                                                                           "operations/bridge_recovery/proofs/archive_proof_v1.json",
@@ -1733,6 +1738,9 @@
                                                                           "operations/bridge_recovery/proofs/lab_restore_proof_v1.json",
                                                                           "operations/bridge_recovery/proofs/migration_pack_v2_proof_20260726.json",
                                                                           "operations/bridge_recovery/proofs/migration_validation_v2_current_20260726.json",
+                                                                          "operations/bridge_recovery/proofs/ngrok_circuit_breaker_lab_proof_20260727.json",
+                                                                          "operations/bridge_recovery/proofs/ngrok_post_policy_kill_recovery_proof_20260727.json",
+                                                                          "operations/bridge_recovery/proofs/ngrok_traffic_policy_rollout_proof_20260727.json",
                                                                           "operations/bridge_recovery/proofs/pack_build_proof_v1.json",
                                                                           "operations/bridge_recovery/proofs/primary_channel_monitor_install_proof_20260727.json",
                                                                           "operations/bridge_recovery/proofs/stage_only_install_proof_20260726.json",
@@ -8760,9 +8768,9 @@
 
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "21986bd389b50a08b91a1f122c3e01d7f0bce57c",
-                                                     "committed_at":  "2026-07-27T00:12:19+04:00",
-                                                     "subject":  "bridge: clarify primary-first dual-channel operations"
+                                                     "head":  "d78e5faa5f8f6b5a0033a3ebfb72f78796e3d5c0",
+                                                     "committed_at":  "2026-07-27T07:42:56+04:00",
+                                                     "subject":  "bridge: add continuous primary availability monitor"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -9789,18 +9797,18 @@
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                            "discovery_method":  "bounded_git_ls_files_path_discovery",
                            "evidence_counts":  {
-                                                   "files":  63,
-                                                   "scripts":  9,
+                                                   "files":  67,
+                                                   "scripts":  10,
                                                    "validators":  3,
-                                                   "proofs":  8,
-                                                   "contracts_or_policies":  0,
+                                                   "proofs":  11,
+                                                   "contracts_or_policies":  2,
                                                    "docs":  5
                                                },
-                           "file_count":  63,
-                           "script_count":  9,
+                           "file_count":  67,
+                           "script_count":  10,
                            "validator_count":  3,
-                           "proof_file_count":  8,
-                           "contract_or_policy_count":  0,
+                           "proof_file_count":  11,
+                           "contract_or_policy_count":  2,
                            "doc_count":  5,
                            "validator_refs":  [
                                                   "operations/bridge_recovery/proofs/migration_validation_v2_current_20260726.json",
@@ -9813,12 +9821,16 @@
                                               "operations/bridge_recovery/proofs/lab_restore_proof_v1.json",
                                               "operations/bridge_recovery/proofs/migration_pack_v2_proof_20260726.json",
                                               "operations/bridge_recovery/proofs/migration_validation_v2_current_20260726.json",
+                                              "operations/bridge_recovery/proofs/ngrok_circuit_breaker_lab_proof_20260727.json",
+                                              "operations/bridge_recovery/proofs/ngrok_post_policy_kill_recovery_proof_20260727.json",
+                                              "operations/bridge_recovery/proofs/ngrok_traffic_policy_rollout_proof_20260727.json",
                                               "operations/bridge_recovery/proofs/pack_build_proof_v1.json",
                                               "operations/bridge_recovery/proofs/primary_channel_monitor_install_proof_20260727.json",
                                               "operations/bridge_recovery/proofs/stage_only_install_proof_20260726.json"
                                           ],
                            "contract_or_policy_refs":  [
-
+                                                           "operations/bridge_recovery/proofs/ngrok_post_policy_kill_recovery_proof_20260727.json",
+                                                           "operations/bridge_recovery/proofs/ngrok_traffic_policy_rollout_proof_20260727.json"
                                                        ],
                            "notable_files":  [
                                                  "operations/bridge_recovery/BRIDGE_OPERATOR_NOTEBOOK.md",
@@ -9831,6 +9843,7 @@
                                                  "operations/bridge_recovery/config/secrets.required.json",
                                                  "operations/bridge_recovery/monitoring/EFAB_Primary_Channel_Availability_Monitor_SYSTEM.xml",
                                                  "operations/bridge_recovery/monitoring/sample_primary_channel.ps1",
+                                                 "operations/bridge_recovery/ngrok/ngrok_launcher.ps1",
                                                  "operations/bridge_recovery/payload/README.md",
                                                  "operations/bridge_recovery/payload/efab_resilience_supervisor_v3.template.ps1",
                                                  "operations/bridge_recovery/payload/efab_supervisor_keeper_v1.template.ps1",
@@ -9844,11 +9857,11 @@
                                                  "operations/bridge_recovery/payload/src/bridge_app/api/__init__.py",
                                                  "operations/bridge_recovery/payload/src/bridge_app/api/routes/__init__.py",
                                                  "operations/bridge_recovery/payload/src/bridge_app/api/routes/codex.py",
-                                                 "operations/bridge_recovery/payload/src/bridge_app/api/routes/context.py",
-                                                 "operations/bridge_recovery/payload/src/bridge_app/api/routes/health.py"
+                                                 "operations/bridge_recovery/payload/src/bridge_app/api/routes/context.py"
                                              ],
                            "primary_evidence_refs":  [
                                                          "operations/bridge_recovery/monitoring/sample_primary_channel.ps1",
+                                                         "operations/bridge_recovery/ngrok/ngrok_launcher.ps1",
                                                          "operations/bridge_recovery/payload/efab_resilience_supervisor_v3.template.ps1",
                                                          "operations/bridge_recovery/payload/efab_supervisor_keeper_v1.template.ps1",
                                                          "operations/bridge_recovery/proofs/archive_proof_v1.json",
@@ -9856,6 +9869,9 @@
                                                          "operations/bridge_recovery/proofs/lab_restore_proof_v1.json",
                                                          "operations/bridge_recovery/proofs/migration_pack_v2_proof_20260726.json",
                                                          "operations/bridge_recovery/proofs/migration_validation_v2_current_20260726.json",
+                                                         "operations/bridge_recovery/proofs/ngrok_circuit_breaker_lab_proof_20260727.json",
+                                                         "operations/bridge_recovery/proofs/ngrok_post_policy_kill_recovery_proof_20260727.json",
+                                                         "operations/bridge_recovery/proofs/ngrok_traffic_policy_rollout_proof_20260727.json",
                                                          "operations/bridge_recovery/proofs/pack_build_proof_v1.json",
                                                          "operations/bridge_recovery/proofs/primary_channel_monitor_install_proof_20260727.json",
                                                          "operations/bridge_recovery/proofs/stage_only_install_proof_20260726.json",

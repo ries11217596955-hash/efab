@@ -126,3 +126,8 @@ Paths:
 - script: C:\ProgramData\EFAB-Bridge-Monitor\sample_primary_channel.ps1`n- raw samples: C:\ProgramData\EFAB-Bridge-Monitor\samples.jsonl`n- rolling summary: C:\ProgramData\EFAB-Bridge-Monitor\daily_summary_latest.json`n
 Sampling interval: 1 minute. Window: rolling 7 days. Metrics: availability_percent, outage_count, max_recovery_seconds, duplicate_process_events, task_failure_samples, current_status, maturity. The monitor is observe-only and does not restart or mutate Bridge components.
 
+
+## 2026-07-27 — Primary ngrok production hardening
+
+Replaced deprecated request-header CLI injection with ngrok Traffic Policy dd-headers via a restricted runtime policy file. Live rollout restored public health in 6 seconds without rollback. Post-rollout forced kill recovery restored public health in 7 seconds with one ngrok process. Added circuit breaker: 5 rapid failures within 120 seconds opens 300-second quarantine; threshold logic PROVEN_LAB. ngrok version remains 3.39.8; version upgrade is a separate future slice.
+
