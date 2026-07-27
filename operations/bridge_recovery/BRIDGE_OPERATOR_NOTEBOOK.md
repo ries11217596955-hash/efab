@@ -118,3 +118,11 @@ Priority 2 — Channel B completion:
 - Never update the migration pack from an unproven live state.
 
 Chat context handoff: `chat_context/BRIDGE_BUILD_CHAT_HANDOFF_20260720.md`
+## Primary channel continuous monitoring
+
+Live task: EFAB Primary Channel Availability Monitor SYSTEM.
+
+Paths:
+- script: C:\ProgramData\EFAB-Bridge-Monitor\sample_primary_channel.ps1`n- raw samples: C:\ProgramData\EFAB-Bridge-Monitor\samples.jsonl`n- rolling summary: C:\ProgramData\EFAB-Bridge-Monitor\daily_summary_latest.json`n
+Sampling interval: 1 minute. Window: rolling 7 days. Metrics: availability_percent, outage_count, max_recovery_seconds, duplicate_process_events, task_failure_samples, current_status, maturity. The monitor is observe-only and does not restart or mutate Bridge components.
+

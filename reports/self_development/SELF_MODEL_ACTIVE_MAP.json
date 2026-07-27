@@ -6,19 +6,19 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "a0670fa68a5b83fbb960a8734f0b43330555c7c8",
-    "subject_head":  "a0670fa68a5b83fbb960a8734f0b43330555c7c8",
-    "generated_at":  "2026-07-27T00:13:25.4958201+04:00",
+    "observed_head_at_generation":  "21986bd389b50a08b91a1f122c3e01d7f0bce57c",
+    "subject_head":  "21986bd389b50a08b91a1f122c3e01d7f0bce57c",
+    "generated_at":  "2026-07-27T07:44:10.2074130+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  2320,
+    "structural_path_count":  2322,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2320,
-                                    "sha256":  "dd06bbf2683222dba79830c175211667a85b51e7aafa28c867891e9cdec8296b"
+                                    "structural_file_count":  2322,
+                                    "sha256":  "c5c95215b31b5bc9ccefc0c08950e61e90613e942cb7b574529475476a1011be"
                                 },
     "module_count":  203,
     "validator_count":  259,
@@ -635,9 +635,9 @@
 
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "a0670fa68a5b83fbb960a8734f0b43330555c7c8",
-                                                               "committed_at":  "2026-07-26T23:48:34+04:00",
-                                                               "subject":  "bridge: prove isolated v2 stage-only install"
+                                                               "head":  "21986bd389b50a08b91a1f122c3e01d7f0bce57c",
+                                                               "committed_at":  "2026-07-27T00:12:19+04:00",
+                                                               "subject":  "bridge: clarify primary-first dual-channel operations"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -1666,17 +1666,17 @@
                                             "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                                             "discovery_method":  "bounded_git_ls_files_path_discovery",
                                             "evidence_counts":  {
-                                                                    "files":  60,
-                                                                    "scripts":  8,
+                                                                    "files":  63,
+                                                                    "scripts":  9,
                                                                     "validators":  3,
-                                                                    "proofs":  7,
+                                                                    "proofs":  8,
                                                                     "contracts_or_policies":  0,
                                                                     "docs":  5
                                                                 },
-                                            "file_count":  60,
-                                            "script_count":  8,
+                                            "file_count":  63,
+                                            "script_count":  9,
                                             "validator_count":  3,
-                                            "proof_file_count":  7,
+                                            "proof_file_count":  8,
                                             "contract_or_policy_count":  0,
                                             "doc_count":  5,
                                             "validator_refs":  [
@@ -1691,6 +1691,7 @@
                                                                "operations/bridge_recovery/proofs/migration_pack_v2_proof_20260726.json",
                                                                "operations/bridge_recovery/proofs/migration_validation_v2_current_20260726.json",
                                                                "operations/bridge_recovery/proofs/pack_build_proof_v1.json",
+                                                               "operations/bridge_recovery/proofs/primary_channel_monitor_install_proof_20260727.json",
                                                                "operations/bridge_recovery/proofs/stage_only_install_proof_20260726.json"
                                                            ],
                                             "contract_or_policy_refs":  [
@@ -1705,6 +1706,8 @@
                                                                   "operations/bridge_recovery/checksums/SHA256SUMS",
                                                                   "operations/bridge_recovery/config/bridge.config.example.json",
                                                                   "operations/bridge_recovery/config/secrets.required.json",
+                                                                  "operations/bridge_recovery/monitoring/EFAB_Primary_Channel_Availability_Monitor_SYSTEM.xml",
+                                                                  "operations/bridge_recovery/monitoring/sample_primary_channel.ps1",
                                                                   "operations/bridge_recovery/payload/README.md",
                                                                   "operations/bridge_recovery/payload/efab_resilience_supervisor_v3.template.ps1",
                                                                   "operations/bridge_recovery/payload/efab_supervisor_keeper_v1.template.ps1",
@@ -1719,11 +1722,10 @@
                                                                   "operations/bridge_recovery/payload/src/bridge_app/api/routes/__init__.py",
                                                                   "operations/bridge_recovery/payload/src/bridge_app/api/routes/codex.py",
                                                                   "operations/bridge_recovery/payload/src/bridge_app/api/routes/context.py",
-                                                                  "operations/bridge_recovery/payload/src/bridge_app/api/routes/health.py",
-                                                                  "operations/bridge_recovery/payload/src/bridge_app/api/routes/repo.py",
-                                                                  "operations/bridge_recovery/payload/src/bridge_app/api/routes/reports.py"
+                                                                  "operations/bridge_recovery/payload/src/bridge_app/api/routes/health.py"
                                                               ],
                                             "primary_evidence_refs":  [
+                                                                          "operations/bridge_recovery/monitoring/sample_primary_channel.ps1",
                                                                           "operations/bridge_recovery/payload/efab_resilience_supervisor_v3.template.ps1",
                                                                           "operations/bridge_recovery/payload/efab_supervisor_keeper_v1.template.ps1",
                                                                           "operations/bridge_recovery/proofs/archive_proof_v1.json",
@@ -1732,6 +1734,7 @@
                                                                           "operations/bridge_recovery/proofs/migration_pack_v2_proof_20260726.json",
                                                                           "operations/bridge_recovery/proofs/migration_validation_v2_current_20260726.json",
                                                                           "operations/bridge_recovery/proofs/pack_build_proof_v1.json",
+                                                                          "operations/bridge_recovery/proofs/primary_channel_monitor_install_proof_20260727.json",
                                                                           "operations/bridge_recovery/proofs/stage_only_install_proof_20260726.json",
                                                                           "operations/bridge_recovery/scripts/install_bridge.ps1",
                                                                           "operations/bridge_recovery/scripts/install_bridge_v2.ps1",
@@ -8757,9 +8760,9 @@
 
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "a0670fa68a5b83fbb960a8734f0b43330555c7c8",
-                                                     "committed_at":  "2026-07-26T23:48:34+04:00",
-                                                     "subject":  "bridge: prove isolated v2 stage-only install"
+                                                     "head":  "21986bd389b50a08b91a1f122c3e01d7f0bce57c",
+                                                     "committed_at":  "2026-07-27T00:12:19+04:00",
+                                                     "subject":  "bridge: clarify primary-first dual-channel operations"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -9786,17 +9789,17 @@
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
                            "discovery_method":  "bounded_git_ls_files_path_discovery",
                            "evidence_counts":  {
-                                                   "files":  60,
-                                                   "scripts":  8,
+                                                   "files":  63,
+                                                   "scripts":  9,
                                                    "validators":  3,
-                                                   "proofs":  7,
+                                                   "proofs":  8,
                                                    "contracts_or_policies":  0,
                                                    "docs":  5
                                                },
-                           "file_count":  60,
-                           "script_count":  8,
+                           "file_count":  63,
+                           "script_count":  9,
                            "validator_count":  3,
-                           "proof_file_count":  7,
+                           "proof_file_count":  8,
                            "contract_or_policy_count":  0,
                            "doc_count":  5,
                            "validator_refs":  [
@@ -9811,6 +9814,7 @@
                                               "operations/bridge_recovery/proofs/migration_pack_v2_proof_20260726.json",
                                               "operations/bridge_recovery/proofs/migration_validation_v2_current_20260726.json",
                                               "operations/bridge_recovery/proofs/pack_build_proof_v1.json",
+                                              "operations/bridge_recovery/proofs/primary_channel_monitor_install_proof_20260727.json",
                                               "operations/bridge_recovery/proofs/stage_only_install_proof_20260726.json"
                                           ],
                            "contract_or_policy_refs":  [
@@ -9825,6 +9829,8 @@
                                                  "operations/bridge_recovery/checksums/SHA256SUMS",
                                                  "operations/bridge_recovery/config/bridge.config.example.json",
                                                  "operations/bridge_recovery/config/secrets.required.json",
+                                                 "operations/bridge_recovery/monitoring/EFAB_Primary_Channel_Availability_Monitor_SYSTEM.xml",
+                                                 "operations/bridge_recovery/monitoring/sample_primary_channel.ps1",
                                                  "operations/bridge_recovery/payload/README.md",
                                                  "operations/bridge_recovery/payload/efab_resilience_supervisor_v3.template.ps1",
                                                  "operations/bridge_recovery/payload/efab_supervisor_keeper_v1.template.ps1",
@@ -9839,11 +9845,10 @@
                                                  "operations/bridge_recovery/payload/src/bridge_app/api/routes/__init__.py",
                                                  "operations/bridge_recovery/payload/src/bridge_app/api/routes/codex.py",
                                                  "operations/bridge_recovery/payload/src/bridge_app/api/routes/context.py",
-                                                 "operations/bridge_recovery/payload/src/bridge_app/api/routes/health.py",
-                                                 "operations/bridge_recovery/payload/src/bridge_app/api/routes/repo.py",
-                                                 "operations/bridge_recovery/payload/src/bridge_app/api/routes/reports.py"
+                                                 "operations/bridge_recovery/payload/src/bridge_app/api/routes/health.py"
                                              ],
                            "primary_evidence_refs":  [
+                                                         "operations/bridge_recovery/monitoring/sample_primary_channel.ps1",
                                                          "operations/bridge_recovery/payload/efab_resilience_supervisor_v3.template.ps1",
                                                          "operations/bridge_recovery/payload/efab_supervisor_keeper_v1.template.ps1",
                                                          "operations/bridge_recovery/proofs/archive_proof_v1.json",
@@ -9852,6 +9857,7 @@
                                                          "operations/bridge_recovery/proofs/migration_pack_v2_proof_20260726.json",
                                                          "operations/bridge_recovery/proofs/migration_validation_v2_current_20260726.json",
                                                          "operations/bridge_recovery/proofs/pack_build_proof_v1.json",
+                                                         "operations/bridge_recovery/proofs/primary_channel_monitor_install_proof_20260727.json",
                                                          "operations/bridge_recovery/proofs/stage_only_install_proof_20260726.json",
                                                          "operations/bridge_recovery/scripts/install_bridge.ps1",
                                                          "operations/bridge_recovery/scripts/install_bridge_v2.ps1",

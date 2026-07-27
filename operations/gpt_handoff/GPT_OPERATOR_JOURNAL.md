@@ -626,3 +626,7 @@ Added StageOnly installer path. Parser PASS; staging completed with all required
 ## 2026-07-26 — Bridge priority and operator docs refresh
 Updated BRIDGE_OPERATOR_NOTEBOOK.md and bridge.config.example.json to current two-channel topology. Accepted order: Primary production channel first, independent Rescue second. Rescue is not compensation for an unstable Primary. Added hardening plan and current proof boundaries.
 
+
+## 2026-07-27 — Primary channel monitor
+Installed observe-only one-minute SYSTEM monitor for Channel A with rolling 7-day summary. Initial sample healthy; no duplicate process or task-failure events. Seven-day maturity still ACCUMULATING.
+
