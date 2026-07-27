@@ -1,0 +1,44 @@
+{
+    "schema":  "SCHOOL_TINY_LIVE_DUPLICATE_SUCCESS_RECONCILIATION_V1",
+    "status":  "BLOCKED_DUPLICATE_LIVE_OBSERVATION",
+    "observed_at":  "2026-07-27",
+    "repo_head":  "a72cc51",
+    "source_reports":  [
+                           "operations/reports/CANONICAL_EXACT_COUNT_CYCLE_RUN_20260722_121110.json",
+                           "operations/reports/CANONICAL_EXACT_COUNT_CYCLE_RUN_20260722_121138.json",
+                           "operations/reports/CANONICAL_EXACT_COUNT_CYCLE_RUN_20260722_121209.json"
+                       ],
+    "runs":  [
+                 {
+                     "run_id":  "canonical_exact_count_cycle_real_1_20260722_120848",
+                     "status":  "PASS_CANONICAL_EXACT_COUNT_CYCLE_LIVE_V1",
+                     "accepted_count":  1,
+                     "finalizer_status":  "FINALIZER_COMMITTED_TRACKED_SUMMARY",
+                     "memory_changed":  true
+                 },
+                 {
+                     "run_id":  "canonical_exact_count_cycle_real_1_20260722_120900",
+                     "status":  "PASS_CANONICAL_EXACT_COUNT_CYCLE_LIVE_V1",
+                     "accepted_count":  1,
+                     "finalizer_status":  "FINALIZER_COMMITTED_TRACKED_SUMMARY",
+                     "memory_changed":  true
+                 },
+                 {
+                     "run_id":  "canonical_exact_count_cycle_real_1_20260722_120911",
+                     "status":  "PASS_CANONICAL_EXACT_COUNT_CYCLE_LIVE_V1",
+                     "accepted_count":  1,
+                     "finalizer_status":  "FINALIZER_RUNTIME_ONLY_REPO_DIRTY_BEFORE_SUMMARY",
+                     "memory_changed":  true
+                 }
+             ],
+    "duplicate_run_count":  3,
+    "clean_single_run_proven":  false,
+    "scale_5000_allowed":  false,
+    "blockers":  [
+                     "multiple Count=1 Live runs occurred",
+                     "all observed runs changed active compact memory",
+                     "one finalizer encountered repo dirty before summary",
+                     "no isolated single-run proof with duplicate_run_count=1"
+                 ],
+    "next_action":  "repair/prove duplicate-launch prevention and then run one isolated Count=1 Live from clean synced repo"
+}

@@ -634,3 +634,18 @@ Installed observe-only one-minute SYSTEM monitor for Channel A with rolling 7-da
 ## 2026-07-27 — ngrok production hardening
 Traffic Policy rollout PASS; deprecated header flag removed. Post-policy kill recovery PASS in 7s. Circuit breaker threshold logic PASS in LAB. ngrok binary version unchanged at 3.39.8; upgrade deferred to separate controlled slice.
 
+
+## 2026-07-27 - School tiny Live duplicate-success reconciliation
+
+```text
+status = BLOCKED_DUPLICATE_LIVE_OBSERVATION
+observed_reports = 3
+successful_count1_live_runs = 3
+tracked_summaries_committed = 2
+repo_dirty_finalizer_blocks = 1
+memory_changed_on_all_runs = true
+clean_single_run_proven = false
+scale_5000_allowed = false
+proof = tests/self_development/SCHOOL_TINY_LIVE_DUPLICATE_SUCCESS_RECONCILIATION_V1_PROOF.json
+next = prove duplicate-launch prevention, then one isolated Count=1 Live from clean synced repo
+```
