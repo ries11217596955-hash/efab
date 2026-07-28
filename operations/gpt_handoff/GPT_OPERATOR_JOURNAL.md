@@ -649,3 +649,366 @@ scale_5000_allowed = false
 proof = tests/self_development/SCHOOL_TINY_LIVE_DUPLICATE_SUCCESS_RECONCILIATION_V1_PROOF.json
 next = prove duplicate-launch prevention, then one isolated Count=1 Live from clean synced repo
 ```
+
+## 2026-07-28 — Dual-channel mutual recovery plan
+
+marker: DUAL_CHANNEL_MUTUAL_RECOVERY_PLAN_V1
+status: OWNER_ACCEPTED_ARCHITECTURE
+
+Bridge and Rescue are two independent universal Builder tools. Neither is permanently limited to read-only or execution-only. They must help restore each other.
+
+Routing law:
+- one channel fails or returns ambiguous timeout -> do not blindly retry;
+- inspect the same object through the other channel;
+- choose retry, repair, restart, or rollback from joint evidence;
+- never let both channels mutate the same object concurrently;
+- prove both directions: Rescue restores Bridge, Bridge restores Rescue.
+
+Current blocker:
+- Primary health/context pass, but managed-run lifecycle returns HTTP 500;
+- Rescue V2 is live and can inspect Primary/run-store;
+- giant report index and stale running records are active debt candidates;
+- retention target: raw routine run/report files 5 days, critical proofs longer, no monolithic eternal index.
+
+Next action:
+- repair managed-run/report-index path;
+- restore reliable Bridge run lifecycle;
+- then prove two-way recovery and install retention cleanup.
+
+## 2026-07-28 — Primary channel recovered
+
+marker: PRIMARY_CHANNEL_RECOVERED_PROVEN_LIVE_20260728
+status: PROVEN_LIVE
+
+Evidence:
+- Primary health PASS after report-index guard recovery;
+- managed run managed_run-20260727-210713-44fe02e8 completed_success, exit_code=0;
+- getRunStatus PASS;
+- waitRun PASS;
+- getRunLogs PASS;
+- Rescue independently derived state=completed and process_alive=false;
+- reports/index.json compacted from about 153 MB to 7159 bytes;
+- report guard active for index files over 5 MB;
+- Primary PID observed as 7128 during recovery proof.
+
+Operational boundary:
+- one remote execution channel is available for morning work;
+- Rescue remains independent verification/recovery channel;
+- retention cleanup is NOT_IMPLEMENTED and must be a separate validated slice;
+- repository is dirty because notebook/journal and bridge hotfix changes are not yet committed.
+
+## 2026-07-28 — Bridge retention V1
+
+marker: BRIDGE_RETENTION_V1_PROVEN_LIVE_20260728
+status: PROVEN_LIVE
+
+Evidence:
+- Audit: 14,502 candidates, 1,235,141,846 bytes, 0 errors, no active run IDs;
+- Delete run completed_success and removed all 14,502 candidates;
+- protected recovery/proof/activation/rollback/checkpoint/salvage/corrupt/legacy/index-backup files were excluded;
+- scheduled task EFAB Bridge Retention V1 installed under SYSTEM, daily at 03:30;
+- scheduler validation run: LastTaskResult=0, candidate_count=0, deleted_count=0, error_count=0;
+- Primary health remained true;
+- reports/index.json remained compact (7,900 bytes at final validation).
+
+Files:
+- H:\bridge\operations\retention\Invoke-BridgeRetentionV1.ps1
+- H:\bridge\reports\retention_proofs\retention_v1_delete_20260728_011626.json
+- H:\bridge\reports\retention_proofs\retention_v1_delete_20260728_011640.json
+
+Boundary:
+- critical proof retention beyond protection-by-name is not yet compacted into a 30-day/latest-5 policy;
+- two old damaged index backups remain protected debt (~292 MB total);
+- Bridge/efab changes are not yet committed or pushed.
+
+## 2026-07-28 — Channel audit and first mutual-recovery proof
+
+marker: RESCUE_TO_PRIMARY_RECOVERY_PROVEN_LIVE_20260728
+status: PROVEN_LIVE
+
+Audit decision:
+- Primary is the stronger execution channel and remains the daily-work channel.
+- Rescue is the more independent transport/recovery channel and is being strengthened first.
+
+Fresh evidence:
+- Primary health/context/managed-run smoke PASS after restart;
+- Rescue health/status/ports PASS over Tailscale;
+- Primary task restart_count=5, restart_interval=1m, start_when_available=true;
+- Rescue task restart_count=999, restart_interval=1m, execution_time_limit=unlimited;
+- Recovery Gateway active with 1-minute supervisor trigger;
+- Rescue restart worker patched: reserved $PID references replaced, parser PASS, backup created;
+- controlled operation rescue_restart_20260727_212222_fe47f554 completed with status PROVEN_LIVE_PRIMARY_RESTART_VIA_RESCUE_V2;
+- Primary PID changed 7128 -> 2524, port returned, health true;
+- post-restart managed run managed_run-20260727-212240-5918afe2 completed_success with stdout PRIMARY_AFTER_RESCUE_RESTART_OK.
+
+Current maturity:
+- Rescue -> Primary recovery: PROVEN_LIVE.
+- Primary -> Rescue recovery: NOT_YET_PROVEN.
+- Rescue bounded repair/file execution: NOT_IMPLEMENTED.
+- Primary long-term hardening and direct secondary transport: NOT_YET_PROVEN.
+
+Next action:
+- add bounded repair capability to Rescue with allowlisted roots, checkpoint, parser/hash proof, rollback and no arbitrary shell;
+- prove Primary can restart/repair Rescue;
+- then harden Primary transport/health path.
+
+## 2026-07-28 — Mutual recovery proven both directions
+
+marker: PRIMARY_TO_RESCUE_RECOVERY_PROVEN_LIVE_20260728
+status: PROVEN_LIVE
+
+Evidence:
+- Primary controlled restart of Rescue completed_success;
+- operation_id primary_restart_rescue_20260728_013443_956b02f2;
+- local authenticated Rescue health before=true and after=true;
+- Rescue scheduled task returned Running;
+- external Rescue action confirmed rescue_ready=true, primary_http_health=true, primary_grade=READY;
+- Rescue PID after restart: 10124;
+- Primary remained healthy and managed-run lifecycle completed normally.
+
+Mutual recovery state:
+- Rescue -> Primary: PROVEN_LIVE;
+- Primary -> Rescue: PROVEN_LIVE.
+
+Remaining maturity gaps:
+- Rescue still lacks bounded file repair capability;
+- Primary still depends on ngrok/Recovery transport chain;
+- no failure drill for transport loss or token/config corruption;
+- no channel router policy encoded in runtime yet.
+
+Next action:
+- harden Rescue with bounded repair primitives and validator/rollback;
+- then harden Primary transport and health semantics;
+- keep both channels independent and prohibit concurrent mutation of the same target.
+
+## 2026-07-28 — Rescue bounded repair V2.1
+
+marker: RESCUE_BOUNDED_REPAIR_V21_PROVEN_LIVE_20260728
+status: PROVEN_LIVE_BACKEND
+
+Evidence:
+- Rescue version 2.1.0 externally healthy;
+- POST /repair/text-replace implemented with allowlisted roots H:\bridge and C:\ProgramData\EFAB-Rescue;
+- mandatory confirm, expected SHA256, unique anchor, size limits, backup, atomic temp write, validator and rollback;
+- positive LAB/live backend proof operation bounded_repair_20260728_014144_8142ce8a;
+- proof status PROVEN_LIVE_BOUNDED_REPAIR;
+- hash before 6BB2ACA6E782B8B5FE9F635F758876443868B80DEC96223F0D8CF67A74A2B267;
+- hash after A2AB47897217FA2CF410AE3747A8762A83841D21EB1C6D960F3EC8A985B55C4E;
+- bad-hash negative test rejected;
+- /proofs/{id} and /proofs/latest fixed and externally verified for bounded repair proofs;
+- backup and rollback paths exist.
+
+Boundary:
+- backend is live and externally proof-readable;
+- GPT Action schema still does not expose boundedTextRepair directly and must be published separately;
+- arbitrary shell remains prohibited;
+- Python validator is not implemented; current validators are none/json/powershell.
+
+## 2026-07-28 — Rescue built-in bounded repair validated
+
+marker: RESCUE_BUILTIN_BOUNDED_REPAIR_PROVEN_LAB_20260728
+status: PROVEN_LAB
+
+Evidence:
+- existing Invoke-BoundedTextRepair discovered in active Rescue gateway; duplicate candidate module removed;
+- active endpoint: POST /repair/text-replace, operationId boundedTextRepair;
+- allowlist limited to H:\bridge and C:\ProgramData\EFAB-Rescue;
+- source SHA256 precondition required;
+- anchor must occur exactly once;
+- payload limited to 65,536 chars; target file limited to 2 MB;
+- validators: json, powershell, none;
+- backup and proof paths created before replacement;
+- negative wrong-hash test blocked and target remained unchanged;
+- positive JSON LAB repair completed with status PROVEN_LIVE_BOUNDED_REPAIR;
+- operation_id bounded_repair_20260728_014522_928291e0;
+- proof: C:\ProgramData\EFAB-Rescue\proofs\bounded_repair_20260728_014522_928291e0.json;
+- external Rescue health after restart: version 2.1.0, rescue_ready=true, primary_grade=READY, PID 1612.
+
+Boundary:
+- bounded repair capability is PROVEN_LAB on isolated test file;
+- no real Primary production file has been repaired through this endpoint yet;
+- live production acceptance remains NOT_YET_PROVEN;
+- no arbitrary shell was added.
+
+Next action:
+- publish/activate the existing boundedTextRepair operation in the Rescue GPT Action schema if not already visible;
+- then run one controlled real repair only when a genuine defect exists, with source hash, exact anchor, validator, backup, rollback and proof.
+
+## 2026-07-28 — Recovery Gateway auto-recovery drill
+
+marker: RECOVERY_GATEWAY_AUTO_RECOVERY_PROVEN_LIVE_20260728
+status: PROVEN_LIVE
+
+Root cause fixed:
+- recovery_supervisor.ps1 used reserved PowerShell variable $pid in StartGateway;
+- replaced with $processId;
+- parser PASS;
+- backup created: H:\bridge\recovery_gateway_v1\recovery_supervisor.ps1.bak_pid_fix_20260728_071732.
+
+Live drill:
+- operation_id gateway_recovery_drill_20260728_071803_11cafac8;
+- Gateway listener 18787 deliberately stopped;
+- supervisor exited 0 and restored Gateway PID 3084 -> 920;
+- Primary 18788 and Rescue 18789 remained available;
+- corrected validator confirmed gateway_health=true and primary_health=true;
+- external Primary GPT Action health passed after recovery.
+
+Proof:
+- H:\bridge\recovery_gateway_v1\proofs\gateway_recovery_drill_20260728_071803_11cafac8.corrected.json
+
+Validator correction:
+- original drill used wrong token path H:\bridge\bridge_token.txt and produced a false FAILED label;
+- corrected path is H:\bridge\recovery_gateway_v1\bridge_token.txt;
+- fresh corrected proof wins over the original validator result.
+
+Next action:
+- implement non-destructive deep health/readiness for Primary/Recovery without duplicating watchdog logic;
+- then test ngrok restart/recovery while Rescue remains available.
+
+
+## 2026-07-28 — Primary deep health V1
+marker: PRIMARY_DEEP_HEALTH_V1_PROVEN_LIVE_20260728
+status: PROVEN_LIVE
+Evidence: /health/deep READY; reports/runs writable; report index compact 6137 bytes; Recovery Gateway reachable; Rescue restart proof rescue_restart_20260728_031807_89b0b82d; Primary PID 2524 -> 3756. External ngrok route briefly returned ERR_NGROK_8012 during restart window and recovered automatically.
+Boundary: latest_managed_run can observe current health-check as running; Recovery startup window remains debt; H:\bridge hotfix not committed.
+Next: harden Recovery Gateway readiness and reduce outage window.
+
+## 2026-07-28 — Recovery Gateway continuous watchdog
+
+marker: RECOVERY_CONTINUOUS_WATCHDOG_PROVEN_LIVE_20260728
+status: PROVEN_LIVE
+
+Evidence:
+- scheduled task EFAB Recovery Gateway SYSTEM changed from -Once/minute to continuous supervisor mode;
+- task state Running, restart_count=999, restart_interval=1m, execution_time_limit=unlimited, MultipleInstances=IgnoreNew;
+- controlled drill stopped Recovery Gateway PID 920 while Primary and Rescue stayed alive;
+- watchdog restored Gateway as PID 8988;
+- local listener and authenticated health returned in 14.5 seconds;
+- proof: H:\bridge\recovery_gateway_v1\proofs\recovery_watchdog_drill_20260728_073700_600b6ae6.json;
+- external Primary action later returned health PASS.
+
+Boundary:
+- ngrok external-readiness patch attempt stopped at ENSUREALL_ANCHOR_NOT_FOUND before source write;
+- ngrok process health is still checked by process presence, not proven external readiness;
+- external route had an additional recovery delay after local Gateway returned;
+- ngrok readiness/restart policy remains NOT_IMPLEMENTED.
+
+Next action:
+- patch ngrok readiness against exact current supervisor source with parser/backup;
+- require three consecutive external failures before controlled ngrok restart;
+- prove external recovery time in a separate drill.
+
+## 2026-07-28 — Dual-channel overnight readiness
+
+marker: DUAL_CHANNEL_OVERNIGHT_READINESS_PROVEN_LIVE_20260728
+status: PROVEN_LIVE
+
+Evidence:
+- Primary /health/deep grade=READY;
+- reports_writable=true, runs_writable=true;
+- report index compact, size_bytes=10599;
+- Recovery Gateway health=true;
+- ports 18787, 18788, 18789 and ngrok admin 4040 listening;
+- exactly one Recovery gateway process, one continuous supervisor and one ngrok process;
+- no active managed-run processes after audit;
+- Bridge retention task LastTaskResult=0, next run 2026-07-29 03:30 local;
+- H: free space 996,868,431,872 bytes;
+- external Rescue health: rescue_ready=true, primary_http_health=true, primary_grade=READY, PID 1612;
+- mutual recovery previously proven both directions.
+
+External recovery latency drill:
+- operation_id external_recovery_drill_20260728_075026_291dc2d3;
+- Gateway PID 6360 -> 924;
+- local recovery_ms=13426;
+- external recovery_ms=13607;
+- ngrok added only 181 ms after local health returned;
+- proof: H:\bridge\recovery_gateway_v1\proofs\external_recovery_drill_20260728_075026_291dc2d3.json;
+- one-off drill task removed.
+
+Decision:
+- both remote channels are READY for overnight remote work;
+- Primary remains normal execution path;
+- Rescue remains independent recovery/verification path;
+- on ambiguous timeout, do not retry blindly; reconcile through the other channel first.
+
+Boundaries/debt:
+- H:\efab HEAD 98be004 is tracked-dirty due operator notebook/journal and temporary backup files;
+- H:\bridge hotfixes are not committed;
+- Primary Boot task still has PT3M execution limit;
+- deep-health latest_managed_run observes the current audit run and is not a readiness criterion;
+- no push performed.
+
+## 2026-07-28 — Dual-channel overnight readiness V1
+
+marker: DUAL_CHANNEL_OVERNIGHT_READINESS_V1_20260728
+status: PROVEN_LIVE_WITH_KNOWN_BOUNDARY
+
+Evidence:
+- Primary deep health: READY;
+- Recovery Gateway continuous watchdog: Running;
+- Rescue task: Running and externally healthy;
+- exactly one Recovery Gateway process, one continuous supervisor, one ngrok process;
+- corrected external drill operation external_recovery_drill_v2_20260728_075211_0d752c3c passed stable preflight with 3 consecutive healthy samples;
+- Gateway PID 8868 was stopped and restored as PID 8172;
+- local recovery_ms=12778;
+- external ngrok recovery_ms=12956;
+- Primary remained READY;
+- external route and Rescue route both healthy after drill;
+- one-off drill task removed;
+- proof: H:\bridge\recovery_gateway_v1\proofs\external_recovery_drill_v2_20260728_075211_0d752c3c.json.
+
+Readiness decision:
+- Primary remote work channel: READY_FOR_OVERNIGHT_REMOTE_WORK;
+- Rescue independent recovery channel: READY_FOR_OVERNIGHT_REMOTE_RECOVERY;
+- mutual restart recovery both directions: PROVEN_LIVE;
+- expected Primary external outage after Gateway process loss: about 13 seconds in current drill.
+
+Known boundaries:
+- hotfixes under H:\bridge are not committed;
+- deep-health operation is not yet exposed as a direct GPT Action;
+- bounded repair is PROVEN_LAB, not yet accepted on a production defect;
+- no arbitrary shell added to Rescue;
+- report/index historical debt remains frozen for later.
+
+## 2026-07-28 — Overnight remote channels readiness
+
+marker: OVERNIGHT_REMOTE_CHANNELS_READY_20260728
+status: PROVEN_LIVE
+
+Evidence:
+- external recovery drill V2 operation external_recovery_drill_v2_20260728_075144_0de2a8f8 completed EXTERNAL_RECOVERY_LATENCY_PROVEN_LIVE;
+- Gateway PID 924 -> 8868;
+- local recovery_ms=16016;
+- external recovery_ms=16404;
+- ngrok added 388 ms after local Gateway health returned;
+- stable preflight count=3;
+- external failed probes during outage=16;
+- corrected overnight audit result=OVERNIGHT_REMOTE_CHANNELS_READY;
+- deep health grade=READY;
+- external Primary health=true;
+- Rescue health=true;
+- exact process counts: Primary=1, Recovery=1, continuous supervisor=1, ngrok=1;
+- truly active managed runs=0;
+- one-off drill tasks remaining=0;
+- H: free space=99.67 percent;
+- Primary PID=3756; Gateway PID=8172 at final audit.
+
+Operational conclusion:
+- both remote channels are available for unattended overnight access;
+- Rescue <-> Primary mutual recovery is proven both directions;
+- Recovery Gateway self-recovery and external ngrok recovery are proven live;
+- no claim of zero downtime: measured external outage was about 16.4 seconds.
+
+Boundary:
+- Rescue version field was null in one local health projection, but external Rescue health previously proved version 2.1.0 and current health=true;
+- H:\bridge and H:\efab changes remain uncommitted/unpushed;
+- deep-health action is not yet exposed as a dedicated GPT Action operation;
+- stale historical run metadata remains debt but no truly active old runs were found.
+
+
+## 2026-07-28 — Morning channel verification and result commit
+marker: MORNING_CHANNELS_SURVIVED_AND_RESULTS_COMMITTED_20260728
+status: PROVEN_LIVE
+Evidence: Primary, Recovery, continuous supervisor, ngrok and Rescue each had exactly one process after overnight interval; deep health READY; active managed runs 0; retention task LastResult=0; H: free 99.67 percent. Two temporary backup files were removed after proving they were malformed PowerShell serialization artifacts rather than valid handoff backups.
+Boundary: H:\bridge remains outside git; no push performed.
+
