@@ -1012,3 +1012,11 @@ status: PROVEN_LIVE
 Evidence: Primary, Recovery, continuous supervisor, ngrok and Rescue each had exactly one process after overnight interval; deep health READY; active managed runs 0; retention task LastResult=0; H: free 99.67 percent. Two temporary backup files were removed after proving they were malformed PowerShell serialization artifacts rather than valid handoff backups.
 Boundary: H:\bridge remains outside git; no push performed.
 
+
+
+## 2026-07-28 — Map hook audit and staged refresh reconciliation
+marker: MAP_HOOK_AUDIT_AND_REFRESH_COMMITTED_20260728
+status: PROVEN_LOCAL
+Evidence: pre-commit hook intentionally runs branch-agnostic map refresh and stages four map artifacts; post-commit only validates. The four staged files were left by a failed follow-up commit attempt, not by commit 3fd14c7. Current map validator PASS; body source fingerprint changed to 0581fa2690af5e9af156402cb98cdbec8016eb4b5848b8f89ded75aceba93bbb. Maps accepted in a separate commit with EF_SKIP_MAP_HOOK=1 to avoid recursive self-refresh.
+Boundary: push not performed; hook behavior remains intentional and unchanged.
+

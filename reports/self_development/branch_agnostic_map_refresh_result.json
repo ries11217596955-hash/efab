@@ -1,34 +1,25 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-27T09:11:06.9714374+04:00",
+    "checked_at":  "2026-07-28T08:37:42.4864153+04:00",
     "branch":  "main",
-    "observed_head":  "a72cc51230f2ed961d511d6ef60edfc0a999cd7e",
-    "subject_head":  "a72cc51230f2ed961d511d6ef60edfc0a999cd7e",
+    "observed_head":  "98be0048a7f92b0e2dfbc229b2ce049002a06781",
+    "subject_head":  "98be0048a7f92b0e2dfbc229b2ce049002a06781",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
                           "AGENT_BUILDER_SELF_NOTEBOOK.md",
-                          "operations/bridge_recovery/BRIDGE_OPERATOR_NOTEBOOK.md",
-                          "operations/bridge_recovery/ngrok/ngrok_launcher.ps1",
-                          "operations/bridge_recovery/proofs/ngrok_circuit_breaker_lab_proof_20260727.json",
-                          "operations/bridge_recovery/proofs/ngrok_post_policy_kill_recovery_proof_20260727.json",
-                          "operations/bridge_recovery/proofs/ngrok_traffic_policy_rollout_proof_20260727.json",
-                          "operations/bridge_recovery/releases/EFAB_BRIDGE_MIGRATION_PACK_v2_20260726.zip",
                           "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
-                          "reports/self_development/branch_agnostic_map_refresh_result.json"
+                          "reports/self_development/branch_agnostic_map_refresh_result.json",
+                          "tests/self_development/SCHOOL_TINY_LIVE_DUPLICATE_SUCCESS_RECONCILIATION_V1_PROOF.json"
                       ],
     "structural_paths":  [
-                             "operations/bridge_recovery/BRIDGE_OPERATOR_NOTEBOOK.md",
-                             "operations/bridge_recovery/ngrok/ngrok_launcher.ps1",
-                             "operations/bridge_recovery/proofs/ngrok_circuit_breaker_lab_proof_20260727.json",
-                             "operations/bridge_recovery/proofs/ngrok_post_policy_kill_recovery_proof_20260727.json",
-                             "operations/bridge_recovery/proofs/ngrok_traffic_policy_rollout_proof_20260727.json",
-                             "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
+                             "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
+                             "tests/self_development/SCHOOL_TINY_LIVE_DUPLICATE_SUCCESS_RECONCILIATION_V1_PROOF.json"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -41,7 +32,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  2327,
-                                    "sha256":  "c1e7abbee49e7808e9b3638a0ca0e4f38363b8abcc62843e4cc2faea3c8efb15"
+                                    "sha256":  "0581fa2690af5e9af156402cb98cdbec8016eb4b5848b8f89ded75aceba93bbb"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -74,5 +65,5 @@
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-27T09:12:10.9952318+04:00"
+    "refreshed_at":  "2026-07-28T08:38:41.7675529+04:00"
 }
