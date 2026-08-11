@@ -9,7 +9,7 @@ $items=@()
 $files=@()
 $files += Get-ChildItem operations/reports -File -ErrorAction SilentlyContinue
 $files += Get-Item operations/gpt_handoff/GPT_OPERATOR_LIVING_CELL_SOURCE_LADDER_V1.md -ErrorAction SilentlyContinue
-$files += Get-Item operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md -ErrorAction SilentlyContinue
+$files += Get-Item AGENT_BUILDER_SELF_NOTEBOOK.md -ErrorAction SilentlyContinue
 foreach($f in ($files | Where-Object {$null -ne $_} | Sort-Object LastWriteTime -Descending)){
   $txt=Get-Content $f.FullName -Raw -ErrorAction SilentlyContinue
   if([string]::IsNullOrWhiteSpace($txt)){continue}

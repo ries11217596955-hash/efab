@@ -1,4 +1,4 @@
-﻿# GPT_ENTRYPOINT
+# GPT_ENTRYPOINT
 
 Status: ACTIVE_OPERATOR_BIOS
 Updated: 2026-07-15T13:36:42+04:00
@@ -9,7 +9,7 @@ This is the stable first-read BIOS for Агент_Строитель / E-Factory
 
 ## Restore Order
 1. Read GPT_ENTRYPOINT.md.
-2. Read operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md.
+2. Read AGENT_BUILDER_SELF_NOTEBOOK.md.
 3. Restore fresh repo/runtime truth before any claim or mutation.
 4. Read reports/self_development/agent_body_map.json as body composition map only.
 5. Read reports/self_development/SELF_MODEL_ACTIVE_MAP.json as self-model map only.
@@ -18,7 +18,7 @@ This is the stable first-read BIOS for Агент_Строитель / E-Factory
 8. Check self_model/organ_passports and ORGAN_PROMOTION_LANES_V1.json before organ/passport claims.
 
 ## Sources of Truth
-- GPT_OPERATOR_JOURNAL.md = living operator index.
+- AGENT_BUILDER_SELF_NOTEBOOK.md = single canonical living operator continuity surface.
 - agent_body_map.json = active body composition view, not capability/reflex map.
 - SELF_MODEL_ACTIVE_MAP.json = self-model map, not active body inventory.
 - .runtime/active_compact_semantic_memory_v1 = protected active memory, never cleanup trash.

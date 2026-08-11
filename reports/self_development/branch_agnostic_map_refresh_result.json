@@ -1,23 +1,21 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-07-28T08:52:42.7908571+04:00",
+    "checked_at":  "2026-08-11T21:37:53.6540279+04:00",
     "branch":  "main",
-    "observed_head":  "4b50897c5107279c90a0e01c04c3e56a541093a8",
-    "subject_head":  "4b50897c5107279c90a0e01c04c3e56a541093a8",
-    "trigger_reason":  "post_commit_map_reconciliation",
+    "observed_head":  "f9a9210a1ae2febcd25881e2f9347290b9011c44",
+    "subject_head":  "f9a9210a1ae2febcd25881e2f9347290b9011c44",
+    "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "AGENT_BUILDER_SELF_NOTEBOOK.md",
-                          "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json"
                       ],
     "structural_paths":  [
-                             "operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md"
+
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -29,8 +27,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2327,
-                                    "sha256":  "b2aee6320b8b093d6bba7f0f9f5e698ce4aee7d1d59a4adaf31898a2ef44594f"
+                                    "structural_file_count":  2294,
+                                    "sha256":  "7cae4fea45dd4b787971dbcdaa0bd3b793ae4509021d5fd81631ff946bc8e4fa"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -40,7 +38,7 @@
                                 "knowledge_acquisition_port",
                                 "map_control",
                                 "operations_self_model",
-                                "gpt_handoff"
+                                "gpt_continuity"
                             ],
     "skip_reason":  null,
     "freshness_rule":  "Currentness is body_source_fingerprint, not self-referential commit HEAD.",
@@ -52,16 +50,16 @@
                          "builder":  "AGENT_BODY_COMPOSITION_MAP_PRIMARY_EVIDENCE_V1",
                          "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                          "confirmed_component_count":  7,
-                         "primary_evidence_candidate_count":  146,
+                         "primary_evidence_candidate_count":  147,
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
-                         "total_component_count":  153,
-                         "structural_path_count":  2327,
+                         "total_component_count":  154,
+                         "structural_path_count":  2294,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-07-28T08:53:39.3050201+04:00"
+    "refreshed_at":  "2026-08-11T21:41:49.3627813+04:00"
 }

@@ -1,4 +1,4 @@
-﻿$ErrorActionPreference='Stop'
+$ErrorActionPreference='Stop'
 $repoRoot=(git rev-parse --show-toplevel).Trim(); Set-Location $repoRoot
 function Assert($Cond,[string]$Msg){if(-not $Cond){throw $Msg}}
 function Write-Json([string]$Path,$Obj,[int]$Depth=100){$dir=Split-Path -Parent $Path;if($dir){New-Item -ItemType Directory -Force -Path $dir|Out-Null};$Obj|ConvertTo-Json -Depth $Depth|Set-Content $Path -Encoding UTF8}
@@ -6,7 +6,7 @@ $bodyPath='reports/self_development/LIVING_LOOP_CURRENT_STATE_REFRESH_V1_BODY_ST
 $reasonPath='reports/self_development/LIVING_LOOP_CURRENT_STATE_REFRESH_V1_REASONER.json'
 $decisionPath='reports/self_development/LIVING_LOOP_CURRENT_STATE_REFRESH_V1_DECISION.json'
 $proofPathIn='tests/self_development/LIVING_LOOP_CURRENT_STATE_REFRESH_V1_PROOF.json'
-$journalPath='operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md'
+$journalPath='AGENT_BUILDER_SELF_NOTEBOOK.md'
 $optionsPath='reports/self_development/PRIORITY_INTENT_SELECTION_MODEL_V1_OPTIONS.json'
 $reportPath='reports/self_development/PRIORITY_INTENT_SELECTION_MODEL_V1_REPORT.json'
 $proofPath='tests/self_development/PRIORITY_INTENT_SELECTION_MODEL_V1_PROOF.json'

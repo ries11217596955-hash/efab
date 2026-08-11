@@ -3,15 +3,17 @@ param(
   [string]$PolicyPath = "operations/compact_memory_intake/multi_source_compact_memory_intake_policy.json"
 )
 $ErrorActionPreference = 'Stop'
-function Fail($Code,$Message){
+function Fail($Code,$Message,[ValidateSet('CONTENT','INFRASTRUCTURE','UNKNOWN')][string]$FailureClass='CONTENT'){
   Write-Host "PACKET_VALIDATION_STATUS=FAIL"
+  Write-Host "PACKET_VALIDATION_FAILURE_CLASS=$FailureClass"
   Write-Host "PACKET_VALIDATION_ERROR=$Code"
+  Write-Host "PACKET_VALIDATION_ERROR_CODE=$Code"
   throw $Message
 }
-if(-not (Test-Path $PacketPath)){ Fail 'PACKET_MISSING' "Packet not found: $PacketPath" }
-if(-not (Test-Path $PolicyPath)){ Fail 'POLICY_MISSING' "Policy not found: $PolicyPath" }
-$policy = Get-Content $PolicyPath -Raw | ConvertFrom-Json
-$packet = Get-Content $PacketPath -Raw | ConvertFrom-Json
+if(-not (Test-Path $PacketPath)){ Fail 'PACKET_MISSING' "Packet not found: $PacketPath" 'INFRASTRUCTURE' }
+if(-not (Test-Path $PolicyPath)){ Fail 'POLICY_MISSING' "Policy not found: $PolicyPath" 'INFRASTRUCTURE' }
+try { $policy = Get-Content $PolicyPath -Raw | ConvertFrom-Json } catch { Fail 'POLICY_JSON_PARSE_ERROR' $_.Exception.Message 'INFRASTRUCTURE' }
+try { $packet = Get-Content $PacketPath -Raw | ConvertFrom-Json } catch { Fail 'PACKET_JSON_PARSE_ERROR' $_.Exception.Message 'CONTENT' }
 if($packet.schema -ne 'compact_memory_knowledge_packet_v1'){ Fail 'BAD_SCHEMA' 'Expected compact_memory_knowledge_packet_v1' }
 if(@($policy.allowed_sources) -notcontains [string]$packet.source_kind){ Fail 'SOURCE_NOT_ALLOWED' "Source not allowed: $($packet.source_kind)" }
 if(-not $packet.source_id){ Fail 'SOURCE_ID_MISSING' 'source_id is required' }
@@ -37,6 +39,7 @@ if($declaredAtomCount -lt $atoms.Count){ Fail 'ATOM_COUNT_LT_PACKET_ATOMS' 'qual
 $result=[ordered]@{
   schema='compact_memory_knowledge_packet_validation_v1'
   status='PASS_COMPACT_MEMORY_KNOWLEDGE_PACKET_V1'
+  failure_class='NONE'
   packet_path=$PacketPath
   source_kind=$packet.source_kind
   source_id=$packet.source_id

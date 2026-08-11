@@ -10,6 +10,25 @@ function EnsureDir($Path){ if(-not (Test-Path $Path)){ New-Item -ItemType Direct
 function WriteJson($Path,$Obj,$Depth=80){ $d=Split-Path $Path -Parent; if($d){ EnsureDir $d }; $Obj|ConvertTo-Json -Depth $Depth|Set-Content -LiteralPath $Path -Encoding UTF8 }
 function ReadPacketKind($Path){ try { $p=Get-Content $Path -Raw|ConvertFrom-Json; return [string]$p.source_kind } catch { return $null } }
 function Slug($s){ (([string]$s) -replace '[^A-Za-z0-9_.-]','_') }
+function AppendJsonLine($Path,$Obj){ $d=Split-Path $Path -Parent; if($d){ EnsureDir $d }; Add-Content -LiteralPath $Path -Value ($Obj|ConvertTo-Json -Depth 40 -Compress) -Encoding UTF8 }
+function InvokePacketValidation($PacketPath,$PolicyPath){
+  $previousErrorActionPreference=$ErrorActionPreference
+  $ErrorActionPreference='Continue'
+  try {
+    $out=@(& powershell -NoProfile -ExecutionPolicy Bypass -File 'operations/compact_memory_intake/validate_compact_memory_packet_v1.ps1' -PacketPath $PacketPath -PolicyPath $PolicyPath *>&1 | ForEach-Object{[string]$_})
+    $exitCode=$LASTEXITCODE
+  } finally {
+    $ErrorActionPreference=$previousErrorActionPreference
+  }
+  $status=(($out|Where-Object{$_ -match '^PACKET_VALIDATION_STATUS='}|Select-Object -Last 1) -replace '^PACKET_VALIDATION_STATUS=','')
+  $failureClass=(($out|Where-Object{$_ -match '^PACKET_VALIDATION_FAILURE_CLASS='}|Select-Object -Last 1) -replace '^PACKET_VALIDATION_FAILURE_CLASS=','')
+  $errorCode=(($out|Where-Object{$_ -match '^PACKET_VALIDATION_ERROR_CODE='}|Select-Object -Last 1) -replace '^PACKET_VALIDATION_ERROR_CODE=','')
+  if([string]::IsNullOrWhiteSpace($errorCode)){ $errorCode=(($out|Where-Object{$_ -match '^PACKET_VALIDATION_ERROR='}|Select-Object -Last 1) -replace '^PACKET_VALIDATION_ERROR=','') }
+  if([string]::IsNullOrWhiteSpace($status)){ $status=if($exitCode -eq 0){'UNKNOWN'}else{'FAIL_PACKET_VALIDATION_EXCEPTION'} }
+  if($status -eq 'PASS_COMPACT_MEMORY_KNOWLEDGE_PACKET_V1'){ $failureClass='NONE' } elseif([string]::IsNullOrWhiteSpace($failureClass)){ $failureClass='UNKNOWN' }
+  if([string]::IsNullOrWhiteSpace($errorCode) -and $failureClass -ne 'NONE'){ $errorCode='VALIDATOR_EXECUTION_FAILED' }
+  return [ordered]@{status=$status;failure_class=$failureClass;error_code=$errorCode;exit_code=$exitCode;output_tail=@($out|Select-Object -Last 20)}
+}
 function StopProcessTree([int]$ProcessId){
   foreach($child in @(Get-CimInstance Win32_Process -ErrorAction SilentlyContinue | Where-Object { $_.ParentProcessId -eq $ProcessId })){
     StopProcessTree ([int]$child.ProcessId)
@@ -42,10 +61,11 @@ if(-not (Test-Path $PolicyPath)){ throw "POLICY_MISSING:$PolicyPath" }
 $policy=Get-Content $PolicyPath -Raw|ConvertFrom-Json
 $runId="queue_maintenance_$(Get-Date -Format yyyyMMdd_HHmmss)"
 $runRoot=".runtime/compact_memory_intake_v1/maintenance_runs/$runId"
+$rejectedMetricsPath=Join-Path $runRoot 'rejected_metrics.jsonl'
 EnsureDir $runRoot
 $lockPath='.runtime/compact_memory_intake_v1/MERGE_QUEUE.lock.json'
 $queueRoot=[string]$policy.runtime_queue_root
-$actions=@(); $processed=@(); $skipped=@(); $blockers=@()
+$actions=@(); $processed=@(); $skipped=@(); $rejected=@(); $pending=@(); $blockers=@()
 $status='STARTED'
 if(Test-Path $lockPath){
   $status='SKIPPED_QUEUE_MAINTENANCE_MERGE_LOCK_EXISTS'
@@ -66,6 +86,16 @@ if(Test-Path $lockPath){
   } else {
     foreach($c in $candidates){
       if(Test-Path $lockPath){ $blockers += 'MERGE_QUEUE_LOCK_APPEARED_DURING_MAINTENANCE'; break }
+      $validation=InvokePacketValidation $c.path $PolicyPath
+      if($validation.status -ne 'PASS_COMPACT_MEMORY_KNOWLEDGE_PACKET_V1'){
+        $isContent=([string]$validation.failure_class -eq 'CONTENT')
+        $decision=if($isContent){'REJECT_DELETE'}else{'PENDING_RETAIN_VALIDATION_INFRASTRUCTURE'}
+        $event=[ordered]@{packet_path=$c.path;source_kind=$c.source_kind;decision=$decision;deleted=$false;validation=$validation;created_at=(Get-Date).ToString('o')}
+        if($isContent -and (Test-Path -LiteralPath $c.path)){ Remove-Item -LiteralPath $c.path -Force; $event.deleted=$true; $rejected += $event; $actions += "REJECT_DELETE:$($c.source_kind):$($validation.error_code)" }
+        else { $pending += $event; $actions += "PENDING_RETAIN:$($c.source_kind):$($validation.failure_class):$($validation.error_code)" }
+        AppendJsonLine $rejectedMetricsPath $event
+        continue
+      }
       $child=InvokeMergeQueueChild $c.path $PolicyPath $runRoot $MergeTimeoutSeconds
       $out=@($child.output_tail | ForEach-Object{[string]$_})
       $mergeStatus=($out|Where-Object{$_ -match '^MERGE_QUEUE_STATUS='}|Select-Object -Last 1) -replace '^MERGE_QUEUE_STATUS=',''
@@ -92,6 +122,11 @@ $result=[ordered]@{
   merge_timeout_seconds=$MergeTimeoutSeconds
   queue_root=$queueRoot
   processed_count=@($processed).Count
+  rejected_count=@($rejected).Count
+  pending_count=@($pending).Count
+  rejected=@($rejected)
+  pending=@($pending)
+  rejected_metrics_path=$rejectedMetricsPath
   processed=@($processed)
   skipped=@($skipped)
   actions=@($actions)

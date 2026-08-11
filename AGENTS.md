@@ -92,7 +92,7 @@ Immediate route:
 5. REAL_DELTA_SCHOOL_ORGAN_V1_STAGE1 and related dry-run/resource-guard work are LAB_ADAPTER_CANDIDATE / SIDE_PROBE unless Owner explicitly promotes them.
 6. Do not continue REAL_DELTA_SCHOOL_SCALE_GATE_V1 as route; it is SUPERSEDED_WRONG_DIRECTION because N is a parameter, not architecture.
 7. Canonical school owner interface is defined by operations/school/SCHOOL_CANONICAL_RUN_CONTRACT_V1.md: TargetAccepted + RunKind(Test|Real), with internal 5000/100 scheduler.
-8. GPT operator continuity lives in operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md; GPT must read it and the self-map before choosing route.
+8. GPT operator continuity lives in AGENT_BUILDER_SELF_NOTEBOOK.md; GPT must read it and the self-map before choosing route.
 9. runtime_ready=false.
 ```
 

@@ -1,4 +1,4 @@
-﻿param(
+param(
   [string]$ResultPath = 'reports/self_development/branch_agnostic_map_refresh_result.json',
   [string]$ActiveMapPath = 'reports/self_development/SELF_MODEL_ACTIVE_MAP.json',
   [switch]$RequireCurrentHead
@@ -109,7 +109,7 @@ if(Test-Path $ActiveMapPath){
   if($summary.passport_generator_blocked_until_candidate_triage -ne $true){ Add-Err 'passport_generator_not_blocked_until_candidate_triage' }
   if($summary.child_agent_factory_readiness -ne 'NOT_PROVEN'){ Add-Err "child_agent_factory_readiness_bad:$($summary.child_agent_factory_readiness)" }
   $componentIds=@($confirmed | ForEach-Object { $_.id })
-  foreach($id in @('school','school_source_router','compact_memory_intake','knowledge_acquisition_port','map_control','gpt_handoff')){ if($componentIds -notcontains $id){ Add-Err "missing_component:$id" } }
+  foreach($id in @('school','school_source_router','compact_memory_intake','knowledge_acquisition_port','map_control','gpt_continuity')){ if($componentIds -notcontains $id){ Add-Err "missing_component:$id" } }
   $router = @($confirmed | Where-Object { $_.id -eq 'school_source_router' } | Select-Object -First 1)
   if($router.Count -eq 0){ Add-Err 'school_source_router_component_absent' }
   else {

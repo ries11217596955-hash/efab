@@ -41,6 +41,7 @@ if (Test-Path -LiteralPath $scriptPath) {
 $launcherHashBefore = if (Test-Path $launcher) { (Get-FileHash $launcher -Algorithm SHA256).Hash } else { $null }
 $runnerHashBefore = if (Test-Path $runner) { (Get-FileHash $runner -Algorithm SHA256).Hash } else { $null }
 $activeStatsBefore = Get-TreeStats $activeRoot
+$repoStatusBefore = @(& git status --porcelain=v1 | Sort-Object)
 $beforeRuntimeDirs = @()
 if (Test-Path -LiteralPath $runtimeBase) { $beforeRuntimeDirs = @(Get-ChildItem -LiteralPath $runtimeBase -Directory -Force | Select-Object -ExpandProperty FullName) }
 
@@ -56,6 +57,10 @@ foreach ($dir in $afterRuntimeDirs) {
   if ($beforeRuntimeDirs -notcontains $dir.FullName) { $newRuntime = $dir; break }
 }
 if (-not $newRuntime -and $afterRuntimeDirs.Count -gt 0) { $newRuntime = $afterRuntimeDirs[0] }
+
+$repoStatusAfter = @(& git status --porcelain=v1 | Sort-Object)
+$repoStatusDelta = @(Compare-Object -ReferenceObject $repoStatusBefore -DifferenceObject $repoStatusAfter)
+$repoStatusChanged = ($repoStatusDelta.Count -gt 0)
 
 $runtimeProof = $null
 $runtimeProofPath = $null
@@ -75,9 +80,10 @@ if ($runtimeProof) {
   foreach($flag in @('lock_created','heartbeat_written','stop_signal_supported','checkpoint_written','final_proof_written','cycle_scratch_cleared')) {
     if ($runtimeProof.$flag -ne $true) { Add-Err "required_true_flag_false:$flag" }
   }
-  foreach($flag in @('repo_mutated','active_memory_direct_mutated','codex_launched','web_launched','school_launched','raw_debug_retained','canonical_launcher_mutated','cycle_runner_mutated')) {
+  foreach($flag in @('active_memory_direct_mutated','codex_launched','web_launched','school_launched','raw_debug_retained','canonical_launcher_mutated','cycle_runner_mutated')) {
     if ($runtimeProof.$flag -ne $false) { Add-Err "required_false_flag_true:$flag" }
   }
+  if ($repoStatusChanged) { Add-Err "repo_status_delta_detected:$($repoStatusDelta.Count)" }
   $pids = @($runtimeProof.cycle_records | ForEach-Object { [int]$_.pid } | Select-Object -Unique)
   if ($pids.Count -ne 1) { Add-Err "cycle_pid_unique_count:$($pids.Count)" }
   if ($pids.Count -eq 1 -and [int]$pids[0] -ne [int]$runtimeProof.pid) { Add-Err 'cycle_pid_does_not_match_runtime_pid' }
@@ -121,6 +127,10 @@ $canonical = [ordered]@{
     active_memory_before = $activeStatsBefore
     active_memory_after = $activeStatsAfter
     bad_process_count = $badProcs.Count
+    repo_status_before = @($repoStatusBefore)
+    repo_status_after = @($repoStatusAfter)
+    repo_status_changed = $repoStatusChanged
+    repo_status_delta = @($repoStatusDelta)
   }
   errors = @($errors)
   boundary = [ordered]@{

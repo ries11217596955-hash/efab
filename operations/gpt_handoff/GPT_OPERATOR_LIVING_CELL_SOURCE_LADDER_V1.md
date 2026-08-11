@@ -66,7 +66,7 @@ Operator gate applied: no magic N / no engine-stress-as-learning / promotion req
 After any meaningful mistake, correction, audit, stopped run, promotion, or active behavior change, GPT must append a compact entry to:
 
 ```text
-operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md
+AGENT_BUILDER_SELF_NOTEBOOK.md
 ```
 
 The journal entry must record what changed, what proof exists, and what must not be claimed.

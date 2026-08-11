@@ -776,6 +776,16 @@ for ($i = 1; $i -le $MaxPacks; $i++) {
         $SelfModelFirstRoot = ".\self_build_batch\autonomy_trials\PHASE124_BUILD_SELF_MODEL_FIRST_RUNTIME_ENTRYPOINT_V1"
         $Entry = Invoke-SelfModelFirstRuntimeEntrypoint -RepoRoot $RepoRoot -RunId $RunId -OutputRoot $SelfModelFirstRoot
 
+        if ($Entry.status -ne "PASS") {
+            Write-Host "SELF_MODEL_FIRST_STATUS=$($Entry.status)"
+            Write-Host "SELF_MODEL_FIRST_DECISION_ID=$($Entry.decision_id)"
+            Write-Host "SELF_MODEL_FIRST_ENTRY_MODE=$($Entry.entry_mode)"
+            Write-Host "SELF_MODEL_FIRST_CURRENT_NEED=$($Entry.current_need)"
+            Write-Host "SELF_MODEL_FIRST_NEXT_STEP=$($Entry.proposed_next_step)"
+            Write-Host "STATUS=BLOCKED_STOPPED_SELF_MODEL_FIRST_ENTRYPOINT"
+            return
+        }
+
         if ($Entry.status -eq "PASS") {
             Write-Host "SELF_MODEL_FIRST_RUNTIME_ENTRYPOINT=SELF_MODEL_FIRST_RUNTIME_ENTRYPOINT_V1"
             Write-Host "SELF_MODEL_FIRST_STATUS=$($Entry.status)"

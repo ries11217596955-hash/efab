@@ -1,4 +1,4 @@
-﻿param(
+param(
   [int]$Cycles = 10,
   [string]$TrialId = 'thinking_sandbox_v1_20260712'
 )
@@ -11,7 +11,7 @@ $bodyPath='reports/self_development/LIVING_LOOP_CURRENT_STATE_REFRESH_V1_BODY_ST
 $reasonPath='reports/self_development/LIVING_LOOP_CURRENT_STATE_REFRESH_V1_REASONER.json'
 $priorityPath='reports/self_development/PRIORITY_POLICY_CONTRACT_V1_SCORED_OPTIONS.json'
 $priorityProofPath='tests/self_development/PRIORITY_POLICY_CONTRACT_V1_PROOF.json'
-$journalPath='operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md'
+$journalPath='AGENT_BUILDER_SELF_NOTEBOOK.md'
 foreach($p in @($bodyPath,$reasonPath,$priorityPath,$priorityProofPath,$journalPath)){Assert (Test-Path $p) "INPUT_MISSING:$p"}
 powershell -ExecutionPolicy Bypass -File operations/living_loop/validate_living_loop_current_state_refresh_v1.ps1 | Out-Host
 Assert ($LASTEXITCODE -eq 0) 'CURRENT_STATE_REFRESH_VALIDATION_FAILED'

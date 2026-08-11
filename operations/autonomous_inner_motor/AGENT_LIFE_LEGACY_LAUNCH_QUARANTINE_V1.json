@@ -1,4 +1,4 @@
-{
+﻿{
     "schema":  "agent_life_legacy_launch_quarantine_v1",
     "status":  "ACTIVE_QUARANTINE_MANIFEST",
     "created_at":  "2026-07-17T09:13:01.2175664Z",
@@ -55,10 +55,11 @@
                              "note":  "runtime history may contain old generated wrappers; do not reuse manually"
                          },
     "boundary":  {
-                     "deletion_performed":  false,
-                     "legacy_files_modified":  false,
+                     "deletion_performed":  true,
+                     "legacy_files_modified":  true,
                      "runtime_cleaned":  false,
                      "active_memory_mutated":  false,
                      "live_process_touched":  false
-                 }
+                 },
+    "decommissioned_at":  "2026-08-11"
 }

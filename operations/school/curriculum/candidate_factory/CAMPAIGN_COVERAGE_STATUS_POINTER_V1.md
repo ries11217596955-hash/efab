@@ -13,7 +13,7 @@ operations/school/curriculum/candidate_factory/memory/theme_cursor_ledger.json
 operations/school/curriculum/candidate_factory/memory/active_compact_memory_snapshot_for_evidence_v1/manifest.json
 operations/school/curriculum/candidate_factory/memory/active_compact_memory_snapshot_for_evidence_v1/index.json
 operations/school/curriculum/candidate_factory/memory/active_compact_memory_snapshot_for_evidence_v1/cells_tail_sample_200.jsonl
-operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md
+AGENT_BUILDER_SELF_NOTEBOOK.md
 operations/school/curriculum/candidate_factory/reports/THEME_CURSOR_LEDGER_REBUILD_V1_REPORT.json
 ```
 

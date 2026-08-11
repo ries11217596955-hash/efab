@@ -1,4 +1,4 @@
-﻿# CODEX TASK — Codex-authored knowledge campaign pack for existing school V1
+# CODEX TASK — Codex-authored knowledge campaign pack for existing school V1
 
 STATUS: CODEX_DRAFT_TASK_FOR_EXISTING_SCHOOL_UPDATE
 TARGET: existing school candidate factory / generator; do not create duplicate organ
@@ -215,7 +215,7 @@ Use these local source surfaces:
 
 ```text
 1. AGENTS.md current task/rules
-2. operations/gpt_handoff/GPT_OPERATOR_JOURNAL.md recent school/finalizer/generator lessons
+2. AGENT_BUILDER_SELF_NOTEBOOK.md recent school/finalizer/generator lessons
 3. operations/gpt_handoff/CODEX_TASK_EVIDENCE_GROUNDED_SCHOOL_GENERATOR_V1.md this task
 4. operations/school/SCHOOL_CANONICAL_RUN_CONTRACT_V1.md
 5. operations/school/run_agent_school.ps1

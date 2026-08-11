@@ -2,9 +2,9 @@
 
 Status: ACTIVE_DERIVED_VIEW
 Branch: main
-Observed head at generation: 4b50897c5107279c90a0e01c04c3e56a541093a8
-Generated: 2026-07-28T08:53:38.9729347+04:00
-Body source fingerprint: b2aee6320b8b093d6bba7f0f9f5e698ce4aee7d1d59a4adaf31898a2ef44594f
+Observed head at generation: f9a9210a1ae2febcd25881e2f9347290b9011c44
+Generated: 2026-08-11T21:41:47.9132355+04:00
+Body source fingerprint: 7cae4fea45dd4b787971dbcdaa0bd3b793ae4509021d5fd81631ff946bc8e4fa
 
 Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
@@ -18,7 +18,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 ## Counts
 
 - Confirmed components: 7
-- Primary evidence candidates: 146
+- Primary evidence candidates: 147
 - Legacy unverified hints: 4
 - Rejected or stale hints: 3
 
@@ -30,7 +30,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `knowledge_acquisition_port` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/knowledge_acquisition_port`, files=50, scripts=2, required_present=True
 - `map_control` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/map_control`, files=2, scripts=0, required_present=True
 - `operations_self_model` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/self_model`, files=62, scripts=62, required_present=True
-- `gpt_handoff` - CONFIRMED_PRIMARY_EVIDENCE_PRESENT, root `operations/gpt_handoff`, files=21, scripts=0, required_present=True
+- `gpt_continuity` - CONFIRMED_REQUIRED_COMPONENT_WITH_GAPS, root `.`, files=0, scripts=0, required_present=True
 
 ## Candidate Triage Queue
 
@@ -47,19 +47,20 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `modules_self_development` - root `modules/self_development`, files=20, scripts=20, validators=0, proofs=1, needs_triage=True
 - `operations_accepted_atom_retention_calibration` - root `operations/accepted_atom_retention_calibration`, files=2, scripts=2, validators=1, proofs=0, needs_triage=True
 - `operations_active_behavior` - root `operations/active_behavior`, files=22, scripts=12, validators=5, proofs=0, needs_triage=True
-- `operations_autonomous_inner_motor` - root `operations/autonomous_inner_motor`, files=85, scripts=9, validators=1, proofs=8, needs_triage=True
+- `operations_autonomous_inner_motor` - root `operations/autonomous_inner_motor`, files=86, scripts=9, validators=1, proofs=8, needs_triage=True
 - `operations_body_self_inspection` - root `operations/body_self_inspection`, files=25, scripts=18, validators=0, proofs=0, needs_triage=True
 - `operations_bridge_diagnostics` - root `operations/bridge_diagnostics`, files=2, scripts=0, validators=0, proofs=2, needs_triage=True
-- `operations_bridge_recovery` - root `operations/bridge_recovery`, files=67, scripts=10, validators=3, proofs=11, needs_triage=True
-- `operations_live_like` - root `operations/live_like`, files=5, scripts=5, validators=3, proofs=0, needs_triage=True
-- `operations_live_readiness` - root `operations/live_readiness`, files=11, scripts=11, validators=5, proofs=2, needs_triage=True
-- `operations_live_start` - root `operations/live_start`, files=5, scripts=5, validators=2, proofs=0, needs_triage=True
+- `operations_bridge_recovery` - root `operations/bridge_recovery`, files=2, scripts=0, validators=0, proofs=0, needs_triage=True
+- `operations_gpt_handoff` - root `operations/gpt_handoff`, files=19, scripts=0, validators=0, proofs=0, needs_triage=True
+- `operations_live_like` - root `operations/live_like`, files=4, scripts=4, validators=3, proofs=0, needs_triage=True
+- `operations_live_readiness` - root `operations/live_readiness`, files=9, scripts=9, validators=5, proofs=1, needs_triage=True
+- `operations_live_start` - root `operations/live_start`, files=3, scripts=3, validators=2, proofs=0, needs_triage=True
 - `operations_living_loop` - root `operations/living_loop`, files=21, scripts=21, validators=11, proofs=0, needs_triage=True
 - `operations_memory` - root `operations/memory`, files=4, scripts=4, validators=2, proofs=0, needs_triage=True
 - `operations_memory_commit` - root `operations/memory_commit`, files=11, scripts=1, validators=0, proofs=7, needs_triage=True
 - `operations_organ_promotion_lanes` - root `operations/organ_promotion_lanes`, files=5, scripts=5, validators=3, proofs=0, needs_triage=True
 - `operations_overnight_school` - root `operations/overnight_school`, files=3, scripts=3, validators=1, proofs=0, needs_triage=True
-- `operations_parallel_life` - root `operations/parallel_life`, files=5, scripts=5, validators=3, proofs=0, needs_triage=True
+- `operations_parallel_life` - root `operations/parallel_life`, files=4, scripts=4, validators=3, proofs=0, needs_triage=True
 - `operations_readme_md` - root `operations/README.md`, files=1, scripts=0, validators=0, proofs=0, needs_triage=True
 - `operations_reasoning` - root `operations/reasoning`, files=16, scripts=15, validators=3, proofs=0, needs_triage=True
 - `operations_reflex_library` - root `operations/reflex_library`, files=2, scripts=1, validators=0, proofs=0, needs_triage=True
@@ -113,7 +114,6 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `packs_phase45_seed_driven_monitoring_profile_v1` - root `packs/PHASE45_SEED_DRIVEN_MONITORING_PROFILE_V1`, files=8, scripts=3, validators=1, proofs=2, needs_triage=True
 - `packs_phase46_monitoring_gap_closure_specialized_proof_v1` - root `packs/PHASE46_MONITORING_GAP_CLOSURE_SPECIALIZED_PROOF_V1`, files=4, scripts=2, validators=1, proofs=4, needs_triage=True
 - `packs_phase47_remediation_program_seed_consumption_closure_proof_v1` - root `packs/PHASE47_REMEDIATION_PROGRAM_SEED_CONSUMPTION_CLOSURE_PROOF_V1`, files=3, scripts=2, validators=1, proofs=3, needs_triage=True
-- `packs_phase48_remediation_seed_program_blueprint_contract_v1` - root `packs/PHASE48_REMEDIATION_SEED_PROGRAM_BLUEPRINT_CONTRACT_V1`, files=6, scripts=3, validators=1, proofs=0, needs_triage=True
 
 ## Freshness
 
