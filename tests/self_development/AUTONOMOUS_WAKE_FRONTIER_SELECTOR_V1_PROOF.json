@@ -1,0 +1,321 @@
+{
+    "schema":  "autonomous_wake_frontier_selector_v1_proof",
+    "status":  "PASS_AUTONOMOUS_WAKE_FRONTIER_SELECTOR_V1",
+    "checked_at":  "2026-08-12T10:12:01.9295264Z",
+    "scenarios":  {
+                      "healthy":  {
+                                      "schema":  "autonomous_wake_frontier_selector_v1",
+                                      "status":  "PASS_AUTONOMOUS_WAKE_FRONTIER_SELECTOR_V1",
+                                      "owner_task_required":  false,
+                                      "selection_rule":  "fresh control/recovery signals \u003e fresh explicit capability gap \u003e healthy knowledge seeking \u003e non-fresh maintenance/exploration candidates; avoid penalty prevents fixation",
+                                      "candidates":  [
+                                                         {
+                                                             "frontier":  "knowledge_source_gap",
+                                                             "base_score":  60,
+                                                             "avoid_penalty":  0,
+                                                             "score":  60,
+                                                             "reason":  "healthy_autonomous_default_seeks_new_reusable_knowledge",
+                                                             "goal":  "Identify one high-value knowledge gap not already resolved by current memory, then determine the smallest trustworthy evidence needed to learn it.",
+                                                             "fresh_signal":  true
+                                                         },
+                                                         {
+                                                             "frontier":  "memory_quality_frontier",
+                                                             "base_score":  42,
+                                                             "avoid_penalty":  0,
+                                                             "score":  42,
+                                                             "reason":  "memory_exists_and_can_be_examined_for_quality_or_coverage_without_forcing_topic",
+                                                             "goal":  "Examine whether current memory has a quality or coverage weakness worth learning about, without forcing the next topic to repeat old memory.",
+                                                             "fresh_signal":  false
+                                                         },
+                                                         {
+                                                             "frontier":  "bounded_exploration",
+                                                             "base_score":  38,
+                                                             "avoid_penalty":  0,
+                                                             "score":  38,
+                                                             "reason":  "bounded_novel_exploration_remains_available",
+                                                             "goal":  "Explore one novel useful question with potential cross-domain reuse, while avoiding recently saturated frontiers.",
+                                                             "fresh_signal":  false
+                                                         },
+                                                         {
+                                                             "frontier":  "self_build_gap",
+                                                             "base_score":  25,
+                                                             "avoid_penalty":  0,
+                                                             "score":  25,
+                                                             "reason":  "self_build_material_exists_but_freshness_is_not_proven",
+                                                             "goal":  "Re-evaluate a Builder capability gap only after fresh proof shows it is still current.",
+                                                             "fresh_signal":  false
+                                                         }
+                                                     ],
+                                      "selected_frontier":  "knowledge_source_gap",
+                                      "selected_reason":  "healthy_autonomous_default_seeks_new_reusable_knowledge",
+                                      "selected_goal":  "Identify one high-value knowledge gap not already resolved by current memory, then determine the smallest trustworthy evidence needed to learn it.",
+                                      "boundary":  {
+                                                       "selector_only":  true,
+                                                       "action_execution_allowed":  false,
+                                                       "active_memory_mutated":  false,
+                                                       "no_web_research":  true,
+                                                       "no_codex_launch":  true,
+                                                       "no_school_launch":  true
+                                                   }
+                                  },
+                      "repo_dirty":  {
+                                         "schema":  "autonomous_wake_frontier_selector_v1",
+                                         "status":  "PASS_AUTONOMOUS_WAKE_FRONTIER_SELECTOR_V1",
+                                         "owner_task_required":  false,
+                                         "selection_rule":  "fresh control/recovery signals \u003e fresh explicit capability gap \u003e healthy knowledge seeking \u003e non-fresh maintenance/exploration candidates; avoid penalty prevents fixation",
+                                         "candidates":  [
+                                                            {
+                                                                "frontier":  "recovery_control_gap",
+                                                                "base_score":  100,
+                                                                "avoid_penalty":  0,
+                                                                "score":  100,
+                                                                "reason":  "fresh_repo_dirty_signal_has_priority_over_exploration",
+                                                                "goal":  "Understand the current repository/control inconsistency and determine the smallest safe recovery step before exploration.",
+                                                                "fresh_signal":  true
+                                                            },
+                                                            {
+                                                                "frontier":  "knowledge_source_gap",
+                                                                "base_score":  60,
+                                                                "avoid_penalty":  0,
+                                                                "score":  60,
+                                                                "reason":  "healthy_autonomous_default_seeks_new_reusable_knowledge",
+                                                                "goal":  "Identify one high-value knowledge gap not already resolved by current memory, then determine the smallest trustworthy evidence needed to learn it.",
+                                                                "fresh_signal":  true
+                                                            },
+                                                            {
+                                                                "frontier":  "memory_quality_frontier",
+                                                                "base_score":  42,
+                                                                "avoid_penalty":  0,
+                                                                "score":  42,
+                                                                "reason":  "memory_exists_and_can_be_examined_for_quality_or_coverage_without_forcing_topic",
+                                                                "goal":  "Examine whether current memory has a quality or coverage weakness worth learning about, without forcing the next topic to repeat old memory.",
+                                                                "fresh_signal":  false
+                                                            },
+                                                            {
+                                                                "frontier":  "bounded_exploration",
+                                                                "base_score":  38,
+                                                                "avoid_penalty":  0,
+                                                                "score":  38,
+                                                                "reason":  "bounded_novel_exploration_remains_available",
+                                                                "goal":  "Explore one novel useful question with potential cross-domain reuse, while avoiding recently saturated frontiers.",
+                                                                "fresh_signal":  false
+                                                            },
+                                                            {
+                                                                "frontier":  "self_build_gap",
+                                                                "base_score":  25,
+                                                                "avoid_penalty":  0,
+                                                                "score":  25,
+                                                                "reason":  "self_build_material_exists_but_freshness_is_not_proven",
+                                                                "goal":  "Re-evaluate a Builder capability gap only after fresh proof shows it is still current.",
+                                                                "fresh_signal":  false
+                                                            }
+                                                        ],
+                                         "selected_frontier":  "recovery_control_gap",
+                                         "selected_reason":  "fresh_repo_dirty_signal_has_priority_over_exploration",
+                                         "selected_goal":  "Understand the current repository/control inconsistency and determine the smallest safe recovery step before exploration.",
+                                         "boundary":  {
+                                                          "selector_only":  true,
+                                                          "action_execution_allowed":  false,
+                                                          "active_memory_mutated":  false,
+                                                          "no_web_research":  true,
+                                                          "no_codex_launch":  true,
+                                                          "no_school_launch":  true
+                                                      }
+                                     },
+                      "memory_missing":  {
+                                             "schema":  "autonomous_wake_frontier_selector_v1",
+                                             "status":  "PASS_AUTONOMOUS_WAKE_FRONTIER_SELECTOR_V1",
+                                             "owner_task_required":  false,
+                                             "selection_rule":  "fresh control/recovery signals \u003e fresh explicit capability gap \u003e healthy knowledge seeking \u003e non-fresh maintenance/exploration candidates; avoid penalty prevents fixation",
+                                             "candidates":  [
+                                                                {
+                                                                    "frontier":  "active_memory_recovery",
+                                                                    "base_score":  90,
+                                                                    "avoid_penalty":  0,
+                                                                    "score":  90,
+                                                                    "reason":  "protected_memory_required_files_are_not_ready",
+                                                                    "goal":  "Understand why protected active memory is unavailable or incomplete and what proof is required to restore safe read access.",
+                                                                    "fresh_signal":  true
+                                                                },
+                                                                {
+                                                                    "frontier":  "knowledge_source_gap",
+                                                                    "base_score":  60,
+                                                                    "avoid_penalty":  0,
+                                                                    "score":  60,
+                                                                    "reason":  "healthy_autonomous_default_seeks_new_reusable_knowledge",
+                                                                    "goal":  "Identify one high-value knowledge gap not already resolved by current memory, then determine the smallest trustworthy evidence needed to learn it.",
+                                                                    "fresh_signal":  true
+                                                                },
+                                                                {
+                                                                    "frontier":  "bounded_exploration",
+                                                                    "base_score":  38,
+                                                                    "avoid_penalty":  0,
+                                                                    "score":  38,
+                                                                    "reason":  "bounded_novel_exploration_remains_available",
+                                                                    "goal":  "Explore one novel useful question with potential cross-domain reuse, while avoiding recently saturated frontiers.",
+                                                                    "fresh_signal":  false
+                                                                },
+                                                                {
+                                                                    "frontier":  "self_build_gap",
+                                                                    "base_score":  25,
+                                                                    "avoid_penalty":  0,
+                                                                    "score":  25,
+                                                                    "reason":  "self_build_material_exists_but_freshness_is_not_proven",
+                                                                    "goal":  "Re-evaluate a Builder capability gap only after fresh proof shows it is still current.",
+                                                                    "fresh_signal":  false
+                                                                }
+                                                            ],
+                                             "selected_frontier":  "active_memory_recovery",
+                                             "selected_reason":  "protected_memory_required_files_are_not_ready",
+                                             "selected_goal":  "Understand why protected active memory is unavailable or incomplete and what proof is required to restore safe read access.",
+                                             "boundary":  {
+                                                              "selector_only":  true,
+                                                              "action_execution_allowed":  false,
+                                                              "active_memory_mutated":  false,
+                                                              "no_web_research":  true,
+                                                              "no_codex_launch":  true,
+                                                              "no_school_launch":  true
+                                                          }
+                                         },
+                      "fresh_self_build_gap":  {
+                                                   "schema":  "autonomous_wake_frontier_selector_v1",
+                                                   "status":  "PASS_AUTONOMOUS_WAKE_FRONTIER_SELECTOR_V1",
+                                                   "owner_task_required":  false,
+                                                   "selection_rule":  "fresh control/recovery signals \u003e fresh explicit capability gap \u003e healthy knowledge seeking \u003e non-fresh maintenance/exploration candidates; avoid penalty prevents fixation",
+                                                   "candidates":  [
+                                                                      {
+                                                                          "frontier":  "self_build_gap",
+                                                                          "base_score":  72,
+                                                                          "avoid_penalty":  0,
+                                                                          "score":  72,
+                                                                          "reason":  "fresh_explicit_self_build_gap",
+                                                                          "goal":  "Reason about the freshly proven Builder capability gap: fresh capability gap",
+                                                                          "fresh_signal":  true
+                                                                      },
+                                                                      {
+                                                                          "frontier":  "knowledge_source_gap",
+                                                                          "base_score":  60,
+                                                                          "avoid_penalty":  0,
+                                                                          "score":  60,
+                                                                          "reason":  "healthy_autonomous_default_seeks_new_reusable_knowledge",
+                                                                          "goal":  "Identify one high-value knowledge gap not already resolved by current memory, then determine the smallest trustworthy evidence needed to learn it.",
+                                                                          "fresh_signal":  true
+                                                                      },
+                                                                      {
+                                                                          "frontier":  "memory_quality_frontier",
+                                                                          "base_score":  42,
+                                                                          "avoid_penalty":  0,
+                                                                          "score":  42,
+                                                                          "reason":  "memory_exists_and_can_be_examined_for_quality_or_coverage_without_forcing_topic",
+                                                                          "goal":  "Examine whether current memory has a quality or coverage weakness worth learning about, without forcing the next topic to repeat old memory.",
+                                                                          "fresh_signal":  false
+                                                                      },
+                                                                      {
+                                                                          "frontier":  "bounded_exploration",
+                                                                          "base_score":  38,
+                                                                          "avoid_penalty":  0,
+                                                                          "score":  38,
+                                                                          "reason":  "bounded_novel_exploration_remains_available",
+                                                                          "goal":  "Explore one novel useful question with potential cross-domain reuse, while avoiding recently saturated frontiers.",
+                                                                          "fresh_signal":  false
+                                                                      }
+                                                                  ],
+                                                   "selected_frontier":  "self_build_gap",
+                                                   "selected_reason":  "fresh_explicit_self_build_gap",
+                                                   "selected_goal":  "Reason about the freshly proven Builder capability gap: fresh capability gap",
+                                                   "boundary":  {
+                                                                    "selector_only":  true,
+                                                                    "action_execution_allowed":  false,
+                                                                    "active_memory_mutated":  false,
+                                                                    "no_web_research":  true,
+                                                                    "no_codex_launch":  true,
+                                                                    "no_school_launch":  true
+                                                                }
+                                               },
+                      "avoid_knowledge":  {
+                                              "schema":  "autonomous_wake_frontier_selector_v1",
+                                              "status":  "PASS_AUTONOMOUS_WAKE_FRONTIER_SELECTOR_V1",
+                                              "owner_task_required":  false,
+                                              "selection_rule":  "fresh control/recovery signals \u003e fresh explicit capability gap \u003e healthy knowledge seeking \u003e non-fresh maintenance/exploration candidates; avoid penalty prevents fixation",
+                                              "candidates":  [
+                                                                 {
+                                                                     "frontier":  "memory_quality_frontier",
+                                                                     "base_score":  42,
+                                                                     "avoid_penalty":  0,
+                                                                     "score":  42,
+                                                                     "reason":  "memory_exists_and_can_be_examined_for_quality_or_coverage_without_forcing_topic",
+                                                                     "goal":  "Examine whether current memory has a quality or coverage weakness worth learning about, without forcing the next topic to repeat old memory.",
+                                                                     "fresh_signal":  false
+                                                                 },
+                                                                 {
+                                                                     "frontier":  "bounded_exploration",
+                                                                     "base_score":  38,
+                                                                     "avoid_penalty":  0,
+                                                                     "score":  38,
+                                                                     "reason":  "bounded_novel_exploration_remains_available",
+                                                                     "goal":  "Explore one novel useful question with potential cross-domain reuse, while avoiding recently saturated frontiers.",
+                                                                     "fresh_signal":  false
+                                                                 },
+                                                                 {
+                                                                     "frontier":  "knowledge_source_gap",
+                                                                     "base_score":  60,
+                                                                     "avoid_penalty":  35,
+                                                                     "score":  25,
+                                                                     "reason":  "healthy_autonomous_default_seeks_new_reusable_knowledge",
+                                                                     "goal":  "Identify one high-value knowledge gap not already resolved by current memory, then determine the smallest trustworthy evidence needed to learn it.",
+                                                                     "fresh_signal":  true
+                                                                 }
+                                                             ],
+                                              "selected_frontier":  "memory_quality_frontier",
+                                              "selected_reason":  "memory_exists_and_can_be_examined_for_quality_or_coverage_without_forcing_topic",
+                                              "selected_goal":  "Examine whether current memory has a quality or coverage weakness worth learning about, without forcing the next topic to repeat old memory.",
+                                              "boundary":  {
+                                                               "selector_only":  true,
+                                                               "action_execution_allowed":  false,
+                                                               "active_memory_mutated":  false,
+                                                               "no_web_research":  true,
+                                                               "no_codex_launch":  true,
+                                                               "no_school_launch":  true
+                                                           }
+                                          }
+                  },
+    "wiring":  {
+                   "selector_before_internal_goal":  true,
+                   "owner_override_after_autonomous_goal":  true,
+                   "reasoner_after_owner_override":  true,
+                   "reasoner_topic":  "Current reasoning topic: Identify one high-value knowledge gap not already resolved by current memory, then determine the smallest trustworthy evidence needed to learn it.",
+                   "reasoner_winner":  "source_gap"
+               },
+    "active_memory_hashes":  {
+                                 "manifest":  "36C6CDCDDD0C05872F13E9D43DC5314CF31478F7117D630C2EDDE48B177BEE67",
+                                 "index":  "34951D7B72801EACD682BB938374D49E9FB0CEAD74DF66B80F4675A9EE3FDA3F",
+                                 "cells":  "367EC2C6B548AF6023D5278CE1A1419A1E508992EC514786B302463242630D1B"
+                             },
+    "claims_proven":  [
+                          "No Owner task is required to select an autonomous wake frontier.",
+                          "Healthy state selects knowledge_source_gap rather than forcing self-build.",
+                          "Fresh control/recovery signals outrank exploration.",
+                          "Fresh explicit self-build gap can still win when actually proven current.",
+                          "Avoid penalty can move the next frontier away from a repeated category.",
+                          "Selected wake frontier is wired into internalGoal before topic-general reasoning; Owner task remains a later override."
+                      ],
+    "does_not_prove":  [
+                           "Full AIMO wake/runtime completes with this selector.",
+                           "The selector has discovered a concrete external-domain research question.",
+                           "External research is performed.",
+                           "Learning atom is topic-aware or durable.",
+                           "LIVE behavior or runtime_ready."
+                       ],
+    "boundary":  {
+                     "lab_selector_only":  true,
+                     "full_aimo_runtime_launched":  false,
+                     "action_execution_allowed":  false,
+                     "active_memory_mutated":  false,
+                     "web_launched":  false,
+                     "codex_launched":  false,
+                     "school_launched":  false
+                 },
+    "errors":  [
+
+               ]
+}

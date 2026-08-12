@@ -11,6 +11,9 @@ param(
   [int]$MaxMemorySamples=6
 )
 $ErrorActionPreference='Stop'
+$wakeFrontierSelectorPath='operations/autonomous_inner_motor/select_autonomous_wake_frontier_v1.ps1'
+if(-not(Test-Path -LiteralPath $wakeFrontierSelectorPath)){ throw 'AUTONOMOUS_WAKE_FRONTIER_SELECTOR_MISSING' }
+. $wakeFrontierSelectorPath
 # SandboxExploration, sandbox_exploration, SANDBOX_EXPLORATION_PROOF.json, SandboxTestLife, TEST_LIFE_PROOF.json
 # No active memory mutation. PROTECTIVE_CHECKPOINT. schoolActive.
 function Write-CleanJson([string]$Path,$Obj,[int]$Depth=30){
@@ -286,17 +289,21 @@ function Get-SelfBuildState {
     artifacts=$items
   }
 }
-function New-InternalSelfGoal($SelfBuildState,$BodyMapState,$MemoryState){
+function New-InternalSelfGoal($SelfBuildState,$BodyMapState,$MemoryState,$WakeFrontierSelection){
   $agentCatalog=$SelfBuildState.artifacts | Where-Object { $_.path -eq 'agent_catalog/AGENT_CATALOG.json' } | Select-Object -First 1
   $agentCount=0
   if($agentCatalog -and $agentCatalog.summary -and ($agentCatalog.summary.PSObject.Properties.Name -contains 'agent_count')){ $agentCount=[int]$agentCatalog.summary.agent_count }
+  $frontier=if($WakeFrontierSelection){[string]$WakeFrontierSelection.selected_frontier}else{'knowledge_source_gap'}
+  $goal=if($WakeFrontierSelection -and $WakeFrontierSelection.selected_goal){[string]$WakeFrontierSelection.selected_goal}else{'Identify one useful knowledge gap and determine what evidence would reduce it.'}
   return [ordered]@{
-    source='SELF_BUILD_INTERNAL_SEED'
+    source='AUTONOMOUS_WAKE_FRONTIER'
     owner_query_required=$false
-    goal='Increase the agent thinking capacity so it can later govern self-build actions and eventually produce child agents.'
-    first_stage='think_and_improve_logic_without_action'
-    second_stage='governed_self_build_steps_after validators and owner authority'
-    third_stage='child_agent_factory only after Builder can self-observe, self-select gaps, self-validate, and self-repair'
+    frontier=$frontier
+    goal=$goal
+    wake_frontier_selection=$WakeFrontierSelection
+    first_stage='reason_about_selected_frontier_without_action'
+    second_stage='use_relevant_memory_and_source_gap_reasoning_before_any_learning_or_build_step'
+    third_stage='return_new_understanding_to_governed_learning_and_then_choose_next_frontier'
     current_body_signal=[ordered]@{ component_count=$BodyMapState.component_count; confirmed=$BodyMapState.confirmed_component_count; candidates=$BodyMapState.primary_evidence_candidate_count }
     memory_signal=[ordered]@{ active_memory_exists=$MemoryState.exists; manifest=$MemoryState.manifest_summary }
     child_agent_signal=[ordered]@{ existing_agent_catalog_count=$agentCount; child_agents_are_future_output_not_current_brain=$true }
@@ -1371,7 +1378,10 @@ $body=Get-BodyMapState
 $living=Get-LivingLoopState
 $selfBuild=Get-SelfBuildState
 $ownerQuestionProvided=(-not [string]::IsNullOrWhiteSpace($Question))
-$internalGoal=New-InternalSelfGoal $selfBuild $body $memoryBefore
+$memoryCoreReady=($memoryBefore.exists -and @($memoryBefore.files).Count -ge 3)
+$selfBuildCandidateAvailable=(@($selfBuild.artifacts | Where-Object { $_.exists }).Count -gt 0)
+$autonomousWakeFrontier=Select-AutonomousWakeFrontier -RepoClean (@($repo.dirty).Count -eq 0) -ActiveMemoryReady $memoryCoreReady -BodyMapAvailable ([bool]$body.exists) -SchoolActive ([bool]$school.schoolActive) -SelfBuildCandidateAvailable $selfBuildCandidateAvailable -FreshSelfBuildGap $false
+$internalGoal=New-InternalSelfGoal $selfBuild $body $memoryBefore $autonomousWakeFrontier
 if($ownerQuestionProvided){
   if($internalGoal -is [System.Collections.IDictionary]){
     $internalGoal['source']='OWNER_QUESTION_ACTIVE_GOAL'
@@ -1690,6 +1700,7 @@ $proof=[ordered]@{
   school_state=$school
   living_loop_state=$living
   self_build_state=$selfBuild
+  autonomous_wake_frontier=$autonomousWakeFrontier
   internal_goal=$internalGoal
   new_thought_seed_to_active_goal=$newThoughtSeedToActiveGoal
   owner_query_required=$false

@@ -2595,3 +2595,22 @@ Parent priority correction:
 - Owner-task routing is an override capability, not the autonomous life motor;
 - main next path is `NO OWNER TASK -> observe reality/memory/gaps -> select self-directed frontier -> self-chosen thought goal -> topic-general reasoning -> relevant memory -> new understanding`;
 - only after that path is proven should task arrival/preemption/return be tested as an override/return contract.
+## 2026-08-12 - Autonomous wake frontier selector acceptance
+marker: AUTONOMOUS_WAKE_FRONTIER_SELECTOR_ACCEPTANCE_20260812
+status: ACCEPTED_PROVEN_LAB_AUTONOMOUS_WAKE_FRONTIER_SELECTOR_V1
+
+Accepted no-Owner-task wake behavior:
+- autonomous life no longer requires `SELF_BUILD_INTERNAL_SEED` as the mandatory first topic;
+- in a healthy clean state with protected memory/body available, the wake selector chooses `knowledge_source_gap` and sends its selected goal into the topic-general reasoner;
+- fresh control/recovery signals outrank exploration: dirty repo -> `recovery_control_gap`; unavailable active memory -> `active_memory_recovery`;
+- a freshly proven Builder capability gap can still select `self_build_gap`, but stale historical backlog existence is only a low-priority candidate and cannot dominate by itself;
+- anti-repeat avoidance can shift the next frontier away from `knowledge_source_gap` (validator selected `memory_quality_frontier` when knowledge frontier was avoided);
+- Owner task remains a later higher-priority override through the already accepted `OWNER_QUESTION_ACTIVE_GOAL` branch;
+- tracked proof `tests/self_development/AUTONOMOUS_WAKE_FRONTIER_SELECTOR_V1_PROOF.json` is `PASS_AUTONOMOUS_WAKE_FRONTIER_SELECTOR_V1` with zero errors;
+- disposable `.runtime/autonomous_wake_frontier_selector_v1` validator output was removed after proof capture; protected active memory stayed byte-identical.
+
+Proof boundary / next parent action:
+- this is LAB selector+wiring proof, not full AIMO wake/runtime proof and not LIVE/runtime_ready;
+- it does not yet choose a concrete external-domain research question, perform external research, or create topic-aware/durable learning;
+- the old `SELF_BUILD_INTERNAL_SEED` self-directed proof is historical/narrow evidence of no-owner waiting plus self-build orientation, not current authority for broad autonomous learning; do not delete it until decommission/caller closure is proven;
+- next parent gap: `knowledge_source_gap -> one concrete useful bounded self-chosen question/topic -> topic-general reasoning -> relevant memory/source gap`, with anti-repeat and no external launch until question-generation/selectivity is proven in LAB.
