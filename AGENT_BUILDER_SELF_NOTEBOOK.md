@@ -2694,3 +2694,15 @@ Fresh incident boundary:
 - failed Live237 memory was rolled back exactly to pre-Live237 checkpoint `H:\bridge\reports\school_live237_memory_checkpoint_20260812_1816` (138 cells; three hashes restored). The failed 237 atoms are preserved only in forensic/runtime evidence and are not accepted live memory; after repair, a fresh Live237 absorption is required for acceptance.
 
 Sanitation boundary: preserve `canonical_exact_count_cycle_real_237_20260812_181728` and related absorption evidence until recovery acceptance is complete.
+## 2026-08-12 - School single-instance guard after transport-retry incident
+marker: SCHOOL_SINGLE_INSTANCE_TRANSPORT_RETRY_GUARD_20260812
+status: ACCEPTED_CANONICAL_VALIDATOR_PASS
+
+Fresh incident and repair proof:
+- during a Live237 attempt, two independent Bridge wrappers were able to invoke the same canonical public School launcher concurrently; both were stopped before protected-memory publish and active compact memory remained byte-identical to checkpoint `H:\bridge\reports\school_live237_memory_checkpoint_20260812_2027`;
+- incident proof: `H:\bridge\reports\school_live237_aborted_streaming_incident_20260812_2042.json`;
+- sanitation decision: reject redundant filesystem singleton-lock design and keep one process-level Windows named mutex only: `Global\EFAB_SCHOOL_SINGLE_PUBLIC_LAUNCH_V1`;
+- concurrent public-launch micro-trial: first `Test237` completed PASS with exact `100,100,37`, accepted=237, memory_changed=False; second simultaneous `Test1` was blocked with `SCHOOL_SINGLE_INSTANCE_BLOCKED_ACTIVE_RUN`, exit 73;
+- post-health after both runs: School/Codex/intake process_count=0, queue=0, locks=0, protected memory hashes unchanged.
+
+Does not prove: Live237 end-to-end success after guard. Next parent step after canonical validator/commit/sanitation is fresh Live237 with real Codex overlap proof and one public runtime only.

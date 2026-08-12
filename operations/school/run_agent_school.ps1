@@ -14,7 +14,20 @@ param(
 # Internal implementation is embedded here intentionally.
 # ONE BIKE LAW: operations/school/run_agent_school.ps1 is the only public School launcher.
 # Former warehouse .ps1 launchers were physically removed to prevent alternate School starts.
-function Invoke-SchoolWarehouseConsumer {
+# Transport retries must not create a second public School runtime.
+$SchoolSingleInstanceMutexName='Global\EFAB_SCHOOL_SINGLE_PUBLIC_LAUNCH_V1'
+$script:SchoolSingleInstanceMutex=New-Object System.Threading.Mutex($false,$SchoolSingleInstanceMutexName)
+$SchoolSingleInstanceAcquired=$false
+try {
+  $SchoolSingleInstanceAcquired=$script:SchoolSingleInstanceMutex.WaitOne(0,$false)
+} catch [System.Threading.AbandonedMutexException] {
+  $SchoolSingleInstanceAcquired=$true
+}
+if(-not $SchoolSingleInstanceAcquired){
+  Write-Error 'SCHOOL_SINGLE_INSTANCE_BLOCKED_ACTIVE_RUN'
+  exit 73
+}
+try {function Invoke-SchoolWarehouseConsumer {
 param(
   [Parameter(Mandatory=$true)][string]$MacroTaskJsonPath,
   [ValidateRange(1,100)][int]$MaxConsumeBatches = 1,
@@ -643,3 +656,7 @@ Write-Host "SCHOOL_RUN_REPORT=$proofPath"
   Write-Host "EXACT_COUNT_CYCLE_MEMORY_CHANGED=$($base.memory_changed)"
   Write-Host 'RUNTIME_READY=false'
   return
+} finally {
+  if($SchoolSingleInstanceAcquired -and $script:SchoolSingleInstanceMutex){ try { $script:SchoolSingleInstanceMutex.ReleaseMutex() } catch {} }
+  if($script:SchoolSingleInstanceMutex){ $script:SchoolSingleInstanceMutex.Dispose() }
+}

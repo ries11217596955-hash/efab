@@ -20,6 +20,12 @@ foreach($requiredPrompt in @('- Write exactly TARGET_COUNT JSONL candidate lines
   if($entryText -notlike ('*'+$requiredPrompt+'*')){ AddErr ('school_codex_output_boundary_missing:'+ $requiredPrompt) }
 }
 if($entryText -notlike '*BOUNDED_BYPASS_WINDOWS_SYSTEM*'){ AddErr 'school_codex_execution_mode_event_missing' }
+foreach($needle in @('Global\EFAB_SCHOOL_SINGLE_PUBLIC_LAUNCH_V1','System.Threading.Mutex','WaitOne(0,$false)','SCHOOL_SINGLE_INSTANCE_BLOCKED_ACTIVE_RUN','exit 73','ReleaseMutex()')){
+  if(-not $entryText.Contains($needle)){ AddErr ('school_single_instance_guard_missing:'+ $needle) }
+}
+foreach($forbidden in @('school_singleton_v1','ACTIVE_RUN.lock.json','SCHOOL_SINGLETON_ACQUIRE_RACE')){
+  if($entryText.Contains($forbidden)){ AddErr ('school_redundant_filesystem_singleton_present:'+ $forbidden) }
+}
 if($entryText -like '*$p.WaitForExit($CodexTimeoutSeconds*1000)*'){ AddErr 'school_streaming_waitforexit_before_consume_present' }
 foreach($needle in @('STREAM_READY_DETECTED','STREAM_BATCH_CONSUMED','streaming_enabled','producer_completed_at','first_consume_started_at','stream_batches','overlap_proven','Invoke-SchoolWarehouseConsumer -MacroTaskJsonPath $taskJson -MaxConsumeBatches 1')){
   if($entryText -notlike ('*'+$needle+'*')){ AddErr ('school_streaming_contract_missing:'+ $needle) }
