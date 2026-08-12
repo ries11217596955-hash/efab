@@ -1,4 +1,4 @@
-# AGENTS.md — Codex execution contract
+# AGENTS.md Ã¢â‚¬â€ Codex execution contract
 
 ## Purpose
 
@@ -118,6 +118,15 @@ Do not silently delete history or accepted behavior. Decommission requires expli
 For School work, use the canonical owner interface only when the task names it:
 
 `operations/school/SCHOOL_CANONICAL_RUN_CONTRACT_V1.md`
+
+For School Codex execution under Bridge/SYSTEM on this Windows host, do not guess the runtime path:
+
+- proven CLI: `C:\Users\Azerbaijan\.codex\.sandbox-bin\codex.exe`;
+- proven home: `CODEX_HOME=C:\Users\Azerbaijan\.codex`;
+- prefer explicit `EFAB_CODEX_EXE` / `EFAB_CODEX_HOME` when supplied; otherwise use the single healthy authenticated profile selected by the School resolver;
+- for the School producer under Bridge/SYSTEM use `--dangerously-bypass-approvals-and-sandbox`, not `-s workspace-write`; the latter is a known non-working Windows/SYSTEM branch here;
+- bounded bypass is allowed only after `PREFLIGHT_PASS` and only for the exact School warehouse outputs named by the task; no tracked-repo edits, no active-memory writes, no remote/network side tasks;
+- do not install or create a second Codex to work around this route.
 
 Do not infer School readiness or progress from this `AGENTS.md`.
 

@@ -1,22 +1,27 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-08-12T16:46:38.2325483+04:00",
+    "checked_at":  "2026-08-12T17:30:29.3591349+04:00",
     "branch":  "main",
-    "observed_head":  "c743129bcd74d5c3068c2c742ddcd4837b758a4c",
-    "subject_head":  "c743129bcd74d5c3068c2c742ddcd4837b758a4c",
+    "observed_head":  "b7043519189160d537efbf2c0b905ad5649600cf",
+    "subject_head":  "b7043519189160d537efbf2c0b905ad5649600cf",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "docs/operations/SCHOOL_RUN_RESULT_20260812_163146_Live_100_canonical_exact_count_cycle_real_100_20260812_162437.md",
+                          "AGENT_BUILDER_SELF_NOTEBOOK.md",
+                          "operations/school/finalize_agent_school_run_v1.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
-                          "reports/self_development/branch_agnostic_map_refresh_result.json"
+                          "reports/self_development/branch_agnostic_map_refresh_result.json",
+                          "tests/self_development/SCHOOL_CANONICAL_ENTRYPOINT_CONTRACT_REPAIR_V1_PROOF.json",
+                          "validators/validate_school_canonical_entrypoint_contract_repair_v1.ps1"
                       ],
     "structural_paths":  [
-                             "docs/operations/SCHOOL_RUN_RESULT_20260812_163146_Live_100_canonical_exact_count_cycle_real_100_20260812_162437.md"
+                             "operations/school/finalize_agent_school_run_v1.ps1",
+                             "tests/self_development/SCHOOL_CANONICAL_ENTRYPOINT_CONTRACT_REPAIR_V1_PROOF.json",
+                             "validators/validate_school_canonical_entrypoint_contract_repair_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -62,5 +67,5 @@
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-08-12T16:50:53.3798746+04:00"
+    "refreshed_at":  "2026-08-12T17:34:25.4732535+04:00"
 }
