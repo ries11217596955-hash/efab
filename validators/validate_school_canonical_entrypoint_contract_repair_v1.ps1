@@ -24,6 +24,8 @@ if($entryText -like '*$p.WaitForExit($CodexTimeoutSeconds*1000)*'){ AddErr 'scho
 foreach($needle in @('STREAM_READY_DETECTED','STREAM_BATCH_CONSUMED','streaming_enabled','producer_completed_at','first_consume_started_at','stream_batches','overlap_proven','Invoke-SchoolWarehouseConsumer -MacroTaskJsonPath $taskJson -MaxConsumeBatches 1')){
   if($entryText -notlike ('*'+$needle+'*')){ AddErr ('school_streaming_contract_missing:'+ $needle) }
 }
+if($entryText -like '*try{ $producerCompletedAtValue=$p.ExitTime }catch{ $producerCompletedAtValue=Get-Date }*'){ AddErr 'school_streaming_exit_time_null_guard_missing' }
+if($entryText -notlike '*if($null -ne $exitTime){ $producerCompletedAtValue=$exitTime }*'){ AddErr 'school_streaming_exit_time_null_guard_missing' }
 if($entryText -notlike '*After writing each READY.marker.json, immediately continue producing the next batch without waiting for School consumption.*'){ AddErr 'school_streaming_prompt_continue_after_ready_missing' }
 $agentsText=Get-Content 'AGENTS.md' -Raw
 foreach($needle in @('C:\Users\Azerbaijan\.codex\.sandbox-bin\codex.exe','CODEX_HOME=C:\Users\Azerbaijan\.codex','--dangerously-bypass-approvals-and-sandbox','workspace-write','known non-working Windows/SYSTEM branch','do not install or create a second Codex')){

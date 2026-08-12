@@ -415,7 +415,8 @@ if($ProducerMode -eq 'MockProducer'){
     $p.Refresh()
     if($p.HasExited){
       $completed=$true
-      try{ $producerCompletedAtValue=$p.ExitTime }catch{ $producerCompletedAtValue=Get-Date }
+      $producerCompletedAtValue=Get-Date
+      try{ $exitTime=$p.ExitTime; if($null -ne $exitTime){ $producerCompletedAtValue=$exitTime } }catch{}
       $producerCompletedAt=$producerCompletedAtValue.ToString('o')
       break
     }

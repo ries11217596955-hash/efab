@@ -2683,3 +2683,14 @@ Fresh proof:
 - active compact memory hashes remained manifest `F93A1130794B87FFE9ED235804EE35F28ABD566B91677FCC126439CFB2C06905`, index `34951D7B72801EACD682BB938374D49E9FB0CEAD74DF66B80F4675A9EE3FDA3F`, cells `B4BAD687FE123FCB3274367AFE4BE999F539DFC9A7D6151793A9D3C17FF27C71`.
 
 Does not prove: real Codex producer overlap. Next acceptance layer is Live237 after commit/clean preflight; real multi-batch run must prove first consume starts before producer completion when Codex produces more than one batch.
+## 2026-08-12 - Live237 streaming partial completion / post-loop null recovery
+marker: SCHOOL_LIVE237_PARTIAL_POSTLOOP_NULL_RECOVERY_20260812
+status: NULL_GUARD_ACCEPTED_TEST237_PASS_ROLLBACK_PRESERVED
+
+Fresh incident boundary:
+- Live237 `development_lawfulness` produced/normalized/absorbed exact batches 100,100,37 with accepted counts 100,100,37 and `PASS_FILE_ATOM_ABSORPTION_PIPELINE_V1` for each;
+- streaming was real: each READY was detected with `reason=producer_alive` and each batch consumed while producer lifecycle was still active;
+- after third absorption, exact cycle failed before final report/finalizer with `InvokeMethodOnNull` because producer `ExitTime` may be null without throwing and code called `.ToString('o')` on it;
+- failed Live237 memory was rolled back exactly to pre-Live237 checkpoint `H:\bridge\reports\school_live237_memory_checkpoint_20260812_1816` (138 cells; three hashes restored). The failed 237 atoms are preserved only in forensic/runtime evidence and are not accepted live memory; after repair, a fresh Live237 absorption is required for acceptance.
+
+Sanitation boundary: preserve `canonical_exact_count_cycle_real_237_20260812_181728` and related absorption evidence until recovery acceptance is complete.
