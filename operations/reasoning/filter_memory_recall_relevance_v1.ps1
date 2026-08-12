@@ -66,7 +66,6 @@ foreach($raw in $rawMatches){
     if(@($hits).Count -ge 2){ $rel += 2; $reasons.Add('multi_hit')|Out-Null }
     if($curriculumNoise){ $rel -= 8; $reasons.Add('curriculum_noise')|Out-Null }
     if([int]$m.observation_count -gt 1000 -and $curriculumNoise){ $rel -= 2; $reasons.Add('high_volume_curriculum_pattern')|Out-Null }
-    if($summary -match 'AIMO|memory atom|gate|action candidate|mind|logic|recall'){ $rel += 4; $reasons.Add('agent_logic_semantic_signal')|Out-Null }
     if(@($coverage).Count -lt 2){ $rel -= 3; $reasons.Add('low_query_coverage')|Out-Null }
     $m.relevance_score=$rel
     $m.reasons=@($reasons)

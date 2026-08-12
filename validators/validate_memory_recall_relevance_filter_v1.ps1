@@ -6,6 +6,8 @@ function Normalize([string]$p){ $txt=Get-Content $p -Raw; $lines=$txt -split "`r
 $filter='operations/reasoning/filter_memory_recall_relevance_v1.ps1'
 Assert (Test-Path $filter) 'filter_missing'
 try{ [void][scriptblock]::Create((Get-Content $filter -Raw)) }catch{ Add-Err ('filter_parse_failed:'+ $_.Exception.Message) }
+$filterSource=Get-Content $filter -Raw
+Assert ($filterSource -notmatch 'agent_logic_semantic_signal') 'topic_independent_agent_logic_bonus_present'
 $before=@{}
 foreach($f in @('.runtime/active_compact_semantic_memory_v1/manifest.json','.runtime/active_compact_semantic_memory_v1/index.json','.runtime/active_compact_semantic_memory_v1/cells.jsonl')){ if(Test-Path $f){ $before[$f]=(Get-FileHash $f -Algorithm SHA256).Hash.ToLower() } }
 $outPath='.runtime/memory_recall_relevance_filter_v1/validator_filter_result.json'
@@ -18,6 +20,11 @@ Assert (@($r.accepted_matches | Where-Object { $_.decision -ne 'ACCEPT_AS_MEMORY
 Assert (@($r.rejected_matches | Where-Object { $_.relevance_class -eq 'DUPLICATE' }).Count -ge 1) 'duplicate_not_detected'
 Assert (@($r.rejected_matches | Where-Object { $_.curriculum_noise -eq $true }).Count -ge 1) 'curriculum_noise_not_detected'
 Assert (($r.accepted_matches | ConvertTo-Json -Depth 20) -match 'AIMO|memory atom|gate|agent|logic|action') 'accepted_not_agent_relevant'
+$unrelatedQuery='logic orchid transaction isolation phantom concurrency'
+$unrelatedPath='.runtime/memory_recall_relevance_filter_v1/validator_unrelated_filter_result.json'
+$unrelatedOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File $filter -Query $unrelatedQuery -Top 8 -AcceptTop 3 -OutputPath $unrelatedPath *>&1 | ForEach-Object { [string]$_ })
+$unrelated=Get-Content $unrelatedPath -Raw | ConvertFrom-Json
+Assert ($unrelated.accepted_count -eq 0) ('unrelated_memory_should_not_be_accepted:'+ $unrelated.accepted_count)
 $after=@{}
 foreach($f in @('.runtime/active_compact_semantic_memory_v1/manifest.json','.runtime/active_compact_semantic_memory_v1/index.json','.runtime/active_compact_semantic_memory_v1/cells.jsonl')){ if(Test-Path $f){ $after[$f]=(Get-FileHash $f -Algorithm SHA256).Hash.ToLower(); if($before[$f] -ne $after[$f]){ Add-Err ('active_memory_hash_changed:'+ $f) } } }
 $status=if($errors.Count -eq 0){'PASS_MEMORY_RECALL_RELEVANCE_FILTER_V1'}else{'FAIL_MEMORY_RECALL_RELEVANCE_FILTER_V1'}
@@ -31,6 +38,10 @@ $proof=[ordered]@{
   raw_match_count=$r.raw_match_count
   accepted_count=$r.accepted_count
   accepted_labels=@($r.accepted_matches | ForEach-Object { $_.label })
+  topic_independent_bonus_absent=($filterSource -notmatch 'agent_logic_semantic_signal')
+  unrelated_query=$unrelatedQuery
+  unrelated_filter_status=$unrelated.status
+  unrelated_accepted_count=$unrelated.accepted_count
   duplicate_reject_count=@($r.rejected_matches | Where-Object { $_.relevance_class -eq 'DUPLICATE' }).Count
   curriculum_noise_reject_count=@($r.rejected_matches | Where-Object { $_.curriculum_noise -eq $true }).Count
   active_memory_hash_unchanged=($errors|Where-Object{$_ -match 'active_memory_hash_changed'}).Count -eq 0
@@ -41,7 +52,7 @@ $proof=[ordered]@{
 $proofPath='tests/self_development/MEMORY_RECALL_RELEVANCE_FILTER_V1_PROOF.json'
 New-Item -ItemType Directory -Force -Path (Split-Path $proofPath -Parent) | Out-Null
 $proof | ConvertTo-Json -Depth 80 | Set-Content $proofPath -Encoding UTF8
-foreach($p in @($proofPath,$outPath)){ if(Test-Path $p){ Normalize $p } }
+foreach($p in @($proofPath,$outPath,$unrelatedPath)){ if(Test-Path $p){ Normalize $p } }
 Write-Host ('VALIDATION_STATUS='+$status)
 Write-Host ('PROOF_PATH='+$proofPath)
 Write-Host ('ACCEPTED_COUNT='+$proof.accepted_count)

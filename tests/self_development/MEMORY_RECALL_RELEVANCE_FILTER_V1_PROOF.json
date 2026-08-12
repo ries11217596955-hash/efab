@@ -1,7 +1,7 @@
 {
     "schema":  "memory_recall_relevance_filter_validation_v1",
     "status":  "PASS_MEMORY_RECALL_RELEVANCE_FILTER_V1",
-    "checked_at":  "2026-07-16T13:59:27.9443664+04:00",
+    "checked_at":  "2026-08-12T11:55:56.6451457+04:00",
     "filter_path":  "operations/reasoning/filter_memory_recall_relevance_v1.ps1",
     "filter_result_path":  ".runtime/memory_recall_relevance_filter_v1/validator_filter_result.json",
     "filter_status":  "PASS_MEMORY_RECALL_RELEVANCE_FILTER_V1",
@@ -12,6 +12,10 @@
                             "AIMO memory atom gate rewrites rule-like candidates into DELTA experience atoms",
                             "memory_commit.batch_drain.selftest"
                         ],
+    "topic_independent_bonus_absent":  true,
+    "unrelated_query":  "logic orchid transaction isolation phantom concurrency",
+    "unrelated_filter_status":  "BLOCKED_NO_RELEVANT_MEMORY_AFTER_FILTER_V1",
+    "unrelated_accepted_count":  0,
     "duplicate_reject_count":  3,
     "curriculum_noise_reject_count":  5,
     "active_memory_hash_unchanged":  true,
