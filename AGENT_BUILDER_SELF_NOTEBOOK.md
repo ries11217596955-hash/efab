@@ -2655,3 +2655,18 @@ Fresh execution proof:
 - School producer now uses the proven bypass only under its warehouse-only output contract: exact TARGET_COUNT, READY/DONE/heartbeat outputs, no active-memory mutation and no tracked-repo edits. Codex remains candidate producer; School validators/consumer remain acceptance authority.
 
 Next parent action after canonical validation/commit: repeat the same Live100 with the existing verified memory checkpoint; no scale increase until post-Live PASS.
+## 2026-08-12 - School Live100 accepted; summary anti-fixation repair
+marker: SCHOOL_LIVE100_ACCEPTANCE_AND_SUMMARY_ANTIFIXATION_20260812
+status: ACCEPTED_CANONICAL_VALIDATOR_PASS
+
+Fresh Live100 result:
+- canonical `Live100 + Topics=AUTO` completed with exit 0 and `PASS_CANONICAL_EXACT_COUNT_CYCLE_LIVE_V1`;
+- AUTO selected `school_cycle_completion_proof` at depth 1/4, gap 3, pressure MEDIUM_HIGH_DEPTH_GAP;
+- Codex produced exactly 100 normalized candidates, accepted=100, rejected=0;
+- governed digest/absorb passed and changed protected compact memory; 100 atoms merged cumulatively into the existing 138 semantic cells rather than creating 100 new cells;
+- finalizer committed tracked summary as `c743129bcd74d5c3068c2c742ddcd4837b758a4c`;
+- one extra School summary intake packet was NOT merged because an old stale merge lock existed. Inspection found its behavior hint contradicted the accepted `MEMORY != NEXT_TOPIC` law by asking fresh School memory to influence the next path before selection;
+- that queue packet, stale lock, and matching active growth signal were rejected/sanitized without changing active compact memory; rejection proof: `H:\bridge\reports\school_live100_rejected_summary_residue_20260812.json`;
+- finalizer summary wording is repaired: next topic/path is selected independently first; fresh School memory is retrieved only afterward when relevant; recency/latest School run must not choose next topic.
+
+Parent continuation: validate and commit this anti-fixation repair; inspect actual Live100 memory delta and atom examples; then choose the next School scale only from fresh AUTO/scale preflight, with no jump to large campaigns before bounded stability proof.

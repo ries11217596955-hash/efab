@@ -31,6 +31,8 @@ $finalizerText=if(Test-Path $finalizer){Get-Content $finalizer -Raw}else{''}
 $lifecycleJson=if(Test-Path $lifecycle){Get-Content $lifecycle -Raw|ConvertFrom-Json}else{$null}
 if($finalizerText -notlike '*$intakeAllowed = @($finalizer.intake_modes) -contains $publicMode*'){ AddErr 'finalizer_intake_mode_gate_missing' }
 if($finalizerText -notlike '*SKIPPED_FINALIZER_INTAKE_MODE_NOT_ALLOWED*'){ AddErr 'finalizer_test_skip_status_missing' }
+if($finalizerText -like '*Use fresh school memory before next autonomous path selection; prefer tasks that exploit newly accepted concepts.*'){ AddErr 'finalizer_summary_recency_selects_next_topic' }
+if($finalizerText -notlike '*Select the next topic/path independently from Owner task, parent task, fresh reality, gaps, priorities, safety, and bounded exploration; only after selection, retrieve fresh school memory when it is relevant. Recency or the latest School run must not choose the next topic.*'){ AddErr 'finalizer_summary_post_selection_relevance_rule_missing' }
 if($lifecycleJson){
   $intakeModes=@($lifecycleJson.finalizer.intake_modes)
   if($intakeModes.Count -ne 1 -or $intakeModes[0] -ne 'Live'){ AddErr ('lifecycle_intake_modes:'+($intakeModes -join ',')) }

@@ -45,7 +45,7 @@ function SubmitSchoolPacketToIntake($Proof,$RunId,$ProofPath,$Manifest,$Manifest
     source_id=$RunId
     created_at=(Get-Date).ToString('o')
     quality_summary=[ordered]@{ atom_count=$ready; chunk_count=[int]@($Proof.chunks).Count; proof_status=$Proof.status; semantic_growth=$true; note='Compact summary packet for completed school run; raw atoms remain in runtime proof pipeline.' }
-    atoms=@([ordered]@{ id="school-summary:$RunId"; topic=$topic; level=5; quality_score=1.0; novelty_score=0.7; proof_ref=$ProofPath; behavior_use_hint='Use fresh school memory before next autonomous path selection; prefer tasks that exploit newly accepted concepts.' })
+    atoms=@([ordered]@{ id="school-summary:$RunId"; topic=$topic; level=5; quality_score=1.0; novelty_score=0.7; proof_ref=$ProofPath; behavior_use_hint='Select the next topic/path independently from Owner task, parent task, fresh reality, gaps, priorities, safety, and bounded exploration; only after selection, retrieve fresh school memory when it is relevant. Recency or the latest School run must not choose the next topic.' })
     influence=[ordered]@{ maturity_delta=$maturityDelta; memory_support_policy='USE_SCHOOL_MEMORY_WHEN_SELECTED_PATH_TOPIC_MATCHES'; focus_boosts=@('fresh_school_memory','recall_use_behavior_delta','avoid_idle_repeat') }
     refs=[ordered]@{ proof_path=$ProofPath; active_memory_manifest=$ManifestPath; memory_run_id=$Manifest.run_id; memory_cells_sha256=$Manifest.cells_sha256 }
   }
