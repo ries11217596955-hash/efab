@@ -2631,3 +2631,16 @@ Next parent action after validator/commit:
 1. run canonical `Test100 + Topics=AUTO`; require exact 100 accepted, no intake queue, no protected-memory hash change;
 2. if PASS, checkpoint protected active memory and run canonical `Live100 + Topics=AUTO`; require governed intake/merge, exactly bounded learning result, post-health and memory validation;
 3. only after Live100 PASS choose the next School volume from fresh AUTO/depth/pressure and scale preflight rather than forcing an arbitrary 15k.
+
+## 2026-08-12 - School Codex resolver repaired
+marker: SCHOOL_CODEX_RESOLUTION_REPAIR_20260812
+status: ACCEPTED_PROVEN_LAB_CODEX_RESOLUTION_V1
+
+Fresh Live100 blocker and repair:
+- first Live100 stopped before memory mutation because Bridge/SYSTEM could not resolve `codex.cmd` from PATH;
+- existing CLI is `C:\Users\Azerbaijan\.codex\.sandbox-bin\codex.exe` (`codex-cli 0.142.5`); with `CODEX_HOME=C:\Users\Azerbaijan\.codex` it reports `Logged in using ChatGPT`;
+- School now resolves exactly one healthy authenticated Codex candidate instead of depending on interactive-user PATH; zero or ambiguous healthy candidates block launch;
+- resolver behavior is `PASS_SCHOOL_CODEX_CLI_RESOLUTION_V1`; canonical School validator remains `PASS_SCHOOL_CANONICAL_ENTRYPOINT_CONTRACT_REPAIR_V1` with zero errors;
+- protected active memory remained unchanged at the pre-Live checkpoint.
+
+Next parent action: repeat bounded `Live100 + Topics=AUTO` using checkpoint `H:\bridge\reports\school_live100_memory_checkpoint_20260812_1533`; no scale increase until post-Live proof passes.

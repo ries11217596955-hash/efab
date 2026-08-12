@@ -150,6 +150,59 @@ $repoRoot=(git rev-parse --show-toplevel).Trim(); Set-Location $repoRoot
 function EnsureDir($Path){ if($Path -and -not (Test-Path $Path)){ New-Item -ItemType Directory -Force -Path $Path | Out-Null } }
 function WriteJson($Path,$Obj,$Depth=100){ $d=Split-Path -Parent $Path; if($d){ EnsureDir $d }; $Obj|ConvertTo-Json -Depth $Depth|Set-Content -LiteralPath $Path -Encoding UTF8 }
 function Sha($p){ if(Test-Path $p){ (Get-FileHash $p -Algorithm SHA256).Hash } else { 'MISSING' } }
+function Resolve-SchoolCodexCli {
+  $explicitExe=[string]$env:EFAB_CODEX_EXE
+  $explicitHome=[string]$env:EFAB_CODEX_HOME
+  $candidates=New-Object System.Collections.Generic.List[object]
+  function Add-Candidate([string]$Exe,[string]$CodexHome,[string]$Source){
+    if([string]::IsNullOrWhiteSpace($Exe) -or -not(Test-Path -LiteralPath $Exe)){ return }
+    if([string]::IsNullOrWhiteSpace($CodexHome)){ $CodexHome=[string]$env:CODEX_HOME }
+    if([string]::IsNullOrWhiteSpace($CodexHome)){ return }
+    if(-not(Test-Path -LiteralPath $CodexHome)){ return }
+    $resolved=(Resolve-Path -LiteralPath $Exe).Path
+    if(@($candidates | Where-Object { $_.exe -eq $resolved -and $_.home -eq $CodexHome }).Count -eq 0){
+      $candidates.Add([pscustomobject][ordered]@{exe=$resolved;home=$CodexHome;source=$Source})|Out-Null
+    }
+  }
+  if(-not [string]::IsNullOrWhiteSpace($explicitExe)){
+    Add-Candidate $explicitExe $explicitHome 'EFAB_EXPLICIT'
+  }
+  foreach($name in @('codex.cmd','codex.exe','codex')){
+    $g=Get-Command $name -ErrorAction SilentlyContinue
+    if($g){ Add-Candidate ([string]$g.Source) $explicitHome 'PATH' }
+  }
+  foreach($u in @(Get-ChildItem 'C:\Users' -Directory -Force -ErrorAction SilentlyContinue)){
+    $codexHome=Join-Path $u.FullName '.codex'
+    $exe=Join-Path $codexHome '.sandbox-bin\codex.exe'
+    $auth=Join-Path $codexHome 'auth.json'
+    if((Test-Path -LiteralPath $exe) -and (Test-Path -LiteralPath $auth)){ Add-Candidate $exe $codexHome 'PROFILE_SANDBOX_BIN' }
+  }
+  if($candidates.Count -eq 0){ throw 'SCHOOL_CODEX_RESOLUTION_FAILED:NO_AUTHENTICATED_CANDIDATE' }
+  $healthy=New-Object System.Collections.Generic.List[object]
+  foreach($c in $candidates){
+    $old=$env:CODEX_HOME
+    $oldEap=$ErrorActionPreference
+    try{
+      $env:CODEX_HOME=[string]$c.home
+      $ErrorActionPreference='Continue'
+      $ver=@(& ([string]$c.exe) --version 2>&1 | ForEach-Object{[string]$_})
+      $verExit=$LASTEXITCODE
+      $login=@(& ([string]$c.exe) login status 2>&1 | ForEach-Object{[string]$_})
+      $loginExit=$LASTEXITCODE
+      if($verExit -eq 0 -and $loginExit -eq 0 -and (($login -join "`n") -match '(?i)logged in')){
+        $healthy.Add([pscustomobject][ordered]@{exe=[string]$c.exe;home=[string]$c.home;source=[string]$c.source;version=($ver -join ' ').Trim();login_status=($login -join ' ').Trim()})|Out-Null
+      }
+    } finally {
+      $ErrorActionPreference=$oldEap
+      if($null -eq $old){ Remove-Item Env:CODEX_HOME -ErrorAction SilentlyContinue }else{ $env:CODEX_HOME=$old }
+    }
+  }
+  $uniq=@($healthy | Sort-Object exe,home -Unique)
+  if($uniq.Count -eq 0){ throw 'SCHOOL_CODEX_RESOLUTION_FAILED:NO_HEALTHY_AUTHENTICATED_CANDIDATE' }
+  if($uniq.Count -gt 1){ throw ('SCHOOL_CODEX_RESOLUTION_FAILED:AMBIGUOUS_HEALTHY_CANDIDATES:'+($uniq.Count)) }
+  return [ordered]@{status='PASS_SCHOOL_CODEX_CLI_RESOLUTION_V1';exe=$uniq[0].exe;home=$uniq[0].home;source=$uniq[0].source;version=$uniq[0].version;login_status=$uniq[0].login_status}
+}
+
 function Stop-ProcessTreeByRootPid([int]$RootPid){ $children=@(Get-CimInstance Win32_Process | Where-Object { $_.ParentProcessId -eq $RootPid }); foreach($child in $children){ Stop-ProcessTreeByRootPid -RootPid ([int]$child.ProcessId) }; try{ Stop-Process -Id $RootPid -Force -ErrorAction SilentlyContinue }catch{} }
 $mem='.runtime/active_compact_semantic_memory_v1'
 $memoryBefore=[ordered]@{manifest=Sha "$mem/manifest.json"; index=Sha "$mem/index.json"; cells=Sha "$mem/cells.jsonl"}
@@ -240,9 +293,12 @@ if($ProducerMode -eq 'MockProducer'){
   [void]$promptLines.Add('Use schema=codex_school_patch_candidate_v1, topic_key exactly TOPIC_KEY, source_basis as a non-empty array or source_missing=true, and depth_level between START_DEPTH and TARGET_DEPTH.')
   [void]$promptLines.Add('After all READY markers and DONE marker are written, stop.')
   $promptLines | Set-Content -LiteralPath $promptPath -Encoding UTF8
-  $codexCmd=(Get-Command codex.cmd -ErrorAction Stop).Source
+  $codexResolution=Resolve-SchoolCodexCli
+  $codexCmd=[string]$codexResolution.exe
+  $env:CODEX_HOME=[string]$codexResolution.home
   $cmdLine='""{0}" exec -C "{1}" -s workspace-write --ephemeral - < "{2}" > "{3}" 2> "{4}""' -f $codexCmd,$repoRoot,$promptPath,$stdoutPath,$stderrPath
-  AddEvent 'CODEX_LAUNCH' @{prompt_path=$promptPath; timeout_seconds=$CodexTimeoutSeconds}
+  AddEvent 'CODEX_RESOLUTION' @{status=$codexResolution.status; exe=$codexCmd; home=$codexResolution.home; source=$codexResolution.source; version=$codexResolution.version}
+  AddEvent 'CODEX_LAUNCH' @{prompt_path=$promptPath; timeout_seconds=$CodexTimeoutSeconds; exe=$codexCmd; codex_home=$codexResolution.home}
   $p=Start-Process -FilePath $env:ComSpec -ArgumentList @('/d','/c',$cmdLine) -NoNewWindow -PassThru
   $completed=$p.WaitForExit($CodexTimeoutSeconds*1000)
   $readyFiles=@($task.micro_batches | Where-Object { (Test-Path ([string]$_.ready_jsonl)) -and (Test-Path ([string]$_.ready_marker)) })
