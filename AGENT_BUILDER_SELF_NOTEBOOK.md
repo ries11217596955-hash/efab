@@ -2708,7 +2708,7 @@ Fresh incident and repair proof:
 Does not prove: Live237 end-to-end success after guard. Next parent step after canonical validator/commit/sanitation is fresh Live237 with real Codex overlap proof and one public runtime only.
 ## 2026-08-12 - Live237 producer quality and incremental handoff repair
 marker: SCHOOL_LIVE237_PRODUCER_QUALITY_INCREMENTAL_REPAIR_20260812
-status: CANDIDATE_PENDING_PRODUCER_MICROTRIAL
+status: ACCEPTED_LAB_PRODUCER_MICROTRIAL_PASS
 
 Fresh failed-Live finding:
 - guarded Live237 reached real Codex production on topic `development_lawfulness`, exact plan `100,100,37`, with protected memory still byte-identical to checkpoint after failure;
@@ -2718,3 +2718,11 @@ Fresh failed-Live finding:
 - producer contract is strengthened without relaxing normalizer rules: every required quality field must be non-empty; one micro-batch per separate tool/command invocation; validate current batch before READY marker; return control before starting the next batch.
 
 Next acceptance layer: bounded real-Codex producer-only micro-trial with no memory absorption, then canonical validator/commit, then fresh Live237 with real overlap proof.
+Producer-only micro-trial acceptance:
+- real Codex via the same `cmd.exe /d /c` route as School completed exit 0 under the proven Windows/SYSTEM Codex configuration;
+- independent validation proved exact batches `100,100,37`, total=237, global unique candidate_id=237, all required quality fields non-empty including `return_to_parent`, source_missing=false, non-empty source_basis/quality_flags;
+- batch READY markers were strictly ordered at 18:22:09Z, 18:22:58Z, 18:23:46Z; trace proves separate batch commands and a separate final DONE command;
+- the first `micro_001` command hit a PowerShell parse error before execution and wrote no artifact; Codex detected it and retried only that batch with corrected syntax, preserving the incremental boundary;
+- active compact memory remained byte-identical and no Codex process remained after validation.
+
+Does not prove: end-to-end Live237 overlap/absorption. Next layer remains clean-commit -> sanitation -> fresh Live237 memory checkpoint -> one canonical Live237 with real overlap proof.
