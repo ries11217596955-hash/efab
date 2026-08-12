@@ -1,27 +1,29 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-08-12T14:15:39.6913508+04:00",
+    "checked_at":  "2026-08-12T14:47:23.2555243+04:00",
     "branch":  "main",
-    "observed_head":  "4adc9e94f0becb414a695788ed6694b0598e8e64",
-    "subject_head":  "4adc9e94f0becb414a695788ed6694b0598e8e64",
+    "observed_head":  "51ebce279ea3dbfded343522fa66796d93cb55b4",
+    "subject_head":  "51ebce279ea3dbfded343522fa66796d93cb55b4",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
                           "AGENT_BUILDER_SELF_NOTEBOOK.md",
                           "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+                          "operations/autonomous_inner_motor/select_autonomous_wake_frontier_v1.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "tests/self_development/AIMO_ACTIVE_THOUGHT_GOAL_PROPAGATION_V1_PROOF.json",
-                          "validators/validate_aimo_active_thought_goal_propagation_v1.ps1"
+                          "tests/self_development/AUTONOMOUS_WAKE_FRONTIER_SELECTOR_V1_PROOF.json",
+                          "validators/validate_autonomous_wake_frontier_selector_v1.ps1"
                       ],
     "structural_paths":  [
                              "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
-                             "tests/self_development/AIMO_ACTIVE_THOUGHT_GOAL_PROPAGATION_V1_PROOF.json",
-                             "validators/validate_aimo_active_thought_goal_propagation_v1.ps1"
+                             "operations/autonomous_inner_motor/select_autonomous_wake_frontier_v1.ps1",
+                             "tests/self_development/AUTONOMOUS_WAKE_FRONTIER_SELECTOR_V1_PROOF.json",
+                             "validators/validate_autonomous_wake_frontier_selector_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -34,7 +36,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  2299,
-                                    "sha256":  "0aada0e4fe4235dad3d938c7d2735dbb2ba21b25419f85100c90430251d5b30a"
+                                    "sha256":  "420b06d40ef4493f6d65c08410ffac0306c45a400bddf8b30a6ec92ae0b10726"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -67,5 +69,5 @@
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-08-12T14:19:43.3911678+04:00"
+    "refreshed_at":  "2026-08-12T14:51:21.1216142+04:00"
 }

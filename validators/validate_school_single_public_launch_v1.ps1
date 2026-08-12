@@ -49,7 +49,8 @@ if($runText -notmatch 'SCHOOL_PREFLIGHT_STATUS=PASS_SCHOOL_DYNAMIC_REQUEST_PREFL
 if($runText -notmatch 'plan_dynamic_school_request_v1.ps1'){ Add-Err 'public_launcher_missing_dynamic_request_planner_call' }
 if($runText -notmatch 'select_dynamic_theme_cell_v1.ps1'){ Add-Err 'public_launcher_missing_dynamic_theme_selection_call' }
 if($runText -match 'EF_SCHOOL_DISABLE_EXACT_COUNT_CYCLE_V1'){ Add-Err 'legacy_exact_count_disable_switch_still_present' }
-if($runText -match 'TopicPatchPlan|SCHOOL_TOPIC_PATCH_PLAN|school_patch_runs'){ Add-Err 'legacy_topic_patch_route_still_present' }
+if($runText -match 'execute_school_patch_v1\.ps1|SCHOOL_TOPIC_PATCH_PLAN|school_patch_runs'){ Add-Err 'legacy_topic_patch_execution_route_still_present' }
+if($runText -notmatch 'plan_topic_patch_cycle_v1\.ps1'){ Add-Err 'canonical_topic_patch_planner_hook_missing' }
 $smokeProofPath='tests/self_development/SCHOOL_DYNAMIC_PREFLIGHT_SINGLE_LAUNCH_V1_PROOF.json'
 $smokeProof=$null
 if(Test-Path $smokeProofPath){
