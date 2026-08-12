@@ -1,7 +1,7 @@
 {
     "schema":  "hypothesis_tester_validation_v1",
     "status":  "PASS_HYPOTHESIS_TESTER_V1",
-    "checked_at":  "2026-07-16T14:26:48.6876543+04:00",
+    "checked_at":  "2026-08-12T12:44:18.5342993+04:00",
     "tester_path":  "operations/reasoning/test_mind_logic_hypotheses_v1.ps1",
     "mind_case":  ".runtime/hypothesis_tester_v1/validator_mind_hypothesis.json",
     "memory_case":  ".runtime/hypothesis_tester_v1/validator_memory_hypothesis.json",
@@ -79,6 +79,46 @@
                                                           "high_risk"
                                                       ],
                                           "rejected":  true
+                                      },
+    "general_source_gap_case":  ".runtime/hypothesis_tester_v1/validator_general_source_gap.json",
+    "general_source_gap_winner":  {
+                                      "id":  "H_SOURCE_GAP",
+                                      "text":  "Current topic needs verified evidence before a factual conclusion: thermofade braking friction vehicle safety",
+                                      "kind":  "source_gap",
+                                      "score":  24,
+                                      "class":  "STRONG",
+                                      "coverage_terms":  [
+                                                             "thermofade",
+                                                             "braking",
+                                                             "friction",
+                                                             "vehicle",
+                                                             "safety"
+                                                         ],
+                                      "reasons":  [
+                                                      "no_relevant_memory_requires_source"
+                                                  ],
+                                      "rejected":  false
+                                  },
+    "general_topic_evidence_case":  ".runtime/hypothesis_tester_v1/validator_general_topic_evidence.json",
+    "general_topic_evidence_winner":  {
+                                          "id":  "H_TOPIC_EVIDENCE",
+                                          "text":  "Relevant evidence can support a provisional synthesis for current topic: orchid transaction isolation phantom concurrency database",
+                                          "kind":  "topic_evidence",
+                                          "score":  25,
+                                          "class":  "STRONG",
+                                          "coverage_terms":  [
+                                                                 "orchid",
+                                                                 "transaction",
+                                                                 "isolation",
+                                                                 "phantom",
+                                                                 "concurrency",
+                                                                 "database"
+                                                             ],
+                                          "reasons":  [
+                                                          "relevant_memory_supports_topic_evidence",
+                                                          "medium_risk"
+                                                      ],
+                                          "rejected":  false
                                       },
     "active_memory_hash_unchanged":  true,
     "action_executed":  false,

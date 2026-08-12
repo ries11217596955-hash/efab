@@ -26,6 +26,23 @@ $a=Get-Content $actionOut -Raw | ConvertFrom-Json
 Assert ($a.status -eq 'PASS_HYPOTHESIS_TESTER_V1') 'action_status_bad'
 Assert ($a.strongest_hypothesis.kind -ne 'action_authority') 'premature_action_won_despite_penalty'
 Assert (($a.evaluated_hypotheses | Where-Object { $_.kind -eq 'action_authority' }).reasons -contains 'penalized_as_premature_action_branch') 'action_penalty_missing'
+$generalGapOut='.runtime/hypothesis_tester_v1/validator_general_source_gap.json'
+$generalGapProblem='thermofade braking friction vehicle safety'
+$gapOut=@(& $tester -Problem $generalGapProblem -RelevantMemoryCount 0 -OutputPath $generalGapOut *>&1 | ForEach-Object { [string]$_ })
+$genGap=Get-Content $generalGapOut -Raw | ConvertFrom-Json
+Assert ($genGap.status -eq 'PASS_HYPOTHESIS_TESTER_V1') 'general_gap_status_bad'
+Assert ($genGap.hypothesis_mode -eq 'TOPIC_GENERAL') ('general_gap_mode_bad:'+ $genGap.hypothesis_mode)
+Assert ($genGap.strongest_hypothesis.kind -eq 'source_gap') ('general_gap_winner_bad:'+ $genGap.strongest_hypothesis.kind)
+Assert ($genGap.strongest_hypothesis.text -match 'thermofade') 'general_gap_topic_not_preserved'
+Assert ($genGap.strongest_hypothesis.kind -ne 'mind_logic') 'general_gap_collapsed_to_mind_logic'
+$generalEvidenceOut='.runtime/hypothesis_tester_v1/validator_general_topic_evidence.json'
+$generalEvidenceProblem='orchid transaction isolation phantom concurrency database'
+$evidenceOut=@(& $tester -Problem $generalEvidenceProblem -RelevantMemoryCount 2 -OutputPath $generalEvidenceOut *>&1 | ForEach-Object { [string]$_ })
+$genEvidence=Get-Content $generalEvidenceOut -Raw | ConvertFrom-Json
+Assert ($genEvidence.status -eq 'PASS_HYPOTHESIS_TESTER_V1') 'general_evidence_status_bad'
+Assert ($genEvidence.hypothesis_mode -eq 'TOPIC_GENERAL') ('general_evidence_mode_bad:'+ $genEvidence.hypothesis_mode)
+Assert ($genEvidence.strongest_hypothesis.kind -eq 'topic_evidence') ('general_evidence_winner_bad:'+ $genEvidence.strongest_hypothesis.kind)
+Assert ($genEvidence.strongest_hypothesis.text -match 'orchid') 'general_evidence_topic_not_preserved'
 $after=@{}
 foreach($f in @('.runtime/active_compact_semantic_memory_v1/manifest.json','.runtime/active_compact_semantic_memory_v1/index.json','.runtime/active_compact_semantic_memory_v1/cells.jsonl')){ if(Test-Path $f){ $after[$f]=(Get-FileHash $f -Algorithm SHA256).Hash.ToLower(); if($before[$f] -ne $after[$f]){ Add-Err ('active_memory_hash_changed:'+ $f) } } }
 $status=if($errors.Count -eq 0){'PASS_HYPOTHESIS_TESTER_V1'}else{'FAIL_HYPOTHESIS_TESTER_V1'}
@@ -41,6 +58,10 @@ $proof=[ordered]@{
   memory_winner=$mem.strongest_hypothesis
   action_case_winner=$a.strongest_hypothesis
   action_case_action_hypothesis=($a.evaluated_hypotheses | Where-Object { $_.kind -eq 'action_authority' })
+  general_source_gap_case=$generalGapOut
+  general_source_gap_winner=$genGap.strongest_hypothesis
+  general_topic_evidence_case=$generalEvidenceOut
+  general_topic_evidence_winner=$genEvidence.strongest_hypothesis
   active_memory_hash_unchanged=($errors|Where-Object{$_ -match 'active_memory_hash_changed'}).Count -eq 0
   action_executed=$false
   live_process_touched=$false
@@ -49,11 +70,13 @@ $proof=[ordered]@{
 $proofPath='tests/self_development/HYPOTHESIS_TESTER_V1_PROOF.json'
 New-Item -ItemType Directory -Force -Path (Split-Path $proofPath -Parent) | Out-Null
 $proof | ConvertTo-Json -Depth 100 | Set-Content $proofPath -Encoding UTF8
-foreach($p in @($proofPath,$mindOut,$memoryOut,$actionOut)){ if(Test-Path $p){ Normalize $p } }
+foreach($p in @($proofPath,$mindOut,$memoryOut,$actionOut,$generalGapOut,$generalEvidenceOut)){ if(Test-Path $p){ Normalize $p } }
 Write-Host ('VALIDATION_STATUS='+$status)
 Write-Host ('PROOF_PATH='+$proofPath)
 Write-Host ('MIND_WINNER='+$m.strongest_hypothesis.kind)
 Write-Host ('MEMORY_WINNER='+$mem.strongest_hypothesis.kind)
 Write-Host ('ACTION_CASE_WINNER='+$a.strongest_hypothesis.kind)
+Write-Host ('GENERAL_GAP_WINNER='+$genGap.strongest_hypothesis.kind)
+Write-Host ('GENERAL_EVIDENCE_WINNER='+$genEvidence.strongest_hypothesis.kind)
 Write-Host ('ACTIVE_MEMORY_HASH_UNCHANGED='+$proof.active_memory_hash_unchanged)
 if($errors.Count -gt 0){ $errors|ForEach-Object{ Write-Host ('ERROR='+$_) }; exit 1 }

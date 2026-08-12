@@ -55,6 +55,30 @@ $out2=@(& $builder -Problem no_evidence_no_knowledge -OutputPath $gapPath *>&1 |
 $g=Get-Content $gapPath -Raw|ConvertFrom-Json
 Assert ($g.no_evidence_no_claim -eq $true) 'no_evidence_no_claim_false'
 Assert ($g.selected_next_logical_step.step_id -eq 'ASK_OR_RECALL_SOURCE_BEFORE_ACTION') ('knowledge_next_step_bad:'+ $g.selected_next_logical_step.step_id)
+$generalAPath='.runtime/agent_mind_logic_kernel_v1/validator_general_vehicle_frame.json'
+$generalAProblem='thermofade braking friction vehicle safety'
+$genAOut=@(& $builder -Problem $generalAProblem -DisableMemoryRecall -OutputPath $generalAPath *>&1 | ForEach-Object { [string]$_ })
+$genA=Get-Content $generalAPath -Raw|ConvertFrom-Json
+Assert ($genA.classification -eq 'GENERAL_LOGIC_TASK') ('general_a_class_bad:'+ $genA.classification)
+Assert ($genA.known[0].claim -eq ('Current reasoning topic: ' + $generalAProblem)) 'general_a_known_not_topic_relative'
+Assert ($genA.strongest_hypothesis.kind -eq 'source_gap') ('general_a_winner_bad:'+ $genA.strongest_hypothesis.kind)
+Assert ($genA.strongest_hypothesis.text -match 'thermofade') 'general_a_hypothesis_topic_missing'
+Assert ($genA.selected_next_logical_step.step_id -eq 'ACQUIRE_TOPIC_EVIDENCE_BEFORE_CLAIM') ('general_a_next_bad:'+ $genA.selected_next_logical_step.step_id)
+Assert ($genA.restored_context.nearest_project_context -eq $generalAProblem) 'general_a_context_not_topic'
+Assert ($genA.return_to_parent -match 'thermofade') 'general_a_return_not_topic'
+Assert (($genA.known | ConvertTo-Json -Depth 20) -notmatch 'AIMO can produce thinking traces') 'general_a_contains_canned_aimo_known'
+$generalBPath='.runtime/agent_mind_logic_kernel_v1/validator_general_database_frame.json'
+$generalBProblem='orchid transaction isolation phantom concurrency database'
+$genBOut=@(& $builder -Problem $generalBProblem -DisableMemoryRecall -OutputPath $generalBPath *>&1 | ForEach-Object { [string]$_ })
+$genB=Get-Content $generalBPath -Raw|ConvertFrom-Json
+Assert ($genB.classification -eq 'GENERAL_LOGIC_TASK') ('general_b_class_bad:'+ $genB.classification)
+Assert ($genB.known[0].claim -eq ('Current reasoning topic: ' + $generalBProblem)) 'general_b_known_not_topic_relative'
+Assert ($genB.strongest_hypothesis.kind -eq 'source_gap') ('general_b_winner_bad:'+ $genB.strongest_hypothesis.kind)
+Assert ($genB.strongest_hypothesis.text -match 'orchid') 'general_b_hypothesis_topic_missing'
+Assert ($genB.selected_next_logical_step.step_id -eq 'ACQUIRE_TOPIC_EVIDENCE_BEFORE_CLAIM') ('general_b_next_bad:'+ $genB.selected_next_logical_step.step_id)
+Assert ($genB.restored_context.nearest_project_context -eq $generalBProblem) 'general_b_context_not_topic'
+Assert ($genB.return_to_parent -match 'orchid') 'general_b_return_not_topic'
+Assert ($genA.strongest_hypothesis.text -ne $genB.strongest_hypothesis.text) 'general_topics_collapsed_to_same_hypothesis_text'
 $after=@{}
 foreach($f1 in @('.runtime/active_compact_semantic_memory_v1/manifest.json','.runtime/active_compact_semantic_memory_v1/index.json','.runtime/active_compact_semantic_memory_v1/cells.jsonl')){ if(Test-Path $f1){ $after[$f1]=(Get-FileHash $f1 -Algorithm SHA256).Hash.ToLower(); if($before[$f1] -ne $after[$f1]){ Add-Err ('active_memory_hash_changed:'+ $f1) } } }
 $status=if($errors.Count -eq 0){'PASS_AGENT_MIND_LOGIC_KERNEL_V1'}else{'FAIL_AGENT_MIND_LOGIC_KERNEL_V1'}
@@ -86,6 +110,10 @@ $proof=[ordered]@{
   correction_deep_source_answer_evidence_count=if($f.deep_source_answer_request.result.answer_candidate){@($f.deep_source_answer_request.result.answer_candidate.evidence_items).Count}else{0}
   memory_recall_used_in_known=$mem.memory_recall.used_in_known
   no_knowledge_next_step=$g.selected_next_logical_step
+  general_vehicle_frame=$generalAPath
+  general_vehicle_winner=$genA.strongest_hypothesis
+  general_database_frame=$generalBPath
+  general_database_winner=$genB.strongest_hypothesis
   tests=@(
     [ordered]@{name='kernel_has_cognitive_cycle';status=if(($k.cognitive_cycle -join ' ') -match 'detect_contradictions'){'PASS'}else{'FAIL'}},
     [ordered]@{name='memory_recall_cycle_present';status=if(($k.cognitive_cycle -join ' ') -match 'recall_relevant_memory'){'PASS'}else{'FAIL'}},
@@ -97,6 +125,8 @@ $proof=[ordered]@{
     [ordered]@{name='memory_recall_used_when_relevant';status=if($mem.memory_recall.status -eq 'PASS_COMPACT_MEMORY_RECALL_V1' -and $mem.memory_recall.used_in_known -eq $true){'PASS'}else{'FAIL'}},
     [ordered]@{name='memory_recall_filter_used_when_relevant';status=if($mem.memory_recall_filter.status -eq 'PASS_MEMORY_RECALL_RELEVANCE_FILTER_V1' -and $mem.memory_recall_filter.used_in_known -eq $true){'PASS'}else{'FAIL'}},
     [ordered]@{name='no_knowledge_selects_source_before_action';status=if($g.selected_next_logical_step.step_id -eq 'ASK_OR_RECALL_SOURCE_BEFORE_ACTION'){'PASS'}else{'FAIL'}},
+    [ordered]@{name='general_topics_preserved';status=if($genA.strongest_hypothesis.text -match 'thermofade' -and $genB.strongest_hypothesis.text -match 'orchid' -and $genA.strongest_hypothesis.text -ne $genB.strongest_hypothesis.text){'PASS'}else{'FAIL'}},
+    [ordered]@{name='general_topics_do_not_collapse_to_self_build';status=if($genA.strongest_hypothesis.kind -eq 'source_gap' -and $genB.strongest_hypothesis.kind -eq 'source_gap' -and (($genA.known | ConvertTo-Json -Depth 20) -notmatch 'AIMO can produce thinking traces')){'PASS'}else{'FAIL'}},
     [ordered]@{name='active_memory_unchanged';status=if(($errors|Where-Object{$_ -match 'active_memory_hash_changed'}).Count -eq 0){'PASS'}else{'FAIL'}}
   )
   active_memory_hash_unchanged=($errors|Where-Object{$_ -match 'active_memory_hash_changed'}).Count -eq 0
@@ -107,12 +137,14 @@ $proof=[ordered]@{
 $proofPath='tests/self_development/AGENT_MIND_LOGIC_KERNEL_V1_PROOF.json'
 New-Item -ItemType Directory -Force -Path (Split-Path $proofPath -Parent) | Out-Null
 $proof|ConvertTo-Json -Depth 100|Set-Content $proofPath -Encoding UTF8
-foreach($p in @($proofPath,$correctionPath,$memoryPath,$gapPath)){ if(Test-Path $p){ Normalize $p } }
+foreach($p in @($proofPath,$correctionPath,$memoryPath,$gapPath,$generalAPath,$generalBPath)){ if(Test-Path $p){ Normalize $p } }
 Write-Host ('VALIDATION_STATUS='+$status)
 Write-Host ('PROOF_PATH='+$proofPath)
 Write-Host ('CORRECTION_NEXT_STEP='+$f.selected_next_logical_step.step_id)
 Write-Host ('MEMORY_RECALL_STATUS='+$mem.memory_recall.status)
 Write-Host ('MEMORY_RECALL_MATCH_COUNT='+@($mem.memory_recall.matches).Count)
 Write-Host ('NO_KNOWLEDGE_NEXT_STEP='+$g.selected_next_logical_step.step_id)
+Write-Host ('GENERAL_A_WINNER='+$genA.strongest_hypothesis.kind)
+Write-Host ('GENERAL_B_WINNER='+$genB.strongest_hypothesis.kind)
 Write-Host ('ACTIVE_MEMORY_HASH_UNCHANGED='+$proof.active_memory_hash_unchanged)
 if($errors.Count -gt 0){ $errors|ForEach-Object{ Write-Host ('ERROR='+$_) }; exit 1 }

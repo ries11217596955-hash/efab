@@ -2558,3 +2558,25 @@ AIMO sandbox-memory seam status:
 - the previous unaccepted seam patch was removed from the working tree before AGENTS hygiene and preserved externally at `H:\bridge\reports\aimo_sandbox_memory_seam_unaccepted_20260812.patch`;
 - patch SHA256: `9C8B01CB65A766A823D0276142993C8A0ABA5C5D80DD81CB842F27AD76E1AEC5`;
 - do not reapply it blindly; re-evaluate the minimal sandbox-memory injection seam against the corrected non-fixation validator design.
+## 2026-08-12 - Topic-general reasoning acceptance
+marker: TOPIC_GENERAL_REASONING_ACCEPTANCE_20260812
+status: ACCEPTED_PROVEN_LAB_TOPIC_GENERAL_REASONING_V1
+
+Proven in current repo slice:
+- memory relevance was already made topic-neutral in commit `0a820a2c987d032940fbb2bb086aa44caa9768aa`;
+- `operations/reasoning/test_mind_logic_hypotheses_v1.ps1` now preserves narrow legacy self-build/meta-memory compatibility but uses `TOPIC_GENERAL` reasoning for ordinary topics;
+- GENERAL topic with no relevant memory selects `source_gap`; GENERAL topic with relevant memory selects `topic_evidence`;
+- `operations/reasoning/build_agent_mind_logic_frame_v1.ps1` no longer injects canned AIMO/self-build known facts, hypotheses, restored context, or return-to-parent into ordinary GENERAL topics;
+- two unrelated GENERAL topics (vehicle thermofade/braking and database transaction isolation) preserve their own topic-specific known/unknown/hypothesis/context/return and do not collapse to the same canned self-build hypothesis text;
+- knowledge-gap/source-before-action and explicit legacy Builder correction paths remain preserved;
+- `validators/validate_hypothesis_tester_v1.ps1` PASS;
+- `validators/validate_agent_mind_logic_kernel_v1.ps1` PASS;
+- tracked proof refs: `tests/self_development/HYPOTHESIS_TESTER_V1_PROOF.json` and `tests/self_development/AGENT_MIND_LOGIC_KERNEL_V1_PROOF.json`;
+- protected active compact memory hashes remained unchanged;
+- disposable validator/debug `.runtime` JSON outputs from this slice were removed after proof capture.
+
+Limitations / next parent action:
+- this proves topic-general reasoning at the mind-logic organ boundary, not full AIMO end-to-end topic propagation;
+- the previously saved AIMO Active Thought Goal candidate must be re-evaluated against this now topic-neutral reasoner rather than reapplied blindly;
+- learning atom generation is still historically fixed/self-build-biased and must later be moved after real reasoning output so accepted learning reflects the actual topic/conclusion;
+- after AIMO topic propagation is proven, continue to sandbox memory proof for durability + non-interference + relevant reuse + cross-domain transfer.

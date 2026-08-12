@@ -1,23 +1,26 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-08-12T11:59:30.6867153+04:00",
+    "checked_at":  "2026-08-12T12:51:14.7869124+04:00",
     "branch":  "main",
-    "observed_head":  "95e1930d9954dc6bcc188b31ad6bf464f670bd2b",
-    "subject_head":  "95e1930d9954dc6bcc188b31ad6bf464f670bd2b",
+    "observed_head":  "0a820a2c987d032940fbb2bb086aa44caa9768aa",
+    "subject_head":  "0a820a2c987d032940fbb2bb086aa44caa9768aa",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "AGENTS.md",
-                          "AGENT_BUILDER_SELF_NOTEBOOK.md",
+                          "operations/reasoning/filter_memory_recall_relevance_v1.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
-                          "reports/self_development/branch_agnostic_map_refresh_result.json"
+                          "reports/self_development/branch_agnostic_map_refresh_result.json",
+                          "tests/self_development/MEMORY_RECALL_RELEVANCE_FILTER_V1_PROOF.json",
+                          "validators/validate_memory_recall_relevance_filter_v1.ps1"
                       ],
     "structural_paths":  [
-
+                             "operations/reasoning/filter_memory_recall_relevance_v1.ps1",
+                             "tests/self_development/MEMORY_RECALL_RELEVANCE_FILTER_V1_PROOF.json",
+                             "validators/validate_memory_recall_relevance_filter_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -30,7 +33,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  2294,
-                                    "sha256":  "e4e3e1b9e7df703ba4cdbd42f4f5d2b12d7b2f52a4998f13da0ea2af64d1c97e"
+                                    "sha256":  "d232da0fcebb3b6de0470d1bde2974555becc537981271be0e19285a2ba6cf5d"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -63,5 +66,5 @@
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-08-12T12:04:09.0138979+04:00"
+    "refreshed_at":  "2026-08-12T12:55:16.2722547+04:00"
 }
