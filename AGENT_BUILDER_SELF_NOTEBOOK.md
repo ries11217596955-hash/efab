@@ -2644,3 +2644,14 @@ Fresh Live100 blocker and repair:
 - protected active memory remained unchanged at the pre-Live checkpoint.
 
 Next parent action: repeat bounded `Live100 + Topics=AUTO` using checkpoint `H:\bridge\reports\school_live100_memory_checkpoint_20260812_1533`; no scale increase until post-Live proof passes.
+## 2026-08-12 - School Codex Windows/SYSTEM bounded bypass
+marker: SCHOOL_CODEX_WINDOWS_SYSTEM_BOUNDED_BYPASS_20260812
+status: ACCEPTED_PROVEN_LAB_BOUNDED_BYPASS_V1
+
+Fresh execution proof:
+- authenticated Codex resolution works, but `workspace-write` under Bridge/SYSTEM cannot start its internal PowerShell child (`-1073741502`); failed Live100 produced 0/100 candidates and did not mutate protected memory;
+- direct SYSTEM shell is healthy, so failure is scoped to the Codex Windows sandbox path;
+- read-only bypass micro-trial passed repo/AGENTS PREFLIGHT; bounded-write bypass micro-trial created exactly one allowed `.runtime` JSON, left tracked repo clean, and left protected memory unchanged;
+- School producer now uses the proven bypass only under its warehouse-only output contract: exact TARGET_COUNT, READY/DONE/heartbeat outputs, no active-memory mutation and no tracked-repo edits. Codex remains candidate producer; School validators/consumer remain acceptance authority.
+
+Next parent action after canonical validation/commit: repeat the same Live100 with the existing verified memory checkpoint; no scale increase until post-Live PASS.

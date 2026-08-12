@@ -296,9 +296,9 @@ if($ProducerMode -eq 'MockProducer'){
   $codexResolution=Resolve-SchoolCodexCli
   $codexCmd=[string]$codexResolution.exe
   $env:CODEX_HOME=[string]$codexResolution.home
-  $cmdLine='""{0}" exec -C "{1}" -s workspace-write --ephemeral - < "{2}" > "{3}" 2> "{4}""' -f $codexCmd,$repoRoot,$promptPath,$stdoutPath,$stderrPath
+  $cmdLine='""{0}" exec -C "{1}" --dangerously-bypass-approvals-and-sandbox --ephemeral - < "{2}" > "{3}" 2> "{4}""' -f $codexCmd,$repoRoot,$promptPath,$stdoutPath,$stderrPath
   AddEvent 'CODEX_RESOLUTION' @{status=$codexResolution.status; exe=$codexCmd; home=$codexResolution.home; source=$codexResolution.source; version=$codexResolution.version}
-  AddEvent 'CODEX_LAUNCH' @{prompt_path=$promptPath; timeout_seconds=$CodexTimeoutSeconds; exe=$codexCmd; codex_home=$codexResolution.home}
+  AddEvent 'CODEX_LAUNCH' @{prompt_path=$promptPath; timeout_seconds=$CodexTimeoutSeconds; exe=$codexCmd; codex_home=$codexResolution.home; execution_mode='BOUNDED_BYPASS_WINDOWS_SYSTEM'; output_contract='WAREHOUSE_ONLY_NO_ACTIVE_MEMORY_NO_TRACKED_WRITES'}
   $p=Start-Process -FilePath $env:ComSpec -ArgumentList @('/d','/c',$cmdLine) -NoNewWindow -PassThru
   $completed=$p.WaitForExit($CodexTimeoutSeconds*1000)
   $readyFiles=@($task.micro_batches | Where-Object { (Test-Path ([string]$_.ready_jsonl)) -and (Test-Path ([string]$_.ready_marker)) })

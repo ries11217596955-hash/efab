@@ -14,6 +14,12 @@ if(-not(Test-Path $lifecycle)){ AddErr "missing_lifecycle:$lifecycle" }
 if(-not(Test-Path $latestReport)){ AddErr "missing_test_report:$latestReport" }
 $entryText=''
 if(Test-Path $entry){ $entryText=Get-Content $entry -Raw }
+if($entryText -notlike '*--dangerously-bypass-approvals-and-sandbox*'){ AddErr 'school_codex_bounded_bypass_missing' }
+if($entryText -like '*-s workspace-write*'){ AddErr 'school_codex_workspace_write_sandbox_still_present' }
+foreach($requiredPrompt in @('- Write exactly TARGET_COUNT JSONL candidate lines total across all batches.','- For each batch, write READY.jsonl directly, then write READY.marker.json.','- Write heartbeat and DONE marker after all batches are READY.','- Do not mutate active memory. Do not edit tracked repo files.')){
+  if($entryText -notlike ('*'+$requiredPrompt+'*')){ AddErr ('school_codex_output_boundary_missing:'+ $requiredPrompt) }
+}
+if($entryText -notlike '*BOUNDED_BYPASS_WINDOWS_SYSTEM*'){ AddErr 'school_codex_execution_mode_event_missing' }
 foreach($needle in @('SCHOOL_CANONICAL_ENTRYPOINT_CONTRACT_REPAIR_V1','operations/school/plan_topic_patch_cycle_v1.ps1','operations/school/finalize_agent_school_run_v1.ps1','finalizer_status','finalizer_hook')){
   if($entryText -notlike "*$needle*"){ AddErr "entry_missing:$needle" }
 }

@@ -1,29 +1,25 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-08-12T15:53:40.4835459+04:00",
+    "checked_at":  "2026-08-12T16:14:51.3799907+04:00",
     "branch":  "main",
-    "observed_head":  "ee8ebb7a47f4dfbe204488f05067927478598b68",
-    "subject_head":  "ee8ebb7a47f4dfbe204488f05067927478598b68",
+    "observed_head":  "9e78ecc87f3d330d1219acf06622cfef82d8095f",
+    "subject_head":  "9e78ecc87f3d330d1219acf06622cfef82d8095f",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
                           "AGENT_BUILDER_SELF_NOTEBOOK.md",
-                          "operations/school/finalize_agent_school_run_v1.ps1",
-                          "operations/school/school_lifecycle_policy.json",
+                          "operations/school/run_agent_school.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "tests/self_development/SCHOOL_CANONICAL_ENTRYPOINT_CONTRACT_REPAIR_V1_PROOF.json",
-                          "validators/validate_school_canonical_entrypoint_contract_repair_v1.ps1"
+                          "tests/self_development/SCHOOL_CANONICAL_ENTRYPOINT_CONTRACT_REPAIR_V1_PROOF.json"
                       ],
     "structural_paths":  [
-                             "operations/school/finalize_agent_school_run_v1.ps1",
-                             "operations/school/school_lifecycle_policy.json",
-                             "tests/self_development/SCHOOL_CANONICAL_ENTRYPOINT_CONTRACT_REPAIR_V1_PROOF.json",
-                             "validators/validate_school_canonical_entrypoint_contract_repair_v1.ps1"
+                             "operations/school/run_agent_school.ps1",
+                             "tests/self_development/SCHOOL_CANONICAL_ENTRYPOINT_CONTRACT_REPAIR_V1_PROOF.json"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -36,7 +32,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  2299,
-                                    "sha256":  "888dec388bcf916028e63531c8c712df3aa09598f778a0d4ad6de8c0480190d9"
+                                    "sha256":  "94ee16f77ae5501f78ec223e6276461c2cfca5bf2d4335e3b23e9a0f8c5ad347"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -69,5 +65,5 @@
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-08-12T15:57:40.5306521+04:00"
+    "refreshed_at":  "2026-08-12T16:18:43.9851671+04:00"
 }
