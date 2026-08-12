@@ -2525,3 +2525,13 @@ Current backup proof at this checkpoint:
 - exact live Bridge/Rescue secret-value hits: `0`.
 
 This correction supersedes earlier chat/Notebook interpretations that treated Bridge backup as a separate recovery product or searched for a second Bridge Git repo.
+## 2026-08-11 - CUDA cleanup debt
+marker: CUDA_13_1_INTERACTIVE_UNINSTALL_DEBT_20260811
+status: DEFERRED_OWNER_ACCEPTED_DEBT
+
+- `C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v13.1` remains installed and occupies about 4.05 GB.
+- It is classified as leftover infrastructure from the retired photo/video GPU-agent direction; current Builder/Bridge has no proven dependency on it.
+- Nsight Compute and Nsight Systems were already removed successfully; NVIDIA display driver remains healthy.
+- NVIDIA Installer2 master uninstall hangs in SYSTEM session and does not actually remove CUDA.
+- Do NOT manually delete the CUDA directory or registry/PATH components.
+- Next allowed completion path: run the registered NVIDIA CUDA uninstall from an interactive user Windows session, then validate PATH/CUDA_PATH cleanup, `nvidia-smi`, Builder/Bridge health, and reclaimed space.
