@@ -20,6 +20,15 @@ foreach($requiredPrompt in @('- Write exactly TARGET_COUNT JSONL candidate lines
   if($entryText -notlike ('*'+$requiredPrompt+'*')){ AddErr ('school_codex_output_boundary_missing:'+ $requiredPrompt) }
 }
 if($entryText -notlike '*BOUNDED_BYPASS_WINDOWS_SYSTEM*'){ AddErr 'school_codex_execution_mode_event_missing' }
+if($entryText -like '*$p.WaitForExit($CodexTimeoutSeconds*1000)*'){ AddErr 'school_streaming_waitforexit_before_consume_present' }
+foreach($needle in @('STREAM_READY_DETECTED','STREAM_BATCH_CONSUMED','streaming_enabled','producer_completed_at','first_consume_started_at','stream_batches','overlap_proven','Invoke-SchoolWarehouseConsumer -MacroTaskJsonPath $taskJson -MaxConsumeBatches 1')){
+  if($entryText -notlike ('*'+$needle+'*')){ AddErr ('school_streaming_contract_missing:'+ $needle) }
+}
+if($entryText -notlike '*After writing each READY.marker.json, immediately continue producing the next batch without waiting for School consumption.*'){ AddErr 'school_streaming_prompt_continue_after_ready_missing' }
+$agentsText=Get-Content 'AGENTS.md' -Raw
+foreach($needle in @('C:\Users\Azerbaijan\.codex\.sandbox-bin\codex.exe','CODEX_HOME=C:\Users\Azerbaijan\.codex','--dangerously-bypass-approvals-and-sandbox','workspace-write','known non-working Windows/SYSTEM branch','do not install or create a second Codex')){
+  if($agentsText -notlike ('*'+$needle+'*')){ AddErr ('agents_codex_windows_route_missing:'+ $needle) }
+}
 foreach($needle in @('SCHOOL_CANONICAL_ENTRYPOINT_CONTRACT_REPAIR_V1','operations/school/plan_topic_patch_cycle_v1.ps1','operations/school/finalize_agent_school_run_v1.ps1','finalizer_status','finalizer_hook')){
   if($entryText -notlike "*$needle*"){ AddErr "entry_missing:$needle" }
 }

@@ -226,7 +226,104 @@ if([string]::IsNullOrWhiteSpace($taskJson) -or -not (Test-Path $taskJson)){ thro
 $task=Get-Content $taskJson -Raw | ConvertFrom-Json
 $batchCounts=@($task.micro_batches | ForEach-Object {[int]$_.candidate_count})
 $producerStatus='NOT_RUN'; $producerFailureClass=''; $producerExitAnomaly=$false; $producerExitClass=''; $producerExitCode=$null; $readyBatchCount=0; $readyCandidateCount=0
+$streamingEnabled=$true
+$producerCompletedAt=$null
+$producerCompletedAtValue=$null
+$orderedMicroBatches=@($task.micro_batches | Sort-Object sequence)
+$streamBatches=New-Object System.Collections.ArrayList
+$consumerReports=New-Object System.Collections.ArrayList
+$consumerStatuses=New-Object System.Collections.ArrayList
+$streamState=[ordered]@{next_ordinal=1; consumed=0; accepted=0; first_consume_started_at=$null; first_consume_started_at_value=$null; consumer_failed=$false}
+function Test-ExpectedBatchReady([int]$Ordinal){
+  if($Ordinal -lt 1 -or $Ordinal -gt $orderedMicroBatches.Count){ return $false }
+  $mb=$orderedMicroBatches[$Ordinal-1]
+  if(-not (Test-Path -LiteralPath ([string]$mb.ready_marker))){ return $false }
+  if(-not (Test-Path -LiteralPath ([string]$mb.ready_jsonl))){ return $false }
+  return $true
+}
+function Get-ReadyBatchTotals {
+  $batchTotal=0
+  $candidateTotal=0
+  foreach($mb in @($orderedMicroBatches)){
+    if((Test-Path -LiteralPath ([string]$mb.ready_marker)) -and (Test-Path -LiteralPath ([string]$mb.ready_jsonl))){
+      $batchTotal++
+      $candidateTotal += (Get-Content -LiteralPath ([string]$mb.ready_jsonl) | Measure-Object).Count
+    }
+  }
+  return [pscustomobject]@{ready_batch_count=$batchTotal; ready_candidate_count=$candidateTotal}
+}
+function Invoke-ExpectedStreamConsume([string]$Reason){
+  if([bool]$streamState['consumer_failed']){ return $false }
+  $ordinal=[int]$streamState['next_ordinal']
+  if($ordinal -lt 1 -or $ordinal -gt $orderedMicroBatches.Count){ return $false }
+  $mb=$orderedMicroBatches[$ordinal-1]
+  if(-not (Test-Path -LiteralPath ([string]$mb.ready_marker))){ return $false }
+  if(-not (Test-Path -LiteralPath ([string]$mb.ready_jsonl))){ return $false }
+  $readyDetectedAt=Get-Date
+  AddEvent 'STREAM_READY_DETECTED' @{ordinal=$ordinal; id=[string]$mb.micro_batch_id; count=[int]$mb.candidate_count; ready_marker=[string]$mb.ready_marker; reason=$Reason}
+  $consumeStartedAt=Get-Date
+  if($null -eq $streamState['first_consume_started_at_value']){
+    $streamState['first_consume_started_at_value']=$consumeStartedAt
+    $streamState['first_consume_started_at']=$consumeStartedAt.ToString('o')
+  }
+  if($Absorb){ $out=@(& { Invoke-SchoolWarehouseConsumer -MacroTaskJsonPath $taskJson -MaxConsumeBatches 1 -MaxWaitSeconds 0 -Absorb } *>&1 | ForEach-Object{[string]$_}) }
+  else { $out=@(& { Invoke-SchoolWarehouseConsumer -MacroTaskJsonPath $taskJson -MaxConsumeBatches 1 -MaxWaitSeconds 0 } *>&1 | ForEach-Object{[string]$_}) }
+  $consumeCompletedAt=Get-Date
+  $outPath=("{0}/consumer_{1:D3}_stdout.txt" -f $OutputRoot,$ordinal)
+  $out | Set-Content -LiteralPath $outPath -Encoding UTF8
+  $cr=(($out|Where-Object{$_ -match '^CODEX_WAREHOUSE_CONSUMER_REPORT='}|Select-Object -Last 1) -replace '^CODEX_WAREHOUSE_CONSUMER_REPORT=','')
+  $consumerStatus='MISSING_REPORT'
+  $snapshotReport=$null
+  $acceptedCount=0
+  $consumedId=$null
+  if(-not [string]::IsNullOrWhiteSpace($cr) -and (Test-Path -LiteralPath $cr)){
+    $c=Get-Content -LiteralPath $cr -Raw | ConvertFrom-Json
+    $consumerStatus=[string]$c.status
+    $snapshotReport=("{0}/consumer_{1:D3}_report.json" -f $OutputRoot,$ordinal)
+    Copy-Item -LiteralPath $cr -Destination $snapshotReport -Force
+    [void]$consumerReports.Add($snapshotReport)
+    [void]$consumerStatuses.Add($consumerStatus)
+    $consumedBatch=@($c.consumed_batches)
+    if($consumedBatch.Count -gt 0){
+      $consumedId=[string]$consumedBatch[0].micro_batch_id
+      if($consumedId -ne [string]$mb.micro_batch_id){ throw ("STREAM_CONSUMED_OUT_OF_ORDER:expected:{0}:actual:{1}" -f $mb.micro_batch_id,$consumedId) }
+      $acceptedCount=[int]$consumedBatch[0].accepted_count
+      $streamState['consumed']=[int]$streamState['consumed'] + $consumedBatch.Count
+      $streamState['accepted']=[int]$streamState['accepted'] + $acceptedCount
+      $streamState['next_ordinal']=$ordinal + 1
+    } else {
+      $streamState['consumer_failed']=$true
+    }
+  } else {
+    $streamState['consumer_failed']=$true
+  }
+  [void]$streamBatches.Add([ordered]@{
+    ordinal=$ordinal
+    id=[string]$mb.micro_batch_id
+    count=[int]$mb.candidate_count
+    ready_detected_at=$readyDetectedAt.ToString('o')
+    consume_started_at=$consumeStartedAt.ToString('o')
+    consume_completed_at=$consumeCompletedAt.ToString('o')
+    consumer_status=$consumerStatus
+    accepted_count=$acceptedCount
+    consumer_report=$snapshotReport
+  })
+  if($consumedId -eq [string]$mb.micro_batch_id){
+    AddEvent 'STREAM_BATCH_CONSUMED' @{ordinal=$ordinal; id=[string]$mb.micro_batch_id; count=[int]$mb.candidate_count; accepted_count=$acceptedCount; consume_started_at=$consumeStartedAt.ToString('o'); consume_completed_at=$consumeCompletedAt.ToString('o'); reason=$Reason}
+    return $true
+  }
+  return $false
+}
+function Drain-ReadyExpectedStreamBatches([string]$Reason){
+  while($true){
+    $ordinal=[int]$streamState['next_ordinal']
+    if($ordinal -gt $orderedMicroBatches.Count){ break }
+    if(-not (Test-ExpectedBatchReady -Ordinal $ordinal)){ break }
+    if(-not (Invoke-ExpectedStreamConsume -Reason $Reason)){ break }
+  }
+}
 if($ProducerMode -eq 'MockProducer'){
+  $mockProducerCompleted=$true
   foreach($mb in @($task.micro_batches)){
     $rows=New-Object System.Collections.ArrayList
     for($i=1;$i -le [int]$mb.candidate_count;$i++){
@@ -257,10 +354,21 @@ if($ProducerMode -eq 'MockProducer'){
     }
     ($rows|ForEach-Object{$_|ConvertTo-Json -Depth 50 -Compress}) -join "`n" | Set-Content -LiteralPath ([string]$mb.ready_jsonl) -Encoding UTF8
     WriteJson ([string]$mb.ready_marker) ([ordered]@{status='READY'; micro_batch_id=$mb.micro_batch_id; candidate_count=[int]$mb.candidate_count; updated_at=(Get-Date).ToString('o'); mode='MockProducer'}) 20
+    if(-not (Invoke-ExpectedStreamConsume -Reason 'mock_after_marker')){
+      $mockProducerCompleted=$false
+      $producerFailureClass=("MOCK_STREAM_CONSUME_FAILED_AT_ORDINAL_{0}" -f $streamState['next_ordinal'])
+      break
+    }
   }
-  WriteJson ([string]$task.heartbeat_path) ([ordered]@{status='PRODUCER_DONE'; request_id=$task.request_id; last_written_batch=[int]$task.micro_batch_count; updated_at=(Get-Date).ToString('o'); mode='MockProducer'}) 20
-  WriteJson ([string]$task.producer_done_marker) ([ordered]@{status='PRODUCER_DONE'; micro_batch_count=[int]$task.micro_batch_count; candidate_count=[int]$task.total_candidate_count; updated_at=(Get-Date).ToString('o'); mode='MockProducer'}) 20
-  $producerStatus='MOCK_PRODUCER_ALL_READY_CREATED'
+  if($mockProducerCompleted){
+    WriteJson ([string]$task.heartbeat_path) ([ordered]@{status='PRODUCER_DONE'; request_id=$task.request_id; last_written_batch=[int]$task.micro_batch_count; updated_at=(Get-Date).ToString('o'); mode='MockProducer'}) 20
+    WriteJson ([string]$task.producer_done_marker) ([ordered]@{status='PRODUCER_DONE'; micro_batch_count=[int]$task.micro_batch_count; candidate_count=[int]$task.total_candidate_count; updated_at=(Get-Date).ToString('o'); mode='MockProducer'}) 20
+    $producerCompletedAtValue=Get-Date
+    $producerCompletedAt=$producerCompletedAtValue.ToString('o')
+    $producerStatus='MOCK_PRODUCER_ALL_READY_CREATED'
+  } else {
+    $producerStatus='MOCK_FAILED'
+  }
 } else {
   $promptPath="$OutputRoot/codex_exact_count_cycle_prompt.txt"; $stdoutPath="$OutputRoot/codex_stdout.txt"; $stderrPath="$OutputRoot/codex_stderr.txt"
   $batchTable=@($task.micro_batches | ForEach-Object { ("{0}|count={1}|ready_jsonl={2}|ready_marker={3}" -f $_.micro_batch_id,$_.candidate_count,$_.ready_jsonl,$_.ready_marker) })
@@ -285,6 +393,7 @@ if($ProducerMode -eq 'MockProducer'){
   [void]$promptLines.Add('- Use Python standard library if possible. Do not use PowerShell .NET constructors.')
   [void]$promptLines.Add('- Do not use tmp files and do not rename files in this cycle.')
   [void]$promptLines.Add('- For each batch, write READY.jsonl directly, then write READY.marker.json.')
+  [void]$promptLines.Add('- After writing each READY.marker.json, immediately continue producing the next batch without waiting for School consumption.')
   [void]$promptLines.Add('- Write exactly TARGET_COUNT JSONL candidate lines total across all batches.')
   [void]$promptLines.Add('- Write heartbeat and DONE marker after all batches are READY.')
   [void]$promptLines.Add('- Do not mutate active memory. Do not edit tracked repo files.')
@@ -300,11 +409,27 @@ if($ProducerMode -eq 'MockProducer'){
   AddEvent 'CODEX_RESOLUTION' @{status=$codexResolution.status; exe=$codexCmd; home=$codexResolution.home; source=$codexResolution.source; version=$codexResolution.version}
   AddEvent 'CODEX_LAUNCH' @{prompt_path=$promptPath; timeout_seconds=$CodexTimeoutSeconds; exe=$codexCmd; codex_home=$codexResolution.home; execution_mode='BOUNDED_BYPASS_WINDOWS_SYSTEM'; output_contract='WAREHOUSE_ONLY_NO_ACTIVE_MEMORY_NO_TRACKED_WRITES'}
   $p=Start-Process -FilePath $env:ComSpec -ArgumentList @('/d','/c',$cmdLine) -NoNewWindow -PassThru
-  $completed=$p.WaitForExit($CodexTimeoutSeconds*1000)
-  $readyFiles=@($task.micro_batches | Where-Object { (Test-Path ([string]$_.ready_jsonl)) -and (Test-Path ([string]$_.ready_marker)) })
-  $readyBatchCount=$readyFiles.Count
-  $readyCandidateCount=0
-  foreach($mb in $readyFiles){ $readyCandidateCount += (Get-Content ([string]$mb.ready_jsonl) | Measure-Object).Count }
+  $deadline=(Get-Date).AddSeconds($CodexTimeoutSeconds)
+  $completed=$false
+  while($true){
+    $p.Refresh()
+    if($p.HasExited){
+      $completed=$true
+      try{ $producerCompletedAtValue=$p.ExitTime }catch{ $producerCompletedAtValue=Get-Date }
+      $producerCompletedAt=$producerCompletedAtValue.ToString('o')
+      break
+    }
+    if((Get-Date) -ge $deadline){
+      Stop-ProcessTreeByRootPid -RootPid ([int]$p.Id)
+      break
+    }
+    Drain-ReadyExpectedStreamBatches -Reason 'producer_alive'
+    Start-Sleep -Seconds 2
+  }
+  Drain-ReadyExpectedStreamBatches -Reason 'producer_stopped'
+  $readyTotals=Get-ReadyBatchTotals
+  $readyBatchCount=[int]$readyTotals.ready_batch_count
+  $readyCandidateCount=[int]$readyTotals.ready_candidate_count
   if(-not $completed){
     Stop-ProcessTreeByRootPid -RootPid ([int]$p.Id)
     if($readyBatchCount -eq [int]$task.micro_batch_count -and $readyCandidateCount -eq $Count){ $producerStatus='CODEX_PRODUCER_ALL_READY_CREATED'; $producerExitAnomaly=$true; $producerExitClass='TIMEOUT_AFTER_VALID_READY_DONE'; $producerExitCode='TIMEOUT' } else { $producerStatus='CODEX_FAILED'; $producerFailureClass=("TIMEOUT_READY_BATCHES_{0}/{1}_CANDIDATES_{2}/{3}" -f $readyBatchCount,$task.micro_batch_count,$readyCandidateCount,$Count) }
@@ -315,29 +440,53 @@ if($ProducerMode -eq 'MockProducer'){
   }
 }
 # Count ready for mock too.
-$readyFilesFinal=@($task.micro_batches | Where-Object { (Test-Path ([string]$_.ready_jsonl)) -and (Test-Path ([string]$_.ready_marker)) })
-$readyBatchCount=$readyFilesFinal.Count
-$readyCandidateCount=0
-foreach($mb in $readyFilesFinal){ $readyCandidateCount += (Get-Content ([string]$mb.ready_jsonl) | Measure-Object).Count }
-$consumed=0; $accepted=0; $consumerReports=New-Object System.Collections.ArrayList; $consumerStatuses=New-Object System.Collections.ArrayList
-if($producerStatus -in @('MOCK_PRODUCER_ALL_READY_CREATED','CODEX_PRODUCER_ALL_READY_CREATED')){
-  for($i=1;$i -le [int]$task.micro_batch_count;$i++){
-    if($Absorb){ $out=@(& { Invoke-SchoolWarehouseConsumer -MacroTaskJsonPath $taskJson -MaxConsumeBatches 1 -MaxWaitSeconds 0 -Absorb } *>&1 | ForEach-Object{[string]$_}) }
-    else { $out=@(& { Invoke-SchoolWarehouseConsumer -MacroTaskJsonPath $taskJson -MaxConsumeBatches 1 -MaxWaitSeconds 0 } *>&1 | ForEach-Object{[string]$_}) }
-    $outPath=("{0}/consumer_{1:D3}_stdout.txt" -f $OutputRoot,$i); $out | Set-Content -LiteralPath $outPath -Encoding UTF8
-    $cr=(($out|Where-Object{$_ -match '^CODEX_WAREHOUSE_CONSUMER_REPORT='}|Select-Object -Last 1) -replace '^CODEX_WAREHOUSE_CONSUMER_REPORT=','')
-    if([string]::IsNullOrWhiteSpace($cr) -or -not (Test-Path $cr)){ break }
-    $c=Get-Content $cr -Raw | ConvertFrom-Json
-    $snapshotReport=("{0}/consumer_{1:D3}_report.json" -f $OutputRoot,$i)
-    Copy-Item -LiteralPath $cr -Destination $snapshotReport -Force
-    [void]$consumerReports.Add($snapshotReport); [void]$consumerStatuses.Add($c.status)
-    if(@($c.consumed_batches).Count -gt 0){ $consumed += @($c.consumed_batches).Count; $accepted += [int]$c.consumed_batches[0].accepted_count }
-  }
+$readyTotalsFinal=Get-ReadyBatchTotals
+$readyBatchCount=[int]$readyTotalsFinal.ready_batch_count
+$readyCandidateCount=[int]$readyTotalsFinal.ready_candidate_count
+$consumed=[int]$streamState['consumed']
+$accepted=[int]$streamState['accepted']
+$firstConsumeStartedAt=$streamState['first_consume_started_at']
+$overlapProven=$false
+if($ProducerMode -eq 'RunCodex' -and [int]$task.micro_batch_count -gt 1 -and $null -ne $streamState['first_consume_started_at_value'] -and $null -ne $producerCompletedAtValue){
+  $overlapProven=([datetime]$streamState['first_consume_started_at_value'] -lt [datetime]$producerCompletedAtValue)
 }
 $memoryAfter=[ordered]@{manifest=Sha "$mem/manifest.json"; index=Sha "$mem/index.json"; cells=Sha "$mem/cells.jsonl"}
 $memoryChanged=($memoryBefore.cells -ne $memoryAfter.cells -or $memoryBefore.index -ne $memoryAfter.index -or $memoryBefore.manifest -ne $memoryAfter.manifest)
 $status=if($producerStatus -eq 'CODEX_PRODUCER_ALL_READY_CREATED' -and $accepted -eq $Count -and -not $Absorb -and -not $memoryChanged){'PASS_REAL_CODEX_EXACT_COUNT_CYCLE_NO_ABSORB_V1'}elseif($producerStatus -eq 'MOCK_PRODUCER_ALL_READY_CREATED' -and $accepted -eq $Count -and -not $Absorb -and -not $memoryChanged){'PASS_MOCK_EXACT_COUNT_CYCLE_NO_ABSORB_V1'}elseif($producerStatus -eq 'CODEX_PRODUCER_ALL_READY_CREATED' -and $accepted -eq $Count -and $Absorb -and $memoryChanged){'PASS_REAL_CODEX_EXACT_COUNT_CYCLE_WITH_ABSORB_V1'}else{'CHECK_EXACT_COUNT_CYCLE_V1'}
-$report=[ordered]@{schema='generic_exact_count_warehouse_cycle_v1'; status=$status; created_at=(Get-Date).ToString('o'); run_id=$runId; producer_mode=$ProducerMode; count=$Count; micro_batch_size=$MicroBatchSize; micro_batch_count=[int]$task.micro_batch_count; batch_counts=$batchCounts; producer_status=$producerStatus; producer_failure_class=$producerFailureClass; producer_exit_anomaly=[bool]$producerExitAnomaly; producer_exit_class=$producerExitClass; producer_exit_code=$producerExitCode; ready_batch_count=$readyBatchCount; ready_candidate_count=$readyCandidateCount; consumed_batches=$consumed; accepted_count=$accepted; absorb=[bool]$Absorb; consumer_statuses=@($consumerStatuses); consumer_reports=@($consumerReports); memory_before=$memoryBefore; memory_after=$memoryAfter; memory_changed=$memoryChanged; task_json=$taskJson; output_root=$OutputRoot; boundary='Generic exact Count cycle. Absorption only if -Absorb is passed. Complete valid READY/DONE output with nonzero/timeout external exit is reported as producer_exit_anomaly, not producer_failure_class.'}
+$report=[ordered]@{
+  schema='generic_exact_count_warehouse_cycle_v1'
+  status=$status
+  created_at=(Get-Date).ToString('o')
+  run_id=$runId
+  producer_mode=$ProducerMode
+  count=$Count
+  micro_batch_size=$MicroBatchSize
+  micro_batch_count=[int]$task.micro_batch_count
+  batch_counts=$batchCounts
+  streaming_enabled=[bool]$streamingEnabled
+  producer_completed_at=$producerCompletedAt
+  first_consume_started_at=$firstConsumeStartedAt
+  stream_batches=@($streamBatches)
+  overlap_proven=[bool]$overlapProven
+  producer_status=$producerStatus
+  producer_failure_class=$producerFailureClass
+  producer_exit_anomaly=[bool]$producerExitAnomaly
+  producer_exit_class=$producerExitClass
+  producer_exit_code=$producerExitCode
+  ready_batch_count=$readyBatchCount
+  ready_candidate_count=$readyCandidateCount
+  consumed_batches=$consumed
+  accepted_count=$accepted
+  absorb=[bool]$Absorb
+  consumer_statuses=@($consumerStatuses)
+  consumer_reports=@($consumerReports)
+  memory_before=$memoryBefore
+  memory_after=$memoryAfter
+  memory_changed=$memoryChanged
+  task_json=$taskJson
+  output_root=$OutputRoot
+  boundary='Generic exact Count cycle. Absorption only if -Absorb is passed. Complete valid READY/DONE output with nonzero/timeout external exit is reported as producer_exit_anomaly, not producer_failure_class.'
+}
 $reportPath="$OutputRoot/exact_count_cycle_report.json"
 WriteJson $reportPath $report 100
 Write-Host "EXACT_COUNT_CYCLE_STATUS=$status"

@@ -2670,3 +2670,16 @@ Fresh Live100 result:
 - finalizer summary wording is repaired: next topic/path is selected independently first; fresh School memory is retrieved only afterward when relevant; recency/latest School run must not choose next topic.
 
 Parent continuation: validate and commit this anti-fixation repair; inspect actual Live100 memory delta and atom examples; then choose the next School scale only from fresh AUTO/scale preflight, with no jump to large campaigns before bounded stability proof.
+## 2026-08-12 - School streaming Test237 accepted
+marker: SCHOOL_STREAMING_TEST237_ACCEPTANCE_20260812
+status: ACCEPTED_LAB_STREAMING_TEST237_V1
+
+Fresh proof:
+- single public School launcher `Count=237 Mode=Test Topics=AUTO` passed with `PASS_CANONICAL_EXACT_COUNT_CYCLE_TEST_V1` and exact batch plan `100,100,37`;
+- AUTO selected `development_lawfulness`, current depth 0, target depth 2, pressure `MISSING_OR_ZERO_DEPTH`;
+- all three batches normalized with accepted counts `100,100,37`, rejected=0; total accepted=237;
+- streaming timeline is ordinal and single-consumer: `micro_001/100`, `micro_002/100`, `micro_003/37`, each consumed after READY detection before the next MockProducer batch is emitted;
+- Test mode had `Absorb=False`, `memory_changed=False`, finalizer intake/merge/maintenance skipped, post-health process_count=0, queue=0, locks=0;
+- active compact memory hashes remained manifest `F93A1130794B87FFE9ED235804EE35F28ABD566B91677FCC126439CFB2C06905`, index `34951D7B72801EACD682BB938374D49E9FB0CEAD74DF66B80F4675A9EE3FDA3F`, cells `B4BAD687FE123FCB3274367AFE4BE999F539DFC9A7D6151793A9D3C17FF27C71`.
+
+Does not prove: real Codex producer overlap. Next acceptance layer is Live237 after commit/clean preflight; real multi-batch run must prove first consume starts before producer completion when Codex produces more than one batch.
