@@ -2706,3 +2706,15 @@ Fresh incident and repair proof:
 - post-health after both runs: School/Codex/intake process_count=0, queue=0, locks=0, protected memory hashes unchanged.
 
 Does not prove: Live237 end-to-end success after guard. Next parent step after canonical validator/commit/sanitation is fresh Live237 with real Codex overlap proof and one public runtime only.
+## 2026-08-12 - Live237 producer quality and incremental handoff repair
+marker: SCHOOL_LIVE237_PRODUCER_QUALITY_INCREMENTAL_REPAIR_20260812
+status: CANDIDATE_PENDING_PRODUCER_MICROTRIAL
+
+Fresh failed-Live finding:
+- guarded Live237 reached real Codex production on topic `development_lawfulness`, exact plan `100,100,37`, with protected memory still byte-identical to checkpoint after failure;
+- Codex structurally produced all 237 candidates, but micro_001 normalized only 66/100 because exactly 34 candidates had empty `return_to_parent`; all other checked acceptance fields passed;
+- the same producer wrote all three READY batches within about 18 ms in one Python command, so the School streaming loop detected micro_001 only after micro_002/micro_003 were already present. That does not prove useful producer/consumer overlap;
+- failure proof: `H:\bridge\reports\school_live237_producer_quality_failure_20260812_2128.json`;
+- producer contract is strengthened without relaxing normalizer rules: every required quality field must be non-empty; one micro-batch per separate tool/command invocation; validate current batch before READY marker; return control before starting the next batch.
+
+Next acceptance layer: bounded real-Codex producer-only micro-trial with no memory absorption, then canonical validator/commit, then fresh Live237 with real overlap proof.

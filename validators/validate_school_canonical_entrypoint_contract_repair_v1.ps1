@@ -33,6 +33,9 @@ foreach($needle in @('STREAM_READY_DETECTED','STREAM_BATCH_CONSUMED','streaming_
 if($entryText -like '*try{ $producerCompletedAtValue=$p.ExitTime }catch{ $producerCompletedAtValue=Get-Date }*'){ AddErr 'school_streaming_exit_time_null_guard_missing' }
 if($entryText -notlike '*if($null -ne $exitTime){ $producerCompletedAtValue=$exitTime }*'){ AddErr 'school_streaming_exit_time_null_guard_missing' }
 if($entryText -notlike '*After writing each READY.marker.json, immediately continue producing the next batch without waiting for School consumption.*'){ AddErr 'school_streaming_prompt_continue_after_ready_missing' }
+foreach($needle in @('Produce exactly one micro-batch per shell/tool command invocation. Never create or write READY files for more than one micro-batch in the same command, script, or process.','Before writing each READY.marker.json, validate only that current batch: exact candidate_count, unique candidate_id values, correct topic/depth/source fields, and every required quality field non-empty.','For every candidate, expected_behavior, validator, proof_requirements, negative_case, return_to_parent, and digest_hint must each be non-empty strings regardless of depth_level.','After a batch READY.marker.json is written, return control to Codex before starting a separate command invocation for the next micro-batch.')){
+  if(-not $entryText.Contains($needle)){ AddErr ('school_codex_incremental_producer_contract_missing:'+ $needle) }
+}
 $agentsText=Get-Content 'AGENTS.md' -Raw
 foreach($needle in @('C:\Users\Azerbaijan\.codex\.sandbox-bin\codex.exe','CODEX_HOME=C:\Users\Azerbaijan\.codex','--dangerously-bypass-approvals-and-sandbox','workspace-write','known non-working Windows/SYSTEM branch','do not install or create a second Codex')){
   if($agentsText -notlike ('*'+$needle+'*')){ AddErr ('agents_codex_windows_route_missing:'+ $needle) }
