@@ -2580,3 +2580,18 @@ Limitations / next parent action:
 - the previously saved AIMO Active Thought Goal candidate must be re-evaluated against this now topic-neutral reasoner rather than reapplied blindly;
 - learning atom generation is still historically fixed/self-build-biased and must later be moved after real reasoning output so accepted learning reflects the actual topic/conclusion;
 - after AIMO topic propagation is proven, continue to sandbox memory proof for durability + non-interference + relevant reuse + cross-domain transfer.
+## 2026-08-12 - Owner task active-goal override acceptance
+marker: OWNER_TASK_ACTIVE_GOAL_OVERRIDE_ACCEPTANCE_20260812
+status: ACCEPTED_PROVEN_LAB_SECONDARY_TASK_MODE
+
+Secondary task-mode capability accepted:
+- when Owner supplies a question/task, AIMO preserves it as `OWNER_QUESTION_ACTIVE_GOAL` before refocus, mind-logic, and selective-memory retrieval wiring;
+- existing self-directed refocus remains gated to cycles without an Owner question;
+- `tests/self_development/AIMO_ACTIVE_THOUGHT_GOAL_PROPAGATION_V1_PROOF.json` status is `PASS_AIMO_ACTIVE_THOUGHT_GOAL_PROPAGATION_V1` with zero errors;
+- this is LAB wiring proof only and does not prove full AIMO wake/runtime, useful retrieval for arbitrary domains, topic-aware learning, durable learning, LIVE behavior, or `runtime_ready`;
+- disposable validator `.runtime/aimo_active_thought_goal_propagation_v1` output was removed after proof capture; protected active memory remained unchanged.
+
+Parent priority correction:
+- Owner-task routing is an override capability, not the autonomous life motor;
+- main next path is `NO OWNER TASK -> observe reality/memory/gaps -> select self-directed frontier -> self-chosen thought goal -> topic-general reasoning -> relevant memory -> new understanding`;
+- only after that path is proven should task arrival/preemption/return be tested as an override/return contract.

@@ -1372,7 +1372,15 @@ $living=Get-LivingLoopState
 $selfBuild=Get-SelfBuildState
 $ownerQuestionProvided=(-not [string]::IsNullOrWhiteSpace($Question))
 $internalGoal=New-InternalSelfGoal $selfBuild $body $memoryBefore
-if([string]::IsNullOrWhiteSpace($Question)){ $Question=$internalGoal.goal }
+if($ownerQuestionProvided){
+  if($internalGoal -is [System.Collections.IDictionary]){
+    $internalGoal['source']='OWNER_QUESTION_ACTIVE_GOAL'
+    $internalGoal['goal']=$Question
+    $internalGoal['owner_question_active']=$true
+  }
+} elseif([string]::IsNullOrWhiteSpace($Question)){
+  $Question=$internalGoal.goal
+}
 $policy=Read-JsonSafe 'operations/autonomous_inner_motor/motor_policy.json'
 $runId='aimo_'+(Get-Date -Format 'yyyyMMdd_HHmmss')
 $runRoot=Join-Path $OutputRoot $runId

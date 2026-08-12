@@ -1,0 +1,92 @@
+{
+    "schema":  "aimo_active_thought_goal_propagation_v1_proof",
+    "status":  "PASS_AIMO_ACTIVE_THOUGHT_GOAL_PROPAGATION_V1",
+    "checked_at":  "2026-08-12T09:05:42.3937212Z",
+    "runner":  "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
+    "reasoner":  "operations/reasoning/build_agent_mind_logic_frame_v1.ps1",
+    "wiring":  {
+                   "owner_question_sets_internal_goal":  true,
+                   "owner_source_marker":  true,
+                   "owner_goal_before_refocus_and_reasoning":  true,
+                   "refocus_requires_no_owner_question":  true,
+                   "mind_logic_consumes_internal_goal":  true,
+                   "retrieval_consumes_internal_goal":  true
+               },
+    "topic_a":  {
+                    "problem":  "thermofade braking friction vehicle safety",
+                    "classification":  "GENERAL_LOGIC_TASK",
+                    "known0":  "Current reasoning topic: thermofade braking friction vehicle safety",
+                    "winner":  {
+                                   "id":  "H_SOURCE_GAP",
+                                   "text":  "Current topic needs verified evidence before a factual conclusion: thermofade braking friction vehicle safety",
+                                   "kind":  "source_gap",
+                                   "score":  24,
+                                   "class":  "STRONG",
+                                   "coverage_terms":  [
+                                                          "thermofade",
+                                                          "braking",
+                                                          "friction",
+                                                          "vehicle",
+                                                          "safety"
+                                                      ],
+                                   "reasons":  [
+                                                   "no_relevant_memory_requires_source"
+                                               ],
+                                   "rejected":  false
+                               }
+                },
+    "topic_b":  {
+                    "problem":  "orchid transaction isolation phantom concurrency database",
+                    "classification":  "GENERAL_LOGIC_TASK",
+                    "known0":  "Current reasoning topic: orchid transaction isolation phantom concurrency database",
+                    "winner":  {
+                                   "id":  "H_SOURCE_GAP",
+                                   "text":  "Current topic needs verified evidence before a factual conclusion: orchid transaction isolation phantom concurrency database",
+                                   "kind":  "source_gap",
+                                   "score":  26,
+                                   "class":  "STRONG",
+                                   "coverage_terms":  [
+                                                          "orchid",
+                                                          "transaction",
+                                                          "isolation",
+                                                          "phantom",
+                                                          "concurrency",
+                                                          "database"
+                                                      ],
+                                   "reasons":  [
+                                                   "no_relevant_memory_requires_source"
+                                               ],
+                                   "rejected":  false
+                               }
+                },
+    "active_memory_hashes":  {
+                                 "manifest.json":  "36C6CDCDDD0C05872F13E9D43DC5314CF31478F7117D630C2EDDE48B177BEE67",
+                                 "index.json":  "34951D7B72801EACD682BB938374D49E9FB0CEAD74DF66B80F4675A9EE3FDA3F",
+                                 "cells.jsonl":  "367EC2C6B548AF6023D5278CE1A1419A1E508992EC514786B302463242630D1B"
+                             },
+    "claims_proven":  [
+                          "Owner question is wired into internalGoal before refocus, mind-logic and selective-retrieval call sites.",
+                          "Existing refocus seed consumption remains gated off when OwnerQuestionProvided is true.",
+                          "The current topic-general reasoner preserves two unrelated supplied topics at the AIMO reasoner boundary.",
+                          "Selective retrieval function consumes InternalGoal.goal as query input."
+                      ],
+    "does_not_prove":  [
+                           "Full AIMO wake/body-self-inspection runtime completes for these two topics.",
+                           "Retrieval returns useful cells for arbitrary domain topics.",
+                           "Learning atom is topic-aware.",
+                           "Active memory is mutated or learning is durable.",
+                           "LIVE behavior or runtime_ready."
+                       ],
+    "boundary":  {
+                     "lab_wiring_only":  true,
+                     "full_aimo_runtime_launched":  false,
+                     "active_memory_mutated":  false,
+                     "action_execution_allowed":  false,
+                     "school_launched":  false,
+                     "codex_launched":  false,
+                     "web_launched":  false
+                 },
+    "errors":  [
+
+               ]
+}
