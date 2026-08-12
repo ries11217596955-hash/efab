@@ -123,7 +123,8 @@ $result=[ordered]@{
   boundary=$finalizer.boundary
   intake_submission=$null
 }
-if($passStatus -and $manifest){
+$intakeAllowed = @($finalizer.intake_modes) -contains $publicMode
+if($passStatus -and $manifest -and $intakeAllowed){
   $result.intake_submission = SubmitSchoolPacketToIntake $proof $runId $ProofPath $manifest $manifestPath
   $actions += "SUBMITTED_INTAKE:$($result.intake_submission.status)"
   $result.merge_queue_result = InvokeSchoolPacketMergeQueue $finalizer $result.intake_submission.queue_path
@@ -131,6 +132,11 @@ if($passStatus -and $manifest){
   $result.queue_maintenance_result = InvokeQueueMaintenanceAfterSchoolMerge $finalizer $result.merge_queue_result
   $actions += "QUEUE_MAINTENANCE:$($result.queue_maintenance_result.status)"
   if($result.queue_maintenance_result.status -like 'FAIL_*'){ $blockers += $result.queue_maintenance_result.status }
+} elseif($passStatus -and $manifest -and -not $intakeAllowed){
+  $result.intake_submission = [ordered]@{ status='SKIPPED_FINALIZER_INTAKE_MODE_NOT_ALLOWED'; public_mode=$publicMode; allowed_modes=@($finalizer.intake_modes); queue_path=$null; growth_signal_path=$null }
+  $result.merge_queue_result = [ordered]@{ status='SKIPPED_FINALIZER_INTAKE_MODE_NOT_ALLOWED'; public_mode=$publicMode }
+  $result.queue_maintenance_result = [ordered]@{ status='SKIPPED_FINALIZER_INTAKE_MODE_NOT_ALLOWED'; public_mode=$publicMode }
+  $actions += "INTAKE_SKIPPED_MODE_NOT_ALLOWED:$publicMode"
 }
 if(-not [bool]$finalizer.enabled){
   $status='FINALIZER_DISABLED_BY_POLICY'
@@ -194,7 +200,7 @@ Status: PROVEN_LIVE
 
 ## Boundary
 
-This finalizer records compact school evidence only. It does not commit raw `.runtime` files and does not change the two-field owner launch contract. The current school uses the local cursor-guided Codex-curriculum candidate factory unless a separate governed Codex-source lane is wired and proven. School PASS also submits a compact knowledge packet to multi-source compact memory intake so autonomous life can react to new knowledge.
+This finalizer records compact school evidence only. It does not commit raw `.runtime` files and does not change the two-field owner launch contract. The current school uses the local cursor-guided Codex-curriculum candidate factory unless a separate governed Codex-source lane is wired and proven. School PASS submits a compact knowledge packet to multi-source compact memory intake only when the current public mode is allowed by finalizer.intake_modes; Test remains validation-only and Live may feed protected memory through the governed intake path.
 "@
     Set-Content -LiteralPath $summaryPath -Value $md -Encoding UTF8
     $check = Get-Content $summaryPath -Raw

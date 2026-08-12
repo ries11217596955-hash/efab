@@ -2614,3 +2614,20 @@ Proof boundary / next parent action:
 - it does not yet choose a concrete external-domain research question, perform external research, or create topic-aware/durable learning;
 - the old `SELF_BUILD_INTERNAL_SEED` self-directed proof is historical/narrow evidence of no-owner waiting plus self-build orientation, not current authority for broad autonomous learning; do not delete it until decommission/caller closure is proven;
 - next parent gap: `knowledge_source_gap -> one concrete useful bounded self-chosen question/topic -> topic-general reasoning -> relevant memory/source gap`, with anti-repeat and no external launch until question-generation/selectivity is proven in LAB.
+
+## 2026-08-12 - School Test/Live finalizer boundary restored
+marker: SCHOOL_TEST_LIVE_FINALIZER_BOUNDARY_20260812
+status: OWNER_DIRECTED_CURRENT_NORM_RESTORED_CANDIDATE
+
+Current School operating decision after fresh code/history reconciliation:
+- Owner-facing School launcher remains one canonical entrypoint: `operations/school/run_agent_school.ps1`;
+- `Topics=AUTO` owns topic/depth/pressure selection and exact-count work remains micro-batched at 100;
+- the older finalizer behavior that submitted every PASS proof to compact-memory intake conflicted with the later canonical contract and lifecycle `commit_modes=Live`;
+- current norm is explicit: `Mode=Test` validates School and finalizes runtime/proof only, with no protected active-memory intake; `Mode=Live` may submit/merge through the governed compact-memory intake path;
+- stopped Test100 incident did not change protected active memory; its disposable runtime/intake artifacts were sanitized and a compact incident manifest is retained at `H:\bridge\reports\school_test100_stopped_incident_20260812.json`;
+- finalizer repair adds `intake_modes=[Live]` and a Test skip gate before submit/merge.
+
+Next parent action after validator/commit:
+1. run canonical `Test100 + Topics=AUTO`; require exact 100 accepted, no intake queue, no protected-memory hash change;
+2. if PASS, checkpoint protected active memory and run canonical `Live100 + Topics=AUTO`; require governed intake/merge, exactly bounded learning result, post-health and memory validation;
+3. only after Live100 PASS choose the next School volume from fresh AUTO/depth/pressure and scale preflight rather than forcing an arbitrary 15k.

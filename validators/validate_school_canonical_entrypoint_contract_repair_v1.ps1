@@ -3,10 +3,14 @@ $errors=@()
 function AddErr([string]$e){ $script:errors += $e }
 $entry='operations/school/run_agent_school.ps1'
 $policy='operations/school/validate_agent_school_canonical_entrypoint_v1.ps1'
+$finalizer='operations/school/finalize_agent_school_run_v1.ps1'
+$lifecycle='operations/school/school_lifecycle_policy.json'
 $proofPath='tests/self_development/SCHOOL_CANONICAL_ENTRYPOINT_CONTRACT_REPAIR_V1_PROOF.json'
 $latestReport='operations/reports/CANONICAL_EXACT_COUNT_CYCLE_RUN_20260722_105408.json'
 if(-not(Test-Path $entry)){ AddErr "missing_entry:$entry" }
 if(-not(Test-Path $policy)){ AddErr "missing_policy:$policy" }
+if(-not(Test-Path $finalizer)){ AddErr "missing_finalizer:$finalizer" }
+if(-not(Test-Path $lifecycle)){ AddErr "missing_lifecycle:$lifecycle" }
 if(-not(Test-Path $latestReport)){ AddErr "missing_test_report:$latestReport" }
 $entryText=''
 if(Test-Path $entry){ $entryText=Get-Content $entry -Raw }
@@ -17,6 +21,15 @@ if($entryText -like '*FINALIZER_STATUS=SKIPPED_EXACT_COUNT_CYCLE_CANONICAL_ROUTE
 $policyOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File $policy *>&1 | ForEach-Object{[string]$_})
 $policyStatus=(($policyOut|Where-Object{$_ -match '^VALIDATION_STATUS='}|Select-Object -Last 1) -replace '^VALIDATION_STATUS=','')
 if($policyStatus -ne 'PASS_AGENT_SCHOOL_CANONICAL_POLICY_V2'){ AddErr "policy_status:$policyStatus" }
+$finalizerText=if(Test-Path $finalizer){Get-Content $finalizer -Raw}else{''}
+$lifecycleJson=if(Test-Path $lifecycle){Get-Content $lifecycle -Raw|ConvertFrom-Json}else{$null}
+if($finalizerText -notlike '*$intakeAllowed = @($finalizer.intake_modes) -contains $publicMode*'){ AddErr 'finalizer_intake_mode_gate_missing' }
+if($finalizerText -notlike '*SKIPPED_FINALIZER_INTAKE_MODE_NOT_ALLOWED*'){ AddErr 'finalizer_test_skip_status_missing' }
+if($lifecycleJson){
+  $intakeModes=@($lifecycleJson.finalizer.intake_modes)
+  if($intakeModes.Count -ne 1 -or $intakeModes[0] -ne 'Live'){ AddErr ('lifecycle_intake_modes:'+($intakeModes -join ',')) }
+  if($intakeModes -contains 'Test'){ AddErr 'test_mode_must_not_be_intake_mode' }
+}
 $r=$null
 if(Test-Path $latestReport){ $r=Get-Content $latestReport -Raw|ConvertFrom-Json }
 if($r){
@@ -43,6 +56,10 @@ $proof=[ordered]@{
   owner_command='powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/run_agent_school.ps1 -Count <N> -Mode Live -Topics AUTO'
   policy_validator=$policy
   policy_status=$policyStatus
+  finalizer=$finalizer
+  lifecycle=$lifecycle
+  finalizer_intake_modes=if($lifecycleJson){@($lifecycleJson.finalizer.intake_modes)}else{@()}
+  test_intake_allowed=if($lifecycleJson){@($lifecycleJson.finalizer.intake_modes) -contains 'Test'}else{$null}
   test_report=$latestReport
   test_status=if($r){$r.status}else{$null}
   test_accepted_count=if($r){$r.accepted_count}else{$null}
