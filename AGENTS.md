@@ -1,601 +1,173 @@
-# AGENTS.md Ã¢â‚¬â€ EF Agent Builder Codex Command File
+# AGENTS.md — Codex execution contract
 
-Status: ACTIVE_CODEX_COMMAND_FILE_V3
-Owner decision: AGENTS.md is a command file, not a history archive.
-Purpose: guide Codex to work productively and safely without wasting context or acting as Builder brain.
+## Purpose
 
-If this file conflicts with chat history, old reports, old route notes, or stale generated maps, this file wins for Codex execution.
+This file is the repo-local command contract for Codex and other bounded external executors working in `H:\efab`.
 
----
+**AGENTS.md is a command file, not a history archive, proof ledger, status snapshot, Notebook, or source of current runtime truth.**
 
-## 1. Current repo identity
+Do not add dated progress, old phase summaries, proof counts, historical PASS lists, debt history, or current-state claims here. Resolve current reality from fresh repo/runtime evidence and from the exact task package.
 
-Canonical active local root:
+## 1. Role boundary
 
-```text
-H:\efab
-```
-
-Canonical active GitHub remote:
-
-```text
-https://github.com/ries11217596955-hash/efab.git
-```
-
-Required branch:
-
-```text
-main
-```
-
-Current clean-line boundary:
-
-```text
-ACTIVE_WORKING_REPO=H:\efab
-ACTIVE_GITHUB_REPO=ries11217596955-hash/efab
-OLD_REPO=C:\Users\Azerbaijan\Downloads\e-factory-agent-builder
-OLD_REPO_ROLE=ARCHIVE_REFERENCE_ONLY
-OLD_GIT_HISTORY_DEPENDENCY=NO
-```
-
-Required identity markers:
-
-```text
-CAPABILITY_ROADMAP.json
-GENESIS_STATE.json
-TASK_QUEUE.json
-packs/registry.json
-orchestrator/run.ps1
-AGENTS.md
-reports/self_development/SELF_MODEL_ACTIVE_MAP.json
-```
-
-Remote identity gate:
-
-```text
-Expected origin URL must be exactly or resolve to:
-https://github.com/ries11217596955-hash/efab.git
-```
-
-Preflight rule:
-
-```text
-If cwd/root is not H:\efab, or branch is not main, or origin is not efab.git:
-STATUS: BLOCKED_PREFLIGHT
-STOP: REPO_CONTEXT_MISMATCH
-```
-
-Historical path rule:
-
-```text
-C:\Users\Azerbaijan\Downloads\e-factory-agent-builder is old archive/reference only.
-Do not use it as current body.
-Do not commit, push, validate readiness, or run Builder growth from the old path unless Owner explicitly requests archive recovery.
-```
-
-
-## 2. Current route snapshot
-
-Active work line:
-
-```text
-AGENT_BUILDER_SELF_DEVELOPMENT
-```
-
-Immediate route:
-
-```text
-1. Keep Codex bounded and productive through this AGENTS.md.
-2. Current route is EXISTING_SCHOOL_ABSORPTION_DIAGNOSTIC, not new school construction.
-3. Do not build a new school from scratch; existing school/acceptance proofs already cover 100, 1000, 3000, 5000, and 30000 lab mechanics.
-4. Next work must diagnose/wire the existing canonical route: useful school -> Phase162/Phase165 acceptance -> accepted atom retention/compact storage -> retrieval -> decision reuse -> behavior delta proof.
-5. REAL_DELTA_SCHOOL_ORGAN_V1_STAGE1 and related dry-run/resource-guard work are LAB_ADAPTER_CANDIDATE / SIDE_PROBE unless Owner explicitly promotes them.
-6. Do not continue REAL_DELTA_SCHOOL_SCALE_GATE_V1 as route; it is SUPERSEDED_WRONG_DIRECTION because N is a parameter, not architecture.
-7. Canonical school owner interface is defined by operations/school/SCHOOL_CANONICAL_RUN_CONTRACT_V1.md: TargetAccepted + RunKind(Test|Real), with internal 5000/100 scheduler.
-8. GPT operator continuity lives in AGENT_BUILDER_SELF_NOTEBOOK.md; GPT must read it and the self-map before choosing route.
-9. runtime_ready=false.
-```
-
-Current known state:
-
-```text
-EXISTING_SCHOOL_PROOFS: PASS for curriculum supervisor 3000, useful ladder 5000, school 30000, batch 100, runtime 1000, durable retrieval 100.
-ACTIVE_ACCEPTED_SURFACES: THINNED_REQUIRES_STORAGE_ORGAN_BEFORE_RUNTIME_USE for accepted memory snapshot, self model active map, and packs registry.
-SCHOOL_ROUTE_DEDUP_AUDIT_V1: CLASSIFICATION_ONLY_NO_DELETE; canonical=1, internal_support=99, broken_support=12, quarantine_side_probe=59, superseded=3.
-MAIN_GAP: accepted atoms are proven in lab/retrieval paths but not yet wired as canonical active behavior absorption.
-REAL_DELTA_SCHOOL_EXISTING_BODY_SCAN_V1: VALID as reference.
-REAL_DELTA_SCHOOL_ORGAN_V1_PASSPORT_CONTRACT: design reference only, not canonical route.
-REAL_DELTA_SCHOOL_CYCLE_V1 / REVIEW: LAB harness references, not live intelligence.
-SELF_MAP_ROLLUP_POLICY: atom/subchunk map updates blocked; rollup/capability/module/organ updates allowed.
-runtime_ready=false
-```
-
-
----
-## 2A. Hard Codex context budget gate
-
-When a task package gives an exact read list, that list is the context budget.
-
-Codex must not read the whole repo to “understand context”.
-
-Allowed discovery before PREFLIGHT_PASS:
-
-```text
-git status --short
-git rev-parse --short HEAD
-git rev-list --left-right --count HEAD...origin/main
-git ls-files <explicit pathspecs from task only>
-Select-String / grep only over explicit pathspecs from task
-Get-ChildItem only for explicit shallow directories named in task
-```
-
-Forbidden unless the task explicitly grants `ALLOW_BROAD_REPO_SCAN=true`:
-
-```text
-git ls-files without pathspecs
-Get-ChildItem -Recurse from repo root
-reading all reports/**
-reading all tests/**
-reading all operations/**
-reading all modules/**
-reading all docs/**
-opening legacy maps as authority
-```
-
-If Codex needs a file outside the task read list, it must stop with:
-
-```text
-STATUS: BLOCKED_PREFLIGHT
-BLOCKER: READ_BUDGET_EXPANSION_REQUIRED
-REQUESTED_FILES:
-WHY_NEEDED:
-FILES_CHANGED_BEFORE_PREFLIGHT_PASS: NO
-```
-
-For map/body/self-model work, old maps are never authority unless the task explicitly says so. They may only be used as bounded hints, hashes, or deletion targets.
-Codex context budget cut-list:
-
-```text
-Do not ingest whole repo.
-Do not read zz_MUSORKA_DO_NOT_READ_BY_CODEX unless explicitly asked.
-Do not restore operations/quarantine blindly; quarantine is reference material only.
-Do not inspect generated self-map state/report/logs unless the task is map validation.
-Prefer exact file list from task + AGENTS.md + active validators/proofs only.
-```
-
-Do not claim any school, map, runtime, or live capability is fixed without fresh validator/runtime/proof evidence.
-
----
-## 3. Codex role boundary
-
-Codex is a bounded builder / repair / audit / launcher tool.
+Codex is a bounded executor for implementation, repair, audit, and validation.
 
 Codex is not:
 
-```text
-Builder brain
-accepted truth source
-live runtime supervisor
-unbounded executor
-child-agent factory
-replacement for proof
-```
+- Builder brain or identity;
+- accepted truth or acceptance authority;
+- live supervisor;
+- unbounded repo explorer;
+- autonomous child-agent factory;
+- authority to mutate protected/live/remote surfaces.
 
-Codex output is `CODEX_DRAFT` until validated by repo/test/runtime/proof evidence.
+Codex output is `CODEX_DRAFT` until Builder independently validates and accepts it.
 
-Codex may be active and productive.
-Safety means planned, bounded, validated execution Ã¢â‚¬â€ not waiting for Owner after every step.
+## 2. Task authority and scope
 
----
+Act only on the explicit current task package from Owner/Builder.
 
-## 4. Mandatory one-pass workflow
+The task package must bound:
 
-Codex must not execute blindly.
+- allowed reads / context budget;
+- allowed output files;
+- requirements and cut list;
+- validators / proof expected;
+- action class and environment where relevant.
 
-For every task:
+Do not infer mutation authority from tool availability, prior work, old reports, branches, proofs, or this file.
 
-```text
-1. Read AGENTS.md.
-2. Read the task.
-3. Restate the task goal.
-4. Define in-scope work.
-5. Define out-of-scope work.
-6. List files expected to read.
-7. List files expected to change.
-8. Create a brief execution plan.
-9. Create a validation plan.
-10. Run bounded read-only preflight diagnosis.
-11. If no blockers: declare PREFLIGHT_PASS and execute in the same run.
-12. If blockers: declare BLOCKED_PREFLIGHT and do not modify files.
-13. Validate.
-14. Report.
-```
+## 3. Mandatory PREFLIGHT before writes
 
-Default rule:
+Before any file write:
 
-```text
-plan briefly, then execute
-```
+1. confirm repo root, branch, HEAD, and `git status --short`;
+2. read this applicable `AGENTS.md`;
+3. verify every allowed output path and that no unexpected dirty state overlaps the task;
+4. verify every required input/validator named by the task exists;
+5. verify the requested work stays inside the exact scope.
 
-Codex does not wait for Owner approval after every plan.
-
-Codex stops only when:
-
-```text
-repo/branch/head mismatch
-dirty worktree blocks task
-scope is unclear
-validation is missing or impossible
-task touches protected files/state not explicitly in scope
-live/runtime/accepted-core/settings/route may be affected
-AGENTS.md conflicts with task
-task asks for broad "fix everything"
-task requires long attached waiting
-task would make Codex the brain/supervisor
-```
-
----
-
-## 5. Required preflight before mutation
-
-Before modifying files, Codex must include:
-
-```text
-TASK UNDERSTANDING:
-IN SCOPE:
-OUT OF SCOPE:
-FILES I EXPECT TO READ:
-FILES I EXPECT TO CHANGE:
-EXECUTION PLAN:
-VALIDATION PLAN:
-STOP IF:
-PREFLIGHT_DECISION: PREFLIGHT_PASS or BLOCKED_PREFLIGHT
-Files changed before PREFLIGHT_PASS: YES/NO
-```
-
-Expected:
-
-```text
-Files changed before PREFLIGHT_PASS: NO
-```
-
-Plan must be bounded, file-aware, validation-aware, and not a broad repo mutation.
-
----
-
-## 6. If PREFLIGHT_PASS
-
-Codex may execute without extra Owner approval when:
-
-```text
-task is bounded
-scope is clear
-target files are identified
-validation is defined
-protected state is not touched outside explicit scope
-no hidden live/runtime risk
-no AGENTS.md conflict
-```
-
-Then Codex should make the smallest sufficient change, run validation, and report evidence.
-
----
-
-## 7. If BLOCKED_PREFLIGHT
-
-Codex must not modify/create/delete/move/rename files.
-
-Return blockers in batch, not one-by-one.
-
-Required report:
+If any blocker exists, return:
 
 ```text
 STATUS: BLOCKED_PREFLIGHT
-TASK_UNDERSTANDING:
-PREFLIGHT_SCOPE_CHECKED:
-BLOCKERS:
-RISKS_NOT_BLOCKING:
-DUPLICATES_OR_CONFLICTS:
-MISSING_INFORMATION:
-PROPOSED_RESOLUTION_OPTIONS:
-RECOMMENDED_NEXT_ACTION:
-FILES_READ:
-FILES_NOT_READ_AND_WHY:
-Files changed before PREFLIGHT_PASS: NO
+BLOCKER: <reason>
+FILES_CHANGED_BEFORE_PREFLIGHT_PASS: NO
 ```
 
-Do not invent blockers to avoid work.
+No writes before `PREFLIGHT_PASS`.
 
----
+## 4. Hard context budget
 
-## 8. Read budget and navigation
+When the task gives an exact read list, that list is the context budget.
 
-Codex must not burn context by reading everything.
-
-Read order:
+Allowed bounded discovery may include:
 
 ```text
-1. AGENTS.md
-2. user's task
-3. exact files named in task
-4. local AGENTS.md files only if present in target subtree
-5. narrow modules/validators/tests/contracts relevant to task
-6. targeted search only if exact file unknown
-7. broader repo scan only if preflight proves narrow scan insufficient
+git status --short
+git rev-parse HEAD
+git branch --show-current
+git ls-files <explicit pathspecs>
+Select-String / grep over explicit task paths
+shallow listing of explicitly named directories
 ```
 
-Read first for current Builder work:
+Forbidden unless the task explicitly expands scope:
+
+- repo-root recursive scans;
+- reading all `reports/**`, `tests/**`, `operations/**`, `modules/**`, or `docs/**`;
+- reading quarantine or legacy trees as authority;
+- reading `AGENT_BUILDER_SELF_NOTEBOOK.md` merely to discover work;
+- opening historical proofs to manufacture current status.
+
+If another file is needed, stop and request bounded read-budget expansion.
+
+## 5. Fresh truth and continuity boundary
+
+Fresh scoped proof wins over static text, Notebook, reports, old maps, transcripts, or Codex claims.
+
+`AGENT_BUILDER_SELF_NOTEBOOK.md` is GPT/Builder continuity, not Codex history to ingest by default. Read it only when the task explicitly includes it.
+
+Current repo/runtime/live status must be observed fresh for the claimed scope. Never copy a volatile status into this file.
+
+## 6. Protected and live surfaces
+
+Treat active memory and live runtime as protected.
+
+Without explicit scoped authority, do not:
+
+- delete/recreate/migrate `.runtime` active compact memory;
+- mutate live processes, services, Scheduled Tasks, Bridge channels, tunnels, or credentials;
+- perform remote Git/GitHub mutation;
+- run destructive cleanup;
+- transplant LAB artifacts into LIVE/accepted-core;
+- overwrite generated registries/maps manually when a generator owns them.
+
+`LAB_PROOF != LIVE_PROOF` and proof never grants mutation authority.
+
+## 7. Implementation discipline
+
+Prefer reuse and the smallest bounded change.
+
+Do not create a new School, memory system, organ, framework, recovery product, or duplicate route when an existing canonical mechanism can satisfy the task.
+
+Do not broaden a repair into cleanup/refactor unless explicitly requested.
+
+Do not silently delete history or accepted behavior. Decommission requires explicit scope and proof.
+
+For School work, use the canonical owner interface only when the task names it:
+
+`operations/school/SCHOOL_CANONICAL_RUN_CONTRACT_V1.md`
+
+Do not infer School readiness or progress from this `AGENTS.md`.
+
+## 8. Validation and proof
+
+A validator must match the claim scope and, where relevant, state:
+
+- inputs;
+- procedure;
+- pass/fail rule;
+- claims proven;
+- `does_not_prove`;
+- negative tests.
+
+Structural PASS does not prove semantic behavior. One smoke does not prove stability. A changed model/config requires revalidation.
+
+Before handoff, run task-scoped validators and `git diff --check` for changed repo files.
+
+## 9. Commit and remote discipline
+
+Do not commit, push, force-push, rebase, reset history, or mutate remote state unless the current task explicitly authorizes it.
+
+If commit is authorized, stage only the accepted task files and verify staged scope before commit.
+
+If push is authorized, fetch first and prove non-divergence / fast-forward safety. Never use force as a convenience.
+
+## 10. Required output contract
+
+Return a compact execution report containing:
 
 ```text
-AGENTS.md
-README.md
-AGENT_MISSION.md
-CAPABILITY_ROADMAP.json
-GENESIS_STATE.json
-TASK_QUEUE.json
-orchestrator/run.ps1
-modules/run_ephemeral_candidate_controlled_runtime_v1.ps1
-modules/invoke_accepted_atom_retention_compactor_v1.ps1
-modules/invoke_accepted_atom_retention_gate_v1.ps1
-modules/generate_structured_ephemeral_candidate_batch_v1.ps1
-validators/
-tests/accepted_atom_retention/
-contracts/controlled_runtime/
-```
-
-Do not read by default:
-
-```text
-.runtime/**
-reports/**
-proofs/**
-runtime_sessions/**
-zz_MUSORKA_DO_NOT_READ_BY_CODEX/**
-raw_shards/**
-**/*.jsonl
-runner stdout/stderr dumps
-old logs
-old frozen source repo paths
-large historical report folders
-```
-
-Exception: exact task asks for a specific evidence path.
-
----
-
-## 9. Protected areas
-
-Do not touch unless task explicitly includes them:
-
-```text
-.git/**
-.runtime/**
-proofs/**
-raw_shards/**
-old reports/log dumps
-accepted-core / D2B rules
-settings/Knowledge law files
-route locks / phase pointers
-AGENTS.md itself
-```
-
-AGENTS.md may be edited only by explicit AGENTS.md update task.
-
----
-
-## 10. Runtime and cleanup boundary
-
-`.runtime/**` is ignored runtime evidence/temp material.
-
-Rules:
-
-```text
-never commit .runtime/**
-do not edit .runtime/**
-do not delete .runtime/** unless task explicitly says controlled cleanup
-before cleanup, check no matching runtime process is running
-compact proof/evidence before deleting runtime evidence
-```
-
-Long runtime must be detached.
-
-For long runs, Codex must launch detached and return:
-
-```text
-PID
-runtime root
-heartbeat path
-summary path
-stdout path
-stderr path
-stopfile path
-git status count
-next inspect command
-runtime_ready=false
-```
-
----
-
-
-## 10A. Proof execution budget and no validation loop
-
-Codex must not become runtime/proof supervisor.
-
-Default: Codex patches. Owner terminal proves.
-
-Codex may run only: static checks; syntax checks; small read-only diagnostics; one explicitly scoped quick smoke check.
-
-Codex must not run: repair/validate/retry loops; attached multi-cycle runtime proofs; attached 8-cycle proof loops; attached 45-cycle proof; StructuredV1 30000; long polling of PowerShell validators; waiting for runtime/agent completion.
-
-If a proof, validator, runtime, or helper process needs polling, repeated retries, or more than a short smoke window, Codex must stop attached waiting and return PID/root/heartbeat/summary/stdout/stderr/stopfile if detached, or return exact Owner PowerShell command to run outside Codex.
-
-After a failed proof Codex must report the exact failure, report files changed, report validation attempted, and stop.
-
-Codex must not silently patch and rerun proof again unless the task explicitly says: ALLOW_CODEX_VALIDATION_LOOP=true.
-
-For Builder runtime work, 8-cycle, 45-cycle, and larger proofs are Owner-terminal or detached-proof responsibilities, not Codex waiting responsibilities.
-
-## 11. Commit policy
-
-Codex must not commit unless the task explicitly allows commit.
-
-If commit is allowed:
-
-```text
-run validation first
-inspect changed files
-include commit hash in report
-include git status count after commit
-```
-
-If commit is not allowed:
-
-```text
-leave diff uncommitted
-report changed files
-report validation result
-```
-
----
-
-## 12. Validation and proof language
-
-Do not claim:
-
-```text
-fixed
-works
-accepted
-synced
-clean
-complete
-runtime_ready=true
-```
-
-unless fresh proof supports it.
-
-Use statuses:
-
-```text
-CODEX_DRAFT
-PREFLIGHT_PASS
-BLOCKED_PREFLIGHT
-VALIDATOR_PASS
-PROOF_PASS
-VALIDATED_PENDING_ACCEPTANCE
-ACCEPTED_LOCAL
-OWNER_DECISION_REQUIRED
-QUARANTINED
-ROLLBACK_REQUIRED
-```
-
-`runtime_ready` remains false unless Owner explicitly authorizes a route that proves otherwise.
-
----
-
-## 13. Shell and terminal discipline
-
-Before commands, identify shell:
-
-```text
-PowerShell
-Bash / Git Bash
-CodeSpace Linux shell
-```
-
-Do not mix Bash syntax with PowerShell.
-
-PowerShell owner-facing blocks should prefer soft STOP markers:
-
-```powershell
-$Continue = $true
-if (-not (Test-Path "CAPABILITY_ROADMAP.json")) {
-  Write-Host "STOP=WRONG_AGENT_BUILDER_REPO"
-  $Continue = $false
-}
-```
-
-Avoid `exit` in long owner-facing PowerShell blocks when soft STOP is safer.
-
----
-
-## 14. Final report standard
-
-Every Codex task ends with:
-
-```text
-CODEX_DELIVERY_REPORT
 STATUS:
-PREFLIGHT_DECISION:
-Files changed before PREFLIGHT_PASS: YES/NO
-TASK_UNDERSTANDING:
-PLAN_USED:
-FILES_READ:
 FILES_CHANGED:
-COMMANDS_RUN:
-VALIDATION_RESULT:
-DIFF_SUMMARY:
-RISKS:
+VALIDATORS:
+PROOF:
 LIMITATIONS:
-COMMIT:
-RUNTIME_READY=false
-NEXT_RECOMMENDED_STEP:
+RISKS:
+NEXT_SAFE_ACTION:
 ```
 
-If not committed:
+If blocked, say exactly what is missing. Do not report completion from draft text, tool availability, or partial execution.
 
-```text
-COMMIT=NONE
-WHY_NOT_COMMITTED:
-```
+## 11. Cut list
 
----
+Do not:
 
-## 15. Maintenance rule
-
-This AGENTS.md is Codex-facing guidance, not source of truth.
-
-If route/self-map/current runtime reality changes:
-
-```text
-AGENTS.md may become stale
-Codex must not silently rely on stale map
-update AGENTS.md only through explicit AGENTS.md update task
-```
-
-This file must stay compact.
-Do not turn AGENTS.md into a ledger, report, or archive.
-
-
-
-
----
-
-## 16. Current school route lock
-
-Owner-facing school launch has exactly one entrypoint:
-
-```powershell
-operations/school/run_agent_school.ps1 -Count <N> -Mode <Test|Live> -Topics <AUTO|topic1,topic2>
-```
-
-Owner-facing launch fields are exactly:
-
-```text
-Count
-Mode = Test | Live
-Topics = AUTO | comma-separated topic keys
-```
-
-`TopicsPlan`, `PatchSize`, candidate factory, streaming, quality gate, digest, source router, finalizer, and autonomous cycle controller are internal helpers only. PatchSize is internally fixed at 1000. They must not be presented as separate school launches.
-
-School completion means compact memory update proof exists. If compact memory is not updated, the school run is not complete; it is blocked, failed, or pending.
-
-Codex remains a bounded material authoring tool before school. Codex task files are not school launch routes and must not be treated as active school entrypoints.
-
-Do not use or recreate deleted old school pointers. Current school route truth is only the single Owner launch above.
-
-
-## Partial school progress rule
-
-Patch ledger states `ABSORBED` and `CLEANED_AFTER_ABSORPTION` count as memory progress after restart. Other patch states do not count and must be quarantined or regenerated. Count is a ceiling, not equal budget per topic.
+- turn this file back into history/proof/status storage;
+- ingest the whole repo for context;
+- treat old maps/reports as current authority;
+- touch protected memory by default;
+- mutate live/remote surfaces without scoped authority;
+- create duplicate architecture instead of reusing the existing body;
+- claim acceptance because Codex wrote code or a validator returned an unrelated PASS.

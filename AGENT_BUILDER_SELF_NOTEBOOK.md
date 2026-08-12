@@ -2535,3 +2535,26 @@ status: DEFERRED_OWNER_ACCEPTED_DEBT
 - NVIDIA Installer2 master uninstall hangs in SYSTEM session and does not actually remove CUDA.
 - Do NOT manually delete the CUDA directory or registry/PATH components.
 - Next allowed completion path: run the registered NVIDIA CUDA uninstall from an interactive user Windows session, then validate PATH/CUDA_PATH cleanup, `nvidia-smi`, Builder/Bridge health, and reclaimed space.
+## 2026-08-12 - Current debts and Builder thinking correction
+marker: CURRENT_DEBTS_AND_THINKING_CORRECTION_20260812
+status: ACCEPTED_OWNER_DIRECTION
+
+Owner decisions / current debts:
+- C-drive cleanup is STOPPED. Ubuntu/WSL, Python, hibernation, and other ambiguous functional components are not cleanup targets without a recovered requirement and fresh proof.
+- CUDA 13.1 interactive uninstall remains a deferred accepted debt. Complete only from an interactive Windows user session with post-uninstall PATH/CUDA_PATH, `nvidia-smi`, Builder/Bridge health, and reclaimed-space validation.
+- GitHub sync remains a debt. Before any push: prove current auth, fetch, compare local/origin, require no divergence, then push normally and verify `origin/main == local HEAD`. No force/rebase/history rewrite by default.
+- `AGENTS.md` is a Codex command contract only. Historical/proof/current-status material belongs in Notebook, reports/proofs, or fresh runtime/repo observation; do not repopulate AGENTS.md with a status ledger.
+
+Builder thinking architecture correction:
+- `MEMORY != NEXT_TOPIC`.
+- The next thinking topic/frontier is selected from Owner task, parent task, fresh reality, unresolved gaps, priorities, safety/recovery needs, and bounded exploration. A newly learned atom must not automatically select or lock the next topic.
+- A useful new atom enters the shared accepted memory through the governed admission path. It strengthens available experience, not thematic inertia.
+- Selective retrieval happens after the current topic/context is chosen. Irrelevant atoms should remain silent.
+- Retrieval should support both direct relevance and cross-domain transfer through reusable principles/abstractions.
+- Anti-fixation requirement: the next cycle must be free to move to an unrelated topic when the parent/frontier requires it.
+- The next learning/reuse proof must test at least: durability of a newly admitted atom, non-interference on an unrelated topic, relevant reuse when the atom matters, and cross-domain transfer when an abstraction is genuinely relevant. A forced same-topic second cycle is not sufficient proof of healthy thinking.
+
+AIMO sandbox-memory seam status:
+- the previous unaccepted seam patch was removed from the working tree before AGENTS hygiene and preserved externally at `H:\bridge\reports\aimo_sandbox_memory_seam_unaccepted_20260812.patch`;
+- patch SHA256: `9C8B01CB65A766A823D0276142993C8A0ABA5C5D80DD81CB842F27AD76E1AEC5`;
+- do not reapply it blindly; re-evaluate the minimal sandbox-memory injection seam against the corrected non-fixation validator design.
