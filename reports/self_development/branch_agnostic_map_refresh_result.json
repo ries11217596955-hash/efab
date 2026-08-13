@@ -1,24 +1,22 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-08-13T14:37:22.1810416+04:00",
+    "checked_at":  "2026-08-13T15:18:19.7132797+04:00",
     "branch":  "main",
-    "observed_head":  "cafa2add479ed969626c6b9cf6cb90cc7ec26a5d",
-    "subject_head":  "cafa2add479ed969626c6b9cf6cb90cc7ec26a5d",
+    "observed_head":  "53a61cfd37c58fa97b90b19cc9c5ef24920fe844",
+    "subject_head":  "53a61cfd37c58fa97b90b19cc9c5ef24920fe844",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "operations/school/run_agent_school.ps1",
+                          "docs/operations/SCHOOL_RUN_RESULT_20260813_143657_Live_500_canonical_exact_count_cycle_real_500_20260813_141626.md",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
-                          "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "validators/validate_school_canonical_entrypoint_contract_repair_v1.ps1"
+                          "reports/self_development/branch_agnostic_map_refresh_result.json"
                       ],
     "structural_paths":  [
-                             "operations/school/run_agent_school.ps1",
-                             "validators/validate_school_canonical_entrypoint_contract_repair_v1.ps1"
+                             "docs/operations/SCHOOL_RUN_RESULT_20260813_143657_Live_500_canonical_exact_count_cycle_real_500_20260813_141626.md"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -31,7 +29,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  2303,
-                                    "sha256":  "ab058fab1dccb824d3ebf09a6b7c9382748cb18637ec3ed5d8289e34cff99866"
+                                    "sha256":  "80cef2b101c6ab4882bc4478274c41ed6202473200d363ed4c7164fde9c7b291"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -64,5 +62,5 @@
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-08-13T14:41:51.2241307+04:00"
+    "refreshed_at":  "2026-08-13T15:22:56.2548684+04:00"
 }

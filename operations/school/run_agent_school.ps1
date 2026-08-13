@@ -235,6 +235,36 @@ function Resolve-SchoolCodexCli {
   return [ordered]@{status='PASS_SCHOOL_CODEX_CLI_RESOLUTION_V1';exe=$uniq[0].exe;home=$uniq[0].home;source=$uniq[0].source;version=$uniq[0].version;login_status=$uniq[0].login_status}
 }
 
+function Resolve-SchoolPythonRuntime {
+  $explicit=[string]$env:EFAB_PYTHON_EXE
+  $candidates=New-Object System.Collections.Generic.List[object]
+  function Add-PythonCandidate([string]$Exe,[string]$Source){
+    if([string]::IsNullOrWhiteSpace($Exe) -or -not(Test-Path -LiteralPath $Exe)){ return }
+    $resolved=(Resolve-Path -LiteralPath $Exe).Path
+    if(@($candidates|Where-Object{$_.exe -eq $resolved}).Count -eq 0){ $candidates.Add([pscustomobject][ordered]@{exe=$resolved;source=$Source})|Out-Null }
+  }
+  if(-not[string]::IsNullOrWhiteSpace($explicit)){ Add-PythonCandidate $explicit 'EFAB_EXPLICIT' }
+  foreach($name in @('python.exe','python3.exe','python')){ $g=Get-Command $name -ErrorAction SilentlyContinue; if($g){ Add-PythonCandidate ([string]$g.Source) 'PATH' } }
+  foreach($u in @(Get-ChildItem 'C:\Users' -Directory -Force -ErrorAction SilentlyContinue)){
+    foreach($py in @(Get-ChildItem (Join-Path $u.FullName 'AppData\Local\Programs\Python') -Directory -Filter 'Python*' -ErrorAction SilentlyContinue | ForEach-Object{Join-Path $_.FullName 'python.exe'})){ Add-PythonCandidate $py 'PROFILE_LOCAL_PROGRAMS' }
+  }
+  $healthy=New-Object System.Collections.Generic.List[object]
+  foreach($c in $candidates){
+    $oldEap=$ErrorActionPreference
+    try{
+      $ErrorActionPreference='Continue'
+      $ver=@(& ([string]$c.exe) --version 2>&1|ForEach-Object{[string]$_}); $verExit=$LASTEXITCODE
+      $smoke=@(& ([string]$c.exe) -c 'import sys; print(sys.executable)' 2>&1|ForEach-Object{[string]$_}); $smokeExit=$LASTEXITCODE
+      if($verExit -eq 0 -and $smokeExit -eq 0 -and (($ver -join ' ') -match 'Python\s+(\d+\.\d+\.\d+)')){ $healthy.Add([pscustomobject][ordered]@{exe=[string]$c.exe;source=[string]$c.source;version=$Matches[1];smoke=($smoke -join ' ').Trim()})|Out-Null }
+    } finally { $ErrorActionPreference=$oldEap }
+  }
+  if($healthy.Count -eq 0){ throw 'SCHOOL_PYTHON_RESOLUTION_FAILED:NO_HEALTHY_RUNTIME' }
+  $chosen=$null
+  if(-not[string]::IsNullOrWhiteSpace($explicit) -and (Test-Path -LiteralPath $explicit)){ $explicitResolved=(Resolve-Path -LiteralPath $explicit).Path; $chosen=@($healthy|Where-Object{$_.exe -eq $explicitResolved}|Select-Object -First 1) }
+  if($null -eq $chosen -or @($chosen).Count -eq 0){ $chosen=@($healthy|Sort-Object @{Expression={[version]$_.version};Descending=$true},exe|Select-Object -First 1) }
+  $chosen=@($chosen)[0]
+  return [ordered]@{status='PASS_SCHOOL_PYTHON_RUNTIME_RESOLUTION_V1';exe=[string]$chosen.exe;source=[string]$chosen.source;version=[string]$chosen.version;smoke=[string]$chosen.smoke}
+}
 function Stop-ProcessTreeByRootPid([int]$RootPid){ $children=@(Get-CimInstance Win32_Process | Where-Object { $_.ParentProcessId -eq $RootPid }); foreach($child in $children){ Stop-ProcessTreeByRootPid -RootPid ([int]$child.ProcessId) }; try{ Stop-Process -Id $RootPid -Force -ErrorAction SilentlyContinue }catch{} }
 $mem='.runtime/active_compact_semantic_memory_v1'
 $memoryBefore=[ordered]@{manifest=Sha "$mem/manifest.json"; index=Sha "$mem/index.json"; cells=Sha "$mem/cells.jsonl"}
@@ -439,10 +469,16 @@ if($ProducerMode -eq 'MockProducer'){
   [void]$promptLines.Add('Use schema=codex_school_patch_candidate_v1, topic_key exactly TOPIC_KEY, source_basis as a non-empty array or source_missing=true, and depth_level between START_DEPTH and TARGET_DEPTH.')
   [void]$promptLines.Add('After all READY markers and DONE marker are written, stop.')
   $promptLines | Set-Content -LiteralPath $promptPath -Encoding UTF8
+  $pythonResolution=Resolve-SchoolPythonRuntime
+  $env:EFAB_PYTHON_EXE=[string]$pythonResolution.exe
+  $pythonDir=Split-Path -Parent ([string]$pythonResolution.exe)
+  $pathParts=@([string]$env:PATH -split ';' | Where-Object{-not[string]::IsNullOrWhiteSpace($_)})
+  if($pathParts -notcontains $pythonDir){ $env:PATH=($pythonDir+';'+[string]$env:PATH) }
   $codexResolution=Resolve-SchoolCodexCli
   $codexCmd=[string]$codexResolution.exe
   $env:CODEX_HOME=[string]$codexResolution.home
   $cmdLine='""{0}" exec -C "{1}" --dangerously-bypass-approvals-and-sandbox --ephemeral - < "{2}" > "{3}" 2> "{4}""' -f $codexCmd,$repoRoot,$promptPath,$stdoutPath,$stderrPath
+  AddEvent 'PYTHON_RUNTIME_RESOLUTION' @{status=$pythonResolution.status; exe=$pythonResolution.exe; source=$pythonResolution.source; version=$pythonResolution.version}
   AddEvent 'CODEX_RESOLUTION' @{status=$codexResolution.status; exe=$codexCmd; home=$codexResolution.home; source=$codexResolution.source; version=$codexResolution.version}
   AddEvent 'CODEX_LAUNCH' @{prompt_path=$promptPath; timeout_seconds=$CodexTimeoutSeconds; exe=$codexCmd; codex_home=$codexResolution.home; execution_mode='BOUNDED_BYPASS_WINDOWS_SYSTEM'; output_contract='WAREHOUSE_ONLY_NO_ACTIVE_MEMORY_NO_TRACKED_WRITES'}
   $p=Start-Process -FilePath $env:ComSpec -ArgumentList @('/d','/c',$cmdLine) -NoNewWindow -PassThru

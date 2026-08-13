@@ -27,7 +27,7 @@ foreach($forbidden in @('school_singleton_v1','ACTIVE_RUN.lock.json','SCHOOL_SIN
   if($entryText.Contains($forbidden)){ AddErr ('school_redundant_filesystem_singleton_present:'+ $forbidden) }
 }
 if($entryText -like '*$p.WaitForExit($CodexTimeoutSeconds*1000)*'){ AddErr 'school_streaming_waitforexit_before_consume_present' }
-foreach($needle in @('STREAM_READY_WINDOW_DETECTED','STREAM_DIGEST_WINDOW_WAIT','STREAM_BATCH_CONSUMED','streaming_enabled','producer_completed_at','first_consume_started_at','stream_batches','overlap_proven','DigestWindowAtoms = 1000','MicroBatchSize=100','-MaxConsumeBatches $maxConsume')){
+foreach($needle in @('STREAM_READY_WINDOW_DETECTED','STREAM_DIGEST_WINDOW_WAIT','STREAM_BATCH_CONSUMED','streaming_enabled','producer_completed_at','first_consume_started_at','stream_batches','overlap_proven','DigestWindowAtoms = 1000','MicroBatchSize=100','-MaxConsumeBatches $maxConsume','Resolve-SchoolPythonRuntime','PASS_SCHOOL_PYTHON_RUNTIME_RESOLUTION_V1','EFAB_PYTHON_EXE','PYTHON_RUNTIME_RESOLUTION')){
   if($entryText -notlike ('*'+$needle+'*')){ AddErr ('school_streaming_contract_missing:'+ $needle) }
 }
 if($entryText -like '*Invoke-SchoolWarehouseConsumer -MacroTaskJsonPath $taskJson -MaxConsumeBatches 1 -MaxWaitSeconds 0 -Absorb*'){ AddErr 'school_digest_window_regressed_to_one_batch_absorb' }
