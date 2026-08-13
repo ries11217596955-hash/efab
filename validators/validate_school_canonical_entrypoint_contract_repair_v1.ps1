@@ -27,9 +27,10 @@ foreach($forbidden in @('school_singleton_v1','ACTIVE_RUN.lock.json','SCHOOL_SIN
   if($entryText.Contains($forbidden)){ AddErr ('school_redundant_filesystem_singleton_present:'+ $forbidden) }
 }
 if($entryText -like '*$p.WaitForExit($CodexTimeoutSeconds*1000)*'){ AddErr 'school_streaming_waitforexit_before_consume_present' }
-foreach($needle in @('STREAM_READY_DETECTED','STREAM_BATCH_CONSUMED','streaming_enabled','producer_completed_at','first_consume_started_at','stream_batches','overlap_proven','Invoke-SchoolWarehouseConsumer -MacroTaskJsonPath $taskJson -MaxConsumeBatches 1')){
+foreach($needle in @('STREAM_READY_WINDOW_DETECTED','STREAM_DIGEST_WINDOW_WAIT','STREAM_BATCH_CONSUMED','streaming_enabled','producer_completed_at','first_consume_started_at','stream_batches','overlap_proven','DigestWindowAtoms = 1000','MicroBatchSize=100','-MaxConsumeBatches $maxConsume')){
   if($entryText -notlike ('*'+$needle+'*')){ AddErr ('school_streaming_contract_missing:'+ $needle) }
 }
+if($entryText -like '*Invoke-SchoolWarehouseConsumer -MacroTaskJsonPath $taskJson -MaxConsumeBatches 1 -MaxWaitSeconds 0 -Absorb*'){ AddErr 'school_digest_window_regressed_to_one_batch_absorb' }
 if($entryText -like '*try{ $producerCompletedAtValue=$p.ExitTime }catch{ $producerCompletedAtValue=Get-Date }*'){ AddErr 'school_streaming_exit_time_null_guard_missing' }
 if($entryText -notlike '*if($null -ne $exitTime){ $producerCompletedAtValue=$exitTime }*'){ AddErr 'school_streaming_exit_time_null_guard_missing' }
 if($entryText -notlike '*After writing each READY.marker.json, immediately continue producing the next batch without waiting for School consumption.*'){ AddErr 'school_streaming_prompt_continue_after_ready_missing' }

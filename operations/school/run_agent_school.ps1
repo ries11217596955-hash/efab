@@ -61,7 +61,9 @@ while($true){
     if((Test-Path ([string]$mb.ready_marker)) -and (Test-Path ([string]$mb.ready_jsonl)) -and -not (Test-Path ([string]$mb.absorbed_marker)) -and -not (Test-Path ([string]$mb.cleaned_marker)) -and -not (Test-Path ([string]$mb.consuming_marker))){ $ready += $mb }
   }
   if($ready.Count -gt 0){
-    foreach($mb in @($ready | Sort-Object sequence | Select-Object -First $MaxConsumeBatches)){
+    $selected=@($ready | Sort-Object sequence | Select-Object -First $MaxConsumeBatches)
+    $prepared=New-Object System.Collections.ArrayList
+    foreach($mb in $selected){
       $consumeMarker=[string]$mb.consuming_marker
       WriteJson $consumeMarker ([ordered]@{status='CONSUMING'; micro_batch_id=$mb.micro_batch_id; started_at=(Get-Date).ToString('o')}) 20
       $microTaskPath=(Join-Path $warehouseRoot ("$($mb.micro_batch_id).micro_task.json"))
@@ -83,19 +85,35 @@ while($true){
       WriteJson $microTaskPath $microTask 80
       & powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/codex/validate_and_normalize_codex_school_patch_candidates_v1.ps1 -TaskJsonPath $microTaskPath -CandidatesJsonlPath ([string]$mb.ready_jsonl) -OutputAtomsJsonlPath ([string]$mb.normalized_atoms_jsonl) -ReportPath ([string]$mb.normalization_report) | Out-Host
       $norm=Get-Content ([string]$mb.normalization_report) -Raw | ConvertFrom-Json
-      $state='VALIDATED_NORMALIZED'
-      $absorbStatus='NOT_RUN'
-      $absorbProof=$null
-      if($Absorb){
-        $absorbOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/digestion/absorb_atom_file_via_digest_pipeline_v1.ps1 -InputPath ([string]$mb.normalized_atoms_jsonl) -SizeBudgetBytes 26214400 *>&1 | ForEach-Object{[string]$_})
-        $absorbStatus=(($absorbOut|Where-Object{$_ -match '^FILE_ATOM_ABSORPTION_STATUS='}|Select-Object -Last 1) -replace '^FILE_ATOM_ABSORPTION_STATUS=','')
-        $absorbProof=(($absorbOut|Where-Object{$_ -match '^PROOF_PATH='}|Select-Object -Last 1) -replace '^PROOF_PATH=','')
-        if($absorbStatus -ne 'PASS_FILE_ATOM_ABSORPTION_PIPELINE_V1'){ throw "MICRO_ABSORPTION_FAILED:$absorbStatus" }
-        WriteJson ([string]$mb.absorbed_marker) ([ordered]@{status='ABSORBED'; micro_batch_id=$mb.micro_batch_id; absorbed_at=(Get-Date).ToString('o'); proof=$absorbProof}) 30
-        $state='ABSORBED'
+      [void]$prepared.Add([pscustomobject]@{mb=$mb; norm=$norm})
+    }
+    $absorbStatus='NOT_RUN'; $absorbProof=$null; $digestWindowAtoms=0; $digestWindowInput=$null
+    if($Absorb){
+      $windowLines=New-Object System.Collections.ArrayList
+      foreach($item in @($prepared)){
+        $digestWindowAtoms += [int]$item.norm.accepted_count
+        foreach($line in Get-Content -LiteralPath ([string]$item.mb.normalized_atoms_jsonl)){ if(-not [string]::IsNullOrWhiteSpace($line)){ [void]$windowLines.Add($line) } }
       }
-      AddLedger $ledgerPath ([ordered]@{ts=(Get-Date).ToString('o'); micro_batch_id=$mb.micro_batch_id; sequence=$mb.sequence; state=$state; candidate_count=[int]$mb.candidate_count; normalization_report=[string]$mb.normalization_report; normalized_atoms_jsonl=[string]$mb.normalized_atoms_jsonl; absorption_status=$absorbStatus; absorption_proof=$absorbProof})
-      [void]$consumed.Add([pscustomobject]@{micro_batch_id=$mb.micro_batch_id; state=$state; candidate_count=[int]$mb.candidate_count; accepted_count=[int]$norm.accepted_count; absorption_status=$absorbStatus})
+      if($windowLines.Count -ne $digestWindowAtoms){ throw ("DIGEST_WINDOW_LINE_COUNT_MISMATCH:{0}/{1}" -f $windowLines.Count,$digestWindowAtoms) }
+      $digestWindowInput=Join-Path $warehouseRoot ("digest_window_{0}_{1:D6}.normalized_atoms.jsonl" -f (Get-Date -Format 'yyyyMMdd_HHmmssfff'),$digestWindowAtoms)
+      ($windowLines -join "`n") | Set-Content -LiteralPath $digestWindowInput -Encoding UTF8
+      $absorbOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/digestion/absorb_atom_file_via_digest_pipeline_v1.ps1 -InputPath $digestWindowInput -SizeBudgetBytes 26214400 *>&1 | ForEach-Object{[string]$_})
+      $absorbStatus=(($absorbOut|Where-Object{$_ -match '^FILE_ATOM_ABSORPTION_STATUS='}|Select-Object -Last 1) -replace '^FILE_ATOM_ABSORPTION_STATUS=','')
+      $absorbProof=(($absorbOut|Where-Object{$_ -match '^PROOF_PATH='}|Select-Object -Last 1) -replace '^PROOF_PATH=','')
+      if($absorbStatus -ne 'PASS_FILE_ATOM_ABSORPTION_PIPELINE_V1'){ throw "DIGEST_WINDOW_ABSORPTION_FAILED:$absorbStatus" }
+      foreach($item in @($prepared)){
+        $mb=$item.mb; $norm=$item.norm
+        WriteJson ([string]$mb.absorbed_marker) ([ordered]@{status='ABSORBED'; micro_batch_id=$mb.micro_batch_id; absorbed_at=(Get-Date).ToString('o'); proof=$absorbProof; digest_window_atoms=$digestWindowAtoms; digest_window_batch_count=$prepared.Count}) 30
+        AddLedger $ledgerPath ([ordered]@{ts=(Get-Date).ToString('o'); micro_batch_id=$mb.micro_batch_id; sequence=$mb.sequence; state='ABSORBED'; candidate_count=[int]$mb.candidate_count; normalization_report=[string]$mb.normalization_report; normalized_atoms_jsonl=[string]$mb.normalized_atoms_jsonl; absorption_status=$absorbStatus; absorption_proof=$absorbProof; digest_window_atoms=$digestWindowAtoms; digest_window_batch_count=$prepared.Count})
+        [void]$consumed.Add([pscustomobject]@{micro_batch_id=$mb.micro_batch_id; state='ABSORBED'; candidate_count=[int]$mb.candidate_count; accepted_count=[int]$norm.accepted_count; absorption_status=$absorbStatus; digest_window_atoms=$digestWindowAtoms; digest_window_batch_count=$prepared.Count})
+      }
+      if(Test-Path -LiteralPath $digestWindowInput){ Remove-Item -LiteralPath $digestWindowInput -Force }
+    } else {
+      foreach($item in @($prepared)){
+        $mb=$item.mb; $norm=$item.norm
+        AddLedger $ledgerPath ([ordered]@{ts=(Get-Date).ToString('o'); micro_batch_id=$mb.micro_batch_id; sequence=$mb.sequence; state='VALIDATED_NORMALIZED'; candidate_count=[int]$mb.candidate_count; normalization_report=[string]$mb.normalization_report; normalized_atoms_jsonl=[string]$mb.normalized_atoms_jsonl; absorption_status='NOT_RUN'; absorption_proof=$null})
+        [void]$consumed.Add([pscustomobject]@{micro_batch_id=$mb.micro_batch_id; state='VALIDATED_NORMALIZED'; candidate_count=[int]$mb.candidate_count; accepted_count=[int]$norm.accepted_count; absorption_status='NOT_RUN'})
+      }
     }
     $status=if($Absorb){'PASS_WAREHOUSE_CONSUMED_READY_BATCHES_WITH_ABSORB_V1'}else{'PASS_WAREHOUSE_CONSUMED_READY_BATCHES_NO_ABSORB_V1'}
     break
@@ -153,6 +171,7 @@ param(
   [ValidateSet('MockProducer','RunCodex')][string]$ProducerMode = 'MockProducer',
   [ValidateRange(1,50000)][int]$Count = 678,
   [ValidateRange(1,10000)][int]$MicroBatchSize = 100,
+  [ValidateRange(1,10000)][int]$DigestWindowAtoms = 1000,
   [ValidateRange(30,7200)][int]$CodexTimeoutSeconds = 900,
   [switch]$Absorb,
   [string]$Topics = 'AUTO',
@@ -227,7 +246,7 @@ $requestPlanPath="$OutputRoot/request_plan.json"
 $taskDir="$OutputRoot/warehouse_request"
 $eventsPath="$OutputRoot/events.jsonl"
 function AddEvent($State,$Data){ ([ordered]@{ts=(Get-Date).ToString('o'); state=$State; data=$Data}|ConvertTo-Json -Depth 80 -Compress)|Add-Content -LiteralPath $eventsPath -Encoding UTF8 }
-AddEvent 'EXACT_COUNT_CYCLE_STARTED' @{producer_mode=$ProducerMode; count=$Count; micro_batch_size=$MicroBatchSize; absorb=[bool]$Absorb}
+AddEvent 'EXACT_COUNT_CYCLE_STARTED' @{producer_mode=$ProducerMode; count=$Count; micro_batch_size=$MicroBatchSize; digest_window_atoms=$DigestWindowAtoms; absorb=[bool]$Absorb}
 & powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/memory/select_dynamic_theme_cell_v1.ps1 -RequestedTopics $Topics -PatchSize 1000 -OutputPath $selectionPath | Out-Host
 & powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/request/plan_dynamic_school_request_v1.ps1 -SelectionPath $selectionPath -OutputPath $requestPlanPath -ExactRequestSize $Count -MicroBatchSize $MicroBatchSize -MaxRequestSize 50000 -MaxReadyBacklogCandidates 3000 | Out-Host
 $request=Get-Content $requestPlanPath -Raw | ConvertFrom-Json
@@ -269,26 +288,36 @@ function Invoke-ExpectedStreamConsume([string]$Reason){
   if([bool]$streamState['consumer_failed']){ return $false }
   $ordinal=[int]$streamState['next_ordinal']
   if($ordinal -lt 1 -or $ordinal -gt $orderedMicroBatches.Count){ return $false }
-  $mb=$orderedMicroBatches[$ordinal-1]
-  if(-not (Test-Path -LiteralPath ([string]$mb.ready_marker))){ return $false }
-  if(-not (Test-Path -LiteralPath ([string]$mb.ready_jsonl))){ return $false }
+  $windowBatches=New-Object System.Collections.ArrayList
+  $windowAtoms=0
+  for($i=$ordinal-1; $i -lt $orderedMicroBatches.Count; $i++){
+    $candidate=$orderedMicroBatches[$i]
+    if(-not (Test-Path -LiteralPath ([string]$candidate.ready_marker))){ break }
+    if(-not (Test-Path -LiteralPath ([string]$candidate.ready_jsonl))){ break }
+    [void]$windowBatches.Add($candidate)
+    $windowAtoms += [int]$candidate.candidate_count
+    if(-not $Absorb -or $windowAtoms -ge $DigestWindowAtoms){ break }
+  }
+  if($windowBatches.Count -eq 0){ return $false }
+  if($Absorb -and $windowAtoms -lt $DigestWindowAtoms -and -not (Test-Path -LiteralPath ([string]$task.producer_done_marker))){
+    AddEvent 'STREAM_DIGEST_WINDOW_WAIT' @{next_ordinal=$ordinal; ready_window_batches=$windowBatches.Count; ready_window_atoms=$windowAtoms; digest_window_atoms=$DigestWindowAtoms; reason=$Reason}
+    return $false
+  }
   $readyDetectedAt=Get-Date
-  AddEvent 'STREAM_READY_DETECTED' @{ordinal=$ordinal; id=[string]$mb.micro_batch_id; count=[int]$mb.candidate_count; ready_marker=[string]$mb.ready_marker; reason=$Reason}
+  AddEvent 'STREAM_READY_WINDOW_DETECTED' @{ordinal=$ordinal; batch_count=$windowBatches.Count; atom_count=$windowAtoms; digest_window_atoms=$DigestWindowAtoms; reason=$Reason}
   $consumeStartedAt=Get-Date
   if($null -eq $streamState['first_consume_started_at_value']){
     $streamState['first_consume_started_at_value']=$consumeStartedAt
     $streamState['first_consume_started_at']=$consumeStartedAt.ToString('o')
   }
-  if($Absorb){ $out=@(& { Invoke-SchoolWarehouseConsumer -MacroTaskJsonPath $taskJson -MaxConsumeBatches 1 -MaxWaitSeconds 0 -Absorb } *>&1 | ForEach-Object{[string]$_}) }
-  else { $out=@(& { Invoke-SchoolWarehouseConsumer -MacroTaskJsonPath $taskJson -MaxConsumeBatches 1 -MaxWaitSeconds 0 } *>&1 | ForEach-Object{[string]$_}) }
+  $maxConsume=[int]$windowBatches.Count
+  if($Absorb){ $out=@(& { Invoke-SchoolWarehouseConsumer -MacroTaskJsonPath $taskJson -MaxConsumeBatches $maxConsume -MaxWaitSeconds 0 -Absorb } *>&1 | ForEach-Object{[string]$_}) }
+  else { $out=@(& { Invoke-SchoolWarehouseConsumer -MacroTaskJsonPath $taskJson -MaxConsumeBatches $maxConsume -MaxWaitSeconds 0 } *>&1 | ForEach-Object{[string]$_}) }
   $consumeCompletedAt=Get-Date
   $outPath=("{0}/consumer_{1:D3}_stdout.txt" -f $OutputRoot,$ordinal)
   $out | Set-Content -LiteralPath $outPath -Encoding UTF8
   $cr=(($out|Where-Object{$_ -match '^CODEX_WAREHOUSE_CONSUMER_REPORT='}|Select-Object -Last 1) -replace '^CODEX_WAREHOUSE_CONSUMER_REPORT=','')
-  $consumerStatus='MISSING_REPORT'
-  $snapshotReport=$null
-  $acceptedCount=0
-  $consumedId=$null
+  $consumerStatus='MISSING_REPORT'; $snapshotReport=$null; $acceptedCount=0; $windowAccepted=0; $windowConsumedOk=$false
   if(-not [string]::IsNullOrWhiteSpace($cr) -and (Test-Path -LiteralPath $cr)){
     $c=Get-Content -LiteralPath $cr -Raw | ConvertFrom-Json
     $consumerStatus=[string]$c.status
@@ -297,35 +326,26 @@ function Invoke-ExpectedStreamConsume([string]$Reason){
     [void]$consumerReports.Add($snapshotReport)
     [void]$consumerStatuses.Add($consumerStatus)
     $consumedBatch=@($c.consumed_batches)
-    if($consumedBatch.Count -gt 0){
-      $consumedId=[string]$consumedBatch[0].micro_batch_id
-      if($consumedId -ne [string]$mb.micro_batch_id){ throw ("STREAM_CONSUMED_OUT_OF_ORDER:expected:{0}:actual:{1}" -f $mb.micro_batch_id,$consumedId) }
-      $acceptedCount=[int]$consumedBatch[0].accepted_count
+    if($consumedBatch.Count -eq $windowBatches.Count){
+      $windowConsumedOk=$true
+      for($j=0; $j -lt $windowBatches.Count; $j++){
+        $expectedId=[string]$windowBatches[$j].micro_batch_id
+        $actualId=[string]$consumedBatch[$j].micro_batch_id
+        if($actualId -ne $expectedId){ throw ("STREAM_CONSUMED_OUT_OF_ORDER:expected:{0}:actual:{1}" -f $expectedId,$actualId) }
+        $windowAccepted += [int]$consumedBatch[$j].accepted_count
+      }
       $streamState['consumed']=[int]$streamState['consumed'] + $consumedBatch.Count
-      $streamState['accepted']=[int]$streamState['accepted'] + $acceptedCount
-      $streamState['next_ordinal']=$ordinal + 1
-    } else {
-      $streamState['consumer_failed']=$true
-    }
-  } else {
-    $streamState['consumer_failed']=$true
+      $streamState['accepted']=[int]$streamState['accepted'] + $windowAccepted
+      $streamState['next_ordinal']=$ordinal + $consumedBatch.Count
+    } else { $streamState['consumer_failed']=$true }
+  } else { $streamState['consumer_failed']=$true }
+  for($j=0; $j -lt $windowBatches.Count; $j++){
+    $mb=$windowBatches[$j]
+    $acceptedCount=if($windowConsumedOk){[int](@($c.consumed_batches)[$j].accepted_count)}else{0}
+    [void]$streamBatches.Add([ordered]@{ordinal=($ordinal+$j);id=[string]$mb.micro_batch_id;count=[int]$mb.candidate_count;ready_detected_at=$readyDetectedAt.ToString('o');consume_started_at=$consumeStartedAt.ToString('o');consume_completed_at=$consumeCompletedAt.ToString('o');consumer_status=$consumerStatus;accepted_count=$acceptedCount;consumer_report=$snapshotReport;digest_window_atoms=$windowAtoms;digest_window_batch_count=$windowBatches.Count})
+    if($windowConsumedOk){ AddEvent 'STREAM_BATCH_CONSUMED' @{ordinal=($ordinal+$j); id=[string]$mb.micro_batch_id; count=[int]$mb.candidate_count; accepted_count=$acceptedCount; digest_window_atoms=$windowAtoms; digest_window_batch_count=$windowBatches.Count; consume_started_at=$consumeStartedAt.ToString('o'); consume_completed_at=$consumeCompletedAt.ToString('o'); reason=$Reason} }
   }
-  [void]$streamBatches.Add([ordered]@{
-    ordinal=$ordinal
-    id=[string]$mb.micro_batch_id
-    count=[int]$mb.candidate_count
-    ready_detected_at=$readyDetectedAt.ToString('o')
-    consume_started_at=$consumeStartedAt.ToString('o')
-    consume_completed_at=$consumeCompletedAt.ToString('o')
-    consumer_status=$consumerStatus
-    accepted_count=$acceptedCount
-    consumer_report=$snapshotReport
-  })
-  if($consumedId -eq [string]$mb.micro_batch_id){
-    AddEvent 'STREAM_BATCH_CONSUMED' @{ordinal=$ordinal; id=[string]$mb.micro_batch_id; count=[int]$mb.candidate_count; accepted_count=$acceptedCount; consume_started_at=$consumeStartedAt.ToString('o'); consume_completed_at=$consumeCompletedAt.ToString('o'); reason=$Reason}
-    return $true
-  }
-  return $false
+  return [bool]$windowConsumedOk
 }
 function Drain-ReadyExpectedStreamBatches([string]$Reason){
   while($true){
@@ -480,6 +500,7 @@ $report=[ordered]@{
   count=$Count
   micro_batch_size=$MicroBatchSize
   micro_batch_count=[int]$task.micro_batch_count
+  digest_window_atoms=$DigestWindowAtoms
   batch_counts=$batchCounts
   streaming_enabled=[bool]$streamingEnabled
   producer_completed_at=$producerCompletedAt
@@ -580,7 +601,7 @@ Write-Host "SCHOOL_PREFLIGHT_PRESSURE=$($SchoolRequestPlan.pressure_class)"
   $TopicPatchPlanStatus=(($TopicPatchPlanOut|Where-Object{$_ -match '^TOPIC_PATCH_PLAN_STATUS='}|Select-Object -Last 1) -replace '^TOPIC_PATCH_PLAN_STATUS=','')
   if($TopicPatchPlanStatus -notmatch '^PASS_'){ throw "TOPIC_PATCH_PLAN_FAILED:$TopicPatchPlanStatus" }
   $ExactCycleProducerMode=if($RunKind -eq 'Real'){'RunCodex'}else{'MockProducer'}
-  $ExactCycleArgs=[ordered]@{ ProducerMode=$ExactCycleProducerMode; Count=$TargetAccepted; MicroBatchSize=100; Topics=$RequestedTopics; OutputRoot=$ExactCycleRoot; CodexTimeoutSeconds=300 }
+  $ExactCycleArgs=[ordered]@{ ProducerMode=$ExactCycleProducerMode; Count=$TargetAccepted; MicroBatchSize=100; DigestWindowAtoms=1000; Topics=$RequestedTopics; OutputRoot=$ExactCycleRoot; CodexTimeoutSeconds=300 }
   if($RunKind -eq 'Real'){
     $ExactCycleArgs['CodexTimeoutSeconds']=900
     $ExactCycleArgs['Absorb']=$true
