@@ -118,10 +118,15 @@ $manifest | Add-Member -NotePropertyName 'storage_weight_guard' -NotePropertyVal
 }) -Force
 $manifest.cells_bytes=(Get-Item $cellsPath).Length
 $manifest.index_bytes=(Get-Item $indexPath).Length
+$manifest.cells_sha256=(FileSha256 $cellsPath).ToLower()
+$manifest.index_sha256=(FileSha256 $indexPath).ToLower()
 # Estimate total after manifest rewrite; exact manifest bytes recalculated after write.
 $manifest.total_memory_bytes=[int64]($manifest.cells_bytes + $manifest.index_bytes + (JsonBytes $manifest))
 [IO.File]::WriteAllText((Join-Path (Get-Location).Path $manifestPath),($manifest|ConvertTo-Json -Depth 80),$utf8)
 $after=[ordered]@{ cells_bytes=(Get-Item $cellsPath).Length; index_bytes=(Get-Item $indexPath).Length; manifest_bytes=(Get-Item $manifestPath).Length; cells_sha256=(FileSha256 $cellsPath); index_sha256=(FileSha256 $indexPath); manifest_sha256=(FileSha256 $manifestPath) }
+$manifestAfter=Get-Content $manifestPath -Raw | ConvertFrom-Json
+if(([string]$manifestAfter.cells_sha256).ToLower() -ne ([string]$after.cells_sha256).ToLower()){ throw 'MANIFEST_CELLS_SHA256_MISMATCH_AFTER_GUARD' }
+if(([string]$manifestAfter.index_sha256).ToLower() -ne ([string]$after.index_sha256).ToLower()){ throw 'MANIFEST_INDEX_SHA256_MISMATCH_AFTER_GUARD' }
 # Basic validation
 $lineCount=(Get-Content $cellsPath | Measure-Object).Count
 if($lineCount -ne $cells.Count){ throw "CELL_LINE_COUNT_MISMATCH_AFTER_GUARD:$lineCount/$($cells.Count)" }

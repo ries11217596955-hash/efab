@@ -2,12 +2,12 @@
     "schema":  "AGENT_BODY_MAP_COMPATIBILITY_VIEW_V2",
     "source":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
     "branch":  "main",
-    "observed_head_at_generation":  "40b098d22a3cb385711eb7847145987450431c54",
-    "generated_at":  "2026-08-12T22:45:24.2019566+04:00",
+    "observed_head_at_generation":  "f85ca069fb9e8f4d01f78b5f8ba3063505359a59",
+    "generated_at":  "2026-08-13T11:00:29.3294105+04:00",
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  2301,
-                                    "sha256":  "ae3e7ea5ac42dc8937e3245e2bcf64344b44368cb66250bb94d8912f5f19e595"
+                                    "sha256":  "be325ccfe9b1aaab29eabfaa0e7fd9b7f7c7de22a385ead4d9ff87fec35900d3"
                                 },
     "map_kind":  "DERIVED_HUMAN_COMPATIBILITY_VIEW",
     "confirmed_component_count":  7,
@@ -1814,10 +1814,10 @@
                            "needs_triage":  true
                        },
                        {
-                           "id":  "self_build_programs_quarantine",
+                           "id":  "self_build_programs_memory",
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                           "root":  "self_build_programs/quarantine",
-                           "file_count":  3,
+                           "root":  "self_build_programs/memory",
+                           "file_count":  2,
                            "script_count":  1,
                            "required_files_present":  null,
                            "is_required_component":  false,
@@ -1826,10 +1826,10 @@
                            "needs_triage":  true
                        },
                        {
-                           "id":  "self_build_programs_memory",
+                           "id":  "self_build_programs_quarantine",
                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
-                           "root":  "self_build_programs/memory",
-                           "file_count":  2,
+                           "root":  "self_build_programs/quarantine",
+                           "file_count":  3,
                            "script_count":  1,
                            "required_files_present":  null,
                            "is_required_component":  false,

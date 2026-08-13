@@ -234,6 +234,11 @@ if(Test-Path $stagedInput){ throw 'STAGED_RAW_SOURCE_NOT_DELETED' }
 if($manifest.raw_source_dependency_removed -ne $true){ throw 'RAW_SOURCE_DEPENDENCY_NOT_REMOVED' }
 if([int]$manifest.total_memory_bytes -gt $SizeBudgetBytes){ throw 'SIZE_BUDGET_EXCEEDED_AFTER_DIGEST' }
 if([int]$index.term_count -lt 1){ throw 'LOOKUP_INDEX_EMPTY' }
+$candidateCellsSha=(Get-FileHash $cellsPath -Algorithm SHA256).Hash.ToLower()
+$candidateIndexPath=Join-Path $candidateMemoryRoot 'index.json'
+$candidateIndexSha=(Get-FileHash $candidateIndexPath -Algorithm SHA256).Hash.ToLower()
+if(([string]$manifest.cells_sha256).ToLower() -ne $candidateCellsSha){ throw 'CANDIDATE_MANIFEST_CELLS_SHA256_MISMATCH_BEFORE_PUBLISH' }
+if(([string]$manifest.index_sha256).ToLower() -ne $candidateIndexSha){ throw 'CANDIDATE_MANIFEST_INDEX_SHA256_MISMATCH_BEFORE_PUBLISH' }
 if($selectedTier -ne 'Fast'){
   $cellsText=Get-Content $cellsPath -Raw
   foreach($bad in @('raw_text','source_text','ready_atoms','batch_trace','prompt_trace')){ if($cellsText -match $bad){ throw "RAW_FIELD_SURVIVED:$bad" } }

@@ -2726,3 +2726,32 @@ Producer-only micro-trial acceptance:
 - active compact memory remained byte-identical and no Codex process remained after validation.
 
 Does not prove: end-to-end Live237 overlap/absorption. Next layer remains clean-commit -> sanitation -> fresh Live237 memory checkpoint -> one canonical Live237 with real overlap proof.
+## 2026-08-13 - School Live237 acceptance and compact-memory hash-integrity repair
+marker: SCHOOL_LIVE237_STREAMING_ACCEPTED_MEMORY_HASH_REPAIR_20260813
+status: ACCEPTED_LIVE237_PASS_INTEGRITY_REPAIR_VALIDATED
+
+Fresh acceptance:
+- Fresh repo/runtime recovery found that canonical Live237 had already completed after migration; no duplicate School/Codex/commit was launched.
+- `operations/reports/CANONICAL_EXACT_COUNT_CYCLE_RUN_20260812_224011.json` plus `.runtime/canonical_exact_count_cycle/canonical_exact_count_cycle_real_237_20260812_222941/exact_count_cycle_report.json` prove exact batches `100,100,37`, accepted=237, absorb=true, memory_changed=true, and real overlap: first consume `2026-08-12T22:33:00.3433120+04:00` preceded producer completion `2026-08-12T22:40:10.4345123+04:00`, overlap_proven=true.
+- `runtime_ready=false` is a digest boundary flag and was not the post-Live defect.
+
+Integrity defect and repair:
+- Post-Live active memory had correct actual cells/index files but stale `manifest.cells_sha256`.
+- Root cause: `apply_compact_memory_weight_guard_v1.ps1` rewrote `cells.jsonl` after digestion and updated byte metadata without refreshing manifest file hashes.
+- Weight guard now refreshes cells/index hashes and self-checks them after manifest write.
+- `absorb_atom_file_via_digest_pipeline_v1.ps1` now blocks publish when candidate manifest hashes do not exactly match candidate cells/index files.
+- Before protected metadata repair a full active-memory checkpoint was captured at `H:\bridge\reports\school_active_memory_integrity_checkpoint_20260813T064348Z`.
+- Active-memory repair changed only manifest metadata; cells/index were not rewritten. Current repaired state at acceptance: cell_count=139, cells SHA256 `4A15EA430041AEE69B244D2ADEAF421086C2970A547F7AB152381B6C448A4202`, index SHA256 `FB9674755B10EF13839768876DD72957C275530045F5DE038F05DB86FE2BAD48`, manifest metadata matches both, exact total_memory_bytes=13138599.
+- Disposable weight-guard copy probe PASS; full synthetic one-atom absorption pipeline PASS through digest -> guard -> pre-publish integrity -> disposable publish; active protected memory remained byte-identical during lab and all lab runtime roots were removed.
+- Canonical School entrypoint validator PASS; compact-memory recall smoke PASS.
+
+Sanitation:
+- Deleted only proven disposable runtime roots: `canonical_exact_count_cycle_real_100_20260812_160020` (accepted=0, memory_changed=false) and `canonical_exact_count_cycle_real_237_20260812_195749` (orphan, absorbed=0, no final report).
+- Preserved accepted Live100 `...162437`, accepted Live237 `...222941`, and historical absorbed recovery evidence `...181728`; protected active memory and rollback checkpoints were untouched.
+
+Limitation / path-selection boundary:
+- Recall can still surface stale `school_live_growth` text saying fresh School memory should precede next path selection. Treat that text as stale/non-authoritative material, not as path-selection authority.
+- Owner correction remains controlling: select next topic/path independently from Owner task + parent task + fresh reality + gaps/priorities/safety/exploration; only then retrieve relevant School memory.
+
+Next parent step:
+- Commit exactly the two integrity guards plus this Notebook entry, restore clean repo/runtime proof, then choose a moderate next Live scale from fresh stability gaps. Do not jump blindly to 15k/50k/100k.
