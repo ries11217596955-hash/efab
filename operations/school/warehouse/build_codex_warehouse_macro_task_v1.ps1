@@ -13,7 +13,7 @@ if(-not (Test-Path $SelectionPath)){ throw "SELECTION_PATH_MISSING:$SelectionPat
 if(-not (Test-Path $PatchPlanPath)){ throw "PATCH_PLAN_PATH_MISSING:$PatchPlanPath" }
 $selection=Get-Content $SelectionPath -Raw | ConvertFrom-Json
 $plan=Get-Content $PatchPlanPath -Raw | ConvertFrom-Json
-if($selection.status -notin @('PASS_DEVELOPMENT_VECTOR_THEME_SELECTION_V1','PASS_DYNAMIC_THEME_CELL_SELECTION_V1')){ throw "BAD_SELECTION_STATUS:$($selection.status)" }
+if($selection.status -notin @('PASS_DEVELOPMENT_VECTOR_THEME_SELECTION_V1','PASS_DEVELOPMENT_VECTOR_THEME_SELECTION_V2','PASS_DYNAMIC_THEME_CELL_SELECTION_V1')){ throw "BAD_SELECTION_STATUS:$($selection.status)" }
 if($plan.status -notin @('PASS_TOPIC_PATCH_PLAN_READY','PASS_TOPIC_PATCH_PLAN_ALREADY_ABSORBED')){ throw "BAD_PATCH_PLAN_STATUS:$($plan.status)" }
 if($null -eq $plan.next_patch){ throw 'NO_NEXT_PATCH_FOR_WAREHOUSE_TASK' }
 $patch=$plan.next_patch

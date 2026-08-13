@@ -21,7 +21,7 @@ function RoundUpToMicro([int]$v,[int]$micro,[int]$min,[int]$max){
 }
 if(-not (Test-Path $SelectionPath)){ throw "SELECTION_PATH_MISSING:$SelectionPath" }
 $selection=Get-Content $SelectionPath -Raw | ConvertFrom-Json
-if($selection.status -notin @('PASS_DEVELOPMENT_VECTOR_THEME_SELECTION_V1','PASS_DYNAMIC_THEME_CELL_SELECTION_V1')){ throw "BAD_SELECTION_STATUS:$($selection.status)" }
+if($selection.status -notin @('PASS_DEVELOPMENT_VECTOR_THEME_SELECTION_V1','PASS_DEVELOPMENT_VECTOR_THEME_SELECTION_V2','PASS_DYNAMIC_THEME_CELL_SELECTION_V1')){ throw "BAD_SELECTION_STATUS:$($selection.status)" }
 $template=$selection.codex_request_template
 $topic=[string](GetProp $selection.selected_topic 'topic_key' '')
 if([string]::IsNullOrWhiteSpace($topic)){ $topic=[string](GetProp $template 'target_topic' '') }

@@ -12,7 +12,7 @@ if(-not (Test-Path $SelectionPath)){ throw "SELECTION_PATH_MISSING:$SelectionPat
 $request=Get-Content $RequestPlanPath -Raw | ConvertFrom-Json
 $selection=Get-Content $SelectionPath -Raw | ConvertFrom-Json
 if($request.status -ne 'PASS_DYNAMIC_SCHOOL_REQUEST_PLAN_READY_V1'){ throw "BAD_REQUEST_PLAN_STATUS:$($request.status)" }
-if($selection.status -notin @('PASS_DEVELOPMENT_VECTOR_THEME_SELECTION_V1','PASS_DYNAMIC_THEME_CELL_SELECTION_V1')){ throw "BAD_SELECTION_STATUS:$($selection.status)" }
+if($selection.status -notin @('PASS_DEVELOPMENT_VECTOR_THEME_SELECTION_V1','PASS_DEVELOPMENT_VECTOR_THEME_SELECTION_V2','PASS_DYNAMIC_THEME_CELL_SELECTION_V1')){ throw "BAD_SELECTION_STATUS:$($selection.status)" }
 $topic=[string]$request.topic_key
 $total=[int]$request.request_candidate_count
 $micro=[int]$request.micro_batch_size
