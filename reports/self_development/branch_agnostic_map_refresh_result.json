@@ -1,22 +1,28 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-08-13T13:00:35.3780124+04:00",
+    "checked_at":  "2026-08-13T13:47:40.8317788+04:00",
     "branch":  "main",
-    "observed_head":  "00ee6e70d14b61709d6179b7f865a209b5f9da3b",
-    "subject_head":  "00ee6e70d14b61709d6179b7f865a209b5f9da3b",
+    "observed_head":  "345fdf40e011c878fef5fe6e93a5105c2c136cdc",
+    "subject_head":  "345fdf40e011c878fef5fe6e93a5105c2c136cdc",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "operations/school/run_agent_school.ps1",
+                          "operations/school/codex/build_codex_school_patch_task_v1.ps1",
+                          "operations/school/request/plan_dynamic_school_request_v1.ps1",
+                          "operations/school/warehouse/build_codex_warehouse_macro_task_v1.ps1",
+                          "operations/school/warehouse/build_codex_warehouse_request_macro_task_v1.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json"
                       ],
     "structural_paths":  [
-                             "operations/school/run_agent_school.ps1"
+                             "operations/school/codex/build_codex_school_patch_task_v1.ps1",
+                             "operations/school/request/plan_dynamic_school_request_v1.ps1",
+                             "operations/school/warehouse/build_codex_warehouse_macro_task_v1.ps1",
+                             "operations/school/warehouse/build_codex_warehouse_request_macro_task_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -28,8 +34,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2301,
-                                    "sha256":  "ff53f91db141614e5bc86cf8e7fdd0165068ebad2f8d8495f70381cad3205a5f"
+                                    "structural_file_count":  2302,
+                                    "sha256":  "ce7037240b5cb4612483f381c4e96fab45842bc0fdbbe82b1d7bc141e0d51315"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -55,12 +61,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  154,
-                         "structural_path_count":  2301,
+                         "structural_path_count":  2302,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-08-13T13:05:49.2317571+04:00"
+    "refreshed_at":  "2026-08-13T13:52:38.6855876+04:00"
 }
