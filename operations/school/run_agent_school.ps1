@@ -541,7 +541,7 @@ $SchoolRequestPlanPath=Join-Path $SchoolPreflightRoot 'request_plan.json'
 $SchoolSelectionOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File 'operations/school/memory/select_dynamic_theme_cell_v1.ps1' -RequestedTopics $RequestedTopics -PatchSize $PatchSize -OutputPath $SchoolSelectionPath *>&1 | ForEach-Object{[string]$_})
 $SchoolSelectionOut | Set-Content -LiteralPath (Join-Path $SchoolPreflightRoot 'selection_stdout.txt') -Encoding UTF8
 $SchoolSelectionStatus=(($SchoolSelectionOut|Where-Object{$_ -match '^DYNAMIC_THEME_SELECTION_STATUS='}|Select-Object -Last 1) -replace '^DYNAMIC_THEME_SELECTION_STATUS=','')
-$AllowedSelectionStatuses=@('PASS_DYNAMIC_THEME_CELL_SELECTION_V1','PASS_DEVELOPMENT_VECTOR_THEME_SELECTION_V1')
+$AllowedSelectionStatuses=@('PASS_DYNAMIC_THEME_CELL_SELECTION_V1','PASS_DEVELOPMENT_VECTOR_THEME_SELECTION_V1','PASS_DEVELOPMENT_VECTOR_THEME_SELECTION_V2')
 if($AllowedSelectionStatuses -notcontains $SchoolSelectionStatus){ throw "SCHOOL_PREFLIGHT_SELECTION_FAILED:$SchoolSelectionStatus" }
 if(-not(Test-Path $SchoolSelectionPath)){ throw "SCHOOL_PREFLIGHT_SELECTION_MISSING:$SchoolSelectionPath" }
 $SchoolPlanOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File 'operations/school/request/plan_dynamic_school_request_v1.ps1' -SelectionPath $SchoolSelectionPath -OutputPath $SchoolRequestPlanPath -MinRequestSize 1 -MaxRequestSize $TargetAccepted -MicroBatchSize 100 -MaxReadyBacklogCandidates $TargetAccepted -ProductionWindowCandidates $TargetAccepted -ExactRequestSize $TargetAccepted *>&1 | ForEach-Object{[string]$_})
