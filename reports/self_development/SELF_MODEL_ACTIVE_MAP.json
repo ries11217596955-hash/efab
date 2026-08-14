@@ -6,19 +6,19 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "a95eaf70bd02e65af30b51b138d82ea572c2c493",
-    "subject_head":  "a95eaf70bd02e65af30b51b138d82ea572c2c493",
-    "generated_at":  "2026-08-14T10:06:11.3738082+04:00",
+    "observed_head_at_generation":  "b619d1dc9e270869cde678d6f60c10c6e5e63422",
+    "subject_head":  "b619d1dc9e270869cde678d6f60c10c6e5e63422",
+    "generated_at":  "2026-08-14T21:18:01.3057620+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  2304,
+    "structural_path_count":  2306,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2304,
-                                    "sha256":  "4ccb75d9745a75a57f82a82f574a3cd599f686307a452c8a19c76985643bf30d"
+                                    "structural_file_count":  2306,
+                                    "sha256":  "bde5489b629d100eba712e96db327f4cb9a4cc46fd10a3b343a92a2d5fadaf55"
                                 },
     "module_count":  203,
     "validator_count":  263,
@@ -29,8 +29,8 @@
                                      "root":  "operations/school",
                                      "status":  "CONFIRMED_PRIMARY_EVIDENCE_PRESENT",
                                      "confirmation_basis":  "explicit_required_component_with_primary_repo_evidence",
-                                     "file_count":  138,
-                                     "script_count":  78,
+                                     "file_count":  140,
+                                     "script_count":  80,
                                      "validator_count":  30,
                                      "proof_file_count":  12,
                                      "contract_or_policy_count":  17,
@@ -180,11 +180,11 @@
                                                                 "operations/school/curriculum/validate_curriculum_school_v1.ps1",
                                                                 "operations/school/digestion/validate_active_memory_publish_retry_v1.ps1",
                                                                 "operations/school/digestion/validate_compact_semantic_digestion_organ_v1.ps1",
+                                                                "operations/school/digestion/validate_exact_existing_reinforcement_fast_path_v1.ps1",
                                                                 "operations/school/finalize_agent_school_run_v1.ps1",
                                                                 "operations/school/memory/validate_compact_memory_recall_use_probe_v1.ps1",
                                                                 "operations/school/memory/validate_dynamic_theme_cell_selector_v1.ps1",
-                                                                "operations/school/request/validate_dynamic_school_request_planner_v1.ps1",
-                                                                "operations/school/request/validate_generic_exact_request_engine_v1.ps1"
+                                                                "operations/school/request/validate_dynamic_school_request_planner_v1.ps1"
                                                             ],
                                      "latest_git_commit":  {
                                                                "head":  "034e9e24a24dcf2a4e9b8fbf0ca76e1c8f9e37b5",
@@ -634,9 +634,9 @@
 
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "a95eaf70bd02e65af30b51b138d82ea572c2c493",
-                                                               "committed_at":  "2026-08-14T09:38:57+04:00",
-                                                               "subject":  "docs: record control-plane recovery acceptance continuity"
+                                                               "head":  "b619d1dc9e270869cde678d6f60c10c6e5e63422",
+                                                               "committed_at":  "2026-08-14T10:01:57+04:00",
+                                                               "subject":  "docs: record school result: Live 500"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -8151,8 +8151,8 @@
                            "root":  "operations/school",
                            "status":  "CONFIRMED_PRIMARY_EVIDENCE_PRESENT",
                            "confirmation_basis":  "explicit_required_component_with_primary_repo_evidence",
-                           "file_count":  138,
-                           "script_count":  78,
+                           "file_count":  140,
+                           "script_count":  80,
                            "validator_count":  30,
                            "proof_file_count":  12,
                            "contract_or_policy_count":  17,
@@ -8302,11 +8302,11 @@
                                                       "operations/school/curriculum/validate_curriculum_school_v1.ps1",
                                                       "operations/school/digestion/validate_active_memory_publish_retry_v1.ps1",
                                                       "operations/school/digestion/validate_compact_semantic_digestion_organ_v1.ps1",
+                                                      "operations/school/digestion/validate_exact_existing_reinforcement_fast_path_v1.ps1",
                                                       "operations/school/finalize_agent_school_run_v1.ps1",
                                                       "operations/school/memory/validate_compact_memory_recall_use_probe_v1.ps1",
                                                       "operations/school/memory/validate_dynamic_theme_cell_selector_v1.ps1",
-                                                      "operations/school/request/validate_dynamic_school_request_planner_v1.ps1",
-                                                      "operations/school/request/validate_generic_exact_request_engine_v1.ps1"
+                                                      "operations/school/request/validate_dynamic_school_request_planner_v1.ps1"
                                                   ],
                            "latest_git_commit":  {
                                                      "head":  "034e9e24a24dcf2a4e9b8fbf0ca76e1c8f9e37b5",
@@ -8756,9 +8756,9 @@
 
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "a95eaf70bd02e65af30b51b138d82ea572c2c493",
-                                                     "committed_at":  "2026-08-14T09:38:57+04:00",
-                                                     "subject":  "docs: record control-plane recovery acceptance continuity"
+                                                     "head":  "b619d1dc9e270869cde678d6f60c10c6e5e63422",
+                                                     "committed_at":  "2026-08-14T10:01:57+04:00",
+                                                     "subject":  "docs: record school result: Live 500"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,

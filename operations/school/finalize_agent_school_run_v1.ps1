@@ -120,6 +120,7 @@ $result=[ordered]@{
   blockers=@()
   tracked_summary_path=$null
   commit=$null
+  map_refresh_hook_skip=$null
   boundary=$finalizer.boundary
   intake_submission=$null
 }
@@ -209,8 +210,36 @@ This finalizer records compact school evidence only. It does not commit raw `.ru
     $actions += "WROTE_TRACKED_SUMMARY:$summaryPath"
     if([bool]$finalizer.auto_commit_tracked_summary){
       git add -- $summaryPath
+      if($LASTEXITCODE -ne 0){ throw 'TRACKED_SUMMARY_GIT_ADD_FAILED' }
+      $summaryGitPath=([string]$summaryPath -replace '\\','/')
+      $stagedPaths=@(git diff --cached --name-only --diff-filter=ACMRD -- | Where-Object{ -not [string]::IsNullOrWhiteSpace($_) } | ForEach-Object{ ([string]$_) -replace '\\','/' })
+      $unstagedTracked=@(git diff --name-only -- | Where-Object{ -not [string]::IsNullOrWhiteSpace($_) })
+      $untracked=@(git ls-files --others --exclude-standard | Where-Object{ -not [string]::IsNullOrWhiteSpace($_) })
+      if($summaryGitPath -notlike 'docs/operations/SCHOOL_RUN_RESULT_*.md'){ throw "MAP_HOOK_SKIP_REFUSED_BAD_SUMMARY_PATH:$summaryGitPath" }
+      if($stagedPaths.Count -ne 1 -or $stagedPaths[0] -ne $summaryGitPath){ throw "MAP_HOOK_SKIP_REFUSED_STAGED_SCOPE:$($stagedPaths -join ',')" }
+      if($unstagedTracked.Count -gt 0 -or $untracked.Count -gt 0){ throw "MAP_HOOK_SKIP_REFUSED_DIRTY_AFTER_SUMMARY:unstaged=$($unstagedTracked.Count):untracked=$($untracked.Count)" }
+      if([string]::IsNullOrWhiteSpace([string]$runtimeJson)){ throw 'MAP_HOOK_SKIP_REQUIRES_RUNTIME_PROOF' }
+      $result.map_refresh_hook_skip=[ordered]@{
+        status='PROVEN_SAFE_SKIP_SCHOOL_SUMMARY_ONLY'
+        reason='School tracked result is compact evidence only; no structural/body path is staged and repo was clean before finalizer.'
+        staged_paths=@($stagedPaths)
+        unstaged_tracked_count=[int]$unstagedTracked.Count
+        untracked_count=[int]$untracked.Count
+        hook_bypass_env='EF_SKIP_MAP_HOOK=1'
+        currentness_rule='Body-map currentness is body_source_fingerprint, not commit HEAD.'
+      }
+      $actions += "MAP_REFRESH_HOOK_SKIP_PROVEN:$summaryGitPath"
+      $result.actions=@($actions)
+      WriteJson $runtimeJson $result 50
       $msg = "{0}: {1} {2}" -f ([string]$finalizer.commit_message_prefix),$publicMode,$target
-      git commit -m $msg | Out-Host
+      $previousMapHookSkip=$env:EF_SKIP_MAP_HOOK
+      try {
+        $env:EF_SKIP_MAP_HOOK='1'
+        git commit -m $msg | Out-Host
+        if($LASTEXITCODE -ne 0){ throw "TRACKED_SUMMARY_GIT_COMMIT_FAILED:$LASTEXITCODE" }
+      } finally {
+        if($null -eq $previousMapHookSkip){ Remove-Item Env:EF_SKIP_MAP_HOOK -ErrorAction SilentlyContinue } else { $env:EF_SKIP_MAP_HOOK=$previousMapHookSkip }
+      }
       $commit=(git rev-parse HEAD).Trim()
       $result.commit=$commit
       $actions += "COMMITTED:$commit"

@@ -213,10 +213,17 @@ if([string]::IsNullOrWhiteSpace($selectedTier)){ throw 'VALIDATION_POLICY_TIER_M
 $routeBefore=Get-Content operations/school/curriculum/incremental_active_store/ACTIVE_REPO_BODY_ROUTE_POINTER_V1.json -Raw|ConvertFrom-Json
 $ledgerBefore=Get-Content operations/school/curriculum/incremental_active_store/ACTIVE_REPO_BODY_ROUTE_REPLAY_LEDGER_V1.json -Raw|ConvertFrom-Json
 $inputSha=FileSha256 $stagedInput
-$digestOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/digestion/invoke_compact_semantic_digestion_organ_v1.ps1 -InputPath $normalizedInput -MemoryRoot $candidateMemoryRoot -RunId $runId -CleanupRawSource -SizeBudgetBytes $SizeBudgetBytes *>&1 | ForEach-Object {[string]$_})
-$digestStatus=($digestOut|Where-Object{$_ -match '^DIGEST_STATUS='}|Select-Object -Last 1) -replace '^DIGEST_STATUS=',''
-if($digestStatus -ne 'PASS_COMPACT_SEMANTIC_DIGESTION_ORGAN_V1'){ throw "DIGEST_NOT_PASS:$digestStatus" }
-MarkAbsorbStage 'digest_candidate_memory'
+$fastPathOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/digestion/try_exact_existing_reinforcement_fast_path_v1.ps1 -InputPath $normalizedInput -MemoryRoot $candidateMemoryRoot -RunId $runId -CleanupInput -SizeBudgetBytes $SizeBudgetBytes *>&1 | ForEach-Object {[string]$_})
+$reinforcementFastPathStatus=($fastPathOut|Where-Object{$_ -match '^REINFORCEMENT_FAST_PATH_STATUS='}|Select-Object -Last 1) -replace '^REINFORCEMENT_FAST_PATH_STATUS=',''
+if($reinforcementFastPathStatus -eq 'APPLIED'){
+  $digestStatus='PASS_COMPACT_SEMANTIC_DIGESTION_ORGAN_V1'
+  MarkAbsorbStage 'reinforcement_fast_path'
+} else {
+  $digestOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/digestion/invoke_compact_semantic_digestion_organ_v1.ps1 -InputPath $normalizedInput -MemoryRoot $candidateMemoryRoot -RunId $runId -CleanupRawSource -SizeBudgetBytes $SizeBudgetBytes *>&1 | ForEach-Object {[string]$_})
+  $digestStatus=($digestOut|Where-Object{$_ -match '^DIGEST_STATUS='}|Select-Object -Last 1) -replace '^DIGEST_STATUS=',''
+  if($digestStatus -ne 'PASS_COMPACT_SEMANTIC_DIGESTION_ORGAN_V1'){ throw "DIGEST_NOT_PASS:$digestStatus" }
+  MarkAbsorbStage 'digest_candidate_memory'
+}
 if(Test-Path $normalizedInput){ throw 'NORMALIZED_DIGEST_INPUT_NOT_DELETED' }
 if(Test-Path $stagedInput){ Remove-Item $stagedInput -Force }
 $guardReportPath="$runRoot/MEMORY_WEIGHT_GUARD_V1.json"

@@ -1,22 +1,22 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-08-14T10:02:19.0467563+04:00",
+    "checked_at":  "2026-08-14T21:13:49.3759200+04:00",
     "branch":  "main",
-    "observed_head":  "a95eaf70bd02e65af30b51b138d82ea572c2c493",
-    "subject_head":  "a95eaf70bd02e65af30b51b138d82ea572c2c493",
+    "observed_head":  "b619d1dc9e270869cde678d6f60c10c6e5e63422",
+    "subject_head":  "b619d1dc9e270869cde678d6f60c10c6e5e63422",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "AGENT_BUILDER_SELF_NOTEBOOK.md",
+                          "docs/operations/SCHOOL_RUN_RESULT_20260814_100156_Live_500_canonical_exact_count_cycle_real_500_20260814_094653.md",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json"
                       ],
     "structural_paths":  [
-
+                             "docs/operations/SCHOOL_RUN_RESULT_20260814_100156_Live_500_canonical_exact_count_cycle_real_500_20260814_094653.md"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -28,8 +28,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2304,
-                                    "sha256":  "4ccb75d9745a75a57f82a82f574a3cd599f686307a452c8a19c76985643bf30d"
+                                    "structural_file_count":  2306,
+                                    "sha256":  "bde5489b629d100eba712e96db327f4cb9a4cc46fd10a3b343a92a2d5fadaf55"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -55,12 +55,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  154,
-                         "structural_path_count":  2304,
+                         "structural_path_count":  2306,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-08-14T10:06:12.9265333+04:00"
+    "refreshed_at":  "2026-08-14T21:18:03.1064832+04:00"
 }
