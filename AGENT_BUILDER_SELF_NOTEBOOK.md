@@ -2755,3 +2755,96 @@ Limitation / path-selection boundary:
 
 Next parent step:
 - Commit exactly the two integrity guards plus this Notebook entry, restore clean repo/runtime proof, then choose a moderate next Live scale from fresh stability gaps. Do not jump blindly to 15k/50k/100k.
+## 2026-08-13 - School Live500/digest-window follow-up and four-channel control-plane recovery mesh
+marker: CONTROL_PLANE_FOUR_CHANNEL_DESKTOP_AND_RECOVERY_MESH_20260813
+status: PARTIAL_ACCEPTANCE_DESKTOP_4OF4_RECOVERY_MATRIX_IN_PROGRESS
+
+School continuity catch-up:
+- AUTO topic selection was corrected to preserve `MEMORY != NEXT_TOPIC`: topic/path is fixed from Owner task + parent task + fresh reality + gaps/priorities/safety/exploration before relevant memory retrieval. Accepted selector-v2 commits: `cf8c93f563138efd163ecf6120171ddc8e4f90eb`, `00ee6e70d14b61709d6179b7f865a209b5f9da3`, `345fdf40e011c878fef5fe6e93a5105c2c136cdc`.
+- School producer micro-batch remains 100; digest/publish window is 1000. Digest-window implementation commit `cafa2add479ed969626c6b9cf6cb90cc7ec26a5d`.
+- LAB aggregation of 500 normalized atoms into one digest took `260946 ms` (~4m21s). This is LAB digest-only proof, not a full Live500 wall-clock claim.
+- Real digest-window Live500 `canonical_exact_count_cycle_real_500_20260813_141626` completed exact 500/500 with five READY batches of 100, one tail digest of 500, finalizer PASS, active compact-memory integrity PASS and historical finalizer commit `53a61cfd37c58fa97b90b19cc9c5ef24920fe844`.
+- School/Codex SYSTEM Python gap was repaired by deterministic runtime resolution instead of installing a second Python or mutating machine PATH. Commit `034e9e24a24dcf2a4e9b8fbf0ca76e1c8f9e37b5` publishes Python 3.14 runtime into the School/Codex environment. Fresh repo proof before this Notebook update: root `H:\efab`, branch `main`, HEAD `034e9e24a24dcf2a4e9b8fbf0ca76e1c8f9e37b5`, clean; School/Codex/digest inactive.
+
+Four-channel control-plane acceptance:
+- Channels under test: Primary, Rescue, PC-control and OOB. Declarative capability matrix reached 4x25 = 100/100, missing=0; this alone was explicitly not treated as behavioral acceptance.
+- One unchanged USER desktop acceptance scenario then passed through all four channels: Azerbaijan session 1, scoped Desktop file create/copy/read roundtrip, Notepad launch/close, isolated Edge launch/session/owned cleanup, valid `.xlsx` create/readback and Excel `/x` launch/session/owned cleanup. Behavioral USER desktop acceptance is 4/4 PASS.
+- Excel COM automation was rejected as an infrastructure dependency after it could leave USER PowerShell apartment hung despite successful workbook work. Stable test path uses standard-library OOXML create/readback plus Excel as a separately launched USER application.
+- OOB Cloudflare transport gained an independent SYSTEM transport supervisor and authenticated `transport/status` + `transport/recover`. A scalar-array bug that spawned duplicate `cloudflared` instances was repaired; stability proof requires one process, fresh status and PID match. Live recovery test intentionally stopped transport, recovered it through OOB, received a new public URL and passed external authenticated `/ready`.
+
+Recovery-mesh findings and accepted directed edges:
+- OOB was initially considered recovered when only gateway+USER were alive; Cloudflare transport was missing from recovery state. Primary, Rescue and PC-control recovery contracts were extended so OOB acceptance requires `oob + oob_user + oob_transport`.
+- Directed LIVE PASS edges already proven include `OOB -> PC-control`, `OOB -> Rescue_SERVICE`, `PC-control -> Rescue_SERVICE_WITH_WATCHDOG`, `PC-control -> OOB_FULL`, `Rescue -> OOB_FULL`, and `Primary -> OOB_FULL`.
+- OOB recovery had two lifecycle defects: Rescue and PC-control probes shared one `try` (one failure masked the other), and one fixed post-start snapshot was too early. Probes are now independent and OOB uses bounded health convergence.
+- PC-control recovery exposed a self-watchdog race: long `/channels/reconcile-all` made the single-threaded gateway miss a 5-second health probe, so its watchdog restarted the recovery source mid-operation. Repair: bounded reconcile busy lease with live PID + age <=180s; stale/dead-PID lease does not suppress restart. Directed test forced the watchdog during `PC-control -> Rescue`; PC PID stayed unchanged, busy lease cleared, Rescue health/watchdog returned PASS.
+- PC-control, Rescue and Primary sources have convergence patches prepared/validated so recovery decisions wait on actual target health instead of treating `Start-ScheduledTask` as completion.
+- `Primary -> Rescue` remained NOT ACCEPTED in the last run because a stale live `recovery_gateway.py` child (PID 8776 at that slice) was still executing pre-patch code. A fresh activation replaced it with a new child (PID 9288 at that slice) and direct health passed. That only repairs live-source identity; the directed `Primary -> Rescue` failure-injection must still be rerun before acceptance.
+
+Sanitation / retention boundary:
+- Four-channel Desktop acceptance artifacts and isolated browser profiles are disposable after 4/4 proof and should be removed.
+- Python `__pycache__` created only by compile/smoke validation under OOB/recovery/control-plane tooling is disposable and should be removed.
+- Recovery checkpoints and run/proof material remain retained while the directed recovery matrix is incomplete; do not prune them yet.
+- No acceptance test process should remain after sanitation. Fresh runtime/channel proof must be re-observed before any later mutation; Notebook is continuity, not current runtime truth.
+
+Next parent step:
+- Re-run `Primary -> Rescue` using the proven new live source identity; then complete remaining directed edges to PC-control and full Primary target/transport. Only after all required directed edges pass may the claim `each of four channels can recover the other three` be accepted. After matrix acceptance, perform a second sanitation pass over rollback checkpoints/run evidence using retention rules.
+Recovery-matrix continuation update:
+- marker: PRIMARY_TO_RESCUE_SERVICE_LIVE_PASS_20260813
+- `Primary -> Rescue_SERVICE` is now LIVE PASS on the proven post-patch live Primary child (PID 9288 at this slice). Failure injection produced `before.rescue=false`; Primary bounded convergence returned `after.rescue=true`, `reconciled=true`, action `start_task/recovered=true`; direct Rescue process/watchdog/health post-proof passed. The earlier pre-patch/stale-process failure remains historical evidence, not current acceptance.
+Recovery-matrix diagnostic update:
+- marker: RESCUE_BUSY_LEASE_CANDIDATE_ROLLED_BACK_20260813
+- Rescue watchdog was confirmed to use a fragile one-miss restart path and to derive process kill from listener ownership, which can resolve to HTTP.sys/System PID 4 rather than `rescue_gateway.ps1`.
+- A symmetric busy-lease + exact-process-identity candidate was prepared for Rescue, but its live activation did not pass health. The candidate was therefore REJECTED and both Rescue files were rolled back from `C:\ProgramData\EFAB-OOB\rescue_busy_lease_checkpoint_20260813T192907Z` instead of leaving an unaccepted live patch.
+- Independent Primary post-rollback proof: exactly one `rescue_gateway.ps1` process (PID 7684 at that slice), Rescue Control Running, Rescue Watchdog Ready+Enabled, `/health=True`, `reconcile_busy.json` absent. Health response took about 4054 ms.
+- This latency is now a concrete diagnostic input: before another Rescue source-recovery edge, repair/validate the Rescue health+watchdog timing contract in a bounded micro-trial. Do not retry the rejected busy-lease candidate without new evidence.
+Recovery-matrix continuation update:
+- marker: RESCUE_LIVENESS_AND_PC_RECOVERY_LIVE_PASS_20260813
+- Rescue deep `/health` was measured repeatedly around 3.6-3.8s and includes `Get-PrimaryInspection`; it is not suitable as a watchdog liveness probe. A dedicated local `/liveness` endpoint was added and measured at ~8-14ms normally (one observed sample 93ms; independent probe ~309ms), while deep `/health` remains available for diagnostics.
+- Rescue watchdog now uses `/liveness`, honors only a fresh live-PID reconcile busy lease, and targets only exact `rescue_gateway.ps1` processes instead of listener owner PID (HTTP.sys can be PID 4).
+- Rescue `pc_control` recovery was corrected to restore both `EFAB PC Control SYSTEM` and `EFAB PC Control Watchdog SYSTEM`.
+- Directed `Rescue -> PC-control` failure injection is LIVE PASS: before `pc_control=false`; Rescue source PID 4484 remained unchanged while its watchdog was forcibly invoked during reconcile; busy lease cleared; PC-control returned as PID 6736; PC watchdog `Enabled=True`; PC health PASS; Rescue returned `reconciled=true` and `after.pc_control=true`.
+- Temporary diagnostic Rescue instance on port 18889 was created accidentally during source inspection and immediately stopped; post-check confirmed port18889=0 and no duplicate Rescue process.
+- Sanitation rule strengthened by Owner: classify cleanup candidates encountered anywhere along the path, not only artifacts created in the current slice. Delete only when proven disposable/duplicate/stale; preserve uncertain artifacts and current rollback/proof checkpoints until lifecycle acceptance.
+Recovery-matrix continuation update:
+- marker: PRIMARY_TO_PC_CONTROL_LIVE_PASS_20260813
+- `Primary -> PC-control` is LIVE PASS. Failure injection disabled PC watchdog and stopped the gateway; Primary observed `before.pc_control=false`, recovered the target, waited to `after.pc_control=true`, returned `reconciled=true`; PC-control returned as PID 5172 at that slice, watchdog Ready+Enabled, direct health PASS. Primary recovery source PID 9288 remained the proven live source.
+
+Sanitation continuation update:
+- marker: SANITATION_EMPTY_PC_BACKUPS_REMOVED_20260813
+- Broad sanitation scan found `C:\ProgramData\EFAB-PC-Control\backups` contained zero files and one empty child directory only. After a separate empty-tree preflight it was deleted. Post-cleanup proof: target absent, PC-control health PASS, watchdog Ready+Enabled. Nonempty historical backup/checkpoint/test trees remain retained until classified with stronger proof; top-level candidate scan found no byte-identical duplicate hashes.
+## 2026-08-14 - Four-channel recovery matrix LIVE acceptance
+marker: FOUR_CHANNEL_RECOVERY_MATRIX_LIVE_ACCEPTED_12OF12_20260814
+status: LIVE_ACCEPTED_12_OF_12
+
+Acceptance:
+- The current accepted control-plane configuration has four channels: Primary, Rescue, PC-control and OOB. Directed recovery requirement is 4 sources x 3 peer targets = 12 edges.
+- All 12 directed edges have LIVE behavioral proof using real failure injection, not health-only inference: each channel recovered each of the other three under the tested scoped failure mode.
+- Primary_FULL means recovery wrapper 18787 + upstream API 18788 + ngrok transport + required scheduled tasks/watchdog. OOB_FULL means OOB gateway + interactive USER actuator + Cloudflare transport. Rescue and PC-control full targets include their service and watchdog.
+- Final compact acceptance artifact: `H:\bridge\control_plane_v1\recovery_matrix_acceptance_v1.json`, SHA256 `0EA212305301A6EC80823C53EE35A52E05FE7EB80D0842FEAB682BE650364678`; exact validation: edge_count=12, passed=12, failed=0.
+- Key final full-Primary proofs: OOB->Primary_FULL `pc_run-20260813-200144-f4ca9a16`; Rescue->Primary_FULL `pc_run-20260813-202133-8a866720`; PC-control->Primary_FULL `pc_run-20260813-202553-38f0181b`.
+- Final health sweep `pc_run-20260813-202956-64ac4fbc` PASS: exactly one process per Primary recovery/upstream/ngrok, Rescue, PC-control, OOB gateway and OOB cloudflared; all required tasks Enabled; OOB ready/user/transport true; temp acceptance processes=0; port18889=0.
+- PC-control final healthy reconcile after Rescue `/liveness` cleanup returned every channel true with actions_count=0 (`managed_run-20260813-202850-e83c4f90`).
+- Practical USER desktop capability remains separately accepted 4/4 across Primary, Rescue, PC-control and OOB.
+
+Important repairs discovered by real failure testing:
+- Recovery completion now follows actual health convergence rather than treating task start as success.
+- OOB full recovery includes Cloudflare transport, not only gateway+USER.
+- Rescue watchdog uses fast `/liveness`, bounded busy lease and exact process identity rather than HTTP.sys listener owner PID 4.
+- PC-control watchdog uses bounded busy lease so a long reconcile does not kill its own recovery source.
+- Primary recovery semantics were unified across peers to require wrapper+upstream+ngrok instead of inconsistent partial definitions.
+- Rescue and PC-control ngrok recovery now restores both Ngrok Primary and Ngrok Watchdog even when tasks are Disabled.
+- OOB and PC-control Rescue state probes use Rescue `/liveness`, eliminating false rescue-down recovery actions caused by deep `/health` latency.
+
+Post-acceptance sanitation / retention:
+- Acceptance artifact was created before pruning.
+- 26 superseded rollback/checkpoint artifacts (~681531 bytes) were deleted because restoring them would reintroduce already-fixed defects.
+- 21 compact bounded-repair proof JSON files were retained.
+- Exactly three nearest practical rollback copies were retained: latest Rescue predecessor SHA `BA0AA383CF38E8B8CFC0B9E9D885046DDE5FBF7E130E5627DEBA245FA5D024EB`; latest OOB predecessor SHA `ABADD78C5D01B4BDAD3EA31FBF06AC391789188EABEDFDB0DF28CC3D1B75B7D2`; PC pre-liveness predecessor SHA `E8E8088BA124DB9CB8A7BFC8D6D893D3C5CCE97B1E5369E5DF2A7B0758662A84`.
+- Post-cleanup proof: Primary/Rescue/PC-control direct health PASS, OOB ready+USER+transport PASS, acceptance SHA unchanged, retained rollback hashes unchanged, temp process count=0 and port18889=0.
+
+Claims proven / limits:
+- Proven for the current accepted configuration and tested failure modes: each of the four channels can recover each of the other three.
+- Not proven: survival of simultaneous correlated multi-channel failure, provider-wide outages beyond tested transports, infinite-duration stability, or future configuration changes without revalidation.
+
+Return to parent:
+- Four-channel control-plane recovery objective is accepted. Resume the deferred parent task: run another real Live500 and measure true end-to-end wall-clock, while preserving active-memory protection and normal scale preflight.
