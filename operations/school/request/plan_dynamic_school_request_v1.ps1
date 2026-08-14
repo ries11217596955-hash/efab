@@ -3,7 +3,7 @@ param(
   [string]$OutputPath = '',
   [ValidateRange(1,1000000)][int]$MinRequestSize = 50,
   [ValidateRange(1,1000000)][int]$MaxRequestSize = 50000,
-  [ValidateRange(1,10000)][int]$MicroBatchSize = 100,
+  [ValidateRange(1,10000)][int]$MicroBatchSize = 500,
   [ValidateRange(1,1000000)][int]$MaxReadyBacklogCandidates = 3000,
   [ValidateRange(1,1000000)][int]$ProductionWindowCandidates = 1000,
   [ValidateRange(0,1000000)][int]$ExactRequestSize = 0

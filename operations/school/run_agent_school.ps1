@@ -40,7 +40,10 @@ $ErrorActionPreference='Stop'
 $repoRoot=(git rev-parse --show-toplevel).Trim(); Set-Location $repoRoot
 function EnsureDir($Path){ if($Path -and -not (Test-Path $Path)){ New-Item -ItemType Directory -Force -Path $Path | Out-Null } }
 function WriteJson($Path,$Obj,$Depth=100){ $d=Split-Path -Parent $Path; if($d){ EnsureDir $d }; $Obj|ConvertTo-Json -Depth $Depth|Set-Content -LiteralPath $Path -Encoding UTF8 }
+function WriteJsonAtomic($Path,$Obj,$Depth=100){ $d=Split-Path -Parent $Path; if($d){ EnsureDir $d }; $tmp=("{0}.tmp.{1}" -f $Path,[guid]::NewGuid().ToString('N')); try { $Obj|ConvertTo-Json -Depth $Depth|Set-Content -LiteralPath $tmp -Encoding UTF8; Move-Item -LiteralPath $tmp -Destination $Path -Force } finally { if(Test-Path -LiteralPath $tmp){ Remove-Item -LiteralPath $tmp -Force -ErrorAction SilentlyContinue } } }
 function Sha($p){ if(Test-Path $p){ (Get-FileHash $p -Algorithm SHA256).Hash } else { 'MISSING' } }
+function MemoryHashes($Root){ return [ordered]@{manifest=Sha (Join-Path $Root 'manifest.json'); index=Sha (Join-Path $Root 'index.json'); cells=Sha (Join-Path $Root 'cells.jsonl')} }
+function SameMemoryHashes($A,$B){ return ([string]$A.manifest -eq [string]$B.manifest -and [string]$A.index -eq [string]$B.index -and [string]$A.cells -eq [string]$B.cells) }
 function AddLedger($Path,$Row){ EnsureDir (Split-Path -Parent $Path); ($Row|ConvertTo-Json -Depth 80 -Compress)|Add-Content -LiteralPath $Path -Encoding UTF8 }
 $mem='.runtime/active_compact_semantic_memory_v1'
 $memoryBefore=[ordered]@{manifest=Sha "$mem/manifest.json"; index=Sha "$mem/index.json"; cells=Sha "$mem/cells.jsonl"}
@@ -51,6 +54,53 @@ if($task.status -notin $acceptedTaskStatuses){ throw "BAD_MACRO_TASK_STATUS:$($t
 $warehouseRoot=[string]$task.warehouse_root
 $ledgerPath=[string]$task.warehouse_ledger_path
 EnsureDir $warehouseRoot
+$recoveryRoot=Join-Path $warehouseRoot 'digest_recovery'
+$recoveryMarker=Join-Path $recoveryRoot 'digest_window_recovery.json'
+$checkpointRoot=Join-Path $recoveryRoot 'active_memory_checkpoint'
+EnsureDir $recoveryRoot
+if(Test-Path -LiteralPath $recoveryMarker){
+  $recovery=Get-Content -LiteralPath $recoveryMarker -Raw|ConvertFrom-Json
+  $currentHashes=MemoryHashes $mem
+  if([string]$recovery.state -eq 'PREPARED'){
+    if(-not(SameMemoryHashes $currentHashes $recovery.before_hashes)){ throw 'RECOVERY_REQUIRED_AMBIGUOUS_MEMORY_STATE:PREPARED_HASH_MISMATCH' }
+    foreach($b in @($recovery.batches)){
+      $mb=@($task.micro_batches|Where-Object{[string]$_.micro_batch_id -eq [string]$b.micro_batch_id})[0]
+      if($null -ne $mb -and (Test-Path -LiteralPath ([string]$mb.consuming_marker))){ Remove-Item -LiteralPath ([string]$mb.consuming_marker) -Force }
+    }
+    if(Test-Path -LiteralPath $checkpointRoot){ Remove-Item -LiteralPath $checkpointRoot -Recurse -Force }
+    Remove-Item -LiteralPath $recoveryMarker -Force
+    AddLedger $ledgerPath ([ordered]@{ts=(Get-Date).ToString('o');state='RECOVERY_PREPARED_SAFE_RETRY';before_hashes=$currentHashes})
+  } elseif([string]$recovery.state -eq 'PUBLISHED_PASS'){
+    if(-not(SameMemoryHashes $currentHashes $recovery.after_hashes)){ throw 'RECOVERY_REQUIRED_AMBIGUOUS_MEMORY_STATE:PUBLISHED_HASH_MISMATCH' }
+    if([string]::IsNullOrWhiteSpace([string]$recovery.proof_path) -or -not(Test-Path -LiteralPath ([string]$recovery.proof_path))){ throw 'RECOVERY_REQUIRED_AMBIGUOUS_MEMORY_STATE:PUBLISHED_PROOF_MISSING' }
+    foreach($b in @($recovery.batches)){
+      $mb=@($task.micro_batches|Where-Object{[string]$_.micro_batch_id -eq [string]$b.micro_batch_id})[0]
+      if($null -eq $mb){ throw ("RECOVERY_REQUIRED_AMBIGUOUS_MEMORY_STATE:BATCH_NOT_IN_TASK:{0}" -f $b.micro_batch_id) }
+      if(-not(Test-Path -LiteralPath ([string]$mb.absorbed_marker))){
+        WriteJson ([string]$mb.absorbed_marker) ([ordered]@{status='ABSORBED';micro_batch_id=[string]$b.micro_batch_id;absorbed_at=(Get-Date).ToString('o');proof=[string]$recovery.proof_path;digest_window_atoms=[int]$recovery.digest_window_atoms;digest_window_batch_count=@($recovery.batches).Count;recovered_from_published_pass=$true}) 30
+        AddLedger $ledgerPath ([ordered]@{ts=(Get-Date).ToString('o');micro_batch_id=[string]$b.micro_batch_id;sequence=[int]$mb.sequence;state='ABSORBED_RECOVERED_PUBLISHED_PASS';candidate_count=[int]$b.candidate_count;absorption_proof=[string]$recovery.proof_path;digest_window_atoms=[int]$recovery.digest_window_atoms;digest_window_batch_count=@($recovery.batches).Count})
+      }
+      if(Test-Path -LiteralPath ([string]$mb.consuming_marker)){ Remove-Item -LiteralPath ([string]$mb.consuming_marker) -Force }
+    }
+    if(Test-Path -LiteralPath $checkpointRoot){ Remove-Item -LiteralPath $checkpointRoot -Recurse -Force }
+    Remove-Item -LiteralPath $recoveryMarker -Force
+    AddLedger $ledgerPath ([ordered]@{ts=(Get-Date).ToString('o');state='RECOVERY_PUBLISHED_PASS_COMPLETED';after_hashes=$currentHashes;proof=[string]$recovery.proof_path})
+  } else { throw ("RECOVERY_REQUIRED_AMBIGUOUS_MEMORY_STATE:UNKNOWN_STATE:{0}" -f $recovery.state) }
+} else {
+  if(Test-Path -LiteralPath $checkpointRoot){ Remove-Item -LiteralPath $checkpointRoot -Recurse -Force }
+  Get-ChildItem -LiteralPath $recoveryRoot -File -Filter 'digest_window_recovery.json.tmp.*' -ErrorAction SilentlyContinue | Remove-Item -Force -ErrorAction SilentlyContinue
+  $orphanConsuming=@($task.micro_batches | Where-Object { (Test-Path -LiteralPath ([string]$_.consuming_marker)) -and -not(Test-Path -LiteralPath ([string]$_.absorbed_marker)) -and -not(Test-Path -LiteralPath ([string]$_.cleaned_marker)) })
+  if($orphanConsuming.Count -gt 0){
+    if($Absorb){
+      $ids=(@($orphanConsuming|ForEach-Object{[string]$_.micro_batch_id}) -join ',')
+      throw ("RECOVERY_REQUIRED_AMBIGUOUS_MEMORY_STATE:CONSUMING_WITHOUT_RECOVERY_MARKER:{0}" -f $ids)
+    }
+    foreach($mb in $orphanConsuming){
+      Remove-Item -LiteralPath ([string]$mb.consuming_marker) -Force
+      AddLedger $ledgerPath ([ordered]@{ts=(Get-Date).ToString('o');micro_batch_id=[string]$mb.micro_batch_id;sequence=[int]$mb.sequence;state='RECOVERY_STALE_CONSUMING_CLEARED_NO_ABSORB';reason='restart_before_no_absorb_consumer_completion'})
+    }
+  }
+}
 $start=Get-Date
 $consumed=New-Object System.Collections.ArrayList
 $waitEvents=New-Object System.Collections.ArrayList
@@ -63,6 +113,20 @@ while($true){
   if($ready.Count -gt 0){
     $selected=@($ready | Sort-Object sequence | Select-Object -First $MaxConsumeBatches)
     $prepared=New-Object System.Collections.ArrayList
+    if($Absorb){
+      if(Test-Path -LiteralPath $recoveryMarker){ throw 'DIGEST_RECOVERY_MARKER_ALREADY_ACTIVE' }
+      if(Test-Path -LiteralPath $checkpointRoot){ Remove-Item -LiteralPath $checkpointRoot -Recurse -Force }
+      EnsureDir $checkpointRoot
+      $beforeHashes=MemoryHashes $mem
+      foreach($name in @('manifest.json','index.json','cells.jsonl')){
+        $src=Join-Path $mem $name; if(-not(Test-Path -LiteralPath $src)){ throw ("ACTIVE_MEMORY_CHECKPOINT_SOURCE_MISSING:{0}" -f $name) }
+        Copy-Item -LiteralPath $src -Destination (Join-Path $checkpointRoot $name) -Force
+      }
+      $checkpointHashes=MemoryHashes $checkpointRoot
+      if(-not(SameMemoryHashes $beforeHashes $checkpointHashes)){ throw 'ACTIVE_MEMORY_CHECKPOINT_HASH_MISMATCH' }
+      $recoveryBatches=@($selected|ForEach-Object{[ordered]@{micro_batch_id=[string]$_.micro_batch_id;sequence=[int]$_.sequence;candidate_count=[int]$_.candidate_count}})
+      WriteJsonAtomic $recoveryMarker ([ordered]@{schema='school_digest_window_recovery_v1';state='PREPARED';created_at=(Get-Date).ToString('o');warehouse_root=$warehouseRoot;checkpoint_path=$checkpointRoot;batches=$recoveryBatches;before_hashes=$beforeHashes;after_hashes=$null;proof_path=$null;digest_window_atoms=0}) 50
+    }
     foreach($mb in $selected){
       $consumeMarker=[string]$mb.consuming_marker
       WriteJson $consumeMarker ([ordered]@{status='CONSUMING'; micro_batch_id=$mb.micro_batch_id; started_at=(Get-Date).ToString('o')}) 20
@@ -101,18 +165,28 @@ while($true){
       $absorbStatus=(($absorbOut|Where-Object{$_ -match '^FILE_ATOM_ABSORPTION_STATUS='}|Select-Object -Last 1) -replace '^FILE_ATOM_ABSORPTION_STATUS=','')
       $absorbProof=(($absorbOut|Where-Object{$_ -match '^PROOF_PATH='}|Select-Object -Last 1) -replace '^PROOF_PATH=','')
       if($absorbStatus -ne 'PASS_FILE_ATOM_ABSORPTION_PIPELINE_V1'){ throw "DIGEST_WINDOW_ABSORPTION_FAILED:$absorbStatus" }
+      $afterHashes=MemoryHashes $mem
+      if(-not(Test-Path -LiteralPath $recoveryMarker)){ throw 'DIGEST_RECOVERY_MARKER_MISSING_AFTER_ABSORB' }
+      $recovery=Get-Content -LiteralPath $recoveryMarker -Raw|ConvertFrom-Json
+      $published=[ordered]@{schema='school_digest_window_recovery_v1';state='PUBLISHED_PASS';created_at=[string]$recovery.created_at;published_at=(Get-Date).ToString('o');warehouse_root=$warehouseRoot;checkpoint_path=$checkpointRoot;batches=@($recovery.batches);before_hashes=$recovery.before_hashes;after_hashes=$afterHashes;proof_path=$absorbProof;digest_window_atoms=$digestWindowAtoms}
+      WriteJsonAtomic $recoveryMarker $published 50
       foreach($item in @($prepared)){
         $mb=$item.mb; $norm=$item.norm
         WriteJson ([string]$mb.absorbed_marker) ([ordered]@{status='ABSORBED'; micro_batch_id=$mb.micro_batch_id; absorbed_at=(Get-Date).ToString('o'); proof=$absorbProof; digest_window_atoms=$digestWindowAtoms; digest_window_batch_count=$prepared.Count}) 30
         AddLedger $ledgerPath ([ordered]@{ts=(Get-Date).ToString('o'); micro_batch_id=$mb.micro_batch_id; sequence=$mb.sequence; state='ABSORBED'; candidate_count=[int]$mb.candidate_count; normalization_report=[string]$mb.normalization_report; normalized_atoms_jsonl=[string]$mb.normalized_atoms_jsonl; absorption_status=$absorbStatus; absorption_proof=$absorbProof; digest_window_atoms=$digestWindowAtoms; digest_window_batch_count=$prepared.Count})
         [void]$consumed.Add([pscustomobject]@{micro_batch_id=$mb.micro_batch_id; state='ABSORBED'; candidate_count=[int]$mb.candidate_count; accepted_count=[int]$norm.accepted_count; absorption_status=$absorbStatus; digest_window_atoms=$digestWindowAtoms; digest_window_batch_count=$prepared.Count})
+        if(Test-Path -LiteralPath ([string]$mb.consuming_marker)){ Remove-Item -LiteralPath ([string]$mb.consuming_marker) -Force }
       }
+      if(Test-Path -LiteralPath $checkpointRoot){ Remove-Item -LiteralPath $checkpointRoot -Recurse -Force }
+      if(Test-Path -LiteralPath $recoveryMarker){ Remove-Item -LiteralPath $recoveryMarker -Force }
       if(Test-Path -LiteralPath $digestWindowInput){ Remove-Item -LiteralPath $digestWindowInput -Force }
     } else {
       foreach($item in @($prepared)){
         $mb=$item.mb; $norm=$item.norm
         AddLedger $ledgerPath ([ordered]@{ts=(Get-Date).ToString('o'); micro_batch_id=$mb.micro_batch_id; sequence=$mb.sequence; state='VALIDATED_NORMALIZED'; candidate_count=[int]$mb.candidate_count; normalization_report=[string]$mb.normalization_report; normalized_atoms_jsonl=[string]$mb.normalized_atoms_jsonl; absorption_status='NOT_RUN'; absorption_proof=$null})
         [void]$consumed.Add([pscustomobject]@{micro_batch_id=$mb.micro_batch_id; state='VALIDATED_NORMALIZED'; candidate_count=[int]$mb.candidate_count; accepted_count=[int]$norm.accepted_count; absorption_status='NOT_RUN'})
+        WriteJson ([string]$mb.cleaned_marker) ([ordered]@{status='CLEANED_WITHOUT_ABSORB';micro_batch_id=$mb.micro_batch_id;completed_at=(Get-Date).ToString('o');normalization_report=[string]$mb.normalization_report;normalized_atoms_jsonl=[string]$mb.normalized_atoms_jsonl}) 30
+        if(Test-Path -LiteralPath ([string]$mb.consuming_marker)){ Remove-Item -LiteralPath ([string]$mb.consuming_marker) -Force }
       }
     }
     $status=if($Absorb){'PASS_WAREHOUSE_CONSUMED_READY_BATCHES_WITH_ABSORB_V1'}else{'PASS_WAREHOUSE_CONSUMED_READY_BATCHES_NO_ABSORB_V1'}
@@ -170,8 +244,8 @@ function Invoke-SchoolExactCountWarehouseCycle {
 param(
   [ValidateSet('MockProducer','RunCodex')][string]$ProducerMode = 'MockProducer',
   [ValidateRange(1,50000)][int]$Count = 678,
-  [ValidateRange(1,10000)][int]$MicroBatchSize = 100,
-  [ValidateRange(1,10000)][int]$DigestWindowAtoms = 1000,
+  [ValidateRange(1,10000)][int]$MicroBatchSize = 500,
+  [ValidateRange(1,10000)][int]$DigestWindowAtoms = 500,
   [ValidateRange(30,7200)][int]$CodexTimeoutSeconds = 900,
   [switch]$Absorb,
   [string]$Topics = 'AUTO',
@@ -277,15 +351,31 @@ $taskDir="$OutputRoot/warehouse_request"
 $eventsPath="$OutputRoot/events.jsonl"
 function AddEvent($State,$Data){ ([ordered]@{ts=(Get-Date).ToString('o'); state=$State; data=$Data}|ConvertTo-Json -Depth 80 -Compress)|Add-Content -LiteralPath $eventsPath -Encoding UTF8 }
 AddEvent 'EXACT_COUNT_CYCLE_STARTED' @{producer_mode=$ProducerMode; count=$Count; micro_batch_size=$MicroBatchSize; digest_window_atoms=$DigestWindowAtoms; absorb=[bool]$Absorb}
-& powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/memory/select_dynamic_theme_cell_v1.ps1 -RequestedTopics $Topics -PatchSize 1000 -OutputPath $selectionPath | Out-Host
-& powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/request/plan_dynamic_school_request_v1.ps1 -SelectionPath $selectionPath -OutputPath $requestPlanPath -ExactRequestSize $Count -MicroBatchSize $MicroBatchSize -MaxRequestSize 50000 -MaxReadyBacklogCandidates 3000 | Out-Host
-$request=Get-Content $requestPlanPath -Raw | ConvertFrom-Json
-$taskOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/warehouse/build_codex_warehouse_request_macro_task_v1.ps1 -RequestPlanPath $requestPlanPath -SelectionPath $selectionPath -OutputDir $taskDir *>&1 | ForEach-Object{[string]$_})
-$taskOut | Set-Content -LiteralPath "$OutputRoot/task_builder_stdout.txt" -Encoding UTF8
-$taskJson=(($taskOut|Where-Object{$_ -match '^CODEX_WAREHOUSE_DYNAMIC_REQUEST_TASK_JSON='}|Select-Object -Last 1) -replace '^CODEX_WAREHOUSE_DYNAMIC_REQUEST_TASK_JSON=','')
-$taskMd=(($taskOut|Where-Object{$_ -match '^CODEX_WAREHOUSE_DYNAMIC_REQUEST_TASK_MD='}|Select-Object -Last 1) -replace '^CODEX_WAREHOUSE_DYNAMIC_REQUEST_TASK_MD=','')
-if([string]::IsNullOrWhiteSpace($taskJson) -or -not (Test-Path $taskJson)){ throw 'TASK_JSON_MISSING' }
-$task=Get-Content $taskJson -Raw | ConvertFrom-Json
+$taskJson="$taskDir/codex_warehouse_dynamic_request_task.json"
+$taskMd="$taskDir/CODEX_WAREHOUSE_DYNAMIC_REQUEST_TASK.md"
+if(Test-Path -LiteralPath $taskJson){
+  $task=Get-Content -LiteralPath $taskJson -Raw | ConvertFrom-Json
+  if($task.status -ne 'CODEX_WAREHOUSE_DYNAMIC_REQUEST_TASK_BUILT'){ throw "RESUME_TASK_STATUS_BAD:$($task.status)" }
+  if([int]$task.total_candidate_count -ne $Count){ throw "RESUME_TASK_COUNT_MISMATCH:$($task.total_candidate_count)/$Count" }
+  if([int]$task.micro_batch_size -ne $MicroBatchSize){ throw "RESUME_TASK_MICRO_BATCH_MISMATCH:$($task.micro_batch_size)/$MicroBatchSize" }
+  if($Topics -ne 'AUTO' -and [string]$task.topic_key -ne $Topics){ throw "RESUME_TASK_TOPIC_MISMATCH:$($task.topic_key)/$Topics" }
+  $selectionPath=[string]$task.selection_path
+  $requestPlanPath=[string]$task.request_plan_path
+  if(-not(Test-Path -LiteralPath $selectionPath)){ throw "RESUME_SELECTION_MISSING:$selectionPath" }
+  if(-not(Test-Path -LiteralPath $requestPlanPath)){ throw "RESUME_REQUEST_PLAN_MISSING:$requestPlanPath" }
+  $request=Get-Content -LiteralPath $requestPlanPath -Raw | ConvertFrom-Json
+  AddEvent 'RESUME_TASK_REUSED' @{task_json=$taskJson; count=$Count; micro_batch_size=$MicroBatchSize; topic=$task.topic_key}
+} else {
+  & powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/memory/select_dynamic_theme_cell_v1.ps1 -RequestedTopics $Topics -PatchSize 1000 -OutputPath $selectionPath | Out-Host
+  & powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/request/plan_dynamic_school_request_v1.ps1 -SelectionPath $selectionPath -OutputPath $requestPlanPath -ExactRequestSize $Count -MicroBatchSize $MicroBatchSize -MaxRequestSize 50000 -MaxReadyBacklogCandidates 3000 | Out-Host
+  $request=Get-Content $requestPlanPath -Raw | ConvertFrom-Json
+  $taskOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/warehouse/build_codex_warehouse_request_macro_task_v1.ps1 -RequestPlanPath $requestPlanPath -SelectionPath $selectionPath -OutputDir $taskDir *>&1 | ForEach-Object{[string]$_})
+  $taskOut | Set-Content -LiteralPath "$OutputRoot/task_builder_stdout.txt" -Encoding UTF8
+  $taskJson=(($taskOut|Where-Object{$_ -match '^CODEX_WAREHOUSE_DYNAMIC_REQUEST_TASK_JSON='}|Select-Object -Last 1) -replace '^CODEX_WAREHOUSE_DYNAMIC_REQUEST_TASK_JSON=','')
+  $taskMd=(($taskOut|Where-Object{$_ -match '^CODEX_WAREHOUSE_DYNAMIC_REQUEST_TASK_MD='}|Select-Object -Last 1) -replace '^CODEX_WAREHOUSE_DYNAMIC_REQUEST_TASK_MD=','')
+  if([string]::IsNullOrWhiteSpace($taskJson) -or -not (Test-Path $taskJson)){ throw 'TASK_JSON_MISSING' }
+  $task=Get-Content $taskJson -Raw | ConvertFrom-Json
+}
 $batchCounts=@($task.micro_batches | ForEach-Object {[int]$_.candidate_count})
 $producerStatus='NOT_RUN'; $producerFailureClass=''; $producerExitAnomaly=$false; $producerExitClass=''; $producerExitCode=$null; $readyBatchCount=0; $readyCandidateCount=0
 $streamingEnabled=$true
@@ -295,7 +385,24 @@ $orderedMicroBatches=@($task.micro_batches | Sort-Object sequence)
 $streamBatches=New-Object System.Collections.ArrayList
 $consumerReports=New-Object System.Collections.ArrayList
 $consumerStatuses=New-Object System.Collections.ArrayList
-$streamState=[ordered]@{next_ordinal=1; consumed=0; accepted=0; first_consume_started_at=$null; first_consume_started_at_value=$null; consumer_failed=$false}
+$resumeConsumed=0; $resumeAccepted=0; $resumeNextOrdinal=1; $seenGap=$false
+foreach($mb in @($orderedMicroBatches)){
+  $isAbsorbed=(Test-Path -LiteralPath ([string]$mb.absorbed_marker))
+  $isCleanedNoAbsorb=((-not $Absorb) -and (Test-Path -LiteralPath ([string]$mb.cleaned_marker)))
+  if($isAbsorbed -or $isCleanedNoAbsorb){
+    if($seenGap){ throw "RESUME_NONCONTIGUOUS_COMPLETED_PREFIX:$($mb.micro_batch_id)" }
+    if($isAbsorbed){
+      $completedMarker=Get-Content -LiteralPath ([string]$mb.absorbed_marker) -Raw | ConvertFrom-Json
+      if([string]$completedMarker.status -ne 'ABSORBED'){ throw "RESUME_ABSORBED_MARKER_STATUS_BAD:$($mb.micro_batch_id):$($completedMarker.status)" }
+    } else {
+      $completedMarker=Get-Content -LiteralPath ([string]$mb.cleaned_marker) -Raw | ConvertFrom-Json
+      if([string]$completedMarker.status -ne 'CLEANED_WITHOUT_ABSORB'){ throw "RESUME_CLEANED_MARKER_STATUS_BAD:$($mb.micro_batch_id):$($completedMarker.status)" }
+    }
+    $resumeConsumed++; $resumeAccepted += [int]$mb.candidate_count; $resumeNextOrdinal++
+  } else { $seenGap=$true }
+}
+$streamState=[ordered]@{next_ordinal=$resumeNextOrdinal; consumed=$resumeConsumed; accepted=$resumeAccepted; first_consume_started_at=$null; first_consume_started_at_value=$null; consumer_failed=$false}
+if($resumeConsumed -gt 0){ AddEvent 'RESUME_COMPLETED_PREFIX' @{consumed_batches=$resumeConsumed; accepted_candidates=$resumeAccepted; next_ordinal=$resumeNextOrdinal; absorb=[bool]$Absorb} }
 function Test-ExpectedBatchReady([int]$Ordinal){
   if($Ordinal -lt 1 -or $Ordinal -gt $orderedMicroBatches.Count){ return $false }
   $mb=$orderedMicroBatches[$Ordinal-1]
@@ -313,6 +420,16 @@ function Get-ReadyBatchTotals {
     }
   }
   return [pscustomobject]@{ready_batch_count=$batchTotal; ready_candidate_count=$candidateTotal}
+}
+function Get-CompletedBatchTotals {
+  $batchTotal=0
+  $candidateTotal=0
+  foreach($mb in @($orderedMicroBatches)){
+    $absorbed=(Test-Path -LiteralPath ([string]$mb.absorbed_marker))
+    $ready=((Test-Path -LiteralPath ([string]$mb.ready_marker)) -and (Test-Path -LiteralPath ([string]$mb.ready_jsonl)))
+    if($absorbed -or $ready){ $batchTotal++; $candidateTotal += [int]$mb.candidate_count }
+  }
+  return [pscustomobject]@{completed_batch_count=$batchTotal; completed_candidate_count=$candidateTotal}
 }
 function Invoke-ExpectedStreamConsume([string]$Reason){
   if([bool]$streamState['consumer_failed']){ return $false }
@@ -434,83 +551,85 @@ if($ProducerMode -eq 'MockProducer'){
   }
 } else {
   $promptPath="$OutputRoot/codex_exact_count_cycle_prompt.txt"; $stdoutPath="$OutputRoot/codex_stdout.txt"; $stderrPath="$OutputRoot/codex_stderr.txt"
-  $batchTable=@($task.micro_batches | ForEach-Object { ("{0}|count={1}|ready_jsonl={2}|ready_marker={3}" -f $_.micro_batch_id,$_.candidate_count,$_.ready_jsonl,$_.ready_marker) })
-  $promptLines=New-Object System.Collections.ArrayList
-  [void]$promptLines.Add('You are Codex acting only as producer for one exact-count warehouse cycle. You are not the Builder brain.')
-  [void]$promptLines.Add('')
-  [void]$promptLines.Add(('TARGET_COUNT={0}' -f $Count))
-  [void]$promptLines.Add(('MICRO_BATCH_SIZE={0}' -f $MicroBatchSize))
-  [void]$promptLines.Add(('MICRO_BATCH_COUNT={0}' -f $task.micro_batch_count))
-  [void]$promptLines.Add(('BATCH_COUNTS={0}' -f ($batchCounts -join ',')))
-  [void]$promptLines.Add(('TOPIC_KEY={0}' -f $task.topic_key))
-  [void]$promptLines.Add(('TOPIC_LABEL={0}' -f $task.topic_label))
-  [void]$promptLines.Add(('START_DEPTH={0}' -f $task.start_depth))
-  [void]$promptLines.Add(('TARGET_DEPTH={0}' -f $task.target_depth))
-  [void]$promptLines.Add(('HEARTBEAT_PATH={0}' -f $task.heartbeat_path))
-  [void]$promptLines.Add(('DONE_MARKER={0}' -f $task.producer_done_marker))
-  [void]$promptLines.Add('')
-  [void]$promptLines.Add('REQUIRED_BATCHES:')
-  foreach($line in $batchTable){ [void]$promptLines.Add($line) }
-  [void]$promptLines.Add('')
-  [void]$promptLines.Add('OUTPUT RULES:')
-  [void]$promptLines.Add('- Use Python standard library if possible. Do not use PowerShell .NET constructors.')
-  [void]$promptLines.Add('- Do not use tmp files and do not rename files in this cycle.')
-  [void]$promptLines.Add('- For each batch, write READY.jsonl directly, then write READY.marker.json.')
-  [void]$promptLines.Add('- After writing each READY.marker.json, immediately continue producing the next batch without waiting for School consumption.')
-  [void]$promptLines.Add('- Produce exactly one micro-batch per shell/tool command invocation. Never create or write READY files for more than one micro-batch in the same command, script, or process.')
-  [void]$promptLines.Add('- Before writing each READY.marker.json, validate only that current batch: exact candidate_count, unique candidate_id values, correct topic/depth/source fields, and every required quality field non-empty.')
-  [void]$promptLines.Add('- For every candidate, expected_behavior, validator, proof_requirements, negative_case, return_to_parent, and digest_hint must each be non-empty strings regardless of depth_level.')
-  [void]$promptLines.Add('- After a batch READY.marker.json is written, return control to Codex before starting a separate command invocation for the next micro-batch.')
-  [void]$promptLines.Add('- Write exactly TARGET_COUNT JSONL candidate lines total across all batches.')
-  [void]$promptLines.Add('- Write heartbeat and DONE marker after all batches are READY.')
-  [void]$promptLines.Add('- Do not mutate active memory. Do not edit tracked repo files.')
-  [void]$promptLines.Add('')
-  [void]$promptLines.Add('Each JSONL line must be a JSON object with fields: schema,candidate_id,topic_key,topic_label,depth_level,prerequisite_depth,target_depth,source_basis,source_missing,claim,expected_behavior,failure_contrast,validator,proof_requirements,negative_case,return_to_parent,digest_hint,quality_flags.')
-  [void]$promptLines.Add('Use schema=codex_school_patch_candidate_v1, topic_key exactly TOPIC_KEY, source_basis as a non-empty array or source_missing=true, and depth_level between START_DEPTH and TARGET_DEPTH.')
-  [void]$promptLines.Add('After all READY markers and DONE marker are written, stop.')
-  $promptLines | Set-Content -LiteralPath $promptPath -Encoding UTF8
-  $pythonResolution=Resolve-SchoolPythonRuntime
-  $env:EFAB_PYTHON_EXE=[string]$pythonResolution.exe
-  $pythonDir=Split-Path -Parent ([string]$pythonResolution.exe)
-  $pathParts=@([string]$env:PATH -split ';' | Where-Object{-not[string]::IsNullOrWhiteSpace($_)})
-  if($pathParts -notcontains $pythonDir){ $env:PATH=($pythonDir+';'+[string]$env:PATH) }
-  $codexResolution=Resolve-SchoolCodexCli
-  $codexCmd=[string]$codexResolution.exe
-  $env:CODEX_HOME=[string]$codexResolution.home
-  $cmdLine='""{0}" exec -C "{1}" --dangerously-bypass-approvals-and-sandbox --ephemeral - < "{2}" > "{3}" 2> "{4}""' -f $codexCmd,$repoRoot,$promptPath,$stdoutPath,$stderrPath
-  AddEvent 'PYTHON_RUNTIME_RESOLUTION' @{status=$pythonResolution.status; exe=$pythonResolution.exe; source=$pythonResolution.source; version=$pythonResolution.version}
-  AddEvent 'CODEX_RESOLUTION' @{status=$codexResolution.status; exe=$codexCmd; home=$codexResolution.home; source=$codexResolution.source; version=$codexResolution.version}
-  AddEvent 'CODEX_LAUNCH' @{prompt_path=$promptPath; timeout_seconds=$CodexTimeoutSeconds; exe=$codexCmd; codex_home=$codexResolution.home; execution_mode='BOUNDED_BYPASS_WINDOWS_SYSTEM'; output_contract='WAREHOUSE_ONLY_NO_ACTIVE_MEMORY_NO_TRACKED_WRITES'}
-  $p=Start-Process -FilePath $env:ComSpec -ArgumentList @('/d','/c',$cmdLine) -NoNewWindow -PassThru
-  $deadline=(Get-Date).AddSeconds($CodexTimeoutSeconds)
-  $completed=$false
-  while($true){
-    $p.Refresh()
-    if($p.HasExited){
-      $completed=$true
-      $producerCompletedAtValue=Get-Date
-      try{ $exitTime=$p.ExitTime; if($null -ne $exitTime){ $producerCompletedAtValue=$exitTime } }catch{}
-      $producerCompletedAt=$producerCompletedAtValue.ToString('o')
-      break
-    }
-    if((Get-Date) -ge $deadline){
-      Stop-ProcessTreeByRootPid -RootPid ([int]$p.Id)
-      break
-    }
-    Drain-ReadyExpectedStreamBatches -Reason 'producer_alive'
-    Start-Sleep -Seconds 2
-  }
-  Drain-ReadyExpectedStreamBatches -Reason 'producer_stopped'
-  $readyTotals=Get-ReadyBatchTotals
-  $readyBatchCount=[int]$readyTotals.ready_batch_count
-  $readyCandidateCount=[int]$readyTotals.ready_candidate_count
-  if(-not $completed){
-    Stop-ProcessTreeByRootPid -RootPid ([int]$p.Id)
-    if($readyBatchCount -eq [int]$task.micro_batch_count -and $readyCandidateCount -eq $Count){ $producerStatus='CODEX_PRODUCER_ALL_READY_CREATED'; $producerExitAnomaly=$true; $producerExitClass='TIMEOUT_AFTER_VALID_READY_DONE'; $producerExitCode='TIMEOUT' } else { $producerStatus='CODEX_FAILED'; $producerFailureClass=("TIMEOUT_READY_BATCHES_{0}/{1}_CANDIDATES_{2}/{3}" -f $readyBatchCount,$task.micro_batch_count,$readyCandidateCount,$Count) }
-  } elseif($p.ExitCode -ne 0){
-    if($readyBatchCount -eq [int]$task.micro_batch_count -and $readyCandidateCount -eq $Count){ $producerStatus='CODEX_PRODUCER_ALL_READY_CREATED'; $producerExitAnomaly=$true; $producerExitClass='NONZERO_EXIT_AFTER_VALID_READY_DONE'; $producerExitCode=$p.ExitCode } else { $producerStatus='CODEX_FAILED'; $producerFailureClass=("NONZERO_READY_BATCHES_{0}/{1}_CANDIDATES_{2}/{3}" -f $readyBatchCount,$task.micro_batch_count,$readyCandidateCount,$Count) }
+  $pendingMicroBatches=@($task.micro_batches | Where-Object {
+    -not (Test-Path -LiteralPath ([string]$_.absorbed_marker)) -and -not ((Test-Path -LiteralPath ([string]$_.ready_marker)) -and (Test-Path -LiteralPath ([string]$_.ready_jsonl)))
+  } | Sort-Object sequence)
+  $pendingTargetCount=0; foreach($mb in $pendingMicroBatches){ $pendingTargetCount += [int]$mb.candidate_count }
+  if($pendingMicroBatches.Count -eq 0){
+    if(-not(Test-Path -LiteralPath ([string]$task.producer_done_marker))){ WriteJson ([string]$task.producer_done_marker) ([ordered]@{status='PRODUCER_DONE'; candidate_count=$Count; resumed_without_codex=$true; updated_at=(Get-Date).ToString('o')}) 20 }
+    AddEvent 'CODEX_SKIPPED_NO_MISSING_BATCHES' @{completed_count=$Count}
+    Drain-ReadyExpectedStreamBatches -Reason 'resume_no_missing_batches'
+    $completedTotals=Get-CompletedBatchTotals
+    if([int]$completedTotals.completed_candidate_count -eq $Count){ $producerStatus='CODEX_PRODUCER_ALL_READY_CREATED'; $producerCompletedAtValue=Get-Date; $producerCompletedAt=$producerCompletedAtValue.ToString('o') }
+    else { $producerStatus='CODEX_FAILED'; $producerFailureClass=("RESUME_INCOMPLETE_WITHOUT_MISSING_BATCHES_{0}/{1}" -f $completedTotals.completed_candidate_count,$Count) }
   } else {
-    if($readyBatchCount -eq [int]$task.micro_batch_count -and $readyCandidateCount -eq $Count){ $producerStatus='CODEX_PRODUCER_ALL_READY_CREATED' } else { $producerStatus='CODEX_FAILED'; $producerFailureClass=("READY_BATCHES_{0}/{1}_CANDIDATES_{2}/{3}" -f $readyBatchCount,$task.micro_batch_count,$readyCandidateCount,$Count) }
+    $batchTable=@($pendingMicroBatches | ForEach-Object { ("{0}|count={1}|tmp_jsonl={2}|writing_marker={3}|ready_jsonl={4}|ready_marker={5}" -f $_.micro_batch_id,$_.candidate_count,$_.tmp_jsonl,$_.writing_marker,$_.ready_jsonl,$_.ready_marker) })
+    $promptLines=New-Object System.Collections.ArrayList
+    [void]$promptLines.Add('You are Codex acting only as producer for one exact-count warehouse cycle. You are not the Builder brain.')
+    [void]$promptLines.Add('')
+    [void]$promptLines.Add(('REQUEST_TOTAL_COUNT={0}' -f $Count))
+    [void]$promptLines.Add(('TARGET_COUNT={0}' -f $pendingTargetCount))
+    [void]$promptLines.Add(('MICRO_BATCH_SIZE={0}' -f $MicroBatchSize))
+    [void]$promptLines.Add(('MICRO_BATCH_COUNT={0}' -f $pendingMicroBatches.Count))
+    [void]$promptLines.Add(('BATCH_COUNTS={0}' -f ((@($pendingMicroBatches|ForEach-Object{[int]$_.candidate_count})) -join ',')))
+    [void]$promptLines.Add(('TOPIC_KEY={0}' -f $task.topic_key))
+    [void]$promptLines.Add(('TOPIC_LABEL={0}' -f $task.topic_label))
+    [void]$promptLines.Add(('START_DEPTH={0}' -f $task.start_depth))
+    [void]$promptLines.Add(('TARGET_DEPTH={0}' -f $task.target_depth))
+    [void]$promptLines.Add(('HEARTBEAT_PATH={0}' -f $task.heartbeat_path))
+    [void]$promptLines.Add(('DONE_MARKER={0}' -f $task.producer_done_marker))
+    [void]$promptLines.Add('')
+    [void]$promptLines.Add('REQUIRED_BATCHES (ONLY THESE ARE MISSING; NEVER OVERWRITE READY OR ABSORBED BATCHES):')
+    foreach($line in $batchTable){ [void]$promptLines.Add($line) }
+    [void]$promptLines.Add('')
+    [void]$promptLines.Add('OUTPUT RULES:')
+    [void]$promptLines.Add('- Use Python standard library if possible. Do not use PowerShell .NET constructors.')
+    [void]$promptLines.Add('- For each missing batch, write WRITING.marker.json, then the complete batch to tmp.jsonl, validate that batch, atomically promote/rename tmp.jsonl to READY.jsonl, then write READY.marker.json. School never consumes WRITING or tmp.')
+    [void]$promptLines.Add('- Never expose a partial READY.jsonl. READY.marker.json is written only after the atomic tmp-to-READY promotion succeeds.')
+    [void]$promptLines.Add('- Never modify a batch that already has READY.marker+READY.jsonl or ABSORBED.marker.')
+    [void]$promptLines.Add('- Produce exactly one missing micro-batch per shell/tool command invocation.')
+    [void]$promptLines.Add('- Before writing each READY.marker.json, validate only that current batch: exact candidate_count, unique candidate_id values, correct topic/depth/source fields, and every required quality field non-empty.')
+    [void]$promptLines.Add('- For every candidate, expected_behavior, validator, proof_requirements, negative_case, return_to_parent, and digest_hint must each be non-empty strings regardless of depth_level.')
+    [void]$promptLines.Add('- Write exactly TARGET_COUNT JSONL candidate lines total across REQUIRED_BATCHES only.')
+    [void]$promptLines.Add('- Write heartbeat and DONE marker after all REQUIRED_BATCHES are READY.')
+    [void]$promptLines.Add('- Do not mutate active memory. Do not edit tracked repo files.')
+    [void]$promptLines.Add('')
+    [void]$promptLines.Add('Each JSONL line must be a JSON object with fields: schema,candidate_id,topic_key,topic_label,depth_level,prerequisite_depth,target_depth,source_basis,source_missing,claim,expected_behavior,failure_contrast,validator,proof_requirements,negative_case,return_to_parent,digest_hint,quality_flags.')
+    [void]$promptLines.Add('Use schema=codex_school_patch_candidate_v1, topic_key exactly TOPIC_KEY, source_basis as a non-empty array or source_missing=true, and depth_level between START_DEPTH and TARGET_DEPTH.')
+    [void]$promptLines.Add('After all REQUIRED_BATCHES and DONE marker are written, stop.')
+    $promptLines | Set-Content -LiteralPath $promptPath -Encoding UTF8
+    $pythonResolution=Resolve-SchoolPythonRuntime
+    $env:EFAB_PYTHON_EXE=[string]$pythonResolution.exe
+    $pythonDir=Split-Path -Parent ([string]$pythonResolution.exe)
+    $pathParts=@([string]$env:PATH -split ';' | Where-Object{-not[string]::IsNullOrWhiteSpace($_)})
+    if($pathParts -notcontains $pythonDir){ $env:PATH=($pythonDir+';'+[string]$env:PATH) }
+    $codexResolution=Resolve-SchoolCodexCli
+    $codexCmd=[string]$codexResolution.exe
+    $env:CODEX_HOME=[string]$codexResolution.home
+    $cmdLine='""{0}" exec -C "{1}" --dangerously-bypass-approvals-and-sandbox --ephemeral - < "{2}" > "{3}" 2> "{4}""' -f $codexCmd,$repoRoot,$promptPath,$stdoutPath,$stderrPath
+    AddEvent 'PYTHON_RUNTIME_RESOLUTION' @{status=$pythonResolution.status; exe=$pythonResolution.exe; source=$pythonResolution.source; version=$pythonResolution.version}
+    AddEvent 'CODEX_RESOLUTION' @{status=$codexResolution.status; exe=$codexCmd; home=$codexResolution.home; source=$codexResolution.source; version=$codexResolution.version}
+    AddEvent 'CODEX_LAUNCH' @{prompt_path=$promptPath; timeout_seconds=$CodexTimeoutSeconds; exe=$codexCmd; codex_home=$codexResolution.home; missing_batch_count=$pendingMicroBatches.Count; missing_candidate_count=$pendingTargetCount; execution_mode='BOUNDED_BYPASS_WINDOWS_SYSTEM'; output_contract='WAREHOUSE_ONLY_NO_ACTIVE_MEMORY_NO_TRACKED_WRITES'}
+    $p=Start-Process -FilePath $env:ComSpec -ArgumentList @('/d','/c',$cmdLine) -NoNewWindow -PassThru
+    $deadline=(Get-Date).AddSeconds($CodexTimeoutSeconds)
+    $completed=$false
+    while($true){
+      $p.Refresh()
+      if($p.HasExited){ $completed=$true; $producerCompletedAtValue=Get-Date; try{ $exitTime=$p.ExitTime; if($null -ne $exitTime){ $producerCompletedAtValue=$exitTime } }catch{}; $producerCompletedAt=$producerCompletedAtValue.ToString('o'); break }
+      if((Get-Date) -ge $deadline){ Stop-ProcessTreeByRootPid -RootPid ([int]$p.Id); break }
+      Drain-ReadyExpectedStreamBatches -Reason 'producer_alive'
+      Start-Sleep -Seconds 2
+    }
+    Drain-ReadyExpectedStreamBatches -Reason 'producer_stopped'
+    $completedTotals=Get-CompletedBatchTotals
+    if(-not $completed){
+      Stop-ProcessTreeByRootPid -RootPid ([int]$p.Id)
+      if([int]$completedTotals.completed_candidate_count -eq $Count){ $producerStatus='CODEX_PRODUCER_ALL_READY_CREATED'; $producerExitAnomaly=$true; $producerExitClass='TIMEOUT_AFTER_VALID_READY_DONE'; $producerExitCode='TIMEOUT' } else { $producerStatus='CODEX_FAILED'; $producerFailureClass=("TIMEOUT_COMPLETED_CANDIDATES_{0}/{1}" -f $completedTotals.completed_candidate_count,$Count) }
+    } elseif($p.ExitCode -ne 0){
+      if([int]$completedTotals.completed_candidate_count -eq $Count){ $producerStatus='CODEX_PRODUCER_ALL_READY_CREATED'; $producerExitAnomaly=$true; $producerExitClass='NONZERO_EXIT_AFTER_VALID_READY_DONE'; $producerExitCode=$p.ExitCode } else { $producerStatus='CODEX_FAILED'; $producerFailureClass=("NONZERO_COMPLETED_CANDIDATES_{0}/{1}" -f $completedTotals.completed_candidate_count,$Count) }
+    } else {
+      if([int]$completedTotals.completed_candidate_count -eq $Count){ $producerStatus='CODEX_PRODUCER_ALL_READY_CREATED' } else { $producerStatus='CODEX_FAILED'; $producerFailureClass=("COMPLETED_CANDIDATES_{0}/{1}" -f $completedTotals.completed_candidate_count,$Count) }
+    }
   }
 }
 # Count ready for mock too.
@@ -579,38 +698,127 @@ Write-Host "EXACT_COUNT_CYCLE_ACCEPTED_COUNT=$accepted"
 Write-Host "EXACT_COUNT_CYCLE_MEMORY_CHANGED=$memoryChanged"
 }
 
+$SchoolResumeRoot='.runtime/school_resume_v1'
+$SchoolQueueRoot=Join-Path $SchoolResumeRoot 'queue'
+$SchoolPendingPath=Join-Path $SchoolResumeRoot 'pending_request.json'
+New-Item -ItemType Directory -Force -Path $SchoolQueueRoot | Out-Null
+function Write-SchoolAtomicJson([string]$Path,$Object,[int]$Depth=80){
+  $dir=Split-Path -Parent $Path; if($dir){ New-Item -ItemType Directory -Force -Path $dir | Out-Null }
+  $tmp=("{0}.tmp.{1}" -f $Path,[guid]::NewGuid().ToString('N'))
+  try { $Object|ConvertTo-Json -Depth $Depth|Set-Content -LiteralPath $tmp -Encoding UTF8; Move-Item -LiteralPath $tmp -Destination $Path -Force }
+  finally { if(Test-Path -LiteralPath $tmp){ Remove-Item -LiteralPath $tmp -Force -ErrorAction SilentlyContinue } }
+}
+function Get-SchoolRequestFingerprint([int]$RequestCount,[string]$RequestMode,[string]$RequestTopics){
+  $normalized=("{0}|{1}|{2}" -f $RequestCount,$RequestMode.Trim().ToLowerInvariant(),$RequestTopics.Trim().ToLowerInvariant())
+  $sha=[System.Security.Cryptography.SHA256]::Create()
+  try { return ([BitConverter]::ToString($sha.ComputeHash([Text.Encoding]::UTF8.GetBytes($normalized))).Replace('-','').ToLowerInvariant()) } finally { $sha.Dispose() }
+}
+function Get-SchoolQueueFiles { return @(Get-ChildItem -LiteralPath $SchoolQueueRoot -File -Filter 'request_*.json' -ErrorAction SilentlyContinue | Sort-Object Name) }
+function Read-SchoolRequestFile([string]$Path){ if(-not(Test-Path -LiteralPath $Path)){ throw "SCHOOL_REQUEST_STATE_MISSING:$Path" }; return (Get-Content -LiteralPath $Path -Raw|ConvertFrom-Json) }
+$IncomingCount=[int]$Count; $IncomingMode=[string]$Mode; $IncomingTopics=[string]$Topics
+$IncomingFingerprint=Get-SchoolRequestFingerprint -RequestCount $IncomingCount -RequestMode $IncomingMode -RequestTopics $IncomingTopics
+$PendingState=$null
+if(Test-Path -LiteralPath $SchoolPendingPath){
+  $PendingState=Read-SchoolRequestFile $SchoolPendingPath
+  if(-not [string]::IsNullOrWhiteSpace([string]$PendingState.proof_path) -and (Test-Path -LiteralPath ([string]$PendingState.proof_path))){
+    try {
+      $pendingProof=Get-Content -LiteralPath ([string]$PendingState.proof_path) -Raw|ConvertFrom-Json
+      if(([string]$pendingProof.status -match '^PASS_CANONICAL_EXACT_COUNT_CYCLE_') -and -not [string]::IsNullOrWhiteSpace([string]$pendingProof.finalizer_status)){
+        if(-not [string]::IsNullOrWhiteSpace([string]$PendingState.queue_item_path) -and (Test-Path -LiteralPath ([string]$PendingState.queue_item_path))){ Remove-Item -LiteralPath ([string]$PendingState.queue_item_path) -Force }
+        Remove-Item -LiteralPath $SchoolPendingPath -Force
+        Write-Host ("SCHOOL_RESUME_RECOVERED_FINALIZED_PENDING={0}" -f $pendingProof.run_id)
+        $PendingState=$null
+      }
+    } catch { throw ("SCHOOL_PENDING_PROOF_RECONCILIATION_FAILED:{0}" -f $_.Exception.Message) }
+  }
+}
+$DispatchQueueItem=[string]$env:EFAB_SCHOOL_DISPATCH_QUEUE_ITEM
+if([string]::IsNullOrWhiteSpace($DispatchQueueItem)){
+  $duplicate=$false
+  if($null -ne $PendingState -and [string]$PendingState.request_fingerprint -eq $IncomingFingerprint){ $duplicate=$true }
+  if(-not $duplicate){
+    foreach($qf in @(Get-SchoolQueueFiles)){
+      try { $q=Read-SchoolRequestFile $qf.FullName; if([string]$q.request_fingerprint -eq $IncomingFingerprint){ $duplicate=$true; break } } catch { throw ("SCHOOL_QUEUE_STATE_INVALID:{0}:{1}" -f $qf.FullName,$_.Exception.Message) }
+    }
+  }
+  if(-not $duplicate){
+    $queueName=("request_{0}_{1}.json" -f (Get-Date -Format 'yyyyMMdd_HHmmss_fff'),[guid]::NewGuid().ToString('N'))
+    $queuedPath=Join-Path $SchoolQueueRoot $queueName
+    Write-SchoolAtomicJson $queuedPath ([ordered]@{schema='school_queued_request_v1';status='QUEUED';created_at=(Get-Date).ToString('o');count=$IncomingCount;mode=$IncomingMode;topics=$IncomingTopics;request_fingerprint=$IncomingFingerprint}) 20
+    Write-Host "SCHOOL_REQUEST_QUEUED=$queuedPath"
+  } else { Write-Host "SCHOOL_REQUEST_DEDUPLICATED=$IncomingFingerprint" }
+}
+$ResumePendingActive=($null -ne $PendingState)
+$ActiveQueueItemPath=$null
+if($ResumePendingActive){
+  if([string]$PendingState.status -notin @('PENDING','PAUSED_EXTERNAL','RESUMING')){ throw "SCHOOL_PENDING_STATUS_BAD:$($PendingState.status)" }
+  $Count=[int]$PendingState.count; $Mode=[string]$PendingState.mode; $Topics=[string]$PendingState.topics
+  $ActiveQueueItemPath=[string]$PendingState.queue_item_path
+  Write-Host ("SCHOOL_RESUME_PENDING_FIRST=count:{0}|mode:{1}|topics:{2}|phase:{3}" -f $Count,$Mode,$Topics,$PendingState.phase)
+} else {
+  if(-not [string]::IsNullOrWhiteSpace($DispatchQueueItem)){
+    $queueRootFull=[IO.Path]::GetFullPath((Join-Path (Get-Location) $SchoolQueueRoot))
+    $dispatchFull=if([IO.Path]::IsPathRooted($DispatchQueueItem)){[IO.Path]::GetFullPath($DispatchQueueItem)}else{[IO.Path]::GetFullPath((Join-Path (Get-Location) $DispatchQueueItem))}
+    if(-not $dispatchFull.StartsWith($queueRootFull,[StringComparison]::OrdinalIgnoreCase)){ throw 'SCHOOL_DISPATCH_QUEUE_ITEM_OUTSIDE_QUEUE_ROOT' }
+    if(-not(Test-Path -LiteralPath $dispatchFull)){ throw "SCHOOL_DISPATCH_QUEUE_ITEM_MISSING:$dispatchFull" }
+    $ActiveQueueItemPath=$dispatchFull
+  } else {
+    $queueFiles=@(Get-SchoolQueueFiles); if($queueFiles.Count -eq 0){ throw 'SCHOOL_QUEUE_EMPTY_AFTER_ENQUEUE' }; $ActiveQueueItemPath=$queueFiles[0].FullName
+  }
+  $ActiveQueuedRequest=Read-SchoolRequestFile $ActiveQueueItemPath
+  if([string]$ActiveQueuedRequest.status -ne 'QUEUED'){ throw "SCHOOL_QUEUE_ITEM_STATUS_BAD:$($ActiveQueuedRequest.status)" }
+  $Count=[int]$ActiveQueuedRequest.count; $Mode=[string]$ActiveQueuedRequest.mode; $Topics=[string]$ActiveQueuedRequest.topics
+  Write-Host ("SCHOOL_QUEUE_DISPATCH=count:{0}|mode:{1}|topics:{2}|path:{3}" -f $Count,$Mode,$Topics,$ActiveQueueItemPath)
+}
 $TargetAccepted=$Count
 $RunKind=if($Mode -eq 'Live'){'Real'}else{'Test'}
 $RequestedTopics=$Topics
 $PatchSize=1000
 $TopicsPlan='operations/school/curriculum/topics/builder_night_school_topics_v1.json'
 $runId="school_factory_digest_use_{0}_{1}_{2}" -f $RunKind.ToLowerInvariant(),$TargetAccepted,(Get-Date -Format 'yyyyMMdd_HHmmss')
-$ResumeOrdinalOffset=0
-$ResumeCompletedChunks=0
-$ResumePlannedTotalAccepted=0
 if(-not (Test-Path $TopicsPlan)){ throw "CANONICAL_TOPICS_PLAN_MISSING:$TopicsPlan" }
 
 
-$SchoolPreflightRoot=".runtime/school_single_public_launch_preflight/$runId"
-New-Item -ItemType Directory -Force -Path $SchoolPreflightRoot | Out-Null
-$SchoolSelectionPath=Join-Path $SchoolPreflightRoot 'selection.json'
-$SchoolRequestPlanPath=Join-Path $SchoolPreflightRoot 'request_plan.json'
-$SchoolSelectionOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File 'operations/school/memory/select_dynamic_theme_cell_v1.ps1' -RequestedTopics $RequestedTopics -PatchSize $PatchSize -OutputPath $SchoolSelectionPath *>&1 | ForEach-Object{[string]$_})
-$SchoolSelectionOut | Set-Content -LiteralPath (Join-Path $SchoolPreflightRoot 'selection_stdout.txt') -Encoding UTF8
-$SchoolSelectionStatus=(($SchoolSelectionOut|Where-Object{$_ -match '^DYNAMIC_THEME_SELECTION_STATUS='}|Select-Object -Last 1) -replace '^DYNAMIC_THEME_SELECTION_STATUS=','')
 $AllowedSelectionStatuses=@('PASS_DYNAMIC_THEME_CELL_SELECTION_V1','PASS_DEVELOPMENT_VECTOR_THEME_SELECTION_V1','PASS_DEVELOPMENT_VECTOR_THEME_SELECTION_V2')
-if($AllowedSelectionStatuses -notcontains $SchoolSelectionStatus){ throw "SCHOOL_PREFLIGHT_SELECTION_FAILED:$SchoolSelectionStatus" }
-if(-not(Test-Path $SchoolSelectionPath)){ throw "SCHOOL_PREFLIGHT_SELECTION_MISSING:$SchoolSelectionPath" }
-$SchoolPlanOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File 'operations/school/request/plan_dynamic_school_request_v1.ps1' -SelectionPath $SchoolSelectionPath -OutputPath $SchoolRequestPlanPath -MinRequestSize 1 -MaxRequestSize $TargetAccepted -MicroBatchSize 100 -MaxReadyBacklogCandidates $TargetAccepted -ProductionWindowCandidates $TargetAccepted -ExactRequestSize $TargetAccepted *>&1 | ForEach-Object{[string]$_})
-$SchoolPlanOut | Set-Content -LiteralPath (Join-Path $SchoolPreflightRoot 'request_plan_stdout.txt') -Encoding UTF8
-$SchoolPlanStatus=(($SchoolPlanOut|Where-Object{$_ -match '^DYNAMIC_SCHOOL_REQUEST_PLAN_STATUS='}|Select-Object -Last 1) -replace '^DYNAMIC_SCHOOL_REQUEST_PLAN_STATUS=','')
-if($SchoolPlanStatus -ne 'PASS_DYNAMIC_SCHOOL_REQUEST_PLAN_READY_V1'){ throw "SCHOOL_PREFLIGHT_REQUEST_PLAN_FAILED:$SchoolPlanStatus" }
-if(-not(Test-Path $SchoolRequestPlanPath)){ throw "SCHOOL_PREFLIGHT_REQUEST_PLAN_MISSING:$SchoolRequestPlanPath" }
-$SchoolRequestPlan=Get-Content $SchoolRequestPlanPath -Raw | ConvertFrom-Json
-if([string]::IsNullOrWhiteSpace([string]$SchoolRequestPlan.topic_key)){ throw 'SCHOOL_PREFLIGHT_TOPIC_KEY_MISSING' }
-if([int]$SchoolRequestPlan.request_candidate_count -ne [int]$TargetAccepted){ throw ("SCHOOL_PREFLIGHT_COUNT_MISMATCH:{0}/{1}" -f $SchoolRequestPlan.request_candidate_count,$TargetAccepted) }
-if([string]::IsNullOrWhiteSpace([string]$SchoolRequestPlan.pressure_class)){ throw 'SCHOOL_PREFLIGHT_PRESSURE_CLASS_MISSING' }
-$RequestedTopics=[string]$SchoolRequestPlan.topic_key
+if($ResumePendingActive){
+  $SchoolPreflightRoot=[string]$PendingState.school_preflight_root
+  $SchoolSelectionPath=[string]$PendingState.selection_path
+  $SchoolRequestPlanPath=[string]$PendingState.request_plan_path
+  if([string]::IsNullOrWhiteSpace($SchoolPreflightRoot) -or -not(Test-Path -LiteralPath $SchoolPreflightRoot)){ throw "SCHOOL_RESUME_PREFLIGHT_ROOT_MISSING:$SchoolPreflightRoot" }
+  if(-not(Test-Path -LiteralPath $SchoolSelectionPath)){ throw "SCHOOL_RESUME_SELECTION_MISSING:$SchoolSelectionPath" }
+  if(-not(Test-Path -LiteralPath $SchoolRequestPlanPath)){ throw "SCHOOL_RESUME_REQUEST_PLAN_MISSING:$SchoolRequestPlanPath" }
+  $SchoolSelection=Get-Content -LiteralPath $SchoolSelectionPath -Raw|ConvertFrom-Json
+  $SchoolSelectionStatus=[string]$SchoolSelection.status
+  $SchoolRequestPlan=Get-Content -LiteralPath $SchoolRequestPlanPath -Raw|ConvertFrom-Json
+  $SchoolPlanStatus=[string]$SchoolRequestPlan.status
+  if($AllowedSelectionStatuses -notcontains $SchoolSelectionStatus){ throw "SCHOOL_RESUME_SELECTION_STATUS_BAD:$SchoolSelectionStatus" }
+  if($SchoolPlanStatus -ne 'PASS_DYNAMIC_SCHOOL_REQUEST_PLAN_READY_V1'){ throw "SCHOOL_RESUME_REQUEST_PLAN_STATUS_BAD:$SchoolPlanStatus" }
+  if([int]$SchoolRequestPlan.request_candidate_count -ne [int]$TargetAccepted){ throw ("SCHOOL_RESUME_COUNT_MISMATCH:{0}/{1}" -f $SchoolRequestPlan.request_candidate_count,$TargetAccepted) }
+  if([int]$SchoolRequestPlan.micro_batch_size -ne 500){ throw ("SCHOOL_RESUME_MICRO_BATCH_MISMATCH:{0}/500" -f $SchoolRequestPlan.micro_batch_size) }
+  $RequestedTopics=[string]$SchoolRequestPlan.topic_key
+  if(-not [string]::IsNullOrWhiteSpace([string]$PendingState.requested_topics) -and [string]$PendingState.requested_topics -ne $RequestedTopics){ throw ("SCHOOL_RESUME_TOPIC_MISMATCH:{0}/{1}" -f $PendingState.requested_topics,$RequestedTopics) }
+  Write-Host "SCHOOL_PREFLIGHT_RESUME_REUSED=true"
+} else {
+  $SchoolPreflightRoot=".runtime/school_single_public_launch_preflight/$runId"
+  New-Item -ItemType Directory -Force -Path $SchoolPreflightRoot | Out-Null
+  $SchoolSelectionPath=Join-Path $SchoolPreflightRoot 'selection.json'
+  $SchoolRequestPlanPath=Join-Path $SchoolPreflightRoot 'request_plan.json'
+  $SchoolSelectionOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File 'operations/school/memory/select_dynamic_theme_cell_v1.ps1' -RequestedTopics $RequestedTopics -PatchSize $PatchSize -OutputPath $SchoolSelectionPath *>&1 | ForEach-Object{[string]$_})
+  $SchoolSelectionOut | Set-Content -LiteralPath (Join-Path $SchoolPreflightRoot 'selection_stdout.txt') -Encoding UTF8
+  $SchoolSelectionStatus=(($SchoolSelectionOut|Where-Object{$_ -match '^DYNAMIC_THEME_SELECTION_STATUS='}|Select-Object -Last 1) -replace '^DYNAMIC_THEME_SELECTION_STATUS=','')
+  if($AllowedSelectionStatuses -notcontains $SchoolSelectionStatus){ throw "SCHOOL_PREFLIGHT_SELECTION_FAILED:$SchoolSelectionStatus" }
+  if(-not(Test-Path $SchoolSelectionPath)){ throw "SCHOOL_PREFLIGHT_SELECTION_MISSING:$SchoolSelectionPath" }
+  $SchoolPlanOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File 'operations/school/request/plan_dynamic_school_request_v1.ps1' -SelectionPath $SchoolSelectionPath -OutputPath $SchoolRequestPlanPath -MinRequestSize 1 -MaxRequestSize $TargetAccepted -MicroBatchSize 500 -MaxReadyBacklogCandidates $TargetAccepted -ProductionWindowCandidates $TargetAccepted -ExactRequestSize $TargetAccepted *>&1 | ForEach-Object{[string]$_})
+  $SchoolPlanOut | Set-Content -LiteralPath (Join-Path $SchoolPreflightRoot 'request_plan_stdout.txt') -Encoding UTF8
+  $SchoolPlanStatus=(($SchoolPlanOut|Where-Object{$_ -match '^DYNAMIC_SCHOOL_REQUEST_PLAN_STATUS='}|Select-Object -Last 1) -replace '^DYNAMIC_SCHOOL_REQUEST_PLAN_STATUS=','')
+  if($SchoolPlanStatus -ne 'PASS_DYNAMIC_SCHOOL_REQUEST_PLAN_READY_V1'){ throw "SCHOOL_PREFLIGHT_REQUEST_PLAN_FAILED:$SchoolPlanStatus" }
+  if(-not(Test-Path $SchoolRequestPlanPath)){ throw "SCHOOL_PREFLIGHT_REQUEST_PLAN_MISSING:$SchoolRequestPlanPath" }
+  $SchoolRequestPlan=Get-Content $SchoolRequestPlanPath -Raw | ConvertFrom-Json
+  if([string]::IsNullOrWhiteSpace([string]$SchoolRequestPlan.topic_key)){ throw 'SCHOOL_PREFLIGHT_TOPIC_KEY_MISSING' }
+  if([int]$SchoolRequestPlan.request_candidate_count -ne [int]$TargetAccepted){ throw ("SCHOOL_PREFLIGHT_COUNT_MISMATCH:{0}/{1}" -f $SchoolRequestPlan.request_candidate_count,$TargetAccepted) }
+  if([string]::IsNullOrWhiteSpace([string]$SchoolRequestPlan.pressure_class)){ throw 'SCHOOL_PREFLIGHT_PRESSURE_CLASS_MISSING' }
+  $RequestedTopics=[string]$SchoolRequestPlan.topic_key
+}
 Write-Host "SCHOOL_PREFLIGHT_STATUS=PASS_SCHOOL_DYNAMIC_REQUEST_PREFLIGHT_V1"
 Write-Host "SCHOOL_PREFLIGHT_SELECTION_STATUS=$SchoolSelectionStatus"
 Write-Host "SCHOOL_PREFLIGHT_SELECTION_PATH=$SchoolSelectionPath"
@@ -626,22 +834,47 @@ Write-Host "SCHOOL_PREFLIGHT_PRESSURE=$($SchoolRequestPlan.pressure_class)"
 # Dynamic request preflight chooses the material/depth, then embedded engine produces exact Count.
 # Test = mock producer/no absorption. Live = real Codex producer/absorption.
 # Single public School route: dynamic coverage/depth preflight, then embedded exact-count engine.
-  $ExactCycleRunId="canonical_exact_count_cycle_{0}_{1}_{2}" -f $RunKind.ToLowerInvariant(),$TargetAccepted,(Get-Date -Format 'yyyyMMdd_HHmmss')
-  $ExactCycleRoot=".runtime/canonical_exact_count_cycle/$ExactCycleRunId"
-  # Canonical contract hook: plan_topic_patch_cycle_v1.ps1 records the patch/ledger recovery contract.
-  # It does not change the owner-facing fields; Count/Mode/Topics remain the only public School inputs.
-  $TopicPatchPlanPath=Join-Path $ExactCycleRoot 'topic_patch_plan.json'
-  $TopicPatchLedgerPath=Join-Path $ExactCycleRoot 'patch_ledger.jsonl'
-  $TopicPatchPlanOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/plan_topic_patch_cycle_v1.ps1 -Count $TargetAccepted -Mode $Mode -Topics $RequestedTopics -RunId $ExactCycleRunId -DynamicSelectionPath $SchoolSelectionPath -OutputPath $TopicPatchPlanPath -LedgerPath $TopicPatchLedgerPath *>&1 | ForEach-Object{[string]$_})
-  $TopicPatchPlanOut | Set-Content -LiteralPath (Join-Path $ExactCycleRoot 'topic_patch_plan_stdout.txt') -Encoding UTF8
-  $TopicPatchPlanStatus=(($TopicPatchPlanOut|Where-Object{$_ -match '^TOPIC_PATCH_PLAN_STATUS='}|Select-Object -Last 1) -replace '^TOPIC_PATCH_PLAN_STATUS=','')
-  if($TopicPatchPlanStatus -notmatch '^PASS_'){ throw "TOPIC_PATCH_PLAN_FAILED:$TopicPatchPlanStatus" }
+  if($ResumePendingActive){
+    $ExactCycleRunId=[string]$PendingState.exact_cycle_run_id
+    $ExactCycleRoot=[string]$PendingState.exact_cycle_root
+    $TopicPatchPlanPath=[string]$PendingState.topic_patch_plan_path
+    $TopicPatchLedgerPath=[string]$PendingState.topic_patch_ledger_path
+    if([string]::IsNullOrWhiteSpace($ExactCycleRunId) -or [string]::IsNullOrWhiteSpace($ExactCycleRoot)){ throw 'SCHOOL_RESUME_EXACT_CYCLE_IDENTITY_MISSING' }
+    if(-not(Test-Path -LiteralPath $ExactCycleRoot)){ throw "SCHOOL_RESUME_EXACT_ROOT_MISSING:$ExactCycleRoot" }
+    if(-not(Test-Path -LiteralPath $TopicPatchPlanPath)){ throw "SCHOOL_RESUME_TOPIC_PATCH_PLAN_MISSING:$TopicPatchPlanPath" }
+    $TopicPatchPlan=Get-Content -LiteralPath $TopicPatchPlanPath -Raw|ConvertFrom-Json
+    $TopicPatchPlanStatus=[string]$TopicPatchPlan.status
+    if($TopicPatchPlanStatus -notmatch '^PASS_'){ throw "SCHOOL_RESUME_TOPIC_PATCH_STATUS_BAD:$TopicPatchPlanStatus" }
+    Write-Host "SCHOOL_TOPIC_PATCH_RESUME_REUSED=$TopicPatchPlanPath"
+  } else {
+    $ExactCycleRunId="canonical_exact_count_cycle_{0}_{1}_{2}" -f $RunKind.ToLowerInvariant(),$TargetAccepted,(Get-Date -Format 'yyyyMMdd_HHmmss')
+    $ExactCycleRoot=".runtime/canonical_exact_count_cycle/$ExactCycleRunId"
+    # Canonical contract hook: plan_topic_patch_cycle_v1.ps1 records the patch/ledger recovery contract.
+    # It does not change the owner-facing fields; Count/Mode/Topics remain the only public School inputs.
+    $TopicPatchPlanPath=Join-Path $ExactCycleRoot 'topic_patch_plan.json'
+    $TopicPatchLedgerPath=Join-Path $ExactCycleRoot 'patch_ledger.jsonl'
+    $TopicPatchPlanOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/plan_topic_patch_cycle_v1.ps1 -Count $TargetAccepted -Mode $Mode -Topics $RequestedTopics -RunId $ExactCycleRunId -DynamicSelectionPath $SchoolSelectionPath -OutputPath $TopicPatchPlanPath -LedgerPath $TopicPatchLedgerPath *>&1 | ForEach-Object{[string]$_})
+    $TopicPatchPlanOut | Set-Content -LiteralPath (Join-Path $ExactCycleRoot 'topic_patch_plan_stdout.txt') -Encoding UTF8
+    $TopicPatchPlanStatus=(($TopicPatchPlanOut|Where-Object{$_ -match '^TOPIC_PATCH_PLAN_STATUS='}|Select-Object -Last 1) -replace '^TOPIC_PATCH_PLAN_STATUS=','')
+    if($TopicPatchPlanStatus -notmatch '^PASS_'){ throw "TOPIC_PATCH_PLAN_FAILED:$TopicPatchPlanStatus" }
+  }
   $ExactCycleProducerMode=if($RunKind -eq 'Real'){'RunCodex'}else{'MockProducer'}
-  $ExactCycleArgs=[ordered]@{ ProducerMode=$ExactCycleProducerMode; Count=$TargetAccepted; MicroBatchSize=100; DigestWindowAtoms=1000; Topics=$RequestedTopics; OutputRoot=$ExactCycleRoot; CodexTimeoutSeconds=300 }
+  $ExactCycleArgs=[ordered]@{ ProducerMode=$ExactCycleProducerMode; Count=$TargetAccepted; MicroBatchSize=500; DigestWindowAtoms=500; Topics=$RequestedTopics; OutputRoot=$ExactCycleRoot; CodexTimeoutSeconds=300 }
   if($RunKind -eq 'Real'){
     $ExactCycleArgs['CodexTimeoutSeconds']=900
     $ExactCycleArgs['Absorb']=$true
   }
+  $activeFingerprint=if($ResumePendingActive){[string]$PendingState.request_fingerprint}else{Get-SchoolRequestFingerprint -RequestCount $TargetAccepted -RequestMode $Mode -RequestTopics $Topics}
+  $pendingCreatedAt=if($ResumePendingActive -and -not [string]::IsNullOrWhiteSpace([string]$PendingState.created_at)){[string]$PendingState.created_at}else{(Get-Date).ToString('o')}
+  $PendingState=[ordered]@{
+    schema='school_pending_request_v1'; status='PENDING'; phase=if($ResumePendingActive){'RESUMING_EXTERNAL'}else{'PREPARED_EXTERNAL'}; created_at=$pendingCreatedAt; updated_at=(Get-Date).ToString('o')
+    count=[int]$TargetAccepted; mode=[string]$Mode; topics=[string]$Topics; requested_topics=[string]$RequestedTopics; request_fingerprint=$activeFingerprint
+    queue_item_path=[string]$ActiveQueueItemPath; school_preflight_root=[string]$SchoolPreflightRoot; selection_path=[string]$SchoolSelectionPath; request_plan_path=[string]$SchoolRequestPlanPath
+    exact_cycle_run_id=[string]$ExactCycleRunId; exact_cycle_root=[string]$ExactCycleRoot; topic_patch_plan_path=[string]$TopicPatchPlanPath; topic_patch_ledger_path=[string]$TopicPatchLedgerPath
+    micro_batch_size=500; digest_window_atoms=500; proof_path=if($ResumePendingActive){[string]$PendingState.proof_path}else{$null}; last_error=$null
+  }
+  Write-SchoolAtomicJson $SchoolPendingPath $PendingState 50
+  Write-Host "SCHOOL_PENDING_STATE=$SchoolPendingPath"
   $ExactCycleOut=@(& { Invoke-SchoolExactCountWarehouseCycle @ExactCycleArgs } *>&1 | ForEach-Object{[string]$_})
   New-Item -ItemType Directory -Force -Path $ExactCycleRoot | Out-Null
   $ExactCycleOut | Set-Content -LiteralPath (Join-Path $ExactCycleRoot 'canonical_exact_cycle_stdout.txt') -Encoding UTF8
@@ -689,9 +922,11 @@ Write-Host "SCHOOL_PREFLIGHT_PRESSURE=$($SchoolRequestPlan.pressure_class)"
     boundary=if($RunKind -eq 'Real'){'Canonical Live uses the single public School launcher with embedded real Codex warehouse engine and absorption.'}else{'Canonical Test uses the single public School launcher with embedded mock warehouse engine and no absorption.'}
     no_fake_pass=$true
     no_hidden_failures=$true
-    law='Owner launch uses one public School launcher with Count + Mode + Topics. Dynamic request preflight is mandatory. Count is exact and may be non-rounded. Embedded engine splits Count into micro-batches of 100 with partial final batch.'
+    law='Owner launch uses one public School launcher with Count + Mode + Topics. Dynamic request preflight is mandatory. Count is exact and may be non-rounded. Embedded engine splits Count into micro-batches of 500 with partial final batch.'
   }
   $base | ConvertTo-Json -Depth 100 | Set-Content -LiteralPath $proofPath -Encoding UTF8
+  $PendingState['phase']='EXACT_PASS'; $PendingState['proof_path']=$proofPath; $PendingState['updated_at']=(Get-Date).ToString('o')
+  Write-SchoolAtomicJson $SchoolPendingPath $PendingState 50
   # Canonical contract hook: finalize_agent_school_run_v1.ps1 handles compact finalizer evidence/intake/merge policy.
   $FinalizerOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/finalize_agent_school_run_v1.ps1 -ProofPath $proofPath *>&1 | ForEach-Object{[string]$_})
   $FinalizerOut | Set-Content -LiteralPath (Join-Path $ExactCycleRoot 'finalizer_stdout.txt') -Encoding UTF8
@@ -701,6 +936,8 @@ Write-Host "SCHOOL_PREFLIGHT_PRESSURE=$($SchoolRequestPlan.pressure_class)"
   $base | Add-Member -NotePropertyName finalizer_output -NotePropertyValue @($FinalizerOut) -Force
   $base | Add-Member -NotePropertyName finalizer_hook -NotePropertyValue 'operations/school/finalize_agent_school_run_v1.ps1' -Force
   $base | ConvertTo-Json -Depth 100 | Set-Content -LiteralPath $proofPath -Encoding UTF8
+  $PendingState['phase']='FINALIZER_PASS'; $PendingState['proof_path']=$proofPath; $PendingState['finalizer_status']=$FinalizerStatus; $PendingState['updated_at']=(Get-Date).ToString('o')
+  Write-SchoolAtomicJson $SchoolPendingPath $PendingState 50
   foreach($line in $FinalizerOut){ if($line -match '^FINALIZER_'){ Write-Host $line } }
   Write-Host "SCHOOL_RUN_STATUS=$($base.status)"
   Write-Host "PROOF_PATH=$proofPath"
@@ -708,7 +945,7 @@ Write-Host "SCHOOL_RUN_REPORT=$proofPath"
   Write-Host "TARGET_ACCEPTED=$TargetAccepted"
   Write-Host "RUN_KIND=$RunKind"
   Write-Host "REQUESTED_TOPICS=$RequestedTopics"
-  Write-Host 'PATCH_SIZE=100'
+  Write-Host 'PATCH_SIZE=500'
   Write-Host "EXACT_COUNT_CYCLE_STATUS=$($base.cycle_status)"
   Write-Host "EXACT_COUNT_CYCLE_REPORT=$ExactCycleReportPath"
   Write-Host "EXACT_COUNT_CYCLE_BATCH_COUNTS=$(@($base.batch_counts) -join ',')"
@@ -716,6 +953,28 @@ Write-Host "SCHOOL_RUN_REPORT=$proofPath"
   Write-Host "EXACT_COUNT_CYCLE_ABSORB=$($base.absorb)"
   Write-Host "EXACT_COUNT_CYCLE_MEMORY_CHANGED=$($base.memory_changed)"
   Write-Host 'RUNTIME_READY=false'
+  # Completion order is queue item first, pending marker second. If power fails between them,
+  # pending proof reconciliation above recognizes FINALIZER_PASS and finishes cleanup without rerunning School.
+  if(-not [string]::IsNullOrWhiteSpace([string]$ActiveQueueItemPath) -and (Test-Path -LiteralPath $ActiveQueueItemPath)){ Remove-Item -LiteralPath $ActiveQueueItemPath -Force }
+  if(Test-Path -LiteralPath $SchoolPendingPath){ Remove-Item -LiteralPath $SchoolPendingPath -Force }
+  Write-Host "SCHOOL_PENDING_CLEARED=$ExactCycleRunId"
+  $remainingQueue=@(Get-SchoolQueueFiles)
+  if($remainingQueue.Count -gt 0){
+    $nextQueuePath=$remainingQueue[0].FullName
+    $nextRequest=Read-SchoolRequestFile $nextQueuePath
+    Write-Host ("SCHOOL_NEXT_QUEUED_REQUEST=count:{0}|mode:{1}|topics:{2}|path:{3}" -f $nextRequest.count,$nextRequest.mode,$nextRequest.topics,$nextQueuePath)
+    if($SchoolSingleInstanceAcquired -and $script:SchoolSingleInstanceMutex){ $script:SchoolSingleInstanceMutex.ReleaseMutex(); $SchoolSingleInstanceAcquired=$false }
+    $prevDispatch=[string]$env:EFAB_SCHOOL_DISPATCH_QUEUE_ITEM
+    try {
+      $env:EFAB_SCHOOL_DISPATCH_QUEUE_ITEM=$nextQueuePath
+      $nextOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/run_agent_school.ps1 -Count ([int]$nextRequest.count) -Mode ([string]$nextRequest.mode) -Topics ([string]$nextRequest.topics) *>&1 | ForEach-Object{[string]$_})
+      $nextExit=$LASTEXITCODE
+      foreach($line in $nextOut){ Write-Host $line }
+      if($nextExit -ne 0){ throw ("SCHOOL_QUEUED_DISPATCH_FAILED:{0}:{1}" -f $nextExit,$nextQueuePath) }
+    } finally {
+      if([string]::IsNullOrWhiteSpace($prevDispatch)){ Remove-Item Env:EFAB_SCHOOL_DISPATCH_QUEUE_ITEM -ErrorAction SilentlyContinue } else { $env:EFAB_SCHOOL_DISPATCH_QUEUE_ITEM=$prevDispatch }
+    }
+  }
   return
 } finally {
   if($SchoolSingleInstanceAcquired -and $script:SchoolSingleInstanceMutex){ try { $script:SchoolSingleInstanceMutex.ReleaseMutex() } catch {} }

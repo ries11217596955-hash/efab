@@ -2848,3 +2848,50 @@ Claims proven / limits:
 
 Return to parent:
 - Four-channel control-plane recovery objective is accepted. Resume the deferred parent task: run another real Live500 and measure true end-to-end wall-clock, while preserving active-memory protection and normal scale preflight.
+## 2026-08-14 - School Live500 acceleration, 500/500 decision, and resumable-tail candidate
+marker: SCHOOL_500_ACCELERATION_AND_RESUME_CANDIDATE_20260814
+status: MIXED_PROOF_LIVE_ACCELERATION_PROVEN_RESUME_CANDIDATE_NOT_ACCEPTED
+
+Delta since FOUR_CHANNEL_RECOVERY_MATRIX_LIVE_ACCEPTED_12OF12_20260814:
+- Returned to the deferred School parent task and localized the prior Live500 bottlenecks. Historical real Live500 was PASS 500/500 at about 20m13s end-to-end; a second full memory digest/finalizer path contributed about 200s.
+- Built and locally committed two School acceleration changes in commit `f3598a0d58ffd25ccddc898d6329d30453ba5b97`: exact-existing reinforcement fast-path with mandatory full-digest fallback, and guarded School-summary-only `EF_SKIP_MAP_HOOK=1` finalization after exact staged-scope/repo-clean proof. Structural map refresh remains normal for structural commits.
+- Fast-path proof: historical exact reinforcement matched accepted full-digest semantics while preserving index identity; non-exact summary change exercised the mandatory full-digest fallback. Finalizer LAB proof showed one School summary commit, map artifacts byte-identical to parent, and negative refusal when an extra staged file was present.
+- Real post-change Live500 `canonical_exact_count_cycle_real_500_20260814_212351` completed PASS 500/500. End-to-end wall was about 14m34s, improving roughly 5m38s versus the earlier ~20m13s run. Finalizer was reduced to about 30s. Remaining dominant costs were Codex production (~8.5m) and one 500-atom digest window (~4.5m).
+- The live run confirmed the consumer does not wait forever for `DigestWindowAtoms=1000`: while producer is active it waits for the configured window, but after producer completion it consumes the remaining tail. The 500-run therefore absorbed all 500 in one window.
+
+Owner decision after timing review:
+- Canonical producer micro-batch target becomes 500 instead of 100.
+- Canonical digest window becomes 500 instead of 1000.
+- One Owner request still uses one Codex macro process; a Count=3000 request should be six 500-candidate warehouse batches inside that one macro request, not six independent Codex launches.
+- School must survive Codex refusal, network loss, power loss, PC hang, or restart: unfinished prior work has priority over a later Owner command. Example: if a previous 3000 request has an unfinished tail, a new 3000 command is queued behind that tail.
+
+Current 500/500 + recovery implementation state (candidate, NOT accepted):
+- Repo HEAD at this continuity slice is `843a11d202ee146fc75454eb8c921ecdfaa1cd0e`; current working tree has exactly three School candidate files modified: `operations/school/run_agent_school.ps1`, `operations/school/request/plan_dynamic_school_request_v1.ps1`, and `operations/school/request/validate_generic_exact_request_engine_v1.ps1`.
+- 500/500 exact-request LAB passed: Count 1200 => 500,500,200; Count 3000 => six batches of 500; partial final batches remain supported; active memory was unchanged in LAB.
+- Public-launch Test LAB also reached canonical PASS for Count=1200 with `batch_counts=500,500,200`, cleared pending state and left FIFO queue empty. The wrapper's final test assertion had a PowerShell harness syntax error after product completion; classify product path as LAB PASS evidence, but rerun/negative matrix is still required before acceptance.
+- Candidate recovery design reuses the existing warehouse/state machine rather than adding a second launcher: persistent `.runtime/school_resume_v1` FIFO + `pending_request.json`; task/output-root reuse; leading ABSORBED prefix skip; READY reuse; Codex prompt restricted to missing batches only; duplicate queued request fingerprint suppression.
+- Producer crash-safety candidate follows existing warehouse lifecycle `WRITING -> tmp.jsonl -> atomic promote to READY.jsonl -> READY marker`; partial tmp is never consumable.
+- Digest crash-safety candidate adds per-window active-memory checkpoint plus atomic recovery marker: PREPARED before absorb; PUBLISHED_PASS with proof/after-hashes before ABSORBED markers. Resume semantics: PREPARED + unchanged memory => safe retry; PUBLISHED_PASS + exact after-hashes/proof => complete missing ABSORBED markers without re-digest; any mismatch/unknown state => `RECOVERY_REQUIRED_AMBIGUOUS_MEMORY_STATE` and no blind retry/auto-restore.
+- This recovery slice is not committed, not pushed, not LIVE-proven and not accepted. Required next proof is a negative recovery matrix covering partial ABSORBED, existing READY, PREPARED unchanged-memory restart, PUBLISHED_PASS completion, and deliberate memory-hash divergence refusal.
+
+Sanitation / retention:
+- Owner explicitly strengthened sanitation: temporary LAB roots, partial artifacts, duplicates and unrelated trash must be noticed and removed as soon as safely disposable; compact proofs and required rollback/checkpoints are retained.
+- Completed exact-request LAB root was deleted after PASS. Current rollback checkpoint `H:\bridge\reports\school_500_resume_checkpoint_20260814_2208` is retained until the 500/500 recovery candidate reaches an acceptance/rollback decision.
+- Do not prune runtime/recovery evidence while a School/digest run is active. After each completed proof slice, classify and remove disposable LAB residues rather than accumulating them.
+
+Return to parent:
+- First resolve the already-completed public-launch LAB evidence and run the negative crash/recovery matrix without LIVE mutation. If all recovery cases PASS, validate exact current file identity, sanitation and canonical entrypoint, then decide acceptance/local commit. A new Live proof comes only after that; no blind resume, no duplicate School runtime, no remote push as a side effect.
+### 2026-08-14 - 500/500 durable School recovery LAB acceptance checkpoint
+marker: SCHOOL_500_DURABLE_RECOVERY_LAB_ACCEPTED_20260814
+status: LAB_ACCEPTED_LOCAL_IMPLEMENTATION_LIVE_NOT_YET_PROVEN
+
+- Current `operations/school/run_agent_school.ps1` SHA256: `3D756D87C1EF792CCC257A539606233600AF3C73FF6E3712A1582CBF8D5F9E21`.
+- Current planner SHA256: `AC9705E92C6BE39156A5A06D984EA28D5DED912FCA7BCC32ECF895147F992A1F`; semantic diff from HEAD is exactly one default change `MicroBatchSize 100 -> 500` (HEAD file already carries CRLF; validator uses transient `core.whitespace=cr-at-eol`).
+- Current generic exact validator SHA256: `FCC86A17554695CBF1AD1FE0C29175509088BF6F79B2203A93313315B6DA92F3`.
+- Fresh exact-count LAB proof: `H:\bridge\reports\school_500_exact_validator_current_20260814.json`, PASS for 1,499,500,501,1200,3000; 1200=>500,500,200; 3000=>500x6; LAB memory unchanged.
+- Fresh digest recovery matrix: `H:\bridge\reports\school_500_digest_recovery_matrix_current_20260814.json`, PASS for PREPARED unchanged safe retry, PREPARED divergence hard block, PUBLISHED_PASS matching completion without redigest, PUBLISHED_PASS divergence hard block, and Live orphan CONSUMING without recovery marker hard block.
+- Fresh forced-interruption/FIFO proof: `H:\bridge\reports\school_500_public_interrupt_fifo_resume_20260814.json`, PASS: durable pending survived forced process stop; a new Count=1 request queued behind the prior Count=500; prior 500 completed first; next queued request then completed; final pending=false and queue_count=0; LAB memory matched source.
+- Canonical entrypoint validator PASS: one Owner-facing `run_agent_school.ps1` with only Count, Mode, Topics; School processes=0 at acceptance gate; `H:\bridge\lab` had zero `school_500*` residues after sanitation.
+- Acceptance scope: local implementation and LAB behavior only. This does NOT prove physical power-loss interruption during real Live memory publication, real external Codex outage/quota exhaustion, or long-run Live stability. Those require post-commit Live proof.
+
+Return to parent: commit this accepted LAB implementation locally after exact staged-scope/pre-commit validation; no remote push as a side effect. Then restore fresh repo/runtime/memory proof and run a bounded Live validation before calling the recovery organ Live-proven.

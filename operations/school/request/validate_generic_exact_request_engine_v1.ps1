@@ -1,6 +1,6 @@
 ﻿param(
   [int[]]$Counts = @(1,50,99,100,101,678,1000,3581,50000),
-  [ValidateRange(1,10000)][int]$MicroBatchSize = 100,
+  [ValidateRange(1,10000)][int]$MicroBatchSize = 500,
   [ValidateRange(1,1000000)][int]$MaxRequestSize = 50000
 )
 $ErrorActionPreference='Stop'
