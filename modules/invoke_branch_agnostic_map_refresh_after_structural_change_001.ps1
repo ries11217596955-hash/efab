@@ -29,6 +29,7 @@ function Test-StructuralPath([string]$Path) {
     'tests/self_development/BODY_MAP_PRIMARY_EVIDENCE_REBUILD_V1_PROOF.json'
   )
   if ($generatedOutputs -contains $p) { return $false }
+  if ($p -like 'docs/operations/SCHOOL_RUN_RESULT_*.md') { return $false }
   $allowedPrefixes = @(
     'operations/',
     'modules/',

@@ -2895,3 +2895,20 @@ status: LAB_ACCEPTED_LOCAL_IMPLEMENTATION_LIVE_NOT_YET_PROVEN
 - Acceptance scope: local implementation and LAB behavior only. This does NOT prove physical power-loss interruption during real Live memory publication, real external Codex outage/quota exhaustion, or long-run Live stability. Those require post-commit Live proof.
 
 Return to parent: commit this accepted LAB implementation locally after exact staged-scope/pre-commit validation; no remote push as a side effect. Then restore fresh repo/runtime/memory proof and run a bounded Live validation before calling the recovery organ Live-proven.
+## 2026-08-15 - School 500/500 recovery Live proof and summary-map policy repair
+marker: SCHOOL_500_DURABLE_RECOVERY_LIVE_PROVEN_20260815
+status: LIVE_PROVEN_LOCAL_ACCEPTANCE_MAP_POLICY_REPAIR_VALIDATED_NOT_PUSHED
+
+- LAB-accepted 500/500 durable recovery implementation was committed locally as `d7de57bdb1ac741ca0c4d08fb7a5f8452d00841c` before Live validation.
+- Real post-commit Live500 run `canonical_exact_count_cycle_real_500_20260814_235700` completed `PASS_CANONICAL_EXACT_COUNT_CYCLE_LIVE_V1`: target=500, ready=500, accepted=500, micro_batch_size=500, micro_batch_count=1, batch_counts=500, consumed_batches=1, real Codex invoked.
+- Outer managed run `pc_run-20260814-195649-bd27d92e` measured wall `540688 ms` (~9m00.7s), improving materially over the previous ~14m34s 500-run and original ~20m13s baseline. One Codex 500 batch reached READY in about 3m36s; the 500-atom digest remained the next major cost at about 4m25s.
+- Live crash-safety boundary was observed in production: before digest, `digest_window_recovery.json` was `PREPARED` with exact pre-Live active-memory hashes and an active-memory checkpoint; successful publish then produced ABSORBED completion, removed CONSUMING, and cleaned the recovery marker/checkpoint. No blind retry or duplicate School runtime occurred.
+- Finalizer committed exactly one tracked summary file in commit `2e74b02f60120ceadca06dbb9da04a463c85e0ff`; post-run repo was clean, School processes=0, pending=false, FIFO queue=0, active memory remained coherent at 139 cells.
+- Post-Live map-currentness initially failed with `stale_result_fingerprint` / `stale_active_map_fingerprint`. Root cause was a policy inconsistency: finalizer correctly treated `docs/operations/SCHOOL_RUN_RESULT_*.md` as compact evidence-only, while both map generator/validator classified all `docs/operations/` as structural.
+- Repair: both `Test-StructuralPath` implementations now explicitly classify only `docs/operations/SCHOOL_RUN_RESULT_*.md` as non-structural evidence while ordinary `docs/operations/*` structural docs remain structural and generated map outputs remain excluded. Classification microtrial PASS in both implementations.
+- Forced canonical map refresh after the repair reported `structural_paths={}` for the new School summary, `protected_state_mutated=false`, and map currentness PASS with `CURRENT_FP=RESULT_FP=ACTIVE_FP=8e891ea1c38c569e98d16fe4384482444a7c333f0c5d8b2a5bdd49f85c72c2e7`.
+- Acceptance boundary: 500/500 producer/digest behavior and the durable recovery implementation now have real Live500 proof for the exercised normal publish path. LAB negative tests still carry the power-loss ambiguity cases. This does not prove every physical power-loss timing, provider-wide Codex outage, or infinite-duration stability.
+- Remote state was not mutated: no push was performed.
+
+Return to parent:
+- Commit the validated summary-map evidence-only policy repair plus generated maps and this Notebook checkpoint locally. Then run post-commit currentness/repo/process checks; no new Live500 is required because the repair changes map classification only, not School/runtime behavior.
