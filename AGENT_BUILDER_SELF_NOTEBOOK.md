@@ -2992,3 +2992,25 @@ status: VALIDATED_LOCAL_CANDIDATE_NOT_YET_COMMITTED
 Return to parent:
 - Validation PASS: `PASS_BUILDER_CONTROL_CENTER_V3|ACTIONS=14|DIAGNOSE_ROUTES=5|MULTI_DIAG=PASS|LIVE_MUTATION=0|TRACKED_MUTATION=0|RUNTIME_STARTED=0`.
 - Next: commit through automatic pre-commit map hook; no manual map refresh.
+
+
+## 2026-08-16 - Builder Control Center v4 operational overview
+marker: BUILDER_CONTROL_CENTER_V4_OPERATIONAL_OVERVIEW_20260816
+status: VALIDATED_LOCAL_CANDIDATE_NOT_YET_COMMITTED
+
+Owner-approved strengthening:
+- Add one fast `builder.overview` above existing canonical actions; it does not own organ behavior.
+- Normalize surfaces into HEALTHY / IDLE / ACTIVE / DEGRADED / BLOCKED-style states while preserving each raw status.
+- Every overview response carries a live freshness envelope (`observed_at`, TTL, `expires_at`, proof scope).
+- Show blockers, bounded impact, and exactly one `recommended_next_action` using safety-first precedence.
+- Add `remote_access.status` as local-PC component health only; explicitly report GPT connector/session reachability as `UNKNOWN_EXTERNAL_TO_LOCAL_PC` rather than inferring end-to-end health.
+- Capability gap should surface as `CAPABILITY_MAP_MISSING_NOT_WIRED` and recommend the existing `capability.diagnose` path / capability-map pipeline completion.
+- Inventory fast overview reports presence only; semantic/currentness remains owned by `inventory.diagnose`.
+
+Additional correction captured:
+- V3 post-commit lifecycle left four generated map files staged with timestamp-only deltas. They were verified as non-semantic and cleaned back to accepted HEAD; map currentness passed. A cleanup mutation was initiated before printing its required mutation passport; this governance process error was explicitly acknowledged and must not repeat.
+
+Return to parent:
+- Validation PASS: `PASS_BUILDER_CONTROL_CENTER_V4|ACTIONS=16|DIAGNOSE_ROUTES=5|OVERVIEW=PASS|REMOTE_SCOPE=PASS|MULTI_DIAG=PASS|LIVE_MUTATION=0|TRACKED_MUTATION=0|RUNTIME_STARTED=0`.
+- Fresh candidate behavior: remote local components `HEALTHY_LOCAL_COMPONENTS`; GPT connector/session remains `UNKNOWN_EXTERNAL_TO_LOCAL_PC`; overview accumulates `REPO_DIRTY` plus `CAPABILITY_MAP_MISSING_NOT_WIRED` and recommends repo inspection while candidate is uncommitted. After a clean acceptance commit, capability diagnose is expected to become the next safe action if no higher-priority blocker exists.
+- Next: local acceptance commit through the automatic map hook; no manual map refresh and no push.

@@ -1,6 +1,6 @@
 {
   "schema": "builder_control_center_registry_v1",
-  "status": "CANDIDATE_DIAGNOSE_ROUTING_V3",
+  "status": "CANDIDATE_OPERATIONAL_OVERVIEW_V4",
   "purpose": "Single governed menu/registry over existing Builder organs and canonical entrypoints; no organ duplication.",
   "rules": {
     "read_only_by_default": true,
@@ -175,6 +175,27 @@
       "read_only": true,
       "parallel_safe": true,
       "handler": "builtin:control_center_diagnose",
+      "conflicts": []
+    },
+    {
+      "id": "builder.overview",
+      "group": "VIEW",
+      "title": "Builder operational overview",
+      "kind": "OBSERVE",
+      "read_only": true,
+      "parallel_safe": true,
+      "handler": "builtin:builder_overview",
+      "conflicts": []
+    },
+    {
+      "id": "remote_access.status",
+      "group": "VIEW",
+      "title": "Remote access local component status",
+      "kind": "OBSERVE",
+      "read_only": true,
+      "parallel_safe": true,
+      "handler": "builtin:remote_access_status",
+      "scope_note": "Local PC component health only. GPT connector/session health is external and remains UNKNOWN unless separately observed.",
       "conflicts": []
     }
   ],

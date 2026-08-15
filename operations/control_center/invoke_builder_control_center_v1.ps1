@@ -46,6 +46,51 @@ function Get-StartReadiness([string]$Id){
  }
  throw "CONTROL_CENTER_START_READINESS_UNKNOWN:$Id"
 }
+function Get-FreshnessEnvelope([int]$TtlSeconds=60){
+ $now=Get-Date;$expires=$now.AddSeconds($TtlSeconds)
+ [ordered]@{observed_at=$now.ToString('o');ttl_seconds=$TtlSeconds;expires_at=$expires.ToString('o');state='FRESH';proof_scope='LIVE_OBSERVE_THIS_CALL'}
+}
+function Get-ScheduledTaskProbe([string]$Name){
+ try{$t=Get-ScheduledTask -TaskName $Name -ErrorAction Stop;[ordered]@{name=$Name;present=$true;state=[string]$t.State;healthy=([string]$t.State -eq 'Running')}}catch{[ordered]@{name=$Name;present=$false;state='MISSING';healthy=$false}}
+}
+function Get-RemoteAccessStatus{
+ $pc=Get-ScheduledTaskProbe 'EFAB PC Control SYSTEM';$rescue=Get-ScheduledTaskProbe 'EFAB Rescue Control SYSTEM';$recovery=Get-ScheduledTaskProbe 'EFAB Recovery Gateway SYSTEM';$ngrok=Get-ScheduledTaskProbe 'EFAB Ngrok Primary SYSTEM';$oob=Get-ScheduledTaskProbe 'EFAB OOB Gateway SYSTEM';$oobTransport=Get-ScheduledTaskProbe 'EFAB OOB Cloudflare Transport SYSTEM'
+ $tailscale=[ordered]@{name='Tailscale';present=$false;state='MISSING';healthy=$false}
+ try{$svc=Get-Service -Name 'Tailscale' -ErrorAction Stop;$tailscale=[ordered]@{name='Tailscale';present=$true;state=[string]$svc.Status;start_type=[string]$svc.StartType;healthy=([string]$svc.Status -eq 'Running')}}catch{}
+ $pcApi=[ordered]@{endpoint='127.0.0.1:18790';status='NOT_LISTENING';healthy=$false;proof_scope='tcp_listener_only';does_not_prove='authenticated_api_behavior'}
+ try{$client=New-Object System.Net.Sockets.TcpClient;$async=$client.BeginConnect('127.0.0.1',18790,$null,$null);if($async.AsyncWaitHandle.WaitOne(1000,$false) -and $client.Connected){$client.EndConnect($async);$pcApi=[ordered]@{endpoint='127.0.0.1:18790';status='LISTENING';healthy=$true;proof_scope='tcp_listener_only';does_not_prove='authenticated_api_behavior'}};$client.Close()}catch{}
+ $components=@($pc,$rescue,$recovery,$ngrok,$oob,$oobTransport,$tailscale,$pcApi)
+ $bad=@($components|Where-Object{-not[bool]$_.healthy})
+ [ordered]@{id='remote_access.status';status=if($bad.Count){'DEGRADED_LOCAL_COMPONENTS'}else{'HEALTHY_LOCAL_COMPONENTS'};components=$components;gpt_connector=[ordered]@{status='UNKNOWN_EXTERNAL_TO_LOCAL_PC';reason='Connector/session reachability cannot be proven from the local PC itself.'};failover_locally_present=($rescue.present -and $recovery.present -and $oob.present);freshness=(Get-FreshnessEnvelope 60)}
+}
+function Get-BuilderOverview{
+ $repo=Get-RepoStatus;$school=Get-SchoolStatus;$agent=Get-AgentStatus;$memory=Get-MemoryStatus;$inventory=Get-InventoryStatus;$capability=Get-CapabilityStatus;$remote=Get-RemoteAccessStatus
+ $registryState=[ordered]@{status='HEALTHY';action_count=@($actions).Count;duplicate_ids=$false}
+ $ids=@($actions.id);if($ids.Count -ne @($ids|Sort-Object -Unique).Count){$registryState.status='DEGRADED';$registryState.duplicate_ids=$true}
+ $blockers=@();$impact=@();$recommended=[ordered]@{id='none';action='NONE';reason='No higher-priority blocker observed.'}
+ if($repo.status -ne 'CLEAN'){$blockers+='REPO_DIRTY';$impact+='Mutation/start readiness may be blocked by dirty repository state.'}
+ if($memory.status -ne 'PRESENT'){$blockers+='ACTIVE_MEMORY_INCOMPLETE';$impact+='School and memory-dependent operations are unsafe.'}
+ if($school.status -eq 'RECOVERY_OR_QUEUED'){$blockers+='SCHOOL_RECOVERY_OR_QUEUE';$impact+='New School launch must not bypass recovery/queue state.'}
+ if($remote.status -ne 'HEALTHY_LOCAL_COMPONENTS'){$blockers+='REMOTE_ACCESS_LOCAL_DEGRADED';$impact+='Remote recovery redundancy is reduced.'}
+ if($capability.status -eq 'MISSING_NOT_WIRED'){$blockers+='CAPABILITY_MAP_MISSING_NOT_WIRED';$impact+='Canonical capability invocation map is unavailable.';$impact+='Capability-map-dependent routing/currentness cannot be proven.'}
+ if($repo.status -ne 'CLEAN'){$recommended=[ordered]@{id='repo.status';action='INSPECT_REPO';reason='Repository is not clean.'}}
+ elseif($memory.status -ne 'PRESENT'){$recommended=[ordered]@{id='memory.diagnose';action='DIAGNOSE_MEMORY';reason='Active compact memory is incomplete.'}}
+ elseif($school.status -eq 'RECOVERY_OR_QUEUED'){$recommended=[ordered]@{id='school.status';action='OBSERVE_SCHOOL_RECOVERY';reason='School recovery or queued request exists.'}}
+ elseif($remote.status -ne 'HEALTHY_LOCAL_COMPONENTS'){$recommended=[ordered]@{id='remote_access.status';action='DIAGNOSE_REMOTE_ACCESS';reason='One or more locally observable remote-access components are unhealthy.'}}
+ elseif($capability.status -eq 'MISSING_NOT_WIRED'){$recommended=[ordered]@{id='capability.diagnose';action='COMPLETE_CAPABILITY_MAP_PIPELINE';reason='Capability contract exists but canonical map/wiring is missing.'}}
+ $surface=@(
+  [ordered]@{id='repo';state=if($repo.status-eq'CLEAN'){'HEALTHY'}else{'DEGRADED'};raw_status=$repo.status},
+  [ordered]@{id='school';state=if($school.status-eq'RUNNING'){'ACTIVE'}elseif($school.status-eq'STOPPED'){'IDLE'}else{'DEGRADED'};raw_status=$school.status},
+  [ordered]@{id='agent';state=if($agent.status-eq'RUNNING'){'ACTIVE'}else{'IDLE'};raw_status=$agent.status},
+  [ordered]@{id='memory';state=if($memory.status-eq'PRESENT'){'HEALTHY'}else{'BLOCKED'};raw_status=$memory.status},
+  [ordered]@{id='inventory';state=if($inventory.status-eq'PRESENT'){'PRESENT'}else{'MISSING'};raw_status=$inventory.status;claim_scope='presence_only_use_inventory.diagnose_for_currentness'},
+  [ordered]@{id='capability';state=if($capability.status-eq'PRESENT'){'PRESENT'}else{'DEGRADED'};raw_status=$capability.status;maturity=[ordered]@{contract=if($capability.contract_status){'PRESENT'}else{'UNKNOWN'};canonical_map=if($capability.status-eq'PRESENT'){'PRESENT'}else{'MISSING'};wiring=if($capability.status-eq'PRESENT'){'NOT_PROVEN'}else{'NOT_WIRED'}}},
+  [ordered]@{id='remote_access';state=if($remote.status-eq'HEALTHY_LOCAL_COMPONENTS'){'HEALTHY_LOCAL'}else{'DEGRADED'};raw_status=$remote.status;connector_status=$remote.gpt_connector.status},
+  [ordered]@{id='control_center';state=$registryState.status;raw_status='REGISTRY_OBSERVED';action_count=$registryState.action_count}
+ )
+ $overall=if(@($surface|Where-Object{$_.state -in @('BLOCKED','DEGRADED')}).Count){'DEGRADED'}else{'HEALTHY'}
+ [ordered]@{id='builder.overview';status='OVERVIEW_READY';overall=$overall;surfaces=$surface;blockers=@($blockers);impact=@($impact);recommended_next_action=$recommended;freshness=(Get-FreshnessEnvelope 60);source_actions=@('repo.status','school.status','agent.status','memory.status','inventory.status','capability.status','remote_access.status','control_center registry');does_not_prove=@('inventory semantic currentness unless inventory.diagnose is run','GPT connector/session health','capability semantic validity while canonical map is missing')}
+}
 function Invoke-Diagnostic([string]$Id){
  if($Id -eq 'runtime.diagnose'){
    $school=Get-SchoolStatus;$agent=Get-AgentStatus
@@ -91,7 +136,7 @@ function Invoke-Diagnostic([string]$Id){
  }
  throw "CONTROL_CENTER_DIAGNOSTIC_UNKNOWN:$Id"
 }
-function Invoke-Observed([string]$Id){switch($Id){'repo.status'{Get-RepoStatus}'school.status'{Get-SchoolStatus}'agent.status'{Get-AgentStatus}'inventory.status'{Get-InventoryStatus}'capability.status'{Get-CapabilityStatus}'memory.status'{Get-MemoryStatus}'builder.status'{[ordered]@{id='builder.status';status='OBSERVED';repo=(Get-RepoStatus);school=(Get-SchoolStatus);agent=(Get-AgentStatus);inventory=(Get-InventoryStatus);capability=(Get-CapabilityStatus);memory=(Get-MemoryStatus)}}'school.start'{Get-StartReadiness 'school.start'}'agent.start'{Get-StartReadiness 'agent.start'}default{throw"CONTROL_CENTER_HANDLER_NOT_IMPLEMENTED:$Id"}}}
+function Invoke-Observed([string]$Id){switch($Id){'repo.status'{Get-RepoStatus}'school.status'{Get-SchoolStatus}'agent.status'{Get-AgentStatus}'inventory.status'{Get-InventoryStatus}'capability.status'{Get-CapabilityStatus}'memory.status'{Get-MemoryStatus}'builder.status'{[ordered]@{id='builder.status';status='OBSERVED';repo=(Get-RepoStatus);school=(Get-SchoolStatus);agent=(Get-AgentStatus);inventory=(Get-InventoryStatus);capability=(Get-CapabilityStatus);memory=(Get-MemoryStatus)}}'builder.overview'{Get-BuilderOverview}'remote_access.status'{Get-RemoteAccessStatus}'school.start'{Get-StartReadiness 'school.start'}'agent.start'{Get-StartReadiness 'agent.start'}default{throw"CONTROL_CENTER_HANDLER_NOT_IMPLEMENTED:$Id"}}}
 function Invoke-Start([string]$Id){
  $ready=Get-StartReadiness $Id
  if($ready.status -ne 'READY'){return $ready}
