@@ -67,6 +67,27 @@ if([int]$routeBefore.routed_active_count -ne [int]$routeAfter.routed_active_coun
 if([int]$ledgerBefore.replayed_active_count -ne [int]$ledgerAfter.replayed_active_count){ throw 'LEDGER_MUTATED_BY_DIGEST_VALIDATION' }
 $statusLines=@(git status --short --untracked-files=all)
 if($statusLines | Where-Object { $_ -match '^\?\? \.runtime' }){ throw 'RUNTIME_NOT_IGNORED' }
+# Index-clean fast-path regression: relations/fingerprints-only change must preserve index bytes.
+$indexBeforeClean=(Get-FileHash -Algorithm SHA256 (Join-Path $memory 'index.json')).Hash
+$cleanInput="$root/index_clean_relation_only.jsonl"
+$cleanRow=[ordered]@{concept_key='vehicle.car';label='car';aliases=@('automobile','auto');definition='A car is a road vehicle used to transport people or goods.';properties=@('road vehicle','wheels','transport','engine or motor','passenger cabin');relations=@('proof_only:new_relation');uses=@('travel','delivery','commuting')}
+WriteText $cleanInput (($cleanRow|ConvertTo-Json -Depth 20 -Compress)+"`n")
+$cleanOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/digestion/invoke_compact_semantic_digestion_organ_v1.ps1 -InputPath $cleanInput -MemoryRoot $memory -RunId "${runId}_index_clean" -SizeBudgetBytes $SizeBudgetBytes *>&1 | ForEach-Object {[string]$_})
+$cleanAction=(($cleanOut|Where-Object{$_ -match '^INDEX_ACTION='}|Select-Object -Last 1) -replace '^INDEX_ACTION=','')
+if($cleanAction -ne 'PRESERVED_CLEAN'){ throw "INDEX_CLEAN_NOT_PRESERVED:$cleanAction" }
+$indexAfterClean=(Get-FileHash -Algorithm SHA256 (Join-Path $memory 'index.json')).Hash
+if($indexAfterClean -ne $indexBeforeClean){ throw 'INDEX_CLEAN_SHA_CHANGED' }
+# Index-dirty fallback: one new indexed property must rebuild and become queryable.
+$dirtyInput="$root/index_dirty_property.jsonl"
+$dirtyRow=[ordered]@{concept_key='vehicle.car';label='car';definition='A car is a road vehicle used to transport people or goods.';properties=@('validator-new-index-term');relations=@();uses=@()}
+WriteText $dirtyInput (($dirtyRow|ConvertTo-Json -Depth 20 -Compress)+"`n")
+$dirtyOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/digestion/invoke_compact_semantic_digestion_organ_v1.ps1 -InputPath $dirtyInput -MemoryRoot $memory -RunId "${runId}_index_dirty" -SizeBudgetBytes $SizeBudgetBytes *>&1 | ForEach-Object {[string]$_})
+$dirtyAction=(($dirtyOut|Where-Object{$_ -match '^INDEX_ACTION='}|Select-Object -Last 1) -replace '^INDEX_ACTION=','')
+if($dirtyAction -ne 'REBUILT'){ throw "INDEX_DIRTY_NOT_REBUILT:$dirtyAction" }
+$dirtyIndex=Get-Content (Join-Path $memory 'index.json') -Raw|ConvertFrom-Json
+if($null -eq $dirtyIndex.terms.'validator-new-index-term'){ throw 'INDEX_DIRTY_TERM_MISSING' }
+Write-Host "INDEX_CLEAN_ACTION=$cleanAction"
+Write-Host "INDEX_DIRTY_ACTION=$dirtyAction"
 Write-Host 'VALIDATION_PASS=COMPACT_SEMANTIC_DIGESTION_ORGAN_V1_VALID'
 Write-Host "VALIDATION_TIER=$selectedTier"
 Write-Host "TARGET_ATOMS=$TargetAtoms"

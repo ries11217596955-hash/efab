@@ -99,6 +99,9 @@ $existingCellCountBefore=$cells.Keys.Count
 $createdCellCount=0
 $mergedObservationCount=0
 $inputFingerprints=New-Object System.Collections.Generic.List[string]
+$groups=@{}
+$groupOrder=New-Object System.Collections.Generic.List[string]
+$indexDirty=$false
 foreach($r in $rows){
   $concept=[string](GetProp $r 'concept_key')
   if([string]::IsNullOrWhiteSpace($concept)){ $concept=[string](GetProp $r 'concept') }
@@ -122,39 +125,71 @@ foreach($r in $rows){
   $rawCanonical=($r|ConvertTo-Json -Depth 80 -Compress)
   $fp=Sha256Text $rawCanonical
   $inputFingerprints.Add($fp) | Out-Null
+  if(-not $groups.ContainsKey($conceptKey)){
+    $g=[pscustomobject]@{
+      concept_key=$conceptKey; label=$label; kind=$kind; summary=$summary; count=0
+      aliases=(New-Object System.Collections.Generic.SortedSet[string])
+      properties=(New-Object System.Collections.Generic.SortedSet[string])
+      relations=(New-Object System.Collections.Generic.SortedSet[string])
+      uses=(New-Object System.Collections.Generic.SortedSet[string])
+      source_fingerprints=(New-Object System.Collections.Generic.SortedSet[string])
+    }
+    $groups[$conceptKey]=$g
+    $groupOrder.Add($conceptKey) | Out-Null
+  }
+  $g=$groups[$conceptKey]
+  $g.count=[int]$g.count+1
+  foreach($x in $aliases){ if(-not [string]::IsNullOrWhiteSpace([string]$x)){ [void]$g.aliases.Add([string]$x) } }
+  foreach($x in $props){ if(-not [string]::IsNullOrWhiteSpace([string]$x)){ [void]$g.properties.Add([string]$x) } }
+  foreach($x in $relations){ if(-not [string]::IsNullOrWhiteSpace([string]$x)){ [void]$g.relations.Add([string]$x) } }
+  foreach($x in $uses){ if(-not [string]::IsNullOrWhiteSpace([string]$x)){ [void]$g.uses.Add([string]$x) } }
+  [void]$g.source_fingerprints.Add($fp)
+  if(([string]$g.summary).Length -lt $summary.Length){ $g.summary=$summary }
+}
+foreach($conceptKey in $groupOrder){
+  $g=$groups[$conceptKey]
   if($cells.ContainsKey($conceptKey)){
     $old=$cells[$conceptKey]
-    $old.aliases=MergeUnique $old.aliases $aliases
-    $old.properties=MergeUnique $old.properties $props
-    $old.relations=MergeUnique $old.relations $relations
-    $old.uses=MergeUnique $old.uses $uses
-    $old.source_fingerprints=MergeUnique $old.source_fingerprints @($fp)
-    $old.observation_count=[int]$old.observation_count + 1
-    $old.version=[int]$old.version + 1
-    if(([string]$old.summary).Length -lt $summary.Length){ $old.summary=$summary }
+    $oldAliasesUnique=MergeUnique $old.aliases @()
+    $newAliases=MergeUnique $old.aliases @($g.aliases)
+    $oldPropertiesUnique=MergeUnique $old.properties @()
+    $newProperties=MergeUnique $old.properties @($g.properties)
+    $oldUsesUnique=MergeUnique $old.uses @()
+    $newUses=MergeUnique $old.uses @($g.uses)
+    if($newAliases.Count -ne $oldAliasesUnique.Count -or $newProperties.Count -ne $oldPropertiesUnique.Count -or $newUses.Count -ne $oldUsesUnique.Count){ $indexDirty=$true }
+    $old.aliases=$newAliases
+    $old.properties=$newProperties
+    $old.relations=MergeUnique $old.relations @($g.relations)
+    $old.uses=$newUses
+    $old.source_fingerprints=MergeUnique $old.source_fingerprints @($g.source_fingerprints)
+    $old.observation_count=[int]$old.observation_count + [int]$g.count
+    $old.version=[int]$old.version + [int]$g.count
+    if(([string]$old.summary).Length -lt ([string]$g.summary).Length){ $old.summary=[string]$g.summary }
     $old.updated_at=(Get-Date).ToString('o')
     $cells[$conceptKey]=$old
-    $mergedObservationCount++
+    $mergedObservationCount += [int]$g.count
   } else {
+    $indexDirty=$true
     $cell=[pscustomobject]@{
       schema='compact_semantic_cell_v1'
       cell_id=('cell_'+(Sha256Text $conceptKey).Substring(0,16))
       concept_key=$conceptKey
-      label=$label
-      aliases=$aliases
-      kind=$kind
-      summary=$summary
-      properties=$props
-      relations=$relations
-      uses=$uses
-      source_fingerprints=@($fp)
-      observation_count=1
+      label=[string]$g.label
+      aliases=@($g.aliases)
+      kind=[string]$g.kind
+      summary=[string]$g.summary
+      properties=@($g.properties)
+      relations=@($g.relations)
+      uses=@($g.uses)
+      source_fingerprints=@($g.source_fingerprints)
+      observation_count=[int]$g.count
       confidence=0.75
-      version=1
+      version=[int]$g.count
       updated_at=(Get-Date).ToString('o')
     }
     $cells[$conceptKey]=$cell
     $createdCellCount++
+    $mergedObservationCount += [Math]::Max(0,[int]$g.count-1)
   }
 }
 $orderedCells=@($cells.Keys | Sort-Object | ForEach-Object { CellToOrdered $cells[$_] })
@@ -167,16 +202,21 @@ foreach($forbidden in @('raw_text','source_text','ready_atoms','batch_trace','pr
   if($cellsJsonl -match $forbidden){ throw "RAW_FIELD_SURVIVED_IN_CELL:$forbidden" }
 }
 WriteText $cellsPath ($cellsJsonl + "`n")
-$index=@{}
-foreach($c in $orderedCells){
-  $terms=@($c.concept_key,$c.label)+@($c.aliases)+@($c.properties)+@($c.uses)
-  foreach($t in $terms){
-    $k=CanonicalSlug ([string]$t)
-    if(-not [string]::IsNullOrWhiteSpace($k)){ $index[$k]=[string]$c.cell_id }
+if($indexDirty -or -not (Test-Path $indexPath)){
+  $index=@{}
+  foreach($c in $orderedCells){
+    $terms=@($c.concept_key,$c.label)+@($c.aliases)+@($c.properties)+@($c.uses)
+    foreach($t in $terms){
+      $k=CanonicalSlug ([string]$t)
+      if(-not [string]::IsNullOrWhiteSpace($k)){ $index[$k]=[string]$c.cell_id }
+    }
   }
+  $indexObj=[ordered]@{ schema='compact_semantic_lookup_index_v1'; term_count=$index.Keys.Count; terms=$index }
+  WriteJson $indexPath $indexObj 100
+  Write-Host 'INDEX_ACTION=REBUILT'
+} else {
+  Write-Host 'INDEX_ACTION=PRESERVED_CLEAN'
 }
-$indexObj=[ordered]@{ schema='compact_semantic_lookup_index_v1'; term_count=$index.Keys.Count; terms=$index }
-WriteJson $indexPath $indexObj 100
 $cellBytes=(Get-Item $cellsPath).Length
 $indexBytes=(Get-Item $indexPath).Length
 $totalBytes=$cellBytes+$indexBytes

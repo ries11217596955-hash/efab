@@ -1,18 +1,25 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-08-15T00:24:25.0521652+04:00",
+    "checked_at":  "2026-08-15T09:19:19.2935457+04:00",
     "branch":  "main",
-    "observed_head":  "2e74b02f60120ceadca06dbb9da04a463c85e0ff",
-    "subject_head":  "2e74b02f60120ceadca06dbb9da04a463c85e0ff",
-    "trigger_reason":  "school_summary_evidence_only_map_policy_repair",
+    "observed_head":  "cc8702b7c4f5d91b29a26407fcc395d1baa8864f",
+    "subject_head":  "cc8702b7c4f5d91b29a26407fcc395d1baa8864f",
+    "trigger_reason":  "digest_index_clean_fastpath_candidate",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "docs/operations/SCHOOL_RUN_RESULT_20260815_000549_Live_500_canonical_exact_count_cycle_real_500_20260814_235700.md"
+                          "AGENT_BUILDER_SELF_NOTEBOOK.md",
+                          "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
+                          "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+                          "reports/self_development/agent_body_map.json",
+                          "reports/self_development/agent_body_map.md",
+                          "reports/self_development/branch_agnostic_map_refresh_result.json",
+                          "validators/validate_agent_body_composition_map_current_v1.ps1"
                       ],
     "structural_paths":  [
-
+                             "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
+                             "validators/validate_agent_body_composition_map_current_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -25,7 +32,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  2293,
-                                    "sha256":  "8e891ea1c38c569e98d16fe4384482444a7c333f0c5d8b2a5bdd49f85c72c2e7"
+                                    "sha256":  "95d8fa71951a76ef8b37c314dc5dc912e856a83abb3eb1223f323237c9e9ed98"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -58,5 +65,5 @@
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-08-15T00:28:43.9747191+04:00"
+    "refreshed_at":  "2026-08-15T09:23:31.0896310+04:00"
 }
