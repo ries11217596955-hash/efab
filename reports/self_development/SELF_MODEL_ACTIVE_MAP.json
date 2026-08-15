@@ -6,22 +6,22 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "a7123bde16623d914eb0629d902d89dab780af4e",
-    "subject_head":  "a7123bde16623d914eb0629d902d89dab780af4e",
-    "generated_at":  "2026-08-15T12:03:20.4413240+04:00",
+    "observed_head_at_generation":  "9c50ce51a8e985a7d2d6455f9a8b47f4606ba3f4",
+    "subject_head":  "9c50ce51a8e985a7d2d6455f9a8b47f4606ba3f4",
+    "generated_at":  "2026-08-15T14:19:48.8489628+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
-    "trigger_reason":  "digest_live500_acceptance_notebook",
+    "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  2293,
+    "structural_path_count":  2296,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2293,
-                                    "sha256":  "95d8fa71951a76ef8b37c314dc5dc912e856a83abb3eb1223f323237c9e9ed98"
+                                    "structural_file_count":  2296,
+                                    "sha256":  "d5aabcc3b3b0327cf6e004474d6802deaeeabfc7eeaf5db89b9afe087a800007"
                                 },
     "module_count":  203,
-    "validator_count":  263,
+    "validator_count":  264,
     "confirmed_components":  [
                                  {
                                      "id":  "school",
@@ -634,9 +634,9 @@
 
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "a7123bde16623d914eb0629d902d89dab780af4e",
-                                                               "committed_at":  "2026-08-15T11:00:04+04:00",
-                                                               "subject":  "docs: record school result: Live 500"
+                                                               "head":  "9c50ce51a8e985a7d2d6455f9a8b47f4606ba3f4",
+                                                               "committed_at":  "2026-08-15T12:16:19+04:00",
+                                                               "subject":  "docs: record school result: Live 2537"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -1694,6 +1694,47 @@
                                                               ],
                                             "primary_evidence_refs":  [
 
+                                                                      ],
+                                            "needs_triage":  true,
+                                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
+                                            "source_ref":  "bounded_tracked_file_discovery_v1",
+                                            "is_required_component":  false
+                                        },
+                                        {
+                                            "id":  "operations_control_center",
+                                            "path":  "operations/control_center",
+                                            "root":  "operations/control_center",
+                                            "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
+                                            "discovery_method":  "bounded_git_ls_files_path_discovery",
+                                            "evidence_counts":  {
+                                                                    "files":  2,
+                                                                    "scripts":  1,
+                                                                    "validators":  0,
+                                                                    "proofs":  0,
+                                                                    "contracts_or_policies":  0,
+                                                                    "docs":  0
+                                                                },
+                                            "file_count":  2,
+                                            "script_count":  1,
+                                            "validator_count":  0,
+                                            "proof_file_count":  0,
+                                            "contract_or_policy_count":  0,
+                                            "doc_count":  0,
+                                            "validator_refs":  [
+
+                                                               ],
+                                            "proof_refs":  [
+
+                                                           ],
+                                            "contract_or_policy_refs":  [
+
+                                                                        ],
+                                            "notable_files":  [
+                                                                  "operations/control_center/BUILDER_CONTROL_CENTER_REGISTRY_V1.json",
+                                                                  "operations/control_center/invoke_builder_control_center_v1.ps1"
+                                                              ],
+                                            "primary_evidence_refs":  [
+                                                                          "operations/control_center/invoke_builder_control_center_v1.ps1"
                                                                       ],
                                             "needs_triage":  true,
                                             "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
@@ -8116,11 +8157,11 @@
                                 ],
     "component_authority_summary":  {
                                         "confirmed_components":  7,
-                                        "primary_evidence_candidates":  147,
+                                        "primary_evidence_candidates":  148,
                                         "legacy_unverified_hints":  4,
                                         "rejected_or_stale_hints":  3,
                                         "required_components":  7,
-                                        "total_components_in_compatibility_view":  154,
+                                        "total_components_in_compatibility_view":  155,
                                         "bounded_discovery_pathspecs":  [
                                                                             "operations",
                                                                             "modules",
@@ -8756,9 +8797,9 @@
 
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "a7123bde16623d914eb0629d902d89dab780af4e",
-                                                     "committed_at":  "2026-08-15T11:00:04+04:00",
-                                                     "subject":  "docs: record school result: Live 500"
+                                                     "head":  "9c50ce51a8e985a7d2d6455f9a8b47f4606ba3f4",
+                                                     "committed_at":  "2026-08-15T12:16:19+04:00",
+                                                     "subject":  "docs: record school result: Live 2537"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -9814,6 +9855,47 @@
                                              ],
                            "primary_evidence_refs":  [
 
+                                                     ],
+                           "needs_triage":  true,
+                           "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",
+                           "source_ref":  "bounded_tracked_file_discovery_v1",
+                           "is_required_component":  false
+                       },
+                       {
+                           "id":  "operations_control_center",
+                           "path":  "operations/control_center",
+                           "root":  "operations/control_center",
+                           "status":  "PRIMARY_EVIDENCE_CANDIDATE_NEEDS_TRIAGE",
+                           "discovery_method":  "bounded_git_ls_files_path_discovery",
+                           "evidence_counts":  {
+                                                   "files":  2,
+                                                   "scripts":  1,
+                                                   "validators":  0,
+                                                   "proofs":  0,
+                                                   "contracts_or_policies":  0,
+                                                   "docs":  0
+                                               },
+                           "file_count":  2,
+                           "script_count":  1,
+                           "validator_count":  0,
+                           "proof_file_count":  0,
+                           "contract_or_policy_count":  0,
+                           "doc_count":  0,
+                           "validator_refs":  [
+
+                                              ],
+                           "proof_refs":  [
+
+                                          ],
+                           "contract_or_policy_refs":  [
+
+                                                       ],
+                           "notable_files":  [
+                                                 "operations/control_center/BUILDER_CONTROL_CENTER_REGISTRY_V1.json",
+                                                 "operations/control_center/invoke_builder_control_center_v1.ps1"
+                                             ],
+                           "primary_evidence_refs":  [
+                                                         "operations/control_center/invoke_builder_control_center_v1.ps1"
                                                      ],
                            "needs_triage":  true,
                            "authority_class":  "PRIMARY_EVIDENCE_CANDIDATE_REPO_DISCOVERED",

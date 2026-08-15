@@ -2938,3 +2938,26 @@ status: LIVE_PROVEN_LOCAL_ACCEPTANCE_READY_FOR_LARGER_LIVE
 
 Return to parent:
 - Next governed action is one larger Live School run at Count=2537 after exact planner proof, clean/synced local preflight, fresh active-memory checkpoint, and no active School runtime. Expected 500-microbatch plan if planner contract remains unchanged: 500+500+500+500+500+37.
+
+## 2026-08-15 - Builder Control Center decision and construction start
+marker: BUILDER_CONTROL_CENTER_V1_CONSTRUCTION_STARTED_20260815
+status: OWNER_APPROVED_DESIGN_FIRST_READ_ONLY_SLICE_BUILDING
+
+Owner decision:
+- Create one canonical Builder Control Center above existing organs/entrypoints rather than new parallel launchers.
+- Owner may multi-select compatible actions; Control Center must plan conflicts/dependencies before execution.
+- Control Center serves both Owner and Builder: registered reusable procedures replace repeated ad-hoc PowerShell for standard status/audit/diagnostic work.
+- Separate action classes: START, VIEW, DIAGNOSE, MAINTAIN, REPAIR. VIEW/DIAGNOSE are read-only by default; maintenance must never silently enter a normal Start path.
+- Existing canonical organ entrypoints remain owners of behavior. Control Center routes to them and does not duplicate School, Agent, map, memory, recovery, or validator logic.
+- One overall Builder status should expose Agent, School, memory, inventory map, capability map, repo/recovery state compactly.
+- Repeated standard work that still needs ad-hoc shell is evidence of a missing registered procedure.
+
+First construction slice:
+- Inventory canonical entrypoints and classify KEEP / LEGACY / DUPLICATE / MISSING before enabling mutation actions.
+- Build read-only registry + List/Plan/Run surface first, with multi-select and mutation accounting.
+- Initial observations: builder, repo, School, Agent, inventory/body map, capability-map state, active compact memory.
+- Keep Start/Stop/Repair disabled until read-only core has parser/schema/multi-select/no-mutation proof.
+- Capability map remains a known missing organ output; Control Center must report MISSING_NOT_WIRED rather than fabricate readiness.
+
+Return to parent:
+- Validate the read-only candidate and exact worktree scope. After acceptance, add canonical START actions by routing to existing launchers with ALREADY_RUNNING/BLOCKED/READY semantics; do not create replacement launchers.

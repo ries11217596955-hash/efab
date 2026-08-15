@@ -1,15 +1,15 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-08-15T11:58:23.1721407+04:00",
+    "checked_at":  "2026-08-15T14:15:39.6274188+04:00",
     "branch":  "main",
-    "observed_head":  "a7123bde16623d914eb0629d902d89dab780af4e",
-    "subject_head":  "a7123bde16623d914eb0629d902d89dab780af4e",
-    "trigger_reason":  "digest_live500_acceptance_notebook",
+    "observed_head":  "9c50ce51a8e985a7d2d6455f9a8b47f4606ba3f4",
+    "subject_head":  "9c50ce51a8e985a7d2d6455f9a8b47f4606ba3f4",
+    "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "docs/operations/SCHOOL_RUN_RESULT_20260815_110002_Live_500_canonical_exact_count_cycle_real_500_20260815_105418.md"
+                          "docs/operations/SCHOOL_RUN_RESULT_20260815_121618_Live_2537_canonical_exact_count_cycle_real_2537_20260815_120601.md"
                       ],
     "structural_paths":  [
 
@@ -24,8 +24,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2293,
-                                    "sha256":  "95d8fa71951a76ef8b37c314dc5dc912e856a83abb3eb1223f323237c9e9ed98"
+                                    "structural_file_count":  2296,
+                                    "sha256":  "d5aabcc3b3b0327cf6e004474d6802deaeeabfc7eeaf5db89b9afe087a800007"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -47,16 +47,16 @@
                          "builder":  "AGENT_BODY_COMPOSITION_MAP_PRIMARY_EVIDENCE_V1",
                          "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                          "confirmed_component_count":  7,
-                         "primary_evidence_candidate_count":  147,
+                         "primary_evidence_candidate_count":  148,
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
-                         "total_component_count":  154,
-                         "structural_path_count":  2293,
+                         "total_component_count":  155,
+                         "structural_path_count":  2296,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-08-15T12:03:21.9337136+04:00"
+    "refreshed_at":  "2026-08-15T14:19:50.3056475+04:00"
 }

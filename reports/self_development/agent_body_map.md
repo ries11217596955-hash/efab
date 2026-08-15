@@ -2,9 +2,9 @@
 
 Status: ACTIVE_DERIVED_VIEW
 Branch: main
-Observed head at generation: a7123bde16623d914eb0629d902d89dab780af4e
-Generated: 2026-08-15T12:03:20.4413240+04:00
-Body source fingerprint: 95d8fa71951a76ef8b37c314dc5dc912e856a83abb3eb1223f323237c9e9ed98
+Observed head at generation: 9c50ce51a8e985a7d2d6455f9a8b47f4606ba3f4
+Generated: 2026-08-15T14:19:48.8489628+04:00
+Body source fingerprint: d5aabcc3b3b0327cf6e004474d6802deaeeabfc7eeaf5db89b9afe087a800007
 
 Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
@@ -18,7 +18,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 ## Counts
 
 - Confirmed components: 7
-- Primary evidence candidates: 147
+- Primary evidence candidates: 148
 - Legacy unverified hints: 4
 - Rejected or stale hints: 3
 
@@ -51,6 +51,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `operations_body_self_inspection` - root `operations/body_self_inspection`, files=25, scripts=18, validators=0, proofs=0, needs_triage=True
 - `operations_bridge_diagnostics` - root `operations/bridge_diagnostics`, files=2, scripts=0, validators=0, proofs=2, needs_triage=True
 - `operations_bridge_recovery` - root `operations/bridge_recovery`, files=2, scripts=0, validators=0, proofs=0, needs_triage=True
+- `operations_control_center` - root `operations/control_center`, files=2, scripts=1, validators=0, proofs=0, needs_triage=True
 - `operations_gpt_handoff` - root `operations/gpt_handoff`, files=19, scripts=0, validators=0, proofs=0, needs_triage=True
 - `operations_live_like` - root `operations/live_like`, files=4, scripts=4, validators=3, proofs=0, needs_triage=True
 - `operations_live_readiness` - root `operations/live_readiness`, files=9, scripts=9, validators=5, proofs=1, needs_triage=True
@@ -113,7 +114,6 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `packs_phase44_one_run_remediation_program_seed_proof_v1` - root `packs/PHASE44_ONE_RUN_REMEDIATION_PROGRAM_SEED_PROOF_V1`, files=3, scripts=2, validators=1, proofs=3, needs_triage=True
 - `packs_phase45_seed_driven_monitoring_profile_v1` - root `packs/PHASE45_SEED_DRIVEN_MONITORING_PROFILE_V1`, files=8, scripts=3, validators=1, proofs=2, needs_triage=True
 - `packs_phase46_monitoring_gap_closure_specialized_proof_v1` - root `packs/PHASE46_MONITORING_GAP_CLOSURE_SPECIALIZED_PROOF_V1`, files=4, scripts=2, validators=1, proofs=4, needs_triage=True
-- `packs_phase47_remediation_program_seed_consumption_closure_proof_v1` - root `packs/PHASE47_REMEDIATION_PROGRAM_SEED_CONSUMPTION_CLOSURE_PROOF_V1`, files=3, scripts=2, validators=1, proofs=3, needs_triage=True
 
 ## Freshness
 
