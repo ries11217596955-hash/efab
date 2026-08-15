@@ -2924,3 +2924,17 @@ status: LAB_ACCEPTED_LOCAL_CANDIDATE_LIVE_NOT_YET_PROVEN
 - Full `absorb_atom_file_via_digest_pipeline_v1.ps1` integration on a copy of the exact pre-Live protected memory and exact 500-row Live input SHA `BC270F27F4FA335233C3F88542EA77B3EB92D35513A0B6974FB16E6568FCAC62` PASS. Compact proof `H:\bridge\reports\digest_index_clean_absorption_integration_20260815.json`: full absorption 239694 -> 36722 ms; digest stage 222604 -> 18432 ms; weight guard/post-validation/publish/cleanup PASS; target and 138 non-target semantics match; index SHA exact; active source memory unchanged.
 - Current production-candidate digest SHA is `819FD17D11DE689489190C06652EE183A54C6861A89E4B5401D3824269B5DC48`; validator SHA is `DCC29BA136AA6BE0AA1731C57FF4A99F500C8B60043E8AE95D9040D5AB8C9CCE`.
 - Acceptance boundary: LAB implementation is accepted as candidate. It is not yet committed and not Live-proven. Required next steps are structural map refresh, exact scoped local commit, then one post-commit Live500. No remote push as a side effect.
+## 2026-08-15 - Digest index-clean optimization Live500 acceptance
+marker: DIGEST_500_INDEX_CLEAN_LIVE_PROVEN_20260815
+status: LIVE_PROVEN_LOCAL_ACCEPTANCE_READY_FOR_LARGER_LIVE
+
+- Production digest acceleration commit: `d613454777c5dc952e64f3b02e4166a9bbf6d779` (`school: accelerate clean digest index path`).
+- Post-commit Live500 run `canonical_exact_count_cycle_real_500_20260815_105418` completed `PASS_CANONICAL_EXACT_COUNT_CYCLE_LIVE_V1`: target=500, ready=500, accepted=500, one microbatch of 500.
+- Outer managed run `pc_run-20260815-065406-d7bb18ec` completed exit=0 with wall `356623 ms` (~5m56.6s), versus prior accepted Live500 ~540688 ms (~9m00.7s), about 34% faster overall.
+- Live absorption proof `file_atom_absorption_20260815_105943` completed in `15513 ms`; stages included reinforcement fast path 3323 ms, memory weight guard 8243 ms, post-digest validation 675 ms, publish 147 ms, cleanup 824 ms.
+- Post-run boundary: repo clean; School processes=0; pending=false; queue=0; active compact memory coherent at 139 cells; map currentness PASS.
+- Finalizer summary-only commit after the run: `a7123bde16623d914eb0629d902d89dab780af4e`.
+- Acceptance boundary: index-clean digest acceleration is now Live500-proven for the exercised reinforcement path. This does not yet prove larger multi-window Live behavior or long-run stability.
+
+Return to parent:
+- Next governed action is one larger Live School run at Count=2537 after exact planner proof, clean/synced local preflight, fresh active-memory checkpoint, and no active School runtime. Expected 500-microbatch plan if planner contract remains unchanged: 500+500+500+500+500+37.
