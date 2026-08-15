@@ -1,110 +1,130 @@
 {
-    "schema":  "builder_control_center_registry_v1",
-    "status":  "CANDIDATE_READ_ONLY_CORE",
-    "purpose":  "Single governed menu/registry over existing Builder organs and canonical entrypoints; no organ duplication.",
-    "rules":  {
-                  "read_only_by_default":  true,
-                  "multi_select_enabled":  true,
-                  "maintenance_not_in_start_path":  true,
-                  "standard_action_requires_registered_procedure":  true
-              },
-    "actions":  [
-                    {
-                        "id":  "builder.status",
-                        "group":  "VIEW",
-                        "title":  "Builder overall status",
-                        "kind":  "OBSERVE",
-                        "read_only":  true,
-                        "parallel_safe":  true,
-                        "handler":  "builtin:builder_status",
-                        "conflicts":  [
-
-                                      ]
-                    },
-                    {
-                        "id":  "repo.status",
-                        "group":  "VIEW",
-                        "title":  "Repository status",
-                        "kind":  "OBSERVE",
-                        "read_only":  true,
-                        "parallel_safe":  true,
-                        "handler":  "builtin:repo_status",
-                        "conflicts":  [
-
-                                      ]
-                    },
-                    {
-                        "id":  "school.status",
-                        "group":  "VIEW",
-                        "title":  "School runtime status",
-                        "kind":  "OBSERVE",
-                        "read_only":  true,
-                        "parallel_safe":  true,
-                        "handler":  "builtin:school_status",
-                        "canonical_entrypoint":  "operations/school/run_agent_school.ps1",
-                        "conflicts":  [
-
-                                      ]
-                    },
-                    {
-                        "id":  "agent.status",
-                        "group":  "VIEW",
-                        "title":  "Agent life/runtime status",
-                        "kind":  "OBSERVE",
-                        "read_only":  true,
-                        "parallel_safe":  true,
-                        "handler":  "builtin:agent_status",
-                        "canonical_entrypoint":  "operations/autonomous_inner_motor/start_agent_life_v1.ps1",
-                        "conflicts":  [
-
-                                      ]
-                    },
-                    {
-                        "id":  "inventory.status",
-                        "group":  "VIEW",
-                        "title":  "Inventory/body map status",
-                        "kind":  "OBSERVE",
-                        "read_only":  true,
-                        "parallel_safe":  true,
-                        "handler":  "builtin:inventory_status",
-                        "canonical_artifact":  "reports/self_development/agent_body_map.json",
-                        "validator":  "validators/validate_body_inventory_map_current_v1.ps1",
-                        "conflicts":  [
-
-                                      ]
-                    },
-                    {
-                        "id":  "capability.status",
-                        "group":  "VIEW",
-                        "title":  "Capability/skills map status",
-                        "kind":  "OBSERVE",
-                        "read_only":  true,
-                        "parallel_safe":  true,
-                        "handler":  "builtin:capability_status",
-                        "contract":  "self_model/CAPABILITY_INVOCATION_MAP_V1_CONTRACT.json",
-                        "canonical_artifact":  "reports/self_development/CAPABILITY_INVOCATION_MAP_V1.json",
-                        "conflicts":  [
-
-                                      ]
-                    },
-                    {
-                        "id":  "memory.status",
-                        "group":  "VIEW",
-                        "title":  "Active compact memory status",
-                        "kind":  "OBSERVE",
-                        "read_only":  true,
-                        "parallel_safe":  true,
-                        "handler":  "builtin:memory_status",
-                        "conflicts":  [
-
-                                      ]
-                    }
-                ],
-    "planned_not_enabled":  [
-                                "school.start",
-                                "agent.start",
-                                "diagnostics.organ",
-                                "maintenance.map_refresh",
-                                "repair.*"
-                            ]
+  "schema": "builder_control_center_registry_v1",
+  "status": "CANDIDATE_START_ROUTING_V2",
+  "purpose": "Single governed menu/registry over existing Builder organs and canonical entrypoints; no organ duplication.",
+  "rules": {
+    "read_only_by_default": true,
+    "multi_select_enabled": true,
+    "maintenance_not_in_start_path": true,
+    "standard_action_requires_registered_procedure": true
+  },
+  "actions": [
+    {
+      "id": "builder.status",
+      "group": "VIEW",
+      "title": "Builder overall status",
+      "kind": "OBSERVE",
+      "read_only": true,
+      "parallel_safe": true,
+      "handler": "builtin:builder_status",
+      "conflicts": []
+    },
+    {
+      "id": "repo.status",
+      "group": "VIEW",
+      "title": "Repository status",
+      "kind": "OBSERVE",
+      "read_only": true,
+      "parallel_safe": true,
+      "handler": "builtin:repo_status",
+      "conflicts": []
+    },
+    {
+      "id": "school.status",
+      "group": "VIEW",
+      "title": "School runtime status",
+      "kind": "OBSERVE",
+      "read_only": true,
+      "parallel_safe": true,
+      "handler": "builtin:school_status",
+      "canonical_entrypoint": "operations/school/run_agent_school.ps1",
+      "conflicts": []
+    },
+    {
+      "id": "agent.status",
+      "group": "VIEW",
+      "title": "Agent life/runtime status",
+      "kind": "OBSERVE",
+      "read_only": true,
+      "parallel_safe": true,
+      "handler": "builtin:agent_status",
+      "canonical_entrypoint": "operations/autonomous_inner_motor/start_agent_life_v1.ps1",
+      "conflicts": []
+    },
+    {
+      "id": "inventory.status",
+      "group": "VIEW",
+      "title": "Inventory/body map status",
+      "kind": "OBSERVE",
+      "read_only": true,
+      "parallel_safe": true,
+      "handler": "builtin:inventory_status",
+      "canonical_artifact": "reports/self_development/agent_body_map.json",
+      "validator": "validators/validate_body_inventory_map_current_v1.ps1",
+      "conflicts": []
+    },
+    {
+      "id": "capability.status",
+      "group": "VIEW",
+      "title": "Capability/skills map status",
+      "kind": "OBSERVE",
+      "read_only": true,
+      "parallel_safe": true,
+      "handler": "builtin:capability_status",
+      "contract": "self_model/CAPABILITY_INVOCATION_MAP_V1_CONTRACT.json",
+      "canonical_artifact": "reports/self_development/CAPABILITY_INVOCATION_MAP_V1.json",
+      "conflicts": []
+    },
+    {
+      "id": "memory.status",
+      "group": "VIEW",
+      "title": "Active compact memory status",
+      "kind": "OBSERVE",
+      "read_only": true,
+      "parallel_safe": true,
+      "handler": "builtin:memory_status",
+      "conflicts": []
+    },
+    {
+      "id": "school.start",
+      "group": "START",
+      "title": "Start School",
+      "kind": "LIVE_MUTATE",
+      "read_only": false,
+      "parallel_safe": false,
+      "handler": "builtin:school_start",
+      "canonical_entrypoint": "operations/school/run_agent_school.ps1",
+      "required_parameters": [
+        "SchoolCount",
+        "SchoolMode",
+        "SchoolTopics"
+      ],
+      "conflicts": [
+        "school.start",
+        "agent.start"
+      ]
+    },
+    {
+      "id": "agent.start",
+      "group": "START",
+      "title": "Start Agent life",
+      "kind": "LIVE_MUTATE",
+      "read_only": false,
+      "parallel_safe": false,
+      "handler": "builtin:agent_start",
+      "canonical_entrypoint": "operations/autonomous_inner_motor/start_agent_life_v1.ps1",
+      "required_parameters": [
+        "AgentDurationMinutes"
+      ],
+      "conflicts": [
+        "school.start",
+        "agent.start"
+      ]
+    }
+  ],
+  "planned_not_enabled": [
+    "diagnostics.organ",
+    "maintenance.map_refresh",
+    "repair.*"
+  ]
 }

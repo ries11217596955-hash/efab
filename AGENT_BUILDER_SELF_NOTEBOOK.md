@@ -2961,3 +2961,18 @@ First construction slice:
 
 Return to parent:
 - Validate the read-only candidate and exact worktree scope. After acceptance, add canonical START actions by routing to existing launchers with ALREADY_RUNNING/BLOCKED/READY semantics; do not create replacement launchers.
+
+
+## 2026-08-15 - Builder Control Center v2 start-routing candidate
+marker: BUILDER_CONTROL_CENTER_V2_START_ROUTING_CANDIDATE_20260815
+status: VALIDATED_LOCAL_CANDIDATE_NOT_YET_COMMITTED
+
+- Read-only v1 core accepted in commit `6d917bec221b1cce82f7090cacad015b392f0844`; pre-commit hook automatically refreshed/staged the four canonical body-map artifacts. No manual map refresh was used.
+- Extended the same Control Center registry from 7 to 9 actions by adding `school.start` and `agent.start`; no replacement launcher was created.
+- Canonical routing remains `operations/school/run_agent_school.ps1` for School and `operations/autonomous_inner_motor/start_agent_life_v1.ps1` for Agent.
+- Start planning reports truthful `READY`, `ALREADY_RUNNING`, or `BLOCKED` from repo/runtime/recovery/memory state. School and Agent start actions conflict with each other.
+- Actual dispatch is gated by explicit `ConfirmMutation`; required parameters are School Count/Mode/Topics or Agent DurationMinutes.
+- Validator proof: `PASS_BUILDER_CONTROL_CENTER_V2|ACTIONS=9|MULTISELECT=3|START_ROUTES=2|CONFIRM_GATE=PASS|CONFLICT_GATE=PASS|RUNTIME_STARTED=0`. Validation did not start School/Agent or mutate active compact memory.
+
+Return to parent:
+- Commit this bounded v2 slice through the existing automatic map hook. After acceptance, next useful growth is reusable DIAGNOSE procedures and a compact Owner-facing menu/view; keep MAINTAIN/REPAIR outside normal Start path.
