@@ -1,6 +1,6 @@
 {
   "schema": "builder_control_center_registry_v1",
-  "status": "CANDIDATE_START_ROUTING_V2",
+  "status": "CANDIDATE_DIAGNOSE_ROUTING_V3",
   "purpose": "Single governed menu/registry over existing Builder organs and canonical entrypoints; no organ duplication.",
   "rules": {
     "read_only_by_default": true,
@@ -120,6 +120,62 @@
         "school.start",
         "agent.start"
       ]
+    },
+    {
+      "id": "runtime.diagnose",
+      "group": "DIAGNOSE",
+      "title": "Diagnose Agent and School runtime",
+      "kind": "OBSERVE",
+      "read_only": true,
+      "parallel_safe": true,
+      "handler": "builtin:runtime_diagnose",
+      "conflicts": []
+    },
+    {
+      "id": "memory.diagnose",
+      "group": "DIAGNOSE",
+      "title": "Diagnose active compact memory",
+      "kind": "OBSERVE",
+      "read_only": true,
+      "parallel_safe": true,
+      "handler": "builtin:memory_diagnose",
+      "conflicts": []
+    },
+    {
+      "id": "inventory.diagnose",
+      "group": "DIAGNOSE",
+      "title": "Validate inventory/body map currentness",
+      "kind": "PREPARE_ARTIFACT",
+      "read_only": false,
+      "parallel_safe": false,
+      "handler": "validator:inventory_currentness",
+      "validator": "validators/validate_body_inventory_map_current_v1.ps1",
+      "diagnostic_artifact": ".runtime/map_control/validations/body_inventory_map_current_validation.json",
+      "tracked_mutation": false,
+      "confirmation_required": false,
+      "conflicts": []
+    },
+    {
+      "id": "capability.diagnose",
+      "group": "DIAGNOSE",
+      "title": "Diagnose capability/skills map wiring",
+      "kind": "OBSERVE",
+      "read_only": true,
+      "parallel_safe": true,
+      "handler": "builtin:capability_diagnose",
+      "unsafe_validator": "operations/self_model/validate_capability_invocation_map_v1_contract.ps1",
+      "unsafe_reason": "validator_writes_tracked_proof",
+      "conflicts": []
+    },
+    {
+      "id": "control_center.diagnose",
+      "group": "DIAGNOSE",
+      "title": "Diagnose Control Center registry and routing",
+      "kind": "OBSERVE",
+      "read_only": true,
+      "parallel_safe": true,
+      "handler": "builtin:control_center_diagnose",
+      "conflicts": []
     }
   ],
   "planned_not_enabled": [

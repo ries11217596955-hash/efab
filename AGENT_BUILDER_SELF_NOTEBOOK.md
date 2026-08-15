@@ -2976,3 +2976,19 @@ status: VALIDATED_LOCAL_CANDIDATE_NOT_YET_COMMITTED
 
 Return to parent:
 - Commit this bounded v2 slice through the existing automatic map hook. After acceptance, next useful growth is reusable DIAGNOSE procedures and a compact Owner-facing menu/view; keep MAINTAIN/REPAIR outside normal Start path.
+
+
+## 2026-08-15 - Builder Control Center v3 canonical diagnostics
+marker: BUILDER_CONTROL_CENTER_V3_CANONICAL_DIAGNOSE_20260815
+status: VALIDATED_LOCAL_CANDIDATE_NOT_YET_COMMITTED
+
+- Added exactly one canonical DIAGNOSE namespace to the accepted 9-action Control Center: `runtime.diagnose`, `memory.diagnose`, `inventory.diagnose`, `capability.diagnose`, `control_center.diagnose`.
+- No diagnostic organ or replacement launcher was created. The Control Center routes to existing status logic and validators.
+- `inventory.diagnose` reuses `validators/validate_body_inventory_map_current_v1.ps1`; its only permitted write is the declared `.runtime` currentness report.
+- `capability.diagnose` deliberately does not run `operations/self_model/validate_capability_invocation_map_v1_contract.ps1` because that validator writes tracked proof; it reports the capability map as missing/not wired plus this blocker.
+- Runtime, memory and Control Center diagnostics are observation-only. Multi-select diagnostics are planned separately from START/MAINTAIN/REPAIR, and any non-parallel-safe diagnostic forces sequential execution.
+- A discarded intermediate V3 branch attempted a second diagnostic namespace; it was fully rolled back to accepted HEAD before this canonical implementation.
+
+Return to parent:
+- Validation PASS: `PASS_BUILDER_CONTROL_CENTER_V3|ACTIONS=14|DIAGNOSE_ROUTES=5|MULTI_DIAG=PASS|LIVE_MUTATION=0|TRACKED_MUTATION=0|RUNTIME_STARTED=0`.
+- Next: commit through automatic pre-commit map hook; no manual map refresh.
