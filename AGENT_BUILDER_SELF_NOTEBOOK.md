@@ -3082,3 +3082,16 @@ status: VALIDATION_PENDING_LOCAL_CANDIDATE
 
 Return to parent:
 - Regenerate and require canonical validator PASS at exact 77/25 before local acceptance.
+
+
+## 2026-08-16 - Capability Map repair-loop validator reuse atom
+marker: CAPABILITY_MAP_REPAIR_LOOP_VALIDATOR_ALIAS_20260816
+status: VALIDATED_LOCAL_CANDIDATE_NOT_YET_COMMITTED
+
+- Reuse-first audit rejected all three single name-match shortcuts that lacked matching provenance/contract scope.
+- `repair_loop_generator_v1` has an exact lifecycle binding in `packs/PHASE103_REPAIR_LOOP_GENERATOR_V1/PACK.json`: task `TASK_REPAIR_LOOP_GENERATOR_V1_001`, phase `PHASE103`, gate `REPAIR_LOOP_GENERATOR_V1`, validator `packs/PHASE103_REPAIR_LOOP_GENERATOR_V1/VALIDATE.ps1`.
+- The exporter and canonical map validator now carry the same explicit alias. The validator still requires the target file to exist and contain the exact capability id.
+- Proof PASS: `VALIDATOR_LINKED=78`, `VALIDATOR_GAPPED=24`, `OWNERS=0`, `INVOCABLE=0`, `LIVE=0`, `WORKTREE_MUTATION=0`, `MEMORY_MUTATION=0`. This closes one validator-ref gap only; it does not upgrade maturity, ownership, invocation readiness or live status.
+
+Return to parent:
+- Accept this six-file atom locally, verify clean-state Control Center remains `PRESENT_DRAFT_NOT_READY`, then continue reuse-first analysis of the remaining 24 validator gaps.

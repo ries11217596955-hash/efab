@@ -92,7 +92,7 @@ This map is generated from current task sources and the current body inventory. 
 | `remediation_program_seed_contract_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 1 | 0 | 4 |
 | `remediation_seed_program_blueprint_contract_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 1 | 0 | 4 |
 | `remediation_seed_program_materialization_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 1 | 0 | 4 |
-| `repair_loop_generator_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 0 | 0 | 6 |
+| `repair_loop_generator_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 1 | 0 | 5 |
 | `route_v1_closure_and_v2_r2_activation` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 0 | 0 | 5 |
 | `runbook_executor_agent_github_action_acceptance_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 1 | 0 | 4 |
 | `runbook_executor_agent_github_action_launch_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 1 | 0 | 4 |
@@ -123,7 +123,7 @@ This map is generated from current task sources and the current body inventory. 
 
 - `TASKS_WITHOUT_CAPABILITY_ID`: 7
 - `CAPABILITIES_WITH_UNRESOLVED_OWNER`: 102
-- `CAPABILITIES_WITHOUT_VALIDATOR_REF`: 25
+- `CAPABILITIES_WITHOUT_VALIDATOR_REF`: 24
 - `CAPABILITIES_WITHOUT_INVOCATION_MODE`: 102
 - `CAPABILITIES_WITHOUT_EXPLICIT_INPUTS`: 102
 - `CAPABILITIES_WITHOUT_EXPLICIT_OUTPUTS`: 102
