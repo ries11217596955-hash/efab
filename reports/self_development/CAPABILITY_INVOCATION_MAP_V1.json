@@ -7,7 +7,7 @@
                            "task_glob":  "tasks/*.json",
                            "retirement_proof":  "tests/self_development/PHASE84_86_OPERATION_RUNTIME_RETIREMENT_AND_DELETE_V1_PROOF.json",
                            "generator":  "operations/self_model/export_capability_invocation_map_v1.ps1",
-                           "head":  "6da491304102cf3561eabfbe5525eb9634fb1b36"
+                           "head":  "56b84c9224029d51c4f9e8736109a42ec57ef5be"
                        },
     "capabilities":  [
                          {
@@ -684,6 +684,104 @@
                                                 ]
                          },
                          {
+                             "capability_id":  "builder_executes_own_generated_next_pack_v1",
+                             "display_name":  "Builder Executes Own Generated Next Pack V1",
+                             "owning_organ_id":  null,
+                             "organ_inventory_ref":  "reports/self_development/agent_body_map.json",
+                             "what_it_does":  null,
+                             "invocation_modes":  [
+
+                                                  ],
+                             "primary_invocation":  null,
+                             "inputs":  [
+
+                                        ],
+                             "outputs":  [
+
+                                         ],
+                             "validator_refs":  [
+
+                                                ],
+                             "proof_refs":  [
+
+                                            ],
+                             "safety_boundary":  "NOT_INVOKABLE_FROM_V1_MAP_UNLESS_EXPLICIT_COMPLETE_INVOCATION_MODE_IS_PRESENT_AND_VALIDATED",
+                             "maturity":  "DRAFT_NORMALIZED",
+                             "live_or_lab_status":  "NOT_PROVEN",
+                             "source_task_refs":  [
+                                                      "tasks/TASK_BUILDER_EXECUTES_OWN_GENERATED_NEXT_PACK_V1_001.json"
+                                                  ],
+                             "source_script_refs":  [
+
+                                                    ],
+                             "source_report_refs":  [
+
+                                                    ],
+                             "gaps":  [
+                                          "INPUTS_UNSPECIFIED",
+                                          "INVOCATION_UNSPECIFIED",
+                                          "OUTPUTS_UNSPECIFIED",
+                                          "OWNING_ORGAN_UNRESOLVED",
+                                          "VALIDATOR_REF_UNSPECIFIED",
+                                          "WHAT_IT_DOES_UNSPECIFIED"
+                                      ],
+                             "do_not_use_for":  [
+                                                    "direct invocation",
+                                                    "live mutation authority",
+                                                    "acceptance proof",
+                                                    "claiming capability maturity beyond attached proof"
+                                                ]
+                         },
+                         {
+                             "capability_id":  "builder_generated_pack_admission_v1",
+                             "display_name":  "Builder Generated Pack Admission V1",
+                             "owning_organ_id":  null,
+                             "organ_inventory_ref":  "reports/self_development/agent_body_map.json",
+                             "what_it_does":  null,
+                             "invocation_modes":  [
+
+                                                  ],
+                             "primary_invocation":  null,
+                             "inputs":  [
+
+                                        ],
+                             "outputs":  [
+
+                                         ],
+                             "validator_refs":  [
+
+                                                ],
+                             "proof_refs":  [
+
+                                            ],
+                             "safety_boundary":  "NOT_INVOKABLE_FROM_V1_MAP_UNLESS_EXPLICIT_COMPLETE_INVOCATION_MODE_IS_PRESENT_AND_VALIDATED",
+                             "maturity":  "DRAFT_NORMALIZED",
+                             "live_or_lab_status":  "NOT_PROVEN",
+                             "source_task_refs":  [
+                                                      "tasks/TASK_BUILDER_GENERATED_PACK_ADMISSION_V1_001.json"
+                                                  ],
+                             "source_script_refs":  [
+
+                                                    ],
+                             "source_report_refs":  [
+
+                                                    ],
+                             "gaps":  [
+                                          "INPUTS_UNSPECIFIED",
+                                          "INVOCATION_UNSPECIFIED",
+                                          "OUTPUTS_UNSPECIFIED",
+                                          "OWNING_ORGAN_UNRESOLVED",
+                                          "VALIDATOR_REF_UNSPECIFIED",
+                                          "WHAT_IT_DOES_UNSPECIFIED"
+                                      ],
+                             "do_not_use_for":  [
+                                                    "direct invocation",
+                                                    "live mutation authority",
+                                                    "acceptance proof",
+                                                    "claiming capability maturity beyond attached proof"
+                                                ]
+                         },
+                         {
                              "capability_id":  "builder_github_action_manual_run_surface_v1",
                              "display_name":  "Builder Github Action Manual Run Surface V1",
                              "owning_organ_id":  null,
@@ -818,6 +916,54 @@
                                           "INVOCATION_UNSPECIFIED",
                                           "OUTPUTS_UNSPECIFIED",
                                           "OWNING_ORGAN_UNRESOLVED"
+                                      ],
+                             "do_not_use_for":  [
+                                                    "direct invocation",
+                                                    "live mutation authority",
+                                                    "acceptance proof",
+                                                    "claiming capability maturity beyond attached proof"
+                                                ]
+                         },
+                         {
+                             "capability_id":  "capability_gap_detector_v1",
+                             "display_name":  "Capability Gap Detector V1",
+                             "owning_organ_id":  null,
+                             "organ_inventory_ref":  "reports/self_development/agent_body_map.json",
+                             "what_it_does":  "Create capability gap detector V1",
+                             "invocation_modes":  [
+
+                                                  ],
+                             "primary_invocation":  null,
+                             "inputs":  [
+
+                                        ],
+                             "outputs":  [
+
+                                         ],
+                             "validator_refs":  [
+
+                                                ],
+                             "proof_refs":  [
+
+                                            ],
+                             "safety_boundary":  "NOT_INVOKABLE_FROM_V1_MAP_UNLESS_EXPLICIT_COMPLETE_INVOCATION_MODE_IS_PRESENT_AND_VALIDATED",
+                             "maturity":  "DRAFT_NORMALIZED",
+                             "live_or_lab_status":  "NOT_PROVEN",
+                             "source_task_refs":  [
+                                                      "tasks/TASK_CAPABILITY_GAP_DETECTOR_V1_001.json"
+                                                  ],
+                             "source_script_refs":  [
+
+                                                    ],
+                             "source_report_refs":  [
+
+                                                    ],
+                             "gaps":  [
+                                          "INPUTS_UNSPECIFIED",
+                                          "INVOCATION_UNSPECIFIED",
+                                          "OUTPUTS_UNSPECIFIED",
+                                          "OWNING_ORGAN_UNRESOLVED",
+                                          "VALIDATOR_REF_UNSPECIFIED"
                                       ],
                              "do_not_use_for":  [
                                                     "direct invocation",
@@ -3109,6 +3255,102 @@
                                                 ]
                          },
                          {
+                             "capability_id":  "phase110_idempotent_autonomy_trial_one_cycle_smoke_v1",
+                             "display_name":  "Phase110 Idempotent Autonomy Trial One Cycle Smoke V1",
+                             "owning_organ_id":  null,
+                             "organ_inventory_ref":  "reports/self_development/agent_body_map.json",
+                             "what_it_does":  "Idempotent one-cycle PHASE110 smoke target",
+                             "invocation_modes":  [
+
+                                                  ],
+                             "primary_invocation":  null,
+                             "inputs":  [
+
+                                        ],
+                             "outputs":  [
+
+                                         ],
+                             "validator_refs":  [
+
+                                                ],
+                             "proof_refs":  [
+
+                                            ],
+                             "safety_boundary":  "NOT_INVOKABLE_FROM_V1_MAP_UNLESS_EXPLICIT_COMPLETE_INVOCATION_MODE_IS_PRESENT_AND_VALIDATED",
+                             "maturity":  "DRAFT_NORMALIZED",
+                             "live_or_lab_status":  "NOT_PROVEN",
+                             "source_task_refs":  [
+                                                      "tasks/TASK_PHASE110_IDEMPOTENT_AUTONOMY_TRIAL_ONE_CYCLE_SMOKE_V1_001.json"
+                                                  ],
+                             "source_script_refs":  [
+
+                                                    ],
+                             "source_report_refs":  [
+
+                                                    ],
+                             "gaps":  [
+                                          "INPUTS_UNSPECIFIED",
+                                          "INVOCATION_UNSPECIFIED",
+                                          "OUTPUTS_UNSPECIFIED",
+                                          "OWNING_ORGAN_UNRESOLVED",
+                                          "VALIDATOR_REF_UNSPECIFIED"
+                                      ],
+                             "do_not_use_for":  [
+                                                    "direct invocation",
+                                                    "live mutation authority",
+                                                    "acceptance proof",
+                                                    "claiming capability maturity beyond attached proof"
+                                                ]
+                         },
+                         {
+                             "capability_id":  "phase115_execute_builder_queued_admitted_action_v1",
+                             "display_name":  "Phase115 Execute Builder Queued Admitted Action V1",
+                             "owning_organ_id":  null,
+                             "organ_inventory_ref":  "reports/self_development/agent_body_map.json",
+                             "what_it_does":  "Execute generated admitted-action move and return queue to NONE",
+                             "invocation_modes":  [
+
+                                                  ],
+                             "primary_invocation":  null,
+                             "inputs":  [
+
+                                        ],
+                             "outputs":  [
+
+                                         ],
+                             "validator_refs":  [
+
+                                                ],
+                             "proof_refs":  [
+
+                                            ],
+                             "safety_boundary":  "NOT_INVOKABLE_FROM_V1_MAP_UNLESS_EXPLICIT_COMPLETE_INVOCATION_MODE_IS_PRESENT_AND_VALIDATED",
+                             "maturity":  "DRAFT_NORMALIZED",
+                             "live_or_lab_status":  "NOT_PROVEN",
+                             "source_task_refs":  [
+                                                      "tasks/TASK_PHASE115_EXECUTE_BUILDER_QUEUED_ADMITTED_ACTION_V1_001.json"
+                                                  ],
+                             "source_script_refs":  [
+
+                                                    ],
+                             "source_report_refs":  [
+
+                                                    ],
+                             "gaps":  [
+                                          "INPUTS_UNSPECIFIED",
+                                          "INVOCATION_UNSPECIFIED",
+                                          "OUTPUTS_UNSPECIFIED",
+                                          "OWNING_ORGAN_UNRESOLVED",
+                                          "VALIDATOR_REF_UNSPECIFIED"
+                                      ],
+                             "do_not_use_for":  [
+                                                    "direct invocation",
+                                                    "live mutation authority",
+                                                    "acceptance proof",
+                                                    "claiming capability maturity beyond attached proof"
+                                                ]
+                         },
+                         {
                              "capability_id":  "production_factory_proof_v1",
                              "display_name":  "Production Factory Proof V1",
                              "owning_organ_id":  null,
@@ -4298,6 +4540,54 @@
                                                 ]
                          },
                          {
+                             "capability_id":  "self_build_backlog_contract_v1",
+                             "display_name":  "Self Build Backlog Contract V1",
+                             "owning_organ_id":  null,
+                             "organ_inventory_ref":  "reports/self_development/agent_body_map.json",
+                             "what_it_does":  "Create self-build backlog contract V1",
+                             "invocation_modes":  [
+
+                                                  ],
+                             "primary_invocation":  null,
+                             "inputs":  [
+
+                                        ],
+                             "outputs":  [
+
+                                         ],
+                             "validator_refs":  [
+
+                                                ],
+                             "proof_refs":  [
+
+                                            ],
+                             "safety_boundary":  "NOT_INVOKABLE_FROM_V1_MAP_UNLESS_EXPLICIT_COMPLETE_INVOCATION_MODE_IS_PRESENT_AND_VALIDATED",
+                             "maturity":  "DRAFT_NORMALIZED",
+                             "live_or_lab_status":  "NOT_PROVEN",
+                             "source_task_refs":  [
+                                                      "tasks/TASK_SELF_BUILD_BACKLOG_CONTRACT_V1_001.json"
+                                                  ],
+                             "source_script_refs":  [
+
+                                                    ],
+                             "source_report_refs":  [
+
+                                                    ],
+                             "gaps":  [
+                                          "INPUTS_UNSPECIFIED",
+                                          "INVOCATION_UNSPECIFIED",
+                                          "OUTPUTS_UNSPECIFIED",
+                                          "OWNING_ORGAN_UNRESOLVED",
+                                          "VALIDATOR_REF_UNSPECIFIED"
+                                      ],
+                             "do_not_use_for":  [
+                                                    "direct invocation",
+                                                    "live mutation authority",
+                                                    "acceptance proof",
+                                                    "claiming capability maturity beyond attached proof"
+                                                ]
+                         },
+                         {
                              "capability_id":  "self_build_execution_loop",
                              "display_name":  "Self Build Execution Loop",
                              "owning_organ_id":  null,
@@ -4866,9 +5156,9 @@
                      ],
     "coverage":  {
                      "current_tasks_seen":  109,
-                     "current_tasks_with_capability_id":  102,
-                     "normalized_capabilities":  102,
-                     "tasks_without_capability_id":  7,
+                     "current_tasks_with_capability_id":  108,
+                     "normalized_capabilities":  108,
+                     "tasks_without_capability_id":  1,
                      "retired_tasks_accounted":  3,
                      "historical_task_baseline":  112,
                      "accounted_total":  112,
@@ -4877,49 +5167,13 @@
                      "explicit_source_program_paths_kept":  2,
                      "explicit_runtime_report_paths_kept":  0,
                      "deterministic_validator_refs_linked":  79,
-                     "validator_ref_gaps":  23
+                     "validator_ref_gaps":  29
                  },
     "gaps":  [
                  {
                      "gap_id":  "TASKS_WITHOUT_CAPABILITY_ID",
-                     "count":  7,
+                     "count":  1,
                      "items":  [
-                                   {
-                                       "gap_id":  "TASK_CAPABILITY_ID_MISSING",
-                                       "source_task_ref":  "tasks/TASK_BUILDER_EXECUTES_OWN_GENERATED_NEXT_PACK_V1_001.json",
-                                       "task_id":  "TASK_BUILDER_EXECUTES_OWN_GENERATED_NEXT_PACK_V1_001",
-                                       "reason":  "Current task source has no explicit capability_id; generator does not fabricate one."
-                                   },
-                                   {
-                                       "gap_id":  "TASK_CAPABILITY_ID_MISSING",
-                                       "source_task_ref":  "tasks/TASK_BUILDER_GENERATED_PACK_ADMISSION_V1_001.json",
-                                       "task_id":  "TASK_BUILDER_GENERATED_PACK_ADMISSION_V1_001",
-                                       "reason":  "Current task source has no explicit capability_id; generator does not fabricate one."
-                                   },
-                                   {
-                                       "gap_id":  "TASK_CAPABILITY_ID_MISSING",
-                                       "source_task_ref":  "tasks/TASK_CAPABILITY_GAP_DETECTOR_V1_001.json",
-                                       "task_id":  "TASK_CAPABILITY_GAP_DETECTOR_V1_001",
-                                       "reason":  "Current task source has no explicit capability_id; generator does not fabricate one."
-                                   },
-                                   {
-                                       "gap_id":  "TASK_CAPABILITY_ID_MISSING",
-                                       "source_task_ref":  "tasks/TASK_PHASE110_IDEMPOTENT_AUTONOMY_TRIAL_ONE_CYCLE_SMOKE_V1_001.json",
-                                       "task_id":  "TASK_PHASE110_IDEMPOTENT_AUTONOMY_TRIAL_ONE_CYCLE_SMOKE_V1_001",
-                                       "reason":  "Current task source has no explicit capability_id; generator does not fabricate one."
-                                   },
-                                   {
-                                       "gap_id":  "TASK_CAPABILITY_ID_MISSING",
-                                       "source_task_ref":  "tasks/TASK_PHASE115_EXECUTE_BUILDER_QUEUED_ADMITTED_ACTION_V1_001.json",
-                                       "task_id":  "TASK_PHASE115_EXECUTE_BUILDER_QUEUED_ADMITTED_ACTION_V1_001",
-                                       "reason":  "Current task source has no explicit capability_id; generator does not fabricate one."
-                                   },
-                                   {
-                                       "gap_id":  "TASK_CAPABILITY_ID_MISSING",
-                                       "source_task_ref":  "tasks/TASK_SELF_BUILD_BACKLOG_CONTRACT_V1_001.json",
-                                       "task_id":  "TASK_SELF_BUILD_BACKLOG_CONTRACT_V1_001",
-                                       "reason":  "Current task source has no explicit capability_id; generator does not fabricate one."
-                                   },
                                    {
                                        "gap_id":  "TASK_CAPABILITY_ID_MISSING",
                                        "source_task_ref":  "tasks/TASK_SELF_BUILD_PROGRAM_GENERATOR_V1_001.json",
@@ -4930,23 +5184,23 @@
                  },
                  {
                      "gap_id":  "CAPABILITIES_WITH_UNRESOLVED_OWNER",
-                     "count":  102
+                     "count":  108
                  },
                  {
                      "gap_id":  "CAPABILITIES_WITHOUT_VALIDATOR_REF",
-                     "count":  23
+                     "count":  29
                  },
                  {
                      "gap_id":  "CAPABILITIES_WITHOUT_INVOCATION_MODE",
-                     "count":  102
+                     "count":  108
                  },
                  {
                      "gap_id":  "CAPABILITIES_WITHOUT_EXPLICIT_INPUTS",
-                     "count":  102
+                     "count":  108
                  },
                  {
                      "gap_id":  "CAPABILITIES_WITHOUT_EXPLICIT_OUTPUTS",
-                     "count":  102
+                     "count":  108
                  }
              ],
     "legacy_sources":  [
@@ -4981,5 +5235,5 @@
                        ],
     "live_process_touched":  false,
     "active_memory_mutated":  false,
-    "created_at":  "2026-08-16T17:46:00.8972219Z"
+    "created_at":  "2026-08-16T17:58:08.2700900Z"
 }

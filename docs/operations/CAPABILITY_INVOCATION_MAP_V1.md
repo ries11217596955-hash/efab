@@ -7,8 +7,8 @@ This map is generated from current task sources and the current body inventory. 
 ## Coverage
 
 - Current tasks: **109**
-- Normalized capabilities: **102**
-- Tasks without capability_id: **7**
+- Normalized capabilities: **108**
+- Tasks without capability_id: **1**
 - Retired tasks accounted: **3**
 - Historical accounted total: **112/112**
 
@@ -30,9 +30,12 @@ This map is generated from current task sources and the current body inventory. 
 | `batch_proof_aggregator_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 0 | 0 | 6 |
 | `build_from_raw_idea_mode_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 1 | 0 | 4 |
 | `build_from_raw_idea_specialized_mode_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 1 | 0 | 4 |
+| `builder_executes_own_generated_next_pack_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 0 | 0 | 6 |
+| `builder_generated_pack_admission_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 0 | 0 | 6 |
 | `builder_github_action_manual_run_surface_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 1 | 0 | 4 |
 | `builder_self_pack_author_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 0 | 0 | 6 |
 | `candidate_intake_report_contract_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 1 | 0 | 4 |
+| `capability_gap_detector_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 0 | 0 | 5 |
 | `continue_on_failure_runtime_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 0 | 0 | 6 |
 | `controlled_multi_cycle_self_build_run_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 0 | 0 | 6 |
 | `decision_support_agent_specialization_profile_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 1 | 0 | 4 |
@@ -81,6 +84,8 @@ This map is generated from current task sources and the current body inventory. 
 | `operational_validation_harness_v2` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 1 | 0 | 4 |
 | `owner_order_to_gap_map_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 0 | 0 | 5 |
 | `owner_visible_self_build_acceptance_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 1 | 0 | 4 |
+| `phase110_idempotent_autonomy_trial_one_cycle_smoke_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 0 | 0 | 5 |
+| `phase115_execute_builder_queued_admitted_action_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 0 | 0 | 5 |
 | `production_factory_proof_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 1 | 0 | 4 |
 | `production_package_blueprint_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 1 | 0 | 4 |
 | `production_spec_contract_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 1 | 0 | 4 |
@@ -106,6 +111,7 @@ This map is generated from current task sources and the current body inventory. 
 | `second_generated_program_family_materialization_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 1 | 0 | 4 |
 | `second_generated_program_family_proof_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 1 | 0 | 4 |
 | `seed_driven_monitoring_profile_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 1 | 0 | 4 |
+| `self_build_backlog_contract_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 0 | 0 | 5 |
 | `self_build_execution_loop` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 1 | 0 | 4 |
 | `self_build_program_generator_v2` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 0 | 0 | 5 |
 | `self_development_decision_kernel_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 0 | 0 | 5 |
@@ -121,12 +127,12 @@ This map is generated from current task sources and the current body inventory. 
 
 ## Global gaps
 
-- `TASKS_WITHOUT_CAPABILITY_ID`: 7
-- `CAPABILITIES_WITH_UNRESOLVED_OWNER`: 102
-- `CAPABILITIES_WITHOUT_VALIDATOR_REF`: 23
-- `CAPABILITIES_WITHOUT_INVOCATION_MODE`: 102
-- `CAPABILITIES_WITHOUT_EXPLICIT_INPUTS`: 102
-- `CAPABILITIES_WITHOUT_EXPLICIT_OUTPUTS`: 102
+- `TASKS_WITHOUT_CAPABILITY_ID`: 1
+- `CAPABILITIES_WITH_UNRESOLVED_OWNER`: 108
+- `CAPABILITIES_WITHOUT_VALIDATOR_REF`: 29
+- `CAPABILITIES_WITHOUT_INVOCATION_MODE`: 108
+- `CAPABILITIES_WITHOUT_EXPLICIT_INPUTS`: 108
+- `CAPABILITIES_WITHOUT_EXPLICIT_OUTPUTS`: 108
 
 ## Boundary
 

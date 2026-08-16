@@ -62,8 +62,10 @@ $capRun=& $ctl -Mode Run -Action @('capability.status') -Json|ConvertFrom-Json
 $cap=@($capRun.results|Where-Object id -eq 'capability.status')|Select-Object -First 1
 if(Test-Path 'reports/self_development/CAPABILITY_INVOCATION_MAP_V1.json'){
  if($cap.status-ne'PRESENT_DRAFT_NOT_READY'){throw 'CAPABILITY_DRAFT_STATUS_BAD'}
- if([int]$cap.capability_count-ne102 -or [int]$cap.current_tasks_seen-ne109 -or [int]$cap.tasks_without_capability_id-ne7){throw 'CAPABILITY_DRAFT_COUNTS_BAD'}
- if([int]$cap.owners_resolved-ne0 -or [int]$cap.invocable_count-ne0 -or [int]$cap.live_proven_count-ne0){throw 'CAPABILITY_DRAFT_READINESS_FALSE_POSITIVE'}
+ $cm=Get-Content 'reports/self_development/CAPABILITY_INVOCATION_MAP_V1.json' -Raw|ConvertFrom-Json;$cmCaps=@($cm.capabilities).Count;$cmTasks=[int]$cm.coverage.current_tasks_seen;$cmNoId=[int]$cm.coverage.tasks_without_capability_id
+ if([int]$cap.capability_count-ne$cmCaps -or [int]$cap.current_tasks_seen-ne$cmTasks -or [int]$cap.tasks_without_capability_id-ne$cmNoId){throw 'CAPABILITY_DRAFT_COUNTS_BAD'}
+ $cmOwners=@($cm.capabilities|Where-Object{$null-ne$_.owning_organ_id -and -not[string]::IsNullOrWhiteSpace([string]$_.owning_organ_id)}).Count;$cmInvocable=@($cm.capabilities|Where-Object{@($_.invocation_modes).Count-gt0}).Count;$cmLive=@($cm.capabilities|Where-Object{$_.live_or_lab_status-eq'PROVEN_LIVE'}).Count
+ if([int]$cap.owners_resolved-ne$cmOwners -or [int]$cap.invocable_count-ne$cmInvocable -or [int]$cap.live_proven_count-ne$cmLive){throw 'CAPABILITY_DRAFT_READINESS_FALSE_POSITIVE'}
  $cd=& $ctl -Mode Run -Action @('capability.diagnose') -Json|ConvertFrom-Json
  $cdr=@($cd.results|Where-Object id -eq 'capability.diagnose')|Select-Object -First 1
  if($cdr.status-ne'DIAGNOSTIC_PASS_WITH_GAPS' -or -not$cdr.validator_invoked -or $cdr.validator_exit-ne0){throw 'CAPABILITY_DIAG_WIRING_BAD'}

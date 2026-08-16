@@ -3109,3 +3109,16 @@ Return to parent:
 - Validation PASS: `PASS_CAPABILITY_INVOCATION_MAP_V1_DRAFT|TASKS=109|CAPABILITIES=102|NO_CAPABILITY_ID=7|RETIRED=3|ACCOUNTED=112|LIVE_PROVEN=0|INVOCABLE=0|VALIDATOR_LINKED=79|VALIDATOR_GAPPED=23|WORKTREE_MUTATION=0|MEMORY_MUTATION=0`.
 - `item_level_execution_ledger_v1.validator_refs` is exactly `packs/PHASE98_ITEM_LEVEL_EXECUTION_LEDGER_V1/VALIDATE.ps1`; `VALIDATOR_REF_UNSPECIFIED` is removed while INPUTS/OUTPUTS/INVOCATION/OWNER/WHAT_IT_DOES gaps remain.
 - Next: accept this six-file atom locally, then return to reuse-first scan of the remaining 23 validator gaps.
+
+
+## 2026-08-16 - Capability Map six no-id tasks closed
+marker: CAPABILITY_MAP_SIX_NO_ID_TASKS_CLOSED_20260816
+status: VALIDATION_PENDING_LOCAL_CANDIDATE
+
+- Six current tasks with unambiguous task identity received explicit unique `capability_id`; `TASK_SELF_BUILD_PROGRAM_GENERATOR_V1_001.json` remains intentionally unresolved because V2 already exists and V1/V2 relation requires separate proof.
+- Canonical map regeneration PASS moved `CAPABILITIES=102 -> 108` and `NO_CAPABILITY_ID=7 -> 1`; accounting remains 112/112. No owners, invocation modes or live maturity were fabricated.
+- Validator-link gap increased 23 -> 29 because the six newly visible capabilities do not yet have proven validator refs; this is an explicit downstream gap, not hidden failure.
+- Control Center validator candidate now derives capability/task/readiness counts from the canonical map instead of hardcoding snapshot counts, so future lawful map growth does not produce false regression failures.
+
+Return to parent:
+- Validate map + Control Center + exact scope; if PASS, accept locally. Remaining no-id task is the V1 generator identity decision; next growth work should then address validator links/ownership/invocation in bounded atoms.
