@@ -22,7 +22,7 @@ $rt=@($dr.results|Where-Object id -eq 'runtime.diagnose')|Select-Object -First 1
 $mm=@($dr.results|Where-Object id -eq 'memory.diagnose')|Select-Object -First 1;if($mm.status-ne'DIAGNOSTIC_PASS'){throw 'MEMORY_DIAG_BAD'}
 $ii=@($dr.results|Where-Object id -eq 'inventory.diagnose')|Select-Object -First 1;if($ii.status-ne'DIAGNOSTIC_PASS'-or$ii.validator_status-ne'PASS_BODY_INVENTORY_MAP_CURRENT_V1'){throw 'INVENTORY_DIAG_BAD'}
 $cc=@($dr.results|Where-Object id -eq 'control_center.diagnose')|Select-Object -First 1;if($cc.status-ne'DIAGNOSTIC_PASS'-or[int]$cc.action_count-ne16){throw 'CONTROL_DIAG_BAD'}
-$cp=@($dr.results|Where-Object id -eq 'capability.diagnose')|Select-Object -First 1;if($cp.unsafe_validator_invoked -ne $false){throw 'CAPABILITY_UNSAFE_VALIDATOR_INVOKED'}
+$cp=@($dr.results|Where-Object id -eq 'capability.diagnose')|Select-Object -First 1;if($cp.status-ne'DIAGNOSTIC_PASS_WITH_GAPS'-or-not$cp.validator_invoked-or$cp.validator-ne'operations/self_model/validate_capability_invocation_map_v1.ps1'-or[int]$cp.validator_exit-ne0){throw 'CAPABILITY_DIAGNOSTIC_CANONICAL_VALIDATOR_BAD'}
 if(-not(Test-Path '.runtime/map_control/validations/body_inventory_map_current_validation.json')){throw 'INVENTORY_RUNTIME_ARTIFACT_MISSING'}
 
 $ra=& $ctl -Mode Run -Action @('remote_access.status') -Json|ConvertFrom-Json
@@ -58,4 +58,17 @@ $after=@(git status --porcelain=v1 -uall);if(($before-join"`n")-ne($after-join"`
 foreach($n in $mh.Keys){if((Get-FileHash -Algorithm SHA256 (Join-Path $mr $n)).Hash-ne$mh[$n]){throw "VALIDATOR_MUTATED_MEMORY:$n"}}
 if($null-ne$capHash -and (Get-FileHash -Algorithm SHA256 $capProof).Hash-ne$capHash){throw 'CAPABILITY_TRACKED_PROOF_MUTATED'}
 $procAfter=@(Get-CimInstance Win32_Process|Where-Object{$_.CommandLine -and $_.CommandLine -match '(?i)run_agent_school\.ps1|start_agent_life_v1\.ps1'}|Select-Object -ExpandProperty ProcessId);$new=@($procAfter|Where-Object{$procBefore -notcontains $_});if($new.Count){throw ('VALIDATOR_STARTED_RUNTIME:'+($new-join','))}
+$capRun=& $ctl -Mode Run -Action @('capability.status') -Json|ConvertFrom-Json
+$cap=@($capRun.results|Where-Object id -eq 'capability.status')|Select-Object -First 1
+if(Test-Path 'reports/self_development/CAPABILITY_INVOCATION_MAP_V1.json'){
+ if($cap.status-ne'PRESENT_DRAFT_NOT_READY'){throw 'CAPABILITY_DRAFT_STATUS_BAD'}
+ if([int]$cap.capability_count-ne102 -or [int]$cap.current_tasks_seen-ne109 -or [int]$cap.tasks_without_capability_id-ne7){throw 'CAPABILITY_DRAFT_COUNTS_BAD'}
+ if([int]$cap.owners_resolved-ne0 -or [int]$cap.invocable_count-ne0 -or [int]$cap.live_proven_count-ne0){throw 'CAPABILITY_DRAFT_READINESS_FALSE_POSITIVE'}
+ $cd=& $ctl -Mode Run -Action @('capability.diagnose') -Json|ConvertFrom-Json
+ $cdr=@($cd.results|Where-Object id -eq 'capability.diagnose')|Select-Object -First 1
+ if($cdr.status-ne'DIAGNOSTIC_PASS_WITH_GAPS' -or -not$cdr.validator_invoked -or $cdr.validator_exit-ne0){throw 'CAPABILITY_DIAG_WIRING_BAD'}
+ $bo=& $ctl -Mode Run -Action @('builder.overview') -Json|ConvertFrom-Json
+ $bor=@($bo.results|Where-Object id -eq 'builder.overview')|Select-Object -First 1
+ if($bor.overall-ne'DEGRADED' -or $bor.blockers -notcontains 'CAPABILITY_MAP_PRESENT_DRAFT_NOT_READY'){throw 'OVERVIEW_CAPABILITY_DRAFT_BLOCKER_BAD'}
+}
 Write-Output ('PASS_BUILDER_CONTROL_CENTER_V4|ACTIONS=16|DIAGNOSE_ROUTES=5|OVERVIEW=PASS|REMOTE_SCOPE=PASS|MULTI_DIAG=PASS|LIVE_MUTATION=0|TRACKED_MUTATION=0|RUNTIME_STARTED=0')

@@ -3045,3 +3045,15 @@ Return to parent:
 - Canonical JSON is Git-visible through an explicit narrow `.gitignore` exception; validator now blocks any future regression that makes it ignored.
 - Current truth boundary: 102 normalized capabilities, 7 current tasks without capability_id, 0 automatically resolved owning organs, 0 complete invocation modes, 0 PROVEN_LIVE. Draft acceptance proves coverage/provenance honesty only; wiring, maturity and invocation readiness remain unresolved parent work.
 - Next: accept this seven-file draft locally, then wire Control Center capability status to map maturity/coverage so mere file existence cannot become a false HEALTHY result.
+
+
+## 2026-08-16 - Control Center capability-draft truth wiring
+marker: CONTROL_CENTER_CAPABILITY_DRAFT_TRUTH_WIRING_20260816
+status: VALIDATION_PENDING_LOCAL_CANDIDATE
+
+- Fresh observation exposed false health: accepted Capability Map draft was treated as `PRESENT` and could make Overview HEALTHY.
+- Candidate wiring now reports `PRESENT_DRAFT_NOT_READY`, counts 102 capabilities / 109 tasks / 7 no-id / 0 owners / 0 invocable / 0 live-proven, routes `capability.diagnose` to the pure canonical map validator, and surfaces blocker `CAPABILITY_MAP_PRESENT_DRAFT_NOT_READY`.
+- START routes and action count remain unchanged.
+
+Return to parent:
+- Run full Control Center validator with zero-mutation guards; if PASS, accept locally and verify clean-state Overview recommends capability wiring.
