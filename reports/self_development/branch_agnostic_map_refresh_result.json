@@ -1,27 +1,29 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-08-16T10:27:53.4416315+04:00",
+    "checked_at":  "2026-08-16T11:01:12.8879273+04:00",
     "branch":  "main",
-    "observed_head":  "7f26d97a443b8f4882e4e1e3bfe95c8f681d5979",
-    "subject_head":  "7f26d97a443b8f4882e4e1e3bfe95c8f681d5979",
+    "observed_head":  "8eb2256f0871d91761f8a6dc29a58d47ce1d1753",
+    "subject_head":  "8eb2256f0871d91761f8a6dc29a58d47ce1d1753",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
                           "AGENT_BUILDER_SELF_NOTEBOOK.md",
-                          "operations/control_center/BUILDER_CONTROL_CENTER_REGISTRY_V1.json",
-                          "operations/control_center/invoke_builder_control_center_v1.ps1",
+                          "docs/operations/CAPABILITY_INVOCATION_MAP_V1_CONTRACT.md",
+                          "operations/self_model/validate_capability_invocation_map_v1_contract.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "validators/validate_builder_control_center_v1.ps1"
+                          "self_model/CAPABILITY_INVOCATION_MAP_V1_CONTRACT.json",
+                          "tests/self_development/CAPABILITY_INVOCATION_MAP_V1_CONTRACT_PROOF.json"
                       ],
     "structural_paths":  [
-                             "operations/control_center/BUILDER_CONTROL_CENTER_REGISTRY_V1.json",
-                             "operations/control_center/invoke_builder_control_center_v1.ps1",
-                             "validators/validate_builder_control_center_v1.ps1"
+                             "docs/operations/CAPABILITY_INVOCATION_MAP_V1_CONTRACT.md",
+                             "operations/self_model/validate_capability_invocation_map_v1_contract.ps1",
+                             "self_model/CAPABILITY_INVOCATION_MAP_V1_CONTRACT.json",
+                             "tests/self_development/CAPABILITY_INVOCATION_MAP_V1_CONTRACT_PROOF.json"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -33,8 +35,8 @@
     "deletion_performed":  false,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2296,
-                                    "sha256":  "d3f796187246c6c2f43969d2acced0490714216169da79b1caa9a356158901a2"
+                                    "structural_file_count":  2301,
+                                    "sha256":  "ef1e5239e2078515db6ecf2f5f78e09d6e09fe27407d0f6934a46c464e0232ad"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -60,12 +62,12 @@
                          "legacy_unverified_hint_count":  4,
                          "rejected_or_stale_hint_count":  3,
                          "total_component_count":  155,
-                         "structural_path_count":  2296,
+                         "structural_path_count":  2301,
                          "legacy_maps_raw_authority":  false,
                          "old_maps_read_as_authority":  false,
                          "passport_generator_blocked_until_candidate_triage":  true,
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-08-16T10:32:14.1002793+04:00"
+    "refreshed_at":  "2026-08-16T11:05:28.2527154+04:00"
 }

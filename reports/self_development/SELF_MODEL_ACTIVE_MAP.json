@@ -6,19 +6,19 @@
     "self_knowledge_ready":  true,
     "map_is_ready_for_next_decision":  true,
     "branch":  "main",
-    "observed_head_at_generation":  "7f26d97a443b8f4882e4e1e3bfe95c8f681d5979",
-    "subject_head":  "7f26d97a443b8f4882e4e1e3bfe95c8f681d5979",
-    "generated_at":  "2026-08-16T10:32:12.5683667+04:00",
+    "observed_head_at_generation":  "8eb2256f0871d91761f8a6dc29a58d47ce1d1753",
+    "subject_head":  "8eb2256f0871d91761f8a6dc29a58d47ce1d1753",
+    "generated_at":  "2026-08-16T11:05:26.6327755+04:00",
     "generator":  "modules/invoke_branch_agnostic_map_refresh_after_structural_change_001.ps1",
     "generated_by_auto_refresh":  true,
     "role":  "canonical local body composition/status map built from primary repo evidence and bounded tracked-file discovery",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "canonical_map_path":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
-    "structural_path_count":  2296,
+    "structural_path_count":  2301,
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
-                                    "structural_file_count":  2296,
-                                    "sha256":  "d3f796187246c6c2f43969d2acced0490714216169da79b1caa9a356158901a2"
+                                    "structural_file_count":  2301,
+                                    "sha256":  "ef1e5239e2078515db6ecf2f5f78e09d6e09fe27407d0f6934a46c464e0232ad"
                                 },
     "module_count":  203,
     "validator_count":  264,
@@ -467,8 +467,8 @@
                                      "root":  "operations/self_model",
                                      "status":  "CONFIRMED_PRIMARY_EVIDENCE_PRESENT",
                                      "confirmation_basis":  "explicit_required_component_with_primary_repo_evidence",
-                                     "file_count":  62,
-                                     "script_count":  62,
+                                     "file_count":  64,
+                                     "script_count":  64,
                                      "validator_count":  30,
                                      "proof_file_count":  2,
                                      "contract_or_policy_count":  4,
@@ -496,6 +496,7 @@
                                                             "operations/self_model/validate_builder_identity_contract_v1.ps1",
                                                             "operations/self_model/validate_builder_mission_scoring_v1.ps1",
                                                             "operations/self_model/validate_candidate_action_set_v1.ps1",
+                                                            "operations/self_model/validate_capability_invocation_map_v1.ps1",
                                                             "operations/self_model/validate_capability_invocation_map_v1_contract.ps1",
                                                             "operations/self_model/validate_codex_context_budget_and_body_map_task_v1.ps1",
                                                             "operations/self_model/validate_current_body_capability_snapshot_v1.ps1",
@@ -512,8 +513,7 @@
                                                             "operations/self_model/validate_operations_self_model_organ_lab_validation_v1.ps1",
                                                             "operations/self_model/validate_organ_passport_calibration_v1.ps1",
                                                             "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
-                                                            "operations/self_model/validate_organ_passport_coverage_batch_v2.ps1",
-                                                            "operations/self_model/validate_organ_passport_draft_generator_fast_lane_v1.ps1"
+                                                            "operations/self_model/validate_organ_passport_coverage_batch_v2.ps1"
                                                         ],
                                      "proof_refs":  [
                                                         "operations/self_model/build_organ_passport_proof_run_calibration_v1.ps1",
@@ -557,6 +557,7 @@
                                                                 "operations/self_model/validate_builder_identity_contract_v1.ps1",
                                                                 "operations/self_model/validate_builder_mission_scoring_v1.ps1",
                                                                 "operations/self_model/validate_candidate_action_set_v1.ps1",
+                                                                "operations/self_model/validate_capability_invocation_map_v1.ps1",
                                                                 "operations/self_model/validate_capability_invocation_map_v1_contract.ps1",
                                                                 "operations/self_model/validate_codex_context_budget_and_body_map_task_v1.ps1",
                                                                 "operations/self_model/validate_current_body_capability_snapshot_v1.ps1",
@@ -584,13 +585,12 @@
                                                                 "operations/self_model/validate_organ_passport_tail_dedup_audit_v1.ps1",
                                                                 "operations/self_model/validate_owner_facing_organ_cleanup_queue_v1.ps1",
                                                                 "operations/self_model/validate_phase84_86_operation_runtime_retirement_and_delete_v1.ps1",
-                                                                "operations/self_model/validate_route_reality_alignment_v1.ps1",
-                                                                "operations/self_model/validate_route_v4_execution_report_phase_m_v1.ps1"
+                                                                "operations/self_model/validate_route_reality_alignment_v1.ps1"
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "2da513cccf2f987251863ed210abd253a69e3455",
-                                                               "committed_at":  "2026-07-15T16:09:09+04:00",
-                                                               "subject":  "fix: harden body inventory map validation"
+                                                               "head":  "8eb2256f0871d91761f8a6dc29a58d47ce1d1753",
+                                                               "committed_at":  "2026-08-16T10:25:18+04:00",
+                                                               "subject":  "self-model: repair capability map coverage contract"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -634,9 +634,9 @@
 
                                                             ],
                                      "latest_git_commit":  {
-                                                               "head":  "7f26d97a443b8f4882e4e1e3bfe95c8f681d5979",
-                                                               "committed_at":  "2026-08-16T01:24:31+04:00",
-                                                               "subject":  "control: add operational overview and remote status"
+                                                               "head":  "8eb2256f0871d91761f8a6dc29a58d47ce1d1753",
+                                                               "committed_at":  "2026-08-16T10:25:18+04:00",
+                                                               "subject":  "self-model: repair capability map coverage contract"
                                                            },
                                      "latest_runtime_artifact":  null,
                                      "runtime_evidence_inspected":  false,
@@ -8630,8 +8630,8 @@
                            "root":  "operations/self_model",
                            "status":  "CONFIRMED_PRIMARY_EVIDENCE_PRESENT",
                            "confirmation_basis":  "explicit_required_component_with_primary_repo_evidence",
-                           "file_count":  62,
-                           "script_count":  62,
+                           "file_count":  64,
+                           "script_count":  64,
                            "validator_count":  30,
                            "proof_file_count":  2,
                            "contract_or_policy_count":  4,
@@ -8659,6 +8659,7 @@
                                                   "operations/self_model/validate_builder_identity_contract_v1.ps1",
                                                   "operations/self_model/validate_builder_mission_scoring_v1.ps1",
                                                   "operations/self_model/validate_candidate_action_set_v1.ps1",
+                                                  "operations/self_model/validate_capability_invocation_map_v1.ps1",
                                                   "operations/self_model/validate_capability_invocation_map_v1_contract.ps1",
                                                   "operations/self_model/validate_codex_context_budget_and_body_map_task_v1.ps1",
                                                   "operations/self_model/validate_current_body_capability_snapshot_v1.ps1",
@@ -8675,8 +8676,7 @@
                                                   "operations/self_model/validate_operations_self_model_organ_lab_validation_v1.ps1",
                                                   "operations/self_model/validate_organ_passport_calibration_v1.ps1",
                                                   "operations/self_model/validate_organ_passport_contract_and_coverage_audit_v1.ps1",
-                                                  "operations/self_model/validate_organ_passport_coverage_batch_v2.ps1",
-                                                  "operations/self_model/validate_organ_passport_draft_generator_fast_lane_v1.ps1"
+                                                  "operations/self_model/validate_organ_passport_coverage_batch_v2.ps1"
                                               ],
                            "proof_refs":  [
                                               "operations/self_model/build_organ_passport_proof_run_calibration_v1.ps1",
@@ -8720,6 +8720,7 @@
                                                       "operations/self_model/validate_builder_identity_contract_v1.ps1",
                                                       "operations/self_model/validate_builder_mission_scoring_v1.ps1",
                                                       "operations/self_model/validate_candidate_action_set_v1.ps1",
+                                                      "operations/self_model/validate_capability_invocation_map_v1.ps1",
                                                       "operations/self_model/validate_capability_invocation_map_v1_contract.ps1",
                                                       "operations/self_model/validate_codex_context_budget_and_body_map_task_v1.ps1",
                                                       "operations/self_model/validate_current_body_capability_snapshot_v1.ps1",
@@ -8747,13 +8748,12 @@
                                                       "operations/self_model/validate_organ_passport_tail_dedup_audit_v1.ps1",
                                                       "operations/self_model/validate_owner_facing_organ_cleanup_queue_v1.ps1",
                                                       "operations/self_model/validate_phase84_86_operation_runtime_retirement_and_delete_v1.ps1",
-                                                      "operations/self_model/validate_route_reality_alignment_v1.ps1",
-                                                      "operations/self_model/validate_route_v4_execution_report_phase_m_v1.ps1"
+                                                      "operations/self_model/validate_route_reality_alignment_v1.ps1"
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "2da513cccf2f987251863ed210abd253a69e3455",
-                                                     "committed_at":  "2026-07-15T16:09:09+04:00",
-                                                     "subject":  "fix: harden body inventory map validation"
+                                                     "head":  "8eb2256f0871d91761f8a6dc29a58d47ce1d1753",
+                                                     "committed_at":  "2026-08-16T10:25:18+04:00",
+                                                     "subject":  "self-model: repair capability map coverage contract"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,
@@ -8797,9 +8797,9 @@
 
                                                   ],
                            "latest_git_commit":  {
-                                                     "head":  "7f26d97a443b8f4882e4e1e3bfe95c8f681d5979",
-                                                     "committed_at":  "2026-08-16T01:24:31+04:00",
-                                                     "subject":  "control: add operational overview and remote status"
+                                                     "head":  "8eb2256f0871d91761f8a6dc29a58d47ce1d1753",
+                                                     "committed_at":  "2026-08-16T10:25:18+04:00",
+                                                     "subject":  "self-model: repair capability map coverage contract"
                                                  },
                            "latest_runtime_artifact":  null,
                            "runtime_evidence_inspected":  false,

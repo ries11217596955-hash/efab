@@ -3028,3 +3028,20 @@ status: VALIDATED_LOCAL_CANDIDATE_NOT_YET_COMMITTED
 Return to parent:
 - Validation PASS: `PASS_CAPABILITY_INVOCATION_MAP_V1_CONTRACT_V2|CURRENT_TASKS=109|RETIRED_TASKS=3|ACCOUNTED_TOTAL=112|HISTORICAL_BASELINE=112|WORKTREE_MUTATION=0|MEMORY_MUTATION=0|RUNTIME_DEPENDENCY=0`.
 - Next: accept this five-file contract repair, then generate the actual Capability Invocation Map from current tasks/body inventory/proofs with explicit gaps and no guessed organ links or live maturity.
+
+
+## 2026-08-16 - Capability Invocation Map V1 first canonical draft
+marker: CAPABILITY_INVOCATION_MAP_V1_FIRST_CANONICAL_DRAFT_20260816
+status: VALIDATED_LOCAL_CANDIDATE_NOT_YET_COMMITTED
+
+- Contract repair accepted in commit `8eb2256f0871d91761f8a6dc29a58d47ce1d1753`; coverage now preserves historical baseline 112 as 109 current + 3 governed-retired task sources.
+- First canonical map slice is intentionally a truthful normalized draft, not a claim that every capability is invokable. Current tasks expose 102 explicit `capability_id` values and 7 tasks with no capability id.
+- Generator must not infer missing inputs, outputs, validators, invocation commands, cwd/args, stop/rollback, organ owners, or live maturity. Exact body-map id equality is the only automatic owner link in this slice; otherwise owner stays unresolved with a gap.
+- Explicit runtime proof/report/source-program paths are retained only when the referenced path exists. Descriptive `validation` text is not promoted to `validator_refs`.
+- All generated capabilities remain `DRAFT_NORMALIZED / NOT_PROVEN` in this slice. No invocation mode is emitted from task material because current tasks do not provide the complete invocation contract required by the canonical contract.
+
+Return to parent:
+- Validation PASS: `PASS_CAPABILITY_INVOCATION_MAP_V1_DRAFT|TASKS=109|CAPABILITIES=102|NO_CAPABILITY_ID=7|RETIRED=3|ACCOUNTED=112|LIVE_PROVEN=0|INVOCABLE=0|WORKTREE_MUTATION=0|MEMORY_MUTATION=0`.
+- Canonical JSON is Git-visible through an explicit narrow `.gitignore` exception; validator now blocks any future regression that makes it ignored.
+- Current truth boundary: 102 normalized capabilities, 7 current tasks without capability_id, 0 automatically resolved owning organs, 0 complete invocation modes, 0 PROVEN_LIVE. Draft acceptance proves coverage/provenance honesty only; wiring, maturity and invocation readiness remain unresolved parent work.
+- Next: accept this seven-file draft locally, then wire Control Center capability status to map maturity/coverage so mere file existence cannot become a false HEALTHY result.
