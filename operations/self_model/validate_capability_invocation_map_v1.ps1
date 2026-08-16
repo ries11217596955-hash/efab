@@ -4,6 +4,7 @@ $RepoRoot=(git rev-parse --show-toplevel).Trim();Set-Location $RepoRoot
 function Assert($Cond,[string]$Msg){if(-not$Cond){throw $Msg}}
 $contractPath='self_model/CAPABILITY_INVOCATION_MAP_V1_CONTRACT.json';$bodyPath='reports/self_development/agent_body_map.json';$mapPath='reports/self_development/CAPABILITY_INVOCATION_MAP_V1.json';$docPath='docs/operations/CAPABILITY_INVOCATION_MAP_V1.md';$proofPath='tests/self_development/CAPABILITY_INVOCATION_MAP_V1_PROOF.json'
 $validatorAliasMap=@{
+ 'item_level_execution_ledger_v1'='packs/PHASE98_ITEM_LEVEL_EXECUTION_LEDGER_V1/VALIDATE.ps1'
  'generated_conveyor_failure_trial_family_v1_failure_pack_v1'='validators/validate_generated_family_autonomous_conveyor_failure_recovery_v1.ps1'
  'generated_conveyor_trial_family_v1_live_pack_v1'='validators/validate_generated_family_autonomous_conveyor_live_trial_v1.ps1'
  'repair_loop_generator_v1'='packs/PHASE103_REPAIR_LOOP_GENERATOR_V1/VALIDATE.ps1'

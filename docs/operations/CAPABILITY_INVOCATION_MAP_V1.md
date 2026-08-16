@@ -64,7 +64,7 @@ This map is generated from current task sources and the current body inventory. 
 | `idea_to_agent_factory_proof_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 1 | 0 | 4 |
 | `idea_to_specialized_agent_factory_proof_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 1 | 0 | 4 |
 | `intake_driven_workflow_execution_profile_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 1 | 0 | 4 |
-| `item_level_execution_ledger_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 0 | 0 | 6 |
+| `item_level_execution_ledger_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 1 | 0 | 5 |
 | `manual_scout_pass_import_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 0 | 0 | 5 |
 | `material_acquisition_bootstrap_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 0 | 0 | 5 |
 | `material_admission_policy_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 0 | 0 | 5 |
@@ -123,7 +123,7 @@ This map is generated from current task sources and the current body inventory. 
 
 - `TASKS_WITHOUT_CAPABILITY_ID`: 7
 - `CAPABILITIES_WITH_UNRESOLVED_OWNER`: 102
-- `CAPABILITIES_WITHOUT_VALIDATOR_REF`: 24
+- `CAPABILITIES_WITHOUT_VALIDATOR_REF`: 23
 - `CAPABILITIES_WITHOUT_INVOCATION_MODE`: 102
 - `CAPABILITIES_WITHOUT_EXPLICIT_INPUTS`: 102
 - `CAPABILITIES_WITHOUT_EXPLICIT_OUTPUTS`: 102

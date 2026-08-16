@@ -7,7 +7,7 @@
                            "task_glob":  "tasks/*.json",
                            "retirement_proof":  "tests/self_development/PHASE84_86_OPERATION_RUNTIME_RETIREMENT_AND_DELETE_V1_PROOF.json",
                            "generator":  "operations/self_model/export_capability_invocation_map_v1.ps1",
-                           "head":  "34acec35ce7943b3f0bfeb31132baafdce2dd6f4"
+                           "head":  "6da491304102cf3561eabfbe5525eb9634fb1b36"
                        },
     "capabilities":  [
                          {
@@ -2320,7 +2320,7 @@
 
                                          ],
                              "validator_refs":  [
-
+                                                    "packs/PHASE98_ITEM_LEVEL_EXECUTION_LEDGER_V1/VALIDATE.ps1"
                                                 ],
                              "proof_refs":  [
 
@@ -2342,7 +2342,6 @@
                                           "INVOCATION_UNSPECIFIED",
                                           "OUTPUTS_UNSPECIFIED",
                                           "OWNING_ORGAN_UNRESOLVED",
-                                          "VALIDATOR_REF_UNSPECIFIED",
                                           "WHAT_IT_DOES_UNSPECIFIED"
                                       ],
                              "do_not_use_for":  [
@@ -4877,8 +4876,8 @@
                      "explicit_runtime_proof_paths_kept":  0,
                      "explicit_source_program_paths_kept":  2,
                      "explicit_runtime_report_paths_kept":  0,
-                     "deterministic_validator_refs_linked":  78,
-                     "validator_ref_gaps":  24
+                     "deterministic_validator_refs_linked":  79,
+                     "validator_ref_gaps":  23
                  },
     "gaps":  [
                  {
@@ -4935,7 +4934,7 @@
                  },
                  {
                      "gap_id":  "CAPABILITIES_WITHOUT_VALIDATOR_REF",
-                     "count":  24
+                     "count":  23
                  },
                  {
                      "gap_id":  "CAPABILITIES_WITHOUT_INVOCATION_MODE",
@@ -4982,5 +4981,5 @@
                        ],
     "live_process_touched":  false,
     "active_memory_mutated":  false,
-    "created_at":  "2026-08-16T17:16:11.6977007Z"
+    "created_at":  "2026-08-16T17:46:00.8972219Z"
 }

@@ -3095,3 +3095,17 @@ status: VALIDATED_LOCAL_CANDIDATE_NOT_YET_COMMITTED
 
 Return to parent:
 - Accept this six-file atom locally, verify clean-state Control Center remains `PRESENT_DRAFT_NOT_READY`, then continue reuse-first analysis of the remaining 24 validator gaps.
+
+
+## 2026-08-16 - Capability Map item-level ledger validator reuse atom
+marker: CAPABILITY_MAP_ITEM_LEDGER_VALIDATOR_ALIAS_20260816
+status: VALIDATED_LOCAL_CANDIDATE_NOT_YET_COMMITTED
+
+- Reuse-first preflight proved an exact lifecycle binding for `item_level_execution_ledger_v1`: Phase98 pack task `TASK_ITEM_LEVEL_EXECUTION_LEDGER_V1_001`, gate `ITEM_LEVEL_EXECUTION_LEDGER_V1`, explicit `validate_script=packs/PHASE98_ITEM_LEVEL_EXECUTION_LEDGER_V1/VALIDATE.ps1`.
+- The target validator exists, contains the exact capability id and task id, and had SHA256 `83E131B4622F87E08593960011C99D57B8D18CB291B02E62747D5B31A8C151FA` at preflight.
+- Candidate change adds only this explicit validator alias to exporter + canonical map validator. It must not change maturity, owner, invocation readiness, live status, tasks, pack, or active memory.
+
+Return to parent:
+- Validation PASS: `PASS_CAPABILITY_INVOCATION_MAP_V1_DRAFT|TASKS=109|CAPABILITIES=102|NO_CAPABILITY_ID=7|RETIRED=3|ACCOUNTED=112|LIVE_PROVEN=0|INVOCABLE=0|VALIDATOR_LINKED=79|VALIDATOR_GAPPED=23|WORKTREE_MUTATION=0|MEMORY_MUTATION=0`.
+- `item_level_execution_ledger_v1.validator_refs` is exactly `packs/PHASE98_ITEM_LEVEL_EXECUTION_LEDGER_V1/VALIDATE.ps1`; `VALIDATOR_REF_UNSPECIFIED` is removed while INPUTS/OUTPUTS/INVOCATION/OWNER/WHAT_IT_DOES gaps remain.
+- Next: accept this six-file atom locally, then return to reuse-first scan of the remaining 23 validator gaps.
