@@ -7,6 +7,11 @@ $retirementProof='tests/self_development/PHASE84_86_OPERATION_RUNTIME_RETIREMENT
 $outJson='reports/self_development/CAPABILITY_INVOCATION_MAP_V1.json'
 $outMd='docs/operations/CAPABILITY_INVOCATION_MAP_V1.md'
 $outProof='tests/self_development/CAPABILITY_INVOCATION_MAP_V1_PROOF.json'
+$validatorAliasMap=@{
+ 'generated_conveyor_failure_trial_family_v1_failure_pack_v1'='validators/validate_generated_family_autonomous_conveyor_failure_recovery_v1.ps1'
+ 'generated_conveyor_trial_family_v1_live_pack_v1'='validators/validate_generated_family_autonomous_conveyor_live_trial_v1.ps1'
+}
+
 foreach($p in @($contractPath,$bodyPath,$retirementProof)){if(-not(Test-Path $p)){throw "SOURCE_MISSING:$p"}}
 $c=Get-Content $contractPath -Raw|ConvertFrom-Json
 $b=Get-Content $bodyPath -Raw|ConvertFrom-Json
@@ -37,7 +42,7 @@ foreach($f in $tasks){
  $scripts=New-Object System.Collections.Generic.List[string]
  if($t.PSObject.Properties.Name -contains 'source_program_path'){$v=[string]$t.source_program_path;if(-not[string]::IsNullOrWhiteSpace($v)){if(Test-Path $v){$scripts.Add($v)}else{$gaps.Add('EXPLICIT_SOURCE_PROGRAM_PATH_MISSING')}}}
  $validators=New-Object System.Collections.Generic.List[string]
- $validatorCandidate='validators/validate_'+$cid+'.ps1'
+ $validatorCandidate=if($validatorAliasMap.ContainsKey($cid)){[string]$validatorAliasMap[$cid]}else{'validators/validate_'+$cid+'.ps1'}
  if(Test-Path $validatorCandidate){$validatorRaw=Get-Content $validatorCandidate -Raw;if($validatorRaw -match [regex]::Escape($cid)){$validators.Add($validatorCandidate)}else{$gaps.Add('VALIDATOR_REF_UNSPECIFIED')}}else{$gaps.Add('VALIDATOR_REF_UNSPECIFIED')}
  $gaps.Add('INPUTS_UNSPECIFIED');$gaps.Add('OUTPUTS_UNSPECIFIED');$gaps.Add('INVOCATION_UNSPECIFIED')
  $capabilities.Add([pscustomobject][ordered]@{

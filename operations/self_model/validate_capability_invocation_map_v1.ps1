@@ -3,6 +3,11 @@ $ErrorActionPreference='Stop'
 $RepoRoot=(git rev-parse --show-toplevel).Trim();Set-Location $RepoRoot
 function Assert($Cond,[string]$Msg){if(-not$Cond){throw $Msg}}
 $contractPath='self_model/CAPABILITY_INVOCATION_MAP_V1_CONTRACT.json';$bodyPath='reports/self_development/agent_body_map.json';$mapPath='reports/self_development/CAPABILITY_INVOCATION_MAP_V1.json';$docPath='docs/operations/CAPABILITY_INVOCATION_MAP_V1.md';$proofPath='tests/self_development/CAPABILITY_INVOCATION_MAP_V1_PROOF.json'
+$validatorAliasMap=@{
+ 'generated_conveyor_failure_trial_family_v1_failure_pack_v1'='validators/validate_generated_family_autonomous_conveyor_failure_recovery_v1.ps1'
+ 'generated_conveyor_trial_family_v1_live_pack_v1'='validators/validate_generated_family_autonomous_conveyor_live_trial_v1.ps1'
+}
+
 foreach($p in @($contractPath,$bodyPath,$mapPath,$docPath,$proofPath)){Assert (Test-Path $p) ("MISSING:$p")}
 git check-ignore -q -- $mapPath 2>$null;$mapIgnored=($LASTEXITCODE -eq 0);Assert (-not $mapIgnored) 'CANONICAL_MAP_IS_GIT_IGNORED'
 $before=@(git status --porcelain=v1 -uall);$taskBefore=@(git status --porcelain=v1 -uall -- tasks);$mr='.runtime/active_compact_semantic_memory_v1';$mh=@{};foreach($n in @('manifest.json','index.json','cells.jsonl')){$p=Join-Path $mr $n;if(Test-Path $p){$mh[$n]=(Get-FileHash -Algorithm SHA256 $p).Hash}}
@@ -21,7 +26,7 @@ foreach($cap in @($m.capabilities)){
  Assert ($allowedMat -contains [string]$cap.maturity) ("MATURITY_BAD:$($cap.capability_id)");Assert ($allowedLive -contains [string]$cap.live_or_lab_status) ("LIVE_LAB_BAD:$($cap.capability_id)")
  foreach($tr in @($cap.source_task_refs)){Assert (Test-Path $tr) ("TASK_REF_MISSING:$($cap.capability_id):$tr");$mappedTasks.Add([string]$tr)}
  if($null-ne$cap.owning_organ_id -and -not[string]::IsNullOrWhiteSpace([string]$cap.owning_organ_id)){Assert ($bodyIds -contains [string]$cap.owning_organ_id) ("OWNER_NOT_IN_BODY_MAP:$($cap.capability_id)")}else{Assert (@($cap.gaps) -contains 'OWNING_ORGAN_UNRESOLVED') ("UNRESOLVED_OWNER_GAP_MISSING:$($cap.capability_id)")}
- $expectedValidator='validators/validate_'+[string]$cap.capability_id+'.ps1'
+ $expectedValidator=if($validatorAliasMap.ContainsKey([string]$cap.capability_id)){[string]$validatorAliasMap[[string]$cap.capability_id]}else{'validators/validate_'+[string]$cap.capability_id+'.ps1'}
  $eligibleValidator=$false
  if(Test-Path $expectedValidator){$expectedValidatorRaw=Get-Content $expectedValidator -Raw;$eligibleValidator=($expectedValidatorRaw -match [regex]::Escape([string]$cap.capability_id))}
  if($eligibleValidator){Assert (@($cap.validator_refs).Count -eq 1) ("VALIDATOR_REF_COUNT_BAD:$($cap.capability_id)");Assert ([string]$cap.validator_refs[0] -eq $expectedValidator) ("VALIDATOR_REF_NOT_EXACT:$($cap.capability_id)");Assert (@($cap.gaps) -notcontains 'VALIDATOR_REF_UNSPECIFIED') ("VALIDATOR_GAP_SHOULD_BE_CLOSED:$($cap.capability_id)")}else{Assert (@($cap.validator_refs).Count -eq 0) ("UNPROVEN_VALIDATOR_REF_PRESENT:$($cap.capability_id)");Assert (@($cap.gaps) -contains 'VALIDATOR_REF_UNSPECIFIED') ("VALIDATOR_GAP_MISSING:$($cap.capability_id)")}

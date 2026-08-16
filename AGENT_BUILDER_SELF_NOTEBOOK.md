@@ -3069,3 +3069,16 @@ status: VALIDATION_PENDING_LOCAL_CANDIDATE
 
 Return to parent:
 - Regenerate canonical map/doc/proof and validate exact 75/27 split with zero memory/runtime mutation.
+
+
+## 2026-08-16 - Capability Map explicit conveyor validator aliases
+marker: CAPABILITY_MAP_TWO_CONVEYOR_VALIDATOR_ALIASES_20260816
+status: VALIDATION_PENDING_LOCAL_CANDIDATE
+
+- Remaining validator-gap audit at `c691b7d122b75da35006b0d10f0677d330918e8b`: 27 total = 3 content-mention, 2 name-similar, 22 no candidate.
+- Ambiguous `external_agent_production_program_test_v1` remains unresolved (three validators). Name-similar-only candidates remain unresolved.
+- Exactly two generated-conveyor capabilities have one semantically matching validator each; explicit alias mapping is added only for those two. A validator reference is evidence linkage only, not invocation authority or maturity.
+- Expected delta: linked 75 -> 77, gapped 27 -> 25; owners/invocable/live remain 0.
+
+Return to parent:
+- Regenerate and require canonical validator PASS at exact 77/25 before local acceptance.

@@ -51,8 +51,8 @@ This map is generated from current task sources and the current body inventory. 
 | `generalized_generated_program_live_admission_contract_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 1 | 0 | 4 |
 | `generated_agent_action_launch_contract_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 1 | 0 | 4 |
 | `generated_agent_validation_harness_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 1 | 0 | 4 |
-| `generated_conveyor_failure_trial_family_v1_failure_pack_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 0 | 0 | 7 |
-| `generated_conveyor_trial_family_v1_live_pack_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 0 | 0 | 7 |
+| `generated_conveyor_failure_trial_family_v1_failure_pack_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 1 | 0 | 6 |
+| `generated_conveyor_trial_family_v1_live_pack_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 1 | 0 | 6 |
 | `generated_family_autonomous_conveyor_contract_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 1 | 0 | 6 |
 | `generated_family_autonomous_conveyor_failure_recovery_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 1 | 0 | 6 |
 | `generated_family_autonomous_conveyor_live_trial_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 1 | 0 | 6 |
@@ -123,7 +123,7 @@ This map is generated from current task sources and the current body inventory. 
 
 - `TASKS_WITHOUT_CAPABILITY_ID`: 7
 - `CAPABILITIES_WITH_UNRESOLVED_OWNER`: 102
-- `CAPABILITIES_WITHOUT_VALIDATOR_REF`: 27
+- `CAPABILITIES_WITHOUT_VALIDATOR_REF`: 25
 - `CAPABILITIES_WITHOUT_INVOCATION_MODE`: 102
 - `CAPABILITIES_WITHOUT_EXPLICIT_INPUTS`: 102
 - `CAPABILITIES_WITHOUT_EXPLICIT_OUTPUTS`: 102
