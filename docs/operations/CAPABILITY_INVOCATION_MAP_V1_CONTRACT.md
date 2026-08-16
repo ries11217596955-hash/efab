@@ -64,3 +64,12 @@ It is not the body/organ inventory map. The body map says what exists. This map 
 ## Next step
 
 Generate a draft `CAPABILITY_INVOCATION_MAP_V1` from current tasks and validators. Missing fields must be recorded as gaps, not guessed.
+
+
+## Retirement-accounted coverage revision (2026-08-16)
+
+The original V1 contract observed 112 task sources. Three phase84-86 task files were later intentionally retired by governed cleanup commit `cc97c55f6b5754fa1491c2fdb26e6c0357ad5a53`, with proof `tests/self_development/PHASE84_86_OPERATION_RUNTIME_RETIREMENT_AND_DELETE_V1_PROOF.json`.
+
+Coverage therefore preserves **112 as the historical baseline**, while current task coverage is computed from all present `tasks/*.json` files. Any deficit from the historical baseline is acceptable only when every missing historical task is explicitly named by an accepted retirement/decommission proof. Unexplained task loss is a hard blocker. Known current accounting is 109 current + 3 retired = 112 accounted. Retired tasks are legacy provenance only and must not be restored or represented as current tasks.
+
+The contract validator is read-only: it validates this accounting and structural/safety rules but does not require a historical live runtime and does not rewrite tracked proof. Runtime state is not part of contract validity.

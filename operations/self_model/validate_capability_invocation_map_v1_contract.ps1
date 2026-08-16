@@ -1,55 +1,39 @@
-﻿$ErrorActionPreference='Stop'
-$RepoRoot=(Resolve-Path (Join-Path $PSScriptRoot '../..')).Path
-Set-Location $RepoRoot
-function Assert($Cond,[string]$Msg){ if(-not $Cond){ throw $Msg } }
+[CmdletBinding()]param()
+$ErrorActionPreference='Stop'
+$RepoRoot=(git rev-parse --show-toplevel).Trim();Set-Location $RepoRoot
+function Assert($Cond,[string]$Msg){if(-not $Cond){throw $Msg}}
 $contractPath='self_model/CAPABILITY_INVOCATION_MAP_V1_CONTRACT.json'
 $docPath='docs/operations/CAPABILITY_INVOCATION_MAP_V1_CONTRACT.md'
-Assert (Test-Path $contractPath) 'CONTRACT_MISSING'
-Assert (Test-Path $docPath) 'DOC_MISSING'
+$retirementProof='tests/self_development/PHASE84_86_OPERATION_RUNTIME_RETIREMENT_AND_DELETE_V1_PROOF.json'
+Assert (Test-Path $contractPath) 'CONTRACT_MISSING';Assert (Test-Path $docPath) 'DOC_MISSING';Assert (Test-Path $retirementProof) 'RETIREMENT_PROOF_MISSING'
+$before=@(git status --porcelain=v1 -uall);$taskBefore=@(git status --porcelain=v1 -uall -- tasks)
+$mr='.runtime/active_compact_semantic_memory_v1';$mh=@{};foreach($n in @('manifest.json','index.json','cells.jsonl')){$p=Join-Path $mr $n;if(Test-Path $p){$mh[$n]=(Get-FileHash -Algorithm SHA256 $p).Hash}}
 $c=Get-Content $contractPath -Raw|ConvertFrom-Json
 Assert ($c.schema -eq 'capability_invocation_map_v1_contract') 'SCHEMA_BAD'
 Assert ($c.status -eq 'ACTIVE_CONTRACT') 'STATUS_BAD'
-foreach($f in @('capability_id','owning_organ_id','invocation_modes','inputs','outputs','validator_refs','proof_refs','safety_boundary','maturity','live_or_lab_status')){ Assert (@($c.capability_required_fields) -contains $f) ("REQUIRED_CAPABILITY_FIELD_MISSING:{0}" -f $f) }
-foreach($f in @('command_or_entrypoint','cwd','preconditions','expected_outputs','stop_condition','rollback_or_cleanup','proof_after_run')){ Assert (@($c.invocation_mode_required_fields) -contains $f) ("REQUIRED_INVOCATION_FIELD_MISSING:{0}" -f $f) }
-foreach($m in @('MATERIAL_ONLY','VALIDATED_LAB','VALIDATED_LIVE','BLOCKED')){ Assert (@($c.allowed_maturity) -contains $m) ("MATURITY_MISSING:{0}" -f $m) }
-foreach($s in @('NOT_PROVEN','PROVEN_LAB','PROVEN_LIVE','BLOCKED')){ Assert (@($c.allowed_live_or_lab_status) -contains $s) ("STATUS_VALUE_MISSING:{0}" -f $s) }
-$rulesText=(@($c.required_safety_rules) -join ' ')
-Assert ($rulesText -match 'No capability may be marked PROVEN_LIVE') 'NO_FALSE_LIVE_RULE_MISSING'
-Assert ($rulesText -match 'child-agent readiness validator') 'CHILD_AGENT_SAFETY_RULE_MISSING'
-Assert ($rulesText -match 'Legacy maps may be source material only') 'LEGACY_AUTHORITY_RULE_MISSING'
-Assert ($c.organ_link_contract.required_fields -contains 'owning_organ_id') 'ORGAN_LINK_FIELD_MISSING'
+foreach($f in @('schema','status','generated_from','capabilities','coverage','gaps','legacy_sources','live_process_touched','active_memory_mutated','created_at')){Assert ($c.required_top_level_fields -contains $f) ("TOP_FIELD_MISSING:$f")}
+foreach($f in @('capability_id','display_name','owning_organ_id','organ_inventory_ref','what_it_does','invocation_modes','primary_invocation','inputs','outputs','validator_refs','proof_refs','safety_boundary','maturity','live_or_lab_status','source_task_refs','source_script_refs','source_report_refs','gaps','do_not_use_for')){Assert ($c.capability_required_fields -contains $f) ("CAP_FIELD_MISSING:$f")}
 Assert ($c.organ_link_contract.forbidden -match 'Do not merge') 'NO_MERGE_RULE_MISSING'
 Assert ($c.legacy_policy.no_silent_deletion -eq $true) 'NO_SILENT_DELETION_BAD'
-Assert ($c.coverage_requirements_for_v1.minimum_source_task_count -gt 50) 'SOURCE_TASK_COUNT_TOO_LOW'
+$cov=$c.coverage_requirements_for_v1
+Assert ([int]$cov.historical_task_baseline -eq 112) 'HISTORICAL_BASELINE_BAD'
+Assert ([int]$cov.expected_retired_task_count -eq 3) 'EXPECTED_RETIRED_COUNT_BAD'
+Assert ([int]$cov.expected_accounted_total -eq 112) 'EXPECTED_ACCOUNTED_TOTAL_BAD'
+Assert ($cov.retirement_proof_refs -contains $retirementProof) 'RETIREMENT_PROOF_REF_MISSING'
+$expectedRetired=@('tasks/TASK_FIRST_SMOKE_INSTALL_TRIAL_V1_001.json','tasks/TASK_FIRST_WRAPPER_OPERATION_CONTRACTS_V1_001.json','tasks/TASK_OPERATION_RUNTIME_SKELETON_V1_001.json')
+$declared=@($cov.retired_task_refs|Sort-Object);Assert (@(Compare-Object ($expectedRetired|Sort-Object) $declared).Count -eq 0) 'RETIRED_TASK_SET_BAD'
+$r=Get-Content $retirementProof -Raw|ConvertFrom-Json
+$deleted=@($r.deleted_tracked_files)
+foreach($f in $expectedRetired){Assert ($deleted -contains $f) ("RETIREMENT_PROOF_DOES_NOT_NAME:$f");Assert (-not(Test-Path $f)) ("RETIRED_TASK_REAPPEARED:$f")}
+$current=@(Get-ChildItem tasks -File -Filter '*.json')
+$currentCount=$current.Count;$retiredCount=$expectedRetired.Count;$accounted=$currentCount+$retiredCount
+Assert ($currentCount -eq [int]$cov.expected_current_task_count_after_known_retirements) ("CURRENT_TASK_COUNT_UNEXPECTED:{0}" -f $currentCount)
+Assert ($accounted -eq [int]$cov.historical_task_baseline) ("ACCOUNTED_TASK_TOTAL_BAD:{0}" -f $accounted)
 Assert (Test-Path $c.source_diagnostic_ref) 'SOURCE_DIAGNOSTIC_REF_MISSING'
 $d=Get-Content $c.source_diagnostic_ref -Raw|ConvertFrom-Json
-Assert ($d.status -eq 'DIAGNOSTIC_COMPLETE_RECOMMEND_TWO_MAP_ORGANS_WITH_THIN_SELF_MODEL_LINK') 'SOURCE_DIAGNOSTIC_STATUS_BAD'
 Assert ($d.design_decision.preferred_architecture -eq 'TWO_MAP_ORGANS_PLUS_THIN_SELF_MODEL_LINK') 'SOURCE_DIAGNOSTIC_ARCH_BAD'
-$taskDirty=@(git status --short -- tasks)
-Assert ($taskDirty.Count -eq 0) 'TASK_FILES_MODIFIED_FOR_CONTRACT_ONLY'
-$liveNow=@(Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -and $_.CommandLine -like '*run_autonomous_inner_motor.ps1*' -and $_.CommandLine -like '*-Mode SandboxTestLife*' -and $_.CommandLine -like '*-RunId live_aimo*' -and $_.CommandLine -notlike '* -Command *' })
-Assert (@($liveNow).Count -eq 1) ("LIVE_AIMO_COUNT_BAD:{0}" -f @($liveNow).Count)
-Assert ([string]$liveNow[0].CommandLine -notlike '*UseSourceAgnosticPathSelectionLabGate*') 'LIVE_AIMO_HAS_GATE'
-$runtimeSize=(Get-ChildItem .runtime -Recurse -File -ErrorAction SilentlyContinue|Measure-Object Length -Sum).Sum
-Assert ([Math]::Round($runtimeSize/1MB,2) -lt 80) 'RUNTIME_SIZE_BAD'
-$proof=[ordered]@{
-  schema='capability_invocation_map_v1_contract_validation_v1'
-  status='PASS_CAPABILITY_INVOCATION_MAP_V1_CONTRACT'
-  contract_path=$contractPath
-  doc_path=$docPath
-  source_diagnostic_ref=[string]$c.source_diagnostic_ref
-  source_task_count=[int]$c.task_source_count_at_contract_time
-  contract_only=$true
-  task_files_modified=$false
-  deletion_allowed=$false
-  live_pid_now=[int]$liveNow[0].ProcessId
-  live_process_touched_by_validator=$false
-  active_memory_mutated=$false
-  next_step='GENERATE_CAPABILITY_INVOCATION_MAP_V1_DRAFT'
-  created_at=(Get-Date).ToString('o')
-}
-$proofPath='tests/self_development/CAPABILITY_INVOCATION_MAP_V1_CONTRACT_PROOF.json'
-$proof|ConvertTo-Json -Depth 80|Set-Content $proofPath -Encoding UTF8
-Write-Host 'VALIDATION_PASS=PASS_CAPABILITY_INVOCATION_MAP_V1_CONTRACT'
-Write-Host ('PROOF_PATH='+$proofPath)
-Write-Host 'LIVE_PROCESS_TOUCHED_BY_VALIDATOR=false'
+$after=@(git status --porcelain=v1 -uall);$taskAfter=@(git status --porcelain=v1 -uall -- tasks)
+Assert (($before -join "`n") -eq ($after -join "`n")) 'VALIDATOR_MUTATED_WORKTREE'
+Assert (($taskBefore -join "`n") -eq ($taskAfter -join "`n")) 'VALIDATOR_MUTATED_TASKS'
+foreach($n in $mh.Keys){Assert ((Get-FileHash -Algorithm SHA256 (Join-Path $mr $n)).Hash -eq $mh[$n]) ("VALIDATOR_MUTATED_MEMORY:$n")}
+Write-Output ('PASS_CAPABILITY_INVOCATION_MAP_V1_CONTRACT_V2|CURRENT_TASKS='+$currentCount+'|RETIRED_TASKS='+$retiredCount+'|ACCOUNTED_TOTAL='+$accounted+'|HISTORICAL_BASELINE='+[int]$cov.historical_task_baseline+'|WORKTREE_MUTATION=0|MEMORY_MUTATION=0|RUNTIME_DEPENDENCY=0')

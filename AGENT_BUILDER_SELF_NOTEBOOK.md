@@ -3014,3 +3014,17 @@ Return to parent:
 - Validation PASS: `PASS_BUILDER_CONTROL_CENTER_V4|ACTIONS=16|DIAGNOSE_ROUTES=5|OVERVIEW=PASS|REMOTE_SCOPE=PASS|MULTI_DIAG=PASS|LIVE_MUTATION=0|TRACKED_MUTATION=0|RUNTIME_STARTED=0`.
 - Fresh candidate behavior: remote local components `HEALTHY_LOCAL_COMPONENTS`; GPT connector/session remains `UNKNOWN_EXTERNAL_TO_LOCAL_PC`; overview accumulates `REPO_DIRTY` plus `CAPABILITY_MAP_MISSING_NOT_WIRED` and recommends repo inspection while candidate is uncommitted. After a clean acceptance commit, capability diagnose is expected to become the next safe action if no higher-priority blocker exists.
 - Next: local acceptance commit through the automatic map hook; no manual map refresh and no push.
+
+
+## 2026-08-16 - Capability Map contract retirement-accounting repair
+marker: CAPABILITY_MAP_CONTRACT_RETIREMENT_ACCOUNTING_REPAIR_20260816
+status: VALIDATED_LOCAL_CANDIDATE_NOT_YET_COMMITTED
+
+- Control Center V4 accepted at `7f26d97a443b8f4882e4e1e3bfe95c8f681d5979` and clean-state overview selected `capability.diagnose / COMPLETE_CAPABILITY_MAP_PIPELINE`.
+- Reuse audit found current `tasks/*.json` count 109 versus the contract-time baseline 112. The three missing tasks were not accidental loss: governed cleanup commit `cc97c55f6b5754fa1491c2fdb26e6c0357ad5a53` retired the phase84-86 operation runtime chain, with proof `tests/self_development/PHASE84_86_OPERATION_RUNTIME_RETIREMENT_AND_DELETE_V1_PROOF.json`.
+- Contract repair preserves historical baseline 112 and requires retirement-accounted coverage: all current tasks plus every explicitly proven retired historical task must account for the baseline; unexplained loss blocks acceptance. Known accounting is 109 current + 3 retired = 112. Retired tasks remain deleted and are legacy provenance only.
+- Old contract validator also depended on one historical `live_aimo` SandboxTestLife process, runtime-size <80MB, and rewrote tracked proof. V2 candidate removes those unrelated runtime assumptions and is read-only.
+
+Return to parent:
+- Validation PASS: `PASS_CAPABILITY_INVOCATION_MAP_V1_CONTRACT_V2|CURRENT_TASKS=109|RETIRED_TASKS=3|ACCOUNTED_TOTAL=112|HISTORICAL_BASELINE=112|WORKTREE_MUTATION=0|MEMORY_MUTATION=0|RUNTIME_DEPENDENCY=0`.
+- Next: accept this five-file contract repair, then generate the actual Capability Invocation Map from current tasks/body inventory/proofs with explicit gaps and no guessed organ links or live maturity.
