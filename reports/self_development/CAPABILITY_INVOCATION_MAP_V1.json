@@ -7,7 +7,7 @@
                            "task_glob":  "tasks/*.json",
                            "retirement_proof":  "tests/self_development/PHASE84_86_OPERATION_RUNTIME_RETIREMENT_AND_DELETE_V1_PROOF.json",
                            "generator":  "operations/self_model/export_capability_invocation_map_v1.ps1",
-                           "head":  "56b84c9224029d51c4f9e8736109a42ec57ef5be"
+                           "head":  "93fad3bb113857d3ea2d3150187fc15ebebd5594"
                        },
     "capabilities":  [
                          {
@@ -4635,6 +4635,54 @@
                                                 ]
                          },
                          {
+                             "capability_id":  "self_build_program_generator_v1",
+                             "display_name":  "Self Build Program Generator V1",
+                             "owning_organ_id":  null,
+                             "organ_inventory_ref":  "reports/self_development/agent_body_map.json",
+                             "what_it_does":  "Generate the current dynamic self-build program candidate from the runtime-selected owner material, current identity, and lineage contract.",
+                             "invocation_modes":  [
+
+                                                  ],
+                             "primary_invocation":  null,
+                             "inputs":  [
+
+                                        ],
+                             "outputs":  [
+
+                                         ],
+                             "validator_refs":  [
+
+                                                ],
+                             "proof_refs":  [
+
+                                            ],
+                             "safety_boundary":  "NOT_INVOKABLE_FROM_V1_MAP_UNLESS_EXPLICIT_COMPLETE_INVOCATION_MODE_IS_PRESENT_AND_VALIDATED",
+                             "maturity":  "DRAFT_NORMALIZED",
+                             "live_or_lab_status":  "NOT_PROVEN",
+                             "source_task_refs":  [
+                                                      "tasks/TASK_SELF_BUILD_PROGRAM_GENERATOR_V1_001.json"
+                                                  ],
+                             "source_script_refs":  [
+
+                                                    ],
+                             "source_report_refs":  [
+
+                                                    ],
+                             "gaps":  [
+                                          "INPUTS_UNSPECIFIED",
+                                          "INVOCATION_UNSPECIFIED",
+                                          "OUTPUTS_UNSPECIFIED",
+                                          "OWNING_ORGAN_UNRESOLVED",
+                                          "VALIDATOR_REF_UNSPECIFIED"
+                                      ],
+                             "do_not_use_for":  [
+                                                    "direct invocation",
+                                                    "live mutation authority",
+                                                    "acceptance proof",
+                                                    "claiming capability maturity beyond attached proof"
+                                                ]
+                         },
+                         {
                              "capability_id":  "self_build_program_generator_v2",
                              "display_name":  "Self Build Program Generator V2",
                              "owning_organ_id":  null,
@@ -5156,9 +5204,9 @@
                      ],
     "coverage":  {
                      "current_tasks_seen":  109,
-                     "current_tasks_with_capability_id":  108,
-                     "normalized_capabilities":  108,
-                     "tasks_without_capability_id":  1,
+                     "current_tasks_with_capability_id":  109,
+                     "normalized_capabilities":  109,
+                     "tasks_without_capability_id":  0,
                      "retired_tasks_accounted":  3,
                      "historical_task_baseline":  112,
                      "accounted_total":  112,
@@ -5167,40 +5215,35 @@
                      "explicit_source_program_paths_kept":  2,
                      "explicit_runtime_report_paths_kept":  0,
                      "deterministic_validator_refs_linked":  79,
-                     "validator_ref_gaps":  29
+                     "validator_ref_gaps":  30
                  },
     "gaps":  [
                  {
                      "gap_id":  "TASKS_WITHOUT_CAPABILITY_ID",
-                     "count":  1,
+                     "count":  0,
                      "items":  [
-                                   {
-                                       "gap_id":  "TASK_CAPABILITY_ID_MISSING",
-                                       "source_task_ref":  "tasks/TASK_SELF_BUILD_PROGRAM_GENERATOR_V1_001.json",
-                                       "task_id":  "TASK_SELF_BUILD_PROGRAM_GENERATOR_V1_001",
-                                       "reason":  "Current task source has no explicit capability_id; generator does not fabricate one."
-                                   }
+
                                ]
                  },
                  {
                      "gap_id":  "CAPABILITIES_WITH_UNRESOLVED_OWNER",
-                     "count":  108
+                     "count":  109
                  },
                  {
                      "gap_id":  "CAPABILITIES_WITHOUT_VALIDATOR_REF",
-                     "count":  29
+                     "count":  30
                  },
                  {
                      "gap_id":  "CAPABILITIES_WITHOUT_INVOCATION_MODE",
-                     "count":  108
+                     "count":  109
                  },
                  {
                      "gap_id":  "CAPABILITIES_WITHOUT_EXPLICIT_INPUTS",
-                     "count":  108
+                     "count":  109
                  },
                  {
                      "gap_id":  "CAPABILITIES_WITHOUT_EXPLICIT_OUTPUTS",
-                     "count":  108
+                     "count":  109
                  }
              ],
     "legacy_sources":  [
@@ -5235,5 +5278,5 @@
                        ],
     "live_process_touched":  false,
     "active_memory_mutated":  false,
-    "created_at":  "2026-08-16T17:58:08.2700900Z"
+    "created_at":  "2026-08-16T18:15:46.6970446Z"
 }

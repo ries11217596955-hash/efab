@@ -3122,3 +3122,15 @@ status: VALIDATION_PENDING_LOCAL_CANDIDATE
 
 Return to parent:
 - Validate map + Control Center + exact scope; if PASS, accept locally. Remaining no-id task is the V1 generator identity decision; next growth work should then address validator links/ownership/invocation in bounded atoms.
+
+
+## 2026-08-16 - Capability Map last task identity closure
+marker: CAPABILITY_MAP_LAST_TASK_IDENTITY_CLOSURE_20260816
+status: VALIDATION_PENDING_LOCAL_CANDIDATE
+
+- After commit `93fad3bb113857d3ea2d3150187fc15ebebd5594`, canonical map had 109 current tasks, 108 normalized capabilities, and exactly one task without `capability_id`: `TASK_SELF_BUILD_PROGRAM_GENERATOR_V1_001`.
+- Reuse/provenance scan identified canonical PHASE88 pack and organ passport `packs_phase88_self_build_program_generator_v1`, while the V2 successor task uses `self_build_program_generator_v2`. The V1 identity candidate is therefore `self_build_program_generator_v1`.
+- This slice changes task identity only; task status, dynamic contract, cut list, organ maturity and invocation readiness are not promoted.
+
+Return to parent:
+- Regenerate and validate the Capability Map. Expected identity coverage is 109/109 with no current no-id gaps; remaining work is validator/owner/invocation/maturity wiring.
