@@ -3057,3 +3057,15 @@ status: VALIDATION_PENDING_LOCAL_CANDIDATE
 
 Return to parent:
 - Run full Control Center validator with zero-mutation guards; if PASS, accept locally and verify clean-state Overview recommends capability wiring.
+
+
+## 2026-08-16 - Capability Map deterministic validator-link atom
+marker: CAPABILITY_MAP_DETERMINISTIC_VALIDATOR_LINKS_20260816
+status: VALIDATION_PENDING_LOCAL_CANDIDATE
+
+- Deterministic reuse rule: link `validators/validate_<capability_id>.ps1` only when that exact file exists and contains the exact capability id. Fresh audit: 75 eligible, 27 no exact file, 0 content mismatches.
+- No owner, invocation, maturity or live-proof state changes in this atom.
+- Validator enforces both directions: eligible => exactly one exact validator ref/no gap; ineligible => no ref/validator gap retained.
+
+Return to parent:
+- Regenerate canonical map/doc/proof and validate exact 75/27 split with zero memory/runtime mutation.

@@ -36,7 +36,10 @@ foreach($f in $tasks){
  if($t.PSObject.Properties.Name -contains 'runtime_report_path'){$v=[string]$t.runtime_report_path;if(-not[string]::IsNullOrWhiteSpace($v)){if(Test-Path $v){$reports.Add($v)}else{$gaps.Add('EXPLICIT_RUNTIME_REPORT_PATH_MISSING')}}}
  $scripts=New-Object System.Collections.Generic.List[string]
  if($t.PSObject.Properties.Name -contains 'source_program_path'){$v=[string]$t.source_program_path;if(-not[string]::IsNullOrWhiteSpace($v)){if(Test-Path $v){$scripts.Add($v)}else{$gaps.Add('EXPLICIT_SOURCE_PROGRAM_PATH_MISSING')}}}
- $gaps.Add('INPUTS_UNSPECIFIED');$gaps.Add('OUTPUTS_UNSPECIFIED');$gaps.Add('VALIDATOR_REF_UNSPECIFIED');$gaps.Add('INVOCATION_UNSPECIFIED')
+ $validators=New-Object System.Collections.Generic.List[string]
+ $validatorCandidate='validators/validate_'+$cid+'.ps1'
+ if(Test-Path $validatorCandidate){$validatorRaw=Get-Content $validatorCandidate -Raw;if($validatorRaw -match [regex]::Escape($cid)){$validators.Add($validatorCandidate)}else{$gaps.Add('VALIDATOR_REF_UNSPECIFIED')}}else{$gaps.Add('VALIDATOR_REF_UNSPECIFIED')}
+ $gaps.Add('INPUTS_UNSPECIFIED');$gaps.Add('OUTPUTS_UNSPECIFIED');$gaps.Add('INVOCATION_UNSPECIFIED')
  $capabilities.Add([pscustomobject][ordered]@{
   capability_id=$cid
   display_name=(Get-Culture).TextInfo.ToTitleCase(($cid -replace '_',' '))
@@ -47,7 +50,7 @@ foreach($f in $tasks){
   primary_invocation=$null
   inputs=@()
   outputs=@()
-  validator_refs=@()
+  validator_refs=@($validators)
   proof_refs=@($proofs)
   safety_boundary='NOT_INVOKABLE_FROM_V1_MAP_UNLESS_EXPLICIT_COMPLETE_INVOCATION_MODE_IS_PRESENT_AND_VALIDATED'
   maturity='DRAFT_NORMALIZED'
@@ -85,7 +88,7 @@ $map=[ordered]@{
  status='DRAFT_NORMALIZED_WITH_GAPS'
  generated_from=[ordered]@{contract=$contractPath;body_inventory=$bodyPath;task_glob='tasks/*.json';retirement_proof=$retirementProof;generator='operations/self_model/export_capability_invocation_map_v1.ps1';head=(git rev-parse HEAD).Trim()}
  capabilities=$capabilities
- coverage=[ordered]@{current_tasks_seen=$tasks.Count;current_tasks_with_capability_id=$usedTaskRefs.Count;normalized_capabilities=$capabilities.Count;tasks_without_capability_id=$noId.Count;retired_tasks_accounted=$retired.Count;historical_task_baseline=[int]$c.coverage_requirements_for_v1.historical_task_baseline;accounted_total=$tasks.Count+$retired.Count;unexplained_historical_task_loss=[int]$c.coverage_requirements_for_v1.historical_task_baseline-($tasks.Count+$retired.Count);explicit_runtime_proof_paths_kept=@($capabilities|ForEach-Object{$_.proof_refs}|Where-Object{$_}).Count;explicit_source_program_paths_kept=@($capabilities|ForEach-Object{$_.source_script_refs}|Where-Object{$_}).Count;explicit_runtime_report_paths_kept=@($capabilities|ForEach-Object{$_.source_report_refs}|Where-Object{$_}).Count}
+ coverage=[ordered]@{current_tasks_seen=$tasks.Count;current_tasks_with_capability_id=$usedTaskRefs.Count;normalized_capabilities=$capabilities.Count;tasks_without_capability_id=$noId.Count;retired_tasks_accounted=$retired.Count;historical_task_baseline=[int]$c.coverage_requirements_for_v1.historical_task_baseline;accounted_total=$tasks.Count+$retired.Count;unexplained_historical_task_loss=[int]$c.coverage_requirements_for_v1.historical_task_baseline-($tasks.Count+$retired.Count);explicit_runtime_proof_paths_kept=@($capabilities|ForEach-Object{$_.proof_refs}|Where-Object{$_}).Count;explicit_source_program_paths_kept=@($capabilities|ForEach-Object{$_.source_script_refs}|Where-Object{$_}).Count;explicit_runtime_report_paths_kept=@($capabilities|ForEach-Object{$_.source_report_refs}|Where-Object{$_}).Count;deterministic_validator_refs_linked=@($capabilities|Where-Object{@($_.validator_refs).Count-gt0}).Count;validator_ref_gaps=@($capabilities|Where-Object{@($_.validator_refs).Count-eq0}).Count}
  gaps=$gapSummary
  legacy_sources=$legacy
  live_process_touched=$false
@@ -106,9 +109,9 @@ $md.Add(('- Current tasks: **{0}**' -f $tasks.Count));$md.Add(('- Normalized cap
 $md.Add('')
 $md.Add('## Capabilities')
 $md.Add('')
-$md.Add('| capability_id | owner | maturity | live/lab | proofs | gaps |')
-$md.Add('|---|---|---|---|---:|---:|')
-foreach($cap in $capabilities){$md.Add(('| `{0}` | `{1}` | `{2}` | `{3}` | {4} | {5} |' -f $cap.capability_id,$(if($cap.owning_organ_id){$cap.owning_organ_id}else{'UNRESOLVED'}),$cap.maturity,$cap.live_or_lab_status,@($cap.proof_refs).Count,@($cap.gaps).Count))}
+$md.Add('| capability_id | owner | maturity | live/lab | validators | proofs | gaps |')
+$md.Add('|---|---|---|---|---:|---:|---:|')
+foreach($cap in $capabilities){$md.Add(('| `{0}` | `{1}` | `{2}` | `{3}` | {4} | {5} | {6} |' -f $cap.capability_id,$(if($cap.owning_organ_id){$cap.owning_organ_id}else{'UNRESOLVED'}),$cap.maturity,$cap.live_or_lab_status,@($cap.validator_refs).Count,@($cap.proof_refs).Count,@($cap.gaps).Count))}
 $md.Add('')
 $md.Add('## Global gaps')
 $md.Add('')
@@ -118,6 +121,6 @@ $md.Add('## Boundary')
 $md.Add('')
 $md.Add('This draft is not invocation authority, not live proof, and not maturity acceptance. A capability with no complete invocation mode must not be invoked from this map.')
 $md|Set-Content -LiteralPath $outMd -Encoding UTF8
-$proof=[ordered]@{schema='capability_invocation_map_v1_generation_proof';status='PASS_CAPABILITY_INVOCATION_MAP_V1_DRAFT_GENERATION_CANDIDATE';map_path=$outJson;doc_path=$outMd;generator_path='operations/self_model/export_capability_invocation_map_v1.ps1';contract_path=$contractPath;body_map_path=$bodyPath;current_tasks_seen=$tasks.Count;normalized_capabilities=$capabilities.Count;tasks_without_capability_id=$noId.Count;retired_tasks_accounted=$retired.Count;accounted_total=$tasks.Count+$retired.Count;historical_baseline=[int]$c.coverage_requirements_for_v1.historical_task_baseline;unexplained_historical_task_loss=[int]$c.coverage_requirements_for_v1.historical_task_baseline-($tasks.Count+$retired.Count);map_sha256=(Get-FileHash -Algorithm SHA256 $outJson).Hash;live_process_touched=$false;active_memory_mutated=$false;does_not_prove=@('capability maturity','invocation readiness','live behavior','organ ownership where unresolved');created_at=$now}
+$proof=[ordered]@{schema='capability_invocation_map_v1_generation_proof';status='PASS_CAPABILITY_INVOCATION_MAP_V1_DRAFT_GENERATION_CANDIDATE';map_path=$outJson;doc_path=$outMd;generator_path='operations/self_model/export_capability_invocation_map_v1.ps1';contract_path=$contractPath;body_map_path=$bodyPath;current_tasks_seen=$tasks.Count;normalized_capabilities=$capabilities.Count;tasks_without_capability_id=$noId.Count;retired_tasks_accounted=$retired.Count;accounted_total=$tasks.Count+$retired.Count;historical_baseline=[int]$c.coverage_requirements_for_v1.historical_task_baseline;unexplained_historical_task_loss=[int]$c.coverage_requirements_for_v1.historical_task_baseline-($tasks.Count+$retired.Count);deterministic_validator_refs_linked=@($capabilities|Where-Object{@($_.validator_refs).Count-gt0}).Count;validator_ref_gaps=@($capabilities|Where-Object{@($_.validator_refs).Count-eq0}).Count;map_sha256=(Get-FileHash -Algorithm SHA256 $outJson).Hash;live_process_touched=$false;active_memory_mutated=$false;does_not_prove=@('capability maturity','invocation readiness','live behavior','organ ownership where unresolved');created_at=$now}
 $proof|ConvertTo-Json -Depth 20|Set-Content -LiteralPath $outProof -Encoding UTF8
 Write-Output ('PASS_CAPABILITY_INVOCATION_MAP_V1_EXPORT|TASKS='+$tasks.Count+'|CAPABILITIES='+$capabilities.Count+'|NO_CAPABILITY_ID='+$noId.Count+'|RETIRED='+$retired.Count+'|ACCOUNTED='+($tasks.Count+$retired.Count))
