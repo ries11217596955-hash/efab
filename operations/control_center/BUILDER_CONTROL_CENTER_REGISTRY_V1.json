@@ -168,6 +168,17 @@
       "conflicts": []
     },
     {
+      "id": "builder.candidate.status",
+      "group": "DIAGNOSE",
+      "title": "Builder candidate scope checkpoint",
+      "kind": "OBSERVE",
+      "read_only": true,
+      "parallel_safe": true,
+      "handler": "builtin:builder_candidate_status",
+      "scope_note": "Compare actual staged/unstaged/untracked paths with ExpectedPaths. Does not grant mutation or acceptance authority.",
+      "conflicts": []
+    },
+    {
       "id": "builder.preflight",
       "group": "DIAGNOSE",
       "title": "Builder mutation preflight",

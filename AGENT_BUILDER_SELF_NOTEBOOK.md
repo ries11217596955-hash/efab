@@ -3161,3 +3161,18 @@ status: VALIDATED_LOCAL_CANDIDATE_PENDING_COMMIT
 Return to parent:
 - After clean local acceptance, use `builder.preflight` as the canonical fresh pre-mutation observer instead of reconstructing repo/runtime/memory checks ad hoc.
 - Continue Control Center mechanization with the next recurring bounded process rather than creating parallel launchers.
+## 2026-08-17 - Control Center candidate scope checkpoint atom
+marker: CONTROL_CENTER_BUILDER_CANDIDATE_SCOPE_20260817
+status: ACCEPTANCE_SLICE_PREPARED
+
+- `builder.preflight` was locally accepted in commit `4b36a3676becd960f57ceac5bbe957fdd198d223` and then reused as the canonical fresh observer: repo CLEAN at that HEAD, School/Agent STOPPED, protected active memory PRESENT with 139 cells, `AGENTS.md` resolved, blockers empty, freshness scope `LIVE_OBSERVE_THIS_CALL`.
+- Added `builder.candidate.status` inside the same existing Control Center; no new launcher or organ.
+- Contract: read-only candidate checkpoint reports actual/staged/unstaged/untracked paths and compares them with Owner/Builder-supplied `ExpectedPaths`; it returns unexpected and missing paths separately.
+- Positive use proof on this candidate: `SCOPE_MATCH`, `scope_ready=True`, exact three-file actual=expected, unexpected/missing empty.
+- Negative proof: intentionally wrong expected scope returned `SCOPE_MISMATCH`, `scope_ready=False`, with both unexpected real paths and missing fake path.
+- Full Control Center regression PASS before acceptance: `ACTIONS=18`, `DIAGNOSE_ROUTES=7`, `LIVE_MUTATION=0`, `TRACKED_MUTATION=0`, `RUNTIME_STARTED=0`.
+- Safety boundary: `builder.candidate.status` reports `does_not_prove=mutation_authority_semantic_correctness_or_acceptance`; scope match never grants mutation/acceptance authority.
+
+Return to parent:
+- Use `builder.preflight` before starting a serious mutation and `builder.candidate.status -ExpectedPaths ...` after the candidate exists, instead of reconstructing those checks ad hoc.
+- Next Control Center mechanization target: acceptance/checkpoint procedure built from current governed primitives; do not reuse PHASE54/162/165 legacy acceptance pipelines wholesale because they are phase-specific and mutate legacy state.

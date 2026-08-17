@@ -6,23 +6,24 @@ foreach($f in @($reg,$ctl)){if(-not(Test-Path $f)){throw "MISSING:$f"}}
 $r=Get-Content $reg -Raw|ConvertFrom-Json
 if($r.schema -ne 'builder_control_center_registry_v1'){throw 'REGISTRY_SCHEMA_BAD'}
 $ids=@($r.actions.id);if($ids.Count -ne @($ids|Sort-Object -Unique).Count){throw 'DUPLICATE_ACTION_ID'}
-$need=@('builder.status','repo.status','school.status','agent.status','inventory.status','capability.status','memory.status','school.start','agent.start','runtime.diagnose','memory.diagnose','inventory.diagnose','capability.diagnose','control_center.diagnose','builder.overview','remote_access.status','builder.preflight');foreach($id in $need){if($ids -notcontains $id){throw "MISSING_ACTION:$id"}}
-if($ids.Count -ne 17){throw 'ACTION_COUNT_BAD'}
+$need=@('builder.status','repo.status','school.status','agent.status','inventory.status','capability.status','memory.status','school.start','agent.start','runtime.diagnose','memory.diagnose','inventory.diagnose','capability.diagnose','control_center.diagnose','builder.overview','remote_access.status','builder.preflight','builder.candidate.status');foreach($id in $need){if($ids -notcontains $id){throw "MISSING_ACTION:$id"}}
+if($ids.Count -ne 18){throw 'ACTION_COUNT_BAD'}
 $tok=$null;$err=$null;[void][System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path $ctl),[ref]$tok,[ref]$err);if($err.Count){throw ('CONTROL_PARSE_FAIL:'+($err.Message -join ';'))}
 $before=@(git status --porcelain=v1 -uall);$mr='.runtime/active_compact_semantic_memory_v1';$mh=@{};foreach($n in @('manifest.json','index.json','cells.jsonl')){$x=Join-Path $mr $n;if(Test-Path $x){$mh[$n]=(Get-FileHash -Algorithm SHA256 $x).Hash}}
 $capProof='tests/self_development/CAPABILITY_INVOCATION_MAP_V1_CONTRACT_PROOF.json';$capHash=if(Test-Path $capProof){(Get-FileHash -Algorithm SHA256 $capProof).Hash}else{$null}
 $procBefore=@(Get-CimInstance Win32_Process|Where-Object{$_.CommandLine -and $_.CommandLine -match '(?i)run_agent_school\.ps1|start_agent_life_v1\.ps1'}|Select-Object -ExpandProperty ProcessId)
-$list=& $ctl -Mode List -Json|ConvertFrom-Json;if(@($list).Count -ne 17){throw 'LIST_ACTION_COUNT_BAD'}
+$list=& $ctl -Mode List -Json|ConvertFrom-Json;if(@($list).Count -ne 18){throw 'LIST_ACTION_COUNT_BAD'}
 $view=@('inventory.status','capability.status','memory.status');$vp=& $ctl -Mode Plan -Action $view -Json|ConvertFrom-Json;if($vp.status-ne'READY'-or[int]$vp.count-ne3-or-not[bool]$vp.parallel_safe){throw 'VIEW_PLAN_BAD'}
 $vr=& $ctl -Mode Run -Action $view -Json|ConvertFrom-Json;if($vr.status-ne'PASS_READ_ONLY_RUN'-or@($vr.results).Count-ne3){throw 'VIEW_RUN_BAD'}
-$diag=@('runtime.diagnose','memory.diagnose','inventory.diagnose','capability.diagnose','control_center.diagnose','builder.preflight');$dp=& $ctl -Mode Plan -Action $diag -Json|ConvertFrom-Json
-if($dp.status-ne'READY'-or[int]$dp.diagnostic_count-ne6-or[int]$dp.live_mutation_count-ne0-or$dp.execution_mode-ne'SEQUENTIAL'){throw 'DIAG_PLAN_BAD'}
-$dr=& $ctl -Mode Run -Action $diag -Json|ConvertFrom-Json;if($dr.status-ne'PASS_DIAGNOSTIC_RUN'-or@($dr.results).Count-ne6){throw 'DIAG_RUN_BAD'}
+$diag=@('runtime.diagnose','memory.diagnose','inventory.diagnose','capability.diagnose','control_center.diagnose','builder.preflight','builder.candidate.status');$dp=& $ctl -Mode Plan -Action $diag -Json|ConvertFrom-Json
+if($dp.status-ne'READY'-or[int]$dp.diagnostic_count-ne7-or[int]$dp.live_mutation_count-ne0-or$dp.execution_mode-ne'SEQUENTIAL'){throw 'DIAG_PLAN_BAD'}
+$dr=& $ctl -Mode Run -Action $diag -Json|ConvertFrom-Json;if($dr.status-ne'PASS_DIAGNOSTIC_RUN'-or@($dr.results).Count-ne7){throw 'DIAG_RUN_BAD'}
+$cs=@($dr.results|Where-Object id -eq 'builder.candidate.status')|Select-Object -First 1;if($cs.id-ne'builder.candidate.status'-or-not$cs.freshness.observed_at-or$cs.does_not_prove-ne'mutation_authority_semantic_correctness_or_acceptance'-or@($cs.expected_paths).Count-ne0){throw 'BUILDER_CANDIDATE_CONTRACT_BAD'};if(@($cs.actual_paths).Count-eq0){if($cs.status-ne'NO_CANDIDATE'-or$cs.scope_ready){throw 'BUILDER_CANDIDATE_CLEAN_BAD'}}else{if($cs.status-ne'CANDIDATE_SCOPE_UNSPECIFIED'-or$cs.scope_ready){throw 'BUILDER_CANDIDATE_UNSPECIFIED_BAD'}}
 $pf=@($dr.results|Where-Object id -eq 'builder.preflight')|Select-Object -First 1;if($pf.id-ne'builder.preflight'-or-not$pf.freshness.observed_at-or$pf.protected_memory.protected-ne$true-or$pf.does_not_prove-ne'mutation_authority_or_action_completion'){throw 'BUILDER_PREFLIGHT_CONTRACT_BAD'};if($pf.repo.status-eq'CLEAN'-and$pf.runtime.school.status-ne'RUNNING'-and$pf.runtime.agent.status-ne'RUNNING'-and$pf.protected_memory.status-eq'PRESENT'-and$pf.applicable_agents){if($pf.status-ne'PREFLIGHT_PASS'-or-not$pf.mutation_ready){throw 'BUILDER_PREFLIGHT_FALSE_BLOCK'}}else{if($pf.status-ne'PREFLIGHT_BLOCKED'-or$pf.mutation_ready){throw 'BUILDER_PREFLIGHT_FALSE_READY'}}
 $rt=@($dr.results|Where-Object id -eq 'runtime.diagnose')|Select-Object -First 1;if($rt.status -notin @('DIAGNOSTIC_PASS','DIAGNOSTIC_RUNNING','DIAGNOSTIC_ATTENTION')){throw 'RUNTIME_DIAG_BAD'}
 $mm=@($dr.results|Where-Object id -eq 'memory.diagnose')|Select-Object -First 1;if($mm.status-ne'DIAGNOSTIC_PASS'){throw 'MEMORY_DIAG_BAD'}
 $ii=@($dr.results|Where-Object id -eq 'inventory.diagnose')|Select-Object -First 1;if($ii.status-ne'DIAGNOSTIC_PASS'-or$ii.validator_status-ne'PASS_BODY_INVENTORY_MAP_CURRENT_V1'){throw 'INVENTORY_DIAG_BAD'}
-$cc=@($dr.results|Where-Object id -eq 'control_center.diagnose')|Select-Object -First 1;if($cc.status-ne'DIAGNOSTIC_PASS'-or[int]$cc.action_count-ne17){throw 'CONTROL_DIAG_BAD'}
+$cc=@($dr.results|Where-Object id -eq 'control_center.diagnose')|Select-Object -First 1;if($cc.status-ne'DIAGNOSTIC_PASS'-or[int]$cc.action_count-ne18){throw 'CONTROL_DIAG_BAD'}
 $cp=@($dr.results|Where-Object id -eq 'capability.diagnose')|Select-Object -First 1;if($cp.status-ne'DIAGNOSTIC_PASS_WITH_GAPS'-or-not$cp.validator_invoked-or$cp.validator-ne'operations/self_model/validate_capability_invocation_map_v1.ps1'-or[int]$cp.validator_exit-ne0){throw 'CAPABILITY_DIAGNOSTIC_CANONICAL_VALIDATOR_BAD'}
 if(-not(Test-Path '.runtime/map_control/validations/body_inventory_map_current_validation.json')){throw 'INVENTORY_RUNTIME_ARTIFACT_MISSING'}
 
@@ -74,4 +75,4 @@ if(Test-Path 'reports/self_development/CAPABILITY_INVOCATION_MAP_V1.json'){
  $bor=@($bo.results|Where-Object id -eq 'builder.overview')|Select-Object -First 1
  if($bor.overall-ne'DEGRADED' -or $bor.blockers -notcontains 'CAPABILITY_MAP_PRESENT_DRAFT_NOT_READY'){throw 'OVERVIEW_CAPABILITY_DRAFT_BLOCKER_BAD'}
 }
-Write-Output ('PASS_BUILDER_CONTROL_CENTER_V4|ACTIONS=17|DIAGNOSE_ROUTES=6|OVERVIEW=PASS|REMOTE_SCOPE=PASS|MULTI_DIAG=PASS|LIVE_MUTATION=0|TRACKED_MUTATION=0|RUNTIME_STARTED=0')
+Write-Output ('PASS_BUILDER_CONTROL_CENTER_V4|ACTIONS=18|DIAGNOSE_ROUTES=7|OVERVIEW=PASS|REMOTE_SCOPE=PASS|MULTI_DIAG=PASS|LIVE_MUTATION=0|TRACKED_MUTATION=0|RUNTIME_STARTED=0')

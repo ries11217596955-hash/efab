@@ -7,7 +7,8 @@ param(
   [ValidateRange(1,1000000)][int]$SchoolCount=1,
   [ValidateSet('Test','Live')][string]$SchoolMode='Test',
   [string]$SchoolTopics='codex_school_task_template_strength',
-  [ValidateRange(1,10080)][int]$AgentDurationMinutes=1
+  [ValidateRange(1,10080)][int]$AgentDurationMinutes=1,
+  [string[]]$ExpectedPaths=@()
 )
 $ErrorActionPreference='Stop'
 $repo=(git rev-parse --show-toplevel).Trim()
@@ -103,7 +104,17 @@ function Get-BuilderOverview{
  $overall=if(@($surface|Where-Object{$_.state -in @('BLOCKED','DEGRADED')}).Count){'DEGRADED'}else{'HEALTHY'}
  [ordered]@{id='builder.overview';status='OVERVIEW_READY';overall=$overall;surfaces=$surface;blockers=@($blockers);impact=@($impact);recommended_next_action=$recommended;freshness=(Get-FreshnessEnvelope 60);source_actions=@('repo.status','school.status','agent.status','memory.status','inventory.status','capability.status','remote_access.status','control_center registry');does_not_prove=@('inventory semantic currentness unless inventory.diagnose is run','GPT connector/session health','capability readiness beyond the current map validator and attached proof')}
 }
-function Get-BuilderPreflight{
+function Get-CandidateStatus{
+ $staged=@(git diff --cached --name-only --diff-filter=ACDMRTUXB|Where-Object{$_}|Sort-Object -Unique)
+ $unstaged=@(git diff --name-only --diff-filter=ACDMRTUXB|Where-Object{$_}|Sort-Object -Unique)
+ $untracked=@(git ls-files --others --exclude-standard|Where-Object{$_}|Sort-Object -Unique)
+ $actual=@(@($staged)+@($unstaged)+@($untracked)|ForEach-Object{([string]$_).Replace('\','/')}|Sort-Object -Unique)
+ $expected=@($ExpectedPaths|Where-Object{$_}|ForEach-Object{([string]$_).Replace('\','/')}|Sort-Object -Unique)
+ $unexpected=if($expected.Count){@(Compare-Object $expected $actual|Where-Object SideIndicator -eq '=>'|ForEach-Object InputObject)}else{@()}
+ $missing=if($expected.Count){@(Compare-Object $expected $actual|Where-Object SideIndicator -eq '<='|ForEach-Object InputObject)}else{@()}
+ $scopeStatus=if(-not$actual.Count){if($expected.Count){'SCOPE_MISMATCH'}else{'NO_CANDIDATE'}}elseif(-not$expected.Count){'CANDIDATE_SCOPE_UNSPECIFIED'}elseif($unexpected.Count-or$missing.Count){'SCOPE_MISMATCH'}else{'SCOPE_MATCH'}
+ [ordered]@{id='builder.candidate.status';status=$scopeStatus;scope_ready=($actual.Count-gt0-and$expected.Count-gt0-and-not$unexpected.Count-and-not$missing.Count);head=(git rev-parse HEAD).Trim();branch=(git branch --show-current).Trim();actual_paths=@($actual);staged_paths=@($staged);unstaged_paths=@($unstaged);untracked_paths=@($untracked);expected_paths=@($expected);unexpected_paths=@($unexpected);missing_expected_paths=@($missing);freshness=(Get-FreshnessEnvelope);does_not_prove='mutation_authority_semantic_correctness_or_acceptance'}
+}function Get-BuilderPreflight{
  $repoState=Get-RepoStatus;$school=Get-SchoolStatus;$agent=Get-AgentStatus;$memory=Get-MemoryStatus;$blockers=@()
  if($repoState.status -ne 'CLEAN'){$blockers+='REPO_DIRTY'}
  if($school.status -eq 'RUNNING'){$blockers+='SCHOOL_RUNTIME_ACTIVE'}
@@ -147,6 +158,7 @@ function Get-BuilderPreflight{
   if($exit-ne0){return [ordered]@{id=$Id;status='DIAGNOSTIC_FAIL';capability=$cap;validator=$validator;validator_exit=$exit;output=$output.Trim()}}
   return [ordered]@{id=$Id;status=if($cap.status-eq'PRESENT_READY'){'DIAGNOSTIC_PASS'}else{'DIAGNOSTIC_PASS_WITH_GAPS'};capability=$cap;validator=$validator;validator_exit=$exit;validator_invoked=$true;output=$output.Trim()}
  }
+ if($Id -eq 'builder.candidate.status'){return Get-CandidateStatus}
  if($Id -eq 'builder.preflight'){return Get-BuilderPreflight}
  if($Id -eq 'control_center.diagnose'){
    $errors=@();$regPath='operations/control_center/BUILDER_CONTROL_CENTER_REGISTRY_V1.json';$ctlPath='operations/control_center/invoke_builder_control_center_v1.ps1'

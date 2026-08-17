@@ -1,31 +1,27 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-08-17T11:40:51.9009053+04:00",
+    "checked_at":  "2026-08-17T11:55:22.2769963+04:00",
     "branch":  "main",
-    "observed_head":  "8f09f6aade304d2f3d8f06628f77d0581373eb35",
-    "subject_head":  "8f09f6aade304d2f3d8f06628f77d0581373eb35",
+    "observed_head":  "4b36a3676becd960f57ceac5bbe957fdd198d223",
+    "subject_head":  "4b36a3676becd960f57ceac5bbe957fdd198d223",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
                           "AGENT_BUILDER_SELF_NOTEBOOK.md",
-                          "docs/operations/CAPABILITY_INVOCATION_MAP_V1.md",
-                          "operations/self_model/export_capability_invocation_map_v1.ps1",
-                          "operations/self_model/validate_capability_invocation_map_v1.ps1",
-                          "reports/self_development/CAPABILITY_INVOCATION_MAP_V1.json",
+                          "operations/control_center/BUILDER_CONTROL_CENTER_REGISTRY_V1.json",
+                          "operations/control_center/invoke_builder_control_center_v1.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "tests/self_development/CAPABILITY_INVOCATION_MAP_V1_PROOF.json"
+                          "validators/validate_builder_control_center_v1.ps1"
                       ],
     "structural_paths":  [
-                             "docs/operations/CAPABILITY_INVOCATION_MAP_V1.md",
-                             "operations/self_model/export_capability_invocation_map_v1.ps1",
-                             "operations/self_model/validate_capability_invocation_map_v1.ps1",
-                             "reports/self_development/CAPABILITY_INVOCATION_MAP_V1.json",
-                             "tests/self_development/CAPABILITY_INVOCATION_MAP_V1_PROOF.json"
+                             "operations/control_center/BUILDER_CONTROL_CENTER_REGISTRY_V1.json",
+                             "operations/control_center/invoke_builder_control_center_v1.ps1",
+                             "validators/validate_builder_control_center_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -38,7 +34,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  2301,
-                                    "sha256":  "b60619be2be85fb8613bb3c653294754919ee9f8741a83dc69eb2059504b0fc2"
+                                    "sha256":  "e8f1b1ac9a4d56ee07d998458ef13341e85a46199e80c0f5ada545078defe6a7"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -71,5 +67,5 @@
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-08-17T11:45:07.2646559+04:00"
+    "refreshed_at":  "2026-08-17T11:59:34.3835962+04:00"
 }
