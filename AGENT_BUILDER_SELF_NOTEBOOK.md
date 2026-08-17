@@ -3213,3 +3213,15 @@ Owner strategic decision - Control Center first reflex:
 Return to parent:
 - Existing reusable chain: `builder.preflight -> builder.candidate.status -> builder.acceptance.plan`, plus `builder.run.status` for managed-run observation after this slice is accepted.
 - Next safe parent move: body-literacy/reuse scan of canonical Rule Graph/settings compiler surfaces, then prepare a `CONTROL_CENTER_FIRST` settings candidate without claiming installation; active GPT settings installation remains a separate SETTINGS_INSTALL lifecycle.
+## 2026-08-17 - Correction: AGENTS.md role boundary
+marker: CONTROL_CENTER_AGENTS_ROLE_CORRECTION_20260817
+status: CORRECTION_PREPARED
+
+- Owner correction: root `AGENTS.md` is a Codex orientation/control surface, not the Builder cross-chat behavior surface.
+- The prior `Control Center first` insertion into `AGENTS.md` was a role/context mismatch even though its repository validators passed.
+- Corrective action: remove only that inserted block and preserve the rest of `AGENTS.md`.
+- Builder reflex requirement remains valid: before reconstructing repeated operational commands, prefer the unified Control Center when applicable; however cross-chat persistence must be wired through the Builder/GPT active Instructions/settings lifecycle, not through Codex orientation files.
+- Do not infer Builder behavior activation from `AGENTS.md`.
+
+Return to parent:
+- Continue settings body-literacy and locate the canonical Rule Graph/compiler/install path for a compact `CONTROL_CENTER_FIRST` Builder behavior rule.
