@@ -1,27 +1,24 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-08-17T21:11:02.2034462+04:00",
+    "checked_at":  "2026-08-17T23:18:45.7762991+04:00",
     "branch":  "main",
-    "observed_head":  "b30d511688ff25138fd207f4ffddeb0fa2a2c200",
-    "subject_head":  "b30d511688ff25138fd207f4ffddeb0fa2a2c200",
+    "observed_head":  "6a85b658df5b1c3c390445efc15df5affaecb754",
+    "subject_head":  "6a85b658df5b1c3c390445efc15df5affaecb754",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "AGENT_BUILDER_SELF_NOTEBOOK.md",
-                          "operations/control_center/BUILDER_CONTROL_CENTER_REGISTRY_V1.json",
-                          "operations/control_center/invoke_builder_control_center_v1.ps1",
+                          "operations/school/run_agent_school.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "validators/validate_builder_control_center_v1.ps1"
+                          "validators/validate_school_canonical_entrypoint_contract_repair_v1.ps1"
                       ],
     "structural_paths":  [
-                             "operations/control_center/BUILDER_CONTROL_CENTER_REGISTRY_V1.json",
-                             "operations/control_center/invoke_builder_control_center_v1.ps1",
-                             "validators/validate_builder_control_center_v1.ps1"
+                             "operations/school/run_agent_school.ps1",
+                             "validators/validate_school_canonical_entrypoint_contract_repair_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -34,7 +31,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  2301,
-                                    "sha256":  "680c250e8c41cdb42c0730da35101fff668919f10c1fd047d9d4b0f4e9df42b8"
+                                    "sha256":  "28340e4fe0d8d7b904f4ef122bdf5facd97a8bba063c1b06d5ba6b45b4c1e4d1"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -67,5 +64,5 @@
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-08-17T21:15:18.1369718+04:00"
+    "refreshed_at":  "2026-08-17T23:23:08.3962477+04:00"
 }

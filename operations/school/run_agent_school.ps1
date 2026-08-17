@@ -243,7 +243,7 @@ Write-Host "CODEX_WAREHOUSE_MEMORY_CHANGED=$($report.memory_changed)"
 function Invoke-SchoolExactCountWarehouseCycle {
 param(
   [ValidateSet('MockProducer','RunCodex')][string]$ProducerMode = 'MockProducer',
-  [ValidateRange(1,50000)][int]$Count = 678,
+  [ValidateRange(1,1000000)][int]$Count = 678,
   [ValidateRange(1,10000)][int]$MicroBatchSize = 500,
   [ValidateRange(1,10000)][int]$DigestWindowAtoms = 500,
   [ValidateRange(30,7200)][int]$CodexTimeoutSeconds = 900,
@@ -367,7 +367,7 @@ if(Test-Path -LiteralPath $taskJson){
   AddEvent 'RESUME_TASK_REUSED' @{task_json=$taskJson; count=$Count; micro_batch_size=$MicroBatchSize; topic=$task.topic_key}
 } else {
   & powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/memory/select_dynamic_theme_cell_v1.ps1 -RequestedTopics $Topics -PatchSize 1000 -OutputPath $selectionPath | Out-Host
-  & powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/request/plan_dynamic_school_request_v1.ps1 -SelectionPath $selectionPath -OutputPath $requestPlanPath -ExactRequestSize $Count -MicroBatchSize $MicroBatchSize -MaxRequestSize 50000 -MaxReadyBacklogCandidates 3000 | Out-Host
+  & powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/request/plan_dynamic_school_request_v1.ps1 -SelectionPath $selectionPath -OutputPath $requestPlanPath -ExactRequestSize $Count -MicroBatchSize $MicroBatchSize -MaxRequestSize 1000000 -MaxReadyBacklogCandidates 3000 | Out-Host
   $request=Get-Content $requestPlanPath -Raw | ConvertFrom-Json
   $taskOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/warehouse/build_codex_warehouse_request_macro_task_v1.ps1 -RequestPlanPath $requestPlanPath -SelectionPath $selectionPath -OutputDir $taskDir *>&1 | ForEach-Object{[string]$_})
   $taskOut | Set-Content -LiteralPath "$OutputRoot/task_builder_stdout.txt" -Encoding UTF8
