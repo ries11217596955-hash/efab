@@ -1,35 +1,30 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-08-16T22:22:59.9027143+04:00",
+    "checked_at":  "2026-08-17T09:58:36.7220950+04:00",
     "branch":  "main",
-    "observed_head":  "93fad3bb113857d3ea2d3150187fc15ebebd5594",
-    "subject_head":  "93fad3bb113857d3ea2d3150187fc15ebebd5594",
+    "observed_head":  "2e719c224b4d1da79d68384267f58fe8f6858bd6",
+    "subject_head":  "2e719c224b4d1da79d68384267f58fe8f6858bd6",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
                           "AGENT_BUILDER_SELF_NOTEBOOK.md",
                           "docs/operations/CAPABILITY_INVOCATION_MAP_V1.md",
+                          "operations/self_model/validate_capability_invocation_map_v1.ps1",
                           "reports/self_development/CAPABILITY_INVOCATION_MAP_V1.json",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "tasks/TASK_BUILDER_EXECUTES_OWN_GENERATED_NEXT_PACK_V1_001.json",
-                          "tasks/TASK_BUILDER_GENERATED_PACK_ADMISSION_V1_001.json",
-                          "tasks/TASK_CAPABILITY_GAP_DETECTOR_V1_001.json",
-                          "tasks/TASK_PHASE110_IDEMPOTENT_AUTONOMY_TRIAL_ONE_CYCLE_SMOKE_V1_001.json",
-                          "tasks/TASK_PHASE115_EXECUTE_BUILDER_QUEUED_ADMITTED_ACTION_V1_001.json",
-                          "tasks/TASK_SELF_BUILD_BACKLOG_CONTRACT_V1_001.json",
-                          "tests/self_development/CAPABILITY_INVOCATION_MAP_V1_PROOF.json",
-                          "validators/validate_builder_control_center_v1.ps1"
+                          "tasks/TASK_SELF_BUILD_PROGRAM_GENERATOR_V1_001.json",
+                          "tests/self_development/CAPABILITY_INVOCATION_MAP_V1_PROOF.json"
                       ],
     "structural_paths":  [
                              "docs/operations/CAPABILITY_INVOCATION_MAP_V1.md",
+                             "operations/self_model/validate_capability_invocation_map_v1.ps1",
                              "reports/self_development/CAPABILITY_INVOCATION_MAP_V1.json",
-                             "tests/self_development/CAPABILITY_INVOCATION_MAP_V1_PROOF.json",
-                             "validators/validate_builder_control_center_v1.ps1"
+                             "tests/self_development/CAPABILITY_INVOCATION_MAP_V1_PROOF.json"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -42,7 +37,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  2301,
-                                    "sha256":  "8058d0ac5b4f33e47caf0fbd2cf0927b1dcf23d42542636210b917e681eb610b"
+                                    "sha256":  "f720221cb83ef917d51e2f960e83ca68ed3432e9cf9968ecacd9baae79f6d6d5"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -75,5 +70,5 @@
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-08-16T22:27:23.1450826+04:00"
+    "refreshed_at":  "2026-08-17T10:02:47.3499071+04:00"
 }

@@ -3134,3 +3134,17 @@ status: VALIDATION_PENDING_LOCAL_CANDIDATE
 
 Return to parent:
 - Regenerate and validate the Capability Map. Expected identity coverage is 109/109 with no current no-id gaps; remaining work is validator/owner/invocation/maturity wiring.
+
+## 2026-08-17 - Capability Map Phase88 validator reuse atom
+marker: CAPABILITY_MAP_PHASE88_VALIDATOR_ALIAS_20260817
+status: VALIDATED_LOCAL_CANDIDATE_NOT_YET_COMMITTED
+
+- Fresh repo proof started from `main` at `2e719c224b4d1da79d68384267f58fe8f6858bd6`; exact binding was proved for `self_build_program_generator_v1` -> task `TASK_SELF_BUILD_PROGRAM_GENERATOR_V1_001` -> pack `PHASE88_SELF_BUILD_PROGRAM_GENERATOR_V1` -> `packs/PHASE88_SELF_BUILD_PROGRAM_GENERATOR_V1/VALIDATE.ps1` (SHA256 `9215B66DBF4C008FACD14A5EA6EF6EF46D00542A9536EAA8EA0F5A43C2C83463`).
+- Candidate adds only the deterministic validator alias to the canonical exporter and map validator, then regenerates canonical map/doc/proof.
+- Capability Map validation PASS: `TASKS=109`, `CAPABILITIES=109`, `NO_CAPABILITY_ID=0`, `RETIRED=3`, `ACCOUNTED=112`, `VALIDATOR_LINKED=80`, `VALIDATOR_GAPPED=29`, `INVOCABLE=0`, `LIVE_PROVEN=0`, `WORKTREE_MUTATION=0`, `MEMORY_MUTATION=0`.
+- Control Center regression PASS: `ACTIONS=16`, `DIAGNOSE_ROUTES=5`, `OVERVIEW=PASS`, `LIVE_MUTATION=0`, `TRACKED_MUTATION=0`, `RUNTIME_STARTED=0`.
+- This atom does not prove or promote owner, inputs, outputs, invocation mode, maturity or live behavior. `OWNING_ORGAN_UNRESOLVED`, `INPUTS_UNSPECIFIED`, `OUTPUTS_UNSPECIFIED` and `INVOCATION_UNSPECIFIED` remain for this capability; maturity remains `DRAFT_NORMALIZED`, live status `NOT_PROVEN`.
+- CRLF validation note: the five canonical surfaces are baseline CRLF with `core.autocrlf=false`; an initial plain `git diff --check` candidate was rolled back. The accepted candidate uses CRLF-aware `core.whitespace=cr-at-eol` plus an explicit no-space/tab-before-CR check.
+
+Return to parent:
+- After local acceptance and clean-state proof, continue reuse-first bounded analysis of the remaining 29 validator-ref gaps. Do not infer owner/invocation/maturity/live readiness from this validator link.

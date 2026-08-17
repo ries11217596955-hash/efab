@@ -113,7 +113,7 @@ This map is generated from current task sources and the current body inventory. 
 | `seed_driven_monitoring_profile_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 1 | 0 | 4 |
 | `self_build_backlog_contract_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 0 | 0 | 5 |
 | `self_build_execution_loop` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 1 | 0 | 4 |
-| `self_build_program_generator_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 0 | 0 | 5 |
+| `self_build_program_generator_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 1 | 0 | 4 |
 | `self_build_program_generator_v2` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 0 | 0 | 5 |
 | `self_development_decision_kernel_v1` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 0 | 0 | 5 |
 | `self_validation_release_gates` | `UNRESOLVED` | `DRAFT_NORMALIZED` | `NOT_PROVEN` | 1 | 0 | 4 |
@@ -130,7 +130,7 @@ This map is generated from current task sources and the current body inventory. 
 
 - `TASKS_WITHOUT_CAPABILITY_ID`: 0
 - `CAPABILITIES_WITH_UNRESOLVED_OWNER`: 109
-- `CAPABILITIES_WITHOUT_VALIDATOR_REF`: 30
+- `CAPABILITIES_WITHOUT_VALIDATOR_REF`: 29
 - `CAPABILITIES_WITHOUT_INVOCATION_MODE`: 109
 - `CAPABILITIES_WITHOUT_EXPLICIT_INPUTS`: 109
 - `CAPABILITIES_WITHOUT_EXPLICIT_OUTPUTS`: 109
