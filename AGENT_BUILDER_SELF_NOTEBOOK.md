@@ -3398,3 +3398,10 @@ status: ACCEPTANCE_SLICE_PREPARED
 
 Return to parent:
 - Accept this transport slice locally. Then configure Telegram credentials outside repo and perform one explicitly-authorized remote test message through `school.notification.send`. Only DELIVERED proof can close the live transport layer.
+## 2026-08-18 - OWNER_POLICY_NO_FIXED_REPO_OR_MEMORY_SIZE_CEILING
+- Owner decision: there is no fixed 50 MB (or other fixed) size ceiling for the Agent Builder repository or long-term memory.
+- The prior 50 MB value must not be treated as architecture law or a growth target.
+- Required policy: keep repository and memory clean; prevent duplicates, stale raw/debug accumulation, unnecessary copies, and unjustified growth.
+- Size is governed by evidence, lifecycle, retention/cleanup, deduplication, retrieval performance, and available disk/compute resources rather than one arbitrary global byte cap.
+- Per-operation safety budgets remain allowed when they bound one mutation/run and are derived from current state; they do not define a global maximum memory size.
+- Historical reports/proofs and test fixtures may retain old size-budget values as history and are not rewritten merely to erase the old number.

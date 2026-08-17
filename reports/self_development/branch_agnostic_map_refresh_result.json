@@ -1,10 +1,10 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-08-17T23:18:45.7762991+04:00",
+    "checked_at":  "2026-08-18T00:46:49.3744546+04:00",
     "branch":  "main",
-    "observed_head":  "6a85b658df5b1c3c390445efc15df5affaecb754",
-    "subject_head":  "6a85b658df5b1c3c390445efc15df5affaecb754",
+    "observed_head":  "bfac5300d34e14fa569e3d9bdfa321659a9f040d",
+    "subject_head":  "bfac5300d34e14fa569e3d9bdfa321659a9f040d",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
@@ -13,12 +13,10 @@
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
-                          "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "validators/validate_school_canonical_entrypoint_contract_repair_v1.ps1"
+                          "reports/self_development/branch_agnostic_map_refresh_result.json"
                       ],
     "structural_paths":  [
-                             "operations/school/run_agent_school.ps1",
-                             "validators/validate_school_canonical_entrypoint_contract_repair_v1.ps1"
+                             "operations/school/run_agent_school.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -31,7 +29,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  2301,
-                                    "sha256":  "28340e4fe0d8d7b904f4ef122bdf5facd97a8bba063c1b06d5ba6b45b4c1e4d1"
+                                    "sha256":  "0dc3607970d1a64567fbfe440b30d8eb575d8a6418106e05cdd6b4c1e2290c5b"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -64,5 +62,5 @@
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-08-17T23:23:08.3962477+04:00"
+    "refreshed_at":  "2026-08-18T00:51:11.2570251+04:00"
 }

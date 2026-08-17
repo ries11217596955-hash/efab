@@ -106,7 +106,7 @@ try {
   if($digestAtoms.Count -lt 1){ throw 'NO_DIGEST_ATOMS_FROM_PACKETS' }
   $digestInput=Join-Path $runRoot 'digest_atoms.jsonl'
   ($digestAtoms|ForEach-Object{ $_|ConvertTo-Json -Depth 30 -Compress }) -join "`n" | Set-Content -LiteralPath $digestInput -Encoding UTF8
-  $budget=[int64]([Math]::Max([double]($before.total_memory_bytes + 5000000),[double]50000000))
+  $budget=[int64]($before.total_memory_bytes + 5000000)
   $absorbOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/digestion/absorb_atom_file_via_digest_pipeline_v1.ps1 -InputPath $digestInput -MemoryRoot $MemoryRoot -ValidationTier Fast -SizeBudgetBytes $budget -DeleteOriginalRaw *>&1 | ForEach-Object{[string]$_})
   $absorbStatus=($absorbOut|Where-Object{$_ -match '^FILE_ATOM_ABSORPTION_STATUS='}|Select-Object -Last 1) -replace '^FILE_ATOM_ABSORPTION_STATUS=',''
   $absorbProof=($absorbOut|Where-Object{$_ -match '^PROOF_PATH='}|Select-Object -Last 1) -replace '^PROOF_PATH=',''
