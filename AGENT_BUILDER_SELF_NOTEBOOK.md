@@ -3271,3 +3271,18 @@ Rule Admission candidate: `LAW_CONTROL_CENTER_FIRST`
 Return to parent:
 - Step 1 is closed at the available proof boundary. Do not repeat provenance scans without a new source pointer.
 - Execute near-term plan step 2 now: normalize `builder.run.status` for proven live Bridge states such as `wait_expired_still_running`.
+## 2026-08-17 - Control Center managed-run live-status normalization
+marker: CONTROL_CENTER_RUN_STATUS_LIVE_NORMALIZATION_20260817
+status: ACCEPTANCE_SLICE_PREPARED
+
+- Near-term plan Step 2 normalized `builder.run.status` live source handling without adding a new action or changing the registry/action count.
+- Proven live source set is now `running` plus `wait_expired_still_running`; raw `source_status` remains visible.
+- Natural Bridge micro-trial: `waitRun` produced `wait_expired_still_running` with a live PID; Control Center returned `ACTIVE`, preserved the raw source status, and both reported/observed alive signals were true.
+- Existing branches remained valid: completed micro-trial => `PASS` / `completed_success` / exit 0; unknown RunId => `RUN_NOT_FOUND`; path escape => `INVALID_RUN_ID`.
+- Full regression PASS: `PASS_BUILDER_CONTROL_CENTER_V4|ACTIONS=20|DIAGNOSE_ROUTES=9|...|LIVE_MUTATION=0|TRACKED_MUTATION=0|RUNTIME_STARTED=0`.
+- Implementation scope: controller + validator only; logical diff is controller 2/1 lines and validator 1/0 line.
+- EOL lesson: both files are tracked and checked out as CRLF (`git ls-files --eol` => `i/crlf w/crlf`) with `core.autocrlf=false`. Plain `git diff --check` flags new CRLF carriage returns as trailing whitespace unless Git is told `core.whitespace=cr-at-eol`; use `git -c core.whitespace=cr-at-eol diff --check` for this surface. Do not normalize whole-file line endings.
+- Safety boundary: this action observes run state only; it does not start/stop/retry/kill runs and does not grant mutation authority.
+
+Return to parent:
+- After local acceptance, execute near-term plan Step 3: design the next Control Center atom for bounded acceptance/checkpoint execution using the accepted chain `builder.preflight -> builder.candidate.status -> builder.acceptance.plan -> builder.run.status`.
