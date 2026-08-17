@@ -3286,3 +3286,22 @@ status: ACCEPTANCE_SLICE_PREPARED
 
 Return to parent:
 - After local acceptance, execute near-term plan Step 3: design the next Control Center atom for bounded acceptance/checkpoint execution using the accepted chain `builder.preflight -> builder.candidate.status -> builder.acceptance.plan -> builder.run.status`.
+## 2026-08-17 - Control Center local checkpoint creator
+marker: CONTROL_CENTER_BUILDER_CHECKPOINT_CREATE_20260817
+status: ACCEPTANCE_SLICE_PREPARED
+
+- Near-term plan Step 3 adds the first `MAINTAIN` Control Center atom: `builder.checkpoint.create`.
+- Contract boundary: this atom creates one governed LOCAL git checkpoint only. `CHECKPOINT_CREATED != ACCEPTED`; it never proves semantic acceptance, validator PASS, remote push, or authority for a future mutation.
+- Required gates: complete LAB_MUTATE authority passport, exact expected base HEAD, non-empty commit message, explicit expected paths, no pre-existing staged files, `builder.candidate.status=SCOPE_MATCH`, and `builder.acceptance.plan` ready.
+- Mutation boundary: stage exactly explicit paths; allow the existing pre-commit hook to add only outputs already predicted by `builder.acceptance.plan`; create one local commit; never push/fetch/pull/rebase/reset-hard or bypass hooks.
+- Failure boundary: if commit fails before HEAD changes, restore the index to its prior clean staged state while preserving the worktree candidate. After HEAD changes, never rewrite history automatically; scope-proof failure returns `CHECKPOINT_CREATED_POST_PROOF_FAILED` and requires forward repair.
+- Isolated temp-repo proof covers: missing authority, empty message, head mismatch, candidate-scope mismatch, pre-existing staging, positive local checkpoint with predicted hook auto-stage, and failing-hook rollback with HEAD unchanged/staging cleared/worktree preserved.
+- Full Control Center validator PASS: `ACTIONS=21`, `DIAGNOSE_ROUTES=9`, `LIVE_MUTATION=0`, `TRACKED_MUTATION=0`, `RUNTIME_STARTED=0`; the validator never invokes checkpoint mutation against `H:\efab`.
+- Anti-repeat lesson 1: bounded Codex handoff failed before Codex start because the Bridge wrapper passed `AllowedOutput` repeatedly. NO_WRITE_EFFECT was proven; do not retry that route without wrapper repair.
+- Anti-repeat lesson 2: first lab positive test was blocked because copied controller/registry/hook were outside the temp baseline candidate scope. Baseline fixture was corrected rather than weakening scope gates.
+- Anti-repeat lesson 3: Windows PowerShell with `$ErrorActionPreference=Stop` can turn benign native git stderr warnings into `NativeCommandError`; checkpoint capture now temporarily uses `Continue` only around `git commit`, preserves stderr and `$LASTEXITCODE`, then restores the prior preference.
+- Anti-repeat lesson 4: success hook originally ran during the temp baseline commit, so its generated output was already unchanged during the checkpoint. The fixture now activates `core.hooksPath` only after baseline commit so the positive checkpoint truly proves hook auto-stage.
+- Self-hosting boundary: this candidate must NOT use `builder.checkpoint.create` to accept itself. Its own acceptance uses the previously proven manual pipeline. After acceptance, future local checkpoints may reuse this atom.
+
+Return to parent:
+- After local acceptance and clean-chain proof, continue near-term plan Step 4: reuse-first mechanization of recurring repo/runtime procedures, preferring the unified Control Center over new helper scripts.

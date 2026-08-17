@@ -168,6 +168,21 @@
       "conflicts": []
     },
     {
+      "id": "builder.checkpoint.create",
+      "group": "MAINTAIN",
+      "title": "Builder local checkpoint create",
+      "kind": "LAB_MUTATE",
+      "read_only": false,
+      "parallel_safe": false,
+      "handler": "builtin:builder_checkpoint_create",
+      "confirmation_required": true,
+      "scope_note": "Create one local git checkpoint after explicit authority, head, candidate-scope, and acceptance-plan gates. CHECKPOINT_CREATED is not semantic acceptance. Never pushes or rewrites history.",
+      "conflicts": [
+        "school.start",
+        "agent.start"
+      ]
+    },
+    {
       "id": "builder.run.status",
       "group": "DIAGNOSE",
       "title": "Builder managed run status",

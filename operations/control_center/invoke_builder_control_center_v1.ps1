@@ -10,7 +10,10 @@ param(
   [ValidateRange(1,10080)][int]$AgentDurationMinutes=1,
   [string[]]$ExpectedPaths=@(),
   [string]$RunId='',
-  [ValidateRange(1,100)][int]$RunTailLines=20
+  [ValidateRange(1,100)][int]$RunTailLines=20,
+  [string]$ExpectedHead='',
+  [string]$CommitMessage='',
+  [string]$AuthorityPassportJson=''
 )
 $ErrorActionPreference='Stop'
 $repo=(git rev-parse --show-toplevel).Trim()
@@ -120,6 +123,34 @@ function Get-ManagedRunStatus{
  $status=if($timedOut){'TIMEOUT'}elseif($isLiveSource-and$observedAlive){'ACTIVE'}elseif($isLiveSource-and-not$observedAlive){'STALE_OR_UNFINALIZED'}elseif($sourceStatus-eq'completed_success'-and($null-eq$exitCode-or[int]$exitCode-eq0)){'PASS'}elseif($sourceStatus-match'fail|error'-or($null-ne$exitCode-and[int]$exitCode-ne0)){'FAILED'}else{'FINAL_OTHER'}
  $stdout=@();$stderr=@();$outPath=Join-Path $dir 'stdout.txt';$errPath=Join-Path $dir 'stderr.txt';if(Test-Path $outPath){$stdout=@(Get-Content $outPath -Tail $RunTailLines -ErrorAction SilentlyContinue|ForEach-Object{[string]$_})};if(Test-Path $errPath){$stderr=@(Get-Content $errPath -Tail $RunTailLines -ErrorAction SilentlyContinue|ForEach-Object{[string]$_})}
  [ordered]@{id='builder.run.status';status=[string]$status;run_id=[string]$RunId;source_status=[string]$sourceStatus;pid=[int]$pidValue;reported_process_alive=[bool]$s.process_alive;observed_process_alive=[bool]$observedAlive;exit_code=if($null-eq$exitCode){$null}else{[int]$exitCode};timed_out=[bool]$timedOut;started_at=[string]$s.started_at;last_seen_at=[string]$s.last_seen_at;checked_at=[string]$s.checked_at;finished_at=[string]$s.finished_at;elapsed_ms=if($null-eq$s.elapsed_ms){$null}else{[long]$s.elapsed_ms};run_dir=[string]$dir;state_path=[string]$statePath;stdout_tail=[string[]]$stdout;stderr_tail=[string[]]$stderr;tail_lines=[int]$RunTailLines;freshness=(Get-FreshnessEnvelope);does_not_prove='transport_health_mutation_authority_or_run_semantic_success'}
+}function Get-CheckpointAuthority{
+ if([string]::IsNullOrWhiteSpace($AuthorityPassportJson)){return [ordered]@{status='BLOCKED_AUTHORITY';reason='AUTHORITY_PASSPORT_REQUIRED'}}
+ try{$p=$AuthorityPassportJson|ConvertFrom-Json}catch{return [ordered]@{status='BLOCKED_AUTHORITY';reason='AUTHORITY_PASSPORT_INVALID_JSON'}}
+ $required=@('source','actor','action_class','target_surface','environment','scope','expiry','safety_boundary','checkpoint','rollback','validator')
+ $missing=@($required|Where-Object{$prop=$p.PSObject.Properties[$_];$null-eq$prop -or [string]::IsNullOrWhiteSpace([string]$prop.Value)})
+ if($missing.Count){return [ordered]@{status='BLOCKED_AUTHORITY';reason='AUTHORITY_PASSPORT_INCOMPLETE';missing=@($missing)}}
+ if([string]$p.action_class -ne 'LAB_MUTATE'){return [ordered]@{status='BLOCKED_AUTHORITY';reason='AUTHORITY_ACTION_CLASS_NOT_LAB_MUTATE';action_class=[string]$p.action_class}}
+ [ordered]@{status='VALID';passport=$p}
+}function Get-CheckpointReadiness{
+ $auth=Get-CheckpointAuthority;if($auth.status-ne'VALID'){return [ordered]@{id='builder.checkpoint.create';status=$auth.status;reason=$auth.reason;missing=@($auth.missing)}}
+ if([string]::IsNullOrWhiteSpace($ExpectedHead)){return [ordered]@{id='builder.checkpoint.create';status='BLOCKED_EXPECTED_HEAD_REQUIRED'}}
+ if([string]::IsNullOrWhiteSpace($CommitMessage)){return [ordered]@{id='builder.checkpoint.create';status='BLOCKED_COMMIT_MESSAGE_REQUIRED'}}
+ $ep=@($ExpectedPaths|Where-Object{$_}|ForEach-Object{$_.Replace('\','/')}|Sort-Object -Unique);if(-not$ep.Count){return [ordered]@{id='builder.checkpoint.create';status='BLOCKED_EXPECTED_PATHS_REQUIRED'}}
+ $head=(git rev-parse HEAD).Trim();if($head-ne$ExpectedHead){return [ordered]@{id='builder.checkpoint.create';status='BLOCKED_HEAD_MISMATCH';expected_head=$ExpectedHead;actual_head=$head}}
+ $staged=@(git diff --cached --name-only|Where-Object{$_}|Sort-Object -Unique);if($staged.Count){return [ordered]@{id='builder.checkpoint.create';status='BLOCKED_PREEXISTING_STAGED';staged_paths=@($staged)}}
+ $candidate=Get-CandidateStatus;if($candidate.status-ne'SCOPE_MATCH'){return [ordered]@{id='builder.checkpoint.create';status='BLOCKED_CANDIDATE_SCOPE';candidate=$candidate}}
+ $plan=Get-AcceptancePlan;if(-not$plan.plan_ready-or$plan.status -notin @('ACCEPTANCE_PLAN_READY','ACCEPTANCE_PLAN_READY_NO_PRECOMMIT_HOOK')){return [ordered]@{id='builder.checkpoint.create';status='BLOCKED_ACCEPTANCE_PLAN';acceptance_plan=$plan}}
+ [ordered]@{id='builder.checkpoint.create';status='READY';base_head=$head;expected_paths=@($ep);authority=$auth.passport;acceptance_plan=$plan;does_not_prove='semantic_acceptance_validator_pass_remote_push_or_future_mutation_authority'}
+}function Invoke-CheckpointCreate{
+ $ready=Get-CheckpointReadiness;if($ready.status-ne'READY'){return $ready}
+ if(-not$ConfirmMutation){return [ordered]@{id='builder.checkpoint.create';status='BLOCKED_CONFIRMATION_REQUIRED';reason='ConfirmMutation required';base_head=$ready.base_head}}
+ $base=[string]$ready.base_head;$ep=@($ready.expected_paths);$plan=$ready.acceptance_plan
+ & git add -- $ep | Out-Null;$addExit=$LASTEXITCODE;if($addExit-ne0){$now=@(git diff --cached --name-only);if($now.Count){& git restore --staged -- $now|Out-Null};return [ordered]@{id='builder.checkpoint.create';status='CHECKPOINT_STAGE_FAILED';base_head=$base;exit_code=$addExit;expected_paths=@($ep)}}
+ $staged=@(git diff --cached --name-only|Where-Object{$_}|Sort-Object -Unique);if(@(Compare-Object ($ep|Sort-Object) $staged).Count){if($staged.Count){& git restore --staged -- $staged|Out-Null};return [ordered]@{id='builder.checkpoint.create';status='CHECKPOINT_STAGE_SCOPE_FAILED';base_head=$base;expected_paths=@($ep);staged_paths=@($staged)}}
+ $savedEap=$ErrorActionPreference;$ErrorActionPreference='Continue';try{$commitOut=@(& git commit -m $CommitMessage 2>&1|ForEach-Object{[string]$_});$commitExit=$LASTEXITCODE}finally{$ErrorActionPreference=$savedEap};$new=(git rev-parse HEAD).Trim()
+ if($new-eq$base){$now=@(git diff --cached --name-only|Where-Object{$_}|Sort-Object -Unique);if($now.Count){& git restore --staged -- $now|Out-Null};return [ordered]@{id='builder.checkpoint.create';status='CHECKPOINT_COMMIT_FAILED_PRE_HEAD_CHANGE';base_head=$base;head=$new;exit_code=$commitExit;commit_output=@($commitOut);worktree_candidate_preserved=$true;does_not_prove='semantic_acceptance_validator_pass_remote_push_or_future_mutation_authority'}}
+ $actual=@(git show --name-only --format= $new|Where-Object{$_}|Sort-Object -Unique);$expectedFinal=@($plan.expected_final_commit_paths|Where-Object{$_}|Sort-Object -Unique);$missing=@($ep|Where-Object{$actual -notcontains $_});$extra=@($actual|Where-Object{$expectedFinal -notcontains $_});$postBad=($commitExit-ne0-or$missing.Count-or$extra.Count)
+ [ordered]@{id='builder.checkpoint.create';status=if($postBad){'CHECKPOINT_CREATED_POST_PROOF_FAILED'}else{'CHECKPOINT_CREATED'};base_head=$base;new_head=$new;commit_exit=$commitExit;commit_message=$CommitMessage;explicit_paths=@($ep);actual_commit_paths=@($actual);expected_final_commit_paths=@($expectedFinal);missing_explicit_paths=@($missing);unexpected_commit_paths=@($extra);pre_commit_path=$plan.pre_commit_path;pre_commit_sha256=$plan.pre_commit_sha256;authority=$ready.authority;freshness=(Get-FreshnessEnvelope);does_not_prove='semantic_acceptance_validator_pass_remote_push_or_future_mutation_authority'}
 }function Get-AcceptancePlan{
  $candidate=Get-CandidateStatus
  $hooksPath=(git config --get core.hooksPath);if($LASTEXITCODE-ne0){$hooksPath=$null};$hooksPath=([string]$hooksPath).Trim()
@@ -220,17 +251,17 @@ elseif($Mode -eq 'Plan'){
  if(-not$Action.Count){throw'CONTROL_CENTER_ACTION_REQUIRED'}
  $selected=@();foreach($id in $Action){$a=Get-Reg $id;if(-not$a){throw"CONTROL_CENTER_UNKNOWN_ACTION:$id"};$selected+=$a}
  $conflicts=@();foreach($a in $selected){foreach($c in @($a.conflicts)){if($c -ne $a.id -and $Action -contains $c){$conflicts+="$($a.id)<->$c"}}}
- $readiness=@();foreach($a in $selected){if($a.group -eq 'DIAGNOSE'){$readiness+=,[ordered]@{id=$a.id;status='READY_DIAGNOSTIC'}}elseif([bool]$a.read_only){$readiness+=,[ordered]@{id=$a.id;status='READY_READ_ONLY'}}else{$readiness+=,(Get-StartReadiness $a.id)}}
+ $readiness=@();foreach($a in $selected){if($a.group -eq 'DIAGNOSE'){$readiness+=,[ordered]@{id=$a.id;status='READY_DIAGNOSTIC'}}elseif([bool]$a.read_only){$readiness+=,[ordered]@{id=$a.id;status='READY_READ_ONLY'}}elseif($a.id -eq 'builder.checkpoint.create'){$readiness+=,(Get-CheckpointReadiness)}else{$readiness+=,(Get-StartReadiness $a.id)}}
  $blocked=@($readiness|Where-Object{$_.status -notin @('READY','READY_READ_ONLY','READY_DIAGNOSTIC')})
  $out=[ordered]@{status=if($conflicts.Count){'BLOCKED_CONFLICT'}elseif($blocked.Count){'BLOCKED'}else{'READY'};selected=@($selected.id);count=$selected.Count;mutation_count=@($selected|Where-Object{-not[bool]$_.read_only}).Count;diagnostic_count=@($selected|Where-Object{$_.group -eq 'DIAGNOSE'}).Count;live_mutation_count=@($selected|Where-Object{$_.group -in @('START','MAINTAIN','REPAIR')}).Count;parallel_safe=(@($selected|Where-Object{-not[bool]$_.parallel_safe}).Count -eq 0);execution_mode=if(@($selected|Where-Object{-not[bool]$_.parallel_safe}).Count){'SEQUENTIAL'}else{'PARALLEL_SAFE'};conflicts=@($conflicts);readiness=@($readiness)}
 }
 else{
  if(-not$Action.Count){throw'CONTROL_CENTER_ACTION_REQUIRED'}
- $plan=& $PSCommandPath -Mode Plan -Action $Action -Json -SchoolCount $SchoolCount -SchoolMode $SchoolMode -SchoolTopics $SchoolTopics -AgentDurationMinutes $AgentDurationMinutes|ConvertFrom-Json
+ $plan=& $PSCommandPath -Mode Plan -Action $Action -Json -SchoolCount $SchoolCount -SchoolMode $SchoolMode -SchoolTopics $SchoolTopics -AgentDurationMinutes $AgentDurationMinutes -ExpectedPaths $ExpectedPaths -RunId $RunId -RunTailLines $RunTailLines -ExpectedHead $ExpectedHead -CommitMessage $CommitMessage -AuthorityPassportJson $AuthorityPassportJson|ConvertFrom-Json
  if($plan.status -ne 'READY'){ $out=[ordered]@{status='NOT_STARTED';plan=$plan} }
  else{
-   $results=@();foreach($id in $Action){$a=Get-Reg $id;if($a.group -eq 'DIAGNOSE'){$results+=,(Invoke-Diagnostic $id)}elseif([bool]$a.read_only){$results+=,(Invoke-Observed $id)}else{$results+=,(Invoke-Start $id)}}
-   $out=[ordered]@{status=if(@($results|Where-Object{$_.status -eq 'STARTED'}).Count){'START_DISPATCHED'}elseif(@($results|Where-Object{$_.status -eq 'BLOCKED_CONFIRMATION_REQUIRED'}).Count){'BLOCKED_CONFIRMATION_REQUIRED'}elseif(@($Action|Where-Object{(Get-Reg $_).group -eq 'DIAGNOSE'}).Count){'PASS_DIAGNOSTIC_RUN'}else{'PASS_READ_ONLY_RUN'};selected=@($Action);results=@($results)}
+    $results=@();foreach($id in $Action){$a=Get-Reg $id;if($a.group -eq 'DIAGNOSE'){$results+=,(Invoke-Diagnostic $id)}elseif([bool]$a.read_only){$results+=,(Invoke-Observed $id)}elseif($id -eq 'builder.checkpoint.create'){$results+=,(Invoke-CheckpointCreate)}else{$results+=,(Invoke-Start $id)}}
+    $checkpointResult=@($results|Where-Object{$_.id -eq 'builder.checkpoint.create'})|Select-Object -First 1;$out=[ordered]@{status=if($checkpointResult){[string]$checkpointResult.status}elseif(@($results|Where-Object{$_.status -eq 'STARTED'}).Count){'START_DISPATCHED'}elseif(@($results|Where-Object{$_.status -eq 'BLOCKED_CONFIRMATION_REQUIRED'}).Count){'BLOCKED_CONFIRMATION_REQUIRED'}elseif(@($Action|Where-Object{(Get-Reg $_).group -eq 'DIAGNOSE'}).Count){'PASS_DIAGNOSTIC_RUN'}else{'PASS_READ_ONLY_RUN'};selected=@($Action);results=@($results)}
  }
 }
 if($Json){$out|ConvertTo-Json -Depth 14 -Compress}else{$out|ConvertTo-Json -Depth 14}
