@@ -3225,3 +3225,20 @@ status: CORRECTION_PREPARED
 
 Return to parent:
 - Continue settings body-literacy and locate the canonical Rule Graph/compiler/install path for a compact `CONTROL_CENTER_FIRST` Builder behavior rule.
+## 2026-08-17 - Near-term Builder execution plan
+marker: BUILDER_NEAR_TERM_PLAN_20260817_A
+status: PLAN_ACCEPTED_FOR_EXECUTION
+
+Current boundary:
+- AGENTS role correction is accepted at `4df9da183da2316b374643c6852292ce1461787a`; repo clean and fresh preflight PASS.
+- Unified Control Center is the preferred operational surface in this chat, but cross-chat `CONTROL_CENTER_FIRST` behavior is still `SETTINGS_WIRING_NOT_INSTALLED`.
+- `builder.run.status` is accepted, with one observed semantic gap: a live Bridge state `wait_expired_still_running` can classify as `FINAL_OTHER` even when the PID is alive.
+
+Short execution queue:
+1. Restore the real Builder/GPT settings authoring boundary and locate the canonical Rule Graph / compiler / install route; prepare `CONTROL_CENTER_FIRST` only through that route. If the route is unavailable, produce a bounded settings candidate/fail-report rather than inventing a repo substitute.
+2. Tighten `builder.run.status` lifecycle normalization so proven live Bridge states such as `wait_expired_still_running` report a clear active classification, with positive and negative tests and no run mutation.
+3. Build the next Control Center atom for bounded acceptance/checkpoint execution from the already accepted chain (`builder.preflight -> builder.candidate.status -> builder.acceptance.plan -> builder.run.status`), separating authority, validators, hook observation, rollback and failure classification; no magic auto-commit shortcut.
+4. Continue reuse-first mechanization: whenever a recurring manual repo/runtime procedure appears, prefer extending the existing Control Center over adding helper scripts; periodically update this Notebook after accepted slices and return to the self-build parent goal.
+
+Return to parent:
+- Execute step 1 now. Do not start child-agent production yet; self-build/control reliability remains the current parent task.
