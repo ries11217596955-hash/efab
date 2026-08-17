@@ -168,6 +168,17 @@
       "conflicts": []
     },
     {
+      "id": "builder.run.status",
+      "group": "DIAGNOSE",
+      "title": "Builder managed run status",
+      "kind": "OBSERVE",
+      "read_only": true,
+      "parallel_safe": true,
+      "handler": "builtin:builder_run_status",
+      "scope_note": "Read one persisted Bridge managed-run snapshot plus bounded stdout/stderr tails. Never stops, kills, retries, or starts a run.",
+      "conflicts": []
+    },
+    {
       "id": "builder.acceptance.plan",
       "group": "DIAGNOSE",
       "title": "Builder acceptance scope plan",

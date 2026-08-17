@@ -8,7 +8,9 @@ param(
   [ValidateSet('Test','Live')][string]$SchoolMode='Test',
   [string]$SchoolTopics='codex_school_task_template_strength',
   [ValidateRange(1,10080)][int]$AgentDurationMinutes=1,
-  [string[]]$ExpectedPaths=@()
+  [string[]]$ExpectedPaths=@(),
+  [string]$RunId='',
+  [ValidateRange(1,100)][int]$RunTailLines=20
 )
 $ErrorActionPreference='Stop'
 $repo=(git rev-parse --show-toplevel).Trim()
@@ -104,7 +106,20 @@ function Get-BuilderOverview{
  $overall=if(@($surface|Where-Object{$_.state -in @('BLOCKED','DEGRADED')}).Count){'DEGRADED'}else{'HEALTHY'}
  [ordered]@{id='builder.overview';status='OVERVIEW_READY';overall=$overall;surfaces=$surface;blockers=@($blockers);impact=@($impact);recommended_next_action=$recommended;freshness=(Get-FreshnessEnvelope 60);source_actions=@('repo.status','school.status','agent.status','memory.status','inventory.status','capability.status','remote_access.status','control_center registry');does_not_prove=@('inventory semantic currentness unless inventory.diagnose is run','GPT connector/session health','capability readiness beyond the current map validator and attached proof')}
 }
-function Get-AcceptancePlan{
+function Get-ManagedRunStatus{
+ $root='H:\bridge\runs'
+ if([string]::IsNullOrWhiteSpace($RunId)){return [ordered]@{id='builder.run.status';status='RUN_ID_REQUIRED';run_id=$null;freshness=(Get-FreshnessEnvelope);does_not_prove='transport_health_mutation_authority_or_run_semantic_success'}}
+ if($RunId -notmatch '^[A-Za-z0-9._-]+$'){return [ordered]@{id='builder.run.status';status='INVALID_RUN_ID';run_id=$RunId;freshness=(Get-FreshnessEnvelope);does_not_prove='transport_health_mutation_authority_or_run_semantic_success'}}
+ if(-not(Test-Path $root -PathType Container)){return [ordered]@{id='builder.run.status';status='RUN_STORE_UNAVAILABLE';run_id=$RunId;run_store=$root;freshness=(Get-FreshnessEnvelope);does_not_prove='transport_health_mutation_authority_or_run_semantic_success'}}
+ $dir=Join-Path $root $RunId;if(-not(Test-Path $dir -PathType Container)){return [ordered]@{id='builder.run.status';status='RUN_NOT_FOUND';run_id=$RunId;run_store=$root;freshness=(Get-FreshnessEnvelope);does_not_prove='transport_health_mutation_authority_or_run_semantic_success'}}
+ $statePath=Join-Path $dir 'result.json';if(-not(Test-Path $statePath -PathType Leaf)){return [ordered]@{id='builder.run.status';status='RUN_STATE_MISSING';run_id=$RunId;run_dir=$dir;freshness=(Get-FreshnessEnvelope);does_not_prove='transport_health_mutation_authority_or_run_semantic_success'}}
+ try{$s=Get-Content $statePath -Raw|ConvertFrom-Json}catch{return [ordered]@{id='builder.run.status';status='RUN_STATE_INVALID';run_id=$RunId;run_dir=$dir;error=$_.Exception.Message;freshness=(Get-FreshnessEnvelope);does_not_prove='transport_health_mutation_authority_or_run_semantic_success'}}
+ $pidValue=0;if($null-ne$s.pid){$pidValue=[int]$s.pid};$observedAlive=$false;if($pidValue-gt0){$observedAlive=[bool](Get-Process -Id $pidValue -ErrorAction SilentlyContinue)}
+ $sourceStatus=[string]$s.status;$exitCode=$s.exit_code;$timedOut=[bool]$s.timed_out
+ $status=if($timedOut){'TIMEOUT'}elseif($sourceStatus-eq'running'-and$observedAlive){'ACTIVE'}elseif($sourceStatus-eq'running'-and-not$observedAlive){'STALE_OR_UNFINALIZED'}elseif($sourceStatus-eq'completed_success'-and($null-eq$exitCode-or[int]$exitCode-eq0)){'PASS'}elseif($sourceStatus-match'fail|error'-or($null-ne$exitCode-and[int]$exitCode-ne0)){'FAILED'}else{'FINAL_OTHER'}
+ $stdout=@();$stderr=@();$outPath=Join-Path $dir 'stdout.txt';$errPath=Join-Path $dir 'stderr.txt';if(Test-Path $outPath){$stdout=@(Get-Content $outPath -Tail $RunTailLines -ErrorAction SilentlyContinue|ForEach-Object{[string]$_})};if(Test-Path $errPath){$stderr=@(Get-Content $errPath -Tail $RunTailLines -ErrorAction SilentlyContinue|ForEach-Object{[string]$_})}
+ [ordered]@{id='builder.run.status';status=[string]$status;run_id=[string]$RunId;source_status=[string]$sourceStatus;pid=[int]$pidValue;reported_process_alive=[bool]$s.process_alive;observed_process_alive=[bool]$observedAlive;exit_code=if($null-eq$exitCode){$null}else{[int]$exitCode};timed_out=[bool]$timedOut;started_at=[string]$s.started_at;last_seen_at=[string]$s.last_seen_at;checked_at=[string]$s.checked_at;finished_at=[string]$s.finished_at;elapsed_ms=if($null-eq$s.elapsed_ms){$null}else{[long]$s.elapsed_ms};run_dir=[string]$dir;state_path=[string]$statePath;stdout_tail=[string[]]$stdout;stderr_tail=[string[]]$stderr;tail_lines=[int]$RunTailLines;freshness=(Get-FreshnessEnvelope);does_not_prove='transport_health_mutation_authority_or_run_semantic_success'}
+}function Get-AcceptancePlan{
  $candidate=Get-CandidateStatus
  $hooksPath=(git config --get core.hooksPath);if($LASTEXITCODE-ne0){$hooksPath=$null};$hooksPath=([string]$hooksPath).Trim()
  $preCommit=if([string]::IsNullOrWhiteSpace($hooksPath)){'.git/hooks/pre-commit'}else{(Join-Path $hooksPath 'pre-commit').Replace('\','/')}
@@ -168,6 +183,7 @@ function Get-AcceptancePlan{
   if($exit-ne0){return [ordered]@{id=$Id;status='DIAGNOSTIC_FAIL';capability=$cap;validator=$validator;validator_exit=$exit;output=$output.Trim()}}
   return [ordered]@{id=$Id;status=if($cap.status-eq'PRESENT_READY'){'DIAGNOSTIC_PASS'}else{'DIAGNOSTIC_PASS_WITH_GAPS'};capability=$cap;validator=$validator;validator_exit=$exit;validator_invoked=$true;output=$output.Trim()}
  }
+ if($Id -eq 'builder.run.status'){return Get-ManagedRunStatus}
  if($Id -eq 'builder.acceptance.plan'){return Get-AcceptancePlan}
  if($Id -eq 'builder.candidate.status'){return Get-CandidateStatus}
  if($Id -eq 'builder.preflight'){return Get-BuilderPreflight}

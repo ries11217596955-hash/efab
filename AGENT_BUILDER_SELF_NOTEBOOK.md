@@ -3191,3 +3191,25 @@ status: ACCEPTANCE_SLICE_PREPARED
 Return to parent:
 - Use chain `builder.preflight -> builder.candidate.status -> builder.acceptance.plan` for serious local repo slices instead of reconstructing these checks ad hoc.
 - Next mechanization target after acceptance: bounded acceptance execution/checkpoint procedure, but only after separating authority, pre-validator bundle, commit/hook observation, post-validator bundle and failure classification; do not create a magic auto-commit shortcut.
+## 2026-08-17 - Control Center managed-run observer atom and Control-Center-first decision
+marker: CONTROL_CENTER_BUILDER_RUN_STATUS_20260817
+status: ACCEPTANCE_SLICE_PREPARED
+
+- Added `builder.run.status` to the existing Control Center; no new launcher/organ and no loop/watcher process.
+- Contract: one read-only snapshot for a supplied Bridge managed `RunId`, persisted `result.json`, observed PID state, bounded stdout/stderr tails, and lifecycle classification. It never starts, retries, stops or kills a run.
+- Active proof: a live harmless managed run returned `ACTIVE`, `source_status=running`, `reported_process_alive=True`, `observed_process_alive=True`.
+- Completed proof: prior micro-trial returned `PASS`, `source_status=completed_success`, `exit_code=0`, `observed_process_alive=False`, and bounded stdout contained `MICRO_TRIAL_DONE`.
+- Negative proofs: unknown ID => `RUN_NOT_FOUND`; path-escape input => `INVALID_RUN_ID`.
+- Failure lesson: first candidate leaked PowerShell extended objects into JSON and timed out after structural PASS. Step timing proved IO fast and hang began at serialization; plain-scalar DTO serialized in 18 ms and targeted Control Center action then completed in ~1.7 s. Do not repeat the pre-fix object-shape route.
+- Full regression PASS after repair: `ACTIONS=20`, `DIAGNOSE_ROUTES=9`, `LIVE_MUTATION=0`, `TRACKED_MUTATION=0`, `RUNTIME_STARTED=0`.
+- Safety boundary: run observation is evidence only; it does not prove transport health, semantic success of arbitrary work, or mutation authority.
+
+Owner strategic decision - Control Center first reflex:
+- The unified Builder Control Center must become the default operational reflex for repeated repo/runtime procedures, not something the Owner must remind Builder about in each chat.
+- Repo continuity should record/discover the Control Center, but cross-chat automatic preference requires an admitted/compiled/installed settings-level behavior rule; Notebook alone is not active behavior.
+- Until settings installation and smoke/stability proof exist, status is `REFLEX_REQUIREMENT_ACCEPTED / SETTINGS_WIRING_NOT_INSTALLED`.
+- Desired behavior: before reconstructing repeated terminal commands/scripts, check whether the Control Center already owns the operation; reuse it when applicable and fall back to bounded primitives only when the required action is absent, unhealthy, unauthorized, or unproven.
+
+Return to parent:
+- Existing reusable chain: `builder.preflight -> builder.candidate.status -> builder.acceptance.plan`, plus `builder.run.status` for managed-run observation after this slice is accepted.
+- Next safe parent move: body-literacy/reuse scan of canonical Rule Graph/settings compiler surfaces, then prepare a `CONTROL_CENTER_FIRST` settings candidate without claiming installation; active GPT settings installation remains a separate SETTINGS_INSTALL lifecycle.
