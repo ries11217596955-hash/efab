@@ -104,7 +104,17 @@ function Get-BuilderOverview{
  $overall=if(@($surface|Where-Object{$_.state -in @('BLOCKED','DEGRADED')}).Count){'DEGRADED'}else{'HEALTHY'}
  [ordered]@{id='builder.overview';status='OVERVIEW_READY';overall=$overall;surfaces=$surface;blockers=@($blockers);impact=@($impact);recommended_next_action=$recommended;freshness=(Get-FreshnessEnvelope 60);source_actions=@('repo.status','school.status','agent.status','memory.status','inventory.status','capability.status','remote_access.status','control_center registry');does_not_prove=@('inventory semantic currentness unless inventory.diagnose is run','GPT connector/session health','capability readiness beyond the current map validator and attached proof')}
 }
-function Get-CandidateStatus{
+function Get-AcceptancePlan{
+ $candidate=Get-CandidateStatus
+ $hooksPath=(git config --get core.hooksPath);if($LASTEXITCODE-ne0){$hooksPath=$null};$hooksPath=([string]$hooksPath).Trim()
+ $preCommit=if([string]::IsNullOrWhiteSpace($hooksPath)){'.git/hooks/pre-commit'}else{(Join-Path $hooksPath 'pre-commit').Replace('\','/')}
+ $hookExists=Test-Path $preCommit -PathType Leaf;$hookHash=if($hookExists){(Get-FileHash $preCommit -Algorithm SHA256).Hash}else{$null}
+ $auto=@();$hookValidators=@()
+ if($hookExists){ foreach($line in Get-Content $preCommit){ if($line -match '^\s*git\s+add\s+(.+?)\s*$'){ $tail=$Matches[1];$auto+=@($tail -split '\s+'|Where-Object{$_ -and $_ -notmatch '^-' }|ForEach-Object{$_.Trim('"','''').Replace('\','/')}) }; if($line -match '(?i)-File\s+([^\s|;]+)'){ $ref=$Matches[1].Trim('"','''').Replace('\','/');if($ref -like 'validators/*'){$hookValidators+=$ref} } } }
+ $auto=@($auto|Sort-Object -Unique);$hookValidators=@($hookValidators|Sort-Object -Unique);$expectedFinal=@(@($candidate.expected_paths)+@($auto)|Where-Object{$_}|Sort-Object -Unique)
+ $status=if($candidate.status-ne'SCOPE_MATCH'){'ACCEPTANCE_PLAN_BLOCKED_CANDIDATE_SCOPE'}elseif(-not$hookExists){'ACCEPTANCE_PLAN_READY_NO_PRECOMMIT_HOOK'}else{'ACCEPTANCE_PLAN_READY'}
+ [ordered]@{id='builder.acceptance.plan';status=$status;plan_ready=($candidate.status-eq'SCOPE_MATCH');candidate=$candidate;hooks_path=$hooksPath;pre_commit_path=$preCommit;pre_commit_exists=$hookExists;pre_commit_sha256=$hookHash;hook_auto_staged_paths=@($auto);hook_validator_refs=@($hookValidators);expected_final_commit_paths=@($expectedFinal);freshness=(Get-FreshnessEnvelope);does_not_prove='mutation_authority_validator_pass_commit_success_or_acceptance'}
+}function Get-CandidateStatus{
  $staged=@(git diff --cached --name-only --diff-filter=ACDMRTUXB|Where-Object{$_}|Sort-Object -Unique)
  $unstaged=@(git diff --name-only --diff-filter=ACDMRTUXB|Where-Object{$_}|Sort-Object -Unique)
  $untracked=@(git ls-files --others --exclude-standard|Where-Object{$_}|Sort-Object -Unique)
@@ -158,6 +168,7 @@ function Get-CandidateStatus{
   if($exit-ne0){return [ordered]@{id=$Id;status='DIAGNOSTIC_FAIL';capability=$cap;validator=$validator;validator_exit=$exit;output=$output.Trim()}}
   return [ordered]@{id=$Id;status=if($cap.status-eq'PRESENT_READY'){'DIAGNOSTIC_PASS'}else{'DIAGNOSTIC_PASS_WITH_GAPS'};capability=$cap;validator=$validator;validator_exit=$exit;validator_invoked=$true;output=$output.Trim()}
  }
+ if($Id -eq 'builder.acceptance.plan'){return Get-AcceptancePlan}
  if($Id -eq 'builder.candidate.status'){return Get-CandidateStatus}
  if($Id -eq 'builder.preflight'){return Get-BuilderPreflight}
  if($Id -eq 'control_center.diagnose'){

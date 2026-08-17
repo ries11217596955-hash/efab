@@ -3176,3 +3176,18 @@ status: ACCEPTANCE_SLICE_PREPARED
 Return to parent:
 - Use `builder.preflight` before starting a serious mutation and `builder.candidate.status -ExpectedPaths ...` after the candidate exists, instead of reconstructing those checks ad hoc.
 - Next Control Center mechanization target: acceptance/checkpoint procedure built from current governed primitives; do not reuse PHASE54/162/165 legacy acceptance pipelines wholesale because they are phase-specific and mutate legacy state.
+## 2026-08-17 - Control Center acceptance planning atom
+marker: CONTROL_CENTER_BUILDER_ACCEPTANCE_PLAN_20260817
+status: ACCEPTANCE_SLICE_PREPARED
+
+- `builder.preflight` remains the canonical fresh repo/runtime/memory observer; `builder.candidate.status` remains the canonical candidate scope checkpoint.
+- Added `builder.acceptance.plan` inside the same existing Control Center; no new launcher or organ.
+- Contract: read-only plan composes the candidate ExpectedPaths with the current configured pre-commit hook, records hook path/SHA, extracts hook auto-staged outputs and hook validator refs, and computes the expected final commit scope.
+- Positive proof: `ACCEPTANCE_PLAN_READY`, `plan_ready=True`, current hook `.githooks/pre-commit`, hook SHA `A9AA7AF8353BFB3E4E4F2AC54101FFD38926E18F07662FB8B9159E81FA6E9CA9`, four canonical body-map auto-staged outputs, validator `validators/validate_agent_body_composition_map_current_v1.ps1`, exact final scope.
+- Negative proof: intentionally wrong ExpectedPaths returned `ACCEPTANCE_PLAN_BLOCKED_CANDIDATE_SCOPE`, `plan_ready=False`.
+- Full Control Center candidate regression PASS: `ACTIONS=19`, `DIAGNOSE_ROUTES=8`, `LIVE_MUTATION=0`, `TRACKED_MUTATION=0`, `RUNTIME_STARTED=0`.
+- Safety boundary: `builder.acceptance.plan` returns `does_not_prove=mutation_authority_validator_pass_commit_success_or_acceptance`; a ready plan does not authorize or prove commit/acceptance.
+
+Return to parent:
+- Use chain `builder.preflight -> builder.candidate.status -> builder.acceptance.plan` for serious local repo slices instead of reconstructing these checks ad hoc.
+- Next mechanization target after acceptance: bounded acceptance execution/checkpoint procedure, but only after separating authority, pre-validator bundle, commit/hook observation, post-validator bundle and failure classification; do not create a magic auto-commit shortcut.

@@ -168,6 +168,17 @@
       "conflicts": []
     },
     {
+      "id": "builder.acceptance.plan",
+      "group": "DIAGNOSE",
+      "title": "Builder acceptance scope plan",
+      "kind": "OBSERVE",
+      "read_only": true,
+      "parallel_safe": true,
+      "handler": "builtin:builder_acceptance_plan",
+      "scope_note": "Compose candidate scope with the current pre-commit hook auto-staged outputs. Does not execute acceptance or grant authority.",
+      "conflicts": []
+    },
+    {
       "id": "builder.candidate.status",
       "group": "DIAGNOSE",
       "title": "Builder candidate scope checkpoint",
