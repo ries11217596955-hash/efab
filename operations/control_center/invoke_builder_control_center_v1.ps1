@@ -12,6 +12,8 @@ param(
   [string]$RunId='',
   [ValidateRange(1,100)][int]$RunTailLines=20,
   [string]$ExpectedHead='',
+  [string]$AcceptanceBaseHead='',
+  [string]$AcceptanceNewHead='',
   [string]$CommitMessage='',
   [string]$AuthorityPassportJson=''
 )
@@ -123,6 +125,19 @@ function Get-ManagedRunStatus{
  $status=if($timedOut){'TIMEOUT'}elseif($isLiveSource-and$observedAlive){'ACTIVE'}elseif($isLiveSource-and-not$observedAlive){'STALE_OR_UNFINALIZED'}elseif($sourceStatus-eq'completed_success'-and($null-eq$exitCode-or[int]$exitCode-eq0)){'PASS'}elseif($sourceStatus-match'fail|error'-or($null-ne$exitCode-and[int]$exitCode-ne0)){'FAILED'}else{'FINAL_OTHER'}
  $stdout=@();$stderr=@();$outPath=Join-Path $dir 'stdout.txt';$errPath=Join-Path $dir 'stderr.txt';if(Test-Path $outPath){$stdout=@(Get-Content $outPath -Tail $RunTailLines -ErrorAction SilentlyContinue|ForEach-Object{[string]$_})};if(Test-Path $errPath){$stderr=@(Get-Content $errPath -Tail $RunTailLines -ErrorAction SilentlyContinue|ForEach-Object{[string]$_})}
  [ordered]@{id='builder.run.status';status=[string]$status;run_id=[string]$RunId;source_status=[string]$sourceStatus;pid=[int]$pidValue;reported_process_alive=[bool]$s.process_alive;observed_process_alive=[bool]$observedAlive;exit_code=if($null-eq$exitCode){$null}else{[int]$exitCode};timed_out=[bool]$timedOut;started_at=[string]$s.started_at;last_seen_at=[string]$s.last_seen_at;checked_at=[string]$s.checked_at;finished_at=[string]$s.finished_at;elapsed_ms=if($null-eq$s.elapsed_ms){$null}else{[long]$s.elapsed_ms};run_dir=[string]$dir;state_path=[string]$statePath;stdout_tail=[string[]]$stdout;stderr_tail=[string[]]$stderr;tail_lines=[int]$RunTailLines;freshness=(Get-FreshnessEnvelope);does_not_prove='transport_health_mutation_authority_or_run_semantic_success'}
+}function Invoke-AcceptanceVerify{
+ if([string]::IsNullOrWhiteSpace($AcceptanceBaseHead)){return [ordered]@{id='builder.acceptance.verify';status='BLOCKED_ACCEPTANCE_BASE_HEAD_REQUIRED'}}
+ if([string]::IsNullOrWhiteSpace($AcceptanceNewHead)){return [ordered]@{id='builder.acceptance.verify';status='BLOCKED_ACCEPTANCE_NEW_HEAD_REQUIRED'}}
+ $ep=@($ExpectedPaths|Where-Object{$_}|ForEach-Object{$_.Replace('\','/')}|Sort-Object -Unique);if(-not$ep.Count){return [ordered]@{id='builder.acceptance.verify';status='BLOCKED_EXPECTED_PATHS_REQUIRED'}}
+ $current=(git rev-parse HEAD).Trim();if($current-ne$AcceptanceNewHead){return [ordered]@{id='builder.acceptance.verify';status='BLOCKED_ACCEPTANCE_HEAD_MISMATCH';expected_new_head=$AcceptanceNewHead;actual_head=$current}}
+ $parent=(git rev-parse ($AcceptanceNewHead+'^')).Trim();if($parent-ne$AcceptanceBaseHead){return [ordered]@{id='builder.acceptance.verify';status='BLOCKED_ACCEPTANCE_PARENT_MISMATCH';expected_base_head=$AcceptanceBaseHead;actual_parent=$parent}}
+ $actual=@(git show --name-only --format= $AcceptanceNewHead|Where-Object{$_}|ForEach-Object{$_.Replace('\','/')}|Sort-Object -Unique);$scopeDiff=@(Compare-Object ($ep|Sort-Object) ($actual|Sort-Object));if($scopeDiff.Count){return [ordered]@{id='builder.acceptance.verify';status='BLOCKED_ACCEPTANCE_COMMIT_SCOPE_MISMATCH';expected_paths=@($ep);actual_commit_paths=@($actual)}}
+ $dirtyBefore=@(git status --porcelain=v1 -uall);if($dirtyBefore.Count){return [ordered]@{id='builder.acceptance.verify';status='BLOCKED_ACCEPTANCE_REPO_DIRTY';dirty=@($dirtyBefore)}}
+ $ccPath=Join-Path $repo 'validators/validate_builder_control_center_v1.ps1';$bodyPath=Join-Path $repo 'validators/validate_agent_body_composition_map_current_v1.ps1'
+ $savedEap=$ErrorActionPreference;$ErrorActionPreference='Continue';try{$ccOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File $ccPath 2>&1|ForEach-Object{[string]$_});$ccExit=$LASTEXITCODE;$bodyOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File $bodyPath 2>&1|ForEach-Object{[string]$_});$bodyExit=$LASTEXITCODE}finally{$ErrorActionPreference=$savedEap}
+ $ccPass=($ccExit-eq0-and@($ccOut|Where-Object{$_ -like 'PASS_BUILDER_CONTROL_CENTER_V4|ACTIONS=22|DIAGNOSE_ROUTES=10*'}).Count-gt0);$bodyPass=($bodyExit-eq0-and@($bodyOut|Where-Object{$_ -like 'STATUS=PASS_AGENT_BODY_COMPOSITION_MAP_CURRENT_V1*'}).Count-gt0)
+ $dirtyAfter=@(git status --porcelain=v1 -uall);$pf=Get-BuilderPreflight;$candidate=Get-CandidateStatus;$plan=Get-AcceptancePlan;$cleanChain=($pf.status-eq'PREFLIGHT_PASS'-and$pf.mutation_ready-and$dirtyAfter.Count-eq0-and$plan.status-eq'ACCEPTANCE_PLAN_BLOCKED_CANDIDATE_SCOPE'-and-not$plan.plan_ready)
+ $ok=($ccPass-and$bodyPass-and$dirtyAfter.Count-eq0-and$cleanChain);[ordered]@{id='builder.acceptance.verify';status=if($ok){'ACCEPTANCE_VERIFIED'}else{'ACCEPTANCE_VERIFY_FAILED'};base_head=$AcceptanceBaseHead;new_head=$AcceptanceNewHead;expected_paths=@($ep);actual_commit_paths=@($actual);control_center_validator=[ordered]@{path='validators/validate_builder_control_center_v1.ps1';exit_code=$ccExit;pass=$ccPass;tail=@($ccOut|Select-Object -Last 8)};body_map_validator=[ordered]@{path='validators/validate_agent_body_composition_map_current_v1.ps1';exit_code=$bodyExit;pass=$bodyPass;tail=@($bodyOut|Select-Object -Last 8)};repo_clean_after=($dirtyAfter.Count-eq0);clean_chain_pass=$cleanChain;preflight=$pf;candidate=$candidate;acceptance_plan=$plan;freshness=(Get-FreshnessEnvelope);does_not_prove='mutation_authority_remote_push_live_proof_or_future_acceptance'}
 }function Get-CheckpointAuthority{
  if([string]::IsNullOrWhiteSpace($AuthorityPassportJson)){return [ordered]@{status='BLOCKED_AUTHORITY';reason='AUTHORITY_PASSPORT_REQUIRED'}}
  try{$p=$AuthorityPassportJson|ConvertFrom-Json}catch{return [ordered]@{status='BLOCKED_AUTHORITY';reason='AUTHORITY_PASSPORT_INVALID_JSON'}}
@@ -215,6 +230,7 @@ function Get-ManagedRunStatus{
   if($exit-ne0){return [ordered]@{id=$Id;status='DIAGNOSTIC_FAIL';capability=$cap;validator=$validator;validator_exit=$exit;output=$output.Trim()}}
   return [ordered]@{id=$Id;status=if($cap.status-eq'PRESENT_READY'){'DIAGNOSTIC_PASS'}else{'DIAGNOSTIC_PASS_WITH_GAPS'};capability=$cap;validator=$validator;validator_exit=$exit;validator_invoked=$true;output=$output.Trim()}
  }
+ if($Id -eq 'builder.acceptance.verify'){return Invoke-AcceptanceVerify}
  if($Id -eq 'builder.run.status'){return Get-ManagedRunStatus}
  if($Id -eq 'builder.acceptance.plan'){return Get-AcceptancePlan}
  if($Id -eq 'builder.candidate.status'){return Get-CandidateStatus}

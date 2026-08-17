@@ -194,6 +194,21 @@
       "conflicts": []
     },
     {
+      "id": "builder.acceptance.verify",
+      "group": "DIAGNOSE",
+      "title": "Builder post-checkpoint acceptance verifier",
+      "kind": "PREPARE_ARTIFACT",
+      "read_only": false,
+      "parallel_safe": false,
+      "handler": "builtin:builder_acceptance_verify",
+      "scope_note": "Verify one current local checkpoint against exact parent/new HEAD and exact commit paths, then reuse canonical Control Center and body-map validators. Produces proof only; grants no authority and performs no remote action.",
+      "conflicts": [
+        "school.start",
+        "agent.start",
+        "builder.checkpoint.create"
+      ]
+    },
+    {
       "id": "builder.acceptance.plan",
       "group": "DIAGNOSE",
       "title": "Builder acceptance scope plan",

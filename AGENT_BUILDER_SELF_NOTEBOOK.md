@@ -3305,3 +3305,19 @@ status: ACCEPTANCE_SLICE_PREPARED
 
 Return to parent:
 - After local acceptance and clean-chain proof, continue near-term plan Step 4: reuse-first mechanization of recurring repo/runtime procedures, preferring the unified Control Center over new helper scripts.
+## 2026-08-17 - Control Center post-checkpoint acceptance verifier
+marker: CONTROL_CENTER_BUILDER_ACCEPTANCE_VERIFY_20260817
+status: ACCEPTANCE_SLICE_PREPARED
+
+- Near-term plan Step 4 selected a repeated manual procedure by reuse evidence: every accepted slice still required manual post-checkpoint collection of commit scope, Control Center validator, body-map currentness, repo-clean, and clean-chain proof.
+- Legacy `phase162` post-accept validation/rollback files were inspected and classified as batch-specific historical machinery, not a universal current-repo acceptance verifier. They were not transplanted as a framework.
+- New candidate action: `builder.acceptance.verify`, `DIAGNOSE / PREPARE_ARTIFACT`, non-parallel. It is a proof aggregator, not an authority source.
+- Inputs: `AcceptanceBaseHead`, `AcceptanceNewHead`, and exact final `ExpectedPaths` from the prior `builder.acceptance.plan`.
+- Proof path: current HEAD must equal expected new HEAD; commit parent must equal expected base HEAD; actual commit paths must equal expected paths; repo must be clean; then reuse canonical `validators/validate_builder_control_center_v1.ps1` and `validators/validate_agent_body_composition_map_current_v1.ps1`; finally require clean preflight / blocked-no-candidate acceptance-plan state.
+- Output boundary: `ACCEPTANCE_VERIFIED` proves this scoped local acceptance pipeline only. `does_not_prove=mutation_authority_remote_push_live_proof_or_future_acceptance`.
+- Recursion boundary: the Control Center validator structurally validates this action but deliberately excludes it from the validator multi-diagnostic self-run, because the action itself invokes that validator. This avoids self-recursive validation without weakening the action contract.
+- Candidate full regression PASS: `PASS_BUILDER_CONTROL_CENTER_V4|ACTIONS=22|DIAGNOSE_ROUTES=10|...|LIVE_MUTATION=0|TRACKED_MUTATION=0|RUNTIME_STARTED=0`.
+- Reuse proof planned: accept this slice using the already accepted `builder.checkpoint.create`, then run the established manual post-proof once. Only after that independent acceptance may `builder.acceptance.verify` be exercised end-to-end on its own accepted commit as a use proof.
+
+Return to parent:
+- After local acceptance and end-to-end use proof, continue reuse-first Step 4 by selecting the next repeated manual operation only when concrete repetition evidence appears.
