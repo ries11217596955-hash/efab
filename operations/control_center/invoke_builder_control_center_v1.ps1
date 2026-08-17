@@ -9,6 +9,8 @@ param(
   [string]$SchoolTopics='codex_school_task_template_strength',
   [ValidateRange(1,10080)][int]$AgentDurationMinutes=1,
   [string[]]$ExpectedPaths=@(),
+  [string]$SchoolProofPath='',
+  [ValidateSet('telegram')][string]$NotificationChannel='telegram',
   [string]$RunId='',
   [ValidateRange(1,100)][int]$RunTailLines=20,
   [string]$ExpectedHead='',
@@ -110,6 +112,17 @@ function Get-BuilderOverview{
  )
  $overall=if(@($surface|Where-Object{$_.state -in @('BLOCKED','DEGRADED')}).Count){'DEGRADED'}else{'HEALTHY'}
  [ordered]@{id='builder.overview';status='OVERVIEW_READY';overall=$overall;surfaces=$surface;blockers=@($blockers);impact=@($impact);recommended_next_action=$recommended;freshness=(Get-FreshnessEnvelope 60);source_actions=@('repo.status','school.status','agent.status','memory.status','inventory.status','capability.status','remote_access.status','control_center registry');does_not_prove=@('inventory semantic currentness unless inventory.diagnose is run','GPT connector/session health','capability readiness beyond the current map validator and attached proof')}
+}
+function Get-SchoolNotificationPlan{
+ if([string]::IsNullOrWhiteSpace($SchoolProofPath)){return [ordered]@{id='school.notification.plan';status='SCHOOL_PROOF_PATH_REQUIRED';delivery_attempted=$false}}
+ $full=[IO.Path]::GetFullPath((Join-Path $repo $SchoolProofPath));$repoFull=[IO.Path]::GetFullPath($repo);if(-not$full.StartsWith($repoFull,[StringComparison]::OrdinalIgnoreCase)){return [ordered]@{id='school.notification.plan';status='SCHOOL_PROOF_OUTSIDE_REPO';delivery_attempted=$false}}
+ if(-not(Test-Path -LiteralPath $full -PathType Leaf)){return [ordered]@{id='school.notification.plan';status='SCHOOL_PROOF_NOT_FOUND';proof_path=$SchoolProofPath;delivery_attempted=$false}}
+ try{$proof=Get-Content -LiteralPath $full -Raw|ConvertFrom-Json}catch{return [ordered]@{id='school.notification.plan';status='SCHOOL_PROOF_INVALID_JSON';proof_path=$SchoolProofPath;delivery_attempted=$false}}
+ $required=@('status','run_id','public_mode','target_accepted','ready_atoms','finalizer_status');$missing=@($required|Where-Object{-not($proof.PSObject.Properties.Name -contains $_)-or$null-eq$proof.$_-or[string]::IsNullOrWhiteSpace([string]$proof.$_)});if($missing.Count){return [ordered]@{id='school.notification.plan';status='SCHOOL_PROOF_FIELDS_MISSING';missing_fields=[string[]]$missing;delivery_attempted=$false}}
+ $proofPass=([string]$proof.status -like 'PASS_*');$accepted=[int]$proof.target_accepted;$ready=[int]$proof.ready_atoms;$topics=if($proof.PSObject.Properties.Name -contains 'requested_topics'){[string]$proof.requested_topics}else{''};$proofHash=(Get-FileHash -LiteralPath $full -Algorithm SHA256).Hash.ToLowerInvariant()
+ $botPresent=![string]::IsNullOrWhiteSpace([Environment]::GetEnvironmentVariable('TELEGRAM_BOT_TOKEN','Process'));$chatPresent=![string]::IsNullOrWhiteSpace([Environment]::GetEnvironmentVariable('TELEGRAM_CHAT_ID','Process'));$transportReady=($botPresent-and$chatPresent)
+ $resultLabel=if($proofPass){'PASS'}else{'FAILED'};$message=("School finished: {0} | run={1} | mode={2} | accepted={3}/{4} | topics={5} | finalizer={6}" -f $resultLabel,[string]$proof.run_id,[string]$proof.public_mode,$accepted,$ready,$topics,[string]$proof.finalizer_status)
+ [ordered]@{id='school.notification.plan';status='NOTIFICATION_PLAN_READY';channel=$NotificationChannel;proof_path=$SchoolProofPath;proof_sha256=$proofHash;school=[ordered]@{run_id=[string]$proof.run_id;proof_status=[string]$proof.status;pass=$proofPass;mode=[string]$proof.public_mode;target_accepted=$accepted;ready_atoms=$ready;topics=$topics;finalizer_status=[string]$proof.finalizer_status};payload=[ordered]@{text=$message};credential_refs=[string[]]@('TELEGRAM_BOT_TOKEN','TELEGRAM_CHAT_ID');credential_presence=[ordered]@{bot_token=$botPresent;chat_id=$chatPresent};transport_state=if($transportReady){'READY_FOR_TRANSPORT'}else{'MISSING_CREDENTIALS'};delivery_attempted=$false;does_not_prove='notification_delivery_transport_configuration_or_future_school_completion'}
 }
 function Get-ManagedRunPhaseSummary{
  param([int]$RootPid,[bool]$IsActive)
@@ -242,6 +255,7 @@ function Get-ManagedRunStatus{
   return [ordered]@{id=$Id;status=if($cap.status-eq'PRESENT_READY'){'DIAGNOSTIC_PASS'}else{'DIAGNOSTIC_PASS_WITH_GAPS'};capability=$cap;validator=$validator;validator_exit=$exit;validator_invoked=$true;output=$output.Trim()}
  }
  if($Id -eq 'builder.acceptance.verify'){return Invoke-AcceptanceVerify}
+ if($Id -eq 'school.notification.plan'){return Get-SchoolNotificationPlan}
  if($Id -eq 'builder.run.status'){return Get-ManagedRunStatus}
  if($Id -eq 'builder.acceptance.plan'){return Get-AcceptancePlan}
  if($Id -eq 'builder.candidate.status'){return Get-CandidateStatus}

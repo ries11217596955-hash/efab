@@ -1,25 +1,22 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-08-17T16:02:11.1731989+04:00",
+    "checked_at":  "2026-08-17T19:05:48.3225705+04:00",
     "branch":  "main",
-    "observed_head":  "015cc5777a9c228c64b04f99cfbdb19109b78c89",
-    "subject_head":  "015cc5777a9c228c64b04f99cfbdb19109b78c89",
+    "observed_head":  "5da3d44ec971d7f7d6918cb081de15e216b29956",
+    "subject_head":  "5da3d44ec971d7f7d6918cb081de15e216b29956",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
                           "AGENT_BUILDER_SELF_NOTEBOOK.md",
-                          "operations/control_center/invoke_builder_control_center_v1.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
-                          "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "validators/validate_builder_control_center_v1.ps1"
+                          "reports/self_development/branch_agnostic_map_refresh_result.json"
                       ],
     "structural_paths":  [
-                             "operations/control_center/invoke_builder_control_center_v1.ps1",
-                             "validators/validate_builder_control_center_v1.ps1"
+
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -32,7 +29,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  2301,
-                                    "sha256":  "856b538f5dc8a15f87bed1fb1a7cf54c1928a6ddcff60d592237f3af363c4973"
+                                    "sha256":  "33b1dbb7aed5cd5cece3be58851e4a9ddcf03903309f840031803dbce17b01d1"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -65,5 +62,5 @@
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-08-17T16:06:23.3406292+04:00"
+    "refreshed_at":  "2026-08-17T19:10:01.2818932+04:00"
 }

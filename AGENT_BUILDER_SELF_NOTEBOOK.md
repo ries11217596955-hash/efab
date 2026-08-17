@@ -3353,3 +3353,18 @@ Next near-term plan:
 
 Return to parent:
 - Continue Owner work through the accepted Control Center by default. The next self-build atom must come from concrete operational evidence, not feature speculation.
+## 2026-08-17 - School completion notification plan
+marker: CONTROL_CENTER_SCHOOL_NOTIFICATION_PLAN_20260817
+status: ACCEPTANCE_SLICE_PREPARED
+
+- Owner requested asynchronous completion notification preparation while School-5000 was running. By the time implementation preflight completed, School had already stopped cleanly; repo was clean and `builder.preflight` allowed LAB mutation.
+- Real School-5000 proof fixture: `operations/reports/CANONICAL_EXACT_COUNT_CYCLE_RUN_20260817_184403.json`, status `PASS_CANONICAL_EXACT_COUNT_CYCLE_TEST_V1`, target_accepted=5000, ready_atoms=5000, micro_batches=10. Related finalizer proof also reported pass_status=True.
+- New candidate action: `school.notification.plan`, DIAGNOSE / PREPARE_ARTIFACT / read-only / parallel-safe.
+- Contract: read one completed School proof inside repo; require completion identity fields; hash the proof; build a Telegram-ready text payload; expose only credential refs `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` plus presence booleans; never expose secret values and never send network traffic.
+- Real fixture micro-trial PASS: `NOTIFICATION_PLAN_READY`, School pass=True, accepted=5000/5000, transport_state=MISSING_CREDENTIALS, delivery_attempted=False.
+- Integration failure-deepening: first full regression failed because validator expectation for the existing mass DIAGNOSE self-run was incorrectly increased from 9 to 10 even though `school.notification.plan` requires `SchoolProofPath` and is deliberately excluded from no-argument self-run. Test expectation was repaired back to 9; action/registry counts remain 23 actions / 11 DIAGNOSE.
+- Full regression after repair PASS: `PASS_BUILDER_CONTROL_CENTER_V4|ACTIONS=23|DIAGNOSE_ROUTES=11|...|LIVE_MUTATION=0|TRACKED_MUTATION=0|RUNTIME_STARTED=0`.
+- Boundary: this atom proves completion-message planning only. It does not prove Telegram transport configuration or message delivery. Real send transport is a separate future atom after credential setup and a bounded test message.
+
+Return to parent:
+- Accept this plan atom through `builder.checkpoint.create -> builder.acceptance.verify`. Then build Telegram transport separately; do not embed tokens/chat IDs in repo.

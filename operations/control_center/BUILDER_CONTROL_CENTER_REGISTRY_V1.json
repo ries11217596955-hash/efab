@@ -168,6 +168,16 @@
       "conflicts": []
     },
     {
+      "id": "school.notification.plan",
+      "group": "DIAGNOSE",
+      "title": "School completion notification plan",
+      "kind": "PREPARE_ARTIFACT",
+      "read_only": true,
+      "parallel_safe": true,
+      "handler": "builtin:school_notification_plan",
+      "scope_note": "Read one completed School proof and build a Telegram-ready notification payload. Never sends network traffic or reveals secret values."
+    },
+    {
       "id": "builder.checkpoint.create",
       "group": "MAINTAIN",
       "title": "Builder local checkpoint create",
