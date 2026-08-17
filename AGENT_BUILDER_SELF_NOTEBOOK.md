@@ -3242,3 +3242,32 @@ Short execution queue:
 
 Return to parent:
 - Execute step 1 now. Do not start child-agent production yet; self-build/control reliability remains the current parent task.
+## 2026-08-17 - Near-term plan step 1 closure: settings provenance and CONTROL_CENTER_FIRST candidate
+marker: CONTROL_CENTER_FIRST_SETTINGS_GAP_20260817
+status: STEP_1_CLOSED_WITH_BOUNDED_SETTINGS_GAP
+
+Observed provenance boundary:
+- Current R6 Knowledge surfaces identify `release_id=EF_SETTINGS_V4_2_RELEASE_CANDIDATE_R6` and one `source_graph_hash`, and canonical settings law says author in Rule Graph and compile Instructions/Knowledge.
+- Exact release/hash search found no authoring Rule Graph/compiler in tracked `H:\efab` or its git history.
+- Bounded external search found no exact current release/hash source in `H:\VAULT`; File Library exact queries found current compiled R6 surfaces and legacy GPT-settings maintenance agreements, but no proven R6 Rule Graph/compiler artifact.
+- Legacy V0.35/V0.38 material is historical process evidence only: it shows settings recomposition used a settings archive + Program Ledger in a separate workspace. It is not current R6 authoring proof.
+- Claim boundary: `CURRENT_R6_AUTHORING_SOURCE_NOT_AVAILABLE_IN_SCANNED_CONTOURS`; this is not a global absence claim.
+
+Rule Admission candidate: `LAW_CONTROL_CENTER_FIRST`
+- status: `SPEC_CANDIDATE / NOT_COMPILED / NOT_INSTALLED`.
+- gap: Builder can own reusable Control Center actions but cross-chat behavior can forget to consult them and recreate repeated terminal procedures.
+- owner: Builder behavior/routing owner; exact canonical Rule Graph owner must be restored before admission.
+- criticality: K1 candidate because it prevents repeated unsafe/duplicated operational routes without granting authority.
+- activation: OWNER_TASK, REPO_TERMINAL, RUNTIME_OBSERVE, SELF_DEVELOPMENT when a repeated operational procedure is about to be composed.
+- required behavior: before reconstructing repeated repo/runtime commands or helper scripts, check the unified Builder Control Center for an applicable accepted/proven action; prefer it when it owns the operation.
+- fallback: bounded primitives are allowed when the required action is absent, not applicable, unhealthy, unauthorized, or not proven for the required scope.
+- forbidden: requiring an Owner reminder; treating Control Center PASS as mutation authority; inventing a repo/AGENTS/settings substitute when canonical settings authoring source is unavailable.
+- validators candidate: verify active Instructions contain the rule once; topology references resolve to the Control Center discovery/invocation contract; no volatile action-count/status snapshot; no authority escalation.
+- negative tests candidate: new chat + repeated repo task selects Control Center without Owner reminder; missing action falls back to bounded primitive; unhealthy/unauthorized action does not execute; Control Center PASS does not authorize mutation.
+- supersession/integration: merge into existing Builder behavior/routing law family rather than add a parallel settings file; remove any duplicate reminder wording during Rule Admission.
+- net complexity target: one routing preference should replace repeated ad-hoc operational reconstruction and avoid new helper scripts.
+- install gate: requires restored Rule Graph/compiler source, release handshake, rollback package, Owner SETTINGS_INSTALL, then cross-chat smoke/stability proof.
+
+Return to parent:
+- Step 1 is closed at the available proof boundary. Do not repeat provenance scans without a new source pointer.
+- Execute near-term plan step 2 now: normalize `builder.run.status` for proven live Bridge states such as `wait_expired_still_running`.
