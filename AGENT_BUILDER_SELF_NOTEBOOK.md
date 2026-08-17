@@ -3368,3 +3368,19 @@ status: ACCEPTANCE_SLICE_PREPARED
 
 Return to parent:
 - Accept this plan atom through `builder.checkpoint.create -> builder.acceptance.verify`. Then build Telegram transport separately; do not embed tokens/chat IDs in repo.
+## 2026-08-17 - Notification-plan acceptance forward repair
+marker: CONTROL_CENTER_NOTIFICATION_ACCEPTANCE_FORWARD_REPAIR_20260817
+status: ACCEPTANCE_SLICE_PREPARED
+
+- `school.notification.plan` checkpoint was created at `656629e9823fecbb10b99e29e4d25fc9849bf84b` with exact 8-file final scope.
+- First post-checkpoint `builder.acceptance.verify` returned `ACCEPTANCE_VERIFY_FAILED`: body-map PASS, repo clean, clean-chain PASS, but Control Center validator pass=False.
+- Failure deepened to a stale self-contract in `builder.acceptance.verify`: it hardcoded the old Control Center marker `ACTIONS=22|DIAGNOSE_ROUTES=10`, while the accepted notification-plan registry/validator now correctly reports `ACTIONS=23|DIAGNOSE_ROUTES=11`.
+- The notifier implementation itself remained semantically healthy: real School-5000 proof still returned `NOTIFICATION_PLAN_READY`, pass=True, accepted=5000/5000, transport=MISSING_CREDENTIALS, delivery=False.
+- Forward-only repair replaces the hardcoded action/route numbers with a strict PASS regex that requires numeric counts plus `OVERVIEW=PASS`, `REMOTE_SCOPE=PASS`, `MULTI_DIAG=PASS`, `LIVE_MUTATION=0`, `TRACKED_MUTATION=0`, and `RUNTIME_STARTED=0`. A validator guard prevents reintroduction of the obsolete 22/10 literal.
+- Positive/negative dynamic-marker micro-trial PASS; malformed non-numeric marker rejected.
+- Full current-state Control Center regression PASS: `ACTIONS=23|DIAGNOSE_ROUTES=11|...|LIVE_MUTATION=0|TRACKED_MUTATION=0|RUNTIME_STARTED=0`.
+- History was not rewritten. The parent notifier checkpoint remains a checkpoint, not an accepted slice, until this forward repair is checkpointed and the repaired `builder.acceptance.verify` accepts the new current HEAD.
+- Wrapper lessons: capturing validator stderr under an outer `$ErrorActionPreference=Stop` can turn benign LF/CRLF warnings into `NativeCommandError`; do not confuse that wrapper artifact with validator semantics. Also keep whitespace between `throw` and its string literal in one-line PowerShell wrappers.
+
+Return to parent:
+- Checkpoint this forward repair through `builder.checkpoint.create`; then use the repaired `builder.acceptance.verify` on the repair commit. Fresh acceptance plus the already-proven notifier behavior closes the combined notification-plan recovery chain. Telegram delivery remains a separate future transport atom.
