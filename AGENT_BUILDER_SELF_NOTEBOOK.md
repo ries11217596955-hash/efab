@@ -3321,3 +3321,18 @@ status: ACCEPTANCE_SLICE_PREPARED
 
 Return to parent:
 - After local acceptance and end-to-end use proof, continue reuse-first Step 4 by selecting the next repeated manual operation only when concrete repetition evidence appears.
+## 2026-08-17 - Managed-run phase summary reuse atom
+marker: CONTROL_CENTER_RUN_STATUS_PHASE_SUMMARY_20260817
+status: ACCEPTANCE_SLICE_PREPARED
+
+- Step-4 reuse proof completed for the prior slice: `builder.checkpoint.create` created commit `2722fedf0546a48ddadf7f37d88e188bcc98ee6b`; independent acceptance passed; then `builder.acceptance.verify` returned `ACCEPTANCE_VERIFIED` with Control Center validator PASS, body-map PASS, repo clean, and clean-chain PASS.
+- Resource incident lesson: an old stale diagnostic run `managed_run-20260817-084846-d0fffe7f` remained alive for hours, consumed about 899 MB working set, and reduced free virtual memory to about 346 MB, causing an `Out of memory` validator failure. Fresh run ownership proved it was an obsolete `builder.run.status` benchmark; its runtime limit then closed it. Free virtual memory recovered to about 9625 MB and the same semantic validator passed. Resource failure must not be misclassified as semantic failure.
+- New reuse gap: during long checkpoint/validator runs, Builder repeatedly used manual process-tree inspection just to identify phase. Reuse scan found no canonical generic managed-run phase observer, so no new action or helper script was created.
+- Existing `builder.run.status` now returns a bounded phase summary: `descendant_count`, `active_phase`, and allowlisted `phase_evidence` (`map_refresh`, `control_center_validator`, `body_map_validator`, `pre_commit_hook`, `git_commit`, `powershell_child`). Raw descendant command lines are never surfaced.
+- Harmless active micro-trial PASS: managed run `managed_run-20260817-114725-058a2866` returned `ACTIVE`, `descendant_count=1`, `active_phase=powershell_child`, with no raw command fields.
+- Completed branch PASS on the same run: `PASS`, `descendant_count=0`, `active_phase=not_active`, empty phase evidence.
+- Full regression PASS: `PASS_BUILDER_CONTROL_CENTER_V4|ACTIONS=22|DIAGNOSE_ROUTES=10|...|LIVE_MUTATION=0|TRACKED_MUTATION=0|RUNTIME_STARTED=0`.
+- Boundary unchanged: `builder.run.status` remains observe-only and does not start, stop, kill, retry, or grant authority for managed runs.
+
+Return to parent:
+- Accept this slice through `builder.checkpoint.create -> builder.acceptance.verify`. Then continue the reuse-first Step-4 loop only when another repeated manual operation is proven by concrete evidence.
