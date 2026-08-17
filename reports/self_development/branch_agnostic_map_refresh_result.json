@@ -1,16 +1,15 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-08-17T15:51:31.7868130+04:00",
+    "checked_at":  "2026-08-17T16:02:11.1731989+04:00",
     "branch":  "main",
-    "observed_head":  "2722fedf0546a48ddadf7f37d88e188bcc98ee6b",
-    "subject_head":  "2722fedf0546a48ddadf7f37d88e188bcc98ee6b",
+    "observed_head":  "015cc5777a9c228c64b04f99cfbdb19109b78c89",
+    "subject_head":  "015cc5777a9c228c64b04f99cfbdb19109b78c89",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
                           "AGENT_BUILDER_SELF_NOTEBOOK.md",
-                          "operations/control_center/BUILDER_CONTROL_CENTER_REGISTRY_V1.json",
                           "operations/control_center/invoke_builder_control_center_v1.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
@@ -19,7 +18,6 @@
                           "validators/validate_builder_control_center_v1.ps1"
                       ],
     "structural_paths":  [
-                             "operations/control_center/BUILDER_CONTROL_CENTER_REGISTRY_V1.json",
                              "operations/control_center/invoke_builder_control_center_v1.ps1",
                              "validators/validate_builder_control_center_v1.ps1"
                          ],
@@ -67,5 +65,5 @@
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-08-17T15:55:49.0609452+04:00"
+    "refreshed_at":  "2026-08-17T16:06:23.3406292+04:00"
 }

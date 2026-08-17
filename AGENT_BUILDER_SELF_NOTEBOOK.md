@@ -3336,3 +3336,20 @@ status: ACCEPTANCE_SLICE_PREPARED
 
 Return to parent:
 - Accept this slice through `builder.checkpoint.create -> builder.acceptance.verify`. Then continue the reuse-first Step-4 loop only when another repeated manual operation is proven by concrete evidence.
+## 2026-08-17 - Control Center phase-summary accepted; next near-term plan
+marker: CONTROL_CENTER_NEXT_PLAN_AFTER_PHASE_ACCEPTANCE_20260817
+status: PLAN_ACTIVE
+
+Accepted closure:
+- `builder.run.status` phase-summary slice is locally accepted at commit `015cc5777a9c228c64b04f99cfbdb19109b78c89`.
+- `builder.checkpoint.create` created the checkpoint with exact predicted scope; `builder.acceptance.verify` returned `ACCEPTANCE_VERIFIED` with Control Center validator PASS, body-map PASS, repo clean, and clean-chain PASS.
+- Real use proof replaced manual process-tree inspection during the same checkpoint/acceptance flow: observed phases included `map_refresh`, `body_map_validator`, and `control_center_validator` through the existing `builder.run.status` action.
+- Control Center remains at 22 actions; no new action is justified without concrete repetition evidence.
+
+Next near-term plan:
+1. **Evidence-gated reuse.** Use the accepted Control Center chain first for owned repeated repo/runtime operations (`preflight -> candidate.status -> acceptance.plan -> checkpoint.create -> run.status -> acceptance.verify`). Add or extend an action only after a real repeated manual gap is proven; otherwise use bounded primitives.
+2. **Cross-chat reflex boundary.** Preserve `CONTROL_CENTER_FIRST` as `SETTINGS_SPEC_CANDIDATE / NOT_INSTALLED`. Do not repeat repo provenance scans or invent AGENTS/repo substitutes. Resume only when a real canonical Rule Graph/compiler/settings-install source becomes available; then run Rule Admission -> merge/compile -> release validation/rollback -> Owner SETTINGS_INSTALL -> fresh-chat smoke/stability proof.
+3. **Maturity before reproduction.** Accumulate real use, recovery, negative-test, and stability proof of the unified Control Center across Owner tasks. Do not start child-agent production merely because the prompt/scaffold layer is available; revisit the child-agent capability gate only when Builder can define, create, validate, launch, repair, quarantine, and maintain through proven mechanisms.
+
+Return to parent:
+- Continue Owner work through the accepted Control Center by default. The next self-build atom must come from concrete operational evidence, not feature speculation.
