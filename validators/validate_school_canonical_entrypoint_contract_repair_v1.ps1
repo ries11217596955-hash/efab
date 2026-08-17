@@ -26,6 +26,8 @@ foreach($needle in @('Global\EFAB_SCHOOL_SINGLE_PUBLIC_LAUNCH_V1','System.Thread
 foreach($forbidden in @('school_singleton_v1','ACTIVE_RUN.lock.json','SCHOOL_SINGLETON_ACQUIRE_RACE')){
   if($entryText.Contains($forbidden)){ AddErr ('school_redundant_filesystem_singleton_present:'+ $forbidden) }
 }
+if(-not $entryText.Contains("if([int]$mb.sequence -lt [int]$resumeNextOrdinal){ AddEvent 'MOCK_RESUME_SKIP_COMPLETED_PREFIX'")){ AddErr 'school_mock_resume_prefix_skip_missing' }
+if(-not $entryText.Contains('RESUME_NONCONTIGUOUS_COMPLETED_PREFIX')){ AddErr 'school_resume_noncontiguous_prefix_guard_missing' }
 if($entryText -like '*$p.WaitForExit($CodexTimeoutSeconds*1000)*'){ AddErr 'school_streaming_waitforexit_before_consume_present' }
 foreach($needle in @('STREAM_READY_WINDOW_DETECTED','STREAM_DIGEST_WINDOW_WAIT','STREAM_BATCH_CONSUMED','streaming_enabled','producer_completed_at','first_consume_started_at','stream_batches','overlap_proven','DigestWindowAtoms = 1000','MicroBatchSize=100','-MaxConsumeBatches $maxConsume','Resolve-SchoolPythonRuntime','PASS_SCHOOL_PYTHON_RUNTIME_RESOLUTION_V1','EFAB_PYTHON_EXE','PYTHON_RUNTIME_RESOLUTION')){
   if($entryText -notlike ('*'+$needle+'*')){ AddErr ('school_streaming_contract_missing:'+ $needle) }

@@ -505,6 +505,7 @@ function Drain-ReadyExpectedStreamBatches([string]$Reason){
 if($ProducerMode -eq 'MockProducer'){
   $mockProducerCompleted=$true
   foreach($mb in @($task.micro_batches)){
+    if([int]$mb.sequence -lt [int]$resumeNextOrdinal){ AddEvent 'MOCK_RESUME_SKIP_COMPLETED_PREFIX' @{sequence=[int]$mb.sequence; micro_batch_id=[string]$mb.micro_batch_id; resume_next_ordinal=[int]$resumeNextOrdinal}; continue }
     $rows=New-Object System.Collections.ArrayList
     for($i=1;$i -le [int]$mb.candidate_count;$i++){
       $globalIndex=((([int]$mb.sequence)-1)*$MicroBatchSize)+$i
