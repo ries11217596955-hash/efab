@@ -103,7 +103,15 @@ function Get-BuilderOverview{
  $overall=if(@($surface|Where-Object{$_.state -in @('BLOCKED','DEGRADED')}).Count){'DEGRADED'}else{'HEALTHY'}
  [ordered]@{id='builder.overview';status='OVERVIEW_READY';overall=$overall;surfaces=$surface;blockers=@($blockers);impact=@($impact);recommended_next_action=$recommended;freshness=(Get-FreshnessEnvelope 60);source_actions=@('repo.status','school.status','agent.status','memory.status','inventory.status','capability.status','remote_access.status','control_center registry');does_not_prove=@('inventory semantic currentness unless inventory.diagnose is run','GPT connector/session health','capability readiness beyond the current map validator and attached proof')}
 }
-function Invoke-Diagnostic([string]$Id){
+function Get-BuilderPreflight{
+ $repoState=Get-RepoStatus;$school=Get-SchoolStatus;$agent=Get-AgentStatus;$memory=Get-MemoryStatus;$blockers=@()
+ if($repoState.status -ne 'CLEAN'){$blockers+='REPO_DIRTY'}
+ if($school.status -eq 'RUNNING'){$blockers+='SCHOOL_RUNTIME_ACTIVE'}
+ if($agent.status -eq 'RUNNING'){$blockers+='AGENT_RUNTIME_ACTIVE'}
+ if($memory.status -ne 'PRESENT'){$blockers+='ACTIVE_MEMORY_NOT_READY'}
+ $agents=if(Test-Path 'AGENTS.md'){'AGENTS.md'}else{$null};if(-not$agents){$blockers+='APPLICABLE_AGENTS_MISSING'}
+ [ordered]@{id='builder.preflight';status=if($blockers.Count){'PREFLIGHT_BLOCKED'}else{'PREFLIGHT_PASS'};mutation_ready=($blockers.Count-eq0);repo=$repoState;runtime=[ordered]@{school=$school;agent=$agent};protected_memory=[ordered]@{status=$memory.status;root=$memory.root;cell_count=$memory.cell_count;protected=$true};applicable_agents=$agents;blockers=@($blockers);freshness=(Get-FreshnessEnvelope);does_not_prove='mutation_authority_or_action_completion'}
+}function Invoke-Diagnostic([string]$Id){
  if($Id -eq 'runtime.diagnose'){
    $school=Get-SchoolStatus;$agent=Get-AgentStatus
    $status=if($school.status -eq 'RUNNING' -or $agent.status -eq 'RUNNING'){'DIAGNOSTIC_RUNNING'}elseif($school.status -eq 'RECOVERY_OR_QUEUED'){'DIAGNOSTIC_ATTENTION'}else{'DIAGNOSTIC_PASS'}
@@ -139,6 +147,7 @@ function Invoke-Diagnostic([string]$Id){
   if($exit-ne0){return [ordered]@{id=$Id;status='DIAGNOSTIC_FAIL';capability=$cap;validator=$validator;validator_exit=$exit;output=$output.Trim()}}
   return [ordered]@{id=$Id;status=if($cap.status-eq'PRESENT_READY'){'DIAGNOSTIC_PASS'}else{'DIAGNOSTIC_PASS_WITH_GAPS'};capability=$cap;validator=$validator;validator_exit=$exit;validator_invoked=$true;output=$output.Trim()}
  }
+ if($Id -eq 'builder.preflight'){return Get-BuilderPreflight}
  if($Id -eq 'control_center.diagnose'){
    $errors=@();$regPath='operations/control_center/BUILDER_CONTROL_CENTER_REGISTRY_V1.json';$ctlPath='operations/control_center/invoke_builder_control_center_v1.ps1'
    try{$rr=Get-Content $regPath -Raw|ConvertFrom-Json}catch{$errors+='registry_json_invalid';$rr=$null}

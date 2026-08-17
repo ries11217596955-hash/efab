@@ -1,27 +1,28 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-08-17T09:58:36.7220950+04:00",
+    "checked_at":  "2026-08-17T11:40:51.9009053+04:00",
     "branch":  "main",
-    "observed_head":  "2e719c224b4d1da79d68384267f58fe8f6858bd6",
-    "subject_head":  "2e719c224b4d1da79d68384267f58fe8f6858bd6",
+    "observed_head":  "8f09f6aade304d2f3d8f06628f77d0581373eb35",
+    "subject_head":  "8f09f6aade304d2f3d8f06628f77d0581373eb35",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
                           "AGENT_BUILDER_SELF_NOTEBOOK.md",
                           "docs/operations/CAPABILITY_INVOCATION_MAP_V1.md",
+                          "operations/self_model/export_capability_invocation_map_v1.ps1",
                           "operations/self_model/validate_capability_invocation_map_v1.ps1",
                           "reports/self_development/CAPABILITY_INVOCATION_MAP_V1.json",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json",
-                          "tasks/TASK_SELF_BUILD_PROGRAM_GENERATOR_V1_001.json",
                           "tests/self_development/CAPABILITY_INVOCATION_MAP_V1_PROOF.json"
                       ],
     "structural_paths":  [
                              "docs/operations/CAPABILITY_INVOCATION_MAP_V1.md",
+                             "operations/self_model/export_capability_invocation_map_v1.ps1",
                              "operations/self_model/validate_capability_invocation_map_v1.ps1",
                              "reports/self_development/CAPABILITY_INVOCATION_MAP_V1.json",
                              "tests/self_development/CAPABILITY_INVOCATION_MAP_V1_PROOF.json"
@@ -37,7 +38,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  2301,
-                                    "sha256":  "f720221cb83ef917d51e2f960e83ca68ed3432e9cf9968ecacd9baae79f6d6d5"
+                                    "sha256":  "b60619be2be85fb8613bb3c653294754919ee9f8741a83dc69eb2059504b0fc2"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -70,5 +71,5 @@
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-08-17T10:02:47.3499071+04:00"
+    "refreshed_at":  "2026-08-17T11:45:07.2646559+04:00"
 }

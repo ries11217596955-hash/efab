@@ -168,6 +168,17 @@
       "conflicts": []
     },
     {
+      "id": "builder.preflight",
+      "group": "DIAGNOSE",
+      "title": "Builder mutation preflight",
+      "kind": "OBSERVE",
+      "read_only": true,
+      "parallel_safe": true,
+      "handler": "builtin:builder_preflight",
+      "scope_note": "Fresh local repo/runtime/protected-memory readiness. Does not grant mutation authority.",
+      "conflicts": []
+    },
+    {
       "id": "control_center.diagnose",
       "group": "DIAGNOSE",
       "title": "Diagnose Control Center registry and routing",

@@ -3148,3 +3148,16 @@ status: VALIDATED_LOCAL_CANDIDATE_NOT_YET_COMMITTED
 
 Return to parent:
 - After local acceptance and clean-state proof, continue reuse-first bounded analysis of the remaining 29 validator-ref gaps. Do not infer owner/invocation/maturity/live readiness from this validator link.
+## 2026-08-17 - Control Center builder.preflight reuse atom
+marker: CONTROL_CENTER_BUILDER_PREFLIGHT_20260817
+status: VALIDATED_LOCAL_CANDIDATE_PENDING_COMMIT
+
+- Added one existing-Control-Center action `builder.preflight`; no new launcher or organ.
+- Contract: read-only DIAGNOSE action returns fresh repo state, School/Agent runtime state, protected active-memory readiness, applicable `AGENTS.md`, blockers, freshness, and `mutation_ready`.
+- Safety boundary is explicit: result includes `does_not_prove=mutation_authority_or_action_completion`; preflight evidence never grants mutation authority.
+- Candidate regression PASS: `PASS_BUILDER_CONTROL_CENTER_V4|ACTIONS=17|DIAGNOSE_ROUTES=6|OVERVIEW=PASS|REMOTE_SCOPE=PASS|MULTI_DIAG=PASS|LIVE_MUTATION=0|TRACKED_MUTATION=0|RUNTIME_STARTED=0`.
+- Dirty-candidate negative behavior PASS: `PREFLIGHT_BLOCKED`, `mutation_ready=False`, blocker `REPO_DIRTY`, while School/Agent were STOPPED, active memory PRESENT, and `AGENTS.md` resolved.
+
+Return to parent:
+- After clean local acceptance, use `builder.preflight` as the canonical fresh pre-mutation observer instead of reconstructing repo/runtime/memory checks ad hoc.
+- Continue Control Center mechanization with the next recurring bounded process rather than creating parallel launchers.
