@@ -58,6 +58,12 @@ function Get-StartReadiness([string]$Id){
    if($memory.status -ne 'PRESENT'){return [ordered]@{id=$Id;status='BLOCKED';reason='Active compact memory incomplete';canonical_entrypoint='operations/school/run_agent_school.ps1'}}
    return [ordered]@{id=$Id;status='READY';canonical_entrypoint='operations/school/run_agent_school.ps1';parameters=[ordered]@{Count=$SchoolCount;Mode=$SchoolMode;Topics=$SchoolTopics}}
  }
+ if($Id -eq 'school.notification.send'){
+   $plan=Get-SchoolNotificationPlan
+   if($plan.status -ne 'NOTIFICATION_PLAN_READY'){return [ordered]@{id=$Id;status='BLOCKED_NOTIFICATION_PLAN';reason=[string]$plan.status;canonical_entrypoint='Telegram Bot API sendMessage'}}
+   if($plan.transport_state -ne 'READY_FOR_TRANSPORT'){return [ordered]@{id=$Id;status='BLOCKED_CREDENTIALS_REQUIRED';reason='TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID environment variables required';canonical_entrypoint='Telegram Bot API sendMessage';proof_sha256=[string]$plan.proof_sha256}}
+   return [ordered]@{id=$Id;status='READY';canonical_entrypoint='Telegram Bot API sendMessage';parameters=[ordered]@{channel='telegram';proof_sha256=[string]$plan.proof_sha256;credential_source='process_environment'}}
+ }
  if($Id -eq 'agent.start'){
    if($agent.status -eq 'RUNNING'){return [ordered]@{id=$Id;status='ALREADY_RUNNING';reason='Agent runtime already active';canonical_entrypoint='operations/autonomous_inner_motor/start_agent_life_v1.ps1'}}
    if($school.status -ne 'STOPPED'){return [ordered]@{id=$Id;status='BLOCKED';reason='School runtime/recovery state active';canonical_entrypoint='operations/autonomous_inner_motor/start_agent_life_v1.ps1'}}
@@ -275,6 +281,13 @@ function Invoke-Start([string]$Id){
  $ready=Get-StartReadiness $Id
  if($ready.status -ne 'READY'){return $ready}
  if(-not $ConfirmMutation){return [ordered]@{id=$Id;status='BLOCKED_CONFIRMATION_REQUIRED';reason='ConfirmMutation required';canonical_entrypoint=$ready.canonical_entrypoint}}
+ if($Id -eq 'school.notification.send'){
+   $plan=Get-SchoolNotificationPlan
+   $token=[Environment]::GetEnvironmentVariable('TELEGRAM_BOT_TOKEN','Process');$chat=[Environment]::GetEnvironmentVariable('TELEGRAM_CHAT_ID','Process')
+   if([string]::IsNullOrWhiteSpace($token)-or[string]::IsNullOrWhiteSpace($chat)){return [ordered]@{id=$Id;status='BLOCKED_CREDENTIALS_REQUIRED';delivery_attempted=$false}}
+   $uri='https://api.telegram.org/bot'+$token+'/sendMessage'
+   try{$resp=Invoke-RestMethod -Method Post -Uri $uri -Body @{chat_id=$chat;text=[string]$plan.payload.text} -ContentType 'application/x-www-form-urlencoded' -ErrorAction Stop;if(-not[bool]$resp.ok){return [ordered]@{id=$Id;status='DELIVERY_FAILED';channel='telegram';proof_sha256=[string]$plan.proof_sha256;delivery_attempted=$true;error_class='TELEGRAM_API_REJECTED'}};return [ordered]@{id=$Id;status='DELIVERED';channel='telegram';proof_sha256=[string]$plan.proof_sha256;delivery_attempted=$true;telegram=[ordered]@{message_id=[int64]$resp.result.message_id;date=[int64]$resp.result.date};does_not_prove='future_delivery_or_future_school_completion'}}catch{return [ordered]@{id=$Id;status='DELIVERY_FAILED';channel='telegram';proof_sha256=[string]$plan.proof_sha256;delivery_attempted=$true;error_class='TELEGRAM_API_OR_TRANSPORT_FAILURE'}}
+ }
  if($Id -eq 'school.start'){
    $args=@('-NoProfile','-ExecutionPolicy','Bypass','-File','operations/school/run_agent_school.ps1','-Count',[string]$SchoolCount,'-Mode',$SchoolMode,'-Topics',$SchoolTopics)
    $proc=Start-Process -FilePath 'powershell.exe' -ArgumentList $args -WorkingDirectory $repo -PassThru
@@ -294,7 +307,7 @@ elseif($Mode -eq 'Plan'){
  $conflicts=@();foreach($a in $selected){foreach($c in @($a.conflicts)){if($c -ne $a.id -and $Action -contains $c){$conflicts+="$($a.id)<->$c"}}}
  $readiness=@();foreach($a in $selected){if($a.group -eq 'DIAGNOSE'){$readiness+=,[ordered]@{id=$a.id;status='READY_DIAGNOSTIC'}}elseif([bool]$a.read_only){$readiness+=,[ordered]@{id=$a.id;status='READY_READ_ONLY'}}elseif($a.id -eq 'builder.checkpoint.create'){$readiness+=,(Get-CheckpointReadiness)}else{$readiness+=,(Get-StartReadiness $a.id)}}
  $blocked=@($readiness|Where-Object{$_.status -notin @('READY','READY_READ_ONLY','READY_DIAGNOSTIC')})
- $out=[ordered]@{status=if($conflicts.Count){'BLOCKED_CONFLICT'}elseif($blocked.Count){'BLOCKED'}else{'READY'};selected=@($selected.id);count=$selected.Count;mutation_count=@($selected|Where-Object{-not[bool]$_.read_only}).Count;diagnostic_count=@($selected|Where-Object{$_.group -eq 'DIAGNOSE'}).Count;live_mutation_count=@($selected|Where-Object{$_.group -in @('START','MAINTAIN','REPAIR')}).Count;parallel_safe=(@($selected|Where-Object{-not[bool]$_.parallel_safe}).Count -eq 0);execution_mode=if(@($selected|Where-Object{-not[bool]$_.parallel_safe}).Count){'SEQUENTIAL'}else{'PARALLEL_SAFE'};conflicts=@($conflicts);readiness=@($readiness)}
+ $out=[ordered]@{status=if($conflicts.Count){'BLOCKED_CONFLICT'}elseif($blocked.Count){'BLOCKED'}else{'READY'};selected=@($selected.id);count=$selected.Count;mutation_count=@($selected|Where-Object{-not[bool]$_.read_only}).Count;diagnostic_count=@($selected|Where-Object{$_.group -eq 'DIAGNOSE'}).Count;live_mutation_count=@($selected|Where-Object{$_.kind -eq 'LIVE_MUTATE'}).Count;remote_mutation_count=@($selected|Where-Object{$_.kind -eq 'REMOTE_MUTATE'}).Count;parallel_safe=(@($selected|Where-Object{-not[bool]$_.parallel_safe}).Count -eq 0);execution_mode=if(@($selected|Where-Object{-not[bool]$_.parallel_safe}).Count){'SEQUENTIAL'}else{'PARALLEL_SAFE'};conflicts=@($conflicts);readiness=@($readiness)}
 }
 else{
  if(-not$Action.Count){throw'CONTROL_CENTER_ACTION_REQUIRED'}
@@ -302,7 +315,7 @@ else{
  if($plan.status -ne 'READY'){ $out=[ordered]@{status='NOT_STARTED';plan=$plan} }
  else{
     $results=@();foreach($id in $Action){$a=Get-Reg $id;if($a.group -eq 'DIAGNOSE'){$results+=,(Invoke-Diagnostic $id)}elseif([bool]$a.read_only){$results+=,(Invoke-Observed $id)}elseif($id -eq 'builder.checkpoint.create'){$results+=,(Invoke-CheckpointCreate)}else{$results+=,(Invoke-Start $id)}}
-    $checkpointResult=@($results|Where-Object{$_.id -eq 'builder.checkpoint.create'})|Select-Object -First 1;$out=[ordered]@{status=if($checkpointResult){[string]$checkpointResult.status}elseif(@($results|Where-Object{$_.status -eq 'STARTED'}).Count){'START_DISPATCHED'}elseif(@($results|Where-Object{$_.status -eq 'BLOCKED_CONFIRMATION_REQUIRED'}).Count){'BLOCKED_CONFIRMATION_REQUIRED'}elseif(@($Action|Where-Object{(Get-Reg $_).group -eq 'DIAGNOSE'}).Count){'PASS_DIAGNOSTIC_RUN'}else{'PASS_READ_ONLY_RUN'};selected=@($Action);results=@($results)}
+    $checkpointResult=@($results|Where-Object{$_.id -eq 'builder.checkpoint.create'})|Select-Object -First 1;$deliveryResult=@($results|Where-Object{$_.id -eq 'school.notification.send'})|Select-Object -First 1;$out=[ordered]@{status=if($checkpointResult){[string]$checkpointResult.status}elseif($deliveryResult){if($deliveryResult.status -eq 'DELIVERED'){'REMOTE_MUTATION_COMPLETED'}elseif($deliveryResult.status -eq 'DELIVERY_FAILED'){'REMOTE_MUTATION_FAILED'}else{[string]$deliveryResult.status}}elseif(@($results|Where-Object{$_.status -eq 'STARTED'}).Count){'START_DISPATCHED'}elseif(@($results|Where-Object{$_.status -eq 'BLOCKED_CONFIRMATION_REQUIRED'}).Count){'BLOCKED_CONFIRMATION_REQUIRED'}elseif(@($Action|Where-Object{(Get-Reg $_).group -eq 'DIAGNOSE'}).Count){'PASS_DIAGNOSTIC_RUN'}else{'PASS_READ_ONLY_RUN'};selected=@($Action);results=@($results)}
  }
 }
 if($Json){$out|ConvertTo-Json -Depth 14 -Compress}else{$out|ConvertTo-Json -Depth 14}

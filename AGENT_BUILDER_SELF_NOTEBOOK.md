@@ -3384,3 +3384,17 @@ status: ACCEPTANCE_SLICE_PREPARED
 
 Return to parent:
 - Checkpoint this forward repair through `builder.checkpoint.create`; then use the repaired `builder.acceptance.verify` on the repair commit. Fresh acceptance plus the already-proven notifier behavior closes the combined notification-plan recovery chain. Telegram delivery remains a separate future transport atom.
+## 2026-08-17 - Telegram completion transport candidate
+marker: CONTROL_CENTER_TELEGRAM_TRANSPORT_20260817
+status: ACCEPTANCE_SLICE_PREPARED
+
+- Added candidate action `school.notification.send` as START / REMOTE_MUTATE / non-read-only / non-parallel-safe.
+- Transport contract: uses accepted `school.notification.plan`, reads only process-environment credential refs `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID`, requires mutation confirmation, POSTs one Telegram Bot API `sendMessage`, and returns only delivery status plus non-secret message metadata.
+- No credential values are written to repo or returned in Control Center output; transport/API failures collapse to generic error classes without leaking token-bearing URI.
+- Current environment has no Telegram credentials, so only no-send gates were exercised: plan reports remote_mutation_count=1 and live_mutation_count=0; missing credentials block readiness; Run returns NOT_STARTED; no network delivery was attempted.
+- Failure-deepening: first regression exposed stale action-count expectations after growth from 23 to 24 actions. Current candidate was reconciled; `control_center.diagnose` reports action_count=24 and no stale `23` literals remain in controller/validator relevant surfaces.
+- Full current-state regression PASS: `PASS_BUILDER_CONTROL_CENTER_V4|ACTIONS=24|DIAGNOSE_ROUTES=11|OVERVIEW=PASS|REMOTE_SCOPE=PASS|MULTI_DIAG=PASS|LIVE_MUTATION=0|TRACKED_MUTATION=0|RUNTIME_STARTED=0`.
+- Boundary: this slice can prove transport structure, no-send safety gates and Control Center integration. It does not prove Telegram credential configuration, remote delivery, chat identity, or future completion notifications. One bounded real test message is required later.
+
+Return to parent:
+- Accept this transport slice locally. Then configure Telegram credentials outside repo and perform one explicitly-authorized remote test message through `school.notification.send`. Only DELIVERED proof can close the live transport layer.

@@ -178,6 +178,16 @@
       "scope_note": "Read one completed School proof and build a Telegram-ready notification payload. Never sends network traffic or reveals secret values."
     },
     {
+      "id": "school.notification.send",
+      "group": "START",
+      "title": "Send School completion notification",
+      "kind": "REMOTE_MUTATE",
+      "read_only": false,
+      "parallel_safe": false,
+      "handler": "builtin:school_notification_send",
+      "scope_note": "Send one completed School proof payload through Telegram Bot API using environment-only credentials. Requires ConfirmMutation; never returns credential values."
+    },
+    {
       "id": "builder.checkpoint.create",
       "group": "MAINTAIN",
       "title": "Builder local checkpoint create",
