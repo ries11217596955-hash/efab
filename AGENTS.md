@@ -110,6 +110,15 @@ Without explicit scoped authority, do not:
 Prefer reuse and the smallest bounded change.
 
 Do not create a new School, memory system, organ, framework, recovery product, or duplicate route when an existing canonical mechanism can satisfy the task.
+### Control Center first
+
+For repeated repo/runtime operations, check the unified Builder Control Center before composing ad-hoc terminal commands or creating helper scripts.
+
+Use `operations/control_center/BUILDER_CONTROL_CENTER_REGISTRY_V1.json` to discover the current actions and `operations/control_center/invoke_builder_control_center_v1.ps1` as the canonical invocation surface. Prefer an applicable accepted/proven Control Center action when it owns the operation.
+
+Fall back to bounded primitives only when the required Control Center action is absent, not applicable, unhealthy, unauthorized, or not proven for the required scope. Do not require an Owner reminder to check the Control Center first.
+
+A Control Center status, plan, or PASS is evidence only: it never grants mutation authority and never replaces the task-scoped validator/rollback boundary.
 
 Do not broaden a repair into cleanup/refactor unless explicitly requested.
 
