@@ -2,9 +2,9 @@
 
 Status: ACTIVE_DERIVED_VIEW
 Branch: main
-Observed head at generation: 93d3255d2f6fefe072a50e501b47bf52b271db40
-Generated: 2026-08-19T00:06:32.3207532+04:00
-Body source fingerprint: 7220ebd3813f07742f5e9fa34de79d6eb3ecb1b70df3562c45d9bbdd6c524569
+Observed head at generation: 4f47834a43c8d86532e1eabfcea2eec784c4dcf7
+Generated: 2026-08-19T00:28:15.8704805+04:00
+Body source fingerprint: 721d0955856ad3ecf645db65905ab3c0491ec4d14380bd9d69ccc8bc7e874d71
 
 Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 
@@ -51,7 +51,7 @@ Canonical JSON: `reports/self_development/SELF_MODEL_ACTIVE_MAP.json`
 - `operations_body_self_inspection` - root `operations/body_self_inspection`, files=25, scripts=18, validators=0, proofs=0, needs_triage=True
 - `operations_bridge_diagnostics` - root `operations/bridge_diagnostics`, files=2, scripts=0, validators=0, proofs=2, needs_triage=True
 - `operations_bridge_recovery` - root `operations/bridge_recovery`, files=2, scripts=0, validators=0, proofs=0, needs_triage=True
-- `operations_control_center` - root `operations/control_center`, files=2, scripts=1, validators=0, proofs=0, needs_triage=True
+- `operations_control_center` - root `operations/control_center`, files=3, scripts=2, validators=0, proofs=0, needs_triage=True
 - `operations_gpt_handoff` - root `operations/gpt_handoff`, files=19, scripts=0, validators=0, proofs=0, needs_triage=True
 - `operations_live_like` - root `operations/live_like`, files=4, scripts=4, validators=3, proofs=0, needs_triage=True
 - `operations_live_readiness` - root `operations/live_readiness`, files=9, scripts=9, validators=5, proofs=1, needs_triage=True

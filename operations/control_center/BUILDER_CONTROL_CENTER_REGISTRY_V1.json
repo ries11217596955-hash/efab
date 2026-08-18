@@ -89,16 +89,12 @@
       "id": "school.start",
       "group": "START",
       "title": "Start School",
-      "kind": "LIVE_MUTATE",
+      "kind": "REMOTE_MUTATE",
       "read_only": false,
       "parallel_safe": false,
       "handler": "builtin:school_start",
       "canonical_entrypoint": "operations/school/run_agent_school.ps1",
-      "required_parameters": [
-        "SchoolCount",
-        "SchoolMode",
-        "SchoolTopics"
-      ],
+      "required_parameters": ["SchoolCount"],
       "conflicts": [
         "school.start",
         "agent.start"

@@ -5,7 +5,7 @@ param(
   [switch]$Json,
   [switch]$ConfirmMutation,
   [ValidateRange(1,1000000)][int]$SchoolCount=1,
-  [ValidateSet('Test','Live')][string]$SchoolMode='Test',
+  [ValidateSet('Test','Live')][string]$SchoolMode='Live',
   [string]$SchoolTopics='codex_school_task_template_strength',
   [ValidateRange(1,10080)][int]$AgentDurationMinutes=1,
   [string[]]$ExpectedPaths=@(),
@@ -345,11 +345,24 @@ elseif($Mode -eq 'Plan'){
 }
 else{
  if(-not$Action.Count){throw'CONTROL_CENTER_ACTION_REQUIRED'}
- $plan=& $PSCommandPath -Mode Plan -Action $Action -Json -SchoolCount $SchoolCount -SchoolMode $SchoolMode -SchoolTopics $SchoolTopics -AgentDurationMinutes $AgentDurationMinutes -ExpectedPaths $ExpectedPaths -RunId $RunId -RunTailLines $RunTailLines -ExpectedHead $ExpectedHead -CommitMessage $CommitMessage -AuthorityPassportJson $AuthorityPassportJson -SchoolProofPath $SchoolProofPath|ConvertFrom-Json
- if($plan.status -ne 'READY'){ $out=[ordered]@{status='NOT_STARTED';plan=$plan} }
- else{
-    $results=@();foreach($id in $Action){$a=Get-Reg $id;if($a.group -eq 'DIAGNOSE'){$results+=,(Invoke-Diagnostic $id)}elseif([bool]$a.read_only){$results+=,(Invoke-Observed $id)}elseif($id -eq 'builder.checkpoint.create'){$results+=,(Invoke-CheckpointCreate)}else{$results+=,(Invoke-Start $id)}}
-    $checkpointResult=@($results|Where-Object{$_.id -eq 'builder.checkpoint.create'})|Select-Object -First 1;$deliveryResult=@($results|Where-Object{$_.id -eq 'school.notification.send'})|Select-Object -First 1;$out=[ordered]@{status=if($checkpointResult){[string]$checkpointResult.status}elseif($deliveryResult){if($deliveryResult.status -eq 'DELIVERED'){'REMOTE_MUTATION_COMPLETED'}elseif($deliveryResult.status -eq 'DELIVERY_FAILED'){'REMOTE_MUTATION_FAILED'}else{[string]$deliveryResult.status}}elseif(@($results|Where-Object{$_.status -eq 'STOP_REQUESTED'}).Count){'LIVE_MUTATION_COMPLETED'}elseif(@($results|Where-Object{$_.status -eq 'STARTED'}).Count){'START_DISPATCHED'}elseif(@($results|Where-Object{$_.status -eq 'BLOCKED_CONFIRMATION_REQUIRED'}).Count){'BLOCKED_CONFIRMATION_REQUIRED'}elseif(@($Action|Where-Object{(Get-Reg $_).group -eq 'DIAGNOSE'}).Count){'PASS_DIAGNOSTIC_RUN'}else{'PASS_READ_ONLY_RUN'};selected=@($Action);results=@($results)}
+ $prepare=$null;$prepareBlocked=$false
+ if($Action.Count -eq 1 -and $Action[0] -eq 'school.start' -and $ConfirmMutation){
+   $preparePath='operations/control_center/prepare_school_start_v1.ps1'
+   if(-not(Test-Path $preparePath)){ $out=[ordered]@{status='NOT_STARTED';prepare=[ordered]@{status='PREP_BLOCKED';reason='SCHOOL_START_PREP_HELPER_MISSING';path=$preparePath}};$prepareBlocked=$true }
+   else{
+     $authorityBase64=[Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($AuthorityPassportJson))
+     $prepareRaw=& powershell.exe -NoProfile -ExecutionPolicy Bypass -File $preparePath -RepoRoot $repo -SchoolCount $SchoolCount -SchoolMode $SchoolMode -SchoolTopics $SchoolTopics -AuthorityPassportBase64 $authorityBase64
+     try{$prepare=$prepareRaw|ConvertFrom-Json}catch{$prepare=[ordered]@{status='PREP_BLOCKED';reason='SCHOOL_START_PREP_INVALID_OUTPUT';raw=@($prepareRaw)}}
+     if([string]$prepare.status -ne 'PREPARED'){ $out=[ordered]@{status='NOT_STARTED';prepare=$prepare};$prepareBlocked=$true }
+   }
+ }
+ if(-not$prepareBlocked){
+   $plan=& $PSCommandPath -Mode Plan -Action $Action -Json -SchoolCount $SchoolCount -SchoolMode $SchoolMode -SchoolTopics $SchoolTopics -AgentDurationMinutes $AgentDurationMinutes -ExpectedPaths $ExpectedPaths -RunId $RunId -RunTailLines $RunTailLines -ExpectedHead $ExpectedHead -CommitMessage $CommitMessage -AuthorityPassportJson $AuthorityPassportJson -SchoolProofPath $SchoolProofPath|ConvertFrom-Json
+   if($plan.status -ne 'READY'){ $out=[ordered]@{status='NOT_STARTED';prepare=$prepare;plan=$plan} }
+   else{
+      $results=@();foreach($id in $Action){$a=Get-Reg $id;if($a.group -eq 'DIAGNOSE'){$results+=,(Invoke-Diagnostic $id)}elseif([bool]$a.read_only){$results+=,(Invoke-Observed $id)}elseif($id -eq 'builder.checkpoint.create'){$results+=,(Invoke-CheckpointCreate)}else{$results+=,(Invoke-Start $id)}}
+      $checkpointResult=@($results|Where-Object{$_.id -eq 'builder.checkpoint.create'})|Select-Object -First 1;$deliveryResult=@($results|Where-Object{$_.id -eq 'school.notification.send'})|Select-Object -First 1;$out=[ordered]@{status=if($checkpointResult){[string]$checkpointResult.status}elseif($deliveryResult){if($deliveryResult.status -eq 'DELIVERED'){'REMOTE_MUTATION_COMPLETED'}elseif($deliveryResult.status -eq 'DELIVERY_FAILED'){'REMOTE_MUTATION_FAILED'}else{[string]$deliveryResult.status}}elseif(@($results|Where-Object{$_.status -eq 'STOP_REQUESTED'}).Count){'LIVE_MUTATION_COMPLETED'}elseif(@($results|Where-Object{$_.status -eq 'STARTED'}).Count){'START_DISPATCHED'}elseif(@($results|Where-Object{$_.status -eq 'BLOCKED_CONFIRMATION_REQUIRED'}).Count){'BLOCKED_CONFIRMATION_REQUIRED'}elseif(@($Action|Where-Object{(Get-Reg $_).group -eq 'DIAGNOSE'}).Count){'PASS_DIAGNOSTIC_RUN'}else{'PASS_READ_ONLY_RUN'};selected=@($Action);prepare=$prepare;results=@($results)}
+   }
  }
 }
 if($Json){$out|ConvertTo-Json -Depth 14 -Compress}else{$out|ConvertTo-Json -Depth 14}
