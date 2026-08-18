@@ -345,7 +345,7 @@ elseif($Mode -eq 'Plan'){
 }
 else{
  if(-not$Action.Count){throw'CONTROL_CENTER_ACTION_REQUIRED'}
- $plan=& $PSCommandPath -Mode Plan -Action $Action -Json -SchoolCount $SchoolCount -SchoolMode $SchoolMode -SchoolTopics $SchoolTopics -AgentDurationMinutes $AgentDurationMinutes -ExpectedPaths $ExpectedPaths -RunId $RunId -RunTailLines $RunTailLines -ExpectedHead $ExpectedHead -CommitMessage $CommitMessage -AuthorityPassportJson $AuthorityPassportJson|ConvertFrom-Json
+ $plan=& $PSCommandPath -Mode Plan -Action $Action -Json -SchoolCount $SchoolCount -SchoolMode $SchoolMode -SchoolTopics $SchoolTopics -AgentDurationMinutes $AgentDurationMinutes -ExpectedPaths $ExpectedPaths -RunId $RunId -RunTailLines $RunTailLines -ExpectedHead $ExpectedHead -CommitMessage $CommitMessage -AuthorityPassportJson $AuthorityPassportJson -SchoolProofPath $SchoolProofPath|ConvertFrom-Json
  if($plan.status -ne 'READY'){ $out=[ordered]@{status='NOT_STARTED';plan=$plan} }
  else{
     $results=@();foreach($id in $Action){$a=Get-Reg $id;if($a.group -eq 'DIAGNOSE'){$results+=,(Invoke-Diagnostic $id)}elseif([bool]$a.read_only){$results+=,(Invoke-Observed $id)}elseif($id -eq 'builder.checkpoint.create'){$results+=,(Invoke-CheckpointCreate)}else{$results+=,(Invoke-Start $id)}}

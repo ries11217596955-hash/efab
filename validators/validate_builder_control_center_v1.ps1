@@ -30,6 +30,15 @@ $procBefore=@(Get-CimInstance Win32_Process|Where-Object{$_.CommandLine -and $_.
 $list=& $ctl -Mode List -Json|ConvertFrom-Json;if(@($list).Count -ne 26){throw 'LIST_ACTION_COUNT_BAD'}
 $snDefault=& $ctl -Mode Run -Action @('school.notification.plan') -Json|ConvertFrom-Json;$snDefaultResult=@($snDefault.results|Where-Object id -eq 'school.notification.plan')|Select-Object -First 1;if($snDefaultResult.status-ne'SCHOOL_PROOF_PATH_REQUIRED'-or[bool]$snDefaultResult.delivery_attempted){throw 'SCHOOL_NOTIFICATION_PLAN_DEFAULT_GATE_BAD'}
 $sendPlan=& $ctl -Mode Plan -Action @('school.notification.send') -SchoolProofPath 'operations/reports/CANONICAL_EXACT_COUNT_CYCLE_RUN_20260817_184403.json' -Json|ConvertFrom-Json;if($sendPlan.status-ne'BLOCKED'-or[int]$sendPlan.remote_mutation_count-ne1-or[int]$sendPlan.live_mutation_count-ne0-or@($sendPlan.readiness|Where-Object status -eq 'BLOCKED_CREDENTIALS_REQUIRED').Count-ne1){throw 'SCHOOL_NOTIFICATION_SEND_MISSING_CREDENTIALS_GATE_BAD'}
+$oldBot=$env:TELEGRAM_BOT_TOKEN;$oldChat=$env:TELEGRAM_CHAT_ID
+try{
+ Remove-Item Env:TELEGRAM_BOT_TOKEN -ErrorAction SilentlyContinue;Remove-Item Env:TELEGRAM_CHAT_ID -ErrorAction SilentlyContinue
+ $sendRunGate=& $ctl -Mode Run -Action @('school.notification.send') -SchoolProofPath 'operations/reports/CANONICAL_EXACT_COUNT_CYCLE_RUN_20260817_184403.json' -ConfirmMutation -Json|ConvertFrom-Json
+ if($sendRunGate.status-ne'NOT_STARTED'-or$sendRunGate.plan.status-ne'BLOCKED'-or@($sendRunGate.plan.readiness|Where-Object status -eq 'BLOCKED_CREDENTIALS_REQUIRED').Count-ne1-or@($sendRunGate.plan.readiness|Where-Object status -eq 'SCHOOL_PROOF_PATH_REQUIRED').Count){throw 'SCHOOL_NOTIFICATION_RUN_PROOF_FORWARD_GATE_BAD'}
+} finally {
+ if($null-ne$oldBot){$env:TELEGRAM_BOT_TOKEN=$oldBot}else{Remove-Item Env:TELEGRAM_BOT_TOKEN -ErrorAction SilentlyContinue}
+ if($null-ne$oldChat){$env:TELEGRAM_CHAT_ID=$oldChat}else{Remove-Item Env:TELEGRAM_CHAT_ID -ErrorAction SilentlyContinue}
+}
 $avDefault=& $ctl -Mode Run -Action @('builder.acceptance.verify') -Json|ConvertFrom-Json;$avDefaultResult=@($avDefault.results|Where-Object id -eq 'builder.acceptance.verify')|Select-Object -First 1;if($avDefaultResult.status-ne'BLOCKED_ACCEPTANCE_BASE_HEAD_REQUIRED'){throw 'BUILDER_ACCEPTANCE_VERIFY_DEFAULT_GATE_BAD'}
 $cpBlocked=& $ctl -Mode Run -Action @('builder.checkpoint.create') -ConfirmMutation -ExpectedHead (git rev-parse HEAD).Trim() -ExpectedPaths @('no-such-candidate.txt') -CommitMessage 'validator must block' -Json|ConvertFrom-Json;if($cpBlocked.status-ne'NOT_STARTED'-or$cpBlocked.plan.status-ne'BLOCKED'-or@($cpBlocked.plan.readiness|Where-Object{$_.id-eq'builder.checkpoint.create' -and $_.status-eq'BLOCKED_AUTHORITY'}).Count-ne1){throw 'BUILDER_CHECKPOINT_MISSING_AUTHORITY_GATE_BAD'}
 $view=@('inventory.status','capability.status','memory.status');$vp=& $ctl -Mode Plan -Action $view -Json|ConvertFrom-Json;if($vp.status-ne'READY'-or[int]$vp.count-ne3-or-not[bool]$vp.parallel_safe){throw 'VIEW_PLAN_BAD'}
