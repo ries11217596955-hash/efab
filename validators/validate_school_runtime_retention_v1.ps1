@@ -1,0 +1,6 @@
+param([Parameter(Mandatory=$true)][string]$CleanerPath,[Parameter(Mandatory=$true)][string]$ControlCenterPath)
+$ErrorActionPreference='Stop';$errors=@();foreach($p in @($CleanerPath,$ControlCenterPath)){if(-not(Test-Path $p)){$errors+=('missing:'+ $p);continue};$tok=$null;$err=$null;$parsePath=(Resolve-Path -LiteralPath $p).Path;[void][Management.Automation.Language.Parser]::ParseFile($parsePath,[ref]$tok,[ref]$err);if(@($err).Count){$errors+=('parse:'+ $p+':'+(@($err).Count))}}
+$cc=Get-Content $ControlCenterPath -Raw;foreach($needle in @('cleanup_completed_school_runtime_v1.ps1','KeepLatestCompletedRoot 1','KeepLatestCheckpoints 3','SCHOOL_RUNTIME_RETENTION_FAILED')){if($cc-notmatch[regex]::Escape($needle)){$errors+=('cc_missing:'+ $needle)}}
+$cl=Get-Content $CleanerPath -Raw;foreach($needle in @('PASS_SCHOOL_RUNTIME_RETENTION_V1','BLOCKED_PROTECTED_RUNTIME','ACTIVE_MEMORY_CHANGED','PASS_CANONICAL_EXACT_COUNT_CYCLE_(TEST|LIVE)_V1','kept_unproven_roots')){if($cl-notmatch[regex]::Escape($needle)){$errors+=('cleaner_missing:'+ $needle)}}
+if($cl-match 'Remove-Item[^\r\n]+active_compact_semantic_memory_v1'){$errors+='forbidden_active_memory_delete'}
+$status=if($errors.Count){'FAIL_SCHOOL_RUNTIME_RETENTION_STATIC_V1'}else{'PASS_SCHOOL_RUNTIME_RETENTION_STATIC_V1'};[ordered]@{status=$status;errors=$errors}|ConvertTo-Json -Compress;if($errors.Count){exit 1}
