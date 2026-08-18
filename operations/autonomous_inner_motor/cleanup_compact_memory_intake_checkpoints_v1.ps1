@@ -30,7 +30,7 @@ $activeRoot='.runtime/active_compact_semantic_memory_v1'
 $queueRoot=Join-Path $IntakeRoot 'queue'
 $checkpointRoot=Join-Path $IntakeRoot 'checkpoints'
 $processPatterns='run_autonomous_inner_motor.ps1|start_agent_life_v1.ps1|invoke_body_self_inspection_circuit_v1.ps1|codex exec|node.*codex|school|continuous'
-$procs=@(Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -and $_.CommandLine -notmatch '\s-Command\s' -and $_.CommandLine -match $processPatterns })
+$procs=@(Get-CimInstance Win32_Process | Where-Object { $_.ProcessId -ne $PID -and $_.CommandLine -and $_.CommandLine -notmatch '\s-Command\s' -and $_.CommandLine -match $processPatterns })
 if($procs.Count -ne 0){ throw "BLOCKED_PROCESS_COUNT:$($procs.Count)" }
 if(-not(Test-Path -LiteralPath $activeRoot)){ throw "ACTIVE_MEMORY_ROOT_MISSING:$activeRoot" }
 if(-not(Test-Path -LiteralPath $IntakeRoot)){ throw "INTAKE_ROOT_MISSING:$IntakeRoot" }
