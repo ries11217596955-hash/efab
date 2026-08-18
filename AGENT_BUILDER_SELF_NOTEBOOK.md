@@ -3678,3 +3678,46 @@ NOT YET PROVEN / MUST BE FRESHLY RESTORED IN NEW CHAT:
 
 ### Return-to-parent criterion
 The migration is successful when the new chat can, from fresh proof, state the canonical life control path, current life status, protected surfaces, and the next bounded action without relying on this chat transcript. This marker is an expiring continuity pointer, not acceptance authority.
+
+## NIGHT_HANDOFF_20260818_2357_AZ
+
+### Fresh state
+- repo root: `H:\efab`
+- branch: `main`
+- HEAD: `93d3255d2f6fefe072a50e501b47bf52b271db40`
+- origin/main: `d1fb20898e2fcb1d7189febf725c85b7cf84bd0a`
+- delta: local ahead 3, behind 0
+- worktree: clean before this Notebook append
+- School: `STOPPED`, process_count=0, pending=false, queue_count=0
+- Agent Life: `STOPPED`, process_count=0
+
+### Agent Life proven today
+- canonical Control Center launch works.
+- bounded-duration repair installed.
+- 1-minute live trial passed: about 61 seconds, self-stop without manual kill, no duplicate process, protected memory unchanged.
+- status boundary: `MICRO_TRIAL_BOUNDEDNESS_PASS`; long stability still not proven.
+
+### School Control proven/gaps today
+- Control Center `school.start/status/stop/resume` remains canonical route.
+- cleanup retention self-PID false-positive was repaired in local commit history.
+- rejected Test-mode 400000 request/pending queue was explicitly cleaned; School returned STOPPED.
+- requested overnight 400000 Live was NOT launched because scale preflight requires clean+synced repo and current main is ahead origin/main by 3 commits.
+- scale law remains: before 50k/500k/1M scale launches require repo clean+synced plus process_count=0, protected memory root/manifest/index/cells, last bounded PASS, disk/compute budget, logs, stop/resume, retention/cleanup, scoped authority.
+- therefore with current unsynced repo, do not claim 50000+ ready. The highest count below the first scale gate is 49999, subject to normal Control Center readiness checks at launch time.
+
+### School Control design gap to build next
+- Owner should be able to enter arbitrary atom count and choose Live; Control Center must derive scale class and gates automatically.
+- add governed repo sync capability (`repo.sync` or School autosync path) with explicit Owner authority for remote mutation, pre/post sync proof, then re-run scale preflight and launch.
+- no per-number patches for 400k/600k/710k/820k; thresholds are policy classes, not bespoke launch implementations.
+
+### Four-channel parent task
+- canonical channels: Primary, Rescue, PC-control, OOB. Transports such as ngrok/Tailscale are not the four channels themselves.
+- accepted historical target: 4x3 directed recovery matrix (each channel can recover the other three) plus equivalent local-PC command/file/process/reboot capability envelope under governed authority.
+- fresh observed gap: current Primary/Bridge Action route is hard-rooted to `H:\bridge`, while independent PC-control can operate in `H:\efab`; wrappers are capability-asymmetric and Primary intermittently returned `PRIMARY_UNAVAILABLE`.
+- next task: read-only restore current channel contracts/config first, then repair one wrapper/control-plane gap at a time and revalidate 4x3 recovery + PC capability smoke. Do not rebuild channels from scratch without evidence.
+
+### Return-to-parent
+Morning continuation should first read this marker, restore fresh repo/runtime/channel reality, and decide either:
+1. governed repo sync + arbitrary-scale School Control completion; or
+2. four-channel capability/recovery normalization.
+Fresh proof supersedes this handoff.
