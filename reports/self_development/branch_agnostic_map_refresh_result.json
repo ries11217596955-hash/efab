@@ -1,22 +1,23 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-08-18T00:46:49.3744546+04:00",
+    "checked_at":  "2026-08-18T11:14:01.3905254+04:00",
     "branch":  "main",
-    "observed_head":  "bfac5300d34e14fa569e3d9bdfa321659a9f040d",
-    "subject_head":  "bfac5300d34e14fa569e3d9bdfa321659a9f040d",
+    "observed_head":  "ce638f126b011dbb5f8b3467a02f8a2de2efafd1",
+    "subject_head":  "ce638f126b011dbb5f8b3467a02f8a2de2efafd1",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "operations/school/run_agent_school.ps1",
+                          "AGENT_BUILDER_SELF_NOTEBOOK.md",
+                          "operations/compact_memory_intake/merge_compact_memory_intake_queue_v1.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json"
                       ],
     "structural_paths":  [
-                             "operations/school/run_agent_school.ps1"
+                             "operations/compact_memory_intake/merge_compact_memory_intake_queue_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -62,5 +63,5 @@
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-08-18T00:51:11.2570251+04:00"
+    "refreshed_at":  "2026-08-18T11:18:29.8157397+04:00"
 }

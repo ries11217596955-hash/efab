@@ -3405,3 +3405,88 @@ Return to parent:
 - Size is governed by evidence, lifecycle, retention/cleanup, deduplication, retrieval performance, and available disk/compute resources rather than one arbitrary global byte cap.
 - Per-operation safety budgets remain allowed when they bound one mutation/run and are derived from current state; they do not define a global maximum memory size.
 - Historical reports/proofs and test fixtures may retain old size-budget values as history and are not rewritten merely to erase the old number.
+# CHAT_HANDOFF_2026-08-18_1112_BAKU
+
+## Purpose
+Persistent append-only continuity block for moving Builder work to a new chat. Treat this as an expiring continuity capsule, not as current runtime proof. On resume, re-observe repo/runtime/channel reality before mutation.
+
+## Parent goal
+Build Agent Builder as a local-first, logic-first independent action machine with governed Control Center, durable memory, safe School, autonomous recovery, and later child agents. Current immediate goal: close autonomous GitHub transport for Bridge/SYSTEM, then launch the agreed night School experiment at 200000 through Control Center.
+
+## Fresh reality at handoff creation
+- Repo: H:\efab
+- Branch: main
+- HEAD before this Notebook append: ce638f126b011dbb5f8b3467a02f8a2de2efafd1
+- Repo was clean at observation.
+- GitHub origin/main was synced to ce638f126b011dbb5f8b3467a02f8a2de2efafd1 before this handoff append.
+- School: STOPPED; process_count=0; pending=false; queue=0.
+- Bridge execution identity: NT AUTHORITY\SYSTEM.
+- Bridge root guard: expected_root=H:\bridge, cwd=H:\bridge, then Set-Location H:\efab.
+
+## School proof and measured benchmark
+- Latest completed 100000 Test cycle: PASS, accepted=100000/100000, ready=100000, memory_changed=false.
+- Final proof: operations/reports/CANONICAL_EXACT_COUNT_CYCLE_RUN_20260818_002633.json.
+- Clean working 100k segment after ceiling repair ran approximately 23:24:14 -> 00:26:33 Baku, about 62m19s.
+- 100k is therefore proven as one completed Test segment, but not yet proven as a long-term autonomous campaign primitive.
+- School internal stale 50000 ceiling was aligned to 1000000 in operations/school/run_agent_school.ps1; checkpoint bfac5300d34e14fa569e3d9bdfa321659a9f040d. Live recovery then progressed and completed 100k.
+
+## Agreed future School architecture
+- Large values such as 1M are campaign targets, not one immortal Codex process.
+- School/campaign supervisor remains logically alive across the campaign.
+- Codex is a disposable worker that must fully exit and restart on bounded shifts.
+- Working proposal: micro-batch=500; recovery checkpoint around 5000; Codex worker shift around 25000; semantic School replan boundary=100000.
+- After each 100000: finalize -> proof -> digest/replan themes -> launch next 100000 campaign segment.
+- Example 1M: 10 School semantic segments x 100k; each 100k may use 4 Codex workers x 25k; each worker processes 500-sized micro-batches.
+- Do not implement this campaign-loop silently; it is the next design/build direction after the current channel/night-run tasks.
+
+## Active compact memory
+- Active memory root: .runtime/active_compact_semantic_memory_v1
+- Current active cell count observed: 139.
+- Current total size observed before handoff: about 13.2 MB.
+- The 100k School run was Test mode and did NOT absorb into active memory.
+- The previous fixed 50 MB global ceiling was removed from production intake policy. Owner policy: no arbitrary fixed repo/memory size cap; instead enforce cleanliness, deduplication, retention/cleanup, no unjustified growth, and per-operation safety budgets.
+- Checkpoint for that policy: ce638f126b011dbb5f8b3467a02f8a2de2efafd1.
+- Historical manifests/proofs may still contain 50000000 as history; do not rewrite protected active memory merely to erase the old number.
+
+## Inventory / capability / passport debt
+- Do NOT build a separate passport organ merely to list passports.
+- Required convergence: inventory/capability maps themselves must expose passport state for each organ, e.g. ACTIVE/DRAFT/MISSING/REPAIR_REQUIRED plus passport_ref, validator/proof, freshness/lifecycle.
+- Control Center should then filter/query the canonical maps rather than maintain a parallel passport truth source.
+- This is an explicit debt, not yet implemented.
+
+## Control Center / School debts
+- Control Center has school.start and school.status.
+- It still lacks a proper school.resume/recover action.
+- It also lacks first-class school.progress showing accepted/target, batch ordinal, last PASS/error, elapsed, pending/queue in one read-only action; current detailed progress sometimes requires direct runtime/report reads.
+- Original 100k launch exposed this gap; recovery had to use canonical launcher directly because school.resume was absent.
+
+## GitHub autonomous channel: current exact state
+- User browser/PowerShell GitHub login works under the human Windows profile, but Bridge runs as SYSTEM and cannot see those user credentials.
+- Manual user push successfully synchronized main before this handoff.
+- Chosen durable solution: dedicated SYSTEM machine SSH credential scoped to efab GitHub transport.
+- SYSTEM SSH directory exists and github.com host key is already in known_hosts.
+- Dedicated keypair created locally at C:\Windows\system32\config\systemprofile\.ssh\efab_builder_github_ed25519 and .pub.
+- Private key must remain local and must never be printed, committed, copied into Notebook, or sent in chat.
+- Public key fingerprint: SHA256:qGeaLYhxrQg66gU2bxKF3DwEjI+dSd3wS4EdD2eeRPs.
+- GitHub-side Deploy key is NOT YET INSTALLED at handoff creation.
+- origin is still HTTPS at handoff creation.
+- Therefore autonomous SYSTEM push is NOT YET PROVEN.
+
+## Exact next safe action after chat migration
+1. Re-observe repo HEAD/dirty/upstream, School status, and channel health.
+2. Owner installs the prepared public SSH key as a Deploy key on GitHub repo ries11217596955-hash/efab with write access. Do not expose private key.
+3. Builder tests SSH authentication from SYSTEM using the dedicated key without mutating repo.
+4. If SSH auth PASS, change origin from HTTPS to git@github.com:ries11217596955-hash/efab.git (scoped REMOTE/LOCAL transport configuration mutation), verify fetch, then prove an actual governed push path when a legitimate new commit exists. No force push.
+5. Commit/push this handoff Notebook update once autonomous transport is proven.
+6. Re-run >50k scale preflight. If PASS, launch school.start(200000) strictly through Control Center with sufficiently long outer managed runtime; no duplicate run on Bridge flap.
+
+## Do not forget
+- GitHub permission/authority and GitHub credential are separate things.
+- User authorization does not create SYSTEM credentials.
+- No push without explicit scoped authority unless already granted as part of the current Owner task.
+- No duplicate School runtime.
+- No active-memory mutation without its protected-memory boundary.
+- No strong claims from this handoff alone; fresh proof wins.
+
+## Short new-chat recovery command for Owner
+Продолжи Builder по последнему CHAT_HANDOFF в AGENT_BUILDER_SELF_NOTEBOOK.md. Сначала восстанови fresh repo/runtime/channel proof, потом закрой SYSTEM→GitHub SSH Deploy-key канал и после PASS продолжи согласованный запуск School 200000 строго через Control Center. Ничего не дублируй и не считай Notebook current proof.
