@@ -1,15 +1,19 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-08-18T19:36:33.7949647+04:00",
+    "checked_at":  "2026-08-18T22:28:39.1427460+04:00",
     "branch":  "main",
-    "observed_head":  "3e0a86137f105066e502ce9e9dfb5e5533b6443a",
-    "subject_head":  "3e0a86137f105066e502ce9e9dfb5e5533b6443a",
+    "observed_head":  "d1fb20898e2fcb1d7189febf725c85b7cf84bd0a",
+    "subject_head":  "d1fb20898e2fcb1d7189febf725c85b7cf84bd0a",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "docs/operations/SCHOOL_RUN_RESULT_20260818_192824_Live_1000_canonical_exact_count_cycle_real_1000_20260818_191515.md"
+                          "AGENT_BUILDER_SELF_NOTEBOOK.md",
+                          "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+                          "reports/self_development/agent_body_map.json",
+                          "reports/self_development/agent_body_map.md",
+                          "reports/self_development/branch_agnostic_map_refresh_result.json"
                       ],
     "structural_paths":  [
 
@@ -25,7 +29,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  2305,
-                                    "sha256":  "9a732cbeacb325057ea8563c69b1f48cf65893627d4d4dd95cb1c439730a4da4"
+                                    "sha256":  "b1f0120a742d3e13692b956d981b3e9ceec4c34e190052ad65d54f7d11d2a799"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -58,5 +62,5 @@
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-08-18T19:42:34.8538576+04:00"
+    "refreshed_at":  "2026-08-18T22:28:54.5072305+04:00"
 }

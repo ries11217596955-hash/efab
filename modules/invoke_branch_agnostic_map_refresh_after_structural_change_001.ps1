@@ -111,6 +111,18 @@ $BoundedEvidencePathspecs = @(
   'tests/self_development'
 )
 $trackedFiles = Get-GitLines (@('ls-files','--') + $BoundedEvidencePathspecs)
+$trackedFilesByRoot = @{}
+foreach($trackedPath in $trackedFiles) {
+  $normalizedTrackedPath = $trackedPath -replace '\\','/'
+  $trackedParts = @($normalizedTrackedPath -split '/')
+  for($depth = 1; $depth -le $trackedParts.Count; $depth++) {
+    $rootKey = ($trackedParts[0..($depth-1)] -join '/')
+    if(-not $trackedFilesByRoot.ContainsKey($rootKey)) {
+      $trackedFilesByRoot[$rootKey] = New-Object System.Collections.Generic.List[string]
+    }
+    $trackedFilesByRoot[$rootKey].Add($normalizedTrackedPath) | Out-Null
+  }
+}
 function New-Component([string]$Id, [string]$RootPath, [string[]]$RequiredFiles = @(), [string[]]$RuntimeRoots = @(), [string]$Role = '') {
   $files = @($trackedFiles | Where-Object { $_ -eq $RootPath -or $_.StartsWith($RootPath.TrimEnd('/') + '/') })
   $scripts = @($files | Where-Object { $_.EndsWith('.ps1') })
@@ -217,11 +229,13 @@ function Test-PathUnderRoot([string]$Path, [string]$RootPath) {
 }
 
 function Get-TrackedFilesUnderRoot([string]$RootPath) {
-  return @($trackedFiles | Where-Object { Test-PathUnderRoot $_ $RootPath })
+  $rootKey = ($RootPath -replace '\\','/').TrimEnd('/')
+  if($trackedFilesByRoot.ContainsKey($rootKey)) { return @($trackedFilesByRoot[$rootKey]) }
+  return @()
 }
 
 function Get-EvidenceRefsForRoot([string]$RootPath, [string]$Pattern, [int]$Limit = 30) {
-  return @($trackedFiles | Where-Object { (Test-PathUnderRoot $_ $RootPath) -and ($_ -match $Pattern) } | Sort-Object -Unique | Select-Object -First $Limit)
+  return @(Get-TrackedFilesUnderRoot $RootPath | Where-Object { $_ -match $Pattern } | Sort-Object -Unique | Select-Object -First $Limit)
 }
 
 function New-ConfirmedComponent([string]$Id, [string]$RootPath, [string[]]$RequiredFiles, [string]$Role) {
