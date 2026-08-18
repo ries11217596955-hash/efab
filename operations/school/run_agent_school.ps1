@@ -975,6 +975,20 @@ Write-Host "SCHOOL_RUN_REPORT=$proofPath"
   if(-not [string]::IsNullOrWhiteSpace([string]$ActiveQueueItemPath) -and (Test-Path -LiteralPath $ActiveQueueItemPath)){ Remove-Item -LiteralPath $ActiveQueueItemPath -Force }
   if(Test-Path -LiteralPath $SchoolPendingPath){ Remove-Item -LiteralPath $SchoolPendingPath -Force }
   Write-Host "SCHOOL_PENDING_CLEARED=$ExactCycleRunId"
+  $NotificationStatus='NOT_ATTEMPTED'
+  try {
+    $notifyScript='operations/school/notify_school_completion_v1.ps1'
+    if(Test-Path $notifyScript){
+      $notifyOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File $notifyScript -RepoRoot (Get-Location).Path -SchoolProofPath $proofPath *>&1 | ForEach-Object{[string]$_})
+      foreach($line in $notifyOut){if($line -match '^NOTIFICATION_'){Write-Host $line}}
+      $NotificationStatus=(($notifyOut|Where-Object{$_ -match '^NOTIFICATION_STATUS='}|Select-Object -Last 1)-replace '^NOTIFICATION_STATUS=','')
+      if([string]::IsNullOrWhiteSpace($NotificationStatus)){$NotificationStatus='UNKNOWN'}
+    } else {$NotificationStatus='NOTIFIER_MISSING'}
+  } catch {
+    $NotificationStatus='NOTIFIER_ERROR'
+    Write-Host ('NOTIFICATION_ERROR_CLASS='+$_.Exception.GetType().Name)
+  }
+  Write-Host ('SCHOOL_COMPLETION_NOTIFICATION_STATUS='+$NotificationStatus)
   $remainingQueue=@(Get-SchoolQueueFiles)
   if($remainingQueue.Count -gt 0){
     $nextQueuePath=$remainingQueue[0].FullName

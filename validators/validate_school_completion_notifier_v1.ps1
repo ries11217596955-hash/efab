@@ -1,0 +1,6 @@
+param([Parameter(Mandatory=$true)][string]$NotifierPath,[Parameter(Mandatory=$true)][string]$RunnerPath)
+$ErrorActionPreference='Stop';$errors=@();foreach($p in @($NotifierPath,$RunnerPath)){if(-not(Test-Path $p)){$errors+=('missing:'+ $p);continue};$tok=$null;$err=$null;$rp=(Resolve-Path $p).Path;[void][Management.Automation.Language.Parser]::ParseFile($rp,[ref]$tok,[ref]$err);if(@($err).Count){$errors+=('parse:'+ $p+':'+@($err).Count)}}
+$n=Get-Content $NotifierPath -Raw;foreach($x in @('PENDING_CREDENTIALS','ALREADY_DELIVERED','NOTIFICATION_STATUS=DELIVERED','school.notification.send','ConfirmMutation','GetEnvironmentVariable($name,''Machine'')')){if($n-notmatch[regex]::Escape($x)){$errors+=('notifier_missing:'+ $x)}}
+$r=Get-Content $RunnerPath -Raw;foreach($x in @('notify_school_completion_v1.ps1','SCHOOL_COMPLETION_NOTIFICATION_STATUS','NOTIFIER_ERROR')){if($r-notmatch[regex]::Escape($x)){$errors+=('runner_missing:'+ $x)}}
+if($r-match 'throw .*NOTIFICATION'){ $errors+='notification_must_not_fail_school' }
+$status=if($errors.Count){'FAIL_SCHOOL_COMPLETION_NOTIFIER_STATIC_V1'}else{'PASS_SCHOOL_COMPLETION_NOTIFIER_STATIC_V1'};[ordered]@{status=$status;errors=$errors}|ConvertTo-Json -Compress;if($errors.Count){exit 1}
