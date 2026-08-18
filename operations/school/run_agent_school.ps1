@@ -249,10 +249,12 @@ param(
   [ValidateRange(30,7200)][int]$CodexTimeoutSeconds = 900,
   [switch]$Absorb,
   [string]$Topics = 'AUTO',
-  [string]$OutputRoot = ''
+  [string]$OutputRoot = '',
+  [string]$StopRequestPath = ''
 )
 $ErrorActionPreference='Stop'
 $repoRoot=(git rev-parse --show-toplevel).Trim(); Set-Location $repoRoot
+function Test-CooperativeStopRequested { return (-not [string]::IsNullOrWhiteSpace([string]$StopRequestPath) -and (Test-Path -LiteralPath $StopRequestPath)) }
 function EnsureDir($Path){ if($Path -and -not (Test-Path $Path)){ New-Item -ItemType Directory -Force -Path $Path | Out-Null } }
 function WriteJson($Path,$Obj,$Depth=100){ $d=Split-Path -Parent $Path; if($d){ EnsureDir $d }; $Obj|ConvertTo-Json -Depth $Depth|Set-Content -LiteralPath $Path -Encoding UTF8 }
 function Sha($p){ if(Test-Path $p){ (Get-FileHash $p -Algorithm SHA256).Hash } else { 'MISSING' } }
@@ -502,9 +504,11 @@ function Drain-ReadyExpectedStreamBatches([string]$Reason){
     if(-not (Invoke-ExpectedStreamConsume -Reason $Reason)){ break }
   }
 }
+$stopRequested=$false
 if($ProducerMode -eq 'MockProducer'){
   $mockProducerCompleted=$true
   foreach($mb in @($task.micro_batches)){
+    if(Test-CooperativeStopRequested){$stopRequested=$true;$mockProducerCompleted=$false;AddEvent 'COOPERATIVE_STOP_REQUESTED' @{producer_mode='MockProducer';next_ordinal=[int]$streamState['next_ordinal']};break}
     if([int]$mb.sequence -lt [int]$resumeNextOrdinal){ AddEvent 'MOCK_RESUME_SKIP_COMPLETED_PREFIX' @{sequence=[int]$mb.sequence; micro_batch_id=[string]$mb.micro_batch_id; resume_next_ordinal=[int]$resumeNextOrdinal}; continue }
     $rows=New-Object System.Collections.ArrayList
     for($i=1;$i -le [int]$mb.candidate_count;$i++){
@@ -541,7 +545,9 @@ if($ProducerMode -eq 'MockProducer'){
       break
     }
   }
-  if($mockProducerCompleted){
+  if($stopRequested){
+    $producerStatus='PAUSED_EXTERNAL'
+  } elseif($mockProducerCompleted){
     WriteJson ([string]$task.heartbeat_path) ([ordered]@{status='PRODUCER_DONE'; request_id=$task.request_id; last_written_batch=[int]$task.micro_batch_count; updated_at=(Get-Date).ToString('o'); mode='MockProducer'}) 20
     WriteJson ([string]$task.producer_done_marker) ([ordered]@{status='PRODUCER_DONE'; micro_batch_count=[int]$task.micro_batch_count; candidate_count=[int]$task.total_candidate_count; updated_at=(Get-Date).ToString('o'); mode='MockProducer'}) 20
     $producerCompletedAtValue=Get-Date
@@ -617,13 +623,16 @@ if($ProducerMode -eq 'MockProducer'){
     while($true){
       $p.Refresh()
       if($p.HasExited){ $completed=$true; $producerCompletedAtValue=Get-Date; try{ $exitTime=$p.ExitTime; if($null -ne $exitTime){ $producerCompletedAtValue=$exitTime } }catch{}; $producerCompletedAt=$producerCompletedAtValue.ToString('o'); break }
+      if(Test-CooperativeStopRequested){Drain-ReadyExpectedStreamBatches -Reason 'cooperative_stop';Stop-ProcessTreeByRootPid -RootPid ([int]$p.Id);$stopRequested=$true;AddEvent 'COOPERATIVE_STOP_REQUESTED' @{producer_mode='RunCodex';next_ordinal=[int]$streamState['next_ordinal'];producer_pid=[int]$p.Id};break}
       if((Get-Date) -ge $deadline){ Stop-ProcessTreeByRootPid -RootPid ([int]$p.Id); break }
       Drain-ReadyExpectedStreamBatches -Reason 'producer_alive'
       Start-Sleep -Seconds 2
     }
     Drain-ReadyExpectedStreamBatches -Reason 'producer_stopped'
     $completedTotals=Get-CompletedBatchTotals
-    if(-not $completed){
+    if($stopRequested){
+      $producerStatus='PAUSED_EXTERNAL';$producerFailureClass=$null
+    } elseif(-not $completed){
       Stop-ProcessTreeByRootPid -RootPid ([int]$p.Id)
       if([int]$completedTotals.completed_candidate_count -eq $Count){ $producerStatus='CODEX_PRODUCER_ALL_READY_CREATED'; $producerExitAnomaly=$true; $producerExitClass='TIMEOUT_AFTER_VALID_READY_DONE'; $producerExitCode='TIMEOUT' } else { $producerStatus='CODEX_FAILED'; $producerFailureClass=("TIMEOUT_COMPLETED_CANDIDATES_{0}/{1}" -f $completedTotals.completed_candidate_count,$Count) }
     } elseif($p.ExitCode -ne 0){
@@ -646,7 +655,7 @@ if($ProducerMode -eq 'RunCodex' -and [int]$task.micro_batch_count -gt 1 -and $nu
 }
 $memoryAfter=[ordered]@{manifest=Sha "$mem/manifest.json"; index=Sha "$mem/index.json"; cells=Sha "$mem/cells.jsonl"}
 $memoryChanged=($memoryBefore.cells -ne $memoryAfter.cells -or $memoryBefore.index -ne $memoryAfter.index -or $memoryBefore.manifest -ne $memoryAfter.manifest)
-$status=if($producerStatus -eq 'CODEX_PRODUCER_ALL_READY_CREATED' -and $accepted -eq $Count -and -not $Absorb -and -not $memoryChanged){'PASS_REAL_CODEX_EXACT_COUNT_CYCLE_NO_ABSORB_V1'}elseif($producerStatus -eq 'MOCK_PRODUCER_ALL_READY_CREATED' -and $accepted -eq $Count -and -not $Absorb -and -not $memoryChanged){'PASS_MOCK_EXACT_COUNT_CYCLE_NO_ABSORB_V1'}elseif($producerStatus -eq 'CODEX_PRODUCER_ALL_READY_CREATED' -and $accepted -eq $Count -and $Absorb -and $memoryChanged){'PASS_REAL_CODEX_EXACT_COUNT_CYCLE_WITH_ABSORB_V1'}else{'CHECK_EXACT_COUNT_CYCLE_V1'}
+$status=if($stopRequested){'PAUSED_EXTERNAL_EXACT_COUNT_CYCLE_V1'}elseif($producerStatus -eq 'CODEX_PRODUCER_ALL_READY_CREATED' -and $accepted -eq $Count -and -not $Absorb -and -not $memoryChanged){'PASS_REAL_CODEX_EXACT_COUNT_CYCLE_NO_ABSORB_V1'}elseif($producerStatus -eq 'MOCK_PRODUCER_ALL_READY_CREATED' -and $accepted -eq $Count -and -not $Absorb -and -not $memoryChanged){'PASS_MOCK_EXACT_COUNT_CYCLE_NO_ABSORB_V1'}elseif($producerStatus -eq 'CODEX_PRODUCER_ALL_READY_CREATED' -and $accepted -eq $Count -and $Absorb -and $memoryChanged){'PASS_REAL_CODEX_EXACT_COUNT_CYCLE_WITH_ABSORB_V1'}else{'CHECK_EXACT_COUNT_CYCLE_V1'}
 $report=[ordered]@{
   schema='generic_exact_count_warehouse_cycle_v1'
   status=$status
@@ -672,6 +681,9 @@ $report=[ordered]@{
   ready_candidate_count=$readyCandidateCount
   consumed_batches=$consumed
   accepted_count=$accepted
+  next_ordinal=[int]$streamState['next_ordinal']
+  stop_requested=[bool]$stopRequested
+  stop_request_path=[string]$StopRequestPath
   absorb=[bool]$Absorb
   consumer_statuses=@($consumerStatuses)
   consumer_reports=@($consumerReports)
@@ -702,6 +714,7 @@ Write-Host "EXACT_COUNT_CYCLE_MEMORY_CHANGED=$memoryChanged"
 $SchoolResumeRoot='.runtime/school_resume_v1'
 $SchoolQueueRoot=Join-Path $SchoolResumeRoot 'queue'
 $SchoolPendingPath=Join-Path $SchoolResumeRoot 'pending_request.json'
+$SchoolStopPath=Join-Path $SchoolResumeRoot 'stop_request.json'
 New-Item -ItemType Directory -Force -Path $SchoolQueueRoot | Out-Null
 function Write-SchoolAtomicJson([string]$Path,$Object,[int]$Depth=80){
   $dir=Split-Path -Parent $Path; if($dir){ New-Item -ItemType Directory -Force -Path $dir | Out-Null }
@@ -860,7 +873,7 @@ Write-Host "SCHOOL_PREFLIGHT_PRESSURE=$($SchoolRequestPlan.pressure_class)"
     if($TopicPatchPlanStatus -notmatch '^PASS_'){ throw "TOPIC_PATCH_PLAN_FAILED:$TopicPatchPlanStatus" }
   }
   $ExactCycleProducerMode=if($RunKind -eq 'Real'){'RunCodex'}else{'MockProducer'}
-  $ExactCycleArgs=[ordered]@{ ProducerMode=$ExactCycleProducerMode; Count=$TargetAccepted; MicroBatchSize=500; DigestWindowAtoms=500; Topics=$RequestedTopics; OutputRoot=$ExactCycleRoot; CodexTimeoutSeconds=300 }
+  $ExactCycleArgs=[ordered]@{ ProducerMode=$ExactCycleProducerMode; Count=$TargetAccepted; MicroBatchSize=500; DigestWindowAtoms=500; Topics=$RequestedTopics; OutputRoot=$ExactCycleRoot; CodexTimeoutSeconds=300; StopRequestPath=$SchoolStopPath }
   if($RunKind -eq 'Real'){
     $ExactCycleArgs['CodexTimeoutSeconds']=900
     $ExactCycleArgs['Absorb']=$true
@@ -882,6 +895,9 @@ Write-Host "SCHOOL_PREFLIGHT_PRESSURE=$($SchoolRequestPlan.pressure_class)"
   $ExactCycleReportPath=(($ExactCycleOut|Where-Object{$_ -match '^EXACT_COUNT_CYCLE_REPORT='}|Select-Object -Last 1) -replace '^EXACT_COUNT_CYCLE_REPORT=','')
   if([string]::IsNullOrWhiteSpace($ExactCycleReportPath) -or -not (Test-Path $ExactCycleReportPath)){ throw "CANONICAL_EXACT_COUNT_CYCLE_REPORT_MISSING" }
   $ExactCycleReport=Get-Content $ExactCycleReportPath -Raw | ConvertFrom-Json
+  if([string]$ExactCycleReport.status -eq 'PAUSED_EXTERNAL_EXACT_COUNT_CYCLE_V1'){
+    $PendingState['status']='PAUSED_EXTERNAL';$PendingState['phase']='PAUSED_EXTERNAL';$PendingState['next_ordinal']=[int]$ExactCycleReport.next_ordinal;$PendingState['accepted_count']=[int]$ExactCycleReport.accepted_count;$PendingState['exact_cycle_report_path']=[string]$ExactCycleReportPath;$PendingState['updated_at']=(Get-Date).ToString('o');Write-SchoolAtomicJson $SchoolPendingPath $PendingState 50;if(Test-Path -LiteralPath $SchoolStopPath){Remove-Item -LiteralPath $SchoolStopPath -Force};Write-Host 'SCHOOL_RUN_STATUS=PAUSED_EXTERNAL';Write-Host ('SCHOOL_PENDING_STATE={0}' -f $SchoolPendingPath);Write-Host ('SCHOOL_RESUME_NEXT_ORDINAL={0}' -f $ExactCycleReport.next_ordinal);return
+  }
   $ExpectedExactStatus=if($RunKind -eq 'Real'){'PASS_REAL_CODEX_EXACT_COUNT_CYCLE_WITH_ABSORB_V1'}else{'PASS_MOCK_EXACT_COUNT_CYCLE_NO_ABSORB_V1'}
   if($ExactCycleReport.status -ne $ExpectedExactStatus){ throw ("CANONICAL_EXACT_COUNT_CYCLE_STATUS_BAD:{0}:expected:{1}" -f $ExactCycleReport.status,$ExpectedExactStatus) }
   if([int]$ExactCycleReport.accepted_count -ne [int]$TargetAccepted){ throw ("CANONICAL_EXACT_COUNT_CYCLE_ACCEPTED_MISMATCH:{0}/{1}" -f $ExactCycleReport.accepted_count,$TargetAccepted) }

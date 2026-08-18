@@ -184,6 +184,19 @@
       "conflicts": []
     },
     {
+      "id": "school.stop",
+      "group": "START",
+      "title": "Cooperatively pause running School",
+      "kind": "LIVE_MUTATE",
+      "read_only": false,
+      "parallel_safe": false,
+      "handler": "builtin:school_stop",
+      "canonical_entrypoint": "operations/school/run_agent_school.ps1",
+      "required_parameters": [],
+      "conflicts": ["school.start", "school.resume", "school.stop", "agent.start"],
+      "scope_note": "Write one cooperative stop request; runner pauses on a safe boundary and preserves pending recovery state."
+    },
+    {
       "id": "school.notification.plan",
       "group": "DIAGNOSE",
       "title": "School completion notification plan",

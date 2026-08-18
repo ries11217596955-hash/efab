@@ -72,6 +72,17 @@ function Get-StartReadiness([string]$Id){
    $pt=[string]$pending.topics; if([string]::IsNullOrWhiteSpace($pt)){return [ordered]@{id=$Id;status='BLOCKED';reason='Pending School topics invalid';canonical_entrypoint='operations/school/run_agent_school.ps1';pending_path=$pendingPath}}
    return [ordered]@{id=$Id;status='READY';canonical_entrypoint='operations/school/run_agent_school.ps1';parameters=[ordered]@{Count=$pc;Mode=$pm;Topics=$pt;PendingPath=$pendingPath;PendingStatus=[string]$pending.status;PendingPhase=[string]$pending.phase};does_not_prove='successful_resumed_school_completion'}
  }
+ if($Id -eq 'school.stop'){
+   $pendingPath='.runtime/school_resume_v1/pending_request.json';$stopPath='.runtime/school_resume_v1/stop_request.json'
+   if($school.status -ne 'RUNNING'){return [ordered]@{id=$Id;status='BLOCKED';reason='School runtime not running';canonical_entrypoint='operations/school/run_agent_school.ps1'}}
+   if($repoState.status -ne 'CLEAN'){return [ordered]@{id=$Id;status='BLOCKED';reason='Repository not clean';canonical_entrypoint='operations/school/run_agent_school.ps1'}}
+   if($memory.status -ne 'PRESENT'){return [ordered]@{id=$Id;status='BLOCKED';reason='Active compact memory incomplete';canonical_entrypoint='operations/school/run_agent_school.ps1'}}
+   if(-not(Test-Path -LiteralPath $pendingPath)){return [ordered]@{id=$Id;status='BLOCKED';reason='Running School has no pending recovery state';canonical_entrypoint='operations/school/run_agent_school.ps1'}}
+   if(Test-Path -LiteralPath $stopPath){return [ordered]@{id=$Id;status='ALREADY_REQUESTED';reason='Cooperative stop already requested';canonical_entrypoint='operations/school/run_agent_school.ps1';stop_path=$stopPath}}
+   try{$pending=Get-Content -LiteralPath $pendingPath -Raw|ConvertFrom-Json}catch{return [ordered]@{id=$Id;status='BLOCKED';reason='Pending School request JSON invalid';canonical_entrypoint='operations/school/run_agent_school.ps1'}}
+   if([string]$pending.status -notin @('PENDING','RESUMING')){return [ordered]@{id=$Id;status='BLOCKED';reason=('Running School pending status not stoppable: '+[string]$pending.status);canonical_entrypoint='operations/school/run_agent_school.ps1'}}
+   return [ordered]@{id=$Id;status='READY';canonical_entrypoint='operations/school/run_agent_school.ps1';parameters=[ordered]@{StopPath=$stopPath;PendingPath=$pendingPath;RunId=[string]$pending.exact_cycle_run_id};does_not_prove='pause_acknowledged_or_resume_success'}
+ }
  if($Id -eq 'school.notification.send'){
    $plan=Get-SchoolNotificationPlan
    if($plan.status -ne 'NOTIFICATION_PLAN_READY'){return [ordered]@{id=$Id;status='BLOCKED_NOTIFICATION_PLAN';reason=[string]$plan.status;canonical_entrypoint='Telegram Bot API sendMessage'}}
@@ -307,6 +318,9 @@ function Invoke-Start([string]$Id){
    $proc=Start-Process -FilePath 'powershell.exe' -ArgumentList $args -WorkingDirectory $repo -PassThru
    return [ordered]@{id=$Id;status='STARTED';pid=$proc.Id;canonical_entrypoint='operations/school/run_agent_school.ps1';parameters=$ready.parameters}
  }
+ if($Id -eq 'school.stop'){
+   $stopPath=[string]$ready.parameters.StopPath;$dir=Split-Path -Parent $stopPath;if(-not(Test-Path $dir)){New-Item -ItemType Directory -Force -Path $dir|Out-Null};$tmp=$stopPath+'.tmp.'+[guid]::NewGuid().ToString('N');[ordered]@{schema='school_stop_request_v1';status='REQUESTED';requested_at=(Get-Date).ToString('o');run_id=[string]$ready.parameters.RunId;actor='BUILDER_CONTROL_CENTER'}|ConvertTo-Json -Depth 8|Set-Content -LiteralPath $tmp -Encoding UTF8;Move-Item -LiteralPath $tmp -Destination $stopPath -Force;return [ordered]@{id=$Id;status='STOP_REQUESTED';canonical_entrypoint='operations/school/run_agent_school.ps1';stop_path=$stopPath;run_id=[string]$ready.parameters.RunId;does_not_prove='pause_acknowledged_or_resume_success'}
+ }
  if($Id -eq 'school.resume'){
    $args=@('-NoProfile','-ExecutionPolicy','Bypass','-File','operations/school/run_agent_school.ps1','-Count',[string]$ready.parameters.Count,'-Mode',[string]$ready.parameters.Mode,'-Topics',[string]$ready.parameters.Topics)
    $proc=Start-Process -FilePath 'powershell.exe' -ArgumentList $args -WorkingDirectory $repo -PassThru
@@ -334,7 +348,7 @@ else{
  if($plan.status -ne 'READY'){ $out=[ordered]@{status='NOT_STARTED';plan=$plan} }
  else{
     $results=@();foreach($id in $Action){$a=Get-Reg $id;if($a.group -eq 'DIAGNOSE'){$results+=,(Invoke-Diagnostic $id)}elseif([bool]$a.read_only){$results+=,(Invoke-Observed $id)}elseif($id -eq 'builder.checkpoint.create'){$results+=,(Invoke-CheckpointCreate)}else{$results+=,(Invoke-Start $id)}}
-    $checkpointResult=@($results|Where-Object{$_.id -eq 'builder.checkpoint.create'})|Select-Object -First 1;$deliveryResult=@($results|Where-Object{$_.id -eq 'school.notification.send'})|Select-Object -First 1;$out=[ordered]@{status=if($checkpointResult){[string]$checkpointResult.status}elseif($deliveryResult){if($deliveryResult.status -eq 'DELIVERED'){'REMOTE_MUTATION_COMPLETED'}elseif($deliveryResult.status -eq 'DELIVERY_FAILED'){'REMOTE_MUTATION_FAILED'}else{[string]$deliveryResult.status}}elseif(@($results|Where-Object{$_.status -eq 'STARTED'}).Count){'START_DISPATCHED'}elseif(@($results|Where-Object{$_.status -eq 'BLOCKED_CONFIRMATION_REQUIRED'}).Count){'BLOCKED_CONFIRMATION_REQUIRED'}elseif(@($Action|Where-Object{(Get-Reg $_).group -eq 'DIAGNOSE'}).Count){'PASS_DIAGNOSTIC_RUN'}else{'PASS_READ_ONLY_RUN'};selected=@($Action);results=@($results)}
+    $checkpointResult=@($results|Where-Object{$_.id -eq 'builder.checkpoint.create'})|Select-Object -First 1;$deliveryResult=@($results|Where-Object{$_.id -eq 'school.notification.send'})|Select-Object -First 1;$out=[ordered]@{status=if($checkpointResult){[string]$checkpointResult.status}elseif($deliveryResult){if($deliveryResult.status -eq 'DELIVERED'){'REMOTE_MUTATION_COMPLETED'}elseif($deliveryResult.status -eq 'DELIVERY_FAILED'){'REMOTE_MUTATION_FAILED'}else{[string]$deliveryResult.status}}elseif(@($results|Where-Object{$_.status -eq 'STOP_REQUESTED'}).Count){'LIVE_MUTATION_COMPLETED'}elseif(@($results|Where-Object{$_.status -eq 'STARTED'}).Count){'START_DISPATCHED'}elseif(@($results|Where-Object{$_.status -eq 'BLOCKED_CONFIRMATION_REQUIRED'}).Count){'BLOCKED_CONFIRMATION_REQUIRED'}elseif(@($Action|Where-Object{(Get-Reg $_).group -eq 'DIAGNOSE'}).Count){'PASS_DIAGNOSTIC_RUN'}else{'PASS_READ_ONLY_RUN'};selected=@($Action);results=@($results)}
  }
 }
 if($Json){$out|ConvertTo-Json -Depth 14 -Compress}else{$out|ConvertTo-Json -Depth 14}
