@@ -1,18 +1,26 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-08-18T17:48:28.2472383+04:00",
+    "checked_at":  "2026-08-18T17:59:07.1252542+04:00",
     "branch":  "main",
-    "observed_head":  "3fd42381f3bad80cfdc68c24d0b759579130a7c2",
-    "subject_head":  "3fd42381f3bad80cfdc68c24d0b759579130a7c2",
+    "observed_head":  "89aa89320aa657b39a3e1125c63a87dd1097a7cf",
+    "subject_head":  "89aa89320aa657b39a3e1125c63a87dd1097a7cf",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
-                          "docs/operations/SCHOOL_RUN_RESULT_20260818_171032_Live_1_canonical_exact_count_cycle_real_1_20260818_170639.md"
+                          "operations/control_center/invoke_builder_control_center_v1.ps1",
+                          "operations/school/cleanup_completed_school_runtime_v1.ps1",
+                          "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
+                          "reports/self_development/agent_body_map.json",
+                          "reports/self_development/agent_body_map.md",
+                          "reports/self_development/branch_agnostic_map_refresh_result.json",
+                          "validators/validate_school_runtime_retention_v1.ps1"
                       ],
     "structural_paths":  [
-
+                             "operations/control_center/invoke_builder_control_center_v1.ps1",
+                             "operations/school/cleanup_completed_school_runtime_v1.ps1",
+                             "validators/validate_school_runtime_retention_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -58,5 +66,5 @@
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-08-18T17:54:35.9172914+04:00"
+    "refreshed_at":  "2026-08-18T18:04:50.9996413+04:00"
 }

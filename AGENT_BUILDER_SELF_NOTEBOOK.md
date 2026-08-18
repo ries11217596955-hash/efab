@@ -3524,3 +3524,24 @@ proof_boundary: NOTEBOOK_CANDIDATE_PREPARED_DURING_ACTIVE_SCHOOL; not canonical 
   - missing-credential path creates no receipt and does not prove/send network delivery;
   - fake-transport idempotency micro-trial: first completion -> `DELIVERED` + receipt; second invocation -> `ALREADY_NOTIFIED`; receipt hash unchanged.
   - watcher status remains LAB_CANDIDATE; it is not installed or autonomous-live until real Telegram delivery and post-School acceptance.
+
+## 2026-08-18 - School runtime retention accepted
+marker: SCHOOL_RUNTIME_RETENTION_ACCEPTED_20260818
+
+- Supersedes the earlier temporary `NOTEBOOK_CANDIDATE_PREPARED_DURING_ACTIVE_SCHOOL` status: that continuity block was installed into canonical Notebook in commit `b828efbc6e23ebc9ea07fedd4ea20e4fd0731493` after School stopped.
+- School 200000 Test completed `PASS_CANONICAL_EXACT_COUNT_CYCLE_TEST_V1`, accepted=200000/200000, memory_changed=false. Test used MockProducer and was not copied into active memory.
+- Fresh Live/Real micro-trial then passed with RunCodex, accepted=1/1, absorb=true, memory_changed=true; finalizer intake+merge committed tracked summary `3fd42381f3bad80cfdc68c24d0b759579130a7c2`.
+- Aggressive sanitation diagnosis: repository bloat was runtime, not Git/reports. `H:\efab` was >2 GB because completed exact-count roots and 79 full memory rollback checkpoints accumulated. Cleanup reduced repo to about 124 MB while active memory hashes stayed unchanged.
+- Accepted prevention commit: `89aa89320aa657b39a3e1125c63a87dd1097a7cf` (`school: enforce runtime retention before launch`).
+  - fresh `school.start` now performs retention before Start-Process, while School/digest is stopped;
+  - retains latest proof-backed finalized exact-count root=1;
+  - retains compact-memory intake rollback checkpoints=3 using existing cleaner;
+  - preserves unproven/incomplete roots;
+  - refuses cleanup while protected School/memory/digest runtime is active;
+  - validates active compact memory hash invariance.
+- LAB proof: static PASS; positive fixture deleted only old completed root + old checkpoint; kept newest completed + unproven root; negative active-School guard blocked.
+- LIVE proof: cleaner smoke PASS, exact_deleted=0, checkpoint_deleted=0, active memory unchanged; Control Center `school.start` Plan=READY. Commit synced to origin 0/0.
+- Development sanitation after acceptance: retention LAB and install backup deleted; Telegram notification watcher LAB intentionally retained because real Telegram delivery is still unproven.
+- Current notification blocker remains external credentials: `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID`; next proof is one bounded real `school.notification.send` delivery, then watcher installation/acceptance.
+
+proof_boundary: RETENTION_INSTALLED_AND_LIVE_SMOKE_PROVEN; integrated automatic deletion on a future real school.start will be observed on the next actual School launch. Telegram real delivery remains NOT_PROVEN.
