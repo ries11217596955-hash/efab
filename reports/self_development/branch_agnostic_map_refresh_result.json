@@ -1,23 +1,22 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-08-18T11:14:01.3905254+04:00",
+    "checked_at":  "2026-08-18T13:45:09.0254421+04:00",
     "branch":  "main",
-    "observed_head":  "ce638f126b011dbb5f8b3467a02f8a2de2efafd1",
-    "subject_head":  "ce638f126b011dbb5f8b3467a02f8a2de2efafd1",
+    "observed_head":  "3bb1e6f30e05e28a477e6ee4e4855f2cd54270b2",
+    "subject_head":  "3bb1e6f30e05e28a477e6ee4e4855f2cd54270b2",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
                           "AGENT_BUILDER_SELF_NOTEBOOK.md",
-                          "operations/compact_memory_intake/merge_compact_memory_intake_queue_v1.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
                           "reports/self_development/branch_agnostic_map_refresh_result.json"
                       ],
     "structural_paths":  [
-                             "operations/compact_memory_intake/merge_compact_memory_intake_queue_v1.ps1"
+
                          ],
     "output_root":  "reports/self_development",
     "canonical_composition_map":  "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
@@ -30,7 +29,7 @@
     "body_source_fingerprint":  {
                                     "algorithm":  "sha256(sorted structural path plus file sha256; excludes reports/runtime/proofs/gpt_handoff archives)",
                                     "structural_file_count":  2301,
-                                    "sha256":  "0dc3607970d1a64567fbfe440b30d8eb575d8a6418106e05cdd6b4c1e2290c5b"
+                                    "sha256":  "ee20cfe57e92aad52e4def5f25146fa3dab05f7734640f877d789ee01f81e0b3"
                                 },
     "map_contains_required_components":  true,
     "required_components":  [
@@ -63,5 +62,5 @@
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-08-18T11:18:29.8157397+04:00"
+    "refreshed_at":  "2026-08-18T13:49:27.9197131+04:00"
 }

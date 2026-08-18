@@ -58,6 +58,20 @@ function Get-StartReadiness([string]$Id){
    if($memory.status -ne 'PRESENT'){return [ordered]@{id=$Id;status='BLOCKED';reason='Active compact memory incomplete';canonical_entrypoint='operations/school/run_agent_school.ps1'}}
    return [ordered]@{id=$Id;status='READY';canonical_entrypoint='operations/school/run_agent_school.ps1';parameters=[ordered]@{Count=$SchoolCount;Mode=$SchoolMode;Topics=$SchoolTopics}}
  }
+ if($Id -eq 'school.resume'){
+   $pendingPath='.runtime/school_resume_v1/pending_request.json'
+   if($school.status -eq 'RUNNING'){return [ordered]@{id=$Id;status='ALREADY_RUNNING';reason='School process already active';canonical_entrypoint='operations/school/run_agent_school.ps1'}}
+   if($agent.status -eq 'RUNNING'){return [ordered]@{id=$Id;status='BLOCKED';reason='Agent runtime active';canonical_entrypoint='operations/school/run_agent_school.ps1'}}
+   if($repoState.status -ne 'CLEAN'){return [ordered]@{id=$Id;status='BLOCKED';reason='Repository not clean';canonical_entrypoint='operations/school/run_agent_school.ps1'}}
+   if($memory.status -ne 'PRESENT'){return [ordered]@{id=$Id;status='BLOCKED';reason='Active compact memory incomplete';canonical_entrypoint='operations/school/run_agent_school.ps1'}}
+   if(-not(Test-Path -LiteralPath $pendingPath)){return [ordered]@{id=$Id;status='BLOCKED';reason='No pending School request to resume';canonical_entrypoint='operations/school/run_agent_school.ps1';pending_path=$pendingPath}}
+   try{$pending=Get-Content -LiteralPath $pendingPath -Raw|ConvertFrom-Json}catch{return [ordered]@{id=$Id;status='BLOCKED';reason='Pending School request JSON invalid';canonical_entrypoint='operations/school/run_agent_school.ps1';pending_path=$pendingPath}}
+   if([string]$pending.status -notin @('PENDING','PAUSED_EXTERNAL','RESUMING')){return [ordered]@{id=$Id;status='BLOCKED';reason=('Pending School status not resumable: '+[string]$pending.status);canonical_entrypoint='operations/school/run_agent_school.ps1';pending_path=$pendingPath}}
+   [int]$pc=0; if(-not [int]::TryParse([string]$pending.count,[ref]$pc) -or $pc -lt 1 -or $pc -gt 1000000){return [ordered]@{id=$Id;status='BLOCKED';reason='Pending School count invalid';canonical_entrypoint='operations/school/run_agent_school.ps1';pending_path=$pendingPath}}
+   $pm=[string]$pending.mode; if($pm -notin @('Test','Live')){return [ordered]@{id=$Id;status='BLOCKED';reason='Pending School mode invalid';canonical_entrypoint='operations/school/run_agent_school.ps1';pending_path=$pendingPath}}
+   $pt=[string]$pending.topics; if([string]::IsNullOrWhiteSpace($pt)){return [ordered]@{id=$Id;status='BLOCKED';reason='Pending School topics invalid';canonical_entrypoint='operations/school/run_agent_school.ps1';pending_path=$pendingPath}}
+   return [ordered]@{id=$Id;status='READY';canonical_entrypoint='operations/school/run_agent_school.ps1';parameters=[ordered]@{Count=$pc;Mode=$pm;Topics=$pt;PendingPath=$pendingPath;PendingStatus=[string]$pending.status;PendingPhase=[string]$pending.phase};does_not_prove='successful_resumed_school_completion'}
+ }
  if($Id -eq 'school.notification.send'){
    $plan=Get-SchoolNotificationPlan
    if($plan.status -ne 'NOTIFICATION_PLAN_READY'){return [ordered]@{id=$Id;status='BLOCKED_NOTIFICATION_PLAN';reason=[string]$plan.status;canonical_entrypoint='Telegram Bot API sendMessage'}}
@@ -102,7 +116,7 @@ function Get-BuilderOverview{
  if($capability.status -eq 'MISSING_NOT_WIRED'){$blockers+='CAPABILITY_MAP_MISSING_NOT_WIRED';$impact+='Canonical capability invocation map is unavailable.';$impact+='Capability-map-dependent routing/currentness cannot be proven.'};if($capability.status -eq 'PRESENT_DRAFT_NOT_READY'){$blockers+='CAPABILITY_MAP_PRESENT_DRAFT_NOT_READY';$impact+='Capability catalog exists but ownership/invocation/maturity wiring is incomplete.'}
  if($repo.status -ne 'CLEAN'){$recommended=[ordered]@{id='repo.status';action='INSPECT_REPO';reason='Repository is not clean.'}}
  elseif($memory.status -ne 'PRESENT'){$recommended=[ordered]@{id='memory.diagnose';action='DIAGNOSE_MEMORY';reason='Active compact memory is incomplete.'}}
- elseif($school.status -eq 'RECOVERY_OR_QUEUED'){$recommended=[ordered]@{id='school.status';action='OBSERVE_SCHOOL_RECOVERY';reason='School recovery or queued request exists.'}}
+ elseif($school.status -eq 'RECOVERY_OR_QUEUED'){if($school.pending){$recommended=[ordered]@{id='school.resume';action='RESUME_SCHOOL';reason='A pending School request exists and can be evaluated for governed resume.'}}else{$recommended=[ordered]@{id='school.status';action='OBSERVE_SCHOOL_RECOVERY';reason='School queue/recovery state exists without a resumable pending request.'}}}
  elseif($remote.status -ne 'HEALTHY_LOCAL_COMPONENTS'){$recommended=[ordered]@{id='remote_access.status';action='DIAGNOSE_REMOTE_ACCESS';reason='One or more locally observable remote-access components are unhealthy.'}}
  elseif($capability.status -eq 'MISSING_NOT_WIRED'){$recommended=[ordered]@{id='capability.diagnose';action='COMPLETE_CAPABILITY_MAP_PIPELINE';reason='Capability contract exists but canonical map/wiring is missing.'}}
  elseif($capability.status -eq 'PRESENT_DRAFT_NOT_READY'){$recommended=[ordered]@{id='capability.diagnose';action='COMPLETE_CAPABILITY_MAP_WIRING';reason='Capability map draft exists but owners/invocation/maturity are not ready.'}}
@@ -292,6 +306,11 @@ function Invoke-Start([string]$Id){
    $args=@('-NoProfile','-ExecutionPolicy','Bypass','-File','operations/school/run_agent_school.ps1','-Count',[string]$SchoolCount,'-Mode',$SchoolMode,'-Topics',$SchoolTopics)
    $proc=Start-Process -FilePath 'powershell.exe' -ArgumentList $args -WorkingDirectory $repo -PassThru
    return [ordered]@{id=$Id;status='STARTED';pid=$proc.Id;canonical_entrypoint='operations/school/run_agent_school.ps1';parameters=$ready.parameters}
+ }
+ if($Id -eq 'school.resume'){
+   $args=@('-NoProfile','-ExecutionPolicy','Bypass','-File','operations/school/run_agent_school.ps1','-Count',[string]$ready.parameters.Count,'-Mode',[string]$ready.parameters.Mode,'-Topics',[string]$ready.parameters.Topics)
+   $proc=Start-Process -FilePath 'powershell.exe' -ArgumentList $args -WorkingDirectory $repo -PassThru
+   return [ordered]@{id=$Id;status='STARTED';pid=$proc.Id;canonical_entrypoint='operations/school/run_agent_school.ps1';parameters=$ready.parameters;resume_source='pending_request';does_not_prove='successful_resumed_school_completion'}
  }
  if($Id -eq 'agent.start'){
    $args=@('-NoProfile','-ExecutionPolicy','Bypass','-File','operations/autonomous_inner_motor/start_agent_life_v1.ps1','-DurationMinutes',[string]$AgentDurationMinutes)

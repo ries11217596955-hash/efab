@@ -105,6 +105,22 @@
       ]
     },
     {
+      "id": "school.resume",
+      "group": "START",
+      "title": "Resume/recover pending School",
+      "kind": "LIVE_MUTATE",
+      "read_only": false,
+      "parallel_safe": false,
+      "handler": "builtin:school_resume",
+      "canonical_entrypoint": "operations/school/run_agent_school.ps1",
+      "required_parameters": [],
+      "conflicts": [
+        "school.start",
+        "school.resume",
+        "agent.start"
+      ]
+    },
+    {
       "id": "agent.start",
       "group": "START",
       "title": "Start Agent life",
