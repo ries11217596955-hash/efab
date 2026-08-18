@@ -3490,3 +3490,37 @@ Build Agent Builder as a local-first, logic-first independent action machine wit
 
 ## Short new-chat recovery command for Owner
 Продолжи Builder по последнему CHAT_HANDOFF в AGENT_BUILDER_SELF_NOTEBOOK.md. Сначала восстанови fresh repo/runtime/channel proof, потом закрой SYSTEM→GitHub SSH Deploy-key канал и после PASS продолжи согласованный запуск School 200000 строго через Control Center. Ничего не дублируй и не считай Notebook current proof.
+## 2026-08-18 - School 200k control hardening + notification continuation
+marker: SCHOOL_200K_CONTROL_AND_NOTIFICATION_CONTINUITY_20260818
+
+- Fresh accepted control changes before launch:
+  - `school.resume` installed/smoke-proven and synced; it resumes only from governed pending state and blocks duplicate runtime.
+  - `school.stop` installed/smoke-proven and synced; it writes a cooperative stop request, runner pauses with `PAUSED_EXTERNAL`, preserves `next_ordinal`, and existing resume continues from retained prefix.
+  - Mock/Test stop->pause->resume micro-trial passed at 1200/1200 with active compact memory unchanged. Boundary: does not prove arbitrary real RunCodex timing.
+- School 200000 Test launch:
+  - launched only after >50k preflight PASS through Builder Control Center;
+  - target=200000, mode=Test, topics=`codex_school_task_template_strength`;
+  - canonical run id observed: `canonical_exact_count_cycle_test_200000_20260818_143314`;
+  - fresh status at notification work start: RUNNING, one root School runtime, pending present; active memory protected.
+- Notification organ current state:
+  - accepted `school.notification.plan` produces Telegram-ready completion payload from a canonical completed School proof;
+  - `school.notification.send` exists as REMOTE_MUTATE, requires ConfirmMutation, reads only process-environment refs `TELEGRAM_BOT_TOKEN` / `TELEGRAM_CHAT_ID`, and posts Telegram Bot API `sendMessage` without returning secrets;
+  - fresh 100000 proof returns `NOTIFICATION_PLAN_READY`, PASS, accepted=100000/100000; transport remains `MISSING_CREDENTIALS`; no delivery attempted;
+  - no Telegram credentials are currently present in Process/User/Machine environment;
+  - old `operations/overnight_school/watch_useful_school_30k_full_process_v1.ps1` is an observation watcher only; it does not deliver Telegram completion messages.
+- Active-runtime safety decision:
+  - canonical Notebook/repo must remain clean while School is running because governed `school.stop` requires clean repo and active-runtime law forbids interfering mutation;
+  - therefore this Notebook update is prepared as an external candidate and must be transplanted/committed only after School completion or a governed pause.
+- Exact next notification actions:
+  1. configure Telegram bot token/chat id outside repo, without recording secret values in Notebook/repo;
+  2. run one explicitly-authorized bounded real `school.notification.send` against a completed School proof; require `DELIVERED` proof;
+  3. add/validate a completion-trigger watcher that detects canonical final proof and invokes the accepted send route once, with idempotency/no-duplicate-send guard;
+  4. after School is no longer active, transplant this Notebook candidate and accepted notification watcher slice through normal checkpoint/acceptance/push.
+
+proof_boundary: NOTEBOOK_CANDIDATE_PREPARED_DURING_ACTIVE_SCHOOL; not canonical until transplanted after active runtime ends.
+- Notification watcher LAB proof added during the same active-run slice:
+  - active 200k one-shot correctly reports `WAITING_FOR_COMPLETION` from `school.status` + matching pending run id;
+  - completed 100k one-shot returns `NOTIFICATION_PLAN_READY` from canonical proof;
+  - missing-credential path creates no receipt and does not prove/send network delivery;
+  - fake-transport idempotency micro-trial: first completion -> `DELIVERED` + receipt; second invocation -> `ALREADY_NOTIFIED`; receipt hash unchanged.
+  - watcher status remains LAB_CANDIDATE; it is not installed or autonomous-live until real Telegram delivery and post-School acceptance.
