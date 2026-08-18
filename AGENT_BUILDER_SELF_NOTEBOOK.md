@@ -3545,3 +3545,136 @@ marker: SCHOOL_RUNTIME_RETENTION_ACCEPTED_20260818
 - Current notification blocker remains external credentials: `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID`; next proof is one bounded real `school.notification.send` delivery, then watcher installation/acceptance.
 
 proof_boundary: RETENTION_INSTALLED_AND_LIVE_SMOKE_PROVEN; integrated automatic deletion on a future real school.start will be observed on the next actual School launch. Telegram real delivery remains NOT_PROVEN.
+
+## 2026-08-18 - Migration to new chat: launch and configure Agent Life
+marker: AGENT_LIFE_CHAT_MIGRATION_20260818
+
+### Parent goal
+Continue self-build by moving from School/control-plane hardening into the next parent task: **launch, observe, validate, and configure the life/autonomous runtime of the Builder agent itself**. Child-agent production remains downstream; first prove the parent Builder can operate its own life safely, recoverably, and continuously.
+
+### Canonical repo / current proof boundary
+- Canonical repo: `H:\efab`, branch `main`.
+- Migration base after the latest School finalizer: `3e0a86137f105066e502ce9e9dfb5e5533b6443a`.
+- At migration preparation: local HEAD = origin/main, divergence `0/0`, repo clean.
+- School current state: `STOPPED`, process_count=0, pending=false, queue_count=0.
+- Active compact semantic memory is PROTECTED and present. Fresh hashes after Live-1000:
+  - `manifest.json`: `2BB131FA5472E1A91FAC5E6E683A7C45C1ECFBF2D7368AE85F7C13EF9AC7547E`
+  - `index.json`: `79502B339B429555F4FA7E4484389D3AD1D0B014A16D595661454BB381CD19A8`
+  - `cells.jsonl`: `C1727F1D35883568FAE8F90B6CD5F1520A35B8819CA49FCE8AA9193D1EFE091B`
+- These hashes are continuity pointers, not permission to mutate memory; fresh proof wins in the new chat.
+
+### School / learning system proven state
+- 200000 Test run passed canonical exact-count with accepted=200000/200000, `MockProducer`, `memory_changed=false`; test mock atoms were intentionally not copied into active memory.
+- Fresh Live/Real micro-trial passed with real `RunCodex`, accepted=1/1, absorb=true, memory_changed=true, intake+merge PASS, tracked summary committed.
+- Fresh governed Live run through Control Center:
+  - run_id: `canonical_exact_count_cycle_real_1000_20260818_191515`
+  - proof: `operations/reports/CANONICAL_EXACT_COUNT_CYCLE_RUN_20260818_192751.json`
+  - status: `PASS_CANONICAL_EXACT_COUNT_CYCLE_LIVE_V1`
+  - accepted=1000/1000, ready=1000
+  - producer=`RunCodex`
+  - memory_changed=true
+  - finalizer=`FINALIZER_COMMITTED_TRACKED_SUMMARY`
+  - tracked summary commit: `3e0a86137f105066e502ce9e9dfb5e5533b6443a`
+- Live-1000 demonstrated current real learning path works through the Control Center and actually changes active memory.
+
+### Runtime sanitation / retention accepted state
+- Root cause of prior >2 GB repo footprint was `.runtime` accumulation, not Git or canonical reports.
+- Aggressive cleanup reduced the repo to ~124 MB without changing active memory.
+- Accepted prevention commit: `89aa89320aa657b39a3e1125c63a87dd1097a7cf`.
+- Before every future `school.start`, governed retention now:
+  - keeps latest proof-backed finalized exact-count root=1;
+  - keeps latest compact-memory intake rollback checkpoints=3;
+  - preserves unproven/incomplete roots;
+  - refuses cleanup while protected School/memory/digest runtime is active;
+  - validates active-memory hash invariance.
+- Do not rebuild a second retention mechanism unless fresh evidence shows this accepted route is insufficient.
+
+### Telegram completion notification organ accepted state
+- Completion notifier is integrated directly into School completion after final canonical proof; no polling daemon is required.
+- Main notifier install commit: `2990a64375af1cfc936c6b074331fb82a4abda70`.
+- Control Center Run→Plan SchoolProofPath propagation defect was found during real delivery preparation and fixed in commit `8969e4c9094bd61b58b46cc1be7b4b85b2b3906e`.
+- Telegram credentials are configured on the EFAB Windows machine in Machine environment; token values MUST NOT be copied into repo, Notebook, logs, or future chat output.
+- Real delivery proof for 200k Test:
+  - receipt under `%ProgramData%\EFAB-Notifications\canonical_exact_count_cycle_test_200000_20260818_143314.telegram.json`
+  - status=DELIVERED, message_id=2
+  - repeat notifier call returned `ALREADY_DELIVERED` and did not send a duplicate.
+- Fresh end-to-end Live-1000 notification proof:
+  - receipt: `%ProgramData%\EFAB-Notifications\canonical_exact_count_cycle_real_1000_20260818_191515.telegram.json`
+  - status=DELIVERED
+  - message_id=3
+  - Owner visually confirmed receipt on phone.
+- Telegram organ status: `INSTALLED + REAL_DELIVERY_PROVEN + IDEMPOTENCY_PROVEN`.
+- Security note: the original bot token was once disclosed in chat/screenshot. Token rotation through BotFather remains recommended before treating long-term secret hygiene as mature. Do not rotate automatically without Owner direction because it is an external credential mutation.
+
+### Control Center / School accepted control surfaces
+- `school.start` governed launch is installed and proven.
+- `school.status` read-only observation is installed and proven.
+- `school.stop` cooperative stop is installed and proven in micro-trial; real mid-RunCodex stop timing is not fully proven.
+- `school.resume` retained-prefix resume is installed and smoke-proven.
+- pre-start retention is wired before School `Start-Process`.
+- completion Telegram notifier is wired after final canonical proof.
+- No duplicate School runtime may be launched. Always observe before action.
+
+### Current task transition: Agent Life
+New chat must NOT assume that the life runtime is currently running or that remembered command names are current proof. First restore runtime reality and applicable governance.
+
+Required opening cycle in the new chat:
+1. `getHealth()` on Primary Bridge.
+2. Verify repo context/root `H:\efab`, branch/HEAD/origin/dirty, applicable `AGENTS.md`, and current protected surfaces.
+3. Read this Notebook migration marker and the latest fresh runtime evidence; fresh proof supersedes this capsule.
+4. Observe existing agent-life/control surfaces before starting anything. Search current repo for canonical life entrypoints, Control Center action IDs, validators, runtime state files, watchdogs, stop/recovery routes, and any currently running agent process.
+5. Classify the intended action. If a life process is already running, observe it; **do not launch a duplicate**.
+6. If stopped and a canonical governed life start route exists, run Plan/readiness first. No direct terminal bypass if Control Center already owns the action.
+7. Before any LIVE_MUTATE, print a complete AUTHORITY_PASSPORT and restore checkpoint/rollback/validator boundaries.
+8. Start with the smallest useful life micro-trial, not an unbounded autonomous run. Long autonomy requires micro-trial proof.
+9. Validate: process identity/count, runtime health, memory/use path, task/return behavior, stop/recovery, logs, resource bounds, and no repo/runtime pollution.
+10. Only after micro-trial acceptance, expand life duration/scope and configure continuous operation.
+
+### Life-system questions to answer with fresh proof
+- What is the current canonical agent-life entrypoint and who owns launch authority?
+- Is there already a Control Center action for life start/status/stop/restart, or only direct scripts?
+- What runtime state/heartbeat proves life is alive rather than merely a process existing?
+- Does life read/use active compact memory in the real runtime path?
+- Does it return useful work/proof to the parent task rather than spin or self-prompt indefinitely?
+- How are task selection, sleep/cadence, budgets, failure retry, quarantine, and stop handled?
+- What happens on Bridge loss, process crash, machine reboot, or stale lock/state?
+- Are watchdog/recovery channels already wired and proven for life, or only for Bridge/School?
+- Is there a governed path for Owner commands while life is active?
+- What retention/sanitation applies to life logs/runtime so the earlier 2 GB bloat cannot recur?
+
+### Proven vs unverified at migration
+PROVEN:
+- canonical repo clean/synced at migration base before this Notebook append;
+- School Control Center launch/status/retention path;
+- real Live learning and active-memory mutation on Live-1000;
+- School finalizer tracked-summary commit;
+- Telegram real delivery + idempotency, including fresh Live-1000 message;
+- active memory present after Live-1000 with hashes above;
+- School stopped after completion.
+
+NOT YET PROVEN / MUST BE FRESHLY RESTORED IN NEW CHAT:
+- current Agent Life process state;
+- current life canonical entrypoint/action IDs and runtime ownership;
+- autonomous life micro-trial on the current HEAD/config;
+- life memory read/use/return behavior end-to-end;
+- continuous/stability proof;
+- crash/reboot/Bridge-loss recovery for life;
+- life-specific sanitation/retention under long operation;
+- whether all previous historical life scripts are still canonical vs superseded.
+
+### Safety / cut list for the new chat
+- Do NOT start School unless the new task specifically requires it.
+- Do NOT modify active memory directly.
+- Do NOT delete/recreate active memory.
+- Do NOT rotate Telegram token unless Owner explicitly asks.
+- Do NOT launch a second agent-life runtime if one exists.
+- Do NOT treat transcript/history/this capsule as current runtime proof.
+- Do NOT use Codex as brain/authority; any code change stays bounded and validated.
+- Do NOT perform broad cleanup while active life/memory work is running; observe first.
+- Do NOT jump directly to child-agent creation. First prove Builder can launch, observe, stop, recover, and maintain its own life.
+
+### First parent action in the new chat
+`OBSERVE/ANALYZE`: restore fresh repo + life-runtime reality and produce a compact capability/status map for Agent Life. Then choose the single strongest safe move toward a bounded life micro-trial through the canonical control surface. If no governed control surface exists, report the gap and prepare the smallest candidate rather than bypassing governance.
+
+### Return-to-parent criterion
+The migration is successful when the new chat can, from fresh proof, state the canonical life control path, current life status, protected surfaces, and the next bounded action without relying on this chat transcript. This marker is an expiring continuity pointer, not acceptance authority.
