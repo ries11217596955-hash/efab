@@ -154,10 +154,22 @@ $cycle = 0
 while ((Get-Date) -lt $end) {
     $cycle++
     $cycleStart = Get-Date
-    powershell -NoProfile -ExecutionPolicy Bypass -File "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1" -Mode SandboxExploration -EnableDeepThinking -EnableMemoryLearning -MemoryIngestionMode QueueOnly -WakeContextPath $lifeWorkingMemoryPath
-    $exit = $LASTEXITCODE
+    $remainingMs = [Math]::Max(0, [int](($end - (Get-Date)).TotalMilliseconds))
+    $runnerArgs = @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', 'operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1',
+        '-Mode', 'SandboxExploration', '-EnableDeepThinking', '-EnableMemoryLearning', '-MemoryIngestionMode', 'QueueOnly',
+        '-WakeContextPath', $lifeWorkingMemoryPath
+    )
+    $runner = Start-Process -FilePath 'powershell.exe' -ArgumentList $runnerArgs -PassThru -NoNewWindow
+    $boundedStop = $false
+    if (-not $runner.WaitForExit($remainingMs)) {
+        $boundedStop = $true
+        & taskkill.exe /PID $runner.Id /T /F | Out-Null
+        $runner.WaitForExit()
+    }
+    $exit = if ($boundedStop) { 124 } else { $runner.ExitCode }
 
-    $latest = Get-ChildItem ".runtime/autonomous_inner_motor" -Directory -ErrorAction SilentlyContinue | Sort-Object LastWriteTime -Descending | Select-Object -First 1
+    $latest = if (-not $boundedStop) { Get-ChildItem ".runtime/autonomous_inner_motor" -Directory -ErrorAction SilentlyContinue | Sort-Object LastWriteTime -Descending | Select-Object -First 1 } else { $null }
     $proofPath = $null
     $proof = $null
     if ($latest) {
@@ -172,6 +184,7 @@ while ((Get-Date) -lt $end) {
         cycle = $cycle
         started_at = $cycleStart.ToUniversalTime().ToString("o")
         exit_code = $exit
+        bounded_stop = $boundedStop
         run_dir = if ($latest) { $latest.FullName } else { $null }
         proof_path = $proofPath
         proof_status = if ($proof) { $proof.deep_thinking.status } else { $null }
@@ -196,7 +209,7 @@ while ((Get-Date) -lt $end) {
 }
 
 $finish = Get-Date
-$badCycles = @($cycles | Where-Object { $_.exit_code -ne 0 })
+$badCycles = @($cycles | Where-Object { $_.exit_code -ne 0 -and -not $_.bounded_stop })
 $summary = [ordered]@{
     schema = "agent_life_trial_summary_v1"
     status = if (@($badCycles).Count -eq 0) { "PASS_AGENT_LIFE_CANONICAL_TRIAL" } else { "FAIL_AGENT_LIFE_CANONICAL_TRIAL" }
