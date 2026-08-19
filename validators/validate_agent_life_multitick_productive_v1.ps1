@@ -20,6 +20,7 @@ if(-not$runner.Contains("'-MemoryContextPath',`$lifeWorkingMemoryPath") -or -not
 if(-not$mind.Contains("[string]`$MemoryContextPath=''") -or -not$mind.Contains('PASS_LIFE_CYCLE_LOCAL_MEMORY_CONTEXT_V1') -or -not$mind.Contains("memory_recall_mode=if(`$useLocalLifeMemory){'life_working_memory_local'}")){Err 'mind_local_memory_context_contract_missing'}
 if(-not$runner.Contains("kind='epistemic_state_delta'") -or -not$runner.Contains('selected_next_logical_step_is_claim=$false') -or -not$runner.Contains('provisional_knowledge=$knowledge') -or -not$runner.Contains('long_term_admitted=$false')){Err 'epistemic_delta_producer_contract_missing'}
 if(-not$runner.Contains('function Get-LifeEpistemicStateSignature') -or -not$runner.Contains('if(-not [string]::IsNullOrWhiteSpace($previousSignature) -and $previousSignature -eq $epistemicSignature){ return $null }') -or -not$runner.Contains("if(`$itemSource -eq 'life_working_memory_provisional'){ continue }")){Err 'material_epistemic_delta_anti_recursion_contract_missing'}
+if(-not$runner.Contains('PROVISIONAL_EPISTEMIC_DELTA_PRODUCED') -or -not$runner.Contains('THOUGHT_COMPLETED_WITH_NO_MEANINGFUL_EPISTEMIC_DELTA_PREVIOUS_KNOWLEDGE_PRESERVED') -or -not$runner.Contains("New-LifePreviousCycleDelta `$mindLogic.frame `$selectedActionId `$deepThinking (Get-ObjectField `$lifeWorkingMemory.compact_context 'previous_cycle_delta')")){Err 'provisional_knowledge_carry_forward_contract_missing'}
 if(-not$runner.Contains('function Set-ObjectField') -or -not$runner.Contains("Set-ObjectField `$lifeWorkingMemory.compact_context 'previous_cycle_delta' `$cycleDelta")){Err 'first_cycle_delta_dictionary_serialization_guard_missing'}
 if(-not$mind.Contains("source='life_working_memory_provisional'") -or -not$mind.Contains("if(`$hits -gt 0){") -or $mind.Contains("`$c.source -eq 'life_working_memory'")){Err 'provisional_relevance_not_temporal_contract_missing'}
 if(-not$runner.Contains('New-AgentLifePendingMemoryPacket') -or -not$runner.Contains('PASS_LIFE_LIGHT_EPISTEMIC_DELTA_QUEUED_PENDING_GATE') -or -not$runner.Contains('memory_admission_pending=')){Err 'pending_memory_gate_runner_contract_missing'}
@@ -46,7 +47,7 @@ if(Test-Path $relScratch){Err 'provisional_relevance_scratch_leftover'}
 $deltaScratch=Join-Path '.runtime/self_development' ('material_epistemic_delta_validator_'+[guid]::NewGuid().ToString('N'))
 New-Item -ItemType Directory -Force -Path $deltaScratch|Out-Null
 try{
-  $sharedContext=Join-Path $deltaScratch 'shared_life_context.json';$cycle1Root=Join-Path $deltaScratch 'cycle1';$cycle2Root=Join-Path $deltaScratch 'cycle2'
+  $sharedContext=Join-Path $deltaScratch 'shared_life_context.json';$cycle1Root=Join-Path $deltaScratch 'cycle1';$cycle2Root=Join-Path $deltaScratch 'cycle2';$cycle3Root=Join-Path $deltaScratch 'cycle3'
   $question='Identify one high-value knowledge gap not already resolved by current memory, then determine the smallest trustworthy evidence needed to learn it.'
   & powershell -NoProfile -ExecutionPolicy Bypass -File 'operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1' -Mode SandboxExploration -Question $question -SeedSource OwnerHint -EnableDeepThinking -LifeProfile LifeLight -OutputRoot $cycle1Root -WakeContextPath $sharedContext *> $null
   if($LASTEXITCODE-ne0){Err 'material_delta_cycle1_failed'}else{
@@ -60,7 +61,16 @@ try{
     if(-not$p2f){Err 'material_delta_cycle2_proof_missing'}else{$p2=Get-Content $p2f.FullName -Raw|ConvertFrom-Json;if($null-ne$p2.deep_thinking.learning_atom){Err 'duplicate_epistemic_state_not_suppressed'};if($p2.deep_thinking.status-ne'PASS_LIFE_LIGHT_THOUGHT_NO_MEANINGFUL_EPISTEMIC_DELTA'){Err 'duplicate_epistemic_state_wrong_status'}}
   }
   $bytes2=if(Test-Path $sharedContext){(Get-Item $sharedContext).Length}else{0}
-  if($bytes1-le0 -or $bytes2-gt($bytes1*2)){Err 'provisional_context_recursive_growth_guard_failed'}
+  $ctx2=if(Test-Path $sharedContext){Get-Content $sharedContext -Raw|ConvertFrom-Json}else{$null}
+  $d2=if($ctx2){$ctx2.compact_context.previous_cycle_delta}else{$null}
+  if($null-eq$d2 -or -not[bool]$d2.provisional -or $null-eq$d2.provisional_knowledge -or [string]::IsNullOrWhiteSpace([string]$d2.provisional_knowledge.epistemic_state.signature)){Err 'provisional_knowledge_not_preserved_after_no_delta_cycle'}
+  & powershell -NoProfile -ExecutionPolicy Bypass -File 'operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1' -Mode SandboxExploration -Question $question -SeedSource OwnerHint -EnableDeepThinking -LifeProfile LifeLight -OutputRoot $cycle3Root -WakeContextPath $sharedContext *> $null
+  if($LASTEXITCODE-ne0){Err 'material_delta_cycle3_failed'}else{
+    $p3f=Get-ChildItem $cycle3Root -Recurse -File -Filter 'SANDBOX_EXPLORATION_PROOF.json'|Sort-Object LastWriteTime -Descending|Select-Object -First 1
+    if(-not$p3f){Err 'material_delta_cycle3_proof_missing'}else{$p3=Get-Content $p3f.FullName -Raw|ConvertFrom-Json;if($null-ne$p3.deep_thinking.learning_atom){Err 'duplicate_epistemic_state_reappeared_after_empty_cycle'};if($p3.deep_thinking.status-ne'PASS_LIFE_LIGHT_THOUGHT_NO_MEANINGFUL_EPISTEMIC_DELTA'){Err 'cycle3_duplicate_epistemic_state_wrong_status'}}
+  }
+  $bytes3=if(Test-Path $sharedContext){(Get-Item $sharedContext).Length}else{0}
+  if($bytes1-le0 -or $bytes2-gt($bytes1*2) -or $bytes3-gt($bytes1*2)){Err 'provisional_context_recursive_growth_guard_failed'}
 }finally{if(Test-Path $deltaScratch){Remove-Item $deltaScratch -Recurse -Force -ErrorAction SilentlyContinue}}
 if(Test-Path $deltaScratch){Err 'material_epistemic_delta_scratch_leftover'}
  $tok=$null;$pe=$null;$ast=[System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path 'operations/autonomous_inner_motor/start_agent_life_v1.ps1'),[ref]$tok,[ref]$pe);$fn=@($ast.FindAll({param($n)$n -is [System.Management.Automation.Language.FunctionDefinitionAst] -and $n.Name -eq 'Invoke-AgentLifeOwnedRunSanitation'},$true))|Select-Object -First 1

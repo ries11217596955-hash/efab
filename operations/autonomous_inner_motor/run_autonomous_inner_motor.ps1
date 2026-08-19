@@ -609,19 +609,22 @@ function Get-LifeSafeConceptToken([string]$Text,[string]$Fallback){
   if([string]::IsNullOrWhiteSpace($token)){ $token=$Fallback }
   return $token
 }
-function New-LifePreviousCycleDelta($MindFrame,$SelectedActionId,$DeepThinking){
+function New-LifePreviousCycleDelta($MindFrame,$SelectedActionId,$DeepThinking,$PreviousCycleDelta){
   $atom=if($DeepThinking){$DeepThinking.learning_atom}else{$null}
   $step=Get-ObjectField $MindFrame 'selected_next_logical_step'
   $selectedStepId=if($step -and (Get-ObjectField $step 'step_id')){[string](Get-ObjectField $step 'step_id')}elseif($step){[string](Convert-LifeMindFrameValueToText $step)}else{$SelectedActionId}
   $selectedStepReason=if($step -and (Get-ObjectField $step 'reason')){[string](Get-ObjectField $step 'reason')}else{$null}
+  $previousKnowledge=if($PreviousCycleDelta){Get-ObjectField $PreviousCycleDelta 'provisional_knowledge'}else{$null}
+  $carryPrevious=($null -eq $atom -and $PreviousCycleDelta -and [bool](Get-ObjectField $PreviousCycleDelta 'provisional') -and -not [bool](Get-ObjectField $PreviousCycleDelta 'long_term_admitted') -and -not [bool](Get-ObjectField $PreviousCycleDelta 'memory_is_command') -and $previousKnowledge)
+  $sourceKnowledge=if($atom){$atom}elseif($carryPrevious){$previousKnowledge}else{$null}
   $knowledge=[ordered]@{
-    concept_key=if($atom){$atom.concept_key}else{$null}
-    kind=if($atom){$atom.kind}else{$null}
-    label=if($atom){$atom.label}else{$null}
-    summary=if($atom){$atom.summary}else{$null}
-    definition=if($atom){$atom.definition}else{$null}
-    epistemic_state=if($atom){$atom.epistemic_state}else{$null}
-    provisional=if($atom){$true}else{$false}
+    concept_key=if($sourceKnowledge){Get-ObjectField $sourceKnowledge 'concept_key'}else{$null}
+    kind=if($sourceKnowledge){Get-ObjectField $sourceKnowledge 'kind'}else{$null}
+    label=if($sourceKnowledge){Get-ObjectField $sourceKnowledge 'label'}else{$null}
+    summary=if($sourceKnowledge){Get-ObjectField $sourceKnowledge 'summary'}else{$null}
+    definition=if($sourceKnowledge){Get-ObjectField $sourceKnowledge 'definition'}else{$null}
+    epistemic_state=if($sourceKnowledge){Get-ObjectField $sourceKnowledge 'epistemic_state'}else{$null}
+    provisional=if($sourceKnowledge){$true}else{$false}
     long_term_admitted=$false
     not_long_term_admitted=$true
     memory_is_command=$false
@@ -635,9 +638,9 @@ function New-LifePreviousCycleDelta($MindFrame,$SelectedActionId,$DeepThinking){
     provisional_knowledge_summary=$knowledge.summary
     provisional_knowledge_definition=$knowledge.definition
     provisional_knowledge=$knowledge
-    useful_outcome=if($atom){'PROVISIONAL_EPISTEMIC_DELTA_PRODUCED'}else{'THOUGHT_COMPLETED_WITH_NO_MEANINGFUL_EPISTEMIC_DELTA'}
+    useful_outcome=if($atom){'PROVISIONAL_EPISTEMIC_DELTA_PRODUCED'}elseif($carryPrevious){'THOUGHT_COMPLETED_WITH_NO_MEANINGFUL_EPISTEMIC_DELTA_PREVIOUS_KNOWLEDGE_PRESERVED'}else{'THOUGHT_COMPLETED_WITH_NO_MEANINGFUL_EPISTEMIC_DELTA'}
     memory_admission_status=if($DeepThinking -and $DeepThinking.absorption){$DeepThinking.absorption.status_line}elseif($DeepThinking -and $DeepThinking.acceptance_gate){$DeepThinking.acceptance_gate.status}else{'NO_MEMORY_ADMISSION'}
-    provisional=if($atom){$true}else{$false}
+    provisional=if($sourceKnowledge){$true}else{$false}
     long_term_admitted=$false
     not_long_term_admitted=$true
     memory_is_command=$false
@@ -1952,7 +1955,7 @@ if($LifeProfile -eq 'LifeLight'){
   Write-CleanJson $shortTermMindStatePath $shortTermMindState 30
   Write-CleanJson $shortTermStateToNextTaskRouterPath $shortTermStateToNextTaskRouter 30
   if($lifeWorkingMemory -and $lifeWorkingMemory.compact_context){
-    $cycleDelta=New-LifePreviousCycleDelta $mindLogic.frame $selectedActionId $deepThinking
+    $cycleDelta=New-LifePreviousCycleDelta $mindLogic.frame $selectedActionId $deepThinking (Get-ObjectField $lifeWorkingMemory.compact_context 'previous_cycle_delta')
     Set-ObjectField $lifeWorkingMemory.compact_context 'previous_cycle_delta' $cycleDelta
     Write-CleanJson $lifeWorkingMemoryPath $lifeWorkingMemory 100
   }
