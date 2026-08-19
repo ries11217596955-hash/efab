@@ -5,12 +5,45 @@ param(
   [switch]$DisableMemoryRecall,
   [string]$OutputPath='.runtime/agent_mind_logic_kernel_v1/logic_frame.json',
   [ValidateSet('LabOnly')][string]$Mode='LabOnly',
-  [ValidateSet('Full','LifeCycle')][string]$ReasoningProfile='Full'
+  [ValidateSet('Full','LifeCycle')][string]$ReasoningProfile='Full',
+  [string]$MemoryContextPath=''
 )
 $ErrorActionPreference='Stop'
 function WJson($o,$p){ New-Item -ItemType Directory -Force -Path (Split-Path $p -Parent) | Out-Null; $o|ConvertTo-Json -Depth 80|Set-Content -Path $p -Encoding UTF8 }
 function FileProof([string]$p){ if(Test-Path $p){ $i=Get-Item $p; return [ordered]@{path=$p; exists=$true; bytes=$i.Length; sha256=(Get-FileHash $p -Algorithm SHA256).Hash.ToLower()} }; return [ordered]@{path=$p; exists=$false} }
 function Has([string]$s,[string]$pattern){ return ($s -match $pattern) }
+function Get-LifeCycleLocalMemoryEvidence([string]$Path,[string]$Query,[int]$Top=5){
+  $out=[ordered]@{status='NO_LOCAL_CONTEXT';matches=@();accepted_matches=@();accepted_count=0;rejected_matches=@();source_path=$Path;used_in_known=$false}
+  if([string]::IsNullOrWhiteSpace($Path) -or -not(Test-Path -LiteralPath $Path -PathType Leaf)){ return $out }
+  try{$ctx=Get-Content -Raw -LiteralPath $Path | ConvertFrom-Json}catch{$out.status='LOCAL_CONTEXT_PARSE_FAILED';return $out}
+  if($ctx.status -ne 'PASS_LIFE_WORKING_MEMORY_V1'){$out.status='LOCAL_CONTEXT_STATUS_MISMATCH';return $out}
+  $candidates=New-Object 'System.Collections.Generic.List[object]'
+  $sample=$ctx.compact_context.active_memory_sample
+  foreach($c in @($sample.cell_sample)){
+    if($c){[void]$candidates.Add([pscustomobject]@{label=if($c.title){[string]$c.title}else{[string]$c.id};summary=if($c.title){[string]$c.title}else{([string]$c.kind+' '+[string]$c.id)};kind=[string]$c.kind;source='active_memory_cell_sample';priority=1})}
+  }
+  foreach($i in @($sample.index_key_sample)){
+    if($i){[void]$candidates.Add([pscustomobject]@{label=[string]$i.key;summary=[string]$i.value;kind='index_sample';source='active_memory_index_sample';priority=1})}
+  }
+  if($ctx.compact_context.previous_cycle_delta){
+    $d=$ctx.compact_context.previous_cycle_delta
+    $summary=('Previous cycle: step='+[string]$d.selected_step+'; knowledge='+[string]$d.knowledge_candidate_label+'; outcome='+[string]$d.useful_outcome)
+    [void]$candidates.Add([pscustomobject]@{label='previous_cycle_delta';summary=$summary;kind='life_continuity';source='life_working_memory';priority=3})
+  }
+  $tokens=@(([regex]::Matches(([string]$Query).ToLowerInvariant(),'[\p{L}0-9_-]{4,}')|ForEach-Object{$_.Value})|Select-Object -Unique)
+  $scored=New-Object 'System.Collections.Generic.List[object]'
+  foreach($c in @($candidates.ToArray())){
+    $text=(([string]$c.label+' '+[string]$c.summary+' '+[string]$c.kind).ToLowerInvariant())
+    $hits=0;foreach($t in $tokens){if($text.Contains($t)){$hits++}}
+    $score=[int]$hits+[int]$c.priority
+    if($hits -gt 0 -or $c.source -eq 'life_working_memory'){
+      [void]$scored.Add([pscustomobject]@{label=$c.label;summary=$c.summary;kind=$c.kind;source=$c.source;score=$score;hits=$hits})
+    } else { $out.rejected_matches += $c }
+  }
+  $accepted=@($scored.ToArray()|Sort-Object score -Descending|Select-Object -First ([Math]::Max(1,$Top)))
+  $out.status='PASS_LIFE_CYCLE_LOCAL_MEMORY_CONTEXT_V1';$out.matches=$accepted;$out.accepted_matches=$accepted;$out.accepted_count=$accepted.Count
+  return $out
+}
 $kernelPath='operations/reasoning/agent_mind_logic_kernel_v1.json'
 if(-not(Test-Path $kernelPath)){ throw 'MIND_LOGIC_KERNEL_MISSING' }
 $problemText=[string]$Problem
@@ -37,8 +70,15 @@ $memoryRecall=[ordered]@{
   matches=@()
   used_in_known=$false
 }
+$useLocalLifeMemory=($ReasoningProfile -eq 'LifeCycle' -and -not [string]::IsNullOrWhiteSpace($MemoryContextPath) -and (Test-Path -LiteralPath $MemoryContextPath -PathType Leaf))
+$localLifeMemory=if($useLocalLifeMemory){Get-LifeCycleLocalMemoryEvidence $MemoryContextPath $Problem $MemoryTop}else{$null}
 $memoryQueryScript='operations/school/memory/query_compact_semantic_memory_v1.ps1'
-if(-not $DisableMemoryRecall -and (Test-Path $memoryQueryScript)){
+if($useLocalLifeMemory){
+  $memoryRecall.status=$localLifeMemory.status
+  $memoryRecall.matches=@($localLifeMemory.matches)
+  $memoryRecall.stdout=@('LOCAL_LIFE_MEMORY_CONTEXT='+$MemoryContextPath)
+  $memoryRecall.exit_code=0
+} elseif(-not $DisableMemoryRecall -and (Test-Path $memoryQueryScript)){
   $recallOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File $memoryQueryScript -Query $Problem -Top $MemoryTop *>&1 | ForEach-Object { [string]$_ })
   $memoryRecall.stdout=@($recallOut | Where-Object { $_ -match '^(MEMORY_RECALL_STATUS|MATCH\|)' } | Select-Object -First 8)
   $memoryRecall.exit_code=$LASTEXITCODE
@@ -73,7 +113,15 @@ $memoryRecallFilter=[ordered]@{
 }
 $memoryFilterScript='operations/reasoning/filter_memory_recall_relevance_v1.ps1'
 $memoryFilterPath=Join-Path (Split-Path $OutputPath -Parent) 'memory_recall_filter.json'
-if(-not $DisableMemoryRecall -and (Test-Path $memoryFilterScript)){
+if($useLocalLifeMemory){
+  $memoryRecallFilter.status=$localLifeMemory.status
+  $memoryRecallFilter.accepted_count=[int]$localLifeMemory.accepted_count
+  $memoryRecallFilter.accepted_matches=@($localLifeMemory.accepted_matches)
+  $memoryRecallFilter.rejected_count=@($localLifeMemory.rejected_matches).Count
+  $memoryRecallFilter.result_path=$MemoryContextPath
+  $memoryRecallFilter.exit_code=0
+  $memoryRecallFilter.stdout=@('LOCAL_LIFE_MEMORY_CONTEXT='+$MemoryContextPath)
+} elseif(-not $DisableMemoryRecall -and (Test-Path $memoryFilterScript)){
   $filterOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File $memoryFilterScript -Query $Problem -Top $MemoryTop -AcceptTop 3 -OutputPath $memoryFilterPath *>&1 | ForEach-Object { [string]$_ })
   $memoryRecallFilter.stdout=@($filterOut | Where-Object { $_ -match '^(RECALL_FILTER_STATUS|RECALL_FILTER_ACCEPTED_COUNT|RECALL_FILTER_TOP_LABEL)=' })
   $memoryRecallFilter.exit_code=$LASTEXITCODE
@@ -114,7 +162,7 @@ if($legacySelfBuildTopic){
 }else{
   [void]$known.Add([ordered]@{claim=('Current reasoning topic: ' + $Problem); evidence='current_input'; confidence='INPUT_DEFINED_TOPIC'})
 }
-if($memoryRecallFilter.status -eq 'PASS_MEMORY_RECALL_RELEVANCE_FILTER_V1' -and @($memoryRecallFilter.accepted_matches).Count -gt 0){
+if($memoryRecallFilter.status -in @('PASS_MEMORY_RECALL_RELEVANCE_FILTER_V1','PASS_LIFE_CYCLE_LOCAL_MEMORY_CONTEXT_V1') -and @($memoryRecallFilter.accepted_matches).Count -gt 0){
   $memoryRecall.used_in_known=$true
   $memoryRecallFilter.used_in_known=$true
   if($legacySelfBuildTopic){
@@ -387,6 +435,8 @@ $frame=[ordered]@{
   evidence_refs=@($evidence)
   restored_context=if($legacySelfBuildTopic){[ordered]@{current_branch='Owner corrected direction from safety/passports to mind/logic'; nearest_project_context='AIMO has thinking proof and action-candidate proof, but needs stable cognitive operator.'}}else{[ordered]@{current_branch='current topic reasoning'; nearest_project_context=$Problem}}
   reasoning_profile=$ReasoningProfile
+  memory_context_path=$MemoryContextPath
+  memory_recall_mode=if($useLocalLifeMemory){'life_working_memory_local'}elseif($DisableMemoryRecall){'disabled'}else{'semantic_subprocess'}
   known=@($known.ToArray())
   unknown=@($unknown)
   assumptions=@($assumptions)

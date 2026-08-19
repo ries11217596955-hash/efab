@@ -1470,6 +1470,10 @@ if(-not [string]::IsNullOrWhiteSpace($WakeContextPath) -and (Test-Path -LiteralP
   $innateReflexBootloadPath=$lifeWorkingMemory.innate_reflex_bootload_path
   $defaultWakeReflexesPath=$lifeWorkingMemory.default_wake_reflexes_path
   $lifeWorkingMemoryMode='reused_life_working_memory'
+  if(-not $lifeWorkingMemory.compact_context){$lifeWorkingMemory|Add-Member -NotePropertyName compact_context -NotePropertyValue ([pscustomobject]@{}) -Force}
+  $lifeWorkingMemory.compact_context | Add-Member -NotePropertyName active_memory_sample -NotePropertyValue $memoryBefore -Force
+  $lifeWorkingMemory.compact_context | Add-Member -NotePropertyName active_memory_sample_refreshed_at -NotePropertyValue ((Get-Date).ToUniversalTime().ToString('o')) -Force
+  Write-CleanJson $lifeWorkingMemoryPath $lifeWorkingMemory 100
 } else {
   $innateReflexBootload=New-InnateReflexBootload $runRoot $innateReflexBootloadPath
   $defaultWakeReflexes=Invoke-DefaultWakeReflexes $runRoot $innateReflexBootload $defaultWakeReflexesPath $LifeProfile
@@ -1495,6 +1499,8 @@ if(-not [string]::IsNullOrWhiteSpace($WakeContextPath) -and (Test-Path -LiteralP
       runtime_top_entry_count=$defaultWakeReflexes.runtime_pressure_reflex.runtime_top_entry_count
       active_memory_root_exists=$defaultWakeReflexes.active_memory_read_reflex.root_exists
       active_memory_cells_exists=$defaultWakeReflexes.active_memory_read_reflex.cells_exists
+      active_memory_sample=$memoryBefore
+      active_memory_sample_refreshed_at=(Get-Date).ToUniversalTime().ToString('o')
     }
     boundary=[ordered]@{
       life_scope='one_per_canonical_life_when_launcher_passes_WakeContextPath'
@@ -1571,7 +1577,7 @@ if(Test-Path $mindBuilder){
   $logicProblem=if($internalGoal -and $internalGoal.goal){ [string]$internalGoal.goal } else { [string]$Question }
   if([string]::IsNullOrWhiteSpace($logicProblem)){ $logicProblem='AIMO self-build thinking cycle: choose the next logical reasoning step before action candidate.' }
   $mindArgs=@('-NoProfile','-ExecutionPolicy','Bypass','-File',$mindBuilder,'-Problem',$logicProblem,'-OutputPath',$mindLogicPath)
-  if($LifeProfile -eq 'LifeLight'){ $mindArgs += @('-ReasoningProfile','LifeCycle') }
+  if($LifeProfile -eq 'LifeLight'){ $mindArgs += @('-ReasoningProfile','LifeCycle','-MemoryContextPath',$lifeWorkingMemoryPath) }
   $mindOut=@(& powershell @mindArgs *>&1 | ForEach-Object { [string]$_ })
   $mindLogic.builder_stdout=@($mindOut)
   $mindLogic.builder_exit_code=$LASTEXITCODE
@@ -1738,6 +1744,11 @@ if($LifeProfile -eq 'LifeLight'){
   $buildTaskBoundedExecutor=[ordered]@{status='DEFERRED_LIFE_CYCLE_PROFILE';execution_status='NOT_EXECUTED'}
   Write-CleanJson $shortTermMindStatePath $shortTermMindState 30
   Write-CleanJson $shortTermStateToNextTaskRouterPath $shortTermStateToNextTaskRouter 30
+  if($lifeWorkingMemory -and $lifeWorkingMemory.compact_context){
+    $cycleDelta=[ordered]@{selected_step=if($mindLogic.frame -and $mindLogic.frame.selected_next_logical_step){$mindLogic.frame.selected_next_logical_step.step_id}else{$selectedActionId};knowledge_candidate_label=if($deepThinking.learning_atom){$deepThinking.learning_atom.label}else{$null};useful_outcome=if($deepThinking.learning_atom){'KNOWLEDGE_CANDIDATE_PRODUCED'}elseif($selectedActionId){'NEXT_ACTION_CANDIDATE_PRODUCED'}else{'THOUGHT_COMPLETED'};memory_admission_status=if($deepThinking.absorption){$deepThinking.absorption.status_line}elseif($deepThinking.acceptance_gate){$deepThinking.acceptance_gate.status}else{'NO_MEMORY_ADMISSION'};memory_is_command=$false;created_at=(Get-Date).ToUniversalTime().ToString('o')}
+    $lifeWorkingMemory.compact_context | Add-Member -NotePropertyName previous_cycle_delta -NotePropertyValue $cycleDelta -Force
+    Write-CleanJson $lifeWorkingMemoryPath $lifeWorkingMemory 100
+  }
 } else {
   $selectiveCompactMemoryRetrieval = New-SelectiveCompactMemoryRetrieval $runId $internalGoal $mindLogic $mentalFrontierRouter $dynamicMemoryRetrievalBudget
   Write-CleanJson $selectiveCompactMemoryRetrievalPath $selectiveCompactMemoryRetrieval 40
