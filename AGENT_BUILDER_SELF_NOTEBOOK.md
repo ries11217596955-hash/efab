@@ -3721,3 +3721,123 @@ Morning continuation should first read this marker, restore fresh repo/runtime/c
 1. governed repo sync + arbitrary-scale School Control completion; or
 2. four-channel capability/recovery normalization.
 Fresh proof supersedes this handoff.
+
+## NEW_CHAT_MIGRATION_20260819_2021_AZ
+
+### Parent goal / stage
+- Parent goal: довести local-first Agent Builder до реально продуктивной автономной жизни и self-build path без внешнего LLM/model/API/cloud inference как runtime brain.
+- Текущий stage: Agent Life multi-tick productivity + единый candidate warehouse / one-throat long-term memory admission.
+- Child agents НЕ начинать до доказанного self-build/self-repair baseline.
+
+### Fresh canonical reality at migration
+- repo root: `H:\efab`
+- branch: `main`
+- HEAD: `a1da9c8c82c98ab56208b38f267f24d47515a8f3`
+- origin/main: `0366df5d02547be76b8bfd21d5d9e885f8fcf46c`
+- delta: local ahead 4, behind 0
+- worktree: clean before this Notebook append
+- Agent Life: `STOPPED`, process_count=0
+- School: `STOPPED`, process_count=0, pending=false, queue_count=0
+- canonical Agent Life entrypoint: `operations/autonomous_inner_motor/start_agent_life_v1.ps1`
+- canonical School entrypoint: `operations/school/run_agent_school.ps1`
+
+### Current installed Agent Life slice
+Recent local commits, newest first:
+- `a1da9c8` — `feat(agent-life): decouple memory admission from life ticks`
+- `ecdcf9d` — `perf(agent-life): reuse local working memory per tick`
+- `7ec9455` — `chore(maps): refresh after agent-life install`
+- `7a3470a` — `feat(agent-life): make bounded productive life ticks`
+- origin/main currently remains at `0366df5`.
+
+### Agent Life proven state
+PROVEN:
+- Ordinary LifeLight no longer performs full body audit every tick.
+- Ordinary LifeLight no longer requires heavy semantic-memory subprocess every tick; it reuses bounded `life_working_memory_context`.
+- Two sequential LAB LifeLight ticks sharing one working context completed in about 22.5s and 17.7s.
+- Second tick saw `previous_cycle_delta` from the first tick.
+- `memory_recall_mode=life_working_memory_local` was proven in that two-tick LAB.
+- Memory is evidence/weight/context, not a command: `memory_is_command=false`, `memory_can_force_next_step=false`.
+- Specialized validator freshly passed on current HEAD:
+  `PASS_AGENT_LIFE_MULTITICK_PRODUCTIVE_V1|STRUCTURE=PASS|MEMORY_NOT_COMMAND=PASS|TYPE_STABILITY=PASS|OWNED_SANITATION=PASS|FOREIGN_REFUSAL=PASS|SCRATCH_CLEAN=PASS|LIVE_MULTITICK=NOT_PROVEN_BY_THIS_VALIDATOR`.
+- Sanitation guard refuses foreign/non-owned run cleanup and compacts/deletes only current-life-owned runtime according to contract.
+
+### Unified candidate warehouse / one-throat memory admission proven state
+Architecture now follows:
+`Agent Life / School / governed producer -> one existing warehouse -> full memory atom gate -> READY -> one existing memory throat -> active accepted memory`.
+
+PROVEN in bounded synthetic/LAB evidence:
+- `PENDING_MEMORY_ATOM_GATE` packet cannot merge into active memory.
+- Bad AgentLife candidate was rejected by the real existing memory gate, warehouse packet deleted, and only bounded feedback returned to synthetic life working context.
+- Rejection example proven: `reason_code=DUPLICATE`, `retry_condition=only_with_new_delta_or_evidence`.
+- Active protected memory hashes remained unchanged during negative-path proof.
+- Good unique candidate passed the real full memory atom gate with `ACCEPT`, became `READY_AFTER_MEMORY_ATOM_GATE`, `merge_ready=true`, and entered the existing single digestion/merge throat on a synthetic memory copy.
+- Full final digest/merge on the large synthetic memory copy did NOT complete inside a 180s test window. Therefore `READY -> final accepted memory write` is not yet newly end-to-end proven for this decoupled path.
+- Existing throat timeout hygiene was repaired and proven: forced 1s synthetic merge timeout left no stale merge lock, no child merge/checkpoint/absorption debris, no active-memory mutation, and test scratch was removed.
+
+### Critical behavior contract
+- Agent Life must NOT wait for heavy long-term memory acceptance inside its life tick.
+- Agent creates a knowledge candidate, queues it to the existing common warehouse, records bounded working-memory continuity, and continues life.
+- School uses the same warehouse and same final throat.
+- No second queue, second accepted-memory route, rejection daemon, or producer-specific memory brain.
+- REJECT lifecycle: reject -> short structured feedback -> delete candidate packet.
+- Feedback is not accepted long-term memory. For Agent Life it belongs only in bounded anti-repeat working context/digest.
+- Candidate/feedback must never dictate next step; fresh goal/reality/reasoning remain authoritative for selection.
+
+### Master Plan v0.3 settings note
+- Owner reports that `AGENT_BUILDER_UNIFIED_MASTER_ARCHITECTURE_IMPLEMENTATION_SPEC_v0.3` has been loaded into this GPT's settings.
+- v0.3 artifact SHA256 from the generated plan: `4d2f992330361eb2bed6d8d802682c5cdf9962742ee67e96abce99034669dd1e`.
+- Treat v0.3 as architecture/implementation/acceptance-plan guidance.
+- Owner-reported settings upload is NOT by itself `BEHAVIOR_PROVEN`; static plan/settings text does not override fresh repo/runtime proof.
+- This Root Notebook remains project continuity authority.
+
+### Current proof limits / blockers
+- Current HEAD post-commit Agent Life specialized validator is fresh PASS.
+- Current body-map validator was started during migration but did not finish inside the 30s read-only window; do NOT claim fresh map-currentness PASS from that invocation. Recheck only if a structural/map claim depends on it.
+- New decoupled warehouse path has NOT yet been proven by a fresh canonical 2-minute Agent Life trial on HEAD `a1da9c8`.
+- New path has NOT yet proven real production sequence: multiple completed live ticks -> multiple pending warehouse candidates -> Agent self-stop -> separate maintenance processing -> accepted/rejected outcomes.
+- Final good-candidate digest/merge can be slow; prior synthetic positive proof reached READY/one-throat but timed out at 180s during the existing digest organ.
+- Local main is ahead origin/main by 4; no remote push is implied by this handoff.
+- `stash@{0}` remains: `checkpoint: pre-agent-life unrelated retention slice 20260819`. Do not mix it into Agent Life work accidentally.
+- `stash@{1}` is older unrelated WIP. Do not restore either stash without a separate task/reality check.
+
+### Forbidden repeats / cut list
+- Do NOT solve life productivity by simply increasing tick timeout.
+- Do NOT put full semantic recall or full long-term memory admission back inside ordinary LifeLight tick.
+- Do NOT create a second candidate warehouse, second memory throat, rejection memory, or rejection daemon.
+- Do NOT treat `PENDING` or working-memory continuity as accepted long-term knowledge.
+- Do NOT directly write protected active memory from Agent Life, School, Codex, or GPT.
+- Do NOT start School during Agent Life continuation unless specifically required.
+- Do NOT launch duplicate Agent Life runtime; always observe first.
+- Do NOT broaden cleanup beyond proven self-owned runtime artifacts.
+- Do NOT restore unrelated retention stash merely to make the repo look different.
+- Do NOT jump to child agents before productive self-build/self-repair evidence.
+
+### Exact first move in the new chat
+1. Read this marker after proving canonical root `H:\efab`.
+2. Fresh observe: branch/HEAD/origin/dirty; Agent/School status; candidate warehouse count/state; merge lock; relevant current validators/control-center readiness.
+3. If repo/runtime are safe and `agent.start` Plan is READY, run ONE canonical governed 2-minute Agent Life trial on current HEAD.
+4. Acceptance target for that trial:
+   - >=2 completed useful ticks (prefer 3+ if timing naturally permits);
+   - no tick monopolizes whole life window;
+   - cycle2+ reuses previous-cycle continuity locally;
+   - each completed tick can produce/queue a knowledge candidate without waiting for full memory gate;
+   - `memory_is_command=false`;
+   - Agent self-stops, process_count returns 0;
+   - sanitation leaves no uncontrolled run/proof debris;
+   - repo unchanged by runtime;
+   - no direct active-memory write by Agent Life.
+5. After Agent Life stops, observe warehouse candidates.
+6. Separately run existing governed queue maintenance on a bounded subset; classify ACCEPT/REJECT, verify REJECT deletion+feedback and READY/one-throat behavior.
+7. Only after this live proof decide whether the next strongest move is final throat performance/acceptance proof or the next Agent self-build capability.
+
+### Return-to-parent criterion
+Migration succeeds when the new chat can state from fresh proof:
+- current Agent Life status and canonical control path;
+- whether multiple productive live ticks complete on current HEAD;
+- what candidates entered the one warehouse;
+- how REJECT feedback behaved;
+- whether long-term admission happened only after the separate governed gate/throat;
+- sanitation state;
+- single strongest next move toward productive local self-build.
+
+Fresh proof supersedes this marker for volatile claims.

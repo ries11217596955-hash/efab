@@ -1,16 +1,18 @@
 {
     "schema":  "BRANCH_AGNOSTIC_MAP_REFRESH_RESULT_V3",
     "status":  "MAP_REFRESHED",
-    "checked_at":  "2026-08-19T13:14:05.0842122+04:00",
+    "checked_at":  "2026-08-19T20:26:21.4485673+04:00",
     "branch":  "main",
-    "observed_head":  "ecdcf9d399eff4b81fa02e09b750c7b9fec3be5c",
-    "subject_head":  "ecdcf9d399eff4b81fa02e09b750c7b9fec3be5c",
+    "observed_head":  "a1da9c8c82c98ab56208b38f267f24d47515a8f3",
+    "subject_head":  "a1da9c8c82c98ab56208b38f267f24d47515a8f3",
     "trigger_reason":  "git_pre_commit_composition_map_auto_refresh",
     "force":  true,
     "dry_run":  false,
     "changed_paths":  [
+                          "operations/autonomous_inner_motor/dual_pipe_memory_policy.json",
                           "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
-                          "operations/reasoning/build_agent_mind_logic_frame_v1.ps1",
+                          "operations/compact_memory_intake/merge_compact_memory_intake_queue_v1.ps1",
+                          "operations/compact_memory_intake/run_compact_memory_queue_maintenance_v1.ps1",
                           "reports/self_development/SELF_MODEL_ACTIVE_MAP.json",
                           "reports/self_development/agent_body_map.json",
                           "reports/self_development/agent_body_map.md",
@@ -18,8 +20,10 @@
                           "validators/validate_agent_life_multitick_productive_v1.ps1"
                       ],
     "structural_paths":  [
+                             "operations/autonomous_inner_motor/dual_pipe_memory_policy.json",
                              "operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1",
-                             "operations/reasoning/build_agent_mind_logic_frame_v1.ps1",
+                             "operations/compact_memory_intake/merge_compact_memory_intake_queue_v1.ps1",
+                             "operations/compact_memory_intake/run_compact_memory_queue_maintenance_v1.ps1",
                              "validators/validate_agent_life_multitick_productive_v1.ps1"
                          ],
     "output_root":  "reports/self_development",
@@ -66,5 +70,5 @@
                          "child_agent_factory_readiness":  "NOT_PROVEN",
                          "files_changed_before_preflight_pass":  false
                      },
-    "refreshed_at":  "2026-08-19T13:14:43.1804252+04:00"
+    "refreshed_at":  "2026-08-19T20:26:45.0714280+04:00"
 }
