@@ -3841,3 +3841,37 @@ Migration succeeds when the new chat can state from fresh proof:
 - single strongest next move toward productive local self-build.
 
 Fresh proof supersedes this marker for volatile claims.
+## CONTINUITY_UPDATE_20260819_2148_AZ
+
+Parent goal: continue Agent Life toward productive local self-build, with School untouched unless separately required.
+
+Accepted/proven slice:
+- Repo H:\efab, main. Commit `4f2cac8` accepted the Agent Life null-child-exit repair plus launcher validator/proof and mandatory pre-commit map/report refresh.
+- Canonical governed 2-minute Agent Life trial `.runtime/live_trials/agent_life_2min_20260819_214311` = PASS.
+- Trial completed 6 useful ticks; 7th tick stopped by bounded duration. Agent self-stopped; relevant process count returned 0; merge lock absent; repo remained clean.
+- Null `ExitCode` false-failure is behavior-proven closed for this live path: completed ticks continued multi-tick instead of stopping after tick 1.
+- 6 AgentLife packets were produced in the common warehouse: `214318`, `214340`, `214358`, `214418`, `214438`, `214458`.
+
+Critical memory truth:
+- These 6 packets are NOT accepted long-term memory yet.
+- Fresh state for all six: `admission_state=PENDING_MEMORY_ATOM_GATE`, `merge_ready=false`, direct active-memory write=false.
+- Therefore no claim that these six passed full atom gate, one-throat merge, or became active accepted memory.
+- All six currently carry the same concept/delta: `SYNTHESIZE_TOPIC_EVIDENCE_AND_VERIFY` — use relevant topic evidence to identify one high-value unresolved knowledge gap and determine the smallest trustworthy evidence needed to learn it.
+- This repetition is a signal to inspect duplicate/redundancy handling during bounded maintenance; do not treat six copies as six distinct learned facts.
+
+Fresh safety/reality after trial:
+- School untouched.
+- No Agent Life duplicate remains running.
+- `MERGE_QUEUE.lock.json` absent.
+- Active compact memory hashes were only observed; no direct write by Agent Life was performed or claimed.
+
+Next strongest move:
+1. Run the existing governed queue maintenance on a bounded subset of these six newest AgentLife packets.
+2. Observe real gate outcomes: ACCEPT/REJECT, duplicate handling, REJECT deletion+feedback, READY transition.
+3. If a candidate reaches READY, observe the existing one-throat merge path separately; do not increase timeout blindly and do not claim accepted memory without final proof.
+
+Do-not-repeat:
+- Do not say the six candidates are memory merely because Agent Life produced them.
+- Do not start School for this continuation.
+- Do not launch duplicate Agent Life while processing the queue.
+- Do not bypass the full memory atom gate or write active memory directly.
