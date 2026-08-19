@@ -21,7 +21,7 @@ if($before.cells -ne $after.cells -or $before.index -ne $after.index -or $before
 if(-not (Test-Path $report.normalization_report)){ $fail += 'NORMALIZATION_REPORT_MISSING' }
 else {
   $norm=Get-Content $report.normalization_report -Raw | ConvertFrom-Json
-  if($norm.status -ne 'PASS_CODEX_SCHOOL_PATCH_CANDIDATE_NORMALIZATION_V1'){ $fail += "BAD_NORMALIZATION_STATUS:$($norm.status)" }
+  if($norm.status -ne 'PASS_CODEX_SCHOOL_KNOWLEDGE_CANDIDATE_NORMALIZATION_V1'){ $fail += "BAD_NORMALIZATION_STATUS:$($norm.status)" }
   if([int]$norm.accepted_count -ne 1000){ $fail += "ACCEPTED_COUNT_NOT_1000:$($norm.accepted_count)" }
 }
 $ledgerRows=@()

@@ -516,16 +516,18 @@ if($ProducerMode -eq 'MockProducer'){
       $range=[Math]::Max(1,(([int]$task.target_depth - [int]$task.start_depth)+1))
       $depth=[int]$task.start_depth + (($globalIndex-1) % $range)
       $obj=[ordered]@{
-        schema='codex_school_patch_candidate_v1'
+        schema='codex_school_knowledge_candidate_v1'
         candidate_id=("exact.count.mock.{0}.{1:D6}" -f $Count,$globalIndex)
         topic_key=$task.topic_key
         topic_label=$task.topic_label
         depth_level=$depth
         prerequisite_depth=[Math]::Max(0,$depth-1)
         target_depth=$task.target_depth
-        source_basis=@('mock exact count source')
+        source_basis=@('operations/school/run_agent_school.ps1')
         source_missing=$false
-        claim=("Mock exact-count candidate {0} of {1} for {2}" -f $globalIndex,$Count,$task.topic_key)
+        claim=("The exact-count mock cycle contains candidate {0} of {1} for topic {2}." -f $globalIndex,$Count,$task.topic_key)
+        knowledge_kind='observation'
+        evidence_statement='Mock exact count source establishes this synthetic observation for validator-only use.'
         expected_behavior='Builder can split, validate, and consume exact request batches including partial final batch.'
         failure_contrast='Without generic exact count support, counts are rounded, truncated, or duplicated.'
         validator='Validate total Count, per-batch candidate_count, topic_key, depth range, required fields, and memory boundary.'
@@ -597,12 +599,16 @@ if($ProducerMode -eq 'MockProducer'){
     [void]$promptLines.Add('- Produce exactly one missing micro-batch per shell/tool command invocation.')
     [void]$promptLines.Add('- Before writing each READY.marker.json, validate only that current batch: exact candidate_count, unique candidate_id values, correct topic/depth/source fields, and every required quality field non-empty.')
     [void]$promptLines.Add('- For every candidate, expected_behavior, validator, proof_requirements, negative_case, return_to_parent, and digest_hint must each be non-empty strings regardless of depth_level.')
+    [void]$promptLines.Add('- Every claim must be a declarative, source-grounded knowledge statement. Never emit a task, instruction, patch proposal, next step, or suggestion as claim.')
+    [void]$promptLines.Add('- knowledge_kind must be one of fact, observation, relation, mechanism, constraint, rule; evidence_statement must say what source_basis establishes.')
+    [void]$promptLines.Add('- source_basis entries must be concrete existing repo-relative file paths or explicit https:// URLs; vague source labels are forbidden.')
+    [void]$promptLines.Add('- source_missing=true is not admissible for knowledge. If evidence is insufficient for TARGET_COUNT distinct claims, write producer.FAILED.marker.json with reason=INSUFFICIENT_EVIDENCE_FOR_EXACT_COUNT and stop; never pad count with paraphrases.')
     [void]$promptLines.Add('- Write exactly TARGET_COUNT JSONL candidate lines total across REQUIRED_BATCHES only.')
     [void]$promptLines.Add('- Write heartbeat and DONE marker after all REQUIRED_BATCHES are READY.')
     [void]$promptLines.Add('- Do not mutate active memory. Do not edit tracked repo files.')
     [void]$promptLines.Add('')
-    [void]$promptLines.Add('Each JSONL line must be a JSON object with fields: schema,candidate_id,topic_key,topic_label,depth_level,prerequisite_depth,target_depth,source_basis,source_missing,claim,expected_behavior,failure_contrast,validator,proof_requirements,negative_case,return_to_parent,digest_hint,quality_flags.')
-    [void]$promptLines.Add('Use schema=codex_school_patch_candidate_v1, topic_key exactly TOPIC_KEY, source_basis as a non-empty array or source_missing=true, and depth_level between START_DEPTH and TARGET_DEPTH.')
+    [void]$promptLines.Add('Each JSONL line must be a JSON object with fields: schema,candidate_id,topic_key,topic_label,depth_level,prerequisite_depth,target_depth,source_basis,source_missing,claim,knowledge_kind,evidence_statement,expected_behavior,failure_contrast,validator,proof_requirements,negative_case,return_to_parent,digest_hint,quality_flags.')
+    [void]$promptLines.Add('Use schema=codex_school_knowledge_candidate_v1, topic_key exactly TOPIC_KEY, source_basis as a non-empty array, source_missing=false, and depth_level between START_DEPTH and TARGET_DEPTH.')
     [void]$promptLines.Add('After all REQUIRED_BATCHES and DONE marker are written, stop.')
     $promptLines | Set-Content -LiteralPath $promptPath -Encoding UTF8
     $pythonResolution=Resolve-SchoolPythonRuntime

@@ -57,6 +57,8 @@ $requiredCandidateFields=@(
   'source_basis',
   'source_missing',
   'claim',
+  'knowledge_kind',
+  'evidence_statement',
   'expected_behavior',
   'failure_contrast',
   'validator',
@@ -68,9 +70,16 @@ $requiredCandidateFields=@(
 )
 $hardRules=@(
   'single topic only',
+  'schema=codex_school_knowledge_candidate_v1 only',
   'no active memory mutation',
   'no broad multi-topic pack',
   'no external factual invention without source_basis',
+  'source_missing is never admissible for memory knowledge',
+  'claim must be declarative knowledge, never a task, instruction, patch proposal, next step, or suggestion',
+  'knowledge_kind must be fact, observation, relation, mechanism, constraint, or rule',
+  'evidence_statement must state what source_basis establishes
+- source_basis entries must be concrete existing repo-relative file paths or explicit https:// URLs; vague labels are forbidden',
+  'do not paraphrase-pad count when evidence is insufficient',
   'no raw archive dump',
   'each candidate must be compact-digest friendly',
   'each candidate must include validator and negative_case',
@@ -120,7 +129,10 @@ $task=[ordered]@{
     'every line is valid JSON',
     'every candidate topic_key equals selected topic_key',
     'every candidate depth_level is between start_depth and target_depth',
-    'every candidate has source_basis or source_missing=true',
+    'every candidate has non-empty source_basis and source_missing=false',
+    'every candidate claim is declarative knowledge, not an action request',
+    'every candidate has knowledge_kind and evidence_statement',
+    'insufficient distinct evidence blocks output instead of padding candidate_limit',
     'every candidate has expected_behavior, validator, negative_case, proof_requirements, return_to_parent, digest_hint',
     'no candidate mutates active compact memory',
     'final report declares Files changed before PREFLIGHT_PASS: NO'
@@ -193,9 +205,15 @@ Single topic only. Each candidate must:
 
 ```text
 - single topic only
+- schema must be codex_school_knowledge_candidate_v1
 - belong only to topic_key: $topic
 - declare depth_level and prerequisite_depth
-- include source_basis OR source_missing=true
+- include non-empty source_basis and set source_missing=false
+- claim must be a declarative knowledge statement, never a task, instruction, patch proposal, next step, or suggestion
+- knowledge_kind must be one of fact, observation, relation, mechanism, constraint, rule
+- evidence_statement must state what source_basis establishes
+- source_basis entries must be concrete existing repo-relative file paths or explicit https:// URLs; vague labels are forbidden
+- if distinct grounded knowledge is insufficient for candidate_limit, block with failure_class=INSUFFICIENT_EVIDENCE_FOR_EXACT_COUNT instead of padding with paraphrases
 - include expected_behavior
 - include validator
 - include proof_requirements
@@ -216,6 +234,8 @@ Single topic only. Each candidate must:
 - do not create broad curriculum packs
 - do not write reports into tracked repo for every patch
 - do not invent source facts
+- do not generate task-like or patch-proposal claims
+- do not use source_missing=true as an admission shortcut
 - do not change school scripts
 - do not write candidates before PREFLIGHT_PASS
 ```

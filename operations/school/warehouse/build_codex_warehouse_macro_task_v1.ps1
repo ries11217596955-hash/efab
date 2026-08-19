@@ -29,7 +29,7 @@ $topic=[string]$patch.topic_key
 if([string]::IsNullOrWhiteSpace($topic)){ $topic=[string]$selection.selected_topic.topic_key }
 $template=$selection.codex_request_template
 $requiredCandidateFields=@(
-  'schema','candidate_id','topic_key','topic_label','depth_level','prerequisite_depth','target_depth','source_basis','source_missing','claim','expected_behavior','failure_contrast','validator','proof_requirements','negative_case','return_to_parent','digest_hint','quality_flags'
+  'schema','candidate_id','topic_key','topic_label','depth_level','prerequisite_depth','target_depth','source_basis','source_missing','claim','knowledge_kind','evidence_statement','expected_behavior','failure_contrast','validator','proof_requirements','negative_case','return_to_parent','digest_hint','quality_flags'
 )
 $microBatches=@()
 for($i=1;$i -le $microCount;$i++){
@@ -65,7 +65,7 @@ $task=[ordered]@{
   current_depth=[int]$template.current_depth
   start_depth=[int]$template.start_depth
   target_depth=[int]$template.target_depth
-  patch_candidate_count=$patchCount
+  knowledge_candidate_count=$patchCount
   micro_batch_size=$MicroBatchSize
   micro_batch_count=$microCount
   max_backlog_batches=$MaxBacklogBatches
@@ -88,7 +88,7 @@ $task=[ordered]@{
     uncounted_states=@('READY','CONSUMING','VALIDATED_NORMALIZED','FAILED','QUARANTINED','CLEANED_WITHOUT_ABSORB')
     stale_writing_recovery='Stale WRITING marker is not consumed. It is classified for retry/quarantine.'
   }
-  hard_rules=@('single topic only','no active memory mutation by Codex','no broad multi-topic pack','no external facts without source_basis','no reading unrelated reports','no tracked repo report per micro-batch','runtime warehouse only')
+  hard_rules=@('single topic only','schema=codex_school_knowledge_candidate_v1 only','claim is declarative knowledge, never task/instruction/patch proposal','knowledge_kind and evidence_statement required','source_basis must be concrete repo-relative file path or https URL','source_missing=false required','insufficient evidence fails instead of paraphrase padding','no active memory mutation by Codex','no broad multi-topic pack','no external facts without source_basis','no reading unrelated reports','no tracked repo report per micro-batch','runtime warehouse only')
 }
 $taskJson="$OutputDir/codex_warehouse_macro_task.json"
 $taskMd="$OutputDir/CODEX_WAREHOUSE_MACRO_TASK.md"
@@ -98,14 +98,14 @@ $md=@"
 
 STATUS: CODEX_WAREHOUSE_MACRO_TASK_BUILT
 
-You are Codex acting only as producer for one school patch warehouse. You are not the Builder brain.
+You are Codex acting only as producer of grounded knowledge for one School warehouse. You are not the Builder brain.
 
 ## TARGET
 
 ```text
 topic_key = $topic
 topic_label = $($task.topic_label)
-patch_candidate_count = $patchCount
+knowledge_candidate_count = $patchCount
 micro_batch_size = $MicroBatchSize
 micro_batch_count = $microCount
 current_depth = $($task.current_depth)
@@ -137,6 +137,18 @@ School consumes only READY marker + READY JSONL. The READY marker is the final c
 
 ```text
 $($requiredCandidateFields -join "`n")
+```
+
+## KNOWLEDGE QUALITY
+
+```text
+- schema must be codex_school_knowledge_candidate_v1
+- claim must be declarative knowledge, never a task, instruction, patch proposal, next step, or suggestion
+- knowledge_kind must be one of fact, observation, relation, mechanism, constraint, rule
+- evidence_statement must state what source_basis establishes
+- source_basis entries must be concrete existing repo-relative file paths or explicit https:// URLs; vague labels are forbidden
+- source_missing must be false
+- if distinct grounded knowledge is insufficient for the requested count, fail with INSUFFICIENT_EVIDENCE_FOR_EXACT_COUNT; do not pad with paraphrases
 ```
 
 ## MICRO-BATCH OUTPUTS

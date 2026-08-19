@@ -25,7 +25,7 @@ $badJson=0
 $wrongTopic=0
 $missingRequired=0
 $topic=[string]$task.topic_key
-$required=@('schema','candidate_id','topic_key','topic_label','depth_level','prerequisite_depth','target_depth','source_basis','source_missing','claim','expected_behavior','failure_contrast','validator','proof_requirements','negative_case','return_to_parent','digest_hint','quality_flags')
+$required=@('schema','candidate_id','topic_key','topic_label','depth_level','prerequisite_depth','target_depth','source_basis','source_missing','claim','knowledge_kind','evidence_statement','expected_behavior','failure_contrast','validator','proof_requirements','negative_case','return_to_parent','digest_hint','quality_flags')
 foreach($line in Get-Content $readyJsonl){
   if([string]::IsNullOrWhiteSpace($line)){ continue }
   try{ $o=$line|ConvertFrom-Json }catch{ $badJson++; continue }

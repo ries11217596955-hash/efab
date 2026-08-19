@@ -25,7 +25,7 @@ if($microCount -gt 500){ throw "MICRO_BATCH_COUNT_OVER_HARD_LIMIT:$microCount" }
 if([string]::IsNullOrWhiteSpace($OutputDir)){ $OutputDir=".runtime/codex_warehouse_requests/$($request.request_id)" }
 $warehouseRoot="$OutputDir/warehouse"
 EnsureDir $warehouseRoot
-$requiredCandidateFields=@('schema','candidate_id','topic_key','topic_label','depth_level','prerequisite_depth','target_depth','source_basis','source_missing','claim','expected_behavior','failure_contrast','validator','proof_requirements','negative_case','return_to_parent','digest_hint','quality_flags')
+$requiredCandidateFields=@('schema','candidate_id','topic_key','topic_label','depth_level','prerequisite_depth','target_depth','source_basis','source_missing','claim','knowledge_kind','evidence_statement','expected_behavior','failure_contrast','validator','proof_requirements','negative_case','return_to_parent','digest_hint','quality_flags')
 $microBatches=@()
 for($i=1;$i -le $microCount;$i++){
   $remaining=$total-(($i-1)*$micro)
@@ -144,9 +144,16 @@ $($requiredCandidateFields -join "`n")
 ## REQUIRED QUALITY
 
 ```text
+- every candidate schema must equal codex_school_knowledge_candidate_v1
 - every candidate topic_key must equal $topic
 - every candidate must declare depth_level between start_depth and target_depth
-- every candidate must include source_basis or source_missing=true
+- every candidate must include a non-empty source_basis and set source_missing=false
+- source_missing=true is not acceptable for memory admission; if grounded evidence is unavailable, fail the request with reason=INSUFFICIENT_EVIDENCE_FOR_EXACT_COUNT instead of inventing candidates
+- claim must be a declarative knowledge statement, never a task, instruction, patch proposal, next step, or suggestion
+- knowledge_kind must be one of fact, observation, relation, mechanism, constraint, or rule
+- evidence_statement must state what the cited source actually establishes
+- source_basis entries must be concrete existing repo-relative file paths or explicit https:// URLs; vague labels are forbidden
+- do not generate paraphrase variants merely to satisfy the requested count; quality and distinct grounded knowledge outrank count
 - every candidate must include expected_behavior, validator, proof_requirements, negative_case, return_to_parent, digest_hint
 - every candidate must be compact-digest friendly
 ```
