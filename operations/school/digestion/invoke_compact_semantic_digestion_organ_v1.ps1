@@ -42,6 +42,21 @@ function MergeUnique($A,$B){
   }
   return @($set)
 }
+function MergeProperties($A,$B){
+  $normal=New-Object System.Collections.Generic.SortedSet[string]
+  $singleton=[ordered]@{}
+  foreach($x in @($A)+@($B)){
+    $text=[string]$x
+    if([string]::IsNullOrWhiteSpace($text)){ continue }
+    $eq=$text.IndexOf('=')
+    $key=if($eq -gt 0){$text.Substring(0,$eq)}else{''}
+    if($key -match '^(latest_|current_)'){ $singleton[$key]=$text } else { [void]$normal.Add($text) }
+  }
+  $out=New-Object System.Collections.Generic.List[string]
+  foreach($v in $normal){ [void]$out.Add($v) }
+  foreach($k in @($singleton.Keys | Sort-Object)){ [void]$out.Add([string]$singleton[$k]) }
+  return @($out.ToArray())
+}
 function CompactSummary([string]$Text){
   $s=(([string]$Text) -replace '\s+',' ').Trim()
   if($s.Length -gt 360){ $s=$s.Substring(0,360).Trim() }
@@ -152,8 +167,8 @@ foreach($conceptKey in $groupOrder){
     $old=$cells[$conceptKey]
     $oldAliasesUnique=MergeUnique $old.aliases @()
     $newAliases=MergeUnique $old.aliases @($g.aliases)
-    $oldPropertiesUnique=MergeUnique $old.properties @()
-    $newProperties=MergeUnique $old.properties @($g.properties)
+    $oldPropertiesUnique=MergeProperties $old.properties @()
+    $newProperties=MergeProperties $old.properties @($g.properties)
     $oldUsesUnique=MergeUnique $old.uses @()
     $newUses=MergeUnique $old.uses @($g.uses)
     if($newAliases.Count -ne $oldAliasesUnique.Count -or $newProperties.Count -ne $oldPropertiesUnique.Count -or $newUses.Count -ne $oldUsesUnique.Count){ $indexDirty=$true }

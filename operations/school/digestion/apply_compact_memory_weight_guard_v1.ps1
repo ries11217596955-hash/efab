@@ -53,6 +53,27 @@ function ApplyGuardToCell($Cell){
   $changed=$false
   $events=New-Object 'System.Collections.Generic.List[object]'
   $cellId=[string]$Cell.cell_id
+  $propertiesProp=$Cell.PSObject.Properties['properties']
+  if($propertiesProp){
+    $props=@($propertiesProp.Value)
+    $normal=New-Object System.Collections.Generic.SortedSet[string]
+    $singleton=[ordered]@{}
+    foreach($x in $props){
+      $text=[string]$x
+      if([string]::IsNullOrWhiteSpace($text)){ continue }
+      $eq=$text.IndexOf('=')
+      $key=if($eq -gt 0){$text.Substring(0,$eq)}else{''}
+      if($key -match '^(latest_|current_)'){ $singleton[$key]=$text } else { [void]$normal.Add($text) }
+    }
+    $compacted=New-Object System.Collections.Generic.List[string]
+    foreach($v in $normal){ [void]$compacted.Add($v) }
+    foreach($k in @($singleton.Keys | Sort-Object)){ [void]$compacted.Add([string]$singleton[$k]) }
+    if($compacted.Count -lt $props.Count){
+      $Cell.properties=@($compacted.ToArray())
+      $changed=$true
+      [void]$events.Add([ordered]@{cell_id=$cellId;field='properties';action='singleton_latest_current_compaction';original_count=$props.Count;retained_count=$compacted.Count;removed_count=($props.Count-$compacted.Count)})
+    }
+  }
   foreach($field in @('relations','source_fingerprints')){
     $prop=$Cell.PSObject.Properties[$field]
     if(-not $prop){ continue }
@@ -77,9 +98,9 @@ function ApplyGuardToCell($Cell){
       schema='compact_memory_weight_guard_cell_v1'
       mode=$Mode
       applied_at=(Get-Date).ToString('o')
-      fields_guarded=@('relations','source_fingerprints')
-      properties_preserved_full=$true
-      rule='large proof-tail lists summarized; properties remain full for query compatibility'
+      fields_guarded=@('properties_singleton_latest_current','relations','source_fingerprints')
+      properties_preserved_full_except_singleton_latest_current=$true
+      rule='latest/current singleton properties collapse to newest value; large proof-tail lists summarized'
     }) -Force
   }
   return [ordered]@{ cell=$Cell; changed=$changed; events=@($events.ToArray()) }
@@ -112,8 +133,8 @@ $manifest | Add-Member -NotePropertyName 'storage_weight_guard' -NotePropertyVal
   max_list_items=$MaxListItems
   max_field_bytes=$MaxFieldBytes
   sample_count=$SampleCount
-  guarded_fields=@('relations','source_fingerprints')
-  properties_preserved_full=$true
+  guarded_fields=@('properties_singleton_latest_current','relations','source_fingerprints')
+  properties_preserved_full_except_singleton_latest_current=$true
   compacted_event_count=[int]$events.Count
 }) -Force
 $manifest.cells_bytes=(Get-Item $cellsPath).Length
@@ -146,11 +167,11 @@ $report=[ordered]@{
   cell_count=[int]$cells.Count
   compacted_event_count=[int]$events.Count
   compacted_events=@($events.ToArray())
-  fields_guarded=@('relations','source_fingerprints')
-  properties_preserved_full=$true
+  fields_guarded=@('properties_singleton_latest_current','relations','source_fingerprints')
+  properties_preserved_full_except_singleton_latest_current=$true
   index_sha256_unchanged=($before.index_sha256 -eq $after.index_sha256)
   bytes_saved=[int64]($before.cells_bytes - $after.cells_bytes)
-  boundary='Guard compacts proof-tail list fields only. It preserves properties, index, and semantic cell fields.'
+  boundary='Guard compacts singleton latest/current properties and proof-tail list fields; index and semantic identity fields are preserved.'
   created_at=(Get-Date).ToString('o')
 }
 if([string]::IsNullOrWhiteSpace($ReportPath)){ $ReportPath=".runtime/compact_memory_weight_guard_v1/WEIGHT_GUARD_REPORT_$(Get-Date -Format 'yyyyMMdd_HHmmss').json" }

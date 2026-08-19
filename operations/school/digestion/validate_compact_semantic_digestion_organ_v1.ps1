@@ -67,6 +67,23 @@ if([int]$routeBefore.routed_active_count -ne [int]$routeAfter.routed_active_coun
 if([int]$ledgerBefore.replayed_active_count -ne [int]$ledgerAfter.replayed_active_count){ throw 'LEDGER_MUTATED_BY_DIGEST_VALIDATION' }
 $statusLines=@(git status --short --untracked-files=all)
 if($statusLines | Where-Object { $_ -match '^\?\? \.runtime' }){ throw 'RUNTIME_NOT_IGNORED' }
+# Singleton latest/current property regression: successive observations must replace, not accumulate.
+$singleton1="$root/singleton_property_1.jsonl"
+$singleton2="$root/singleton_property_2.jsonl"
+$row1=[ordered]@{concept_key='validator.singleton';label='singleton';definition='Validator singleton property concept.';properties=@('stable_property=keep','latest_observed_level=1');relations=@();uses=@()}
+$row2=[ordered]@{concept_key='validator.singleton';label='singleton';definition='Validator singleton property concept.';properties=@('stable_property=keep','latest_observed_level=2');relations=@();uses=@()}
+WriteText $singleton1 (($row1|ConvertTo-Json -Depth 20 -Compress)+"`n")
+& powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/digestion/invoke_compact_semantic_digestion_organ_v1.ps1 -InputPath $singleton1 -MemoryRoot $memory -RunId "${runId}_singleton_1" -SizeBudgetBytes $SizeBudgetBytes *> $null
+if($LASTEXITCODE-ne0){ throw 'SINGLETON_DIGEST_1_FAILED' }
+WriteText $singleton2 (($row2|ConvertTo-Json -Depth 20 -Compress)+"`n")
+& powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/digestion/invoke_compact_semantic_digestion_organ_v1.ps1 -InputPath $singleton2 -MemoryRoot $memory -RunId "${runId}_singleton_2" -SizeBudgetBytes $SizeBudgetBytes *> $null
+if($LASTEXITCODE-ne0){ throw 'SINGLETON_DIGEST_2_FAILED' }
+$singletonCell=@(Get-Content (Join-Path $memory 'cells.jsonl')|Where-Object{-not[string]::IsNullOrWhiteSpace($_)}|ForEach-Object{$_|ConvertFrom-Json}|Where-Object{$_.concept_key-eq'validator-singleton'}|Select-Object -First 1)
+if(-not$singletonCell){ throw 'SINGLETON_CELL_MISSING' }
+$latestProps=@($singletonCell.properties|Where-Object{([string]$_)-match '^latest_observed_level='})
+if($latestProps.Count-ne1 -or [string]$latestProps[0]-ne'latest_observed_level=2'){ throw ('SINGLETON_PROPERTY_ACCUMULATED:'+(@($latestProps)-join',')) }
+if(@($singletonCell.properties|Where-Object{[string]$_-eq'stable_property=keep'}).Count-ne1){ throw 'STABLE_PROPERTY_LOST' }
+Write-Host 'SINGLETON_PROPERTY_REGRESSION=PASS'
 # Index-clean fast-path regression: relations/fingerprints-only change must preserve index bytes.
 $indexBeforeClean=(Get-FileHash -Algorithm SHA256 (Join-Path $memory 'index.json')).Hash
 $cleanInput="$root/index_clean_relation_only.jsonl"
