@@ -3912,3 +3912,51 @@ Next strongest move:
 2. Prove generated learning output is declarative knowledge, not a next-task instruction.
 3. Wire relevance-based future reuse of provisional/accepted knowledge without forcing immediate-next-cycle use.
 4. Only then run a bounded Agent Life proof showing: microsteps can continue without atom spam; a real epistemic delta becomes available; unrelated next work need not use it; related later work can recall it.
+
+## AGENT_LIFE_EPISTEMIC_TICK_LIVE_PROOF_20260819_2331_AZ
+
+Parent goal: real Agent Life learns only on material epistemic change, retains useful provisional knowledge for future relevance-based reuse, and does not equate runtime ticks with atoms.
+
+Accepted implementation slice:
+- `ed26063` wired declarative epistemic deltas, semantic-kind gate, relevance-based provisional reuse, and first-cycle serialization.
+- `0e61635` added epistemic-state fingerprinting and self-reference/duplicate suppression.
+- `c2caba3` fixed carry-forward so an empty runtime tick does not erase the last provisional knowledge delta.
+- Persistent validator `validate_agent_life_multitick_productive_v1.ps1` now includes a three-cycle regression: atom -> no-new-delta -> no-new-delta; provisional knowledge must persist, the same epistemic atom must not reappear, and working context must remain bounded.
+
+Live proof:
+- Canonical governed trial: `.runtime/live_trials/agent_life_2min_20260819_232825`.
+- Result: `PASS_AGENT_LIFE_CANONICAL_TRIAL`.
+- Duration: 120 seconds.
+- Runtime cycles: 7.
+- New AgentLife warehouse packets from this trial: exactly 1.
+- Packet: `agentlife_pending_aimo_aimo_20260819_232832.json`, about 14 KB, `kind=epistemic_state_delta`, `admission_state=PENDING_MEMORY_ATOM_GATE`.
+- Epistemic signature: `b3dc67857d192a089fee3062e3805792d4ab8e0bf55f97c0745e74df348c911b`.
+- Final working context retained the same provisional knowledge with `provisional=true`, `long_term_admitted=false`, `memory_is_command=false` and `THOUGHT_COMPLETED_WITH_NO_MEANINGFUL_EPISTEMIC_DELTA_PREVIOUS_KNOWLEDGE_PRESERVED`.
+- Relevant process count after self-stop: 0. Merge lock absent. Git clean.
+
+Important failure/guard history:
+- Earlier live trial `.runtime/live_trials/agent_life_2min_20260819_230025` exposed recursive self-reference: 6 runtime ticks produced 6 same-signature packets growing roughly 14 KB -> 286 KB.
+- First anti-recursion repair reduced this to 3 same-signature packets because empty ticks erased provisional knowledge.
+- Carry-forward repair plus three-cycle regression closed that recurrence class; final live trial produced only 1 packet across 7 runtime cycles.
+
+Architecture truth now proven:
+- runtime tick != epistemic tick.
+- A runtime tick may complete with no atom.
+- A new atom is produced only when the epistemic state materially changes.
+- Provisional knowledge remains available across later runtime ticks but is not a command and is used by future reasoning only when relevant.
+- Temporal adjacency does not force reuse.
+- Candidate packet != accepted long-term memory.
+
+Remaining blocker / next strongest move:
+1. The one new epistemic candidate is still only `PENDING_MEMORY_ATOM_GATE`; it is not accepted memory.
+2. Long-term throat is still not automatic for Agent Life.
+3. Existing one-throat merge previously timed out in `await_digest_process` at 180 seconds, so blindly wiring synchronous admission into each runtime tick is forbidden.
+4. Next: repair/complete asynchronous automatic warehouse consumption + throat performance/termination while preserving one-throat, gate, rollback, no direct active-memory writes, and relevance-based provisional reuse.
+5. Only after that path is behavior-proven should School 500 be launched under the Owner's intended order: drain/absorb existing warehouse first, then produce/ingest new School learning.
+
+Do-not-repeat:
+- Do not treat every runtime tick as an atom.
+- Do not erase the last provisional epistemic delta on a no-new-knowledge tick.
+- Do not include provisional self-reference as new independent evidence.
+- Do not claim warehouse packets are accepted memory before gate + one-throat proof.
+- Do not start School 500 before warehouse-first + automatic throat path is correct.
