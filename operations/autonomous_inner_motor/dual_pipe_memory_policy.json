@@ -4,10 +4,10 @@
   "purpose": "AIMO learns from life while School may also grow compact memory; AIMO uses AgentLife compact_memory_intake queue to avoid direct publish races.",
   "pipes": {
     "School": "existing School absorption/live batch pipe",
-    "AgentLife": "AIMO acceptance-gated atom -> compact_memory_intake AgentLife packet -> locked merge queue"
+    "AgentLife": "AIMO LifeLight candidate -> existing compact_memory_intake warehouse with PENDING_MEMORY_ATOM_GATE -> full memory atom acceptance -> READY_AFTER_MEMORY_ATOM_GATE -> locked merge queue"
   },
   "default_mode": "Auto",
-  "auto_rule": "If School/digest/merge lock is active, queue only. Otherwise submit to queue and immediately run locked merge for bounded proof.",
+  "auto_rule": "Ordinary LifeLight never blocks cognition on semantic acceptance. It queues a PENDING_MEMORY_ATOM_GATE packet. Merge/maintenance must defer pending packets. A separate governed acceptance pass may promote to READY_AFTER_MEMORY_ATOM_GATE before locked merge.",
   "agent_view": "AIMO should treat compact memory as one source-agnostic growing memory and resample memory state at each cycle boundary.",
   "forbidden": [
     "direct_active_memory_write",
@@ -16,11 +16,23 @@
     "source-specific reasoning unless debugging/proof"
   ],
   "proof_requirements": [
-    "agentlife_packet_validated",
+    "agentlife_pending_packet_validated",
     "queue_packet_source_kind_AgentLife",
-    "merge_queue_status_pass_when_merge_allowed",
-    "memory_hash_changed_after_merge",
-    "queue_only_when_busy",
-    "recall_finds_merged_atom"
+    "pending_packet_cannot_merge",
+    "maintenance_skips_pending_packet",
+    "full_memory_atom_gate_required_before_ready",
+    "merge_queue_status_pass_only_after_ready_when_merge_allowed",
+    "no_direct_active_memory_write",
+    "next_cycle_can_reuse_previous_cycle_delta_before_long_term_admission"
+  ],
+  "reject_rule": "REJECT: existing queue maintenance deletes the bad warehouse packet immediately after full memory atom gate, writes only a bounded anti-repeat feedback digest (max 20) into the existing AgentLife working context when a valid producer context exists, and does not create a second queue, daemon, or long-term rejection memory.",
+  "feedback_reason_codes": [
+    "DUPLICATE",
+    "LOW_NOVELTY",
+    "UNSUPPORTED",
+    "CONTRADICTION",
+    "STALE",
+    "MALFORMED",
+    "REJECTED_BY_MEMORY_GATE"
   ]
 }

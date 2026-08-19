@@ -551,6 +551,31 @@ function New-AgentLifeCompactMemoryPacket($RunRoot,$RunId,$AcceptedAtomPath,$Gat
   Write-CleanJson $packetPath $packet 60
   return [ordered]@{ packet_path=$packetPath; queue_root=$queueRoot; packet=$packet }
 }
+function New-AgentLifePendingMemoryPacket($RunRoot,$RunId,$CandidateAtom,[string]$RequestedMode='Auto',[string]$FeedbackContextPath=''){
+  $policy=Read-JsonSafe 'operations/compact_memory_intake/multi_source_compact_memory_intake_policy.json'
+  if(-not $policy){ throw 'COMPACT_MEMORY_INTAKE_POLICY_MISSING' }
+  $queueRoot=[string]$policy.runtime_queue_root
+  if([string]::IsNullOrWhiteSpace($queueRoot)){ throw 'COMPACT_MEMORY_INTAKE_QUEUE_ROOT_MISSING' }
+  if(-not(Test-Path -LiteralPath $queueRoot)){ New-Item -ItemType Directory -Force -Path $queueRoot | Out-Null }
+  $topic=[string]$CandidateAtom.concept_key; if([string]::IsNullOrWhiteSpace($topic)){$topic='aimo.agentlife.pending'}; $topic=$topic -replace '[^A-Za-z0-9_.-]','_'
+  $id=[string]$CandidateAtom.candidate_id; if([string]::IsNullOrWhiteSpace($id)){$id='aimo_agentlife_'+$RunId}; $id=$id -replace '[^A-Za-z0-9_.-]','_'
+  $hint=[string]$CandidateAtom.summary; if([string]::IsNullOrWhiteSpace($hint)){$hint=[string]$CandidateAtom.definition}; if([string]::IsNullOrWhiteSpace($hint)){$hint=[string]$CandidateAtom.label}
+  $packet=[ordered]@{
+    schema='compact_memory_knowledge_packet_v1'; source_kind='AgentLife'; source_id=('AIMO:'+$RunId); created_at=(Get-Date).ToString('o')
+    admission_state='PENDING_MEMORY_ATOM_GATE'
+    producer_feedback_context_path=$FeedbackContextPath
+    agentlife_candidate=$CandidateAtom
+    atoms=@([ordered]@{id=$id;topic=$topic;level=1;quality_score=0.95;novelty_score=0.60;summary=$hint;behavior_use_hint=$hint;source_ref='embedded:agentlife_candidate';gate_decision='PENDING_MEMORY_ATOM_GATE';gate_reason='ordinary LifeLight tick queues candidate before full semantic acceptance gate'})
+    quality_summary=[ordered]@{atom_count=1;min_quality_score=0.95;min_novelty_score=0.60;gate_decision='PENDING_MEMORY_ATOM_GATE'}
+    boundary=[ordered]@{source='AIMO_AGENT_LIFE';direct_active_memory_write=$false;queue_first=$true;merge_ready=$false;full_memory_atom_gate_required=$true}
+  }
+  $packetPath=Join-Path $queueRoot ("agentlife_pending_aimo_$RunId.json")
+  Write-CleanJson $packetPath $packet 80
+  $validationOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File 'operations/compact_memory_intake/validate_compact_memory_packet_v1.ps1' -PacketPath $packetPath *>&1 | ForEach-Object{[string]$_})
+  $validationStatus=(($validationOut|Where-Object{$_ -match '^PACKET_VALIDATION_STATUS='}|Select-Object -Last 1) -replace '^PACKET_VALIDATION_STATUS=','')
+  if($validationStatus -ne 'PASS_COMPACT_MEMORY_KNOWLEDGE_PACKET_V1'){ Remove-Item -LiteralPath $packetPath -Force -ErrorAction SilentlyContinue; throw "PENDING_AGENTLIFE_PACKET_VALIDATION_NOT_PASS:$validationStatus" }
+  return [ordered]@{mode='PendingGateQueue';requested_mode=$RequestedMode;admission_state='PENDING_MEMORY_ATOM_GATE';queue_packet=[ordered]@{packet_path=$packetPath;queue_root=$queueRoot;packet=$packet};packet_validation_status=$validationStatus;merge=$null;atom_path=$packetPath;exit_code=0;memory_changed=$false;candidate_memory_root_removed=$null;candidate_memory_root_exists_after=$null;status_line='QUEUED_AGENTLIFE_PENDING_MEMORY_ATOM_GATE'}
+}
 function Invoke-AgentLifeMemoryQueueIntake($RunRoot,$RunId,$AcceptedAtomPath,$GateDecision,[string]$RequestedMode){
   $busy=Test-MemoryPublishBusy
   $mode=$RequestedMode
@@ -1600,15 +1625,9 @@ if($EnableDeepThinking -and $LifeProfile -eq 'LifeLight'){
     $deepThinking.learning_atom=New-LifeCycleLearningAtom $runId $internalGoal $mindLogic.frame
     $deepThinking.memory_recalls=@($mindLogic.frame.memory_recall,$mindLogic.frame.memory_recall_filter)
     if($EnableMemoryLearning){
-      $deepThinking.acceptance_gate=Invoke-MemoryAtomAcceptanceGate $runRoot $runId $deepThinking.learning_atom $deepThinking.frames $deepThinking.memory_recalls
-      if([int]$deepThinking.acceptance_gate.exit_code -eq 0 -and $deepThinking.acceptance_gate.decision -and $deepThinking.acceptance_gate.decision.absorption_allowed){
-        $deepThinking.absorption=Invoke-AgentLifeMemoryQueueIntake $runRoot $runId $deepThinking.acceptance_gate.final_atom_path $deepThinking.acceptance_gate.decision $MemoryIngestionMode
-        if([int]$deepThinking.absorption.exit_code -eq 0){$deepThinking.status='PASS_LIFE_LIGHT_THOUGHT_WITH_GOVERNED_MEMORY'}else{$deepThinking.status='PARTIAL_LIFE_LIGHT_THOUGHT_MEMORY_INGESTION_FAILED'}
-      } elseif([int]$deepThinking.acceptance_gate.exit_code -eq 0){
-        $deepThinking.status='PASS_LIFE_LIGHT_THOUGHT_CANDIDATE_REJECTED_OR_MERGED_BY_GATE'
-      } else {
-        $deepThinking.status='PARTIAL_LIFE_LIGHT_THOUGHT_MEMORY_GATE_FAILED'
-      }
+      $deepThinking.acceptance_gate=[ordered]@{status='DEFERRED_TO_PENDING_MEMORY_ATOM_GATE';exit_code=0;decision=$null;absorption_allowed=$false;boundary=[ordered]@{full_gate_required_before_merge=$true;ordinary_tick_does_not_run_semantic_acceptance=$true}}
+      $deepThinking.absorption=New-AgentLifePendingMemoryPacket $runRoot $runId $deepThinking.learning_atom $MemoryIngestionMode $lifeWorkingMemoryPath
+      $deepThinking.status='PASS_LIFE_LIGHT_THOUGHT_CANDIDATE_QUEUED_PENDING_GATE'
     } else { $deepThinking.status='PASS_LIFE_LIGHT_THOUGHT_CANDIDATE_ONLY' }
   } else { $deepThinking.status='PARTIAL_LIFE_LIGHT_MIND_LOGIC_FRAME_MISSING' }
 }
@@ -1704,7 +1723,7 @@ $memoryToNextPathReuseGate = [ordered]@{
   selected_action_id=$selectedActionId
   repeat_pressure_detected=[bool]$repeatPressure
   consecutive_repeat_count=$consecutiveRepeatCount
-  governed_absorption_used=[bool]($EnableMemoryLearning -and $deepThinking.absorption)
+  governed_absorption_used=[bool]($EnableMemoryLearning -and $deepThinking.absorption -and $deepThinking.absorption.admission_state -ne 'PENDING_MEMORY_ATOM_GATE')
   memory_changed=[bool]$deepThinking.absorption.memory_changed
   memory_growth_packet_queued=$memoryGrowthPacketQueued
   learning_signal_available=$absorptionChanged
@@ -1864,7 +1883,7 @@ $proof=[ordered]@{
   heartbeat=[ordered]@{ cycle_count=@($cycles).Count; alive='one_shot_sandbox'; background_process_started=$false }
   final_self_diagnosis='The motor can self-seed a thinking cycle, build a Mind Logic Frame, decompose a root question into ThoughtFrames, use memory recall, and return a next_action_candidate with execution disabled. Memory learning remains governed and optional.'
   stop_reason='PROTECTIVE_CHECKPOINT_THINKING_ONLY'
-  mutation_audit=[ordered]@{ active_memory_mutated=[bool]$EnableMemoryLearning; direct_active_memory_write=$false; governed_absorption_used=[bool]($EnableMemoryLearning -and $deepThinking.absorption); memory_ingestion_mode=if($deepThinking.absorption){$deepThinking.absorption.mode}else{$MemoryIngestionMode}; git_mutated=$false; codex_launched=$false; web_research_performed=$false; school_started=$false; background_process_started=$false; files_written=$filesWritten }
+  mutation_audit=[ordered]@{ active_memory_mutated=[bool]($deepThinking.absorption -and $deepThinking.absorption.memory_changed); direct_active_memory_write=$false; governed_absorption_used=[bool]($EnableMemoryLearning -and $deepThinking.absorption -and $deepThinking.absorption.admission_state -ne 'PENDING_MEMORY_ATOM_GATE'); memory_admission_pending=[bool]($deepThinking.absorption -and $deepThinking.absorption.admission_state -eq 'PENDING_MEMORY_ATOM_GATE'); memory_ingestion_mode=if($deepThinking.absorption){$deepThinking.absorption.mode}else{$MemoryIngestionMode}; git_mutated=$false; codex_launched=$false; web_research_performed=$false; school_started=$false; background_process_started=$false; files_written=$filesWritten }
   validator_result=[ordered]@{ runner_self_check='PASS_RUNNER_GENERATED_SINGLE_SANDBOX_PROOF'; external_validator_expected='validators/validate_autonomous_inner_motor_organ_contract.ps1 -SandboxProofPath <proof>; validators/validate_autonomous_inner_motor_mind_logic_wiring_v1.ps1 -ProofPath <proof>; validators/validate_autonomous_inner_motor_action_decision_wiring_v1.ps1 -ProofPath <proof>' }
 }
 Write-CleanJson $proofPath $proof 80

@@ -94,14 +94,28 @@ try {
   }
   $digestAtoms=@()
   $packetSummaries=@()
+  $readyPacketFiles=@()
+  $deferredPackets=@()
   foreach($pf in $packetFiles){
     $validationOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File operations/compact_memory_intake/validate_compact_memory_packet_v1.ps1 -PacketPath $pf -PolicyPath $PolicyPath *>&1 | ForEach-Object{[string]$_})
     $v=($validationOut|Where-Object{$_ -match '^PACKET_VALIDATION_STATUS='}|Select-Object -Last 1) -replace '^PACKET_VALIDATION_STATUS=',''
     if($v -ne 'PASS_COMPACT_MEMORY_KNOWLEDGE_PACKET_V1'){ throw "PACKET_VALIDATION_NOT_PASS:${pf}:${v}" }
     $packet=Get-Content $pf -Raw|ConvertFrom-Json
+    if([string]$packet.source_kind -eq 'AgentLife' -and [string]$packet.admission_state -eq 'PENDING_MEMORY_ATOM_GATE'){
+      $deferredPackets += [ordered]@{path=$pf;source_kind=$packet.source_kind;source_id=$packet.source_id;admission_state=$packet.admission_state;reason='FULL_MEMORY_ATOM_GATE_REQUIRED_BEFORE_MERGE'}
+      $actions += "DEFER_PENDING_MEMORY_ATOM_GATE:$pf"
+      continue
+    }
+    $readyPacketFiles += $pf
     $atoms=PacketToAtoms $packet $pf
     $digestAtoms += $atoms
-    $packetSummaries += [ordered]@{ path=$pf; source_kind=$packet.source_kind; source_id=$packet.source_id; packet_atoms=@($packet.atoms).Count; digest_atoms=@($atoms).Count }
+    $packetSummaries += [ordered]@{ path=$pf; source_kind=$packet.source_kind; source_id=$packet.source_id; admission_state=if($packet.PSObject.Properties['admission_state']){$packet.admission_state}else{$null}; packet_atoms=@($packet.atoms).Count; digest_atoms=@($atoms).Count }
+  }
+  if($digestAtoms.Count -lt 1 -and $deferredPackets.Count -gt 0){
+    $status='DEFERRED_PENDING_MEMORY_ATOM_GATE'
+    $result=[ordered]@{schema='compact_memory_merge_queue_result_v1';status=$status;run_id=$runId;memory_before=$before;memory_after=$before;packet_count=0;digest_atom_count=0;deferred_count=$deferredPackets.Count;deferred_packets=@($deferredPackets);checkpoint_path=$checkpointMemory;actions=@($actions);blockers=@();rollback_performed=$false;created_at=(Get-Date).ToString('o')}
+    WriteJson (Join-Path $runRoot 'COMPACT_MEMORY_MERGE_QUEUE_RESULT_V1.json') $result 100
+    Write-Host "MERGE_QUEUE_STATUS=$status"; Write-Host "MERGE_QUEUE_PROOF=$(Join-Path $runRoot 'COMPACT_MEMORY_MERGE_QUEUE_RESULT_V1.json')"; return
   }
   if($digestAtoms.Count -lt 1){ throw 'NO_DIGEST_ATOMS_FROM_PACKETS' }
   $digestInput=Join-Path $runRoot 'digest_atoms.jsonl'
@@ -113,7 +127,7 @@ try {
   if($absorbStatus -ne 'PASS_FILE_ATOM_ABSORPTION_PIPELINE_V1'){ throw "ABSORPTION_NOT_PASS:$absorbStatus" }
   $after=MemState $MemoryRoot
   if($after.cells_sha256 -eq $before.cells_sha256){ throw 'MEMORY_HASH_UNCHANGED_AFTER_MERGE' }
-  foreach($pf in $packetFiles){
+  foreach($pf in $readyPacketFiles){
     $dest=Join-Path $processedRoot ((Split-Path $pf -Leaf) + ".$runId.processed")
     Copy-Item -LiteralPath $pf -Destination $dest -Force
       $removeQueuePacket=$false
@@ -132,7 +146,9 @@ try {
     run_id=$runId
     memory_before=$before
     memory_after=$after
-    packet_count=$packetFiles.Count
+    packet_count=$readyPacketFiles.Count
+    deferred_count=$deferredPackets.Count
+    deferred_packets=@($deferredPackets)
     digest_atom_count=$digestAtoms.Count
     packet_summaries=@($packetSummaries)
     checkpoint_path=$checkpointMemory
@@ -148,7 +164,7 @@ try {
   WriteJson (Join-Path $runRoot 'COMPACT_MEMORY_MERGE_QUEUE_RESULT_V1.json') $result 100
   Write-Host "MERGE_QUEUE_STATUS=$status"
   Write-Host "MERGE_QUEUE_PROOF=$(Join-Path $runRoot 'COMPACT_MEMORY_MERGE_QUEUE_RESULT_V1.json')"
-  Write-Host "MERGED_PACKETS=$($packetFiles.Count)"
+  Write-Host "MERGED_PACKETS=$($readyPacketFiles.Count)"
   Write-Host "DIGEST_ATOMS=$($digestAtoms.Count)"
   Write-Host "MEMORY_CELLS_BEFORE=$($before.cell_count)"
   Write-Host "MEMORY_CELLS_AFTER=$($after.cell_count)"
