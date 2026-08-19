@@ -1,11 +1,11 @@
 param(
     [Parameter(Mandatory = $true, Position = 0)]
     [ValidateRange(1, 10080)]
-    [int]$DurationMinutes,
-    [ValidateRange(5,45)][int]$TickBudgetSeconds=35
+    [int]$DurationMinutes
 )
 
 $ErrorActionPreference = "Stop"
+$TickBudgetSeconds=35
 
 function Convert-JsonCompatible {
     param($Value)
@@ -186,8 +186,10 @@ while ((Get-Date) -lt $end) {
     $runnerArgs=@('-NoProfile','-ExecutionPolicy','Bypass','-File','operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1','-Mode','SandboxExploration','-EnableDeepThinking','-EnableMemoryLearning','-MemoryIngestionMode','Auto','-WakeContextPath',$lifeWorkingMemoryPath,'-LifeProfile','LifeLight')
     $runner=Start-Process -FilePath 'powershell.exe' -ArgumentList $runnerArgs -PassThru -NoNewWindow
     $boundedStop=$false
-    if(-not $runner.WaitForExit($tickBudgetMs)){ $boundedStop=$true;& taskkill.exe /PID $runner.Id /T /F|Out-Null;try{$runner.WaitForExit(3000)}catch{} }
-    $exit=if($boundedStop){124}else{$runner.ExitCode}
+    $completedWithinBudget=$runner.WaitForExit($tickBudgetMs)
+    if(-not $completedWithinBudget){ $boundedStop=$true;& taskkill.exe /PID $runner.Id /T /F|Out-Null;try{$runner.WaitForExit(3000)}catch{} }
+    if(-not $boundedStop){try{$runner.Refresh()}catch{}}
+    $exit=if($boundedStop){124}elseif($null -ne $runner.ExitCode){[int]$runner.ExitCode}elseif($completedWithinBudget -and $runner.HasExited){0}else{throw "AGENT_LIFE_CHILD_EXITCODE_UNKNOWN"}
     $cycleFinish=Get-Date
     $newDirs=@(Get-ChildItem -LiteralPath $aimoRoot -Directory -ErrorAction SilentlyContinue|Where-Object{-not $beforeDirs.ContainsKey($_.FullName) -and $_.LastWriteTime -ge $cycleStart.AddSeconds(-2)}|Sort-Object LastWriteTime)
     $runBindingStatus=if($newDirs.Count -eq 1){'BOUND_CURRENT_TICK_RUN_DIR'}elseif($newDirs.Count -eq 0){'NO_CURRENT_TICK_RUN_DIR'}else{'AMBIGUOUS_CURRENT_TICK_RUN_DIRS'}

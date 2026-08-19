@@ -32,10 +32,10 @@ else {
 
     $text = Get-Content $launcher -Raw
     $required = @(
-        "-Mode SandboxExploration",
+        "'-Mode','SandboxExploration'",
         "-EnableDeepThinking",
         "-EnableMemoryLearning",
-        "-MemoryIngestionMode QueueOnly",
+        "'-MemoryIngestionMode','Auto'",
         'Convert-JsonCompatible',
         'if ($pattern -in @("run_autonomous_inner_motor.ps1", "start_agent_life_v1.ps1"))',
         '-Command',
@@ -49,6 +49,11 @@ else {
     )
     foreach ($needle in $required) {
         if ($text -notlike "*$needle*") { Add-Failure "missing_required_canonical_setting: $needle" }
+    }
+    $normalizedLauncherText = $text -replace '\s+', ''
+    $childExitCodeContract = '$exit=if($boundedStop){124}elseif($null-ne$runner.ExitCode){[int]$runner.ExitCode}elseif($completedWithinBudget-and$runner.HasExited){0}else{throw"AGENT_LIFE_CHILD_EXITCODE_UNKNOWN"}'
+    if (-not $normalizedLauncherText.Contains($childExitCodeContract)) {
+        Add-Failure "missing_child_exitcode_contract"
     }
     $forbiddenParams = @("Mode", "EnableDeepThinking", "EnableMemoryLearning", "MemoryIngestionMode", "AllowActionExecution", "AllowCodex", "AllowWeb")
     if ($paramBlock) {
@@ -75,7 +80,7 @@ $proof = [ordered]@{
         mode = "SandboxExploration"
         enable_deep_thinking = $true
         enable_memory_learning = $true
-        memory_ingestion_mode = "QueueOnly"
+        memory_ingestion_mode = "Auto"
         action_execution_allowed = $false
         codex_allowed = $false
         web_allowed = $false
