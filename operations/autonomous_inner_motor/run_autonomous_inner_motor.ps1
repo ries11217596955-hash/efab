@@ -439,7 +439,15 @@ function New-DeepThinkingLearningAtom($RunId,$Frames,$InternalGoal){
     quality_flags=@('recursive','memory_first','governed_absorption','return_to_parent','self_build_aligned')
   }
 }
-function New-LifeCycleLearningAtom($RunId,$InternalGoal,$MindFrame){
+function Get-LifeEpistemicStateSignature([string]$Hypothesis,[object[]]$Unknowns){
+  $parts=@()
+  $parts += ('hyp=' + ([string]$Hypothesis).Trim().ToLowerInvariant())
+  foreach($u in @($Unknowns)){ if(-not [string]::IsNullOrWhiteSpace([string]$u)){ $parts += ('u=' + ([string]$u).Trim().ToLowerInvariant()) } }
+  $canonical=(@($parts | Select-Object -Unique | Sort-Object) -join "`n")
+  $sha=[System.Security.Cryptography.SHA256]::Create()
+  try { return ([BitConverter]::ToString($sha.ComputeHash([Text.Encoding]::UTF8.GetBytes($canonical))).Replace('-','').ToLowerInvariant()) } finally { $sha.Dispose() }
+}
+function New-LifeCycleLearningAtom($RunId,$InternalGoal,$MindFrame,$PreviousCycleDelta){
   $goal=if($InternalGoal -and $InternalGoal.goal){[string]$InternalGoal.goal}else{'Agent Life bounded self-directed reasoning'}
   $step=Get-ObjectField $MindFrame 'selected_next_logical_step'
   $hyp=Get-ObjectField $MindFrame 'strongest_hypothesis'
@@ -450,6 +458,11 @@ function New-LifeCycleLearningAtom($RunId,$InternalGoal,$MindFrame){
   $localMemoryEvidence=Get-LifeMindFrameLocalMemoryEvidence $MindFrame 6
   $hasEpistemicDelta=((-not [string]::IsNullOrWhiteSpace($hypText)) -or @($unknowns).Count -gt 0 -or @($evidenceRefs).Count -gt 0 -or @($localMemoryEvidence).Count -gt 0)
   if(-not $hasEpistemicDelta){ return $null }
+  $epistemicSignature=Get-LifeEpistemicStateSignature $hypText @($unknowns)
+  $previousKnowledge=Get-ObjectField $PreviousCycleDelta 'provisional_knowledge'
+  $previousState=Get-ObjectField $previousKnowledge 'epistemic_state'
+  $previousSignature=[string](Get-ObjectField $previousState 'signature')
+  if(-not [string]::IsNullOrWhiteSpace($previousSignature) -and $previousSignature -eq $epistemicSignature){ return $null }
   $stepId=if($step -and (Get-ObjectField $step 'step_id')){[string](Get-ObjectField $step 'step_id')}elseif($step){[string](Convert-LifeMindFrameValueToText $step)}else{$null}
   $stepReason=if($step -and (Get-ObjectField $step 'reason')){[string](Get-ObjectField $step 'reason')}else{$null}
   $hypPart=if(-not [string]::IsNullOrWhiteSpace($hypText)){('strongest_hypothesis="'+$hypText+'"')}else{'strongest_hypothesis=not_asserted'}
@@ -475,6 +488,7 @@ function New-LifeCycleLearningAtom($RunId,$InternalGoal,$MindFrame){
     return_to_parent='Future cycles may use this as evidence/weight, never as a directive.'
     source_basis=@('current Agent Life internal goal','current MindLogic frame','filtered compact-memory context when available')
     epistemic_state=[ordered]@{
+      signature=$epistemicSignature
       strongest_hypothesis=$hypText
       unresolved_unknowns=@($unknowns)
       evidence_ref_count=[int]@($evidenceRefs).Count
@@ -534,6 +548,8 @@ function Get-LifeMindFrameEvidenceRefs($MindFrame,[int]$Limit=12){
   foreach($field in @('evidence_refs','evidence_ref','evidence','supporting_evidence','source_refs','sources','selected_memory_refs','memory_refs','local_memory_evidence')){
     $value=Get-ObjectField $MindFrame $field
     foreach($item in @($value)){
+      $itemSource=[string](Get-ObjectField $item 'source')
+      if($itemSource -eq 'life_working_memory_provisional'){ continue }
       $text=$null
       foreach($refField in @('evidence_ref','source_ref','ref','path','cell_id','concept_key','label','summary','source','id')){
         $refValue=Get-ObjectField $item $refField
@@ -549,6 +565,8 @@ function Get-LifeMindFrameEvidenceRefs($MindFrame,[int]$Limit=12){
     foreach($field in @('selected_memory_refs','selected_refs','evidence_refs','refs','matches','cells','memory_refs')){
       $value=Get-ObjectField $container $field
       foreach($item in @($value)){
+        $itemSource=[string](Get-ObjectField $item 'source')
+        if($itemSource -eq 'life_working_memory_provisional'){ continue }
         $text=$null
         foreach($refField in @('evidence_ref','source_ref','ref','path','cell_id','concept_key','label','summary','source','id')){
           $refValue=Get-ObjectField $item $refField
@@ -570,6 +588,8 @@ function Get-LifeMindFrameLocalMemoryEvidence($MindFrame,[int]$Limit=6){
     foreach($field in @('selected_memory_refs','selected_refs','refs','matches','cells','evidence_refs')){
       $value=Get-ObjectField $container $field
       foreach($item in @($value)){
+        $itemSource=[string](Get-ObjectField $item 'source')
+        if($itemSource -eq 'life_working_memory_provisional'){ continue }
         $text=Convert-LifeMindFrameValueToText $item
         if(-not [string]::IsNullOrWhiteSpace($text)){ $evidence += $text }
       }
@@ -1784,7 +1804,7 @@ if(Test-Path $mindBuilder){
 
 if($EnableDeepThinking -and $LifeProfile -eq 'LifeLight'){
   if($mindLogic.frame){
-    $deepThinking.learning_atom=New-LifeCycleLearningAtom $runId $internalGoal $mindLogic.frame
+    $deepThinking.learning_atom=New-LifeCycleLearningAtom $runId $internalGoal $mindLogic.frame (Get-ObjectField $lifeWorkingMemory.compact_context 'previous_cycle_delta')
     $deepThinking.memory_recalls=@($mindLogic.frame.memory_recall,$mindLogic.frame.memory_recall_filter)
     if($deepThinking.learning_atom){
       if($EnableMemoryLearning){
