@@ -49,6 +49,24 @@ function Invoke-MemoryRecallLite([string]$Query){
   foreach($line in $out){ if($line -like 'MATCH|*'){ $result.matches += $line } }
   return $result
 }
+function Test-TaskOrInstructionSemantics([string]$Text){
+  $t=$Text.ToLowerInvariant()
+  $commandVerbPattern='(?<![\w-])(identify|determine|find|verify|check|use|perform|investigate|gather|collect|produce|create|decide|choose|assess|compare)(?![\w-])'
+  $goalConstructionPattern='(?<![\w-])(need to|needs to|should|must|the next step is|goal is to|the goal is to|task is to|the task is to|needed to learn|evidence needed to learn)(?![\w-])'
+  return (($t -match $commandVerbPattern) -or ($t -match $goalConstructionPattern))
+}
+function Test-ConcreteObservedKnowledge([string]$Text){
+  $t=$Text.ToLowerInvariant()
+  $observedPatterns=@(
+    '(?<![\w-])during(?![\w-]).{0,180}(?<![\w-])(completed|stopped|ran|finished|detected|observed|found|learned|verified|accepted|rejected|rewrote|produced|returned|failed|passed)(?![\w-])',
+    '(?<![\w-])(observed|detected|learned|found|verified|showed|revealed|confirmed|completed|stopped|passed|failed|accepted|rejected|rewrote|measured)(?![\w-])',
+    '(?<![\w-])(result|outcome|proof|validator|run|tick|repair)(?![\w-]).{0,180}(?<![\w-])(showed|proves|proved|completed|failed|passed|detected|learned|found|accepted|rejected|stopped)(?![\w-])'
+  )
+  foreach($pattern in $observedPatterns){
+    if($t -match $pattern){ return $true }
+  }
+  return $false
+}
 $candidate=Read-JsonAny $CandidateAtomPath
 $context=$null
 if(-not [string]::IsNullOrWhiteSpace($RunContextPath) -and (Test-Path -LiteralPath $RunContextPath)){ $context=Read-JsonAny $RunContextPath }
@@ -59,6 +77,7 @@ $definition=[string]$candidate.definition
 $summary=[string]$candidate.summary
 $label=[string]$candidate.label
 $combined=($definition + ' ' + $summary + ' ' + $label).ToLowerInvariant()
+$semanticKindText=($definition + ' ' + $summary + ' ' + $label + ' ' + [string]$candidate.concept_key)
 $contractRefs=@(
   'operations/autonomous_inner_motor/AUTONOMOUS_INNER_MOTOR_ORGAN_SPEC.md',
   'operations/autonomous_inner_motor/deep_thinking_policy.json',
@@ -140,6 +159,13 @@ if($genericRuleLike -or @($duplicateRuleRefs).Count -gt 0){
     $explanation='The candidate repeats an existing rule/policy/validator but no run context was provided to rewrite it as an experience atom.'
     $rejection='Not absorbed: memory atoms require DELTA, not a copied rule.'
   }
+}
+if($decision -eq 'ACCEPT' -and (Test-TaskOrInstructionSemantics $semanticKindText) -and -not (Test-ConcreteObservedKnowledge $semanticKindText)){
+  $decision='REJECT_WITH_EXPLANATION'
+  $reason='candidate_is_task_or_instruction_not_knowledge'
+  $explanation='The candidate is phrased as a task, instruction, or goal rather than concrete observed knowledge about what happened or was learned.'
+  $rejection='Not absorbed: memory atoms require observed knowledge or experience, not unresolved prescriptions or next actions.'
+  $finalAtom=$null
 }
 $absorptionAllowed=($decision -eq 'ACCEPT' -or $decision -eq 'REWRITE_AS_EXPERIENCE_ATOM')
 $decisionObj=[ordered]@{

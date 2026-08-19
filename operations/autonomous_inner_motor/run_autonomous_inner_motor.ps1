@@ -43,6 +43,11 @@ function Get-ObjectField($Obj,[string]$Name){
   if($Obj.PSObject.Properties.Name -contains $Name){ return $Obj.$Name }
   return $null
 }
+function Set-ObjectField($Obj,[string]$Name,$Value){
+  if($null -eq $Obj){ throw ('SET_OBJECT_FIELD_TARGET_NULL:'+ $Name) }
+  if($Obj -is [System.Collections.IDictionary]){ $Obj[$Name]=$Value; return }
+  $Obj | Add-Member -NotePropertyName $Name -NotePropertyValue $Value -Force
+}
 function New-InnateReflexBootload([string]$RunRoot,[string]$OutputPath){
   $builderPath='operations/autonomous_inner_motor/build_innate_reflex_kernel_v1.ps1'
   $sourcePath='operations/autonomous_inner_motor/innate_reflex_kernel_v1.json'
@@ -436,30 +441,187 @@ function New-DeepThinkingLearningAtom($RunId,$Frames,$InternalGoal){
 }
 function New-LifeCycleLearningAtom($RunId,$InternalGoal,$MindFrame){
   $goal=if($InternalGoal -and $InternalGoal.goal){[string]$InternalGoal.goal}else{'Agent Life bounded self-directed reasoning'}
-  $step=if($MindFrame -and $MindFrame.selected_next_logical_step){$MindFrame.selected_next_logical_step}else{$null}
-  $hyp=if($MindFrame -and $MindFrame.strongest_hypothesis){$MindFrame.strongest_hypothesis}else{$null}
-  $stepId=if($step -and $step.step_id){[string]$step.step_id}else{'no_step'}
-  $stepReason=if($step -and $step.reason){[string]$step.reason}else{'No explicit next-step reason was produced.'}
-  $hypText=if($hyp -and $hyp.text){[string]$hyp.text}elseif($hyp){[string]$hyp}else{'No explicit strongest hypothesis was produced.'}
-  $safeStep=($stepId -replace '[^A-Za-z0-9_.-]','_')
+  $step=Get-ObjectField $MindFrame 'selected_next_logical_step'
+  $hyp=Get-ObjectField $MindFrame 'strongest_hypothesis'
+  if($null -eq $hyp){ $hyp=Get-ObjectField $MindFrame 'best_hypothesis' }
+  $hypText=Convert-LifeMindFrameValueToText $hyp
+  $unknowns=Get-LifeMindFrameTextList $MindFrame @('unresolved_unknowns','unresolved_unknown','known_unknowns','unknowns','open_questions','questions_to_resolve') 6
+  $evidenceRefs=Get-LifeMindFrameEvidenceRefs $MindFrame 12
+  $localMemoryEvidence=Get-LifeMindFrameLocalMemoryEvidence $MindFrame 6
+  $hasEpistemicDelta=((-not [string]::IsNullOrWhiteSpace($hypText)) -or @($unknowns).Count -gt 0 -or @($evidenceRefs).Count -gt 0 -or @($localMemoryEvidence).Count -gt 0)
+  if(-not $hasEpistemicDelta){ return $null }
+  $stepId=if($step -and (Get-ObjectField $step 'step_id')){[string](Get-ObjectField $step 'step_id')}elseif($step){[string](Convert-LifeMindFrameValueToText $step)}else{$null}
+  $stepReason=if($step -and (Get-ObjectField $step 'reason')){[string](Get-ObjectField $step 'reason')}else{$null}
+  $hypPart=if(-not [string]::IsNullOrWhiteSpace($hypText)){('strongest_hypothesis="'+$hypText+'"')}else{'strongest_hypothesis=not_asserted'}
+  $unknownPart=if(@($unknowns).Count -gt 0){('unresolved_unknowns="'+((@($unknowns) | Select-Object -First 3) -join '" | "')+'"')}else{'unresolved_unknowns=none_recorded'}
+  $evidencePart=('evidence_ref_count='+[string]@($evidenceRefs).Count)
+  $localPart=if(@($localMemoryEvidence).Count -gt 0){('local_memory_evidence="'+((@($localMemoryEvidence) | Select-Object -First 3) -join '" | "')+'"')}else{'local_memory_evidence=none_recorded'}
+  $conceptSeed=if(-not [string]::IsNullOrWhiteSpace($hypText)){$hypText}elseif(@($unknowns).Count -gt 0){[string]$unknowns[0]}else{'local_memory_evidence'}
+  $safeConcept=Get-LifeSafeConceptToken $conceptSeed 'epistemic_state_delta'
   return [ordered]@{
     schema='aimo_self_learning_atom_v1'
     candidate_id=('aimo_life_cycle_'+$RunId)
-    concept_key=('aimo.life_cycle.'+$safeStep)
-    label=('Agent Life reasoning delta: '+$stepId)
-    kind='thinking_growth_rule'
-    definition=('For current goal "'+$goal+'", bounded local reasoning selected next step "'+$stepId+'" because: '+$stepReason+' Strongest hypothesis/evidence direction: '+$hypText)
-    summary=('Life-cycle delta: '+$stepId+' | '+$stepReason)
-    aliases=@('agent_life_cycle_delta','bounded_thought_delta',$safeStep)
-    properties=@('owner_query_required=false','stage=thinking_growth','action_authority=false','memory_growth=governed_admission','max_atoms_per_cycle=1','memory_is_command=false')
+    concept_key=('aimo.life_cycle.epistemic_state_delta.'+$safeConcept)
+    label='Agent Life epistemic state delta'
+    kind='epistemic_state_delta'
+    definition=('For current goal "'+$goal+'", MindFrame supports this provisional epistemic state: '+$hypPart+'; '+$unknownPart+'; '+$evidencePart+'; '+$localPart+'. This is evidence-weight context only, not a task directive and not long-term admitted knowledge.')
+    summary=('Provisional epistemic delta: '+$hypPart+'; '+$unknownPart+'; '+$evidencePart+'; '+$localPart+'.')
+    aliases=@('agent_life_cycle_epistemic_delta','bounded_epistemic_state_delta',$safeConcept)
+    properties=@('owner_query_required=false','stage=epistemic_state_delta','action_authority=false','memory_growth=governed_admission','max_atoms_per_cycle=1','memory_is_command=false','provisional=true','long_term_admitted=false')
     relations=@('uses:active_compact_memory','uses:mind_logic_frame','supports:self_build','precedes:next_life_cycle')
-    uses=@('Use as evidence in later cycles; re-evaluate against fresh reality and current goal before choosing any next step.')
-    proof_requirements=@('mind_logic_frame_present','selected_next_logical_step_recorded','memory_recall_or_filter_attempted','governed_memory_admission_only')
-    negative_case='Reject or merge if this delta is duplicate, unsupported, stale, or would be interpreted as a command for the next cycle.'
+    uses=@('Use as provisional evidence in later cycles; re-evaluate against fresh reality and current goal before choosing any next step.')
+    proof_requirements=@('mind_logic_frame_present','epistemic_delta_present','evidence_or_local_memory_reference_present','selected_next_logical_step_metadata_only','governed_memory_admission_only')
+    negative_case='Reject or merge if this delta is duplicate, unsupported, stale, lacks epistemic content, or would be interpreted as a command for the next cycle.'
     return_to_parent='Future cycles may use this as evidence/weight, never as a directive.'
     source_basis=@('current Agent Life internal goal','current MindLogic frame','filtered compact-memory context when available')
+    epistemic_state=[ordered]@{
+      strongest_hypothesis=$hypText
+      unresolved_unknowns=@($unknowns)
+      evidence_ref_count=[int]@($evidenceRefs).Count
+      evidence_refs=@($evidenceRefs)
+      local_memory_evidence=@($localMemoryEvidence)
+      provisional=$true
+      long_term_admitted=$false
+      memory_is_command=$false
+    }
+    source_provenance=[ordered]@{
+      mind_frame_status=if($MindFrame){Get-ObjectField $MindFrame 'status'}else{$null}
+      selected_next_logical_step=[ordered]@{ step_id=$stepId; reason=$stepReason }
+      selected_next_logical_step_is_claim=$false
+    }
     source_missing=$false
-    quality_flags=@('bounded','local_first','mind_logic_derived','memory_not_command','governed_admission')
+    quality_flags=@('bounded','local_first','mind_logic_derived','epistemic_state_delta','memory_not_command','provisional','governed_admission')
+  }
+}
+function Convert-LifeMindFrameValueToText($Value){
+  if($null -eq $Value){ return $null }
+  if($Value -is [string]){
+    $text=$Value.Trim()
+    if([string]::IsNullOrWhiteSpace($text)){ return $null }
+    return $text
+  }
+  foreach($field in @('text','summary','claim','hypothesis','question','unknown','gap','description','reason','value','label','status')){
+    $fieldValue=Get-ObjectField $Value $field
+    if($null -ne $fieldValue -and -not ($fieldValue -is [System.Array])){
+      $text=[string]$fieldValue
+      if(-not [string]::IsNullOrWhiteSpace($text)){ return $text.Trim() }
+    }
+  }
+  try {
+    $json=($Value | ConvertTo-Json -Depth 12 -Compress)
+    if(-not [string]::IsNullOrWhiteSpace($json)){ return $json }
+  } catch {
+    $text=[string]$Value
+    if(-not [string]::IsNullOrWhiteSpace($text)){ return $text.Trim() }
+  }
+  return $null
+}
+function Get-LifeMindFrameTextList($MindFrame,[string[]]$Fields,[int]$Limit=6){
+  $items=@()
+  if($null -eq $MindFrame){ return @() }
+  foreach($field in @($Fields)){
+    $value=Get-ObjectField $MindFrame $field
+    foreach($item in @($value)){
+      $text=Convert-LifeMindFrameValueToText $item
+      if(-not [string]::IsNullOrWhiteSpace($text)){ $items += $text }
+    }
+  }
+  return @($items | Select-Object -Unique | Select-Object -First $Limit)
+}
+function Get-LifeMindFrameEvidenceRefs($MindFrame,[int]$Limit=12){
+  $refs=@()
+  if($null -eq $MindFrame){ return @() }
+  foreach($field in @('evidence_refs','evidence_ref','evidence','supporting_evidence','source_refs','sources','selected_memory_refs','memory_refs','local_memory_evidence')){
+    $value=Get-ObjectField $MindFrame $field
+    foreach($item in @($value)){
+      $text=$null
+      foreach($refField in @('evidence_ref','source_ref','ref','path','cell_id','concept_key','label','summary','source','id')){
+        $refValue=Get-ObjectField $item $refField
+        if($null -ne $refValue -and -not [string]::IsNullOrWhiteSpace([string]$refValue)){ $text=[string]$refValue; break }
+      }
+      if([string]::IsNullOrWhiteSpace($text)){ $text=Convert-LifeMindFrameValueToText $item }
+      if(-not [string]::IsNullOrWhiteSpace($text)){ $refs += $text.Trim() }
+    }
+  }
+  foreach($containerField in @('memory_recall','memory_recall_filter','filtered_memory','compact_memory_context')){
+    $container=Get-ObjectField $MindFrame $containerField
+    if($null -eq $container){ continue }
+    foreach($field in @('selected_memory_refs','selected_refs','evidence_refs','refs','matches','cells','memory_refs')){
+      $value=Get-ObjectField $container $field
+      foreach($item in @($value)){
+        $text=$null
+        foreach($refField in @('evidence_ref','source_ref','ref','path','cell_id','concept_key','label','summary','source','id')){
+          $refValue=Get-ObjectField $item $refField
+          if($null -ne $refValue -and -not [string]::IsNullOrWhiteSpace([string]$refValue)){ $text=[string]$refValue; break }
+        }
+        if([string]::IsNullOrWhiteSpace($text)){ $text=Convert-LifeMindFrameValueToText $item }
+        if(-not [string]::IsNullOrWhiteSpace($text)){ $refs += $text.Trim() }
+      }
+    }
+  }
+  return @($refs | Select-Object -Unique | Select-Object -First $Limit)
+}
+function Get-LifeMindFrameLocalMemoryEvidence($MindFrame,[int]$Limit=6){
+  $evidence=@()
+  if($null -eq $MindFrame){ return @() }
+  foreach($containerField in @('memory_recall','memory_recall_filter','filtered_memory','compact_memory_context','local_memory_evidence')){
+    $container=Get-ObjectField $MindFrame $containerField
+    if($null -eq $container){ continue }
+    foreach($field in @('selected_memory_refs','selected_refs','refs','matches','cells','evidence_refs')){
+      $value=Get-ObjectField $container $field
+      foreach($item in @($value)){
+        $text=Convert-LifeMindFrameValueToText $item
+        if(-not [string]::IsNullOrWhiteSpace($text)){ $evidence += $text }
+      }
+    }
+    foreach($field in @('status','decision_effect','reason','filter_reason','query','query_text')){
+      $value=Get-ObjectField $container $field
+      if($null -ne $value -and -not [string]::IsNullOrWhiteSpace([string]$value)){ $evidence += ($containerField+'.'+$field+'='+[string]$value) }
+    }
+  }
+  return @($evidence | Select-Object -Unique | Select-Object -First $Limit)
+}
+function Get-LifeSafeConceptToken([string]$Text,[string]$Fallback){
+  $token=if($Text){$Text.ToLowerInvariant()}else{''}
+  $token=($token -replace '[^a-z0-9]+','_').Trim('_')
+  if([string]::IsNullOrWhiteSpace($token)){ $token=$Fallback }
+  if($token.Length -gt 64){ $token=$token.Substring(0,64).Trim('_') }
+  if([string]::IsNullOrWhiteSpace($token)){ $token=$Fallback }
+  return $token
+}
+function New-LifePreviousCycleDelta($MindFrame,$SelectedActionId,$DeepThinking){
+  $atom=if($DeepThinking){$DeepThinking.learning_atom}else{$null}
+  $step=Get-ObjectField $MindFrame 'selected_next_logical_step'
+  $selectedStepId=if($step -and (Get-ObjectField $step 'step_id')){[string](Get-ObjectField $step 'step_id')}elseif($step){[string](Convert-LifeMindFrameValueToText $step)}else{$SelectedActionId}
+  $selectedStepReason=if($step -and (Get-ObjectField $step 'reason')){[string](Get-ObjectField $step 'reason')}else{$null}
+  $knowledge=[ordered]@{
+    concept_key=if($atom){$atom.concept_key}else{$null}
+    kind=if($atom){$atom.kind}else{$null}
+    label=if($atom){$atom.label}else{$null}
+    summary=if($atom){$atom.summary}else{$null}
+    definition=if($atom){$atom.definition}else{$null}
+    epistemic_state=if($atom){$atom.epistemic_state}else{$null}
+    provisional=if($atom){$true}else{$false}
+    long_term_admitted=$false
+    not_long_term_admitted=$true
+    memory_is_command=$false
+  }
+  return [ordered]@{
+    selected_step=$selectedStepId
+    selected_next_logical_step=[ordered]@{ step_id=$selectedStepId; reason=$selectedStepReason; metadata_only=$true; memory_is_command=$false }
+    knowledge_candidate_label=$knowledge.label
+    provisional_knowledge_concept_key=$knowledge.concept_key
+    provisional_knowledge_kind=$knowledge.kind
+    provisional_knowledge_summary=$knowledge.summary
+    provisional_knowledge_definition=$knowledge.definition
+    provisional_knowledge=$knowledge
+    useful_outcome=if($atom){'PROVISIONAL_EPISTEMIC_DELTA_PRODUCED'}else{'THOUGHT_COMPLETED_WITH_NO_MEANINGFUL_EPISTEMIC_DELTA'}
+    memory_admission_status=if($DeepThinking -and $DeepThinking.absorption){$DeepThinking.absorption.status_line}elseif($DeepThinking -and $DeepThinking.acceptance_gate){$DeepThinking.acceptance_gate.status}else{'NO_MEMORY_ADMISSION'}
+    provisional=if($atom){$true}else{$false}
+    long_term_admitted=$false
+    not_long_term_admitted=$true
+    memory_is_command=$false
+    created_at=(Get-Date).ToUniversalTime().ToString('o')
   }
 }
 function Invoke-MemoryAtomAcceptanceGate($RunRoot,$RunId,$Atom,$Frames,$MemoryRecalls){
@@ -1624,11 +1786,17 @@ if($EnableDeepThinking -and $LifeProfile -eq 'LifeLight'){
   if($mindLogic.frame){
     $deepThinking.learning_atom=New-LifeCycleLearningAtom $runId $internalGoal $mindLogic.frame
     $deepThinking.memory_recalls=@($mindLogic.frame.memory_recall,$mindLogic.frame.memory_recall_filter)
-    if($EnableMemoryLearning){
-      $deepThinking.acceptance_gate=[ordered]@{status='DEFERRED_TO_PENDING_MEMORY_ATOM_GATE';exit_code=0;decision=$null;absorption_allowed=$false;boundary=[ordered]@{full_gate_required_before_merge=$true;ordinary_tick_does_not_run_semantic_acceptance=$true}}
-      $deepThinking.absorption=New-AgentLifePendingMemoryPacket $runRoot $runId $deepThinking.learning_atom $MemoryIngestionMode $lifeWorkingMemoryPath
-      $deepThinking.status='PASS_LIFE_LIGHT_THOUGHT_CANDIDATE_QUEUED_PENDING_GATE'
-    } else { $deepThinking.status='PASS_LIFE_LIGHT_THOUGHT_CANDIDATE_ONLY' }
+    if($deepThinking.learning_atom){
+      if($EnableMemoryLearning){
+        $deepThinking.acceptance_gate=[ordered]@{status='DEFERRED_TO_PENDING_MEMORY_ATOM_GATE';exit_code=0;decision=$null;absorption_allowed=$false;boundary=[ordered]@{full_gate_required_before_merge=$true;ordinary_tick_does_not_run_semantic_acceptance=$true}}
+        $deepThinking.absorption=New-AgentLifePendingMemoryPacket $runRoot $runId $deepThinking.learning_atom $MemoryIngestionMode $lifeWorkingMemoryPath
+        $deepThinking.status='PASS_LIFE_LIGHT_EPISTEMIC_DELTA_QUEUED_PENDING_GATE'
+      } else { $deepThinking.status='PASS_LIFE_LIGHT_EPISTEMIC_DELTA_CANDIDATE_ONLY' }
+    } else {
+      $deepThinking.acceptance_gate=[ordered]@{status='NO_MEANINGFUL_EPISTEMIC_DELTA';exit_code=0;decision=$null;absorption_allowed=$false;boundary=[ordered]@{no_learning_atom_created=$true;ordinary_tick_completed=$true;direct_active_memory_write=$false}}
+      $deepThinking.absorption=$null
+      $deepThinking.status='PASS_LIFE_LIGHT_THOUGHT_NO_MEANINGFUL_EPISTEMIC_DELTA'
+    }
   } else { $deepThinking.status='PARTIAL_LIFE_LIGHT_MIND_LOGIC_FRAME_MISSING' }
 }
 
@@ -1764,8 +1932,8 @@ if($LifeProfile -eq 'LifeLight'){
   Write-CleanJson $shortTermMindStatePath $shortTermMindState 30
   Write-CleanJson $shortTermStateToNextTaskRouterPath $shortTermStateToNextTaskRouter 30
   if($lifeWorkingMemory -and $lifeWorkingMemory.compact_context){
-    $cycleDelta=[ordered]@{selected_step=if($mindLogic.frame -and $mindLogic.frame.selected_next_logical_step){$mindLogic.frame.selected_next_logical_step.step_id}else{$selectedActionId};knowledge_candidate_label=if($deepThinking.learning_atom){$deepThinking.learning_atom.label}else{$null};useful_outcome=if($deepThinking.learning_atom){'KNOWLEDGE_CANDIDATE_PRODUCED'}elseif($selectedActionId){'NEXT_ACTION_CANDIDATE_PRODUCED'}else{'THOUGHT_COMPLETED'};memory_admission_status=if($deepThinking.absorption){$deepThinking.absorption.status_line}elseif($deepThinking.acceptance_gate){$deepThinking.acceptance_gate.status}else{'NO_MEMORY_ADMISSION'};memory_is_command=$false;created_at=(Get-Date).ToUniversalTime().ToString('o')}
-    $lifeWorkingMemory.compact_context | Add-Member -NotePropertyName previous_cycle_delta -NotePropertyValue $cycleDelta -Force
+    $cycleDelta=New-LifePreviousCycleDelta $mindLogic.frame $selectedActionId $deepThinking
+    Set-ObjectField $lifeWorkingMemory.compact_context 'previous_cycle_delta' $cycleDelta
     Write-CleanJson $lifeWorkingMemoryPath $lifeWorkingMemory 100
   }
 } else {

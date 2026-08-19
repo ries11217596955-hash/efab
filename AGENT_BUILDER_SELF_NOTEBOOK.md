@@ -3875,3 +3875,40 @@ Do-not-repeat:
 - Do not start School for this continuation.
 - Do not launch duplicate Agent Life while processing the queue.
 - Do not bypass the full memory atom gate or write active memory directly.
+
+## EPISTEMIC_TICK_DECISION_20260819_2246_AZ
+
+Owner/Builder architecture decision:
+- `runtime tick` and `epistemic/learning tick` are different things.
+- Runtime tick = one bounded execution iteration of Agent Life. It may inspect, reason, test, select a next step, or produce no new durable knowledge.
+- Epistemic/learning tick = a semantic learning cycle that starts from a question/problem X, may contain many internal reasoning/microsteps X1..Xn, and closes only when a material knowledge delta is produced (or the frontier is honestly changed by proving what remains unknown).
+- Atom = minimal evidence-backed reusable knowledge delta. A sequence/composition of atoms may form a molecule/stronger synthesis.
+
+Critical reuse rule:
+- When an epistemic tick produces knowledge K, K becomes available to future cognition.
+- The immediately next runtime/epistemic cycle is NOT required to use K.
+- Future task Y, Z, or later work may reuse K only when the memory/router judges K relevant to the current problem/context.
+- Therefore cognition is not a forced linear chain `tick N knowledge -> mandatory tick N+1 use`; it is cumulative available knowledge with relevance-based recall.
+
+Dual-pipe implication:
+- Fast life continuity may carry a bounded `provisional knowledge delta` forward before long-term admission, but it must be explicitly provisional, non-command, and relevance-filtered.
+- Provisional knowledge must not bypass the governed long-term accepted-core admission path.
+- If long-term gate rejects a provisional delta, it must not remain masquerading as accepted durable knowledge.
+- Current implementation gap: existing `dual_pipe_memory_policy` intended previous-cycle reuse, but fresh code inspection showed `previous_cycle_delta` was written and not actually consumed as useful knowledge; old producer also encoded selected next-step/task as a learning atom. Repair is in progress, not yet accepted.
+
+Do-not-confuse:
+- microstep/reasoning step != epistemic tick.
+- runtime tick != atom.
+- candidate != accepted memory.
+- next action/task/instruction != knowledge atom.
+- temporal proximity != relevance.
+
+Current repair status:
+- Semantic-kind gate draft/regression exists: task/instruction candidate is rejected; observed declarative experience remains absorbable. This is still repo-dirty work pending final acceptance/commit.
+- Timed-out Codex draft in `run_autonomous_inner_motor.ps1` attempts to emit declarative epistemic deltas and richer provisional `previous_cycle_delta`; it remains CODEX_DRAFT until independently validated.
+
+Next strongest move:
+1. Validate/repair the timed-out producer draft without launching School or duplicating runtime.
+2. Prove generated learning output is declarative knowledge, not a next-task instruction.
+3. Wire relevance-based future reuse of provisional/accepted knowledge without forcing immediate-next-cycle use.
+4. Only then run a bounded Agent Life proof showing: microsteps can continue without atom spam; a real epistemic delta becomes available; unrelated next work need not use it; related later work can recall it.

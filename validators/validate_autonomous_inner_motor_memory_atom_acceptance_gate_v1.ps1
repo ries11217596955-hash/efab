@@ -95,6 +95,77 @@ if($negDecision){
   Add-Err 'negative_rule_duplicate_decision_missing'
 }
 
+# Negative semantic kind case: unresolved task/instruction candidates are not knowledge atoms.
+$taskCandidatePath=Join-Path $negRoot 'task_instruction_candidate.jsonl'
+$taskDecisionPath=Join-Path $negRoot 'task_instruction_decision.json'
+$taskFinalPath=Join-Path $negRoot 'task_instruction_final.jsonl'
+$taskCandidate=[ordered]@{
+  schema='aimo_self_learning_atom_v1'
+  candidate_id='negative_agent_life_task_instruction_not_knowledge'
+  concept_key='aimo.agent_life.failure_gap.task_instruction_candidate'
+  label='Agent Life evidence gap task instruction'
+  kind='instruction_candidate'
+  definition='Relevant evidence exists for the Agent Life failure pattern; identify one unresolved gap and determine the smallest trustworthy evidence needed to learn it.'
+  summary='Relevant evidence exists; identify one unresolved gap and determine the smallest trustworthy evidence needed to learn it.'
+  return_to_parent='Return to parent.'
+  source_missing=$false
+}
+[System.IO.File]::WriteAllText((Join-Path (Get-Location).Path $taskCandidatePath), (($taskCandidate | ConvertTo-Json -Depth 20 -Compress) + "`n"), $utf8NoBom)
+$taskOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File 'operations/autonomous_inner_motor/invoke_memory_atom_acceptance_gate_v1.ps1' -CandidateAtomPath $taskCandidatePath -OutputPath $taskDecisionPath -FinalAtomPath $taskFinalPath *>&1 | ForEach-Object { [string]$_ })
+$taskExit=$LASTEXITCODE
+$taskDecision=Read-Json $taskDecisionPath
+$taskInstructionCase=[ordered]@{ exit_code=$taskExit; decision=$null; reason=$null; absorption_allowed=$null; explanation=$null; output=@($taskOut) }
+if($taskDecision){
+  $taskInstructionCase.decision=$taskDecision.decision
+  $taskInstructionCase.reason=$taskDecision.reason
+  $taskInstructionCase.absorption_allowed=$taskDecision.absorption_allowed
+  $taskInstructionCase.explanation=$taskDecision.explanation
+  if($taskDecision.decision -ne 'REJECT_WITH_EXPLANATION'){ Add-Err "negative_task_instruction_not_rejected:$($taskDecision.decision)" }
+  if($taskDecision.reason -ne 'candidate_is_task_or_instruction_not_knowledge'){ Add-Err "negative_task_instruction_reason_bad:$($taskDecision.reason)" }
+  if($taskDecision.absorption_allowed -ne $false){ Add-Err 'negative_task_instruction_absorption_allowed' }
+  if($null -ne $taskDecision.final_atom){ Add-Err 'negative_task_instruction_final_atom_present' }
+  if($null -ne $taskDecision.final_atom_path){ Add-Err 'negative_task_instruction_final_atom_path_present' }
+  if(Test-Path $taskFinalPath){ Add-Err 'negative_task_instruction_final_atom_created' }
+} else {
+  Add-Err 'negative_task_instruction_decision_missing'
+}
+
+# Positive semantic kind case: declarative observed Agent Life experience remains absorbable.
+$observedCandidatePath=Join-Path $negRoot 'observed_experience_candidate.jsonl'
+$observedDecisionPath=Join-Path $negRoot 'observed_experience_decision.json'
+$observedFinalPath=Join-Path $negRoot 'observed_experience_final.jsonl'
+$observedCandidate=[ordered]@{
+  schema='aimo_self_learning_atom_v1'
+  candidate_id='positive_agent_life_observed_experience_ticks'
+  concept_key='aimo.agent_life.run.useful_ticks_before_bounded_stop'
+  label='Agent Life run completed six useful ticks before bounded stop'
+  kind='observed_experience'
+  definition='During a 2-minute Agent Life run, six useful ticks completed before the bounded seventh tick stopped.'
+  summary='The run showed six useful ticks completed before the seventh tick stopped at the boundary.'
+  return_to_parent='Return to parent.'
+  source_missing=$false
+}
+[System.IO.File]::WriteAllText((Join-Path (Get-Location).Path $observedCandidatePath), (($observedCandidate | ConvertTo-Json -Depth 20 -Compress) + "`n"), $utf8NoBom)
+$observedOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File 'operations/autonomous_inner_motor/invoke_memory_atom_acceptance_gate_v1.ps1' -CandidateAtomPath $observedCandidatePath -OutputPath $observedDecisionPath -FinalAtomPath $observedFinalPath *>&1 | ForEach-Object { [string]$_ })
+$observedExit=$LASTEXITCODE
+$observedDecision=Read-Json $observedDecisionPath
+$observedExperienceCase=[ordered]@{ exit_code=$observedExit; decision=$null; reason=$null; absorption_allowed=$null; explanation=$null; output=@($observedOut) }
+if($observedDecision){
+  $observedExperienceCase.decision=$observedDecision.decision
+  $observedExperienceCase.reason=$observedDecision.reason
+  $observedExperienceCase.absorption_allowed=$observedDecision.absorption_allowed
+  $observedExperienceCase.explanation=$observedDecision.explanation
+  if($observedDecision.reason -eq 'candidate_is_task_or_instruction_not_knowledge'){ Add-Err 'positive_observed_experience_rejected_as_task_instruction' }
+  if($observedDecision.decision -notin @('ACCEPT','REWRITE_AS_EXPERIENCE_ATOM')){ Add-Err "positive_observed_experience_not_absorbable:$($observedDecision.decision)" }
+  if($observedDecision.absorption_allowed -ne $true){ Add-Err 'positive_observed_experience_absorption_not_allowed' }
+  if($null -eq $observedDecision.final_atom){ Add-Err 'positive_observed_experience_final_atom_missing' }
+  if([string]::IsNullOrWhiteSpace($observedDecision.final_atom_path)){ Add-Err 'positive_observed_experience_final_atom_path_missing' }
+  if(-not(Test-Path $observedFinalPath)){ Add-Err 'positive_observed_experience_final_atom_not_created' }
+  if($observedDecision.decision -eq 'REWRITE_AS_EXPERIENCE_ATOM' -and @($observedDecision.duplicate_rule_refs).Count -lt 1){ Add-Err 'positive_observed_experience_rewrite_without_duplicate_rule_refs' }
+} else {
+  Add-Err 'positive_observed_experience_decision_missing'
+}
+
 $status=if($errors.Count -eq 0){'PASS_AUTONOMOUS_INNER_MOTOR_MEMORY_ATOM_ACCEPTANCE_GATE_V1'}else{'FAIL_AUTONOMOUS_INNER_MOTOR_MEMORY_ATOM_ACCEPTANCE_GATE_V1'}
 $out=[ordered]@{
   schema='autonomous_inner_motor_memory_atom_acceptance_gate_validation_v1'
@@ -102,8 +173,10 @@ $out=[ordered]@{
   checked_at=(Get-Date).ToString('o')
   proof_path=$ProofPath
   decision_path=$DecisionPath
-  boundary=[ordered]@{ validates_explained_gate=$true; validates_no_rule_copy_absorption=$true; validates_rewrite_or_reject=$true }
+  boundary=[ordered]@{ validates_explained_gate=$true; validates_no_rule_copy_absorption=$true; validates_rewrite_or_reject=$true; validates_semantic_kind_task_instruction_rejection=$true; validates_observed_experience_absorbable=$true }
   negative_case_rule_duplicate_without_context=$negativeCase
+  negative_case_task_instruction_not_knowledge=$taskInstructionCase
+  positive_case_observed_experience_agent_life_ticks=$observedExperienceCase
   errors=@($errors)
 }
 $proofOut='tests/self_development/AUTONOMOUS_INNER_MOTOR_MEMORY_ATOM_ACCEPTANCE_GATE_V1_PROOF.json'

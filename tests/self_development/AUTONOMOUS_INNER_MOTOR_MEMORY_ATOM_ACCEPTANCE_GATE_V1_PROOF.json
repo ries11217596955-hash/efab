@@ -1,13 +1,15 @@
 {
     "schema":  "autonomous_inner_motor_memory_atom_acceptance_gate_validation_v1",
     "status":  "PASS_AUTONOMOUS_INNER_MOTOR_MEMORY_ATOM_ACCEPTANCE_GATE_V1",
-    "checked_at":  "2026-07-15T21:02:19.4520304+04:00",
-    "proof_path":  "operations/autonomous_inner_motor/proofs/AUTONOMOUS_INNER_MOTOR_DEEP_THINKING_MEMORY_LEARNING_PROOF_20260715.json",
-    "decision_path":  "",
+    "checked_at":  "2026-08-19T22:58:47.0393495+04:00",
+    "proof_path":  "",
+    "decision_path":  ".runtime/gate_semantic_kind_probe_v2_20260819_2215/task_decision.json",
     "boundary":  {
                      "validates_explained_gate":  true,
                      "validates_no_rule_copy_absorption":  true,
-                     "validates_rewrite_or_reject":  true
+                     "validates_rewrite_or_reject":  true,
+                     "validates_semantic_kind_task_instruction_rejection":  true,
+                     "validates_observed_experience_absorbable":  true
                  },
     "negative_case_rule_duplicate_without_context":  {
                                                          "exit_code":  2,
@@ -21,6 +23,33 @@
                                                                         "EXPLANATION=The candidate repeats an existing rule/policy/validator but no run context was provided to rewrite it as an experience atom."
                                                                     ]
                                                      },
+    "negative_case_task_instruction_not_knowledge":  {
+                                                         "exit_code":  2,
+                                                         "decision":  "REJECT_WITH_EXPLANATION",
+                                                         "reason":  "candidate_is_task_or_instruction_not_knowledge",
+                                                         "absorption_allowed":  false,
+                                                         "explanation":  "The candidate is phrased as a task, instruction, or goal rather than concrete observed knowledge about what happened or was learned.",
+                                                         "output":  [
+                                                                        "MEMORY_ATOM_GATE_DECISION=REJECT_WITH_EXPLANATION",
+                                                                        "ABSORPTION_ALLOWED=False",
+                                                                        "GATE_DECISION_PATH=.runtime\\autonomous_inner_motor_gate_validator\\task_instruction_decision.json",
+                                                                        "EXPLANATION=The candidate is phrased as a task, instruction, or goal rather than concrete observed knowledge about what happened or was learned."
+                                                                    ]
+                                                     },
+    "positive_case_observed_experience_agent_life_ticks":  {
+                                                               "exit_code":  0,
+                                                               "decision":  "ACCEPT",
+                                                               "reason":  "candidate_contains_delta_and_is_not_a_rule_duplicate",
+                                                               "absorption_allowed":  true,
+                                                               "explanation":  "The candidate has enough local experience and does not appear to be only a copied rule.",
+                                                               "output":  [
+                                                                              "MEMORY_ATOM_GATE_DECISION=ACCEPT",
+                                                                              "ABSORPTION_ALLOWED=True",
+                                                                              "GATE_DECISION_PATH=.runtime\\autonomous_inner_motor_gate_validator\\observed_experience_decision.json",
+                                                                              "FINAL_ATOM_PATH=.runtime\\autonomous_inner_motor_gate_validator\\observed_experience_final.jsonl",
+                                                                              "EXPLANATION=The candidate has enough local experience and does not appear to be only a copied rule."
+                                                                          ]
+                                                           },
     "errors":  [
 
                ]

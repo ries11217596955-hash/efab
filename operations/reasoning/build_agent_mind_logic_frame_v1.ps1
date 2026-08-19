@@ -27,8 +27,17 @@ function Get-LifeCycleLocalMemoryEvidence([string]$Path,[string]$Query,[int]$Top
   }
   if($ctx.compact_context.previous_cycle_delta){
     $d=$ctx.compact_context.previous_cycle_delta
-    $summary=('Previous cycle: step='+[string]$d.selected_step+'; knowledge='+[string]$d.knowledge_candidate_label+'; outcome='+[string]$d.useful_outcome)
-    [void]$candidates.Add([pscustomobject]@{label='previous_cycle_delta';summary=$summary;kind='life_continuity';source='life_working_memory';priority=3})
+    $pk=$d.provisional_knowledge
+    $safeProvisional=([bool]$d.provisional -and -not [bool]$d.long_term_admitted -and -not [bool]$d.memory_is_command -and $null -ne $pk)
+    if($safeProvisional){
+      $pkSummary=[string]$pk.summary
+      $pkDefinition=[string]$pk.definition
+      if(-not [string]::IsNullOrWhiteSpace($pkSummary) -or -not [string]::IsNullOrWhiteSpace($pkDefinition)){
+        $summary=('Provisional knowledge: '+$pkSummary+' '+$pkDefinition).Trim()
+        $label=if(-not [string]::IsNullOrWhiteSpace([string]$pk.label)){[string]$pk.label}elseif(-not [string]::IsNullOrWhiteSpace([string]$pk.concept_key)){[string]$pk.concept_key}else{'previous_cycle_delta'}
+        [void]$candidates.Add([pscustomobject]@{label=$label;summary=$summary;kind='provisional_epistemic_delta';source='life_working_memory_provisional';priority=2})
+      }
+    }
   }
   $tokens=@(([regex]::Matches(([string]$Query).ToLowerInvariant(),'[\p{L}0-9_-]{4,}')|ForEach-Object{$_.Value})|Select-Object -Unique)
   $scored=New-Object 'System.Collections.Generic.List[object]'
@@ -36,7 +45,7 @@ function Get-LifeCycleLocalMemoryEvidence([string]$Path,[string]$Query,[int]$Top
     $text=(([string]$c.label+' '+[string]$c.summary+' '+[string]$c.kind).ToLowerInvariant())
     $hits=0;foreach($t in $tokens){if($text.Contains($t)){$hits++}}
     $score=[int]$hits+[int]$c.priority
-    if($hits -gt 0 -or $c.source -eq 'life_working_memory'){
+    if($hits -gt 0){
       [void]$scored.Add([pscustomobject]@{label=$c.label;summary=$c.summary;kind=$c.kind;source=$c.source;score=$score;hits=$hits})
     } else { $out.rejected_matches += $c }
   }
@@ -170,7 +179,7 @@ if($memoryRecallFilter.status -in @('PASS_MEMORY_RECALL_RELEVANCE_FILTER_V1','PA
     [void]$known.Add([ordered]@{claim=('Filtered active memory recalls accepted as relevant evidence: ' + $topLabels); evidence='filter_memory_recall_relevance_v1'; confidence='FILTERED_MEMORY_RECALL_SUPPORTED'})
   }else{
     foreach($m in @($memoryRecallFilter.accepted_matches | Select-Object -First 3)){
-      [void]$known.Add([ordered]@{claim=('Relevant memory evidence candidate for current topic: ' + [string]$m.summary); evidence=('active_memory:' + [string]$m.label); confidence='FILTERED_MEMORY_EVIDENCE_CANDIDATE'})
+      $evidenceSource=if([string]$m.source -eq 'life_working_memory_provisional'){('provisional_life_memory:' + [string]$m.label)}else{('active_memory:' + [string]$m.label)}; $confidence=if([string]$m.source -eq 'life_working_memory_provisional'){'PROVISIONAL_RELEVANT_MEMORY_EVIDENCE_CANDIDATE'}else{'FILTERED_MEMORY_EVIDENCE_CANDIDATE'}; [void]$known.Add([ordered]@{claim=('Relevant memory evidence candidate for current topic: ' + [string]$m.summary); evidence=$evidenceSource; confidence=$confidence})
     }
   }
 }
