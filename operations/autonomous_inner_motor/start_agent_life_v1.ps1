@@ -1,7 +1,8 @@
 param(
     [Parameter(Mandatory = $true, Position = 0)]
     [ValidateRange(1, 10080)]
-    [int]$DurationMinutes
+    [int]$DurationMinutes,
+    [ValidateRange(5,45)][int]$TickBudgetSeconds=35
 )
 
 $ErrorActionPreference = "Stop"
@@ -73,6 +74,25 @@ function Get-ProcessConflicts {
     return @($matches)
 }
 
+function Invoke-AgentLifeOwnedRunSanitation {
+    param([Parameter(Mandatory=$true)][string]$RunDir,[Parameter(Mandatory=$true)][string]$AimoRoot,[Parameter(Mandatory=$true)][string[]]$OwnedRunDirs,[switch]$DeleteWholeRun)
+    if(-not(Test-Path -LiteralPath $RunDir -PathType Container)){ return [ordered]@{status='ABSENT';removed_count=0;removed_bytes=0;kept_count=0} }
+    $resolvedRoot=(Resolve-Path -LiteralPath $AimoRoot).Path.TrimEnd('\')
+    $resolvedRun=(Resolve-Path -LiteralPath $RunDir).Path.TrimEnd('\')
+    if((Split-Path -Parent $resolvedRun) -ne $resolvedRoot -or (Split-Path -Leaf $resolvedRun) -notlike 'aimo_*'){ throw "SANITATION_REFUSED_NON_AIMO_CHILD:$resolvedRun" }
+    $ownedResolved=@($OwnedRunDirs | ForEach-Object { if(Test-Path -LiteralPath $_){(Resolve-Path -LiteralPath $_).Path.TrimEnd('\')}else{[IO.Path]::GetFullPath($_).TrimEnd('\')} })
+    if($resolvedRun -notin $ownedResolved){ throw "SANITATION_REFUSED_NOT_CURRENT_LIFE_OWNED:$resolvedRun" }
+    $files=@(Get-ChildItem -LiteralPath $resolvedRun -Recurse -File -Force -ErrorAction SilentlyContinue); [int64]$bytes=(($files|Measure-Object Length -Sum).Sum)
+    if($DeleteWholeRun){ Remove-Item -LiteralPath $resolvedRun -Recurse -Force -ErrorAction Stop; return [ordered]@{status='DELETED_SELF_OWNED_INCOMPLETE_RUN';removed_count=$files.Count;removed_bytes=$bytes;kept_count=0} }
+    $keep=@('memory_to_next_path_reuse_gate.json','short_term_mind_state.json','short_term_state_to_next_task_router.json','refocus_seed_diversification.json','refocus_to_new_thought_seed.json','action_decision_packet.json')
+    $removed=0;[int64]$removedBytes=0
+    foreach($f in $files){ if($f.DirectoryName -eq $resolvedRun -and $f.Name -in $keep){continue};$removed++;$removedBytes += [int64]$f.Length;Remove-Item -LiteralPath $f.FullName -Force -ErrorAction Stop }
+    foreach($d in @(Get-ChildItem -LiteralPath $resolvedRun -Directory -Force -ErrorAction SilentlyContinue)){Remove-Item -LiteralPath $d.FullName -Recurse -Force -ErrorAction Stop}
+    $kept=@(Get-ChildItem -LiteralPath $resolvedRun -File -Force -ErrorAction SilentlyContinue)
+    if($kept.Count -gt 6){ throw "SANITATION_CONTINUITY_LIMIT_EXCEEDED:$($kept.Count)" }
+    return [ordered]@{status='COMPACTED_SELF_OWNED_RUN_TO_CONTINUITY';removed_count=$removed;removed_bytes=$removedBytes;kept_count=$kept.Count;kept_files=@($kept.Name)}
+}
+
 $RepoRoot = Get-RepoRoot
 Set-Location $RepoRoot
 
@@ -107,7 +127,7 @@ $preflight = [ordered]@{
         mode = "SandboxExploration"
         enable_deep_thinking = $true
         enable_memory_learning = $true
-        memory_ingestion_mode = "QueueOnly"
+        memory_ingestion_mode = "Auto"
         action_execution_allowed = $false
         codex_allowed = $false
         web_allowed = $false
@@ -128,7 +148,7 @@ $preflight = [ordered]@{
         action_execution_allowed = $false
         direct_active_memory_write = $false
         governed_memory_learning = $true
-        memory_ingestion_mode = "QueueOnly"
+        memory_ingestion_mode = "Auto"
         live_action = $false
     }
 }
@@ -150,62 +170,45 @@ $start = Get-Date
 $end = $start.AddSeconds($durationSeconds)
 $cycles = @()
 $cycle = 0
+$aimoRoot=Join-Path $RepoRoot '.runtime/autonomous_inner_motor'
+if(-not(Test-Path -LiteralPath $aimoRoot)){New-Item -ItemType Directory -Force -Path $aimoRoot|Out-Null}
+$ownedRunDirs=New-Object 'System.Collections.Generic.List[string]'
+$sanitationEvents=New-Object 'System.Collections.Generic.List[object]'
+$maxOwnedContinuityDirs=12
 
 while ((Get-Date) -lt $end) {
     $cycle++
-    $cycleStart = Get-Date
-    $remainingMs = [Math]::Max(0, [int](($end - (Get-Date)).TotalMilliseconds))
-    $runnerArgs = @(
-        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', 'operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1',
-        '-Mode', 'SandboxExploration', '-EnableDeepThinking', '-EnableMemoryLearning', '-MemoryIngestionMode', 'QueueOnly',
-        '-WakeContextPath', $lifeWorkingMemoryPath
-    )
-    $runner = Start-Process -FilePath 'powershell.exe' -ArgumentList $runnerArgs -PassThru -NoNewWindow
-    $boundedStop = $false
-    if (-not $runner.WaitForExit($remainingMs)) {
-        $boundedStop = $true
-        & taskkill.exe /PID $runner.Id /T /F | Out-Null
-        $runner.WaitForExit()
+    $cycleStart=Get-Date
+    $beforeDirs=@{};Get-ChildItem -LiteralPath $aimoRoot -Directory -ErrorAction SilentlyContinue|ForEach-Object{$beforeDirs[$_.FullName]=$true}
+    $remainingMs=[Math]::Max(0,[int](($end-(Get-Date)).TotalMilliseconds))
+    $tickBudgetMs=[Math]::Min($remainingMs,$TickBudgetSeconds*1000)
+    if($tickBudgetMs -le 0){break}
+    $runnerArgs=@('-NoProfile','-ExecutionPolicy','Bypass','-File','operations/autonomous_inner_motor/run_autonomous_inner_motor.ps1','-Mode','SandboxExploration','-EnableDeepThinking','-EnableMemoryLearning','-MemoryIngestionMode','Auto','-WakeContextPath',$lifeWorkingMemoryPath,'-LifeProfile','LifeLight')
+    $runner=Start-Process -FilePath 'powershell.exe' -ArgumentList $runnerArgs -PassThru -NoNewWindow
+    $boundedStop=$false
+    if(-not $runner.WaitForExit($tickBudgetMs)){ $boundedStop=$true;& taskkill.exe /PID $runner.Id /T /F|Out-Null;try{$runner.WaitForExit(3000)}catch{} }
+    $exit=if($boundedStop){124}else{$runner.ExitCode}
+    $cycleFinish=Get-Date
+    $newDirs=@(Get-ChildItem -LiteralPath $aimoRoot -Directory -ErrorAction SilentlyContinue|Where-Object{-not $beforeDirs.ContainsKey($_.FullName) -and $_.LastWriteTime -ge $cycleStart.AddSeconds(-2)}|Sort-Object LastWriteTime)
+    $runBindingStatus=if($newDirs.Count -eq 1){'BOUND_CURRENT_TICK_RUN_DIR'}elseif($newDirs.Count -eq 0){'NO_CURRENT_TICK_RUN_DIR'}else{'AMBIGUOUS_CURRENT_TICK_RUN_DIRS'}
+    $currentRun=if($newDirs.Count -eq 1){$newDirs[0]}else{$null}
+    if($currentRun -and -not $ownedRunDirs.Contains($currentRun.FullName)){[void]$ownedRunDirs.Add($currentRun.FullName)}
+    $proofPath=$null;$proof=$null
+    if($currentRun){$candidateProof=Join-Path $currentRun.FullName 'SANDBOX_EXPLORATION_PROOF.json';if(Test-Path -LiteralPath $candidateProof){$proofPath=$candidateProof;try{$proof=Get-Content $candidateProof -Raw|ConvertFrom-Json}catch{$proof=$null}}}
+    $selectedActionId=if($proof -and $proof.next_action_candidate -and $proof.next_action_candidate.packet -and $proof.next_action_candidate.packet.selected_action){$proof.next_action_candidate.packet.selected_action.action_id}elseif($proof -and $proof.next_action_candidate -and $proof.next_action_candidate.selected_action){$proof.next_action_candidate.selected_action.action_id}else{$null}
+    $knowledgeCandidate=if($proof -and $proof.deep_thinking -and $proof.deep_thinking.absorption -and $proof.deep_thinking.absorption.atom_path){[string]$proof.deep_thinking.absorption.atom_path}else{$null}
+    $usefulOutcome=if($knowledgeCandidate){'KNOWLEDGE_CANDIDATE_PRODUCED'}elseif($selectedActionId){'NEXT_ACTION_CANDIDATE_PRODUCED'}elseif($proof){'THOUGHT_PROOF_COMPLETED'}else{'NO_COMPLETED_THOUGHT_PROOF'}
+    $sanitation=$null
+    if($currentRun){
+      if($exit -ne 0 -or -not $proof){$sanitation=Invoke-AgentLifeOwnedRunSanitation -RunDir $currentRun.FullName -AimoRoot $aimoRoot -OwnedRunDirs @($ownedRunDirs.ToArray()) -DeleteWholeRun;[void]$ownedRunDirs.Remove($currentRun.FullName)}
+      else{$sanitation=Invoke-AgentLifeOwnedRunSanitation -RunDir $currentRun.FullName -AimoRoot $aimoRoot -OwnedRunDirs @($ownedRunDirs.ToArray())}
+      [void]$sanitationEvents.Add([ordered]@{cycle=$cycle;run_dir=$currentRun.FullName;result=$sanitation})
     }
-    $exit = if ($boundedStop) { 124 } else { $runner.ExitCode }
-
-    $latest = if (-not $boundedStop) { Get-ChildItem ".runtime/autonomous_inner_motor" -Directory -ErrorAction SilentlyContinue | Sort-Object LastWriteTime -Descending | Select-Object -First 1 } else { $null }
-    $proofPath = $null
-    $proof = $null
-    if ($latest) {
-        $candidateProof = Join-Path $latest.FullName "SANDBOX_EXPLORATION_PROOF.json"
-        if (Test-Path $candidateProof) {
-            $proofPath = $candidateProof
-            $proof = Get-Content $candidateProof -Raw | ConvertFrom-Json
-        }
-    }
-
-    $cycles += [ordered]@{
-        cycle = $cycle
-        started_at = $cycleStart.ToUniversalTime().ToString("o")
-        exit_code = $exit
-        bounded_stop = $boundedStop
-        run_dir = if ($latest) { $latest.FullName } else { $null }
-        proof_path = $proofPath
-        proof_status = if ($proof) { $proof.deep_thinking.status } else { $null }
-        action_execution_allowed = if ($proof) { $proof.boundary.action_execution_allowed } else { $null }
-        active_memory_mutated = if ($proof) { $proof.mutation_audit.active_memory_mutated } else { $null }
-        git_mutated = if ($proof) { $proof.mutation_audit.git_mutated } else { $null }
-        codex_launched = if ($proof) { $proof.mutation_audit.codex_launched } else { $null }
-        web_research_performed = if ($proof) { $proof.mutation_audit.web_research_performed } else { $null }
-        memory_ingestion_mode = if ($proof) { $proof.mutation_audit.memory_ingestion_mode } else { "QueueOnly" }
-        governed_absorption_used = if ($proof) { $proof.mutation_audit.governed_absorption_used } else { $null }
-        anti_repeat_status = if ($proof) { $proof.memory_to_next_path_reuse_gate.status } else { $null }
-        selected_action_id = if ($proof -and $proof.next_action_candidate -and $proof.next_action_candidate.packet -and $proof.next_action_candidate.packet.selected_action) { $proof.next_action_candidate.packet.selected_action.action_id } elseif ($proof -and $proof.next_action_candidate -and $proof.next_action_candidate.selected_action) { $proof.next_action_candidate.selected_action.action_id } else { $null }
-        consecutive_repeat_count = if ($proof) { $proof.memory_to_next_path_reuse_gate.consecutive_repeat_count } else { $null }
-        repeated_candidate_is_progress = if ($proof) { -not $proof.memory_to_next_path_reuse_gate.repeat_pressure_detected } else { $null }
-        repeat_requires_new_learning_or_escalation = if ($proof) { $proof.memory_to_next_path_reuse_gate.repeat_pressure_detected } else { $null }
-        manifest_status = if ($proof) { $proof.sandbox_proof_pack_manifest.status } else { $null }
-        manifest_files = if ($proof) { @($proof.sandbox_proof_pack_manifest.files).Count } else { $null }
-    }
-
-    if ($exit -ne 0) { break }
-    Start-Sleep -Seconds 5
+    $existingOwned=@($ownedRunDirs.ToArray()|Where-Object{Test-Path -LiteralPath $_})
+    while($existingOwned.Count -gt $maxOwnedContinuityDirs){$oldest=$existingOwned|Sort-Object{(Get-Item -LiteralPath $_).LastWriteTime}|Select-Object -First 1;$ev=Invoke-AgentLifeOwnedRunSanitation -RunDir $oldest -AimoRoot $aimoRoot -OwnedRunDirs @($ownedRunDirs.ToArray()) -DeleteWholeRun;[void]$sanitationEvents.Add([ordered]@{cycle=$cycle;run_dir=$oldest;reason='owned_continuity_window_limit';result=$ev});[void]$ownedRunDirs.Remove($oldest);$existingOwned=@($ownedRunDirs.ToArray()|Where-Object{Test-Path -LiteralPath $_})}
+    $cycles += [ordered]@{cycle=$cycle;started_at=$cycleStart.ToUniversalTime().ToString('o');finished_at=$cycleFinish.ToUniversalTime().ToString('o');duration_seconds=[Math]::Round(($cycleFinish-$cycleStart).TotalSeconds,3);tick_budget_seconds=$TickBudgetSeconds;exit_code=$exit;bounded_stop=$boundedStop;run_binding_status=$runBindingStatus;run_dir=if($currentRun){$currentRun.FullName}else{$null};proof_path=$proofPath;proof_status=if($proof){$proof.deep_thinking.status}else{$null};useful_outcome=$usefulOutcome;knowledge_candidate=$knowledgeCandidate;knowledge_candidate_reason_absent=if($knowledgeCandidate){$null}elseif($proof){'governed absorption produced no atom path this tick'}else{'tick produced no completed proof'};memory_ingestion_mode=if($proof){$proof.mutation_audit.memory_ingestion_mode}else{'Auto'};governed_absorption_used=if($proof){$proof.mutation_audit.governed_absorption_used}else{$false};selected_action_id=$selectedActionId;memory_is_command=if($proof -and $proof.memory_influence_contract){$proof.memory_influence_contract.memory_is_command}else{$false};memory_can_force_next_step=if($proof -and $proof.memory_influence_contract){$proof.memory_influence_contract.memory_can_force_next_step}else{$false};sanitation=$sanitation;action_execution_allowed=if($proof){$proof.boundary.action_execution_allowed}else{$false};active_memory_mutated=if($proof){$proof.mutation_audit.active_memory_mutated}else{$false};git_mutated=if($proof){$proof.mutation_audit.git_mutated}else{$false};codex_launched=if($proof){$proof.mutation_audit.codex_launched}else{$false};web_research_performed=if($proof){$proof.mutation_audit.web_research_performed}else{$false}}
+    if($exit -ne 0 -and -not $boundedStop){break}
+    if((Get-Date) -lt $end){Start-Sleep -Seconds 1}
 }
 
 $finish = Get-Date
@@ -216,6 +219,7 @@ $summary = [ordered]@{
     started_at = $start.ToUniversalTime().ToString("o")
     finished_at = $finish.ToUniversalTime().ToString("o")
     duration_minutes_requested = $DurationMinutes
+    tick_budget_seconds = $TickBudgetSeconds
     duration_seconds = [int]($finish - $start).TotalSeconds
     life_working_memory_path = $lifeWorkingMemoryPath
     life_working_memory_exists = (Test-Path $lifeWorkingMemoryPath)
@@ -232,12 +236,14 @@ $summary = [ordered]@{
         action_execution_allowed = $false
         direct_active_memory_write = $false
         governed_memory_learning = $true
-        memory_ingestion_mode = "QueueOnly"
+        memory_ingestion_mode = "Auto"
         git_mutated = (@($cycles | Where-Object { $_.git_mutated -eq $true }).Count -gt 0)
         codex_launched = (@($cycles | Where-Object { $_.codex_launched -eq $true }).Count -gt 0)
         web_research_performed = (@($cycles | Where-Object { $_.web_research_performed -eq $true }).Count -gt 0)
         repair_executed = $false
     }
+    sanitation = [ordered]@{policy='OWNED_RUN_COMPACTION_V1';continuity_files_per_run_max=6;owned_continuity_dirs_max=$maxOwnedContinuityDirs;events=@($sanitationEvents.ToArray());foreign_run_cleanup_allowed=$false;active_memory_cleanup_allowed=$false;tracked_repo_cleanup_allowed=$false}
+    memory_influence_contract=[ordered]@{role='evidence_weight_context';memory_is_command=$false;memory_can_force_next_step=$false}
     cycles_detail = $cycles
     repo_after = [ordered]@{
         head = (git rev-parse --short HEAD).Trim()

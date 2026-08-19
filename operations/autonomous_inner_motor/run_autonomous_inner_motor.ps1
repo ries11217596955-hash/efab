@@ -8,6 +8,7 @@ param(
   [ValidateSet('Auto','QueueOnly','QueueAndMerge','DirectAbsorb')][string]$MemoryIngestionMode='Auto',
   [string]$OutputRoot='.runtime/autonomous_inner_motor',
   [string]$WakeContextPath='',
+  [ValidateSet('Full','LifeLight')][string]$LifeProfile='Full',
   [int]$MaxMemorySamples=6
 )
 $ErrorActionPreference='Stop'
@@ -95,7 +96,7 @@ function New-InnateReflexBootload([string]$RunRoot,[string]$OutputPath){
 }
 
 
-function Invoke-DefaultWakeReflexes([string]$RunRoot,$Bootload,[string]$OutputPath){
+function Invoke-DefaultWakeReflexes([string]$RunRoot,$Bootload,[string]$OutputPath,[string]$LifeProfile='Full'){
   $bodyRuntimeRoot=Join-Path $RunRoot 'wake_body_audit'
   $bodyInvoker='operations/body_self_inspection/invoke_body_self_inspection_circuit_v1.ps1'
   if(-not(Test-Path -LiteralPath $bodyInvoker -PathType Leaf)){ throw "BODY_AUDIT_INVOKER_MISSING:$bodyInvoker" }
@@ -133,6 +134,23 @@ function Invoke-DefaultWakeReflexes([string]$RunRoot,$Bootload,[string]$OutputPa
     status='PASS_ACTIVE_MEMORY_READ_WAKE_REFLEX_V1'; reflex_id='active_memory_read_reflex'; invocation_policy='WAKE_DEFAULT_ON_AGENT_LIFE_START'; requires_owner_permission=$false; trigger_required=$false; observe_only=$true
     root=$memRoot; root_exists=(Test-Path -LiteralPath $memRoot); manifest_exists=(Test-Path -LiteralPath (Join-Path $memRoot 'manifest.json')); index_exists=(Test-Path -LiteralPath (Join-Path $memRoot 'index.json')); cells_exists=(Test-Path -LiteralPath (Join-Path $memRoot 'cells.jsonl'))
     boundary=[ordered]@{ active_memory_written=$false; memory_repaired=$false; memory_cleaned=$false; cells_mutated=$false }
+  }
+  if($LifeProfile -eq 'LifeLight'){
+    $bodyMapPath='reports/self_development/agent_body_map.json'
+    $selfMapPath='reports/self_development/SELF_MODEL_ACTIVE_MAP.json'
+    $bodyMapProof=Get-FileProof $bodyMapPath
+    $selfMapProof=Get-FileProof $selfMapPath
+    if(-not $bodyMapProof -or -not $selfMapProof){ throw 'LIFE_LIGHT_BODY_MAP_MISSING' }
+    $wake=[ordered]@{
+      schema='default_wake_reflexes_v2'; status='PASS_DEFAULT_WAKE_REFLEXES_V2'; invoked_at=(Get-Date).ToUniversalTime().ToString('o'); run_root=$RunRoot; bootload_loaded=$true; life_profile=$LifeProfile
+      default_reflexes_invoked=@('body_map_light_reflex','repo_reality_reflex','process_scan_reflex','runtime_pressure_reflex','active_memory_read_reflex'); default_reflexes_deferred=@('full_body_audit_reflex')
+      body_wake_raw_retention=[ordered]@{schema='body_wake_raw_retention_v1';status='NOT_REQUIRED_LIFE_LIGHT';mode='none';raw_debug_retained=$false;compact_outputs_retained=$false;removed_count=0;removed_bytes=0;boundary=[ordered]@{active_memory_mutated=$false;repo_mutated=$false;repair_executed=$false}}
+      body_audit_reflex=[ordered]@{status='PASS_BODY_MAP_LIGHT_WAKE_REFLEX_V1';reflex_id='body_audit_reflex';invocation_policy='AGENT_LIFE_LIGHT_WAKE';observe_only=$true;invoked_this_run=$true;body_inspection_invoked=$false;full_audit_deferred=$true;full_audit_trigger='explicit drift/recovery/diagnostic signal';body_map=$bodyMapProof;self_map=$selfMapProof;callable=$true;source_entrypoint=$bodyInvoker}
+      repo_reality_reflex=$repoReality; process_scan_reflex=$processScan; runtime_pressure_reflex=$runtimePressure; active_memory_read_reflex=$activeMemory
+      boundary=[ordered]@{wake_default_body_audit_invoked=$false;body_observe_only=$true;body_repair_executed=$false;repo_mutated=$false;git_write_performed=$false;process_killed=$false;process_started=$false;runtime_cleanup_performed=$false;active_memory_mutated=$false;active_memory_written=$false;body_map_mutated=$false;parent_action_executed=$false;live_process_touched=$false;codex_launched=$false;web_launched=$false;cleanup_performed=$false;raw_debug_retained=$false;compact_outputs_retained=$false}
+    }
+    Write-CleanJson $OutputPath $wake 80
+    return $wake
   }
   $bodyOutput=@(& powershell -NoProfile -ExecutionPolicy Bypass -File $bodyInvoker -RepoRoot (Get-Location).Path -RuntimeRoot $bodyRuntimeRoot 2>&1 | ForEach-Object { [string]$_ })
   $bodyExit=$LASTEXITCODE
@@ -414,6 +432,34 @@ function New-DeepThinkingLearningAtom($RunId,$Frames,$InternalGoal){
     source_basis=@('Owner instruction 20260715: thinking should create memory atoms during the thinking process','AIMO self-directed thinking proof','active compact memory governed absorption route')
     source_missing=$false
     quality_flags=@('recursive','memory_first','governed_absorption','return_to_parent','self_build_aligned')
+  }
+}
+function New-LifeCycleLearningAtom($RunId,$InternalGoal,$MindFrame){
+  $goal=if($InternalGoal -and $InternalGoal.goal){[string]$InternalGoal.goal}else{'Agent Life bounded self-directed reasoning'}
+  $step=if($MindFrame -and $MindFrame.selected_next_logical_step){$MindFrame.selected_next_logical_step}else{$null}
+  $hyp=if($MindFrame -and $MindFrame.strongest_hypothesis){$MindFrame.strongest_hypothesis}else{$null}
+  $stepId=if($step -and $step.step_id){[string]$step.step_id}else{'no_step'}
+  $stepReason=if($step -and $step.reason){[string]$step.reason}else{'No explicit next-step reason was produced.'}
+  $hypText=if($hyp -and $hyp.text){[string]$hyp.text}elseif($hyp){[string]$hyp}else{'No explicit strongest hypothesis was produced.'}
+  $safeStep=($stepId -replace '[^A-Za-z0-9_.-]','_')
+  return [ordered]@{
+    schema='aimo_self_learning_atom_v1'
+    candidate_id=('aimo_life_cycle_'+$RunId)
+    concept_key=('aimo.life_cycle.'+$safeStep)
+    label=('Agent Life reasoning delta: '+$stepId)
+    kind='thinking_growth_rule'
+    definition=('For current goal "'+$goal+'", bounded local reasoning selected next step "'+$stepId+'" because: '+$stepReason+' Strongest hypothesis/evidence direction: '+$hypText)
+    summary=('Life-cycle delta: '+$stepId+' | '+$stepReason)
+    aliases=@('agent_life_cycle_delta','bounded_thought_delta',$safeStep)
+    properties=@('owner_query_required=false','stage=thinking_growth','action_authority=false','memory_growth=governed_admission','max_atoms_per_cycle=1','memory_is_command=false')
+    relations=@('uses:active_compact_memory','uses:mind_logic_frame','supports:self_build','precedes:next_life_cycle')
+    uses=@('Use as evidence in later cycles; re-evaluate against fresh reality and current goal before choosing any next step.')
+    proof_requirements=@('mind_logic_frame_present','selected_next_logical_step_recorded','memory_recall_or_filter_attempted','governed_memory_admission_only')
+    negative_case='Reject or merge if this delta is duplicate, unsupported, stale, or would be interpreted as a command for the next cycle.'
+    return_to_parent='Future cycles may use this as evidence/weight, never as a directive.'
+    source_basis=@('current Agent Life internal goal','current MindLogic frame','filtered compact-memory context when available')
+    source_missing=$false
+    quality_flags=@('bounded','local_first','mind_logic_derived','memory_not_command','governed_admission')
   }
 }
 function Invoke-MemoryAtomAcceptanceGate($RunRoot,$RunId,$Atom,$Frames,$MemoryRecalls){
@@ -1426,7 +1472,7 @@ if(-not [string]::IsNullOrWhiteSpace($WakeContextPath) -and (Test-Path -LiteralP
   $lifeWorkingMemoryMode='reused_life_working_memory'
 } else {
   $innateReflexBootload=New-InnateReflexBootload $runRoot $innateReflexBootloadPath
-  $defaultWakeReflexes=Invoke-DefaultWakeReflexes $runRoot $innateReflexBootload $defaultWakeReflexesPath
+  $defaultWakeReflexes=Invoke-DefaultWakeReflexes $runRoot $innateReflexBootload $defaultWakeReflexesPath $LifeProfile
   if([string]::IsNullOrWhiteSpace($lifeWorkingMemoryPath)){ $lifeWorkingMemoryPath=Join-Path $runRoot 'life_working_memory_context.json' }
   $lifeWorkingMemory=[ordered]@{
     schema='life_working_memory_v1'
@@ -1478,21 +1524,23 @@ $cycles=@(
 )
 $deepThinking=[ordered]@{ enabled=[bool]$EnableDeepThinking; frames=@(); memory_recalls=@(); learning_atom=$null; acceptance_gate=$null; absorption=$null; status='NOT_REQUESTED' }
 if($EnableDeepThinking){
-  $deepThinking.status='RUNNING'
-  $deepThinking.frames=@(Build-DeepThinkingTree $internalGoal $body $memoryBefore)
-  foreach($q in @('deep thinking recursive thought frame self build','source ladder memory first return to parent','self learning atom governed absorption')){
-    $deepThinking.memory_recalls += Invoke-MemoryRecall $q 5
-  }
-  $deepThinking.learning_atom=New-DeepThinkingLearningAtom $runId $deepThinking.frames $internalGoal
-  if($EnableMemoryLearning){
-    $deepThinking.acceptance_gate=Invoke-MemoryAtomAcceptanceGate $runRoot $runId $deepThinking.learning_atom $deepThinking.frames $deepThinking.memory_recalls
-    if([int]$deepThinking.acceptance_gate.exit_code -ne 0){ throw "AIMO_MEMORY_ATOM_ACCEPTANCE_GATE_BLOCKED:$($deepThinking.acceptance_gate.exit_code)" }
-    if(-not $deepThinking.acceptance_gate.decision.absorption_allowed){ throw "AIMO_MEMORY_ATOM_ACCEPTANCE_GATE_REJECTED" }
-    $deepThinking.absorption=Invoke-AgentLifeMemoryQueueIntake $runRoot $runId $deepThinking.acceptance_gate.final_atom_path $deepThinking.acceptance_gate.decision $MemoryIngestionMode
-    if([int]$deepThinking.absorption.exit_code -ne 0){ throw "AIMO_LEARNING_ATOM_INGESTION_FAILED:$($deepThinking.absorption.exit_code)" }
-    $deepThinking.status='PASS_DEEP_THINKING_WITH_MEMORY_LEARNING'
+  if($LifeProfile -eq 'LifeLight'){
+    $deepThinking.frames=@(Build-DeepThinkingTree $internalGoal $body $memoryBefore | Where-Object { $_.id -in @('root','gap_selection','learning_atom') })
+    $deepThinking.memory_recalls=@([ordered]@{status='DEFERRED_TO_MIND_LOGIC_LIFECYCLE';reason='ordinary life tick performs one filtered memory path inside MindLogic instead of three duplicate recalls'})
+    $deepThinking.status='LIFE_LIGHT_WAITING_FOR_MIND_LOGIC'
   } else {
-    $deepThinking.status='PASS_DEEP_THINKING_ATOM_CANDIDATE_ONLY'
+    $deepThinking.status='RUNNING'
+    $deepThinking.frames=@(Build-DeepThinkingTree $internalGoal $body $memoryBefore)
+    foreach($q in @('deep thinking recursive thought frame self build','source ladder memory first return to parent','self learning atom governed absorption')){ $deepThinking.memory_recalls += Invoke-MemoryRecall $q 5 }
+    $deepThinking.learning_atom=New-DeepThinkingLearningAtom $runId $deepThinking.frames $internalGoal
+    if($EnableMemoryLearning){
+      $deepThinking.acceptance_gate=Invoke-MemoryAtomAcceptanceGate $runRoot $runId $deepThinking.learning_atom $deepThinking.frames $deepThinking.memory_recalls
+      if([int]$deepThinking.acceptance_gate.exit_code -ne 0){ throw "AIMO_MEMORY_ATOM_ACCEPTANCE_GATE_BLOCKED:$($deepThinking.acceptance_gate.exit_code)" }
+      if(-not $deepThinking.acceptance_gate.decision.absorption_allowed){ throw "AIMO_MEMORY_ATOM_ACCEPTANCE_GATE_REJECTED" }
+      $deepThinking.absorption=Invoke-AgentLifeMemoryQueueIntake $runRoot $runId $deepThinking.acceptance_gate.final_atom_path $deepThinking.acceptance_gate.decision $MemoryIngestionMode
+      if([int]$deepThinking.absorption.exit_code -ne 0){ throw "AIMO_LEARNING_ATOM_INGESTION_FAILED:$($deepThinking.absorption.exit_code)" }
+      $deepThinking.status='PASS_DEEP_THINKING_WITH_MEMORY_LEARNING'
+    } else { $deepThinking.status='PASS_DEEP_THINKING_ATOM_CANDIDATE_ONLY' }
   }
 }
 $webRequests=@(
@@ -1522,7 +1570,9 @@ $mindBuilder='operations/reasoning/build_agent_mind_logic_frame_v1.ps1'
 if(Test-Path $mindBuilder){
   $logicProblem=if($internalGoal -and $internalGoal.goal){ [string]$internalGoal.goal } else { [string]$Question }
   if([string]::IsNullOrWhiteSpace($logicProblem)){ $logicProblem='AIMO self-build thinking cycle: choose the next logical reasoning step before action candidate.' }
-  $mindOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File $mindBuilder -Problem $logicProblem -OutputPath $mindLogicPath *>&1 | ForEach-Object { [string]$_ })
+  $mindArgs=@('-NoProfile','-ExecutionPolicy','Bypass','-File',$mindBuilder,'-Problem',$logicProblem,'-OutputPath',$mindLogicPath)
+  if($LifeProfile -eq 'LifeLight'){ $mindArgs += @('-ReasoningProfile','LifeCycle') }
+  $mindOut=@(& powershell @mindArgs *>&1 | ForEach-Object { [string]$_ })
   $mindLogic.builder_stdout=@($mindOut)
   $mindLogic.builder_exit_code=$LASTEXITCODE
   $mindLogic.frame_path=$mindLogicPath
@@ -1537,6 +1587,24 @@ if(Test-Path $mindBuilder){
   }
 } else {
   $mindLogic.status='MIND_LOGIC_BUILDER_MISSING'
+}
+
+if($EnableDeepThinking -and $LifeProfile -eq 'LifeLight'){
+  if($mindLogic.frame){
+    $deepThinking.learning_atom=New-LifeCycleLearningAtom $runId $internalGoal $mindLogic.frame
+    $deepThinking.memory_recalls=@($mindLogic.frame.memory_recall,$mindLogic.frame.memory_recall_filter)
+    if($EnableMemoryLearning){
+      $deepThinking.acceptance_gate=Invoke-MemoryAtomAcceptanceGate $runRoot $runId $deepThinking.learning_atom $deepThinking.frames $deepThinking.memory_recalls
+      if([int]$deepThinking.acceptance_gate.exit_code -eq 0 -and $deepThinking.acceptance_gate.decision -and $deepThinking.acceptance_gate.decision.absorption_allowed){
+        $deepThinking.absorption=Invoke-AgentLifeMemoryQueueIntake $runRoot $runId $deepThinking.acceptance_gate.final_atom_path $deepThinking.acceptance_gate.decision $MemoryIngestionMode
+        if([int]$deepThinking.absorption.exit_code -eq 0){$deepThinking.status='PASS_LIFE_LIGHT_THOUGHT_WITH_GOVERNED_MEMORY'}else{$deepThinking.status='PARTIAL_LIFE_LIGHT_THOUGHT_MEMORY_INGESTION_FAILED'}
+      } elseif([int]$deepThinking.acceptance_gate.exit_code -eq 0){
+        $deepThinking.status='PASS_LIFE_LIGHT_THOUGHT_CANDIDATE_REJECTED_OR_MERGED_BY_GATE'
+      } else {
+        $deepThinking.status='PARTIAL_LIFE_LIGHT_THOUGHT_MEMORY_GATE_FAILED'
+      }
+    } else { $deepThinking.status='PASS_LIFE_LIGHT_THOUGHT_CANDIDATE_ONLY' }
+  } else { $deepThinking.status='PARTIAL_LIFE_LIGHT_MIND_LOGIC_FRAME_MISSING' }
 }
 
 $previousReuseGate=Get-LatestMemoryToNextPathReuseGate $OutputRoot $runRoot
@@ -1644,42 +1712,58 @@ $dynamicMemoryRetrievalBudgetPath = Join-Path $runRoot 'dynamic_memory_retrieval
 $dynamicMemoryRetrievalBudget = New-DynamicMemoryRetrievalBudget $runId $internalGoal $defaultWakeReflexes $newThoughtSeedToActiveGoal $recentThoughtRepetitionPattern
 Write-CleanJson $dynamicMemoryRetrievalBudgetPath $dynamicMemoryRetrievalBudget 30
 $selectiveCompactMemoryRetrievalPath = Join-Path $runRoot 'selective_compact_memory_retrieval.json'
-$selectiveCompactMemoryRetrieval = New-SelectiveCompactMemoryRetrieval $runId $internalGoal $mindLogic $mentalFrontierRouter $dynamicMemoryRetrievalBudget
-Write-CleanJson $selectiveCompactMemoryRetrievalPath $selectiveCompactMemoryRetrieval 40
 $decisionSpinePath = Join-Path $runRoot 'next_build_task_decision_spine.json'
-$decisionSpine = New-NextBuildTaskDecisionSpine $runId $internalGoal $mindLogic $actionDecision $mentalFrontierRouter $selectiveCompactMemoryRetrieval.selected_memory_refs $antiRepeatGuard $memoryToNextPathReuseGate $MemoryIngestionMode ([bool]$EnableMemoryLearning)
-Write-CleanJson $decisionSpinePath $decisionSpine 30
 $newThoughtSeedToActiveGoalPath = Join-Path $runRoot 'new_thought_seed_to_active_goal.json'
-Write-CleanJson $newThoughtSeedToActiveGoalPath $newThoughtSeedToActiveGoal 50
 $recentThoughtRepetitionPatternPath = Join-Path $runRoot 'recent_thought_repetition_pattern.json'
-Write-CleanJson $recentThoughtRepetitionPatternPath $recentThoughtRepetitionPattern 40
 $shortTermMindStatePath = Join-Path $runRoot 'short_term_mind_state.json'
-$shortTermMindState = New-ShortTermMindState $runId $internalGoal $deepThinking $mindLogic $selectiveCompactMemoryRetrieval $decisionSpine $deepThinking.absorption $previousShortTermMindState $MemoryIngestionMode ([bool]$EnableMemoryLearning)
-Write-CleanJson $shortTermMindStatePath $shortTermMindState 70
 $shortTermStateToNextTaskRouterPath = Join-Path $runRoot 'short_term_state_to_next_task_router.json'
-$shortTermStateToNextTaskRouter = New-ShortTermStateToNextTaskRouter $runId $shortTermMindState $decisionSpine $selectiveCompactMemoryRetrieval $previousShortTermMindState $recentThoughtRepetitionPattern
-Write-CleanJson $shortTermStateToNextTaskRouterPath $shortTermStateToNextTaskRouter 50
 $refocusToNewThoughtSeedPath = Join-Path $runRoot 'refocus_to_new_thought_seed.json'
-$refocusToNewThoughtSeed = New-RefocusToNewThoughtSeed $runId $shortTermStateToNextTaskRouter $recentThoughtRepetitionPattern $shortTermMindState $selectiveCompactMemoryRetrieval
-Write-CleanJson $refocusToNewThoughtSeedPath $refocusToNewThoughtSeed 50
 $diversifiedLensRotationPath = Join-Path $runRoot 'diversified_lens_rotation.json'
-$diversifiedLensRotation = Get-RecentDiversifiedLensRotation $OutputRoot $runRoot 8
-Write-CleanJson $diversifiedLensRotationPath $diversifiedLensRotation 40
 $refocusSeedDiversificationPath = Join-Path $runRoot 'refocus_seed_diversification.json'
-$refocusSeedDiversification = New-RefocusSeedDiversification $runId $refocusToNewThoughtSeed $recentThoughtRepetitionPattern $newThoughtSeedToActiveGoal $diversifiedLensRotation
-Write-CleanJson $refocusSeedDiversificationPath $refocusSeedDiversification 60
 $thoughtDepthLadderPath = Join-Path $runRoot 'thought_depth_ladder.json'
-$thoughtDepthLadder = New-ThoughtDepthLadder $runId $refocusSeedDiversification $dynamicMemoryRetrievalBudget
-Write-CleanJson $thoughtDepthLadderPath $thoughtDepthLadder 50
 $frontierToBuildTaskRouterPath = Join-Path $runRoot 'frontier_to_build_task_router.json'
-$frontierToBuildTaskRouter = New-FrontierToBuildTaskRouter $runId $shortTermStateToNextTaskRouter $shortTermMindState $decisionSpine $selectiveCompactMemoryRetrieval $mentalFrontierRouter ([bool]$EnableBuildTaskExecutorDryRun)
-Write-CleanJson $frontierToBuildTaskRouterPath $frontierToBuildTaskRouter 60
 $buildTaskContractExecutionGatePath = Join-Path $runRoot 'build_task_contract_execution_gate.json'
-$buildTaskContractExecutionGate = New-BuildTaskContractExecutionGate $runId $frontierToBuildTaskRouter $repo 0
-Write-CleanJson $buildTaskContractExecutionGatePath $buildTaskContractExecutionGate 50
 $buildTaskBoundedExecutorPath = Join-Path $runRoot 'build_task_bounded_executor.json'
-$buildTaskBoundedExecutor = New-BuildTaskBoundedExecutor $runId $buildTaskContractExecutionGate $frontierToBuildTaskRouter
-Write-CleanJson $buildTaskBoundedExecutorPath $buildTaskBoundedExecutor 50
+if($LifeProfile -eq 'LifeLight'){
+  $selectiveCompactMemoryRetrieval=[ordered]@{status='PASS_LIFE_LIGHT_MEMORY_CONTEXT_REUSED';selected_memory_refs=@();reason='MindLogic already performed the bounded filtered-memory path for this tick.'}
+  $decisionSpine=[ordered]@{status='PASS_LIFE_LIGHT_DECISION_SPINE';next_action_type='THOUGHT_OR_KNOWLEDGE_CANDIDATE';selected_action_id=$selectedActionId;memory_is_command=$false;memory_can_force_next_step=$false}
+  $shortTermMindState=[ordered]@{schema='short_term_mind_state_v1';status='PASS_LIFE_LIGHT_SHORT_TERM_STATE';run_id=$runId;active_goal=$internalGoal.goal;selected_action_id=$selectedActionId;learning_status=$deepThinking.status;knowledge_candidate_label=if($deepThinking.learning_atom){$deepThinking.learning_atom.label}else{$null};memory_role='evidence_weight_context';memory_is_command=$false;created_at=(Get-Date).ToString('o')}
+  $shortTermStateToNextTaskRouter=[ordered]@{schema='short_term_state_to_next_task_router_v1';status='PASS_LIFE_LIGHT_NEXT_TASK_ROUTER';selected_next_task=if($mindLogic.frame -and $mindLogic.frame.selected_next_logical_step){$mindLogic.frame.selected_next_logical_step.step_id}else{$selectedActionId};selection_rule='fresh goal/reality and bounded reasoning outrank remembered evidence; memory cannot dictate route'}
+  $refocusToNewThoughtSeed=[ordered]@{status='DEFERRED_LIFE_CYCLE_PROFILE'}
+  $diversifiedLensRotation=[ordered]@{status='DEFERRED_LIFE_CYCLE_PROFILE';avoid_lenses=@()}
+  $refocusSeedDiversification=[ordered]@{status='DEFERRED_LIFE_CYCLE_PROFILE';selected_lens=$null}
+  $thoughtDepthLadder=[ordered]@{status='DEFERRED_LIFE_CYCLE_PROFILE';depth_level='ordinary_tick'}
+  $frontierToBuildTaskRouter=[ordered]@{status='DEFERRED_LIFE_CYCLE_PROFILE';contract=[ordered]@{task_id='NOT_ROUTED_FROM_ORDINARY_LIFE_TICK'}}
+  $buildTaskContractExecutionGate=[ordered]@{status='DEFERRED_LIFE_CYCLE_PROFILE';gate_decision='NO_EXECUTION'}
+  $buildTaskBoundedExecutor=[ordered]@{status='DEFERRED_LIFE_CYCLE_PROFILE';execution_status='NOT_EXECUTED'}
+  Write-CleanJson $shortTermMindStatePath $shortTermMindState 30
+  Write-CleanJson $shortTermStateToNextTaskRouterPath $shortTermStateToNextTaskRouter 30
+} else {
+  $selectiveCompactMemoryRetrieval = New-SelectiveCompactMemoryRetrieval $runId $internalGoal $mindLogic $mentalFrontierRouter $dynamicMemoryRetrievalBudget
+  Write-CleanJson $selectiveCompactMemoryRetrievalPath $selectiveCompactMemoryRetrieval 40
+  $decisionSpine = New-NextBuildTaskDecisionSpine $runId $internalGoal $mindLogic $actionDecision $mentalFrontierRouter $selectiveCompactMemoryRetrieval.selected_memory_refs $antiRepeatGuard $memoryToNextPathReuseGate $MemoryIngestionMode ([bool]$EnableMemoryLearning)
+  Write-CleanJson $decisionSpinePath $decisionSpine 30
+  Write-CleanJson $newThoughtSeedToActiveGoalPath $newThoughtSeedToActiveGoal 50
+  Write-CleanJson $recentThoughtRepetitionPatternPath $recentThoughtRepetitionPattern 40
+  $shortTermMindState = New-ShortTermMindState $runId $internalGoal $deepThinking $mindLogic $selectiveCompactMemoryRetrieval $decisionSpine $deepThinking.absorption $previousShortTermMindState $MemoryIngestionMode ([bool]$EnableMemoryLearning)
+  Write-CleanJson $shortTermMindStatePath $shortTermMindState 70
+  $shortTermStateToNextTaskRouter = New-ShortTermStateToNextTaskRouter $runId $shortTermMindState $decisionSpine $selectiveCompactMemoryRetrieval $previousShortTermMindState $recentThoughtRepetitionPattern
+  Write-CleanJson $shortTermStateToNextTaskRouterPath $shortTermStateToNextTaskRouter 50
+  $refocusToNewThoughtSeed = New-RefocusToNewThoughtSeed $runId $shortTermStateToNextTaskRouter $recentThoughtRepetitionPattern $shortTermMindState $selectiveCompactMemoryRetrieval
+  Write-CleanJson $refocusToNewThoughtSeedPath $refocusToNewThoughtSeed 50
+  $diversifiedLensRotation = Get-RecentDiversifiedLensRotation $OutputRoot $runRoot 8
+  Write-CleanJson $diversifiedLensRotationPath $diversifiedLensRotation 40
+  $refocusSeedDiversification = New-RefocusSeedDiversification $runId $refocusToNewThoughtSeed $recentThoughtRepetitionPattern $newThoughtSeedToActiveGoal $diversifiedLensRotation
+  Write-CleanJson $refocusSeedDiversificationPath $refocusSeedDiversification 60
+  $thoughtDepthLadder = New-ThoughtDepthLadder $runId $refocusSeedDiversification $dynamicMemoryRetrievalBudget
+  Write-CleanJson $thoughtDepthLadderPath $thoughtDepthLadder 50
+  $frontierToBuildTaskRouter = New-FrontierToBuildTaskRouter $runId $shortTermStateToNextTaskRouter $shortTermMindState $decisionSpine $selectiveCompactMemoryRetrieval $mentalFrontierRouter ([bool]$EnableBuildTaskExecutorDryRun)
+  Write-CleanJson $frontierToBuildTaskRouterPath $frontierToBuildTaskRouter 60
+  $buildTaskContractExecutionGate = New-BuildTaskContractExecutionGate $runId $frontierToBuildTaskRouter $repo 0
+  Write-CleanJson $buildTaskContractExecutionGatePath $buildTaskContractExecutionGate 50
+  $buildTaskBoundedExecutor = New-BuildTaskBoundedExecutor $runId $buildTaskContractExecutionGate $frontierToBuildTaskRouter
+  Write-CleanJson $buildTaskBoundedExecutorPath $buildTaskBoundedExecutor 50
+}
 $proofPackManifestPath = Join-Path $runRoot 'sandbox_proof_pack_manifest.json'
 
 $filesWritten=@($proofPath,$mindLogicPath,$actionDecisionPath,$antiRepeatGuardPath,$memoryToNextPathReuseGatePath,$mentalFrontierExpansionGatePath,$mentalFrontierRouterPath,$dynamicMemoryRetrievalBudgetPath,$selectiveCompactMemoryRetrievalPath,$decisionSpinePath,$newThoughtSeedToActiveGoalPath,$recentThoughtRepetitionPatternPath,$shortTermMindStatePath,$shortTermStateToNextTaskRouterPath,$refocusToNewThoughtSeedPath,$diversifiedLensRotationPath,$refocusSeedDiversificationPath,$thoughtDepthLadderPath,$frontierToBuildTaskRouterPath,$buildTaskContractExecutionGatePath,$buildTaskBoundedExecutorPath,$proofPackManifestPath)
@@ -1733,6 +1817,7 @@ $proof=[ordered]@{
   self_question_trace=$cycles
   cycles=$cycles
   memory_use_trace=[ordered]@{ first_source='ACTIVE_COMPACT_MEMORY_PORT'; used_manifest=$true; used_index_sample=$true; used_cell_sample=$true; mutation=[bool]$EnableMemoryLearning; limitation='memory system exists; deep thinking uses recall and may absorb one governed learning atom when enabled' }
+  memory_influence_contract=[ordered]@{ role='evidence_weight_context'; memory_is_command=$false; memory_can_force_next_step=$false; memory_can_change_candidate_scores=$true; next_step_sources=@('current_parent_goal','fresh_reality','known_unknown','contradictions','hypotheses','anti_repeat','mental_frontier','short_term_state','compact_memory'); selection_rule='re-evaluate bounded signals every cycle; remembered knowledge may strengthen or weaken a route but cannot dictate it' }
   deep_thinking=$deepThinking
   internal_library_trace=[ordered]@{ used_body_map=$body.exists; used_living_loop=$true; used_school_contract=$school.owner_control_contract }
   web_research_requests=$webRequests
@@ -1772,7 +1857,7 @@ $proof=[ordered]@{
   validator_result=[ordered]@{ runner_self_check='PASS_RUNNER_GENERATED_SINGLE_SANDBOX_PROOF'; external_validator_expected='validators/validate_autonomous_inner_motor_organ_contract.ps1 -SandboxProofPath <proof>; validators/validate_autonomous_inner_motor_mind_logic_wiring_v1.ps1 -ProofPath <proof>; validators/validate_autonomous_inner_motor_action_decision_wiring_v1.ps1 -ProofPath <proof>' }
 }
 Write-CleanJson $proofPath $proof 80
-$proofPackRequiredFiles=@('SANDBOX_EXPLORATION_PROOF.json','mind_logic_frame.json','action_decision_packet.json','anti_repeat_guard.json','memory_to_next_path_reuse_gate.json','mental_frontier_expansion_gate.json','mental_frontier_router.json','dynamic_memory_retrieval_budget.json','selective_compact_memory_retrieval.json','next_build_task_decision_spine.json','new_thought_seed_to_active_goal.json','recent_thought_repetition_pattern.json','short_term_mind_state.json','short_term_state_to_next_task_router.json','refocus_to_new_thought_seed.json','diversified_lens_rotation.json','refocus_seed_diversification.json','thought_depth_ladder.json','frontier_to_build_task_router.json','build_task_contract_execution_gate.json','build_task_bounded_executor.json')
+$proofPackRequiredFiles=if($LifeProfile -eq 'LifeLight'){@('SANDBOX_EXPLORATION_PROOF.json','mind_logic_frame.json','action_decision_packet.json','anti_repeat_guard.json','memory_to_next_path_reuse_gate.json','mental_frontier_expansion_gate.json','mental_frontier_router.json','dynamic_memory_retrieval_budget.json','short_term_mind_state.json','short_term_state_to_next_task_router.json')}else{@('SANDBOX_EXPLORATION_PROOF.json','mind_logic_frame.json','action_decision_packet.json','anti_repeat_guard.json','memory_to_next_path_reuse_gate.json','mental_frontier_expansion_gate.json','mental_frontier_router.json','dynamic_memory_retrieval_budget.json','selective_compact_memory_retrieval.json','next_build_task_decision_spine.json','new_thought_seed_to_active_goal.json','recent_thought_repetition_pattern.json','short_term_mind_state.json','short_term_state_to_next_task_router.json','refocus_to_new_thought_seed.json','diversified_lens_rotation.json','refocus_seed_diversification.json','thought_depth_ladder.json','frontier_to_build_task_router.json','build_task_contract_execution_gate.json','build_task_bounded_executor.json')}
 if($cycleWakeArtifactsWritten){ $proofPackRequiredFiles += @('innate_reflex_bootload.json','default_wake_reflexes.json') }
 $proofPackOptionalSidecars=@('memory_recall_filter.json','contradiction_resolution.json','hypothesis_test_result.json','deep_source_answer_request.json','memory_filter_for_answer.json','route_request_packet.json','source_authority_route_decision.json','deep_source_answer_assimilation.json','mind_delta_acceptance_decision.json')
 $proofPackFiles=@()

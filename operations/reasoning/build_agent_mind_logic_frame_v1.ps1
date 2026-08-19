@@ -4,7 +4,8 @@ param(
   [int]$MemoryTop=5,
   [switch]$DisableMemoryRecall,
   [string]$OutputPath='.runtime/agent_mind_logic_kernel_v1/logic_frame.json',
-  [ValidateSet('LabOnly')][string]$Mode='LabOnly'
+  [ValidateSet('LabOnly')][string]$Mode='LabOnly',
+  [ValidateSet('Full','LifeCycle')][string]$ReasoningProfile='Full'
 )
 $ErrorActionPreference='Stop'
 function WJson($o,$p){ New-Item -ItemType Directory -Force -Path (Split-Path $p -Parent) | Out-Null; $o|ConvertTo-Json -Depth 80|Set-Content -Path $p -Encoding UTF8 }
@@ -105,24 +106,23 @@ if(Has $lower 'doesn.?t know|does not know|knows nothing|no evidence|no knowledg
 if(Has $lower 'wrong|not that|correction|stop|instead|not safety|not passports'){ $signals.Add('OWNER_CORRECTION') | Out-Null }
 if(Has $lower 'can do|capability|can the agent|able to do|what can'){ $signals.Add('CAPABILITY_QUESTION') | Out-Null }
 $classification=if($signals -contains 'OWNER_CORRECTION'){'CONTEXT_MISMATCH_CORRECTION'}elseif($signals -contains 'KNOWLEDGE_GAP_CHALLENGE'){'KNOWLEDGE_GAP_REASONING_TASK'}else{'GENERAL_LOGIC_TASK'}
-$known=if($legacySelfBuildTopic){
-  @(
-    [ordered]@{claim='AIMO can produce thinking traces and next_action_candidate in sandbox.'; evidence='AUTONOMOUS_INNER_MOTOR_ACTION_DECISION_WIRING_V1_PROOF'; confidence='PROVEN_LAB'},
-    [ordered]@{claim='Memory learning mechanism exists through governed queue/merge, but that is not general knowledge competence.'; evidence='AIMO memory learning mechanism proofs'; confidence='PROVEN_LIVE_FOR_MECHANISM_ONLY'},
-    [ordered]@{claim='Recent work over-focused on authority layers relative to current Owner intent.'; evidence='Owner correction in current problem text'; confidence='OWNER_REPORTED_AND_CONTEXT_SUPPORTED'}
-  )
+$known=New-Object 'System.Collections.Generic.List[object]'
+if($legacySelfBuildTopic){
+  [void]$known.Add([ordered]@{claim='AIMO can produce thinking traces and next_action_candidate in sandbox.'; evidence='AUTONOMOUS_INNER_MOTOR_ACTION_DECISION_WIRING_V1_PROOF'; confidence='PROVEN_LAB'})
+  [void]$known.Add([ordered]@{claim='Memory learning mechanism exists through governed queue/merge, but that is not general knowledge competence.'; evidence='AIMO memory learning mechanism proofs'; confidence='PROVEN_LIVE_FOR_MECHANISM_ONLY'})
+  [void]$known.Add([ordered]@{claim='Recent work over-focused on authority layers relative to current Owner intent.'; evidence='Owner correction in current problem text'; confidence='OWNER_REPORTED_AND_CONTEXT_SUPPORTED'})
 }else{
-  @([ordered]@{claim=('Current reasoning topic: ' + $Problem); evidence='current_input'; confidence='INPUT_DEFINED_TOPIC'})
+  [void]$known.Add([ordered]@{claim=('Current reasoning topic: ' + $Problem); evidence='current_input'; confidence='INPUT_DEFINED_TOPIC'})
 }
 if($memoryRecallFilter.status -eq 'PASS_MEMORY_RECALL_RELEVANCE_FILTER_V1' -and @($memoryRecallFilter.accepted_matches).Count -gt 0){
   $memoryRecall.used_in_known=$true
   $memoryRecallFilter.used_in_known=$true
   if($legacySelfBuildTopic){
     $topLabels=(@($memoryRecallFilter.accepted_matches) | Select-Object -First 3 | ForEach-Object { $_.label }) -join '; '
-    $known += [ordered]@{claim=('Filtered active memory recalls accepted as relevant evidence: ' + $topLabels); evidence='filter_memory_recall_relevance_v1'; confidence='FILTERED_MEMORY_RECALL_SUPPORTED'}
+    [void]$known.Add([ordered]@{claim=('Filtered active memory recalls accepted as relevant evidence: ' + $topLabels); evidence='filter_memory_recall_relevance_v1'; confidence='FILTERED_MEMORY_RECALL_SUPPORTED'})
   }else{
     foreach($m in @($memoryRecallFilter.accepted_matches | Select-Object -First 3)){
-      $known += [ordered]@{claim=('Relevant memory evidence candidate for current topic: ' + [string]$m.summary); evidence=('active_memory:' + [string]$m.label); confidence='FILTERED_MEMORY_EVIDENCE_CANDIDATE'}
+      [void]$known.Add([ordered]@{claim=('Relevant memory evidence candidate for current topic: ' + [string]$m.summary); evidence=('active_memory:' + [string]$m.label); confidence='FILTERED_MEMORY_EVIDENCE_CANDIDATE'})
     }
   }
 }
@@ -234,7 +234,7 @@ $deepSourceAnswer=[ordered]@{
 }
 $deepAnswerRequester='operations/reasoning/request_deep_source_answer_v1.ps1'
 $deepAnswerPath=Join-Path (Split-Path $OutputPath -Parent) 'deep_source_answer_request.json'
-if(Test-Path $deepAnswerRequester){
+if($ReasoningProfile -eq 'LifeCycle'){ $deepSourceAnswer.status='DEFERRED_LIFE_CYCLE_PROFILE' } elseif(Test-Path $deepAnswerRequester){
   $needText=if($hypothesisTest.result -and $hypothesisTest.result.strongest_hypothesis){
     'Need deep answer for strongest hypothesis: ' + [string]$hypothesisTest.result.strongest_hypothesis.text
   } elseif($contradictionResolution.result -and $contradictionResolution.result.selected_resolution_step){
@@ -264,7 +264,7 @@ $deepSourceAssimilation=[ordered]@{
 }
 $assimilationScript='operations/reasoning/assimilate_deep_source_answer_v1.ps1'
 $assimilationPath=Join-Path (Split-Path $OutputPath -Parent) 'deep_source_answer_assimilation.json'
-if((Test-Path $assimilationScript) -and (Test-Path $deepAnswerPath)){
+if($ReasoningProfile -eq 'LifeCycle'){ $deepSourceAssimilation.status='DEFERRED_LIFE_CYCLE_PROFILE' } elseif((Test-Path $assimilationScript) -and (Test-Path $deepAnswerPath)){
   $assimOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File $assimilationScript -DeepSourceAnswerPath $deepAnswerPath -OutputPath $assimilationPath *>&1 | ForEach-Object { [string]$_ })
   $deepSourceAssimilation.assimilator_stdout=@($assimOut | Where-Object { $_ -match '^(ASSIMILATION_STATUS|ASSIMILATION_EVIDENCE_COUNT|ASSIMILATION_PATH)=' })
   $deepSourceAssimilation.exit_code=$LASTEXITCODE
@@ -289,7 +289,7 @@ $mindDeltaAcceptance=[ordered]@{
 }
 $acceptanceScript='operations/reasoning/evaluate_mind_delta_acceptance_v1.ps1'
 $acceptancePath=Join-Path (Split-Path $OutputPath -Parent) 'mind_delta_acceptance_decision.json'
-if((Test-Path $acceptanceScript) -and (Test-Path $assimilationPath)){
+if($ReasoningProfile -eq 'LifeCycle'){ $mindDeltaAcceptance.status='DEFERRED_LIFE_CYCLE_PROFILE' } elseif((Test-Path $acceptanceScript) -and (Test-Path $assimilationPath)){
   $accOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File $acceptanceScript -AssimilationPath $assimilationPath -OutputPath $acceptancePath *>&1 | ForEach-Object { [string]$_ })
   $mindDeltaAcceptance.acceptance_stdout=@($accOut | Where-Object { $_ -match '^(ACCEPTANCE_GATE_STATUS|ACCEPTANCE_GATE_DECISION|ACCEPTANCE_GATE_PATH)=' })
   $mindDeltaAcceptance.exit_code=$LASTEXITCODE
@@ -314,7 +314,7 @@ $sourceAuthorityRoute=[ordered]@{
 }
 $sourceRouterScript='operations/reasoning/route_source_authority_v1.ps1'
 $sourceRouterPath=Join-Path (Split-Path $OutputPath -Parent) 'source_authority_route_decision.json'
-if((Test-Path $sourceRouterScript) -and (Test-Path $acceptancePath)){
+if($ReasoningProfile -eq 'LifeCycle'){ $sourceAuthorityRoute.status='DEFERRED_LIFE_CYCLE_PROFILE' } elseif((Test-Path $sourceRouterScript) -and (Test-Path $acceptancePath)){
   $routeOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File $sourceRouterScript -AcceptanceDecisionPath $acceptancePath -OutputPath $sourceRouterPath *>&1 | ForEach-Object { [string]$_ })
   $sourceAuthorityRoute.router_stdout=@($routeOut | Where-Object { $_ -match '^(SOURCE_ROUTER_STATUS|SOURCE_ROUTER_ROUTE|SOURCE_ROUTER_PATH)=' })
   $sourceAuthorityRoute.exit_code=$LASTEXITCODE
@@ -339,7 +339,7 @@ $routeRequestPacket=[ordered]@{
 }
 $routePacketScript='operations/reasoning/build_route_request_packet_v1.ps1'
 $routePacketPath=Join-Path (Split-Path $OutputPath -Parent) 'route_request_packet.json'
-if((Test-Path $routePacketScript) -and (Test-Path $sourceRouterPath)){
+if($ReasoningProfile -eq 'LifeCycle'){ $routeRequestPacket.status='DEFERRED_LIFE_CYCLE_PROFILE' } elseif((Test-Path $routePacketScript) -and (Test-Path $sourceRouterPath)){
   $packetOut=@(& powershell -NoProfile -ExecutionPolicy Bypass -File $routePacketScript -SourceAuthorityRoutePath $sourceRouterPath -OutputPath $routePacketPath *>&1 | ForEach-Object { [string]$_ })
   $routeRequestPacket.packet_stdout=@($packetOut | Where-Object { $_ -match '^(ROUTE_REQUEST_PACKET_STATUS|ROUTE_REQUEST_PACKET_TYPE|ROUTE_REQUEST_PACKET_PATH)=' })
   $routeRequestPacket.exit_code=$LASTEXITCODE
@@ -386,7 +386,8 @@ $frame=[ordered]@{
   memory_recall_filter=$memoryRecallFilter
   evidence_refs=@($evidence)
   restored_context=if($legacySelfBuildTopic){[ordered]@{current_branch='Owner corrected direction from safety/passports to mind/logic'; nearest_project_context='AIMO has thinking proof and action-candidate proof, but needs stable cognitive operator.'}}else{[ordered]@{current_branch='current topic reasoning'; nearest_project_context=$Problem}}
-  known=@($known)
+  reasoning_profile=$ReasoningProfile
+  known=@($known.ToArray())
   unknown=@($unknown)
   assumptions=@($assumptions)
   contradictions=@($contradictions.ToArray())
@@ -406,7 +407,8 @@ $frame=[ordered]@{
   deep_answer_candidate=if($deepSourceAnswer.result){$deepSourceAnswer.result.answer_candidate}else{$null}
   no_evidence_no_claim=$true
   return_to_parent=if($legacySelfBuildTopic){'Use this frame to build/wire AIMO cognitive logic before any further execution authority work.'}else{('Return to parent with topic-specific evidence, unknowns, and next reasoning step for: ' + $Problem)}
-  boundary=[ordered]@{reasoning_only=$true; action_executed=$false; live_process_touched=$false; active_memory_mutated=$false; repo_mutated_by_kernel=$false}
+  memory_influence_contract=[ordered]@{role='evidence_weight_context';memory_is_command=$false;memory_can_force_next_step=$false;memory_can_change_candidate_scores=$true}
+  boundary=[ordered]@{reasoning_only=$true; action_executed=$false; live_process_touched=$false; active_memory_mutated=$false; repo_mutated_by_kernel=$false; reasoning_profile=$ReasoningProfile; deep_source_deferred=($ReasoningProfile -eq 'LifeCycle')}
   kernel_ref=$kernelPath
 }
 WJson $frame $OutputPath
