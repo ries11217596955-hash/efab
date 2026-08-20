@@ -148,7 +148,9 @@ while($true){
       }
       WriteJson $microTaskPath $microTask 80
       & powershell -NoProfile -ExecutionPolicy Bypass -File operations/school/codex/validate_and_normalize_codex_school_patch_candidates_v1.ps1 -TaskJsonPath $microTaskPath -CandidatesJsonlPath ([string]$mb.ready_jsonl) -OutputAtomsJsonlPath ([string]$mb.normalized_atoms_jsonl) -ReportPath ([string]$mb.normalization_report) | Out-Host
+      $normalizerExit=$LASTEXITCODE
       $norm=Get-Content ([string]$mb.normalization_report) -Raw | ConvertFrom-Json
+      if($normalizerExit -ne 0 -or [string]$norm.status -ne 'PASS_CODEX_SCHOOL_KNOWLEDGE_CANDIDATE_NORMALIZATION_V1'){ throw ("SCHOOL_KNOWLEDGE_NORMALIZATION_BLOCKED:{0}:exit={1}:status={2}" -f $mb.micro_batch_id,$normalizerExit,$norm.status) }
       [void]$prepared.Add([pscustomobject]@{mb=$mb; norm=$norm})
     }
     $absorbStatus='NOT_RUN'; $absorbProof=$null; $digestWindowAtoms=0; $digestWindowInput=$null
@@ -602,6 +604,9 @@ if($ProducerMode -eq 'MockProducer'){
     [void]$promptLines.Add('- Every claim must be a declarative, source-grounded knowledge statement. Never emit a task, instruction, patch proposal, next step, or suggestion as claim.')
     [void]$promptLines.Add('- knowledge_kind must be one of fact, observation, relation, mechanism, constraint, rule; evidence_statement must say what source_basis establishes.')
     [void]$promptLines.Add('- source_basis entries must be concrete existing repo-relative file paths or explicit https:// URLs; vague source labels are forbidden.')
+    [void]$promptLines.Add('- AGENTS.md is an execution contract and must not be used as School knowledge source_basis.')
+    [void]$promptLines.Add('- Sources must substantively concern TOPIC_KEY. Do not create knowledge from source formatting, line numbers, token/character counts, headings, or list structure.')
+    [void]$promptLines.Add('- Prefer topic-relevant implementation/spec/source files; a claim must improve understanding or future reasoning about TOPIC_KEY, not merely describe a document.')
     [void]$promptLines.Add('- source_missing=true is not admissible for knowledge. If evidence is insufficient for TARGET_COUNT distinct claims, write producer.FAILED.marker.json with reason=INSUFFICIENT_EVIDENCE_FOR_EXACT_COUNT and stop; never pad count with paraphrases.')
     [void]$promptLines.Add('- Write exactly TARGET_COUNT JSONL candidate lines total across REQUIRED_BATCHES only.')
     [void]$promptLines.Add('- Write heartbeat and DONE marker after all REQUIRED_BATCHES are READY.')

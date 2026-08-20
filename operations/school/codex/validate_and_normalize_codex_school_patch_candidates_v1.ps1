@@ -14,6 +14,21 @@ function Sha256Text([string]$Text){
   try{ $bytes=[Text.Encoding]::UTF8.GetBytes([string]$Text); return (($sha.ComputeHash($bytes)|ForEach-Object{$_.ToString('x2')}) -join '') } finally { $sha.Dispose() }
 }
 function NormalizeKnowledgeClaim([string]$Text){ return ((([string]$Text).ToLowerInvariant() -replace '\s+',' ').Trim()) }
+function NormalizeKnowledgeTemplate([string]$Text){
+  $x=NormalizeKnowledgeClaim $Text
+  $x=[regex]::Replace($x,'`[^`]+`','`X`')
+  $x=[regex]::Replace($x,'"[^"]+"','"X"')
+  $x=[regex]::Replace($x,"'[^']+'","'X'")
+  $x=[regex]::Replace($x,'\b[0-9]+\b','#')
+  $x=[regex]::Replace($x,'\b[a-f0-9]{8,64}\b','HASH')
+  return $x
+}
+function IsSourceDocumentTrivia([string]$Claim){
+  $x=NormalizeKnowledgeClaim $Claim
+  if($x -match '\bline #?\d*\b' -and $x -match '\b(word tokens|characters|starts with token|ends with token|classified as|heading depth|bullet entry|ordered-list entry|fenced-code delimiter|belongs to .* section)\b'){ return $true }
+  if($x -match '\b(parsed word tokens|non-newline characters|heading depth|code-fence content|paragraph content|lead-in content|bullet content|numbered-list content)\b'){ return $true }
+  return $false
+}
 function Test-KnowledgeSourceRef([string]$Ref){
   $x=([string]$Ref).Trim()
   if([string]::IsNullOrWhiteSpace($x)){ return $false }
@@ -31,6 +46,7 @@ $task=Get-Content $TaskJsonPath -Raw | ConvertFrom-Json
 $required=@($task.required_candidate_fields)
 if($required.Count -lt 10){ throw 'TASK_REQUIRED_FIELDS_TOO_THIN' }
 $topic=[string]$task.topic_key
+if(([string]$topic).Trim().ToLowerInvariant() -in @('default','generic','placeholder','unknown_topic')){ throw ('GENERIC_TOPIC_NOT_ADMISSIBLE:'+ $topic) }
 $targetDepth=[int]$task.target_depth
 $startDepth=[int]$task.start_depth
 $expectedCount=[int]$task.candidate_limit
@@ -62,6 +78,7 @@ foreach($line in Get-Content $CandidatesJsonlPath){
   $sourceMissingBool=(([string]$sourceMissing).ToLowerInvariant() -eq 'true')
   if(-not $hasSource){ [void]$fail.Add('grounded_source_basis_required') }
   elseif(@($sourceRefs|Where-Object{-not(Test-KnowledgeSourceRef ([string]$_))}).Count -gt 0){ [void]$fail.Add('unresolvable_source_basis') }
+  if(@($sourceRefs|Where-Object{ ([IO.Path]::GetFileName(([string]$_).Trim())).ToLowerInvariant() -eq 'agents.md' }).Count -gt 0){ [void]$fail.Add('execution_contract_not_school_knowledge_source') }
   if($sourceMissingBool){ [void]$fail.Add('source_missing_not_admissible_for_knowledge') }
   $schema=[string](GetProp $obj 'schema')
   if($schema -ne 'codex_school_knowledge_candidate_v1'){ [void]$fail.Add('knowledge_schema_required') }
@@ -72,6 +89,7 @@ foreach($line in Get-Content $CandidatesJsonlPath){
   if([string]::IsNullOrWhiteSpace($claim)){ [void]$fail.Add('knowledge_claim_empty') }
   if([string]::IsNullOrWhiteSpace($evidenceStatement)){ [void]$fail.Add('evidence_statement_empty') }
   $claimNorm=NormalizeKnowledgeClaim $claim
+  if(IsSourceDocumentTrivia $claim){ [void]$fail.Add('source_document_metadata_not_knowledge') }
   $imperativePattern='^(add|tighten|verify|enforce|ensure|require|prevent|preserve|reject|validate|bound|route|keep|make|limit|guard|detect|prove|create|implement|update|change|fix|write|investigate|collect|gather|decide|choose|assess|compare|identify|determine|find)\b'
   $ambiguousImperativePattern='^(use|test|run|record|build)\s+(the|a|an|this|that|these|those|one|each|all|new|current|existing)\b'
   $instructionPattern='\b(next step|task is to|goal is to|patch proposal|action proposal|we should|you should|we need to|you need to)\b'
@@ -127,7 +145,21 @@ foreach($line in Get-Content $CandidatesJsonlPath){
   [void]$accepted.Add($atom)
 }
 if([string]::IsNullOrWhiteSpace($ReportPath)){ $ReportPath=(Join-Path (Split-Path -Parent $OutputAtomsJsonlPath) 'codex_candidate_normalization_report.json') }
-$normalizationPassed=($accepted.Count -eq $expectedCount -and $accepted.Count -gt 0)
+$batchFailures=New-Object System.Collections.Generic.List[string]
+$templateCounts=@{}
+foreach($a in @($accepted)){
+  $template=NormalizeKnowledgeTemplate ([string]$a.summary)
+  if(-not $templateCounts.ContainsKey($template)){ $templateCounts[$template]=0 }
+  $templateCounts[$template]=[int]$templateCounts[$template]+1
+}
+$templateUnique=$templateCounts.Count
+$templateMaxRepeat=if($templateCounts.Count -gt 0){ [int](($templateCounts.Values|Measure-Object -Maximum).Maximum) }else{0}
+$templateUniqueRatio=if($accepted.Count -gt 0){ [math]::Round(($templateUnique/[double]$accepted.Count),4) }else{0}
+if($accepted.Count -ge 20){
+  if($templateUniqueRatio -lt 0.25){ [void]$batchFailures.Add(('template_diversity_ratio_too_low:{0}' -f $templateUniqueRatio)) }
+  if($templateMaxRepeat -gt [math]::Max(10,[math]::Ceiling($accepted.Count*0.10))){ [void]$batchFailures.Add(('template_repeat_too_high:{0}' -f $templateMaxRepeat)) }
+}
+$normalizationPassed=($accepted.Count -eq $expectedCount -and $accepted.Count -gt 0 -and $batchFailures.Count -eq 0)
 $report=[ordered]@{
   schema='codex_school_knowledge_candidate_normalization_v1'
   status=if($normalizationPassed){'PASS_CODEX_SCHOOL_KNOWLEDGE_CANDIDATE_NORMALIZATION_V1'}else{'FAIL_CODEX_SCHOOL_KNOWLEDGE_CANDIDATE_NORMALIZATION_V1'}
@@ -140,6 +172,10 @@ $report=[ordered]@{
   accepted_count=$accepted.Count
   rejected_count=$rejected.Count
   rejected=@($rejected | Select-Object -First 20)
+  batch_failures=@($batchFailures)
+  template_unique_count=$templateUnique
+  template_unique_ratio=$templateUniqueRatio
+  template_max_repeat=$templateMaxRepeat
   memory_mutated=$false
 }
 WriteJson $ReportPath $report 80
@@ -149,6 +185,7 @@ Write-Host "CODEX_CANDIDATE_ACCEPTED_COUNT=$($accepted.Count)"
 Write-Host "CODEX_CANDIDATE_REJECTED_COUNT=$($rejected.Count)"
 if($accepted.Count -lt 1){ throw 'NO_ACCEPTED_CODEX_CANDIDATES' }
 if($accepted.Count -ne $expectedCount){ throw "ACCEPTED_COUNT_MISMATCH:$($accepted.Count)/$expectedCount" }
+if($batchFailures.Count -gt 0){ throw ('BATCH_SEMANTIC_QUALITY_FAILED:'+(@($batchFailures)-join',')) }
 EnsureDir (Split-Path -Parent $OutputAtomsJsonlPath)
 ($accepted | ForEach-Object { $_|ConvertTo-Json -Depth 50 -Compress }) -join "`n" | Set-Content -LiteralPath $OutputAtomsJsonlPath -Encoding UTF8
 Write-Host "CODEX_CANDIDATE_NORMALIZED_ATOMS=$OutputAtomsJsonlPath"
